@@ -103,16 +103,6 @@ document.addEventListener('DOMContentLoaded', function () {
     runTest();
   });
 
-  document.getElementById('btn-paste-log').addEventListener('click', async function() {
-    try {
-      const text = await navigator.clipboard.readText();
-      logTextarea.value = text;
-      runTest();
-    } catch(_) {
-      window.showToast('Use Ctrl+V to paste into the text area', 'info');
-    }
-  });
-
   /* ===== CORE: RUN TEST ===== */
   function runTest() {
     const pattern = patternInput.value;
@@ -205,8 +195,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
   /* ===== RENDER LOG VIEW (highlighted) ===== */
   function renderLogView(text, matches) {
+    if (!logView) return;
     if (!text) {
-      logView.innerHTML = '<span style="color:#4A5568;font-style:italic;font-size:11px">Paste log text here or use the textarea below…</span>';
+      logView.innerHTML = '<span style="color:#4A5568;font-style:italic;font-size:11px">Paste log text to test your pattern…</span>';
       return;
     }
 
@@ -331,13 +322,13 @@ document.addEventListener('DOMContentLoaded', function () {
       html += '<div style="margin-bottom:8px">';
       html += '<span class="match-badge">Match ' + (mi+1) + '</span>';
       html += '<div style="padding-left:4px;margin-top:3px">';
-      html += '<div style="color:#E2E8F0;font-size:12px;margin-bottom:3px">' + escHtml(m.full) + '</div>';
+      html += '<div style="color:var(--color-text);font-size:12px;margin-bottom:3px">' + escHtml(m.full) + '</div>';
       m.groups.forEach(function(g, gi) {
         if (g === undefined) return;
         const col = groupColors[gi % groupColors.length];
         html += '<div style="display:flex;gap:6px;font-size:11px;margin-bottom:2px">';
         html += '<span style="color:' + col + ';min-width:54px">Group ' + (gi+1) + ':</span>';
-        html += '<span style="color:#FDE68A">' + escHtml(String(g)) + '</span>';
+        html += '<span style="color:var(--color-text)">' + escHtml(String(g)) + '</span>';
         html += '</div>';
       });
       // Named groups
@@ -345,7 +336,7 @@ document.addEventListener('DOMContentLoaded', function () {
       named.forEach(function(name) {
         html += '<div style="display:flex;gap:6px;font-size:11px;margin-bottom:2px">';
         html += '<span style="color:#86EFAC;min-width:54px">?' + escHtml(name) + ':</span>';
-        html += '<span style="color:#FDE68A">' + escHtml(String(m.named[name])) + '</span>';
+        html += '<span style="color:var(--color-text)">' + escHtml(String(m.named[name])) + '</span>';
         html += '</div>';
       });
       html += '</div></div>';

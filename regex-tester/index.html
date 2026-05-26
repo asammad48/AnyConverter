@@ -94,12 +94,10 @@
                 <button class="ac-btn" id="btn-clear-log">Clear</button>
               </div>
             </div>
-            <div class="log-view" id="log-view" aria-label="Log input with match highlighting" aria-live="polite">
-              <span style="color:var(--color-text-2,#6B7280);font-style:italic;font-size:11px">Paste log text here or use the textarea below…</span>
-            </div>
             <textarea
-              id="log-input"
-              style="display:none"
+              id="log-textarea"
+              class="ac-input"
+              placeholder="Paste log content here — matches update live as you type…"
               spellcheck="false"
               aria-label="Log text input"
             ></textarea>
@@ -131,24 +129,6 @@
           </div>
 
         </div><!-- /split-panels -->
-
-        <!-- Paste textarea (visible input source) -->
-        <div class="ac-panel">
-          <div class="ac-panel-header">
-            <span class="ac-panel-label">Paste log text here</span>
-            <div class="ac-panel-actions">
-              <button class="ac-btn" id="btn-paste-log">Paste</button>
-            </div>
-          </div>
-          <textarea
-            id="log-textarea"
-            class="ac-input"
-            placeholder="Paste log content here — matches highlight above as you type…"
-            spellcheck="false"
-            style="min-height:140px;max-height:200px"
-            aria-label="Log text paste area"
-          ></textarea>
-        </div>
 
       </div><!-- /tool-zone -->
 
