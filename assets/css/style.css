@@ -284,7 +284,22 @@ main { flex: 1; }
 :root.dark .hero { background: transparent; }
 @media (min-width: 1024px) { .hero { padding: 44px 40px 36px; } }
 .hero h1 { font-size: clamp(1.75rem, 4vw, 2.25rem); font-weight: 700; line-height: 1.2; margin-bottom: 12px; }
-.hero-desc { font-size: 1.0625rem; color: var(--color-text-2); max-width: 680px; line-height: 1.6; }
+.hero-desc { font-size: 1.0625rem; color: var(--color-text-2); max-width: 100%; line-height: 1.6; }
+.tool-page-actions { margin-top: 20px; display: flex; flex-wrap: wrap; gap: 10px; }
+.tool-page-action-btn {
+  min-height: 40px;
+  min-width: 138px;
+  justify-content: center;
+  padding: 0 14px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  gap: 8px;
+}
+.tool-page-action-btn > span[aria-hidden="true"] {
+  font-size: 14px;
+  line-height: 1;
+}
 
 /* ===== TOOL LAYOUT ===== */
 .tool-layout {
@@ -1102,11 +1117,11 @@ mark.regex-match { background: rgba(255,200,0,0.4); color: transparent; border-r
 
 /* ===== TOOL WRAPPER (new layout) ===== */
 .tool-wrapper {
-  max-width: 1280px; margin: 0 auto;
-  padding: 0 24px 32px;
+  max-width: 1280px; margin: 0;
+  padding: 0 0 32px 24px;
   display: flex; gap: 16px; align-items: flex-start;
 }
-@media (min-width: 1024px) { .tool-wrapper { padding: 0 40px 32px; } }
+@media (min-width: 1024px) { .tool-wrapper { padding: 0 0 32px 40px; } }
 .tool-zone { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 12px; }
 .tool-side {
   width: 300px; flex-shrink: 0;
