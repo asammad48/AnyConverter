@@ -529,6 +529,10 @@
     const actions = document.createElement('div');
     actions.className = 'tool-page-actions';
     actions.innerHTML = `
+      <button type="button" class="ac-btn" data-action="related" aria-label="Go to related tools section">
+        <span aria-hidden="true">▦</span>
+        <span>Related Tools</span>
+      </button>
       <button type="button" class="ac-btn" data-action="share" aria-label="Share this tool">
         <span aria-hidden="true">↗</span>
         <span>Share</span>
@@ -551,6 +555,15 @@
       if (!button) return;
       const url = window.location.href;
       const action = button.getAttribute('data-action');
+
+      if (action === 'related') {
+        const relatedSection = document.querySelector('section.related-tools, #related-tools');
+        if (relatedSection) {
+          relatedSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        } else {
+          showToast('Related tools section is not available on this page.');
+        }
+      }
 
       if (action === 'share') {
         if (navigator.share) {
