@@ -286,6 +286,20 @@ main { flex: 1; }
 .hero h1 { font-size: clamp(1.75rem, 4vw, 2.25rem); font-weight: 700; line-height: 1.2; margin-bottom: 12px; }
 .hero-desc { font-size: 1.0625rem; color: var(--color-text-2); max-width: 100%; line-height: 1.6; }
 .tool-page-actions { margin-top: 20px; display: flex; flex-wrap: wrap; gap: 10px; }
+.tool-page-action-btn {
+  min-height: 40px;
+  min-width: 138px;
+  justify-content: center;
+  padding: 0 14px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  gap: 8px;
+}
+.tool-page-action-btn > span[aria-hidden="true"] {
+  font-size: 14px;
+  line-height: 1;
+}
 
 /* ===== TOOL LAYOUT ===== */
 .tool-layout {

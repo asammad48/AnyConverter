@@ -529,19 +529,19 @@
     const actions = document.createElement('div');
     actions.className = 'tool-page-actions';
     actions.innerHTML = `
-      <button type="button" class="ac-btn" data-action="related" aria-label="Go to related tools section">
+      <button type="button" class="ac-btn tool-page-action-btn" data-action="related" aria-label="Go to related tools section">
         <span aria-hidden="true">▦</span>
         <span>Related Tools</span>
       </button>
-      <button type="button" class="ac-btn" data-action="share" aria-label="Share this tool">
+      <button type="button" class="ac-btn tool-page-action-btn" data-action="share" aria-label="Share this tool">
         <span aria-hidden="true">↗</span>
         <span>Share</span>
       </button>
-      <button type="button" class="ac-btn" data-action="copylink" aria-label="Copy tool link">
+      <button type="button" class="ac-btn tool-page-action-btn" data-action="copylink" aria-label="Copy tool link">
         <span aria-hidden="true">🔗</span>
         <span>Copy Link</span>
       </button>
-      <button type="button" class="ac-btn" data-action="favorite" aria-label="Add tool to favorites">
+      <button type="button" class="ac-btn tool-page-action-btn" data-action="favorite" aria-label="Add tool to favorites">
         <span aria-hidden="true">☆</span>
         <span>Add to Favorites</span>
       </button>
