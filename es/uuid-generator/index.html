@@ -1,0 +1,179 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Generador de UUID Online Gratis | AnyConverter</title>
+  <meta name="description" content="Genera UUIDs v4 (GUIDs) online gratis. Crea hasta 100 identificadores únicos a la vez en formato mayúsculas o minúsculas. Usa aleatoriedad criptográficamente segura.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://anyconverter.io/es/uuid-generator/">
+  <link rel="alternate" hreflang="en" href="https://anyconverter.io/uuid-generator/">
+  <link rel="alternate" hreflang="es" href="https://anyconverter.io/es/uuid-generator/">
+  <link rel="alternate" hreflang="da" href="https://anyconverter.io/da/uuid-generator/">
+  <link rel="alternate" hreflang="x-default" href="https://anyconverter.io/uuid-generator/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Generador de UUID Online Gratis | AnyConverter">
+  <meta property="og:description" content="Genera UUIDs v4 (GUIDs) online gratis. Crea hasta 100 identificadores únicos a la vez en formato mayúsculas o minúsculas. Usa aleatoriedad criptográficamente segura.">
+  <meta property="og:url" content="https://anyconverter.io/es/uuid-generator/">
+  <meta property="og:site_name" content="AnyConverter">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" data-ad-client="ca-pub-XXXXXXXXXX" crossorigin="anonymous"></script>
+  <!-- Replace ca-pub-XXXXXXXXXX with your real AdSense publisher ID -->
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Generador de UUID / GUID","url":"https://anyconverter.io/es/uuid-generator/","description":"Genera UUIDs v4 (GUIDs) online gratis usando aleatoriedad criptográficamente segura.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F4F6FF);color:var(--color-text,#1E1B4B)}
+    body{min-height:100vh;display:flex;flex-direction:column}
+    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8FE)}
+    .header-inner{max-width:1280px;width:100%;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;gap:32px}
+    .hero{padding:40px 24px 32px;max-width:1280px;margin:0 auto}
+    .hero h1{font-size:clamp(1.75rem,4vw,2.25rem);font-weight:700;line-height:1.2;margin-bottom:12px}
+    .hero-desc{font-size:1.0625rem;color:var(--color-text-2,#6B7280);max-width:680px;line-height:1.6}
+    @font-face{font-family:'Inter';font-display:swap}
+  </style>
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+  <header id="site-header" class="site-header"></header>
+  <main id="main-content">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol><li><a href="/es/">Inicio</a></li><li aria-current="page">Generador de UUID / GUID</li></ol>
+    </nav>
+    <section class="hero">
+      <h1>Generador de UUID / GUID</h1>
+      <p class="hero-desc">Genera identificadores UUID v4 criptográficamente seguros al instante. Crea hasta 100 UUIDs a la vez en mayúsculas o minúsculas, cópialos individualmente o todos a la vez — gratis, sin registro.</p>
+    </section>
+    <div class="tool-wrapper">
+      <div class="tool-zone">
+        <div style="padding:24px">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px">
+            <div>
+              <label style="display:block;font-size:13px;font-weight:500;margin-bottom:6px" for="uuid-version">Versión</label>
+              <select id="uuid-version" style="width:100%;padding:10px 12px;border:1px solid var(--color-border,#DDD8FE);border-radius:8px;font-size:14px">
+                <option value="v4" selected>UUID v4 (aleatorio)</option>
+                <option value="nil">UUID Nil (todos ceros)</option>
+              </select>
+            </div>
+            <div>
+              <label style="display:block;font-size:13px;font-weight:500;margin-bottom:6px" for="uuid-count">Cantidad</label>
+              <input type="number" id="uuid-count" value="5" min="1" max="100" style="width:100%;padding:10px 12px;border:1px solid var(--color-border,#DDD8FE);border-radius:8px;font-size:15px">
+            </div>
+          </div>
+          <div style="margin-bottom:16px">
+            <label style="display:flex;align-items:center;gap:8px;font-size:14px;cursor:pointer"><input type="checkbox" id="uuid-upper"> Mayúsculas</label>
+          </div>
+          <div class="action-bar" style="margin-bottom:16px">
+            <button class="btn btn-primary" id="btn-gen-uuid">Generar</button>
+            <button class="btn btn-secondary" id="btn-copy-all-uuid">Copiar todo</button>
+            <button class="btn btn-secondary" id="btn-clear-uuid">Limpiar</button>
+          </div>
+          <div id="uuid-output" style="display:none;background:var(--color-bg,#F4F6FF);border:1px solid var(--color-border,#DDD8FE);border-radius:8px;padding:12px;max-height:320px;overflow-y:auto">
+            <div id="uuid-list" style="display:flex;flex-direction:column;gap:6px"></div>
+          </div>
+        </div>
+      </div>
+      <aside class="tool-side" aria-label="Opciones">
+        <div class="ss-divider">Herramientas relacionadas</div>
+        <a href="/es/hash-generator/" class="ss-link"><img src="/assets/img/icon-hash.svg" alt="" width="18" height="18" loading="lazy"> Generador de Hash</a>
+        <a href="/es/jwt-decoder/" class="ss-link"><img src="/assets/img/icon-hash.svg" alt="" width="18" height="18" loading="lazy"> Decodificador JWT</a>
+        <a href="/es/password-generator/" class="ss-link"><img src="/assets/img/icon-lock.svg" alt="" width="18" height="18" loading="lazy"> Generador de Contraseñas</a>
+        <div style="margin-top:16px">
+          <p class="ad-label">Publicidad</p>
+          <div class="ad-slot" style="min-height:250px">
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+            <!-- Replace ca-pub-XXXXXXXXXX and data-ad-slot="XXXXXXXXXX" with your IDs -->
+          </div>
+        </div>
+      </aside>
+    </div>
+    <div class="ad-slot ad-slot--leaderboard">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="how-to-use">
+      <h2>Cómo Usar el Generador de UUID</h2>
+      <ol class="steps">
+        <li><strong>Paso 1</strong> — Selecciona la versión UUID (v4 aleatorio o Nil) y establece la cantidad de 1 a 100.</li>
+        <li><strong>Paso 2</strong> — Opcionalmente marca "Mayúsculas" si tu sistema requiere UUID en mayúsculas.</li>
+        <li><strong>Paso 3</strong> — Haz clic en "Generar" para crear tus UUIDs. Copia individualmente o usa "Copiar todo" para copiar el lote completo.</li>
+      </ol>
+    </section>
+    <section class="features">
+      <h2>Características</h2>
+      <ul class="features-list">
+        <li>Generación de UUID v4 criptográficamente segura usando Web Crypto API</li>
+        <li>Genera hasta 100 UUIDs en un solo clic</li>
+        <li>Opciones de salida en mayúsculas y minúsculas</li>
+        <li>Botón de copia por UUID más "Copiar todo"</li>
+        <li>Opción UUID Nil (todos ceros) para pruebas</li>
+        <li>100% lado cliente — los UUIDs nunca salen del navegador</li>
+      </ul>
+    </section>
+    <div class="ad-slot ad-slot--rectangle" style="margin:0 auto 32px">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="faq">
+      <h2>Preguntas Frecuentes</h2>
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary class="faq-question">¿Qué es un UUID? <span class="faq-icon">+</span></summary>
+          <div class="faq-answer">UUID significa Identificador Universalmente Único. Es una etiqueta de 128 bits usada para identificar de forma única objetos en sistemas informáticos. El formato estándar es 32 caracteres hexadecimales organizados en cinco grupos separados por guiones: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.</div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-question">¿Cuál es la diferencia entre UUID y GUID? <span class="faq-icon">+</span></summary>
+          <div class="faq-answer">GUID (Identificador Globalmente Único) es la implementación de Microsoft del estándar UUID. Son funcionalmente idénticos — un UUID y un GUID tienen el mismo formato y los términos se usan indistintamente en el desarrollo de software.</div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-question">¿Es realmente único el UUID v4? <span class="faq-icon">+</span></summary>
+          <div class="faq-answer">El UUID v4 usa 122 bits de aleatoriedad, lo que da aproximadamente 5,3 × 10^36 valores posibles. La probabilidad de generar un duplicado es astronómicamente baja — necesitarías generar miles de millones de UUIDs por segundo durante millones de años para que una colisión sea estadísticamente probable.</div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-question">¿Qué es el UUID Nil? <span class="faq-icon">+</span></summary>
+          <div class="faq-answer">El UUID Nil es un UUID especial donde los 128 bits son cero: 00000000-0000-0000-0000-000000000000. Está definido en el RFC 4122 y se usa normalmente como marcador de posición o valor centinela en aplicaciones que requieren un UUID "vacío" conocido.</div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-question">¿Puedo usar estos UUIDs en bases de datos en producción? <span class="faq-icon">+</span></summary>
+          <div class="faq-answer">Sí. Los UUIDs generados aquí utilizan crypto.randomUUID() o crypto.getRandomValues() del navegador, que son criptográficamente seguros y adecuados para su uso como claves primarias en bases de datos, tokens de sesión o cualquier otro caso de uso en producción.</div>
+        </details>
+      </div>
+    </section>
+    <section class="related-tools">
+      <h2>Herramientas Relacionadas</h2>
+      <div class="tool-grid">
+        <a href="/es/hash-generator/" class="tool-card">
+          <img src="/assets/img/icon-hash.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy">
+          <h3>Generador de Hash</h3>
+          <p>Genera hashes MD5, SHA-1, SHA-256 y SHA-512 al instante.</p>
+          <span class="tool-card-link">Usar →</span>
+        </a>
+        <a href="/es/jwt-decoder/" class="tool-card">
+          <img src="/assets/img/icon-hash.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy">
+          <h3>Decodificador JWT</h3>
+          <p>Decodifica e inspecciona tokens JWT con verificación de expiración.</p>
+          <span class="tool-card-link">Usar →</span>
+        </a>
+        <a href="/es/password-generator/" class="tool-card">
+          <img src="/assets/img/icon-lock.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy">
+          <h3>Generador de Contraseñas</h3>
+          <p>Genera contraseñas fuertes y seguras con configuración personalizada.</p>
+          <span class="tool-card-link">Usar →</span>
+        </a>
+        <a href="/es/base64-encoder/" class="tool-card">
+          <img src="/assets/img/icon-base64.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy">
+          <h3>Codificador Base64</h3>
+          <p>Codifica y decodifica cadenas Base64 al instante en tu navegador.</p>
+          <span class="tool-card-link">Usar →</span>
+        </a>
+      </div>
+    </section>
+  </main>
+  <footer id="site-footer" class="site-footer"></footer>
+  <script src="/assets/js/shared.js" defer></script>
+  <script src="/assets/js/tools/uuid-generator.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,146 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Password Generator Online Free | AnyConverter</title>
+  <meta name="description" content="Generate strong, secure random passwords online for free. Customize length, character types, and generate multiple passwords at once. No signup required.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://anyconverter.io/password-generator/">
+  <link rel="alternate" hreflang="en" href="https://anyconverter.io/password-generator/">
+  <link rel="alternate" hreflang="es" href="https://anyconverter.io/es/password-generator/">
+  <link rel="alternate" hreflang="da" href="https://anyconverter.io/da/password-generator/">
+  <link rel="alternate" hreflang="x-default" href="https://anyconverter.io/password-generator/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Password Generator Online Free | AnyConverter">
+  <meta property="og:description" content="Generate strong, secure random passwords online for free. Customize length, character types, and generate multiple passwords at once. No signup required.">
+  <meta property="og:url" content="https://anyconverter.io/password-generator/">
+  <meta property="og:site_name" content="AnyConverter">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" data-ad-client="ca-pub-XXXXXXXXXX" crossorigin="anonymous"></script>
+  <!-- Replace ca-pub-XXXXXXXXXX with your real AdSense publisher ID -->
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Password Generator","url":"https://anyconverter.io/password-generator/","description":"Generate strong, secure random passwords online for free. Customize length and character types.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F4F6FF);color:var(--color-text,#1E1B4B)}
+    body{min-height:100vh;display:flex;flex-direction:column}
+    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8FE)}
+    .header-inner{max-width:1280px;width:100%;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;gap:32px}
+    .hero{padding:40px 24px 32px;max-width:1280px;margin:0 auto}
+    .hero h1{font-size:clamp(1.75rem,4vw,2.25rem);font-weight:700;line-height:1.2;margin-bottom:12px}
+    .hero-desc{font-size:1.0625rem;color:var(--color-text-2,#6B7280);max-width:680px;line-height:1.6}
+    @font-face{font-family:'Inter';font-display:swap}
+  </style>
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+  <header id="site-header" class="site-header"></header>
+  <main id="main-content">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol><li><a href="/">Home</a></li><li aria-current="page">Password Generator</li></ol>
+    </nav>
+    <section class="hero">
+      <h1>Password Generator</h1>
+      <p class="hero-desc">Create strong, random passwords using uppercase, lowercase, numbers, and symbols. Choose your length (6–64 characters) and generate multiple passwords at once. All password generation happens in your browser using the Web Crypto API — nothing is sent to a server.</p>
+    </section>
+    <div class="tool-wrapper">
+      <div class="tool-zone">
+        <div style="padding:24px">
+          <div style="margin-bottom:16px">
+            <label style="display:block;font-size:13px;font-weight:500;margin-bottom:6px">Password Length: <span id="len-display">16</span></label>
+            <input type="range" id="pw-length" min="6" max="64" value="16" style="width:100%;accent-color:var(--color-primary,#4F46E5)">
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:16px">
+            <label style="display:flex;align-items:center;gap:8px;font-size:14px;cursor:pointer"><input type="checkbox" id="opt-upper" checked> Uppercase (A-Z)</label>
+            <label style="display:flex;align-items:center;gap:8px;font-size:14px;cursor:pointer"><input type="checkbox" id="opt-lower" checked> Lowercase (a-z)</label>
+            <label style="display:flex;align-items:center;gap:8px;font-size:14px;cursor:pointer"><input type="checkbox" id="opt-numbers" checked> Numbers (0-9)</label>
+            <label style="display:flex;align-items:center;gap:8px;font-size:14px;cursor:pointer"><input type="checkbox" id="opt-symbols" checked> Symbols (!@#$)</label>
+          </div>
+          <div style="margin-bottom:12px">
+            <label style="display:block;font-size:13px;font-weight:500;margin-bottom:6px">Count</label>
+            <input type="number" id="pw-count" value="1" min="1" max="20" style="width:80px;padding:8px 12px;border:1px solid var(--color-border,#DDD8FE);border-radius:8px;font-size:14px">
+          </div>
+          <div class="action-bar" style="margin-bottom:20px">
+            <button class="btn btn-primary" id="btn-generate-pw">Generate Password</button>
+            <button class="btn btn-secondary" id="btn-copy-all-pw">Copy All</button>
+          </div>
+          <div id="pw-output" style="display:none">
+            <div id="pw-list" style="display:flex;flex-direction:column;gap:8px"></div>
+            <div id="strength-bar" style="margin-top:16px">
+              <div style="font-size:12px;font-weight:500;margin-bottom:4px">Strength: <span id="strength-label">—</span></div>
+              <div style="height:6px;border-radius:3px;background:var(--color-border,#DDD8FE);overflow:hidden"><div id="strength-fill" style="height:100%;width:0%;transition:width 0.3s;border-radius:3px"></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <aside class="tool-side" aria-label="Options">
+        <div class="ss-divider">Related Tools</div>
+        <a href="/qr-code-generator/" class="ss-related-link"><img src="/assets/img/icon-qr.svg" alt="" width="18" height="18" loading="lazy">QR Code Generator</a>
+        <a href="/hash-generator/" class="ss-related-link"><img src="/assets/img/icon-hash.svg" alt="" width="18" height="18" loading="lazy">Hash Generator</a>
+        <a href="/url-encoder/" class="ss-related-link"><img src="/assets/img/icon-url.svg" alt="" width="18" height="18" loading="lazy">URL Encoder</a>
+        <div style="margin-top:16px">
+          <p class="ad-label">Advertisement</p>
+          <div class="ad-slot" style="min-height:250px">
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+            <!-- Replace ca-pub-XXXXXXXXXX and data-ad-slot="XXXXXXXXXX" with your IDs -->
+          </div>
+        </div>
+      </aside>
+    </div>
+    <div class="ad-slot ad-slot--leaderboard">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="how-to-use">
+      <h2>How to Use the Password Generator</h2>
+      <ol class="steps">
+        <li><strong>Step 1</strong> — Drag the length slider to set your desired password length between 6 and 64 characters.</li>
+        <li><strong>Step 2</strong> — Check or uncheck the character types you want: uppercase, lowercase, numbers, and/or symbols.</li>
+        <li><strong>Step 3</strong> — Set the count, click "Generate Password", then copy individual passwords or use "Copy All" to copy all at once.</li>
+      </ol>
+    </section>
+    <section class="features">
+      <h2>Features</h2>
+      <ul class="features-list">
+        <li>Cryptographically secure randomness using the Web Crypto API</li>
+        <li>Customizable length from 6 to 64 characters</li>
+        <li>Toggle uppercase, lowercase, numbers, and symbols independently</li>
+        <li>Generate up to 20 passwords at once</li>
+        <li>Password strength indicator (Weak / Medium / Strong)</li>
+        <li>One-click copy for each password or all at once</li>
+        <li>100% client-side — passwords never leave your browser</li>
+      </ul>
+    </section>
+    <div class="ad-slot ad-slot--rectangle" style="margin:0 auto 32px">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="faq">
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-list">
+        <details class="faq-item"><summary class="faq-question">How secure are the generated passwords? <span class="faq-icon">+</span></summary><div class="faq-answer">Passwords are generated using the browser's built-in Web Crypto API (crypto.getRandomValues), which produces cryptographically secure random numbers. This is the same standard used by security software and password managers.</div></details>
+        <details class="faq-item"><summary class="faq-question">Are my passwords stored or transmitted? <span class="faq-icon">+</span></summary><div class="faq-answer">No. All password generation happens locally in your browser. The passwords are never stored, logged, or transmitted to any server. Once you close or refresh the page, they are gone.</div></details>
+        <details class="faq-item"><summary class="faq-question">What password length should I use? <span class="faq-icon">+</span></summary><div class="faq-answer">For most online accounts, a minimum of 16 characters with a mix of all character types is recommended. For highly sensitive accounts like email or banking, use 20 or more characters.</div></details>
+        <details class="faq-item"><summary class="faq-question">What does the strength indicator measure? <span class="faq-icon">+</span></summary><div class="faq-answer">The strength meter evaluates length and character variety. A "Strong" password is at least 12 characters long and uses a mix of uppercase, lowercase, numbers, and symbols. "Weak" passwords are short or use only one character type.</div></details>
+        <details class="faq-item"><summary class="faq-question">Can I generate multiple passwords at once? <span class="faq-icon">+</span></summary><div class="faq-answer">Yes. Set the Count field to any number between 1 and 20, then click Generate. All passwords use the same settings. Use "Copy All" to copy all generated passwords to your clipboard at once.</div></details>
+      </div>
+    </section>
+    <section class="related-tools">
+      <h2>Related Tools</h2>
+      <div class="tool-grid">
+        <a href="/qr-code-generator/" class="tool-card"><img src="/assets/img/icon-qr.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>QR Code Generator</h3><p>Generate QR codes for any text or URL instantly.</p><span class="tool-card-link">Try it →</span></a>
+        <a href="/hash-generator/" class="tool-card"><img src="/assets/img/icon-hash.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Hash Generator</h3><p>Generate MD5, SHA-1, SHA-256 hashes from any text.</p><span class="tool-card-link">Try it →</span></a>
+        <a href="/url-encoder/" class="tool-card"><img src="/assets/img/icon-url.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>URL Encoder</h3><p>Encode and decode URLs and query strings.</p><span class="tool-card-link">Try it →</span></a>
+        <a href="/base64-encoder/" class="tool-card"><img src="/assets/img/icon-hash.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Base64 Encoder</h3><p>Encode and decode Base64 text and files.</p><span class="tool-card-link">Try it →</span></a>
+      </div>
+    </section>
+  </main>
+  <footer id="site-footer" class="site-footer"></footer>
+  <script src="/assets/js/shared.js" defer></script>
+  <script src="/assets/js/tools/password-generator.js" defer></script>
+</body>
+</html>

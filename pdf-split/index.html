@@ -1,0 +1,179 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Split PDF Online — Extract Pages Free | AnyConverter</title>
+  <meta name="description" content="Split a PDF into multiple files or extract specific pages online for free. No software needed. Choose page ranges or split every N pages. Secure browser processing.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://anyconverter.io/pdf-split/">
+  <link rel="alternate" hreflang="en" href="https://anyconverter.io/pdf-split/">
+  <link rel="alternate" hreflang="es" href="https://anyconverter.io/es/pdf-split/">
+  <link rel="alternate" hreflang="da" href="https://anyconverter.io/da/pdf-split/">
+  <link rel="alternate" hreflang="x-default" href="https://anyconverter.io/pdf-split/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Split PDF Online — Extract Pages Free | AnyConverter">
+  <meta property="og:description" content="Split a PDF into multiple files or extract specific pages online for free.">
+  <meta property="og:url" content="https://anyconverter.io/pdf-split/">
+  <meta property="og:site_name" content="AnyConverter">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" data-ad-client="ca-pub-XXXXXXXXXX" crossorigin="anonymous"></script>
+  <!-- Replace ca-pub-XXXXXXXXXX with your real AdSense publisher ID -->
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Split PDF — Extract Pages Online","url":"https://anyconverter.io/pdf-split/","description":"Split a PDF into multiple files or extract specific pages online for free.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F4F6FF);color:var(--color-text,#1E1B4B)}
+    body{min-height:100vh;display:flex;flex-direction:column}
+    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8FE)}
+    .header-inner{max-width:1280px;width:100%;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;gap:32px}
+    .hero{padding:40px 24px 32px;max-width:1280px;margin:0 auto}
+    .hero h1{font-size:clamp(1.75rem,4vw,2.25rem);font-weight:700;line-height:1.2;margin-bottom:12px}
+    .hero-desc{font-size:1.0625rem;color:var(--color-text-2,#6B7280);max-width:680px;line-height:1.6}
+    @font-face{font-family:'Inter';font-display:swap}
+  </style>
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+  <header id="site-header" class="site-header"></header>
+  <main id="main-content">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol><li><a href="/">Home</a></li><li aria-current="page">PDF Split</li></ol>
+    </nav>
+    <section class="hero">
+      <h1>Split PDF — Extract Pages Online</h1>
+      <p class="hero-desc">Split a PDF into multiple files or extract specific pages. Choose your split mode, preview which pages go where, then download individual files or a ZIP archive. Completely browser-based and private — no server uploads.</p>
+    </section>
+    <div class="tool-wrapper">
+      <div class="tool-zone">
+        <div class="drop-zone" id="split-drop-zone" role="button" tabindex="0" aria-label="Drop PDF here or click to browse">
+          <svg class="drop-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5"/></svg>
+          <p>Drop your PDF here or click to browse</p>
+          <small>Single PDF file</small>
+          <input type="file" id="split-input" accept=".pdf,application/pdf" aria-label="Upload PDF to split">
+        </div>
+
+        <div id="split-settings" style="display:none">
+          <div class="status-bar info mt-4" id="split-file-info"></div>
+
+          <div class="settings-panel mt-4">
+            <h3>Split Mode</h3>
+            <div class="radio-group">
+              <label class="radio-label">
+                <input type="radio" name="split-mode" value="pages" checked>
+                <div><strong>Extract specific pages</strong> — e.g. 1,3,5-8,12</div>
+              </label>
+              <label class="radio-label">
+                <input type="radio" name="split-mode" value="every">
+                <div><strong>Split every N pages</strong> &nbsp; N: <input type="number" id="split-n" value="2" min="1" style="width:60px;display:inline-block"></div>
+              </label>
+              <label class="radio-label">
+                <input type="radio" name="split-mode" value="each">
+                <div><strong>Extract each page as separate PDF</strong></div>
+              </label>
+            </div>
+
+            <div id="page-range-section" class="mt-4">
+              <label for="page-range">Page range</label>
+              <input type="text" id="page-range" placeholder="e.g. 1,3,5-8,12">
+              <p class="text-sm text-muted mt-2">Use commas for individual pages, dashes for ranges</p>
+            </div>
+          </div>
+
+          <button class="btn btn-primary btn-full mt-4" id="btn-split">Split PDF</button>
+
+          <div id="split-result" style="display:none;margin-top:16px">
+            <div class="status-bar success mb-4">✓ Split complete!</div>
+            <div id="split-downloads"></div>
+          </div>
+        </div>
+      </div>
+
+      <aside class="tool-side" aria-label="Options">
+        <div class="ss-divider">Options</div>
+        <div class="ss-option-row">
+          <span class="ss-opt-label">Filename prefix</span>
+          <input class="ss-opt-input" id="split-prefix" type="text" value="part" placeholder="part" maxlength="30">
+        </div>
+        <div class="tog-row"><span class="tog-label" id="lbl-zip-dl">Download as ZIP</span><div class="tog off" id="tog-zip-dl" role="switch" aria-checked="false" tabindex="0" aria-labelledby="lbl-zip-dl"></div></div>
+
+        <div class="ss-divider">Stats</div>
+        <div class="stats-grid">
+          <div class="stat-card"><div class="stat-val" id="stat-total-p">—</div><div class="stat-lbl">Total pages</div></div>
+          <div class="stat-card"><div class="stat-val" id="stat-sel-p">—</div><div class="stat-lbl">Selected</div></div>
+          <div class="stat-card"><div class="stat-val" id="stat-parts">—</div><div class="stat-lbl">Output files</div></div>
+          <div class="stat-card"><div class="stat-val" id="stat-split-size">—</div><div class="stat-lbl">Input size</div></div>
+        </div>
+
+        <div class="ss-divider">Related Tools</div>
+        <a href="/pdf-merge/" class="ss-related-link"><img src="/assets/img/icon-pdf.svg" alt="" width="18" height="18" loading="lazy">PDF Merge</a>
+        <a href="/pdf-compress/" class="ss-related-link"><img src="/assets/img/icon-pdf.svg" alt="" width="18" height="18" loading="lazy">PDF Compress</a>
+        <a href="/image-converter/" class="ss-related-link"><img src="/assets/img/icon-image.svg" alt="" width="18" height="18" loading="lazy">Image Converter</a>
+
+        <div style="margin-top:8px">
+          <p class="ad-label">Advertisement</p>
+          <div class="ad-slot" style="min-height:250px">
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+            <!-- Replace ca-pub-XXXXXXXXXX and data-ad-slot="XXXXXXXXXX" with your IDs -->
+          </div>
+        </div>
+      </aside>
+    </div>
+    <div class="ad-slot ad-slot--leaderboard">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="how-to-use">
+      <h2>How to Split a PDF</h2>
+      <ol class="steps">
+        <li><strong>Upload your PDF</strong> — Drop the PDF file or click to select it. The tool shows the total page count.</li>
+        <li><strong>Choose split mode</strong> — Extract specific pages by range, split every N pages, or extract each page individually.</li>
+        <li><strong>Download</strong> — Click Split PDF and download each resulting file.</li>
+      </ol>
+    </section>
+    <section class="features">
+      <h2>Features</h2>
+      <ul class="features-list">
+        <li>Extract specific pages by range</li>
+        <li>Split every N pages</li>
+        <li>Extract each page separately</li>
+        <li>Download individual PDF files</li>
+        <li>100% private — no server upload</li>
+        <li>Powered by pdf-lib</li>
+      </ul>
+    </section>
+    <div class="ad-slot ad-slot--rectangle" style="margin:0 auto 32px">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="faq">
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-list">
+        <details class="faq-item"><summary class="faq-question">How do I specify page ranges? <span class="faq-icon">+</span></summary><div class="faq-answer">Use commas to separate individual pages and dashes for ranges. Example: 1,3,5-8,12 extracts pages 1, 3, 5, 6, 7, 8, and 12.</div></details>
+        <details class="faq-item"><summary class="faq-question">Can I extract just one page from a PDF? <span class="faq-icon">+</span></summary><div class="faq-answer">Yes. Use Extract specific pages mode and enter just the page number you want (e.g. "5" to get only page 5).</div></details>
+        <details class="faq-item"><summary class="faq-question">Are my PDFs uploaded to a server? <span class="faq-icon">+</span></summary><div class="faq-answer">No. All splitting happens locally in your browser using the pdf-lib JavaScript library. Your files never leave your device.</div></details>
+        <details class="faq-item"><summary class="faq-question">What happens to the page quality when splitting? <span class="faq-icon">+</span></summary><div class="faq-answer">pdf-lib copies pages without re-processing them, so quality is perfectly preserved. Text, images and graphics remain identical to the original.</div></details>
+        <details class="faq-item"><summary class="faq-question">Can I split a large PDF? <span class="faq-icon">+</span></summary><div class="faq-answer">Yes. There is no hard size limit. Very large PDFs may take a moment to process in the browser, but all splitting is done client-side without any upload.</div></details>
+      </div>
+    </section>
+    <section class="related-tools">
+      <h2>Related Tools</h2>
+      <div class="tool-grid">
+        <a href="/pdf-merge/" class="tool-card"><img src="/assets/img/icon-pdf.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>PDF Merge</h3><p>Combine multiple PDFs into one.</p><span class="tool-card-link">Try it →</span></a>
+        <a href="/pdf-compress/" class="tool-card"><img src="/assets/img/icon-pdf.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>PDF Compress</h3><p>Reduce PDF file size online.</p><span class="tool-card-link">Try it →</span></a>
+        <a href="/image-converter/" class="tool-card"><img src="/assets/img/icon-image.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Image Converter</h3><p>Convert images between formats.</p><span class="tool-card-link">Try it →</span></a>
+        <a href="/json-formatter/" class="tool-card"><img src="/assets/img/icon-json.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>JSON Formatter</h3><p>Format and validate JSON.</p><span class="tool-card-link">Try it →</span></a>
+        <a href="/hash-generator/" class="tool-card"><img src="/assets/img/icon-hash.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Hash Generator</h3><p>Verify file integrity.</p><span class="tool-card-link">Try it →</span></a>
+        <a href="/base64-encoder/" class="tool-card"><img src="/assets/img/icon-base64.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Base64 Encoder</h3><p>Encode files to Base64.</p><span class="tool-card-link">Try it →</span></a>
+      </div>
+    </section>
+  </main>
+  <footer id="site-footer" class="site-footer"></footer>
+  <script src="/assets/js/shared.js" defer></script>
+  <script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js" defer></script>
+  <script src="/assets/js/tools/pdf-split.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,17 @@
+<svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#F472B6"/>
+      <stop offset="100%" stop-color="#BE185D"/>
+    </linearGradient>
+  </defs>
+  <rect width="40" height="40" rx="10" fill="url(#g)"/>
+  <!-- Outer color wheel ring -->
+  <circle cx="20" cy="20" r="11" stroke="white" stroke-width="1.8" fill="none" opacity="0.5"/>
+  <!-- Three overlapping primary color circles -->
+  <circle cx="17" cy="17" r="6" fill="#60A5FA" opacity="0.85"/>
+  <circle cx="23" cy="17" r="6" fill="#FBBF24" opacity="0.85"/>
+  <circle cx="20" cy="23" r="6" fill="#F87171" opacity="0.85"/>
+  <!-- White center overlap -->
+  <circle cx="20" cy="19" r="2.5" fill="white" opacity="0.9"/>
+</svg>

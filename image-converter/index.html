@@ -1,0 +1,195 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image Converter Online — PNG JPG WebP AVIF Free | AnyConverter</title>
+  <meta name="description" content="Convert images between PNG, JPG, WebP, AVIF, BMP and GIF online. Free image converter with resize and quality options. No upload to server — instant conversion.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://anyconverter.io/image-converter/">
+  <link rel="alternate" hreflang="en" href="https://anyconverter.io/image-converter/">
+  <link rel="alternate" hreflang="es" href="https://anyconverter.io/es/image-converter/">
+  <link rel="alternate" hreflang="da" href="https://anyconverter.io/da/image-converter/">
+  <link rel="alternate" hreflang="x-default" href="https://anyconverter.io/image-converter/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Image Converter Online — PNG JPG WebP AVIF Free | AnyConverter">
+  <meta property="og:description" content="Convert images between PNG, JPG, WebP, AVIF, BMP and GIF online. Free image converter with resize and quality options.">
+  <meta property="og:url" content="https://anyconverter.io/image-converter/">
+  <meta property="og:site_name" content="AnyConverter">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" data-ad-client="ca-pub-XXXXXXXXXX" crossorigin="anonymous"></script>
+  <!-- Replace ca-pub-XXXXXXXXXX with your real AdSense publisher ID -->
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Free Online Image Converter","url":"https://anyconverter.io/image-converter/","description":"Convert images between PNG, JPG, WebP, AVIF, BMP and GIF online.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F4F6FF);color:var(--color-text,#1E1B4B)}
+    body{min-height:100vh;display:flex;flex-direction:column}
+    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8FE)}
+    .header-inner{max-width:1280px;width:100%;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;gap:32px}
+    .hero{padding:40px 24px 32px;max-width:1280px;margin:0 auto}
+    .hero h1{font-size:clamp(1.75rem,4vw,2.25rem);font-weight:700;line-height:1.2;margin-bottom:12px}
+    .hero-desc{font-size:1.0625rem;color:var(--color-text-2,#6B7280);max-width:680px;line-height:1.6}
+    @font-face{font-family:'Inter';font-display:swap}
+  </style>
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+  <header id="site-header" class="site-header"></header>
+  <main id="main-content">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol><li><a href="/">Home</a></li><li aria-current="page">Image Converter</li></ol>
+    </nav>
+    <section class="hero">
+      <h1>Free Online Image Converter</h1>
+      <p class="hero-desc">Convert images between PNG, JPG, WebP, AVIF, BMP and GIF instantly. Resize, adjust quality, and download — all in your browser with no server upload. Completely free and private.</p>
+    </section>
+    <div class="tool-wrapper">
+      <div class="tool-zone">
+        <div class="drop-zone" id="drop-zone" role="button" tabindex="0" aria-label="Drop image here or click to browse">
+          <svg class="drop-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5"/></svg>
+          <p>Drop image here or click to browse</p>
+          <small>PNG, JPG, WebP, AVIF, BMP, GIF supported</small>
+          <input type="file" id="image-input" accept="image/*" aria-label="Upload image file">
+        </div>
+
+        <div id="settings-panel" class="settings-panel" style="display:none">
+          <h3>Conversion Settings</h3>
+          <div class="settings-row">
+            <div class="settings-field">
+              <label>Output Format</label>
+              <div class="format-toggles" id="format-toggles">
+                <button class="format-toggle active" data-format="image/png">PNG</button>
+                <button class="format-toggle" data-format="image/jpeg">JPG</button>
+                <button class="format-toggle" data-format="image/webp">WebP</button>
+                <button class="format-toggle" data-format="image/bmp">BMP</button>
+              </div>
+            </div>
+          </div>
+          <div class="settings-row" id="quality-row" style="display:none">
+            <div class="settings-field">
+              <label for="quality-slider">Quality: <span id="quality-value">85</span>%</label>
+              <div class="slider-row">
+                <input type="range" id="quality-slider" min="1" max="100" value="85">
+              </div>
+            </div>
+          </div>
+          <div class="settings-row">
+            <div class="settings-field">
+              <label for="width-input">Width (px)</label>
+              <input type="number" id="width-input" placeholder="Original">
+            </div>
+            <div class="settings-field">
+              <label for="height-input">Height (px)</label>
+              <input type="number" id="height-input" placeholder="Original">
+            </div>
+            <div class="settings-field" style="justify-content:flex-end;padding-top:24px">
+              <label class="checkbox-label">
+                <input type="checkbox" id="aspect-ratio" checked>
+                Keep aspect ratio
+              </label>
+            </div>
+          </div>
+          <button class="btn btn-primary btn-full mt-4" id="btn-convert">Convert &amp; Download ↓</button>
+        </div>
+
+        <div id="preview-section" style="display:none">
+          <div class="image-preview-grid">
+            <div class="image-preview-item">
+              <img id="preview-original" src="" alt="Original image" width="300" height="200">
+              <div class="image-preview-meta" id="meta-original"></div>
+            </div>
+            <div class="image-preview-item">
+              <img id="preview-converted" src="" alt="Converted image" width="300" height="200">
+              <div class="image-preview-meta" id="meta-converted"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <aside class="tool-side" aria-label="Options">
+        <div class="ss-divider">Options</div>
+        <div class="tog-row"><span class="tog-label" id="lbl-strip-meta">Strip metadata (EXIF)</span><div class="tog" id="tog-strip-meta" role="switch" aria-checked="true" tabindex="0" aria-labelledby="lbl-strip-meta"></div></div>
+        <div class="tog-row"><span class="tog-label" id="lbl-auto-dl">Auto-download on convert</span><div class="tog" id="tog-auto-dl" role="switch" aria-checked="true" tabindex="0" aria-labelledby="lbl-auto-dl"></div></div>
+
+        <div class="ss-divider">Stats</div>
+        <div class="stats-grid">
+          <div class="stat-card"><div class="stat-val" id="stat-orig-size">—</div><div class="stat-lbl">Original</div></div>
+          <div class="stat-card"><div class="stat-val" id="stat-out-size">—</div><div class="stat-lbl">Output</div></div>
+          <div class="stat-card"><div class="stat-val" id="stat-dimensions">—</div><div class="stat-lbl">Dimensions</div></div>
+          <div class="stat-card"><div class="stat-val" id="stat-format">—</div><div class="stat-lbl">Format</div></div>
+        </div>
+
+        <div class="ss-divider">Related Tools</div>
+        <a href="/pdf-merge/" class="ss-related-link"><img src="/assets/img/icon-pdf.svg" alt="" width="18" height="18" loading="lazy">PDF Merge</a>
+        <a href="/base64-encoder/" class="ss-related-link"><img src="/assets/img/icon-base64.svg" alt="" width="18" height="18" loading="lazy">Base64 Encoder</a>
+        <a href="/color-converter/" class="ss-related-link"><img src="/assets/img/icon-color.svg" alt="" width="18" height="18" loading="lazy">Color Converter</a>
+
+        <div style="margin-top:8px">
+          <p class="ad-label">Advertisement</p>
+          <div class="ad-slot" style="min-height:250px">
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+            <!-- Replace ca-pub-XXXXXXXXXX and data-ad-slot="XXXXXXXXXX" with your IDs -->
+          </div>
+        </div>
+      </aside>
+    </div>
+
+    <div class="ad-slot ad-slot--leaderboard">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <section class="how-to-use">
+      <h2>How to Convert Images</h2>
+      <ol class="steps">
+        <li><strong>Drop or upload your image</strong> — Drag an image onto the drop zone or click to browse for PNG, JPG, WebP, AVIF, BMP or GIF files.</li>
+        <li><strong>Choose output format</strong> — Select the target format and optionally adjust quality and resize dimensions.</li>
+        <li><strong>Convert and download</strong> — Click Convert &amp; Download to get your converted image instantly.</li>
+      </ol>
+    </section>
+    <section class="features">
+      <h2>Features</h2>
+      <ul class="features-list">
+        <li>Convert between PNG, JPG, WebP, AVIF, BMP</li>
+        <li>Quality slider for JPG and WebP</li>
+        <li>Resize with aspect ratio lock</li>
+        <li>Live side-by-side preview</li>
+        <li>No server upload — 100% private</li>
+        <li>Completely free to use</li>
+      </ul>
+    </section>
+    <div class="ad-slot ad-slot--rectangle" style="margin:0 auto 32px">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="faq">
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-list">
+        <details class="faq-item"><summary class="faq-question">Which image formats are supported? <span class="faq-icon">+</span></summary><div class="faq-answer">You can convert from PNG, JPG, JPEG, WebP, AVIF, BMP and GIF. Output formats are PNG, JPG, WebP and BMP. AVIF support depends on your browser.</div></details>
+        <details class="faq-item"><summary class="faq-question">Is the conversion private? <span class="faq-icon">+</span></summary><div class="faq-answer">Yes. Your image is never uploaded to any server. All conversion happens locally in your browser using the Canvas API.</div></details>
+        <details class="faq-item"><summary class="faq-question">What quality setting should I use for JPG? <span class="faq-icon">+</span></summary><div class="faq-answer">For most photos, 80–90% quality provides an excellent balance of file size and visual quality. Use 100% for maximum quality or lower values for smaller file sizes.</div></details>
+        <details class="faq-item"><summary class="faq-question">Why is WebP better than JPG? <span class="faq-icon">+</span></summary><div class="faq-answer">WebP typically produces files 25–35% smaller than equivalent JPG at the same quality. It also supports transparency like PNG. All modern browsers support WebP.</div></details>
+        <details class="faq-item"><summary class="faq-question">Can I resize the image? <span class="faq-icon">+</span></summary><div class="faq-answer">Yes. Enter a width and/or height in pixels. With "Keep aspect ratio" checked, the other dimension adjusts automatically to maintain proportions.</div></details>
+      </div>
+    </section>
+    <section class="related-tools">
+      <h2>Related Tools</h2>
+      <div class="tool-grid">
+        <a href="/pdf-merge/" class="tool-card"><img src="/assets/img/icon-pdf.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>PDF Merge</h3><p>Combine multiple PDF files into one.</p><span class="tool-card-link">Try it →</span></a>
+        <a href="/base64-encoder/" class="tool-card"><img src="/assets/img/icon-base64.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Base64 Encoder</h3><p>Encode images to Base64 data URLs.</p><span class="tool-card-link">Try it →</span></a>
+        <a href="/color-converter/" class="tool-card"><img src="/assets/img/icon-color.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Color Converter</h3><p>Convert colors between HEX, RGB, HSL.</p><span class="tool-card-link">Try it →</span></a>
+        <a href="/hash-generator/" class="tool-card"><img src="/assets/img/icon-hash.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Hash Generator</h3><p>Generate file hashes for verification.</p><span class="tool-card-link">Try it →</span></a>
+        <a href="/pdf-compress/" class="tool-card"><img src="/assets/img/icon-pdf.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>PDF Compress</h3><p>Reduce PDF file size online.</p><span class="tool-card-link">Try it →</span></a>
+        <a href="/json-formatter/" class="tool-card"><img src="/assets/img/icon-json.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>JSON Formatter</h3><p>Format and validate JSON.</p><span class="tool-card-link">Try it →</span></a>
+      </div>
+    </section>
+  </main>
+  <footer id="site-footer" class="site-footer"></footer>
+  <script src="/assets/js/shared.js" defer></script>
+  <script src="/assets/js/tools/image-converter.js" defer></script>
+</body>
+</html>

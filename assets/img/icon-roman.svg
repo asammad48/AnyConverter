@@ -1,0 +1,24 @@
+<svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FB923C"/>
+      <stop offset="100%" stop-color="#C2410C"/>
+    </linearGradient>
+  </defs>
+  <rect width="40" height="40" rx="10" fill="url(#g)"/>
+  <!-- Roman numeral XIV as clean paths -->
+  <!-- X: two diagonal lines -->
+  <line x1="8"  y1="12" x2="15" y2="22" stroke="white" stroke-width="2.2" stroke-linecap="round"/>
+  <line x1="15" y1="12" x2="8"  y2="22" stroke="white" stroke-width="2.2" stroke-linecap="round"/>
+  <!-- I: single vertical line -->
+  <line x1="19" y1="12" x2="19" y2="22" stroke="white" stroke-width="2.2" stroke-linecap="round"/>
+  <!-- V: two diagonals -->
+  <path d="M23 12 L26.5 22 L30 12" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <!-- Divider line -->
+  <line x1="7" y1="25" x2="33" y2="25" stroke="white" stroke-width="1.6" stroke-linecap="round" opacity="0.7"/>
+  <!-- Arabic numeral 14 hint below -->
+  <line x1="17" y1="28" x2="17" y2="34" stroke="white" stroke-width="2" stroke-linecap="round"/>
+  <path d="M13 30 L17 28 L17 34" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <line x1="21" y1="28" x2="21" y2="34" stroke="white" stroke-width="2" stroke-linecap="round"/>
+  <path d="M21 28 Q25 28 25 31 Q25 34 21 34 L25 34" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+</svg>

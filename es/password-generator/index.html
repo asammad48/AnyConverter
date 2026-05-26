@@ -1,0 +1,146 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Generador de Contraseñas Online Gratis | AnyConverter</title>
+  <meta name="description" content="Genera contraseñas aleatorias fuertes y seguras online de forma gratuita. Personaliza la longitud y los tipos de caracteres. Sin registro, 100% en tu navegador.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://anyconverter.io/es/password-generator/">
+  <link rel="alternate" hreflang="en" href="https://anyconverter.io/password-generator/">
+  <link rel="alternate" hreflang="es" href="https://anyconverter.io/es/password-generator/">
+  <link rel="alternate" hreflang="da" href="https://anyconverter.io/da/password-generator/">
+  <link rel="alternate" hreflang="x-default" href="https://anyconverter.io/password-generator/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Generador de Contraseñas Online Gratis | AnyConverter">
+  <meta property="og:description" content="Genera contraseñas aleatorias fuertes y seguras online de forma gratuita. Personaliza la longitud y los tipos de caracteres. Sin registro.">
+  <meta property="og:url" content="https://anyconverter.io/es/password-generator/">
+  <meta property="og:site_name" content="AnyConverter">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" data-ad-client="ca-pub-XXXXXXXXXX" crossorigin="anonymous"></script>
+  <!-- Replace ca-pub-XXXXXXXXXX with your real AdSense publisher ID -->
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Generador de Contraseñas","url":"https://anyconverter.io/es/password-generator/","description":"Genera contraseñas aleatorias fuertes y seguras online de forma gratuita.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F4F6FF);color:var(--color-text,#1E1B4B)}
+    body{min-height:100vh;display:flex;flex-direction:column}
+    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8FE)}
+    .header-inner{max-width:1280px;width:100%;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;gap:32px}
+    .hero{padding:40px 24px 32px;max-width:1280px;margin:0 auto}
+    .hero h1{font-size:clamp(1.75rem,4vw,2.25rem);font-weight:700;line-height:1.2;margin-bottom:12px}
+    .hero-desc{font-size:1.0625rem;color:var(--color-text-2,#6B7280);max-width:680px;line-height:1.6}
+    @font-face{font-family:'Inter';font-display:swap}
+  </style>
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+  <header id="site-header" class="site-header"></header>
+  <main id="main-content">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol><li><a href="/es/">Inicio</a></li><li aria-current="page">Generador de Contraseñas</li></ol>
+    </nav>
+    <section class="hero">
+      <h1>Generador de Contraseñas</h1>
+      <p class="hero-desc">Crea contraseñas aleatorias y seguras usando mayúsculas, minúsculas, números y símbolos. Elige la longitud (6–64 caracteres) y genera varias contraseñas a la vez. Todo sucede en tu navegador con la API Web Crypto — nada se envía a un servidor.</p>
+    </section>
+    <div class="tool-wrapper">
+      <div class="tool-zone">
+        <div style="padding:24px">
+          <div style="margin-bottom:16px">
+            <label style="display:block;font-size:13px;font-weight:500;margin-bottom:6px">Longitud de contraseña: <span id="len-display">16</span></label>
+            <input type="range" id="pw-length" min="6" max="64" value="16" style="width:100%;accent-color:var(--color-primary,#4F46E5)">
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:16px">
+            <label style="display:flex;align-items:center;gap:8px;font-size:14px;cursor:pointer"><input type="checkbox" id="opt-upper" checked> Mayúsculas (A-Z)</label>
+            <label style="display:flex;align-items:center;gap:8px;font-size:14px;cursor:pointer"><input type="checkbox" id="opt-lower" checked> Minúsculas (a-z)</label>
+            <label style="display:flex;align-items:center;gap:8px;font-size:14px;cursor:pointer"><input type="checkbox" id="opt-numbers" checked> Números (0-9)</label>
+            <label style="display:flex;align-items:center;gap:8px;font-size:14px;cursor:pointer"><input type="checkbox" id="opt-symbols" checked> Símbolos (!@#$)</label>
+          </div>
+          <div style="margin-bottom:12px">
+            <label style="display:block;font-size:13px;font-weight:500;margin-bottom:6px">Cantidad</label>
+            <input type="number" id="pw-count" value="1" min="1" max="20" style="width:80px;padding:8px 12px;border:1px solid var(--color-border,#DDD8FE);border-radius:8px;font-size:14px">
+          </div>
+          <div class="action-bar" style="margin-bottom:20px">
+            <button class="btn btn-primary" id="btn-generate-pw">Generar Contraseña</button>
+            <button class="btn btn-secondary" id="btn-copy-all-pw">Copiar todo</button>
+          </div>
+          <div id="pw-output" style="display:none">
+            <div id="pw-list" style="display:flex;flex-direction:column;gap:8px"></div>
+            <div id="strength-bar" style="margin-top:16px">
+              <div style="font-size:12px;font-weight:500;margin-bottom:4px">Fortaleza: <span id="strength-label">—</span></div>
+              <div style="height:6px;border-radius:3px;background:var(--color-border,#DDD8FE);overflow:hidden"><div id="strength-fill" style="height:100%;width:0%;transition:width 0.3s;border-radius:3px"></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <aside class="tool-side" aria-label="Opciones">
+        <div class="ss-divider">Herramientas relacionadas</div>
+        <a href="/es/qr-code-generator/" class="ss-related-link"><img src="/assets/img/icon-qr.svg" alt="" width="18" height="18" loading="lazy">Generador de Códigos QR</a>
+        <a href="/es/hash-generator/" class="ss-related-link"><img src="/assets/img/icon-hash.svg" alt="" width="18" height="18" loading="lazy">Generador de Hash</a>
+        <a href="/es/url-encoder/" class="ss-related-link"><img src="/assets/img/icon-url.svg" alt="" width="18" height="18" loading="lazy">Codificador de URL</a>
+        <div style="margin-top:16px">
+          <p class="ad-label">Publicidad</p>
+          <div class="ad-slot" style="min-height:250px">
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+            <!-- Replace ca-pub-XXXXXXXXXX and data-ad-slot="XXXXXXXXXX" with your IDs -->
+          </div>
+        </div>
+      </aside>
+    </div>
+    <div class="ad-slot ad-slot--leaderboard">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="how-to-use">
+      <h2>Cómo Usar el Generador de Contraseñas</h2>
+      <ol class="steps">
+        <li><strong>Paso 1</strong> — Arrastra el control deslizante de longitud para establecer el número de caracteres entre 6 y 64.</li>
+        <li><strong>Paso 2</strong> — Marca o desmarca los tipos de caracteres: mayúsculas, minúsculas, números y/o símbolos.</li>
+        <li><strong>Paso 3</strong> — Establece la cantidad, haz clic en "Generar Contraseña" y luego copia individualmente o usa "Copiar todo".</li>
+      </ol>
+    </section>
+    <section class="features">
+      <h2>Características</h2>
+      <ul class="features-list">
+        <li>Aleatoriedad criptográficamente segura usando la API Web Crypto</li>
+        <li>Longitud personalizable de 6 a 64 caracteres</li>
+        <li>Activa o desactiva mayúsculas, minúsculas, números y símbolos</li>
+        <li>Genera hasta 20 contraseñas a la vez</li>
+        <li>Indicador de fortaleza de contraseña (Débil / Media / Fuerte)</li>
+        <li>Copia con un clic para cada contraseña o todas a la vez</li>
+        <li>100% en el cliente — las contraseñas nunca salen de tu navegador</li>
+      </ul>
+    </section>
+    <div class="ad-slot ad-slot--rectangle" style="margin:0 auto 32px">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="faq">
+      <h2>Preguntas Frecuentes</h2>
+      <div class="faq-list">
+        <details class="faq-item"><summary class="faq-question">¿Qué tan seguras son las contraseñas generadas? <span class="faq-icon">+</span></summary><div class="faq-answer">Las contraseñas se generan usando la API Web Crypto del navegador (crypto.getRandomValues), que produce números aleatorios criptográficamente seguros, el mismo estándar utilizado por software de seguridad y gestores de contraseñas.</div></details>
+        <details class="faq-item"><summary class="faq-question">¿Se almacenan o transmiten mis contraseñas? <span class="faq-icon">+</span></summary><div class="faq-answer">No. Toda la generación de contraseñas ocurre localmente en tu navegador. Las contraseñas nunca se almacenan, registran ni transmiten a ningún servidor.</div></details>
+        <details class="faq-item"><summary class="faq-question">¿Qué longitud de contraseña debo usar? <span class="faq-icon">+</span></summary><div class="faq-answer">Para la mayoría de las cuentas en línea, se recomienda un mínimo de 16 caracteres con una mezcla de todos los tipos de caracteres. Para cuentas muy sensibles, usa 20 o más caracteres.</div></details>
+        <details class="faq-item"><summary class="faq-question">¿Qué mide el indicador de fortaleza? <span class="faq-icon">+</span></summary><div class="faq-answer">El medidor de fortaleza evalúa la longitud y la variedad de caracteres. Una contraseña "Fuerte" tiene al menos 12 caracteres y usa mayúsculas, minúsculas, números y símbolos.</div></details>
+        <details class="faq-item"><summary class="faq-question">¿Puedo generar varias contraseñas a la vez? <span class="faq-icon">+</span></summary><div class="faq-answer">Sí. Establece el campo Cantidad en cualquier número entre 1 y 20, luego haz clic en Generar. Usa "Copiar todo" para copiar todas las contraseñas generadas al portapapeles de una vez.</div></details>
+      </div>
+    </section>
+    <section class="related-tools">
+      <h2>Herramientas Relacionadas</h2>
+      <div class="tool-grid">
+        <a href="/es/qr-code-generator/" class="tool-card"><img src="/assets/img/icon-qr.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Generador de Códigos QR</h3><p>Genera códigos QR para cualquier texto o URL al instante.</p><span class="tool-card-link">Usar →</span></a>
+        <a href="/es/hash-generator/" class="tool-card"><img src="/assets/img/icon-hash.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Generador de Hash</h3><p>Genera hashes MD5, SHA-1, SHA-256 de cualquier texto.</p><span class="tool-card-link">Usar →</span></a>
+        <a href="/es/url-encoder/" class="tool-card"><img src="/assets/img/icon-url.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Codificador de URL</h3><p>Codifica y decodifica URLs y cadenas de consulta.</p><span class="tool-card-link">Usar →</span></a>
+        <a href="/es/base64-encoder/" class="tool-card"><img src="/assets/img/icon-hash.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Codificador Base64</h3><p>Codifica y decodifica texto y archivos en Base64.</p><span class="tool-card-link">Usar →</span></a>
+      </div>
+    </section>
+  </main>
+  <footer id="site-footer" class="site-footer"></footer>
+  <script src="/assets/js/shared.js" defer></script>
+  <script src="/assets/js/tools/password-generator.js" defer></script>
+</body>
+</html>

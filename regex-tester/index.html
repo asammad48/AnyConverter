@@ -1,0 +1,263 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Regex Tester &amp; Log Extractor Online — Free | AnyConverter</title>
+  <meta name="description" content="Test regular expressions and extract log patterns online. Live match highlighting, capture group colors, quick pattern library. Export matches as CSV or JSON. Free and 100% browser-based.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://anyconverter.io/regex-tester/">
+  <link rel="alternate" hreflang="en" href="https://anyconverter.io/regex-tester/">
+  <link rel="alternate" hreflang="es" href="https://anyconverter.io/es/regex-tester/">
+  <link rel="alternate" hreflang="da" href="https://anyconverter.io/da/regex-tester/">
+  <link rel="alternate" hreflang="x-default" href="https://anyconverter.io/regex-tester/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Regex Tester &amp; Log Extractor Online — Free | AnyConverter">
+  <meta property="og:description" content="Test regular expressions and extract log patterns online with live highlighting, capture groups and CSV export.">
+  <meta property="og:url" content="https://anyconverter.io/regex-tester/">
+  <meta property="og:site_name" content="AnyConverter">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" data-ad-client="ca-pub-XXXXXXXXXX" crossorigin="anonymous"></script>
+  <!-- Replace ca-pub-XXXXXXXXXX with your real AdSense publisher ID -->
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Regex Tester & Log Extractor","url":"https://anyconverter.io/regex-tester/","description":"Test regular expressions and extract log patterns online with live highlighting and CSV export.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F4F6FF);color:var(--color-text,#1E1B4B)}
+    body{min-height:100vh;display:flex;flex-direction:column}
+    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8FE)}
+    .header-inner{max-width:1280px;width:100%;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;gap:32px}
+    .hero{padding:28px 24px 20px;max-width:1280px;margin:0 auto}
+    .hero h1{font-size:clamp(1.5rem,3.5vw,2rem);font-weight:700;line-height:1.2;margin-bottom:8px}
+    .hero-desc{font-size:1rem;color:var(--color-text-2,#6B7280);max-width:680px;line-height:1.6}
+    @font-face{font-family:'Inter';font-display:swap}
+  </style>
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+  <header id="site-header" class="site-header"></header>
+  <main id="main-content">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol><li><a href="/">Home</a></li><li aria-current="page">Regex / Log Extractor</li></ol>
+    </nav>
+    <section class="hero">
+      <h1>Regex Tester &amp; Log Extractor</h1>
+      <p class="hero-desc">Enter a regex pattern and paste log text to extract all matches with capture group highlighting. Color-coded groups, quick pattern library, and CSV/JSON export. 100% free — runs in your browser.</p>
+    </section>
+
+    <div class="tool-wrapper">
+      <div class="tool-zone">
+
+        <!-- Pattern bar -->
+        <div class="ac-panel">
+          <div class="ac-panel-header">
+            <span style="font-size:13px;color:var(--color-text-3);font-family:var(--font-mono)">/…/</span>
+            <span class="ac-panel-label">Pattern</span>
+            <div class="ac-panel-actions">
+              <button class="ac-btn flag-btn active" data-flag="g" title="Global — find all matches">g</button>
+              <button class="ac-btn flag-btn" data-flag="i" title="Case insensitive">i</button>
+              <button class="ac-btn flag-btn" data-flag="m" title="Multiline — ^ and $ match line boundaries">m</button>
+              <button class="ac-btn flag-btn" data-flag="s" title="Dotall — . matches newlines">s</button>
+            </div>
+          </div>
+          <div style="padding:10px 12px;display:flex;align-items:center;gap:8px">
+            <span style="font-size:14px;color:var(--color-text-3);font-family:var(--font-mono);flex-shrink:0">/</span>
+            <input
+              type="text"
+              id="regex-pattern"
+              placeholder="Enter pattern…"
+              spellcheck="false"
+              autocomplete="off"
+              style="flex:1;font-family:var(--font-mono);font-size:13px;border:none;outline:none;background:transparent;color:var(--color-text)"
+              aria-label="Regular expression pattern"
+            >
+            <span style="font-size:14px;color:var(--color-text-3);font-family:var(--font-mono);flex-shrink:0" id="flags-display">/gm</span>
+            <span class="regex-valid-badge" id="regex-valid-badge" style="display:none"></span>
+          </div>
+        </div>
+
+        <!-- Split panels: log input | matches output -->
+        <div class="split-panels">
+
+          <!-- Log input panel -->
+          <div class="ac-panel">
+            <div class="ac-panel-header">
+              <span style="font-size:13px;color:var(--color-text-3)">≡</span>
+              <span class="ac-panel-label">Log input</span>
+              <div class="ac-panel-actions">
+                <label class="ac-btn" style="cursor:pointer" title="Upload log file">
+                  Upload .log
+                  <input type="file" id="log-file-input" accept=".log,.txt,.csv,text/plain" style="display:none">
+                </label>
+                <button class="ac-btn" id="btn-clear-log">Clear</button>
+              </div>
+            </div>
+            <div class="log-view" id="log-view" aria-label="Log input with match highlighting" aria-live="polite">
+              <span style="color:var(--color-text-2,#6B7280);font-style:italic;font-size:11px">Paste log text here or use the textarea below…</span>
+            </div>
+            <textarea
+              id="log-input"
+              style="display:none"
+              spellcheck="false"
+              aria-label="Log text input"
+            ></textarea>
+            <div class="ac-status" id="log-status">
+              <span class="ac-status-info" id="log-lines-info">0 lines</span>
+              <span class="ac-status-info" id="log-matches-info" style="margin-left:0"></span>
+            </div>
+          </div>
+
+          <!-- Matches output panel -->
+          <div class="ac-panel">
+            <div class="ac-panel-header">
+              <span style="font-size:13px;color:var(--color-text-3)">◈</span>
+              <span class="ac-panel-label">Extracted matches</span>
+              <div class="ac-panel-actions">
+                <button class="ac-btn" id="btn-copy-matches" title="Copy all matches">Copy</button>
+                <button class="ac-btn" id="btn-export-csv" title="Export matches as CSV">→ CSV</button>
+                <button class="ac-btn" id="btn-export-json" title="Export matches as JSON">→ JSON</button>
+              </div>
+            </div>
+            <div class="match-view" id="match-view" aria-label="Match results" aria-live="polite">
+              <span style="color:var(--color-text-2,#6B7280);font-style:italic;font-size:11px">Matches will appear here…</span>
+            </div>
+            <div class="ac-status" id="match-status">
+              <span class="ac-status-ok" id="match-count-ok" style="display:none"></span>
+              <span class="ac-status-err" id="match-count-err" style="display:none"></span>
+              <span class="ac-status-info" id="match-groups-info"></span>
+            </div>
+          </div>
+
+        </div><!-- /split-panels -->
+
+        <!-- Paste textarea (visible input source) -->
+        <div class="ac-panel">
+          <div class="ac-panel-header">
+            <span class="ac-panel-label">Paste log text here</span>
+            <div class="ac-panel-actions">
+              <button class="ac-btn" id="btn-paste-log">Paste</button>
+            </div>
+          </div>
+          <textarea
+            id="log-textarea"
+            class="ac-input"
+            placeholder="Paste log content here — matches highlight above as you type…"
+            spellcheck="false"
+            style="min-height:140px;max-height:200px"
+            aria-label="Log text paste area"
+          ></textarea>
+        </div>
+
+      </div><!-- /tool-zone -->
+
+      <!-- Sidebar -->
+      <aside class="tool-side" aria-label="Quick patterns and export options">
+
+        <div class="ss-divider">Quick Patterns</div>
+        <button class="quick-pat-btn" data-pattern="(\d{1,3}\.){3}\d{1,3}" data-desc="IP address">IP address</button>
+        <button class="quick-pat-btn" data-pattern="\d{4}-\d{2}-\d{2}" data-desc="Date YYYY-MM-DD">Date YYYY-MM-DD</button>
+        <button class="quick-pat-btn" data-pattern="[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}" data-desc="Email address">Email address</button>
+        <button class="quick-pat-btn" data-pattern="HTTP/\S+\s+(\d{3})" data-desc="HTTP status code">HTTP status code</button>
+        <button class="quick-pat-btn" data-pattern="\[(ERROR|WARN|INFO|DEBUG)\]" data-desc="Log level tag">[LOG LEVEL]</button>
+        <button class="quick-pat-btn" data-pattern="^\s+at\s+[\w.$]+\(.*:\d+:\d+\)" data-desc="Stack trace line">Stack trace line</button>
+        <button class="quick-pat-btn" data-pattern="[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}" data-desc="UUID">UUID</button>
+        <button class="quick-pat-btn" data-pattern="https?://[^\s]+" data-desc="URL">URL</button>
+        <button class="quick-pat-btn" data-pattern='"(level|severity)"\s*:\s*"(ERROR|WARN|INFO|DEBUG)"' data-desc="JSON log level">JSON log level</button>
+        <button class="quick-pat-btn" data-pattern="(\d{4}-\d{2}-\d{2}[T ]\d{2}:\d{2}:\d{2})" data-desc="ISO timestamp">ISO timestamp</button>
+
+        <div class="ss-divider">Export Options</div>
+        <div class="tog-row"><span class="tog-label" id="lbl-linenums">Include line numbers</span><div class="tog" id="tog-linenums" role="switch" aria-checked="true" tabindex="0" aria-labelledby="lbl-linenums"></div></div>
+        <div class="tog-row"><span class="tog-label" id="lbl-groups">Group by capture</span><div class="tog off" id="tog-groups" role="switch" aria-checked="false" tabindex="0" aria-labelledby="lbl-groups"></div></div>
+
+        <div class="ss-divider">Stats</div>
+        <div class="stats-grid">
+          <div class="stat-card"><div class="stat-val" id="stat-matches">0</div><div class="stat-lbl">Matches</div></div>
+          <div class="stat-card"><div class="stat-val" id="stat-groups">0</div><div class="stat-lbl">Groups</div></div>
+          <div class="stat-card"><div class="stat-val" id="stat-lines">0</div><div class="stat-lbl">Lines</div></div>
+          <div class="stat-card"><div class="stat-val" id="stat-bytes">0</div><div class="stat-lbl">Bytes</div></div>
+        </div>
+
+        <div class="ss-divider">Related Tools</div>
+        <a href="/json-formatter/" class="ss-related-link">
+          <img src="/assets/img/icon-json.svg" alt="" width="18" height="18" loading="lazy">JSON Formatter
+        </a>
+        <a href="/csv-to-sql/" class="ss-related-link">
+          <img src="/assets/img/icon-csv.svg" alt="" width="18" height="18" loading="lazy">CSV → SQL
+        </a>
+        <a href="/hash-generator/" class="ss-related-link">
+          <img src="/assets/img/icon-hash.svg" alt="" width="18" height="18" loading="lazy">Hash Generator
+        </a>
+
+        <!-- AdSense -->
+        <div style="margin-top:8px">
+          <p class="ad-label">Advertisement</p>
+          <div class="ad-slot" style="min-height:250px">
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+            <!-- Replace ca-pub-XXXXXXXXXX and data-ad-slot="XXXXXXXXXX" with your IDs -->
+          </div>
+        </div>
+
+      </aside>
+    </div><!-- /tool-wrapper -->
+
+    <div class="ad-slot ad-slot--leaderboard">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <section class="how-to-use">
+      <h2>How to Use the Regex / Log Extractor</h2>
+      <ol class="steps">
+        <li><strong>Enter a pattern</strong> — Type a regex in the pattern bar, or click a Quick Pattern from the sidebar to load it instantly.</li>
+        <li><strong>Paste log text</strong> — Paste your log content into the text area. Matches highlight in real time with color-coded capture groups.</li>
+        <li><strong>Export results</strong> — Click → CSV or → JSON to download all extracted matches. Groups are included as separate columns.</li>
+      </ol>
+    </section>
+
+    <section class="features">
+      <h2>Features</h2>
+      <ul class="features-list">
+        <li>Live match highlighting as you type</li>
+        <li>Color-coded capture groups (up to 4 groups)</li>
+        <li>Quick pattern library — IP, email, date, UUID, and more</li>
+        <li>Export all matches to CSV or JSON</li>
+        <li>Supports g, i, m, s flags</li>
+        <li>Upload .log / .txt files directly</li>
+        <li>100% browser-based — no server</li>
+      </ul>
+    </section>
+
+    <div class="ad-slot ad-slot--rectangle" style="margin:0 auto 32px">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <section class="faq">
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-list">
+        <details class="faq-item"><summary class="faq-question">What does the g flag do? <span class="faq-icon">+</span></summary><div class="faq-answer">The g (global) flag finds all matches in the string. Without it, only the first match is returned.</div></details>
+        <details class="faq-item"><summary class="faq-question">How do capture groups work? <span class="faq-icon">+</span></summary><div class="faq-answer">Wrap parts of your pattern in parentheses () to create capture groups. Each group is extracted separately and shown in a different color. Named groups use (?&lt;name&gt;...) syntax.</div></details>
+        <details class="faq-item"><summary class="faq-question">How do I export matches? <span class="faq-icon">+</span></summary><div class="faq-answer">Click → CSV to download a spreadsheet with one row per match and columns for each capture group. Click → JSON to get a JSON array of all matches.</div></details>
+        <details class="faq-item"><summary class="faq-question">What regex flavor does this use? <span class="faq-icon">+</span></summary><div class="faq-answer">This tester uses JavaScript's built-in RegExp engine (ECMAScript regex), which supports lookaheads, lookbehinds, named groups, Unicode, and all standard quantifiers.</div></details>
+        <details class="faq-item"><summary class="faq-question">Can I test against large log files? <span class="faq-icon">+</span></summary><div class="faq-answer">Yes. Use the Upload .log button to load a file directly from disk. The tool processes it entirely in your browser — nothing is sent to any server.</div></details>
+      </div>
+    </section>
+
+    <section class="related-tools">
+      <h2>Related Tools</h2>
+      <div class="tool-grid">
+        <a href="/json-formatter/" class="tool-card"><img src="/assets/img/icon-json.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>JSON Formatter</h3><p>Format and validate JSON with collapsible nodes.</p><span class="tool-card-link">Try it →</span></a>
+        <a href="/csv-to-sql/" class="tool-card"><img src="/assets/img/icon-csv.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>CSV to SQL</h3><p>Convert CSV to SQL statements.</p><span class="tool-card-link">Try it →</span></a>
+        <a href="/hash-generator/" class="tool-card"><img src="/assets/img/icon-hash.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Hash Generator</h3><p>Generate MD5, SHA-256, SHA-512 hashes.</p><span class="tool-card-link">Try it →</span></a>
+        <a href="/base64-encoder/" class="tool-card"><img src="/assets/img/icon-base64.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Base64 Encoder</h3><p>Encode and decode Base64.</p><span class="tool-card-link">Try it →</span></a>
+      </div>
+    </section>
+  </main>
+  <footer id="site-footer" class="site-footer"></footer>
+  <script src="/assets/js/shared.js" defer></script>
+  <script src="/assets/js/tools/regex-tester.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,128 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prueba de Velocidad de Internet Online Gratis | AnyConverter</title>
+  <meta name="description" content="Prueba la velocidad de tu conexión a internet gratis online. Mide velocidad de descarga, subida y latencia de ping directamente en tu navegador. Sin aplicación ni registro.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://anyconverter.io/es/internet-speed-test/">
+  <link rel="alternate" hreflang="en" href="https://anyconverter.io/internet-speed-test/">
+  <link rel="alternate" hreflang="es" href="https://anyconverter.io/es/internet-speed-test/">
+  <link rel="alternate" hreflang="da" href="https://anyconverter.io/da/internet-speed-test/">
+  <link rel="alternate" hreflang="x-default" href="https://anyconverter.io/internet-speed-test/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Prueba de Velocidad de Internet Online Gratis | AnyConverter">
+  <meta property="og:description" content="Mide velocidad de descarga, subida y latencia de ping en tu navegador. Sin aplicación ni registro.">
+  <meta property="og:url" content="https://anyconverter.io/es/internet-speed-test/">
+  <meta property="og:site_name" content="AnyConverter">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" data-ad-client="ca-pub-XXXXXXXXXX" crossorigin="anonymous"></script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Prueba de Velocidad de Internet","url":"https://anyconverter.io/es/internet-speed-test/","description":"Prueba la velocidad de descarga, subida y latencia de ping de tu conexión a internet en el navegador.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F4F6FF);color:var(--color-text,#1E1B4B)}
+    body{min-height:100vh;display:flex;flex-direction:column}
+    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8FE)}
+    .header-inner{max-width:1280px;width:100%;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;gap:32px}
+    .hero{padding:40px 24px 32px;max-width:1280px;margin:0 auto}
+    .hero h1{font-size:clamp(1.75rem,4vw,2.25rem);font-weight:700;line-height:1.2;margin-bottom:12px}
+    .hero-desc{font-size:1.0625rem;color:var(--color-text-2,#6B7280);max-width:680px;line-height:1.6}
+    @font-face{font-family:'Inter';font-display:swap}
+    .speed-gauges{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:24px 0}
+    .speed-gauge{background:var(--color-surface-2,#EEF1FF);border-radius:16px;padding:24px;text-align:center}
+    .speed-val{font-size:2rem;font-weight:700;color:var(--color-primary,#4F46E5);min-height:2.5rem;display:block}
+    .speed-sub{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.5px;color:var(--color-text-2,#6B7280);margin-top:4px}
+    .speed-status{text-align:center;margin:12px 0;color:var(--color-text-2,#6B7280);font-size:14px;min-height:20px}
+  </style>
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+  <header id="site-header" class="site-header"></header>
+  <main id="main-content">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol><li><a href="/es/">Inicio</a></li><li aria-current="page">Prueba de Velocidad de Internet</li></ol>
+    </nav>
+    <section class="hero">
+      <h1>Prueba de Velocidad de Internet</h1>
+      <p class="hero-desc">Mide la velocidad de descarga, subida y latencia de ping de tu conexión a internet directamente en tu navegador — sin necesidad de aplicación ni plugin.</p>
+    </section>
+    <div class="tool-wrapper">
+      <div class="tool-zone">
+        <div style="padding:24px">
+          <div class="speed-gauges">
+            <div class="speed-gauge">
+              <span class="speed-val" id="speed-ping">—</span>
+              <div class="speed-sub">Ping</div>
+            </div>
+            <div class="speed-gauge">
+              <span class="speed-val" id="speed-download">—</span>
+              <div class="speed-sub">Descarga</div>
+            </div>
+            <div class="speed-gauge">
+              <span class="speed-val" id="speed-upload">—</span>
+              <div class="speed-sub">Subida</div>
+            </div>
+          </div>
+          <div class="speed-status" id="speed-status">Haz clic en "Iniciar Prueba" para comenzar.</div>
+          <div style="text-align:center;margin-top:12px">
+            <button class="btn btn-primary" id="speed-btn" style="padding:12px 36px;font-size:16px">Iniciar Prueba de Velocidad</button>
+          </div>
+          <p style="font-size:12px;color:var(--color-text-2,#6B7280);text-align:center;margin-top:12px">Usa los servidores de prueba de Cloudflare. Los resultados pueden variar según la carga del servidor y las condiciones de red.</p>
+        </div>
+      </div>
+      <aside class="tool-side" aria-label="Opciones">
+        <div class="ss-divider">Herramientas Relacionadas</div>
+        <a href="/es/viewport-size/" class="ss-related-link"><img src="/assets/img/icon-browser.svg" alt="" width="18" height="18" loading="lazy">Comprobador de Ventana</a>
+        <a href="/es/browser-info/" class="ss-related-link"><img src="/assets/img/icon-browser.svg" alt="" width="18" height="18" loading="lazy">Visor de Info del Navegador</a>
+        <div style="margin-top:16px">
+          <p class="ad-label">Publicidad</p>
+          <div class="ad-slot" style="min-height:250px">
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+          </div>
+        </div>
+      </aside>
+    </div>
+    <div class="ad-slot ad-slot--leaderboard">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="how-to-use">
+      <h2>Cómo Usar la Prueba de Velocidad</h2>
+      <ol class="steps">
+        <li>Haz clic en <strong>Iniciar Prueba de Velocidad</strong> — la prueba comienza automáticamente.</li>
+        <li>Espera unos 20–30 segundos mientras se miden ping, descarga y subida.</li>
+        <li>Los resultados se muestran en Mbps (o Kbps/Gbps según tu conexión).</li>
+      </ol>
+    </section>
+    <section class="features">
+      <h2>Características</h2>
+      <ul class="features-list">
+        <li>Mide ping (latencia), velocidad de descarga y velocidad de subida</li>
+        <li>Usa los servidores distribuidos globalmente de Cloudflare</li>
+        <li>Sin aplicación, sin Flash, sin plugin — funciona en cualquier navegador moderno</li>
+        <li>Los resultados se actualizan en tiempo real al completar cada fase</li>
+      </ul>
+    </section>
+    <div class="ad-slot ad-slot--rectangle" style="margin:0 auto 32px">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="faq">
+      <h2>Preguntas Frecuentes</h2>
+      <div class="faq-list">
+        <details class="faq-item"><summary class="faq-question">¿Qué es una buena velocidad de internet? <span class="faq-icon">+</span></summary><div class="faq-answer">Para navegación básica y correo electrónico, 10 Mbps de descarga es suficiente. Para streaming en HD, se recomiendan 25 Mbps. Para streaming en 4K o juegos, lo ideal es 50–100 Mbps. Para hogares con varios usuarios, se recomiendan 100+ Mbps.</div></details>
+        <details class="faq-item"><summary class="faq-question">¿Qué es el ping o latencia? <span class="faq-icon">+</span></summary><div class="faq-answer">El ping mide el tiempo de ida y vuelta de un pequeño paquete desde tu dispositivo al servidor de prueba y de regreso. Cuanto más bajo, mejor. Menos de 20 ms es excelente, 20–50 ms es bueno, 50–100 ms es promedio, y por encima de 100 ms puede causar retrasos notables en juegos o videollamadas.</div></details>
+        <details class="faq-item"><summary class="faq-question">¿Por qué los resultados pueden diferir de la velocidad anunciada por mi proveedor? <span class="faq-icon">+</span></summary><div class="faq-answer">Las velocidades anunciadas son máximos teóricos. Las velocidades reales dependen de la congestión de la red, la distancia al servidor, tu router y la cantidad de dispositivos que comparten tu conexión.</div></details>
+      </div>
+    </section>
+  </main>
+  <footer id="site-footer" class="site-footer"></footer>
+  <script src="/assets/js/shared.js" defer></script>
+  <script src="/assets/js/tools/internet-speed-test.js" defer></script>
+</body>
+</html>

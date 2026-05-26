@@ -1,0 +1,151 @@
+﻿<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lånberegner Online Gratis | AnyConverter</title>
+  <meta name="description" content="Beregn din månedlige lånebetaling, samlede renteomkostninger og tilbagebetalingsplan online gratis. Ingen tilmelding nødvendig.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://anyconverter.io/da/loan-calculator/">
+  <link rel="alternate" hreflang="en" href="https://anyconverter.io/loan-calculator/">
+  <link rel="alternate" hreflang="es" href="https://anyconverter.io/es/loan-calculator/">
+  <link rel="alternate" hreflang="da" href="https://anyconverter.io/da/loan-calculator/">
+  <link rel="alternate" hreflang="x-default" href="https://anyconverter.io/loan-calculator/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Lånberegner Online Gratis | AnyConverter">
+  <meta property="og:description" content="Beregn din månedlige lånebetaling, samlede renteomkostninger og tilbagebetalingsplan online gratis. Ingen tilmelding nødvendig.">
+  <meta property="og:url" content="https://anyconverter.io/da/loan-calculator/">
+  <meta property="og:site_name" content="AnyConverter">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" data-ad-client="ca-pub-XXXXXXXXXX" crossorigin="anonymous"></script>
+  <!-- Replace ca-pub-XXXXXXXXXX with your real AdSense publisher ID -->
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Lånberegner","url":"https://anyconverter.io/da/loan-calculator/","description":"Beregn månedlig lånebetaling, samlede renter og det samlede tilbagebetalingsbeløb online gratis. Se komplet amortiseringsplan.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F4F6FF);color:var(--color-text,#1E1B4B)}
+    body{min-height:100vh;display:flex;flex-direction:column}
+    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8FE)}
+    .header-inner{max-width:1280px;width:100%;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;gap:32px}
+    .hero{padding:40px 24px 32px;max-width:1280px;margin:0 auto}
+    .hero h1{font-size:clamp(1.75rem,4vw,2.25rem);font-weight:700;line-height:1.2;margin-bottom:12px}
+    .hero-desc{font-size:1.0625rem;color:var(--color-text-2,#6B7280);max-width:680px;line-height:1.6}
+    @font-face{font-family:'Inter';font-display:swap}
+  </style>
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+  <header id="site-header" class="site-header"></header>
+  <main id="main-content">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol><li><a href="/da/">Hjem</a></li><li aria-current="page">Lånberegner</li></ol>
+    </nav>
+    <section class="hero">
+      <h1>Lånberegner</h1>
+      <p class="hero-desc">Beregn din månedlige lånebetaling med komplet opdeling af afdrag og renter. Se de samlede renteomkostninger og det samlede tilbagebetalingsbeløb øjeblikkeligt.</p>
+    </section>
+    <div class="tool-wrapper">
+      <div class="tool-zone">
+        <div style="padding:24px">
+          <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px;margin-bottom:16px">
+            <div>
+              <label style="display:block;font-size:13px;font-weight:500;margin-bottom:6px" for="loan-amount">Lånebeløb ($)</label>
+              <input type="number" id="loan-amount" placeholder="100000" min="1" style="width:100%;padding:10px 12px;border:1px solid var(--color-border,#DDD8FE);border-radius:8px;font-size:15px">
+            </div>
+            <div>
+              <label style="display:block;font-size:13px;font-weight:500;margin-bottom:6px" for="loan-rate">Årlig Rentesats (%)</label>
+              <input type="number" id="loan-rate" placeholder="5.5" step="0.01" min="0.01" style="width:100%;padding:10px 12px;border:1px solid var(--color-border,#DDD8FE);border-radius:8px;font-size:15px">
+            </div>
+            <div>
+              <label style="display:block;font-size:13px;font-weight:500;margin-bottom:6px" for="loan-term">Løbetid (måneder)</label>
+              <input type="number" id="loan-term" placeholder="60" min="1" style="width:100%;padding:10px 12px;border:1px solid var(--color-border,#DDD8FE);border-radius:8px;font-size:15px">
+            </div>
+          </div>
+          <div class="action-bar" style="margin-bottom:20px">
+            <button class="btn btn-primary" id="btn-calc-loan">Beregn Betaling</button>
+            <button class="btn btn-secondary" id="btn-reset-loan">Nulstil</button>
+          </div>
+          <div id="loan-result" style="display:none">
+            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:16px">
+              <div class="stat-card"><div class="stat-val" id="emi-val">—</div><div class="stat-lbl">Månedlig Betaling</div></div>
+              <div class="stat-card"><div class="stat-val" id="total-interest">—</div><div class="stat-lbl">Samlede Renter</div></div>
+              <div class="stat-card"><div class="stat-val" id="total-payment">—</div><div class="stat-lbl">Samlet Betaling</div></div>
+            </div>
+            <div style="background:var(--color-bg,#F4F6FF);border:1px solid var(--color-border,#DDD8FE);border-radius:8px;padding:12px;max-height:300px;overflow-y:auto">
+              <table style="width:100%;border-collapse:collapse;font-size:13px">
+                <thead><tr style="text-align:left"><th style="padding:6px 8px;border-bottom:1px solid var(--color-border,#DDD8FE)">Måned</th><th style="padding:6px 8px;border-bottom:1px solid var(--color-border,#DDD8FE)">Betaling</th><th style="padding:6px 8px;border-bottom:1px solid var(--color-border,#DDD8FE)">Afdrag</th><th style="padding:6px 8px;border-bottom:1px solid var(--color-border,#DDD8FE)">Renter</th><th style="padding:6px 8px;border-bottom:1px solid var(--color-border,#DDD8FE)">Restgæld</th></tr></thead>
+                <tbody id="amort-tbody"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <aside class="tool-side" aria-label="Muligheder">
+        <div class="ss-divider">Relaterede værktøjer</div>
+        <a href="/da/bmi-calculator/" class="ss-related-link"><img src="/assets/img/icon-calculator.svg" alt="" width="18" height="18" loading="lazy">BMI Beregner</a>
+        <a href="/da/age-calculator/" class="ss-related-link"><img src="/assets/img/icon-clock.svg" alt="" width="18" height="18" loading="lazy">Aldersberegner</a>
+        <a href="/da/percentage-calculator/" class="ss-related-link"><img src="/assets/img/icon-calculator.svg" alt="" width="18" height="18" loading="lazy">Procentberegner</a>
+        <div style="margin-top:16px">
+          <p class="ad-label">Reklame</p>
+          <div class="ad-slot" style="min-height:250px">
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+            <!-- Replace ca-pub-XXXXXXXXXX and data-ad-slot="XXXXXXXXXX" with your IDs -->
+          </div>
+        </div>
+      </aside>
+    </div>
+    <div class="ad-slot ad-slot--leaderboard">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="how-to-use">
+      <h2>Sådan bruges Lånberegneren</h2>
+      <ol class="steps">
+        <li><strong>Trin 1</strong> — Indtast lånebeløbet, den årlige rentesats og løbetiden i måneder.</li>
+        <li><strong>Trin 2</strong> — Klik Beregn for at se den månedlige betaling.</li>
+        <li><strong>Trin 3</strong> — Se opdelingen: samlet tilbagebetaling, samlede renter og afdrag. Rul gennem amortiseringstabellen for at se opdeling pr. måned.</li>
+      </ol>
+    </section>
+    <section class="features">
+      <h2>Funktioner</h2>
+      <ul class="features-list">
+        <li>Beregner månedlig lånebetaling med standardamortiseringsformlen</li>
+        <li>Viser samlet tilbagebetaling og samlede renteomkostninger</li>
+        <li>Komplet måneds-for-måneds amortiseringsplan</li>
+        <li>Understøtter enhver løbetid og rentesats</li>
+        <li>Rulbar amortiseringstabel til lange låneperioder</li>
+        <li>Øjeblikkelige resultater uden sideopdatering</li>
+      </ul>
+    </section>
+    <div class="ad-slot ad-slot--rectangle" style="margin:0 auto 32px">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="faq">
+      <h2>Ofte stillede spørgsmål</h2>
+      <div class="faq-list">
+        <details class="faq-item"><summary class="faq-question">Hvad er en månedlig lånebetaling og hvordan beregnes den? <span class="faq-icon">+</span></summary><div class="faq-answer">Den månedlige lånebetaling er en fast månedlig ydelse til tilbagebetaling af et lån over en fastsat periode. Den beregnes ved hjælp af formlen: Betaling = P × r × (1+r)^n / ((1+r)^n - 1), hvor P er lånebeløbet, r er den månedlige rentesats og n er antallet af måneder.</div></details>
+        <details class="faq-item"><summary class="faq-question">Hvordan angiver jeg løbetiden? <span class="faq-icon">+</span></summary><div class="faq-answer">Angiv løbetiden i måneder. Fx er et 5-årigt lån 60 måneder, et 10-årigt lån er 120 måneder og et 30-årigt realkreditlån er 360 måneder.</div></details>
+        <details class="faq-item"><summary class="faq-question">Hvad viser amortiseringsplanen? <span class="faq-icon">+</span></summary><div class="faq-answer">Amortiseringstabellen opdeler hver månedlig betaling i dens afdrags-komponent (reducerer lånets restgæld) og rentekomponent (låneomkostningen). Den viser også den resterende saldo efter hver betaling.</div></details>
+        <details class="faq-item"><summary class="faq-question">Kan jeg bruge dette til realkreditberegning? <span class="faq-icon">+</span></summary><div class="faq-answer">Ja. Indtast realkreditbeløbet, den årlige rentesats og løbetiden i måneder. For et 30-årigt fastforrentet realkreditlån til 7% skal du indtaste 360 måneder som løbetid. Bemærk at denne beregner ikke inkluderer ejendomsskat, forsikring eller andre gebyrer.</div></details>
+        <details class="faq-item"><summary class="faq-question">Tager beregneren højde for ekstraordinære indbetalinger? <span class="faq-icon">+</span></summary><div class="faq-answer">Den nuværende version beregner standard fast-betaling amortisering og modellerer ikke ekstraordinære eller uregelmæssige betalinger. Hver måneds betaling er identisk. For scenarier med ekstraordinære indbetalinger skal du justere lånebeløbet og genberegne.</div></details>
+      </div>
+    </section>
+    <section class="related-tools">
+      <h2>Relaterede Værktøjer</h2>
+      <div class="tool-grid">
+        <a href="/da/bmi-calculator/" class="tool-card"><img src="/assets/img/icon-calculator.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>BMI Beregner</h3><p>Beregn dit Body Mass Index med metriske eller imperiale enheder.</p><span class="tool-card-link">Brug →</span></a>
+        <a href="/da/age-calculator/" class="tool-card"><img src="/assets/img/icon-clock.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Aldersberegner</h3><p>Beregn din præcise alder i år, måneder og dage.</p><span class="tool-card-link">Brug →</span></a>
+        <a href="/da/percentage-calculator/" class="tool-card"><img src="/assets/img/icon-calculator.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Procentberegner</h3><p>Beregn procenter, ændringer og forholdsmål nemt.</p><span class="tool-card-link">Brug →</span></a>
+        <a href="/da/currency-converter/" class="tool-card"><img src="/assets/img/icon-currency.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Valutaomregner</h3><p>Omregn beløb mellem verdens valutaer.</p><span class="tool-card-link">Brug →</span></a>
+      </div>
+    </section>
+  </main>
+  <footer id="site-footer" class="site-footer"></footer>
+  <script src="/assets/js/shared.js" defer></script>
+  <script src="/assets/js/tools/loan-calculator.js" defer></script>
+</body>
+</html>

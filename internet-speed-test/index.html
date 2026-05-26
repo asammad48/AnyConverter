@@ -1,0 +1,129 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Internet Speed Test Online Free | AnyConverter</title>
+  <meta name="description" content="Test your internet connection speed online for free. Measure download speed, upload speed, and ping latency instantly in your browser. No app required.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://anyconverter.io/internet-speed-test/">
+  <link rel="alternate" hreflang="en" href="https://anyconverter.io/internet-speed-test/">
+  <link rel="alternate" hreflang="es" href="https://anyconverter.io/es/internet-speed-test/">
+  <link rel="alternate" hreflang="da" href="https://anyconverter.io/da/internet-speed-test/">
+  <link rel="alternate" hreflang="x-default" href="https://anyconverter.io/internet-speed-test/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Internet Speed Test Online Free | AnyConverter">
+  <meta property="og:description" content="Test download speed, upload speed and ping latency in your browser. No app, no signup.">
+  <meta property="og:url" content="https://anyconverter.io/internet-speed-test/">
+  <meta property="og:site_name" content="AnyConverter">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" data-ad-client="ca-pub-XXXXXXXXXX" crossorigin="anonymous"></script>
+  <!-- Replace ca-pub-XXXXXXXXXX with your real AdSense publisher ID -->
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Internet Speed Test","url":"https://anyconverter.io/internet-speed-test/","description":"Test your internet download speed, upload speed and ping latency in your browser.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F4F6FF);color:var(--color-text,#1E1B4B)}
+    body{min-height:100vh;display:flex;flex-direction:column}
+    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8FE)}
+    .header-inner{max-width:1280px;width:100%;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;gap:32px}
+    .hero{padding:40px 24px 32px;max-width:1280px;margin:0 auto}
+    .hero h1{font-size:clamp(1.75rem,4vw,2.25rem);font-weight:700;line-height:1.2;margin-bottom:12px}
+    .hero-desc{font-size:1.0625rem;color:var(--color-text-2,#6B7280);max-width:680px;line-height:1.6}
+    @font-face{font-family:'Inter';font-display:swap}
+    .speed-gauges{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:24px 0}
+    .speed-gauge{background:var(--color-surface-2,#EEF1FF);border-radius:16px;padding:24px;text-align:center}
+    .speed-val{font-size:2rem;font-weight:700;color:var(--color-primary,#4F46E5);min-height:2.5rem;display:block}
+    .speed-sub{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.5px;color:var(--color-text-2,#6B7280);margin-top:4px}
+    .speed-status{text-align:center;margin:12px 0;color:var(--color-text-2,#6B7280);font-size:14px;min-height:20px}
+  </style>
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+  <header id="site-header" class="site-header"></header>
+  <main id="main-content">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol><li><a href="/">Home</a></li><li aria-current="page">Internet Speed Test</li></ol>
+    </nav>
+    <section class="hero">
+      <h1>Internet Speed Test</h1>
+      <p class="hero-desc">Measure your internet connection's download speed, upload speed, and ping latency directly in your browser — no app or plugin needed.</p>
+    </section>
+    <div class="tool-wrapper">
+      <div class="tool-zone">
+        <div style="padding:24px">
+          <div class="speed-gauges">
+            <div class="speed-gauge">
+              <span class="speed-val" id="speed-ping">—</span>
+              <div class="speed-sub">Ping</div>
+            </div>
+            <div class="speed-gauge">
+              <span class="speed-val" id="speed-download">—</span>
+              <div class="speed-sub">Download</div>
+            </div>
+            <div class="speed-gauge">
+              <span class="speed-val" id="speed-upload">—</span>
+              <div class="speed-sub">Upload</div>
+            </div>
+          </div>
+          <div class="speed-status" id="speed-status">Click "Run Speed Test" to begin.</div>
+          <div style="text-align:center;margin-top:12px">
+            <button class="btn btn-primary" id="speed-btn" style="padding:12px 36px;font-size:16px">Run Speed Test</button>
+          </div>
+          <p style="font-size:12px;color:var(--color-text-2,#6B7280);text-align:center;margin-top:12px">Uses Cloudflare's test servers. Results may vary based on server load and network conditions.</p>
+        </div>
+      </div>
+      <aside class="tool-side" aria-label="Options">
+        <div class="ss-divider">Related Tools</div>
+        <a href="/viewport-size/" class="ss-related-link"><img src="/assets/img/icon-browser.svg" alt="" width="18" height="18" loading="lazy">Viewport Size Checker</a>
+        <a href="/browser-info/" class="ss-related-link"><img src="/assets/img/icon-browser.svg" alt="" width="18" height="18" loading="lazy">Browser Info Viewer</a>
+        <div style="margin-top:16px">
+          <p class="ad-label">Advertisement</p>
+          <div class="ad-slot" style="min-height:250px">
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+          </div>
+        </div>
+      </aside>
+    </div>
+    <div class="ad-slot ad-slot--leaderboard">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="how-to-use">
+      <h2>How to Use</h2>
+      <ol class="steps">
+        <li>Click <strong>Run Speed Test</strong> — the test starts automatically.</li>
+        <li>Wait ~20–30 seconds while ping, download, and upload are measured.</li>
+        <li>Results show in Mbps (or Kbps/Gbps depending on your connection).</li>
+      </ol>
+    </section>
+    <section class="features">
+      <h2>Features</h2>
+      <ul class="features-list">
+        <li>Measures ping (latency), download speed, and upload speed</li>
+        <li>Uses Cloudflare's globally distributed test servers</li>
+        <li>No app, no Flash, no plugin — runs in any modern browser</li>
+        <li>Results update in real-time as each phase completes</li>
+      </ul>
+    </section>
+    <div class="ad-slot ad-slot--rectangle" style="margin:0 auto 32px">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="faq">
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-list">
+        <details class="faq-item"><summary class="faq-question">What is a good internet speed? <span class="faq-icon">+</span></summary><div class="faq-answer">For basic browsing and email, 10 Mbps download is sufficient. For HD streaming, 25 Mbps is recommended. For 4K streaming or gaming, 50–100 Mbps is ideal. For households with multiple users, 100+ Mbps is recommended.</div></details>
+        <details class="faq-item"><summary class="faq-question">What is ping/latency? <span class="faq-icon">+</span></summary><div class="faq-answer">Ping measures the round-trip time for a small packet to travel from your device to the test server and back. Lower is better. Under 20ms is excellent, 20–50ms is good, 50–100ms is average, and above 100ms may cause noticeable delays in gaming or video calls.</div></details>
+        <details class="faq-item"><summary class="faq-question">Why might results differ from my ISP's advertised speed? <span class="faq-icon">+</span></summary><div class="faq-answer">Advertised speeds are theoretical maximums. Actual speeds depend on network congestion, distance from the server, your router, and the number of devices sharing your connection.</div></details>
+      </div>
+    </section>
+  </main>
+  <footer id="site-footer" class="site-footer"></footer>
+  <script src="/assets/js/shared.js" defer></script>
+  <script src="/assets/js/tools/internet-speed-test.js" defer></script>
+</body>
+</html>

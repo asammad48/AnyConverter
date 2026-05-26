@@ -1,0 +1,146 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Generador de Números Aleatorios Online Gratis | AnyConverter</title>
+  <meta name="description" content="Genera números aleatorios online gratis. Establece el rango mínimo/máximo, genera múltiples números, activa el modo sin duplicados. Usa valores aleatorios criptográficamente seguros.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://anyconverter.io/es/random-number-generator/">
+  <link rel="alternate" hreflang="en" href="https://anyconverter.io/random-number-generator/">
+  <link rel="alternate" hreflang="es" href="https://anyconverter.io/es/random-number-generator/">
+  <link rel="alternate" hreflang="da" href="https://anyconverter.io/da/random-number-generator/">
+  <link rel="alternate" hreflang="x-default" href="https://anyconverter.io/random-number-generator/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Generador de Números Aleatorios Online Gratis | AnyConverter">
+  <meta property="og:description" content="Genera números aleatorios online gratis. Establece el rango mínimo/máximo, genera múltiples números y activa el modo sin duplicados. Resultados instantáneos.">
+  <meta property="og:url" content="https://anyconverter.io/es/random-number-generator/">
+  <meta property="og:site_name" content="AnyConverter">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" data-ad-client="ca-pub-XXXXXXXXXX" crossorigin="anonymous"></script>
+  <!-- Replace ca-pub-XXXXXXXXXX with your real AdSense publisher ID -->
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Generador de Números Aleatorios","url":"https://anyconverter.io/es/random-number-generator/","description":"Genera números aleatorios criptográficamente seguros online gratis. Establece el rango, la cantidad y opciones sin duplicados.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F4F6FF);color:var(--color-text,#1E1B4B)}
+    body{min-height:100vh;display:flex;flex-direction:column}
+    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8FE)}
+    .header-inner{max-width:1280px;width:100%;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;gap:32px}
+    .hero{padding:40px 24px 32px;max-width:1280px;margin:0 auto}
+    .hero h1{font-size:clamp(1.75rem,4vw,2.25rem);font-weight:700;line-height:1.2;margin-bottom:12px}
+    .hero-desc{font-size:1.0625rem;color:var(--color-text-2,#6B7280);max-width:680px;line-height:1.6}
+    @font-face{font-family:'Inter';font-display:swap}
+  </style>
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+  <header id="site-header" class="site-header"></header>
+  <main id="main-content">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol><li><a href="/es/">Inicio</a></li><li aria-current="page">Generador de Números Aleatorios</li></ol>
+    </nav>
+    <section class="hero">
+      <h1>Generador de Números Aleatorios</h1>
+      <p class="hero-desc">Genera números verdaderamente aleatorios al instante usando valores criptográficamente seguros de tu navegador. Establece un rango mínimo y máximo personalizado, elige cuántos números generar y opcionalmente asegúrate de que no haya duplicados en tus resultados.</p>
+    </section>
+    <div class="tool-wrapper">
+      <div class="tool-zone">
+        <div style="padding:24px">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px">
+            <div>
+              <label style="display:block;font-size:13px;font-weight:500;margin-bottom:6px" for="rng-min">Mínimo</label>
+              <input type="number" id="rng-min" value="1" style="width:100%;padding:10px 12px;border:1px solid var(--color-border,#DDD8FE);border-radius:8px;font-size:15px">
+            </div>
+            <div>
+              <label style="display:block;font-size:13px;font-weight:500;margin-bottom:6px" for="rng-max">Máximo</label>
+              <input type="number" id="rng-max" value="100" style="width:100%;padding:10px 12px;border:1px solid var(--color-border,#DDD8FE);border-radius:8px;font-size:15px">
+            </div>
+          </div>
+          <div style="margin-bottom:16px">
+            <label style="display:block;font-size:13px;font-weight:500;margin-bottom:6px" for="rng-count">¿Cuántos números?</label>
+            <input type="number" id="rng-count" value="1" min="1" max="100" style="width:120px;padding:10px 12px;border:1px solid var(--color-border,#DDD8FE);border-radius:8px;font-size:15px">
+          </div>
+          <div style="margin-bottom:16px">
+            <label style="display:flex;align-items:center;gap:8px;font-size:14px;cursor:pointer"><input type="checkbox" id="rng-unique"> Sin duplicados</label>
+          </div>
+          <div class="action-bar" style="margin-bottom:20px">
+            <button class="btn btn-primary" id="btn-generate-rng">Generar</button>
+            <button class="btn btn-secondary" id="btn-copy-rng">Copiar todo</button>
+            <button class="btn btn-secondary" id="btn-clear-rng">Limpiar</button>
+          </div>
+          <div id="rng-output" style="display:none">
+            <div id="rng-big-number" style="font-size:64px;font-weight:700;text-align:center;color:var(--color-primary,#4F46E5);padding:16px 0;display:none"></div>
+            <div id="rng-list" style="display:flex;flex-wrap:wrap;gap:8px;padding:12px;background:var(--color-bg,#F4F6FF);border:1px solid var(--color-border,#DDD8FE);border-radius:8px;max-height:200px;overflow-y:auto"></div>
+          </div>
+        </div>
+      </div>
+      <aside class="tool-side" aria-label="Opciones">
+        <div class="ss-divider">Herramientas relacionadas</div>
+        <a href="/es/percentage-calculator/" class="ss-related-link"><img src="/assets/img/icon-calculator.svg" alt="" width="18" height="18" loading="lazy">Calculadora de porcentajes</a>
+        <a href="/es/bmi-calculator/" class="ss-related-link"><img src="/assets/img/icon-calculator.svg" alt="" width="18" height="18" loading="lazy">Calculadora de IMC</a>
+        <a href="/es/password-generator/" class="ss-related-link"><img src="/assets/img/icon-lock.svg" alt="" width="18" height="18" loading="lazy">Generador de contraseñas</a>
+        <div style="margin-top:16px">
+          <p class="ad-label">Publicidad</p>
+          <div class="ad-slot" style="min-height:250px">
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+            <!-- Replace ca-pub-XXXXXXXXXX and data-ad-slot="XXXXXXXXXX" with your IDs -->
+          </div>
+        </div>
+      </aside>
+    </div>
+    <div class="ad-slot ad-slot--leaderboard">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="how-to-use">
+      <h2>Cómo usar el Generador de Números Aleatorios</h2>
+      <ol class="steps">
+        <li><strong>Paso 1</strong> — Establece los valores Mínimo y Máximo para definir tu rango deseado (por ejemplo, 1 a 100).</li>
+        <li><strong>Paso 2</strong> — Ingresa cuántos números deseas generar (hasta 100 a la vez). Marca "Sin duplicados" si necesitas números únicos solamente.</li>
+        <li><strong>Paso 3</strong> — Haz clic en "Generar" para producir tus números aleatorios al instante. Usa "Copiar todo" para copiarlos al portapapeles.</li>
+      </ol>
+    </section>
+    <section class="features">
+      <h2>Características</h2>
+      <ul class="features-list">
+        <li>Valores aleatorios criptográficamente seguros usando la API Web Crypto</li>
+        <li>Rango mínimo y máximo totalmente personalizable, incluyendo números negativos</li>
+        <li>Genera hasta 100 números a la vez</li>
+        <li>Modo sin duplicados para loterías, sorteos y muestreo estadístico</li>
+        <li>Número único mostrado en formato grande; múltiples números mostrados como etiquetas</li>
+        <li>Copia todos los resultados al portapapeles con un solo clic</li>
+      </ul>
+    </section>
+    <div class="ad-slot ad-slot--rectangle" style="margin:0 auto 32px">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="faq">
+      <h2>Preguntas frecuentes</h2>
+      <div class="faq-list">
+        <details class="faq-item"><summary class="faq-question">¿Es este generador verdaderamente aleatorio? <span class="faq-icon">+</span></summary><div class="faq-answer">Sí. Esta herramienta utiliza la API Web Crypto (crypto.getRandomValues), que proporciona valores aleatorios criptográficamente seguros. Esta es la misma calidad de aleatoriedad utilizada para generar claves de cifrado y tokens seguros, muy superior a Math.random().</div></details>
+        <details class="faq-item"><summary class="faq-question">¿Puedo generar números negativos? <span class="faq-icon">+</span></summary><div class="faq-answer">Sí. Simplemente establece el campo Mínimo en un valor negativo, como -100, y el Máximo en tu límite superior deseado. El generador producirá enteros aleatorios dentro de ese rango.</div></details>
+        <details class="faq-item"><summary class="faq-question">¿Qué hace el modo "Sin duplicados"? <span class="faq-icon">+</span></summary><div class="faq-answer">Cuando se marca "Sin duplicados", cada número en el conjunto generado será único. Esto es útil para sorteos de lotería, selección de equipos o muestreo estadístico donde cada valor solo puede aparecer una vez. Si solicitas más números que el rango disponible, el conteo se ajusta automáticamente.</div></details>
+        <details class="faq-item"><summary class="faq-question">¿Puedo usarlo para una lotería o rifa? <span class="faq-icon">+</span></summary><div class="faq-answer">Por supuesto. Establece tu rango (por ejemplo, 1 a 49 para una lotería 6/49), pon el conteo en 6, marca "Sin duplicados" y haz clic en Generar. La herramienta producirá 6 números únicos de tu rango, perfecto para sorteos de rifa o loterías.</div></details>
+        <details class="faq-item"><summary class="faq-question">¿Cuántos valores puedo generar a la vez? <span class="faq-icon">+</span></summary><div class="faq-answer">Puedes generar hasta 100 números en un solo clic. Si necesitas más, simplemente haz clic en Generar de nuevo para obtener otro lote, o copia el conjunto actual y genera más.</div></details>
+      </div>
+    </section>
+    <section class="related-tools">
+      <h2>Herramientas relacionadas</h2>
+      <div class="tool-grid">
+        <a href="/es/percentage-calculator/" class="tool-card"><img src="/assets/img/icon-calculator.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Calculadora de porcentajes</h3><p>Calcula porcentajes, cambios y proporciones fácilmente.</p><span class="tool-card-link">Usar →</span></a>
+        <a href="/es/bmi-calculator/" class="tool-card"><img src="/assets/img/icon-calculator.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Calculadora de IMC</h3><p>Calcula tu Índice de Masa Corporal en unidades métricas o imperiales.</p><span class="tool-card-link">Usar →</span></a>
+        <a href="/es/password-generator/" class="tool-card"><img src="/assets/img/icon-lock.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Generador de contraseñas</h3><p>Genera contraseñas aleatorias fuertes y seguras al instante.</p><span class="tool-card-link">Usar →</span></a>
+        <a href="/es/loan-calculator/" class="tool-card"><img src="/assets/img/icon-calculator.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Calculadora de préstamos</h3><p>Calcula pagos mensuales y el costo total del préstamo.</p><span class="tool-card-link">Usar →</span></a>
+      </div>
+    </section>
+  </main>
+  <footer id="site-footer" class="site-footer"></footer>
+  <script src="/assets/js/shared.js" defer></script>
+  <script src="/assets/js/tools/random-number-generator.js" defer></script>
+</body>
+</html>

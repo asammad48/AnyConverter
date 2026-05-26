@@ -1,0 +1,126 @@
+﻿<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mikrofon Test Online Gratis | AnyConverter</title>
+  <meta name="description" content="Test din mikrofon online gratis. Se live-lydniveauer, kontrollér om din mikrofon virker, og se enhedsinfo — ingen software download nødvendig.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://anyconverter.io/da/microphone-tester/">
+  <link rel="alternate" hreflang="en" href="https://anyconverter.io/microphone-tester/">
+  <link rel="alternate" hreflang="es" href="https://anyconverter.io/es/microphone-tester/">
+  <link rel="alternate" hreflang="da" href="https://anyconverter.io/da/microphone-tester/">
+  <link rel="alternate" hreflang="x-default" href="https://anyconverter.io/microphone-tester/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Mikrofon Test Online Gratis | AnyConverter">
+  <meta property="og:description" content="Test din mikrofon med en live lydnivåmåler. Se om din mikrofon virker øjeblikkeligt i din browser.">
+  <meta property="og:url" content="https://anyconverter.io/da/microphone-tester/">
+  <meta property="og:site_name" content="AnyConverter">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" data-ad-client="ca-pub-XXXXXXXXXX" crossorigin="anonymous"></script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Mikrofon Test","url":"https://anyconverter.io/da/microphone-tester/","description":"Test din mikrofon med en live lydnivåmåler direkte i din browser.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F4F6FF);color:var(--color-text,#1E1B4B)}
+    body{min-height:100vh;display:flex;flex-direction:column}
+    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8FE)}
+    .header-inner{max-width:1280px;width:100%;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;gap:32px}
+    .hero{padding:40px 24px 32px;max-width:1280px;margin:0 auto}
+    .hero h1{font-size:clamp(1.75rem,4vw,2.25rem);font-weight:700;line-height:1.2;margin-bottom:12px}
+    .hero-desc{font-size:1.0625rem;color:var(--color-text-2,#6B7280);max-width:680px;line-height:1.6}
+    @font-face{font-family:'Inter';font-display:swap}
+    .mic-meter-wrap{background:var(--color-surface-2,#EEF1FF);border-radius:12px;padding:24px;margin:8px 0}
+    .mic-meter-track{background:var(--color-border,#DDD8FE);border-radius:99px;height:32px;overflow:hidden;margin:12px 0}
+    #mic-bar{height:100%;width:0%;border-radius:99px;background:var(--color-primary,#4F46E5);transition:width .05s}
+    .mic-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:8px}
+    .mic-stat{background:var(--color-surface,#fff);border-radius:8px;padding:12px;text-align:center}
+    .mic-stat-val{font-size:1.25rem;font-weight:700;color:var(--color-primary,#4F46E5)}
+    .mic-stat-label{font-size:11px;color:var(--color-text-2,#6B7280);font-weight:600;text-transform:uppercase;letter-spacing:.5px;margin-top:2px}
+  </style>
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+  <header id="site-header" class="site-header"></header>
+  <main id="main-content">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol><li><a href="/da/">Hjem</a></li><li aria-current="page">Mikrofon Test</li></ol>
+    </nav>
+    <section class="hero">
+      <h1>Mikrofon Test</h1>
+      <p class="hero-desc">Test din mikrofon med en realtids lydnivåmåler. Se øjeblikkeligt om din mikrofon opfanger lyd, tjek lydstyrkeniveauer og se enhedsoplysninger — direkte i din browser.</p>
+    </section>
+    <div class="tool-wrapper">
+      <div class="tool-zone">
+        <div style="padding:24px">
+          <div class="mic-meter-wrap">
+            <div style="font-size:13px;font-weight:600;margin-bottom:4px">Live Lydniveau</div>
+            <div class="mic-meter-track"><div id="mic-bar"></div></div>
+            <div class="mic-stats">
+              <div class="mic-stat"><div class="mic-stat-val" id="mic-db">— dB</div><div class="mic-stat-label">Niveau</div></div>
+              <div class="mic-stat"><div class="mic-stat-val" id="mic-peak">0%</div><div class="mic-stat-label">Peak</div></div>
+              <div class="mic-stat"><div class="mic-stat-val" id="mic-label" style="font-size:11px;padding-top:4px">—</div><div class="mic-stat-label">Enhed</div></div>
+            </div>
+          </div>
+          <div style="font-size:13px;color:var(--color-text-2,#6B7280);margin:8px 0;min-height:20px" id="mic-status">Klik på "Start Mikrofon Test" for at begynde.</div>
+          <div class="action-bar">
+            <button class="btn btn-primary" id="mic-start">Start Mikrofon Test</button>
+            <button class="btn btn-secondary" id="mic-stop" disabled>Stop</button>
+          </div>
+        </div>
+      </div>
+      <aside class="tool-side" aria-label="Indstillinger">
+        <div class="ss-divider">Relaterede Værktøjer</div>
+        <a href="/da/webcam-tester/" class="ss-related-link"><img src="/assets/img/icon-browser.svg" alt="" width="18" height="18" loading="lazy">Webkameratest</a>
+        <a href="/da/browser-info/" class="ss-related-link"><img src="/assets/img/icon-browser.svg" alt="" width="18" height="18" loading="lazy">Browser Info Fremviser</a>
+        <div style="margin-top:16px">
+          <p class="ad-label">Annonce</p>
+          <div class="ad-slot" style="min-height:250px">
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+          </div>
+        </div>
+      </aside>
+    </div>
+    <div class="ad-slot ad-slot--leaderboard">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="how-to-use">
+      <h2>Sådan Bruger Du Mikrofon Testen</h2>
+      <ol class="steps">
+        <li>Klik på <strong>Start Mikrofon Test</strong> — din browser vil anmode om mikrofontilladelse.</li>
+        <li>Giv adgang og live-niveaulinjen begynder at bevæge sig når du taler.</li>
+        <li>Måleren bliver gul ved høj lydstyrke og rød ved overstyring.</li>
+        <li>Peak-niveau og enhedsnavn vises automatisk.</li>
+      </ol>
+    </section>
+    <section class="features">
+      <h2>Funktioner</h2>
+      <ul class="features-list">
+        <li>Realtids animeret lydnivålinje</li>
+        <li>Omtrentlig dB-niveauvisning</li>
+        <li>Peak-niveausporing</li>
+        <li>Viser mikrofon-enhedens navn</li>
+        <li>Ingen lyd optages eller uploades — 100% lokalt</li>
+      </ul>
+    </section>
+    <div class="ad-slot ad-slot--rectangle" style="margin:0 auto 32px">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="faq">
+      <h2>Ofte Stillede Spørgsmål</h2>
+      <div class="faq-list">
+        <details class="faq-item"><summary class="faq-question">Optages min lyd? <span class="faq-icon">+</span></summary><div class="faq-answer">Nej. Mikrofon-input behandles udelukkende i din browser ved hjælp af Web Audio API. Ingen lyd optages, gemmes eller transmitteres nogen steder.</div></details>
+        <details class="faq-item"><summary class="faq-question">Linjen bevæger sig ikke — hvad skal jeg gøre? <span class="faq-icon">+</span></summary><div class="faq-answer">Tjek at din mikrofon er indstillet som standardinput-enhed i dine OS-indstillinger. Sørg for at browseren har mikrofontilladelse (se efter et mikrofon-ikon i browserens adresselinje). Prøv at tale højere eller flytte dig tættere på mikrofonen.</div></details>
+      </div>
+    </section>
+  </main>
+  <footer id="site-footer" class="site-footer"></footer>
+  <script src="/assets/js/shared.js" defer></script>
+  <script src="/assets/js/tools/microphone-tester.js" defer></script>
+</body>
+</html>

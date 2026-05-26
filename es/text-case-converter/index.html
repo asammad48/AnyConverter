@@ -1,0 +1,146 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Conversor de Mayúsculas y Minúsculas Online Gratis | AnyConverter</title>
+  <meta name="description" content="Convierte texto entre MAYÚSCULAS, minúsculas, Formato Título, camelCase, snake_case, kebab-case y más. Conversor de formato de texto online gratuito, resultados instantáneos.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://anyconverter.io/es/text-case-converter/">
+  <link rel="alternate" hreflang="en" href="https://anyconverter.io/text-case-converter/">
+  <link rel="alternate" hreflang="es" href="https://anyconverter.io/es/text-case-converter/">
+  <link rel="alternate" hreflang="da" href="https://anyconverter.io/da/text-case-converter/">
+  <link rel="alternate" hreflang="x-default" href="https://anyconverter.io/text-case-converter/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Conversor de Mayúsculas y Minúsculas Online Gratis | AnyConverter">
+  <meta property="og:description" content="Convierte texto entre MAYÚSCULAS, minúsculas, Formato Título, camelCase, snake_case, kebab-case y más. Resultados instantáneos, sin registro.">
+  <meta property="og:url" content="https://anyconverter.io/es/text-case-converter/">
+  <meta property="og:site_name" content="AnyConverter">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" data-ad-client="ca-pub-XXXXXXXXXX" crossorigin="anonymous"></script>
+  <!-- Replace ca-pub-XXXXXXXXXX with your real AdSense publisher ID -->
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Conversor de Formato de Texto","url":"https://anyconverter.io/es/text-case-converter/","description":"Convierte texto entre 10 formatos distintos al instante. Compatible con MAYÚSCULAS, minúsculas, Título, camelCase, snake_case y más.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F4F6FF);color:var(--color-text,#1E1B4B)}
+    body{min-height:100vh;display:flex;flex-direction:column}
+    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8FE)}
+    .header-inner{max-width:1280px;width:100%;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;gap:32px}
+    .hero{padding:40px 24px 32px;max-width:1280px;margin:0 auto}
+    .hero h1{font-size:clamp(1.75rem,4vw,2.25rem);font-weight:700;line-height:1.2;margin-bottom:12px}
+    .hero-desc{font-size:1.0625rem;color:var(--color-text-2,#6B7280);max-width:680px;line-height:1.6}
+    @font-face{font-family:'Inter';font-display:swap}
+  </style>
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+  <header id="site-header" class="site-header"></header>
+  <main id="main-content">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol><li><a href="/es/">Inicio</a></li><li aria-current="page">Conversor de Mayúsculas y Minúsculas</li></ol>
+    </nav>
+    <section class="hero">
+      <h1>Conversor de Mayúsculas y Minúsculas</h1>
+      <p class="hero-desc">Convierte tu texto entre 10 formatos distintos al instante. Compatible con MAYÚSCULAS, minúsculas, Formato Título, Oración, camelCase, PascalCase, snake_case, kebab-case, dot.case y formato alternado. Haz clic en cualquier botón para transformar tu texto de inmediato.</p>
+    </section>
+    <div class="tool-wrapper">
+      <div class="tool-zone">
+        <div style="padding:24px">
+          <div style="margin-bottom:12px">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+              <label style="font-size:13px;font-weight:500" for="tcc-input">Texto de entrada</label>
+              <button class="btn btn-secondary btn-sm" id="btn-tcc-clear">Limpiar</button>
+            </div>
+            <textarea id="tcc-input" placeholder="Escribe o pega tu texto aquí..." style="width:100%;min-height:150px;padding:12px;border:1px solid var(--color-border,#DDD8FE);border-radius:8px;font-size:15px;resize:vertical" spellcheck="false"></textarea>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:8px;margin-bottom:16px">
+            <button class="btn btn-secondary btn-sm" id="btn-upper">MAYÚSCULAS</button>
+            <button class="btn btn-secondary btn-sm" id="btn-lower">minúsculas</button>
+            <button class="btn btn-secondary btn-sm" id="btn-title">Formato Título</button>
+            <button class="btn btn-secondary btn-sm" id="btn-sentence">Oración</button>
+            <button class="btn btn-secondary btn-sm" id="btn-camel">camelCase</button>
+            <button class="btn btn-secondary btn-sm" id="btn-pascal">PascalCase</button>
+            <button class="btn btn-secondary btn-sm" id="btn-snake">snake_case</button>
+            <button class="btn btn-secondary btn-sm" id="btn-kebab">kebab-case</button>
+            <button class="btn btn-secondary btn-sm" id="btn-dot">dot.case</button>
+            <button class="btn btn-secondary btn-sm" id="btn-alternating">aLtErNaDo</button>
+          </div>
+          <div style="margin-bottom:8px">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+              <label style="font-size:13px;font-weight:500">Salida</label>
+              <button class="btn btn-secondary btn-sm" id="btn-tcc-copy">Copiar</button>
+            </div>
+            <textarea id="tcc-output" readonly style="width:100%;min-height:150px;padding:12px;border:1px solid var(--color-border,#DDD8FE);border-radius:8px;font-size:15px;resize:vertical;background:var(--color-surface,#fff)" spellcheck="false"></textarea>
+          </div>
+        </div>
+      </div>
+      <aside class="tool-side" aria-label="Opciones">
+        <div class="ss-divider">Herramientas relacionadas</div>
+        <a href="/es/word-counter/" class="ss-related-link"><img src="/assets/img/icon-text.svg" alt="" width="18" height="18" loading="lazy">Contador de palabras</a>
+        <a href="/es/character-counter/" class="ss-related-link"><img src="/assets/img/icon-text.svg" alt="" width="18" height="18" loading="lazy">Contador de caracteres</a>
+        <a href="/es/fancy-text-generator/" class="ss-related-link"><img src="/assets/img/icon-text.svg" alt="" width="18" height="18" loading="lazy">Generador de texto elegante</a>
+        <div style="margin-top:16px">
+          <p class="ad-label">Publicidad</p>
+          <div class="ad-slot" style="min-height:250px">
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+            <!-- Replace ca-pub-XXXXXXXXXX and data-ad-slot="XXXXXXXXXX" with your IDs -->
+          </div>
+        </div>
+      </aside>
+    </div>
+    <div class="ad-slot ad-slot--leaderboard">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="how-to-use">
+      <h2>Cómo usar el Conversor de Formato de Texto</h2>
+      <ol class="steps">
+        <li><strong>Paso 1</strong> — Escribe o pega tu texto en el área de Texto de entrada.</li>
+        <li><strong>Paso 2</strong> — Haz clic en cualquiera de los 10 botones de formato, como MAYÚSCULAS, camelCase o snake_case, para transformar tu texto al instante.</li>
+        <li><strong>Paso 3</strong> — Copia el resultado usando el botón Copiar, o limpia los campos y comienza de nuevo.</li>
+      </ol>
+    </section>
+    <section class="features">
+      <h2>Características</h2>
+      <ul class="features-list">
+        <li>10 formatos: MAYÚSCULAS, minúsculas, Título, Oración, camelCase, PascalCase, snake_case, kebab-case, dot.case, alternado</li>
+        <li>Reconversión en vivo: la salida se actualiza automáticamente mientras escribes</li>
+        <li>Copia al portapapeles con un solo clic</li>
+        <li>Compatible con cualquier longitud de texto, incluido contenido multilínea</li>
+        <li>Sin envío de datos al servidor, todo el procesamiento se realiza en tu navegador</li>
+        <li>Útil para desarrolladores, escritores, profesionales de SEO y tareas de ingreso de datos</li>
+      </ul>
+    </section>
+    <div class="ad-slot ad-slot--rectangle" style="margin:0 auto 32px">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="faq">
+      <h2>Preguntas frecuentes</h2>
+      <div class="faq-list">
+        <details class="faq-item"><summary class="faq-question">¿Qué es camelCase y cuándo se usa? <span class="faq-icon">+</span></summary><div class="faq-answer">camelCase escribe palabras compuestas sin espacios, capitalizando la primera letra de cada palabra excepto la primera (por ejemplo, miNombreDeVariable). Se usa ampliamente en JavaScript, Java y Swift para nombrar variables y funciones.</div></details>
+        <details class="faq-item"><summary class="faq-question">¿Cuál es la diferencia entre snake_case y kebab-case? <span class="faq-icon">+</span></summary><div class="faq-answer">snake_case usa guiones bajos para separar palabras (por ejemplo, mi_nombre_variable) y es común en Python y nombres de columnas de bases de datos. kebab-case usa guiones (por ejemplo, mi-nombre-variable) y se usa ampliamente en URLs, nombres de clases CSS y atributos HTML.</div></details>
+        <details class="faq-item"><summary class="faq-question">¿El Formato Título capitaliza cada palabra? <span class="faq-icon">+</span></summary><div class="faq-answer">Esta herramienta capitaliza la primera letra de cada palabra en el modo Formato Título. Algunos libros de estilo (APA, Chicago) tienen excepciones para preposiciones y artículos cortos, pero esta herramienta usa un enfoque simple de "cada palabra" adecuado para la mayoría de los casos de uso.</div></details>
+        <details class="faq-item"><summary class="faq-question">¿El conversor maneja caracteres especiales y números? <span class="faq-icon">+</span></summary><div class="faq-answer">Sí, para MAYÚSCULAS, minúsculas, Título, Oración y formato alternado, los caracteres especiales y números se conservan tal cual. Para los formatos de programación como snake_case, kebab-case y dot.case, los caracteres no alfanuméricos se eliminan para garantizar identificadores válidos.</div></details>
+        <details class="faq-item"><summary class="faq-question">¿Puedo usarlo para convertir nombres de variables en código? <span class="faq-icon">+</span></summary><div class="faq-answer">Por supuesto. Pega una frase o nombre de variable existente, haz clic en camelCase, PascalCase, snake_case o kebab-case, y copia el resultado. Esto es ideal para renombrar variables al cambiar entre lenguajes de programación o convenciones de estilo.</div></details>
+      </div>
+    </section>
+    <section class="related-tools">
+      <h2>Herramientas relacionadas</h2>
+      <div class="tool-grid">
+        <a href="/es/word-counter/" class="tool-card"><img src="/assets/img/icon-text.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Contador de palabras</h3><p>Cuenta palabras, caracteres, oraciones y tiempo de lectura.</p><span class="tool-card-link">Usar →</span></a>
+        <a href="/es/character-counter/" class="tool-card"><img src="/assets/img/icon-text.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Contador de caracteres</h3><p>Cuenta caracteres con y sin espacios para cualquier texto.</p><span class="tool-card-link">Usar →</span></a>
+        <a href="/es/fancy-text-generator/" class="tool-card"><img src="/assets/img/icon-text.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Generador de texto elegante</h3><p>Genera texto Unicode estilizado para redes sociales y perfiles.</p><span class="tool-card-link">Usar →</span></a>
+        <a href="/es/typing-speed-test/" class="tool-card"><img src="/assets/img/icon-text.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Prueba de velocidad de escritura</h3><p>Prueba tu velocidad de escritura y precisión en PPM gratis.</p><span class="tool-card-link">Usar →</span></a>
+      </div>
+    </section>
+  </main>
+  <footer id="site-footer" class="site-footer"></footer>
+  <script src="/assets/js/shared.js" defer></script>
+  <script src="/assets/js/tools/text-case-converter.js" defer></script>
+</body>
+</html>

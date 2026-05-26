@@ -1,0 +1,136 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Convertidor de Código Morse Online Gratis | AnyConverter</title>
+  <meta name="description" content="Convierte texto a código Morse y código Morse a texto online gratis. Soporta letras, dígitos y puntuación común. Conversión bidireccional instantánea. Sin registro.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://anyconverter.io/es/morse-code-converter/">
+  <link rel="alternate" hreflang="en" href="https://anyconverter.io/morse-code-converter/">
+  <link rel="alternate" hreflang="es" href="https://anyconverter.io/es/morse-code-converter/">
+  <link rel="alternate" hreflang="da" href="https://anyconverter.io/da/morse-code-converter/">
+  <link rel="alternate" hreflang="x-default" href="https://anyconverter.io/morse-code-converter/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Convertidor de Código Morse Online Gratis | AnyConverter">
+  <meta property="og:description" content="Convierte texto a código Morse y código Morse a texto online gratis. Soporta letras, dígitos y puntuación común. Conversión bidireccional instantánea. Sin registro.">
+  <meta property="og:url" content="https://anyconverter.io/es/morse-code-converter/">
+  <meta property="og:site_name" content="AnyConverter">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" data-ad-client="ca-pub-XXXXXXXXXX" crossorigin="anonymous"></script>
+  <!-- Replace ca-pub-XXXXXXXXXX with your real AdSense publisher ID -->
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Convertidor de Código Morse","url":"https://anyconverter.io/es/morse-code-converter/","description":"Convierte texto a código Morse y código Morse a texto online gratis. Soporta letras, dígitos y puntuación común. Conversión bidireccional instantánea.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F4F6FF);color:var(--color-text,#1E1B4B)}
+    body{min-height:100vh;display:flex;flex-direction:column}
+    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8FE)}
+    .header-inner{max-width:1280px;width:100%;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;gap:32px}
+    .hero{padding:40px 24px 32px;max-width:1280px;margin:0 auto}
+    .hero h1{font-size:clamp(1.75rem,4vw,2.25rem);font-weight:700;line-height:1.2;margin-bottom:12px}
+    .hero-desc{font-size:1.0625rem;color:var(--color-text-2,#6B7280);max-width:680px;line-height:1.6}
+    @font-face{font-family:'Inter';font-display:swap}
+  </style>
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+  <header id="site-header" class="site-header"></header>
+  <main id="main-content">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol><li><a href="/es/">Inicio</a></li><li aria-current="page">Convertidor de Código Morse</li></ol>
+    </nav>
+    <section class="hero">
+      <h1>Convertidor de Código Morse</h1>
+      <p class="hero-desc">Convierte texto a código Morse y viceversa al instante. Soporta las 26 letras, dígitos 0-9 y puntuación común. Usa barra diagonal (/) para separar palabras al decodificar. Gratis, sin registro.</p>
+    </section>
+    <div class="tool-wrapper">
+      <div class="tool-zone">
+        <div style="padding:24px">
+          <div class="action-bar" style="margin-bottom:16px">
+            <button class="btn btn-primary btn-sm" id="morse-mode-encode">Texto → Morse</button>
+            <button class="btn btn-secondary btn-sm" id="morse-mode-decode">Morse → Texto</button>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+            <div>
+              <label id="morse-input-label" style="display:block;font-size:13px;font-weight:500;margin-bottom:6px">Texto</label>
+              <textarea id="morse-input" placeholder="Escribe texto para codificar..." style="width:100%;height:200px;padding:12px;border:1px solid var(--color-border,#DDD8FE);border-radius:8px;font-size:14px;resize:vertical"></textarea>
+            </div>
+            <div>
+              <label id="morse-output-label" style="display:block;font-size:13px;font-weight:500;margin-bottom:6px">Código Morse</label>
+              <textarea id="morse-output" readonly style="width:100%;height:200px;padding:12px;border:1px solid var(--color-border,#DDD8FE);border-radius:8px;font-family:'JetBrains Mono',monospace;font-size:14px;resize:vertical;background:var(--color-bg,#F4F6FF);letter-spacing:2px"></textarea>
+            </div>
+          </div>
+          <div class="action-bar" style="margin-top:12px">
+            <button class="btn btn-primary" id="btn-morse-copy">Copiar salida</button>
+            <button class="btn btn-secondary" id="btn-morse-clear">Limpiar</button>
+          </div>
+        </div>
+      </div>
+      <aside class="tool-side" aria-label="Opciones">
+        <div class="ss-divider">Herramientas relacionadas</div>
+        <a href="/es/fancy-text-generator/" class="ss-related-link"><img src="/assets/img/icon-text.svg" alt="" width="18" height="18" loading="lazy">Generador de Texto Elegante</a>
+        <a href="/es/character-counter/" class="ss-related-link"><img src="/assets/img/icon-text.svg" alt="" width="18" height="18" loading="lazy">Contador de Caracteres</a>
+        <a href="/es/ascii-art-generator/" class="ss-related-link"><img src="/assets/img/icon-text.svg" alt="" width="18" height="18" loading="lazy">Generador de Arte ASCII</a>
+        <div style="margin-top:16px">
+          <p class="ad-label">Publicidad</p>
+          <div class="ad-slot" style="min-height:250px">
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+            <!-- Replace ca-pub-XXXXXXXXXX and data-ad-slot="XXXXXXXXXX" with your IDs -->
+          </div>
+        </div>
+      </aside>
+    </div>
+    <div class="ad-slot ad-slot--leaderboard">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="how-to-use">
+      <h2>Cómo Usar el Convertidor de Código Morse</h2>
+      <ol class="steps">
+        <li><strong>Paso 1</strong> — Elige "Texto → Morse" para codificar o "Morse → Texto" para decodificar.</li>
+        <li><strong>Paso 2</strong> — Escribe o pega tu entrada en el panel izquierdo. La conversión ocurre mientras escribes.</li>
+        <li><strong>Paso 3</strong> — Haz clic en "Copiar salida" para copiar el código Morse o el texto decodificado.</li>
+      </ol>
+    </section>
+    <section class="features">
+      <h2>Características</h2>
+      <ul class="features-list">
+        <li>Conversión bidireccional — texto a Morse y Morse a texto</li>
+        <li>Soporta A-Z, 0-9 y puntuación común (., , ? ! / : ; = + @ $)</li>
+        <li>Separador de palabras: barra diagonal (/) entre palabras Morse</li>
+        <li>Conversión en tiempo real</li>
+        <li>Copia con un clic</li>
+        <li>Funciona completamente en el navegador</li>
+      </ul>
+    </section>
+    <div class="ad-slot ad-slot--rectangle" style="margin:0 auto 32px">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="faq">
+      <h2>Preguntas Frecuentes</h2>
+      <div class="faq-list">
+        <details class="faq-item"><summary class="faq-question">¿Cómo decodifico el código Morse? <span class="faq-icon">+</span></summary><div class="faq-answer">Haz clic en "Morse → Texto" e introduce puntos (.) y rayas (-) separados por espacios entre las letras. Usa una barra diagonal ( / ) para separar palabras. Por ejemplo: ".... . .-.. .-.. --- / .-- --- .-. .-.. -.." se decodifica como "HELLO WORLD".</div></details>
+        <details class="faq-item"><summary class="faq-question">¿Qué caracteres son compatibles? <span class="faq-icon">+</span></summary><div class="faq-answer">Las 26 letras del abecedario (A-Z), dígitos 0-9 y puntuación común: punto, coma, signo de interrogación, exclamación, barra, paréntesis, ampersand, dos puntos, punto y coma, igual, más, guion bajo, comillas, dólar y arroba.</div></details>
+        <details class="faq-item"><summary class="faq-question">¿Por qué la salida está en mayúsculas? <span class="faq-icon">+</span></summary><div class="faq-answer">El código Morse no distingue mayúsculas de minúsculas — no existen símbolos Morse separados para letras mayúsculas y minúsculas. La convención estándar es decodificar Morse en mayúsculas, aunque puedes cambiar el formato después si es necesario.</div></details>
+        <details class="faq-item"><summary class="faq-question">¿Qué significa "/" en Morse? <span class="faq-icon">+</span></summary><div class="faq-answer">En esta herramienta, una barra diagonal rodeada de espacios ( / ) representa el separador de palabras. Al codificar, los espacios entre palabras se convierten en " / ". Al decodificar, usa " / " para separar palabras en tu entrada Morse.</div></details>
+      </div>
+    </section>
+    <section class="related-tools">
+      <h2>Herramientas Relacionadas</h2>
+      <div class="tool-grid">
+        <a href="/es/fancy-text-generator/" class="tool-card"><img src="/assets/img/icon-text.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Generador de Texto Elegante</h3><p>Transforma texto sencillo en fuentes Unicode estilizadas al instante.</p><span class="tool-card-link">Usar →</span></a>
+        <a href="/es/character-counter/" class="tool-card"><img src="/assets/img/icon-text.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Contador de Caracteres</h3><p>Cuenta caracteres, palabras, oraciones y párrafos en cualquier texto.</p><span class="tool-card-link">Usar →</span></a>
+        <a href="/es/ascii-art-generator/" class="tool-card"><img src="/assets/img/icon-text.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Generador de Arte ASCII</h3><p>Convierte texto en arte ASCII en decenas de estilos.</p><span class="tool-card-link">Usar →</span></a>
+      </div>
+    </section>
+  </main>
+  <footer id="site-footer" class="site-footer"></footer>
+  <script src="/assets/js/shared.js" defer></script>
+  <script src="/assets/js/tools/morse-code-converter.js" defer></script>
+</body>
+</html>

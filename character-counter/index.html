@@ -1,0 +1,133 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Character Counter Online Free | AnyConverter</title>
+  <meta name="description" content="Count characters, words, lines, and bytes in your text instantly. Check against platform limits for Twitter, LinkedIn, Instagram, and more. Free online character counter.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://anyconverter.io/character-counter/">
+  <link rel="alternate" hreflang="en" href="https://anyconverter.io/character-counter/">
+  <link rel="alternate" hreflang="es" href="https://anyconverter.io/es/character-counter/">
+  <link rel="alternate" hreflang="da" href="https://anyconverter.io/da/character-counter/">
+  <link rel="alternate" hreflang="x-default" href="https://anyconverter.io/character-counter/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Character Counter Online Free | AnyConverter">
+  <meta property="og:description" content="Count characters, words, lines, and bytes in your text instantly. Check against platform limits for Twitter, LinkedIn, Instagram, and more.">
+  <meta property="og:url" content="https://anyconverter.io/character-counter/">
+  <meta property="og:site_name" content="AnyConverter">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" data-ad-client="ca-pub-XXXXXXXXXX" crossorigin="anonymous"></script>
+  <!-- Replace ca-pub-XXXXXXXXXX with your real AdSense publisher ID -->
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Character Counter","url":"https://anyconverter.io/character-counter/","description":"Count characters, words, lines, and bytes in your text instantly. Check platform limits for Twitter, LinkedIn, Instagram, and more.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F4F6FF);color:var(--color-text,#1E1B4B)}
+    body{min-height:100vh;display:flex;flex-direction:column}
+    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8FE)}
+    .header-inner{max-width:1280px;width:100%;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;gap:32px}
+    .hero{padding:40px 24px 32px;max-width:1280px;margin:0 auto}
+    .hero h1{font-size:clamp(1.75rem,4vw,2.25rem);font-weight:700;line-height:1.2;margin-bottom:12px}
+    .hero-desc{font-size:1.0625rem;color:var(--color-text-2,#6B7280);max-width:680px;line-height:1.6}
+    @font-face{font-family:'Inter';font-display:swap}
+  </style>
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+  <header id="site-header" class="site-header"></header>
+  <main id="main-content">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol><li><a href="/">Home</a></li><li aria-current="page">Character Counter</li></ol>
+    </nav>
+    <section class="hero">
+      <h1>Character Counter</h1>
+      <p class="hero-desc">Count characters, words, lines, and bytes in your text instantly. Check remaining characters against Twitter/X, LinkedIn, Instagram, and other platform limits in real time.</p>
+    </section>
+    <div class="tool-wrapper">
+      <div class="tool-zone">
+        <div style="padding:24px">
+          <textarea id="cc-text" placeholder="Type or paste your text here..." style="width:100%;height:200px;padding:12px;border:1px solid var(--color-border,#DDD8FE);border-radius:8px;font-size:15px;line-height:1.6;resize:vertical;margin-bottom:16px"></textarea>
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:20px">
+            <div class="stat-card"><div class="stat-val" id="cc-chars">0</div><div class="stat-lbl">Characters</div></div>
+            <div class="stat-card"><div class="stat-val" id="cc-chars-no-sp">0</div><div class="stat-lbl">No Spaces</div></div>
+            <div class="stat-card"><div class="stat-val" id="cc-words">0</div><div class="stat-lbl">Words</div></div>
+            <div class="stat-card"><div class="stat-val" id="cc-lines">0</div><div class="stat-lbl">Lines</div></div>
+            <div class="stat-card"><div class="stat-val" id="cc-bytes">0</div><div class="stat-lbl">Bytes</div></div>
+            <div class="stat-card"><div class="stat-val" id="cc-unique">0</div><div class="stat-lbl">Unique Chars</div></div>
+          </div>
+          <div style="font-size:13px;font-weight:500;margin-bottom:10px">Platform Limits</div>
+          <div id="cc-limits" style="display:flex;flex-direction:column;gap:8px"></div>
+          <div class="action-bar" style="margin-top:16px">
+            <button class="btn btn-secondary" id="btn-cc-clear">Clear</button>
+          </div>
+        </div>
+      </div>
+      <aside class="tool-side" aria-label="Options">
+        <div class="ss-divider">Related Tools</div>
+        <a href="/fancy-text-generator/" class="ss-related-link"><img src="/assets/img/icon-text.svg" alt="" width="18" height="18" loading="lazy">Fancy Text Generator</a>
+        <a href="/css-gradient-generator/" class="ss-related-link"><img src="/assets/img/icon-text.svg" alt="" width="18" height="18" loading="lazy">CSS Gradient Generator</a>
+        <a href="/word-counter/" class="ss-related-link"><img src="/assets/img/icon-text.svg" alt="" width="18" height="18" loading="lazy">Word Counter</a>
+        <div style="margin-top:16px">
+          <p class="ad-label">Advertisement</p>
+          <div class="ad-slot" style="min-height:250px">
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+            <!-- Replace ca-pub-XXXXXXXXXX and data-ad-slot="XXXXXXXXXX" with your IDs -->
+          </div>
+        </div>
+      </aside>
+    </div>
+    <div class="ad-slot ad-slot--leaderboard">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="how-to-use">
+      <h2>How to Use Character Counter</h2>
+      <ol class="steps">
+        <li><strong>Step 1</strong> — Type or paste your text into the textarea.</li>
+        <li><strong>Step 2</strong> — View character, word, line, byte, and unique character counts in real time.</li>
+        <li><strong>Step 3</strong> — Check the platform limits section to see how your text fits Twitter/X, LinkedIn, Instagram, and other platforms.</li>
+      </ol>
+    </section>
+    <section class="features">
+      <h2>Features</h2>
+      <ul class="features-list">
+        <li>Real-time character, word, line, byte, and unique character counts</li>
+        <li>Platform limit bars for Twitter/X (280), LinkedIn (3000), Instagram bio (150), Meta description (160), Google title (60), SMS (160)</li>
+        <li>Color-coded progress bars (green/yellow/red)</li>
+        <li>No character limit — works on any text length</li>
+        <li>Instant updates as you type</li>
+        <li>Clear button to reset</li>
+      </ul>
+    </section>
+    <div class="ad-slot ad-slot--rectangle" style="margin:0 auto 32px">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="faq">
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-list">
+        <details class="faq-item"><summary class="faq-question">Does it count spaces as characters? <span class="faq-icon">+</span></summary><div class="faq-answer">Yes. The "Characters" count includes all characters including spaces. The "No Spaces" count excludes whitespace characters. Both counts are shown simultaneously.</div></details>
+        <details class="faq-item"><summary class="faq-question">What does "Bytes" mean? <span class="faq-icon">+</span></summary><div class="faq-answer">Bytes shows the UTF-8 byte size of the text. For standard ASCII characters this equals the character count, but accented characters (like é or ü) and emoji use more than one byte each.</div></details>
+        <details class="faq-item"><summary class="faq-question">Why is my Twitter count yellow or red? <span class="faq-icon">+</span></summary><div class="faq-answer">Twitter/X has a 280-character limit. Yellow means you've used more than 80% (224 characters), and red means you've exceeded the limit. The number in parentheses shows how many characters over the limit you are.</div></details>
+        <details class="faq-item"><summary class="faq-question">What are "Unique Chars"? <span class="faq-icon">+</span></summary><div class="faq-answer">Unique characters counts how many distinct characters (excluding spaces) appear in your text. Useful for analysing letter frequency or checking for character diversity.</div></details>
+      </div>
+    </section>
+    <section class="related-tools">
+      <h2>Related Tools</h2>
+      <div class="tool-grid">
+        <a href="/fancy-text-generator/" class="tool-card"><img src="/assets/img/icon-text.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Fancy Text Generator</h3><p>Transform text into 11 Unicode styles — bold, italic, script, and more.</p><span class="tool-card-link">Try it →</span></a>
+        <a href="/css-gradient-generator/" class="tool-card"><img src="/assets/img/icon-text.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>CSS Gradient Generator</h3><p>Design linear and radial CSS gradients visually with live preview.</p><span class="tool-card-link">Try it →</span></a>
+        <a href="/word-counter/" class="tool-card"><img src="/assets/img/icon-text.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Word Counter</h3><p>Count words and reading time for any text or document.</p><span class="tool-card-link">Try it →</span></a>
+        <a href="/base64-encoder/" class="tool-card"><img src="/assets/img/icon-base64.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Base64 Encoder</h3><p>Encode and decode Base64 strings instantly in your browser.</p><span class="tool-card-link">Try it →</span></a>
+      </div>
+    </section>
+  </main>
+  <footer id="site-footer" class="site-footer"></footer>
+  <script src="/assets/js/shared.js" defer></script>
+  <script src="/assets/js/tools/character-counter.js" defer></script>
+</body>
+</html>

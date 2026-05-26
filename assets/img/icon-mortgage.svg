@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40">
+  <defs>
+    <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1E3A8A"/>
+      <stop offset="100%" stop-color="#3B82F6"/>
+    </linearGradient>
+  </defs>
+  <rect width="40" height="40" rx="10" fill="url(#g)"/>
+  <!-- House roof -->
+  <path d="M7,20 L20,9 L33,20" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- House body -->
+  <rect x="11" y="20" width="18" height="13" rx="1.5" fill="white" opacity="0.2"/>
+  <rect x="11" y="20" width="18" height="13" rx="1.5" fill="none" stroke="white" stroke-width="1.8"/>
+  <!-- Door with $ -->
+  <rect x="17" y="25" width="6" height="8" rx="1" fill="white" opacity="0.8"/>
+  <text x="20" y="31" font-family="Georgia,serif" font-size="7" font-weight="700" fill="#1E3A8A" text-anchor="middle">$</text>
+</svg>

@@ -1,0 +1,160 @@
+﻿<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>XML Formatter Online Gratis | AnyConverter</title>
+  <meta name="description" content="Formater og valider XML online gratis. Forskønne eller minificer XML øjeblikkeligt med fejlregistrering. Ingen upload påkrævet — 100% klientbaseret behandling.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://anyconverter.io/da/xml-formatter/">
+  <link rel="alternate" hreflang="en"        href="https://anyconverter.io/xml-formatter/">
+  <link rel="alternate" hreflang="es"        href="https://anyconverter.io/es/xml-formatter/">
+  <link rel="alternate" hreflang="da"        href="https://anyconverter.io/da/xml-formatter/">
+  <link rel="alternate" hreflang="x-default" href="https://anyconverter.io/xml-formatter/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="XML Formatter Online Gratis | AnyConverter">
+  <meta property="og:description" content="Formater og valider XML online gratis. Ingen upload påkrævet.">
+  <meta property="og:url" content="https://anyconverter.io/da/xml-formatter/">
+  <meta property="og:site_name" content="AnyConverter">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" data-ad-client="ca-pub-XXXXXXXXXX" crossorigin="anonymous"></script>
+  <!-- Replace ca-pub-XXXXXXXXXX with your real AdSense publisher ID -->
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"XML Formatter","url":"https://anyconverter.io/da/xml-formatter/","description":"Formater og valider XML online gratis.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F4F6FF);color:var(--color-text,#1E1B4B)}
+    body{min-height:100vh;display:flex;flex-direction:column}
+    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8FE)}
+    .header-inner{max-width:1280px;width:100%;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;gap:32px}
+    .hero{padding:40px 24px 32px;max-width:1280px;margin:0 auto}
+    .hero h1{font-size:clamp(1.75rem,4vw,2.25rem);font-weight:700;line-height:1.2;margin-bottom:12px}
+    .hero-desc{font-size:1.0625rem;color:var(--color-text-2,#6B7280);max-width:680px;line-height:1.6}
+    @font-face{font-family:'Inter';font-display:swap}
+  </style>
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
+</head>
+<body>
+  <header id="site-header" class="site-header"></header>
+  <main id="main-content">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol><li><a href="/da/">Hjem</a></li><li aria-current="page">XML Formatter</li></ol>
+    </nav>
+    <section class="hero">
+      <h1>XML Formatter og Validator</h1>
+      <p class="hero-desc">Formater og valider XML online gratis. Indsæt dit XML eller upload en fil for at forskønne strukturen med korrekt indrykning eller minificere det. Syntaksfejl opdages og vises tydeligt. Al behandling sker 100% i din browser.</p>
+    </section>
+    <div class="tool-wrapper">
+      <div class="tool-zone">
+        <div class="input-wrapper">
+          <textarea id="xml-input" placeholder="Indsæt dit XML her..." spellcheck="false" style="min-height:300px;font-family:var(--font-mono);font-size:13px"></textarea>
+        </div>
+        <div class="action-bar">
+          <div class="action-bar-left">
+            <button class="btn btn-primary" id="btn-format-xml">Formater ↵</button>
+            <button class="btn btn-secondary" id="btn-minify-xml">Minificer</button>
+            <button class="btn btn-secondary" id="btn-validate-xml">Valider</button>
+          </div>
+          <div class="action-bar-right">
+            <button class="btn btn-secondary btn-sm" id="btn-clear-xml">Ryd</button>
+            <label class="btn btn-secondary btn-sm" style="cursor:pointer">Upload .xml<input type="file" id="xml-file" accept=".xml,text/xml" style="display:none"></label>
+          </div>
+        </div>
+        <div id="xml-status" class="status-bar" style="display:none"></div>
+        <div id="xml-output-section" style="display:none">
+          <div class="code-output-wrapper mt-4">
+            <pre class="code-output" id="xml-output"><code id="xml-output-code" class="language-xml"></code></pre>
+            <div class="code-output-actions">
+              <button class="btn btn-sm" id="btn-copy-xml">Kopier</button>
+              <button class="btn btn-sm" id="btn-download-xml">Download</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <aside class="tool-side" aria-label="Options">
+        <div class="ss-divider">Options</div>
+        <div class="ss-option-row">
+          <span class="ss-opt-label">Indent</span>
+          <select class="ss-opt-select" id="opt-indent">
+            <option value="2" selected>2 spaces</option>
+            <option value="4">4 spaces</option>
+            <option value="tab">Tab</option>
+          </select>
+        </div>
+        <div class="tog-row"><span class="tog-label" id="lbl-auto">Auto-format on paste</span><div class="tog" id="tog-auto" role="switch" aria-checked="true" tabindex="0" aria-labelledby="lbl-auto"></div></div>
+        <div class="tog-row"><span class="tog-label" id="lbl-decl">XML declaration</span><div class="tog" id="tog-decl" role="switch" aria-checked="true" tabindex="0" aria-labelledby="lbl-decl"></div></div>
+
+        <div class="ss-divider">Stats</div>
+        <div class="stats-grid">
+          <div class="stat-card"><div class="stat-val" id="stat-elements">0</div><div class="stat-lbl">Elements</div></div>
+          <div class="stat-card"><div class="stat-val" id="stat-depth">0</div><div class="stat-lbl">Depth</div></div>
+          <div class="stat-card"><div class="stat-val" id="stat-bytes">0</div><div class="stat-lbl">Bytes</div></div>
+          <div class="stat-card"><div class="stat-val" id="stat-errors">0</div><div class="stat-lbl">Errors</div></div>
+        </div>
+
+        <div class="ss-divider">Related Tools</div>
+        <a href="/json-formatter/" class="ss-related-link"><img src="/assets/img/icon-json.svg" alt="" width="18" height="18" loading="lazy">JSON Formatter</a>
+        <a href="/regex-tester/" class="ss-related-link"><img src="/assets/img/icon-regex.svg" alt="" width="18" height="18" loading="lazy">Regex / Logs</a>
+        <a href="/csv-to-sql/" class="ss-related-link"><img src="/assets/img/icon-csv.svg" alt="" width="18" height="18" loading="lazy">CSV → SQL</a>
+
+        <div style="margin-top:8px">
+          <p class="ad-label">Advertisement</p>
+          <div class="ad-slot" style="min-height:250px">
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+            <!-- Replace ca-pub-XXXXXXXXXX and data-ad-slot="XXXXXXXXXX" with your IDs -->
+          </div>
+        </div>
+      </aside>
+    </div>
+    <div class="ad-slot ad-slot--leaderboard">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="how-to-use">
+      <h2>Sådan formaterer du XML</h2>
+      <ol class="steps">
+        <li><strong>Indsæt dit XML</strong> — Indsæt XML-indholdet i tekstfeltet eller upload en .xml-fil.</li>
+        <li><strong>Formater eller valider</strong> — Klik "Formater" for at tilføje indrykning, eller "Valider" for at tjekke for syntaksfejl.</li>
+        <li><strong>Kopier eller download</strong> — Kopier resultatet eller download det som .xml-fil.</li>
+      </ol>
+    </section>
+    <section class="features">
+      <h2>Funktioner</h2>
+      <ul class="features-list">
+        <li>Formatering med 2-tegns indrykning</li>
+        <li>Validering med klare fejlmeddelelser</li>
+        <li>Minificering for hurtigere overførsler</li>
+        <li>XML syntaksfremhævning</li>
+        <li>100% behandling i browseren</li>
+      </ul>
+    </section>
+    <div class="ad-slot ad-slot--rectangle" style="margin:0 auto 32px">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="faq">
+      <h2>Ofte stillede spørgsmål</h2>
+      <div class="faq-list">
+        <details class="faq-item"><summary class="faq-question">Sendes mine data til en server? <span class="faq-icon">+</span></summary><div class="faq-answer">Nej. XML-formatteren bruger browserens DOMParser. Al behandling er lokal og dine data forlader aldrig din enhed.</div></details>
+        <details class="faq-item"><summary class="faq-question">Hvilke XML-filtyper understøttes? <span class="faq-icon">+</span></summary><div class="faq-answer">Alle gyldige XML-filer understøttes, herunder XHTML, SVG, RSS, Atom, SOAP og andre XML-baserede formater.</div></details>
+      </div>
+    </section>
+    <section class="related-tools">
+      <h2>Relaterede værktøjer</h2>
+      <div class="tool-grid">
+        <a href="/json-formatter/" class="tool-card"><img src="/assets/img/icon-json.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>JSON Formatter</h3><p>Formater og valider JSON.</p><span class="tool-card-link">Brug →</span></a>
+        <a href="/base64-encoder/" class="tool-card"><img src="/assets/img/icon-base64.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Base64 Encoder</h3><p>Kodér og dekodér Base64.</p><span class="tool-card-link">Brug →</span></a>
+        <a href="/regex-tester/" class="tool-card"><img src="/assets/img/icon-regex.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Regex Tester</h3><p>Test regulære udtryk.</p><span class="tool-card-link">Brug →</span></a>
+      </div>
+    </section>
+  </main>
+  <footer id="site-footer" class="site-footer"></footer>
+  <script src="/assets/js/shared.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" defer></script>
+  <script src="/assets/js/tools/xml-formatter.js" defer></script>
+</body>
+</html>

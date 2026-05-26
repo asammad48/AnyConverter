@@ -1,0 +1,169 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Embellecedor y Minificador HTML Online Gratis | AnyConverter</title>
+  <meta name="description" content="Embellece o minifica código HTML al instante online. Pega tu HTML y obtén salida formateada o minificada en un clic. Gratis, sin registro.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://anyconverter.io/es/html-beautifier/">
+  <link rel="alternate" hreflang="en" href="https://anyconverter.io/html-beautifier/">
+  <link rel="alternate" hreflang="es" href="https://anyconverter.io/es/html-beautifier/">
+  <link rel="alternate" hreflang="da" href="https://anyconverter.io/da/html-beautifier/">
+  <link rel="alternate" hreflang="x-default" href="https://anyconverter.io/html-beautifier/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Embellecedor y Minificador HTML Online Gratis | AnyConverter">
+  <meta property="og:description" content="Embellece o minifica código HTML al instante online. Pega tu HTML y obtén salida formateada o minificada en un clic. Gratis, sin registro.">
+  <meta property="og:url" content="https://anyconverter.io/es/html-beautifier/">
+  <meta property="og:site_name" content="AnyConverter">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" data-ad-client="ca-pub-XXXXXXXXXX" crossorigin="anonymous"></script>
+  <!-- Replace ca-pub-XXXXXXXXXX with your real AdSense publisher ID -->
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Embellecedor y Minificador HTML","url":"https://anyconverter.io/es/html-beautifier/","description":"Embellece o minifica código HTML al instante online. Pega tu HTML y obtén salida formateada o minificada en un clic.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F4F6FF);color:var(--color-text,#1E1B4B)}
+    body{min-height:100vh;display:flex;flex-direction:column}
+    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8FE)}
+    .header-inner{max-width:1280px;width:100%;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;gap:32px}
+    .hero{padding:40px 24px 32px;max-width:1280px;margin:0 auto}
+    .hero h1{font-size:clamp(1.75rem,4vw,2.25rem);font-weight:700;line-height:1.2;margin-bottom:12px}
+    .hero-desc{font-size:1.0625rem;color:var(--color-text-2,#6B7280);max-width:680px;line-height:1.6}
+    @font-face{font-family:'Inter';font-display:swap}
+  </style>
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+  <header id="site-header" class="site-header"></header>
+  <main id="main-content">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol><li><a href="/es/">Inicio</a></li><li aria-current="page">Embellecedor y Minificador HTML</li></ol>
+    </nav>
+    <section class="hero">
+      <h1>Embellecedor y Minificador HTML</h1>
+      <p class="hero-desc">Formatea HTML desordenado en código limpio y sangrado, o comprímelo en una sola línea. Maneja etiquetas anidadas y elementos vacíos correctamente.</p>
+    </section>
+    <div class="tool-wrapper">
+      <div class="tool-zone">
+        <div style="padding:24px">
+          <div class="action-bar" style="margin-bottom:16px">
+            <button class="btn btn-primary btn-sm" id="html-mode-beautify">Embellecer</button>
+            <button class="btn btn-secondary btn-sm" id="html-mode-minify">Minificar</button>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+            <div>
+              <label style="display:block;font-size:13px;font-weight:500;margin-bottom:6px">Entrada HTML</label>
+              <textarea id="html-input" placeholder="Pega tu HTML aquí..." style="width:100%;height:300px;padding:12px;border:1px solid var(--color-border,#DDD8FE);border-radius:8px;font-family:'JetBrains Mono',monospace;font-size:13px;resize:vertical"></textarea>
+            </div>
+            <div>
+              <label style="display:block;font-size:13px;font-weight:500;margin-bottom:6px">Salida</label>
+              <textarea id="html-output" readonly style="width:100%;height:300px;padding:12px;border:1px solid var(--color-border,#DDD8FE);border-radius:8px;font-family:'JetBrains Mono',monospace;font-size:13px;resize:vertical;background:var(--color-bg,#F4F6FF)"></textarea>
+            </div>
+          </div>
+          <div class="action-bar" style="margin-top:12px">
+            <button class="btn btn-primary" id="btn-html-process">Procesar</button>
+            <button class="btn btn-secondary" id="btn-html-sample">Cargar Muestra</button>
+            <button class="btn btn-secondary" id="btn-html-copy">Copiar Salida</button>
+            <button class="btn btn-secondary" id="btn-html-clear">Limpiar</button>
+          </div>
+        </div>
+      </div>
+      <aside class="tool-side" aria-label="Opciones">
+        <div class="ss-divider">Herramientas relacionadas</div>
+        <a class="related-link" href="/es/json-to-yaml/"><img src="/assets/img/icon-text.svg" width="16" height="16" loading="lazy" alt=""> JSON a YAML</a>
+        <a class="related-link" href="/es/cron-expression-parser/"><img src="/assets/img/icon-timer.svg" width="16" height="16" loading="lazy" alt=""> Parser Cron</a>
+        <a class="related-link" href="/word-counter/"><img src="/assets/img/icon-text.svg" width="16" height="16" loading="lazy" alt=""> Contador de Palabras</a>
+        <div style="margin-top:16px">
+          <p class="ad-label">Publicidad</p>
+          <div class="ad-slot" style="min-height:250px">
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+            <!-- Replace ca-pub-XXXXXXXXXX and data-ad-slot="XXXXXXXXXX" with your IDs -->
+          </div>
+        </div>
+      </aside>
+    </div>
+    <div class="ad-slot ad-slot--leaderboard">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="how-to-use">
+      <h2>Cómo Usar el Embellecedor y Minificador HTML</h2>
+      <ol class="steps">
+        <li>Elige "Embellecer" para formatear HTML con sangría, o "Minificar" para comprimirlo.</li>
+        <li>Pega tu código HTML en el panel izquierdo, o haz clic en "Cargar Muestra" para probar un ejemplo.</li>
+        <li>La salida formateada o minificada aparece en el panel derecho. Haz clic en "Copiar Salida" para copiarlo.</li>
+      </ol>
+    </section>
+    <section class="features">
+      <h2>Características</h2>
+      <ul class="features-list">
+        <li>Embellece HTML con sangría de 2 espacios correcta</li>
+        <li>Minifica HTML eliminando espacios en blanco y comentarios</li>
+        <li>Maneja elementos vacíos (br, img, input) y elementos inline correctamente</li>
+        <li>Procesa elementos anidados a cualquier profundidad</li>
+        <li>Carga un fragmento HTML de muestra para pruebas rápidas</li>
+        <li>Sin carga al servidor — funciona completamente en tu navegador</li>
+      </ul>
+    </section>
+    <div class="ad-slot ad-slot--rectangle" style="margin:0 auto 32px">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="faq">
+      <h2>Preguntas Frecuentes</h2>
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary>¿Qué hace el embellecimiento de HTML?</summary>
+          <p>El embellecimiento de HTML reformatea el HTML comprimido o mal sangrado en una estructura limpia y legible con sangría consistente. Facilita la lectura y edición del código añadiendo saltos de línea y sangría adecuados para elementos anidados.</p>
+        </details>
+        <details class="faq-item">
+          <summary>¿Qué hace la minificación de HTML?</summary>
+          <p>La minificación de HTML elimina espacios en blanco, saltos de línea y comentarios innecesarios, reduciendo el tamaño del archivo. Los archivos HTML más pequeños cargan más rápido, lo que puede mejorar el rendimiento de la página.</p>
+        </details>
+        <details class="faq-item">
+          <summary>¿La minificación rompe mi HTML?</summary>
+          <p>No — el espacio en blanco entre elementos de bloque es insignificante en HTML. Sin embargo, el espacio en blanco entre elementos inline puede afectar el diseño. El minificador maneja los elementos inline de forma conservadora para evitar problemas de diseño.</p>
+        </details>
+        <details class="faq-item">
+          <summary>¿Se eliminan los comentarios HTML al minificar?</summary>
+          <p>Sí. Los comentarios HTML se eliminan durante la minificación para reducir el tamaño del archivo. Si necesitas mantener ciertos comentarios, considera usar un minificador de herramienta de construcción dedicado.</p>
+        </details>
+        <details class="faq-item">
+          <summary>¿Mi HTML se envía a un servidor?</summary>
+          <p>No. Esta herramienta funciona completamente en tu navegador usando JavaScript puro. Tu HTML nunca se sube a ningún lugar y permanece completamente privado en tu dispositivo.</p>
+        </details>
+      </div>
+    </section>
+    <section class="related-tools">
+      <h2>Herramientas Relacionadas</h2>
+      <div class="tool-grid">
+        <a class="tool-card" href="/es/json-to-yaml/">
+          <img src="/assets/img/icon-text.svg" width="32" height="32" loading="lazy" alt="JSON a YAML">
+          <h3>JSON a YAML</h3>
+          <p>Convierte JSON a YAML y viceversa</p>
+          <span class="tool-card-cta">Usar →</span>
+        </a>
+        <a class="tool-card" href="/es/cron-expression-parser/">
+          <img src="/assets/img/icon-timer.svg" width="32" height="32" loading="lazy" alt="Parser Cron">
+          <h3>Parser Cron</h3>
+          <p>Decodifica expresiones cron en texto legible</p>
+          <span class="tool-card-cta">Usar →</span>
+        </a>
+        <a class="tool-card" href="/word-counter/">
+          <img src="/assets/img/icon-text.svg" width="32" height="32" loading="lazy" alt="Contador de Palabras">
+          <h3>Contador de Palabras</h3>
+          <p>Cuenta palabras, caracteres y oraciones</p>
+          <span class="tool-card-cta">Usar →</span>
+        </a>
+      </div>
+    </section>
+  </main>
+  <footer id="site-footer" class="site-footer"></footer>
+  <script src="/assets/js/shared.js" defer></script>
+  <script src="/assets/js/tools/html-beautifier.js" defer></script>
+</body>
+</html>

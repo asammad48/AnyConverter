@@ -1,0 +1,148 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Text Repeater Online Free | AnyConverter</title>
+  <meta name="description" content="Repeat any text multiple times instantly. Set a custom separator, number of repetitions, and line breaks. Free, no signup, works in your browser.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://anyconverter.io/text-repeater/">
+  <link rel="alternate" hreflang="en" href="https://anyconverter.io/text-repeater/">
+  <link rel="alternate" hreflang="es" href="https://anyconverter.io/es/text-repeater/">
+  <link rel="alternate" hreflang="da" href="https://anyconverter.io/da/text-repeater/">
+  <link rel="alternate" hreflang="x-default" href="https://anyconverter.io/text-repeater/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Text Repeater Online Free | AnyConverter">
+  <meta property="og:description" content="Repeat any text multiple times with a custom separator. Free and instant.">
+  <meta property="og:url" content="https://anyconverter.io/text-repeater/">
+  <meta property="og:site_name" content="AnyConverter">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" data-ad-client="ca-pub-XXXXXXXXXX" crossorigin="anonymous"></script>
+  <!-- Replace ca-pub-XXXXXXXXXX with your real AdSense publisher ID -->
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Text Repeater","url":"https://anyconverter.io/text-repeater/","description":"Repeat any text multiple times with custom separator and line breaks.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F4F6FF);color:var(--color-text,#1E1B4B)}
+    body{min-height:100vh;display:flex;flex-direction:column}
+    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8FE)}
+    .header-inner{max-width:1280px;width:100%;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;gap:32px}
+    .hero{padding:40px 24px 32px;max-width:1280px;margin:0 auto}
+    .hero h1{font-size:clamp(1.75rem,4vw,2.25rem);font-weight:700;line-height:1.2;margin-bottom:12px}
+    .hero-desc{font-size:1.0625rem;color:var(--color-text-2,#6B7280);max-width:680px;line-height:1.6}
+    @font-face{font-family:'Inter';font-display:swap}
+  </style>
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+  <header id="site-header" class="site-header"></header>
+  <main id="main-content">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol><li><a href="/">Home</a></li><li aria-current="page">Text Repeater</li></ol>
+    </nav>
+    <section class="hero">
+      <h1>Text Repeater</h1>
+      <p class="hero-desc">Repeat any word, phrase or sentence any number of times with a custom separator. Perfect for generating test data, creating patterns, or filling content quickly.</p>
+    </section>
+    <div class="tool-wrapper">
+      <div class="tool-zone">
+        <div style="padding:24px">
+          <div style="margin-bottom:14px">
+            <label style="display:block;font-size:13px;font-weight:500;margin-bottom:6px" for="tr-text">Text to Repeat</label>
+            <textarea id="tr-text" rows="3" placeholder="Enter text here…" style="width:100%;padding:10px 12px;border:1px solid var(--color-border,#DDD8FE);border-radius:8px;font-size:15px;resize:vertical"></textarea>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px">
+            <div>
+              <label style="display:block;font-size:13px;font-weight:500;margin-bottom:6px" for="tr-times">Repeat Times</label>
+              <input type="number" id="tr-times" value="3" min="1" max="10000" style="width:100%;padding:10px 12px;border:1px solid var(--color-border,#DDD8FE);border-radius:8px;font-size:15px">
+            </div>
+            <div>
+              <label style="display:block;font-size:13px;font-weight:500;margin-bottom:6px" for="tr-separator">Separator</label>
+              <input type="text" id="tr-separator" value=", " placeholder="e.g. , or space" style="width:100%;padding:10px 12px;border:1px solid var(--color-border,#DDD8FE);border-radius:8px;font-size:15px">
+            </div>
+          </div>
+          <div style="margin-bottom:16px;display:flex;align-items:center;gap:8px">
+            <input type="checkbox" id="tr-newline">
+            <label for="tr-newline" style="font-size:13px;cursor:pointer">Add new line after each repetition</label>
+          </div>
+          <div class="action-bar" style="margin-bottom:20px">
+            <button class="btn btn-primary" id="tr-btn">Repeat Text</button>
+            <button class="btn btn-secondary" id="tr-clear-btn">Clear</button>
+          </div>
+          <div id="tr-size-warning" style="display:none;background:var(--color-warning-bg,#FFFBEB);border:1px solid var(--color-warning-bg,#FFFBEB);border-radius:6px;padding:8px 12px;font-size:13px;color:var(--color-warning-text,#92400E);margin-bottom:10px"></div>
+          <div id="tr-result-wrap" style="display:none">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+              <span id="tr-char-count" style="font-size:13px;color:var(--color-text-2,#6B7280)"></span>
+              <button class="btn btn-secondary" id="tr-copy-btn" style="font-size:13px;padding:6px 12px">Copy</button>
+            </div>
+            <textarea id="tr-output" rows="8" readonly style="width:100%;padding:10px 12px;border:1px solid var(--color-border,#DDD8FE);border-radius:8px;font-size:14px;font-family:monospace;background:var(--color-bg,#F4F6FF);resize:vertical"></textarea>
+          </div>
+        </div>
+      </div>
+      <aside class="tool-side" aria-label="Options">
+        <div class="ss-divider">Related Tools</div>
+        <a href="/word-counter/" class="ss-related-link"><img src="/assets/img/icon-text.svg" alt="" width="18" height="18" loading="lazy">Word Counter</a>
+        <a href="/lorem-ipsum-generator/" class="ss-related-link"><img src="/assets/img/icon-text.svg" alt="" width="18" height="18" loading="lazy">Lorem Ipsum Generator</a>
+        <a href="/text-case-converter/" class="ss-related-link"><img src="/assets/img/icon-text.svg" alt="" width="18" height="18" loading="lazy">Text Case Converter</a>
+        <div style="margin-top:16px">
+          <p class="ad-label">Advertisement</p>
+          <div class="ad-slot" style="min-height:250px">
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+            <!-- Replace ca-pub-XXXXXXXXXX and data-ad-slot="XXXXXXXXXX" with your IDs -->
+          </div>
+        </div>
+      </aside>
+    </div>
+    <div class="ad-slot ad-slot--leaderboard">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="how-to-use">
+      <h2>How to Use the Text Repeater</h2>
+      <ol class="steps">
+        <li><strong>Step 1</strong> — Type or paste the text you want to repeat.</li>
+        <li><strong>Step 2</strong> — Set the number of repetitions (up to 10,000).</li>
+        <li><strong>Step 3</strong> — Choose a separator (comma, space, newline, etc.).</li>
+        <li><strong>Step 4</strong> — Click "Repeat Text" and copy the result.</li>
+      </ol>
+    </section>
+    <section class="features">
+      <h2>Features</h2>
+      <ul class="features-list">
+        <li>Repeat any text up to 10,000 times</li>
+        <li>Custom separator between repetitions</li>
+        <li>Optional new line after each repetition</li>
+        <li>One-click copy to clipboard</li>
+        <li>Live character count on output</li>
+        <li>Instant results with no page reload</li>
+      </ul>
+    </section>
+    <div class="ad-slot ad-slot--rectangle" style="margin:0 auto 32px">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="faq">
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-list">
+        <details class="faq-item"><summary class="faq-question">What is the maximum number of repetitions? <span class="faq-icon">+</span></summary><div class="faq-answer">You can repeat text up to 10,000 times. For very large outputs, your browser handles the processing entirely in memory with no server required.</div></details>
+        <details class="faq-item"><summary class="faq-question">Can I use a newline as a separator? <span class="faq-icon">+</span></summary><div class="faq-answer">Yes. Leave the separator field empty and check "Add new line after each repetition" to place each repeated text on its own line.</div></details>
+        <details class="faq-item"><summary class="faq-question">Is there a text length limit? <span class="faq-icon">+</span></summary><div class="faq-answer">There is no hard limit on the input text length. However, very long text repeated thousands of times may slow down browser rendering. The tool works entirely in your browser.</div></details>
+      </div>
+    </section>
+    <section class="related-tools">
+      <h2>Related Tools</h2>
+      <div class="tool-grid">
+        <a href="/word-counter/" class="tool-card"><img src="/assets/img/icon-text.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Word Counter</h3><p>Count words, characters, sentences and reading time.</p><span class="tool-card-link">Try it →</span></a>
+        <a href="/lorem-ipsum-generator/" class="tool-card"><img src="/assets/img/icon-text.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Lorem Ipsum Generator</h3><p>Generate placeholder text in paragraphs, sentences or words.</p><span class="tool-card-link">Try it →</span></a>
+        <a href="/fancy-text-generator/" class="tool-card"><img src="/assets/img/icon-text.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Fancy Text Generator</h3><p>Transform text into bold, italic, script and more styles.</p><span class="tool-card-link">Try it →</span></a>
+      </div>
+    </section>
+  </main>
+  <footer id="site-footer" class="site-footer"></footer>
+  <script src="/assets/js/shared.js" defer></script>
+  <script src="/assets/js/tools/text-repeater.js" defer></script>
+</body>
+</html>

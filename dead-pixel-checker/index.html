@@ -1,0 +1,123 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dead Pixel Checker Online Free | AnyConverter</title>
+  <meta name="description" content="Check your monitor for dead or stuck pixels online for free. Cycles through solid colors in fullscreen to reveal any defective pixels. No software download needed.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://anyconverter.io/dead-pixel-checker/">
+  <link rel="alternate" hreflang="en" href="https://anyconverter.io/dead-pixel-checker/">
+  <link rel="alternate" hreflang="es" href="https://anyconverter.io/es/dead-pixel-checker/">
+  <link rel="alternate" hreflang="da" href="https://anyconverter.io/da/dead-pixel-checker/">
+  <link rel="alternate" hreflang="x-default" href="https://anyconverter.io/dead-pixel-checker/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Dead Pixel Checker Online Free | AnyConverter">
+  <meta property="og:description" content="Detect dead or stuck pixels on your monitor. Full-screen solid color test with 8 colors. No download required.">
+  <meta property="og:url" content="https://anyconverter.io/dead-pixel-checker/">
+  <meta property="og:site_name" content="AnyConverter">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" data-ad-client="ca-pub-XXXXXXXXXX" crossorigin="anonymous"></script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Dead Pixel Checker","url":"https://anyconverter.io/dead-pixel-checker/","description":"Check your monitor for dead or stuck pixels by cycling through fullscreen solid colors.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F4F6FF);color:var(--color-text,#1E1B4B)}
+    body{min-height:100vh;display:flex;flex-direction:column}
+    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8FE)}
+    .header-inner{max-width:1280px;width:100%;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;gap:32px}
+    .hero{padding:40px 24px 32px;max-width:1280px;margin:0 auto}
+    .hero h1{font-size:clamp(1.75rem,4vw,2.25rem);font-weight:700;line-height:1.2;margin-bottom:12px}
+    .hero-desc{font-size:1.0625rem;color:var(--color-text-2,#6B7280);max-width:680px;line-height:1.6}
+    @font-face{font-family:'Inter';font-display:swap}
+    .color-swatches{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}
+    .color-swatches .color-swatch{width:40px;height:40px;border-radius:8px;border:2px solid var(--color-border,#DDD8FE);margin-bottom:0}
+    .dp-status{font-size:14px;color:var(--color-text-2,#6B7280);margin-top:8px;min-height:20px}
+  </style>
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+  <header id="site-header" class="site-header"></header>
+  <main id="main-content">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol><li><a href="/">Home</a></li><li aria-current="page">Dead Pixel Checker</li></ol>
+    </nav>
+    <section class="hero">
+      <h1>Dead Pixel Checker</h1>
+      <p class="hero-desc">Detect dead or stuck pixels on your monitor by cycling through 8 solid-color fullscreen tests. Any pixel that doesn't match the background color indicates a defect.</p>
+    </section>
+    <div class="tool-wrapper">
+      <div class="tool-zone">
+        <div style="padding:24px">
+          <p style="font-size:14px;color:var(--color-text-2,#6B7280);margin-bottom:16px">The test fills your entire screen with one solid color at a time. Scan your screen carefully for any dot that looks different — that's a dead or stuck pixel.</p>
+          <div class="color-swatches">
+            <div class="color-swatch" style="background:#000000" title="Black"></div>
+            <div class="color-swatch" style="background:var(--color-surface,#fff);border-color:#ccc" title="White"></div>
+            <div class="color-swatch" style="background:#FF0000" title="Red"></div>
+            <div class="color-swatch" style="background:#00FF00" title="Green"></div>
+            <div class="color-swatch" style="background:#0000FF" title="Blue"></div>
+            <div class="color-swatch" style="background:#00FFFF" title="Cyan"></div>
+            <div class="color-swatch" style="background:#FF00FF" title="Magenta"></div>
+            <div class="color-swatch" style="background:#FFFF00" title="Yellow"></div>
+          </div>
+          <div class="dp-status">Current: <strong id="dp-current">—</strong> &nbsp;|&nbsp; <span id="dp-index">—</span></div>
+          <div class="action-bar" style="margin-top:16px">
+            <button class="btn btn-primary" id="dp-start" style="padding:12px 32px;font-size:15px">🖥️ Start Full-Screen Test</button>
+          </div>
+          <p style="font-size:12px;color:var(--color-text-2,#6B7280);margin-top:12px">Click or press <kbd>→</kbd> / <kbd>Space</kbd> to advance · <kbd>←</kbd> to go back · <kbd>Esc</kbd> to exit</p>
+        </div>
+      </div>
+      <aside class="tool-side" aria-label="Options">
+        <div class="ss-divider">Related Tools</div>
+        <a href="/monitor-color-test/" class="ss-related-link"><img src="/assets/img/icon-browser.svg" alt="" width="18" height="18" loading="lazy">Monitor Color Test</a>
+        <a href="/browser-info/" class="ss-related-link"><img src="/assets/img/icon-browser.svg" alt="" width="18" height="18" loading="lazy">Browser Info Viewer</a>
+        <div style="margin-top:16px">
+          <p class="ad-label">Advertisement</p>
+          <div class="ad-slot" style="min-height:250px">
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+          </div>
+        </div>
+      </aside>
+    </div>
+    <div class="ad-slot ad-slot--leaderboard">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="how-to-use">
+      <h2>How to Use</h2>
+      <ol class="steps">
+        <li>Click <strong>Start Full-Screen Test</strong> to enter fullscreen mode.</li>
+        <li>Your screen turns solid black first — look carefully for any pixel that isn't black.</li>
+        <li>Click or press <kbd>→</kbd> to advance through all 8 colors.</li>
+        <li>Press <kbd>Esc</kbd> to exit when done.</li>
+      </ol>
+    </section>
+    <section class="features">
+      <h2>Features</h2>
+      <ul class="features-list">
+        <li>8 solid-color test screens: black, white, red, green, blue, cyan, magenta, yellow</li>
+        <li>Fullscreen mode for maximum coverage</li>
+        <li>Click or keyboard navigation between colors</li>
+        <li>Works on any monitor, laptop, or external display</li>
+      </ul>
+    </section>
+    <div class="ad-slot ad-slot--rectangle" style="margin:0 auto 32px">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="faq">
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-list">
+        <details class="faq-item"><summary class="faq-question">What is a dead pixel vs a stuck pixel? <span class="faq-icon">+</span></summary><div class="faq-answer">A dead pixel is permanently off (appears black on any background). A stuck pixel is permanently on in one color (e.g., always red). Dead pixels typically cannot be fixed; stuck pixels sometimes recover with pixel-refreshing tools or pressure techniques.</div></details>
+        <details class="faq-item"><summary class="faq-question">How many dead pixels is acceptable? <span class="faq-icon">+</span></summary><div class="faq-answer">Monitor manufacturers use ISO 13406-2 standard which allows Class II monitors to have up to 2 completely dead pixels. However, many retailers accept returns for any dead pixels, especially in the center of the screen.</div></details>
+      </div>
+    </section>
+  </main>
+  <footer id="site-footer" class="site-footer"></footer>
+  <script src="/assets/js/shared.js" defer></script>
+  <script src="/assets/js/tools/dead-pixel-checker.js" defer></script>
+</body>
+</html>

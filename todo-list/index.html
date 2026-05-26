@@ -1,0 +1,81 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>To-do List Online Free | AnyConverter</title>
+  <meta name="description" content="Free online to-do list that saves to your browser. Add tasks, check them off, filter by status and clear completed items. No account needed, works offline.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://anyconverter.io/todo-list/">
+  <link rel="alternate" hreflang="en" href="https://anyconverter.io/todo-list/"><link rel="alternate" hreflang="es" href="https://anyconverter.io/es/todo-list/"><link rel="alternate" hreflang="da" href="https://anyconverter.io/da/todo-list/"><link rel="alternate" hreflang="x-default" href="https://anyconverter.io/todo-list/">
+  <meta property="og:type" content="website"><meta property="og:title" content="To-do List Online Free | AnyConverter"><meta property="og:description" content="Free online to-do list that saves to your browser. Filter, complete and clear tasks."><meta property="og:url" content="https://anyconverter.io/todo-list/"><meta property="og:site_name" content="AnyConverter">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" data-ad-client="ca-pub-XXXXXXXXXX" crossorigin="anonymous"></script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"To-do List","url":"https://anyconverter.io/todo-list/","description":"Free online to-do list with local persistence. No signup needed.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F4F6FF);color:var(--color-text,#1E1B4B)}
+    body{min-height:100vh;display:flex;flex-direction:column}
+    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8FE)}
+    .header-inner{max-width:1280px;width:100%;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;gap:32px}
+    .hero{padding:40px 24px 32px;max-width:1280px;margin:0 auto}
+    .hero h1{font-size:clamp(1.75rem,4vw,2.25rem);font-weight:700;line-height:1.2;margin-bottom:12px}
+    .hero-desc{font-size:1.0625rem;color:var(--color-text-2,#6B7280);max-width:680px;line-height:1.6}
+    @font-face{font-family:'Inter';font-display:swap}
+  </style>
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+  <header id="site-header" class="site-header"></header>
+  <main id="main-content">
+    <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/">Home</a></li><li><a href="/todo-list/">Productivity</a></li><li aria-current="page">To-do List</li></ol></nav>
+    <section class="hero">
+      <h1>To-do List Online</h1>
+      <p class="hero-desc">A simple, persistent to-do list that saves automatically to your browser. No account, no sync, no clutter — just tasks.</p>
+    </section>
+    <div class="tool-wrapper">
+      <div class="tool-zone">
+        <div style="padding:24px;max-width:600px">
+          <!-- Add task -->
+          <div style="display:flex;gap:8px;margin-bottom:16px">
+            <input type="text" id="todo-input" placeholder="Add a new task…" style="flex:1;padding:10px 14px;border:1px solid var(--color-border,#DDD8FE);border-radius:8px;font-size:14px">
+            <button class="btn btn-primary" id="todo-add">Add</button>
+          </div>
+          <!-- Filter bar -->
+          <div style="display:flex;gap:6px;margin-bottom:14px;flex-wrap:wrap">
+            <button data-filter="all" style="padding:6px 14px;border:1px solid var(--color-border,#DDD8FE);border-radius:20px;font-size:12px;cursor:pointer;background:var(--color-primary,#4F46E5);color:var(--color-surface,#fff)">All</button>
+            <button data-filter="active" style="padding:6px 14px;border:1px solid var(--color-border,#DDD8FE);border-radius:20px;font-size:12px;cursor:pointer;background:var(--color-surface,#fff);color:var(--color-text-body,#374151)">Active</button>
+            <button data-filter="completed" style="padding:6px 14px;border:1px solid var(--color-border,#DDD8FE);border-radius:20px;font-size:12px;cursor:pointer;background:var(--color-surface,#fff);color:var(--color-text-body,#374151)">Completed</button>
+            <button id="todo-clear" style="padding:6px 14px;border:1px solid var(--color-border,#DDD8FE);border-radius:20px;font-size:12px;cursor:pointer;background:var(--color-surface,#fff);color:var(--color-error,#DC2626);margin-left:auto">Clear completed</button>
+          </div>
+          <!-- List -->
+          <ul id="todo-list" style="list-style:none;border:1px solid var(--color-border,#DDD8FE);border-radius:10px;overflow:hidden;background:var(--color-surface,#fff);min-height:80px;padding:0 14px"></ul>
+          <!-- Footer count -->
+          <div style="margin-top:8px;font-size:12px;color:var(--color-text-2,#6B7280);text-align:right" id="todo-count">0 items left</div>
+        </div>
+      </div>
+      <aside class="tool-side">
+        <div class="ss-divider">Related Tools</div>
+        <a href="/sticky-notes/" class="ss-related-link"><img src="/assets/img/icon-sticky.svg" alt="" width="18" height="18">Sticky Notes</a>
+        <a href="/daily-planner/" class="ss-related-link"><img src="/assets/img/icon-planner.svg" alt="" width="18" height="18">Daily Planner</a>
+        <a href="/habit-tracker/" class="ss-related-link"><img src="/assets/img/icon-habit.svg" alt="" width="18" height="18">Habit Tracker</a>
+        <div style="margin-top:16px"><p class="ad-label">Advertisement</p>
+          <div class="ad-slot" style="min-height:250px"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div>
+        </div>
+      </aside>
+    </div>
+    <div class="ad-slot ad-slot--leaderboard"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div>
+    <section class="how-to-use"><h2>How to Use the To-do List</h2><ol class="steps"><li><strong>Step 1</strong> — Type a task in the input box and click <em>Add</em> or press Enter.</li><li><strong>Step 2</strong> — Check the checkbox next to a task to mark it complete.</li><li><strong>Step 3</strong> — Use the filter buttons to view All, Active, or Completed tasks.</li><li><strong>Step 4</strong> — Click <em>Clear completed</em> to remove all done tasks at once.</li></ol></section>
+    <section class="features"><h2>Features</h2><ul class="features-list"><li>Saves to localStorage — tasks persist between sessions</li><li>Filter by All, Active, or Completed</li><li>Clear completed tasks with one click</li><li>Item counter shows remaining active tasks</li><li>Works offline — no internet connection needed after page load</li></ul></section>
+    <div class="ad-slot ad-slot--rectangle" style="margin:0 auto 32px"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div>
+    <section class="faq"><h2>Frequently Asked Questions</h2><div class="faq-list">
+      <details class="faq-item"><summary class="faq-question">Will my tasks be saved if I close the browser? <span class="faq-icon">+</span></summary><div class="faq-answer">Yes. Tasks are stored in your browser's localStorage and persist between sessions on the same device and browser. Clearing browser data or using private/incognito mode will erase them.</div></details>
+      <details class="faq-item"><summary class="faq-question">Can I sync tasks across devices? <span class="faq-icon">+</span></summary><div class="faq-answer">Not currently — localStorage is device and browser-specific. For cross-device sync you would need an account-based service.</div></details>
+    </div></section>
+  </main>
+  <footer id="site-footer" class="site-footer"></footer>
+  <script src="/assets/js/shared.js" defer></script>
+  <script src="/assets/js/tools/todo-list.js" defer></script>
+</body>
+</html>

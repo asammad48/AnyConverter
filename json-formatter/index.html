@@ -1,0 +1,379 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>JSON Formatter &amp; Validator Online — Free | AnyConverter</title>
+  <meta name="description" content="Format, beautify and validate JSON instantly. Free online JSON formatter with syntax highlighting and collapsible nodes. Runs in your browser — your data never leaves your device.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://anyconverter.io/json-formatter/">
+
+  <link rel="alternate" hreflang="en" href="https://anyconverter.io/json-formatter/">
+  <link rel="alternate" hreflang="es" href="https://anyconverter.io/es/json-formatter/">
+  <link rel="alternate" hreflang="da" href="https://anyconverter.io/da/json-formatter/">
+  <link rel="alternate" hreflang="x-default" href="https://anyconverter.io/json-formatter/">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="JSON Formatter &amp; Validator Online — Free | AnyConverter">
+  <meta property="og:description" content="Format, beautify and validate JSON instantly. Free online JSON formatter with syntax highlighting. Runs in your browser.">
+  <meta property="og:url" content="https://anyconverter.io/json-formatter/">
+  <meta property="og:site_name" content="AnyConverter">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
+    data-ad-client="ca-pub-XXXXXXXXXX" crossorigin="anonymous"></script>
+  <!-- Replace ca-pub-XXXXXXXXXX with your real AdSense publisher ID -->
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "JSON Formatter & Validator",
+    "url": "https://anyconverter.io/json-formatter/",
+    "description": "Format, beautify and validate JSON instantly. Free online JSON formatter with collapsible syntax highlighting.",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "browserRequirements": "Requires JavaScript",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "provider": { "@type": "Organization", "name": "AnyConverter", "url": "https://anyconverter.io" }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {"@type":"Question","name":"What is a JSON formatter?","acceptedAnswer":{"@type":"Answer","text":"A JSON formatter takes raw or minified JSON text and formats it with proper indentation and line breaks so it is easier for humans to read and debug."}},
+      {"@type":"Question","name":"Is my JSON data safe?","acceptedAnswer":{"@type":"Answer","text":"Yes. All processing happens entirely in your browser. Your JSON data is never sent to any server."}},
+      {"@type":"Question","name":"Can this tool validate JSON?","acceptedAnswer":{"@type":"Answer","text":"Yes. The validator checks your JSON for syntax errors and shows you the exact line and character position of any error."}},
+      {"@type":"Question","name":"What is JSON minification?","acceptedAnswer":{"@type":"Answer","text":"Minification removes all unnecessary whitespace from JSON, producing the smallest possible file size — useful for APIs and data transfer."}},
+      {"@type":"Question","name":"What file types can I upload?","acceptedAnswer":{"@type":"Answer","text":"You can upload any .json file directly using the Upload button, or paste JSON text directly into the input area."}}
+    ]
+  }
+  </script>
+
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F4F6FF);color:var(--color-text,#1E1B4B)}
+    body{min-height:100vh;display:flex;flex-direction:column}
+    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8FE)}
+    .header-inner{max-width:1280px;width:100%;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;gap:32px}
+    .hero{padding:28px 24px 20px;max-width:1280px;margin:0 auto}
+    .hero h1{font-size:clamp(1.5rem,3.5vw,2rem);font-weight:700;line-height:1.2;margin-bottom:8px}
+    .hero-desc{font-size:1rem;color:var(--color-text-2,#6B7280);max-width:680px;line-height:1.6}
+    @font-face{font-family:'Inter';font-display:swap}
+  </style>
+
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+
+  <header id="site-header" class="site-header"></header>
+
+  <main id="main-content">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="/">Home</a></li>
+        <li aria-current="page">JSON Formatter</li>
+      </ol>
+    </nav>
+
+    <section class="hero">
+      <h1>JSON Formatter &amp; Validator</h1>
+      <p class="hero-desc">Instantly format, beautify and validate your JSON. Paste JSON and get live formatted output with collapsible nodes and syntax highlighting. 100% free, 100% private — runs in your browser.</p>
+    </section>
+
+    <!-- Tool area -->
+    <div class="tool-wrapper">
+      <div class="tool-zone">
+
+        <!-- Sub-tabs -->
+        <div class="sub-tabs" role="tablist">
+          <button class="sub-tab active" role="tab" data-mode="format" aria-selected="true">Formatter</button>
+          <button class="sub-tab" role="tab" data-mode="minify" aria-selected="false">Minifier</button>
+          <button class="sub-tab" role="tab" data-mode="validate" aria-selected="false">Validator</button>
+          <button class="sub-tab" role="tab" data-mode="convert" aria-selected="false">Converter</button>
+        </div>
+
+        <!-- Split panels -->
+        <div class="split-panels">
+
+          <!-- Input panel -->
+          <div class="ac-panel">
+            <div class="ac-panel-header">
+              <span style="font-size:14px;color:var(--color-text-3)">{ }</span>
+              <span class="ac-panel-label">Input</span>
+              <div class="ac-panel-actions">
+                <label class="ac-btn" style="cursor:pointer" title="Upload JSON file">
+                  Upload
+                  <input type="file" id="file-upload" accept=".json,application/json" style="display:none">
+                </label>
+                <button class="ac-btn" id="btn-paste" title="Paste from clipboard">Paste</button>
+                <button class="ac-btn" id="btn-clear" title="Clear input">Clear</button>
+                <div class="font-sz-wrap"><button class="font-sz-btn" id="btn-font-down" title="Decrease font size">A−</button><button class="font-sz-btn" id="btn-font-up" title="Increase font size">A+</button></div>
+                <button class="ac-btn" id="btn-fs-input" title="Fullscreen input">⛶</button>
+              </div>
+            </div>
+            <textarea
+              class="ac-input"
+              id="json-input"
+              placeholder="Paste JSON here — auto-formats on input…"
+              spellcheck="false"
+              autocomplete="off"
+              aria-label="JSON input"
+              aria-describedby="input-status"
+            ></textarea>
+            <div class="ac-status" id="input-status">
+              <span class="ac-status-ok" id="input-status-ok" style="display:none">✓ Valid JSON</span>
+              <span class="ac-status-err" id="input-status-err" style="display:none"></span>
+              <span class="ac-status-info" id="input-status-info">Paste or type JSON</span>
+            </div>
+          </div>
+
+          <!-- Output panel -->
+          <div class="ac-panel">
+            <div class="ac-panel-header">
+              <span style="font-size:14px;color:var(--color-text-3)">✦</span>
+              <span class="ac-panel-label">Output — live formatted</span>
+              <div class="ac-panel-actions">
+                <button class="ac-btn" id="btn-copy-output" title="Copy to clipboard">Copy</button>
+                <button class="ac-btn" id="btn-download" title="Download as .json">Download</button>
+                <button class="ac-btn" id="btn-collapse-all" title="Collapse all nodes">Collapse all</button>
+                <button class="ac-btn" id="btn-expand-all" title="Expand all nodes">Expand all</button>
+                <button class="ac-btn" id="btn-fs-output" title="Fullscreen output">⛶</button>
+              </div>
+            </div>
+            <div class="json-view" id="json-output" aria-label="Formatted JSON output" aria-live="polite">
+              <span style="color:var(--color-text-2,#6B7280);font-style:italic;font-size:11px">Output will appear here…</span>
+            </div>
+            <div class="ac-status" id="output-status">
+              <span class="ac-status-ok" id="output-status-ok" style="display:none">✓ Formatted</span>
+              <span class="ac-status-err" id="output-status-err" style="display:none"></span>
+              <span class="ac-status-info" id="output-status-info"></span>
+            </div>
+          </div>
+
+        </div><!-- /split-panels -->
+
+        <!-- Action bar -->
+        <div class="ac-action-bar">
+          <button class="ac-btn primary" id="btn-format">Format</button>
+          <button class="ac-btn" id="btn-minify">Minify</button>
+          <button class="ac-btn" id="btn-validate">Validate</button>
+          <button class="ac-btn" id="btn-to-yaml">→ YAML</button>
+          <button class="ac-btn" id="btn-to-csv">→ CSV</button>
+          <div class="ac-action-bar-right">
+            <span style="font-size:11px;color:var(--color-text-3)" id="auto-format-label">Auto-format: ON</span>
+          </div>
+        </div>
+
+      </div><!-- /tool-zone -->
+
+      <!-- Sidebar -->
+      <aside class="tool-side" aria-label="Options">
+
+        <div class="ss-divider">Options</div>
+        <div class="ss-option-row">
+          <span class="ss-opt-label">Indent</span>
+          <select class="ss-opt-select" id="opt-indent">
+            <option value="2" selected>2 spaces</option>
+            <option value="4">4 spaces</option>
+            <option value="tab">Tab</option>
+          </select>
+        </div>
+        <div class="ss-option-row">
+          <span class="ss-opt-label">Sort keys</span>
+          <select class="ss-opt-select" id="opt-sort">
+            <option value="none" selected>None</option>
+            <option value="asc">A → Z</option>
+            <option value="desc">Z → A</option>
+          </select>
+        </div>
+        <div class="ss-option-row">
+          <span class="ss-opt-label">Font size</span>
+          <select class="ss-opt-select" id="opt-font-size">
+            <option value="11">Small (11px)</option>
+            <option value="13" selected>Normal (13px)</option>
+            <option value="15">Medium (15px)</option>
+            <option value="17">Large (17px)</option>
+          </select>
+        </div>
+
+        <div class="tog-row">
+          <span class="tog-label" id="lbl-autoformat">Auto-format on paste</span>
+          <div class="tog" id="tog-autoformat" role="switch" aria-checked="true" tabindex="0" aria-labelledby="lbl-autoformat"></div>
+        </div>
+        <div class="tog-row">
+          <span class="tog-label" id="lbl-collapse">Collapse all on load</span>
+          <div class="tog off" id="tog-collapse" role="switch" aria-checked="false" tabindex="0" aria-labelledby="lbl-collapse"></div>
+        </div>
+        <div class="tog-row">
+          <span class="tog-label" id="lbl-linenums">Show line numbers</span>
+          <div class="tog off" id="tog-linenums" role="switch" aria-checked="false" tabindex="0" aria-labelledby="lbl-linenums"></div>
+        </div>
+        <div class="tog-row">
+          <span class="tog-label" id="lbl-wrap">Wrap long lines</span>
+          <div class="tog off" id="tog-wrap" role="switch" aria-checked="false" tabindex="0" aria-labelledby="lbl-wrap"></div>
+        </div>
+
+        <div class="ss-divider">Stats</div>
+        <div class="stats-grid">
+          <div class="stat-card"><div class="stat-val" id="stat-keys">0</div><div class="stat-lbl">Keys</div></div>
+          <div class="stat-card"><div class="stat-val" id="stat-depth">0</div><div class="stat-lbl">Depth</div></div>
+          <div class="stat-card"><div class="stat-val" id="stat-bytes">0</div><div class="stat-lbl">Bytes</div></div>
+          <div class="stat-card"><div class="stat-val" id="stat-errors">0</div><div class="stat-lbl">Errors</div></div>
+        </div>
+
+        <div class="ss-divider">Related Tools</div>
+        <a href="/xml-formatter/" class="ss-related-link">
+          <img src="/assets/img/icon-xml.svg" alt="" width="18" height="18" loading="lazy">
+          XML Formatter
+        </a>
+        <a href="/regex-tester/" class="ss-related-link">
+          <img src="/assets/img/icon-regex.svg" alt="" width="18" height="18" loading="lazy">
+          Regex / Logs
+        </a>
+        <a href="/csv-to-sql/" class="ss-related-link">
+          <img src="/assets/img/icon-csv.svg" alt="" width="18" height="18" loading="lazy">
+          CSV → SQL
+        </a>
+        <a href="/base64-encoder/" class="ss-related-link">
+          <img src="/assets/img/icon-base64.svg" alt="" width="18" height="18" loading="lazy">
+          Base64 Encoder
+        </a>
+
+        <!-- AdSense sidebar slot -->
+        <div style="margin-top:8px">
+          <p class="ad-label">Advertisement</p>
+          <div class="ad-slot" style="min-height:250px">
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-XXXXXXXXXX"
+                 data-ad-slot="XXXXXXXXXX"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+            <!-- Replace ca-pub-XXXXXXXXXX and data-ad-slot="XXXXXXXXXX" with your IDs -->
+          </div>
+        </div>
+
+      </aside>
+    </div><!-- /tool-wrapper -->
+
+    <!-- AdSense leaderboard -->
+    <div class="ad-slot ad-slot--leaderboard">
+      <p class="ad-label">Advertisement</p>
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-XXXXXXXXXX"
+           data-ad-slot="XXXXXXXXXX"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <section class="how-to-use">
+      <h2>How to Format JSON</h2>
+      <ol class="steps">
+        <li><strong>Paste your JSON</strong> — Copy your JSON and paste it into the input area. Output formats automatically as you type.</li>
+        <li><strong>Explore the tree</strong> — Click ▾ toggles to collapse/expand any object or array node. Use Collapse All / Expand All to navigate large structures.</li>
+        <li><strong>Copy or Download</strong> — Copy the formatted output to your clipboard or download it as a .json file.</li>
+      </ol>
+    </section>
+
+    <section class="features">
+      <h2>Features</h2>
+      <ul class="features-list">
+        <li>Live auto-format as you type (200ms debounce)</li>
+        <li>Collapsible nodes — collapse any {} or [] instantly</li>
+        <li>Syntax highlighting with color-coded tokens</li>
+        <li>JSON validation with exact error position</li>
+        <li>Minify JSON to reduce file size</li>
+        <li>Upload .json files directly</li>
+        <li>Download formatted output as .json</li>
+        <li>100% private — runs in your browser</li>
+      </ul>
+    </section>
+
+    <div class="ad-slot ad-slot--rectangle" style="margin:0 auto 32px">
+      <p class="ad-label">Advertisement</p>
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-XXXXXXXXXX"
+           data-ad-slot="XXXXXXXXXX"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <section class="faq">
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary class="faq-question">What is a JSON formatter? <span class="faq-icon">+</span></summary>
+          <div class="faq-answer">A JSON formatter takes raw or minified JSON text and formats it with proper indentation and line breaks so it is easier for humans to read and debug.</div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-question">Is my JSON data safe? <span class="faq-icon">+</span></summary>
+          <div class="faq-answer">Yes. All processing happens entirely in your browser using JavaScript. Your JSON data is never sent to any server — it stays completely on your device.</div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-question">Can this tool validate JSON? <span class="faq-icon">+</span></summary>
+          <div class="faq-answer">Yes. The validator checks your JSON for syntax errors and shows you the exact line and character position of any error, making it easy to fix issues quickly.</div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-question">What is JSON minification? <span class="faq-icon">+</span></summary>
+          <div class="faq-answer">Minification removes all unnecessary whitespace and newlines from JSON, producing the smallest possible file size. This is useful for APIs and network data transfer.</div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-question">What file types can I upload? <span class="faq-icon">+</span></summary>
+          <div class="faq-answer">You can upload any .json file directly using the Upload button. The file will be loaded into the input area and automatically formatted.</div>
+        </details>
+      </div>
+    </section>
+
+    <section class="related-tools">
+      <h2>Related Tools</h2>
+      <div class="tool-grid">
+        <a href="/xml-formatter/" class="tool-card">
+          <img src="/assets/img/icon-xml.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy">
+          <h3>XML Formatter</h3>
+          <p>Format and validate XML online.</p>
+          <span class="tool-card-link">Try it →</span>
+        </a>
+        <a href="/regex-tester/" class="tool-card">
+          <img src="/assets/img/icon-regex.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy">
+          <h3>Regex / Log Extractor</h3>
+          <p>Test regex patterns and extract log matches.</p>
+          <span class="tool-card-link">Try it →</span>
+        </a>
+        <a href="/csv-to-sql/" class="tool-card">
+          <img src="/assets/img/icon-csv.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy">
+          <h3>CSV to SQL</h3>
+          <p>Convert CSV files to SQL INSERT statements.</p>
+          <span class="tool-card-link">Try it →</span>
+        </a>
+        <a href="/base64-encoder/" class="tool-card">
+          <img src="/assets/img/icon-base64.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy">
+          <h3>Base64 Encoder</h3>
+          <p>Encode and decode Base64 text and files.</p>
+          <span class="tool-card-link">Try it →</span>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <div id="fs-overlay" class="fs-overlay"></div>
+
+  <footer id="site-footer" class="site-footer"></footer>
+
+  <script src="/assets/js/shared.js" defer></script>
+  <script src="/assets/js/tools/json-formatter.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,171 @@
+﻿<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JSON til YAML Konverter Online Gratis | AnyConverter</title>
+  <meta name="description" content="Konverter JSON til YAML og YAML til JSON øjeblikkeligt i din browser. Indsæt dine data og få formateret output med det samme. Ingen serveroplæsning, 100% privat.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://anyconverter.io/da/json-to-yaml/">
+  <link rel="alternate" hreflang="en" href="https://anyconverter.io/json-to-yaml/">
+  <link rel="alternate" hreflang="es" href="https://anyconverter.io/es/json-to-yaml/">
+  <link rel="alternate" hreflang="da" href="https://anyconverter.io/da/json-to-yaml/">
+  <link rel="alternate" hreflang="x-default" href="https://anyconverter.io/json-to-yaml/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="JSON til YAML Konverter Online Gratis | AnyConverter">
+  <meta property="og:description" content="Konverter JSON til YAML og YAML til JSON øjeblikkeligt i din browser. Indsæt dine data og få formateret output med det samme. Ingen serveroplæsning, 100% privat.">
+  <meta property="og:url" content="https://anyconverter.io/da/json-to-yaml/">
+  <meta property="og:site_name" content="AnyConverter">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" data-ad-client="ca-pub-XXXXXXXXXX" crossorigin="anonymous"></script>
+  <!-- Replace ca-pub-XXXXXXXXXX with your real AdSense publisher ID -->
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"JSON til YAML Konverter","url":"https://anyconverter.io/da/json-to-yaml/","description":"Konverter JSON til YAML og YAML til JSON øjeblikkeligt i din browser. Ingen serveroplæsning, 100% privat.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F4F6FF);color:var(--color-text,#1E1B4B)}
+    body{min-height:100vh;display:flex;flex-direction:column}
+    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8FE)}
+    .header-inner{max-width:1280px;width:100%;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;gap:32px}
+    .hero{padding:40px 24px 32px;max-width:1280px;margin:0 auto}
+    .hero h1{font-size:clamp(1.75rem,4vw,2.25rem);font-weight:700;line-height:1.2;margin-bottom:12px}
+    .hero-desc{font-size:1.0625rem;color:var(--color-text-2,#6B7280);max-width:680px;line-height:1.6}
+    @font-face{font-family:'Inter';font-display:swap}
+  </style>
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+  <header id="site-header" class="site-header"></header>
+  <main id="main-content">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol><li><a href="/da/">Hjem</a></li><li aria-current="page">JSON ↔ YAML Konverter</li></ol>
+    </nav>
+    <section class="hero">
+      <h1>JSON ↔ YAML Konverter</h1>
+      <p class="hero-desc">Konverter mellem JSON og YAML øjeblikkeligt. Indsæt din JSON for at få ren YAML-output, eller konverter YAML tilbage til formateret JSON. Validerer syntaks mens du skriver.</p>
+    </section>
+    <div class="tool-wrapper">
+      <div class="tool-zone">
+        <div style="padding:24px">
+          <div class="action-bar" style="margin-bottom:16px">
+            <button class="btn btn-primary btn-sm" id="jy-mode-j2y">JSON → YAML</button>
+            <button class="btn btn-secondary btn-sm" id="jy-mode-y2j">YAML → JSON</button>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+            <div>
+              <label id="jy-input-label" style="display:block;font-size:13px;font-weight:500;margin-bottom:6px">JSON Input</label>
+              <textarea id="jy-input" placeholder='{"nøgle": "værdi"}' style="width:100%;height:280px;padding:12px;border:1px solid var(--color-border,#DDD8FE);border-radius:8px;font-family:'JetBrains Mono',monospace;font-size:13px;resize:vertical"></textarea>
+            </div>
+            <div>
+              <label id="jy-output-label" style="display:block;font-size:13px;font-weight:500;margin-bottom:6px">YAML Output</label>
+              <textarea id="jy-output" readonly style="width:100%;height:280px;padding:12px;border:1px solid var(--color-border,#DDD8FE);border-radius:8px;font-family:'JetBrains Mono',monospace;font-size:13px;resize:vertical;background:var(--color-bg,#F4F6FF)"></textarea>
+            </div>
+          </div>
+          <div id="jy-error" style="display:none;color:var(--color-pdf,#EF4444);font-size:13px;margin-top:8px"></div>
+          <div class="action-bar" style="margin-top:12px">
+            <button class="btn btn-primary" id="btn-jy-convert">Konverter</button>
+            <button class="btn btn-secondary" id="btn-jy-paste">Indlæs Eksempel</button>
+            <button class="btn btn-secondary" id="btn-jy-copy">Kopiér Output</button>
+            <button class="btn btn-secondary" id="btn-jy-clear">Ryd</button>
+          </div>
+        </div>
+      </div>
+      <aside class="tool-side" aria-label="Muligheder">
+        <div class="ss-divider">Relaterede værktøjer</div>
+        <a class="related-link" href="/da/html-beautifier/"><img src="/assets/img/icon-text.svg" width="16" height="16" loading="lazy" alt=""> HTML Formaterer</a>
+        <a class="related-link" href="/da/cron-expression-parser/"><img src="/assets/img/icon-timer.svg" width="16" height="16" loading="lazy" alt=""> Cron Parser</a>
+        <a class="related-link" href="/uuid-generator/"><img src="/assets/img/icon-hash.svg" width="16" height="16" loading="lazy" alt=""> UUID Generator</a>
+        <div style="margin-top:16px">
+          <p class="ad-label">Reklame</p>
+          <div class="ad-slot" style="min-height:250px">
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+            <!-- Replace ca-pub-XXXXXXXXXX and data-ad-slot="XXXXXXXXXX" with your IDs -->
+          </div>
+        </div>
+      </aside>
+    </div>
+    <div class="ad-slot ad-slot--leaderboard">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="how-to-use">
+      <h2>Sådan bruges JSON til YAML Konverter</h2>
+      <ol class="steps">
+        <li>Vælg konverteringsretning: JSON→YAML eller YAML→JSON ved hjælp af tilstandsknapperne.</li>
+        <li>Indsæt din JSON eller YAML i inputområdet (eller klik på "Indlæs Eksempel" for en prøve).</li>
+        <li>Det konverterede output vises øjeblikkeligt. Klik "Kopiér Output" for at kopiere resultatet.</li>
+      </ol>
+    </section>
+    <section class="features">
+      <h2>Funktioner</h2>
+      <ul class="features-list">
+        <li>Tovejskonvertering — JSON til YAML og YAML til JSON</li>
+        <li>Realtidskonvertering mens du skriver</li>
+        <li>Syntaksvalidering med klare fejlmeddelelser</li>
+        <li>2-mellemrums indrykning i YAML-output</li>
+        <li>Indlæs eksempeldata med ét klik</li>
+        <li>100% klientside — dine data forlader aldrig browseren</li>
+      </ul>
+    </section>
+    <div class="ad-slot ad-slot--rectangle" style="margin:0 auto 32px">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="faq">
+      <h2>Ofte stillede spørgsmål</h2>
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary>Hvad er YAML?</summary>
+          <p>YAML (YAML Ain't Markup Language) er et menneskevenligt dataserialiseringsformat. Det bruger indrykning og minimal tegnsætning, hvilket gør det nemmere at læse end JSON. Det bruges bredt til konfigurationsfiler (Docker, Kubernetes, GitHub Actions).</p>
+        </details>
+        <details class="faq-item">
+          <summary>Er al JSON gyldig YAML?</summary>
+          <p>Ja — JSON er teknisk set en delmængde af YAML 1.2. Ethvert gyldigt JSON-dokument er også gyldigt YAML. YAML understøtter dog yderligere funktioner som kommentarer og flerlinjede strenge, som JSON ikke har.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Understøtter YAML kommentarer?</summary>
+          <p>Ja. YAML understøtter kommentarer ved hjælp af #-tegnet. JSON understøtter slet ikke kommentarer. Når YAML konverteres til JSON, kasseres kommentarer.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Hvilken indrykning bruger konverteren?</summary>
+          <p>Konverteren genererer YAML med 2-mellemrums indrykning, som er den mest almindelige konvention for YAML-filer i moderne værktøjer.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Sendes mine data til en server?</summary>
+          <p>Nej. Dette værktøj kører helt i din browser ved hjælp af js-yaml-biblioteket. Dine data uploades aldrig til nogen server, hvilket gør det sikkert til følsomme konfigurationsdata.</p>
+        </details>
+      </div>
+    </section>
+    <section class="related-tools">
+      <h2>Relaterede Værktøjer</h2>
+      <div class="tool-grid">
+        <a class="tool-card" href="/da/html-beautifier/">
+          <img src="/assets/img/icon-text.svg" width="32" height="32" loading="lazy" alt="HTML Formaterer">
+          <h3>HTML Formaterer</h3>
+          <p>Formater og minificer HTML-kode</p>
+          <span class="tool-card-cta">Brug →</span>
+        </a>
+        <a class="tool-card" href="/da/cron-expression-parser/">
+          <img src="/assets/img/icon-timer.svg" width="32" height="32" loading="lazy" alt="Cron Parser">
+          <h3>Cron Parser</h3>
+          <p>Afkod cron-udtryk til læsbar tekst</p>
+          <span class="tool-card-cta">Brug →</span>
+        </a>
+        <a class="tool-card" href="/uuid-generator/">
+          <img src="/assets/img/icon-hash.svg" width="32" height="32" loading="lazy" alt="UUID Generator">
+          <h3>UUID Generator</h3>
+          <p>Generer tilfældige UUID'er øjeblikkeligt</p>
+          <span class="tool-card-cta">Brug →</span>
+        </a>
+      </div>
+    </section>
+  </main>
+  <footer id="site-footer" class="site-footer"></footer>
+  <script src="/assets/js/shared.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js" defer></script>
+  <script src="/assets/js/tools/json-to-yaml.js" defer></script>
+</body>
+</html>

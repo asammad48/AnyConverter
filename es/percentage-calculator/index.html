@@ -1,0 +1,164 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora de Porcentajes Online Gratis | AnyConverter</title>
+  <meta name="description" content="Calcula porcentajes online gratis. Encuentra X% de Y, qué porcentaje es X de Y, cambio porcentual y aumentar o reducir por un porcentaje. Instantáneo, sin registro.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://anyconverter.io/es/percentage-calculator/">
+  <link rel="alternate" hreflang="en" href="https://anyconverter.io/percentage-calculator/">
+  <link rel="alternate" hreflang="es" href="https://anyconverter.io/es/percentage-calculator/">
+  <link rel="alternate" hreflang="da" href="https://anyconverter.io/da/percentage-calculator/">
+  <link rel="alternate" hreflang="x-default" href="https://anyconverter.io/percentage-calculator/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Calculadora de Porcentajes Online Gratis | AnyConverter">
+  <meta property="og:description" content="Calcula porcentajes online gratis. Cuatro modos: X% de Y, qué porcentaje es X de Y, cambio porcentual y aumentar/reducir por porcentaje. Instantáneo.">
+  <meta property="og:url" content="https://anyconverter.io/es/percentage-calculator/">
+  <meta property="og:site_name" content="AnyConverter">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" data-ad-client="ca-pub-XXXXXXXXXX" crossorigin="anonymous"></script>
+  <!-- Replace ca-pub-XXXXXXXXXX with your real AdSense publisher ID -->
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Calculadora de Porcentajes","url":"https://anyconverter.io/es/percentage-calculator/","description":"Calcula porcentajes online gratis. Cuatro modos: X% de Y, qué porcentaje es X de Y, cambio porcentual y aumentar/reducir por porcentaje.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F4F6FF);color:var(--color-text,#1E1B4B)}
+    body{min-height:100vh;display:flex;flex-direction:column}
+    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8FE)}
+    .header-inner{max-width:1280px;width:100%;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;gap:32px}
+    .hero{padding:40px 24px 32px;max-width:1280px;margin:0 auto}
+    .hero h1{font-size:clamp(1.75rem,4vw,2.25rem);font-weight:700;line-height:1.2;margin-bottom:12px}
+    .hero-desc{font-size:1.0625rem;color:var(--color-text-2,#6B7280);max-width:680px;line-height:1.6}
+    @font-face{font-family:'Inter';font-display:swap}
+  </style>
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+  <header id="site-header" class="site-header"></header>
+  <main id="main-content">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol><li><a href="/es/">Inicio</a></li><li aria-current="page">Calculadora de Porcentajes</li></ol>
+    </nav>
+    <section class="hero">
+      <h1>Calculadora de Porcentajes</h1>
+      <p class="hero-desc">Resuelve cualquier problema de porcentaje al instante con cuatro modos de cálculo. Encuentra qué es X% de un número, determina qué porcentaje es un número de otro, calcula el cambio porcentual entre dos valores o aumenta/reduce un valor por un porcentaje dado.</p>
+    </section>
+    <div class="tool-wrapper">
+      <div class="tool-zone">
+        <div style="padding:24px">
+          <div style="display:flex;gap:8px;margin-bottom:20px;flex-wrap:wrap">
+            <button class="btn btn-primary btn-sm" id="pct-mode-1" style="flex:1">X% de Y</button>
+            <button class="btn btn-secondary btn-sm" id="pct-mode-2" style="flex:1">X es qué % de Y</button>
+            <button class="btn btn-secondary btn-sm" id="pct-mode-3" style="flex:1">Cambio %</button>
+            <button class="btn btn-secondary btn-sm" id="pct-mode-4" style="flex:1">Aumentar/Reducir %</button>
+          </div>
+          <div id="pct-form-1">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px">
+              <div><label style="display:block;font-size:13px;font-weight:500;margin-bottom:6px" for="p1-x">Porcentaje (%)</label><input type="number" id="p1-x" placeholder="25" style="width:100%;padding:10px 12px;border:1px solid var(--color-border,#DDD8FE);border-radius:8px;font-size:15px"></div>
+              <div><label style="display:block;font-size:13px;font-weight:500;margin-bottom:6px" for="p1-y">Del valor</label><input type="number" id="p1-y" placeholder="200" style="width:100%;padding:10px 12px;border:1px solid var(--color-border,#DDD8FE);border-radius:8px;font-size:15px"></div>
+            </div>
+          </div>
+          <div id="pct-form-2" style="display:none">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px">
+              <div><label style="display:block;font-size:13px;font-weight:500;margin-bottom:6px" for="p2-x">Valor (X)</label><input type="number" id="p2-x" placeholder="50" style="width:100%;padding:10px 12px;border:1px solid var(--color-border,#DDD8FE);border-radius:8px;font-size:15px"></div>
+              <div><label style="display:block;font-size:13px;font-weight:500;margin-bottom:6px" for="p2-y">Del total (Y)</label><input type="number" id="p2-y" placeholder="200" style="width:100%;padding:10px 12px;border:1px solid var(--color-border,#DDD8FE);border-radius:8px;font-size:15px"></div>
+            </div>
+          </div>
+          <div id="pct-form-3" style="display:none">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px">
+              <div><label style="display:block;font-size:13px;font-weight:500;margin-bottom:6px" for="p3-old">Valor original</label><input type="number" id="p3-old" placeholder="100" style="width:100%;padding:10px 12px;border:1px solid var(--color-border,#DDD8FE);border-radius:8px;font-size:15px"></div>
+              <div><label style="display:block;font-size:13px;font-weight:500;margin-bottom:6px" for="p3-new">Nuevo valor</label><input type="number" id="p3-new" placeholder="150" style="width:100%;padding:10px 12px;border:1px solid var(--color-border,#DDD8FE);border-radius:8px;font-size:15px"></div>
+            </div>
+          </div>
+          <div id="pct-form-4" style="display:none">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px">
+              <div><label style="display:block;font-size:13px;font-weight:500;margin-bottom:6px" for="p4-val">Valor</label><input type="number" id="p4-val" placeholder="100" style="width:100%;padding:10px 12px;border:1px solid var(--color-border,#DDD8FE);border-radius:8px;font-size:15px"></div>
+              <div><label style="display:block;font-size:13px;font-weight:500;margin-bottom:6px" for="p4-pct">Porcentaje (%)</label><input type="number" id="p4-pct" placeholder="20" style="width:100%;padding:10px 12px;border:1px solid var(--color-border,#DDD8FE);border-radius:8px;font-size:15px"></div>
+            </div>
+            <div style="display:flex;gap:8px;margin-bottom:12px">
+              <button class="btn btn-secondary btn-sm" id="p4-inc-btn">Aumentar en %</button>
+              <button class="btn btn-secondary btn-sm" id="p4-dec-btn">Reducir en %</button>
+            </div>
+          </div>
+          <div class="action-bar" style="margin-bottom:20px">
+            <button class="btn btn-primary" id="btn-calc-pct">Calcular</button>
+            <button class="btn btn-secondary" id="btn-reset-pct">Restablecer</button>
+          </div>
+          <div id="pct-result" style="display:none">
+            <div class="stat-card" style="text-align:center">
+              <div class="stat-val" id="pct-answer" style="font-size:36px">—</div>
+              <div class="stat-lbl" id="pct-label">Resultado</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <aside class="tool-side" aria-label="Opciones">
+        <div class="ss-divider">Herramientas relacionadas</div>
+        <a href="/es/loan-calculator/" class="ss-related-link"><img src="/assets/img/icon-calculator.svg" alt="" width="18" height="18" loading="lazy">Calculadora de préstamos</a>
+        <a href="/es/bmi-calculator/" class="ss-related-link"><img src="/assets/img/icon-calculator.svg" alt="" width="18" height="18" loading="lazy">Calculadora de IMC</a>
+        <a href="/es/random-number-generator/" class="ss-related-link"><img src="/assets/img/icon-calculator.svg" alt="" width="18" height="18" loading="lazy">Generador de números aleatorios</a>
+        <div style="margin-top:16px">
+          <p class="ad-label">Publicidad</p>
+          <div class="ad-slot" style="min-height:250px">
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+            <!-- Replace ca-pub-XXXXXXXXXX and data-ad-slot="XXXXXXXXXX" with your IDs -->
+          </div>
+        </div>
+      </aside>
+    </div>
+    <div class="ad-slot ad-slot--leaderboard">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="how-to-use">
+      <h2>Cómo usar la Calculadora de Porcentajes</h2>
+      <ol class="steps">
+        <li><strong>Paso 1</strong> — Elige el modo de cálculo que corresponda a tu pregunta: "X% de Y", "X es qué % de Y", "Cambio %" o "Aumentar/Reducir %".</li>
+        <li><strong>Paso 2</strong> — Ingresa los valores requeridos en los campos de entrada que aparecen para tu modo seleccionado.</li>
+        <li><strong>Paso 3</strong> — Haz clic en "Calcular" para ver tu resultado al instante. Haz clic en "Restablecer" para limpiar los campos e iniciar un nuevo cálculo.</li>
+      </ol>
+    </section>
+    <section class="features">
+      <h2>Características</h2>
+      <ul class="features-list">
+        <li>Cuatro modos de cálculo que cubren los problemas de porcentaje más comunes</li>
+        <li>X% de Y: encuentra un valor porcentual (por ejemplo, 25% de 200 = 50)</li>
+        <li>Qué porcentaje: determina cómo un número se relaciona con otro como porcentaje</li>
+        <li>Cambio porcentual: ve el aumento o disminución exacta entre dos valores</li>
+        <li>Aumentar/Reducir: aplica un porcentaje a un valor base para obtener el nuevo monto</li>
+        <li>Resultados mostrados con etiquetas claras que explican qué se calculó</li>
+      </ul>
+    </section>
+    <div class="ad-slot ad-slot--rectangle" style="margin:0 auto 32px">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="faq">
+      <h2>Preguntas frecuentes</h2>
+      <div class="faq-list">
+        <details class="faq-item"><summary class="faq-question">¿Cómo calculo qué porcentaje es un número de otro? <span class="faq-icon">+</span></summary><div class="faq-answer">Selecciona el modo "X es qué % de Y", ingresa tu valor (X) y el total (Y), luego haz clic en Calcular. La fórmula utilizada es (X ÷ Y) × 100. Por ejemplo, 50 es el 25% de 200.</div></details>
+        <details class="faq-item"><summary class="faq-question">¿Cómo se calcula el cambio porcentual? <span class="faq-icon">+</span></summary><div class="faq-answer">Cambio porcentual = ((Nuevo Valor − Valor Original) ÷ |Valor Original|) × 100. Un resultado positivo significa un aumento; un resultado negativo significa una disminución. Por ejemplo, pasar de 100 a 150 es un cambio de +50%.</div></details>
+        <details class="faq-item"><summary class="faq-question">¿Cuál es la diferencia entre aumento porcentual y cambio porcentual? <span class="faq-icon">+</span></summary><div class="faq-answer">El cambio porcentual compara dos valores dados para encontrar cuánto cambió uno en relación al otro. El aumento/reducción porcentual toma un solo valor y aplica un porcentaje para calcular el nuevo valor resultante después del aumento o reducción.</div></details>
+        <details class="faq-item"><summary class="faq-question">¿Puedo calcular un descuento con esta herramienta? <span class="faq-icon">+</span></summary><div class="faq-answer">Sí. Usa el modo "Aumentar/Reducir %", ingresa el precio original como Valor, ingresa el porcentaje de descuento, haz clic en "Reducir en %" y luego en Calcular. El resultado muestra el precio final después de aplicar el descuento.</div></details>
+        <details class="faq-item"><summary class="faq-question">¿Esta calculadora maneja porcentajes decimales? <span class="faq-icon">+</span></summary><div class="faq-answer">Sí. Puedes ingresar valores decimales en cualquier campo, como 7,5% o 12,25. La calculadora maneja todas las entradas decimales y muestra resultados con hasta cuatro decimales, eliminando los ceros finales para mayor legibilidad.</div></details>
+      </div>
+    </section>
+    <section class="related-tools">
+      <h2>Herramientas relacionadas</h2>
+      <div class="tool-grid">
+        <a href="/es/loan-calculator/" class="tool-card"><img src="/assets/img/icon-calculator.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Calculadora de préstamos</h3><p>Calcula cuotas mensuales y el pago total del préstamo.</p><span class="tool-card-link">Usar →</span></a>
+        <a href="/es/bmi-calculator/" class="tool-card"><img src="/assets/img/icon-calculator.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Calculadora de IMC</h3><p>Calcula tu Índice de Masa Corporal en unidades métricas o imperiales.</p><span class="tool-card-link">Usar →</span></a>
+        <a href="/es/mortgage-calculator/" class="tool-card"><img src="/assets/img/icon-calculator.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Calculadora de hipoteca</h3><p>Calcula el pago mensual de hipoteca y el interés total.</p><span class="tool-card-link">Usar →</span></a>
+        <a href="/es/compound-interest-calculator/" class="tool-card"><img src="/assets/img/icon-calculator.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Calculadora de interés compuesto</h3><p>Ve cómo crecen tus inversiones con el interés compuesto.</p><span class="tool-card-link">Usar →</span></a>
+      </div>
+    </section>
+  </main>
+  <footer id="site-footer" class="site-footer"></footer>
+  <script src="/assets/js/shared.js" defer></script>
+  <script src="/assets/js/tools/percentage-calculator.js" defer></script>
+</body>
+</html>

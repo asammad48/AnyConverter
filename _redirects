@@ -1,0 +1,42 @@
+# Trailing slash redirects — EN tool pages
+/json-formatter           /json-formatter/          301
+/xml-formatter            /xml-formatter/           301
+/image-converter          /image-converter/         301
+/pdf-merge                /pdf-merge/               301
+/pdf-compress             /pdf-compress/            301
+/pdf-split                /pdf-split/               301
+/base64-encoder           /base64-encoder/          301
+/url-encoder              /url-encoder/             301
+/csv-to-sql               /csv-to-sql/              301
+/csv-query                /csv-query/               301
+/regex-tester             /regex-tester/            301
+/hash-generator           /hash-generator/          301
+/timestamp-converter      /timestamp-converter/     301
+/markdown-html            /markdown-html/           301
+/color-converter          /color-converter/         301
+
+# ES language pages
+/es                       /es/                      301
+/es/json-formatter        /es/json-formatter/       301
+/es/xml-formatter         /es/xml-formatter/        301
+/es/image-converter       /es/image-converter/      301
+/es/pdf-merge             /es/pdf-merge/            301
+/es/pdf-compress          /es/pdf-compress/         301
+/es/base64-encoder        /es/base64-encoder/       301
+/es/url-encoder           /es/url-encoder/          301
+/es/csv-to-sql            /es/csv-to-sql/           301
+/es/regex-tester          /es/regex-tester/         301
+/es/hash-generator        /es/hash-generator/       301
+
+# DA language pages
+/da                       /da/                      301
+/da/json-formatter        /da/json-formatter/       301
+/da/xml-formatter         /da/xml-formatter/        301
+/da/image-converter       /da/image-converter/      301
+/da/pdf-merge             /da/pdf-merge/            301
+/da/pdf-compress          /da/pdf-compress/         301
+/da/base64-encoder        /da/base64-encoder/       301
+/da/url-encoder           /da/url-encoder/          301
+/da/csv-to-sql            /da/csv-to-sql/           301
+/da/regex-tester          /da/regex-tester/         301
+/da/hash-generator        /da/hash-generator/       301

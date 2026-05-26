@@ -1,0 +1,88 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Daily Planner Online Free | AnyConverter</title>
+  <meta name="description" content="Plan your day with a free online daily planner. Add tasks with time and duration, check them off as you go. Each day is saved separately in your browser.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://anyconverter.io/daily-planner/">
+  <link rel="alternate" hreflang="en" href="https://anyconverter.io/daily-planner/"><link rel="alternate" hreflang="es" href="https://anyconverter.io/es/daily-planner/"><link rel="alternate" hreflang="da" href="https://anyconverter.io/da/daily-planner/"><link rel="alternate" hreflang="x-default" href="https://anyconverter.io/daily-planner/">
+  <meta property="og:type" content="website"><meta property="og:title" content="Daily Planner Online Free | AnyConverter"><meta property="og:description" content="Free online daily planner. Add tasks with times and durations. Browser-based, no signup."><meta property="og:url" content="https://anyconverter.io/daily-planner/"><meta property="og:site_name" content="AnyConverter">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" data-ad-client="ca-pub-XXXXXXXXXX" crossorigin="anonymous"></script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Daily Planner","url":"https://anyconverter.io/daily-planner/","description":"Free online daily planner with time-based task scheduling.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F4F6FF);color:var(--color-text,#1E1B4B)}
+    body{min-height:100vh;display:flex;flex-direction:column}
+    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8FE)}
+    .header-inner{max-width:1280px;width:100%;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;gap:32px}
+    .hero{padding:40px 24px 32px;max-width:1280px;margin:0 auto}
+    .hero h1{font-size:clamp(1.75rem,4vw,2.25rem);font-weight:700;line-height:1.2;margin-bottom:12px}
+    .hero-desc{font-size:1.0625rem;color:var(--color-text-2,#6B7280);max-width:680px;line-height:1.6}
+    @font-face{font-family:'Inter';font-display:swap}
+  </style>
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+  <header id="site-header" class="site-header"></header>
+  <main id="main-content">
+    <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/">Home</a></li><li><a href="/todo-list/">Productivity</a></li><li aria-current="page">Daily Planner</li></ol></nav>
+    <section class="hero">
+      <h1>Daily Planner Online</h1>
+      <p class="hero-desc">Schedule your day with time-based task entries. Set start time, task name, and optional duration. Navigate between days and mark tasks complete.</p>
+    </section>
+    <div class="tool-wrapper">
+      <div class="tool-zone">
+        <div style="padding:24px;max-width:640px">
+          <!-- Date selector -->
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:20px;flex-wrap:wrap">
+            <label style="font-size:13px;font-weight:600">Date:</label>
+            <input type="date" id="pl-date" style="padding:8px 12px;border:1px solid var(--color-border,#DDD8FE);border-radius:8px;font-size:14px">
+          </div>
+          <!-- Add task form -->
+          <div style="display:grid;grid-template-columns:90px 1fr 80px auto;gap:8px;align-items:end;margin-bottom:16px">
+            <div>
+              <label style="display:block;font-size:11px;font-weight:500;color:var(--color-text-2,#6B7280);margin-bottom:4px">Time</label>
+              <input type="time" id="pl-time" value="09:00" style="width:100%;padding:9px 8px;border:1px solid var(--color-border,#DDD8FE);border-radius:8px;font-size:13px">
+            </div>
+            <div>
+              <label style="display:block;font-size:11px;font-weight:500;color:var(--color-text-2,#6B7280);margin-bottom:4px">Task</label>
+              <input type="text" id="pl-task" placeholder="What are you doing?" style="width:100%;padding:9px 12px;border:1px solid var(--color-border,#DDD8FE);border-radius:8px;font-size:13px">
+            </div>
+            <div>
+              <label style="display:block;font-size:11px;font-weight:500;color:var(--color-text-2,#6B7280);margin-bottom:4px">Duration (min)</label>
+              <input type="number" id="pl-dur" min="0" max="480" placeholder="30" style="width:100%;padding:9px 8px;border:1px solid var(--color-border,#DDD8FE);border-radius:8px;font-size:13px;text-align:center">
+            </div>
+            <button class="btn btn-primary" id="pl-add" style="align-self:flex-end">Add</button>
+          </div>
+          <!-- Task list -->
+          <ul id="pl-list" style="list-style:none;border:1px solid var(--color-border,#DDD8FE);border-radius:10px;overflow:hidden;background:var(--color-surface,#fff);min-height:80px;padding:0 14px"></ul>
+        </div>
+      </div>
+      <aside class="tool-side">
+        <div class="ss-divider">Related Tools</div>
+        <a href="/todo-list/" class="ss-related-link"><img src="/assets/img/icon-todo.svg" alt="" width="18" height="18">To-do List</a>
+        <a href="/habit-tracker/" class="ss-related-link"><img src="/assets/img/icon-habit.svg" alt="" width="18" height="18">Habit Tracker</a>
+        <a href="/meeting-timer/" class="ss-related-link"><img src="/assets/img/icon-meeting.svg" alt="" width="18" height="18">Meeting Timer</a>
+        <div style="margin-top:16px"><p class="ad-label">Advertisement</p>
+          <div class="ad-slot" style="min-height:250px"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div>
+        </div>
+      </aside>
+    </div>
+    <div class="ad-slot ad-slot--leaderboard"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div>
+    <section class="how-to-use"><h2>How to Use the Daily Planner</h2><ol class="steps"><li><strong>Step 1</strong> — Select a date (defaults to today).</li><li><strong>Step 2</strong> — Enter a time, task description, and optional duration in minutes.</li><li><strong>Step 3</strong> — Click <em>Add</em> — tasks are sorted by time automatically.</li><li><strong>Step 4</strong> — Check the checkbox to mark a task as done, or × to delete it.</li></ol></section>
+    <section class="features"><h2>Features</h2><ul class="features-list"><li>Per-day storage — each date has its own task list</li><li>Tasks sorted chronologically by start time</li><li>Optional duration field in minutes</li><li>Check off tasks as you complete them</li><li>Data saves to localStorage automatically</li></ul></section>
+    <div class="ad-slot ad-slot--rectangle" style="margin:0 auto 32px"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div>
+    <section class="faq"><h2>Frequently Asked Questions</h2><div class="faq-list">
+      <details class="faq-item"><summary class="faq-question">Can I view plans for past or future dates? <span class="faq-icon">+</span></summary><div class="faq-answer">Yes. Use the date picker to navigate to any date. Each day's plan is stored separately in localStorage under its own key.</div></details>
+      <details class="faq-item"><summary class="faq-question">Is there a limit to how many tasks I can add per day? <span class="faq-icon">+</span></summary><div class="faq-answer">No hard limit. You can add as many tasks as you need — the list scrolls to accommodate all entries.</div></details>
+    </div></section>
+  </main>
+  <footer id="site-footer" class="site-footer"></footer>
+  <script src="/assets/js/shared.js" defer></script>
+  <script src="/assets/js/tools/daily-planner.js" defer></script>
+</body>
+</html>

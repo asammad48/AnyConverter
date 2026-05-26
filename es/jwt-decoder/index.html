@@ -1,0 +1,144 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Decodificador JWT Online Gratis | AnyConverter</title>
+  <meta name="description" content="Decodifica e inspecciona tokens JWT (JSON Web Tokens) online gratis. Ve el encabezado, payload y comprueba la expiración. Completamente seguro — sin servidor.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://anyconverter.io/es/jwt-decoder/">
+  <link rel="alternate" hreflang="en" href="https://anyconverter.io/jwt-decoder/">
+  <link rel="alternate" hreflang="es" href="https://anyconverter.io/es/jwt-decoder/">
+  <link rel="alternate" hreflang="da" href="https://anyconverter.io/da/jwt-decoder/">
+  <link rel="alternate" hreflang="x-default" href="https://anyconverter.io/jwt-decoder/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Decodificador JWT Online Gratis | AnyConverter">
+  <meta property="og:description" content="Decodifica e inspecciona tokens JWT online gratis. Ve el encabezado, payload y comprueba la expiración. Completamente seguro — sin servidor.">
+  <meta property="og:url" content="https://anyconverter.io/es/jwt-decoder/">
+  <meta property="og:site_name" content="AnyConverter">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" data-ad-client="ca-pub-XXXXXXXXXX" crossorigin="anonymous"></script>
+  <!-- Replace ca-pub-XXXXXXXXXX with your real AdSense publisher ID -->
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Decodificador JWT","url":"https://anyconverter.io/es/jwt-decoder/","description":"Decodifica e inspecciona tokens JWT online gratis. 100% del lado del cliente — tus tokens nunca salen del navegador.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F4F6FF);color:var(--color-text,#1E1B4B)}
+    body{min-height:100vh;display:flex;flex-direction:column}
+    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8FE)}
+    .header-inner{max-width:1280px;width:100%;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;gap:32px}
+    .hero{padding:40px 24px 32px;max-width:1280px;margin:0 auto}
+    .hero h1{font-size:clamp(1.75rem,4vw,2.25rem);font-weight:700;line-height:1.2;margin-bottom:12px}
+    .hero-desc{font-size:1.0625rem;color:var(--color-text-2,#6B7280);max-width:680px;line-height:1.6}
+    @font-face{font-family:'Inter';font-display:swap}
+  </style>
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+  <header id="site-header" class="site-header"></header>
+  <main id="main-content">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol><li><a href="/es/">Inicio</a></li><li aria-current="page">Decodificador JWT</li></ol>
+    </nav>
+    <section class="hero">
+      <h1>Decodificador JWT</h1>
+      <p class="hero-desc">Decodifica e inspecciona cualquier token JWT al instante. Ve el encabezado codificado en Base64, el payload JSON y el estado de expiración. Todo ocurre en tu navegador — el token nunca sale de tu dispositivo.</p>
+    </section>
+    <div class="tool-wrapper">
+      <div class="tool-zone">
+        <div style="padding:24px">
+          <div style="margin-bottom:12px">
+            <label style="display:block;font-size:13px;font-weight:500;margin-bottom:6px" for="jwt-input">Token JWT</label>
+            <textarea id="jwt-input" placeholder="Pega tu token JWT aquí (eyJ...)" style="width:100%;min-height:100px;padding:12px;border:1px solid var(--color-border,#DDD8FE);border-radius:8px;font-size:13px;font-family:monospace;resize:vertical" spellcheck="false"></textarea>
+          </div>
+          <div class="action-bar" style="margin-bottom:16px">
+            <button class="btn btn-primary" id="btn-decode-jwt">Decodificar</button>
+            <button class="btn btn-secondary" id="btn-clear-jwt">Limpiar</button>
+          </div>
+          <div id="jwt-result" style="display:none">
+            <div style="margin-bottom:12px">
+              <div style="font-size:13px;font-weight:600;color:var(--color-primary,#4F46E5);margin-bottom:6px">Encabezado</div>
+              <pre id="jwt-header" style="background:var(--color-bg,#F4F6FF);border:1px solid var(--color-border,#DDD8FE);border-radius:8px;padding:12px;font-size:13px;overflow-x:auto;white-space:pre-wrap;word-break:break-all"></pre>
+            </div>
+            <div style="margin-bottom:12px">
+              <div style="font-size:13px;font-weight:600;color:var(--color-success,#059669);margin-bottom:6px">Payload</div>
+              <pre id="jwt-payload" style="background:var(--color-bg,#F4F6FF);border:1px solid var(--color-border,#DDD8FE);border-radius:8px;padding:12px;font-size:13px;overflow-x:auto;white-space:pre-wrap;word-break:break-all"></pre>
+            </div>
+            <div>
+              <div style="font-size:13px;font-weight:600;color:var(--color-error,#DC2626);margin-bottom:6px">Firma</div>
+              <div id="jwt-sig" style="background:var(--color-bg,#F4F6FF);border:1px solid var(--color-border,#DDD8FE);border-radius:8px;padding:12px;font-size:13px;font-family:monospace;word-break:break-all"></div>
+            </div>
+            <div id="jwt-exp-info" style="margin-top:12px;padding:10px 12px;border-radius:8px;font-size:13px;display:none"></div>
+          </div>
+          <div id="jwt-error" style="display:none;color:var(--color-error,#DC2626);font-size:13px;margin-top:8px"></div>
+        </div>
+      </div>
+      <aside class="tool-side" aria-label="Opciones">
+        <div class="ss-divider">Herramientas relacionadas</div>
+        <a href="/es/uuid-generator/" class="ss-related-link"><img src="/assets/img/icon-hash.svg" alt="" width="18" height="18" loading="lazy">Generador de UUID</a>
+        <a href="/es/hash-generator/" class="ss-related-link"><img src="/assets/img/icon-hash.svg" alt="" width="18" height="18" loading="lazy">Generador de Hash</a>
+        <a href="/es/base64-encoder/" class="ss-related-link"><img src="/assets/img/icon-base64.svg" alt="" width="18" height="18" loading="lazy">Codificador Base64</a>
+        <div style="margin-top:16px">
+          <p class="ad-label">Publicidad</p>
+          <div class="ad-slot" style="min-height:250px">
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+            <!-- Replace ca-pub-XXXXXXXXXX and data-ad-slot="XXXXXXXXXX" with your IDs -->
+          </div>
+        </div>
+      </aside>
+    </div>
+    <div class="ad-slot ad-slot--leaderboard">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="how-to-use">
+      <h2>Cómo Usar el Decodificador JWT</h2>
+      <ol class="steps">
+        <li><strong>Paso 1</strong> — Copia tu token JWT desde tu aplicación, respuesta de API o herramientas de desarrollador del navegador.</li>
+        <li><strong>Paso 2</strong> — Pega el token en el área de texto. El decodificador lo procesa automáticamente mientras escribes.</li>
+        <li><strong>Paso 3</strong> — Ve el encabezado, payload y firma decodificados. Si hay un claim de expiración, la herramienta muestra si el token sigue siendo válido.</li>
+      </ol>
+    </section>
+    <section class="features">
+      <h2>Características</h2>
+      <ul class="features-list">
+        <li>Decodifica cualquier JWT estándar con tres partes codificadas en Base64url</li>
+        <li>Muestra el encabezado y payload como JSON formateado</li>
+        <li>Comprobación automática de expiración con indicador de color (válido/expirado)</li>
+        <li>Decodificación en tiempo real mientras escribes o pegas</li>
+        <li>Mensajes de error claros para tokens malformados</li>
+        <li>100% del lado del cliente — los tokens nunca salen de tu navegador</li>
+      </ul>
+    </section>
+    <div class="ad-slot ad-slot--rectangle" style="margin:0 auto 32px">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="faq">
+      <h2>Preguntas Frecuentes</h2>
+      <div class="faq-list">
+        <details class="faq-item"><summary class="faq-question">¿Qué es un token JWT? <span class="faq-icon">+</span></summary><div class="faq-answer">JWT (JSON Web Token) es un estándar abierto (RFC 7519) para transmitir información de forma segura entre partes como un objeto JSON. Los JWTs se usan comúnmente para autenticación y autorización en aplicaciones web. Constan de tres partes: encabezado, payload y firma, separadas por puntos.</div></details>
+        <details class="faq-item"><summary class="faq-question">¿Es seguro pegar mi token JWT aquí? <span class="faq-icon">+</span></summary><div class="faq-answer">Este decodificador es 100% del lado del cliente. Tu token se decodifica completamente en tu navegador usando JavaScript y nunca se envía a ningún servidor. Sin embargo, para tokens de producción sensibles a la seguridad, siempre es más seguro decodificar localmente usando la biblioteca JWT de tu lenguaje de programación.</div></details>
+        <details class="faq-item"><summary class="faq-question">¿Puede esta herramienta verificar la firma JWT? <span class="faq-icon">+</span></summary><div class="faq-answer">No. La verificación de firma requiere la clave secreta o la clave pública usada para firmar el token. Esta herramienta solo decodifica el encabezado y el payload (que son simplemente codificados en Base64url, no cifrados) y muestra la cadena de firma sin procesar. Usa tu biblioteca JWT del lado del servidor para la verificación real de firmas.</div></details>
+        <details class="faq-item"><summary class="faq-question">¿Qué algoritmos JWT están soportados? <span class="faq-icon">+</span></summary><div class="faq-answer">El decodificador funciona con cualquier JWT estándar independientemente del algoritmo (HS256, RS256, ES256, etc.) porque solo decodifica el encabezado y el payload codificados en Base64url. El campo de algoritmo en el encabezado se muestra pero la firma en sí no se verifica.</div></details>
+        <details class="faq-item"><summary class="faq-question">¿Por qué la comprobación de expiración muestra la hora incorrecta? <span class="faq-icon">+</span></summary><div class="faq-answer">La expiración se muestra en la zona horaria local de tu navegador usando Date.toLocaleString() de JavaScript. Las claims exp de JWT son marcas de tiempo Unix (segundos desde el 1 de enero de 1970 UTC). La conversión a hora local la realiza automáticamente el decodificador.</div></details>
+      </div>
+    </section>
+    <section class="related-tools">
+      <h2>Herramientas Relacionadas</h2>
+      <div class="tool-grid">
+        <a href="/es/uuid-generator/" class="tool-card"><img src="/assets/img/icon-hash.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Generador de UUID</h3><p>Genera identificadores UUID v4 seguros en masa al instante.</p><span class="tool-card-link">Usar →</span></a>
+        <a href="/es/hash-generator/" class="tool-card"><img src="/assets/img/icon-hash.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Generador de Hash</h3><p>Genera hashes MD5, SHA-1, SHA-256 y SHA-512 al instante.</p><span class="tool-card-link">Usar →</span></a>
+        <a href="/es/base64-encoder/" class="tool-card"><img src="/assets/img/icon-base64.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Codificador Base64</h3><p>Codifica y decodifica cadenas Base64 al instante en tu navegador.</p><span class="tool-card-link">Usar →</span></a>
+        <a href="/es/password-generator/" class="tool-card"><img src="/assets/img/icon-lock.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Generador de Contraseñas</h3><p>Genera contraseñas fuertes y seguras con configuración personalizada.</p><span class="tool-card-link">Usar →</span></a>
+      </div>
+    </section>
+  </main>
+  <footer id="site-footer" class="site-footer"></footer>
+  <script src="/assets/js/shared.js" defer></script>
+  <script src="/assets/js/tools/jwt-decoder.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,140 @@
+﻿<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tekst Forskels Checker Online Gratis | AnyConverter</title>
+  <meta name="description" content="Sammenlign to tekster og fremhæv forskelle online gratis. Se tilføjede og fjernede linjer øjeblikkeligt. Ingen filupload, ingen tilmelding nødvendig.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://anyconverter.io/da/text-diff-checker/">
+  <link rel="alternate" hreflang="en" href="https://anyconverter.io/text-diff-checker/">
+  <link rel="alternate" hreflang="es" href="https://anyconverter.io/es/text-diff-checker/">
+  <link rel="alternate" hreflang="da" href="https://anyconverter.io/da/text-diff-checker/">
+  <link rel="alternate" hreflang="x-default" href="https://anyconverter.io/text-diff-checker/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Tekst Forskels Checker Online Gratis | AnyConverter">
+  <meta property="og:description" content="Sammenlign to tekster og fremhæv forskelle online gratis. Øjeblikkelige resultater, ingen tilmelding nødvendig.">
+  <meta property="og:url" content="https://anyconverter.io/da/text-diff-checker/">
+  <meta property="og:site_name" content="AnyConverter">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" data-ad-client="ca-pub-XXXXXXXXXX" crossorigin="anonymous"></script>
+  <!-- Replace ca-pub-XXXXXXXXXX with your real AdSense publisher ID -->
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Tekst Forskels Checker","url":"https://anyconverter.io/da/text-diff-checker/","description":"Sammenlign to tekster og find forskelle online gratis. Fremhæver tilføjede, fjernede og uændrede linjer med farvekodet visning.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F4F6FF);color:var(--color-text,#1E1B4B)}
+    body{min-height:100vh;display:flex;flex-direction:column}
+    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8FE)}
+    .header-inner{max-width:1280px;width:100%;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;gap:32px}
+    .hero{padding:40px 24px 32px;max-width:1280px;margin:0 auto}
+    .hero h1{font-size:clamp(1.75rem,4vw,2.25rem);font-weight:700;line-height:1.2;margin-bottom:12px}
+    .hero-desc{font-size:1.0625rem;color:var(--color-text-2,#6B7280);max-width:680px;line-height:1.6}
+    @font-face{font-family:'Inter';font-display:swap}
+  </style>
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+  <header id="site-header" class="site-header"></header>
+  <main id="main-content">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol><li><a href="/da/">Hjem</a></li><li aria-current="page">Tekst Forskels Checker</li></ol>
+    </nav>
+    <section class="hero">
+      <h1>Tekst Forskels Checker</h1>
+      <p class="hero-desc">Sammenlign to blokke af tekst og se forskelle fremhævet øjeblikkeligt. Grønne linjer er tilføjede, røde linjer er fjernede. Perfekt til at sammenligne kode, dokumenter eller indhold.</p>
+    </section>
+    <div class="tool-wrapper">
+      <div class="tool-zone">
+        <div style="padding:24px">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px">
+            <div>
+              <label style="display:block;font-size:13px;font-weight:500;margin-bottom:6px" for="diff-orig">Original tekst</label>
+              <textarea id="diff-orig" placeholder="Indsæt original tekst her..." style="width:100%;min-height:200px;padding:12px;border:1px solid var(--color-border,#DDD8FE);border-radius:8px;font-size:14px;resize:vertical;font-family:monospace" spellcheck="false"></textarea>
+            </div>
+            <div>
+              <label style="display:block;font-size:13px;font-weight:500;margin-bottom:6px" for="diff-new">Ændret tekst</label>
+              <textarea id="diff-new" placeholder="Indsæt ændret tekst her..." style="width:100%;min-height:200px;padding:12px;border:1px solid var(--color-border,#DDD8FE);border-radius:8px;font-size:14px;resize:vertical;font-family:monospace" spellcheck="false"></textarea>
+            </div>
+          </div>
+          <div class="action-bar" style="margin-bottom:16px">
+            <button class="btn btn-primary" id="btn-diff">Sammenlign</button>
+            <button class="btn btn-secondary" id="btn-diff-clear">Ryd</button>
+          </div>
+          <div id="diff-stats" style="display:none;display:flex;gap:12px;margin-bottom:12px">
+            <div class="stat-card" style="flex:1"><div class="stat-val" id="diff-added">0</div><div class="stat-lbl" style="color:var(--color-success,#059669)">Tilføjede linjer</div></div>
+            <div class="stat-card" style="flex:1"><div class="stat-val" id="diff-removed">0</div><div class="stat-lbl" style="color:var(--color-pdf,#EF4444)">Fjernede linjer</div></div>
+            <div class="stat-card" style="flex:1"><div class="stat-val" id="diff-unchanged">0</div><div class="stat-lbl">Uændrede</div></div>
+          </div>
+          <div id="diff-output" style="display:none;background:var(--color-code-bg,#0F0F1A);border-radius:8px;padding:16px;max-height:400px;overflow-y:auto;font-family:monospace;font-size:13px;line-height:1.6"></div>
+        </div>
+      </div>
+      <aside class="tool-side" aria-label="Muligheder">
+        <div class="ss-divider">Relaterede værktøjer</div>
+        <a href="/da/word-counter/" class="ss-related-link"><img src="/assets/img/icon-text.svg" alt="" width="18" height="18" loading="lazy">Ordtæller</a>
+        <a href="/da/json-formatter/" class="ss-related-link"><img src="/assets/img/icon-json.svg" alt="" width="18" height="18" loading="lazy">JSON Formatter</a>
+        <a href="/da/character-counter/" class="ss-related-link"><img src="/assets/img/icon-text.svg" alt="" width="18" height="18" loading="lazy">Tegntæller</a>
+        <div style="margin-top:16px">
+          <p class="ad-label">Reklame</p>
+          <div class="ad-slot" style="min-height:250px">
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+            <!-- Replace ca-pub-XXXXXXXXXX and data-ad-slot="XXXXXXXXXX" with your IDs -->
+          </div>
+        </div>
+      </aside>
+    </div>
+    <div class="ad-slot ad-slot--leaderboard">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="how-to-use">
+      <h2>Sådan bruges Tekst Forskels Checkeren</h2>
+      <ol class="steps">
+        <li><strong>Trin 1</strong> — Indsæt den originale tekst i venstre panel.</li>
+        <li><strong>Trin 2</strong> — Indsæt den reviderede tekst i højre panel.</li>
+        <li><strong>Trin 3</strong> — Klik Sammenlign for at se forskelle fremhævet — grønt for tilføjede linjer, rødt for fjernede.</li>
+      </ol>
+    </section>
+    <section class="features">
+      <h2>Funktioner</h2>
+      <ul class="features-list">
+        <li>Linje-for-linje tekstsammenligning</li>
+        <li>Grøn fremhævning for tilføjede linjer, rød for fjernede</li>
+        <li>Viser antal ændrede, tilføjede og fjernede linjer</li>
+        <li>Understøtter kode, prosa og ethvert tekstformat</li>
+        <li>Ingen filupload — kører helt i browseren</li>
+        <li>Øjeblikkelige resultater</li>
+      </ul>
+    </section>
+    <div class="ad-slot ad-slot--rectangle" style="margin:0 auto 32px">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="faq">
+      <h2>Ofte stillede spørgsmål</h2>
+      <div class="faq-list">
+        <details class="faq-item"><summary class="faq-question">Hvordan fungerer diff-algoritmen? <span class="faq-icon">+</span></summary><div class="faq-answer">Værktøjet bruger Longest Common Subsequence (LCS)-algoritmen, det samme grundlag der bruges af værktøjer som git diff. Den finder det største sæt af linjer der forekommer i begge tekster i samme rækkefølge, og markerer derefter alt andet som tilføjet eller fjernet.</div></details>
+        <details class="faq-item"><summary class="faq-question">Sendes min tekst til en server? <span class="faq-icon">+</span></summary><div class="faq-answer">Nej. Al sammenligning sker helt inde i din browser ved hjælp af JavaScript. Din tekst forlader aldrig din enhed, hvilket gør det sikkert at bruge med følsomt eller fortroligt indhold.</div></details>
+        <details class="faq-item"><summary class="faq-question">Kan jeg sammenligne kodefiler? <span class="faq-icon">+</span></summary><div class="faq-answer">Ja. Værktøjet fungerer med enhver ren tekst, herunder kildekode på ethvert sprog, JSON, XML, YAML, konfigurationsfiler og mere. Indsæt blot filindholdet i begge tekstområder.</div></details>
+        <details class="faq-item"><summary class="faq-question">Hvad betyder "Uændrede"-tallet? <span class="faq-icon">+</span></summary><div class="faq-answer">Uændrede linjer er linjer der eksisterer i både den originale og den ændrede tekst på tilsvarende positioner. Et højt antal uændrede linjer betyder at de to tekster er meget ens.</div></details>
+        <details class="faq-item"><summary class="faq-question">Er der en størrelsesgrænse for den tekst jeg kan sammenligne? <span class="faq-icon">+</span></summary><div class="faq-answer">Der er ingen påtvungen grænse, men meget store tekster (tusindvis af linjer) kan tage et øjeblik at behandle på grund af LCS-algoritmens kompleksitet. For bedst mulig ydeevne bør du sammenligne tekster under et par tusinde linjer.</div></details>
+      </div>
+    </section>
+    <section class="related-tools">
+      <h2>Relaterede Værktøjer</h2>
+      <div class="tool-grid">
+        <a href="/da/word-counter/" class="tool-card"><img src="/assets/img/icon-text.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Ordtæller</h3><p>Tæl ord, tegn, sætninger og afsnit øjeblikkeligt.</p><span class="tool-card-link">Brug →</span></a>
+        <a href="/da/json-formatter/" class="tool-card"><img src="/assets/img/icon-json.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>JSON Formatter</h3><p>Formater og valider JSON med syntaksfremhævning.</p><span class="tool-card-link">Brug →</span></a>
+        <a href="/da/character-counter/" class="tool-card"><img src="/assets/img/icon-text.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Tegntæller</h3><p>Tæl tegn, ord og bytes med platformsgrænsesporing.</p><span class="tool-card-link">Brug →</span></a>
+        <a href="/da/text-case-converter/" class="tool-card"><img src="/assets/img/icon-text.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Tekst Store/Små Bogstaver Konverter</h3><p>Konverter tekst mellem store bogstaver, små bogstaver, titelformat og mere.</p><span class="tool-card-link">Brug →</span></a>
+      </div>
+    </section>
+  </main>
+  <footer id="site-footer" class="site-footer"></footer>
+  <script src="/assets/js/shared.js" defer></script>
+  <script src="/assets/js/tools/text-diff-checker.js" defer></script>
+</body>
+</html>

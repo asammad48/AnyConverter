@@ -1,0 +1,196 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GST &amp; VAT Calculator Online Free | AnyConverter</title>
+  <meta name="description" content="Calculate GST or VAT for any amount online for free. Supports add or remove tax mode with presets for Australia, India, UK, EU, and Nordic countries. Instant results.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://anyconverter.io/gst-vat-calculator/">
+  <link rel="alternate" hreflang="en" href="https://anyconverter.io/gst-vat-calculator/">
+  <link rel="alternate" hreflang="es" href="https://anyconverter.io/es/gst-vat-calculator/">
+  <link rel="alternate" hreflang="da" href="https://anyconverter.io/da/gst-vat-calculator/">
+  <link rel="alternate" hreflang="x-default" href="https://anyconverter.io/gst-vat-calculator/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="GST &amp; VAT Calculator Online Free | AnyConverter">
+  <meta property="og:description" content="Calculate GST or VAT for any amount online for free. Supports add or remove tax mode with presets for Australia, India, UK, EU, and Nordic countries.">
+  <meta property="og:url" content="https://anyconverter.io/gst-vat-calculator/">
+  <meta property="og:site_name" content="AnyConverter">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" data-ad-client="ca-pub-XXXXXXXXXX" crossorigin="anonymous"></script>
+  <!-- Replace ca-pub-XXXXXXXXXX with your real AdSense publisher ID -->
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"GST / VAT Calculator","url":"https://anyconverter.io/gst-vat-calculator/","description":"Calculate GST or VAT for any amount online for free. Supports add or remove tax mode.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F4F6FF);color:var(--color-text,#1E1B4B)}
+    body{min-height:100vh;display:flex;flex-direction:column}
+    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8FE)}
+    .header-inner{max-width:1280px;width:100%;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;gap:32px}
+    .hero{padding:40px 24px 32px;max-width:1280px;margin:0 auto}
+    .hero h1{font-size:clamp(1.75rem,4vw,2.25rem);font-weight:700;line-height:1.2;margin-bottom:12px}
+    .hero-desc{font-size:1.0625rem;color:var(--color-text-2,#6B7280);max-width:680px;line-height:1.6}
+    @font-face{font-family:'Inter';font-display:swap}
+  </style>
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+  <header id="site-header" class="site-header"></header>
+  <main id="main-content">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol><li><a href="/">Home</a></li><li aria-current="page">GST / VAT Calculator</li></ol>
+    </nav>
+    <section class="hero">
+      <h1>GST / VAT Calculator</h1>
+      <p class="hero-desc">Add or remove GST and VAT from any amount instantly. Choose from tax rate presets for Australia, India, UK, EU, and Nordic countries, or enter a custom rate. No signup needed.</p>
+    </section>
+    <div class="tool-wrapper">
+      <div class="tool-zone">
+        <div style="padding:24px">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px">
+            <div>
+              <label style="display:block;font-size:13px;font-weight:500;margin-bottom:6px" for="gst-amount">Amount ($)</label>
+              <input type="number" id="gst-amount" placeholder="100" min="0" step="0.01" style="width:100%;padding:10px 12px;border:1px solid var(--color-border,#DDD8FE);border-radius:8px;font-size:15px">
+            </div>
+            <div>
+              <label style="display:block;font-size:13px;font-weight:500;margin-bottom:6px" for="gst-rate">Tax Rate (%)</label>
+              <div style="display:flex;gap:6px">
+                <input type="number" id="gst-rate" placeholder="10" step="0.01" min="0" style="flex:1;padding:10px 12px;border:1px solid var(--color-border,#DDD8FE);border-radius:8px;font-size:15px">
+                <select id="gst-preset" style="padding:10px 8px;border:1px solid var(--color-border,#DDD8FE);border-radius:8px;font-size:13px">
+                  <option value="">Presets</option>
+                  <option value="5">5% (India GST)</option>
+                  <option value="10">10% (Australia GST)</option>
+                  <option value="12">12% (India GST)</option>
+                  <option value="15">15% (NZ/Canada)</option>
+                  <option value="18">18% (India GST)</option>
+                  <option value="20">20% (UK VAT)</option>
+                  <option value="21">21% (EU VAT)</option>
+                  <option value="25">25% (Nordic VAT)</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div style="margin-bottom:16px">
+            <label style="font-size:13px;font-weight:500">Amount is:</label>
+            <div style="display:flex;gap:8px;margin-top:6px">
+              <label style="display:flex;align-items:center;gap:6px;font-size:14px;cursor:pointer;padding:8px 12px;border:1px solid var(--color-border,#DDD8FE);border-radius:8px"><input type="radio" name="gst-type" value="excl" checked> Excluding tax</label>
+              <label style="display:flex;align-items:center;gap:6px;font-size:14px;cursor:pointer;padding:8px 12px;border:1px solid var(--color-border,#DDD8FE);border-radius:8px"><input type="radio" name="gst-type" value="incl"> Including tax</label>
+            </div>
+          </div>
+          <div class="action-bar" style="margin-bottom:20px">
+            <button class="btn btn-primary" id="btn-calc-gst">Calculate Tax</button>
+            <button class="btn btn-secondary" id="btn-reset-gst">Reset</button>
+          </div>
+          <div id="gst-result" style="display:none">
+            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px">
+              <div class="stat-card"><div class="stat-val" id="gst-base">—</div><div class="stat-lbl">Base Amount</div></div>
+              <div class="stat-card"><div class="stat-val" id="gst-tax-amt">—</div><div class="stat-lbl">Tax Amount</div></div>
+              <div class="stat-card"><div class="stat-val" id="gst-total">—</div><div class="stat-lbl">Total (incl. tax)</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <aside class="tool-side" aria-label="Options">
+        <div class="ss-divider">Related Tools</div>
+        <a href="/discount-calculator/" class="ss-link"><img src="/assets/img/icon-calculator.svg" alt="" width="18" height="18" loading="lazy"> Discount Calculator</a>
+        <a href="/tip-calculator/" class="ss-link"><img src="/assets/img/icon-calculator.svg" alt="" width="18" height="18" loading="lazy"> Tip Calculator</a>
+        <a href="/percentage-calculator/" class="ss-link"><img src="/assets/img/icon-calculator.svg" alt="" width="18" height="18" loading="lazy"> Percentage Calculator</a>
+        <div style="margin-top:16px">
+          <p class="ad-label">Advertisement</p>
+          <div class="ad-slot" style="min-height:250px">
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+            <!-- Replace ca-pub-XXXXXXXXXX and data-ad-slot="XXXXXXXXXX" with your IDs -->
+          </div>
+        </div>
+      </aside>
+    </div>
+    <div class="ad-slot ad-slot--leaderboard">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="how-to-use">
+      <h2>How to Use GST / VAT Calculator</h2>
+      <ol class="steps">
+        <li><strong>Step 1</strong> — Enter your amount and select or type a tax rate. Use a preset (like 10% for Australia GST or 20% for UK VAT) or enter any custom rate.</li>
+        <li><strong>Step 2</strong> — Choose whether your amount already includes tax ("Including tax") or is the pre-tax base ("Excluding tax").</li>
+        <li><strong>Step 3</strong> — Click "Calculate Tax" to see the base amount, tax amount, and total including tax.</li>
+      </ol>
+    </section>
+    <section class="features">
+      <h2>Features</h2>
+      <ul class="features-list">
+        <li>Add tax to a base amount or extract tax from a tax-inclusive price</li>
+        <li>Eight preset tax rates covering Australia, India, UK, EU, NZ, Canada, and Nordic countries</li>
+        <li>Custom tax rate input for any percentage</li>
+        <li>Shows base amount, tax amount, and total simultaneously</li>
+        <li>Supports any currency — just change the amount</li>
+        <li>Instant results with no page reload required</li>
+      </ul>
+    </section>
+    <div class="ad-slot ad-slot--rectangle" style="margin:0 auto 32px">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="faq">
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary class="faq-question">What is the difference between GST and VAT? <span class="faq-icon">+</span></summary>
+          <div class="faq-answer">GST (Goods and Services Tax) and VAT (Value Added Tax) are both consumption taxes applied at each stage of production. GST is the common term in Australia, Canada, India, and New Zealand, while VAT is used in the UK, EU, and most of Europe. Functionally they work the same way.</div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-question">How do I remove GST from a total price? <span class="faq-icon">+</span></summary>
+          <div class="faq-answer">Select "Including tax" mode, enter the tax-inclusive price and tax rate, then click Calculate. The tool divides the price by (1 + rate/100) to extract the base amount and shows the tax component separately.</div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-question">What are the GST rates in Australia? <span class="faq-icon">+</span></summary>
+          <div class="faq-answer">Australia applies a flat 10% GST on most goods and services. Some items like fresh food, medical services, and educational courses are GST-exempt. Use the "10% (Australia GST)" preset for quick calculations.</div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-question">What VAT rate should I use for the UK? <span class="faq-icon">+</span></summary>
+          <div class="faq-answer">The standard UK VAT rate is 20%. A reduced rate of 5% applies to certain goods such as domestic energy and children's car seats. There is also a zero rate (0%) for essentials like food and children's clothing. Use the "20% (UK VAT)" preset for standard rate calculations.</div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-question">Can I use this for invoice calculations? <span class="faq-icon">+</span></summary>
+          <div class="faq-answer">Yes. Enter your net invoice amount in "Excluding tax" mode with the applicable tax rate to calculate the tax amount and the final amount to charge your customer. Always verify against official tax authority guidelines for compliance purposes.</div>
+        </details>
+      </div>
+    </section>
+    <section class="related-tools">
+      <h2>Related Tools</h2>
+      <div class="tool-grid">
+        <a href="/discount-calculator/" class="tool-card">
+          <img src="/assets/img/icon-calculator.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy">
+          <h3>Discount Calculator</h3>
+          <p>Find sale price, savings, and discount percentage instantly.</p>
+          <span class="tool-card-link">Try it →</span>
+        </a>
+        <a href="/tip-calculator/" class="tool-card">
+          <img src="/assets/img/icon-calculator.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy">
+          <h3>Tip Calculator</h3>
+          <p>Calculate tip amount and split the bill per person.</p>
+          <span class="tool-card-link">Try it →</span>
+        </a>
+        <a href="/percentage-calculator/" class="tool-card">
+          <img src="/assets/img/icon-calculator.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy">
+          <h3>Percentage Calculator</h3>
+          <p>Calculate percentages, increases, and decreases in seconds.</p>
+          <span class="tool-card-link">Try it →</span>
+        </a>
+        <a href="/currency-converter/" class="tool-card">
+          <img src="/assets/img/icon-currency.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy">
+          <h3>Currency Converter</h3>
+          <p>Convert between 150+ currencies with live exchange rates.</p>
+          <span class="tool-card-link">Try it →</span>
+        </a>
+      </div>
+    </section>
+  </main>
+  <footer id="site-footer" class="site-footer"></footer>
+  <script src="/assets/js/shared.js" defer></script>
+  <script src="/assets/js/tools/gst-vat-calculator.js" defer></script>
+</body>
+</html>

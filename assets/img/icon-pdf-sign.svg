@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40">
+  <defs>
+    <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#5B21B6"/>
+      <stop offset="100%" stop-color="#C4B5FD"/>
+    </linearGradient>
+  </defs>
+  <rect width="40" height="40" rx="10" fill="url(#g)"/>
+  <path d="M9,6 L21,6 L26,11 L26,34 L9,34 Z" fill="white" opacity="0.2"/>
+  <path d="M9,6 L21,6 L26,11 L26,34 L9,34 Z" fill="none" stroke="white" stroke-width="1.8" stroke-linejoin="round"/>
+  <path d="M21,6 L21,11 L26,11" fill="none" stroke="white" stroke-width="1.5" stroke-linejoin="round"/>
+  <!-- Signature line -->
+  <line x1="11" y1="30" x2="24" y2="30" stroke="white" stroke-width="1.4" stroke-linecap="round" opacity="0.6"/>
+  <!-- Handwritten signature curve -->
+  <path d="M12,27 C13,23 15,22 16,24 C17,26 18,22 19,21 C20,20 21,22 22,24 C23,26 24,25 25,23" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Pen icon (bottom right) -->
+  <path d="M27,28 L32,23 L35,26 L30,31 Z" fill="white" opacity="0.85"/>
+  <path d="M32,23 L34,21 L36,23 L35,26 Z" fill="white"/>
+  <line x1="27" y1="28" x2="26" y2="31" stroke="white" stroke-width="1.5" stroke-linecap="round" opacity="0.7"/>
+</svg>

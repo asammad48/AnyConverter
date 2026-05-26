@@ -1,0 +1,403 @@
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--font-sans)}
+.shell{background:var(--color-background-tertiary);border-radius:var(--border-radius-lg);overflow:hidden;border:0.5px solid var(--color-border-tertiary)}
+.topbar{background:var(--color-background-primary);border-bottom:0.5px solid var(--color-border-tertiary);padding:0 16px;height:44px;display:flex;align-items:center;gap:12px}
+.logo{font-size:13px;font-weight:500;color:var(--color-text-primary);display:flex;align-items:center;gap:6px}
+.logo i{font-size:16px;color:#5B5BD6}
+.nav-pills{display:flex;gap:2px;flex:1;margin-left:8px;overflow-x:auto}
+.npill{font-size:12px;padding:4px 10px;border-radius:var(--border-radius-md);color:var(--color-text-secondary);cursor:pointer;white-space:nowrap;border:none;background:none}
+.npill.active{background:#EEEDFE;color:#3C3489}
+.npill:hover:not(.active){background:var(--color-background-secondary)}
+.tb-right{display:flex;align-items:center;gap:8px;margin-left:auto}
+.lang-pill{font-size:11px;padding:3px 8px;border-radius:99px;border:0.5px solid var(--color-border-tertiary);color:var(--color-text-secondary);background:none;cursor:pointer}
+.theme-btn{font-size:16px;color:var(--color-text-tertiary);background:none;border:none;cursor:pointer;padding:4px}
+
+.tool-layout{display:grid;grid-template-columns:1fr 320px;min-height:520px}
+.tool-main{padding:16px;display:flex;flex-direction:column;gap:12px;border-right:0.5px solid var(--color-border-tertiary)}
+.tool-sidebar{padding:16px;display:flex;flex-direction:column;gap:12px;background:var(--color-background-primary)}
+
+.panel{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);overflow:hidden}
+.panel-header{padding:8px 12px;border-bottom:0.5px solid var(--color-border-tertiary);display:flex;align-items:center;gap:8px;background:var(--color-background-secondary)}
+.panel-label{font-size:12px;font-weight:500;color:var(--color-text-secondary)}
+.panel-actions{margin-left:auto;display:flex;gap:4px}
+.pact{font-size:11px;padding:3px 8px;border-radius:var(--border-radius-md);border:0.5px solid var(--color-border-tertiary);background:none;color:var(--color-text-secondary);cursor:pointer}
+.pact:hover{background:var(--color-background-secondary)}
+.pact.primary{background:#5B5BD6;color:#fff;border-color:#5B5BD6}
+.pact.primary:hover{background:#4747C2}
+
+.input-area{padding:12px;font-family:var(--font-mono);font-size:12px;color:var(--color-text-primary);background:transparent;border:none;outline:none;width:100%;resize:none;min-height:160px;line-height:1.6}
+
+.output-area{background:#0F0F1A;border-radius:0;padding:12px;font-family:var(--font-mono);font-size:12px;line-height:1.7;min-height:180px;overflow:auto}
+.j-key{color:#86EFAC}
+.j-str{color:#7DD3FC}
+.j-num{color:#FB923C}
+.j-bool{color:#C084FC}
+.j-null{color:#94A3B8}
+.j-bracket{color:#E2E8F0}
+.j-line{display:flex;align-items:flex-start;gap:0}
+.j-toggle{width:14px;height:14px;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;color:#4A5568;font-size:10px;flex-shrink:0;margin-right:2px;border-radius:2px}
+.j-toggle:hover{background:rgba(255,255,255,0.08);color:#94A3B8}
+.indent{display:inline-block}
+.collapsed-hint{color:#4A5568;font-style:italic;font-size:11px}
+
+.action-bar{display:flex;align-items:center;gap:6px;padding:8px 12px;border-top:0.5px solid var(--color-border-tertiary);background:var(--color-background-secondary);flex-wrap:wrap}
+
+.status-bar{display:flex;align-items:center;gap:8px;padding:6px 12px;background:var(--color-background-secondary);border-top:0.5px solid var(--color-border-tertiary)}
+.status-ok{font-size:11px;color:#16A34A;display:flex;align-items:center;gap:4px}
+.status-err{font-size:11px;color:#DC2626;display:flex;align-items:center;gap:4px}
+.status-info{font-size:11px;color:var(--color-text-tertiary);margin-left:auto}
+
+.drop-zone{border:1.5px dashed var(--color-border-secondary);border-radius:var(--border-radius-lg);padding:24px 16px;text-align:center;cursor:pointer;transition:border-color 0.15s,background 0.15s}
+.drop-zone:hover,.drop-zone.drag-over{border-color:#5B5BD6;background:#EEEDFE14}
+.drop-icon{font-size:28px;color:var(--color-text-tertiary);margin-bottom:8px}
+.drop-label{font-size:13px;color:var(--color-text-secondary)}
+.drop-sub{font-size:11px;color:var(--color-text-tertiary);margin-top:4px}
+
+.progress-wrap{background:var(--color-background-secondary);border-radius:var(--border-radius-lg);padding:14px;border:0.5px solid var(--color-border-tertiary)}
+.prog-header{display:flex;justify-content:space-between;margin-bottom:8px}
+.prog-title{font-size:12px;font-weight:500;color:var(--color-text-primary)}
+.prog-pct{font-size:12px;color:var(--color-text-secondary)}
+.prog-track{height:4px;background:var(--color-border-tertiary);border-radius:2px;overflow:hidden}
+.prog-fill{height:100%;width:67%;background:#5B5BD6;border-radius:2px;transition:width 0.3s}
+.prog-msg{font-size:11px;color:var(--color-text-tertiary);margin-top:6px}
+
+.sidebar-section{display:flex;flex-direction:column;gap:8px}
+.ss-label{font-size:11px;font-weight:500;color:var(--color-text-tertiary);text-transform:uppercase;letter-spacing:0.05em}
+
+.option-row{display:flex;align-items:center;justify-content:space-between;padding:8px 10px;background:var(--color-background-secondary);border-radius:var(--border-radius-md);border:0.5px solid var(--color-border-tertiary)}
+.opt-label{font-size:12px;color:var(--color-text-secondary)}
+.opt-select{font-size:12px;background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-md);padding:3px 6px;color:var(--color-text-primary);outline:none;cursor:pointer}
+
+.toggle-row{display:flex;align-items:center;justify-content:space-between;padding:6px 10px}
+.tog-label{font-size:12px;color:var(--color-text-secondary)}
+.tog{width:28px;height:16px;border-radius:99px;background:#5B5BD6;position:relative;cursor:pointer;flex-shrink:0}
+.tog::after{content:'';position:absolute;width:12px;height:12px;border-radius:50%;background:#fff;top:2px;right:2px;transition:right 0.15s}
+.tog.off{background:var(--color-border-secondary)}
+.tog.off::after{right:auto;left:2px}
+
+.chunk-info{background:var(--color-background-info);border-radius:var(--border-radius-md);padding:10px 12px;border-left:3px solid var(--color-border-info);border-radius:0}
+.chunk-info p{font-size:12px;color:var(--color-text-info);line-height:1.5}
+
+.log-panel{background:#0F0F1A;border-radius:var(--border-radius-md);padding:10px;font-family:var(--font-mono);font-size:11px;max-height:120px;overflow:auto}
+.log-match{background:#1E3A1E;border-radius:3px;padding:2px 6px;display:inline-block;margin:2px 0;color:#86EFAC;font-size:11px}
+.log-line{color:#64748B;font-size:11px;padding:2px 0;display:flex;gap:8px}
+.log-lnum{color:#334155;min-width:28px}
+.log-highlight{color:#FDE68A}
+
+.stat-row{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.stat-card{background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:10px;text-align:center}
+.stat-val{font-size:18px;font-weight:500;color:var(--color-text-primary)}
+.stat-lbl{font-size:11px;color:var(--color-text-tertiary);margin-top:2px}
+
+.toast-mock{background:var(--color-background-primary);border:0.5px solid var(--color-border-success);border-radius:var(--border-radius-lg);padding:10px 14px;display:flex;align-items:center;gap:10px;margin-top:8px}
+.toast-icon{font-size:16px;color:var(--color-text-success)}
+.toast-msg{font-size:12px;color:var(--color-text-primary)}
+.toast-x{margin-left:auto;font-size:14px;color:var(--color-text-tertiary);cursor:pointer}
+
+.section-divider{font-size:11px;font-weight:500;color:var(--color-text-tertiary);padding:6px 0;border-bottom:0.5px solid var(--color-border-tertiary);margin-bottom:4px;text-transform:uppercase;letter-spacing:0.05em}
+
+.nav-tabs{display:flex;border-bottom:0.5px solid var(--color-border-tertiary);padding:0 12px;background:var(--color-background-secondary)}
+.ntab{font-size:12px;padding:8px 12px;cursor:pointer;color:var(--color-text-secondary);border-bottom:2px solid transparent;margin-bottom:-1px}
+.ntab.active{color:#5B5BD6;border-bottom-color:#5B5BD6}
+
+.col-type-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.col-type-item{background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:8px;border:0.5px solid var(--color-border-tertiary)}
+.col-name{font-size:11px;font-family:var(--font-mono);color:var(--color-text-primary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-bottom:4px}
+.col-select{width:100%;font-size:11px;border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-md);padding:3px 5px;background:var(--color-background-primary);color:var(--color-text-primary);outline:none}
+
+.white-block{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:16px}
+</style>
+
+<div class="shell">
+  <div class="topbar">
+    <div class="logo"><i class="ti ti-bolt" aria-hidden="true"></i>AnyConverter</div>
+    <div class="nav-pills">
+      <button class="npill active">JSON</button>
+      <button class="npill">XML</button>
+      <button class="npill">CSV→SQL</button>
+      <button class="npill">Regex / Logs</button>
+      <button class="npill">Image</button>
+      <button class="npill">PDF</button>
+      <button class="npill">More ▾</button>
+    </div>
+    <div class="tb-right">
+      <button class="lang-pill">🇺🇸 EN ▾</button>
+      <button class="theme-btn" aria-label="Toggle theme"><i class="ti ti-moon" aria-hidden="true"></i></button>
+    </div>
+  </div>
+
+  <div class="tool-layout">
+    <div class="tool-main">
+      <div class="nav-tabs">
+        <div class="ntab active">Formatter</div>
+        <div class="ntab">Minifier</div>
+        <div class="ntab">Validator</div>
+        <div class="ntab">Converter</div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px;flex:1">
+        <div class="panel">
+          <div class="panel-header">
+            <i class="ti ti-code" style="font-size:14px" aria-hidden="true"></i>
+            <span class="panel-label">Input</span>
+            <div class="panel-actions">
+              <button class="pact">Upload</button>
+              <button class="pact">Paste</button>
+              <button class="pact">Clear</button>
+            </div>
+          </div>
+          <textarea class="input-area" spellcheck="false" placeholder="Paste JSON here — auto-formats on input…">{
+  "user": {
+    "id": 42,
+    "name": "Ahmad",
+    "active": true,
+    "tags": ["dev","admin"]
+  }
+}</textarea>
+          <div class="status-bar">
+            <span class="status-ok"><i class="ti ti-check" style="font-size:12px" aria-hidden="true"></i> Valid JSON</span>
+            <span class="status-info">6 lines · 98 bytes</span>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-header">
+            <i class="ti ti-sparkles" style="font-size:14px" aria-hidden="true"></i>
+            <span class="panel-label">Output — live formatted</span>
+            <div class="panel-actions">
+              <button class="pact">Copy</button>
+              <button class="pact">Download</button>
+              <button class="pact">Expand all</button>
+            </div>
+          </div>
+          <div class="output-area">
+            <div class="j-line"><span class="j-toggle" title="collapse">▾</span><span class="j-bracket">{</span></div>
+            <div class="j-line" style="padding-left:20px"><span class="j-toggle" title="collapse">▾</span><span class="j-key">"user"</span><span class="j-bracket">: {</span></div>
+            <div class="j-line" style="padding-left:40px"><span class="j-toggle" style="opacity:0">▾</span><span class="j-key">"id"</span><span class="j-bracket">: </span><span class="j-num">42</span><span class="j-bracket">,</span></div>
+            <div class="j-line" style="padding-left:40px"><span class="j-toggle" style="opacity:0">▾</span><span class="j-key">"name"</span><span class="j-bracket">: </span><span class="j-str">"Ahmad"</span><span class="j-bracket">,</span></div>
+            <div class="j-line" style="padding-left:40px"><span class="j-toggle" style="opacity:0">▾</span><span class="j-key">"active"</span><span class="j-bracket">: </span><span class="j-bool">true</span><span class="j-bracket">,</span></div>
+            <div class="j-line" style="padding-left:40px"><span class="j-toggle" title="collapse">▾</span><span class="j-key">"tags"</span><span class="j-bracket">: [</span><span class="j-str">"dev"</span><span class="j-bracket">, </span><span class="j-str">"admin"</span><span class="j-bracket">]</span></div>
+            <div class="j-line" style="padding-left:20px"><span class="j-toggle" style="opacity:0">▾</span><span class="j-bracket">}</span></div>
+            <div class="j-line"><span class="j-toggle" style="opacity:0">▾</span><span class="j-bracket">}</span></div>
+          </div>
+          <div class="status-bar">
+            <span class="status-ok"><i class="ti ti-check" style="font-size:12px" aria-hidden="true"></i> Formatted</span>
+            <span class="status-info">8 lines · 2-space indent · 5 keys</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="action-bar">
+        <button class="pact primary">Format</button>
+        <button class="pact">Minify</button>
+        <button class="pact">Validate</button>
+        <button class="pact">→ YAML</button>
+        <button class="pact">→ CSV</button>
+        <button class="pact">→ XML</button>
+        <span style="margin-left:auto;font-size:11px;color:var(--color-text-tertiary)">Auto-format on paste: ON</span>
+      </div>
+    </div>
+
+    <div class="tool-sidebar">
+      <div class="section-divider">Options</div>
+      <div class="option-row">
+        <span class="opt-label">Indent</span>
+        <select class="opt-select"><option>2 spaces</option><option>4 spaces</option><option>Tab</option></select>
+      </div>
+      <div class="option-row">
+        <span class="opt-label">Sort keys</span>
+        <select class="opt-select"><option>None</option><option>A→Z</option><option>Z→A</option></select>
+      </div>
+      <div class="toggle-row">
+        <span class="tog-label">Auto-format on paste</span>
+        <div class="tog"></div>
+      </div>
+      <div class="toggle-row">
+        <span class="tog-label">Collapse all on load</span>
+        <div class="tog off"></div>
+      </div>
+      <div class="toggle-row">
+        <span class="tog-label">Show line numbers</span>
+        <div class="tog"></div>
+      </div>
+      <div class="toggle-row">
+        <span class="tog-label">Wrap long lines</span>
+        <div class="tog off"></div>
+      </div>
+
+      <div class="section-divider" style="margin-top:8px">Stats</div>
+      <div class="stat-row">
+        <div class="stat-card"><div class="stat-val">5</div><div class="stat-lbl">Keys</div></div>
+        <div class="stat-card"><div class="stat-val">2</div><div class="stat-lbl">Depth</div></div>
+        <div class="stat-card"><div class="stat-val">98</div><div class="stat-lbl">Bytes</div></div>
+        <div class="stat-card"><div class="stat-val">0</div><div class="stat-lbl">Errors</div></div>
+      </div>
+
+      <div class="toast-mock">
+        <i class="ti ti-check toast-icon" aria-hidden="true"></i>
+        <span class="toast-msg">Copied to clipboard!</span>
+        <span class="toast-x"><i class="ti ti-x" aria-hidden="true"></i></span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div style="margin-top:16px;font-size:12px;font-weight:500;color:var(--color-text-secondary);margin-bottom:8px">CSV → SQL with large file upload + chunk loading</div>
+<div class="shell">
+  <div class="tool-layout" style="grid-template-columns:1fr 300px">
+    <div class="tool-main" style="gap:10px">
+      <div class="drop-zone" id="dz">
+        <div class="drop-icon"><i class="ti ti-upload" aria-hidden="true"></i></div>
+        <div class="drop-label">Drop CSV file here or click to browse</div>
+        <div class="drop-sub">Supports files up to 500 MB · Processed in chunks, never uploaded to server</div>
+      </div>
+
+      <div class="progress-wrap">
+        <div class="prog-header">
+          <span class="prog-title">Parsing data.csv</span>
+          <span class="prog-pct">67%</span>
+        </div>
+        <div class="prog-track"><div class="prog-fill"></div></div>
+        <div class="prog-msg">Reading chunk 3 of 5 · 201,234 rows processed · ~2s remaining</div>
+      </div>
+
+      <div class="chunk-info" style="border-radius:var(--border-radius-md)">
+        <p>Large file detected (87 MB). Processing in 5 chunks of ~500K rows each. The page stays responsive during processing — you can set column types while it loads.</p>
+      </div>
+
+      <div class="panel" style="margin-top:4px">
+        <div class="panel-header">
+          <i class="ti ti-table" style="font-size:14px" aria-hidden="true"></i>
+          <span class="panel-label">Preview — first 5 rows</span>
+          <div class="panel-actions"><span style="font-size:11px;color:var(--color-text-tertiary)">1,234,567 total rows</span></div>
+        </div>
+        <div style="overflow-x:auto;font-size:11px;font-family:var(--font-mono)">
+          <table style="width:100%;border-collapse:collapse">
+            <thead>
+              <tr style="background:var(--color-background-secondary)">
+                <th style="padding:6px 10px;text-align:left;border-bottom:0.5px solid var(--color-border-tertiary);color:var(--color-text-secondary);font-weight:500">id</th>
+                <th style="padding:6px 10px;text-align:left;border-bottom:0.5px solid var(--color-border-tertiary);color:var(--color-text-secondary);font-weight:500">name</th>
+                <th style="padding:6px 10px;text-align:left;border-bottom:0.5px solid var(--color-border-tertiary);color:var(--color-text-secondary);font-weight:500">created_at</th>
+                <th style="padding:6px 10px;text-align:left;border-bottom:0.5px solid var(--color-border-tertiary);color:var(--color-text-secondary);font-weight:500">amount</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td style="padding:5px 10px;border-bottom:0.5px solid var(--color-border-tertiary);color:#FB923C">1</td><td style="padding:5px 10px;border-bottom:0.5px solid var(--color-border-tertiary);color:#7DD3FC">Alice</td><td style="padding:5px 10px;border-bottom:0.5px solid var(--color-border-tertiary);color:#86EFAC">2024-01-15</td><td style="padding:5px 10px;border-bottom:0.5px solid var(--color-border-tertiary);color:#FB923C">99.50</td></tr>
+              <tr><td style="padding:5px 10px;border-bottom:0.5px solid var(--color-border-tertiary);color:#FB923C">2</td><td style="padding:5px 10px;border-bottom:0.5px solid var(--color-border-tertiary);color:#7DD3FC">Bob</td><td style="padding:5px 10px;border-bottom:0.5px solid var(--color-border-tertiary);color:#86EFAC">2024-01-16</td><td style="padding:5px 10px;border-bottom:0.5px solid var(--color-border-tertiary);color:#FB923C">149.00</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="section-divider">Column types — auto-detected, click to change</div>
+      <div class="col-type-grid">
+        <div class="col-type-item"><div class="col-name">id</div><select class="col-select"><option selected>INT</option><option>BIGINT</option><option>VARCHAR(255)</option></select></div>
+        <div class="col-type-item"><div class="col-name">name</div><select class="col-select"><option>INT</option><option selected>VARCHAR(255)</option><option>TEXT</option></select></div>
+        <div class="col-type-item"><div class="col-name">created_at</div><select class="col-select"><option>VARCHAR(255)</option><option selected>DATE</option><option>DATETIME</option></select></div>
+        <div class="col-type-item"><div class="col-name">amount</div><select class="col-select"><option>INT</option><option selected>DECIMAL(10,2)</option><option>FLOAT</option></select></div>
+      </div>
+    </div>
+
+    <div class="tool-sidebar">
+      <div class="section-divider">SQL options</div>
+      <div class="option-row"><span class="opt-label">Dialect</span><select class="opt-select"><option>MySQL</option><option>PostgreSQL</option><option>SQLite</option></select></div>
+      <div class="option-row"><span class="opt-label">Table name</span></div>
+      <input style="font-size:12px;width:100%;padding:6px 10px;border-radius:var(--border-radius-md);border:0.5px solid var(--color-border-tertiary);background:var(--color-background-secondary);color:var(--color-text-primary);font-family:var(--font-mono);outline:none" value="my_table">
+      <div class="toggle-row"><span class="tog-label">CREATE TABLE</span><div class="tog"></div></div>
+      <div class="toggle-row"><span class="tog-label">INSERT statements</span><div class="tog"></div></div>
+      <div class="toggle-row"><span class="tog-label">DROP TABLE IF EXISTS</span><div class="tog off"></div></div>
+      <div class="toggle-row"><span class="tog-label">Batch INSERT (500)</span><div class="tog off"></div></div>
+      <button class="pact primary" style="width:100%;padding:8px;margin-top:8px;font-size:13px">Generate SQL</button>
+
+      <div class="section-divider" style="margin-top:8px">Processing log</div>
+      <div class="log-panel">
+        <div class="log-line"><span class="log-lnum">—</span><span style="color:#1D9E75">File loaded: 87.2 MB</span></div>
+        <div class="log-line"><span class="log-lnum">—</span><span>Detecting delimiter… comma</span></div>
+        <div class="log-line"><span class="log-lnum">—</span><span>Headers: 4 columns found</span></div>
+        <div class="log-line"><span class="log-lnum">—</span><span class="log-highlight">Chunk 1/5 done (246K rows)</span></div>
+        <div class="log-line"><span class="log-lnum">—</span><span class="log-highlight">Chunk 2/5 done (246K rows)</span></div>
+        <div class="log-line"><span class="log-lnum">—</span><span style="color:#4A5568">Chunk 3/5 in progress…</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div style="margin-top:16px;font-size:12px;font-weight:500;color:var(--color-text-secondary);margin-bottom:8px">Log extractor — regex-based pattern matching</div>
+<div class="shell">
+  <div class="tool-layout" style="grid-template-columns:1fr 300px">
+    <div class="tool-main" style="gap:10px">
+      <div class="panel">
+        <div class="panel-header">
+          <i class="ti ti-regex" style="font-size:14px" aria-hidden="true"></i>
+          <span class="panel-label">Pattern</span>
+          <div class="panel-actions">
+            <button class="pact">g</button><button class="pact">i</button><button class="pact">m</button>
+          </div>
+        </div>
+        <div style="padding:10px 12px;display:flex;align-items:center;gap:8px">
+          <span style="font-size:13px;color:var(--color-text-tertiary);font-family:var(--font-mono)">/</span>
+          <input style="flex:1;font-family:var(--font-mono);font-size:13px;border:none;outline:none;background:transparent;color:var(--color-text-primary)" value="(\d{4}-\d{2}-\d{2}) \[(\w+)\] (.+)">
+          <span style="font-size:13px;color:var(--color-text-tertiary);font-family:var(--font-mono)">/gm</span>
+          <span style="font-size:11px;padding:2px 8px;background:#EAF3DE;color:#27500A;border-radius:99px">Valid</span>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+        <div class="panel">
+          <div class="panel-header">
+            <span class="panel-label">Log input</span>
+            <div class="panel-actions"><button class="pact">Upload .log</button></div>
+          </div>
+          <div class="output-area" style="min-height:140px">
+            <div class="log-line"><span class="log-lnum">1</span><span><span class="log-highlight">2024-01-15</span> <span style="color:#C084FC">[ERROR]</span> <span style="color:#E2E8F0">DB timeout</span></span></div>
+            <div class="log-line"><span class="log-lnum">2</span><span><span class="log-highlight">2024-01-15</span> <span style="color:#86EFAC">[INFO]</span> <span style="color:#E2E8F0">Server started</span></span></div>
+            <div class="log-line"><span class="log-lnum">3</span><span><span class="log-highlight">2024-01-16</span> <span style="color:#FDE68A">[WARN]</span> <span style="color:#E2E8F0">High memory</span></span></div>
+          </div>
+          <div class="status-bar"><span class="status-info">3 lines · 3 matches</span></div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-header">
+            <span class="panel-label">Extracted matches</span>
+            <div class="panel-actions"><button class="pact">Copy</button><button class="pact">→ CSV</button></div>
+          </div>
+          <div class="output-area" style="min-height:140px">
+            <div style="margin-bottom:6px">
+              <div class="log-match">Match 1</div>
+              <div class="log-line"><span style="color:#86EFAC">Group 1:</span><span class="log-highlight" style="margin-left:6px">2024-01-15</span></div>
+              <div class="log-line"><span style="color:#86EFAC">Group 2:</span><span class="log-highlight" style="margin-left:6px">ERROR</span></div>
+              <div class="log-line"><span style="color:#86EFAC">Group 3:</span><span class="log-highlight" style="margin-left:6px">DB timeout</span></div>
+            </div>
+            <div>
+              <div class="log-match">Match 2</div>
+              <div class="log-line"><span style="color:#86EFAC">Group 1:</span><span class="log-highlight" style="margin-left:6px">2024-01-15</span></div>
+            </div>
+          </div>
+          <div class="status-bar"><span class="status-ok"><i class="ti ti-check" style="font-size:12px" aria-hidden="true"></i> 3 matches</span><span class="status-info">3 groups captured</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tool-sidebar">
+      <div class="section-divider">Quick patterns</div>
+      <div style="display:flex;flex-direction:column;gap:4px">
+        <button class="pact" style="text-align:left;font-family:var(--font-mono);font-size:11px">IP address</button>
+        <button class="pact" style="text-align:left;font-family:var(--font-mono);font-size:11px">Date YYYY-MM-DD</button>
+        <button class="pact" style="text-align:left;font-family:var(--font-mono);font-size:11px">Email address</button>
+        <button class="pact" style="text-align:left;font-family:var(--font-mono);font-size:11px">HTTP status code</button>
+        <button class="pact" style="text-align:left;font-family:var(--font-mono);font-size:11px">JSON error level</button>
+        <button class="pact" style="text-align:left;font-family:var(--font-mono);font-size:11px">Stack trace line</button>
+      </div>
+      <div class="section-divider" style="margin-top:8px">Export</div>
+      <div class="toggle-row"><span class="tog-label">Export as CSV</span><div class="tog"></div></div>
+      <div class="toggle-row"><span class="tog-label">Include line numbers</span><div class="tog"></div></div>
+      <div class="toggle-row"><span class="tog-label">Group by capture</span><div class="tog off"></div></div>
+      <div class="stat-row" style="margin-top:8px">
+        <div class="stat-card"><div class="stat-val">3</div><div class="stat-lbl">Matches</div></div>
+        <div class="stat-card"><div class="stat-val">3</div><div class="stat-lbl">Groups</div></div>
+      </div>
+    </div>
+  </div>
+</div>

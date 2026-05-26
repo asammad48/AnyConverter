@@ -1,0 +1,248 @@
+
+<style>
+h2.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0}
+.cat-section{margin-bottom:32px}
+.cat-header{display:flex;align-items:center;gap:10px;margin-bottom:12px;padding-bottom:8px;border-bottom:0.5px solid var(--color-border-tertiary)}
+.cat-icon{font-size:20px;color:var(--color-text-secondary)}
+.cat-title{font-size:15px;font-weight:500;color:var(--color-text-primary)}
+.cat-note{font-size:12px;color:var(--color-text-tertiary);margin-left:auto}
+.tool-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:8px}
+.tool-card{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:12px 14px;cursor:pointer;transition:border-color 0.15s}
+.tool-card:hover{border-color:var(--color-border-secondary)}
+.card-row1{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:4px}
+.tool-name{font-size:13px;font-weight:500;color:var(--color-text-primary);line-height:1.3}
+.vol-badge{font-size:11px;border-radius:99px;padding:2px 7px;white-space:nowrap;flex-shrink:0;margin-left:6px}
+.vol-xl{background:#FAEEDA;color:#633806}
+.vol-l{background:#EEEDFE;color:#3C3489}
+.vol-m{background:#EAF3DE;color:#27500A}
+.vol-s{background:#E1F5EE;color:#085041}
+.lib-tag{font-size:11px;color:var(--color-text-tertiary);margin-top:5px}
+.difficulty{display:inline-flex;align-items:center;gap:3px;font-size:11px;margin-top:5px;color:var(--color-text-tertiary)}
+.dot{width:6px;height:6px;border-radius:50%;display:inline-block}
+.dot-easy{background:#639922}
+.dot-med{background:#BA7517}
+.dot-hard{background:#E24B4A}
+@media(prefers-color-scheme:dark){
+  .vol-xl{background:#412402;color:#FAC775}
+  .vol-l{background:#26215C;color:#CECBF6}
+  .vol-m{background:#173404;color:#C0DD97}
+  .vol-s{background:#04342C;color:#9FE1CB}
+}
+</style>
+
+<h2 class="sr-only">High-demand frontend-only tools ranked by monthly search volume</h2>
+
+<div class="cat-section">
+  <div class="cat-header">
+    <i class="ti ti-users cat-icon" aria-hidden="true"></i>
+    <span class="cat-title">General public — massive audiences, low competition</span>
+    <span class="cat-note">Non-developers, huge volume</span>
+  </div>
+  <div class="tool-grid">
+    <div class="tool-card" onclick="sendPrompt('How do I build a QR code generator in pure JavaScript?')">
+      <div class="card-row1"><span class="tool-name">QR Code Generator</span><span class="vol-badge vol-xl">12M+/mo</span></div>
+      <div class="lib-tag">qrcode.js (CDN)</div>
+      <div class="difficulty"><span class="dot dot-easy"></span> Easy</div>
+    </div>
+    <div class="tool-card" onclick="sendPrompt('How do I build a password generator in JavaScript?')">
+      <div class="card-row1"><span class="tool-name">Password Generator</span><span class="vol-badge vol-xl">15M+/mo</span></div>
+      <div class="lib-tag">Web Crypto API</div>
+      <div class="difficulty"><span class="dot dot-easy"></span> Easy</div>
+    </div>
+    <div class="tool-card" onclick="sendPrompt('How do I build a BMI calculator in JavaScript?')">
+      <div class="card-row1"><span class="tool-name">BMI Calculator</span><span class="vol-badge vol-xl">10M+/mo</span></div>
+      <div class="lib-tag">Pure JS math</div>
+      <div class="difficulty"><span class="dot dot-easy"></span> Easy</div>
+    </div>
+    <div class="tool-card" onclick="sendPrompt('How do I build an age calculator in JavaScript?')">
+      <div class="card-row1"><span class="tool-name">Age Calculator</span><span class="vol-badge vol-xl">8M+/mo</span></div>
+      <div class="lib-tag">Date API</div>
+      <div class="difficulty"><span class="dot dot-easy"></span> Easy</div>
+    </div>
+    <div class="tool-card" onclick="sendPrompt('How do I build a word counter tool in JavaScript?')">
+      <div class="card-row1"><span class="tool-name">Word Counter</span><span class="vol-badge vol-xl">7M+/mo</span></div>
+      <div class="lib-tag">Pure JS</div>
+      <div class="difficulty"><span class="dot dot-easy"></span> Easy</div>
+    </div>
+    <div class="tool-card" onclick="sendPrompt('How do I build an image compressor in the browser?')">
+      <div class="card-row1"><span class="tool-name">Image Compressor</span><span class="vol-badge vol-xl">10M+/mo</span></div>
+      <div class="lib-tag">Canvas API / browser-image-compression</div>
+      <div class="difficulty"><span class="dot dot-med"></span> Medium</div>
+    </div>
+    <div class="tool-card" onclick="sendPrompt('How do I build a loan calculator in JavaScript?')">
+      <div class="card-row1"><span class="tool-name">Loan / EMI Calculator</span><span class="vol-badge vol-xl">9M+/mo</span></div>
+      <div class="lib-tag">Pure JS math</div>
+      <div class="difficulty"><span class="dot dot-easy"></span> Easy</div>
+    </div>
+    <div class="tool-card" onclick="sendPrompt('How do I build a typing speed test in JavaScript?')">
+      <div class="card-row1"><span class="tool-name">Typing Speed Test</span><span class="vol-badge vol-l">4M+/mo</span></div>
+      <div class="lib-tag">Pure JS + timers</div>
+      <div class="difficulty"><span class="dot dot-med"></span> Medium</div>
+    </div>
+    <div class="tool-card" onclick="sendPrompt('How do I build a text case converter in JavaScript?')">
+      <div class="card-row1"><span class="tool-name">Text Case Converter</span><span class="vol-badge vol-l">3M+/mo</span></div>
+      <div class="lib-tag">Pure JS string methods</div>
+      <div class="difficulty"><span class="dot dot-easy"></span> Easy</div>
+    </div>
+    <div class="tool-card" onclick="sendPrompt('How do I build a random number generator in JavaScript?')">
+      <div class="card-row1"><span class="tool-name">Random Number Generator</span><span class="vol-badge vol-l">5M+/mo</span></div>
+      <div class="lib-tag">Math.random()</div>
+      <div class="difficulty"><span class="dot dot-easy"></span> Easy</div>
+    </div>
+    <div class="tool-card" onclick="sendPrompt('How do I build a percentage calculator in JavaScript?')">
+      <div class="card-row1"><span class="tool-name">Percentage Calculator</span><span class="vol-badge vol-l">6M+/mo</span></div>
+      <div class="lib-tag">Pure JS math</div>
+      <div class="difficulty"><span class="dot dot-easy"></span> Easy</div>
+    </div>
+    <div class="tool-card" onclick="sendPrompt('How do I build a calorie calculator in JavaScript?')">
+      <div class="card-row1"><span class="tool-name">Calorie Calculator</span><span class="vol-badge vol-l">4M+/mo</span></div>
+      <div class="lib-tag">Pure JS math</div>
+      <div class="difficulty"><span class="dot dot-easy"></span> Easy</div>
+    </div>
+  </div>
+</div>
+
+<div class="cat-section">
+  <div class="cat-header">
+    <i class="ti ti-calculator cat-icon" aria-hidden="true"></i>
+    <span class="cat-title">Finance calculators — high RPM ads, user intent</span>
+    <span class="cat-note">Best AdSense RPM $3–8</span>
+  </div>
+  <div class="tool-grid">
+    <div class="tool-card" onclick="sendPrompt('How do I build a mortgage calculator in JavaScript?')">
+      <div class="card-row1"><span class="tool-name">Mortgage Calculator</span><span class="vol-badge vol-xl">12M+/mo</span></div>
+      <div class="lib-tag">Pure JS math</div>
+      <div class="difficulty"><span class="dot dot-easy"></span> Easy — highest RPM</div>
+    </div>
+    <div class="tool-card" onclick="sendPrompt('How do I build a compound interest calculator in JavaScript?')">
+      <div class="card-row1"><span class="tool-name">Compound Interest</span><span class="vol-badge vol-l">5M+/mo</span></div>
+      <div class="lib-tag">Pure JS math</div>
+      <div class="difficulty"><span class="dot dot-easy"></span> Easy</div>
+    </div>
+    <div class="tool-card" onclick="sendPrompt('How do I build a tip calculator in JavaScript?')">
+      <div class="card-row1"><span class="tool-name">Tip Calculator</span><span class="vol-badge vol-l">4M+/mo</span></div>
+      <div class="lib-tag">Pure JS math</div>
+      <div class="difficulty"><span class="dot dot-easy"></span> Easy</div>
+    </div>
+    <div class="tool-card" onclick="sendPrompt('How do I build a currency converter in JavaScript?')">
+      <div class="card-row1"><span class="tool-name">Currency Converter</span><span class="vol-badge vol-xl">8M+/mo</span></div>
+      <div class="lib-tag">Exchange rate API (free tier)</div>
+      <div class="difficulty"><span class="dot dot-med"></span> Needs free API</div>
+    </div>
+    <div class="tool-card" onclick="sendPrompt('How do I build a discount calculator in JavaScript?')">
+      <div class="card-row1"><span class="tool-name">Discount Calculator</span><span class="vol-badge vol-l">3M+/mo</span></div>
+      <div class="lib-tag">Pure JS math</div>
+      <div class="difficulty"><span class="dot dot-easy"></span> Easy</div>
+    </div>
+    <div class="tool-card" onclick="sendPrompt('How do I build a GST VAT tax calculator in JavaScript?')">
+      <div class="card-row1"><span class="tool-name">GST / VAT Calculator</span><span class="vol-badge vol-l">5M+/mo</span></div>
+      <div class="lib-tag">Pure JS math</div>
+      <div class="difficulty"><span class="dot dot-easy"></span> Easy — localized demand</div>
+    </div>
+  </div>
+</div>
+
+<div class="cat-section">
+  <div class="cat-header">
+    <i class="ti ti-code cat-icon" aria-hidden="true"></i>
+    <span class="cat-title">Developer tools — loyal repeat users, bookmarked daily</span>
+    <span class="cat-note">Already in your spec — adding missed ones</span>
+  </div>
+  <div class="tool-grid">
+    <div class="tool-card" onclick="sendPrompt('How do I build a UUID GUID generator in JavaScript?')">
+      <div class="card-row1"><span class="tool-name">UUID / GUID Generator</span><span class="vol-badge vol-l">3M+/mo</span></div>
+      <div class="lib-tag">crypto.randomUUID()</div>
+      <div class="difficulty"><span class="dot dot-easy"></span> Trivial — 10 min build</div>
+    </div>
+    <div class="tool-card" onclick="sendPrompt('How do I build a JWT decoder in JavaScript?')">
+      <div class="card-row1"><span class="tool-name">JWT Decoder</span><span class="vol-badge vol-l">2M+/mo</span></div>
+      <div class="lib-tag">atob() + JSON.parse()</div>
+      <div class="difficulty"><span class="dot dot-easy"></span> Easy</div>
+    </div>
+    <div class="tool-card" onclick="sendPrompt('How do I build a cron expression editor in JavaScript?')">
+      <div class="card-row1"><span class="tool-name">Cron Expression Parser</span><span class="vol-badge vol-m">1M+/mo</span></div>
+      <div class="lib-tag">cronstrue.js</div>
+      <div class="difficulty"><span class="dot dot-med"></span> Medium</div>
+    </div>
+    <div class="tool-card" onclick="sendPrompt('How do I build a diff checker tool in JavaScript?')">
+      <div class="card-row1"><span class="tool-name">Text Diff Checker</span><span class="vol-badge vol-l">2M+/mo</span></div>
+      <div class="lib-tag">diff.js (CDN)</div>
+      <div class="difficulty"><span class="dot dot-med"></span> Medium</div>
+    </div>
+    <div class="tool-card" onclick="sendPrompt('How do I build a JSON to YAML converter in JavaScript?')">
+      <div class="card-row1"><span class="tool-name">JSON to YAML</span><span class="vol-badge vol-m">1M+/mo</span></div>
+      <div class="lib-tag">js-yaml (CDN)</div>
+      <div class="difficulty"><span class="dot dot-easy"></span> Easy</div>
+    </div>
+    <div class="tool-card" onclick="sendPrompt('How do I build an HTML beautifier minifier in JavaScript?')">
+      <div class="card-row1"><span class="tool-name">HTML Beautifier</span><span class="vol-badge vol-m">1M+/mo</span></div>
+      <div class="lib-tag">prettier WASM</div>
+      <div class="difficulty"><span class="dot dot-med"></span> Medium</div>
+    </div>
+    <div class="tool-card" onclick="sendPrompt('How do I build a lorem ipsum generator in JavaScript?')">
+      <div class="card-row1"><span class="tool-name">Lorem Ipsum Generator</span><span class="vol-badge vol-l">4M+/mo</span></div>
+      <div class="lib-tag">Pure JS word arrays</div>
+      <div class="difficulty"><span class="dot dot-easy"></span> Trivial</div>
+    </div>
+    <div class="tool-card" onclick="sendPrompt('How do I build a CSS gradient generator in JavaScript?')">
+      <div class="card-row1"><span class="tool-name">CSS Gradient Generator</span><span class="vol-badge vol-l">3M+/mo</span></div>
+      <div class="lib-tag">Pure JS + CSS</div>
+      <div class="difficulty"><span class="dot dot-med"></span> Medium</div>
+    </div>
+    <div class="tool-card" onclick="sendPrompt('How do I build a character counter with Twitter limit in JavaScript?')">
+      <div class="card-row1"><span class="tool-name">Character Counter</span><span class="vol-badge vol-l">2M+/mo</span></div>
+      <div class="lib-tag">Pure JS</div>
+      <div class="difficulty"><span class="dot dot-easy"></span> Trivial</div>
+    </div>
+  </div>
+</div>
+
+<div class="cat-section">
+  <div class="cat-header">
+    <i class="ti ti-sparkles cat-icon" aria-hidden="true"></i>
+    <span class="cat-title">Hidden gems — low competition, growing fast</span>
+    <span class="cat-note">Less crowded, easier to rank</span>
+  </div>
+  <div class="tool-grid">
+    <div class="tool-card" onclick="sendPrompt('How do I build a fancy text generator in JavaScript?')">
+      <div class="card-row1"><span class="tool-name">Fancy Text Generator</span><span class="vol-badge vol-xl">8M+/mo</span></div>
+      <div class="lib-tag">Unicode character maps</div>
+      <div class="difficulty"><span class="dot dot-easy"></span> Easy — viral on social</div>
+    </div>
+    <div class="tool-card" onclick="sendPrompt('How do I build a strong password strength checker in JavaScript?')">
+      <div class="card-row1"><span class="tool-name">Password Strength Checker</span><span class="vol-badge vol-l">3M+/mo</span></div>
+      <div class="lib-tag">zxcvbn.js</div>
+      <div class="difficulty"><span class="dot dot-easy"></span> Easy</div>
+    </div>
+    <div class="tool-card" onclick="sendPrompt('How do I build a Pomodoro timer in JavaScript?')">
+      <div class="card-row1"><span class="tool-name">Pomodoro Timer</span><span class="vol-badge vol-l">2M+/mo</span></div>
+      <div class="lib-tag">Pure JS timers</div>
+      <div class="difficulty"><span class="dot dot-easy"></span> Easy</div>
+    </div>
+    <div class="tool-card" onclick="sendPrompt('How do I build an invoice generator in JavaScript?')">
+      <div class="card-row1"><span class="tool-name">Invoice Generator</span><span class="vol-badge vol-l">2M+/mo</span></div>
+      <div class="lib-tag">jsPDF (CDN)</div>
+      <div class="difficulty"><span class="dot dot-med"></span> Medium — high intent</div>
+    </div>
+    <div class="tool-card" onclick="sendPrompt('How do I build an ASCII art generator in JavaScript?')">
+      <div class="card-row1"><span class="tool-name">ASCII Art Generator</span><span class="vol-badge vol-m">1M+/mo</span></div>
+      <div class="lib-tag">figlet.js</div>
+      <div class="difficulty"><span class="dot dot-easy"></span> Easy — fun, shareable</div>
+    </div>
+    <div class="tool-card" onclick="sendPrompt('How do I build a number to words converter in JavaScript?')">
+      <div class="card-row1"><span class="tool-name">Number to Words</span><span class="vol-badge vol-m">1M+/mo</span></div>
+      <div class="lib-tag">Pure JS</div>
+      <div class="difficulty"><span class="dot dot-easy"></span> Easy</div>
+    </div>
+    <div class="tool-card" onclick="sendPrompt('How do I build a Morse code converter in JavaScript?')">
+      <div class="card-row1"><span class="tool-name">Morse Code Converter</span><span class="vol-badge vol-m">800K/mo</span></div>
+      <div class="lib-tag">JS lookup table</div>
+      <div class="difficulty"><span class="dot dot-easy"></span> Trivial</div>
+    </div>
+    <div class="tool-card" onclick="sendPrompt('How do I build an IP address lookup tool frontend only?')">
+      <div class="card-row1"><span class="tool-name">IP Address Lookup</span><span class="vol-badge vol-l">5M+/mo</span></div>
+      <div class="lib-tag">ipapi.co free API</div>
+      <div class="difficulty"><span class="dot dot-easy"></span> Easy — free API</div>
+    </div>
+  </div>
+</div>

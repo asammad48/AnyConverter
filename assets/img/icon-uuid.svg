@@ -1,0 +1,25 @@
+<svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#2DD4BF"/>
+      <stop offset="100%" stop-color="#0F766E"/>
+    </linearGradient>
+  </defs>
+  <rect width="40" height="40" rx="10" fill="url(#g)"/>
+  <!-- Fingerprint-style concentric arcs -->
+  <!-- Outermost arc -->
+  <path d="M8 28 Q8 10 20 10 Q32 10 32 28" stroke="white" stroke-width="1.8" fill="none" stroke-linecap="round" opacity="0.5"/>
+  <!-- Second arc -->
+  <path d="M11 28 Q11 13 20 13 Q29 13 29 28" stroke="white" stroke-width="1.8" fill="none" stroke-linecap="round" opacity="0.65"/>
+  <!-- Third arc -->
+  <path d="M14 28 Q14 16 20 16 Q26 16 26 28" stroke="white" stroke-width="1.8" fill="none" stroke-linecap="round" opacity="0.8"/>
+  <!-- Fourth arc -->
+  <path d="M17 28 Q17 19 20 19 Q23 19 23 28" stroke="white" stroke-width="1.8" fill="none" stroke-linecap="round" opacity="0.95"/>
+  <!-- Center pin dot -->
+  <circle cx="20" cy="28" r="2.2" fill="white"/>
+  <!-- UUID dash hints -->
+  <line x1="8" y1="33" x2="13" y2="33" stroke="white" stroke-width="1.6" stroke-linecap="round" opacity="0.6"/>
+  <line x1="15" y1="33" x2="18" y2="33" stroke="white" stroke-width="1.6" stroke-linecap="round" opacity="0.6"/>
+  <line x1="20" y1="33" x2="24" y2="33" stroke="white" stroke-width="1.6" stroke-linecap="round" opacity="0.6"/>
+  <line x1="26" y1="33" x2="32" y2="33" stroke="white" stroke-width="1.6" stroke-linecap="round" opacity="0.6"/>
+</svg>

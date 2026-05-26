@@ -1,0 +1,158 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Comprimir PDF Online Gratis — Reducir Tamaño | AnyConverter</title>
+  <meta name="description" content="Comprime archivos PDF online y reduce su tamaño sin perder calidad. Herramienta gratuita de compresión de PDF. Elige el nivel de compresión. 100% seguro y privado.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://anyconverter.io/es/pdf-compress/">
+  <link rel="alternate" hreflang="en"        href="https://anyconverter.io/pdf-compress/">
+  <link rel="alternate" hreflang="es"        href="https://anyconverter.io/es/pdf-compress/">
+  <link rel="alternate" hreflang="da"        href="https://anyconverter.io/da/pdf-compress/">
+  <link rel="alternate" hreflang="x-default" href="https://anyconverter.io/pdf-compress/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Comprimir PDF Online Gratis | AnyConverter">
+  <meta property="og:description" content="Comprime archivos PDF online gratis. Reduce el tamaño sin perder calidad. 100% seguro.">
+  <meta property="og:url" content="https://anyconverter.io/es/pdf-compress/">
+  <meta property="og:site_name" content="AnyConverter">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" data-ad-client="ca-pub-XXXXXXXXXX" crossorigin="anonymous"></script>
+  <!-- Replace ca-pub-XXXXXXXXXX with your real AdSense publisher ID -->
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Comprimir PDF Online","url":"https://anyconverter.io/es/pdf-compress/","description":"Comprime archivos PDF online gratis.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F4F6FF);color:var(--color-text,#1E1B4B)}
+    body{min-height:100vh;display:flex;flex-direction:column}
+    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8FE)}
+    .header-inner{max-width:1280px;width:100%;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;gap:32px}
+    .hero{padding:40px 24px 32px;max-width:1280px;margin:0 auto}
+    .hero h1{font-size:clamp(1.75rem,4vw,2.25rem);font-weight:700;line-height:1.2;margin-bottom:12px}
+    .hero-desc{font-size:1.0625rem;color:var(--color-text-2,#6B7280);max-width:680px;line-height:1.6}
+    @font-face{font-family:'Inter';font-display:swap}
+  </style>
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+  <header id="site-header" class="site-header"></header>
+  <main id="main-content">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol><li><a href="/es/">Inicio</a></li><li aria-current="page">Comprimir PDF</li></ol>
+    </nav>
+    <section class="hero">
+      <h1>Comprimir PDF Online</h1>
+      <p class="hero-desc">Reduce el tamaño de tus archivos PDF online gratis. Sube tu PDF, elige el nivel de compresión y descarga el resultado optimizado. Todo el procesamiento ocurre en tu navegador — sin subidas al servidor, completamente privado.</p>
+    </section>
+    <div class="tool-wrapper">
+      <div class="tool-zone">
+        <div class="drop-zone" id="compress-drop-zone" role="button" tabindex="0" aria-label="Arrastra un PDF aquí o haz clic para seleccionar">
+          <svg class="drop-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5"/></svg>
+          <p>Arrastra tu PDF aquí o haz clic para seleccionar</p>
+          <small>Archivo PDF único</small>
+          <input type="file" id="compress-input" accept=".pdf,application/pdf">
+        </div>
+        <div id="compress-settings" style="display:none">
+          <div class="status-bar info mt-4" id="original-size-bar"></div>
+          <div class="settings-panel mt-4">
+            <h3>Nivel de compresión</h3>
+            <div class="radio-group">
+              <label class="radio-label"><input type="radio" name="compress-level" value="low" checked><div><strong>Baja</strong> — Máxima compatibilidad, menor reducción</div></label>
+              <label class="radio-label"><input type="radio" name="compress-level" value="medium"><div><strong>Media</strong> — Buen equilibrio entre tamaño y calidad</div></label>
+              <label class="radio-label"><input type="radio" name="compress-level" value="high"><div><strong>Alta</strong> — Máxima reducción de tamaño</div></label>
+            </div>
+          </div>
+          <button class="btn btn-primary btn-full mt-4" id="btn-compress">Comprimir PDF</button>
+          <div id="compress-result" style="display:none;margin-top:16px">
+            <div class="compress-result-grid">
+              <div class="compress-stat"><span class="compress-label">Original</span><span class="compress-value" id="result-original"></span></div>
+              <div class="compress-stat"><span class="compress-label">Comprimido</span><span class="compress-value" id="result-compressed"></span></div>
+              <div class="compress-stat"><span class="compress-label">Ahorro</span><span class="compress-value" id="result-saved"></span></div>
+            </div>
+            <div class="compress-bar mt-4"><div class="compress-bar-fill" id="compress-bar-fill"></div></div>
+            <button class="btn btn-primary btn-full mt-4" id="btn-download-compressed">Descargar PDF comprimido ↓</button>
+          </div>
+        </div>
+      </div>
+      <aside class="tool-side" aria-label="Options">
+        <div class="ss-divider">Compression Guide</div>
+        <div style="font-size:12px;color:var(--color-text-3);line-height:1.6;padding:0 2px">
+          <p style="margin-bottom:6px"><strong style="color:var(--color-text-2)">Low</strong> — preserves quality, small reduction</p>
+          <p style="margin-bottom:6px"><strong style="color:var(--color-text-2)">Medium</strong> — balanced (recommended)</p>
+          <p><strong style="color:var(--color-text-2)">High</strong> — maximum shrink, may reduce image quality</p>
+        </div>
+
+        <div class="ss-divider">Stats</div>
+        <div class="stats-grid">
+          <div class="stat-card"><div class="stat-val" id="stat-orig-pdf">—</div><div class="stat-lbl">Original</div></div>
+          <div class="stat-card"><div class="stat-val" id="stat-comp-pdf">—</div><div class="stat-lbl">Compressed</div></div>
+          <div class="stat-card"><div class="stat-val" id="stat-saved-pct">—</div><div class="stat-lbl">Saved %</div></div>
+          <div class="stat-card"><div class="stat-val" id="stat-pdf-pages">—</div><div class="stat-lbl">Pages</div></div>
+        </div>
+
+        <div class="ss-divider">Related Tools</div>
+        <a href="/pdf-merge/" class="ss-related-link"><img src="/assets/img/icon-pdf.svg" alt="" width="18" height="18" loading="lazy">PDF Merge</a>
+        <a href="/pdf-split/" class="ss-related-link"><img src="/assets/img/icon-pdf.svg" alt="" width="18" height="18" loading="lazy">PDF Split</a>
+        <a href="/image-converter/" class="ss-related-link"><img src="/assets/img/icon-image.svg" alt="" width="18" height="18" loading="lazy">Image Converter</a>
+
+        <div style="margin-top:8px">
+          <p class="ad-label">Advertisement</p>
+          <div class="ad-slot" style="min-height:250px">
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+            <!-- Replace ca-pub-XXXXXXXXXX and data-ad-slot="XXXXXXXXXX" with your IDs -->
+          </div>
+        </div>
+      </aside>
+    </div>
+    <div class="ad-slot ad-slot--leaderboard">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="how-to-use">
+      <h2>Cómo comprimir un PDF</h2>
+      <ol class="steps">
+        <li><strong>Sube tu PDF</strong> — Arrastra o selecciona el archivo PDF que quieres comprimir.</li>
+        <li><strong>Elige el nivel</strong> — Selecciona el nivel de compresión: baja, media o alta.</li>
+        <li><strong>Descarga el resultado</strong> — Haz clic en "Comprimir PDF" y descarga el archivo reducido.</li>
+      </ol>
+    </section>
+    <section class="features">
+      <h2>Características</h2>
+      <ul class="features-list">
+        <li>Tres niveles de compresión</li>
+        <li>Muestra el porcentaje de reducción</li>
+        <li>Calidad visual preservada</li>
+        <li>100% privado — sin subida al servidor</li>
+        <li>Powered by pdf-lib</li>
+      </ul>
+    </section>
+    <div class="ad-slot ad-slot--rectangle" style="margin:0 auto 32px">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="faq">
+      <h2>Preguntas Frecuentes</h2>
+      <div class="faq-list">
+        <details class="faq-item"><summary class="faq-question">¿Cuánto se reduce el tamaño del PDF? <span class="faq-icon">+</span></summary><div class="faq-answer">Depende del contenido. PDFs con muchas imágenes pueden reducirse significativamente. PDFs ya optimizados pueden no reducirse mucho.</div></details>
+        <details class="faq-item"><summary class="faq-question">¿Se pierde calidad al comprimir? <span class="faq-icon">+</span></summary><div class="faq-answer">La herramienta optimiza la estructura del PDF sin re-procesar las imágenes, por lo que la calidad visual se mantiene idéntica.</div></details>
+        <details class="faq-item"><summary class="faq-question">¿Son seguros mis archivos? <span class="faq-icon">+</span></summary><div class="faq-answer">Sí. Todo el procesamiento es 100% local en tu navegador usando pdf-lib. Tus archivos nunca se envían a ningún servidor.</div></details>
+      </div>
+    </section>
+    <section class="related-tools">
+      <h2>Herramientas Relacionadas</h2>
+      <div class="tool-grid">
+        <a href="/pdf-merge/" class="tool-card"><img src="/assets/img/icon-pdf.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>PDF Merge</h3><p>Combina varios PDFs en uno.</p><span class="tool-card-link">Usar →</span></a>
+        <a href="/pdf-split/" class="tool-card"><img src="/assets/img/icon-pdf.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>PDF Split</h3><p>Divide o extrae páginas de un PDF.</p><span class="tool-card-link">Usar →</span></a>
+        <a href="/image-converter/" class="tool-card"><img src="/assets/img/icon-image.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Image Converter</h3><p>Convierte entre PNG, JPG, WebP.</p><span class="tool-card-link">Usar →</span></a>
+      </div>
+    </section>
+  </main>
+  <footer id="site-footer" class="site-footer"></footer>
+  <script src="/assets/js/shared.js" defer></script>
+  <script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js" defer></script>
+  <script src="/assets/js/tools/pdf-compress.js" defer></script>
+</body>
+</html>

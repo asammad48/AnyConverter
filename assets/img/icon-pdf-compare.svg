@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40">
+  <defs>
+    <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#16A34A"/>
+      <stop offset="100%" stop-color="#2563EB"/>
+    </linearGradient>
+  </defs>
+  <rect width="40" height="40" rx="10" fill="url(#g)"/>
+  <!-- Left doc -->
+  <path d="M5,9 L14,9 L17,12 L17,31 L5,31 Z" fill="white" opacity="0.25"/>
+  <path d="M5,9 L14,9 L17,12 L17,31 L5,31 Z" fill="none" stroke="white" stroke-width="1.8" stroke-linejoin="round"/>
+  <path d="M14,9 L14,12 L17,12" fill="none" stroke="white" stroke-width="1.4" stroke-linejoin="round"/>
+  <line x1="7" y1="16" x2="15" y2="16" stroke="white" stroke-width="1.2" stroke-linecap="round" opacity="0.7"/>
+  <rect x="7" y="19" width="8" height="2.5" rx="0.5" fill="#86EFAC" opacity="0.7"/>
+  <line x1="7" y1="24" x2="15" y2="24" stroke="white" stroke-width="1.2" stroke-linecap="round" opacity="0.7"/>
+  <!-- Divider -->
+  <line x1="20" y1="7" x2="20" y2="33" stroke="white" stroke-width="1.4" stroke-linecap="round" opacity="0.4"/>
+  <!-- Right doc -->
+  <path d="M23,9 L32,9 L35,12 L35,31 L23,31 Z" fill="white" opacity="0.25"/>
+  <path d="M23,9 L32,9 L35,12 L35,31 L23,31 Z" fill="none" stroke="white" stroke-width="1.8" stroke-linejoin="round"/>
+  <path d="M32,9 L32,12 L35,12" fill="none" stroke="white" stroke-width="1.4" stroke-linejoin="round"/>
+  <line x1="25" y1="16" x2="33" y2="16" stroke="white" stroke-width="1.2" stroke-linecap="round" opacity="0.7"/>
+  <rect x="25" y="19" width="8" height="2.5" rx="0.5" fill="#FCA5A5" opacity="0.7"/>
+  <line x1="25" y1="24" x2="30" y2="24" stroke="white" stroke-width="1.2" stroke-linecap="round" opacity="0.7"/>
+</svg>

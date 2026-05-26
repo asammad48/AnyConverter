@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40">
+  <defs>
+    <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#B45309"/>
+      <stop offset="100%" stop-color="#FDE68A"/>
+    </linearGradient>
+  </defs>
+  <rect width="40" height="40" rx="10" fill="url(#g)"/>
+  <!-- Full page (faded) -->
+  <rect x="8" y="7" width="20" height="26" rx="2" fill="white" opacity="0.2"/>
+  <rect x="8" y="7" width="20" height="26" rx="2" fill="none" stroke="white" stroke-width="1.5" stroke-dasharray="3,2" opacity="0.5"/>
+  <!-- Crop region (solid) -->
+  <rect x="12" y="12" width="12" height="16" rx="1.5" fill="white" opacity="0.3"/>
+  <rect x="12" y="12" width="12" height="16" rx="1.5" fill="none" stroke="white" stroke-width="2"/>
+  <!-- Corner crop handles -->
+  <path d="M12,16 L12,12 L16,12" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M20,12 L24,12 L24,16" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M12,24 L12,28 L16,28" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M20,28 L24,28 L24,24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

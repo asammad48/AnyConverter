@@ -1,0 +1,141 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Comparador de Texto Online Gratis | AnyConverter</title>
+  <meta name="description" content="Compara dos textos y encuentra las diferencias online gratis. Resalta líneas añadidas, eliminadas y sin cambios con una vista diff a color. Sin registro, 100% en tu navegador.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://anyconverter.io/es/text-diff-checker/">
+  <link rel="alternate" hreflang="en" href="https://anyconverter.io/text-diff-checker/">
+  <link rel="alternate" hreflang="es" href="https://anyconverter.io/es/text-diff-checker/">
+  <link rel="alternate" hreflang="da" href="https://anyconverter.io/da/text-diff-checker/">
+  <link rel="alternate" hreflang="x-default" href="https://anyconverter.io/text-diff-checker/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Comparador de Texto Online Gratis | AnyConverter">
+  <meta property="og:description" content="Compara dos textos y encuentra las diferencias online gratis. Resalta líneas añadidas, eliminadas y sin cambios con una vista diff a color.">
+  <meta property="og:url" content="https://anyconverter.io/es/text-diff-checker/">
+  <meta property="og:site_name" content="AnyConverter">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" data-ad-client="ca-pub-XXXXXXXXXX" crossorigin="anonymous"></script>
+  <!-- Replace ca-pub-XXXXXXXXXX with your real AdSense publisher ID -->
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Comparador de Texto","url":"https://anyconverter.io/es/text-diff-checker/","description":"Compara dos textos y encuentra las diferencias online gratis. Resalta líneas añadidas, eliminadas y sin cambios.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F4F6FF);color:var(--color-text,#1E1B4B)}
+    body{min-height:100vh;display:flex;flex-direction:column}
+    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8FE)}
+    .header-inner{max-width:1280px;width:100%;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;gap:32px}
+    .hero{padding:40px 24px 32px;max-width:1280px;margin:0 auto}
+    .hero h1{font-size:clamp(1.75rem,4vw,2.25rem);font-weight:700;line-height:1.2;margin-bottom:12px}
+    .hero-desc{font-size:1.0625rem;color:var(--color-text-2,#6B7280);max-width:680px;line-height:1.6}
+    @font-face{font-family:'Inter';font-display:swap}
+  </style>
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+  <header id="site-header" class="site-header"></header>
+  <main id="main-content">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol><li><a href="/es/">Inicio</a></li><li aria-current="page">Comparador de Texto</li></ol>
+    </nav>
+    <section class="hero">
+      <h1>Comparador de Texto</h1>
+      <p class="hero-desc">Pega dos versiones de tu texto y ve al instante qué cambió. Las líneas añadidas se resaltan en verde, las eliminadas en rojo y las sin cambios en gris, todo en tu navegador sin enviar datos a ningún servidor.</p>
+    </section>
+    <div class="tool-wrapper">
+      <div class="tool-zone">
+        <div style="padding:24px">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px">
+            <div>
+              <label style="display:block;font-size:13px;font-weight:500;margin-bottom:6px" for="diff-orig">Texto original</label>
+              <textarea id="diff-orig" placeholder="Pega el texto original aquí..." style="width:100%;min-height:200px;padding:12px;border:1px solid var(--color-border,#DDD8FE);border-radius:8px;font-size:14px;resize:vertical;font-family:monospace" spellcheck="false"></textarea>
+            </div>
+            <div>
+              <label style="display:block;font-size:13px;font-weight:500;margin-bottom:6px" for="diff-new">Texto modificado</label>
+              <textarea id="diff-new" placeholder="Pega el texto modificado aquí..." style="width:100%;min-height:200px;padding:12px;border:1px solid var(--color-border,#DDD8FE);border-radius:8px;font-size:14px;resize:vertical;font-family:monospace" spellcheck="false"></textarea>
+            </div>
+          </div>
+          <div class="action-bar" style="margin-bottom:16px">
+            <button class="btn btn-primary" id="btn-diff">Comparar</button>
+            <button class="btn btn-secondary" id="btn-diff-clear">Limpiar</button>
+          </div>
+          <div id="diff-stats" style="display:none;display:flex;gap:12px;margin-bottom:12px">
+            <div class="stat-card" style="flex:1"><div class="stat-val" id="diff-added">0</div><div class="stat-lbl" style="color:var(--color-success,#059669)">Líneas añadidas</div></div>
+            <div class="stat-card" style="flex:1"><div class="stat-val" id="diff-removed">0</div><div class="stat-lbl" style="color:var(--color-pdf,#EF4444)">Líneas eliminadas</div></div>
+            <div class="stat-card" style="flex:1"><div class="stat-val" id="diff-unchanged">0</div><div class="stat-lbl">Sin cambios</div></div>
+          </div>
+          <div id="diff-output" style="display:none;background:var(--color-code-bg,#0F0F1A);border-radius:8px;padding:16px;max-height:400px;overflow-y:auto;font-family:monospace;font-size:13px;line-height:1.6"></div>
+        </div>
+      </div>
+      <aside class="tool-side" aria-label="Opciones">
+        <div class="ss-divider">Herramientas relacionadas</div>
+        <a href="/es/word-counter/" class="ss-related-link"><img src="/assets/img/icon-text.svg" alt="" width="18" height="18" loading="lazy">Contador de palabras</a>
+        <a href="/es/json-formatter/" class="ss-related-link"><img src="/assets/img/icon-json.svg" alt="" width="18" height="18" loading="lazy">Formateador JSON</a>
+        <a href="/es/character-counter/" class="ss-related-link"><img src="/assets/img/icon-text.svg" alt="" width="18" height="18" loading="lazy">Contador de caracteres</a>
+        <div style="margin-top:16px">
+          <p class="ad-label">Publicidad</p>
+          <div class="ad-slot" style="min-height:250px">
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+            <!-- Replace ca-pub-XXXXXXXXXX and data-ad-slot="XXXXXXXXXX" with your IDs -->
+          </div>
+        </div>
+      </aside>
+    </div>
+    <div class="ad-slot ad-slot--leaderboard">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="how-to-use">
+      <h2>Cómo Usar el Comparador de Texto</h2>
+      <ol class="steps">
+        <li><strong>Paso 1</strong> — Pega tu texto original en el área de texto izquierda "Texto original".</li>
+        <li><strong>Paso 2</strong> — Pega la versión modificada en el área de texto derecha "Texto modificado".</li>
+        <li><strong>Paso 3</strong> — Haz clic en "Comparar" para ver las diferencias resaltadas línea por línea. Las líneas verdes fueron añadidas y las rojas eliminadas.</li>
+      </ol>
+    </section>
+    <section class="features">
+      <h2>Características</h2>
+      <ul class="features-list">
+        <li>Comparación línea a línea usando el algoritmo LCS (Subsecuencia Común más Larga)</li>
+        <li>Salida codificada por colores: verde para añadidas, rojo para eliminadas, gris para sin cambios</li>
+        <li>Estadísticas de resumen con el total de líneas añadidas, eliminadas y sin cambios</li>
+        <li>Funciona completamente en tu navegador — no se envía texto a ningún servidor</li>
+        <li>Compatible con cualquier texto plano: código, prosa, archivos de configuración y más</li>
+        <li>Salida diff desplazable para documentos largos</li>
+        <li>Botón Limpiar con un solo clic para reiniciar ambas entradas</li>
+      </ul>
+    </section>
+    <div class="ad-slot ad-slot--rectangle" style="margin:0 auto 32px">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="faq">
+      <h2>Preguntas Frecuentes</h2>
+      <div class="faq-list">
+        <details class="faq-item"><summary class="faq-question">¿Cómo funciona el algoritmo de comparación? <span class="faq-icon">+</span></summary><div class="faq-answer">La herramienta usa el algoritmo de Subsecuencia Común más Larga (LCS), la misma base que usa git diff. Encuentra el mayor conjunto de líneas que aparecen en ambos textos en el mismo orden y marca el resto como añadidas o eliminadas.</div></details>
+        <details class="faq-item"><summary class="faq-question">¿Se envía mi texto a un servidor? <span class="faq-icon">+</span></summary><div class="faq-answer">No. Toda la comparación ocurre dentro de tu navegador usando JavaScript. Tu texto nunca abandona tu dispositivo, lo que lo hace seguro para contenido sensible o confidencial.</div></details>
+        <details class="faq-item"><summary class="faq-question">¿Puedo comparar archivos de código? <span class="faq-icon">+</span></summary><div class="faq-answer">Sí. La herramienta funciona con cualquier texto plano, incluyendo código fuente en cualquier lenguaje, JSON, XML, YAML y archivos de configuración. Simplemente pega el contenido del archivo en ambas áreas de texto.</div></details>
+        <details class="faq-item"><summary class="faq-question">¿Qué significa el conteo de "Sin cambios"? <span class="faq-icon">+</span></summary><div class="faq-answer">Las líneas sin cambios son líneas que existen en ambos textos, original y modificado, en posiciones correspondientes. Un conteo alto de sin cambios significa que los dos textos son muy similares.</div></details>
+        <details class="faq-item"><summary class="faq-question">¿Existe un límite de tamaño para el texto que puedo comparar? <span class="faq-icon">+</span></summary><div class="faq-answer">No hay un límite impuesto, pero textos muy grandes (miles de líneas) pueden tardar un momento en procesarse. Para mejor rendimiento, compara textos de menos de unos miles de líneas.</div></details>
+      </div>
+    </section>
+    <section class="related-tools">
+      <h2>Herramientas Relacionadas</h2>
+      <div class="tool-grid">
+        <a href="/es/word-counter/" class="tool-card"><img src="/assets/img/icon-text.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Contador de palabras</h3><p>Cuenta palabras, caracteres, oraciones y párrafos al instante.</p><span class="tool-card-link">Usar →</span></a>
+        <a href="/es/json-formatter/" class="tool-card"><img src="/assets/img/icon-json.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Formateador JSON</h3><p>Formatea y valida JSON con resaltado de sintaxis.</p><span class="tool-card-link">Usar →</span></a>
+        <a href="/es/character-counter/" class="tool-card"><img src="/assets/img/icon-text.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Contador de caracteres</h3><p>Cuenta caracteres, palabras y bytes con seguimiento de límites de plataforma.</p><span class="tool-card-link">Usar →</span></a>
+        <a href="/es/text-case-converter/" class="tool-card"><img src="/assets/img/icon-text.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Conversor de mayúsculas</h3><p>Convierte texto entre mayúsculas, minúsculas, título y más.</p><span class="tool-card-link">Usar →</span></a>
+      </div>
+    </section>
+  </main>
+  <footer id="site-footer" class="site-footer"></footer>
+  <script src="/assets/js/shared.js" defer></script>
+  <script src="/assets/js/tools/text-diff-checker.js" defer></script>
+</body>
+</html>

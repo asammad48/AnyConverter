@@ -1,0 +1,171 @@
+﻿<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Regex Tester Online Gratis | AnyConverter</title>
+  <meta name="description" content="Test regulære udtryk online med live match-fremhævning. Gratis regex-tester, understøtter alle JavaScript regex-flag. Se matches, grupper og indekser øjeblikkeligt.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://anyconverter.io/da/regex-tester/">
+  <link rel="alternate" hreflang="en"        href="https://anyconverter.io/regex-tester/">
+  <link rel="alternate" hreflang="es"        href="https://anyconverter.io/es/regex-tester/">
+  <link rel="alternate" hreflang="da"        href="https://anyconverter.io/da/regex-tester/">
+  <link rel="alternate" hreflang="x-default" href="https://anyconverter.io/regex-tester/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Regex Tester Online Gratis | AnyConverter">
+  <meta property="og:description" content="Test regulære udtryk online med live match-fremhævning. Alle regex-flag understøttes.">
+  <meta property="og:url" content="https://anyconverter.io/da/regex-tester/">
+  <meta property="og:site_name" content="AnyConverter">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" data-ad-client="ca-pub-XXXXXXXXXX" crossorigin="anonymous"></script>
+  <!-- Replace ca-pub-XXXXXXXXXX with your real AdSense publisher ID -->
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Regex Tester","url":"https://anyconverter.io/da/regex-tester/","description":"Test regulære udtryk online med live match-fremhævning.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F4F6FF);color:var(--color-text,#1E1B4B)}
+    body{min-height:100vh;display:flex;flex-direction:column}
+    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8FE)}
+    .header-inner{max-width:1280px;width:100%;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;gap:32px}
+    .hero{padding:40px 24px 32px;max-width:1280px;margin:0 auto}
+    .hero h1{font-size:clamp(1.75rem,4vw,2.25rem);font-weight:700;line-height:1.2;margin-bottom:12px}
+    .hero-desc{font-size:1.0625rem;color:var(--color-text-2,#6B7280);max-width:680px;line-height:1.6}
+    @font-face{font-family:'Inter';font-display:swap}
+  </style>
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+  <header id="site-header" class="site-header"></header>
+  <main id="main-content">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol><li><a href="/da/">Hjem</a></li><li aria-current="page">Regex Tester</li></ol>
+    </nav>
+    <section class="hero">
+      <h1>Online Regex Tester</h1>
+      <p class="hero-desc">Test og fejlret regulære udtryk online i realtid. Indtast dit mønster og testteksten for at se fremhævede matches, capture-grupper og positionsindekser. Understøtter alle JavaScript-flag: g, i, m, s.</p>
+    </section>
+    <div class="tool-wrapper">
+      <div class="tool-zone">
+        <div class="regex-input-wrapper">
+          <span class="regex-slash">/</span>
+          <input type="text" id="regex-pattern" placeholder="mønster" spellcheck="false" aria-label="Regulært udtryk mønster">
+          <span class="regex-slash">/</span>
+          <div class="regex-flags" id="regex-flags">
+            <button class="flag-btn active" data-flag="g" title="Global">g</button>
+            <button class="flag-btn" data-flag="i" title="Ignorer store/små bogstaver">i</button>
+            <button class="flag-btn" data-flag="m" title="Multiline">m</button>
+            <button class="flag-btn" data-flag="s" title="Dotall">s</button>
+          </div>
+        </div>
+        <div id="regex-error" class="status-bar error" style="display:none;margin-top:8px"></div>
+        <div class="mt-4">
+          <label for="regex-test-input" class="panel-label">Testtekst</label>
+          <div class="regex-overlay-wrapper mt-2" style="position:relative">
+            <div id="regex-highlight-overlay" class="regex-highlight-overlay" aria-hidden="true"></div>
+            <textarea id="regex-test-input" placeholder="Indtast testtekst her..." spellcheck="false" style="min-height:180px;font-family:var(--font-mono);font-size:13px;position:relative;z-index:1;background:transparent"></textarea>
+          </div>
+        </div>
+        <div id="regex-stats" class="status-bar info" style="display:none;margin-top:8px"></div>
+        <div id="regex-matches" style="display:none;margin-top:16px">
+          <p class="panel-label" style="margin-bottom:10px">Matches</p>
+          <div id="regex-match-list"></div>
+        </div>
+      </div>
+      <aside class="tool-side" aria-label="Quick patterns and export options">
+
+        <div class="ss-divider">Quick Patterns</div>
+        <button class="quick-pat-btn" data-pattern="(\d{1,3}\.){3}\d{1,3}" data-desc="IP address">IP address</button>
+        <button class="quick-pat-btn" data-pattern="\d{4}-\d{2}-\d{2}" data-desc="Date YYYY-MM-DD">Date YYYY-MM-DD</button>
+        <button class="quick-pat-btn" data-pattern="[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}" data-desc="Email address">Email address</button>
+        <button class="quick-pat-btn" data-pattern="HTTP/\S+\s+(\d{3})" data-desc="HTTP status code">HTTP status code</button>
+        <button class="quick-pat-btn" data-pattern="\[(ERROR|WARN|INFO|DEBUG)\]" data-desc="Log level tag">[LOG LEVEL]</button>
+        <button class="quick-pat-btn" data-pattern="^\s+at\s+[\w.$]+\(.*:\d+:\d+\)" data-desc="Stack trace line">Stack trace line</button>
+        <button class="quick-pat-btn" data-pattern="[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}" data-desc="UUID">UUID</button>
+        <button class="quick-pat-btn" data-pattern="https?://[^\s]+" data-desc="URL">URL</button>
+        <button class="quick-pat-btn" data-pattern='"(level|severity)"\s*:\s*"(ERROR|WARN|INFO|DEBUG)"' data-desc="JSON log level">JSON log level</button>
+        <button class="quick-pat-btn" data-pattern="(\d{4}-\d{2}-\d{2}[T ]\d{2}:\d{2}:\d{2})" data-desc="ISO timestamp">ISO timestamp</button>
+
+        <div class="ss-divider">Export Options</div>
+        <div class="tog-row"><span class="tog-label" id="lbl-linenums">Include line numbers</span><div class="tog" id="tog-linenums" role="switch" aria-checked="true" tabindex="0" aria-labelledby="lbl-linenums"></div></div>
+        <div class="tog-row"><span class="tog-label" id="lbl-groups">Group by capture</span><div class="tog off" id="tog-groups" role="switch" aria-checked="false" tabindex="0" aria-labelledby="lbl-groups"></div></div>
+
+        <div class="ss-divider">Stats</div>
+        <div class="stats-grid">
+          <div class="stat-card"><div class="stat-val" id="stat-matches">0</div><div class="stat-lbl">Matches</div></div>
+          <div class="stat-card"><div class="stat-val" id="stat-groups">0</div><div class="stat-lbl">Groups</div></div>
+          <div class="stat-card"><div class="stat-val" id="stat-lines">0</div><div class="stat-lbl">Lines</div></div>
+          <div class="stat-card"><div class="stat-val" id="stat-bytes">0</div><div class="stat-lbl">Bytes</div></div>
+        </div>
+
+        <div class="ss-divider">Related Tools</div>
+        <a href="/json-formatter/" class="ss-related-link">
+          <img src="/assets/img/icon-json.svg" alt="" width="18" height="18" loading="lazy">JSON Formatter
+        </a>
+        <a href="/csv-to-sql/" class="ss-related-link">
+          <img src="/assets/img/icon-csv.svg" alt="" width="18" height="18" loading="lazy">CSV → SQL
+        </a>
+        <a href="/hash-generator/" class="ss-related-link">
+          <img src="/assets/img/icon-hash.svg" alt="" width="18" height="18" loading="lazy">Hash Generator
+        </a>
+
+        <!-- AdSense -->
+        <div style="margin-top:8px">
+          <p class="ad-label">Advertisement</p>
+          <div class="ad-slot" style="min-height:250px">
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+            <!-- Replace ca-pub-XXXXXXXXXX and data-ad-slot="XXXXXXXXXX" with your IDs -->
+          </div>
+        </div>
+
+      </aside>
+    </div>
+    <div class="ad-slot ad-slot--leaderboard">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="how-to-use">
+      <h2>Sådan tester du regulære udtryk</h2>
+      <ol class="steps">
+        <li><strong>Indtast dit mønster</strong> — Skriv det regulære udtryk i mønsterfeltet. Aktivér de nødvendige flag (g, i, m, s).</li>
+        <li><strong>Indtast testteksten</strong> — Skriv eller indsæt testteksten. Matches fremhæves i realtid.</li>
+        <li><strong>Analyser resultaterne</strong> — Se antallet af matches, deres positioner og capture-grupper.</li>
+      </ol>
+    </section>
+    <section class="features">
+      <h2>Funktioner</h2>
+      <ul class="features-list">
+        <li>Live match-fremhævning i realtid</li>
+        <li>Understøttelse af capture-grupper</li>
+        <li>Alle flag: g, i, m, s</li>
+        <li>Viser start- og slutindeks for hvert match</li>
+        <li>Mønstre valideres med fejlmeddelelser</li>
+      </ul>
+    </section>
+    <div class="ad-slot ad-slot--rectangle" style="margin:0 auto 32px">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="faq">
+      <h2>Ofte stillede spørgsmål</h2>
+      <div class="faq-list">
+        <details class="faq-item"><summary class="faq-question">Hvilken regex-syntaks bruges? <span class="faq-icon">+</span></summary><div class="faq-answer">Værktøjet bruger JavaScript's regex-motor, som er kompatibel med ECMA-262. Det er den samme motor, som bruges af Node.js og moderne browsere.</div></details>
+        <details class="faq-item"><summary class="faq-question">Hvad betyder de forskellige flag? <span class="faq-icon">+</span></summary><div class="faq-answer">g (global) finder alle matches i stedet for kun det første. i ignorerer forskellen på store og små bogstaver. m behandler hver linje som en separat streng for ^ og $. s får punktum (.) til også at matche linjeskift.</div></details>
+      </div>
+    </section>
+    <section class="related-tools">
+      <h2>Relaterede værktøjer</h2>
+      <div class="tool-grid">
+        <a href="/url-encoder/" class="tool-card"><img src="/assets/img/icon-url.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>URL Encoder</h3><p>Kodér og dekodér URL'er.</p><span class="tool-card-link">Brug →</span></a>
+        <a href="/json-formatter/" class="tool-card"><img src="/assets/img/icon-json.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>JSON Formatter</h3><p>Formater og valider JSON.</p><span class="tool-card-link">Brug →</span></a>
+        <a href="/hash-generator/" class="tool-card"><img src="/assets/img/icon-hash.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Hash Generator</h3><p>Generer kryptografiske hashes.</p><span class="tool-card-link">Brug →</span></a>
+      </div>
+    </section>
+  </main>
+  <footer id="site-footer" class="site-footer"></footer>
+  <script src="/assets/js/shared.js" defer></script>
+  <script src="/assets/js/tools/regex-tester.js" defer></script>
+</body>
+</html>

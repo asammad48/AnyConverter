@@ -1,0 +1,89 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Team Picker Online Free — Split People into Random Teams | AnyConverter</title>
+  <meta name="description" content="Randomly split a list of people into equal teams online for free. Enter names, choose number of teams, shuffle and get colour-coded team cards instantly. No signup.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://anyconverter.io/team-picker/">
+  <link rel="alternate" hreflang="en" href="https://anyconverter.io/team-picker/"><link rel="alternate" hreflang="es" href="https://anyconverter.io/es/team-picker/"><link rel="alternate" hreflang="da" href="https://anyconverter.io/da/team-picker/"><link rel="alternate" hreflang="x-default" href="https://anyconverter.io/team-picker/">
+  <meta property="og:type" content="website"><meta property="og:title" content="Team Picker Online Free | AnyConverter"><meta property="og:description" content="Split people into random teams instantly. Colour-coded cards. Free, no signup."><meta property="og:url" content="https://anyconverter.io/team-picker/"><meta property="og:site_name" content="AnyConverter">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" data-ad-client="ca-pub-XXXXXXXXXX" crossorigin="anonymous"></script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Team Picker","url":"https://anyconverter.io/team-picker/","description":"Randomly split a list of names into balanced teams online for free.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F4F6FF);color:var(--color-text,#1E1B4B)}
+    body{min-height:100vh;display:flex;flex-direction:column}
+    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8FE)}
+    .header-inner{max-width:1280px;width:100%;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;gap:32px}
+    .hero{padding:40px 24px 32px;max-width:1280px;margin:0 auto}
+    .hero h1{font-size:clamp(1.75rem,4vw,2.25rem);font-weight:700;line-height:1.2;margin-bottom:12px}
+    .hero-desc{font-size:1.0625rem;color:var(--color-text-2,#6B7280);max-width:680px;line-height:1.6}
+    @font-face{font-family:'Inter';font-display:swap}
+  </style>
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+  <header id="site-header" class="site-header"></header>
+  <main id="main-content">
+    <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/">Home</a></li><li><a href="/coin-flip/">Random Tools</a></li><li aria-current="page">Team Picker</li></ol></nav>
+    <section class="hero">
+      <h1>Team Picker Online</h1>
+      <p class="hero-desc">Split any group of people into balanced random teams. Paste names, choose how many teams, and get colour-coded team cards in seconds. Perfect for sports, games and workshops.</p>
+    </section>
+    <div class="tool-wrapper">
+      <div class="tool-zone">
+        <div style="padding:24px">
+          <div style="display:grid;grid-template-columns:1fr 2fr;gap:20px;align-items:start">
+            <div>
+              <label style="display:block;font-size:13px;font-weight:500;margin-bottom:6px">Names (one per line)</label>
+              <textarea id="tp-members" spellcheck="false" style="width:100%;height:220px;padding:10px 12px;border:1px solid var(--color-border,#DDD8FE);border-radius:8px;font-size:13px;resize:vertical;background:var(--color-surface,#fff);line-height:1.8">Alice
+Bob
+Charlie
+Diana
+Eve
+Frank
+Grace
+Hank</textarea>
+              <div style="display:flex;align-items:center;gap:10px;margin-top:10px;flex-wrap:wrap">
+                <label style="font-size:13px;color:var(--color-text-body,#374151)">Teams:</label>
+                <input type="number" id="tp-teams" min="2" max="20" value="2" style="width:60px;padding:8px;border:1px solid var(--color-border,#DDD8FE);border-radius:6px;font-size:14px;font-weight:700;text-align:center">
+                <label style="font-size:13px;display:flex;align-items:center;gap:6px;cursor:pointer">
+                  <input type="checkbox" id="tp-shuffle" checked style="accent-color:var(--color-primary,#4F46E5)"> Shuffle names
+                </label>
+              </div>
+              <button class="btn btn-primary" id="tp-pick" style="margin-top:12px;width:100%">Pick Teams</button>
+            </div>
+            <div>
+              <div id="tp-result" style="min-height:60px"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <aside class="tool-side">
+        <div class="ss-divider">Related Tools</div>
+        <a href="/random-picker/" class="ss-related-link"><img src="/assets/img/icon-picker.svg" alt="" width="18" height="18">Random Picker</a>
+        <a href="/spin-the-wheel/" class="ss-related-link"><img src="/assets/img/icon-wheel.svg" alt="" width="18" height="18">Spin the Wheel</a>
+        <a href="/decision-maker/" class="ss-related-link"><img src="/assets/img/icon-decision.svg" alt="" width="18" height="18">Decision Maker</a>
+        <div style="margin-top:16px"><p class="ad-label">Advertisement</p>
+          <div class="ad-slot" style="min-height:250px"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div>
+        </div>
+      </aside>
+    </div>
+    <div class="ad-slot ad-slot--leaderboard"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div>
+    <section class="how-to-use"><h2>How to Pick Teams</h2><ol class="steps"><li><strong>Step 1</strong> — Enter one name per line in the text area.</li><li><strong>Step 2</strong> — Set the number of teams you want.</li><li><strong>Step 3</strong> — Keep "Shuffle names" checked for random assignment (or uncheck to keep list order).</li><li><strong>Step 4</strong> — Click <em>Pick Teams</em> to see colour-coded team cards.</li></ol></section>
+    <section class="features"><h2>Features</h2><ul class="features-list"><li>Round-robin distribution ensures balanced team sizes</li><li>Optional shuffle for truly random assignment</li><li>Up to 8 distinct team colours</li><li>Team member count shown per card</li><li>Works with any number of people and teams</li></ul></section>
+    <div class="ad-slot ad-slot--rectangle" style="margin:0 auto 32px"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div>
+    <section class="faq"><h2>Frequently Asked Questions</h2><div class="faq-list">
+      <details class="faq-item"><summary class="faq-question">What happens if the number of people doesn't divide equally? <span class="faq-icon">+</span></summary><div class="faq-answer">The tool distributes members round-robin so some teams will have one more member than others. The team cards show the member count so you can see the distribution.</div></details>
+      <details class="faq-item"><summary class="faq-question">Can I keep the same teams by refreshing? <span class="faq-icon">+</span></summary><div class="faq-answer">No — the shuffle is re-run each time you click Pick Teams. If you want to keep results, screenshot the page or copy the team cards before clicking again.</div></details>
+    </div></section>
+  </main>
+  <footer id="site-footer" class="site-footer"></footer>
+  <script src="/assets/js/shared.js" defer></script>
+  <script src="/assets/js/tools/team-picker.js" defer></script>
+</body>
+</html>

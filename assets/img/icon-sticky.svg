@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40">
+  <defs>
+    <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F7971E"/>
+      <stop offset="100%" stop-color="#FFD200"/>
+    </linearGradient>
+  </defs>
+  <rect width="40" height="40" rx="10" fill="url(#g)"/>
+  <!-- Note paper body (dog-ear top-right) -->
+  <path d="M10,8 L26,8 L32,14 L32,33 L10,33 Z" fill="white" opacity="0.22"/>
+  <path d="M10,8 L26,8 L32,14 L32,33 L10,33 Z" fill="none" stroke="white" stroke-width="2" stroke-linejoin="round"/>
+  <!-- Dog-ear fold -->
+  <path d="M26,8 L26,14 L32,14" fill="none" stroke="white" stroke-width="1.8" stroke-linejoin="round"/>
+  <!-- Text lines -->
+  <line x1="15" y1="19" x2="27" y2="19" stroke="white" stroke-width="2" stroke-linecap="round"/>
+  <line x1="15" y1="24" x2="27" y2="24" stroke="white" stroke-width="2" stroke-linecap="round"/>
+  <line x1="15" y1="29" x2="22" y2="29" stroke="white" stroke-width="2" stroke-linecap="round"/>
+</svg>

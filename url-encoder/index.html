@@ -1,0 +1,154 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>URL Encoder &amp; Decoder Online — Free | AnyConverter</title>
+  <meta name="description" content="Encode or decode URLs and query parameters online. Free URL encoder with percent-encoding. Encode components or full URLs instantly in your browser.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://anyconverter.io/url-encoder/">
+  <link rel="alternate" hreflang="en" href="https://anyconverter.io/url-encoder/">
+  <link rel="alternate" hreflang="es" href="https://anyconverter.io/es/url-encoder/">
+  <link rel="alternate" hreflang="da" href="https://anyconverter.io/da/url-encoder/">
+  <link rel="alternate" hreflang="x-default" href="https://anyconverter.io/url-encoder/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="URL Encoder &amp; Decoder Online — Free | AnyConverter">
+  <meta property="og:description" content="Encode or decode URLs and query parameters online. Free URL encoder with percent-encoding.">
+  <meta property="og:url" content="https://anyconverter.io/url-encoder/">
+  <meta property="og:site_name" content="AnyConverter">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" data-ad-client="ca-pub-XXXXXXXXXX" crossorigin="anonymous"></script>
+  <!-- Replace ca-pub-XXXXXXXXXX with your real AdSense publisher ID -->
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"URL Encoder & Decoder","url":"https://anyconverter.io/url-encoder/","description":"Encode or decode URLs and query parameters online. Free URL encoder.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F4F6FF);color:var(--color-text,#1E1B4B)}
+    body{min-height:100vh;display:flex;flex-direction:column}
+    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8FE)}
+    .header-inner{max-width:1280px;width:100%;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;gap:32px}
+    .hero{padding:40px 24px 32px;max-width:1280px;margin:0 auto}
+    .hero h1{font-size:clamp(1.75rem,4vw,2.25rem);font-weight:700;line-height:1.2;margin-bottom:12px}
+    .hero-desc{font-size:1.0625rem;color:var(--color-text-2,#6B7280);max-width:680px;line-height:1.6}
+    @font-face{font-family:'Inter';font-display:swap}
+  </style>
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+  <header id="site-header" class="site-header"></header>
+  <main id="main-content">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol><li><a href="/">Home</a></li><li aria-current="page">URL Encoder</li></ol>
+    </nav>
+    <section class="hero">
+      <h1>URL Encoder &amp; Decoder</h1>
+      <p class="hero-desc">Encode or decode URL components and full URLs online. Use percent-encoding to safely include special characters in URLs, or decode encoded URLs back to human-readable form. Instant, free, browser-based.</p>
+    </section>
+    <div class="tool-wrapper">
+      <div class="tool-zone">
+        <div class="format-toggles mb-4" id="mode-toggles">
+          <button class="format-toggle active" data-mode="component">Encode Component</button>
+          <button class="format-toggle" data-mode="full">Encode Full URL</button>
+          <button class="format-toggle" data-mode="decode">Decode</button>
+        </div>
+        <label for="url-input" id="input-label">Input</label>
+        <textarea id="url-input" placeholder="Enter text or URL to encode..." spellcheck="false" style="min-height:120px"></textarea>
+        <div class="action-bar">
+          <div class="action-bar-left">
+            <button class="btn btn-primary btn-sm" id="btn-convert">↕ Convert</button>
+            <button class="btn btn-secondary btn-sm" id="btn-swap">Swap ⇄</button>
+          </div>
+          <div class="action-bar-right">
+            <button class="btn btn-secondary btn-sm" id="btn-clear">Clear</button>
+            <button class="btn btn-secondary btn-sm" id="btn-copy">Copy Output</button>
+          </div>
+        </div>
+        <label for="url-output">Output</label>
+        <textarea id="url-output" readonly placeholder="Encoded/decoded output will appear here..." spellcheck="false" style="min-height:120px;font-family:var(--font-mono)"></textarea>
+        <div id="url-status" class="status-bar" style="display:none"></div>
+      </div>
+
+      <aside class="tool-side" aria-label="Options">
+        <div class="ss-divider">Options</div>
+        <div class="tog-row"><span class="tog-label" id="lbl-plusspaces">Encode spaces as +</span><div class="tog off" id="tog-plusspaces" role="switch" aria-checked="false" tabindex="0" aria-labelledby="lbl-plusspaces"></div></div>
+        <div class="tog-row"><span class="tog-label" id="lbl-liveconv">Live conversion</span><div class="tog" id="tog-liveconv" role="switch" aria-checked="true" tabindex="0" aria-labelledby="lbl-liveconv"></div></div>
+
+        <div class="ss-divider">Stats</div>
+        <div class="stats-grid">
+          <div class="stat-card"><div class="stat-val" id="stat-input-len">0</div><div class="stat-lbl">Input chars</div></div>
+          <div class="stat-card"><div class="stat-val" id="stat-output-len">0</div><div class="stat-lbl">Output chars</div></div>
+          <div class="stat-card"><div class="stat-val" id="stat-encoded-count">0</div><div class="stat-lbl">Encoded</div></div>
+          <div class="stat-card"><div class="stat-val" id="stat-decode-err">0</div><div class="stat-lbl">Errors</div></div>
+        </div>
+
+        <div class="ss-divider">Related Tools</div>
+        <a href="/base64-encoder/" class="ss-related-link"><img src="/assets/img/icon-base64.svg" alt="" width="18" height="18" loading="lazy">Base64 Encoder</a>
+        <a href="/hash-generator/" class="ss-related-link"><img src="/assets/img/icon-hash.svg" alt="" width="18" height="18" loading="lazy">Hash Generator</a>
+        <a href="/json-formatter/" class="ss-related-link"><img src="/assets/img/icon-json.svg" alt="" width="18" height="18" loading="lazy">JSON Formatter</a>
+
+        <div style="margin-top:8px">
+          <p class="ad-label">Advertisement</p>
+          <div class="ad-slot" style="min-height:250px">
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+            <!-- Replace ca-pub-XXXXXXXXXX and data-ad-slot="XXXXXXXXXX" with your IDs -->
+          </div>
+        </div>
+      </aside>
+    </div>
+    <div class="ad-slot ad-slot--leaderboard">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="how-to-use">
+      <h2>How to Encode or Decode a URL</h2>
+      <ol class="steps">
+        <li><strong>Choose mode</strong> — Select Encode Component for query parameters, Encode Full URL to preserve URL structure, or Decode to reverse encoding.</li>
+        <li><strong>Enter your text or URL</strong> — Paste the string you want to encode or decode into the input area.</li>
+        <li><strong>Click Convert</strong> — Copy the output or use Swap to move the output back to input for chaining.</li>
+      </ol>
+    </section>
+    <section class="features">
+      <h2>Features</h2>
+      <ul class="features-list">
+        <li>Encode URL components (encodeURIComponent)</li>
+        <li>Encode full URLs (preserves ://&amp;=?#)</li>
+        <li>Decode percent-encoded URLs</li>
+        <li>Swap input and output</li>
+        <li>Live conversion on input</li>
+        <li>100% browser-based, no server</li>
+      </ul>
+    </section>
+    <div class="ad-slot ad-slot--rectangle" style="margin:0 auto 32px">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="faq">
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-list">
+        <details class="faq-item"><summary class="faq-question">What is URL encoding? <span class="faq-icon">+</span></summary><div class="faq-answer">URL encoding converts special characters in a URL to their percent-encoded equivalents. For example, a space becomes %20 and & becomes %26. This ensures URLs are transmitted correctly.</div></details>
+        <details class="faq-item"><summary class="faq-question">When should I use Encode Component vs Encode Full URL? <span class="faq-icon">+</span></summary><div class="faq-answer">Use Encode Component for individual query parameter values — it encodes everything including / and ?. Use Encode Full URL when you want to keep the URL structure intact but encode unsafe characters.</div></details>
+        <details class="faq-item"><summary class="faq-question">What characters are encoded? <span class="faq-icon">+</span></summary><div class="faq-answer">Encode Component encodes all characters except letters, digits, and -_.~. Encode Full URL also preserves :/?#[]@!$&'()*+,;= which are valid URL characters.</div></details>
+        <details class="faq-item"><summary class="faq-question">What is %20 vs +? <span class="faq-icon">+</span></summary><div class="faq-answer">%20 is the standard percent-encoding for a space. The + sign also represents a space but only in query strings (form data). This tool uses %20 for standard URL encoding.</div></details>
+        <details class="faq-item"><summary class="faq-question">Is URL decoding safe? <span class="faq-icon">+</span></summary><div class="faq-answer">Yes. URL decoding is safe and reversible. All processing happens in your browser and no data is sent to any server.</div></details>
+      </div>
+    </section>
+    <section class="related-tools">
+      <h2>Related Tools</h2>
+      <div class="tool-grid">
+        <a href="/base64-encoder/" class="tool-card"><img src="/assets/img/icon-base64.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Base64 Encoder</h3><p>Encode and decode Base64.</p><span class="tool-card-link">Try it →</span></a>
+        <a href="/hash-generator/" class="tool-card"><img src="/assets/img/icon-hash.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Hash Generator</h3><p>Generate cryptographic hashes.</p><span class="tool-card-link">Try it →</span></a>
+        <a href="/json-formatter/" class="tool-card"><img src="/assets/img/icon-json.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>JSON Formatter</h3><p>Format and validate JSON.</p><span class="tool-card-link">Try it →</span></a>
+        <a href="/regex-tester/" class="tool-card"><img src="/assets/img/icon-regex.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Regex Tester</h3><p>Test regular expressions.</p><span class="tool-card-link">Try it →</span></a>
+        <a href="/timestamp-converter/" class="tool-card"><img src="/assets/img/icon-clock.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Timestamp Converter</h3><p>Convert Unix timestamps.</p><span class="tool-card-link">Try it →</span></a>
+        <a href="/xml-formatter/" class="tool-card"><img src="/assets/img/icon-xml.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>XML Formatter</h3><p>Format and validate XML.</p><span class="tool-card-link">Try it →</span></a>
+      </div>
+    </section>
+  </main>
+  <footer id="site-footer" class="site-footer"></footer>
+  <script src="/assets/js/shared.js" defer></script>
+  <script src="/assets/js/tools/url-encoder.js" defer></script>
+</body>
+</html>

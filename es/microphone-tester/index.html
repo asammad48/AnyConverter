@@ -1,0 +1,126 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Probador de Micrófono Online Gratis | AnyConverter</title>
+  <meta name="description" content="Prueba tu micrófono online gratis. Ve los niveles de audio en tiempo real, comprueba si tu micrófono funciona y ve la información del dispositivo. Sin descarga de software.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://anyconverter.io/es/microphone-tester/">
+  <link rel="alternate" hreflang="en" href="https://anyconverter.io/microphone-tester/">
+  <link rel="alternate" hreflang="es" href="https://anyconverter.io/es/microphone-tester/">
+  <link rel="alternate" hreflang="da" href="https://anyconverter.io/da/microphone-tester/">
+  <link rel="alternate" hreflang="x-default" href="https://anyconverter.io/microphone-tester/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Probador de Micrófono Online Gratis | AnyConverter">
+  <meta property="og:description" content="Prueba tu micrófono con un medidor de nivel de audio en vivo. Comprueba si tu micrófono funciona al instante en tu navegador.">
+  <meta property="og:url" content="https://anyconverter.io/es/microphone-tester/">
+  <meta property="og:site_name" content="AnyConverter">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" data-ad-client="ca-pub-XXXXXXXXXX" crossorigin="anonymous"></script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Probador de Micrófono","url":"https://anyconverter.io/es/microphone-tester/","description":"Prueba tu micrófono con un medidor de nivel de audio en tiempo real directamente en tu navegador.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F4F6FF);color:var(--color-text,#1E1B4B)}
+    body{min-height:100vh;display:flex;flex-direction:column}
+    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8FE)}
+    .header-inner{max-width:1280px;width:100%;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;gap:32px}
+    .hero{padding:40px 24px 32px;max-width:1280px;margin:0 auto}
+    .hero h1{font-size:clamp(1.75rem,4vw,2.25rem);font-weight:700;line-height:1.2;margin-bottom:12px}
+    .hero-desc{font-size:1.0625rem;color:var(--color-text-2,#6B7280);max-width:680px;line-height:1.6}
+    @font-face{font-family:'Inter';font-display:swap}
+    .mic-meter-wrap{background:var(--color-surface-2,#EEF1FF);border-radius:12px;padding:24px;margin:8px 0}
+    .mic-meter-track{background:var(--color-border,#DDD8FE);border-radius:99px;height:32px;overflow:hidden;margin:12px 0}
+    #mic-bar{height:100%;width:0%;border-radius:99px;background:var(--color-primary,#4F46E5);transition:width .05s}
+    .mic-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:8px}
+    .mic-stat{background:var(--color-surface,#fff);border-radius:8px;padding:12px;text-align:center}
+    .mic-stat-val{font-size:1.25rem;font-weight:700;color:var(--color-primary,#4F46E5)}
+    .mic-stat-label{font-size:11px;color:var(--color-text-2,#6B7280);font-weight:600;text-transform:uppercase;letter-spacing:.5px;margin-top:2px}
+  </style>
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+  <header id="site-header" class="site-header"></header>
+  <main id="main-content">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol><li><a href="/es/">Inicio</a></li><li aria-current="page">Probador de Micrófono</li></ol>
+    </nav>
+    <section class="hero">
+      <h1>Probador de Micrófono</h1>
+      <p class="hero-desc">Prueba tu micrófono con un medidor de nivel de audio en tiempo real. Ve al instante si tu micrófono está captando sonido, comprueba los niveles de volumen e información del dispositivo — directamente en tu navegador.</p>
+    </section>
+    <div class="tool-wrapper">
+      <div class="tool-zone">
+        <div style="padding:24px">
+          <div class="mic-meter-wrap">
+            <div style="font-size:13px;font-weight:600;margin-bottom:4px">Nivel de Audio en Vivo</div>
+            <div class="mic-meter-track"><div id="mic-bar"></div></div>
+            <div class="mic-stats">
+              <div class="mic-stat"><div class="mic-stat-val" id="mic-db">— dB</div><div class="mic-stat-label">Nivel</div></div>
+              <div class="mic-stat"><div class="mic-stat-val" id="mic-peak">0%</div><div class="mic-stat-label">Pico</div></div>
+              <div class="mic-stat"><div class="mic-stat-val" id="mic-label" style="font-size:11px;padding-top:4px">—</div><div class="mic-stat-label">Dispositivo</div></div>
+            </div>
+          </div>
+          <div style="font-size:13px;color:var(--color-text-2,#6B7280);margin:8px 0;min-height:20px" id="mic-status">Haz clic en "Iniciar Prueba de Mic" para comenzar.</div>
+          <div class="action-bar">
+            <button class="btn btn-primary" id="mic-start">Iniciar Prueba de Mic</button>
+            <button class="btn btn-secondary" id="mic-stop" disabled>Detener</button>
+          </div>
+        </div>
+      </div>
+      <aside class="tool-side" aria-label="Opciones">
+        <div class="ss-divider">Herramientas Relacionadas</div>
+        <a href="/es/webcam-tester/" class="ss-related-link"><img src="/assets/img/icon-browser.svg" alt="" width="18" height="18" loading="lazy">Probador de Webcam</a>
+        <a href="/es/browser-info/" class="ss-related-link"><img src="/assets/img/icon-browser.svg" alt="" width="18" height="18" loading="lazy">Visor de Info del Navegador</a>
+        <div style="margin-top:16px">
+          <p class="ad-label">Publicidad</p>
+          <div class="ad-slot" style="min-height:250px">
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+          </div>
+        </div>
+      </aside>
+    </div>
+    <div class="ad-slot ad-slot--leaderboard">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="how-to-use">
+      <h2>Cómo Usar el Probador de Micrófono</h2>
+      <ol class="steps">
+        <li>Haz clic en <strong>Iniciar Prueba de Mic</strong> — tu navegador solicitará permiso de micrófono.</li>
+        <li>Concede el acceso y la barra de nivel en vivo comenzará a moverse cuando hables.</li>
+        <li>El medidor se vuelve amarillo cuando hay volumen alto y rojo cuando hay saturación.</li>
+        <li>El nivel pico y el nombre del dispositivo se muestran automáticamente.</li>
+      </ol>
+    </section>
+    <section class="features">
+      <h2>Características</h2>
+      <ul class="features-list">
+        <li>Barra de nivel de audio animada en tiempo real</li>
+        <li>Visualización aproximada del nivel en dB</li>
+        <li>Seguimiento del nivel pico</li>
+        <li>Muestra el nombre del dispositivo de micrófono</li>
+        <li>No se graba ni se sube ningún audio — 100% local</li>
+      </ul>
+    </section>
+    <div class="ad-slot ad-slot--rectangle" style="margin:0 auto 32px">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="faq">
+      <h2>Preguntas Frecuentes</h2>
+      <div class="faq-list">
+        <details class="faq-item"><summary class="faq-question">¿Se graba mi audio? <span class="faq-icon">+</span></summary><div class="faq-answer">No. La entrada del micrófono se procesa completamente en tu navegador usando la Web Audio API. No se graba, almacena ni transmite ningún audio.</div></details>
+        <details class="faq-item"><summary class="faq-question">La barra no se mueve — ¿qué debo hacer? <span class="faq-icon">+</span></summary><div class="faq-answer">Comprueba que tu micrófono esté configurado como dispositivo de entrada predeterminado en la configuración de tu SO. Asegúrate de que el navegador tiene permiso de micrófono (busca un icono de micrófono en la barra de direcciones). Intenta hablar más fuerte o acercarte al micrófono.</div></details>
+      </div>
+    </section>
+  </main>
+  <footer id="site-footer" class="site-footer"></footer>
+  <script src="/assets/js/shared.js" defer></script>
+  <script src="/assets/js/tools/microphone-tester.js" defer></script>
+</body>
+</html>

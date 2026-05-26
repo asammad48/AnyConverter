@@ -1,0 +1,181 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora de Propinas Online Gratis | AnyConverter</title>
+  <meta name="description" content="Calcula la propina y divide la cuenta entre varias personas online gratis. Introduce el importe, el porcentaje de propina y el número de personas al instante.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://anyconverter.io/es/tip-calculator/">
+  <link rel="alternate" hreflang="en" href="https://anyconverter.io/tip-calculator/">
+  <link rel="alternate" hreflang="es" href="https://anyconverter.io/es/tip-calculator/">
+  <link rel="alternate" hreflang="da" href="https://anyconverter.io/da/tip-calculator/">
+  <link rel="alternate" hreflang="x-default" href="https://anyconverter.io/tip-calculator/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Calculadora de Propinas Online Gratis | AnyConverter">
+  <meta property="og:description" content="Calcula la propina y divide la cuenta entre varias personas online gratis. Introduce el importe, el porcentaje de propina y el número de personas al instante.">
+  <meta property="og:url" content="https://anyconverter.io/es/tip-calculator/">
+  <meta property="og:site_name" content="AnyConverter">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" data-ad-client="ca-pub-XXXXXXXXXX" crossorigin="anonymous"></script>
+  <!-- Replace ca-pub-XXXXXXXXXX with your real AdSense publisher ID -->
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Calculadora de Propinas","url":"https://anyconverter.io/es/tip-calculator/","description":"Calcula la propina y divide la cuenta entre varias personas online gratis.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F4F6FF);color:var(--color-text,#1E1B4B)}
+    body{min-height:100vh;display:flex;flex-direction:column}
+    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8FE)}
+    .header-inner{max-width:1280px;width:100%;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;gap:32px}
+    .hero{padding:40px 24px 32px;max-width:1280px;margin:0 auto}
+    .hero h1{font-size:clamp(1.75rem,4vw,2.25rem);font-weight:700;line-height:1.2;margin-bottom:12px}
+    .hero-desc{font-size:1.0625rem;color:var(--color-text-2,#6B7280);max-width:680px;line-height:1.6}
+    @font-face{font-family:'Inter';font-display:swap}
+  </style>
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+  <header id="site-header" class="site-header"></header>
+  <main id="main-content">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol><li><a href="/es/">Inicio</a></li><li aria-current="page">Calculadora de Propinas</li></ol>
+    </nav>
+    <section class="hero">
+      <h1>Calculadora de Propinas</h1>
+      <p class="hero-desc">Calcula la propina exacta para cualquier importe y divídela entre varias personas. Introduce el total de la factura, el porcentaje de propina y el número de comensales para obtener cuánto paga cada uno.</p>
+    </section>
+    <div class="tool-wrapper">
+      <div class="tool-zone">
+        <div style="padding:24px">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px">
+            <div>
+              <label style="display:block;font-size:13px;font-weight:500;margin-bottom:6px" for="tip-bill">Importe de la factura ($)</label>
+              <input type="number" id="tip-bill" placeholder="50.00" min="0" step="0.01" style="width:100%;padding:10px 12px;border:1px solid var(--color-border,#DDD8FE);border-radius:8px;font-size:15px">
+            </div>
+            <div>
+              <label style="display:block;font-size:13px;font-weight:500;margin-bottom:6px" for="tip-people">Número de personas</label>
+              <input type="number" id="tip-people" value="1" min="1" style="width:100%;padding:10px 12px;border:1px solid var(--color-border,#DDD8FE);border-radius:8px;font-size:15px">
+            </div>
+          </div>
+          <div style="margin-bottom:16px">
+            <label style="display:block;font-size:13px;font-weight:500;margin-bottom:8px">Porcentaje de propina: <span id="tip-pct-display">15</span>%</label>
+            <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:8px">
+              <button class="btn btn-secondary btn-sm tip-preset" data-pct="10">10%</button>
+              <button class="btn btn-primary btn-sm tip-preset" data-pct="15">15%</button>
+              <button class="btn btn-secondary btn-sm tip-preset" data-pct="18">18%</button>
+              <button class="btn btn-secondary btn-sm tip-preset" data-pct="20">20%</button>
+              <button class="btn btn-secondary btn-sm tip-preset" data-pct="25">25%</button>
+            </div>
+            <input type="range" id="tip-slider" min="0" max="50" value="15" style="width:100%;accent-color:var(--color-primary,#4F46E5)">
+          </div>
+          <div id="tip-result" style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:8px">
+            <div class="stat-card"><div class="stat-val" id="tip-amount">$0.00</div><div class="stat-lbl">Propina</div></div>
+            <div class="stat-card"><div class="stat-val" id="tip-total">$0.00</div><div class="stat-lbl">Total factura</div></div>
+            <div class="stat-card"><div class="stat-val" id="tip-per-person">$0.00</div><div class="stat-lbl">Por persona</div></div>
+          </div>
+        </div>
+      </div>
+      <aside class="tool-side" aria-label="Opciones">
+        <div class="ss-divider">Herramientas relacionadas</div>
+        <a href="/es/percentage-calculator/" class="ss-link"><img src="/assets/img/icon-calculator.svg" alt="" width="18" height="18" loading="lazy"> Calculadora de Porcentajes</a>
+        <a href="/es/discount-calculator/" class="ss-link"><img src="/assets/img/icon-calculator.svg" alt="" width="18" height="18" loading="lazy"> Calculadora de Descuentos</a>
+        <a href="/es/loan-calculator/" class="ss-link"><img src="/assets/img/icon-calculator.svg" alt="" width="18" height="18" loading="lazy"> Calculadora de Préstamos</a>
+        <div style="margin-top:16px">
+          <p class="ad-label">Publicidad</p>
+          <div class="ad-slot" style="min-height:250px">
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+            <!-- Replace ca-pub-XXXXXXXXXX and data-ad-slot="XXXXXXXXXX" with your IDs -->
+          </div>
+        </div>
+      </aside>
+    </div>
+    <div class="ad-slot ad-slot--leaderboard">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="how-to-use">
+      <h2>Cómo Usar la Calculadora de Propinas</h2>
+      <ol class="steps">
+        <li><strong>Paso 1</strong> — Introduce el importe total de la factura.</li>
+        <li><strong>Paso 2</strong> — Selecciona o escribe el porcentaje de propina deseado.</li>
+        <li><strong>Paso 3</strong> — Ajusta el número de personas para dividir la cuenta y ver cuánto paga cada uno.</li>
+      </ol>
+    </section>
+    <section class="features">
+      <h2>Características</h2>
+      <ul class="features-list">
+        <li>Cálculo instantáneo de propina para cualquier porcentaje</li>
+        <li>División de la cuenta entre 1 y 20 personas</li>
+        <li>Botones de propina rápida (10%, 15%, 18%, 20%, 25%)</li>
+        <li>Muestra el total por persona incluyendo la propina</li>
+        <li>Sin redondeos ocultos</li>
+        <li>Funciona completamente en el navegador</li>
+      </ul>
+    </section>
+    <div class="ad-slot ad-slot--rectangle" style="margin:0 auto 32px">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="faq">
+      <h2>Preguntas Frecuentes</h2>
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary class="faq-question">¿Cuál es el porcentaje de propina estándar? <span class="faq-icon">+</span></summary>
+          <div class="faq-answer">En Estados Unidos, el porcentaje de propina estándar en restaurantes es del 15–20%. El 15% se considera adecuado, el 18% es bueno y el 20% o más es excelente. Para un servicio excepcional, muchas personas dejan el 25% o más.</div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-question">¿Cómo calculo una propina sin calculadora? <span class="faq-icon">+</span></summary>
+          <div class="faq-answer">Para calcular mentalmente una propina del 20%, mueve el punto decimal una posición a la izquierda (10%) y luego duplícalo. Para una factura de $45: 10% = $4,50, duplicado = $9,00 de propina. Para el 15%, calcula el 10% y añade la mitad de esa cantidad.</div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-question">¿Debo dejar propina sobre el subtotal antes o después de impuestos? <span class="faq-icon">+</span></summary>
+          <div class="faq-answer">La mayoría de los expertos en etiqueta sugieren dejar propina sobre el subtotal antes de impuestos, ya que los impuestos son obligatorios y no reflejan la calidad del servicio. Sin embargo, dejar propina sobre el total con impuestos también es ampliamente aceptado y agradecido por el personal.</div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-question">¿Cómo funciona la función de división de cuenta? <span class="faq-icon">+</span></summary>
+          <div class="faq-answer">Introduce el número de personas que comparten la cuenta en el campo "Número de personas". La calculadora divide automáticamente el total de la factura (incluyendo la propina) entre todas las personas y muestra el importe por persona en la tarjeta "Por persona".</div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-question">¿Puedo introducir un porcentaje de propina personalizado? <span class="faq-icon">+</span></summary>
+          <div class="faq-answer">Sí. Usa el control deslizante debajo de los botones preestablecidos para fijar cualquier porcentaje de propina del 0% al 50%. El porcentaje mostrado se actualiza en tiempo real mientras arrastras, y las tres tarjetas de resultado se actualizan al instante.</div>
+        </details>
+      </div>
+    </section>
+    <section class="related-tools">
+      <h2>Herramientas Relacionadas</h2>
+      <div class="tool-grid">
+        <a href="/es/percentage-calculator/" class="tool-card">
+          <img src="/assets/img/icon-calculator.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy">
+          <h3>Calculadora de Porcentajes</h3>
+          <p>Calcula porcentajes, aumentos y disminuciones rápidamente.</p>
+          <span class="tool-card-link">Usar →</span>
+        </a>
+        <a href="/es/discount-calculator/" class="tool-card">
+          <img src="/assets/img/icon-calculator.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy">
+          <h3>Calculadora de Descuentos</h3>
+          <p>Encuentra el precio de venta, el ahorro y el porcentaje de descuento fácilmente.</p>
+          <span class="tool-card-link">Usar →</span>
+        </a>
+        <a href="/es/loan-calculator/" class="tool-card">
+          <img src="/assets/img/icon-calculator.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy">
+          <h3>Calculadora de Préstamos</h3>
+          <p>Calcula los pagos mensuales y el interés total de cualquier préstamo.</p>
+          <span class="tool-card-link">Usar →</span>
+        </a>
+        <a href="/es/currency-converter/" class="tool-card">
+          <img src="/assets/img/icon-currency.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy">
+          <h3>Conversor de Divisas</h3>
+          <p>Convierte entre más de 150 divisas con tipos de cambio en tiempo real.</p>
+          <span class="tool-card-link">Usar →</span>
+        </a>
+      </div>
+    </section>
+  </main>
+  <footer id="site-footer" class="site-footer"></footer>
+  <script src="/assets/js/shared.js" defer></script>
+  <script src="/assets/js/tools/tip-calculator.js" defer></script>
+</body>
+</html>

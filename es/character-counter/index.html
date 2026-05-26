@@ -1,0 +1,133 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contador de Caracteres Online Gratis | AnyConverter</title>
+  <meta name="description" content="Cuenta caracteres, palabras, líneas y bytes en tu texto al instante. Comprueba el límite de caracteres para Twitter/X, LinkedIn, Instagram y otras plataformas. Gratis.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://anyconverter.io/es/character-counter/">
+  <link rel="alternate" hreflang="en" href="https://anyconverter.io/character-counter/">
+  <link rel="alternate" hreflang="es" href="https://anyconverter.io/es/character-counter/">
+  <link rel="alternate" hreflang="da" href="https://anyconverter.io/da/character-counter/">
+  <link rel="alternate" hreflang="x-default" href="https://anyconverter.io/character-counter/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Contador de Caracteres Online Gratis | AnyConverter">
+  <meta property="og:description" content="Cuenta caracteres, palabras, líneas y bytes en tu texto al instante. Comprueba el límite de caracteres para Twitter/X, LinkedIn, Instagram y otras plataformas.">
+  <meta property="og:url" content="https://anyconverter.io/es/character-counter/">
+  <meta property="og:site_name" content="AnyConverter">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" data-ad-client="ca-pub-XXXXXXXXXX" crossorigin="anonymous"></script>
+  <!-- Replace ca-pub-XXXXXXXXXX with your real AdSense publisher ID -->
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Contador de Caracteres","url":"https://anyconverter.io/es/character-counter/","description":"Cuenta caracteres, palabras, líneas y bytes en tu texto al instante. Comprueba el límite de caracteres para Twitter/X, LinkedIn, Instagram y otras plataformas.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F4F6FF);color:var(--color-text,#1E1B4B)}
+    body{min-height:100vh;display:flex;flex-direction:column}
+    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8FE)}
+    .header-inner{max-width:1280px;width:100%;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;gap:32px}
+    .hero{padding:40px 24px 32px;max-width:1280px;margin:0 auto}
+    .hero h1{font-size:clamp(1.75rem,4vw,2.25rem);font-weight:700;line-height:1.2;margin-bottom:12px}
+    .hero-desc{font-size:1.0625rem;color:var(--color-text-2,#6B7280);max-width:680px;line-height:1.6}
+    @font-face{font-family:'Inter';font-display:swap}
+  </style>
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+  <header id="site-header" class="site-header"></header>
+  <main id="main-content">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol><li><a href="/es/">Inicio</a></li><li aria-current="page">Contador de Caracteres</li></ol>
+    </nav>
+    <section class="hero">
+      <h1>Contador de Caracteres</h1>
+      <p class="hero-desc">Cuenta caracteres, palabras, líneas y bytes en tu texto al instante. Comprueba el límite de caracteres para Twitter/X, LinkedIn, Instagram y otras plataformas en tiempo real.</p>
+    </section>
+    <div class="tool-wrapper">
+      <div class="tool-zone">
+        <div style="padding:24px">
+          <textarea id="cc-text" placeholder="Escribe o pega tu texto aquí..." style="width:100%;height:200px;padding:12px;border:1px solid var(--color-border,#DDD8FE);border-radius:8px;font-size:15px;line-height:1.6;resize:vertical;margin-bottom:16px"></textarea>
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:20px">
+            <div class="stat-card"><div class="stat-val" id="cc-chars">0</div><div class="stat-lbl">Caracteres</div></div>
+            <div class="stat-card"><div class="stat-val" id="cc-chars-no-sp">0</div><div class="stat-lbl">Sin espacios</div></div>
+            <div class="stat-card"><div class="stat-val" id="cc-words">0</div><div class="stat-lbl">Palabras</div></div>
+            <div class="stat-card"><div class="stat-val" id="cc-lines">0</div><div class="stat-lbl">Líneas</div></div>
+            <div class="stat-card"><div class="stat-val" id="cc-bytes">0</div><div class="stat-lbl">Bytes</div></div>
+            <div class="stat-card"><div class="stat-val" id="cc-unique">0</div><div class="stat-lbl">Chars únicos</div></div>
+          </div>
+          <div style="font-size:13px;font-weight:500;margin-bottom:10px">Límites de plataforma</div>
+          <div id="cc-limits" style="display:flex;flex-direction:column;gap:8px"></div>
+          <div class="action-bar" style="margin-top:16px">
+            <button class="btn btn-secondary" id="btn-cc-clear">Limpiar</button>
+          </div>
+        </div>
+      </div>
+      <aside class="tool-side" aria-label="Opciones">
+        <div class="ss-divider">Herramientas relacionadas</div>
+        <a href="/es/fancy-text-generator/" class="ss-related-link"><img src="/assets/img/icon-text.svg" alt="" width="18" height="18" loading="lazy">Generador de Texto Elegante</a>
+        <a href="/es/css-gradient-generator/" class="ss-related-link"><img src="/assets/img/icon-text.svg" alt="" width="18" height="18" loading="lazy">Generador de Gradientes CSS</a>
+        <a href="/es/word-counter/" class="ss-related-link"><img src="/assets/img/icon-text.svg" alt="" width="18" height="18" loading="lazy">Contador de Palabras</a>
+        <div style="margin-top:16px">
+          <p class="ad-label">Publicidad</p>
+          <div class="ad-slot" style="min-height:250px">
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+            <!-- Replace ca-pub-XXXXXXXXXX and data-ad-slot="XXXXXXXXXX" with your IDs -->
+          </div>
+        </div>
+      </aside>
+    </div>
+    <div class="ad-slot ad-slot--leaderboard">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="how-to-use">
+      <h2>Cómo Usar el Contador de Caracteres</h2>
+      <ol class="steps">
+        <li><strong>Paso 1</strong> — Escribe o pega tu texto en el área de texto.</li>
+        <li><strong>Paso 2</strong> — Ve el recuento de caracteres, palabras, líneas, bytes y caracteres únicos en tiempo real.</li>
+        <li><strong>Paso 3</strong> — Consulta la sección de límites de plataforma para ver cómo encaja tu texto en Twitter/X, LinkedIn, Instagram y otras plataformas.</li>
+      </ol>
+    </section>
+    <section class="features">
+      <h2>Características</h2>
+      <ul class="features-list">
+        <li>Recuento en tiempo real de caracteres, palabras, líneas, bytes y caracteres únicos</li>
+        <li>Barras de límite de plataforma para Twitter/X (280), LinkedIn (3000), bio de Instagram (150), meta descripción (160), título de Google (60), SMS (160)</li>
+        <li>Barras de progreso con código de color (verde/amarillo/rojo)</li>
+        <li>Sin límite de caracteres — funciona con cualquier longitud de texto</li>
+        <li>Actualización instantánea mientras escribes</li>
+        <li>Botón Limpiar para restablecer</li>
+      </ul>
+    </section>
+    <div class="ad-slot ad-slot--rectangle" style="margin:0 auto 32px">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="faq">
+      <h2>Preguntas Frecuentes</h2>
+      <div class="faq-list">
+        <details class="faq-item"><summary class="faq-question">¿Los espacios cuentan como caracteres? <span class="faq-icon">+</span></summary><div class="faq-answer">Sí. El recuento de "Caracteres" incluye todos los caracteres, incluyendo los espacios. El recuento "Sin espacios" excluye los caracteres de espacio en blanco. Ambos recuentos se muestran simultáneamente.</div></details>
+        <details class="faq-item"><summary class="faq-question">¿Qué significa "Bytes"? <span class="faq-icon">+</span></summary><div class="faq-answer">Bytes muestra el tamaño en bytes UTF-8 del texto. Para caracteres ASCII estándar esto es igual al recuento de caracteres, pero los caracteres acentuados (como é o ü) y los emoji usan más de un byte cada uno.</div></details>
+        <details class="faq-item"><summary class="faq-question">¿Por qué mi recuento de Twitter está en amarillo o rojo? <span class="faq-icon">+</span></summary><div class="faq-answer">Twitter/X tiene un límite de 280 caracteres. El amarillo significa que has usado más del 80% (224 caracteres), y el rojo significa que has superado el límite. El número entre paréntesis muestra cuántos caracteres te has pasado del límite.</div></details>
+        <details class="faq-item"><summary class="faq-question">¿Qué son los "Chars únicos"? <span class="faq-icon">+</span></summary><div class="faq-answer">Los caracteres únicos cuentan cuántos caracteres distintos (excluyendo espacios) aparecen en tu texto. Útil para analizar la frecuencia de letras o comprobar la diversidad de caracteres.</div></details>
+      </div>
+    </section>
+    <section class="related-tools">
+      <h2>Herramientas Relacionadas</h2>
+      <div class="tool-grid">
+        <a href="/es/fancy-text-generator/" class="tool-card"><img src="/assets/img/icon-text.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Generador de Texto Elegante</h3><p>Transforma tu texto en 11 estilos Unicode — negrita, cursiva, script y más.</p><span class="tool-card-link">Usar →</span></a>
+        <a href="/es/css-gradient-generator/" class="tool-card"><img src="/assets/img/icon-text.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Generador de Gradientes CSS</h3><p>Diseña gradientes CSS lineales y radiales visualmente con vista previa.</p><span class="tool-card-link">Usar →</span></a>
+        <a href="/es/word-counter/" class="tool-card"><img src="/assets/img/icon-text.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Contador de Palabras</h3><p>Cuenta palabras y tiempo de lectura de cualquier texto o documento.</p><span class="tool-card-link">Usar →</span></a>
+        <a href="/es/base64-encoder/" class="tool-card"><img src="/assets/img/icon-base64.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Codificador Base64</h3><p>Codifica y decodifica cadenas Base64 al instante en tu navegador.</p><span class="tool-card-link">Usar →</span></a>
+      </div>
+    </section>
+  </main>
+  <footer id="site-footer" class="site-footer"></footer>
+  <script src="/assets/js/shared.js" defer></script>
+  <script src="/assets/js/tools/character-counter.js" defer></script>
+</body>
+</html>

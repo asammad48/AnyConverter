@@ -1,0 +1,173 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lorem Ipsum Generator Online Free | AnyConverter</title>
+  <meta name="description" content="Generate Lorem Ipsum placeholder text online free. Choose paragraphs, sentences, or words. Optionally start with the classic &quot;Lorem ipsum&quot; opening. Instant copy.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://anyconverter.io/lorem-ipsum-generator/">
+  <link rel="alternate" hreflang="en" href="https://anyconverter.io/lorem-ipsum-generator/">
+  <link rel="alternate" hreflang="es" href="https://anyconverter.io/es/lorem-ipsum-generator/">
+  <link rel="alternate" hreflang="da" href="https://anyconverter.io/da/lorem-ipsum-generator/">
+  <link rel="alternate" hreflang="x-default" href="https://anyconverter.io/lorem-ipsum-generator/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Lorem Ipsum Generator Online Free | AnyConverter">
+  <meta property="og:description" content="Generate Lorem Ipsum placeholder text online free. Choose paragraphs, sentences, or words. Optionally start with the classic Lorem ipsum opening. Instant copy.">
+  <meta property="og:url" content="https://anyconverter.io/lorem-ipsum-generator/">
+  <meta property="og:site_name" content="AnyConverter">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" data-ad-client="ca-pub-XXXXXXXXXX" crossorigin="anonymous"></script>
+  <!-- Replace ca-pub-XXXXXXXXXX with your real AdSense publisher ID -->
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Lorem Ipsum Generator","url":"https://anyconverter.io/lorem-ipsum-generator/","description":"Generate Lorem Ipsum placeholder text online free. Choose paragraphs, sentences, or words. Optionally start with the classic Lorem ipsum opening.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F4F6FF);color:var(--color-text,#1E1B4B)}
+    body{min-height:100vh;display:flex;flex-direction:column}
+    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8FE)}
+    .header-inner{max-width:1280px;width:100%;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;gap:32px}
+    .hero{padding:40px 24px 32px;max-width:1280px;margin:0 auto}
+    .hero h1{font-size:clamp(1.75rem,4vw,2.25rem);font-weight:700;line-height:1.2;margin-bottom:12px}
+    .hero-desc{font-size:1.0625rem;color:var(--color-text-2,#6B7280);max-width:680px;line-height:1.6}
+    @font-face{font-family:'Inter';font-display:swap}
+  </style>
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+  <header id="site-header" class="site-header"></header>
+  <main id="main-content">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol><li><a href="/">Home</a></li><li aria-current="page">Lorem Ipsum Generator</li></ol>
+    </nav>
+    <section class="hero">
+      <h1>Lorem Ipsum Generator</h1>
+      <p class="hero-desc">Generate Lorem Ipsum placeholder text in seconds. Choose between paragraphs, sentences, or words, set the count, and copy the output. Ideal for mockups, wireframes, and layout testing.</p>
+    </section>
+    <div class="tool-wrapper">
+      <div class="tool-zone">
+        <div style="padding:24px">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px">
+            <div>
+              <label style="display:block;font-size:13px;font-weight:500;margin-bottom:6px" for="lorem-count">Count</label>
+              <input type="number" id="lorem-count" value="3" min="1" max="50" style="width:100%;padding:10px 12px;border:1px solid var(--color-border,#DDD8FE);border-radius:8px;font-size:15px">
+            </div>
+            <div>
+              <label style="display:block;font-size:13px;font-weight:500;margin-bottom:6px" for="lorem-type">Type</label>
+              <select id="lorem-type" style="width:100%;padding:10px 12px;border:1px solid var(--color-border,#DDD8FE);border-radius:8px;font-size:14px">
+                <option value="paragraphs" selected>Paragraphs</option>
+                <option value="sentences">Sentences</option>
+                <option value="words">Words</option>
+              </select>
+            </div>
+          </div>
+          <div style="margin-bottom:16px">
+            <label style="display:flex;align-items:center;gap:8px;font-size:14px;cursor:pointer"><input type="checkbox" id="lorem-start-lorem" checked> Start with "Lorem ipsum..."</label>
+          </div>
+          <div class="action-bar" style="margin-bottom:16px">
+            <button class="btn btn-primary" id="btn-gen-lorem">Generate</button>
+            <button class="btn btn-secondary" id="btn-copy-lorem">Copy</button>
+            <button class="btn btn-secondary" id="btn-clear-lorem">Clear</button>
+          </div>
+          <textarea id="lorem-output" readonly style="width:100%;height:240px;padding:12px;border:1px solid var(--color-border,#DDD8FE);border-radius:8px;font-size:14px;line-height:1.6;resize:vertical;background:var(--color-bg,#F4F6FF)"></textarea>
+          <div id="lorem-stats" style="display:none;font-size:12px;color:var(--color-text-2,#6B7280);margin-top:6px"></div>
+        </div>
+      </div>
+      <aside class="tool-side" aria-label="Options">
+        <div class="ss-divider">Related Tools</div>
+        <a class="related-link" href="/character-counter/"><img src="/assets/img/icon-text.svg" width="16" height="16" loading="lazy" alt=""> Character Counter</a>
+        <a class="related-link" href="/word-counter/"><img src="/assets/img/icon-text.svg" width="16" height="16" loading="lazy" alt=""> Word Counter</a>
+        <a class="related-link" href="/text-case-converter/"><img src="/assets/img/icon-text.svg" width="16" height="16" loading="lazy" alt=""> Text Case Converter</a>
+        <div style="margin-top:16px">
+          <p class="ad-label">Advertisement</p>
+          <div class="ad-slot" style="min-height:250px">
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+            <!-- Replace ca-pub-XXXXXXXXXX and data-ad-slot="XXXXXXXXXX" with your IDs -->
+          </div>
+        </div>
+      </aside>
+    </div>
+    <div class="ad-slot ad-slot--leaderboard">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="how-to-use">
+      <h2>How to Use Lorem Ipsum Generator</h2>
+      <ol class="steps">
+        <li>Set the count and choose whether to generate paragraphs, sentences, or words.</li>
+        <li>Optionally check "Start with Lorem ipsum" to begin with the classic opening phrase.</li>
+        <li>Click "Generate" and copy the output with the Copy button.</li>
+      </ol>
+    </section>
+    <section class="features">
+      <h2>Features</h2>
+      <ul class="features-list">
+        <li>Generate paragraphs, sentences, or individual words</li>
+        <li>Set count from 1 to 50</li>
+        <li>Option to start with the classic "Lorem ipsum dolor sit amet" phrase</li>
+        <li>Word and character count displayed</li>
+        <li>One-click copy to clipboard</li>
+        <li>Instant generation — no server needed</li>
+      </ul>
+    </section>
+    <div class="ad-slot ad-slot--rectangle" style="margin:0 auto 32px">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="faq">
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary>What is Lorem Ipsum?</summary>
+          <p>Lorem Ipsum is placeholder text widely used in the design and printing industry. It comes from a Latin text by Cicero written in 45 BC. It has been the industry standard placeholder text since the 1500s, used to demonstrate the visual form of a document without relying on meaningful content.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Why use Lorem Ipsum instead of real text?</summary>
+          <p>Placeholder text lets designers focus on layout and typography without being distracted by readable content. Readers tend to focus on the meaning of readable text, which can obscure how the layout looks. Lorem Ipsum is deliberately meaningless so it doesn't draw attention away from design decisions.</p>
+        </details>
+        <details class="faq-item">
+          <summary>What is the difference between paragraphs, sentences, and words?</summary>
+          <p>Paragraphs generate full blocks of text (typically 5-8 sentences each), suitable for body copy areas. Sentences generate individual sentences for smaller text areas. Words generates a specified number of individual words, useful for headings or short labels.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Can I generate more than 50 units?</summary>
+          <p>The tool supports up to 50 units (paragraphs, sentences, or words) per generation. For larger volumes, simply generate multiple times and combine the output as needed.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Is the generated text always the same?</summary>
+          <p>The generator uses a standard Lorem Ipsum word pool and produces consistent, natural-looking placeholder text. The "Lorem ipsum dolor sit amet" opening is the traditional first paragraph of Lorem Ipsum and is optionally prepended when the checkbox is checked.</p>
+        </details>
+      </div>
+    </section>
+    <section class="related-tools">
+      <h2>Related Tools</h2>
+      <div class="tool-grid">
+        <a class="tool-card" href="/character-counter/">
+          <img src="/assets/img/icon-text.svg" width="32" height="32" loading="lazy" alt="Character Counter icon">
+          <h3>Character Counter</h3>
+          <p>Count characters in any text instantly</p>
+          <span class="tool-card-cta">Try it →</span>
+        </a>
+        <a class="tool-card" href="/word-counter/">
+          <img src="/assets/img/icon-text.svg" width="32" height="32" loading="lazy" alt="Word Counter icon">
+          <h3>Word Counter</h3>
+          <p>Count words, characters, and sentences</p>
+          <span class="tool-card-cta">Try it →</span>
+        </a>
+        <a class="tool-card" href="/text-case-converter/">
+          <img src="/assets/img/icon-text.svg" width="32" height="32" loading="lazy" alt="Text Case Converter icon">
+          <h3>Text Case Converter</h3>
+          <p>Convert text to any case style instantly</p>
+          <span class="tool-card-cta">Try it →</span>
+        </a>
+      </div>
+    </section>
+  </main>
+  <footer id="site-footer" class="site-footer"></footer>
+  <script src="/assets/js/shared.js" defer></script>
+  <script src="/assets/js/tools/lorem-ipsum-generator.js" defer></script>
+</body>
+</html>

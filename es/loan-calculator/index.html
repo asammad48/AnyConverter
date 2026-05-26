@@ -1,0 +1,151 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora de Préstamos y EMI Online Gratis | AnyConverter</title>
+  <meta name="description" content="Calcula la cuota mensual EMI, el interés total y el pago total del préstamo online de forma gratuita. Ve el plan de amortización completo. Sin registro, resultados instantáneos.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://anyconverter.io/es/loan-calculator/">
+  <link rel="alternate" hreflang="en" href="https://anyconverter.io/loan-calculator/">
+  <link rel="alternate" hreflang="es" href="https://anyconverter.io/es/loan-calculator/">
+  <link rel="alternate" hreflang="da" href="https://anyconverter.io/da/loan-calculator/">
+  <link rel="alternate" hreflang="x-default" href="https://anyconverter.io/loan-calculator/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Calculadora de Préstamos y EMI Online Gratis | AnyConverter">
+  <meta property="og:description" content="Calcula la cuota mensual EMI, el interés total y el pago total del préstamo online de forma gratuita. Ve el plan de amortización completo.">
+  <meta property="og:url" content="https://anyconverter.io/es/loan-calculator/">
+  <meta property="og:site_name" content="AnyConverter">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" data-ad-client="ca-pub-XXXXXXXXXX" crossorigin="anonymous"></script>
+  <!-- Replace ca-pub-XXXXXXXXXX with your real AdSense publisher ID -->
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Calculadora de Préstamos y EMI","url":"https://anyconverter.io/es/loan-calculator/","description":"Calcula la cuota mensual EMI, el interés total y el pago total del préstamo online de forma gratuita.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F4F6FF);color:var(--color-text,#1E1B4B)}
+    body{min-height:100vh;display:flex;flex-direction:column}
+    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8FE)}
+    .header-inner{max-width:1280px;width:100%;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;gap:32px}
+    .hero{padding:40px 24px 32px;max-width:1280px;margin:0 auto}
+    .hero h1{font-size:clamp(1.75rem,4vw,2.25rem);font-weight:700;line-height:1.2;margin-bottom:12px}
+    .hero-desc{font-size:1.0625rem;color:var(--color-text-2,#6B7280);max-width:680px;line-height:1.6}
+    @font-face{font-family:'Inter';font-display:swap}
+  </style>
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+  <header id="site-header" class="site-header"></header>
+  <main id="main-content">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol><li><a href="/es/">Inicio</a></li><li aria-current="page">Calculadora de Préstamos / EMI</li></ol>
+    </nav>
+    <section class="hero">
+      <h1>Calculadora de Préstamos / EMI</h1>
+      <p class="hero-desc">Calcula tu cuota mensual EMI (Cuota Mensual Equivalente), el interés total pagado y el monto total de reembolso de cualquier préstamo. Ve un plan de amortización mes a mes completo. Gratuito, instantáneo y privado.</p>
+    </section>
+    <div class="tool-wrapper">
+      <div class="tool-zone">
+        <div style="padding:24px">
+          <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px;margin-bottom:16px">
+            <div>
+              <label style="display:block;font-size:13px;font-weight:500;margin-bottom:6px" for="loan-amount">Monto del préstamo ($)</label>
+              <input type="number" id="loan-amount" placeholder="100000" min="1" style="width:100%;padding:10px 12px;border:1px solid var(--color-border,#DDD8FE);border-radius:8px;font-size:15px">
+            </div>
+            <div>
+              <label style="display:block;font-size:13px;font-weight:500;margin-bottom:6px" for="loan-rate">Tasa de interés anual (%)</label>
+              <input type="number" id="loan-rate" placeholder="5.5" step="0.01" min="0.01" style="width:100%;padding:10px 12px;border:1px solid var(--color-border,#DDD8FE);border-radius:8px;font-size:15px">
+            </div>
+            <div>
+              <label style="display:block;font-size:13px;font-weight:500;margin-bottom:6px" for="loan-term">Plazo del préstamo (meses)</label>
+              <input type="number" id="loan-term" placeholder="60" min="1" style="width:100%;padding:10px 12px;border:1px solid var(--color-border,#DDD8FE);border-radius:8px;font-size:15px">
+            </div>
+          </div>
+          <div class="action-bar" style="margin-bottom:20px">
+            <button class="btn btn-primary" id="btn-calc-loan">Calcular EMI</button>
+            <button class="btn btn-secondary" id="btn-reset-loan">Restablecer</button>
+          </div>
+          <div id="loan-result" style="display:none">
+            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:16px">
+              <div class="stat-card"><div class="stat-val" id="emi-val">—</div><div class="stat-lbl">Cuota mensual</div></div>
+              <div class="stat-card"><div class="stat-val" id="total-interest">—</div><div class="stat-lbl">Interés total</div></div>
+              <div class="stat-card"><div class="stat-val" id="total-payment">—</div><div class="stat-lbl">Pago total</div></div>
+            </div>
+            <div style="background:var(--color-bg,#F4F6FF);border:1px solid var(--color-border,#DDD8FE);border-radius:8px;padding:12px;max-height:300px;overflow-y:auto">
+              <table style="width:100%;border-collapse:collapse;font-size:13px">
+                <thead><tr style="text-align:left"><th style="padding:6px 8px;border-bottom:1px solid var(--color-border,#DDD8FE)">Mes</th><th style="padding:6px 8px;border-bottom:1px solid var(--color-border,#DDD8FE)">EMI</th><th style="padding:6px 8px;border-bottom:1px solid var(--color-border,#DDD8FE)">Capital</th><th style="padding:6px 8px;border-bottom:1px solid var(--color-border,#DDD8FE)">Interés</th><th style="padding:6px 8px;border-bottom:1px solid var(--color-border,#DDD8FE)">Saldo</th></tr></thead>
+                <tbody id="amort-tbody"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <aside class="tool-side" aria-label="Opciones">
+        <div class="ss-divider">Herramientas relacionadas</div>
+        <a href="/es/bmi-calculator/" class="ss-related-link"><img src="/assets/img/icon-calculator.svg" alt="" width="18" height="18" loading="lazy">Calculadora de IMC</a>
+        <a href="/es/age-calculator/" class="ss-related-link"><img src="/assets/img/icon-clock.svg" alt="" width="18" height="18" loading="lazy">Calculadora de Edad</a>
+        <a href="/es/percentage-calculator/" class="ss-related-link"><img src="/assets/img/icon-calculator.svg" alt="" width="18" height="18" loading="lazy">Calculadora de Porcentajes</a>
+        <div style="margin-top:16px">
+          <p class="ad-label">Publicidad</p>
+          <div class="ad-slot" style="min-height:250px">
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+            <!-- Replace ca-pub-XXXXXXXXXX and data-ad-slot="XXXXXXXXXX" with your IDs -->
+          </div>
+        </div>
+      </aside>
+    </div>
+    <div class="ad-slot ad-slot--leaderboard">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="how-to-use">
+      <h2>Cómo Usar la Calculadora de Préstamos / EMI</h2>
+      <ol class="steps">
+        <li><strong>Paso 1</strong> — Introduce el monto del préstamo en dólares, la tasa de interés anual como porcentaje y el plazo del préstamo en meses.</li>
+        <li><strong>Paso 2</strong> — Haz clic en "Calcular EMI" para ver tu pago mensual, el interés total pagado y el monto total de reembolso.</li>
+        <li><strong>Paso 3</strong> — Desplázate por la tabla de amortización para ver el desglose de capital e intereses de cada mes del préstamo.</li>
+      </ol>
+    </section>
+    <section class="features">
+      <h2>Características</h2>
+      <ul class="features-list">
+        <li>EMI mensual calculado usando la fórmula estándar de amortización</li>
+        <li>Resumen del interés total y el pago total</li>
+        <li>Plan de amortización completo mes a mes</li>
+        <li>Compatible con cualquier monto, tasa de interés y plazo</li>
+        <li>Tabla de amortización desplazable para plazos largos</li>
+        <li>Resultados instantáneos sin recarga de página</li>
+      </ul>
+    </section>
+    <div class="ad-slot ad-slot--rectangle" style="margin:0 auto 32px">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="faq">
+      <h2>Preguntas Frecuentes</h2>
+      <div class="faq-list">
+        <details class="faq-item"><summary class="faq-question">¿Qué es el EMI y cómo se calcula? <span class="faq-icon">+</span></summary><div class="faq-answer">El EMI (Cuota Mensual Equivalente) es un pago mensual fijo para reembolsar un préstamo en un período establecido. Se calcula con la fórmula: EMI = P × r × (1+r)^n / ((1+r)^n - 1), donde P es el capital, r es la tasa mensual y n el número de meses.</div></details>
+        <details class="faq-item"><summary class="faq-question">¿Cómo introduzco el plazo del préstamo? <span class="faq-icon">+</span></summary><div class="faq-answer">Introduce el plazo del préstamo en meses. Por ejemplo, un préstamo a 5 años son 60 meses, un préstamo a 10 años son 120 meses y una hipoteca a 30 años son 360 meses.</div></details>
+        <details class="faq-item"><summary class="faq-question">¿Qué muestra el plan de amortización? <span class="faq-icon">+</span></summary><div class="faq-answer">La tabla de amortización desglosa cada pago mensual en su componente de capital (reducción del saldo del préstamo) y el componente de interés (coste del préstamo). También muestra el saldo restante después de cada pago.</div></details>
+        <details class="faq-item"><summary class="faq-question">¿Puedo usarlo para el cálculo de una hipoteca? <span class="faq-icon">+</span></summary><div class="faq-answer">Sí. Introduce el monto de la hipoteca, la tasa de interés anual y el plazo en meses. Ten en cuenta que esta calculadora no incluye impuestos sobre la propiedad, seguros ni PMI.</div></details>
+        <details class="faq-item"><summary class="faq-question">¿La calculadora tiene en cuenta los pagos extra? <span class="faq-icon">+</span></summary><div class="faq-answer">La versión actual calcula la amortización estándar de pago fijo y no modela pagos extra o irregulares. Cada EMI mensual es idéntico para todo el plazo del préstamo.</div></details>
+      </div>
+    </section>
+    <section class="related-tools">
+      <h2>Herramientas Relacionadas</h2>
+      <div class="tool-grid">
+        <a href="/es/bmi-calculator/" class="tool-card"><img src="/assets/img/icon-calculator.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Calculadora de IMC</h3><p>Calcula tu Índice de Masa Corporal con unidades métricas o imperiales.</p><span class="tool-card-link">Usar →</span></a>
+        <a href="/es/age-calculator/" class="tool-card"><img src="/assets/img/icon-clock.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Calculadora de Edad</h3><p>Calcula tu edad exacta en años, meses y días.</p><span class="tool-card-link">Usar →</span></a>
+        <a href="/es/percentage-calculator/" class="tool-card"><img src="/assets/img/icon-calculator.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Calculadora de Porcentajes</h3><p>Calcula porcentajes, cambios y ratios fácilmente.</p><span class="tool-card-link">Usar →</span></a>
+        <a href="/es/currency-converter/" class="tool-card"><img src="/assets/img/icon-currency.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Conversor de Divisas</h3><p>Convierte cantidades entre las divisas del mundo.</p><span class="tool-card-link">Usar →</span></a>
+      </div>
+    </section>
+  </main>
+  <footer id="site-footer" class="site-footer"></footer>
+  <script src="/assets/js/shared.js" defer></script>
+  <script src="/assets/js/tools/loan-calculator.js" defer></script>
+</body>
+</html>

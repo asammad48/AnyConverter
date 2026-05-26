@@ -1,0 +1,151 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blood Type Compatibility Checker Online Free | AnyConverter</title>
+  <meta name="description" content="Check blood type compatibility for blood transfusions. See which blood types you can donate to and receive from. Includes universal donor and recipient info. Free online tool.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://anyconverter.io/blood-type-compatibility/">
+  <link rel="alternate" hreflang="en" href="https://anyconverter.io/blood-type-compatibility/">
+  <link rel="alternate" hreflang="es" href="https://anyconverter.io/es/blood-type-compatibility/">
+  <link rel="alternate" hreflang="da" href="https://anyconverter.io/da/blood-type-compatibility/">
+  <link rel="alternate" hreflang="x-default" href="https://anyconverter.io/blood-type-compatibility/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Blood Type Compatibility Checker Online Free | AnyConverter">
+  <meta property="og:description" content="Check which blood types you can donate to or receive from. Includes full compatibility chart. Free and instant.">
+  <meta property="og:url" content="https://anyconverter.io/blood-type-compatibility/">
+  <meta property="og:site_name" content="AnyConverter">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" data-ad-client="ca-pub-XXXXXXXXXX" crossorigin="anonymous"></script>
+  <!-- Replace ca-pub-XXXXXXXXXX with your real AdSense publisher ID -->
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Blood Type Compatibility Checker","url":"https://anyconverter.io/blood-type-compatibility/","description":"Check blood type compatibility for transfusions. See donor/recipient compatibility and the full ABO+Rh chart.","applicationCategory":"HealthApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F4F6FF);color:var(--color-text,#1E1B4B)}
+    body{min-height:100vh;display:flex;flex-direction:column}
+    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8FE)}
+    .header-inner{max-width:1280px;width:100%;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;gap:32px}
+    .hero{padding:40px 24px 32px;max-width:1280px;margin:0 auto}
+    .hero h1{font-size:clamp(1.75rem,4vw,2.25rem);font-weight:700;line-height:1.2;margin-bottom:12px}
+    .hero-desc{font-size:1.0625rem;color:var(--color-text-2,#6B7280);max-width:680px;line-height:1.6}
+    .bt-tag{display:inline-block;padding:3px 10px;border-radius:20px;font-size:13px;font-weight:600;margin:3px}
+    .bt-donate{background:var(--color-error-bg,#FEF2F2);color:var(--color-error-hover,#B91C1C)}
+    .bt-receive{background:var(--color-success-bg,#ECFDF5);color:var(--color-success-text,#166534)}
+    .bt-note{padding:10px 14px;border-radius:8px;font-size:13px;margin-bottom:12px}
+    .bt-note-green{background:var(--color-success-bg,#ECFDF5);color:var(--color-success-text,#166534)}
+    .bt-note-blue{background:var(--color-primary-light,#EEF2FF);color:var(--color-primary,#4F46E5)}
+    @font-face{font-family:'Inter';font-display:swap}
+  </style>
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+  <header id="site-header" class="site-header"></header>
+  <main id="main-content">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol><li><a href="/">Home</a></li><li aria-current="page">Blood Type Compatibility</li></ol>
+    </nav>
+    <section class="hero">
+      <h1>Blood Type Compatibility Checker</h1>
+      <p class="hero-desc">Select your blood type to instantly see which blood types you can donate to and receive from. Includes the full ABO + Rh factor compatibility chart and universal donor/recipient information.</p>
+    </section>
+    <div class="tool-wrapper">
+      <div class="tool-zone">
+        <div style="padding:24px">
+          <div style="margin-bottom:20px">
+            <label style="display:block;font-size:13px;font-weight:500;margin-bottom:8px" for="bt-select">Select Your Blood Type</label>
+            <select id="bt-select" style="padding:10px 14px;border:1px solid var(--color-border,#DDD8FE);border-radius:8px;font-size:16px;font-weight:600;min-width:140px">
+              <option value="O-">O−</option>
+              <option value="O+">O+</option>
+              <option value="A-">A−</option>
+              <option value="A+" selected>A+</option>
+              <option value="B-">B−</option>
+              <option value="B+">B+</option>
+              <option value="AB-">AB−</option>
+              <option value="AB+">AB+</option>
+            </select>
+          </div>
+          <div id="bt-results" style="display:none">
+            <div id="bt-note"></div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px">
+              <div style="padding:16px;border:1px solid var(--color-error-bg,#FEF2F2);border-radius:10px;background:var(--color-error-bg,#FEF2F2)">
+                <h3 style="font-size:13px;font-weight:600;color:var(--color-error-hover,#B91C1C);margin-bottom:8px">🩸 Can Donate To</h3>
+                <div id="bt-donate-to"></div>
+              </div>
+              <div style="padding:16px;border:1px solid var(--color-success-text,#166534);border-radius:10px;background:var(--color-success-bg,#ECFDF5)">
+                <h3 style="font-size:13px;font-weight:600;color:var(--color-success-text,#166534);margin-bottom:8px">💉 Can Receive From</h3>
+                <div id="bt-receive-from"></div>
+              </div>
+            </div>
+            <h3 style="font-size:14px;font-weight:600;margin-bottom:10px">Full Compatibility Chart</h3>
+            <div id="bt-grid" style="overflow-x:auto"></div>
+          </div>
+        </div>
+      </div>
+      <aside class="tool-side" aria-label="Options">
+        <div class="ss-divider">Quick Facts</div>
+        <p style="font-size:13px;color:var(--color-text-2,#6B7280);line-height:1.6;padding:0 4px"><strong>O−</strong> = Universal Donor<br><strong>AB+</strong> = Universal Recipient<br><strong>AB−</strong> = Universal Plasma Donor</p>
+        <div class="ss-divider">Related Tools</div>
+        <a href="/bmi-calculator/" class="ss-related-link"><img src="/assets/img/icon-calculator.svg" alt="" width="18" height="18" loading="lazy">BMI Calculator</a>
+        <a href="/calorie-calculator/" class="ss-related-link"><img src="/assets/img/icon-calculator.svg" alt="" width="18" height="18" loading="lazy">Calorie Calculator</a>
+        <a href="/age-calculator/" class="ss-related-link"><img src="/assets/img/icon-calculator.svg" alt="" width="18" height="18" loading="lazy">Age Calculator</a>
+        <div style="margin-top:16px">
+          <p class="ad-label">Advertisement</p>
+          <div class="ad-slot" style="min-height:250px">
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+          </div>
+        </div>
+      </aside>
+    </div>
+    <div class="ad-slot ad-slot--leaderboard">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="how-to-use">
+      <h2>How to Use the Blood Type Compatibility Checker</h2>
+      <ol class="steps">
+        <li><strong>Step 1</strong> — Select your blood type from the dropdown (O−, O+, A−, A+, B−, B+, AB−, AB+).</li>
+        <li><strong>Step 2</strong> — The tool instantly shows which blood types you can donate to and receive from.</li>
+        <li><strong>Step 3</strong> — Scroll down to see the full ABO + Rh compatibility chart for all 8 blood types.</li>
+      </ol>
+    </section>
+    <section class="features">
+      <h2>Features</h2>
+      <ul class="features-list">
+        <li>Covers all 8 ABO + Rh blood types (O−, O+, A−, A+, B−, B+, AB−, AB+)</li>
+        <li>Shows compatible donor and recipient blood types instantly</li>
+        <li>Highlights universal donor (O−) and universal recipient (AB+)</li>
+        <li>Full compatibility matrix for all blood type combinations</li>
+        <li>Updates live as you change your blood type selection</li>
+      </ul>
+    </section>
+    <div class="ad-slot ad-slot--rectangle" style="margin:0 auto 32px">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="faq">
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-list">
+        <details class="faq-item"><summary class="faq-question">Why is O− the universal donor? <span class="faq-icon">+</span></summary><div class="faq-answer">O− red blood cells lack A antigens, B antigens, and the Rh factor. This means the recipient's immune system won't recognise them as foreign, making O− safe to transfuse to any blood type in emergencies.</div></details>
+        <details class="faq-item"><summary class="faq-question">What is the Rh factor? <span class="faq-icon">+</span></summary><div class="faq-answer">The Rh factor is a protein on the surface of red blood cells. If you have it, you are Rh-positive (+). If not, you are Rh-negative (−). Rh-negative people can only receive Rh-negative blood, while Rh-positive people can receive both.</div></details>
+        <details class="faq-item"><summary class="faq-question">Does blood type compatibility apply to organ transplants? <span class="faq-icon">+</span></summary><div class="faq-answer">This tool specifically covers red blood cell transfusion compatibility. Organ transplant compatibility is more complex and involves additional tissue typing (HLA matching). Always consult medical professionals for transplant decisions.</div></details>
+      </div>
+    </section>
+    <section class="related-tools">
+      <h2>Related Tools</h2>
+      <div class="tool-grid">
+        <a href="/bmi-calculator/" class="tool-card"><img src="/assets/img/icon-calculator.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>BMI Calculator</h3><p>Calculate your Body Mass Index with metric or imperial units.</p><span class="tool-card-link">Try it →</span></a>
+        <a href="/calorie-calculator/" class="tool-card"><img src="/assets/img/icon-calculator.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Calorie Calculator</h3><p>Calculate your daily calorie needs based on age and activity.</p><span class="tool-card-link">Try it →</span></a>
+        <a href="/age-calculator/" class="tool-card"><img src="/assets/img/icon-calculator.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Age Calculator</h3><p>Calculate your exact age in years, months and days.</p><span class="tool-card-link">Try it →</span></a>
+      </div>
+    </section>
+  </main>
+  <footer id="site-footer" class="site-footer"></footer>
+  <script src="/assets/js/shared.js" defer></script>
+  <script src="/assets/js/tools/blood-type-compatibility.js" defer></script>
+</body>
+</html>

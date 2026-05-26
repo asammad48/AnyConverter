@@ -1,0 +1,17 @@
+<svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#2DD4BF"/>
+      <stop offset="100%" stop-color="#0D9488"/>
+    </linearGradient>
+  </defs>
+  <rect width="40" height="40" rx="10" fill="url(#g)"/>
+  <!-- Diagonal connector between the two link rings -->
+  <line x1="17" y1="23" x2="23" y2="17" stroke="white" stroke-width="2.1" stroke-linecap="round"/>
+  <!-- Left link ring -->
+  <path d="M14 21 L12 23 C10 25 10 28 12 30 C14 32 17 32 19 30 L21 28"
+        stroke="white" stroke-width="2.3" stroke-linecap="round" fill="none"/>
+  <!-- Right link ring -->
+  <path d="M26 19 L28 17 C30 15 30 12 28 10 C26 8 23 8 21 10 L19 12"
+        stroke="white" stroke-width="2.3" stroke-linecap="round" fill="none"/>
+</svg>

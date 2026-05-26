@@ -1,0 +1,254 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Frequently Asked Questions — AnyConverter</title>
+  <meta name="description" content="Answers to common questions about AnyConverter — free online tools, data privacy, browser support, offline use, and more.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://anyconverter.io/faq/">
+  <link rel="alternate" hreflang="en" href="https://anyconverter.io/faq/">
+  <link rel="alternate" hreflang="x-default" href="https://anyconverter.io/faq/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="FAQ — AnyConverter">
+  <meta property="og:url" content="https://anyconverter.io/faq/">
+  <meta property="og:site_name" content="AnyConverter">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {"@type":"Question","name":"Is AnyConverter really free?","acceptedAnswer":{"@type":"Answer","text":"Yes. Every single tool on AnyConverter is completely free to use with no usage limits, no subscriptions, and no premium tiers. We are funded by non-intrusive advertising."}},
+      {"@type":"Question","name":"Do I need to create an account?","acceptedAnswer":{"@type":"Answer","text":"No. AnyConverter has no accounts, no sign-ups, and no logins. Just open a tool and use it immediately."}},
+      {"@type":"Question","name":"Is my data safe?","acceptedAnswer":{"@type":"Answer","text":"Yes. All processing happens in your browser. Your files, text, and data are never sent to our servers. We cannot see your data even if we wanted to."}},
+      {"@type":"Question","name":"Do the tools work offline?","acceptedAnswer":{"@type":"Answer","text":"Most tools work offline after the page has initially loaded, since all processing is done in your browser. A few tools that require real-time data (like currency rates or IP lookup) need an internet connection."}},
+      {"@type":"Question","name":"What browsers are supported?","acceptedAnswer":{"@type":"Answer","text":"AnyConverter works on all modern browsers including Chrome, Firefox, Safari, and Edge. We recommend using the latest version of your browser for best performance."}},
+      {"@type":"Question","name":"How do I suggest a new tool?","acceptedAnswer":{"@type":"Answer","text":"We love suggestions! Use our contact page to send us your idea. We regularly add new tools based on user requests."}}
+    ]
+  }
+  </script>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F4F6FF);color:var(--color-text,#1E1B4B)}
+    body{min-height:100vh;display:flex;flex-direction:column}
+    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8FE)}
+    .header-inner{max-width:1280px;width:100%;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;gap:32px}
+    @font-face{font-family:'Inter';font-display:swap}
+    main{flex:1}
+    .page-wrap{max-width:800px;margin:0 auto;padding:44px 24px 80px}
+    .page-hero{text-align:center;margin-bottom:48px}
+    .page-hero h1{font-size:clamp(1.8rem,4vw,2.4rem);font-weight:800;margin-bottom:12px}
+    .page-hero p{font-size:1rem;color:var(--color-text-2,#6B7280);max-width:520px;margin:0 auto;line-height:1.7}
+    .faq-category{margin-bottom:48px}
+    .faq-category-title{font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--color-text-2,#6B7280);margin-bottom:16px;padding-bottom:8px;border-bottom:1px solid var(--color-border-light,#E0E7FF)}
+    .faq-item{background:var(--color-surface,#fff);border:1.5px solid var(--color-border-light,#E0E7FF);border-radius:12px;margin-bottom:10px;overflow:hidden}
+    .faq-question{width:100%;text-align:left;padding:18px 20px;font-size:15px;font-weight:600;color:var(--color-text,#1E1B4B);background:none;border:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;line-height:1.4}
+    .faq-question:hover{background:var(--color-surface-2,#EEF1FF)}
+    .faq-chevron{flex-shrink:0;width:20px;height:20px;transition:transform 0.2s;color:var(--color-text-2,#6B7280)}
+    .faq-item.open .faq-chevron{transform:rotate(180deg)}
+    .faq-answer{display:none;padding:0 20px 18px;font-size:15px;color:var(--color-text-body,#374151);line-height:1.75}
+    .faq-item.open .faq-answer{display:block}
+    .faq-answer a{color:var(--color-primary,#4F46E5)}
+    .faq-answer ul{padding-left:20px;margin-top:8px}
+    .faq-answer li{margin-bottom:4px}
+    .contact-cta{background:linear-gradient(135deg,var(--color-primary-light,#EEF2FF),var(--color-success-bg,#F0FDF4));border-radius:16px;padding:36px;text-align:center;margin-top:16px}
+    .contact-cta h2{font-size:1.3rem;font-weight:800;color:var(--color-text,#1E1B4B);margin-bottom:10px}
+    .contact-cta p{color:var(--color-text-2,#6B7280);font-size:15px;margin-bottom:20px}
+    .contact-cta a{display:inline-block;background:var(--color-primary,#4F46E5);color:var(--color-surface,#fff);font-weight:700;padding:12px 28px;border-radius:9999px;text-decoration:none;font-size:15px;transition:transform 0.15s}
+    .contact-cta a:hover{transform:translateY(-2px)}
+  </style>
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+  <header id="site-header" class="site-header"></header>
+
+  <main id="main-content">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="/">Home</a></li>
+        <li aria-current="page">FAQ</li>
+      </ol>
+    </nav>
+
+    <div class="page-wrap">
+
+      <div class="page-hero">
+        <h1>Frequently Asked Questions</h1>
+        <p>Everything you need to know about AnyConverter. Can't find your answer? <a href="/contact/" style="color:var(--color-primary,#4F46E5)">Contact us</a> and we'll help.</p>
+      </div>
+
+      <!-- GENERAL -->
+      <div class="faq-category">
+        <div class="faq-category-title">General</div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            Is AnyConverter really free?
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-answer">Yes. Every single tool on AnyConverter is completely free to use with no usage limits, no subscriptions, and no premium tiers. We are funded by non-intrusive advertising, which keeps the tools free for everyone forever.</div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            Do I need to create an account?
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-answer">No. AnyConverter has no accounts, no sign-ups, and no logins. Just open a tool and start using it immediately. Nothing to remember, nothing to manage.</div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            How many tools does AnyConverter have?
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-answer">AnyConverter currently has 78+ tools across 9 categories: Developer Tools, PDF Tools, Data &amp; Conversion, General Public Tools, Finance, Text Tools, Dev Utilities, Productivity, and Browser Tools. We regularly add new tools based on user feedback.</div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            How can I suggest a new tool?
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-answer">We love hearing ideas! Head to our <a href="/contact/">contact page</a> and tell us what tool you'd like to see. We read every suggestion and many of our tools were built from user requests.</div>
+        </div>
+      </div>
+
+      <!-- PRIVACY & SECURITY -->
+      <div class="faq-category">
+        <div class="faq-category-title">Privacy &amp; Security</div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            Is my data safe? Do you upload my files?
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-answer">Yes, your data is completely safe. All processing happens <strong>entirely in your browser</strong> on your own device. Your files, text, and data are never sent to our servers. We literally cannot see what you're working on, even if we wanted to. You can verify this by watching your browser's network tab — no file upload requests are made.</div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            Do you track what tools I use?
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-answer">We use Google Analytics to collect <strong>anonymous, aggregated</strong> usage statistics — things like "how many people visited the PDF Merge page today." We cannot identify individual users. For full details, see our <a href="/privacy/">Privacy Policy</a>.</div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            Is it safe to use AnyConverter for sensitive documents?
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-answer">Yes. Because all processing is done locally in your browser, even sensitive documents (contracts, financial records, medical files) never leave your device. The risk profile is similar to using a desktop application on your own computer.</div>
+        </div>
+      </div>
+
+      <!-- TECHNICAL -->
+      <div class="faq-category">
+        <div class="faq-category-title">Technical</div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            What browsers are supported?
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-answer">AnyConverter works on all modern browsers:
+            <ul>
+              <li>Google Chrome 90+</li>
+              <li>Mozilla Firefox 88+</li>
+              <li>Apple Safari 14+</li>
+              <li>Microsoft Edge 90+</li>
+              <li>Opera 76+</li>
+            </ul>
+            We recommend keeping your browser updated for the best experience and security.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            Do the tools work offline?
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-answer">Most tools work offline once the page has loaded, since all processing is done in your browser. However, a few tools require live data — Currency Converter (exchange rates), IP Address Lookup (geolocation), and Internet Speed Test — and need an active internet connection.</div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            Are there file size limits?
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-answer">Since all processing happens in your browser, the only limit is your device's available memory. Most modern computers handle files up to several hundred megabytes without issues. Very large files (over 500MB) may be slow on older devices.</div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            Why do some tools need JavaScript?
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-answer">All our tools are browser-based applications powered by JavaScript. JavaScript is what makes the processing happen on your device instead of on a server. Without JavaScript enabled, the tools cannot function. All modern browsers have JavaScript enabled by default.</div>
+        </div>
+      </div>
+
+      <!-- ACCESSIBILITY -->
+      <div class="faq-category">
+        <div class="faq-category-title">Accessibility &amp; Language</div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            Is there a dark mode?
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-answer">Yes! Click the moon/sun icon in the top navigation bar to toggle dark mode. Your preference is saved locally and remembered on your next visit.</div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            What languages is AnyConverter available in?
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-answer">AnyConverter is currently available in English (EN), Spanish (ES), and Danish (DA). Use the language switcher in the footer or navigate to <a href="/es/">/es/</a> or <a href="/da/">/da/</a>. More languages are planned for the future.</div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            Is AnyConverter mobile-friendly?
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-answer">Yes. All pages and tools are fully responsive and optimised for touch screens. The experience is designed to work well on phones, tablets, and desktop computers alike.</div>
+        </div>
+      </div>
+
+      <div class="contact-cta">
+        <h2>Still have a question?</h2>
+        <p>We're happy to help. Reach out and we'll get back to you quickly.</p>
+        <a href="/contact/">Contact Us</a>
+      </div>
+
+    </div>
+  </main>
+
+  <footer id="site-footer" class="site-footer"></footer>
+  <div id="toast" class="toast" aria-live="polite"></div>
+  <script src="/assets/js/shared.js" defer></script>
+  <script>
+    document.querySelectorAll('.faq-question').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var item = this.closest('.faq-item');
+        var isOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item.open').forEach(function(el) {
+          el.classList.remove('open');
+          el.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+        });
+        if (!isOpen) {
+          item.classList.add('open');
+          this.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,181 @@
+﻿<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Drikkepenge Beregner Online Gratis | AnyConverter</title>
+  <meta name="description" content="Beregn drikkepenge og del regningen mellem flere personer online gratis. Indtast beløbet, drikkepengeprocenten og antal personer øjeblikkeligt.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://anyconverter.io/da/tip-calculator/">
+  <link rel="alternate" hreflang="en" href="https://anyconverter.io/tip-calculator/">
+  <link rel="alternate" hreflang="es" href="https://anyconverter.io/es/tip-calculator/">
+  <link rel="alternate" hreflang="da" href="https://anyconverter.io/da/tip-calculator/">
+  <link rel="alternate" hreflang="x-default" href="https://anyconverter.io/tip-calculator/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Drikkepenge Beregner Online Gratis | AnyConverter">
+  <meta property="og:description" content="Beregn drikkepenge og del regningen mellem flere personer online gratis. Indtast beløbet, drikkepengeprocenten og antal personer øjeblikkeligt.">
+  <meta property="og:url" content="https://anyconverter.io/da/tip-calculator/">
+  <meta property="og:site_name" content="AnyConverter">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" data-ad-client="ca-pub-XXXXXXXXXX" crossorigin="anonymous"></script>
+  <!-- Replace ca-pub-XXXXXXXXXX with your real AdSense publisher ID -->
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Drikkepenge Beregner","url":"https://anyconverter.io/da/tip-calculator/","description":"Beregn drikkepenge og del regningen mellem flere personer online gratis.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F4F6FF);color:var(--color-text,#1E1B4B)}
+    body{min-height:100vh;display:flex;flex-direction:column}
+    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8FE)}
+    .header-inner{max-width:1280px;width:100%;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;gap:32px}
+    .hero{padding:40px 24px 32px;max-width:1280px;margin:0 auto}
+    .hero h1{font-size:clamp(1.75rem,4vw,2.25rem);font-weight:700;line-height:1.2;margin-bottom:12px}
+    .hero-desc{font-size:1.0625rem;color:var(--color-text-2,#6B7280);max-width:680px;line-height:1.6}
+    @font-face{font-family:'Inter';font-display:swap}
+  </style>
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+  <header id="site-header" class="site-header"></header>
+  <main id="main-content">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol><li><a href="/da/">Hjem</a></li><li aria-current="page">Drikkepenge Beregner</li></ol>
+    </nav>
+    <section class="hero">
+      <h1>Drikkepenge Beregner</h1>
+      <p class="hero-desc">Beregn det nøjagtige drikkepenge beløb for enhver regning og del det mellem flere personer. Indtast regningens total, drikkepengeprocenten og antal gæster for at se hvad hver person betaler.</p>
+    </section>
+    <div class="tool-wrapper">
+      <div class="tool-zone">
+        <div style="padding:24px">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px">
+            <div>
+              <label style="display:block;font-size:13px;font-weight:500;margin-bottom:6px" for="tip-bill">Regningsbeløb ($)</label>
+              <input type="number" id="tip-bill" placeholder="50.00" min="0" step="0.01" style="width:100%;padding:10px 12px;border:1px solid var(--color-border,#DDD8FE);border-radius:8px;font-size:15px">
+            </div>
+            <div>
+              <label style="display:block;font-size:13px;font-weight:500;margin-bottom:6px" for="tip-people">Antal personer</label>
+              <input type="number" id="tip-people" value="1" min="1" style="width:100%;padding:10px 12px;border:1px solid var(--color-border,#DDD8FE);border-radius:8px;font-size:15px">
+            </div>
+          </div>
+          <div style="margin-bottom:16px">
+            <label style="display:block;font-size:13px;font-weight:500;margin-bottom:8px">Drikkepengeprocent: <span id="tip-pct-display">15</span>%</label>
+            <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:8px">
+              <button class="btn btn-secondary btn-sm tip-preset" data-pct="10">10%</button>
+              <button class="btn btn-primary btn-sm tip-preset" data-pct="15">15%</button>
+              <button class="btn btn-secondary btn-sm tip-preset" data-pct="18">18%</button>
+              <button class="btn btn-secondary btn-sm tip-preset" data-pct="20">20%</button>
+              <button class="btn btn-secondary btn-sm tip-preset" data-pct="25">25%</button>
+            </div>
+            <input type="range" id="tip-slider" min="0" max="50" value="15" style="width:100%;accent-color:var(--color-primary,#4F46E5)">
+          </div>
+          <div id="tip-result" style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:8px">
+            <div class="stat-card"><div class="stat-val" id="tip-amount">$0.00</div><div class="stat-lbl">Drikkepenge</div></div>
+            <div class="stat-card"><div class="stat-val" id="tip-total">$0.00</div><div class="stat-lbl">Total regning</div></div>
+            <div class="stat-card"><div class="stat-val" id="tip-per-person">$0.00</div><div class="stat-lbl">Per person</div></div>
+          </div>
+        </div>
+      </div>
+      <aside class="tool-side" aria-label="Muligheder">
+        <div class="ss-divider">Relaterede værktøjer</div>
+        <a href="/da/percentage-calculator/" class="ss-link"><img src="/assets/img/icon-calculator.svg" alt="" width="18" height="18" loading="lazy"> Procentberegner</a>
+        <a href="/da/discount-calculator/" class="ss-link"><img src="/assets/img/icon-calculator.svg" alt="" width="18" height="18" loading="lazy"> Rabatberegner</a>
+        <a href="/da/loan-calculator/" class="ss-link"><img src="/assets/img/icon-calculator.svg" alt="" width="18" height="18" loading="lazy"> Låneberegner</a>
+        <div style="margin-top:16px">
+          <p class="ad-label">Reklame</p>
+          <div class="ad-slot" style="min-height:250px">
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+            <!-- Replace ca-pub-XXXXXXXXXX and data-ad-slot="XXXXXXXXXX" with your IDs -->
+          </div>
+        </div>
+      </aside>
+    </div>
+    <div class="ad-slot ad-slot--leaderboard">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="how-to-use">
+      <h2>Sådan bruges Drikkepenge Beregneren</h2>
+      <ol class="steps">
+        <li><strong>Trin 1</strong> — Indtast det samlede regningsbeløb.</li>
+        <li><strong>Trin 2</strong> — Vælg eller indtast den ønskede drikkepengeprocent.</li>
+        <li><strong>Trin 3</strong> — Juster antallet af personer for at dele regningen og se hvad hver person betaler.</li>
+      </ol>
+    </section>
+    <section class="features">
+      <h2>Funktioner</h2>
+      <ul class="features-list">
+        <li>Øjeblikkelig drikkepenge beregning for enhver procent</li>
+        <li>Del regningen mellem 1 og 20 personer</li>
+        <li>Hurtige drikkepenge knapper (10%, 15%, 18%, 20%, 25%)</li>
+        <li>Viser total per person inkl. drikkepenge</li>
+        <li>Ingen skjulte afrundinger</li>
+        <li>Kører helt i browseren</li>
+      </ul>
+    </section>
+    <div class="ad-slot ad-slot--rectangle" style="margin:0 auto 32px">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="faq">
+      <h2>Ofte stillede spørgsmål</h2>
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary class="faq-question">Hvad er den normale drikkepengeprocent? <span class="faq-icon">+</span></summary>
+          <div class="faq-answer">I USA er den normale drikkepengeprocent typisk 15–20% på restauranter. 15% anses for passende, 18% er godt, og 20% eller mere er fremragende. For exceptionel service giver mange 25% eller mere.</div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-question">Hvordan beregner jeg drikkepenge uden beregner? <span class="faq-icon">+</span></summary>
+          <div class="faq-answer">For at beregne 20% drikkepenge i hovedet: flyt decimalpunktet én plads til venstre (10%) og fordobl det. For en regning på $45: 10% = $4,50, fordoblet = $9,00 i drikkepenge. For 15%: beregn 10% og læg halvdelen til.</div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-question">Skal jeg give drikkepenge af beløbet før eller efter moms? <span class="faq-icon">+</span></summary>
+          <div class="faq-answer">De fleste etikette-eksperter anbefaler drikkepenge af subtotalen før moms, da moms er et lovkrav og ikke afspejler servicekvaliteten. At give drikkepenge af det samlede beløb inkl. moms er dog også bredt accepteret.</div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-question">Hvordan fungerer funktionen til at dele regningen? <span class="faq-icon">+</span></summary>
+          <div class="faq-answer">Indtast antallet af personer der deler regningen i feltet "Antal personer". Beregneren deler automatisk den samlede regning (inkl. drikkepenge) ligeligt mellem alle og viser beløbet per person i kortet "Per person".</div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-question">Kan jeg angive en brugerdefineret drikkepengeprocent? <span class="faq-icon">+</span></summary>
+          <div class="faq-answer">Ja. Brug skyderen under de forudindstillede knapper til at vælge en drikkepengeprocent fra 0% til 50%. Procenten opdateres i realtid mens du trækker, og alle tre resultatkort opdateres øjeblikkeligt.</div>
+        </details>
+      </div>
+    </section>
+    <section class="related-tools">
+      <h2>Relaterede Værktøjer</h2>
+      <div class="tool-grid">
+        <a href="/da/percentage-calculator/" class="tool-card">
+          <img src="/assets/img/icon-calculator.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy">
+          <h3>Procentberegner</h3>
+          <p>Beregn procenter, stigninger og fald hurtigt.</p>
+          <span class="tool-card-link">Brug →</span>
+        </a>
+        <a href="/da/discount-calculator/" class="tool-card">
+          <img src="/assets/img/icon-calculator.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy">
+          <h3>Rabatberegner</h3>
+          <p>Find salgsprisen, besparelsen og rabatprocenten nemt.</p>
+          <span class="tool-card-link">Brug →</span>
+        </a>
+        <a href="/da/loan-calculator/" class="tool-card">
+          <img src="/assets/img/icon-calculator.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy">
+          <h3>Låneberegner</h3>
+          <p>Beregn månedlige ydelser og den samlede rente på ethvert lån.</p>
+          <span class="tool-card-link">Brug →</span>
+        </a>
+        <a href="/da/currency-converter/" class="tool-card">
+          <img src="/assets/img/icon-currency.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy">
+          <h3>Valutaomregner</h3>
+          <p>Konverter mellem 150+ valutaer med live valutakurser.</p>
+          <span class="tool-card-link">Brug →</span>
+        </a>
+      </div>
+    </section>
+  </main>
+  <footer id="site-footer" class="site-footer"></footer>
+  <script src="/assets/js/shared.js" defer></script>
+  <script src="/assets/js/tools/tip-calculator.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,201 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSV Query Tool Online — Run SQL on CSV Files Free | AnyConverter</title>
+  <meta name="description" content="Query CSV files with SQL online for free. Upload a CSV and run SELECT, WHERE, GROUP BY queries directly in your browser using SQL.js. Export results as CSV or JSON.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://anyconverter.io/csv-query/">
+  <link rel="alternate" hreflang="en" href="https://anyconverter.io/csv-query/">
+  <link rel="alternate" hreflang="x-default" href="https://anyconverter.io/csv-query/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="CSV Query Tool Online — Run SQL on CSV Files Free | AnyConverter">
+  <meta property="og:description" content="Query CSV files with SQL online for free. Run SELECT, WHERE, GROUP BY queries in your browser. Export results as CSV or JSON.">
+  <meta property="og:url" content="https://anyconverter.io/csv-query/">
+  <meta property="og:site_name" content="AnyConverter">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" data-ad-client="ca-pub-XXXXXXXXXX" crossorigin="anonymous"></script>
+  <!-- Replace ca-pub-XXXXXXXXXX with your real AdSense publisher ID -->
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"CSV Query Tool","url":"https://anyconverter.io/csv-query/","description":"Query CSV files with SQL online for free. Upload a CSV and run SELECT, WHERE, GROUP BY queries directly in your browser using SQL.js.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F4F6FF);color:var(--color-text,#1E1B4B)}
+    body{min-height:100vh;display:flex;flex-direction:column}
+    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8FE)}
+    .header-inner{max-width:1280px;width:100%;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;gap:32px}
+    .hero{padding:40px 24px 32px;max-width:1280px;margin:0 auto}
+    .hero h1{font-size:clamp(1.75rem,4vw,2.25rem);font-weight:700;line-height:1.2;margin-bottom:12px}
+    .hero-desc{font-size:1.0625rem;color:var(--color-text-2,#6B7280);max-width:680px;line-height:1.6}
+    @font-face{font-family:'Inter';font-display:swap}
+    .query-history{display:flex;flex-direction:column;gap:6px}
+    .history-item{padding:8px 12px;background:var(--color-bg,#F4F6FF);border-radius:6px;font-family:var(--font-mono,monospace);font-size:12px;cursor:pointer;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:var(--color-text,#1E1B4B);border:1px solid var(--color-border,#DDD8FE)}
+    .history-item:hover{background:var(--color-border,#DDD8FE);color:var(--color-text,#1E1B4B)}
+  </style>
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+  <header id="site-header" class="site-header"></header>
+  <main id="main-content">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol><li><a href="/">Home</a></li><li aria-current="page">CSV Query</li></ol>
+    </nav>
+    <section class="hero">
+      <h1>CSV Query Tool — Run SQL on CSV Files</h1>
+      <p class="hero-desc">Upload a CSV file and query it with SQL directly in your browser. Use SELECT, WHERE, GROUP BY, ORDER BY, aggregates, and more. Results are paginated and sortable by column. Export to CSV or JSON. Powered by SQL.js (SQLite WASM) — your data never leaves your device.</p>
+    </section>
+    <div class="tool-wrapper">
+      <div class="tool-zone">
+        <div class="drop-zone" id="query-drop-zone" role="button" tabindex="0" aria-label="Drop CSV file here or click to browse">
+          <svg class="drop-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5"/></svg>
+          <p>Drop your CSV file here or click to browse</p>
+          <small>Single CSV file with header row</small>
+          <input type="file" id="query-file-input" accept=".csv,text/csv" aria-label="Upload CSV file">
+        </div>
+
+        <div id="query-section" style="display:none">
+          <div class="status-bar info mt-4" id="query-file-info"></div>
+
+          <div class="mt-4">
+            <label for="sql-query" style="font-weight:500;margin-bottom:6px;display:block">
+              SQL Query
+              <span style="font-size:12px;color:var(--color-text-2,#6B7280);font-weight:400;margin-left:8px">Ctrl+Enter to run — table name: <code style="background:var(--color-bg,#F4F6FF);padding:2px 5px;border-radius:3px">data</code></span>
+            </label>
+            <textarea id="sql-query" spellcheck="false" style="min-height:120px;font-family:var(--font-mono,monospace);font-size:13px;width:100%;resize:vertical">SELECT * FROM data LIMIT 10</textarea>
+          </div>
+
+          <div class="action-bar mt-4">
+            <div class="action-bar-left">
+              <button class="btn btn-primary" id="btn-run-query">Run Query ▶</button>
+              <button class="btn btn-secondary" id="btn-format-sql">Format SQL</button>
+            </div>
+          </div>
+
+          <div id="query-history-section" style="display:none;margin-top:16px">
+            <p class="panel-label" style="margin-bottom:8px">Query History</p>
+            <div id="query-history" class="query-history"></div>
+          </div>
+        </div>
+
+        <div id="results-section" style="display:none;margin-top:20px">
+          <div class="results-fs-wrap" id="results-fs-wrap">
+            <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:10px">
+              <div class="status-bar info" id="result-stats" style="margin:0;flex:1;min-width:0"></div>
+              <div style="display:flex;gap:6px;flex-shrink:0;align-items:center">
+                <div class="font-sz-wrap"><button class="font-sz-btn" id="btn-tbl-font-down" title="Decrease table font">A−</button><button class="font-sz-btn" id="btn-tbl-font-up" title="Increase table font">A+</button></div>
+                <button class="btn btn-sm" id="btn-export-csv">Export CSV</button>
+                <button class="btn btn-sm" id="btn-export-json">Export JSON</button>
+                <button class="btn btn-sm" id="btn-fs-results" title="Fullscreen table">⛶ Fullscreen</button>
+              </div>
+            </div>
+            <div class="csv-preview" id="results-table"></div>
+            <div id="pagination-bar" style="margin-top:12px;display:flex;gap:6px;flex-wrap:wrap;align-items:center"></div>
+          </div>
+        </div>
+      </div>
+
+      <aside class="tool-side" aria-label="Options">
+        <div class="ss-divider">Options</div>
+        <div class="tog-row"><span class="tog-label" id="lbl-has-header">CSV has header row</span><div class="tog" id="tog-has-header" role="switch" aria-checked="true" tabindex="0" aria-labelledby="lbl-has-header"></div></div>
+        <div class="ss-option-row">
+          <span class="ss-opt-label">Rows per page</span>
+          <select class="ss-opt-select" id="opt-rows-per-page">
+            <option value="25">25 rows</option>
+            <option value="50" selected>50 rows</option>
+            <option value="100">100 rows</option>
+          </select>
+        </div>
+
+        <div class="ss-divider">Stats</div>
+        <div class="stats-grid">
+          <div class="stat-card"><div class="stat-val" id="stat-csv-rows">0</div><div class="stat-lbl">Rows</div></div>
+          <div class="stat-card"><div class="stat-val" id="stat-csv-cols">0</div><div class="stat-lbl">Columns</div></div>
+          <div class="stat-card"><div class="stat-val" id="stat-result-rows">0</div><div class="stat-lbl">Results</div></div>
+          <div class="stat-card"><div class="stat-val" id="stat-query-time">—</div><div class="stat-lbl">Query ms</div></div>
+        </div>
+
+        <div class="ss-divider">Quick SQL</div>
+        <div style="display:flex;flex-direction:column;gap:4px">
+          <button class="quick-pat-btn" data-sql="SELECT * FROM data LIMIT 10">SELECT * LIMIT 10</button>
+          <button class="quick-pat-btn" data-sql="SELECT COUNT(*) as count FROM data">COUNT rows</button>
+          <button class="quick-pat-btn" data-sql="SELECT * FROM data WHERE rowid = 1">First row</button>
+          <button class="quick-pat-btn" data-sql="SELECT DISTINCT * FROM data LIMIT 50">DISTINCT rows</button>
+        </div>
+
+        <div class="ss-divider">Related Tools</div>
+        <a href="/csv-to-sql/" class="ss-related-link"><img src="/assets/img/icon-csv.svg" alt="" width="18" height="18" loading="lazy">CSV to SQL</a>
+        <a href="/json-formatter/" class="ss-related-link"><img src="/assets/img/icon-json.svg" alt="" width="18" height="18" loading="lazy">JSON Formatter</a>
+        <a href="/regex-tester/" class="ss-related-link"><img src="/assets/img/icon-regex.svg" alt="" width="18" height="18" loading="lazy">Regex / Logs</a>
+
+        <div style="margin-top:8px">
+          <p class="ad-label">Advertisement</p>
+          <div class="ad-slot" style="min-height:250px">
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+            <!-- Replace ca-pub-XXXXXXXXXX and data-ad-slot="XXXXXXXXXX" with your IDs -->
+          </div>
+        </div>
+      </aside>
+    </div>
+    <div class="ad-slot ad-slot--leaderboard">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="how-to-use">
+      <h2>How to Query a CSV File with SQL</h2>
+      <ol class="steps">
+        <li><strong>Upload your CSV</strong> — Drop or select a CSV file with a header row. It loads into an in-browser SQLite database as a table named <code>data</code>.</li>
+        <li><strong>Write SQL</strong> — Query with full SQL: SELECT, WHERE, GROUP BY, ORDER BY, LIMIT, JOINs, aggregates. Use Ctrl+Enter to run quickly.</li>
+        <li><strong>Explore and export</strong> — Sort results by clicking column headers. Navigate pages. Export the full result set as CSV or JSON.</li>
+      </ol>
+    </section>
+    <section class="features">
+      <h2>Features</h2>
+      <ul class="features-list">
+        <li>Full SQLite SQL — SELECT, WHERE, GROUP BY, ORDER BY, aggregates</li>
+        <li>Paginated results — 50 rows per page</li>
+        <li>Sortable columns — click headers to sort asc/desc</li>
+        <li>Export results as CSV or JSON</li>
+        <li>Query history — last 5 queries, click to restore</li>
+        <li>100% browser-based — powered by SQL.js (SQLite WASM)</li>
+      </ul>
+    </section>
+    <div class="ad-slot ad-slot--rectangle" style="margin:0 auto 32px">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="faq">
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-list">
+        <details class="faq-item"><summary class="faq-question">What SQL syntax is supported? <span class="faq-icon">+</span></summary><div class="faq-answer">The tool uses SQL.js, a WebAssembly build of SQLite. It supports SELECT, WHERE, GROUP BY, ORDER BY, LIMIT, OFFSET, JOINs, subqueries, and aggregates like COUNT, SUM, AVG, MIN, and MAX. Most SQLite functions work too.</div></details>
+        <details class="faq-item"><summary class="faq-question">What is the table name for my CSV? <span class="faq-icon">+</span></summary><div class="faq-answer">Your CSV is loaded into a table called <strong>data</strong>. Column names come from the first row (header row) of your CSV. If a column name has spaces, wrap it in double quotes: SELECT "first name" FROM data.</div></details>
+        <details class="faq-item"><summary class="faq-question">How large a file can I query? <span class="faq-icon">+</span></summary><div class="faq-answer">There is no hard limit — the browser's available memory is the constraint. Files up to 50MB typically work well. Very large files may take a moment to load into the in-memory SQLite database.</div></details>
+        <details class="faq-item"><summary class="faq-question">Is my data sent to a server? <span class="faq-icon">+</span></summary><div class="faq-answer">No. All processing runs locally in your browser. SQL.js is a WASM build of SQLite that runs entirely client-side. Your CSV data and query results never leave your device.</div></details>
+        <details class="faq-item"><summary class="faq-question">Can I run multiple queries on the same file? <span class="faq-icon">+</span></summary><div class="faq-answer">Yes. Once a CSV is loaded, you can run as many queries as you like. The query history keeps your last 5 queries for quick re-use. Upload a new file to replace the current dataset.</div></details>
+      </div>
+    </section>
+    <section class="related-tools">
+      <h2>Related Tools</h2>
+      <div class="tool-grid">
+        <a href="/csv-to-sql/" class="tool-card"><img src="/assets/img/icon-csv.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>CSV to SQL</h3><p>Convert CSV to SQL INSERT statements.</p><span class="tool-card-link">Try it →</span></a>
+        <a href="/json-formatter/" class="tool-card"><img src="/assets/img/icon-json.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>JSON Formatter</h3><p>Format and validate JSON.</p><span class="tool-card-link">Try it →</span></a>
+        <a href="/xml-formatter/" class="tool-card"><img src="/assets/img/icon-xml.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>XML Formatter</h3><p>Format and validate XML.</p><span class="tool-card-link">Try it →</span></a>
+        <a href="/regex-tester/" class="tool-card"><img src="/assets/img/icon-regex.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Regex Tester</h3><p>Test regular expressions live.</p><span class="tool-card-link">Try it →</span></a>
+        <a href="/hash-generator/" class="tool-card"><img src="/assets/img/icon-hash.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Hash Generator</h3><p>Generate MD5, SHA-256, SHA-512 hashes.</p><span class="tool-card-link">Try it →</span></a>
+        <a href="/timestamp-converter/" class="tool-card"><img src="/assets/img/icon-clock.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Timestamp Converter</h3><p>Convert Unix timestamps to dates.</p><span class="tool-card-link">Try it →</span></a>
+      </div>
+    </section>
+  </main>
+
+  <div id="csv-fs-overlay" class="fs-overlay"></div>
+
+  <footer id="site-footer" class="site-footer"></footer>
+  <script src="/assets/js/shared.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.10.2/sql-wasm.js" defer></script>
+  <script src="/assets/js/tools/csv-query.js" defer></script>
+</body>
+</html>

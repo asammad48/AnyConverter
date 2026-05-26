@@ -1,0 +1,181 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tip Calculator Online Free | AnyConverter</title>
+  <meta name="description" content="Calculate tip amount, total bill, and per-person split online for free. Choose from preset tip percentages or use the slider. Instant results, no signup needed.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://anyconverter.io/tip-calculator/">
+  <link rel="alternate" hreflang="en" href="https://anyconverter.io/tip-calculator/">
+  <link rel="alternate" hreflang="es" href="https://anyconverter.io/es/tip-calculator/">
+  <link rel="alternate" hreflang="da" href="https://anyconverter.io/da/tip-calculator/">
+  <link rel="alternate" hreflang="x-default" href="https://anyconverter.io/tip-calculator/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Tip Calculator Online Free | AnyConverter">
+  <meta property="og:description" content="Calculate tip amount, total bill, and per-person split online for free. Choose from preset tip percentages or use the slider. Instant results, no signup needed.">
+  <meta property="og:url" content="https://anyconverter.io/tip-calculator/">
+  <meta property="og:site_name" content="AnyConverter">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" data-ad-client="ca-pub-XXXXXXXXXX" crossorigin="anonymous"></script>
+  <!-- Replace ca-pub-XXXXXXXXXX with your real AdSense publisher ID -->
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Tip Calculator","url":"https://anyconverter.io/tip-calculator/","description":"Calculate tip amount, total bill, and per-person split online for free.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F4F6FF);color:var(--color-text,#1E1B4B)}
+    body{min-height:100vh;display:flex;flex-direction:column}
+    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8FE)}
+    .header-inner{max-width:1280px;width:100%;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;gap:32px}
+    .hero{padding:40px 24px 32px;max-width:1280px;margin:0 auto}
+    .hero h1{font-size:clamp(1.75rem,4vw,2.25rem);font-weight:700;line-height:1.2;margin-bottom:12px}
+    .hero-desc{font-size:1.0625rem;color:var(--color-text-2,#6B7280);max-width:680px;line-height:1.6}
+    @font-face{font-family:'Inter';font-display:swap}
+  </style>
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+  <header id="site-header" class="site-header"></header>
+  <main id="main-content">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol><li><a href="/">Home</a></li><li aria-current="page">Tip Calculator</li></ol>
+    </nav>
+    <section class="hero">
+      <h1>Tip Calculator</h1>
+      <p class="hero-desc">Calculate tip amount, total bill, and split per person instantly. Choose a preset percentage or drag the slider to any amount — no signup needed.</p>
+    </section>
+    <div class="tool-wrapper">
+      <div class="tool-zone">
+        <div style="padding:24px">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px">
+            <div>
+              <label style="display:block;font-size:13px;font-weight:500;margin-bottom:6px" for="tip-bill">Bill Amount ($)</label>
+              <input type="number" id="tip-bill" placeholder="50.00" min="0" step="0.01" style="width:100%;padding:10px 12px;border:1px solid var(--color-border,#DDD8FE);border-radius:8px;font-size:15px">
+            </div>
+            <div>
+              <label style="display:block;font-size:13px;font-weight:500;margin-bottom:6px" for="tip-people">Number of People</label>
+              <input type="number" id="tip-people" value="1" min="1" style="width:100%;padding:10px 12px;border:1px solid var(--color-border,#DDD8FE);border-radius:8px;font-size:15px">
+            </div>
+          </div>
+          <div style="margin-bottom:16px">
+            <label style="display:block;font-size:13px;font-weight:500;margin-bottom:8px">Tip Percentage: <span id="tip-pct-display">15</span>%</label>
+            <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:8px">
+              <button class="btn btn-secondary btn-sm tip-preset" data-pct="10">10%</button>
+              <button class="btn btn-primary btn-sm tip-preset" data-pct="15">15%</button>
+              <button class="btn btn-secondary btn-sm tip-preset" data-pct="18">18%</button>
+              <button class="btn btn-secondary btn-sm tip-preset" data-pct="20">20%</button>
+              <button class="btn btn-secondary btn-sm tip-preset" data-pct="25">25%</button>
+            </div>
+            <input type="range" id="tip-slider" min="0" max="50" value="15" style="width:100%;accent-color:var(--color-primary,#4F46E5)">
+          </div>
+          <div id="tip-result" style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:8px">
+            <div class="stat-card"><div class="stat-val" id="tip-amount">$0.00</div><div class="stat-lbl">Tip Amount</div></div>
+            <div class="stat-card"><div class="stat-val" id="tip-total">$0.00</div><div class="stat-lbl">Total Bill</div></div>
+            <div class="stat-card"><div class="stat-val" id="tip-per-person">$0.00</div><div class="stat-lbl">Per Person</div></div>
+          </div>
+        </div>
+      </div>
+      <aside class="tool-side" aria-label="Options">
+        <div class="ss-divider">Related Tools</div>
+        <a href="/percentage-calculator/" class="ss-link"><img src="/assets/img/icon-calculator.svg" alt="" width="18" height="18" loading="lazy"> Percentage Calculator</a>
+        <a href="/discount-calculator/" class="ss-link"><img src="/assets/img/icon-calculator.svg" alt="" width="18" height="18" loading="lazy"> Discount Calculator</a>
+        <a href="/loan-calculator/" class="ss-link"><img src="/assets/img/icon-calculator.svg" alt="" width="18" height="18" loading="lazy"> Loan Calculator</a>
+        <div style="margin-top:16px">
+          <p class="ad-label">Advertisement</p>
+          <div class="ad-slot" style="min-height:250px">
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+            <!-- Replace ca-pub-XXXXXXXXXX and data-ad-slot="XXXXXXXXXX" with your IDs -->
+          </div>
+        </div>
+      </aside>
+    </div>
+    <div class="ad-slot ad-slot--leaderboard">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="how-to-use">
+      <h2>How to Use Tip Calculator</h2>
+      <ol class="steps">
+        <li><strong>Step 1</strong> — Enter the total bill amount in the "Bill Amount" field.</li>
+        <li><strong>Step 2</strong> — Select a preset tip percentage (10%, 15%, 18%, 20%, 25%) or drag the slider to a custom value.</li>
+        <li><strong>Step 3</strong> — Enter the number of people splitting the bill to see the per-person amount instantly.</li>
+      </ol>
+    </section>
+    <section class="features">
+      <h2>Features</h2>
+      <ul class="features-list">
+        <li>Instant calculation with no page reload required</li>
+        <li>Five preset tip percentages for quick selection</li>
+        <li>Custom tip slider from 0% to 50%</li>
+        <li>Split bill calculation for up to any number of people</li>
+        <li>Shows tip amount, total bill, and per-person cost simultaneously</li>
+        <li>100% free with no signup or account needed</li>
+      </ul>
+    </section>
+    <div class="ad-slot ad-slot--rectangle" style="margin:0 auto 32px">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="faq">
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary class="faq-question">What is the standard tip percentage? <span class="faq-icon">+</span></summary>
+          <div class="faq-answer">In the United States, the standard tip percentage is typically 15–20% for restaurant service. 15% is considered adequate, 18% is good, and 20% or more is excellent. For exceptional service, many people tip 25% or more.</div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-question">How do I calculate a tip without a calculator? <span class="faq-icon">+</span></summary>
+          <div class="faq-answer">To calculate a 20% tip mentally, move the decimal point one place left (10%), then double it. For a $45 bill: 10% = $4.50, doubled = $9.00 tip. For 15%, calculate 10% and add half of that amount.</div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-question">Should I tip on the pre-tax or post-tax total? <span class="faq-icon">+</span></summary>
+          <div class="faq-answer">Most etiquette experts suggest tipping on the pre-tax subtotal, as taxes are government-mandated and not related to the service. However, tipping on the full post-tax amount is also widely accepted and appreciated by service staff.</div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-question">How does the bill splitting feature work? <span class="faq-icon">+</span></summary>
+          <div class="faq-answer">Enter the number of people sharing the bill in the "Number of People" field. The calculator automatically divides the total bill (including tip) equally among all people and displays the per-person amount in the "Per Person" card.</div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-question">Can I tip a custom percentage? <span class="faq-icon">+</span></summary>
+          <div class="faq-answer">Yes. Use the slider below the preset buttons to set any tip percentage from 0% to 50%. The percentage display updates in real time as you drag, and all three result cards update instantly to reflect your chosen percentage.</div>
+        </details>
+      </div>
+    </section>
+    <section class="related-tools">
+      <h2>Related Tools</h2>
+      <div class="tool-grid">
+        <a href="/percentage-calculator/" class="tool-card">
+          <img src="/assets/img/icon-calculator.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy">
+          <h3>Percentage Calculator</h3>
+          <p>Calculate percentages, increases, and decreases quickly.</p>
+          <span class="tool-card-link">Try it →</span>
+        </a>
+        <a href="/discount-calculator/" class="tool-card">
+          <img src="/assets/img/icon-calculator.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy">
+          <h3>Discount Calculator</h3>
+          <p>Find sale price, savings, and discount percentage easily.</p>
+          <span class="tool-card-link">Try it →</span>
+        </a>
+        <a href="/loan-calculator/" class="tool-card">
+          <img src="/assets/img/icon-calculator.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy">
+          <h3>Loan Calculator</h3>
+          <p>Calculate monthly payments and total interest on any loan.</p>
+          <span class="tool-card-link">Try it →</span>
+        </a>
+        <a href="/currency-converter/" class="tool-card">
+          <img src="/assets/img/icon-currency.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy">
+          <h3>Currency Converter</h3>
+          <p>Convert between 150+ currencies with live exchange rates.</p>
+          <span class="tool-card-link">Try it →</span>
+        </a>
+      </div>
+    </section>
+  </main>
+  <footer id="site-footer" class="site-footer"></footer>
+  <script src="/assets/js/shared.js" defer></script>
+  <script src="/assets/js/tools/tip-calculator.js" defer></script>
+</body>
+</html>

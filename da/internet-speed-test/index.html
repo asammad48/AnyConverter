@@ -1,0 +1,128 @@
+﻿<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Internethastighed Test Online Gratis | AnyConverter</title>
+  <meta name="description" content="Test din internethastighed gratis online. Mål download-, upload-hastighed og ping-latenstid direkte i din browser. Ingen app eller tilmelding nødvendig.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://anyconverter.io/da/internet-speed-test/">
+  <link rel="alternate" hreflang="en" href="https://anyconverter.io/internet-speed-test/">
+  <link rel="alternate" hreflang="es" href="https://anyconverter.io/es/internet-speed-test/">
+  <link rel="alternate" hreflang="da" href="https://anyconverter.io/da/internet-speed-test/">
+  <link rel="alternate" hreflang="x-default" href="https://anyconverter.io/internet-speed-test/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Internethastighed Test Online Gratis | AnyConverter">
+  <meta property="og:description" content="Mål download-, upload-hastighed og ping-latenstid i din browser. Ingen app, ingen tilmelding.">
+  <meta property="og:url" content="https://anyconverter.io/da/internet-speed-test/">
+  <meta property="og:site_name" content="AnyConverter">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" data-ad-client="ca-pub-XXXXXXXXXX" crossorigin="anonymous"></script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Internethastighed Test","url":"https://anyconverter.io/da/internet-speed-test/","description":"Test din internets download-, upload-hastighed og ping-latenstid i browseren.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F4F6FF);color:var(--color-text,#1E1B4B)}
+    body{min-height:100vh;display:flex;flex-direction:column}
+    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8FE)}
+    .header-inner{max-width:1280px;width:100%;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;gap:32px}
+    .hero{padding:40px 24px 32px;max-width:1280px;margin:0 auto}
+    .hero h1{font-size:clamp(1.75rem,4vw,2.25rem);font-weight:700;line-height:1.2;margin-bottom:12px}
+    .hero-desc{font-size:1.0625rem;color:var(--color-text-2,#6B7280);max-width:680px;line-height:1.6}
+    @font-face{font-family:'Inter';font-display:swap}
+    .speed-gauges{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:24px 0}
+    .speed-gauge{background:var(--color-surface-2,#EEF1FF);border-radius:16px;padding:24px;text-align:center}
+    .speed-val{font-size:2rem;font-weight:700;color:var(--color-primary,#4F46E5);min-height:2.5rem;display:block}
+    .speed-sub{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.5px;color:var(--color-text-2,#6B7280);margin-top:4px}
+    .speed-status{text-align:center;margin:12px 0;color:var(--color-text-2,#6B7280);font-size:14px;min-height:20px}
+  </style>
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+  <header id="site-header" class="site-header"></header>
+  <main id="main-content">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol><li><a href="/da/">Hjem</a></li><li aria-current="page">Internethastighed Test</li></ol>
+    </nav>
+    <section class="hero">
+      <h1>Internethastighed Test</h1>
+      <p class="hero-desc">Mål din internetforbindelses download-hastighed, upload-hastighed og ping-latenstid direkte i din browser — ingen app eller plugin nødvendig.</p>
+    </section>
+    <div class="tool-wrapper">
+      <div class="tool-zone">
+        <div style="padding:24px">
+          <div class="speed-gauges">
+            <div class="speed-gauge">
+              <span class="speed-val" id="speed-ping">—</span>
+              <div class="speed-sub">Ping</div>
+            </div>
+            <div class="speed-gauge">
+              <span class="speed-val" id="speed-download">—</span>
+              <div class="speed-sub">Download</div>
+            </div>
+            <div class="speed-gauge">
+              <span class="speed-val" id="speed-upload">—</span>
+              <div class="speed-sub">Upload</div>
+            </div>
+          </div>
+          <div class="speed-status" id="speed-status">Klik på "Start Hastighedstest" for at begynde.</div>
+          <div style="text-align:center;margin-top:12px">
+            <button class="btn btn-primary" id="speed-btn" style="padding:12px 36px;font-size:16px">Start Hastighedstest</button>
+          </div>
+          <p style="font-size:12px;color:var(--color-text-2,#6B7280);text-align:center;margin-top:12px">Bruger Cloudflares testservere. Resultater kan variere afhængigt af serverbelastning og netværksforhold.</p>
+        </div>
+      </div>
+      <aside class="tool-side" aria-label="Indstillinger">
+        <div class="ss-divider">Relaterede Værktøjer</div>
+        <a href="/da/viewport-size/" class="ss-related-link"><img src="/assets/img/icon-browser.svg" alt="" width="18" height="18" loading="lazy">Viewport Størrelse</a>
+        <a href="/da/browser-info/" class="ss-related-link"><img src="/assets/img/icon-browser.svg" alt="" width="18" height="18" loading="lazy">Browser Info Fremviser</a>
+        <div style="margin-top:16px">
+          <p class="ad-label">Annonce</p>
+          <div class="ad-slot" style="min-height:250px">
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+          </div>
+        </div>
+      </aside>
+    </div>
+    <div class="ad-slot ad-slot--leaderboard">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="how-to-use">
+      <h2>Sådan Bruger Du Hastighedstesten</h2>
+      <ol class="steps">
+        <li>Klik på <strong>Start Hastighedstest</strong> — testen starter automatisk.</li>
+        <li>Vent ~20–30 sekunder mens ping, download og upload måles.</li>
+        <li>Resultater vises i Mbps (eller Kbps/Gbps afhængigt af din forbindelse).</li>
+      </ol>
+    </section>
+    <section class="features">
+      <h2>Funktioner</h2>
+      <ul class="features-list">
+        <li>Måler ping (latenstid), download-hastighed og upload-hastighed</li>
+        <li>Bruger Cloudflares globalt distribuerede testservere</li>
+        <li>Ingen app, ingen Flash, ingen plugin — virker i alle moderne browsere</li>
+        <li>Resultater opdateres i realtid efterhånden som hver fase afsluttes</li>
+      </ul>
+    </section>
+    <div class="ad-slot ad-slot--rectangle" style="margin:0 auto 32px">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="faq">
+      <h2>Ofte Stillede Spørgsmål</h2>
+      <div class="faq-list">
+        <details class="faq-item"><summary class="faq-question">Hvad er en god internethastighed? <span class="faq-icon">+</span></summary><div class="faq-answer">Til grundlæggende browsing og e-mail er 10 Mbps download tilstrækkeligt. Til HD-streaming anbefales 25 Mbps. Til 4K-streaming eller gaming er 50–100 Mbps ideelt. Til husstande med flere brugere anbefales 100+ Mbps.</div></details>
+        <details class="faq-item"><summary class="faq-question">Hvad er ping/latenstid? <span class="faq-icon">+</span></summary><div class="faq-answer">Ping måler tur-retur-tiden for en lille pakke fra din enhed til testserveren og tilbage. Jo lavere desto bedre. Under 20 ms er fremragende, 20–50 ms er godt, 50–100 ms er gennemsnitligt, og over 100 ms kan forårsage mærkbare forsinkelser i spil eller videoopkald.</div></details>
+        <details class="faq-item"><summary class="faq-question">Hvorfor kan resultaterne afvige fra min udbyders annoncerede hastighed? <span class="faq-icon">+</span></summary><div class="faq-answer">Annoncerede hastigheder er teoretiske maksimumer. Faktiske hastigheder afhænger af netværkskongestion, afstand til serveren, din router og antallet af enheder der deler din forbindelse.</div></details>
+      </div>
+    </section>
+  </main>
+  <footer id="site-footer" class="site-footer"></footer>
+  <script src="/assets/js/shared.js" defer></script>
+  <script src="/assets/js/tools/internet-speed-test.js" defer></script>
+</body>
+</html>

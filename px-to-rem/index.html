@@ -1,0 +1,150 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PX to REM Converter Online Free | AnyConverter</title>
+  <meta name="description" content="Convert pixel values to REM and REM to pixels instantly. Set a custom base font size. Includes a full px-to-rem reference table. Free, no signup.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://anyconverter.io/px-to-rem/">
+  <link rel="alternate" hreflang="en" href="https://anyconverter.io/px-to-rem/">
+  <link rel="alternate" hreflang="es" href="https://anyconverter.io/es/px-to-rem/">
+  <link rel="alternate" hreflang="da" href="https://anyconverter.io/da/px-to-rem/">
+  <link rel="alternate" hreflang="x-default" href="https://anyconverter.io/px-to-rem/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="PX to REM Converter Online Free | AnyConverter">
+  <meta property="og:description" content="Convert pixels to REM and REM to pixels with a custom base font size. Includes a full reference table. Free and instant.">
+  <meta property="og:url" content="https://anyconverter.io/px-to-rem/">
+  <meta property="og:site_name" content="AnyConverter">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" data-ad-client="ca-pub-XXXXXXXXXX" crossorigin="anonymous"></script>
+  <!-- Replace ca-pub-XXXXXXXXXX with your real AdSense publisher ID -->
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"PX to REM Converter","url":"https://anyconverter.io/px-to-rem/","description":"Convert pixel values to REM and back with a custom base font size and reference table.","applicationCategory":"DeveloperApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F4F6FF);color:var(--color-text,#1E1B4B)}
+    body{min-height:100vh;display:flex;flex-direction:column}
+    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8FE)}
+    .header-inner{max-width:1280px;width:100%;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;gap:32px}
+    .hero{padding:40px 24px 32px;max-width:1280px;margin:0 auto}
+    .hero h1{font-size:clamp(1.75rem,4vw,2.25rem);font-weight:700;line-height:1.2;margin-bottom:12px}
+    .hero-desc{font-size:1.0625rem;color:var(--color-text-2,#6B7280);max-width:680px;line-height:1.6}
+    @font-face{font-family:'Inter';font-display:swap}
+  </style>
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+  <header id="site-header" class="site-header"></header>
+  <main id="main-content">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol><li><a href="/">Home</a></li><li aria-current="page">PX to REM Converter</li></ol>
+    </nav>
+    <section class="hero">
+      <h1>PX to REM Converter</h1>
+      <p class="hero-desc">Convert pixel values to REM units and REM back to pixels. Set your project's base font size (default 16px) and get instant conversions with a handy reference table.</p>
+    </section>
+    <div class="tool-wrapper">
+      <div class="tool-zone">
+        <div style="padding:24px">
+          <div style="margin-bottom:20px;padding:14px;background:var(--color-primary-light,#EEF2FF);border-radius:10px;display:flex;align-items:center;gap:12px">
+            <label style="font-size:13px;font-weight:600;white-space:nowrap">Base Font Size:</label>
+            <input type="number" id="pr-base" value="16" min="1" max="100" style="width:80px;padding:8px 10px;border:1px solid var(--color-border-light,#E0E7FF);border-radius:6px;font-size:14px;text-align:center">
+            <span style="font-size:13px;color:var(--color-text-2,#6B7280)">px (root font size of your project)</span>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:24px">
+            <!-- PX to REM -->
+            <div style="padding:18px;border:1px solid var(--color-border,#DDD8FE);border-radius:12px">
+              <h3 style="font-size:14px;font-weight:600;margin-bottom:12px">px → rem</h3>
+              <div style="margin-bottom:10px">
+                <label style="display:block;font-size:12px;font-weight:500;margin-bottom:5px" for="pr-px">Pixels</label>
+                <input type="number" id="pr-px" placeholder="e.g. 24" style="width:100%;padding:9px 11px;border:1px solid var(--color-border,#DDD8FE);border-radius:7px;font-size:14px">
+              </div>
+              <button class="btn btn-primary" id="pr-px-btn" style="width:100%;margin-bottom:10px">Convert</button>
+              <div style="padding:12px;background:var(--color-bg,#F4F6FF);border-radius:7px;font-size:18px;font-weight:700;text-align:center;font-family:monospace" id="pr-rem-out">—</div>
+            </div>
+            <!-- REM to PX -->
+            <div style="padding:18px;border:1px solid var(--color-border,#DDD8FE);border-radius:12px">
+              <h3 style="font-size:14px;font-weight:600;margin-bottom:12px">rem → px</h3>
+              <div style="margin-bottom:10px">
+                <label style="display:block;font-size:12px;font-weight:500;margin-bottom:5px" for="pr-rem">REM</label>
+                <input type="number" id="pr-rem" step="0.125" placeholder="e.g. 1.5" style="width:100%;padding:9px 11px;border:1px solid var(--color-border,#DDD8FE);border-radius:7px;font-size:14px">
+              </div>
+              <button class="btn btn-primary" id="pr-rem-btn" style="width:100%;margin-bottom:10px">Convert</button>
+              <div style="padding:12px;background:var(--color-bg,#F4F6FF);border-radius:7px;font-size:18px;font-weight:700;text-align:center;font-family:monospace" id="pr-px-out">—</div>
+            </div>
+          </div>
+          <h3 style="font-size:14px;font-weight:600;margin-bottom:12px">Reference Table</h3>
+          <div id="pr-table" style="overflow-x:auto"></div>
+        </div>
+      </div>
+      <aside class="tool-side" aria-label="Options">
+        <div class="ss-divider">Formula</div>
+        <p style="font-size:13px;color:var(--color-text-2,#6B7280);line-height:1.7;padding:0 4px">
+          <code style="background:var(--color-primary-light,#EEF2FF);padding:2px 5px;border-radius:4px">rem = px ÷ base</code><br>
+          <code style="background:var(--color-primary-light,#EEF2FF);padding:2px 5px;border-radius:4px">px = rem × base</code>
+        </p>
+        <div class="ss-divider">Related Tools</div>
+        <a href="/css-shadow-generator/" class="ss-related-link"><img src="/assets/img/icon-shadow.svg" alt="" width="18" height="18" loading="lazy">CSS Shadow Generator</a>
+        <a href="/screen-resolution/" class="ss-related-link"><img src="/assets/img/icon-screen.svg" alt="" width="18" height="18" loading="lazy">Screen Resolution</a>
+        <a href="/color-converter/" class="ss-related-link"><img src="/assets/img/icon-color.svg" alt="" width="18" height="18" loading="lazy">Color Converter</a>
+        <div style="margin-top:16px">
+          <p class="ad-label">Advertisement</p>
+          <div class="ad-slot" style="min-height:250px">
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+          </div>
+        </div>
+      </aside>
+    </div>
+    <div class="ad-slot ad-slot--leaderboard">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="how-to-use">
+      <h2>How to Use the PX to REM Converter</h2>
+      <ol class="steps">
+        <li><strong>Step 1</strong> — Set the base font size (default 16px — the browser default and most common project setting).</li>
+        <li><strong>Step 2</strong> — Enter a pixel value and click "Convert" to get the REM equivalent.</li>
+        <li><strong>Step 3</strong> — Or enter a REM value to convert back to pixels.</li>
+        <li><strong>Step 4</strong> — Use the reference table for quick lookups of common sizes.</li>
+      </ol>
+    </section>
+    <section class="features">
+      <h2>Features</h2>
+      <ul class="features-list">
+        <li>Bidirectional: px → rem and rem → px</li>
+        <li>Customisable base font size (default 16px)</li>
+        <li>Live reference table with common sizes and use cases</li>
+        <li>Table updates instantly when base font size changes</li>
+        <li>Press Enter for quick conversions</li>
+      </ul>
+    </section>
+    <div class="ad-slot ad-slot--rectangle" style="margin:0 auto 32px">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="faq">
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-list">
+        <details class="faq-item"><summary class="faq-question">Why use REM instead of pixels? <span class="faq-icon">+</span></summary><div class="faq-answer">REM (root em) units scale relative to the root element's font size. This makes layouts more accessible — users who increase their browser's font size will see your content scale proportionally, unlike fixed pixel values.</div></details>
+        <details class="faq-item"><summary class="faq-question">What base font size should I use? <span class="faq-icon">+</span></summary><div class="faq-answer">The browser default is 16px. Most projects keep this default, meaning 1rem = 16px. Some projects set the root to 62.5% (10px) to make the math easier (1rem = 10px, so 1.6rem = 16px). Match the base to your CSS :root declaration.</div></details>
+        <details class="faq-item"><summary class="faq-question">Is REM the same as EM? <span class="faq-icon">+</span></summary><div class="faq-answer">No. EM is relative to the current element's font size, which can compound in nested elements. REM always refers to the root element's font size, making it more predictable and consistent.</div></details>
+      </div>
+    </section>
+    <section class="related-tools">
+      <h2>Related Tools</h2>
+      <div class="tool-grid">
+        <a href="/css-shadow-generator/" class="tool-card"><img src="/assets/img/icon-shadow.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>CSS Shadow Generator</h3><p>Design box-shadow and text-shadow visually with live preview.</p><span class="tool-card-link">Try it →</span></a>
+        <a href="/color-converter/" class="tool-card"><img src="/assets/img/icon-color.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Color Converter</h3><p>Convert colors between HEX, RGB, HSL, CMYK and HSB.</p><span class="tool-card-link">Try it →</span></a>
+        <a href="/css-gradient-generator/" class="tool-card"><img src="/assets/img/icon-text.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>CSS Gradient Generator</h3><p>Design linear and radial CSS gradients visually.</p><span class="tool-card-link">Try it →</span></a>
+      </div>
+    </section>
+  </main>
+  <footer id="site-footer" class="site-footer"></footer>
+  <script src="/assets/js/shared.js" defer></script>
+  <script src="/assets/js/tools/px-to-rem.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,234 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Conversor CSV a SQL Online Gratis | AnyConverter</title>
+  <meta name="description" content="Convierte archivos CSV a sentencias SQL INSERT online gratis. Detección automática de tipos de columna. Elige dialecto MySQL, PostgreSQL o SQLite. Genera CREATE TABLE e INSERT al instante.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://anyconverter.io/es/csv-to-sql/">
+  <link rel="alternate" hreflang="en"        href="https://anyconverter.io/csv-to-sql/">
+  <link rel="alternate" hreflang="es"        href="https://anyconverter.io/es/csv-to-sql/">
+  <link rel="alternate" hreflang="da"        href="https://anyconverter.io/da/csv-to-sql/">
+  <link rel="alternate" hreflang="x-default" href="https://anyconverter.io/csv-to-sql/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Conversor CSV a SQL Online Gratis | AnyConverter">
+  <meta property="og:description" content="Convierte CSV a SQL INSERT statements online gratis. Detección automática de tipos. MySQL, PostgreSQL, SQLite.">
+  <meta property="og:url" content="https://anyconverter.io/es/csv-to-sql/">
+  <meta property="og:site_name" content="AnyConverter">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" data-ad-client="ca-pub-XXXXXXXXXX" crossorigin="anonymous"></script>
+  <!-- Replace ca-pub-XXXXXXXXXX with your real AdSense publisher ID -->
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Conversor CSV a SQL","url":"https://anyconverter.io/es/csv-to-sql/","description":"Convierte archivos CSV a sentencias SQL INSERT online gratis.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F4F6FF);color:var(--color-text,#1E1B4B)}
+    body{min-height:100vh;display:flex;flex-direction:column}
+    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8FE)}
+    .header-inner{max-width:1280px;width:100%;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;gap:32px}
+    .hero{padding:40px 24px 32px;max-width:1280px;margin:0 auto}
+    .hero h1{font-size:clamp(1.75rem,4vw,2.25rem);font-weight:700;line-height:1.2;margin-bottom:12px}
+    .hero-desc{font-size:1.0625rem;color:var(--color-text-2,#6B7280);max-width:680px;line-height:1.6}
+    @font-face{font-family:'Inter';font-display:swap}
+  </style>
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
+</head>
+<body>
+  <header id="site-header" class="site-header"></header>
+  <main id="main-content">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol><li><a href="/es/">Inicio</a></li><li aria-current="page">CSV a SQL</li></ol>
+    </nav>
+    <section class="hero">
+      <h1>Conversor CSV a SQL</h1>
+      <p class="hero-desc">Convierte datos CSV a sentencias SQL INSERT al instante. Pega tu CSV o sube un archivo, configura los tipos de columna, elige el dialecto SQL (MySQL, PostgreSQL, SQLite) y genera las sentencias CREATE TABLE e INSERT. Todo el procesamiento es en el navegador.</p>
+    </section>
+    <div class="tool-wrapper">
+      <div class="tool-zone">
+        <div class="tab-bar">
+          <button class="tab-btn active" data-tab="paste">Pegar CSV</button>
+          <button class="tab-btn" data-tab="upload">Subir CSV</button>
+        </div>
+        <div class="tab-panel active" id="tab-paste">
+          <textarea id="csv-input" placeholder="Pega los datos CSV aquí..." spellcheck="false" style="min-height:160px;font-family:var(--font-mono);font-size:13px"></textarea>
+        </div>
+        <div class="tab-panel" id="tab-upload">
+          <div class="drop-zone" id="csv-drop-zone" role="button" tabindex="0" aria-label="Arrastra un archivo CSV aquí">
+            <svg class="drop-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5"/></svg>
+            <p>Arrastra tu archivo .csv aquí o haz clic</p>
+            <input type="file" id="csv-file-input" accept=".csv,text/csv">
+          </div>
+        </div>
+        <div class="settings-panel mt-4" style="display:flex;gap:16px;flex-wrap:wrap;align-items:center">
+          <div class="settings-field" style="flex:none">
+            <label for="csv-delimiter">Delimitador</label>
+            <select id="csv-delimiter" style="width:auto">
+              <option value="auto">Auto</option>
+              <option value=",">Coma (,)</option>
+              <option value=";">Punto y coma (;)</option>
+              <option value="&#9;">Tabulador</option>
+              <option value="|">Barra (|)</option>
+            </select>
+          </div>
+          <label class="checkbox-label"><input type="checkbox" id="csv-header" checked> Primera fila es cabecera</label>
+          <button class="btn btn-primary btn-sm" id="btn-parse-csv">Analizar CSV →</button>
+        </div>
+        <div id="csv-preview-section" style="display:none">
+          <div class="status-bar info mt-4" id="csv-stats"></div>
+          <div class="csv-preview mt-4" id="csv-preview-table"></div>
+          <div class="mt-4">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+              <p class="panel-label" style="margin:0">Tipos de columna</p>
+              <div style="display:flex;gap:8px">
+                <button class="btn btn-secondary btn-sm" id="btn-auto-detect">Auto-detectar</button>
+                <button class="btn btn-secondary btn-sm" id="btn-reset-types">Restablecer</button>
+              </div>
+            </div>
+            <div class="column-types" id="column-types"></div>
+          </div>
+        </div>
+        <div id="sql-options-section" style="display:none">
+          <div class="settings-panel mt-4">
+            <div class="settings-row">
+              <div class="settings-field">
+                <label for="table-name">Nombre de tabla</label>
+                <input type="text" id="table-name" value="mi_tabla">
+              </div>
+              <div class="settings-field">
+                <label for="sql-dialect">Dialecto SQL</label>
+                <select id="sql-dialect">
+                  <option value="mysql">MySQL</option>
+                  <option value="postgresql">PostgreSQL</option>
+                  <option value="sqlite">SQLite</option>
+                </select>
+              </div>
+            </div>
+            <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:12px">
+              <label class="checkbox-label"><input type="checkbox" id="gen-create" checked> CREATE TABLE</label>
+              <label class="checkbox-label"><input type="checkbox" id="gen-insert" checked> INSERT statements</label>
+              <label class="checkbox-label"><input type="checkbox" id="gen-drop"> DROP TABLE IF EXISTS</label>
+              <label class="checkbox-label"><input type="checkbox" id="gen-batch"> INSERT en lote (500 filas)</label>
+            </div>
+          </div>
+          <button class="btn btn-primary btn-full mt-4" id="btn-generate-sql">Generar SQL</button>
+        </div>
+        <div id="sql-output-section" style="display:none">
+          <div class="code-output-wrapper mt-4">
+            <pre class="code-output" id="sql-output"><code id="sql-output-code"></code></pre>
+            <div class="code-output-actions">
+              <button class="btn btn-sm" id="btn-copy-sql">Copiar</button>
+              <button class="btn btn-sm" id="btn-download-sql">Descargar</button>
+            </div>
+          </div>
+          <div class="status-bar info mt-2" id="sql-stats"></div>
+        </div>
+      </div>
+      <aside class="tool-side" aria-label="SQL options">
+
+        <div class="ss-divider">SQL Options</div>
+        <div class="ss-option-row">
+          <span class="ss-opt-label">Dialect</span>
+          <select class="ss-opt-select" id="sql-dialect">
+            <option value="mysql">MySQL</option>
+            <option value="postgresql">PostgreSQL</option>
+            <option value="sqlite">SQLite</option>
+          </select>
+        </div>
+        <div class="ss-option-row" style="flex-direction:column;align-items:flex-start;gap:4px">
+          <span class="ss-opt-label">Table name</span>
+          <input type="text" id="table-name" value="my_table" class="ss-opt-input">
+        </div>
+
+        <div class="tog-row"><span class="tog-label" id="lbl-create">CREATE TABLE</span><div class="tog" id="tog-create" role="switch" aria-checked="true" tabindex="0" aria-labelledby="lbl-create"></div></div>
+        <div class="tog-row"><span class="tog-label" id="lbl-insert">INSERT statements</span><div class="tog" id="tog-insert" role="switch" aria-checked="true" tabindex="0" aria-labelledby="lbl-insert"></div></div>
+        <div class="tog-row"><span class="tog-label" id="lbl-drop">DROP TABLE IF EXISTS</span><div class="tog off" id="tog-drop" role="switch" aria-checked="false" tabindex="0" aria-labelledby="lbl-drop"></div></div>
+        <div class="tog-row"><span class="tog-label" id="lbl-batch">Batch INSERT (500)</span><div class="tog off" id="tog-batch" role="switch" aria-checked="false" tabindex="0" aria-labelledby="lbl-batch"></div></div>
+
+        <button class="btn btn-primary btn-full mt-4" id="btn-generate-sql" style="margin-top:12px" disabled>Generate SQL</button>
+
+        <div class="ss-divider">Stats</div>
+        <div class="stats-grid">
+          <div class="stat-card"><div class="stat-val" id="stat-rows">0</div><div class="stat-lbl">Rows</div></div>
+          <div class="stat-card"><div class="stat-val" id="stat-cols">0</div><div class="stat-lbl">Columns</div></div>
+          <div class="stat-card"><div class="stat-val" id="stat-size">0</div><div class="stat-lbl">Size</div></div>
+          <div class="stat-card"><div class="stat-val" id="stat-stmts">0</div><div class="stat-lbl">Statements</div></div>
+        </div>
+
+        <div class="ss-divider">Related Tools</div>
+        <a href="/csv-query/" class="ss-related-link">
+          <img src="/assets/img/icon-csv.svg" alt="" width="18" height="18" loading="lazy">CSV Query
+        </a>
+        <a href="/json-formatter/" class="ss-related-link">
+          <img src="/assets/img/icon-json.svg" alt="" width="18" height="18" loading="lazy">JSON Formatter
+        </a>
+        <a href="/regex-tester/" class="ss-related-link">
+          <img src="/assets/img/icon-regex.svg" alt="" width="18" height="18" loading="lazy">Regex / Logs
+        </a>
+
+        <!-- AdSense -->
+        <div style="margin-top:8px">
+          <p class="ad-label">Advertisement</p>
+          <div class="ad-slot" style="min-height:250px">
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+            <!-- Replace ca-pub-XXXXXXXXXX and data-ad-slot="XXXXXXXXXX" with your IDs -->
+          </div>
+        </div>
+
+      </aside>
+    </div>
+    <div class="ad-slot ad-slot--leaderboard">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="how-to-use">
+      <h2>Cómo convertir CSV a SQL</h2>
+      <ol class="steps">
+        <li><strong>Introduce el CSV</strong> — Pega los datos CSV o sube un archivo .csv. Elige el delimitador si es necesario.</li>
+        <li><strong>Configura los tipos de columna</strong> — Revisa los tipos de columna detectados automáticamente (INT, VARCHAR, DATE, etc.) y ajústalos si es necesario.</li>
+        <li><strong>Genera el SQL</strong> — Define el nombre de tabla, elige el dialecto y haz clic en "Generar SQL". Copia o descarga el resultado.</li>
+      </ol>
+    </section>
+    <section class="features">
+      <h2>Características</h2>
+      <ul class="features-list">
+        <li>Detección automática de tipos de columna</li>
+        <li>Dialectos MySQL, PostgreSQL y SQLite</li>
+        <li>Genera CREATE TABLE e INSERT</li>
+        <li>Soporte para INSERT en lote</li>
+        <li>Valores NULL para celdas vacías</li>
+        <li>100% procesamiento en el navegador</li>
+      </ul>
+    </section>
+    <div class="ad-slot ad-slot--rectangle" style="margin:0 auto 32px">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="faq">
+      <h2>Preguntas Frecuentes</h2>
+      <div class="faq-list">
+        <details class="faq-item"><summary class="faq-question">¿Qué dialectos SQL están disponibles? <span class="faq-icon">+</span></summary><div class="faq-answer">MySQL (comillas invertidas y AUTO_INCREMENT), PostgreSQL (identificadores entre comillas dobles, SERIAL) y SQLite (INTEGER PRIMARY KEY AUTOINCREMENT).</div></details>
+        <details class="faq-item"><summary class="faq-question">¿Cómo se gestionan las celdas vacías? <span class="faq-icon">+</span></summary><div class="faq-answer">Las celdas vacías en el CSV se convierten en NULL en las sentencias INSERT SQL, que es la representación estándar de un valor ausente en SQL.</div></details>
+        <details class="faq-item"><summary class="faq-question">¿Se escapan las comillas simples en los datos? <span class="faq-icon">+</span></summary><div class="faq-answer">Sí. Las comillas simples en los valores de texto se escapan duplicándolas (por ejemplo, O'Brien se convierte en O''Brien), que es el escapado estándar de cadenas en SQL.</div></details>
+      </div>
+    </section>
+    <section class="related-tools">
+      <h2>Herramientas Relacionadas</h2>
+      <div class="tool-grid">
+        <a href="/csv-query/" class="tool-card"><img src="/assets/img/icon-csv.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>CSV Query</h3><p>Ejecuta SQL sobre archivos CSV.</p><span class="tool-card-link">Usar →</span></a>
+        <a href="/json-formatter/" class="tool-card"><img src="/assets/img/icon-json.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>JSON Formatter</h3><p>Formatea y valida JSON.</p><span class="tool-card-link">Usar →</span></a>
+        <a href="/regex-tester/" class="tool-card"><img src="/assets/img/icon-regex.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Regex Tester</h3><p>Prueba expresiones regulares.</p><span class="tool-card-link">Usar →</span></a>
+      </div>
+    </section>
+  </main>
+  <footer id="site-footer" class="site-footer"></footer>
+  <script src="/assets/js/shared.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" defer></script>
+  <script src="/assets/js/tools/csv-to-sql.js" defer></script>
+</body>
+</html>

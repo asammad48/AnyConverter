@@ -1,0 +1,201 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>XML Formatter &amp; Validator Online — Free | AnyConverter</title>
+  <meta name="description" content="Format and validate XML online for free. Instantly beautify or minify XML with error detection. No upload required — 100% client-side processing.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://anyconverter.io/xml-formatter/">
+  <link rel="alternate" hreflang="en" href="https://anyconverter.io/xml-formatter/">
+  <link rel="alternate" hreflang="es" href="https://anyconverter.io/es/xml-formatter/">
+  <link rel="alternate" hreflang="da" href="https://anyconverter.io/da/xml-formatter/">
+  <link rel="alternate" hreflang="x-default" href="https://anyconverter.io/xml-formatter/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="XML Formatter &amp; Validator Online — Free | AnyConverter">
+  <meta property="og:description" content="Format and validate XML online for free. Instantly beautify or minify XML with error detection.">
+  <meta property="og:url" content="https://anyconverter.io/xml-formatter/">
+  <meta property="og:site_name" content="AnyConverter">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" data-ad-client="ca-pub-XXXXXXXXXX" crossorigin="anonymous"></script>
+  <!-- Replace ca-pub-XXXXXXXXXX with your real AdSense publisher ID -->
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"XML Formatter & Validator","url":"https://anyconverter.io/xml-formatter/","description":"Format and validate XML online for free.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F4F6FF);color:var(--color-text,#1E1B4B)}
+    body{min-height:100vh;display:flex;flex-direction:column}
+    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8FE)}
+    .header-inner{max-width:1280px;width:100%;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;gap:32px}
+    .hero{padding:40px 24px 32px;max-width:1280px;margin:0 auto}
+    .hero h1{font-size:clamp(1.75rem,4vw,2.25rem);font-weight:700;line-height:1.2;margin-bottom:12px}
+    .hero-desc{font-size:1.0625rem;color:var(--color-text-2,#6B7280);max-width:680px;line-height:1.6}
+    @font-face{font-family:'Inter';font-display:swap}
+  </style>
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
+</head>
+<body>
+  <header id="site-header" class="site-header"></header>
+  <main id="main-content">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol><li><a href="/">Home</a></li><li aria-current="page">XML Formatter</li></ol>
+    </nav>
+    <section class="hero">
+      <h1>XML Formatter &amp; Validator</h1>
+      <p class="hero-desc">Format and validate XML online for free. Paste your XML to instantly beautify it with proper indentation or minify it to a single line. Error detection shows the exact line and column of any problem. No files leave your browser.</p>
+    </section>
+    <div class="tool-wrapper">
+      <div class="tool-zone">
+
+        <div class="sub-tabs">
+          <button class="sub-tab active" data-mode="format">Formatter</button>
+          <button class="sub-tab" data-mode="minify">Minifier</button>
+          <button class="sub-tab" data-mode="validate">Validator</button>
+        </div>
+
+        <div class="split-panels">
+          <!-- Input panel -->
+          <div class="ac-panel">
+            <div class="ac-panel-header">
+              <span style="font-size:13px;color:var(--color-text-3)">&lt;/&gt;</span>
+              <span class="ac-panel-label">Input</span>
+              <div class="ac-panel-actions">
+                <label class="ac-btn" style="cursor:pointer">Upload<input type="file" id="file-upload" accept=".xml,text/xml" style="display:none"></label>
+                <button class="ac-btn" id="btn-clear">Clear</button>
+              </div>
+            </div>
+            <textarea id="xml-input" class="ac-input" placeholder="Paste XML here — auto-formats on input…" spellcheck="false" autocomplete="off" aria-label="XML input"></textarea>
+            <div class="ac-status">
+              <span class="ac-status-ok" id="input-ok" style="display:none">✓ Valid XML</span>
+              <span class="ac-status-err" id="input-err" style="display:none"></span>
+              <span class="ac-status-info" id="input-info">Paste or type XML</span>
+            </div>
+          </div>
+
+          <!-- Output panel -->
+          <div class="ac-panel">
+            <div class="ac-panel-header">
+              <span style="font-size:13px;color:var(--color-text-3)">✦</span>
+              <span class="ac-panel-label">Output — live formatted</span>
+              <div class="ac-panel-actions">
+                <button class="ac-btn" id="btn-copy-output">Copy</button>
+                <button class="ac-btn" id="btn-download">Download</button>
+              </div>
+            </div>
+            <div class="json-view" id="xml-output" style="white-space:pre-wrap" aria-label="Formatted XML output" aria-live="polite">
+              <span style="color:var(--color-text-2,#6B7280);font-style:italic;font-size:11px">Output will appear here…</span>
+            </div>
+            <div class="ac-status">
+              <span class="ac-status-ok" id="output-ok" style="display:none">✓ Formatted</span>
+              <span class="ac-status-err" id="output-err" style="display:none"></span>
+              <span class="ac-status-info" id="output-info"></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="ac-action-bar">
+          <button class="ac-btn primary" id="btn-format">Format</button>
+          <button class="ac-btn" id="btn-minify">Minify</button>
+          <button class="ac-btn" id="btn-validate">Validate</button>
+          <button class="ac-btn" id="btn-copy-input">Copy Input</button>
+          <div class="ac-action-bar-right">
+            <span style="font-size:11px;color:var(--color-text-3)" id="auto-label">Auto-format: ON</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <aside class="tool-side" aria-label="Options">
+        <div class="ss-divider">Options</div>
+        <div class="ss-option-row">
+          <span class="ss-opt-label">Indent</span>
+          <select class="ss-opt-select" id="opt-indent">
+            <option value="2" selected>2 spaces</option>
+            <option value="4">4 spaces</option>
+            <option value="tab">Tab</option>
+          </select>
+        </div>
+        <div class="tog-row"><span class="tog-label" id="lbl-auto">Auto-format on paste</span><div class="tog" id="tog-auto" role="switch" aria-checked="true" tabindex="0" aria-labelledby="lbl-auto"></div></div>
+        <div class="tog-row"><span class="tog-label" id="lbl-decl">XML declaration</span><div class="tog" id="tog-decl" role="switch" aria-checked="true" tabindex="0" aria-labelledby="lbl-decl"></div></div>
+
+        <div class="ss-divider">Stats</div>
+        <div class="stats-grid">
+          <div class="stat-card"><div class="stat-val" id="stat-elements">0</div><div class="stat-lbl">Elements</div></div>
+          <div class="stat-card"><div class="stat-val" id="stat-depth">0</div><div class="stat-lbl">Depth</div></div>
+          <div class="stat-card"><div class="stat-val" id="stat-bytes">0</div><div class="stat-lbl">Bytes</div></div>
+          <div class="stat-card"><div class="stat-val" id="stat-errors">0</div><div class="stat-lbl">Errors</div></div>
+        </div>
+
+        <div class="ss-divider">Related Tools</div>
+        <a href="/json-formatter/" class="ss-related-link"><img src="/assets/img/icon-json.svg" alt="" width="18" height="18" loading="lazy">JSON Formatter</a>
+        <a href="/regex-tester/" class="ss-related-link"><img src="/assets/img/icon-regex.svg" alt="" width="18" height="18" loading="lazy">Regex / Logs</a>
+        <a href="/csv-to-sql/" class="ss-related-link"><img src="/assets/img/icon-csv.svg" alt="" width="18" height="18" loading="lazy">CSV → SQL</a>
+
+        <div style="margin-top:8px">
+          <p class="ad-label">Advertisement</p>
+          <div class="ad-slot" style="min-height:250px">
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+            <!-- Replace ca-pub-XXXXXXXXXX and data-ad-slot="XXXXXXXXXX" with your IDs -->
+          </div>
+        </div>
+      </aside>
+    </div>
+    <div class="ad-slot ad-slot--leaderboard">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="how-to-use">
+      <h2>How to Format XML</h2>
+      <ol class="steps">
+        <li><strong>Paste your XML</strong> — Paste XML text into the input area or upload an .xml file.</li>
+        <li><strong>Click Format</strong> — Press Format to beautify your XML with 2-space indentation and proper structure.</li>
+        <li><strong>Copy or Download</strong> — Copy the formatted XML or download it as an .xml file.</li>
+      </ol>
+    </section>
+    <section class="features">
+      <h2>Features</h2>
+      <ul class="features-list">
+        <li>Instant XML formatting with 2-space indentation</li>
+        <li>XML validation with exact error position</li>
+        <li>Minify XML to single line</li>
+        <li>Syntax highlighting via highlight.js</li>
+        <li>Upload and download .xml files</li>
+        <li>100% client-side — no server upload</li>
+      </ul>
+    </section>
+    <div class="ad-slot ad-slot--rectangle" style="margin:0 auto 32px">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="faq">
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-list">
+        <details class="faq-item"><summary class="faq-question">What is XML formatting? <span class="faq-icon">+</span></summary><div class="faq-answer">XML formatting adds indentation and line breaks to XML so it is easier to read. Raw or minified XML is often hard to read without proper formatting.</div></details>
+        <details class="faq-item"><summary class="faq-question">Is my XML data private? <span class="faq-icon">+</span></summary><div class="faq-answer">Yes. All XML processing happens in your browser. Your data is never sent to any server.</div></details>
+        <details class="faq-item"><summary class="faq-question">What errors does the validator detect? <span class="faq-icon">+</span></summary><div class="faq-answer">The validator uses the browser's built-in DOMParser to detect XML syntax errors including unclosed tags, mismatched elements, and invalid characters.</div></details>
+        <details class="faq-item"><summary class="faq-question">Can I minify XML? <span class="faq-icon">+</span></summary><div class="faq-answer">Yes. The Minify button collapses your XML to a single line with no whitespace, reducing file size for network transfer.</div></details>
+        <details class="faq-item"><summary class="faq-question">What is the difference between XML and JSON? <span class="faq-icon">+</span></summary><div class="faq-answer">XML uses tags to describe data structure and supports attributes, namespaces, and comments. JSON is simpler and more compact, commonly used in modern APIs. Both are widely used for data exchange.</div></details>
+      </div>
+    </section>
+    <section class="related-tools">
+      <h2>Related Tools</h2>
+      <div class="tool-grid">
+        <a href="/json-formatter/" class="tool-card"><img src="/assets/img/icon-json.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>JSON Formatter</h3><p>Format and validate JSON online.</p><span class="tool-card-link">Try it →</span></a>
+        <a href="/base64-encoder/" class="tool-card"><img src="/assets/img/icon-base64.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Base64 Encoder</h3><p>Encode and decode Base64 online.</p><span class="tool-card-link">Try it →</span></a>
+        <a href="/url-encoder/" class="tool-card"><img src="/assets/img/icon-url.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>URL Encoder</h3><p>Encode or decode URLs online.</p><span class="tool-card-link">Try it →</span></a>
+        <a href="/hash-generator/" class="tool-card"><img src="/assets/img/icon-hash.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Hash Generator</h3><p>Generate cryptographic hashes.</p><span class="tool-card-link">Try it →</span></a>
+        <a href="/csv-to-sql/" class="tool-card"><img src="/assets/img/icon-csv.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>CSV to SQL</h3><p>Convert CSV to SQL statements.</p><span class="tool-card-link">Try it →</span></a>
+        <a href="/markdown-html/" class="tool-card"><img src="/assets/img/icon-markdown.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Markdown to HTML</h3><p>Convert Markdown to HTML.</p><span class="tool-card-link">Try it →</span></a>
+      </div>
+    </section>
+  </main>
+  <footer id="site-footer" class="site-footer"></footer>
+  <script src="/assets/js/shared.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" defer></script>
+  <script src="/assets/js/tools/xml-formatter.js" defer></script>
+</body>
+</html>

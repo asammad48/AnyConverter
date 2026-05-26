@@ -1,0 +1,154 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Generador de Gradientes CSS Online Gratis | AnyConverter</title>
+  <meta name="description" content="Crea hermosos gradientes CSS online gratis. Diseña gradientes lineales y radiales con colores y paradas personalizadas. Copia el código CSS listo para usar al instante. Sin registro.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://anyconverter.io/es/css-gradient-generator/">
+  <link rel="alternate" hreflang="en" href="https://anyconverter.io/css-gradient-generator/">
+  <link rel="alternate" hreflang="es" href="https://anyconverter.io/es/css-gradient-generator/">
+  <link rel="alternate" hreflang="da" href="https://anyconverter.io/da/css-gradient-generator/">
+  <link rel="alternate" hreflang="x-default" href="https://anyconverter.io/css-gradient-generator/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Generador de Gradientes CSS Online Gratis | AnyConverter">
+  <meta property="og:description" content="Crea hermosos gradientes CSS online gratis. Diseña gradientes lineales y radiales con colores y paradas personalizadas. Copia el código CSS listo para usar al instante.">
+  <meta property="og:url" content="https://anyconverter.io/es/css-gradient-generator/">
+  <meta property="og:site_name" content="AnyConverter">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" data-ad-client="ca-pub-XXXXXXXXXX" crossorigin="anonymous"></script>
+  <!-- Replace ca-pub-XXXXXXXXXX with your real AdSense publisher ID -->
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Generador de Gradientes CSS","url":"https://anyconverter.io/es/css-gradient-generator/","description":"Crea hermosos gradientes CSS online gratis. Diseña gradientes lineales y radiales con colores y paradas personalizadas.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F4F6FF);color:var(--color-text,#1E1B4B)}
+    body{min-height:100vh;display:flex;flex-direction:column}
+    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8FE)}
+    .header-inner{max-width:1280px;width:100%;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;gap:32px}
+    .hero{padding:40px 24px 32px;max-width:1280px;margin:0 auto}
+    .hero h1{font-size:clamp(1.75rem,4vw,2.25rem);font-weight:700;line-height:1.2;margin-bottom:12px}
+    .hero-desc{font-size:1.0625rem;color:var(--color-text-2,#6B7280);max-width:680px;line-height:1.6}
+    @font-face{font-family:'Inter';font-display:swap}
+  </style>
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+  <header id="site-header" class="site-header"></header>
+  <main id="main-content">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol><li><a href="/es/">Inicio</a></li><li aria-current="page">Generador de Gradientes CSS</li></ol>
+    </nav>
+    <section class="hero">
+      <h1>Generador de Gradientes CSS</h1>
+      <p class="hero-desc">Diseña gradientes CSS lineales y radiales visualmente. Añade múltiples paradas de color, ajusta el ángulo y copia el código CSS listo para usar.</p>
+    </section>
+    <div class="tool-wrapper">
+      <div class="tool-zone">
+        <div style="padding:24px">
+          <div class="action-bar" style="margin-bottom:16px">
+            <button class="btn btn-primary btn-sm" id="grad-type-linear">Lineal</button>
+            <button class="btn btn-secondary btn-sm" id="grad-type-radial">Radial</button>
+          </div>
+          <div id="grad-angle-row" style="margin-bottom:16px;display:flex;align-items:center;gap:12px">
+            <label style="font-size:13px;font-weight:500;white-space:nowrap">Ángulo</label>
+            <input type="range" id="grad-angle" min="0" max="360" value="90" style="flex:1;accent-color:var(--color-primary,#4F46E5)">
+            <span id="grad-angle-val" style="font-size:13px;min-width:32px">90</span><span style="font-size:13px">°</span>
+          </div>
+          <div style="margin-bottom:12px">
+            <div style="font-size:13px;font-weight:500;margin-bottom:8px">Paradas de Color</div>
+            <div id="grad-stops" style="display:flex;flex-direction:column;gap:8px">
+              <div class="grad-stop" style="display:flex;align-items:center;gap:8px">
+                <input type="color" class="stop-color" value="var(--color-primary,#4F46E5)" style="width:40px;height:36px;border:none;border-radius:6px;cursor:pointer">
+                <input type="range" class="stop-pos" min="0" max="100" value="0" style="flex:1;accent-color:var(--color-primary,#4F46E5)">
+                <span class="stop-pos-val" style="width:36px;font-size:13px;text-align:right">0%</span>
+                <button class="btn btn-secondary btn-sm stop-remove" style="padding:4px 8px">×</button>
+              </div>
+              <div class="grad-stop" style="display:flex;align-items:center;gap:8px">
+                <input type="color" class="stop-color" value="var(--color-convert,#06B6D4)" style="width:40px;height:36px;border:none;border-radius:6px;cursor:pointer">
+                <input type="range" class="stop-pos" min="0" max="100" value="100" style="flex:1;accent-color:var(--color-primary,#4F46E5)">
+                <span class="stop-pos-val" style="width:36px;font-size:13px;text-align:right">100%</span>
+                <button class="btn btn-secondary btn-sm stop-remove" style="padding:4px 8px">×</button>
+              </div>
+            </div>
+            <button class="btn btn-secondary btn-sm" id="btn-add-stop" style="margin-top:8px">+ Añadir Parada</button>
+          </div>
+          <div id="gradient-preview" style="height:120px;border-radius:12px;margin-bottom:16px;background:linear-gradient(90deg,var(--color-primary) 0%,var(--color-convert,#06B6D4) 100%)"></div>
+          <div>
+            <label style="display:block;font-size:13px;font-weight:500;margin-bottom:6px">Código CSS</label>
+            <textarea id="grad-css-output" readonly style="width:100%;height:60px;padding:10px 12px;border:1px solid var(--color-border,#DDD8FE);border-radius:8px;font-family:'JetBrains Mono',monospace;font-size:13px;background:var(--color-bg,#F4F6FF);resize:none"></textarea>
+          </div>
+          <div class="action-bar" style="margin-top:12px">
+            <button class="btn btn-primary" id="btn-copy-grad">Copiar CSS</button>
+          </div>
+        </div>
+      </div>
+      <aside class="tool-side" aria-label="Opciones">
+        <div class="ss-divider">Herramientas relacionadas</div>
+        <a href="/es/character-counter/" class="ss-related-link"><img src="/assets/img/icon-text.svg" alt="" width="18" height="18" loading="lazy">Contador de Caracteres</a>
+        <a href="/es/fancy-text-generator/" class="ss-related-link"><img src="/assets/img/icon-text.svg" alt="" width="18" height="18" loading="lazy">Generador de Texto Elegante</a>
+        <a href="/es/color-converter/" class="ss-related-link"><img src="/assets/img/icon-text.svg" alt="" width="18" height="18" loading="lazy">Conversor de Color</a>
+        <div style="margin-top:16px">
+          <p class="ad-label">Publicidad</p>
+          <div class="ad-slot" style="min-height:250px">
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+            <!-- Replace ca-pub-XXXXXXXXXX and data-ad-slot="XXXXXXXXXX" with your IDs -->
+          </div>
+        </div>
+      </aside>
+    </div>
+    <div class="ad-slot ad-slot--leaderboard">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="how-to-use">
+      <h2>Cómo Usar el Generador de Gradientes CSS</h2>
+      <ol class="steps">
+        <li><strong>Paso 1</strong> — Elige el tipo de gradiente: Lineal o Radial.</li>
+        <li><strong>Paso 2</strong> — Ajusta el ángulo (para lineal) y las paradas de color con los selectores de color y los deslizadores.</li>
+        <li><strong>Paso 3</strong> — Copia el código CSS generado y pégalo en tu hoja de estilos.</li>
+      </ol>
+    </section>
+    <section class="features">
+      <h2>Características</h2>
+      <ul class="features-list">
+        <li>Vista previa del gradiente en tiempo real</li>
+        <li>Tipos de gradiente lineal y radial</li>
+        <li>Añade hasta 10 paradas de color</li>
+        <li>Ajusta el ángulo de 0° a 360° para gradientes lineales</li>
+        <li>El CSS generado es compatible con todos los navegadores modernos</li>
+        <li>Sin carga al servidor — completamente en el navegador</li>
+      </ul>
+    </section>
+    <div class="ad-slot ad-slot--rectangle" style="margin:0 auto 32px">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="faq">
+      <h2>Preguntas Frecuentes</h2>
+      <div class="faq-list">
+        <details class="faq-item"><summary class="faq-question">¿Qué navegadores soportan los gradientes CSS? <span class="faq-icon">+</span></summary><div class="faq-answer">Todos los navegadores modernos (Chrome, Firefox, Safari, Edge) soportan completamente los gradientes CSS sin prefijos de proveedor. Internet Explorer 10+ también los soporta con el prefijo -ms-, pero esta herramienta genera CSS estándar que funciona en todos los navegadores modernos.</div></details>
+        <details class="faq-item"><summary class="faq-question">¿Qué es una parada de color? <span class="faq-icon">+</span></summary><div class="faq-answer">Una parada de color define dónde aparece un color específico a lo largo del gradiente. Cada parada tiene un color y una posición (0%–100%). El navegador interpola suavemente entre las paradas.</div></details>
+        <details class="faq-item"><summary class="faq-question">¿Cómo uso el CSS en mi proyecto? <span class="faq-icon">+</span></summary><div class="faq-answer">Copia el CSS generado y úsalo como valor de la propiedad `background` o `background-image` en tu archivo CSS: `background: linear-gradient(90deg, var(--color-primary,#4F46E5) 0%, var(--color-convert,#06B6D4) 100%);`</div></details>
+        <details class="faq-item"><summary class="faq-question">¿Puedo crear gradientes transparentes? <span class="faq-icon">+</span></summary><div class="faq-answer">Sí. Usa un selector de color que soporte transparencia, o edita manualmente el CSS generado para usar valores de color rgba() con canal alfa.</div></details>
+      </div>
+    </section>
+    <section class="related-tools">
+      <h2>Herramientas Relacionadas</h2>
+      <div class="tool-grid">
+        <a href="/es/character-counter/" class="tool-card"><img src="/assets/img/icon-text.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Contador de Caracteres</h3><p>Cuenta caracteres, palabras, líneas y bytes en tu texto al instante.</p><span class="tool-card-link">Usar →</span></a>
+        <a href="/es/fancy-text-generator/" class="tool-card"><img src="/assets/img/icon-text.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Generador de Texto Elegante</h3><p>Transforma tu texto en 11 estilos Unicode — negrita, cursiva, script y más.</p><span class="tool-card-link">Usar →</span></a>
+        <a href="/es/color-converter/" class="tool-card"><img src="/assets/img/icon-text.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Conversor de Color</h3><p>Convierte colores entre HEX, RGB, HSL y otros formatos.</p><span class="tool-card-link">Usar →</span></a>
+        <a href="/es/base64-encoder/" class="tool-card"><img src="/assets/img/icon-base64.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Codificador Base64</h3><p>Codifica y decodifica cadenas Base64 al instante en tu navegador.</p><span class="tool-card-link">Usar →</span></a>
+      </div>
+    </section>
+  </main>
+  <footer id="site-footer" class="site-footer"></footer>
+  <script src="/assets/js/shared.js" defer></script>
+  <script src="/assets/js/tools/css-gradient-generator.js" defer></script>
+</body>
+</html>

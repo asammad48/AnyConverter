@@ -1,0 +1,196 @@
+﻿<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Moms / GST Beregner Online Gratis | AnyConverter</title>
+  <meta name="description" content="Beregn moms og GST online gratis. Tilføj eller fratræk skat fra ethvert beløb. Understøtter enhver skattesats. Øjeblikkeligt og gratis.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://anyconverter.io/da/gst-vat-calculator/">
+  <link rel="alternate" hreflang="en" href="https://anyconverter.io/gst-vat-calculator/">
+  <link rel="alternate" hreflang="es" href="https://anyconverter.io/es/gst-vat-calculator/">
+  <link rel="alternate" hreflang="da" href="https://anyconverter.io/da/gst-vat-calculator/">
+  <link rel="alternate" hreflang="x-default" href="https://anyconverter.io/gst-vat-calculator/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Moms / GST Beregner Online Gratis | AnyConverter">
+  <meta property="og:description" content="Beregn moms og GST online gratis. Tilføj eller fratræk skat fra ethvert beløb. Understøtter enhver skattesats. Øjeblikkeligt og gratis.">
+  <meta property="og:url" content="https://anyconverter.io/da/gst-vat-calculator/">
+  <meta property="og:site_name" content="AnyConverter">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" data-ad-client="ca-pub-XXXXXXXXXX" crossorigin="anonymous"></script>
+  <!-- Replace ca-pub-XXXXXXXXXX with your real AdSense publisher ID -->
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Moms / GST Beregner","url":"https://anyconverter.io/da/gst-vat-calculator/","description":"Beregn moms og GST online gratis. Tilføj eller fratræk skat fra ethvert beløb.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F4F6FF);color:var(--color-text,#1E1B4B)}
+    body{min-height:100vh;display:flex;flex-direction:column}
+    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8FE)}
+    .header-inner{max-width:1280px;width:100%;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;gap:32px}
+    .hero{padding:40px 24px 32px;max-width:1280px;margin:0 auto}
+    .hero h1{font-size:clamp(1.75rem,4vw,2.25rem);font-weight:700;line-height:1.2;margin-bottom:12px}
+    .hero-desc{font-size:1.0625rem;color:var(--color-text-2,#6B7280);max-width:680px;line-height:1.6}
+    @font-face{font-family:'Inter';font-display:swap}
+  </style>
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+  <header id="site-header" class="site-header"></header>
+  <main id="main-content">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol><li><a href="/da/">Hjem</a></li><li aria-current="page">Moms / GST Beregner</li></ol>
+    </nav>
+    <section class="hero">
+      <h1>Moms / GST Beregner</h1>
+      <p class="hero-desc">Beregn moms/GST ved at tilføje eller fratrække skat fra ethvert beløb. Indtast prisen og skattesatsen for at få prisen ekskl. moms, momsbeløbet og prisen inkl. moms øjeblikkeligt.</p>
+    </section>
+    <div class="tool-wrapper">
+      <div class="tool-zone">
+        <div style="padding:24px">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px">
+            <div>
+              <label style="display:block;font-size:13px;font-weight:500;margin-bottom:6px" for="gst-amount">Beløb ($)</label>
+              <input type="number" id="gst-amount" placeholder="100" min="0" step="0.01" style="width:100%;padding:10px 12px;border:1px solid var(--color-border,#DDD8FE);border-radius:8px;font-size:15px">
+            </div>
+            <div>
+              <label style="display:block;font-size:13px;font-weight:500;margin-bottom:6px" for="gst-rate">Skattesats (%)</label>
+              <div style="display:flex;gap:6px">
+                <input type="number" id="gst-rate" placeholder="10" step="0.01" min="0" style="flex:1;padding:10px 12px;border:1px solid var(--color-border,#DDD8FE);border-radius:8px;font-size:15px">
+                <select id="gst-preset" style="padding:10px 8px;border:1px solid var(--color-border,#DDD8FE);border-radius:8px;font-size:13px">
+                  <option value="">Forudvalg</option>
+                  <option value="5">5% (India GST)</option>
+                  <option value="10">10% (Australien GST)</option>
+                  <option value="12">12% (India GST)</option>
+                  <option value="15">15% (NZ/Canada)</option>
+                  <option value="18">18% (India GST)</option>
+                  <option value="20">20% (UK moms)</option>
+                  <option value="21">21% (EU moms)</option>
+                  <option value="25">25% (Nordisk moms)</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div style="margin-bottom:16px">
+            <label style="font-size:13px;font-weight:500">Beløbet er:</label>
+            <div style="display:flex;gap:8px;margin-top:6px">
+              <label style="display:flex;align-items:center;gap:6px;font-size:14px;cursor:pointer;padding:8px 12px;border:1px solid var(--color-border,#DDD8FE);border-radius:8px"><input type="radio" name="gst-type" value="excl" checked> Ekskl. moms</label>
+              <label style="display:flex;align-items:center;gap:6px;font-size:14px;cursor:pointer;padding:8px 12px;border:1px solid var(--color-border,#DDD8FE);border-radius:8px"><input type="radio" name="gst-type" value="incl"> Inkl. moms</label>
+            </div>
+          </div>
+          <div class="action-bar" style="margin-bottom:20px">
+            <button class="btn btn-primary" id="btn-calc-gst">Beregn Skat</button>
+            <button class="btn btn-secondary" id="btn-reset-gst">Nulstil</button>
+          </div>
+          <div id="gst-result" style="display:none">
+            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px">
+              <div class="stat-card"><div class="stat-val" id="gst-base">—</div><div class="stat-lbl">Grundbeløb</div></div>
+              <div class="stat-card"><div class="stat-val" id="gst-tax-amt">—</div><div class="stat-lbl">Momsbeløb</div></div>
+              <div class="stat-card"><div class="stat-val" id="gst-total">—</div><div class="stat-lbl">Total (inkl. moms)</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <aside class="tool-side" aria-label="Muligheder">
+        <div class="ss-divider">Relaterede værktøjer</div>
+        <a href="/da/discount-calculator/" class="ss-link"><img src="/assets/img/icon-calculator.svg" alt="" width="18" height="18" loading="lazy"> Rabatberegner</a>
+        <a href="/da/tip-calculator/" class="ss-link"><img src="/assets/img/icon-calculator.svg" alt="" width="18" height="18" loading="lazy"> Drikkepengebebergner</a>
+        <a href="/da/percentage-calculator/" class="ss-link"><img src="/assets/img/icon-calculator.svg" alt="" width="18" height="18" loading="lazy"> Procentberegner</a>
+        <div style="margin-top:16px">
+          <p class="ad-label">Reklame</p>
+          <div class="ad-slot" style="min-height:250px">
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+            <!-- Replace ca-pub-XXXXXXXXXX and data-ad-slot="XXXXXXXXXX" with your IDs -->
+          </div>
+        </div>
+      </aside>
+    </div>
+    <div class="ad-slot ad-slot--leaderboard">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="how-to-use">
+      <h2>Sådan bruges Moms / GST Beregneren</h2>
+      <ol class="steps">
+        <li><strong>Trin 1</strong> — Vælg tilstand: tilføj skat (ekskl. → inkl.) eller fratræk skat (inkl. → ekskl.).</li>
+        <li><strong>Trin 2</strong> — Indtast beløbet og skattesatsen i procent.</li>
+        <li><strong>Trin 3</strong> — Se prisen ekskl. moms, momsbeløbet og prisen inkl. moms øjeblikkeligt.</li>
+      </ol>
+    </section>
+    <section class="features">
+      <h2>Funktioner</h2>
+      <ul class="features-list">
+        <li>Tilføj skat til ekskl.-moms priser</li>
+        <li>Fratræk skat fra inkl.-moms priser</li>
+        <li>Otte forudindstillede skattesatser for Australien, Indien, UK, EU, NZ, Canada og nordiske lande</li>
+        <li>Brugerdefineret skattesatsinput for enhver procent</li>
+        <li>Viser alle tre beløb: ekskl., moms og inkl. samtidigt</li>
+        <li>Øjeblikkelig beregning uden sideopdatering</li>
+      </ul>
+    </section>
+    <div class="ad-slot ad-slot--rectangle" style="margin:0 auto 32px">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="faq">
+      <h2>Ofte stillede spørgsmål</h2>
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary class="faq-question">Hvad er forskellen mellem GST og moms? <span class="faq-icon">+</span></summary>
+          <div class="faq-answer">GST (Goods and Services Tax) og moms (Value Added Tax) er begge forbrugsafgifter der anvendes i hvert produktionsled. GST er den gængse betegnelse i Australien, Canada, Indien og New Zealand, mens moms bruges i UK, EU og det meste af Europa. Funktionelt fungerer de på samme måde.</div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-question">Hvordan fjerner jeg moms fra en totalpris? <span class="faq-icon">+</span></summary>
+          <div class="faq-answer">Vælg "Inkl. moms"-tilstanden, indtast den momsinclusive pris og momssatsen, og klik derefter Beregn. Værktøjet dividerer prisen med (1 + sats/100) for at udtrække grundbeløbet og viser momskomponenten separat.</div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-question">Hvad er momssatserne i Danmark? <span class="faq-icon">+</span></summary>
+          <div class="faq-answer">Danmark anvender en standardmomssats på 25% på de fleste varer og tjenesteydelser. Dette svarer til den nordiske momssats. Brug forudvalget "25% (Nordisk moms)" til hurtige beregninger.</div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-question">Hvilken momssats skal jeg bruge for UK? <span class="faq-icon">+</span></summary>
+          <div class="faq-answer">Den standard britiske momssats er 20%. En reduceret sats på 5% gælder for visse varer som husholdningsenergi og børnessæder til biler. Der er også en nulsats (0%) for fornødenheder som mad og børnetøj. Brug forudvalget "20% (UK moms)" til standardsatsberegninger.</div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-question">Kan jeg bruge dette til fakturaberegninger? <span class="faq-icon">+</span></summary>
+          <div class="faq-answer">Ja. Indtast dit netto-fakturabeløb i "Ekskl. moms"-tilstanden med den gældende momssats for at beregne momsbeløbet og det endelige beløb du skal fakturere din kunde. Verificér altid mod officielle skattemyndigheders retningslinjer for overholdelse.</div>
+        </details>
+      </div>
+    </section>
+    <section class="related-tools">
+      <h2>Relaterede Værktøjer</h2>
+      <div class="tool-grid">
+        <a href="/da/discount-calculator/" class="tool-card">
+          <img src="/assets/img/icon-calculator.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy">
+          <h3>Rabatberegner</h3>
+          <p>Find slutpris, besparelse og rabatprocent øjeblikkeligt.</p>
+          <span class="tool-card-link">Brug →</span>
+        </a>
+        <a href="/da/tip-calculator/" class="tool-card">
+          <img src="/assets/img/icon-calculator.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy">
+          <h3>Drikkepengebebergner</h3>
+          <p>Beregn drikkepenge og del regningen per person.</p>
+          <span class="tool-card-link">Brug →</span>
+        </a>
+        <a href="/da/percentage-calculator/" class="tool-card">
+          <img src="/assets/img/icon-calculator.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy">
+          <h3>Procentberegner</h3>
+          <p>Beregn procenter, stigninger og fald på sekunder.</p>
+          <span class="tool-card-link">Brug →</span>
+        </a>
+        <a href="/da/currency-converter/" class="tool-card">
+          <img src="/assets/img/icon-currency.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy">
+          <h3>Valutaomregner</h3>
+          <p>Omregn mellem over 150 valutaer med realtids valutakurser.</p>
+          <span class="tool-card-link">Brug →</span>
+        </a>
+      </div>
+    </section>
+  </main>
+  <footer id="site-footer" class="site-footer"></footer>
+  <script src="/assets/js/shared.js" defer></script>
+  <script src="/assets/js/tools/gst-vat-calculator.js" defer></script>
+</body>
+</html>

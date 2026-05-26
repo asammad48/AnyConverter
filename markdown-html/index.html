@@ -1,0 +1,166 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Markdown to HTML Converter Online — Free | AnyConverter</title>
+  <meta name="description" content="Convert Markdown to HTML online for free. Live preview with rendered output and HTML source view. Supports GitHub Flavored Markdown. No signup needed.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://anyconverter.io/markdown-html/">
+  <link rel="alternate" hreflang="en" href="https://anyconverter.io/markdown-html/">
+  <link rel="alternate" hreflang="es" href="https://anyconverter.io/es/markdown-html/">
+  <link rel="alternate" hreflang="da" href="https://anyconverter.io/da/markdown-html/">
+  <link rel="alternate" hreflang="x-default" href="https://anyconverter.io/markdown-html/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Markdown to HTML Converter Online — Free | AnyConverter">
+  <meta property="og:description" content="Convert Markdown to HTML online for free. Live preview with rendered output and HTML source view.">
+  <meta property="og:url" content="https://anyconverter.io/markdown-html/">
+  <meta property="og:site_name" content="AnyConverter">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" data-ad-client="ca-pub-XXXXXXXXXX" crossorigin="anonymous"></script>
+  <!-- Replace ca-pub-XXXXXXXXXX with your real AdSense publisher ID -->
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Markdown to HTML Converter","url":"https://anyconverter.io/markdown-html/","description":"Convert Markdown to HTML online for free with live preview.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F4F6FF);color:var(--color-text,#1E1B4B)}
+    body{min-height:100vh;display:flex;flex-direction:column}
+    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8FE)}
+    .header-inner{max-width:1280px;width:100%;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;gap:32px}
+    .hero{padding:40px 24px 32px;max-width:1280px;margin:0 auto}
+    .hero h1{font-size:clamp(1.75rem,4vw,2.25rem);font-weight:700;line-height:1.2;margin-bottom:12px}
+    .hero-desc{font-size:1.0625rem;color:var(--color-text-2,#6B7280);max-width:680px;line-height:1.6}
+    @font-face{font-family:'Inter';font-display:swap}
+  </style>
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+  <header id="site-header" class="site-header"></header>
+  <main id="main-content">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol><li><a href="/">Home</a></li><li aria-current="page">Markdown to HTML</li></ol>
+    </nav>
+    <section class="hero">
+      <h1>Markdown to HTML Converter</h1>
+      <p class="hero-desc">Convert Markdown to HTML with live preview. Type or paste Markdown on the left and see the rendered HTML instantly on the right. Switch to HTML source view to copy the raw HTML. Supports GitHub Flavored Markdown — free and browser-based.</p>
+    </section>
+    <div class="tool-wrapper">
+      <div class="tool-zone">
+        <div class="two-panel">
+          <div>
+            <p class="panel-label">Markdown Input</p>
+            <textarea id="md-input" placeholder="# Hello World&#10;&#10;Type your **Markdown** here..." spellcheck="false" style="min-height:400px"></textarea>
+          </div>
+          <div>
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+              <p class="panel-label" style="margin:0">Output</p>
+              <div class="format-toggles" style="gap:4px">
+                <button class="format-toggle active" id="view-rendered">Preview</button>
+                <button class="format-toggle" id="view-source">HTML Source</button>
+              </div>
+            </div>
+            <div id="md-preview" class="markdown-preview"></div>
+            <div id="md-source" style="display:none">
+              <div class="code-output-wrapper">
+                <pre class="code-output" id="md-source-code"></pre>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="action-bar">
+          <div class="action-bar-left">
+            <button class="btn btn-secondary btn-sm" id="btn-clear-md">Clear</button>
+          </div>
+          <div class="action-bar-right">
+            <button class="btn btn-secondary btn-sm" id="btn-copy-html">Copy HTML</button>
+            <button class="btn btn-secondary btn-sm" id="btn-download-html">Download .html</button>
+          </div>
+        </div>
+      </div>
+
+      <aside class="tool-side" aria-label="Options">
+        <div class="ss-divider">Options</div>
+        <div class="tog-row"><span class="tog-label" id="lbl-gfm">GitHub Flavored Markdown</span><div class="tog" id="tog-gfm" role="switch" aria-checked="true" tabindex="0" aria-labelledby="lbl-gfm"></div></div>
+        <div class="tog-row"><span class="tog-label" id="lbl-breaks">Convert line breaks</span><div class="tog off" id="tog-breaks" role="switch" aria-checked="false" tabindex="0" aria-labelledby="lbl-breaks"></div></div>
+        <div class="tog-row"><span class="tog-label" id="lbl-sanitize">Sanitize HTML output</span><div class="tog" id="tog-sanitize" role="switch" aria-checked="true" tabindex="0" aria-labelledby="lbl-sanitize"></div></div>
+
+        <div class="ss-divider">Stats</div>
+        <div class="stats-grid">
+          <div class="stat-card"><div class="stat-val" id="stat-lines">0</div><div class="stat-lbl">Lines</div></div>
+          <div class="stat-card"><div class="stat-val" id="stat-words">0</div><div class="stat-lbl">Words</div></div>
+          <div class="stat-card"><div class="stat-val" id="stat-headings">0</div><div class="stat-lbl">Headings</div></div>
+          <div class="stat-card"><div class="stat-val" id="stat-codeblocks">0</div><div class="stat-lbl">Code blocks</div></div>
+        </div>
+
+        <div class="ss-divider">Related Tools</div>
+        <a href="/json-formatter/" class="ss-related-link"><img src="/assets/img/icon-json.svg" alt="" width="18" height="18" loading="lazy">JSON Formatter</a>
+        <a href="/xml-formatter/" class="ss-related-link"><img src="/assets/img/icon-xml.svg" alt="" width="18" height="18" loading="lazy">XML Formatter</a>
+        <a href="/url-encoder/" class="ss-related-link"><img src="/assets/img/icon-url.svg" alt="" width="18" height="18" loading="lazy">URL Encoder</a>
+
+        <div style="margin-top:8px">
+          <p class="ad-label">Advertisement</p>
+          <div class="ad-slot" style="min-height:250px">
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+            <!-- Replace ca-pub-XXXXXXXXXX and data-ad-slot="XXXXXXXXXX" with your IDs -->
+          </div>
+        </div>
+      </aside>
+    </div>
+    <div class="ad-slot ad-slot--leaderboard">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="how-to-use">
+      <h2>How to Convert Markdown to HTML</h2>
+      <ol class="steps">
+        <li><strong>Type or paste Markdown</strong> — Enter your Markdown content in the left panel. The right panel updates live.</li>
+        <li><strong>Preview the output</strong> — See the rendered HTML in Preview mode, or switch to HTML Source to see the raw markup.</li>
+        <li><strong>Copy or download</strong> — Copy the HTML to clipboard or download it as an .html file.</li>
+      </ol>
+    </section>
+    <section class="features">
+      <h2>Features</h2>
+      <ul class="features-list">
+        <li>Live preview as you type</li>
+        <li>Rendered preview and HTML source views</li>
+        <li>Supports GitHub Flavored Markdown</li>
+        <li>Copy HTML to clipboard</li>
+        <li>Download as .html file</li>
+        <li>100% browser-based, no server</li>
+      </ul>
+    </section>
+    <div class="ad-slot ad-slot--rectangle" style="margin:0 auto 32px">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="faq">
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-list">
+        <details class="faq-item"><summary class="faq-question">What is Markdown? <span class="faq-icon">+</span></summary><div class="faq-answer">Markdown is a lightweight markup language that uses plain text formatting syntax. It was designed to be easy to write and read, and converts cleanly to HTML.</div></details>
+        <details class="faq-item"><summary class="faq-question">What is GitHub Flavored Markdown? <span class="faq-icon">+</span></summary><div class="faq-answer">GitHub Flavored Markdown (GFM) is a superset of standard Markdown that adds features like tables, task lists, strikethrough text, and fenced code blocks with syntax highlighting.</div></details>
+        <details class="faq-item"><summary class="faq-question">How do I add a link in Markdown? <span class="faq-icon">+</span></summary><div class="faq-answer">Use [link text](URL) syntax. For example, [AnyConverter](https://anyconverter.io) creates a clickable link.</div></details>
+        <details class="faq-item"><summary class="faq-question">How do I add an image in Markdown? <span class="faq-icon">+</span></summary><div class="faq-answer">Use ![alt text](image-url) — similar to a link but with an exclamation mark at the start. The alt text is shown if the image fails to load.</div></details>
+        <details class="faq-item"><summary class="faq-question">Can I use the HTML output on my website? <span class="faq-icon">+</span></summary><div class="faq-answer">Yes. The generated HTML is clean and ready to paste into any webpage. You may want to add your own CSS styles, as this tool does not include a stylesheet in the downloaded file.</div></details>
+      </div>
+    </section>
+    <section class="related-tools">
+      <h2>Related Tools</h2>
+      <div class="tool-grid">
+        <a href="/json-formatter/" class="tool-card"><img src="/assets/img/icon-json.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>JSON Formatter</h3><p>Format and validate JSON.</p><span class="tool-card-link">Try it →</span></a>
+        <a href="/xml-formatter/" class="tool-card"><img src="/assets/img/icon-xml.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>XML Formatter</h3><p>Format and validate XML.</p><span class="tool-card-link">Try it →</span></a>
+        <a href="/base64-encoder/" class="tool-card"><img src="/assets/img/icon-base64.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Base64 Encoder</h3><p>Encode and decode Base64.</p><span class="tool-card-link">Try it →</span></a>
+        <a href="/color-converter/" class="tool-card"><img src="/assets/img/icon-color.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Color Converter</h3><p>Convert colors between formats.</p><span class="tool-card-link">Try it →</span></a>
+        <a href="/url-encoder/" class="tool-card"><img src="/assets/img/icon-url.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>URL Encoder</h3><p>Encode or decode URLs.</p><span class="tool-card-link">Try it →</span></a>
+        <a href="/hash-generator/" class="tool-card"><img src="/assets/img/icon-hash.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Hash Generator</h3><p>Generate cryptographic hashes.</p><span class="tool-card-link">Try it →</span></a>
+      </div>
+    </section>
+  </main>
+  <footer id="site-footer" class="site-footer"></footer>
+  <script src="/assets/js/shared.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/9.1.6/marked.min.js" defer></script>
+  <script src="/assets/js/tools/markdown.js" defer></script>
+</body>
+</html>

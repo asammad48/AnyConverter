@@ -1,0 +1,175 @@
+﻿<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Base64 Encoder og Decoder Online Gratis | AnyConverter</title>
+  <meta name="description" content="Kodér og dekodér Base64 online gratis. Konverter tekst eller filer til Base64 og tilbage. Øjeblikkeligt, ingen serverupload. Understøtter Unicode-tekst og alle filtyper.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://anyconverter.io/da/base64-encoder/">
+  <link rel="alternate" hreflang="en"        href="https://anyconverter.io/base64-encoder/">
+  <link rel="alternate" hreflang="es"        href="https://anyconverter.io/es/base64-encoder/">
+  <link rel="alternate" hreflang="da"        href="https://anyconverter.io/da/base64-encoder/">
+  <link rel="alternate" hreflang="x-default" href="https://anyconverter.io/base64-encoder/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Base64 Encoder og Decoder Online Gratis | AnyConverter">
+  <meta property="og:description" content="Kodér og dekodér Base64 online gratis. Tekst eller filer. Ingen serverupload.">
+  <meta property="og:url" content="https://anyconverter.io/da/base64-encoder/">
+  <meta property="og:site_name" content="AnyConverter">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" data-ad-client="ca-pub-XXXXXXXXXX" crossorigin="anonymous"></script>
+  <!-- Replace ca-pub-XXXXXXXXXX with your real AdSense publisher ID -->
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Base64 Encoder","url":"https://anyconverter.io/da/base64-encoder/","description":"Kodér og dekodér Base64 online gratis.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F4F6FF);color:var(--color-text,#1E1B4B)}
+    body{min-height:100vh;display:flex;flex-direction:column}
+    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8FE)}
+    .header-inner{max-width:1280px;width:100%;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;gap:32px}
+    .hero{padding:40px 24px 32px;max-width:1280px;margin:0 auto}
+    .hero h1{font-size:clamp(1.75rem,4vw,2.25rem);font-weight:700;line-height:1.2;margin-bottom:12px}
+    .hero-desc{font-size:1.0625rem;color:var(--color-text-2,#6B7280);max-width:680px;line-height:1.6}
+    @font-face{font-family:'Inter';font-display:swap}
+  </style>
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+  <header id="site-header" class="site-header"></header>
+  <main id="main-content">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol><li><a href="/da/">Hjem</a></li><li aria-current="page">Base64 Encoder</li></ol>
+    </nav>
+    <section class="hero">
+      <h1>Base64 Encoder og Decoder</h1>
+      <p class="hero-desc">Kodér og dekodér Base64 online gratis. Konverter almindelig tekst til Base64 eller dekodér Base64-strenge tilbage til tekst. Understøtter også konvertering af hele filer. Kompatibel med Unicode-tekst. Al behandling sker i din browser.</p>
+    </section>
+    <div class="tool-wrapper">
+      <div class="tool-zone">
+        <div class="tab-bar">
+          <button class="tab-btn active" data-tab="text">Teksttilstand</button>
+          <button class="tab-btn" data-tab="file">Filtilstand</button>
+        </div>
+        <div class="tab-panel active" id="tab-text">
+          <div class="settings-panel mt-4" style="display:flex;gap:12px;flex-wrap:wrap">
+            <label class="radio-label"><input type="radio" name="b64-mode" value="encode" checked> Kodér</label>
+            <label class="radio-label"><input type="radio" name="b64-mode" value="decode"> Dekodér</label>
+          </div>
+          <textarea id="b64-input" placeholder="Indtast tekst til kodning eller Base64 til dekodning..." spellcheck="false" style="min-height:160px;margin-top:12px;font-family:var(--font-mono);font-size:13px"></textarea>
+          <div class="action-bar mt-4">
+            <div class="action-bar-left">
+              <button class="btn btn-primary" id="btn-b64-convert">Konverter</button>
+              <button class="btn btn-secondary" id="btn-b64-swap">⇄ Byt om</button>
+            </div>
+            <div class="action-bar-right">
+              <button class="btn btn-secondary btn-sm" id="btn-b64-clear">Ryd</button>
+            </div>
+          </div>
+          <div id="b64-output-section" style="display:none">
+            <div class="code-output-wrapper mt-4">
+              <pre class="code-output" id="b64-output"><code id="b64-output-code"></code></pre>
+              <div class="code-output-actions">
+                <button class="btn btn-sm" id="btn-b64-copy">Kopier</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="tab-panel" id="tab-file">
+          <div class="drop-zone mt-4" id="b64-file-drop" role="button" tabindex="0" aria-label="Træk en fil hertil">
+            <svg class="drop-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5"/></svg>
+            <p>Træk en fil hertil eller klik</p>
+            <input type="file" id="b64-file-input">
+          </div>
+          <div id="b64-file-result" style="display:none;margin-top:16px">
+            <div class="status-bar info" id="b64-file-info"></div>
+            <div class="code-output-wrapper mt-4">
+              <pre class="code-output" style="max-height:200px"><code id="b64-file-output"></code></pre>
+              <div class="code-output-actions">
+                <button class="btn btn-sm" id="btn-b64-file-copy">Kopier</button>
+              </div>
+            </div>
+            <div id="b64-img-preview" style="display:none;margin-top:12px">
+              <p class="panel-label">Forhåndsvisning</p>
+              <img id="b64-preview-img" alt="Forhåndsvisning" style="max-width:100%;border-radius:8px;margin-top:8px">
+            </div>
+          </div>
+        </div>
+      </div>
+      <aside class="tool-side" aria-label="Options">
+        <div class="ss-divider">Options</div>
+        <div class="tog-row"><span class="tog-label" id="lbl-urlsafe">URL-safe encoding</span><div class="tog off" id="tog-urlsafe" role="switch" aria-checked="false" tabindex="0" aria-labelledby="lbl-urlsafe"></div></div>
+        <div class="tog-row"><span class="tog-label" id="lbl-linewrap">Line wrap (76 chars)</span><div class="tog off" id="tog-linewrap" role="switch" aria-checked="false" tabindex="0" aria-labelledby="lbl-linewrap"></div></div>
+
+        <div class="ss-divider">Stats</div>
+        <div class="stats-grid">
+          <div class="stat-card"><div class="stat-val" id="stat-input-chars">0</div><div class="stat-lbl">Input chars</div></div>
+          <div class="stat-card"><div class="stat-val" id="stat-output-chars">0</div><div class="stat-lbl">Output chars</div></div>
+          <div class="stat-card"><div class="stat-val" id="stat-input-kb">0</div><div class="stat-lbl">Input B</div></div>
+          <div class="stat-card"><div class="stat-val" id="stat-ratio">—</div><div class="stat-lbl">Ratio</div></div>
+        </div>
+
+        <div class="ss-divider">Related Tools</div>
+        <a href="/url-encoder/" class="ss-related-link"><img src="/assets/img/icon-url.svg" alt="" width="18" height="18" loading="lazy">URL Encoder</a>
+        <a href="/hash-generator/" class="ss-related-link"><img src="/assets/img/icon-hash.svg" alt="" width="18" height="18" loading="lazy">Hash Generator</a>
+        <a href="/image-converter/" class="ss-related-link"><img src="/assets/img/icon-image.svg" alt="" width="18" height="18" loading="lazy">Image Converter</a>
+
+        <div style="margin-top:8px">
+          <p class="ad-label">Advertisement</p>
+          <div class="ad-slot" style="min-height:250px">
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+            <!-- Replace ca-pub-XXXXXXXXXX and data-ad-slot="XXXXXXXXXX" with your IDs -->
+          </div>
+        </div>
+      </aside>
+    </div>
+    <div class="ad-slot ad-slot--leaderboard">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="how-to-use">
+      <h2>Sådan bruger du Base64 Encoder</h2>
+      <ol class="steps">
+        <li><strong>Vælg tilstand</strong> — Vælg "Kodér" for at konvertere tekst til Base64 eller "Dekodér" for den omvendte proces.</li>
+        <li><strong>Indtast teksten</strong> — Indsæt teksten eller Base64-strengen i inputfeltet.</li>
+        <li><strong>Konverter og kopier</strong> — Klik "Konverter" og kopier resultatet til udklipsholderen.</li>
+      </ol>
+    </section>
+    <section class="features">
+      <h2>Funktioner</h2>
+      <ul class="features-list">
+        <li>Kodning og dekodning af tekst</li>
+        <li>Kodning af hele filer</li>
+        <li>Understøtter Unicode-tekst</li>
+        <li>Forhåndsvisning af kodede billeder</li>
+        <li>100% behandling i browseren</li>
+      </ul>
+    </section>
+    <div class="ad-slot ad-slot--rectangle" style="margin:0 auto 32px">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="faq">
+      <h2>Ofte stillede spørgsmål</h2>
+      <div class="faq-list">
+        <details class="faq-item"><summary class="faq-question">Hvad bruges Base64 til? <span class="faq-icon">+</span></summary><div class="faq-answer">Base64 bruges til at kode binære data (som billeder eller filer) til ASCII-tekst, så de kan overføres i systemer, der kun accepterer tekst, f.eks. e-mails eller JSON.</div></details>
+        <details class="faq-item"><summary class="faq-question">Er Base64 en form for kryptering? <span class="faq-icon">+</span></summary><div class="faq-answer">Nej. Base64 er en kodning, ikke en kryptering. Enhver kan nemt dekode en Base64-streng. Det bør ikke bruges til at beskytte følsomme data.</div></details>
+        <details class="faq-item"><summary class="faq-question">Virker det med specialtegn? <span class="faq-icon">+</span></summary><div class="faq-answer">Ja. Værktøjet bruger UTF-8-kodning til korrekt håndtering af specialtegn, accenter og emojis.</div></details>
+      </div>
+    </section>
+    <section class="related-tools">
+      <h2>Relaterede værktøjer</h2>
+      <div class="tool-grid">
+        <a href="/url-encoder/" class="tool-card"><img src="/assets/img/icon-url.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>URL Encoder</h3><p>Kodér og dekodér URL'er.</p><span class="tool-card-link">Brug →</span></a>
+        <a href="/hash-generator/" class="tool-card"><img src="/assets/img/icon-hash.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Hash Generator</h3><p>Generer MD5, SHA-256 hashes.</p><span class="tool-card-link">Brug →</span></a>
+        <a href="/json-formatter/" class="tool-card"><img src="/assets/img/icon-json.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>JSON Formatter</h3><p>Formater og valider JSON.</p><span class="tool-card-link">Brug →</span></a>
+      </div>
+    </section>
+  </main>
+  <footer id="site-footer" class="site-footer"></footer>
+  <script src="/assets/js/shared.js" defer></script>
+  <script src="/assets/js/tools/base64.js" defer></script>
+</body>
+</html>

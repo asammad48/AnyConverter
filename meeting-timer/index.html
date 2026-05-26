@@ -1,0 +1,96 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meeting Timer Online Free — Agenda Timer | AnyConverter</title>
+  <meta name="description" content="Keep meetings on track with a free online meeting timer. Add agenda items with durations, start the timer, auto-advance between items and skip to the next topic. No signup.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://anyconverter.io/meeting-timer/">
+  <link rel="alternate" hreflang="en" href="https://anyconverter.io/meeting-timer/"><link rel="alternate" hreflang="es" href="https://anyconverter.io/es/meeting-timer/"><link rel="alternate" hreflang="da" href="https://anyconverter.io/da/meeting-timer/"><link rel="alternate" hreflang="x-default" href="https://anyconverter.io/meeting-timer/">
+  <meta property="og:type" content="website"><meta property="og:title" content="Meeting Timer Online Free — Agenda Timer | AnyConverter"><meta property="og:description" content="Free online meeting agenda timer. Add items with durations, auto-advance, keep meetings on track."><meta property="og:url" content="https://anyconverter.io/meeting-timer/"><meta property="og:site_name" content="AnyConverter">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" data-ad-client="ca-pub-XXXXXXXXXX" crossorigin="anonymous"></script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Meeting Timer","url":"https://anyconverter.io/meeting-timer/","description":"Free online meeting agenda timer. Add items, auto-advance between agenda topics.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F4F6FF);color:var(--color-text,#1E1B4B)}
+    body{min-height:100vh;display:flex;flex-direction:column}
+    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8FE)}
+    .header-inner{max-width:1280px;width:100%;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;gap:32px}
+    .hero{padding:40px 24px 32px;max-width:1280px;margin:0 auto}
+    .hero h1{font-size:clamp(1.75rem,4vw,2.25rem);font-weight:700;line-height:1.2;margin-bottom:12px}
+    .hero-desc{font-size:1.0625rem;color:var(--color-text-2,#6B7280);max-width:680px;line-height:1.6}
+    @font-face{font-family:'Inter';font-display:swap}
+  </style>
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+  <header id="site-header" class="site-header"></header>
+  <main id="main-content">
+    <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/">Home</a></li><li><a href="/stopwatch/">Productivity</a></li><li aria-current="page">Meeting Timer</li></ol></nav>
+    <section class="hero">
+      <h1>Meeting Timer Online</h1>
+      <p class="hero-desc">Create a timed agenda for your meeting. Each item counts down automatically and advances to the next topic when time is up — keeping everyone on schedule.</p>
+    </section>
+    <div class="tool-wrapper">
+      <div class="tool-zone">
+        <div style="padding:24px">
+          <div style="display:grid;grid-template-columns:1fr 300px;gap:24px;align-items:start">
+            <!-- Agenda builder -->
+            <div>
+              <div style="display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap;align-items:flex-end">
+                <div>
+                  <label style="display:block;font-size:11px;font-weight:500;color:var(--color-text-2,#6B7280);margin-bottom:4px">Agenda Item</label>
+                  <input type="text" id="mt-title" placeholder="e.g. Introductions" style="padding:9px 12px;border:1px solid var(--color-border,#DDD8FE);border-radius:8px;font-size:13px;width:220px">
+                </div>
+                <div>
+                  <label style="display:block;font-size:11px;font-weight:500;color:var(--color-text-2,#6B7280);margin-bottom:4px">Duration (min)</label>
+                  <input type="number" id="mt-dur" min="1" max="120" value="5" style="width:72px;padding:9px 8px;border:1px solid var(--color-border,#DDD8FE);border-radius:8px;font-size:13px;text-align:center">
+                </div>
+                <button class="btn btn-secondary" id="mt-add">+ Add</button>
+              </div>
+              <ul id="mt-agenda" style="list-style:none"></ul>
+            </div>
+            <!-- Timer panel -->
+            <div style="background:var(--color-bg,#F4F6FF);border-radius:12px;padding:20px;text-align:center">
+              <div id="mt-current" style="font-size:13px;font-weight:600;color:var(--color-text-2,#6B7280);margin-bottom:10px;min-height:18px">Press Start to begin</div>
+              <div id="mt-display" style="font-size:3rem;font-weight:800;font-family:monospace;color:var(--color-text,#1E1B4B);margin-bottom:12px;letter-spacing:0.05em">00:00</div>
+              <!-- Progress bar -->
+              <div style="width:100%;height:6px;background:var(--color-border,#DDD8FE);border-radius:3px;margin-bottom:16px;overflow:hidden">
+                <div id="mt-progress" style="height:100%;background:var(--color-primary,#4F46E5);border-radius:3px;width:100%;transition:width 0.9s linear"></div>
+              </div>
+              <div style="display:flex;flex-direction:column;gap:8px">
+                <button class="btn btn-primary" id="mt-start">Start Meeting</button>
+                <button class="btn btn-secondary" id="mt-next">Skip to Next →</button>
+                <button class="btn btn-secondary" id="mt-reset">Reset</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <aside class="tool-side">
+        <div class="ss-divider">Related Tools</div>
+        <a href="/stopwatch/" class="ss-related-link"><img src="/assets/img/icon-stopwatch.svg" alt="" width="18" height="18">Stopwatch</a>
+        <a href="/countdown-timer/" class="ss-related-link"><img src="/assets/img/icon-countdown.svg" alt="" width="18" height="18">Countdown Timer</a>
+        <a href="/daily-planner/" class="ss-related-link"><img src="/assets/img/icon-planner.svg" alt="" width="18" height="18">Daily Planner</a>
+        <div style="margin-top:16px"><p class="ad-label">Advertisement</p>
+          <div class="ad-slot" style="min-height:250px"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div>
+        </div>
+      </aside>
+    </div>
+    <div class="ad-slot ad-slot--leaderboard"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div>
+    <section class="how-to-use"><h2>How to Use the Meeting Timer</h2><ol class="steps"><li><strong>Step 1</strong> — Add agenda items with a title and duration in minutes.</li><li><strong>Step 2</strong> — Click <em>Start Meeting</em> to begin timing the first item.</li><li><strong>Step 3</strong> — The timer auto-advances when each item's time runs out.</li><li><strong>Step 4</strong> — Click <em>Skip to Next</em> to move on early, or <em>Reset</em> to start over.</li></ol></section>
+    <section class="features"><h2>Features</h2><ul class="features-list"><li>Agenda items with name and duration</li><li>Auto-advances to next item when time expires</li><li>Progress bar turns red when under 20% time remaining</li><li>Skip button to move ahead manually</li><li>Agenda saved to localStorage between visits</li></ul></section>
+    <div class="ad-slot ad-slot--rectangle" style="margin:0 auto 32px"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div>
+    <section class="faq"><h2>Frequently Asked Questions</h2><div class="faq-list">
+      <details class="faq-item"><summary class="faq-question">Can I reorder agenda items? <span class="faq-icon">+</span></summary><div class="faq-answer">Not by dragging — delete and re-add items in the order you want. Items are processed in the order they appear in the list.</div></details>
+      <details class="faq-item"><summary class="faq-question">Does the agenda save between sessions? <span class="faq-icon">+</span></summary><div class="faq-answer">Yes. The agenda items are saved to localStorage so they're still there when you return. Use Reset to clear the timer state without losing your agenda.</div></details>
+    </div></section>
+  </main>
+  <footer id="site-footer" class="site-footer"></footer>
+  <script src="/assets/js/shared.js" defer></script>
+  <script src="/assets/js/tools/meeting-timer.js" defer></script>
+</body>
+</html>

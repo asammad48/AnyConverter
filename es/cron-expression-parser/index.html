@@ -1,0 +1,185 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Analizador de Expresiones Cron Online Gratis | AnyConverter</title>
+  <meta name="description" content="Analiza y comprende expresiones cron al instante. Obtén una descripción en español con desglose de campos. Gratis, sin registro.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://anyconverter.io/es/cron-expression-parser/">
+  <link rel="alternate" hreflang="en" href="https://anyconverter.io/cron-expression-parser/">
+  <link rel="alternate" hreflang="es" href="https://anyconverter.io/es/cron-expression-parser/">
+  <link rel="alternate" hreflang="da" href="https://anyconverter.io/da/cron-expression-parser/">
+  <link rel="alternate" hreflang="x-default" href="https://anyconverter.io/cron-expression-parser/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Analizador de Expresiones Cron Online Gratis | AnyConverter">
+  <meta property="og:description" content="Analiza y comprende expresiones cron al instante. Obtén una descripción en español con desglose de campos. Gratis, sin registro.">
+  <meta property="og:url" content="https://anyconverter.io/es/cron-expression-parser/">
+  <meta property="og:site_name" content="AnyConverter">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" data-ad-client="ca-pub-XXXXXXXXXX" crossorigin="anonymous"></script>
+  <!-- Replace ca-pub-XXXXXXXXXX with your real AdSense publisher ID -->
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Analizador de Expresiones Cron","url":"https://anyconverter.io/es/cron-expression-parser/","description":"Analiza y comprende expresiones cron al instante. Obtén una descripción en español con desglose de campos.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F4F6FF);color:var(--color-text,#1E1B4B)}
+    body{min-height:100vh;display:flex;flex-direction:column}
+    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8FE)}
+    .header-inner{max-width:1280px;width:100%;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;gap:32px}
+    .hero{padding:40px 24px 32px;max-width:1280px;margin:0 auto}
+    .hero h1{font-size:clamp(1.75rem,4vw,2.25rem);font-weight:700;line-height:1.2;margin-bottom:12px}
+    .hero-desc{font-size:1.0625rem;color:var(--color-text-2,#6B7280);max-width:680px;line-height:1.6}
+    @font-face{font-family:'Inter';font-display:swap}
+  </style>
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+  <header id="site-header" class="site-header"></header>
+  <main id="main-content">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol><li><a href="/es/">Inicio</a></li><li aria-current="page">Analizador de Expresiones Cron</li></ol>
+    </nav>
+    <section class="hero">
+      <h1>Analizador de Expresiones Cron</h1>
+      <p class="hero-desc">Decodifica cualquier expresión cron en texto legible al instante. Muestra cada campo —minuto, hora, día, mes, día de la semana— explicado claramente. Incluye presets comunes para referencia rápida.</p>
+    </section>
+    <div class="tool-wrapper">
+      <div class="tool-zone">
+        <div style="padding:24px">
+          <div style="margin-bottom:16px">
+            <label style="display:block;font-size:13px;font-weight:500;margin-bottom:6px" for="cron-input">Cron Expression</label>
+            <input type="text" id="cron-input" value="*/5 * * * *" placeholder="*/5 * * * *" style="width:100%;padding:10px 12px;border:1px solid var(--color-border,#DDD8FE);border-radius:8px;font-family:'JetBrains Mono',monospace;font-size:15px">
+          </div>
+          <div id="cron-error" style="display:none;color:var(--color-pdf,#EF4444);font-size:13px;margin-bottom:12px"></div>
+          <div id="cron-description" style="display:none;padding:12px 16px;background:var(--color-success-bg,#ECFDF5);border:1px solid var(--color-success-bg,#ECFDF5);border-radius:8px;font-size:15px;font-weight:500;color:var(--color-success-text,#166534);margin-bottom:16px"></div>
+          <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-bottom:16px">
+            <div style="text-align:center;padding:12px 8px;background:var(--color-bg,#F4F6FF);border:1px solid var(--color-border,#DDD8FE);border-radius:8px">
+              <div id="cron-part-min" style="font-size:18px;font-weight:700;font-family:'JetBrains Mono',monospace">—</div>
+              <div style="font-size:11px;color:var(--color-text-2,#6B7280);margin-top:4px">Minuto</div>
+            </div>
+            <div style="text-align:center;padding:12px 8px;background:var(--color-bg,#F4F6FF);border:1px solid var(--color-border,#DDD8FE);border-radius:8px">
+              <div id="cron-part-hr" style="font-size:18px;font-weight:700;font-family:'JetBrains Mono',monospace">—</div>
+              <div style="font-size:11px;color:var(--color-text-2,#6B7280);margin-top:4px">Hora</div>
+            </div>
+            <div style="text-align:center;padding:12px 8px;background:var(--color-bg,#F4F6FF);border:1px solid var(--color-border,#DDD8FE);border-radius:8px">
+              <div id="cron-part-dom" style="font-size:18px;font-weight:700;font-family:'JetBrains Mono',monospace">—</div>
+              <div style="font-size:11px;color:var(--color-text-2,#6B7280);margin-top:4px">Día</div>
+            </div>
+            <div style="text-align:center;padding:12px 8px;background:var(--color-bg,#F4F6FF);border:1px solid var(--color-border,#DDD8FE);border-radius:8px">
+              <div id="cron-part-mon" style="font-size:18px;font-weight:700;font-family:'JetBrains Mono',monospace">—</div>
+              <div style="font-size:11px;color:var(--color-text-2,#6B7280);margin-top:4px">Mes</div>
+            </div>
+            <div style="text-align:center;padding:12px 8px;background:var(--color-bg,#F4F6FF);border:1px solid var(--color-border,#DDD8FE);border-radius:8px">
+              <div id="cron-part-dow" style="font-size:18px;font-weight:700;font-family:'JetBrains Mono',monospace">—</div>
+              <div style="font-size:11px;color:var(--color-text-2,#6B7280);margin-top:4px">Día sem.</div>
+            </div>
+          </div>
+          <div style="display:flex;flex-wrap:wrap;gap:8px">
+            <button class="btn btn-secondary btn-sm cron-preset" data-val="* * * * *">Cada minuto</button>
+            <button class="btn btn-secondary btn-sm cron-preset" data-val="*/5 * * * *">Cada 5 min</button>
+            <button class="btn btn-secondary btn-sm cron-preset" data-val="0 * * * *">Cada hora</button>
+            <button class="btn btn-secondary btn-sm cron-preset" data-val="0 0 * * *">Diario medianoche</button>
+            <button class="btn btn-secondary btn-sm cron-preset" data-val="0 9 * * 1-5">Laborables 9am</button>
+            <button class="btn btn-secondary btn-sm cron-preset" data-val="0 0 1 * *">Mensual</button>
+          </div>
+        </div>
+      </div>
+      <aside class="tool-side" aria-label="Opciones">
+        <div class="ss-divider">Herramientas relacionadas</div>
+        <a class="related-link" href="/uuid-generator/"><img src="/assets/img/icon-hash.svg" width="16" height="16" loading="lazy" alt=""> Generador UUID</a>
+        <a class="related-link" href="/jwt-decoder/"><img src="/assets/img/icon-hash.svg" width="16" height="16" loading="lazy" alt=""> Decodificador JWT</a>
+        <a class="related-link" href="/es/json-to-yaml/"><img src="/assets/img/icon-text.svg" width="16" height="16" loading="lazy" alt=""> JSON a YAML</a>
+        <div style="margin-top:16px">
+          <p class="ad-label">Publicidad</p>
+          <div class="ad-slot" style="min-height:250px">
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+            <!-- Replace ca-pub-XXXXXXXXXX and data-ad-slot="XXXXXXXXXX" with your IDs -->
+          </div>
+        </div>
+      </aside>
+    </div>
+    <div class="ad-slot ad-slot--leaderboard">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="how-to-use">
+      <h2>Cómo Usar el Analizador de Expresiones Cron</h2>
+      <ol class="steps">
+        <li>Escribe o pega una expresión cron (5 campos separados por espacios) en el campo de entrada.</li>
+        <li>La herramienta muestra al instante una descripción legible de la programación.</li>
+        <li>Usa los botones de preset para cargar horarios comunes o explora valores específicos.</li>
+      </ol>
+    </section>
+    <section class="features">
+      <h2>Características</h2>
+      <ul class="features-list">
+        <li>Descripción en texto legible de cualquier expresión cron</li>
+        <li>Desglose visual de los 5 campos</li>
+        <li>Presets de horarios comunes</li>
+        <li>Soporta comodines, rangos, pasos y listas</li>
+        <li>Sin instalación ni registro</li>
+      </ul>
+    </section>
+    <div class="ad-slot ad-slot--rectangle" style="margin:0 auto 32px">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="faq">
+      <h2>Preguntas Frecuentes</h2>
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary>¿Qué es una expresión cron?</summary>
+          <p>Una expresión cron es una cadena de 5 campos (minuto hora día-del-mes mes día-de-la-semana) usada para programar tareas recurrentes en sistemas Unix/Linux. Cada campo acepta números, comodines (*), rangos (1-5), pasos (*/5) o listas (1,3,5).</p>
+        </details>
+        <details class="faq-item">
+          <summary>¿Qué significa */5?</summary>
+          <p>La notación de paso /5 significa "cada 5 unidades". Así, */5 en el campo de minutos se ejecuta cada 5 minutos (0, 5, 10, 15…). En el campo de horas, */2 se ejecutaría cada 2 horas.</p>
+        </details>
+        <details class="faq-item">
+          <summary>¿Qué significa 0 0 * * 1-5?</summary>
+          <p>Esto se ejecuta a medianoche (00:00) de lunes (1) a viernes (5), es decir, cada día laborable a medianoche.</p>
+        </details>
+        <details class="faq-item">
+          <summary>¿Puede cron ejecutarse varias veces por hora?</summary>
+          <p>Sí. Usa */N en el campo de minutos para ejecutar cada N minutos. Por ejemplo, */15 se ejecuta en los minutos 0, 15, 30 y 45 de cada hora.</p>
+        </details>
+        <details class="faq-item">
+          <summary>¿Se admiten segundos?</summary>
+          <p>El cron estándar de 5 campos no incluye segundos. Algunos sistemas usan cron de 6 campos con un campo inicial de segundos, pero este analizador sigue el estándar POSIX de 5 campos.</p>
+        </details>
+      </div>
+    </section>
+    <section class="related-tools">
+      <h2>Herramientas Relacionadas</h2>
+      <div class="tool-grid">
+        <a class="tool-card" href="/uuid-generator/">
+          <img src="/assets/img/icon-hash.svg" width="32" height="32" loading="lazy" alt="Generador UUID">
+          <h3>Generador UUID</h3>
+          <p>Genera UUIDs aleatorios al instante</p>
+          <span class="tool-card-cta">Usar →</span>
+        </a>
+        <a class="tool-card" href="/jwt-decoder/">
+          <img src="/assets/img/icon-hash.svg" width="32" height="32" loading="lazy" alt="Decodificador JWT">
+          <h3>Decodificador JWT</h3>
+          <p>Decodifica e inspecciona tokens JWT</p>
+          <span class="tool-card-cta">Usar →</span>
+        </a>
+        <a class="tool-card" href="/es/json-to-yaml/">
+          <img src="/assets/img/icon-text.svg" width="32" height="32" loading="lazy" alt="JSON a YAML">
+          <h3>JSON a YAML</h3>
+          <p>Convierte JSON a YAML y viceversa</p>
+          <span class="tool-card-cta">Usar →</span>
+        </a>
+      </div>
+    </section>
+  </main>
+  <footer id="site-footer" class="site-footer"></footer>
+  <script src="/assets/js/shared.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/cronstrue@2.50.0/dist/cronstrue.min.js" defer></script>
+  <script src="/assets/js/tools/cron-expression-parser.js" defer></script>
+</body>
+</html>

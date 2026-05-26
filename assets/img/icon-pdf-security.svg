@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40">
+  <defs>
+    <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#92400E"/>
+      <stop offset="100%" stop-color="#FCD34D"/>
+    </linearGradient>
+  </defs>
+  <rect width="40" height="40" rx="10" fill="url(#g)"/>
+  <path d="M8,6 L19,6 L24,11 L24,30 L8,30 Z" fill="white" opacity="0.2"/>
+  <path d="M8,6 L19,6 L24,11 L24,30 L8,30 Z" fill="none" stroke="white" stroke-width="1.8" stroke-linejoin="round"/>
+  <path d="M19,6 L19,11 L24,11" fill="none" stroke="white" stroke-width="1.5" stroke-linejoin="round"/>
+  <!-- Shield badge -->
+  <path d="M27,10 L34,13 L34,22 Q34,28 27,31 Q20,28 20,22 L20,13 Z" fill="white" opacity="0.9"/>
+  <path d="M23,21 L26,24 L31,18" fill="none" stroke="#92400E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

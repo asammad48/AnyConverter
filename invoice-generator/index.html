@@ -1,0 +1,187 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Invoice Generator Online Free | AnyConverter</title>
+  <meta name="description" content="Create and download professional invoices as PDF online for free. Add line items, tax, notes, and business details. No signup, no watermark, runs in your browser.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://anyconverter.io/invoice-generator/">
+  <link rel="alternate" hreflang="en" href="https://anyconverter.io/invoice-generator/">
+  <link rel="alternate" hreflang="es" href="https://anyconverter.io/es/invoice-generator/">
+  <link rel="alternate" hreflang="da" href="https://anyconverter.io/da/invoice-generator/">
+  <link rel="alternate" hreflang="x-default" href="https://anyconverter.io/invoice-generator/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Invoice Generator Online Free | AnyConverter">
+  <meta property="og:description" content="Create and download professional invoices as PDF online for free. Add line items, tax, notes, and business details. No signup, no watermark.">
+  <meta property="og:url" content="https://anyconverter.io/invoice-generator/">
+  <meta property="og:site_name" content="AnyConverter">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" data-ad-client="ca-pub-XXXXXXXXXX" crossorigin="anonymous"></script>
+  <!-- Replace ca-pub-XXXXXXXXXX with your real AdSense publisher ID -->
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Invoice Generator","url":"https://anyconverter.io/invoice-generator/","description":"Create and download professional invoices as PDF online for free. Add line items, tax, notes, and business details. No signup, no watermark.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F4F6FF);color:var(--color-text,#1E1B4B)}
+    body{min-height:100vh;display:flex;flex-direction:column}
+    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8FE)}
+    .header-inner{max-width:1280px;width:100%;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;gap:32px}
+    .hero{padding:40px 24px 32px;max-width:1280px;margin:0 auto}
+    .hero h1{font-size:clamp(1.75rem,4vw,2.25rem);font-weight:700;line-height:1.2;margin-bottom:12px}
+    .hero-desc{font-size:1.0625rem;color:var(--color-text-2,#6B7280);max-width:680px;line-height:1.6}
+    @font-face{font-family:'Inter';font-display:swap}
+  </style>
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+  <header id="site-header" class="site-header"></header>
+  <main id="main-content">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol><li><a href="/">Home</a></li><li aria-current="page">Invoice Generator</li></ol>
+    </nav>
+    <section class="hero">
+      <h1>Invoice Generator</h1>
+      <p class="hero-desc">Create professional PDF invoices in seconds. Add your business details, client name, line items, tax rate, and notes — then download a clean PDF. No watermark, no signup, completely free.</p>
+    </section>
+    <div class="tool-wrapper">
+      <div class="tool-zone">
+        <div style="padding:24px">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px">
+            <div>
+              <label style="display:block;font-size:13px;font-weight:500;margin-bottom:6px" for="inv-from">From (Your Name / Business)</label>
+              <input type="text" id="inv-from" placeholder="Your Business Name" style="width:100%;padding:10px 12px;border:1px solid var(--color-border,#DDD8FE);border-radius:8px;font-size:14px">
+            </div>
+            <div>
+              <label style="display:block;font-size:13px;font-weight:500;margin-bottom:6px" for="inv-to">Bill To (Client)</label>
+              <input type="text" id="inv-to" placeholder="Client Name" style="width:100%;padding:10px 12px;border:1px solid var(--color-border,#DDD8FE);border-radius:8px;font-size:14px">
+            </div>
+            <div>
+              <label style="display:block;font-size:13px;font-weight:500;margin-bottom:6px" for="inv-number">Invoice Number</label>
+              <input type="text" id="inv-number" value="INV-001" style="width:100%;padding:10px 12px;border:1px solid var(--color-border,#DDD8FE);border-radius:8px;font-size:14px">
+            </div>
+            <div>
+              <label style="display:block;font-size:13px;font-weight:500;margin-bottom:6px" for="inv-date">Date</label>
+              <input type="date" id="inv-date" style="width:100%;padding:10px 12px;border:1px solid var(--color-border,#DDD8FE);border-radius:8px;font-size:14px">
+            </div>
+          </div>
+          <div style="margin-bottom:16px">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+              <label style="font-size:13px;font-weight:500">Line Items</label>
+              <button class="btn btn-secondary btn-sm" id="btn-inv-add-row">+ Add Row</button>
+            </div>
+            <table style="width:100%;border-collapse:collapse;font-size:13px">
+              <thead>
+                <tr style="border-bottom:2px solid var(--color-border,#DDD8FE)">
+                  <th style="text-align:left;padding:8px 8px;color:var(--color-text-2,#6B7280);font-weight:500">Description</th>
+                  <th style="text-align:left;padding:8px 4px;color:var(--color-text-2,#6B7280);font-weight:500;width:60px">Qty</th>
+                  <th style="text-align:left;padding:8px 4px;color:var(--color-text-2,#6B7280);font-weight:500;width:80px">Rate</th>
+                  <th style="text-align:right;padding:8px 8px;color:var(--color-text-2,#6B7280);font-weight:500;width:80px">Amount</th>
+                  <th style="width:36px"></th>
+                </tr>
+              </thead>
+              <tbody id="inv-items">
+                <tr>
+                  <td><input type="text" class="inv-desc" placeholder="Item description" style="width:100%;padding:6px 8px;border:1px solid var(--color-border,#DDD8FE);border-radius:4px;font-size:13px"></td>
+                  <td><input type="number" class="inv-qty" value="1" min="0" style="width:60px;padding:6px 8px;border:1px solid var(--color-border,#DDD8FE);border-radius:4px;font-size:13px"></td>
+                  <td><input type="number" class="inv-rate" value="0" min="0" step="0.01" style="width:80px;padding:6px 8px;border:1px solid var(--color-border,#DDD8FE);border-radius:4px;font-size:13px"></td>
+                  <td class="inv-amount" style="padding:6px 8px;font-size:13px;text-align:right">0.00</td>
+                  <td><button type="button" class="btn btn-secondary btn-sm inv-remove" style="padding:4px 8px">&#215;</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px">
+            <div>
+              <label style="display:block;font-size:13px;font-weight:500;margin-bottom:6px" for="inv-notes">Notes (optional)</label>
+              <textarea id="inv-notes" placeholder="Payment terms, thank you note..." style="width:100%;height:80px;padding:10px 12px;border:1px solid var(--color-border,#DDD8FE);border-radius:8px;font-size:13px;resize:vertical"></textarea>
+            </div>
+            <div>
+              <label style="display:block;font-size:13px;font-weight:500;margin-bottom:6px" for="inv-tax">Tax (%)</label>
+              <input type="number" id="inv-tax" value="0" min="0" max="100" step="0.1" style="width:100%;padding:10px 12px;border:1px solid var(--color-border,#DDD8FE);border-radius:8px;font-size:15px;margin-bottom:12px">
+              <label style="display:block;font-size:13px;font-weight:500;margin-bottom:6px" for="inv-currency">Currency Symbol</label>
+              <input type="text" id="inv-currency" value="$" maxlength="3" style="width:80px;padding:10px 12px;border:1px solid var(--color-border,#DDD8FE);border-radius:8px;font-size:15px">
+            </div>
+          </div>
+          <div style="border-top:1px solid var(--color-border,#DDD8FE);padding-top:12px;margin-bottom:16px">
+            <div style="display:flex;justify-content:flex-end;gap:16px;font-size:14px">
+              <span>Subtotal:</span><span id="inv-subtotal" style="min-width:80px;text-align:right;font-weight:500">0.00</span>
+            </div>
+            <div style="display:flex;justify-content:flex-end;gap:16px;font-size:14px;margin-top:4px">
+              <span>Tax:</span><span id="inv-tax-amt" style="min-width:80px;text-align:right;font-weight:500">0.00</span>
+            </div>
+            <div style="display:flex;justify-content:flex-end;gap:16px;font-size:16px;font-weight:700;margin-top:8px">
+              <span>Total:</span><span id="inv-total" style="min-width:80px;text-align:right">0.00</span>
+            </div>
+          </div>
+          <button class="btn btn-primary" id="btn-inv-pdf">Download PDF</button>
+        </div>
+      </div>
+      <aside class="tool-side" aria-label="Options">
+        <div class="ss-divider">Related Tools</div>
+        <a href="/discount-calculator/" class="ss-related-link"><img src="/assets/img/icon-currency.svg" alt="" width="18" height="18" loading="lazy">Discount Calculator</a>
+        <a href="/gst-vat-calculator/" class="ss-related-link"><img src="/assets/img/icon-currency.svg" alt="" width="18" height="18" loading="lazy">GST/VAT Calculator</a>
+        <a href="/tip-calculator/" class="ss-related-link"><img src="/assets/img/icon-calculator.svg" alt="" width="18" height="18" loading="lazy">Tip Calculator</a>
+        <div style="margin-top:16px">
+          <p class="ad-label">Advertisement</p>
+          <div class="ad-slot" style="min-height:250px">
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+            <!-- Replace ca-pub-XXXXXXXXXX and data-ad-slot="XXXXXXXXXX" with your IDs -->
+          </div>
+        </div>
+      </aside>
+    </div>
+    <div class="ad-slot ad-slot--leaderboard">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="how-to-use">
+      <h2>How to Use Invoice Generator</h2>
+      <ol class="steps">
+        <li><strong>Step 1</strong> — Enter your business name, client name, invoice number, and date.</li>
+        <li><strong>Step 2</strong> — Add line items with description, quantity, and rate. The totals update automatically.</li>
+        <li><strong>Step 3</strong> — Set the tax rate, add any notes, then click "Download PDF" to save your invoice.</li>
+      </ol>
+    </section>
+    <section class="features">
+      <h2>Features</h2>
+      <ul class="features-list">
+        <li>Download professional PDF invoices with one click</li>
+        <li>Add unlimited line items with auto-calculated totals</li>
+        <li>Tax rate calculation (supports any percentage)</li>
+        <li>Custom currency symbol</li>
+        <li>Optional payment terms / notes field</li>
+        <li>No watermark, no signup, no data sent to server</li>
+      </ul>
+    </section>
+    <div class="ad-slot ad-slot--rectangle" style="margin:0 auto 32px">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="faq">
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-list">
+        <details class="faq-item"><summary class="faq-question">Is there a watermark on the PDF? <span class="faq-icon">+</span></summary><div class="faq-answer">No. The downloaded PDF has no watermark, no branding from AnyConverter, and no advertisements. It is a plain professional invoice you can send directly to clients.</div></details>
+        <details class="faq-item"><summary class="faq-question">Can I add multiple line items? <span class="faq-icon">+</span></summary><div class="faq-answer">Yes. Click "+ Add Row" to add as many line items as you need. Each row has a description, quantity, and rate. The subtotal, tax, and total update automatically.</div></details>
+        <details class="faq-item"><summary class="faq-question">What currency symbols are supported? <span class="faq-icon">+</span></summary><div class="faq-answer">Any text up to 3 characters works as the currency symbol. Type $, €, £, ¥, kr, or any other currency symbol in the Currency Symbol field.</div></details>
+        <details class="faq-item"><summary class="faq-question">Is my invoice data stored anywhere? <span class="faq-icon">+</span></summary><div class="faq-answer">No. Everything runs in your browser. Your invoice data (names, amounts, items) is never sent to any server and is lost when you close the page. Download the PDF before closing.</div></details>
+      </div>
+    </section>
+    <section class="related-tools">
+      <h2>Related Tools</h2>
+      <div class="tool-grid">
+        <a href="/discount-calculator/" class="tool-card"><img src="/assets/img/icon-currency.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Discount Calculator</h3><p>Calculate sale prices and savings with any discount percentage.</p><span class="tool-card-link">Try it &#8594;</span></a>
+        <a href="/gst-vat-calculator/" class="tool-card"><img src="/assets/img/icon-currency.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>GST/VAT Calculator</h3><p>Calculate tax-inclusive and tax-exclusive amounts for any rate.</p><span class="tool-card-link">Try it &#8594;</span></a>
+        <a href="/tip-calculator/" class="tool-card"><img src="/assets/img/icon-calculator.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Tip Calculator</h3><p>Calculate tip amounts and split bills between multiple people.</p><span class="tool-card-link">Try it &#8594;</span></a>
+      </div>
+    </section>
+  </main>
+  <footer id="site-footer" class="site-footer"></footer>
+  <script src="/assets/js/shared.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" defer></script>
+  <script src="/assets/js/tools/invoice-generator.js" defer></script>
+</body>
+</html>

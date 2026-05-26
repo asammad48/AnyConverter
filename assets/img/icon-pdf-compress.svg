@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40">
+  <defs>
+    <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0F766E"/>
+      <stop offset="100%" stop-color="#2DD4BF"/>
+    </linearGradient>
+  </defs>
+  <rect width="40" height="40" rx="10" fill="url(#g)"/>
+  <!-- Big doc (original) -->
+  <path d="M8,8 L20,8 L24,12 L24,28 L8,28 Z" fill="white" opacity="0.2"/>
+  <path d="M8,8 L20,8 L24,12 L24,28 L8,28 Z" fill="none" stroke="white" stroke-width="1.8" stroke-linejoin="round" opacity="0.6"/>
+  <path d="M20,8 L20,12 L24,12" fill="none" stroke="white" stroke-width="1.5" stroke-linejoin="round" opacity="0.6"/>
+  <!-- Arrow pointing right -->
+  <line x1="26" y1="18" x2="30" y2="18" stroke="white" stroke-width="2" stroke-linecap="round"/>
+  <polyline points="28,15 31,18 28,21" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Small doc (compressed) -->
+  <path d="M31,13 L37,13 L39,15 L39,25 L31,25 Z" fill="white" opacity="0.85"/>
+  <path d="M37,13 L37,15 L39,15" fill="none" stroke="url(#g)" stroke-width="1" stroke-linejoin="round"/>
+  <!-- Size label -->
+  <text x="16" y="35" font-family="system-ui,sans-serif" font-size="7" font-weight="700" fill="white" text-anchor="middle" opacity="0.8">PDF</text>
+  <!-- Compress lines on big doc -->
+  <line x1="11" y1="16" x2="21" y2="16" stroke="white" stroke-width="1.3" stroke-linecap="round" opacity="0.6"/>
+  <line x1="11" y1="20" x2="21" y2="20" stroke="white" stroke-width="1.3" stroke-linecap="round" opacity="0.6"/>
+</svg>

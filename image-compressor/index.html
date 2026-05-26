@@ -1,0 +1,157 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image Compressor Online Free | AnyConverter</title>
+  <meta name="description" content="Compress images online for free. Reduce PNG, JPG, and WebP file sizes with adjustable quality. No upload to server — all processing happens in your browser.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://anyconverter.io/image-compressor/">
+  <link rel="alternate" hreflang="en" href="https://anyconverter.io/image-compressor/">
+  <link rel="alternate" hreflang="es" href="https://anyconverter.io/es/image-compressor/">
+  <link rel="alternate" hreflang="da" href="https://anyconverter.io/da/image-compressor/">
+  <link rel="alternate" hreflang="x-default" href="https://anyconverter.io/image-compressor/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Image Compressor Online Free | AnyConverter">
+  <meta property="og:description" content="Compress images online for free. Reduce PNG, JPG, and WebP file sizes with adjustable quality. No upload to server — all processing happens in your browser.">
+  <meta property="og:url" content="https://anyconverter.io/image-compressor/">
+  <meta property="og:site_name" content="AnyConverter">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" data-ad-client="ca-pub-XXXXXXXXXX" crossorigin="anonymous"></script>
+  <!-- Replace ca-pub-XXXXXXXXXX with your real AdSense publisher ID -->
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Image Compressor","url":"https://anyconverter.io/image-compressor/","description":"Compress images online for free. Reduce PNG, JPG, and WebP file sizes with adjustable quality. No upload to server.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F4F6FF);color:var(--color-text,#1E1B4B)}
+    body{min-height:100vh;display:flex;flex-direction:column}
+    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8FE)}
+    .header-inner{max-width:1280px;width:100%;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;gap:32px}
+    .hero{padding:40px 24px 32px;max-width:1280px;margin:0 auto}
+    .hero h1{font-size:clamp(1.75rem,4vw,2.25rem);font-weight:700;line-height:1.2;margin-bottom:12px}
+    .hero-desc{font-size:1.0625rem;color:var(--color-text-2,#6B7280);max-width:680px;line-height:1.6}
+    @font-face{font-family:'Inter';font-display:swap}
+  </style>
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+  <header id="site-header" class="site-header"></header>
+  <main id="main-content">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol><li><a href="/">Home</a></li><li aria-current="page">Image Compressor</li></ol>
+    </nav>
+    <section class="hero">
+      <h1>Image Compressor</h1>
+      <p class="hero-desc">Reduce the file size of PNG, JPG, and WebP images directly in your browser. Adjust the quality level and output format, then download the compressed result. Your images are never uploaded to any server.</p>
+    </section>
+    <div class="tool-wrapper">
+      <div class="tool-zone">
+        <div style="padding:24px">
+          <div class="drop-zone" id="img-drop-zone" role="button" tabindex="0" aria-label="Drop image here or click to upload">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="40" height="40" aria-hidden="true" style="color:var(--color-text-2,#6B7280)"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5"/></svg>
+            <p style="margin-top:8px;font-weight:500">Drop image here or click to upload</p>
+            <small style="color:var(--color-text-2,#6B7280)">PNG, JPG, WebP supported</small>
+            <input type="file" id="img-file-input" accept="image/*" style="display:none" aria-label="Upload image">
+          </div>
+          <div id="img-options" style="display:none;margin-top:16px">
+            <div style="margin-bottom:12px">
+              <label style="display:block;font-size:13px;font-weight:500;margin-bottom:6px">Quality: <span id="quality-display">80</span>%</label>
+              <input type="range" id="quality-slider" min="10" max="100" value="80" style="width:100%;accent-color:var(--color-primary,#4F46E5)">
+            </div>
+            <div style="margin-bottom:16px">
+              <label style="display:block;font-size:13px;font-weight:500;margin-bottom:6px" for="output-format">Output Format</label>
+              <select id="output-format" style="padding:8px 12px;border:1px solid var(--color-border,#DDD8FE);border-radius:8px;font-size:14px">
+                <option value="image/jpeg">JPEG</option>
+                <option value="image/png">PNG</option>
+                <option value="image/webp">WebP</option>
+              </select>
+            </div>
+            <div class="action-bar">
+              <button class="btn btn-primary" id="btn-compress">Compress</button>
+              <button class="btn btn-secondary" id="btn-img-reset">Reset</button>
+            </div>
+          </div>
+          <div id="img-result" style="display:none;margin-top:16px">
+            <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:16px">
+              <div class="stat-card"><div class="stat-val" id="orig-size">—</div><div class="stat-lbl">Original Size</div></div>
+              <div class="stat-card"><div class="stat-val" id="comp-size">—</div><div class="stat-lbl">Compressed</div></div>
+              <div class="stat-card"><div class="stat-val" id="savings-pct">—</div><div class="stat-lbl">Savings</div></div>
+            </div>
+            <div style="text-align:center;margin-bottom:12px">
+              <img id="preview-img" src="" alt="Compressed preview" style="max-width:100%;max-height:300px;border-radius:8px;border:1px solid var(--color-border,#DDD8FE)" width="0" height="0" loading="lazy">
+            </div>
+            <div class="action-bar" style="justify-content:center">
+              <button class="btn btn-primary" id="btn-download-img">Download Compressed</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <aside class="tool-side" aria-label="Options">
+        <div class="ss-divider">Related Tools</div>
+        <a href="/image-converter/" class="ss-related-link"><img src="/assets/img/icon-image.svg" alt="" width="18" height="18" loading="lazy">Image Converter</a>
+        <a href="/qr-code-generator/" class="ss-related-link"><img src="/assets/img/icon-qr.svg" alt="" width="18" height="18" loading="lazy">QR Code Generator</a>
+        <a href="/pdf-compress/" class="ss-related-link"><img src="/assets/img/icon-pdf.svg" alt="" width="18" height="18" loading="lazy">PDF Compressor</a>
+        <div style="margin-top:16px">
+          <p class="ad-label">Advertisement</p>
+          <div class="ad-slot" style="min-height:250px">
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+            <!-- Replace ca-pub-XXXXXXXXXX and data-ad-slot="XXXXXXXXXX" with your IDs -->
+          </div>
+        </div>
+      </aside>
+    </div>
+    <div class="ad-slot ad-slot--leaderboard">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="how-to-use">
+      <h2>How to Use the Image Compressor</h2>
+      <ol class="steps">
+        <li><strong>Step 1</strong> — Drop an image onto the upload area or click to browse and select a PNG, JPG, or WebP file.</li>
+        <li><strong>Step 2</strong> — Adjust the quality slider (lower = smaller file, higher = better quality) and choose the output format.</li>
+        <li><strong>Step 3</strong> — Click "Compress" to process the image, then review the size savings and download the compressed file.</li>
+      </ol>
+    </section>
+    <section class="features">
+      <h2>Features</h2>
+      <ul class="features-list">
+        <li>Supports PNG, JPG, and WebP input and output formats</li>
+        <li>Adjustable quality slider from 10% to 100%</li>
+        <li>Displays original size, compressed size, and percentage savings</li>
+        <li>Live preview of the compressed image before downloading</li>
+        <li>Drag-and-drop or click-to-upload interface</li>
+        <li>100% client-side — your images never leave your device</li>
+      </ul>
+    </section>
+    <div class="ad-slot ad-slot--rectangle" style="margin:0 auto 32px">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="faq">
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-list">
+        <details class="faq-item"><summary class="faq-question">Which image formats are supported? <span class="faq-icon">+</span></summary><div class="faq-answer">This tool supports PNG, JPEG, and WebP as both input and output formats. You can upload any of these formats and choose to compress to any of the three output formats. GIF and SVG are not currently supported.</div></details>
+        <details class="faq-item"><summary class="faq-question">Is my image uploaded to a server? <span class="faq-icon">+</span></summary><div class="faq-answer">No. All image processing happens entirely in your browser using the HTML5 Canvas API. Your image data never leaves your device, ensuring complete privacy.</div></details>
+        <details class="faq-item"><summary class="faq-question">What quality setting should I use? <span class="faq-icon">+</span></summary><div class="faq-answer">For most use cases, 70–85% quality provides a good balance between file size reduction and visual quality. For web images where small file size is critical, 50–70% is often acceptable. For print or archival purposes, keep it at 90% or above.</div></details>
+        <details class="faq-item"><summary class="faq-question">Why might the compressed file be larger than the original? <span class="faq-icon">+</span></summary><div class="faq-answer">This can happen when converting a PNG to JPEG at high quality, or when the source image is already well-optimized. PNG is a lossless format and may produce a larger file than the original if the original was compressed with specialized tools.</div></details>
+        <details class="faq-item"><summary class="faq-question">Is there a maximum file size limit? <span class="faq-icon">+</span></summary><div class="faq-answer">There is no strict limit, but very large images (over 20 MB or higher than 8000×8000 pixels) may be slow to process or cause memory issues in some browsers. For best results, process images under 10 MB.</div></details>
+      </div>
+    </section>
+    <section class="related-tools">
+      <h2>Related Tools</h2>
+      <div class="tool-grid">
+        <a href="/image-converter/" class="tool-card"><img src="/assets/img/icon-image.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Image Converter</h3><p>Convert images between PNG, JPG, WebP, and more.</p><span class="tool-card-link">Try it →</span></a>
+        <a href="/qr-code-generator/" class="tool-card"><img src="/assets/img/icon-qr.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>QR Code Generator</h3><p>Generate QR codes for any text or URL instantly.</p><span class="tool-card-link">Try it →</span></a>
+        <a href="/pdf-compress/" class="tool-card"><img src="/assets/img/icon-pdf.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>PDF Compressor</h3><p>Reduce the size of your PDF files online for free.</p><span class="tool-card-link">Try it →</span></a>
+        <a href="/pdf-merge/" class="tool-card"><img src="/assets/img/icon-pdf.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>PDF Merge</h3><p>Combine multiple PDF files into one document.</p><span class="tool-card-link">Try it →</span></a>
+      </div>
+    </section>
+  </main>
+  <footer id="site-footer" class="site-footer"></footer>
+  <script src="/assets/js/shared.js" defer></script>
+  <script src="/assets/js/tools/image-compressor.js" defer></script>
+</body>
+</html>

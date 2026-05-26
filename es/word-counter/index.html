@@ -1,0 +1,136 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contador de Palabras Online Gratis | AnyConverter</title>
+  <meta name="description" content="Cuenta palabras, caracteres, frases y párrafos en tiempo real. Obtén el tiempo de lectura estimado para tu texto. Contador de palabras online gratuito, sin registro.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://anyconverter.io/es/word-counter/">
+  <link rel="alternate" hreflang="en" href="https://anyconverter.io/word-counter/">
+  <link rel="alternate" hreflang="es" href="https://anyconverter.io/es/word-counter/">
+  <link rel="alternate" hreflang="da" href="https://anyconverter.io/da/word-counter/">
+  <link rel="alternate" hreflang="x-default" href="https://anyconverter.io/word-counter/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Contador de Palabras Online Gratis | AnyConverter">
+  <meta property="og:description" content="Cuenta palabras, caracteres, frases y párrafos en tiempo real. Obtén el tiempo de lectura estimado para tu texto.">
+  <meta property="og:url" content="https://anyconverter.io/es/word-counter/">
+  <meta property="og:site_name" content="AnyConverter">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" data-ad-client="ca-pub-XXXXXXXXXX" crossorigin="anonymous"></script>
+  <!-- Replace ca-pub-XXXXXXXXXX with your real AdSense publisher ID -->
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Contador de Palabras","url":"https://anyconverter.io/es/word-counter/","description":"Cuenta palabras, caracteres, frases y párrafos en tiempo real.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F4F6FF);color:var(--color-text,#1E1B4B)}
+    body{min-height:100vh;display:flex;flex-direction:column}
+    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8FE)}
+    .header-inner{max-width:1280px;width:100%;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;gap:32px}
+    .hero{padding:40px 24px 32px;max-width:1280px;margin:0 auto}
+    .hero h1{font-size:clamp(1.75rem,4vw,2.25rem);font-weight:700;line-height:1.2;margin-bottom:12px}
+    .hero-desc{font-size:1.0625rem;color:var(--color-text-2,#6B7280);max-width:680px;line-height:1.6}
+    @font-face{font-family:'Inter';font-display:swap}
+  </style>
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+  <header id="site-header" class="site-header"></header>
+  <main id="main-content">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol><li><a href="/es/">Inicio</a></li><li aria-current="page">Contador de Palabras</li></ol>
+    </nav>
+    <section class="hero">
+      <h1>Contador de Palabras</h1>
+      <p class="hero-desc">Pega o escribe tu texto y al instante ve el recuento de palabras, caracteres, frases, párrafos y el tiempo de lectura estimado. Se actualiza en tiempo real mientras escribes, sin necesidad de botón.</p>
+    </section>
+    <div class="tool-wrapper">
+      <div class="tool-zone">
+        <div style="padding:24px">
+          <div style="margin-bottom:12px">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+              <label style="font-size:13px;font-weight:500" for="wc-input">Tu Texto</label>
+              <button class="btn btn-secondary btn-sm" id="btn-wc-clear">Limpiar</button>
+            </div>
+            <textarea id="wc-input" placeholder="Pega o escribe tu texto aquí..." style="width:100%;min-height:200px;padding:12px;border:1px solid var(--color-border,#DDD8FE);border-radius:8px;font-size:15px;resize:vertical;line-height:1.6" spellcheck="false"></textarea>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:10px">
+            <div class="stat-card"><div class="stat-val" id="wc-words">0</div><div class="stat-lbl">Palabras</div></div>
+            <div class="stat-card"><div class="stat-val" id="wc-chars">0</div><div class="stat-lbl">Caracteres</div></div>
+            <div class="stat-card"><div class="stat-val" id="wc-chars-no-space">0</div><div class="stat-lbl">Chars (sin espacios)</div></div>
+            <div class="stat-card"><div class="stat-val" id="wc-sentences">0</div><div class="stat-lbl">Frases</div></div>
+            <div class="stat-card"><div class="stat-val" id="wc-paragraphs">0</div><div class="stat-lbl">Párrafos</div></div>
+            <div class="stat-card"><div class="stat-val" id="wc-read-time">0 min</div><div class="stat-lbl">Tiempo de lectura</div></div>
+          </div>
+        </div>
+      </div>
+      <aside class="tool-side" aria-label="Opciones">
+        <div class="ss-divider">Herramientas relacionadas</div>
+        <a href="/es/qr-code-generator/" class="ss-related-link"><img src="/assets/img/icon-qr.svg" alt="" width="18" height="18" loading="lazy">Generador de Códigos QR</a>
+        <a href="/es/hash-generator/" class="ss-related-link"><img src="/assets/img/icon-hash.svg" alt="" width="18" height="18" loading="lazy">Generador de Hash</a>
+        <a href="/es/url-encoder/" class="ss-related-link"><img src="/assets/img/icon-url.svg" alt="" width="18" height="18" loading="lazy">Codificador de URL</a>
+        <div style="margin-top:16px">
+          <p class="ad-label">Publicidad</p>
+          <div class="ad-slot" style="min-height:250px">
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+            <!-- Replace ca-pub-XXXXXXXXXX and data-ad-slot="XXXXXXXXXX" with your IDs -->
+          </div>
+        </div>
+      </aside>
+    </div>
+    <div class="ad-slot ad-slot--leaderboard">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="how-to-use">
+      <h2>Cómo Usar el Contador de Palabras</h2>
+      <ol class="steps">
+        <li><strong>Paso 1</strong> — Pega o escribe tu texto en el área de texto grande en la parte superior de la herramienta.</li>
+        <li><strong>Paso 2</strong> — Todas las estadísticas se actualizan al instante mientras escribes: palabras, caracteres, frases, párrafos y tiempo de lectura.</li>
+        <li><strong>Paso 3</strong> — Haz clic en "Limpiar" para restablecer el área de texto y todos los contadores a cero.</li>
+      </ol>
+    </section>
+    <section class="features">
+      <h2>Características</h2>
+      <ul class="features-list">
+        <li>Recuento de palabras en tiempo real mientras escribes</li>
+        <li>Recuento total de caracteres incluyendo espacios</li>
+        <li>Recuento de caracteres sin espacios</li>
+        <li>Recuento de frases basado en la detección de puntuación</li>
+        <li>Recuento de párrafos basado en líneas en blanco</li>
+        <li>Tiempo de lectura estimado a 200 palabras por minuto</li>
+        <li>Ningún dato se envía a un servidor — funciona totalmente sin conexión</li>
+      </ul>
+    </section>
+    <div class="ad-slot ad-slot--rectangle" style="margin:0 auto 32px">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="faq">
+      <h2>Preguntas Frecuentes</h2>
+      <div class="faq-list">
+        <details class="faq-item"><summary class="faq-question">¿Cómo se cuentan las palabras? <span class="faq-icon">+</span></summary><div class="faq-answer">Las palabras se cuentan dividiendo el texto por espacios en blanco (espacios, tabulaciones, saltos de línea). Los espacios consecutivos cuentan como un único separador. Una entrada vacía o solo con espacios devuelve un recuento de cero palabras.</div></details>
+        <details class="faq-item"><summary class="faq-question">¿Cómo se estima el tiempo de lectura? <span class="faq-icon">+</span></summary><div class="faq-answer">El tiempo de lectura se calcula dividiendo el recuento de palabras entre 200 palabras por minuto, que es la velocidad media de lectura de un adulto. El resultado se redondea al minuto entero más cercano.</div></details>
+        <details class="faq-item"><summary class="faq-question">¿Cómo se detectan las frases? <span class="faq-icon">+</span></summary><div class="faq-answer">Las frases se cuentan detectando los signos de puntuación que normalmente terminan una frase: puntos (.), signos de exclamación (!) y signos de interrogación (?). Las abreviaturas y los números decimales pueden afectar ligeramente el recuento.</div></details>
+        <details class="faq-item"><summary class="faq-question">¿Cómo se cuentan los párrafos? <span class="faq-icon">+</span></summary><div class="faq-answer">Los párrafos se detectan dividiendo el texto en una o más líneas en blanco (dobles saltos de línea). Los saltos de línea simples dentro de un bloque de texto no se cuentan como un nuevo párrafo.</div></details>
+        <details class="faq-item"><summary class="faq-question">¿Hay un límite de caracteres? <span class="faq-icon">+</span></summary><div class="faq-answer">Esta herramienta no impone un límite estricto de caracteres. Sin embargo, los textos muy grandes pueden ralentizar la actualización en tiempo real en algunos navegadores. La herramienta funciona completamente en tu navegador.</div></details>
+      </div>
+    </section>
+    <section class="related-tools">
+      <h2>Herramientas Relacionadas</h2>
+      <div class="tool-grid">
+        <a href="/es/qr-code-generator/" class="tool-card"><img src="/assets/img/icon-qr.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Generador de Códigos QR</h3><p>Genera códigos QR para cualquier texto o URL al instante.</p><span class="tool-card-link">Usar →</span></a>
+        <a href="/es/hash-generator/" class="tool-card"><img src="/assets/img/icon-hash.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Generador de Hash</h3><p>Genera hashes MD5, SHA-1, SHA-256 de cualquier texto.</p><span class="tool-card-link">Usar →</span></a>
+        <a href="/es/url-encoder/" class="tool-card"><img src="/assets/img/icon-url.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Codificador de URL</h3><p>Codifica y decodifica URLs y cadenas de consulta.</p><span class="tool-card-link">Usar →</span></a>
+        <a href="/es/base64-encoder/" class="tool-card"><img src="/assets/img/icon-hash.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Codificador Base64</h3><p>Codifica y decodifica texto y archivos en Base64.</p><span class="tool-card-link">Usar →</span></a>
+      </div>
+    </section>
+  </main>
+  <footer id="site-footer" class="site-footer"></footer>
+  <script src="/assets/js/shared.js" defer></script>
+  <script src="/assets/js/tools/word-counter.js" defer></script>
+</body>
+</html>

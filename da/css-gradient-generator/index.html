@@ -1,0 +1,154 @@
+﻿<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS Gradient Generator Online Gratis | AnyConverter</title>
+  <meta name="description" content="Opret smukke CSS-gradienter online gratis. Design lineære og radiale gradienter med tilpassede farver og stop. Kopier den klar-til-brug CSS-kode øjeblikkeligt. Ingen tilmelding.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://anyconverter.io/da/css-gradient-generator/">
+  <link rel="alternate" hreflang="en" href="https://anyconverter.io/css-gradient-generator/">
+  <link rel="alternate" hreflang="es" href="https://anyconverter.io/es/css-gradient-generator/">
+  <link rel="alternate" hreflang="da" href="https://anyconverter.io/da/css-gradient-generator/">
+  <link rel="alternate" hreflang="x-default" href="https://anyconverter.io/css-gradient-generator/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="CSS Gradient Generator Online Gratis | AnyConverter">
+  <meta property="og:description" content="Opret smukke CSS-gradienter online gratis. Design lineære og radiale gradienter med tilpassede farver og stop. Kopier den klar-til-brug CSS-kode øjeblikkeligt.">
+  <meta property="og:url" content="https://anyconverter.io/da/css-gradient-generator/">
+  <meta property="og:site_name" content="AnyConverter">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" data-ad-client="ca-pub-XXXXXXXXXX" crossorigin="anonymous"></script>
+  <!-- Replace ca-pub-XXXXXXXXXX with your real AdSense publisher ID -->
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"CSS Gradient Generator","url":"https://anyconverter.io/da/css-gradient-generator/","description":"Opret smukke CSS-gradienter online gratis. Design lineære og radiale gradienter med tilpassede farver og stop.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F4F6FF);color:var(--color-text,#1E1B4B)}
+    body{min-height:100vh;display:flex;flex-direction:column}
+    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8FE)}
+    .header-inner{max-width:1280px;width:100%;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;gap:32px}
+    .hero{padding:40px 24px 32px;max-width:1280px;margin:0 auto}
+    .hero h1{font-size:clamp(1.75rem,4vw,2.25rem);font-weight:700;line-height:1.2;margin-bottom:12px}
+    .hero-desc{font-size:1.0625rem;color:var(--color-text-2,#6B7280);max-width:680px;line-height:1.6}
+    @font-face{font-family:'Inter';font-display:swap}
+  </style>
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+  <header id="site-header" class="site-header"></header>
+  <main id="main-content">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol><li><a href="/da/">Hjem</a></li><li aria-current="page">CSS Gradient Generator</li></ol>
+    </nav>
+    <section class="hero">
+      <h1>CSS Gradient Generator</h1>
+      <p class="hero-desc">Design lineære og radiale CSS-gradienter visuelt. Tilføj flere farvestop, juster vinklen og kopier den klar-til-brug CSS-kode.</p>
+    </section>
+    <div class="tool-wrapper">
+      <div class="tool-zone">
+        <div style="padding:24px">
+          <div class="action-bar" style="margin-bottom:16px">
+            <button class="btn btn-primary btn-sm" id="grad-type-linear">Lineær</button>
+            <button class="btn btn-secondary btn-sm" id="grad-type-radial">Radial</button>
+          </div>
+          <div id="grad-angle-row" style="margin-bottom:16px;display:flex;align-items:center;gap:12px">
+            <label style="font-size:13px;font-weight:500;white-space:nowrap">Vinkel</label>
+            <input type="range" id="grad-angle" min="0" max="360" value="90" style="flex:1;accent-color:var(--color-primary,#4F46E5)">
+            <span id="grad-angle-val" style="font-size:13px;min-width:32px">90</span><span style="font-size:13px">°</span>
+          </div>
+          <div style="margin-bottom:12px">
+            <div style="font-size:13px;font-weight:500;margin-bottom:8px">Farvestop</div>
+            <div id="grad-stops" style="display:flex;flex-direction:column;gap:8px">
+              <div class="grad-stop" style="display:flex;align-items:center;gap:8px">
+                <input type="color" class="stop-color" value="var(--color-primary,#4F46E5)" style="width:40px;height:36px;border:none;border-radius:6px;cursor:pointer">
+                <input type="range" class="stop-pos" min="0" max="100" value="0" style="flex:1;accent-color:var(--color-primary,#4F46E5)">
+                <span class="stop-pos-val" style="width:36px;font-size:13px;text-align:right">0%</span>
+                <button class="btn btn-secondary btn-sm stop-remove" style="padding:4px 8px">×</button>
+              </div>
+              <div class="grad-stop" style="display:flex;align-items:center;gap:8px">
+                <input type="color" class="stop-color" value="var(--color-convert,#06B6D4)" style="width:40px;height:36px;border:none;border-radius:6px;cursor:pointer">
+                <input type="range" class="stop-pos" min="0" max="100" value="100" style="flex:1;accent-color:var(--color-primary,#4F46E5)">
+                <span class="stop-pos-val" style="width:36px;font-size:13px;text-align:right">100%</span>
+                <button class="btn btn-secondary btn-sm stop-remove" style="padding:4px 8px">×</button>
+              </div>
+            </div>
+            <button class="btn btn-secondary btn-sm" id="btn-add-stop" style="margin-top:8px">+ Tilføj Stop</button>
+          </div>
+          <div id="gradient-preview" style="height:120px;border-radius:12px;margin-bottom:16px;background:linear-gradient(90deg,var(--color-primary) 0%,var(--color-convert,#06B6D4) 100%)"></div>
+          <div>
+            <label style="display:block;font-size:13px;font-weight:500;margin-bottom:6px">CSS Kode</label>
+            <textarea id="grad-css-output" readonly style="width:100%;height:60px;padding:10px 12px;border:1px solid var(--color-border,#DDD8FE);border-radius:8px;font-family:'JetBrains Mono',monospace;font-size:13px;background:var(--color-bg,#F4F6FF);resize:none"></textarea>
+          </div>
+          <div class="action-bar" style="margin-top:12px">
+            <button class="btn btn-primary" id="btn-copy-grad">Kopier CSS</button>
+          </div>
+        </div>
+      </div>
+      <aside class="tool-side" aria-label="Muligheder">
+        <div class="ss-divider">Relaterede værktøjer</div>
+        <a href="/da/character-counter/" class="ss-related-link"><img src="/assets/img/icon-text.svg" alt="" width="18" height="18" loading="lazy">Tegntæller</a>
+        <a href="/da/fancy-text-generator/" class="ss-related-link"><img src="/assets/img/icon-text.svg" alt="" width="18" height="18" loading="lazy">Fancy Tekst Generator</a>
+        <a href="/da/color-converter/" class="ss-related-link"><img src="/assets/img/icon-text.svg" alt="" width="18" height="18" loading="lazy">Farvekonverter</a>
+        <div style="margin-top:16px">
+          <p class="ad-label">Reklame</p>
+          <div class="ad-slot" style="min-height:250px">
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+            <!-- Replace ca-pub-XXXXXXXXXX and data-ad-slot="XXXXXXXXXX" with your IDs -->
+          </div>
+        </div>
+      </aside>
+    </div>
+    <div class="ad-slot ad-slot--leaderboard">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="how-to-use">
+      <h2>Sådan bruges CSS Gradient Generator</h2>
+      <ol class="steps">
+        <li><strong>Trin 1</strong> — Vælg Lineær eller Radial gradienttype.</li>
+        <li><strong>Trin 2</strong> — Indstil vinklen (for lineær) og juster farvestop med farvevælgerne og skyderne.</li>
+        <li><strong>Trin 3</strong> — Kopier den genererede CSS-kode og indsæt den i dit stylesheet.</li>
+      </ol>
+    </section>
+    <section class="features">
+      <h2>Funktioner</h2>
+      <ul class="features-list">
+        <li>Visuel gradientforhåndsvisning opdateres i realtid</li>
+        <li>Lineære og radiale gradienttyper</li>
+        <li>Tilføj op til 10 farvestop</li>
+        <li>Juster vinklen fra 0° til 360° for lineære gradienter</li>
+        <li>Genereret CSS er klar til kopiering og browserkompatibel</li>
+        <li>Ingen serveroverførsel — fuldt klientbaseret</li>
+      </ul>
+    </section>
+    <div class="ad-slot ad-slot--rectangle" style="margin:0 auto 32px">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="faq">
+      <h2>Ofte stillede spørgsmål</h2>
+      <div class="faq-list">
+        <details class="faq-item"><summary class="faq-question">Hvilke browsere understøtter CSS-gradienter? <span class="faq-icon">+</span></summary><div class="faq-answer">Alle moderne browsere (Chrome, Firefox, Safari, Edge) understøtter fuldt ud CSS-gradienter uden nogen leverandørpræfikser. Internet Explorer 10+ understøtter dem også med -ms- præfikset, men dette værktøj genererer standard CSS, der fungerer i alle moderne browsere.</div></details>
+        <details class="faq-item"><summary class="faq-question">Hvad er et farvestop? <span class="faq-icon">+</span></summary><div class="faq-answer">Et farvestop definerer, hvor en bestemt farve vises langs gradienten. Hvert stop har en farve og en position (0%–100%). Browseren interpolerer jævnt mellem stop.</div></details>
+        <details class="faq-item"><summary class="faq-question">Hvordan bruger jeg CSS'en i mit projekt? <span class="faq-icon">+</span></summary><div class="faq-answer">Kopier den genererede CSS og brug den som værdien for egenskaben `background` eller `background-image` i din CSS-fil: `background: linear-gradient(90deg, var(--color-primary,#4F46E5) 0%, var(--color-convert,#06B6D4) 100%);`</div></details>
+        <details class="faq-item"><summary class="faq-question">Kan jeg lave transparente gradienter? <span class="faq-icon">+</span></summary><div class="faq-answer">Ja. Brug en farvevælger, der understøtter transparens, eller rediger manuelt den genererede CSS til at bruge rgba() farveværdier med en alfakanal.</div></details>
+      </div>
+    </section>
+    <section class="related-tools">
+      <h2>Relaterede Værktøjer</h2>
+      <div class="tool-grid">
+        <a href="/da/character-counter/" class="tool-card"><img src="/assets/img/icon-text.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Tegntæller</h3><p>Tæl tegn, ord, linjer og bytes i din tekst øjeblikkeligt.</p><span class="tool-card-link">Brug →</span></a>
+        <a href="/da/fancy-text-generator/" class="tool-card"><img src="/assets/img/icon-text.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Fancy Tekst Generator</h3><p>Transformer tekst til 11 Unicode-stilarter — fed, kursiv, script og mere.</p><span class="tool-card-link">Brug →</span></a>
+        <a href="/da/color-converter/" class="tool-card"><img src="/assets/img/icon-text.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Farvekonverter</h3><p>Konverter farver mellem HEX, RGB, HSL og andre formater.</p><span class="tool-card-link">Brug →</span></a>
+        <a href="/da/base64-encoder/" class="tool-card"><img src="/assets/img/icon-base64.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Base64 Encoder</h3><p>Encode og decode Base64-strenge øjeblikkeligt i din browser.</p><span class="tool-card-link">Brug →</span></a>
+      </div>
+    </section>
+  </main>
+  <footer id="site-footer" class="site-footer"></footer>
+  <script src="/assets/js/shared.js" defer></script>
+  <script src="/assets/js/tools/css-gradient-generator.js" defer></script>
+</body>
+</html>

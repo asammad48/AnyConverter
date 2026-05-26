@@ -1,0 +1,169 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HTML Beautifier &amp; Minifier Online Free | AnyConverter</title>
+  <meta name="description" content="Beautify or minify HTML code instantly online. Paste your HTML and get properly formatted or minified output in one click. Free, no signup, runs in your browser.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://anyconverter.io/html-beautifier/">
+  <link rel="alternate" hreflang="en" href="https://anyconverter.io/html-beautifier/">
+  <link rel="alternate" hreflang="es" href="https://anyconverter.io/es/html-beautifier/">
+  <link rel="alternate" hreflang="da" href="https://anyconverter.io/da/html-beautifier/">
+  <link rel="alternate" hreflang="x-default" href="https://anyconverter.io/html-beautifier/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="HTML Beautifier &amp; Minifier Online Free | AnyConverter">
+  <meta property="og:description" content="Beautify or minify HTML code instantly online. Paste your HTML and get properly formatted or minified output in one click. Free, no signup, runs in your browser.">
+  <meta property="og:url" content="https://anyconverter.io/html-beautifier/">
+  <meta property="og:site_name" content="AnyConverter">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" data-ad-client="ca-pub-XXXXXXXXXX" crossorigin="anonymous"></script>
+  <!-- Replace ca-pub-XXXXXXXXXX with your real AdSense publisher ID -->
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"HTML Beautifier & Minifier","url":"https://anyconverter.io/html-beautifier/","description":"Beautify or minify HTML code instantly online. Paste your HTML and get properly formatted or minified output in one click.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F4F6FF);color:var(--color-text,#1E1B4B)}
+    body{min-height:100vh;display:flex;flex-direction:column}
+    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8FE)}
+    .header-inner{max-width:1280px;width:100%;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;gap:32px}
+    .hero{padding:40px 24px 32px;max-width:1280px;margin:0 auto}
+    .hero h1{font-size:clamp(1.75rem,4vw,2.25rem);font-weight:700;line-height:1.2;margin-bottom:12px}
+    .hero-desc{font-size:1.0625rem;color:var(--color-text-2,#6B7280);max-width:680px;line-height:1.6}
+    @font-face{font-family:'Inter';font-display:swap}
+  </style>
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+  <header id="site-header" class="site-header"></header>
+  <main id="main-content">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol><li><a href="/">Home</a></li><li aria-current="page">HTML Beautifier &amp; Minifier</li></ol>
+    </nav>
+    <section class="hero">
+      <h1>HTML Beautifier &amp; Minifier</h1>
+      <p class="hero-desc">Format messy HTML into clean, indented code or compress it to a single line. Handles nested tags, void elements, and inline elements correctly. Instant results, no server upload.</p>
+    </section>
+    <div class="tool-wrapper">
+      <div class="tool-zone">
+        <div style="padding:24px">
+          <div class="action-bar" style="margin-bottom:16px">
+            <button class="btn btn-primary btn-sm" id="html-mode-beautify">Beautify</button>
+            <button class="btn btn-secondary btn-sm" id="html-mode-minify">Minify</button>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+            <div>
+              <label style="display:block;font-size:13px;font-weight:500;margin-bottom:6px">HTML Input</label>
+              <textarea id="html-input" placeholder="Paste your HTML here..." style="width:100%;height:300px;padding:12px;border:1px solid var(--color-border,#DDD8FE);border-radius:8px;font-family:'JetBrains Mono',monospace;font-size:13px;resize:vertical"></textarea>
+            </div>
+            <div>
+              <label style="display:block;font-size:13px;font-weight:500;margin-bottom:6px">Output</label>
+              <textarea id="html-output" readonly style="width:100%;height:300px;padding:12px;border:1px solid var(--color-border,#DDD8FE);border-radius:8px;font-family:'JetBrains Mono',monospace;font-size:13px;resize:vertical;background:var(--color-bg,#F4F6FF)"></textarea>
+            </div>
+          </div>
+          <div class="action-bar" style="margin-top:12px">
+            <button class="btn btn-primary" id="btn-html-process">Process</button>
+            <button class="btn btn-secondary" id="btn-html-sample">Load Sample</button>
+            <button class="btn btn-secondary" id="btn-html-copy">Copy Output</button>
+            <button class="btn btn-secondary" id="btn-html-clear">Clear</button>
+          </div>
+        </div>
+      </div>
+      <aside class="tool-side" aria-label="Options">
+        <div class="ss-divider">Related Tools</div>
+        <a class="related-link" href="/json-to-yaml/"><img src="/assets/img/icon-text.svg" width="16" height="16" loading="lazy" alt=""> JSON to YAML</a>
+        <a class="related-link" href="/cron-expression-parser/"><img src="/assets/img/icon-timer.svg" width="16" height="16" loading="lazy" alt=""> Cron Parser</a>
+        <a class="related-link" href="/word-counter/"><img src="/assets/img/icon-text.svg" width="16" height="16" loading="lazy" alt=""> Word Counter</a>
+        <div style="margin-top:16px">
+          <p class="ad-label">Advertisement</p>
+          <div class="ad-slot" style="min-height:250px">
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+            <!-- Replace ca-pub-XXXXXXXXXX and data-ad-slot="XXXXXXXXXX" with your IDs -->
+          </div>
+        </div>
+      </aside>
+    </div>
+    <div class="ad-slot ad-slot--leaderboard">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="how-to-use">
+      <h2>How to Use HTML Beautifier &amp; Minifier</h2>
+      <ol class="steps">
+        <li>Choose "Beautify" to format HTML with indentation, or "Minify" to compress it.</li>
+        <li>Paste your HTML code into the left panel, or click "Load Sample" to try an example.</li>
+        <li>The formatted or minified output appears in the right panel. Click "Copy Output" to copy it.</li>
+      </ol>
+    </section>
+    <section class="features">
+      <h2>Features</h2>
+      <ul class="features-list">
+        <li>Beautify HTML with proper 2-space indentation</li>
+        <li>Minify HTML by removing whitespace and comments</li>
+        <li>Handles void elements (br, img, input) and inline elements correctly</li>
+        <li>Processes nested elements to any depth</li>
+        <li>Load a sample HTML snippet for quick testing</li>
+        <li>No server upload — runs entirely in your browser</li>
+      </ul>
+    </section>
+    <div class="ad-slot ad-slot--rectangle" style="margin:0 auto 32px">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="faq">
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary>What does HTML beautify do?</summary>
+          <p>HTML beautification reformats compressed or poorly indented HTML into a clean, readable structure with consistent indentation. It makes code easier to read and edit by adding proper line breaks and indentation for nested elements.</p>
+        </details>
+        <details class="faq-item">
+          <summary>What does HTML minify do?</summary>
+          <p>HTML minification removes unnecessary whitespace, line breaks, and comments from your HTML, reducing file size. Smaller HTML files load faster, which can improve page performance and Core Web Vitals scores.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Does minification break my HTML?</summary>
+          <p>No — whitespace between block elements is insignificant in HTML. However, whitespace between inline elements (like &lt;span&gt; or &lt;a&gt;) can sometimes affect layout. The minifier handles inline elements conservatively to avoid layout issues.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Are HTML comments removed when minifying?</summary>
+          <p>Yes. HTML comments are removed during minification to reduce file size. If you need to keep certain comments (like IE conditional comments), consider using a dedicated build-tool minifier that supports comment preservation options.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Is my HTML sent to a server?</summary>
+          <p>No. This tool runs entirely in your browser using vanilla JavaScript. Your HTML is never uploaded anywhere and remains completely private on your device.</p>
+        </details>
+      </div>
+    </section>
+    <section class="related-tools">
+      <h2>Related Tools</h2>
+      <div class="tool-grid">
+        <a class="tool-card" href="/json-to-yaml/">
+          <img src="/assets/img/icon-text.svg" width="32" height="32" loading="lazy" alt="JSON to YAML icon">
+          <h3>JSON to YAML</h3>
+          <p>Convert JSON to YAML and back</p>
+          <span class="tool-card-cta">Try it →</span>
+        </a>
+        <a class="tool-card" href="/cron-expression-parser/">
+          <img src="/assets/img/icon-timer.svg" width="32" height="32" loading="lazy" alt="Cron Parser icon">
+          <h3>Cron Parser</h3>
+          <p>Decode cron expressions into plain English</p>
+          <span class="tool-card-cta">Try it →</span>
+        </a>
+        <a class="tool-card" href="/word-counter/">
+          <img src="/assets/img/icon-text.svg" width="32" height="32" loading="lazy" alt="Word Counter icon">
+          <h3>Word Counter</h3>
+          <p>Count words, characters, and sentences</p>
+          <span class="tool-card-cta">Try it →</span>
+        </a>
+      </div>
+    </section>
+  </main>
+  <footer id="site-footer" class="site-footer"></footer>
+  <script src="/assets/js/shared.js" defer></script>
+  <script src="/assets/js/tools/html-beautifier.js" defer></script>
+</body>
+</html>

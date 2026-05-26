@@ -1,0 +1,132 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Comprobador de Tamaño de Ventana Online Gratis | AnyConverter</title>
+  <meta name="description" content="Comprueba las dimensiones de tu ventana del navegador, resolución de pantalla, relación de píxeles del dispositivo, orientación y punto de quiebre CSS al instante. Se actualiza en vivo.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://anyconverter.io/es/viewport-size/">
+  <link rel="alternate" hreflang="en" href="https://anyconverter.io/viewport-size/">
+  <link rel="alternate" hreflang="es" href="https://anyconverter.io/es/viewport-size/">
+  <link rel="alternate" hreflang="da" href="https://anyconverter.io/da/viewport-size/">
+  <link rel="alternate" hreflang="x-default" href="https://anyconverter.io/viewport-size/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Comprobador de Tamaño de Ventana Online Gratis | AnyConverter">
+  <meta property="og:description" content="Comprueba el ancho, alto, resolución de pantalla, DPR, orientación y punto de quiebre CSS de tu ventana. Se actualiza en vivo al redimensionar.">
+  <meta property="og:url" content="https://anyconverter.io/es/viewport-size/">
+  <meta property="og:site_name" content="AnyConverter">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" data-ad-client="ca-pub-XXXXXXXXXX" crossorigin="anonymous"></script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Comprobador de Tamaño de Ventana","url":"https://anyconverter.io/es/viewport-size/","description":"Comprueba el tamaño de la ventana, resolución de pantalla, relación de píxeles del dispositivo y puntos de quiebre CSS en vivo en tu navegador.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F4F6FF);color:var(--color-text,#1E1B4B)}
+    body{min-height:100vh;display:flex;flex-direction:column}
+    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8FE)}
+    .header-inner{max-width:1280px;width:100%;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;gap:32px}
+    .hero{padding:40px 24px 32px;max-width:1280px;margin:0 auto}
+    .hero h1{font-size:clamp(1.75rem,4vw,2.25rem);font-weight:700;line-height:1.2;margin-bottom:12px}
+    .hero-desc{font-size:1.0625rem;color:var(--color-text-2,#6B7280);max-width:680px;line-height:1.6}
+    @font-face{font-family:'Inter';font-display:swap}
+    .vp-hero-display{text-align:center;background:linear-gradient(135deg,var(--color-primary),var(--color-primary-alt));border-radius:16px;padding:32px 24px;margin-bottom:20px;color:var(--color-surface,#fff)}
+    .vp-big{font-size:3rem;font-weight:700;letter-spacing:-1px;line-height:1}
+    .vp-label{font-size:14px;opacity:.8;margin-top:6px}
+    .vp-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+    @media(min-width:480px){.vp-grid{grid-template-columns:repeat(3,1fr)}}
+    .vp-card{background:var(--color-surface-2,#EEF1FF);border-radius:10px;padding:16px;text-align:center}
+    .vp-card-val{font-size:1.1rem;font-weight:700;color:var(--color-primary,#4F46E5)}
+    .vp-card-label{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.5px;color:var(--color-text-2,#6B7280);margin-top:4px}
+  </style>
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+  <header id="site-header" class="site-header"></header>
+  <main id="main-content">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol><li><a href="/es/">Inicio</a></li><li aria-current="page">Comprobador de Tamaño de Ventana</li></ol>
+    </nav>
+    <section class="hero">
+      <h1>Comprobador de Tamaño de Ventana</h1>
+      <p class="hero-desc">Ve las dimensiones actuales de tu ventana del navegador, resolución de pantalla, relación de píxeles del dispositivo, orientación, punto de quiebre CSS y tamaño en píxeles físicos — actualizado en vivo al redimensionar.</p>
+    </section>
+    <div class="tool-wrapper">
+      <div class="tool-zone">
+        <div style="padding:24px">
+          <div class="vp-hero-display">
+            <div class="vp-big" id="vp-size">— × —</div>
+            <div class="vp-label">Ancho × Alto de la Ventana (px)</div>
+          </div>
+          <div class="vp-grid">
+            <div class="vp-card"><div class="vp-card-val" id="vp-width">—</div><div class="vp-card-label">Ancho</div></div>
+            <div class="vp-card"><div class="vp-card-val" id="vp-height">—</div><div class="vp-card-label">Alto</div></div>
+            <div class="vp-card"><div class="vp-card-val" id="vp-ratio">—</div><div class="vp-card-label">Relación de Aspecto</div></div>
+            <div class="vp-card"><div class="vp-card-val" id="scr-width">—</div><div class="vp-card-label">Ancho de Pantalla</div></div>
+            <div class="vp-card"><div class="vp-card-val" id="scr-height">—</div><div class="vp-card-label">Alto de Pantalla</div></div>
+            <div class="vp-card"><div class="vp-card-val" id="vp-dpr">—</div><div class="vp-card-label">Ratio de Píxeles</div></div>
+            <div class="vp-card"><div class="vp-card-val" id="vp-orient">—</div><div class="vp-card-label">Orientación</div></div>
+            <div class="vp-card"><div class="vp-card-val" id="vp-bp" style="font-size:.85rem">—</div><div class="vp-card-label">Punto de Quiebre CSS</div></div>
+            <div class="vp-card"><div class="vp-card-val" id="vp-phys" style="font-size:.85rem">—</div><div class="vp-card-label">Píxeles Físicos</div></div>
+          </div>
+          <div style="margin-top:16px;text-align:right">
+            <button class="btn btn-primary btn-sm" id="vp-copy">Copiar</button>
+          </div>
+        </div>
+      </div>
+      <aside class="tool-side" aria-label="Opciones">
+        <div class="ss-divider">Herramientas Relacionadas</div>
+        <a href="/es/browser-info/" class="ss-related-link"><img src="/assets/img/icon-browser.svg" alt="" width="18" height="18" loading="lazy">Visor de Info del Navegador</a>
+        <a href="/es/aspect-ratio-calculator/" class="ss-related-link"><img src="/assets/img/icon-calculator.svg" alt="" width="18" height="18" loading="lazy">Calculadora de Relación de Aspecto</a>
+        <div style="margin-top:16px">
+          <p class="ad-label">Publicidad</p>
+          <div class="ad-slot" style="min-height:250px">
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+          </div>
+        </div>
+      </aside>
+    </div>
+    <div class="ad-slot ad-slot--leaderboard">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="how-to-use">
+      <h2>Cómo Usar el Comprobador de Ventana</h2>
+      <ol class="steps">
+        <li>Las dimensiones de tu ventana aparecen al instante cuando se carga la página.</li>
+        <li>Redimensiona la ventana del navegador — todos los valores se actualizan en tiempo real.</li>
+        <li>La tarjeta de Punto de Quiebre CSS muestra en qué breakpoint de Bootstrap/Tailwind estás.</li>
+        <li>Haz clic en <strong>Copiar</strong> para copiar todos los valores como texto.</li>
+      </ol>
+    </section>
+    <section class="features">
+      <h2>Características</h2>
+      <ul class="features-list">
+        <li>Ancho y alto de ventana en vivo — se actualiza en cada redimensionamiento</li>
+        <li>Resolución de pantalla y relación de píxeles del dispositivo</li>
+        <li>Punto de quiebre CSS actual (xs/sm/md/lg/xl/xxl)</li>
+        <li>Dimensiones en píxeles físicos (ventana × DPR)</li>
+        <li>Relación de aspecto y detección de orientación</li>
+        <li>Copia todos los valores con un clic</li>
+      </ul>
+    </section>
+    <div class="ad-slot ad-slot--rectangle" style="margin:0 auto 32px">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="faq">
+      <h2>Preguntas Frecuentes</h2>
+      <div class="faq-list">
+        <details class="faq-item"><summary class="faq-question">¿Cuál es la diferencia entre ventana y resolución de pantalla? <span class="faq-icon">+</span></summary><div class="faq-answer">La resolución de pantalla es el número físico de píxeles de todo el monitor (por ejemplo, 1920×1080). La ventana es el área visible dentro de tu ventana del navegador — cambia al redimensionar la ventana o cuando aparecen barras de desplazamiento. La ventana siempre es menor o igual a la resolución de pantalla.</div></details>
+        <details class="faq-item"><summary class="faq-question">¿Qué es la Relación de Píxeles del Dispositivo (DPR)? <span class="faq-icon">+</span></summary><div class="faq-answer">DPR es cuántos píxeles físicos forman un píxel CSS. Las pantallas Retina/HiDPI tienen un DPR de 2 o superior, lo que significa 4× más píxeles físicos por píxel CSS. Por eso las imágenes de alta resolución se ven más nítidas en pantallas Retina.</div></details>
+      </div>
+    </section>
+  </main>
+  <footer id="site-footer" class="site-footer"></footer>
+  <script src="/assets/js/shared.js" defer></script>
+  <script src="/assets/js/tools/viewport-size.js" defer></script>
+</body>
+</html>

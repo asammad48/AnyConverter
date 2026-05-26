@@ -1,0 +1,181 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aspect Ratio Calculator Online Free | AnyConverter</title>
+  <meta name="description" content="Calculate aspect ratios and scale dimensions while preserving the ratio. Convert any width/height pair, use preset ratios (16:9, 4:3, 1:1), and get the scaled result instantly.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://anyconverter.io/aspect-ratio-calculator/">
+  <link rel="alternate" hreflang="en" href="https://anyconverter.io/aspect-ratio-calculator/">
+  <link rel="alternate" hreflang="es" href="https://anyconverter.io/es/aspect-ratio-calculator/">
+  <link rel="alternate" hreflang="da" href="https://anyconverter.io/da/aspect-ratio-calculator/">
+  <link rel="alternate" hreflang="x-default" href="https://anyconverter.io/aspect-ratio-calculator/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Aspect Ratio Calculator Online Free | AnyConverter">
+  <meta property="og:description" content="Calculate aspect ratios, scale dimensions, and find missing width or height. Free, instant, no signup.">
+  <meta property="og:url" content="https://anyconverter.io/aspect-ratio-calculator/">
+  <meta property="og:site_name" content="AnyConverter">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" data-ad-client="ca-pub-XXXXXXXXXX" crossorigin="anonymous"></script>
+  <!-- Replace ca-pub-XXXXXXXXXX with your real AdSense publisher ID -->
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Aspect Ratio Calculator","url":"https://anyconverter.io/aspect-ratio-calculator/","description":"Calculate aspect ratios, scale image or video dimensions while preserving the ratio.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F4F6FF);color:var(--color-text,#1E1B4B)}
+    body{min-height:100vh;display:flex;flex-direction:column}
+    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8FE)}
+    .header-inner{max-width:1280px;width:100%;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;gap:32px}
+    .hero{padding:40px 24px 32px;max-width:1280px;margin:0 auto}
+    .hero h1{font-size:clamp(1.75rem,4vw,2.25rem);font-weight:700;line-height:1.2;margin-bottom:12px}
+    .hero-desc{font-size:1.0625rem;color:var(--color-text-2,#6B7280);max-width:680px;line-height:1.6}
+    #ar-preview-box{background:var(--color-primary-light,#EEF2FF);border:2px dashed var(--color-primary,#4F46E5);border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;color:var(--color-primary,#4F46E5);transition:all .3s;min-width:40px;min-height:20px}
+    @font-face{font-family:'Inter';font-display:swap}
+  </style>
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+  <header id="site-header" class="site-header"></header>
+  <main id="main-content">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol><li><a href="/">Home</a></li><li aria-current="page">Aspect Ratio Calculator</li></ol>
+    </nav>
+    <section class="hero">
+      <h1>Aspect Ratio Calculator</h1>
+      <p class="hero-desc">Instantly calculate the aspect ratio from any width and height. Scale dimensions to a new size while preserving the ratio, and use popular presets like 16:9, 4:3, and more.</p>
+    </section>
+    <div class="tool-wrapper">
+      <div class="tool-zone">
+        <div style="padding:24px">
+          <!-- Find ratio -->
+          <div style="padding:18px;border:1px solid var(--color-border,#DDD8FE);border-radius:12px;margin-bottom:20px">
+            <h3 style="font-size:14px;font-weight:600;margin-bottom:14px">Find Aspect Ratio</h3>
+            <div style="display:flex;align-items:flex-end;gap:10px;flex-wrap:wrap;margin-bottom:12px">
+              <div>
+                <label style="display:block;font-size:12px;font-weight:500;margin-bottom:5px" for="ar-width">Width (px)</label>
+                <input type="number" id="ar-width" placeholder="1920" style="width:120px;padding:9px 11px;border:1px solid var(--color-border,#DDD8FE);border-radius:7px;font-size:14px">
+              </div>
+              <span style="font-size:20px;font-weight:700;padding-bottom:8px">×</span>
+              <div>
+                <label style="display:block;font-size:12px;font-weight:500;margin-bottom:5px" for="ar-height">Height (px)</label>
+                <input type="number" id="ar-height" placeholder="1080" style="width:120px;padding:9px 11px;border:1px solid var(--color-border,#DDD8FE);border-radius:7px;font-size:14px">
+              </div>
+              <button class="btn btn-primary" id="ar-calc-btn">Calculate</button>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px">
+              <div class="stat-card"><div class="stat-val" id="ar-ratio-out" style="font-size:20px">—</div><div class="stat-lbl">Ratio</div></div>
+              <div class="stat-card"><div class="stat-val" id="ar-decimal-out" style="font-size:18px">—</div><div class="stat-lbl">Decimal</div></div>
+              <div class="stat-card" style="display:flex;align-items:center;justify-content:center">
+                <div id="ar-preview-box" style="width:80px;height:45px">—</div>
+              </div>
+            </div>
+          </div>
+          <!-- Scale dimensions -->
+          <div style="padding:18px;border:1px solid var(--color-border,#DDD8FE);border-radius:12px;margin-bottom:20px">
+            <h3 style="font-size:14px;font-weight:600;margin-bottom:6px">Scale Dimensions</h3>
+            <p style="font-size:12px;color:var(--color-text-2,#6B7280);margin-bottom:12px">Enter a ratio and one dimension to find the other</p>
+            <div style="margin-bottom:10px">
+              <label style="display:block;font-size:12px;font-weight:500;margin-bottom:5px" for="ar-ratio-input">Aspect Ratio (e.g. 16:9)</label>
+              <input type="text" id="ar-ratio-input" placeholder="16:9" style="width:120px;padding:9px 11px;border:1px solid var(--color-border,#DDD8FE);border-radius:7px;font-size:14px">
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+              <div>
+                <label style="display:block;font-size:12px;font-weight:500;margin-bottom:5px" for="ar-new-width">Known Width</label>
+                <div style="display:flex;gap:6px">
+                  <input type="number" id="ar-new-width" placeholder="1280" style="flex:1;padding:9px 11px;border:1px solid var(--color-border,#DDD8FE);border-radius:7px;font-size:14px">
+                  <button class="btn btn-secondary" id="ar-height-btn" style="font-size:12px;padding:8px 10px">→ Height</button>
+                </div>
+                <div style="margin-top:6px;font-weight:600;font-size:15px" id="ar-new-height-out">—</div>
+              </div>
+              <div>
+                <label style="display:block;font-size:12px;font-weight:500;margin-bottom:5px" for="ar-new-height">Known Height</label>
+                <div style="display:flex;gap:6px">
+                  <input type="number" id="ar-new-height" placeholder="720" style="flex:1;padding:9px 11px;border:1px solid var(--color-border,#DDD8FE);border-radius:7px;font-size:14px">
+                  <button class="btn btn-secondary" id="ar-width-btn" style="font-size:12px;padding:8px 10px">→ Width</button>
+                </div>
+                <div style="margin-top:6px;font-weight:600;font-size:15px" id="ar-new-width-out">—</div>
+              </div>
+            </div>
+          </div>
+          <!-- Presets -->
+          <div>
+            <h3 style="font-size:14px;font-weight:600;margin-bottom:10px">Common Presets</h3>
+            <div id="ar-presets" style="display:flex;flex-wrap:wrap;gap:8px"></div>
+          </div>
+        </div>
+      </div>
+      <aside class="tool-side" aria-label="Options">
+        <div class="ss-divider">Common Ratios</div>
+        <div style="font-size:13px;line-height:2;padding:0 4px;color:var(--color-text-2,#6B7280)">
+          <strong style="color:var(--color-text,#1E1B4B)">16:9</strong> — Widescreen video/TV<br>
+          <strong style="color:var(--color-text,#1E1B4B)">4:3</strong> — Classic monitor/TV<br>
+          <strong style="color:var(--color-text,#1E1B4B)">1:1</strong> — Square (Instagram)<br>
+          <strong style="color:var(--color-text,#1E1B4B)">9:16</strong> — Mobile / Reels<br>
+          <strong style="color:var(--color-text,#1E1B4B)">3:2</strong> — DSLR photo sensor<br>
+          <strong style="color:var(--color-text,#1E1B4B)">21:9</strong> — Ultrawide monitor
+        </div>
+        <div class="ss-divider">Related Tools</div>
+        <a href="/screen-resolution/" class="ss-related-link"><img src="/assets/img/icon-screen.svg" alt="" width="18" height="18" loading="lazy">Screen Resolution</a>
+        <a href="/image-converter/" class="ss-related-link"><img src="/assets/img/icon-image.svg" alt="" width="18" height="18" loading="lazy">Image Converter</a>
+        <a href="/px-to-rem/" class="ss-related-link"><img src="/assets/img/icon-pxrem.svg" alt="" width="18" height="18" loading="lazy">PX to REM</a>
+        <div style="margin-top:16px">
+          <p class="ad-label">Advertisement</p>
+          <div class="ad-slot" style="min-height:250px">
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+          </div>
+        </div>
+      </aside>
+    </div>
+    <div class="ad-slot ad-slot--leaderboard">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="how-to-use">
+      <h2>How to Use the Aspect Ratio Calculator</h2>
+      <ol class="steps">
+        <li><strong>Find a ratio:</strong> Enter width and height (e.g. 1920 × 1080) and click "Calculate" to get the simplified ratio and decimal.</li>
+        <li><strong>Scale dimensions:</strong> Enter a ratio (e.g. 16:9) and a known width or height. Click "→ Height" or "→ Width" to find the missing dimension.</li>
+        <li><strong>Presets:</strong> Click a preset button to auto-fill common ratios like 16:9 or 4:3.</li>
+      </ol>
+    </section>
+    <section class="features">
+      <h2>Features</h2>
+      <ul class="features-list">
+        <li>Calculates simplified aspect ratio from any width × height</li>
+        <li>Visual preview rectangle showing the actual proportion</li>
+        <li>Scale any dimension while preserving the ratio</li>
+        <li>8 preset ratios: 16:9, 4:3, 1:1, 21:9, 3:2, 2:3, 9:16, 5:4</li>
+        <li>Decimal ratio output for CSS and design tools</li>
+        <li>Uses GCD algorithm for accurate simplification</li>
+      </ul>
+    </section>
+    <div class="ad-slot ad-slot--rectangle" style="margin:0 auto 32px">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="faq">
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-list">
+        <details class="faq-item"><summary class="faq-question">How is the aspect ratio simplified? <span class="faq-icon">+</span></summary><div class="faq-answer">The calculator uses the Greatest Common Divisor (GCD) algorithm to reduce the width and height to their smallest whole-number ratio. For example, 1920:1080 simplifies to 16:9 because both numbers are divisible by 120.</div></details>
+        <details class="faq-item"><summary class="faq-question">What is the decimal ratio used for? <span class="faq-icon">+</span></summary><div class="faq-answer">The decimal ratio (width ÷ height) is useful for CSS aspect-ratio property and some design tools that accept a single decimal value instead of two numbers. For 16:9 the decimal is 1.7778.</div></details>
+        <details class="faq-item"><summary class="faq-question">Can I use this for video editing? <span class="faq-icon">+</span></summary><div class="faq-answer">Yes. This tool is commonly used to find the correct height for a thumbnail given a width (or vice versa), to verify that a crop maintains a specific aspect ratio, or to convert between standard video dimensions like 4K (3840×2160) and 1080p (1920×1080).</div></details>
+      </div>
+    </section>
+    <section class="related-tools">
+      <h2>Related Tools</h2>
+      <div class="tool-grid">
+        <a href="/screen-resolution/" class="tool-card"><img src="/assets/img/icon-screen.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Screen Resolution</h3><p>Detect your current screen resolution and viewport size.</p><span class="tool-card-link">Try it →</span></a>
+        <a href="/image-converter/" class="tool-card"><img src="/assets/img/icon-image.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Image Converter</h3><p>Convert images between PNG, JPG, WebP, AVIF and BMP.</p><span class="tool-card-link">Try it →</span></a>
+        <a href="/image-compressor/" class="tool-card"><img src="/assets/img/icon-image.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Image Compressor</h3><p>Compress JPEG and PNG images without visible quality loss.</p><span class="tool-card-link">Try it →</span></a>
+      </div>
+    </section>
+  </main>
+  <footer id="site-footer" class="site-footer"></footer>
+  <script src="/assets/js/shared.js" defer></script>
+  <script src="/assets/js/tools/aspect-ratio-calculator.js" defer></script>
+</body>
+</html>

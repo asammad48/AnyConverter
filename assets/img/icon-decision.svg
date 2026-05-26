@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40">
+  <defs>
+    <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#56AB2F"/>
+      <stop offset="100%" stop-color="#A8E063"/>
+    </linearGradient>
+  </defs>
+  <rect width="40" height="40" rx="10" fill="url(#g)"/>
+  <!-- Fork / decision tree arrows -->
+  <!-- Stem coming in from left -->
+  <line x1="8" y1="20" x2="18" y2="20" stroke="white" stroke-width="2.2" stroke-linecap="round"/>
+  <!-- Branch up-right -->
+  <path d="M18,20 Q22,20 24,14 L30,14" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <polyline points="28,12 30,14 28,16" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Branch down-right -->
+  <path d="M18,20 Q22,20 24,26 L30,26" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <polyline points="28,24 30,26 28,28" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Decision node circle -->
+  <circle cx="18" cy="20" r="3" fill="white"/>
+</svg>

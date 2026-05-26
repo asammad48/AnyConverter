@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40">
+  <defs>
+    <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#D97706"/>
+      <stop offset="100%" stop-color="#FCD34D"/>
+    </linearGradient>
+  </defs>
+  <rect width="40" height="40" rx="10" fill="url(#g)"/>
+  <!-- Decorative script-style F with flourish -->
+  <path d="M12,28 C12,28 11,10 14,9 C17,8 21,10 21,14 C21,18 13,17 13,17" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Flourish swirl top -->
+  <path d="M14,9 Q22,4 26,10 Q28,14 24,15" fill="none" stroke="white" stroke-width="1.6" stroke-linecap="round" opacity="0.8"/>
+  <!-- Tail curl bottom -->
+  <path d="M12,28 Q10,33 15,33 Q20,33 22,28" fill="none" stroke="white" stroke-width="1.6" stroke-linecap="round" opacity="0.7"/>
+  <!-- Sparkle dots -->
+  <circle cx="30" cy="10" r="1.5" fill="white" opacity="0.9"/>
+  <circle cx="28" cy="18" r="1" fill="white" opacity="0.6"/>
+  <circle cx="32" cy="22" r="1.2" fill="white" opacity="0.75"/>
+</svg>

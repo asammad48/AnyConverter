@@ -1,0 +1,134 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Convertidor de Números a Palabras Online Gratis | AnyConverter</title>
+  <meta name="description" content="Convierte cualquier número a palabras en inglés online gratis. Soporta números hasta billones, números negativos y muestra la forma ordinal. Instantáneo.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://anyconverter.io/es/number-to-words/">
+  <link rel="alternate" hreflang="en" href="https://anyconverter.io/number-to-words/">
+  <link rel="alternate" hreflang="es" href="https://anyconverter.io/es/number-to-words/">
+  <link rel="alternate" hreflang="da" href="https://anyconverter.io/da/number-to-words/">
+  <link rel="alternate" hreflang="x-default" href="https://anyconverter.io/number-to-words/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Convertidor de Números a Palabras Online Gratis | AnyConverter">
+  <meta property="og:description" content="Convierte cualquier número a palabras en inglés online gratis. Soporta números hasta billones, números negativos y muestra la forma ordinal. Instantáneo.">
+  <meta property="og:url" content="https://anyconverter.io/es/number-to-words/">
+  <meta property="og:site_name" content="AnyConverter">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" data-ad-client="ca-pub-XXXXXXXXXX" crossorigin="anonymous"></script>
+  <!-- Replace ca-pub-XXXXXXXXXX with your real AdSense publisher ID -->
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Convertidor de Números a Palabras","url":"https://anyconverter.io/es/number-to-words/","description":"Convierte cualquier número a palabras en inglés online gratis. Soporta números hasta billones, números negativos y muestra la forma ordinal.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F4F6FF);color:var(--color-text,#1E1B4B)}
+    body{min-height:100vh;display:flex;flex-direction:column}
+    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8FE)}
+    .header-inner{max-width:1280px;width:100%;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;gap:32px}
+    .hero{padding:40px 24px 32px;max-width:1280px;margin:0 auto}
+    .hero h1{font-size:clamp(1.75rem,4vw,2.25rem);font-weight:700;line-height:1.2;margin-bottom:12px}
+    .hero-desc{font-size:1.0625rem;color:var(--color-text-2,#6B7280);max-width:680px;line-height:1.6}
+    @font-face{font-family:'Inter';font-display:swap}
+  </style>
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+  <header id="site-header" class="site-header"></header>
+  <main id="main-content">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol><li><a href="/es/">Inicio</a></li><li aria-current="page">Convertidor de Números a Palabras</li></ol>
+    </nav>
+    <section class="hero">
+      <h1>Convertidor de Números a Palabras</h1>
+      <p class="hero-desc">Convierte cualquier número en su equivalente en palabras inglesas al instante. Soporta números hasta billones, incluyendo valores negativos. También muestra la forma ordinal.</p>
+    </section>
+    <div class="tool-wrapper">
+      <div class="tool-zone">
+        <div style="padding:24px">
+          <div style="margin-bottom:16px">
+            <label style="display:block;font-size:13px;font-weight:500;margin-bottom:6px" for="ntw-input">Introduce un número</label>
+            <input type="number" id="ntw-input" placeholder="ej. 1234567" style="width:100%;padding:12px;border:1px solid var(--color-border,#DDD8FE);border-radius:8px;font-size:18px;font-family:'JetBrains Mono',monospace">
+          </div>
+          <div style="background:var(--color-success-bg,#ECFDF5);border:1px solid var(--color-success-bg,#ECFDF5);border-radius:8px;padding:16px;margin-bottom:12px;min-height:60px">
+            <div style="font-size:11px;color:var(--color-text-2,#6B7280);margin-bottom:4px;text-transform:uppercase;letter-spacing:.5px">Palabras</div>
+            <div id="ntw-output" style="font-size:16px;font-weight:500;color:var(--color-success-text,#166534);line-height:1.4"></div>
+          </div>
+          <div style="background:var(--color-primary-light,#EEF2FF);border:1px solid var(--color-primary-light,#EEF2FF);border-radius:8px;padding:16px;margin-bottom:16px;min-height:48px">
+            <div style="font-size:11px;color:var(--color-text-2,#6B7280);margin-bottom:4px;text-transform:uppercase;letter-spacing:.5px">Ordinal</div>
+            <div id="ntw-ordinal" style="font-size:14px;color:var(--color-primary,#4F46E5)"></div>
+          </div>
+          <div class="action-bar">
+            <button class="btn btn-primary" id="btn-ntw-copy">Copiar palabras</button>
+            <button class="btn btn-secondary" id="btn-ntw-clear">Limpiar</button>
+          </div>
+        </div>
+      </div>
+      <aside class="tool-side" aria-label="Opciones">
+        <div class="ss-divider">Herramientas relacionadas</div>
+        <a href="/percentage-calculator/" class="ss-related-link"><img src="/assets/img/icon-calculator.svg" alt="" width="18" height="18" loading="lazy">Calculadora de porcentajes</a>
+        <a href="/random-number-generator/" class="ss-related-link"><img src="/assets/img/icon-calculator.svg" alt="" width="18" height="18" loading="lazy">Generador de números aleatorios</a>
+        <a href="/morse-code-converter/" class="ss-related-link"><img src="/assets/img/icon-text.svg" alt="" width="18" height="18" loading="lazy">Convertidor de código Morse</a>
+        <div style="margin-top:16px">
+          <p class="ad-label">Publicidad</p>
+          <div class="ad-slot" style="min-height:250px">
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+            <!-- Replace ca-pub-XXXXXXXXXX and data-ad-slot="XXXXXXXXXX" with your IDs -->
+          </div>
+        </div>
+      </aside>
+    </div>
+    <div class="ad-slot ad-slot--leaderboard">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="how-to-use">
+      <h2>Cómo Usar el Convertidor de Números a Palabras</h2>
+      <ol class="steps">
+        <li><strong>Paso 1</strong> — Escribe cualquier número en el campo de entrada (soporta hasta billones).</li>
+        <li><strong>Paso 2</strong> — El equivalente en palabras aparece al instante en el cuadro verde, con la forma ordinal en el cuadro azul.</li>
+        <li><strong>Paso 3</strong> — Haz clic en "Copiar palabras" para copiar el texto al portapapeles.</li>
+      </ol>
+    </section>
+    <section class="features">
+      <h2>Características</h2>
+      <ul class="features-list">
+        <li>Convierte enteros hasta 999 billones a palabras en inglés</li>
+        <li>Soporta números negativos</li>
+        <li>Muestra la forma ordinal (1st, 2nd, 3rd...)</li>
+        <li>Maneja palabras compuestas con guiones (twenty-one, forty-five)</li>
+        <li>Uso correcto de "hundred and" en inglés</li>
+        <li>Conversión instantánea mientras escribes</li>
+      </ul>
+    </section>
+    <div class="ad-slot ad-slot--rectangle" style="margin:0 auto 32px">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="faq">
+      <h2>Preguntas Frecuentes</h2>
+      <div class="faq-list">
+        <details class="faq-item"><summary class="faq-question">¿Cuál es el número más grande soportado? <span class="faq-icon">+</span></summary><div class="faq-answer">El convertidor soporta enteros hasta 999.999.999.999.999 (999 billones). Los números fuera de este rango mostrarán un mensaje de error.</div></details>
+        <details class="faq-item"><summary class="faq-question">¿Admite números decimales? <span class="faq-icon">+</span></summary><div class="faq-answer">El convertidor redondea los números decimales al entero más cercano antes de la conversión. Por ejemplo, 3,7 se convierte en "four" y 3,2 en "three". Para una conversión precisa, introduce un número entero.</div></details>
+        <details class="faq-item"><summary class="faq-question">¿Qué es un número ordinal? <span class="faq-icon">+</span></summary><div class="faq-answer">Un número ordinal indica posición o rango: primero, segundo, tercero, etc. La herramienta muestra automáticamente el sufijo ordinal (st/nd/rd/th) junto a la forma escrita, útil para fechas y clasificaciones.</div></details>
+        <details class="faq-item"><summary class="faq-question">¿Por qué usa "and" en algunos números? <span class="faq-icon">+</span></summary><div class="faq-answer">La expresión "one hundred and twenty-three" sigue la convención del inglés británico, que inserta "and" después de las centenas. El inglés americano omite el "and" — ambas formas son ampliamente aceptadas.</div></details>
+      </div>
+    </section>
+    <section class="related-tools">
+      <h2>Herramientas Relacionadas</h2>
+      <div class="tool-grid">
+        <a href="/percentage-calculator/" class="tool-card"><img src="/assets/img/icon-calculator.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Calculadora de porcentajes</h3><p>Calcula porcentajes, aumentos y disminuciones al instante.</p><span class="tool-card-link">Usar →</span></a>
+        <a href="/random-number-generator/" class="tool-card"><img src="/assets/img/icon-calculator.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Generador de números aleatorios</h3><p>Genera números aleatorios dentro de cualquier rango al instante.</p><span class="tool-card-link">Usar →</span></a>
+        <a href="/morse-code-converter/" class="tool-card"><img src="/assets/img/icon-text.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Convertidor de código Morse</h3><p>Convierte texto a código Morse y viceversa al instante.</p><span class="tool-card-link">Usar →</span></a>
+      </div>
+    </section>
+  </main>
+  <footer id="site-footer" class="site-footer"></footer>
+  <script src="/assets/js/shared.js" defer></script>
+  <script src="/assets/js/tools/number-to-words.js" defer></script>
+</body>
+</html>

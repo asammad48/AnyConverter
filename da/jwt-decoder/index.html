@@ -1,0 +1,179 @@
+﻿<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JWT Dekoder Online Gratis | AnyConverter</title>
+  <meta name="description" content="Dekod og inspicér JWT (JSON Web Tokens) online gratis. Se header, payload og tjek udløbsdato. Helt sikkert — ingen server involveret.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://anyconverter.io/da/jwt-decoder/">
+  <link rel="alternate" hreflang="en" href="https://anyconverter.io/jwt-decoder/">
+  <link rel="alternate" hreflang="es" href="https://anyconverter.io/es/jwt-decoder/">
+  <link rel="alternate" hreflang="da" href="https://anyconverter.io/da/jwt-decoder/">
+  <link rel="alternate" hreflang="x-default" href="https://anyconverter.io/jwt-decoder/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="JWT Dekoder Online Gratis | AnyConverter">
+  <meta property="og:description" content="Dekod og inspicér JWT (JSON Web Tokens) online gratis. Se header, payload og tjek udløbsdato. Helt sikkert — ingen server involveret.">
+  <meta property="og:url" content="https://anyconverter.io/da/jwt-decoder/">
+  <meta property="og:site_name" content="AnyConverter">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" data-ad-client="ca-pub-XXXXXXXXXX" crossorigin="anonymous"></script>
+  <!-- Replace ca-pub-XXXXXXXXXX with your real AdSense publisher ID -->
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"JWT Dekoder","url":"https://anyconverter.io/da/jwt-decoder/","description":"Dekod og inspicér JWT tokens online gratis. 100% klientside — tokenet forlader aldrig browseren.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F4F6FF);color:var(--color-text,#1E1B4B)}
+    body{min-height:100vh;display:flex;flex-direction:column}
+    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8FE)}
+    .header-inner{max-width:1280px;width:100%;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;gap:32px}
+    .hero{padding:40px 24px 32px;max-width:1280px;margin:0 auto}
+    .hero h1{font-size:clamp(1.75rem,4vw,2.25rem);font-weight:700;line-height:1.2;margin-bottom:12px}
+    .hero-desc{font-size:1.0625rem;color:var(--color-text-2,#6B7280);max-width:680px;line-height:1.6}
+    @font-face{font-family:'Inter';font-display:swap}
+  </style>
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+  <header id="site-header" class="site-header"></header>
+  <main id="main-content">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol><li><a href="/da/">Hjem</a></li><li aria-current="page">JWT Dekoder</li></ol>
+    </nav>
+    <section class="hero">
+      <h1>JWT Dekoder</h1>
+      <p class="hero-desc">Dekod og inspicér ethvert JWT-token øjeblikkeligt. Se den Base64-kodede header, JSON-payload og udløbsstatus. Alt sker i din browser — tokenet forlader aldrig din enhed.</p>
+    </section>
+    <div class="tool-wrapper">
+      <div class="tool-zone">
+        <div style="padding:24px">
+          <div style="margin-bottom:12px">
+            <label style="display:block;font-size:13px;font-weight:500;margin-bottom:6px" for="jwt-input">JWT Token</label>
+            <textarea id="jwt-input" placeholder="Indsæt dit JWT token her (eyJ...)" style="width:100%;min-height:100px;padding:12px;border:1px solid var(--color-border,#DDD8FE);border-radius:8px;font-size:13px;font-family:monospace;resize:vertical" spellcheck="false"></textarea>
+          </div>
+          <div class="action-bar" style="margin-bottom:16px">
+            <button class="btn btn-primary" id="btn-decode-jwt">Dekod</button>
+            <button class="btn btn-secondary" id="btn-clear-jwt">Ryd</button>
+          </div>
+          <div id="jwt-result" style="display:none">
+            <div style="margin-bottom:12px">
+              <div style="font-size:13px;font-weight:600;color:var(--color-primary,#4F46E5);margin-bottom:6px">Header</div>
+              <pre id="jwt-header" style="background:var(--color-bg,#F4F6FF);border:1px solid var(--color-border,#DDD8FE);border-radius:8px;padding:12px;font-size:13px;overflow-x:auto;white-space:pre-wrap;word-break:break-all"></pre>
+            </div>
+            <div style="margin-bottom:12px">
+              <div style="font-size:13px;font-weight:600;color:var(--color-success,#059669);margin-bottom:6px">Payload</div>
+              <pre id="jwt-payload" style="background:var(--color-bg,#F4F6FF);border:1px solid var(--color-border,#DDD8FE);border-radius:8px;padding:12px;font-size:13px;overflow-x:auto;white-space:pre-wrap;word-break:break-all"></pre>
+            </div>
+            <div>
+              <div style="font-size:13px;font-weight:600;color:var(--color-error,#DC2626);margin-bottom:6px">Signatur</div>
+              <div id="jwt-sig" style="background:var(--color-bg,#F4F6FF);border:1px solid var(--color-border,#DDD8FE);border-radius:8px;padding:12px;font-size:13px;font-family:monospace;word-break:break-all"></div>
+            </div>
+            <div id="jwt-exp-info" style="margin-top:12px;padding:10px 12px;border-radius:8px;font-size:13px;display:none"></div>
+          </div>
+          <div id="jwt-error" style="display:none;color:var(--color-error,#DC2626);font-size:13px;margin-top:8px"></div>
+        </div>
+      </div>
+      <aside class="tool-side" aria-label="Muligheder">
+        <div class="ss-divider">Relaterede værktøjer</div>
+        <a href="/da/uuid-generator/" class="ss-link"><img src="/assets/img/icon-hash.svg" alt="" width="18" height="18" loading="lazy"> UUID Generator</a>
+        <a href="/da/hash-generator/" class="ss-link"><img src="/assets/img/icon-hash.svg" alt="" width="18" height="18" loading="lazy"> Hash Generator</a>
+        <a href="/da/base64-encoder/" class="ss-link"><img src="/assets/img/icon-base64.svg" alt="" width="18" height="18" loading="lazy"> Base64 Encoder</a>
+        <div style="margin-top:16px">
+          <p class="ad-label">Reklame</p>
+          <div class="ad-slot" style="min-height:250px">
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+            <!-- Replace ca-pub-XXXXXXXXXX and data-ad-slot="XXXXXXXXXX" with your IDs -->
+          </div>
+        </div>
+      </aside>
+    </div>
+    <div class="ad-slot ad-slot--leaderboard">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="how-to-use">
+      <h2>Sådan bruges JWT Dekoder</h2>
+      <ol class="steps">
+        <li><strong>Trin 1</strong> — Indsæt dit JWT-token i inputfeltet.</li>
+        <li><strong>Trin 2</strong> — Header og payload dekodes øjeblikkeligt og vises formateret.</li>
+        <li><strong>Trin 3</strong> — Tjek udløbsstatussen for at se om tokenet stadig er gyldigt.</li>
+      </ol>
+    </section>
+    <section class="features">
+      <h2>Funktioner</h2>
+      <ul class="features-list">
+        <li>Øjeblikkelig JWT header og payload dekodning</li>
+        <li>Udløbsstatus checker (gyldigt / udløbet / udløber snart)</li>
+        <li>Formateret JSON visning med pæn indrykning</li>
+        <li>Realtidsdekodning mens du skriver eller indsætter</li>
+        <li>Understøtter RS256, HS256 og alle standard JWT formater</li>
+        <li>100% klientside — token forlader aldrig browseren</li>
+      </ul>
+    </section>
+    <div class="ad-slot ad-slot--rectangle" style="margin:0 auto 32px">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="faq">
+      <h2>Ofte stillede spørgsmål</h2>
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary class="faq-question">Hvad er et JWT token? <span class="faq-icon">+</span></summary>
+          <div class="faq-answer">JWT (JSON Web Token) er en åben standard (RFC 7519) til sikker transmission af information mellem parter som et JSON-objekt. JWT bruges almindeligvis til autentifikation og autorisation i webapplikationer. De består af tre dele: header, payload og signatur, adskilt af punktummer.</div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-question">Er det sikkert at indsætte mit JWT token her? <span class="faq-icon">+</span></summary>
+          <div class="faq-answer">Denne dekoder er 100% klientside. Dit token dekodes udelukkende i din browser ved hjælp af JavaScript og sendes aldrig til nogen server. For sikkerhedsfølsomme produktionstokens er det dog altid sikreste at dekode lokalt ved hjælp af dit programmeringssprog JWT-bibliotek.</div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-question">Kan dette værktøj verificere JWT-signaturen? <span class="faq-icon">+</span></summary>
+          <div class="faq-answer">Nej. Signaturverificering kræver den hemmelige nøgle eller offentlige nøgle der bruges til at signere tokenet. Dette værktøj dekoder kun headeren og payloaden (som blot er Base64url-kodet, ikke krypteret) og viser den rå signaturtekst. Brug dit server-side JWT-bibliotek til faktisk signaturverificering.</div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-question">Hvilke JWT-algoritmer understøttes? <span class="faq-icon">+</span></summary>
+          <div class="faq-answer">Dekoderen fungerer med ethvert standard JWT uanset algoritme (HS256, RS256, ES256 osv.), fordi den kun dekoder den Base64url-kodede header og payload. Algoritmefelt i headeren vises, men selve signaturen verificeres ikke.</div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-question">Hvorfor viser udløbskontrollen det forkerte tidspunkt? <span class="faq-icon">+</span></summary>
+          <div class="faq-answer">Udløbet vises i din lokale browsertidszone ved hjælp af JavaScript's Date.toLocaleString(). JWT exp-krav er Unix-tidsstempler (sekunder siden 1. januar 1970 UTC). Konverteringen til lokal tid sker automatisk af dekoderen.</div>
+        </details>
+      </div>
+    </section>
+    <section class="related-tools">
+      <h2>Relaterede Værktøjer</h2>
+      <div class="tool-grid">
+        <a href="/da/uuid-generator/" class="tool-card">
+          <img src="/assets/img/icon-hash.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy">
+          <h3>UUID Generator</h3>
+          <p>Generer sikre UUID v4-identifikatorer i bulk øjeblikkeligt.</p>
+          <span class="tool-card-link">Brug →</span>
+        </a>
+        <a href="/da/hash-generator/" class="tool-card">
+          <img src="/assets/img/icon-hash.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy">
+          <h3>Hash Generator</h3>
+          <p>Generer MD5, SHA-1, SHA-256 og SHA-512 hash øjeblikkeligt.</p>
+          <span class="tool-card-link">Brug →</span>
+        </a>
+        <a href="/da/base64-encoder/" class="tool-card">
+          <img src="/assets/img/icon-base64.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy">
+          <h3>Base64 Encoder</h3>
+          <p>Kod og afkod Base64-strenge øjeblikkeligt i din browser.</p>
+          <span class="tool-card-link">Brug →</span>
+        </a>
+        <a href="/da/password-generator/" class="tool-card">
+          <img src="/assets/img/icon-lock.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy">
+          <h3>Adgangskode Generator</h3>
+          <p>Generer stærke, sikre adgangskoder med brugerdefinerede indstillinger.</p>
+          <span class="tool-card-link">Brug →</span>
+        </a>
+      </div>
+    </section>
+  </main>
+  <footer id="site-footer" class="site-footer"></footer>
+  <script src="/assets/js/shared.js" defer></script>
+  <script src="/assets/js/tools/jwt-decoder.js" defer></script>
+</body>
+</html>

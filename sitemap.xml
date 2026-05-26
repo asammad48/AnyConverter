@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+  <!-- Homepage -->
+  <url>
+    <loc>https://anyconverter.io/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- High-demand tool pages — priority 0.9 -->
+  <url>
+    <loc>https://anyconverter.io/json-formatter/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en"        href="https://anyconverter.io/json-formatter/"/>
+    <xhtml:link rel="alternate" hreflang="es"        href="https://anyconverter.io/es/json-formatter/"/>
+    <xhtml:link rel="alternate" hreflang="da"        href="https://anyconverter.io/da/json-formatter/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://anyconverter.io/json-formatter/"/>
+  </url>
+  <url>
+    <loc>https://anyconverter.io/image-converter/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en"        href="https://anyconverter.io/image-converter/"/>
+    <xhtml:link rel="alternate" hreflang="es"        href="https://anyconverter.io/es/image-converter/"/>
+    <xhtml:link rel="alternate" hreflang="da"        href="https://anyconverter.io/da/image-converter/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://anyconverter.io/image-converter/"/>
+  </url>
+  <url>
+    <loc>https://anyconverter.io/pdf-merge/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en"        href="https://anyconverter.io/pdf-merge/"/>
+    <xhtml:link rel="alternate" hreflang="es"        href="https://anyconverter.io/es/pdf-merge/"/>
+    <xhtml:link rel="alternate" hreflang="da"        href="https://anyconverter.io/da/pdf-merge/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://anyconverter.io/pdf-merge/"/>
+  </url>
+  <url>
+    <loc>https://anyconverter.io/pdf-compress/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en"        href="https://anyconverter.io/pdf-compress/"/>
+    <xhtml:link rel="alternate" hreflang="es"        href="https://anyconverter.io/es/pdf-compress/"/>
+    <xhtml:link rel="alternate" hreflang="da"        href="https://anyconverter.io/da/pdf-compress/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://anyconverter.io/pdf-compress/"/>
+  </url>
+
+  <!-- Other EN tool pages — priority 0.8 -->
+  <url>
+    <loc>https://anyconverter.io/xml-formatter/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en"        href="https://anyconverter.io/xml-formatter/"/>
+    <xhtml:link rel="alternate" hreflang="es"        href="https://anyconverter.io/es/xml-formatter/"/>
+    <xhtml:link rel="alternate" hreflang="da"        href="https://anyconverter.io/da/xml-formatter/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://anyconverter.io/xml-formatter/"/>
+  </url>
+  <url>
+    <loc>https://anyconverter.io/base64-encoder/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en"        href="https://anyconverter.io/base64-encoder/"/>
+    <xhtml:link rel="alternate" hreflang="es"        href="https://anyconverter.io/es/base64-encoder/"/>
+    <xhtml:link rel="alternate" hreflang="da"        href="https://anyconverter.io/da/base64-encoder/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://anyconverter.io/base64-encoder/"/>
+  </url>
+  <url>
+    <loc>https://anyconverter.io/url-encoder/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en"        href="https://anyconverter.io/url-encoder/"/>
+    <xhtml:link rel="alternate" hreflang="es"        href="https://anyconverter.io/es/url-encoder/"/>
+    <xhtml:link rel="alternate" hreflang="da"        href="https://anyconverter.io/da/url-encoder/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://anyconverter.io/url-encoder/"/>
+  </url>
+  <url>
+    <loc>https://anyconverter.io/csv-to-sql/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en"        href="https://anyconverter.io/csv-to-sql/"/>
+    <xhtml:link rel="alternate" hreflang="es"        href="https://anyconverter.io/es/csv-to-sql/"/>
+    <xhtml:link rel="alternate" hreflang="da"        href="https://anyconverter.io/da/csv-to-sql/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://anyconverter.io/csv-to-sql/"/>
+  </url>
+  <url>
+    <loc>https://anyconverter.io/csv-query/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://anyconverter.io/regex-tester/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en"        href="https://anyconverter.io/regex-tester/"/>
+    <xhtml:link rel="alternate" hreflang="es"        href="https://anyconverter.io/es/regex-tester/"/>
+    <xhtml:link rel="alternate" hreflang="da"        href="https://anyconverter.io/da/regex-tester/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://anyconverter.io/regex-tester/"/>
+  </url>
+  <url>
+    <loc>https://anyconverter.io/hash-generator/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en"        href="https://anyconverter.io/hash-generator/"/>
+    <xhtml:link rel="alternate" hreflang="es"        href="https://anyconverter.io/es/hash-generator/"/>
+    <xhtml:link rel="alternate" hreflang="da"        href="https://anyconverter.io/da/hash-generator/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://anyconverter.io/hash-generator/"/>
+  </url>
+  <url>
+    <loc>https://anyconverter.io/timestamp-converter/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://anyconverter.io/markdown-html/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://anyconverter.io/color-converter/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://anyconverter.io/pdf-split/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Spanish language pages — priority 0.7 -->
+  <url>
+    <loc>https://anyconverter.io/es/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://anyconverter.io/es/json-formatter/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://anyconverter.io/es/xml-formatter/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://anyconverter.io/es/image-converter/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://anyconverter.io/es/pdf-merge/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://anyconverter.io/es/pdf-compress/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://anyconverter.io/es/base64-encoder/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://anyconverter.io/es/url-encoder/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://anyconverter.io/es/csv-to-sql/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://anyconverter.io/es/regex-tester/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://anyconverter.io/es/hash-generator/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Danish language pages — priority 0.7 -->
+  <url>
+    <loc>https://anyconverter.io/da/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://anyconverter.io/da/json-formatter/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://anyconverter.io/da/xml-formatter/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://anyconverter.io/da/image-converter/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://anyconverter.io/da/pdf-merge/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://anyconverter.io/da/pdf-compress/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://anyconverter.io/da/base64-encoder/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://anyconverter.io/da/url-encoder/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://anyconverter.io/da/csv-to-sql/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://anyconverter.io/da/regex-tester/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://anyconverter.io/da/hash-generator/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+</urlset>

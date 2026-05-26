@@ -1,0 +1,171 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JSON to YAML Converter Online Free | AnyConverter</title>
+  <meta name="description" content="Convert JSON to YAML and YAML to JSON instantly in your browser. Paste your data and get formatted output immediately. No server upload, 100% private.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://anyconverter.io/json-to-yaml/">
+  <link rel="alternate" hreflang="en" href="https://anyconverter.io/json-to-yaml/">
+  <link rel="alternate" hreflang="es" href="https://anyconverter.io/es/json-to-yaml/">
+  <link rel="alternate" hreflang="da" href="https://anyconverter.io/da/json-to-yaml/">
+  <link rel="alternate" hreflang="x-default" href="https://anyconverter.io/json-to-yaml/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="JSON to YAML Converter Online Free | AnyConverter">
+  <meta property="og:description" content="Convert JSON to YAML and YAML to JSON instantly in your browser. Paste your data and get formatted output immediately. No server upload, 100% private.">
+  <meta property="og:url" content="https://anyconverter.io/json-to-yaml/">
+  <meta property="og:site_name" content="AnyConverter">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" data-ad-client="ca-pub-XXXXXXXXXX" crossorigin="anonymous"></script>
+  <!-- Replace ca-pub-XXXXXXXXXX with your real AdSense publisher ID -->
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"JSON to YAML Converter","url":"https://anyconverter.io/json-to-yaml/","description":"Convert JSON to YAML and YAML to JSON instantly in your browser. Paste your data and get formatted output immediately.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F4F6FF);color:var(--color-text,#1E1B4B)}
+    body{min-height:100vh;display:flex;flex-direction:column}
+    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8FE)}
+    .header-inner{max-width:1280px;width:100%;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;gap:32px}
+    .hero{padding:40px 24px 32px;max-width:1280px;margin:0 auto}
+    .hero h1{font-size:clamp(1.75rem,4vw,2.25rem);font-weight:700;line-height:1.2;margin-bottom:12px}
+    .hero-desc{font-size:1.0625rem;color:var(--color-text-2,#6B7280);max-width:680px;line-height:1.6}
+    @font-face{font-family:'Inter';font-display:swap}
+  </style>
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+  <header id="site-header" class="site-header"></header>
+  <main id="main-content">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol><li><a href="/">Home</a></li><li aria-current="page">JSON ↔ YAML Converter</li></ol>
+    </nav>
+    <section class="hero">
+      <h1>JSON ↔ YAML Converter</h1>
+      <p class="hero-desc">Convert between JSON and YAML instantly. Paste your JSON to get clean YAML output, or convert YAML back to formatted JSON. Validates syntax as you type — no server upload required.</p>
+    </section>
+    <div class="tool-wrapper">
+      <div class="tool-zone">
+        <div style="padding:24px">
+          <div class="action-bar" style="margin-bottom:16px">
+            <button class="btn btn-primary btn-sm" id="jy-mode-j2y">JSON → YAML</button>
+            <button class="btn btn-secondary btn-sm" id="jy-mode-y2j">YAML → JSON</button>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+            <div>
+              <label id="jy-input-label" style="display:block;font-size:13px;font-weight:500;margin-bottom:6px">JSON Input</label>
+              <textarea id="jy-input" placeholder='{"key": "value"}' style="width:100%;height:280px;padding:12px;border:1px solid var(--color-border,#DDD8FE);border-radius:8px;font-family:'JetBrains Mono',monospace;font-size:13px;resize:vertical"></textarea>
+            </div>
+            <div>
+              <label id="jy-output-label" style="display:block;font-size:13px;font-weight:500;margin-bottom:6px">YAML Output</label>
+              <textarea id="jy-output" readonly style="width:100%;height:280px;padding:12px;border:1px solid var(--color-border,#DDD8FE);border-radius:8px;font-family:'JetBrains Mono',monospace;font-size:13px;resize:vertical;background:var(--color-bg,#F4F6FF)"></textarea>
+            </div>
+          </div>
+          <div id="jy-error" style="display:none;color:var(--color-pdf,#EF4444);font-size:13px;margin-top:8px"></div>
+          <div class="action-bar" style="margin-top:12px">
+            <button class="btn btn-primary" id="btn-jy-convert">Convert</button>
+            <button class="btn btn-secondary" id="btn-jy-paste">Load Example</button>
+            <button class="btn btn-secondary" id="btn-jy-copy">Copy Output</button>
+            <button class="btn btn-secondary" id="btn-jy-clear">Clear</button>
+          </div>
+        </div>
+      </div>
+      <aside class="tool-side" aria-label="Options">
+        <div class="ss-divider">Related Tools</div>
+        <a class="related-link" href="/html-beautifier/"><img src="/assets/img/icon-text.svg" width="16" height="16" loading="lazy" alt=""> HTML Beautifier</a>
+        <a class="related-link" href="/cron-expression-parser/"><img src="/assets/img/icon-timer.svg" width="16" height="16" loading="lazy" alt=""> Cron Parser</a>
+        <a class="related-link" href="/uuid-generator/"><img src="/assets/img/icon-hash.svg" width="16" height="16" loading="lazy" alt=""> UUID Generator</a>
+        <div style="margin-top:16px">
+          <p class="ad-label">Advertisement</p>
+          <div class="ad-slot" style="min-height:250px">
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+            <!-- Replace ca-pub-XXXXXXXXXX and data-ad-slot="XXXXXXXXXX" with your IDs -->
+          </div>
+        </div>
+      </aside>
+    </div>
+    <div class="ad-slot ad-slot--leaderboard">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="how-to-use">
+      <h2>How to Use JSON to YAML Converter</h2>
+      <ol class="steps">
+        <li>Choose conversion direction: JSON→YAML or YAML→JSON using the mode buttons.</li>
+        <li>Paste your JSON or YAML into the input area (or click "Load Example" for a sample).</li>
+        <li>The converted output appears instantly. Click "Copy Output" to copy the result.</li>
+      </ol>
+    </section>
+    <section class="features">
+      <h2>Features</h2>
+      <ul class="features-list">
+        <li>Bidirectional conversion — JSON to YAML and YAML to JSON</li>
+        <li>Real-time conversion as you type</li>
+        <li>Syntax validation with clear error messages</li>
+        <li>2-space indentation in YAML output</li>
+        <li>Load example data with one click</li>
+        <li>100% client-side — your data never leaves the browser</li>
+      </ul>
+    </section>
+    <div class="ad-slot ad-slot--rectangle" style="margin:0 auto 32px">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="faq">
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary>What is YAML?</summary>
+          <p>YAML (YAML Ain't Markup Language) is a human-friendly data serialization format. It uses indentation and minimal punctuation, making it easier to read than JSON. It's widely used for configuration files (Docker, Kubernetes, GitHub Actions).</p>
+        </details>
+        <details class="faq-item">
+          <summary>Is all JSON valid YAML?</summary>
+          <p>Yes — JSON is technically a subset of YAML 1.2. Any valid JSON document is also valid YAML. However, YAML supports additional features like comments and multi-line strings that JSON does not.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Does YAML support comments?</summary>
+          <p>Yes. YAML supports comments using the # character. JSON does not support comments at all. When converting YAML to JSON, comments are discarded.</p>
+        </details>
+        <details class="faq-item">
+          <summary>What indentation does the converter use?</summary>
+          <p>The converter outputs YAML with 2-space indentation, which is the most common convention for YAML files in modern tooling.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Is my data sent to a server?</summary>
+          <p>No. This tool runs entirely in your browser using the js-yaml library. Your data is never uploaded to any server, making it safe for sensitive configuration data.</p>
+        </details>
+      </div>
+    </section>
+    <section class="related-tools">
+      <h2>Related Tools</h2>
+      <div class="tool-grid">
+        <a class="tool-card" href="/html-beautifier/">
+          <img src="/assets/img/icon-text.svg" width="32" height="32" loading="lazy" alt="HTML Beautifier icon">
+          <h3>HTML Beautifier</h3>
+          <p>Format and minify HTML code</p>
+          <span class="tool-card-cta">Try it →</span>
+        </a>
+        <a class="tool-card" href="/cron-expression-parser/">
+          <img src="/assets/img/icon-timer.svg" width="32" height="32" loading="lazy" alt="Cron Parser icon">
+          <h3>Cron Parser</h3>
+          <p>Decode cron expressions into plain English</p>
+          <span class="tool-card-cta">Try it →</span>
+        </a>
+        <a class="tool-card" href="/uuid-generator/">
+          <img src="/assets/img/icon-hash.svg" width="32" height="32" loading="lazy" alt="UUID Generator icon">
+          <h3>UUID Generator</h3>
+          <p>Generate random UUIDs instantly</p>
+          <span class="tool-card-cta">Try it →</span>
+        </a>
+      </div>
+    </section>
+  </main>
+  <footer id="site-footer" class="site-footer"></footer>
+  <script src="/assets/js/shared.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js" defer></script>
+  <script src="/assets/js/tools/json-to-yaml.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,18 @@
+<svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#60A5FA"/>
+      <stop offset="100%" stop-color="#1D4ED8"/>
+    </linearGradient>
+  </defs>
+  <rect width="40" height="40" rx="10" fill="url(#g)"/>
+  <!-- Monitor frame -->
+  <rect x="7" y="10" width="26" height="17" rx="2" stroke="white" stroke-width="2" fill="none"/>
+  <!-- Stand stem -->
+  <line x1="20" y1="27" x2="20" y2="31" stroke="white" stroke-width="2" stroke-linecap="round"/>
+  <!-- Stand base -->
+  <line x1="15" y1="31" x2="25" y2="31" stroke="white" stroke-width="2" stroke-linecap="round"/>
+  <!-- Waveform / resolution signal inside screen -->
+  <path d="M11 18.5 L14 15.5 L17 18.5 L20 15.5 L23 18.5 L26 15.5 L29 18.5"
+        stroke="white" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" fill="none" opacity="0.9"/>
+</svg>

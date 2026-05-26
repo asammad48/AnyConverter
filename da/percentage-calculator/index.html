@@ -1,0 +1,164 @@
+﻿<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Procentberegner Online Gratis | AnyConverter</title>
+  <meta name="description" content="Beregn procenter, procentvise ændringer og andele online gratis. Find hvad X% af Y er, beregn procentvis stigning eller fald. Øjeblikkeligt, gratis.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://anyconverter.io/da/percentage-calculator/">
+  <link rel="alternate" hreflang="en" href="https://anyconverter.io/percentage-calculator/">
+  <link rel="alternate" hreflang="es" href="https://anyconverter.io/es/percentage-calculator/">
+  <link rel="alternate" hreflang="da" href="https://anyconverter.io/da/percentage-calculator/">
+  <link rel="alternate" hreflang="x-default" href="https://anyconverter.io/percentage-calculator/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Procentberegner Online Gratis | AnyConverter">
+  <meta property="og:description" content="Beregn procenter, procentvise ændringer og andele online gratis. Øjeblikkeligt resultater, ingen tilmelding.">
+  <meta property="og:url" content="https://anyconverter.io/da/percentage-calculator/">
+  <meta property="og:site_name" content="AnyConverter">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" data-ad-client="ca-pub-XXXXXXXXXX" crossorigin="anonymous"></script>
+  <!-- Replace ca-pub-XXXXXXXXXX with your real AdSense publisher ID -->
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Procentberegner","url":"https://anyconverter.io/da/percentage-calculator/","description":"Beregn procenter online gratis. Fire tilstande: X% af Y, hvad procent X er af Y, procentvis ændring og stigning/fald med procent.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F4F6FF);color:var(--color-text,#1E1B4B)}
+    body{min-height:100vh;display:flex;flex-direction:column}
+    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8FE)}
+    .header-inner{max-width:1280px;width:100%;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;gap:32px}
+    .hero{padding:40px 24px 32px;max-width:1280px;margin:0 auto}
+    .hero h1{font-size:clamp(1.75rem,4vw,2.25rem);font-weight:700;line-height:1.2;margin-bottom:12px}
+    .hero-desc{font-size:1.0625rem;color:var(--color-text-2,#6B7280);max-width:680px;line-height:1.6}
+    @font-face{font-family:'Inter';font-display:swap}
+  </style>
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+  <header id="site-header" class="site-header"></header>
+  <main id="main-content">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol><li><a href="/da/">Hjem</a></li><li aria-current="page">Procentberegner</li></ol>
+    </nav>
+    <section class="hero">
+      <h1>Procentberegner</h1>
+      <p class="hero-desc">Beregn hvad procent et tal er af et andet, find procentvise stigninger og fald, og løs hvad X% af Y er. Alle beregninger opdateres øjeblikkeligt mens du skriver.</p>
+    </section>
+    <div class="tool-wrapper">
+      <div class="tool-zone">
+        <div style="padding:24px">
+          <div style="display:flex;gap:8px;margin-bottom:20px;flex-wrap:wrap">
+            <button class="btn btn-primary btn-sm" id="pct-mode-1" style="flex:1">X% af Y</button>
+            <button class="btn btn-secondary btn-sm" id="pct-mode-2" style="flex:1">X er hvad % af Y</button>
+            <button class="btn btn-secondary btn-sm" id="pct-mode-3" style="flex:1">% Ændring</button>
+            <button class="btn btn-secondary btn-sm" id="pct-mode-4" style="flex:1">% Stigning/Fald</button>
+          </div>
+          <div id="pct-form-1">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px">
+              <div><label style="display:block;font-size:13px;font-weight:500;margin-bottom:6px" for="p1-x">Procent (%)</label><input type="number" id="p1-x" placeholder="25" style="width:100%;padding:10px 12px;border:1px solid var(--color-border,#DDD8FE);border-radius:8px;font-size:15px"></div>
+              <div><label style="display:block;font-size:13px;font-weight:500;margin-bottom:6px" for="p1-y">Af værdi</label><input type="number" id="p1-y" placeholder="200" style="width:100%;padding:10px 12px;border:1px solid var(--color-border,#DDD8FE);border-radius:8px;font-size:15px"></div>
+            </div>
+          </div>
+          <div id="pct-form-2" style="display:none">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px">
+              <div><label style="display:block;font-size:13px;font-weight:500;margin-bottom:6px" for="p2-x">Værdi (X)</label><input type="number" id="p2-x" placeholder="50" style="width:100%;padding:10px 12px;border:1px solid var(--color-border,#DDD8FE);border-radius:8px;font-size:15px"></div>
+              <div><label style="display:block;font-size:13px;font-weight:500;margin-bottom:6px" for="p2-y">Af total (Y)</label><input type="number" id="p2-y" placeholder="200" style="width:100%;padding:10px 12px;border:1px solid var(--color-border,#DDD8FE);border-radius:8px;font-size:15px"></div>
+            </div>
+          </div>
+          <div id="pct-form-3" style="display:none">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px">
+              <div><label style="display:block;font-size:13px;font-weight:500;margin-bottom:6px" for="p3-old">Oprindelig værdi</label><input type="number" id="p3-old" placeholder="100" style="width:100%;padding:10px 12px;border:1px solid var(--color-border,#DDD8FE);border-radius:8px;font-size:15px"></div>
+              <div><label style="display:block;font-size:13px;font-weight:500;margin-bottom:6px" for="p3-new">Ny værdi</label><input type="number" id="p3-new" placeholder="150" style="width:100%;padding:10px 12px;border:1px solid var(--color-border,#DDD8FE);border-radius:8px;font-size:15px"></div>
+            </div>
+          </div>
+          <div id="pct-form-4" style="display:none">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px">
+              <div><label style="display:block;font-size:13px;font-weight:500;margin-bottom:6px" for="p4-val">Værdi</label><input type="number" id="p4-val" placeholder="100" style="width:100%;padding:10px 12px;border:1px solid var(--color-border,#DDD8FE);border-radius:8px;font-size:15px"></div>
+              <div><label style="display:block;font-size:13px;font-weight:500;margin-bottom:6px" for="p4-pct">Procent (%)</label><input type="number" id="p4-pct" placeholder="20" style="width:100%;padding:10px 12px;border:1px solid var(--color-border,#DDD8FE);border-radius:8px;font-size:15px"></div>
+            </div>
+            <div style="display:flex;gap:8px;margin-bottom:12px">
+              <button class="btn btn-secondary btn-sm" id="p4-inc-btn">Stigning med %</button>
+              <button class="btn btn-secondary btn-sm" id="p4-dec-btn">Fald med %</button>
+            </div>
+          </div>
+          <div class="action-bar" style="margin-bottom:20px">
+            <button class="btn btn-primary" id="btn-calc-pct">Beregn</button>
+            <button class="btn btn-secondary" id="btn-reset-pct">Nulstil</button>
+          </div>
+          <div id="pct-result" style="display:none">
+            <div class="stat-card" style="text-align:center">
+              <div class="stat-val" id="pct-answer" style="font-size:36px">—</div>
+              <div class="stat-lbl" id="pct-label">Resultat</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <aside class="tool-side" aria-label="Muligheder">
+        <div class="ss-divider">Relaterede værktøjer</div>
+        <a href="/da/loan-calculator/" class="ss-related-link"><img src="/assets/img/icon-calculator.svg" alt="" width="18" height="18" loading="lazy">Lånberegner</a>
+        <a href="/da/bmi-calculator/" class="ss-related-link"><img src="/assets/img/icon-calculator.svg" alt="" width="18" height="18" loading="lazy">BMI Beregner</a>
+        <a href="/da/random-number-generator/" class="ss-related-link"><img src="/assets/img/icon-calculator.svg" alt="" width="18" height="18" loading="lazy">Tilfældig Tal Generator</a>
+        <div style="margin-top:16px">
+          <p class="ad-label">Reklame</p>
+          <div class="ad-slot" style="min-height:250px">
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+            <!-- Replace ca-pub-XXXXXXXXXX and data-ad-slot="XXXXXXXXXX" with your IDs -->
+          </div>
+        </div>
+      </aside>
+    </div>
+    <div class="ad-slot ad-slot--leaderboard">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="how-to-use">
+      <h2>Sådan bruges Procentberegneren</h2>
+      <ol class="steps">
+        <li><strong>Trin 1</strong> — Vælg beregningstypen: "X% af Y", "X er hvad % af Y", "% Ændring" eller "% Stigning/Fald".</li>
+        <li><strong>Trin 2</strong> — Indtast de relevante tal i inputfelterne.</li>
+        <li><strong>Trin 3</strong> — Se resultatet opdatere øjeblikkeligt.</li>
+      </ol>
+    </section>
+    <section class="features">
+      <h2>Funktioner</h2>
+      <ul class="features-list">
+        <li>Tre beregningstyper i ét værktøj</li>
+        <li>Hvad er X% af Y (f.eks. 15% af 200 = 30)</li>
+        <li>X er hvad % af Y (f.eks. 30 er hvad % af 200 = 15%)</li>
+        <li>Procentvis ændring mellem to tal</li>
+        <li>Øjeblikkelig opdatering mens du skriver</li>
+        <li>Ingen login eller installation</li>
+      </ul>
+    </section>
+    <div class="ad-slot ad-slot--rectangle" style="margin:0 auto 32px">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="faq">
+      <h2>Ofte stillede spørgsmål</h2>
+      <div class="faq-list">
+        <details class="faq-item"><summary class="faq-question">Hvordan beregner jeg hvad procent et tal er af et andet? <span class="faq-icon">+</span></summary><div class="faq-answer">Vælg tilstanden "X er hvad % af Y", indtast din værdi (X) og totalen (Y), og klik derefter Beregn. Formlen der bruges er (X ÷ Y) × 100. For eksempel er 50 hvad 25% af 200 er.</div></details>
+        <details class="faq-item"><summary class="faq-question">Hvordan beregnes procentvis ændring? <span class="faq-icon">+</span></summary><div class="faq-answer">Procentvis ændring = ((Ny værdi − Oprindelig værdi) ÷ |Oprindelig værdi|) × 100. Et positivt resultat betyder en stigning; et negativt resultat betyder et fald. For eksempel er en ændring fra 100 til 150 en stigning på +50%.</div></details>
+        <details class="faq-item"><summary class="faq-question">Hvad er forskellen på procentvis stigning og procentvis ændring? <span class="faq-icon">+</span></summary><div class="faq-answer">Procentvis ændring sammenligner to givne værdier for at finde ud af, hvor meget den ene ændrede sig i forhold til den anden. Procentvis stigning/fald tager en enkelt værdi og anvender en procent på den for at beregne den nye resultatværdi efter stigningen eller faldet.</div></details>
+        <details class="faq-item"><summary class="faq-question">Kan jeg beregne en rabat med dette værktøj? <span class="faq-icon">+</span></summary><div class="faq-answer">Ja. Brug tilstanden "% Stigning/Fald", indtast den oprindelige pris som Værdi, indtast rabatprocenten, klik "Fald med %" og derefter Beregn. Resultatet viser den endelige pris efter rabat.</div></details>
+        <details class="faq-item"><summary class="faq-question">Håndterer denne beregner decimalprocenter? <span class="faq-icon">+</span></summary><div class="faq-answer">Ja. Du kan indtaste decimalværdier i ethvert felt, f.eks. 7,5% eller 12,25. Beregneren håndterer alle decimalinput og viser resultater med op til fire decimalpladser, og fjerner efterfølgende nuller for læsbarhed.</div></details>
+      </div>
+    </section>
+    <section class="related-tools">
+      <h2>Relaterede Værktøjer</h2>
+      <div class="tool-grid">
+        <a href="/da/loan-calculator/" class="tool-card"><img src="/assets/img/icon-calculator.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Lånberegner</h3><p>Beregn månedlig ydelse og det samlede lånebeløb.</p><span class="tool-card-link">Brug →</span></a>
+        <a href="/da/bmi-calculator/" class="tool-card"><img src="/assets/img/icon-calculator.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>BMI Beregner</h3><p>Beregn dit BMI med metriske eller imperiale enheder.</p><span class="tool-card-link">Brug →</span></a>
+        <a href="/da/mortgage-calculator/" class="tool-card"><img src="/assets/img/icon-calculator.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Realkreditberegner</h3><p>Beregn månedlig realkreditbetaling og samlede renteomkostninger.</p><span class="tool-card-link">Brug →</span></a>
+        <a href="/da/compound-interest-calculator/" class="tool-card"><img src="/assets/img/icon-calculator.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Renters Rente Beregner</h3><p>Se hvordan dine investeringer vokser over tid med renters rente.</p><span class="tool-card-link">Brug →</span></a>
+      </div>
+    </section>
+  </main>
+  <footer id="site-footer" class="site-footer"></footer>
+  <script src="/assets/js/shared.js" defer></script>
+  <script src="/assets/js/tools/percentage-calculator.js" defer></script>
+</body>
+</html>

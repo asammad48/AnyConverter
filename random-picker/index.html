@@ -1,0 +1,96 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Random Picker Online Free — Pick Random Items | AnyConverter</title>
+  <meta name="description" content="Pick random items from a list online for free. Paste your items separated by newlines or commas, choose how many to pick, and get instant results. No signup needed.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://anyconverter.io/random-picker/">
+  <link rel="alternate" hreflang="en" href="https://anyconverter.io/random-picker/"><link rel="alternate" hreflang="es" href="https://anyconverter.io/es/random-picker/"><link rel="alternate" hreflang="da" href="https://anyconverter.io/da/random-picker/"><link rel="alternate" hreflang="x-default" href="https://anyconverter.io/random-picker/">
+  <meta property="og:type" content="website"><meta property="og:title" content="Random Picker Online Free — Pick Random Items | AnyConverter"><meta property="og:description" content="Pick N random items from a list. Newline or comma separated. Highlights selected items in the pool."><meta property="og:url" content="https://anyconverter.io/random-picker/"><meta property="og:site_name" content="AnyConverter">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" data-ad-client="ca-pub-XXXXXXXXXX" crossorigin="anonymous"></script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Random Picker","url":"https://anyconverter.io/random-picker/","description":"Pick N random items from a list online for free.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F4F6FF);color:var(--color-text,#1E1B4B)}
+    body{min-height:100vh;display:flex;flex-direction:column}
+    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8FE)}
+    .header-inner{max-width:1280px;width:100%;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;gap:32px}
+    .hero{padding:40px 24px 32px;max-width:1280px;margin:0 auto}
+    .hero h1{font-size:clamp(1.75rem,4vw,2.25rem);font-weight:700;line-height:1.2;margin-bottom:12px}
+    .hero-desc{font-size:1.0625rem;color:var(--color-text-2,#6B7280);max-width:680px;line-height:1.6}
+    @font-face{font-family:'Inter';font-display:swap}
+  </style>
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+  <header id="site-header" class="site-header"></header>
+  <main id="main-content">
+    <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/">Home</a></li><li><a href="/coin-flip/">Random Tools</a></li><li aria-current="page">Random Picker</li></ol></nav>
+    <section class="hero">
+      <h1>Random Picker Online</h1>
+      <p class="hero-desc">Paste a list of items and randomly select any number of them. Items can be separated by newlines or commas. Selected items are highlighted in the pool.</p>
+    </section>
+    <div class="tool-wrapper">
+      <div class="tool-zone">
+        <div style="padding:24px">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
+            <div>
+              <label style="display:block;font-size:13px;font-weight:500;margin-bottom:6px">Items</label>
+              <textarea id="rp-items" spellcheck="false" style="width:100%;height:220px;padding:10px 12px;border:1px solid var(--color-border,#DDD8FE);border-radius:8px;font-size:13px;resize:vertical;background:var(--color-surface,#fff);line-height:1.7">Alice
+Bob
+Charlie
+Diana
+Eve
+Frank
+Grace</textarea>
+              <div style="display:flex;align-items:center;gap:12px;margin-top:10px;flex-wrap:wrap">
+                <div>
+                  <label style="font-size:12px;color:var(--color-text-2,#6B7280);margin-right:6px">Separator:</label>
+                  <select id="rp-sep" style="padding:6px 10px;border:1px solid var(--color-border,#DDD8FE);border-radius:6px;font-size:12px">
+                    <option value="newline">New line</option>
+                    <option value="comma">Comma</option>
+                  </select>
+                </div>
+                <div>
+                  <label style="font-size:12px;color:var(--color-text-2,#6B7280);margin-right:6px">Pick:</label>
+                  <input type="number" id="rp-count" min="1" max="100" value="1" style="width:56px;padding:6px 8px;border:1px solid var(--color-border,#DDD8FE);border-radius:6px;font-size:12px;text-align:center">
+                </div>
+                <button class="btn btn-primary" id="rp-pick">Pick!</button>
+              </div>
+            </div>
+            <div>
+              <label style="display:block;font-size:13px;font-weight:500;margin-bottom:6px">Result</label>
+              <div id="rp-result" style="min-height:80px;padding:12px;background:var(--color-surface,#fff);border:1px solid var(--color-border,#DDD8FE);border-radius:8px;margin-bottom:12px"></div>
+              <div id="rp-pool"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <aside class="tool-side">
+        <div class="ss-divider">Related Tools</div>
+        <a href="/team-picker/" class="ss-related-link"><img src="/assets/img/icon-team.svg" alt="" width="18" height="18">Team Picker</a>
+        <a href="/spin-the-wheel/" class="ss-related-link"><img src="/assets/img/icon-wheel.svg" alt="" width="18" height="18">Spin the Wheel</a>
+        <a href="/decision-maker/" class="ss-related-link"><img src="/assets/img/icon-decision.svg" alt="" width="18" height="18">Decision Maker</a>
+        <div style="margin-top:16px"><p class="ad-label">Advertisement</p>
+          <div class="ad-slot" style="min-height:250px"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div>
+        </div>
+      </aside>
+    </div>
+    <div class="ad-slot ad-slot--leaderboard"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div>
+    <section class="how-to-use"><h2>How to Pick Random Items</h2><ol class="steps"><li><strong>Step 1</strong> — Paste your list of items into the text area (one per line, or comma-separated).</li><li><strong>Step 2</strong> — Select the separator that matches your list format.</li><li><strong>Step 3</strong> — Set how many items to pick.</li><li><strong>Step 4</strong> — Click <em>Pick!</em> to see the selected items highlighted in the pool.</li></ol></section>
+    <section class="features"><h2>Features</h2><ul class="features-list"><li>Newline or comma separator</li><li>Pick any number of items (up to the list size)</li><li>Selected items displayed as badges</li><li>Full pool shown with selected items highlighted</li><li>Uses Fisher-Yates shuffle for uniform randomness</li></ul></section>
+    <div class="ad-slot ad-slot--rectangle" style="margin:0 auto 32px"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div>
+    <section class="faq"><h2>Frequently Asked Questions</h2><div class="faq-list">
+      <details class="faq-item"><summary class="faq-question">Are duplicates possible? <span class="faq-icon">+</span></summary><div class="faq-answer">No. The picker uses a shuffle algorithm that ensures each item can only be selected once per pick. If your list contains duplicate entries they may each be selected independently.</div></details>
+      <details class="faq-item"><summary class="faq-question">How large can my list be? <span class="faq-icon">+</span></summary><div class="faq-answer">There is no hard limit. Lists with hundreds of items work fine since all processing is done in the browser with JavaScript.</div></details>
+    </div></section>
+  </main>
+  <footer id="site-footer" class="site-footer"></footer>
+  <script src="/assets/js/shared.js" defer></script>
+  <script src="/assets/js/tools/random-picker.js" defer></script>
+</body>
+</html>

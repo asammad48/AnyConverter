@@ -1,0 +1,187 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Generador de Facturas Online Gratis | AnyConverter</title>
+  <meta name="description" content="Crea y descarga facturas profesionales en PDF online gratis. Añade líneas de artículos, impuestos, notas y detalles de negocio. Sin registro, sin marca de agua.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://anyconverter.io/es/invoice-generator/">
+  <link rel="alternate" hreflang="en" href="https://anyconverter.io/invoice-generator/">
+  <link rel="alternate" hreflang="es" href="https://anyconverter.io/es/invoice-generator/">
+  <link rel="alternate" hreflang="da" href="https://anyconverter.io/da/invoice-generator/">
+  <link rel="alternate" hreflang="x-default" href="https://anyconverter.io/invoice-generator/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Generador de Facturas Online Gratis | AnyConverter">
+  <meta property="og:description" content="Crea y descarga facturas profesionales en PDF online gratis. Añade artículos, impuestos, notas y datos de empresa. Sin registro, sin marca de agua.">
+  <meta property="og:url" content="https://anyconverter.io/es/invoice-generator/">
+  <meta property="og:site_name" content="AnyConverter">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" data-ad-client="ca-pub-XXXXXXXXXX" crossorigin="anonymous"></script>
+  <!-- Replace ca-pub-XXXXXXXXXX with your real AdSense publisher ID -->
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Generador de Facturas","url":"https://anyconverter.io/es/invoice-generator/","description":"Crea y descarga facturas profesionales en PDF online gratis. Sin registro, sin marca de agua.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F4F6FF);color:var(--color-text,#1E1B4B)}
+    body{min-height:100vh;display:flex;flex-direction:column}
+    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8FE)}
+    .header-inner{max-width:1280px;width:100%;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;gap:32px}
+    .hero{padding:40px 24px 32px;max-width:1280px;margin:0 auto}
+    .hero h1{font-size:clamp(1.75rem,4vw,2.25rem);font-weight:700;line-height:1.2;margin-bottom:12px}
+    .hero-desc{font-size:1.0625rem;color:var(--color-text-2,#6B7280);max-width:680px;line-height:1.6}
+    @font-face{font-family:'Inter';font-display:swap}
+  </style>
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+  <header id="site-header" class="site-header"></header>
+  <main id="main-content">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol><li><a href="/es/">Inicio</a></li><li aria-current="page">Generador de Facturas</li></ol>
+    </nav>
+    <section class="hero">
+      <h1>Generador de Facturas</h1>
+      <p class="hero-desc">Crea facturas PDF profesionales en segundos. Añade tus datos comerciales, nombre del cliente, artículos, tasa de impuesto y notas — luego descarga un PDF limpio. Sin marca de agua, sin registro, completamente gratis.</p>
+    </section>
+    <div class="tool-wrapper">
+      <div class="tool-zone">
+        <div style="padding:24px">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px">
+            <div>
+              <label style="display:block;font-size:13px;font-weight:500;margin-bottom:6px" for="inv-from">De (Tu Nombre / Empresa)</label>
+              <input type="text" id="inv-from" placeholder="Nombre de tu Empresa" style="width:100%;padding:10px 12px;border:1px solid var(--color-border,#DDD8FE);border-radius:8px;font-size:14px">
+            </div>
+            <div>
+              <label style="display:block;font-size:13px;font-weight:500;margin-bottom:6px" for="inv-to">Facturar A (Cliente)</label>
+              <input type="text" id="inv-to" placeholder="Nombre del Cliente" style="width:100%;padding:10px 12px;border:1px solid var(--color-border,#DDD8FE);border-radius:8px;font-size:14px">
+            </div>
+            <div>
+              <label style="display:block;font-size:13px;font-weight:500;margin-bottom:6px" for="inv-number">Número de Factura</label>
+              <input type="text" id="inv-number" value="FAC-001" style="width:100%;padding:10px 12px;border:1px solid var(--color-border,#DDD8FE);border-radius:8px;font-size:14px">
+            </div>
+            <div>
+              <label style="display:block;font-size:13px;font-weight:500;margin-bottom:6px" for="inv-date">Fecha</label>
+              <input type="date" id="inv-date" style="width:100%;padding:10px 12px;border:1px solid var(--color-border,#DDD8FE);border-radius:8px;font-size:14px">
+            </div>
+          </div>
+          <div style="margin-bottom:16px">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+              <label style="font-size:13px;font-weight:500">Líneas de Artículos</label>
+              <button class="btn btn-secondary btn-sm" id="btn-inv-add-row">+ Agregar Fila</button>
+            </div>
+            <table style="width:100%;border-collapse:collapse;font-size:13px">
+              <thead>
+                <tr style="border-bottom:2px solid var(--color-border,#DDD8FE)">
+                  <th style="text-align:left;padding:8px 8px;color:var(--color-text-2,#6B7280);font-weight:500">Descripción</th>
+                  <th style="text-align:left;padding:8px 4px;color:var(--color-text-2,#6B7280);font-weight:500;width:60px">Cant.</th>
+                  <th style="text-align:left;padding:8px 4px;color:var(--color-text-2,#6B7280);font-weight:500;width:80px">Precio</th>
+                  <th style="text-align:right;padding:8px 8px;color:var(--color-text-2,#6B7280);font-weight:500;width:80px">Importe</th>
+                  <th style="width:36px"></th>
+                </tr>
+              </thead>
+              <tbody id="inv-items">
+                <tr>
+                  <td><input type="text" class="inv-desc" placeholder="Descripción del artículo" style="width:100%;padding:6px 8px;border:1px solid var(--color-border,#DDD8FE);border-radius:4px;font-size:13px"></td>
+                  <td><input type="number" class="inv-qty" value="1" min="0" style="width:60px;padding:6px 8px;border:1px solid var(--color-border,#DDD8FE);border-radius:4px;font-size:13px"></td>
+                  <td><input type="number" class="inv-rate" value="0" min="0" step="0.01" style="width:80px;padding:6px 8px;border:1px solid var(--color-border,#DDD8FE);border-radius:4px;font-size:13px"></td>
+                  <td class="inv-amount" style="padding:6px 8px;font-size:13px;text-align:right">0.00</td>
+                  <td><button type="button" class="btn btn-secondary btn-sm inv-remove" style="padding:4px 8px">&#215;</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px">
+            <div>
+              <label style="display:block;font-size:13px;font-weight:500;margin-bottom:6px" for="inv-notes">Notas (opcional)</label>
+              <textarea id="inv-notes" placeholder="Condiciones de pago, nota de agradecimiento..." style="width:100%;height:80px;padding:10px 12px;border:1px solid var(--color-border,#DDD8FE);border-radius:8px;font-size:13px;resize:vertical"></textarea>
+            </div>
+            <div>
+              <label style="display:block;font-size:13px;font-weight:500;margin-bottom:6px" for="inv-tax">Impuesto (%)</label>
+              <input type="number" id="inv-tax" value="0" min="0" max="100" step="0.1" style="width:100%;padding:10px 12px;border:1px solid var(--color-border,#DDD8FE);border-radius:8px;font-size:15px;margin-bottom:12px">
+              <label style="display:block;font-size:13px;font-weight:500;margin-bottom:6px" for="inv-currency">Símbolo de Moneda</label>
+              <input type="text" id="inv-currency" value="$" maxlength="3" style="width:80px;padding:10px 12px;border:1px solid var(--color-border,#DDD8FE);border-radius:8px;font-size:15px">
+            </div>
+          </div>
+          <div style="border-top:1px solid var(--color-border,#DDD8FE);padding-top:12px;margin-bottom:16px">
+            <div style="display:flex;justify-content:flex-end;gap:16px;font-size:14px">
+              <span>Subtotal:</span><span id="inv-subtotal" style="min-width:80px;text-align:right;font-weight:500">0.00</span>
+            </div>
+            <div style="display:flex;justify-content:flex-end;gap:16px;font-size:14px;margin-top:4px">
+              <span>Impuesto:</span><span id="inv-tax-amt" style="min-width:80px;text-align:right;font-weight:500">0.00</span>
+            </div>
+            <div style="display:flex;justify-content:flex-end;gap:16px;font-size:16px;font-weight:700;margin-top:8px">
+              <span>Total:</span><span id="inv-total" style="min-width:80px;text-align:right">0.00</span>
+            </div>
+          </div>
+          <button class="btn btn-primary" id="btn-inv-pdf">Descargar PDF</button>
+        </div>
+      </div>
+      <aside class="tool-side" aria-label="Opciones">
+        <div class="ss-divider">Herramientas relacionadas</div>
+        <a href="/discount-calculator/" class="ss-related-link"><img src="/assets/img/icon-currency.svg" alt="" width="18" height="18" loading="lazy">Calculadora de Descuentos</a>
+        <a href="/gst-vat-calculator/" class="ss-related-link"><img src="/assets/img/icon-currency.svg" alt="" width="18" height="18" loading="lazy">Calculadora de IVA</a>
+        <a href="/tip-calculator/" class="ss-related-link"><img src="/assets/img/icon-calculator.svg" alt="" width="18" height="18" loading="lazy">Calculadora de Propina</a>
+        <div style="margin-top:16px">
+          <p class="ad-label">Publicidad</p>
+          <div class="ad-slot" style="min-height:250px">
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+            <!-- Replace ca-pub-XXXXXXXXXX and data-ad-slot="XXXXXXXXXX" with your IDs -->
+          </div>
+        </div>
+      </aside>
+    </div>
+    <div class="ad-slot ad-slot--leaderboard">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="how-to-use">
+      <h2>Cómo Usar el Generador de Facturas</h2>
+      <ol class="steps">
+        <li><strong>Paso 1</strong> — Ingresa el nombre de tu empresa, nombre del cliente, número de factura y fecha.</li>
+        <li><strong>Paso 2</strong> — Agrega líneas de artículos con descripción, cantidad y precio. Los totales se actualizan automáticamente.</li>
+        <li><strong>Paso 3</strong> — Establece la tasa de impuesto, agrega notas y haz clic en "Descargar PDF" para guardar tu factura.</li>
+      </ol>
+    </section>
+    <section class="features">
+      <h2>Características</h2>
+      <ul class="features-list">
+        <li>Descarga facturas PDF profesionales con un clic</li>
+        <li>Agrega artículos ilimitados con totales calculados automáticamente</li>
+        <li>Cálculo de tasa de impuesto (admite cualquier porcentaje)</li>
+        <li>Símbolo de moneda personalizado</li>
+        <li>Campo de condiciones de pago / notas opcionales</li>
+        <li>Sin marca de agua, sin registro, sin datos enviados al servidor</li>
+      </ul>
+    </section>
+    <div class="ad-slot ad-slot--rectangle" style="margin:0 auto 32px">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="faq">
+      <h2>Preguntas Frecuentes</h2>
+      <div class="faq-list">
+        <details class="faq-item"><summary class="faq-question">¿El PDF tiene marca de agua? <span class="faq-icon">+</span></summary><div class="faq-answer">No. El PDF descargado no tiene marca de agua, ni marca de AnyConverter, ni publicidad. Es una factura profesional sencilla que puedes enviar directamente a los clientes.</div></details>
+        <details class="faq-item"><summary class="faq-question">¿Puedo agregar múltiples artículos? <span class="faq-icon">+</span></summary><div class="faq-answer">Sí. Haz clic en "+ Agregar Fila" para añadir tantos artículos como necesites. Cada fila tiene descripción, cantidad y precio. El subtotal, impuesto y total se actualizan automáticamente.</div></details>
+        <details class="faq-item"><summary class="faq-question">¿Qué símbolos de moneda son compatibles? <span class="faq-icon">+</span></summary><div class="faq-answer">Cualquier texto de hasta 3 caracteres funciona como símbolo de moneda. Escribe $, €, £, ¥, kr, o cualquier otro símbolo de moneda en el campo Símbolo de Moneda.</div></details>
+        <details class="faq-item"><summary class="faq-question">¿Se almacenan mis datos de factura en algún lugar? <span class="faq-icon">+</span></summary><div class="faq-answer">No. Todo se ejecuta en tu navegador. Los datos de tu factura (nombres, importes, artículos) nunca se envían a ningún servidor y se pierden cuando cierras la página. Descarga el PDF antes de cerrar.</div></details>
+      </div>
+    </section>
+    <section class="related-tools">
+      <h2>Herramientas Relacionadas</h2>
+      <div class="tool-grid">
+        <a href="/discount-calculator/" class="tool-card"><img src="/assets/img/icon-currency.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Calculadora de Descuentos</h3><p>Calcula precios de venta y ahorros con cualquier porcentaje de descuento.</p><span class="tool-card-link">Usar &#8594;</span></a>
+        <a href="/gst-vat-calculator/" class="tool-card"><img src="/assets/img/icon-currency.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Calculadora de IVA</h3><p>Calcula importes con y sin impuesto para cualquier tasa.</p><span class="tool-card-link">Usar &#8594;</span></a>
+        <a href="/tip-calculator/" class="tool-card"><img src="/assets/img/icon-calculator.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Calculadora de Propina</h3><p>Calcula propinas y divide cuentas entre varias personas.</p><span class="tool-card-link">Usar &#8594;</span></a>
+      </div>
+    </section>
+  </main>
+  <footer id="site-footer" class="site-footer"></footer>
+  <script src="/assets/js/shared.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" defer></script>
+  <script src="/assets/js/tools/invoice-generator.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,153 @@
+﻿<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>URL Encoder og Decoder Online Gratis | AnyConverter</title>
+  <meta name="description" content="Kodér eller dekodér URL'er og forespørgselsparametre online gratis. Gratis URL-encoder med procentkodning. Kodér komponenter eller hele URL'er øjeblikkeligt i din browser.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://anyconverter.io/da/url-encoder/">
+  <link rel="alternate" hreflang="en"        href="https://anyconverter.io/url-encoder/">
+  <link rel="alternate" hreflang="es"        href="https://anyconverter.io/es/url-encoder/">
+  <link rel="alternate" hreflang="da"        href="https://anyconverter.io/da/url-encoder/">
+  <link rel="alternate" hreflang="x-default" href="https://anyconverter.io/url-encoder/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="URL Encoder og Decoder Online Gratis | AnyConverter">
+  <meta property="og:description" content="Kodér eller dekodér URL'er online gratis. Øjeblikkelig konvertering i browseren.">
+  <meta property="og:url" content="https://anyconverter.io/da/url-encoder/">
+  <meta property="og:site_name" content="AnyConverter">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" data-ad-client="ca-pub-XXXXXXXXXX" crossorigin="anonymous"></script>
+  <!-- Replace ca-pub-XXXXXXXXXX with your real AdSense publisher ID -->
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"URL Encoder","url":"https://anyconverter.io/da/url-encoder/","description":"Kodér eller dekodér URL'er og forespørgselsparametre online gratis.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F4F6FF);color:var(--color-text,#1E1B4B)}
+    body{min-height:100vh;display:flex;flex-direction:column}
+    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8FE)}
+    .header-inner{max-width:1280px;width:100%;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;gap:32px}
+    .hero{padding:40px 24px 32px;max-width:1280px;margin:0 auto}
+    .hero h1{font-size:clamp(1.75rem,4vw,2.25rem);font-weight:700;line-height:1.2;margin-bottom:12px}
+    .hero-desc{font-size:1.0625rem;color:var(--color-text-2,#6B7280);max-width:680px;line-height:1.6}
+    @font-face{font-family:'Inter';font-display:swap}
+  </style>
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+  <header id="site-header" class="site-header"></header>
+  <main id="main-content">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol><li><a href="/da/">Hjem</a></li><li aria-current="page">URL Encoder</li></ol>
+    </nav>
+    <section class="hero">
+      <h1>URL Encoder og Decoder</h1>
+      <p class="hero-desc">Kodér eller dekodér URL'er og forespørgselsparametre online gratis. Understøtter komponentkodning (encodeURIComponent), fuld URL-kodning (encodeURI) og dekodning. Realtidskonvertering mens du skriver.</p>
+    </section>
+    <div class="tool-wrapper">
+      <div class="tool-zone">
+        <div class="settings-panel" style="display:flex;gap:12px;flex-wrap:wrap;align-items:center">
+          <label class="radio-label"><input type="radio" name="url-mode" value="encodeComponent" checked> Kodér komponent</label>
+          <label class="radio-label"><input type="radio" name="url-mode" value="encodeURI"> Kodér URL</label>
+          <label class="radio-label"><input type="radio" name="url-mode" value="decode"> Dekodér</label>
+        </div>
+        <div class="mt-4">
+          <label for="url-input" class="panel-label">Input</label>
+          <textarea id="url-input" placeholder="Indsæt din URL eller tekst her..." spellcheck="false" style="min-height:120px;margin-top:8px;font-family:var(--font-mono);font-size:13px"></textarea>
+        </div>
+        <div class="action-bar mt-4">
+          <div class="action-bar-left">
+            <button class="btn btn-secondary" id="btn-url-swap">⇄ Byt om</button>
+          </div>
+          <div class="action-bar-right">
+            <button class="btn btn-secondary btn-sm" id="btn-url-clear">Ryd</button>
+          </div>
+        </div>
+        <div class="mt-4">
+          <label for="url-output" class="panel-label">Resultat</label>
+          <textarea id="url-output" readonly spellcheck="false" style="min-height:120px;margin-top:8px;font-family:var(--font-mono);font-size:13px;background:var(--color-bg,#F4F6FF)"></textarea>
+        </div>
+        <div class="action-bar mt-2">
+          <div class="action-bar-left">
+            <button class="btn btn-primary btn-sm" id="btn-url-copy">Kopier resultat</button>
+          </div>
+        </div>
+        <div id="url-status" class="status-bar" style="display:none;margin-top:8px"></div>
+      </div>
+      <aside class="tool-side" aria-label="Options">
+        <div class="ss-divider">Options</div>
+        <div class="tog-row"><span class="tog-label" id="lbl-plusspaces">Encode spaces as +</span><div class="tog off" id="tog-plusspaces" role="switch" aria-checked="false" tabindex="0" aria-labelledby="lbl-plusspaces"></div></div>
+        <div class="tog-row"><span class="tog-label" id="lbl-liveconv">Live conversion</span><div class="tog" id="tog-liveconv" role="switch" aria-checked="true" tabindex="0" aria-labelledby="lbl-liveconv"></div></div>
+
+        <div class="ss-divider">Stats</div>
+        <div class="stats-grid">
+          <div class="stat-card"><div class="stat-val" id="stat-input-len">0</div><div class="stat-lbl">Input chars</div></div>
+          <div class="stat-card"><div class="stat-val" id="stat-output-len">0</div><div class="stat-lbl">Output chars</div></div>
+          <div class="stat-card"><div class="stat-val" id="stat-encoded-count">0</div><div class="stat-lbl">Encoded</div></div>
+          <div class="stat-card"><div class="stat-val" id="stat-decode-err">0</div><div class="stat-lbl">Errors</div></div>
+        </div>
+
+        <div class="ss-divider">Related Tools</div>
+        <a href="/base64-encoder/" class="ss-related-link"><img src="/assets/img/icon-base64.svg" alt="" width="18" height="18" loading="lazy">Base64 Encoder</a>
+        <a href="/hash-generator/" class="ss-related-link"><img src="/assets/img/icon-hash.svg" alt="" width="18" height="18" loading="lazy">Hash Generator</a>
+        <a href="/json-formatter/" class="ss-related-link"><img src="/assets/img/icon-json.svg" alt="" width="18" height="18" loading="lazy">JSON Formatter</a>
+
+        <div style="margin-top:8px">
+          <p class="ad-label">Advertisement</p>
+          <div class="ad-slot" style="min-height:250px">
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+            <!-- Replace ca-pub-XXXXXXXXXX and data-ad-slot="XXXXXXXXXX" with your IDs -->
+          </div>
+        </div>
+      </aside>
+    </div>
+    <div class="ad-slot ad-slot--leaderboard">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="how-to-use">
+      <h2>Sådan kodér eller dekodér du URL'er</h2>
+      <ol class="steps">
+        <li><strong>Vælg tilstand</strong> — Vælg om du vil kodé et komponent, en hel URL eller dekodé en kodet URL.</li>
+        <li><strong>Indsæt teksten</strong> — Indsæt URL'en eller teksten i inputfeltet. Konvertering sker automatisk.</li>
+        <li><strong>Kopier resultatet</strong> — Brug "Kopier resultat" for at kopiere til udklipsholderen.</li>
+      </ol>
+    </section>
+    <section class="features">
+      <h2>Funktioner</h2>
+      <ul class="features-list">
+        <li>URL-komponentkodning (encodeURIComponent)</li>
+        <li>Fuld URL-kodning (encodeURI)</li>
+        <li>Dekodning af procentkodede URL'er</li>
+        <li>Realtidskonvertering</li>
+        <li>100% behandling i browseren</li>
+      </ul>
+    </section>
+    <div class="ad-slot ad-slot--rectangle" style="margin:0 auto 32px">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="faq">
+      <h2>Ofte stillede spørgsmål</h2>
+      <div class="faq-list">
+        <details class="faq-item"><summary class="faq-question">Hvad er forskellen på komponentkodning og URL-kodning? <span class="faq-icon">+</span></summary><div class="faq-answer">encodeURIComponent kodér alle specialtegn inkl. /, ?, &amp;, =, hvilket gør det velegnet til parametre. encodeURI bevarer URL'ens strukturelle tegn som /, ?, # til kodning af hele URL'er.</div></details>
+        <details class="faq-item"><summary class="faq-question">Hvad er procentkodning? <span class="faq-icon">+</span></summary><div class="faq-answer">Procentkodning erstatter usikre tegn i URL'er med et % efterfulgt af to hexadecimale cifre. F.eks. konverteres et mellemrum til %20.</div></details>
+      </div>
+    </section>
+    <section class="related-tools">
+      <h2>Relaterede værktøjer</h2>
+      <div class="tool-grid">
+        <a href="/base64-encoder/" class="tool-card"><img src="/assets/img/icon-base64.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Base64 Encoder</h3><p>Kodér og dekodér Base64.</p><span class="tool-card-link">Brug →</span></a>
+        <a href="/hash-generator/" class="tool-card"><img src="/assets/img/icon-hash.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Hash Generator</h3><p>Generer MD5, SHA-256 hashes.</p><span class="tool-card-link">Brug →</span></a>
+        <a href="/regex-tester/" class="tool-card"><img src="/assets/img/icon-regex.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Regex Tester</h3><p>Test regulære udtryk.</p><span class="tool-card-link">Brug →</span></a>
+      </div>
+    </section>
+  </main>
+  <footer id="site-footer" class="site-footer"></footer>
+  <script src="/assets/js/shared.js" defer></script>
+  <script src="/assets/js/tools/url-encoder.js" defer></script>
+</body>
+</html>

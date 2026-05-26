@@ -1,0 +1,131 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mouse Tester Online Free | AnyConverter</title>
+  <meta name="description" content="Test your mouse buttons, scroll wheel, and pointer tracking online for free. Check left click, right click, middle click and mouse movement. No download needed.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://anyconverter.io/mouse-tester/">
+  <link rel="alternate" hreflang="en" href="https://anyconverter.io/mouse-tester/">
+  <link rel="alternate" hreflang="es" href="https://anyconverter.io/es/mouse-tester/">
+  <link rel="alternate" hreflang="da" href="https://anyconverter.io/da/mouse-tester/">
+  <link rel="alternate" hreflang="x-default" href="https://anyconverter.io/mouse-tester/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Mouse Tester Online Free | AnyConverter">
+  <meta property="og:description" content="Test your mouse buttons, scroll wheel, and pointer tracking online. No app required.">
+  <meta property="og:url" content="https://anyconverter.io/mouse-tester/">
+  <meta property="og:site_name" content="AnyConverter">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" data-ad-client="ca-pub-XXXXXXXXXX" crossorigin="anonymous"></script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Mouse Tester","url":"https://anyconverter.io/mouse-tester/","description":"Test your mouse buttons, scroll wheel and pointer tracking online for free.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F4F6FF);color:var(--color-text,#1E1B4B)}
+    body{min-height:100vh;display:flex;flex-direction:column}
+    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8FE)}
+    .header-inner{max-width:1280px;width:100%;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;gap:32px}
+    .hero{padding:40px 24px 32px;max-width:1280px;margin:0 auto}
+    .hero h1{font-size:clamp(1.75rem,4vw,2.25rem);font-weight:700;line-height:1.2;margin-bottom:12px}
+    .hero-desc{font-size:1.0625rem;color:var(--color-text-2,#6B7280);max-width:680px;line-height:1.6}
+    @font-face{font-family:'Inter';font-display:swap}
+    #mouse-area{position:relative;width:100%;height:300px;background:var(--color-surface-2,#EEF1FF);border-radius:12px;overflow:hidden;cursor:crosshair;border:2px dashed var(--color-primary-light,#EEF2FF);user-select:none}
+    #mouse-canvas{position:absolute;inset:0;width:100%;height:100%}
+    #mouse-area-hint{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:var(--color-text-2,#6B7280);font-size:14px;pointer-events:none}
+    .mouse-stat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px}
+    .mouse-stat{background:var(--color-bg,#F4F6FF);border:1px solid var(--color-border,#DDD8FE);border-radius:10px;padding:14px;text-align:center}
+    .mouse-stat-val{font-size:1.5rem;font-weight:700;color:var(--color-primary,#4F46E5)}
+    .mouse-stat-label{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.5px;color:var(--color-text-2,#6B7280);margin-top:4px}
+    .mouse-btn--active{background:var(--color-primary,#4F46E5) !important;color:var(--color-surface,#fff) !important}
+  </style>
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+  <header id="site-header" class="site-header"></header>
+  <main id="main-content">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol><li><a href="/">Home</a></li><li aria-current="page">Mouse Tester</li></ol>
+    </nav>
+    <section class="hero">
+      <h1>Mouse Tester</h1>
+      <p class="hero-desc">Test every button and movement of your mouse. Click anywhere in the test area to see click positions tracked in real time.</p>
+    </section>
+    <div class="tool-wrapper">
+      <div class="tool-zone">
+        <div style="padding:24px">
+          <div id="mouse-area">
+            <canvas id="mouse-canvas"></canvas>
+            <div id="mouse-area-hint">Move and click inside this area to test your mouse</div>
+          </div>
+          <div class="mouse-stat-grid">
+            <div class="mouse-stat"><div class="mouse-stat-val" id="mouse-left">0</div><div class="mouse-stat-label">Left Clicks</div></div>
+            <div class="mouse-stat"><div class="mouse-stat-val" id="mouse-middle">0</div><div class="mouse-stat-label">Middle Clicks</div></div>
+            <div class="mouse-stat"><div class="mouse-stat-val" id="mouse-right">0</div><div class="mouse-stat-label">Right Clicks</div></div>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:12px;font-size:13px">
+            <div style="background:var(--color-bg,#F4F6FF);border:1px solid var(--color-border,#DDD8FE);border-radius:8px;padding:10px;text-align:center">X: <strong id="mouse-x">—</strong></div>
+            <div style="background:var(--color-bg,#F4F6FF);border:1px solid var(--color-border,#DDD8FE);border-radius:8px;padding:10px;text-align:center">Y: <strong id="mouse-y">—</strong></div>
+            <div style="background:var(--color-bg,#F4F6FF);border:1px solid var(--color-border,#DDD8FE);border-radius:8px;padding:10px;text-align:center">Scroll: <strong id="mouse-scroll">—</strong></div>
+          </div>
+          <div style="margin-top:12px;display:flex;gap:12px;align-items:center">
+            <div id="mouse-btn-left" style="padding:8px 16px;border-radius:8px;background:var(--color-primary-light,#EEF2FF);color:var(--color-primary,#4F46E5);font-weight:600;font-size:13px;transition:all .1s">Left Button</div>
+            <button class="btn btn-secondary btn-sm" id="mouse-clear">Reset</button>
+          </div>
+        </div>
+      </div>
+      <aside class="tool-side" aria-label="Options">
+        <div class="ss-divider">Related Tools</div>
+        <a href="/keyboard-tester/" class="ss-related-link"><img src="/assets/img/icon-browser.svg" alt="" width="18" height="18" loading="lazy">Keyboard Tester</a>
+        <a href="/browser-info/" class="ss-related-link"><img src="/assets/img/icon-browser.svg" alt="" width="18" height="18" loading="lazy">Browser Info Viewer</a>
+        <div style="margin-top:16px">
+          <p class="ad-label">Advertisement</p>
+          <div class="ad-slot" style="min-height:250px">
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+          </div>
+        </div>
+      </aside>
+    </div>
+    <div class="ad-slot ad-slot--leaderboard">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="how-to-use">
+      <h2>How to Use</h2>
+      <ol class="steps">
+        <li>Move your mouse over the purple test area to see coordinates.</li>
+        <li>Left-click, right-click, or middle-click — each registers separately.</li>
+        <li>Click dots fade out to show your click pattern clearly.</li>
+        <li>Use the scroll wheel and see the direction detected.</li>
+      </ol>
+    </section>
+    <section class="features">
+      <h2>Features</h2>
+      <ul class="features-list">
+        <li>Tracks left, middle, and right mouse buttons separately</li>
+        <li>Shows real-time X/Y coordinates</li>
+        <li>Visual click dot trail with fade animation</li>
+        <li>Scroll wheel direction detection</li>
+        <li>Works with any mouse or trackpad</li>
+      </ul>
+    </section>
+    <div class="ad-slot ad-slot--rectangle" style="margin:0 auto 32px">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="faq">
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-list">
+        <details class="faq-item"><summary class="faq-question">Why doesn't my right-click register? <span class="faq-icon">+</span></summary><div class="faq-answer">The tool suppresses the context menu and captures the right mouse button event. If it still doesn't register, your mouse's right button may be damaged or the browser may have a conflicting extension.</div></details>
+        <details class="faq-item"><summary class="faq-question">Can I test mouse DPI? <span class="faq-icon">+</span></summary><div class="faq-answer">This tool tracks pixel-level movement within the test area. While it doesn't report DPI directly, you can judge sensitivity by how far the cursor moves compared to your physical movement across the test zone.</div></details>
+      </div>
+    </section>
+  </main>
+  <footer id="site-footer" class="site-footer"></footer>
+  <script src="/assets/js/shared.js" defer></script>
+  <script src="/assets/js/tools/mouse-tester.js" defer></script>
+</body>
+</html>

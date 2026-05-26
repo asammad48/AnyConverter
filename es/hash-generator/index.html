@@ -1,0 +1,161 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Generador de Hash Online — MD5 SHA256 SHA512 Gratis | AnyConverter</title>
+  <meta name="description" content="Genera hashes MD5, SHA-1, SHA-256 y SHA-512 online gratis. Hashea texto o archivos. Rápido, seguro, procesamiento del lado del cliente — tus datos nunca salen de tu navegador.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://anyconverter.io/es/hash-generator/">
+  <link rel="alternate" hreflang="en"        href="https://anyconverter.io/hash-generator/">
+  <link rel="alternate" hreflang="es"        href="https://anyconverter.io/es/hash-generator/">
+  <link rel="alternate" hreflang="da"        href="https://anyconverter.io/da/hash-generator/">
+  <link rel="alternate" hreflang="x-default" href="https://anyconverter.io/hash-generator/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Generador de Hash Online — MD5 SHA256 SHA512 Gratis | AnyConverter">
+  <meta property="og:description" content="Genera hashes MD5, SHA-1, SHA-256 y SHA-512 online gratis. Texto o archivos. Seguro, cliente únicamente.">
+  <meta property="og:url" content="https://anyconverter.io/es/hash-generator/">
+  <meta property="og:site_name" content="AnyConverter">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" data-ad-client="ca-pub-XXXXXXXXXX" crossorigin="anonymous"></script>
+  <!-- Replace ca-pub-XXXXXXXXXX with your real AdSense publisher ID -->
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Generador de Hash","url":"https://anyconverter.io/es/hash-generator/","description":"Genera hashes MD5, SHA-1, SHA-256 y SHA-512 online gratis.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F4F6FF);color:var(--color-text,#1E1B4B)}
+    body{min-height:100vh;display:flex;flex-direction:column}
+    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8FE)}
+    .header-inner{max-width:1280px;width:100%;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;gap:32px}
+    .hero{padding:40px 24px 32px;max-width:1280px;margin:0 auto}
+    .hero h1{font-size:clamp(1.75rem,4vw,2.25rem);font-weight:700;line-height:1.2;margin-bottom:12px}
+    .hero-desc{font-size:1.0625rem;color:var(--color-text-2,#6B7280);max-width:680px;line-height:1.6}
+    @font-face{font-family:'Inter';font-display:swap}
+  </style>
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+  <header id="site-header" class="site-header"></header>
+  <main id="main-content">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol><li><a href="/es/">Inicio</a></li><li aria-current="page">Generador de Hash</li></ol>
+    </nav>
+    <section class="hero">
+      <h1>Generador de Hash — MD5, SHA-256, SHA-512</h1>
+      <p class="hero-desc">Genera hashes criptográficos MD5, SHA-1, SHA-256 y SHA-512 online de forma gratuita. Introduce texto o sube un archivo para calcular todos los hashes simultáneamente. Procesamiento seguro 100% en el cliente — tus datos no se envían a ningún servidor.</p>
+    </section>
+    <div class="tool-wrapper">
+      <div class="tool-zone">
+        <div class="tab-bar">
+          <button class="tab-btn active" data-tab="text">Texto</button>
+          <button class="tab-btn" data-tab="file">Archivo</button>
+        </div>
+        <div class="tab-panel active" id="tab-text">
+          <textarea id="hash-input" placeholder="Introduce el texto para generar el hash..." spellcheck="false" style="min-height:140px;font-family:var(--font-mono);font-size:13px;margin-top:12px"></textarea>
+          <div class="action-bar mt-4">
+            <div class="action-bar-left">
+              <button class="btn btn-primary" id="btn-hash-text">Generar hashes</button>
+            </div>
+            <div class="action-bar-right">
+              <button class="btn btn-secondary btn-sm" id="btn-hash-clear">Limpiar</button>
+            </div>
+          </div>
+        </div>
+        <div class="tab-panel" id="tab-file">
+          <div class="drop-zone mt-4" id="hash-drop-zone" role="button" tabindex="0" aria-label="Arrastra un archivo aquí">
+            <svg class="drop-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5"/></svg>
+            <p>Arrastra un archivo aquí o haz clic para seleccionar</p>
+            <input type="file" id="hash-file-input">
+          </div>
+          <div id="hash-progress" style="display:none;margin-top:12px">
+            <div class="progress-bar"><div class="progress-fill" id="hash-progress-fill" style="width:0%"></div></div>
+            <p class="text-sm text-muted mt-2" id="hash-progress-label">Calculando hash...</p>
+          </div>
+        </div>
+        <div id="hash-results" style="display:none;margin-top:16px">
+          <div class="hash-results-grid">
+            <div class="hash-result-item"><span class="hash-algo">MD5</span><code class="hash-value" id="hash-md5"></code><button class="btn btn-sm" data-copy="hash-md5">Copiar</button></div>
+            <div class="hash-result-item"><span class="hash-algo">SHA-1</span><code class="hash-value" id="hash-sha1"></code><button class="btn btn-sm" data-copy="hash-sha1">Copiar</button></div>
+            <div class="hash-result-item"><span class="hash-algo">SHA-256</span><code class="hash-value" id="hash-sha256"></code><button class="btn btn-sm" data-copy="hash-sha256">Copiar</button></div>
+            <div class="hash-result-item"><span class="hash-algo">SHA-512</span><code class="hash-value" id="hash-sha512"></code><button class="btn btn-sm" data-copy="hash-sha512">Copiar</button></div>
+          </div>
+        </div>
+      </div>
+      <aside class="tool-side" aria-label="Options">
+        <div class="ss-divider">Options</div>
+        <div class="tog-row"><span class="tog-label" id="lbl-uppercase">Uppercase output</span><div class="tog off" id="tog-uppercase" role="switch" aria-checked="false" tabindex="0" aria-labelledby="lbl-uppercase"></div></div>
+        <div class="tog-row"><span class="tog-label" id="lbl-livehash">Live hash on input</span><div class="tog" id="tog-livehash" role="switch" aria-checked="true" tabindex="0" aria-labelledby="lbl-livehash"></div></div>
+
+        <div class="ss-divider">Stats</div>
+        <div class="stats-grid">
+          <div class="stat-card"><div class="stat-val" id="stat-input-size">0 B</div><div class="stat-lbl">Input size</div></div>
+          <div class="stat-card"><div class="stat-val" id="stat-algo-count">4</div><div class="stat-lbl">Algorithms</div></div>
+          <div class="stat-card"><div class="stat-val" id="stat-md5-len">—</div><div class="stat-lbl">MD5 bits</div></div>
+          <div class="stat-card"><div class="stat-val" id="stat-sha256-len">—</div><div class="stat-lbl">SHA-256 bits</div></div>
+        </div>
+
+        <div class="ss-divider">Related Tools</div>
+        <a href="/base64-encoder/" class="ss-related-link"><img src="/assets/img/icon-base64.svg" alt="" width="18" height="18" loading="lazy">Base64 Encoder</a>
+        <a href="/url-encoder/" class="ss-related-link"><img src="/assets/img/icon-url.svg" alt="" width="18" height="18" loading="lazy">URL Encoder</a>
+        <a href="/json-formatter/" class="ss-related-link"><img src="/assets/img/icon-json.svg" alt="" width="18" height="18" loading="lazy">JSON Formatter</a>
+
+        <div style="margin-top:8px">
+          <p class="ad-label">Advertisement</p>
+          <div class="ad-slot" style="min-height:250px">
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+            <!-- Replace ca-pub-XXXXXXXXXX and data-ad-slot="XXXXXXXXXX" with your IDs -->
+          </div>
+        </div>
+      </aside>
+    </div>
+    <div class="ad-slot ad-slot--leaderboard">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="how-to-use">
+      <h2>Cómo generar hashes</h2>
+      <ol class="steps">
+        <li><strong>Elige el modo</strong> — Selecciona "Texto" para hashear texto o "Archivo" para hashear cualquier tipo de archivo.</li>
+        <li><strong>Introduce los datos</strong> — Escribe el texto o arrastra el archivo. Haz clic en "Generar hashes".</li>
+        <li><strong>Copia el resultado</strong> — Se muestran los cuatro hashes simultáneamente. Copia el que necesites con el botón correspondiente.</li>
+      </ol>
+    </section>
+    <section class="features">
+      <h2>Características</h2>
+      <ul class="features-list">
+        <li>MD5, SHA-1, SHA-256 y SHA-512 simultáneos</li>
+        <li>Hash de texto y archivos de cualquier tipo</li>
+        <li>MD5 implementado en JS puro (sin CDN)</li>
+        <li>SHA-x usa Web Crypto API del navegador</li>
+        <li>100% seguro — sin subida al servidor</li>
+      </ul>
+    </section>
+    <div class="ad-slot ad-slot--rectangle" style="margin:0 auto 32px">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="faq">
+      <h2>Preguntas Frecuentes</h2>
+      <div class="faq-list">
+        <details class="faq-item"><summary class="faq-question">¿Para qué sirve un hash? <span class="faq-icon">+</span></summary><div class="faq-answer">Los hashes se usan para verificar la integridad de archivos, almacenar contraseñas de forma segura, generar identificadores únicos y detectar duplicados o cambios en datos.</div></details>
+        <details class="faq-item"><summary class="faq-question">¿Es MD5 seguro para contraseñas? <span class="faq-icon">+</span></summary><div class="faq-answer">No. MD5 está obsoleto para uso criptográfico. Para contraseñas, usa bcrypt, scrypt o Argon2. MD5 sigue siendo útil para verificar integridad de archivos no críticos.</div></details>
+        <details class="faq-item"><summary class="faq-question">¿Puedo hashear archivos grandes? <span class="faq-icon">+</span></summary><div class="faq-answer">Sí. La herramienta lee el archivo en fragmentos para que no se sature la memoria. Archivos de varios GB pueden procesarse aunque puede tardar unos segundos.</div></details>
+      </div>
+    </section>
+    <section class="related-tools">
+      <h2>Herramientas Relacionadas</h2>
+      <div class="tool-grid">
+        <a href="/base64-encoder/" class="tool-card"><img src="/assets/img/icon-base64.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Base64 Encoder</h3><p>Codifica y decodifica Base64.</p><span class="tool-card-link">Usar →</span></a>
+        <a href="/url-encoder/" class="tool-card"><img src="/assets/img/icon-url.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>URL Encoder</h3><p>Codifica y decodifica URLs.</p><span class="tool-card-link">Usar →</span></a>
+        <a href="/regex-tester/" class="tool-card"><img src="/assets/img/icon-regex.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Regex Tester</h3><p>Prueba expresiones regulares.</p><span class="tool-card-link">Usar →</span></a>
+      </div>
+    </section>
+  </main>
+  <footer id="site-footer" class="site-footer"></footer>
+  <script src="/assets/js/shared.js" defer></script>
+  <script src="/assets/js/tools/hash-generator.js" defer></script>
+</body>
+</html>

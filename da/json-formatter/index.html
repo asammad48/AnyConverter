@@ -1,0 +1,207 @@
+﻿<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JSON Formatter Online Gratis | AnyConverter</title>
+  <meta name="description" content="Formater og valider JSON øjeblikkeligt. Gratis online JSON-formatter med syntaksfremhævning. Kører i din browser — dine data forlader aldrig din enhed.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://anyconverter.io/da/json-formatter/">
+  <link rel="alternate" hreflang="en"        href="https://anyconverter.io/json-formatter/">
+  <link rel="alternate" hreflang="es"        href="https://anyconverter.io/es/json-formatter/">
+  <link rel="alternate" hreflang="da"        href="https://anyconverter.io/da/json-formatter/">
+  <link rel="alternate" hreflang="x-default" href="https://anyconverter.io/json-formatter/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="JSON Formatter Online Gratis | AnyConverter">
+  <meta property="og:description" content="Formater og valider JSON øjeblikkeligt. Gratis med syntaksfremhævning.">
+  <meta property="og:url" content="https://anyconverter.io/da/json-formatter/">
+  <meta property="og:site_name" content="AnyConverter">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" data-ad-client="ca-pub-XXXXXXXXXX" crossorigin="anonymous"></script>
+  <!-- Replace ca-pub-XXXXXXXXXX with your real AdSense publisher ID -->
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"JSON Formatter","url":"https://anyconverter.io/da/json-formatter/","description":"Formater og valider JSON øjeblikkeligt gratis.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F4F6FF);color:var(--color-text,#1E1B4B)}
+    body{min-height:100vh;display:flex;flex-direction:column}
+    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8FE)}
+    .header-inner{max-width:1280px;width:100%;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;gap:32px}
+    .hero{padding:40px 24px 32px;max-width:1280px;margin:0 auto}
+    .hero h1{font-size:clamp(1.75rem,4vw,2.25rem);font-weight:700;line-height:1.2;margin-bottom:12px}
+    .hero-desc{font-size:1.0625rem;color:var(--color-text-2,#6B7280);max-width:680px;line-height:1.6}
+    @font-face{font-family:'Inter';font-display:swap}
+  </style>
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
+</head>
+<body>
+  <header id="site-header" class="site-header"></header>
+  <main id="main-content">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol><li><a href="/da/">Hjem</a></li><li aria-current="page">JSON Formatter</li></ol>
+    </nav>
+    <section class="hero">
+      <h1>JSON Formatter og Validator</h1>
+      <p class="hero-desc">Formater, forskønne og valider JSON øjeblikkeligt. Indsæt din JSON eller upload en .json-fil. Syntaksfremhævning er inkluderet. Al behandling sker i din browser — dine data forlader aldrig din enhed.</p>
+    </section>
+    <div class="tool-wrapper">
+      <div class="tool-zone">
+        <div class="input-wrapper">
+          <textarea id="json-input" placeholder="Indsæt din JSON her..." spellcheck="false" style="min-height:300px;font-family:var(--font-mono);font-size:13px"></textarea>
+        </div>
+        <div class="action-bar">
+          <div class="action-bar-left">
+            <button class="btn btn-primary" id="btn-format">Formater ↵</button>
+            <button class="btn btn-secondary" id="btn-minify">Minificer</button>
+            <button class="btn btn-secondary" id="btn-validate">Valider</button>
+          </div>
+          <div class="action-bar-right">
+            <button class="btn btn-secondary btn-sm" id="btn-clear">Ryd</button>
+            <button class="btn btn-secondary btn-sm" id="btn-copy-input">Kopier input</button>
+            <label class="btn btn-secondary btn-sm" style="cursor:pointer">Upload .json<input type="file" id="json-file" accept=".json,application/json" style="display:none"></label>
+          </div>
+        </div>
+        <div id="json-status" class="status-bar" style="display:none"></div>
+        <div id="json-output-section" style="display:none">
+          <div class="code-output-wrapper mt-4">
+            <pre class="code-output" id="json-output"><code id="json-output-code" class="language-json"></code></pre>
+            <div class="code-output-actions">
+              <button class="btn btn-sm" id="btn-copy-output">Kopier</button>
+              <button class="btn btn-sm" id="btn-download">Download</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <aside class="tool-side" aria-label="Options">
+
+        <div class="ss-divider">Options</div>
+        <div class="ss-option-row">
+          <span class="ss-opt-label">Indent</span>
+          <select class="ss-opt-select" id="opt-indent">
+            <option value="2" selected>2 spaces</option>
+            <option value="4">4 spaces</option>
+            <option value="tab">Tab</option>
+          </select>
+        </div>
+        <div class="ss-option-row">
+          <span class="ss-opt-label">Sort keys</span>
+          <select class="ss-opt-select" id="opt-sort">
+            <option value="none" selected>None</option>
+            <option value="asc">A → Z</option>
+            <option value="desc">Z → A</option>
+          </select>
+        </div>
+
+        <div class="tog-row">
+          <span class="tog-label" id="lbl-autoformat">Auto-format on paste</span>
+          <div class="tog" id="tog-autoformat" role="switch" aria-checked="true" tabindex="0" aria-labelledby="lbl-autoformat"></div>
+        </div>
+        <div class="tog-row">
+          <span class="tog-label" id="lbl-collapse">Collapse all on load</span>
+          <div class="tog off" id="tog-collapse" role="switch" aria-checked="false" tabindex="0" aria-labelledby="lbl-collapse"></div>
+        </div>
+        <div class="tog-row">
+          <span class="tog-label" id="lbl-linenums">Show line numbers</span>
+          <div class="tog off" id="tog-linenums" role="switch" aria-checked="false" tabindex="0" aria-labelledby="lbl-linenums"></div>
+        </div>
+        <div class="tog-row">
+          <span class="tog-label" id="lbl-wrap">Wrap long lines</span>
+          <div class="tog off" id="tog-wrap" role="switch" aria-checked="false" tabindex="0" aria-labelledby="lbl-wrap"></div>
+        </div>
+
+        <div class="ss-divider">Stats</div>
+        <div class="stats-grid">
+          <div class="stat-card"><div class="stat-val" id="stat-keys">0</div><div class="stat-lbl">Keys</div></div>
+          <div class="stat-card"><div class="stat-val" id="stat-depth">0</div><div class="stat-lbl">Depth</div></div>
+          <div class="stat-card"><div class="stat-val" id="stat-bytes">0</div><div class="stat-lbl">Bytes</div></div>
+          <div class="stat-card"><div class="stat-val" id="stat-errors">0</div><div class="stat-lbl">Errors</div></div>
+        </div>
+
+        <div class="ss-divider">Related Tools</div>
+        <a href="/xml-formatter/" class="ss-related-link">
+          <img src="/assets/img/icon-xml.svg" alt="" width="18" height="18" loading="lazy">
+          XML Formatter
+        </a>
+        <a href="/regex-tester/" class="ss-related-link">
+          <img src="/assets/img/icon-regex.svg" alt="" width="18" height="18" loading="lazy">
+          Regex / Logs
+        </a>
+        <a href="/csv-to-sql/" class="ss-related-link">
+          <img src="/assets/img/icon-csv.svg" alt="" width="18" height="18" loading="lazy">
+          CSV → SQL
+        </a>
+        <a href="/base64-encoder/" class="ss-related-link">
+          <img src="/assets/img/icon-base64.svg" alt="" width="18" height="18" loading="lazy">
+          Base64 Encoder
+        </a>
+
+        <!-- AdSense sidebar slot -->
+        <div style="margin-top:8px">
+          <p class="ad-label">Advertisement</p>
+          <div class="ad-slot" style="min-height:250px">
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-XXXXXXXXXX"
+                 data-ad-slot="XXXXXXXXXX"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+            <!-- Replace ca-pub-XXXXXXXXXX and data-ad-slot="XXXXXXXXXX" with your IDs -->
+          </div>
+        </div>
+
+      </aside>
+    </div>
+    <div class="ad-slot ad-slot--leaderboard">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="how-to-use">
+      <h2>Sådan formaterer du JSON</h2>
+      <ol class="steps">
+        <li><strong>Indsæt din JSON</strong> — Indsæt JSON-indholdet i tekstfeltet eller upload en .json-fil.</li>
+        <li><strong>Formater eller valider</strong> — Klik på "Formater" for at forskønne JSON med indrykning, eller "Valider" for at tjekke for syntaksfejl.</li>
+        <li><strong>Kopier eller download</strong> — Kopier resultatet til udklipsholderen eller download det som .json-fil.</li>
+      </ol>
+    </section>
+    <section class="features">
+      <h2>Funktioner</h2>
+      <ul class="features-list">
+        <li>Øjeblikkelig formatering med indrykning</li>
+        <li>Validering med detaljerede fejlmeddelelser</li>
+        <li>Minificering for at reducere filstørrelsen</li>
+        <li>Syntaksfremhævning i outputtet</li>
+        <li>Understøttelse af filupload</li>
+        <li>100% behandling i browseren</li>
+      </ul>
+    </section>
+    <div class="ad-slot ad-slot--rectangle" style="margin:0 auto 32px">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="faq">
+      <h2>Ofte stillede spørgsmål</h2>
+      <div class="faq-list">
+        <details class="faq-item"><summary class="faq-question">Er det sikkert at indsætte private data? <span class="faq-icon">+</span></summary><div class="faq-answer">Ja. Al behandling sker i din browser. Dine data sendes aldrig til en server.</div></details>
+        <details class="faq-item"><summary class="faq-question">Hvad gør minificering? <span class="faq-icon">+</span></summary><div class="faq-answer">Minificering fjerner unødvendige mellemrum, linjeskift og indrykning fra JSON, hvilket reducerer filstørrelsen for hurtigere overførsler.</div></details>
+        <details class="faq-item"><summary class="faq-question">Hvad er den maksimale filstørrelse? <span class="faq-icon">+</span></summary><div class="faq-answer">Der er ingen fast grænse. Meget store filer (over 10 MB) kan være langsomme at behandle, men værktøjet klarer det på de fleste moderne enheder.</div></details>
+      </div>
+    </section>
+    <section class="related-tools">
+      <h2>Relaterede værktøjer</h2>
+      <div class="tool-grid">
+        <a href="/xml-formatter/" class="tool-card"><img src="/assets/img/icon-xml.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>XML Formatter</h3><p>Formater og valider XML.</p><span class="tool-card-link">Brug →</span></a>
+        <a href="/csv-to-sql/" class="tool-card"><img src="/assets/img/icon-csv.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>CSV til SQL</h3><p>Konverter CSV til SQL-sætninger.</p><span class="tool-card-link">Brug →</span></a>
+        <a href="/hash-generator/" class="tool-card"><img src="/assets/img/icon-hash.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Hash Generator</h3><p>Generer kryptografiske hashes.</p><span class="tool-card-link">Brug →</span></a>
+      </div>
+    </section>
+  </main>
+  <footer id="site-footer" class="site-footer"></footer>
+  <script src="/assets/js/shared.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" defer></script>
+  <script src="/assets/js/tools/json-formatter.js" defer></script>
+</body>
+</html>

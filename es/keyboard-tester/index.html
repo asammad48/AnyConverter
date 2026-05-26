@@ -1,0 +1,126 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Probador de Teclado Online Gratis | AnyConverter</title>
+  <meta name="description" content="Prueba cada tecla de tu teclado online gratis. Presiona cualquier tecla y mírala iluminarse al instante. Detecta teclas atascadas, que no responden o rotas. Sin descarga.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://anyconverter.io/es/keyboard-tester/">
+  <link rel="alternate" hreflang="en" href="https://anyconverter.io/keyboard-tester/">
+  <link rel="alternate" hreflang="es" href="https://anyconverter.io/es/keyboard-tester/">
+  <link rel="alternate" hreflang="da" href="https://anyconverter.io/da/keyboard-tester/">
+  <link rel="alternate" hreflang="x-default" href="https://anyconverter.io/keyboard-tester/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Probador de Teclado Online Gratis | AnyConverter">
+  <meta property="og:description" content="Presiona cualquier tecla y mírala iluminarse. Detecta teclas atascadas o rotas al instante en tu navegador.">
+  <meta property="og:url" content="https://anyconverter.io/es/keyboard-tester/">
+  <meta property="og:site_name" content="AnyConverter">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" data-ad-client="ca-pub-XXXXXXXXXX" crossorigin="anonymous"></script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Probador de Teclado","url":"https://anyconverter.io/es/keyboard-tester/","description":"Prueba cada tecla de tu teclado. Presiona cualquier tecla y mírala iluminarse al instante.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F4F6FF);color:var(--color-text,#1E1B4B)}
+    body{min-height:100vh;display:flex;flex-direction:column}
+    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8FE)}
+    .header-inner{max-width:1280px;width:100%;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;gap:32px}
+    .hero{padding:40px 24px 32px;max-width:1280px;margin:0 auto}
+    .hero h1{font-size:clamp(1.75rem,4vw,2.25rem);font-weight:700;line-height:1.2;margin-bottom:12px}
+    .hero-desc{font-size:1.0625rem;color:var(--color-text-2,#6B7280);max-width:680px;line-height:1.6}
+    @font-face{font-family:'Inter';font-display:swap}
+    #keyboard-wrap{display:flex;gap:12px;overflow-x:auto;padding-bottom:8px;align-items:flex-start}
+    .kb-board{display:flex;flex-direction:column;gap:4px}
+    .kb-nav{display:flex;flex-direction:column;gap:4px}
+    .kb-row{display:flex;gap:4px;align-items:stretch}
+    .kb-key{display:inline-flex;align-items:center;justify-content:center;min-width:40px;height:40px;padding:0 6px;background:var(--color-surface,#fff);border:1px solid var(--color-border,#DDD8FE);border-radius:6px;font-size:11px;font-weight:600;color:#444;cursor:default;user-select:none;transition:background .1s,color .1s;white-space:nowrap;flex:1}
+    .kb-key--active{background:var(--color-primary,#4F46E5) !important;color:var(--color-surface,#fff) !important;border-color:var(--color-primary,#4F46E5)}
+    .kb-log-row{display:flex;gap:8px;align-items:center;padding:4px 0;border-bottom:1px solid var(--color-bg,#F4F6FF);font-size:12px}
+    .kb-log-type{padding:2px 6px;border-radius:4px;font-weight:600;font-size:11px}
+    .kb-log-type--down{background:var(--color-primary-light,#EEF2FF);color:var(--color-primary,#4F46E5)}
+    .kb-log-type--up{background:var(--color-success-bg,#ECFDF5);color:var(--color-success,#059669)}
+    .kb-log-code{font-family:monospace;color:#666}
+    .kb-log-key{font-weight:600}
+  </style>
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+  <header id="site-header" class="site-header"></header>
+  <main id="main-content">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol><li><a href="/es/">Inicio</a></li><li aria-current="page">Probador de Teclado</li></ol>
+    </nav>
+    <section class="hero">
+      <h1>Probador de Teclado</h1>
+      <p class="hero-desc">Presiona cualquier tecla para verla iluminarse en el teclado visual. Detecta teclas atascadas, rotas o que no responden al instante sin instalar ningún software.</p>
+    </section>
+    <div class="tool-wrapper">
+      <div class="tool-zone">
+        <div style="padding:24px">
+          <div style="margin-bottom:12px;display:flex;align-items:center;gap:16px;flex-wrap:wrap">
+            <span style="font-size:13px;color:var(--color-text-2,#6B7280)">Última tecla: <strong id="kb-last">—</strong></span>
+            <button class="btn btn-secondary btn-sm" id="kb-clear">Reiniciar Todo</button>
+          </div>
+          <div id="keyboard-wrap"></div>
+          <div style="margin-top:20px">
+            <div style="font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.5px;color:var(--color-text-2,#6B7280);margin-bottom:8px">Registro de Teclas</div>
+            <div id="kb-log" style="max-height:140px;overflow-y:auto;border:1px solid var(--color-border,#DDD8FE);border-radius:8px;padding:8px 12px"></div>
+          </div>
+        </div>
+      </div>
+      <aside class="tool-side" aria-label="Opciones">
+        <div class="ss-divider">Herramientas Relacionadas</div>
+        <a href="/es/mouse-tester/" class="ss-related-link"><img src="/assets/img/icon-browser.svg" alt="" width="18" height="18" loading="lazy">Probador de Ratón</a>
+        <a href="/es/browser-info/" class="ss-related-link"><img src="/assets/img/icon-browser.svg" alt="" width="18" height="18" loading="lazy">Visor de Info del Navegador</a>
+        <div style="margin-top:16px">
+          <p class="ad-label">Publicidad</p>
+          <div class="ad-slot" style="min-height:250px">
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+          </div>
+        </div>
+      </aside>
+    </div>
+    <div class="ad-slot ad-slot--leaderboard">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="how-to-use">
+      <h2>Cómo Usar el Probador de Teclado</h2>
+      <ol class="steps">
+        <li>Haz clic en cualquier parte de la página para asegurarte de que tiene el foco.</li>
+        <li>Presiona cualquier tecla — se iluminará en morado en el diagrama del teclado.</li>
+        <li>El registro de teclas muestra cada evento keydown y keyup con el código de la tecla.</li>
+        <li>Haz clic en <strong>Reiniciar Todo</strong> para limpiar todas las teclas resaltadas.</li>
+      </ol>
+    </section>
+    <section class="features">
+      <h2>Características</h2>
+      <ul class="features-list">
+        <li>Diseño visual de teclado QWERTY con todas las teclas estándar</li>
+        <li>Las teclas se iluminan al presionar y al soltar</li>
+        <li>Registro de eventos de teclas con indicadores keydown / keyup</li>
+        <li>Detecta teclas modificadoras: Mayús, Ctrl, Alt, Win/Cmd</li>
+        <li>Funciona con cualquier disposición de teclado físico</li>
+      </ul>
+    </section>
+    <div class="ad-slot ad-slot--rectangle" style="margin:0 auto 32px">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="faq">
+      <h2>Preguntas Frecuentes</h2>
+      <div class="faq-list">
+        <details class="faq-item"><summary class="faq-question">¿Por qué una tecla no aparece cuando la presiono? <span class="faq-icon">+</span></summary><div class="faq-answer">La tecla puede estar físicamente dañada o la conexión está rota. Algunas teclas especiales (como Fn en portátiles) son manejadas por el hardware y nunca envían un código de tecla al navegador.</div></details>
+        <details class="faq-item"><summary class="faq-question">¿Cómo pruebo las teclas fantasma? <span class="faq-icon">+</span></summary><div class="faq-answer">Mantén presionadas varias teclas simultáneamente. Si una tecla se registra sin que la hayas presionado, es una tecla fantasma — una limitación de la matriz de hardware del teclado. Los teclados de mayor calidad (con N-Key Rollover) evitan esto.</div></details>
+      </div>
+    </section>
+  </main>
+  <footer id="site-footer" class="site-footer"></footer>
+  <script src="/assets/js/shared.js" defer></script>
+  <script src="/assets/js/tools/keyboard-tester.js" defer></script>
+</body>
+</html>

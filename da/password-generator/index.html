@@ -1,0 +1,146 @@
+﻿<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Adgangskodegenerator Online Gratis | AnyConverter</title>
+  <meta name="description" content="Generer stærke, sikre tilfældige adgangskoder online gratis. Tilpas længde og tegntyper, og generer flere adgangskoder på én gang. Ingen tilmelding kræves.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://anyconverter.io/da/password-generator/">
+  <link rel="alternate" hreflang="en" href="https://anyconverter.io/password-generator/">
+  <link rel="alternate" hreflang="es" href="https://anyconverter.io/es/password-generator/">
+  <link rel="alternate" hreflang="da" href="https://anyconverter.io/da/password-generator/">
+  <link rel="alternate" hreflang="x-default" href="https://anyconverter.io/password-generator/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Adgangskodegenerator Online Gratis | AnyConverter">
+  <meta property="og:description" content="Generer stærke, sikre tilfældige adgangskoder online gratis. Tilpas længde og tegntyper. Ingen tilmelding kræves.">
+  <meta property="og:url" content="https://anyconverter.io/da/password-generator/">
+  <meta property="og:site_name" content="AnyConverter">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" data-ad-client="ca-pub-XXXXXXXXXX" crossorigin="anonymous"></script>
+  <!-- Replace ca-pub-XXXXXXXXXX with your real AdSense publisher ID -->
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Adgangskodegenerator","url":"https://anyconverter.io/da/password-generator/","description":"Generer stærke, sikre tilfældige adgangskoder online gratis.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F4F6FF);color:var(--color-text,#1E1B4B)}
+    body{min-height:100vh;display:flex;flex-direction:column}
+    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8FE)}
+    .header-inner{max-width:1280px;width:100%;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;gap:32px}
+    .hero{padding:40px 24px 32px;max-width:1280px;margin:0 auto}
+    .hero h1{font-size:clamp(1.75rem,4vw,2.25rem);font-weight:700;line-height:1.2;margin-bottom:12px}
+    .hero-desc{font-size:1.0625rem;color:var(--color-text-2,#6B7280);max-width:680px;line-height:1.6}
+    @font-face{font-family:'Inter';font-display:swap}
+  </style>
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+  <header id="site-header" class="site-header"></header>
+  <main id="main-content">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol><li><a href="/da/">Hjem</a></li><li aria-current="page">Adgangskodegenerator</li></ol>
+    </nav>
+    <section class="hero">
+      <h1>Adgangskodegenerator</h1>
+      <p class="hero-desc">Opret stærke, tilfældige adgangskoder med store bogstaver, små bogstaver, tal og symboler. Vælg din længde (6–64 tegn) og generer flere adgangskoder på én gang. Al generering sker i din browser ved hjælp af Web Crypto API — intet sendes til en server.</p>
+    </section>
+    <div class="tool-wrapper">
+      <div class="tool-zone">
+        <div style="padding:24px">
+          <div style="margin-bottom:16px">
+            <label style="display:block;font-size:13px;font-weight:500;margin-bottom:6px">Adgangskodelængde: <span id="len-display">16</span></label>
+            <input type="range" id="pw-length" min="6" max="64" value="16" style="width:100%;accent-color:var(--color-primary,#4F46E5)">
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:16px">
+            <label style="display:flex;align-items:center;gap:8px;font-size:14px;cursor:pointer"><input type="checkbox" id="opt-upper" checked> Store bogstaver (A-Z)</label>
+            <label style="display:flex;align-items:center;gap:8px;font-size:14px;cursor:pointer"><input type="checkbox" id="opt-lower" checked> Små bogstaver (a-z)</label>
+            <label style="display:flex;align-items:center;gap:8px;font-size:14px;cursor:pointer"><input type="checkbox" id="opt-numbers" checked> Tal (0-9)</label>
+            <label style="display:flex;align-items:center;gap:8px;font-size:14px;cursor:pointer"><input type="checkbox" id="opt-symbols" checked> Symboler (!@#$)</label>
+          </div>
+          <div style="margin-bottom:12px">
+            <label style="display:block;font-size:13px;font-weight:500;margin-bottom:6px">Antal</label>
+            <input type="number" id="pw-count" value="1" min="1" max="20" style="width:80px;padding:8px 12px;border:1px solid var(--color-border,#DDD8FE);border-radius:8px;font-size:14px">
+          </div>
+          <div class="action-bar" style="margin-bottom:20px">
+            <button class="btn btn-primary" id="btn-generate-pw">Generer adgangskode</button>
+            <button class="btn btn-secondary" id="btn-copy-all-pw">Kopiér alle</button>
+          </div>
+          <div id="pw-output" style="display:none">
+            <div id="pw-list" style="display:flex;flex-direction:column;gap:8px"></div>
+            <div id="strength-bar" style="margin-top:16px">
+              <div style="font-size:12px;font-weight:500;margin-bottom:4px">Styrke: <span id="strength-label">—</span></div>
+              <div style="height:6px;border-radius:3px;background:var(--color-border,#DDD8FE);overflow:hidden"><div id="strength-fill" style="height:100%;width:0%;transition:width 0.3s;border-radius:3px"></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <aside class="tool-side" aria-label="Indstillinger">
+        <div class="ss-divider">Relaterede værktøjer</div>
+        <a href="/da/qr-code-generator/" class="ss-related-link"><img src="/assets/img/icon-qr.svg" alt="" width="18" height="18" loading="lazy">QR-kode Generator</a>
+        <a href="/da/hash-generator/" class="ss-related-link"><img src="/assets/img/icon-hash.svg" alt="" width="18" height="18" loading="lazy">Hash-generator</a>
+        <a href="/da/url-encoder/" class="ss-related-link"><img src="/assets/img/icon-url.svg" alt="" width="18" height="18" loading="lazy">URL-koder</a>
+        <div style="margin-top:16px">
+          <p class="ad-label">Reklame</p>
+          <div class="ad-slot" style="min-height:250px">
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+            <!-- Replace ca-pub-XXXXXXXXXX and data-ad-slot="XXXXXXXXXX" with your IDs -->
+          </div>
+        </div>
+      </aside>
+    </div>
+    <div class="ad-slot ad-slot--leaderboard">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="how-to-use">
+      <h2>Sådan bruges Adgangskodegeneratoren</h2>
+      <ol class="steps">
+        <li><strong>Trin 1</strong> — Træk længdeskyderne for at angive det ønskede antal tegn mellem 6 og 64.</li>
+        <li><strong>Trin 2</strong> — Markér eller fjern markeringen af de tegntyper, du ønsker: store bogstaver, små bogstaver, tal og/eller symboler.</li>
+        <li><strong>Trin 3</strong> — Angiv antallet, klik på "Generer adgangskode", og kopiér individuelle adgangskoder eller brug "Kopiér alle".</li>
+      </ol>
+    </section>
+    <section class="features">
+      <h2>Funktioner</h2>
+      <ul class="features-list">
+        <li>Kryptografisk sikker tilfældighed ved hjælp af Web Crypto API</li>
+        <li>Tilpasselig længde fra 6 til 64 tegn</li>
+        <li>Slå store bogstaver, små bogstaver, tal og symboler til/fra uafhængigt</li>
+        <li>Generer op til 20 adgangskoder på én gang</li>
+        <li>Adgangskodestyrkemåler (Svag / Middel / Stærk)</li>
+        <li>Kopiér med ét klik for hver adgangskode eller alle på én gang</li>
+        <li>100% klientbaseret — adgangskoder forlader aldrig din browser</li>
+      </ul>
+    </section>
+    <div class="ad-slot ad-slot--rectangle" style="margin:0 auto 32px">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="faq">
+      <h2>Ofte stillede spørgsmål</h2>
+      <div class="faq-list">
+        <details class="faq-item"><summary class="faq-question">Hvor sikre er de genererede adgangskoder? <span class="faq-icon">+</span></summary><div class="faq-answer">Adgangskoder genereres ved hjælp af browserens indbyggede Web Crypto API (crypto.getRandomValues), som producerer kryptografisk sikre tilfældige tal — den samme standard, der bruges af sikkerhedssoftware og adgangskodeadministratorer.</div></details>
+        <details class="faq-item"><summary class="faq-question">Gemmes eller overføres mine adgangskoder? <span class="faq-icon">+</span></summary><div class="faq-answer">Nej. Al adgangskodegenerering sker lokalt i din browser. Adgangskoderne gemmes, logges eller overføres aldrig til nogen server. Når du lukker eller genindlæser siden, er de væk.</div></details>
+        <details class="faq-item"><summary class="faq-question">Hvilken adgangskodelængde bør jeg bruge? <span class="faq-icon">+</span></summary><div class="faq-answer">For de fleste onlinekonti anbefales mindst 16 tegn med en blanding af alle tegntyper. For meget følsomme konti som e-mail eller bank bør du bruge 20 eller flere tegn.</div></details>
+        <details class="faq-item"><summary class="faq-question">Hvad måler styrkeindikatoren? <span class="faq-icon">+</span></summary><div class="faq-answer">Styrkemåleren evaluerer længde og tegnvariation. En "Stærk" adgangskode er mindst 12 tegn lang og bruger en blanding af store bogstaver, små bogstaver, tal og symboler.</div></details>
+        <details class="faq-item"><summary class="faq-question">Kan jeg generere flere adgangskoder på én gang? <span class="faq-icon">+</span></summary><div class="faq-answer">Ja. Indstil feltet Antal til et tal mellem 1 og 20, og klik derefter på Generer. Brug "Kopiér alle" for at kopiere alle genererede adgangskoder til udklipsholderen på én gang.</div></details>
+      </div>
+    </section>
+    <section class="related-tools">
+      <h2>Relaterede Værktøjer</h2>
+      <div class="tool-grid">
+        <a href="/da/qr-code-generator/" class="tool-card"><img src="/assets/img/icon-qr.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>QR-kode Generator</h3><p>Generer QR-koder til enhver tekst eller URL øjeblikkeligt.</p><span class="tool-card-link">Brug →</span></a>
+        <a href="/da/hash-generator/" class="tool-card"><img src="/assets/img/icon-hash.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Hash-generator</h3><p>Generer MD5, SHA-1, SHA-256 hashes fra enhver tekst.</p><span class="tool-card-link">Brug →</span></a>
+        <a href="/da/url-encoder/" class="tool-card"><img src="/assets/img/icon-url.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>URL-koder</h3><p>Kodr og dekod URL'er og forespørgselsstrenge.</p><span class="tool-card-link">Brug →</span></a>
+        <a href="/da/base64-encoder/" class="tool-card"><img src="/assets/img/icon-hash.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Base64-koder</h3><p>Kodr og dekod Base64-tekst og filer.</p><span class="tool-card-link">Brug →</span></a>
+      </div>
+    </section>
+  </main>
+  <footer id="site-footer" class="site-footer"></footer>
+  <script src="/assets/js/shared.js" defer></script>
+  <script src="/assets/js/tools/password-generator.js" defer></script>
+</body>
+</html>

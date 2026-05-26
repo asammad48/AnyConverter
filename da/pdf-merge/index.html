@@ -1,0 +1,159 @@
+﻿<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sammensæt PDF Online Gratis | AnyConverter</title>
+  <meta name="description" content="Kombiner flere PDF-filer til én gratis online. Træk, sorter og flet PDF'er på sekunder. Ingen registrering. Sikker behandling i din browser.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://anyconverter.io/da/pdf-merge/">
+  <link rel="alternate" hreflang="en"        href="https://anyconverter.io/pdf-merge/">
+  <link rel="alternate" hreflang="es"        href="https://anyconverter.io/es/pdf-merge/">
+  <link rel="alternate" hreflang="da"        href="https://anyconverter.io/da/pdf-merge/">
+  <link rel="alternate" hreflang="x-default" href="https://anyconverter.io/pdf-merge/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Sammensæt PDF Online Gratis | AnyConverter">
+  <meta property="og:description" content="Kombiner flere PDF-filer til én gratis. Træk, sorter og flet PDF'er på sekunder.">
+  <meta property="og:url" content="https://anyconverter.io/da/pdf-merge/">
+  <meta property="og:site_name" content="AnyConverter">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" data-ad-client="ca-pub-XXXXXXXXXX" crossorigin="anonymous"></script>
+  <!-- Replace ca-pub-XXXXXXXXXX with your real AdSense publisher ID -->
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Sammensæt PDF Online","url":"https://anyconverter.io/da/pdf-merge/","description":"Kombiner flere PDF-filer til én gratis online.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F4F6FF);color:var(--color-text,#1E1B4B)}
+    body{min-height:100vh;display:flex;flex-direction:column}
+    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8FE)}
+    .header-inner{max-width:1280px;width:100%;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;gap:32px}
+    .hero{padding:40px 24px 32px;max-width:1280px;margin:0 auto}
+    .hero h1{font-size:clamp(1.75rem,4vw,2.25rem);font-weight:700;line-height:1.2;margin-bottom:12px}
+    .hero-desc{font-size:1.0625rem;color:var(--color-text-2,#6B7280);max-width:680px;line-height:1.6}
+    @font-face{font-family:'Inter';font-display:swap}
+  </style>
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+  <header id="site-header" class="site-header"></header>
+  <main id="main-content">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol><li><a href="/da/">Hjem</a></li><li aria-current="page">Sammensæt PDF</li></ol>
+    </nav>
+    <section class="hero">
+      <h1>Sammensæt PDF-Filer Online</h1>
+      <p class="hero-desc">Kombiner flere PDF-filer til én enkelt fil gratis. Træk filerne for at omarrangere dem, og klik på "Flet PDFs" for at få det kombinerede dokument. Al behandling sker i din browser — ingen serverupload, fuldstændig privat.</p>
+    </section>
+    <div class="tool-wrapper">
+      <div class="tool-zone">
+        <div class="drop-zone" id="merge-drop-zone" role="button" tabindex="0" aria-label="Træk PDF-filer hertil eller klik for at vælge">
+          <svg class="drop-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5"/></svg>
+          <p>Træk PDF-filer hertil eller klik for at vælge</p>
+          <small>Vælg flere PDF-filer</small>
+          <input type="file" id="merge-input" accept=".pdf,application/pdf" multiple>
+        </div>
+        <div id="merge-file-list" style="display:none">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin:16px 0 8px">
+            <p class="panel-label" style="margin:0">PDF-filer <span id="merge-count" style="color:var(--color-text-2,#6B7280);font-weight:400"></span></p>
+            <div style="display:flex;gap:8px">
+              <label class="btn btn-secondary btn-sm" style="cursor:pointer">Tilføj flere<input type="file" id="merge-add" accept=".pdf,application/pdf" multiple style="display:none"></label>
+              <button class="btn btn-secondary btn-sm" id="btn-clear-merge">Ryd alt</button>
+            </div>
+          </div>
+          <div id="merge-files" class="file-list"></div>
+          <div class="settings-panel mt-4">
+            <div class="settings-field">
+              <label for="merge-output-name">Navn på outputfil</label>
+              <input type="text" id="merge-output-name" value="merged.pdf">
+            </div>
+          </div>
+          <div id="merge-progress" style="display:none;margin-top:12px">
+            <div class="progress-bar"><div class="progress-fill" id="merge-progress-fill" style="width:0%"></div></div>
+            <p class="text-sm text-muted mt-2" id="merge-progress-label">Behandler...</p>
+          </div>
+          <button class="btn btn-primary btn-full mt-4" id="btn-merge">Flet PDFs</button>
+        </div>
+        <div id="merge-result" style="display:none;margin-top:16px">
+          <div class="status-bar success">✓ PDFs flettet korrekt</div>
+          <button class="btn btn-primary btn-full mt-4" id="btn-download-merge">Download flettet PDF ↓</button>
+        </div>
+      </div>
+      <aside class="tool-side" aria-label="Options">
+        <div class="ss-divider">Options</div>
+        <div class="tog-row"><span class="tog-label" id="lbl-blank-sep">Blank page between files</span><div class="tog off" id="tog-blank-sep" role="switch" aria-checked="false" tabindex="0" aria-labelledby="lbl-blank-sep"></div></div>
+        <div class="tog-row"><span class="tog-label" id="lbl-sort-alpha">Sort files alphabetically</span><div class="tog off" id="tog-sort-alpha" role="switch" aria-checked="false" tabindex="0" aria-labelledby="lbl-sort-alpha"></div></div>
+
+        <div class="ss-divider">Stats</div>
+        <div class="stats-grid">
+          <div class="stat-card"><div class="stat-val" id="stat-file-count">0</div><div class="stat-lbl">Files</div></div>
+          <div class="stat-card"><div class="stat-val" id="stat-total-pages">0</div><div class="stat-lbl">Total pages</div></div>
+          <div class="stat-card"><div class="stat-val" id="stat-total-size">0 B</div><div class="stat-lbl">Total size</div></div>
+          <div class="stat-card"><div class="stat-val" id="stat-merge-status">—</div><div class="stat-lbl">Status</div></div>
+        </div>
+
+        <div class="ss-divider">Related Tools</div>
+        <a href="/pdf-split/" class="ss-related-link"><img src="/assets/img/icon-pdf.svg" alt="" width="18" height="18" loading="lazy">PDF Split</a>
+        <a href="/pdf-compress/" class="ss-related-link"><img src="/assets/img/icon-pdf.svg" alt="" width="18" height="18" loading="lazy">PDF Compress</a>
+        <a href="/image-converter/" class="ss-related-link"><img src="/assets/img/icon-image.svg" alt="" width="18" height="18" loading="lazy">Image Converter</a>
+
+        <div style="margin-top:8px">
+          <p class="ad-label">Advertisement</p>
+          <div class="ad-slot" style="min-height:250px">
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+            <!-- Replace ca-pub-XXXXXXXXXX and data-ad-slot="XXXXXXXXXX" with your IDs -->
+          </div>
+        </div>
+      </aside>
+    </div>
+    <div class="ad-slot ad-slot--leaderboard">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="how-to-use">
+      <h2>Sådan sammensætter du PDF-filer</h2>
+      <ol class="steps">
+        <li><strong>Upload dine PDFs</strong> — Træk flere PDF-filer eller klik for at vælge dem.</li>
+        <li><strong>Omarranger om nødvendigt</strong> — Træk filerne på listen for at ændre den rækkefølge, de kombineres i.</li>
+        <li><strong>Flet og download</strong> — Klik "Flet PDFs" og download det kombinerede dokument.</li>
+      </ol>
+    </section>
+    <section class="features">
+      <h2>Funktioner</h2>
+      <ul class="features-list">
+        <li>Flet et vilkårligt antal PDFs</li>
+        <li>Omarranger ved træk og slip</li>
+        <li>Tilpasseligt navn på outputfilen</li>
+        <li>100% privat — ingen serverupload</li>
+        <li>Powered by pdf-lib</li>
+      </ul>
+    </section>
+    <div class="ad-slot ad-slot--rectangle" style="margin:0 auto 32px">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="faq">
+      <h2>Ofte stillede spørgsmål</h2>
+      <div class="faq-list">
+        <details class="faq-item"><summary class="faq-question">Hvor mange PDFs kan jeg flette ad gangen? <span class="faq-icon">+</span></summary><div class="faq-answer">Der er ingen fast grænse. Du kan flette så mange PDFs, du ønsker. Meget store filer kan tage længere tid afhængigt af enhedens ressourcer.</div></details>
+        <details class="faq-item"><summary class="faq-question">Uploades mine PDF-filer til en server? <span class="faq-icon">+</span></summary><div class="faq-answer">Nej. Al behandling sker i din browser ved hjælp af pdf-lib. Dine filer forlader aldrig din enhed.</div></details>
+        <details class="faq-item"><summary class="faq-question">Bevares bogmærker og formularer? <span class="faq-icon">+</span></summary><div class="faq-answer">Værktøjet kopierer sider uden at genbehandle dem, så det visuelle indhold bevares. Dokumentbogmærker og interaktive formularer overføres muligvis ikke til den resulterende PDF.</div></details>
+      </div>
+    </section>
+    <section class="related-tools">
+      <h2>Relaterede værktøjer</h2>
+      <div class="tool-grid">
+        <a href="/pdf-compress/" class="tool-card"><img src="/assets/img/icon-pdf.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>PDF Compress</h3><p>Reducer størrelsen på PDF-filer.</p><span class="tool-card-link">Brug →</span></a>
+        <a href="/pdf-split/" class="tool-card"><img src="/assets/img/icon-pdf.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>PDF Split</h3><p>Del eller udpak sider fra en PDF.</p><span class="tool-card-link">Brug →</span></a>
+        <a href="/image-converter/" class="tool-card"><img src="/assets/img/icon-image.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Billedkonverter</h3><p>Konverter PNG, JPG, WebP.</p><span class="tool-card-link">Brug →</span></a>
+      </div>
+    </section>
+  </main>
+  <footer id="site-footer" class="site-footer"></footer>
+  <script src="/assets/js/shared.js" defer></script>
+  <script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js" defer></script>
+  <script src="/assets/js/tools/pdf-merge.js" defer></script>
+</body>
+</html>

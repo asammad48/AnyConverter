@@ -1,0 +1,161 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Compound Interest Calculator Online Free | AnyConverter</title>
+  <meta name="description" content="Calculate compound interest online for free. Enter principal, rate, time and compounding frequency to see your investment grow. Includes year-by-year breakdown table.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://anyconverter.io/compound-interest-calculator/">
+  <link rel="alternate" hreflang="en" href="https://anyconverter.io/compound-interest-calculator/">
+  <link rel="alternate" hreflang="es" href="https://anyconverter.io/es/compound-interest-calculator/">
+  <link rel="alternate" hreflang="da" href="https://anyconverter.io/da/compound-interest-calculator/">
+  <link rel="alternate" hreflang="x-default" href="https://anyconverter.io/compound-interest-calculator/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Compound Interest Calculator Online Free | AnyConverter">
+  <meta property="og:description" content="Calculate compound interest online for free. Enter principal, rate, time and compounding frequency to see your investment grow. Includes year-by-year breakdown table.">
+  <meta property="og:url" content="https://anyconverter.io/compound-interest-calculator/">
+  <meta property="og:site_name" content="AnyConverter">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" data-ad-client="ca-pub-XXXXXXXXXX" crossorigin="anonymous"></script>
+  <!-- Replace ca-pub-XXXXXXXXXX with your real AdSense publisher ID -->
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Compound Interest Calculator","url":"https://anyconverter.io/compound-interest-calculator/","description":"Calculate compound interest with year-by-year breakdown. Supports annual, semi-annual, quarterly, monthly, and daily compounding.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F4F6FF);color:var(--color-text,#1E1B4B)}
+    body{min-height:100vh;display:flex;flex-direction:column}
+    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8FE)}
+    .header-inner{max-width:1280px;width:100%;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;gap:32px}
+    .hero{padding:40px 24px 32px;max-width:1280px;margin:0 auto}
+    .hero h1{font-size:clamp(1.75rem,4vw,2.25rem);font-weight:700;line-height:1.2;margin-bottom:12px}
+    .hero-desc{font-size:1.0625rem;color:var(--color-text-2,#6B7280);max-width:680px;line-height:1.6}
+    @font-face{font-family:'Inter';font-display:swap}
+  </style>
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+  <header id="site-header" class="site-header"></header>
+  <main id="main-content">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol><li><a href="/">Home</a></li><li aria-current="page">Compound Interest Calculator</li></ol>
+    </nav>
+    <section class="hero">
+      <h1>Compound Interest Calculator</h1>
+      <p class="hero-desc">See the power of compound interest on your investments. Enter your starting principal, annual interest rate, time horizon, and compounding frequency to calculate your final balance, total interest earned, and a complete year-by-year growth breakdown.</p>
+    </section>
+    <div class="tool-wrapper">
+      <div class="tool-zone">
+        <div style="padding:24px">
+          <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px;margin-bottom:16px">
+            <div>
+              <label style="display:block;font-size:13px;font-weight:500;margin-bottom:6px" for="ci-principal">Principal ($)</label>
+              <input type="number" id="ci-principal" placeholder="10000" min="1" style="width:100%;padding:10px 12px;border:1px solid var(--color-border,#DDD8FE);border-radius:8px;font-size:15px">
+            </div>
+            <div>
+              <label style="display:block;font-size:13px;font-weight:500;margin-bottom:6px" for="ci-rate">Annual Interest Rate (%)</label>
+              <input type="number" id="ci-rate" placeholder="7" step="0.01" min="0.01" style="width:100%;padding:10px 12px;border:1px solid var(--color-border,#DDD8FE);border-radius:8px;font-size:15px">
+            </div>
+            <div>
+              <label style="display:block;font-size:13px;font-weight:500;margin-bottom:6px" for="ci-time">Time (years)</label>
+              <input type="number" id="ci-time" placeholder="10" min="1" style="width:100%;padding:10px 12px;border:1px solid var(--color-border,#DDD8FE);border-radius:8px;font-size:15px">
+            </div>
+            <div>
+              <label style="display:block;font-size:13px;font-weight:500;margin-bottom:6px" for="ci-freq">Compounding Frequency</label>
+              <select id="ci-freq" style="width:100%;padding:10px 12px;border:1px solid var(--color-border,#DDD8FE);border-radius:8px;font-size:14px">
+                <option value="1">Annually</option>
+                <option value="2">Semi-annually</option>
+                <option value="4">Quarterly</option>
+                <option value="12" selected>Monthly</option>
+                <option value="365">Daily</option>
+              </select>
+            </div>
+          </div>
+          <div class="action-bar" style="margin-bottom:20px">
+            <button class="btn btn-primary" id="btn-calc-ci">Calculate</button>
+            <button class="btn btn-secondary" id="btn-reset-ci">Reset</button>
+          </div>
+          <div id="ci-result" style="display:none">
+            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:16px">
+              <div class="stat-card"><div class="stat-val" id="ci-final">—</div><div class="stat-lbl">Final Amount</div></div>
+              <div class="stat-card"><div class="stat-val" id="ci-interest-earned">—</div><div class="stat-lbl">Interest Earned</div></div>
+              <div class="stat-card"><div class="stat-val" id="ci-growth">—</div><div class="stat-lbl">Growth</div></div>
+            </div>
+            <div style="background:var(--color-bg,#F4F6FF);border:1px solid var(--color-border,#DDD8FE);border-radius:8px;padding:12px;max-height:250px;overflow-y:auto">
+              <table style="width:100%;border-collapse:collapse;font-size:13px">
+                <thead><tr style="text-align:left"><th style="padding:6px 8px;border-bottom:1px solid var(--color-border,#DDD8FE)">Year</th><th style="padding:6px 8px;border-bottom:1px solid var(--color-border,#DDD8FE)">Balance</th><th style="padding:6px 8px;border-bottom:1px solid var(--color-border,#DDD8FE)">Interest</th></tr></thead>
+                <tbody id="ci-tbody"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <aside class="tool-side" aria-label="Options">
+        <div class="ss-divider">Related Tools</div>
+        <a href="/mortgage-calculator/" class="ss-related-link"><img src="/assets/img/icon-calculator.svg" alt="" width="18" height="18" loading="lazy">Mortgage Calculator</a>
+        <a href="/loan-calculator/" class="ss-related-link"><img src="/assets/img/icon-calculator.svg" alt="" width="18" height="18" loading="lazy">Loan Calculator</a>
+        <a href="/percentage-calculator/" class="ss-related-link"><img src="/assets/img/icon-calculator.svg" alt="" width="18" height="18" loading="lazy">Percentage Calculator</a>
+        <div style="margin-top:16px">
+          <p class="ad-label">Advertisement</p>
+          <div class="ad-slot" style="min-height:250px">
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+            <!-- Replace ca-pub-XXXXXXXXXX and data-ad-slot="XXXXXXXXXX" with your IDs -->
+          </div>
+        </div>
+      </aside>
+    </div>
+    <div class="ad-slot ad-slot--leaderboard">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="how-to-use">
+      <h2>How to Use the Compound Interest Calculator</h2>
+      <ol class="steps">
+        <li><strong>Step 1</strong> — Enter your starting Principal amount in dollars, the Annual Interest Rate as a percentage, and the Time period in years.</li>
+        <li><strong>Step 2</strong> — Select how often interest is compounded: Annually, Semi-annually, Quarterly, Monthly, or Daily.</li>
+        <li><strong>Step 3</strong> — Click "Calculate" to see your final balance, total interest earned, growth percentage, and a year-by-year breakdown table.</li>
+      </ol>
+    </section>
+    <section class="features">
+      <h2>Features</h2>
+      <ul class="features-list">
+        <li>Supports five compounding frequencies: annual, semi-annual, quarterly, monthly, and daily</li>
+        <li>Shows final balance, total interest earned, and overall growth percentage</li>
+        <li>Scrollable year-by-year breakdown table for up to 50 years</li>
+        <li>Uses the standard compound interest formula: A = P(1 + r/n)^(nt)</li>
+        <li>Results formatted as US dollars with two decimal precision</li>
+        <li>Completely browser-based with no server communication</li>
+      </ul>
+    </section>
+    <div class="ad-slot ad-slot--rectangle" style="margin:0 auto 32px">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="faq">
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-list">
+        <details class="faq-item"><summary class="faq-question">What is the compound interest formula? <span class="faq-icon">+</span></summary><div class="faq-answer">The formula is A = P × (1 + r/n)^(n×t), where A is the final amount, P is the principal, r is the annual interest rate as a decimal, n is the number of compounding periods per year, and t is the time in years. The key difference from simple interest is that interest earned in previous periods also earns interest.</div></details>
+        <details class="faq-item"><summary class="faq-question">Does more frequent compounding always mean more money? <span class="faq-icon">+</span></summary><div class="faq-answer">Yes, more frequent compounding produces slightly higher returns. Daily compounding will always yield slightly more than monthly, which yields more than annually, for the same rate and time period. However, the difference between monthly and daily compounding is usually very small in practice.</div></details>
+        <details class="faq-item"><summary class="faq-question">What is the Rule of 72? <span class="faq-icon">+</span></summary><div class="faq-answer">The Rule of 72 is a quick mental math shortcut: divide 72 by the annual interest rate to estimate how many years it takes for an investment to double. For example, at 7% annual interest, your money doubles in roughly 72 ÷ 7 ≈ 10.3 years. Use this calculator to verify the exact figure.</div></details>
+        <details class="faq-item"><summary class="faq-question">Can I use this for savings accounts or CDs? <span class="faq-icon">+</span></summary><div class="faq-answer">Yes. Enter your deposit as the Principal, the APY or stated interest rate, your intended holding period, and the compounding frequency offered by the institution (usually daily or monthly for savings accounts). The result shows your balance at maturity.</div></details>
+        <details class="faq-item"><summary class="faq-question">Why does the year-by-year table cap at 50 years? <span class="faq-icon">+</span></summary><div class="faq-answer">The table is capped at 50 rows to keep the page performant and readable. The final balance and growth figures are still calculated correctly for any time period you enter. If your time horizon is longer than 50 years, you can still see the total result in the summary cards at the top of the results section.</div></details>
+      </div>
+    </section>
+    <section class="related-tools">
+      <h2>Related Tools</h2>
+      <div class="tool-grid">
+        <a href="/mortgage-calculator/" class="tool-card"><img src="/assets/img/icon-calculator.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Mortgage Calculator</h3><p>Calculate monthly mortgage payment and total interest cost.</p><span class="tool-card-link">Try it →</span></a>
+        <a href="/loan-calculator/" class="tool-card"><img src="/assets/img/icon-calculator.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Loan Calculator</h3><p>Calculate monthly EMI and total loan payment amount.</p><span class="tool-card-link">Try it →</span></a>
+        <a href="/percentage-calculator/" class="tool-card"><img src="/assets/img/icon-calculator.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Percentage Calculator</h3><p>Calculate percentages, changes, and ratios easily.</p><span class="tool-card-link">Try it →</span></a>
+        <a href="/bmi-calculator/" class="tool-card"><img src="/assets/img/icon-calculator.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>BMI Calculator</h3><p>Calculate your Body Mass Index with metric or imperial units.</p><span class="tool-card-link">Try it →</span></a>
+      </div>
+    </section>
+  </main>
+  <footer id="site-footer" class="site-footer"></footer>
+  <script src="/assets/js/shared.js" defer></script>
+  <script src="/assets/js/tools/compound-interest-calculator.js" defer></script>
+</body>
+</html>

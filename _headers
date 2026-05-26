@@ -1,0 +1,18 @@
+/*
+  X-Frame-Options: DENY
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
+  Content-Security-Policy: default-src 'self'; script-src 'self' https://pagead2.googlesyndication.com https://partner.googleadservices.com https://tpc.googlesyndication.com https://cdnjs.cloudflare.com https://fonts.googleapis.com https://unpkg.com 'unsafe-inline' 'wasm-unsafe-eval'; style-src 'self' https://fonts.googleapis.com https://cdnjs.cloudflare.com 'unsafe-inline'; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https: blob:; worker-src 'self' blob:; frame-src https://googleads.g.doubleclick.net https://tpc.googlesyndication.com;
+
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.css
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.js
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.svg
+  Cache-Control: public, max-age=31536000, immutable

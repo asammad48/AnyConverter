@@ -1,0 +1,154 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Búsqueda de Dirección IP Online Gratis | AnyConverter</title>
+  <meta name="description" content="Busca la ubicación, ISP, zona horaria y más de cualquier dirección IP online gratis. Encuentra tu propia IP o busca cualquier dirección IPv4. Resultados instantáneos.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://anyconverter.io/es/ip-address-lookup/">
+  <link rel="alternate" hreflang="en" href="https://anyconverter.io/ip-address-lookup/">
+  <link rel="alternate" hreflang="es" href="https://anyconverter.io/es/ip-address-lookup/">
+  <link rel="alternate" hreflang="da" href="https://anyconverter.io/da/ip-address-lookup/">
+  <link rel="alternate" hreflang="x-default" href="https://anyconverter.io/ip-address-lookup/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Búsqueda de Dirección IP Online Gratis | AnyConverter">
+  <meta property="og:description" content="Busca la ubicación, ISP, zona horaria y más de cualquier dirección IP online gratis. Encuentra tu propia IP o busca cualquier dirección IPv4. Resultados instantáneos.">
+  <meta property="og:url" content="https://anyconverter.io/es/ip-address-lookup/">
+  <meta property="og:site_name" content="AnyConverter">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" data-ad-client="ca-pub-XXXXXXXXXX" crossorigin="anonymous"></script>
+  <!-- Replace ca-pub-XXXXXXXXXX with your real AdSense publisher ID -->
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Búsqueda de Dirección IP","url":"https://anyconverter.io/es/ip-address-lookup/","description":"Busca la ubicación, ISP, zona horaria y más de cualquier dirección IP online gratis.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F4F6FF);color:var(--color-text,#1E1B4B)}
+    body{min-height:100vh;display:flex;flex-direction:column}
+    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8FE)}
+    .header-inner{max-width:1280px;width:100%;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;gap:32px}
+    .hero{padding:40px 24px 32px;max-width:1280px;margin:0 auto}
+    .hero h1{font-size:clamp(1.75rem,4vw,2.25rem);font-weight:700;line-height:1.2;margin-bottom:12px}
+    .hero-desc{font-size:1.0625rem;color:var(--color-text-2,#6B7280);max-width:680px;line-height:1.6}
+    @font-face{font-family:'Inter';font-display:swap}
+  </style>
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+  <header id="site-header" class="site-header"></header>
+  <main id="main-content">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol><li><a href="/es/">Inicio</a></li><li aria-current="page">Búsqueda de Dirección IP</li></ol>
+    </nav>
+    <section class="hero">
+      <h1>Búsqueda de Dirección IP</h1>
+      <p class="hero-desc">Busca la geolocalización, ISP, zona horaria y detalles de red de cualquier dirección IP al instante. Deja el campo en blanco para ver tus propios datos de IP.</p>
+    </section>
+    <div class="tool-wrapper">
+      <div class="tool-zone">
+        <div style="padding:24px">
+          <div style="margin-bottom:16px">
+            <label style="display:block;font-size:13px;font-weight:500;margin-bottom:6px" for="ip-input">IP Address (leave blank for your IP)</label>
+            <div style="display:flex;gap:8px">
+              <input type="text" id="ip-input" placeholder="e.g. 8.8.8.8" style="flex:1;padding:10px 12px;border:1px solid var(--color-border,#DDD8FE);border-radius:8px;font-size:15px;font-family:'JetBrains Mono',monospace">
+              <button class="btn btn-primary" id="btn-ip-lookup">Look Up</button>
+              <button class="btn btn-secondary" id="btn-ip-my">My IP</button>
+            </div>
+          </div>
+          <div id="ip-error" style="display:none;color:var(--color-pdf,#EF4444);font-size:13px;margin-bottom:12px"></div>
+          <div id="ip-results" style="display:none;background:var(--color-bg,#F4F6FF);border:1px solid var(--color-border,#DDD8FE);border-radius:8px;padding:0 16px"></div>
+        </div>
+      </div>
+      <aside class="tool-side" aria-label="Opciones">
+        <div class="ss-divider">Herramientas relacionadas</div>
+        <a href="/es/uuid-generator/" class="ss-related-link"><img src="/assets/img/icon-hash.svg" alt="" width="18" height="18" loading="lazy">Generador UUID</a>
+        <a href="/es/jwt-decoder/" class="ss-related-link"><img src="/assets/img/icon-hash.svg" alt="" width="18" height="18" loading="lazy">Decodificador JWT</a>
+        <a href="/es/random-number-generator/" class="ss-related-link"><img src="/assets/img/icon-calculator.svg" alt="" width="18" height="18" loading="lazy">Generador de Números Aleatorios</a>
+        <div style="margin-top:16px">
+          <p class="ad-label">Publicidad</p>
+          <div class="ad-slot" style="min-height:250px">
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+            <!-- Replace ca-pub-XXXXXXXXXX and data-ad-slot="XXXXXXXXXX" with your IDs -->
+          </div>
+        </div>
+      </aside>
+    </div>
+    <div class="ad-slot ad-slot--leaderboard">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="how-to-use">
+      <h2>Cómo Usar la Búsqueda de Dirección IP</h2>
+      <ol class="steps">
+        <li><strong>Paso 1</strong> — Deja el campo en blanco y haz clic en "Mi IP" para buscar tu propia dirección IP, o escribe cualquier dirección IPv4.</li>
+        <li><strong>Paso 2</strong> — Haz clic en "Buscar" para obtener la geolocalización y datos de red.</li>
+        <li><strong>Paso 3</strong> — Ve ciudad, región, país, coordenadas, zona horaria, ISP y más en el panel de resultados.</li>
+      </ol>
+    </section>
+    <section class="features">
+      <h2>Características</h2>
+      <ul class="features-list">
+        <li>Busca cualquier dirección IPv4 o tu propia IP con un clic</li>
+        <li>Muestra ciudad, región, país, código postal, coordenadas, zona horaria y UTC</li>
+        <li>ISP / organización y ASN</li>
+        <li>Información de moneda e idioma</li>
+        <li>Sin datos almacenados</li>
+      </ul>
+    </section>
+    <div class="ad-slot ad-slot--rectangle" style="margin:0 auto 32px">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="faq">
+      <h2>Preguntas Frecuentes</h2>
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary class="faq-question">¿Se almacena mi dirección IP cuando uso esta herramienta? <span class="faq-icon">+</span></summary>
+          <div class="faq-answer">No. Esta herramienta realiza una llamada directa a la API de ipapi.co desde tu navegador. AnyConverter no registra ni almacena ninguna dirección IP que consultes.</div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-question">¿Qué significa el número ASN? <span class="faq-icon">+</span></summary>
+          <div class="faq-answer">ASN significa Número de Sistema Autónomo. Identifica la red (normalmente un ISP o una gran organización) que posee un bloque de direcciones IP. Por ejemplo, AS15169 es la red de Google.</div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-question">¿Puedo buscar direcciones IPv6? <span class="faq-icon">+</span></summary>
+          <div class="faq-answer">Esta herramienta soporta direcciones IPv4 y la API también gestiona la mayoría de las direcciones IPv6. Los resultados pueden ser menos detallados para IPv6 dependiendo de los datos de geolocalización disponibles.</div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-question">¿Por qué la ubicación a veces es imprecisa? <span class="faq-icon">+</span></summary>
+          <div class="faq-answer">La geolocalización por IP se basa en datos de registro y enrutamiento de red, no en GPS. Es precisa a nivel de ciudad/región en la mayoría de los casos, pero el usuario real puede diferir por el uso de VPNs, proxies o el enrutamiento del ISP.</div>
+        </details>
+      </div>
+    </section>
+    <section class="related-tools">
+      <h2>Herramientas Relacionadas</h2>
+      <div class="tool-grid">
+        <a href="/es/uuid-generator/" class="tool-card">
+          <img src="/assets/img/icon-hash.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy">
+          <h3>Generador UUID</h3>
+          <p>Genera UUIDs aleatorios (v4) al instante, uno o en masa.</p>
+          <span class="tool-card-link">Usar →</span>
+        </a>
+        <a href="/es/jwt-decoder/" class="tool-card">
+          <img src="/assets/img/icon-hash.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy">
+          <h3>Decodificador JWT</h3>
+          <p>Decodifica e inspecciona JSON Web Tokens sin servidor.</p>
+          <span class="tool-card-link">Usar →</span>
+        </a>
+        <a href="/es/random-number-generator/" class="tool-card">
+          <img src="/assets/img/icon-calculator.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy">
+          <h3>Generador de Números Aleatorios</h3>
+          <p>Genera números aleatorios dentro de cualquier rango al instante.</p>
+          <span class="tool-card-link">Usar →</span>
+        </a>
+      </div>
+    </section>
+  </main>
+  <footer id="site-footer" class="site-footer"></footer>
+  <script src="/assets/js/shared.js" defer></script>
+  <script src="/assets/js/tools/ip-address-lookup.js" defer></script>
+</body>
+</html>

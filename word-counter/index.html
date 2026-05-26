@@ -1,0 +1,136 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Word Counter Online Free | AnyConverter</title>
+  <meta name="description" content="Count words, characters, sentences, and paragraphs in real time. Get estimated reading time for your text. Free online word counter, no signup required.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://anyconverter.io/word-counter/">
+  <link rel="alternate" hreflang="en" href="https://anyconverter.io/word-counter/">
+  <link rel="alternate" hreflang="es" href="https://anyconverter.io/es/word-counter/">
+  <link rel="alternate" hreflang="da" href="https://anyconverter.io/da/word-counter/">
+  <link rel="alternate" hreflang="x-default" href="https://anyconverter.io/word-counter/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Word Counter Online Free | AnyConverter">
+  <meta property="og:description" content="Count words, characters, sentences, and paragraphs in real time. Get estimated reading time for your text. Free online word counter, no signup required.">
+  <meta property="og:url" content="https://anyconverter.io/word-counter/">
+  <meta property="og:site_name" content="AnyConverter">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" data-ad-client="ca-pub-XXXXXXXXXX" crossorigin="anonymous"></script>
+  <!-- Replace ca-pub-XXXXXXXXXX with your real AdSense publisher ID -->
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Word Counter","url":"https://anyconverter.io/word-counter/","description":"Count words, characters, sentences, and paragraphs in real time. Get estimated reading time for your text.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F4F6FF);color:var(--color-text,#1E1B4B)}
+    body{min-height:100vh;display:flex;flex-direction:column}
+    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8FE)}
+    .header-inner{max-width:1280px;width:100%;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;gap:32px}
+    .hero{padding:40px 24px 32px;max-width:1280px;margin:0 auto}
+    .hero h1{font-size:clamp(1.75rem,4vw,2.25rem);font-weight:700;line-height:1.2;margin-bottom:12px}
+    .hero-desc{font-size:1.0625rem;color:var(--color-text-2,#6B7280);max-width:680px;line-height:1.6}
+    @font-face{font-family:'Inter';font-display:swap}
+  </style>
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+  <header id="site-header" class="site-header"></header>
+  <main id="main-content">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol><li><a href="/">Home</a></li><li aria-current="page">Word Counter</li></ol>
+    </nav>
+    <section class="hero">
+      <h1>Word Counter</h1>
+      <p class="hero-desc">Paste or type your text and instantly see word count, character count, sentence count, paragraph count, and estimated reading time. Updates live as you type — no button needed.</p>
+    </section>
+    <div class="tool-wrapper">
+      <div class="tool-zone">
+        <div style="padding:24px">
+          <div style="margin-bottom:12px">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+              <label style="font-size:13px;font-weight:500" for="wc-input">Your Text</label>
+              <button class="btn btn-secondary btn-sm" id="btn-wc-clear">Clear</button>
+            </div>
+            <textarea id="wc-input" placeholder="Paste or type your text here..." style="width:100%;min-height:200px;padding:12px;border:1px solid var(--color-border,#DDD8FE);border-radius:8px;font-size:15px;resize:vertical;line-height:1.6" spellcheck="false"></textarea>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:10px">
+            <div class="stat-card"><div class="stat-val" id="wc-words">0</div><div class="stat-lbl">Words</div></div>
+            <div class="stat-card"><div class="stat-val" id="wc-chars">0</div><div class="stat-lbl">Characters</div></div>
+            <div class="stat-card"><div class="stat-val" id="wc-chars-no-space">0</div><div class="stat-lbl">Chars (no spaces)</div></div>
+            <div class="stat-card"><div class="stat-val" id="wc-sentences">0</div><div class="stat-lbl">Sentences</div></div>
+            <div class="stat-card"><div class="stat-val" id="wc-paragraphs">0</div><div class="stat-lbl">Paragraphs</div></div>
+            <div class="stat-card"><div class="stat-val" id="wc-read-time">0 min</div><div class="stat-lbl">Read Time</div></div>
+          </div>
+        </div>
+      </div>
+      <aside class="tool-side" aria-label="Options">
+        <div class="ss-divider">Related Tools</div>
+        <a href="/qr-code-generator/" class="ss-related-link"><img src="/assets/img/icon-qr.svg" alt="" width="18" height="18" loading="lazy">QR Code Generator</a>
+        <a href="/hash-generator/" class="ss-related-link"><img src="/assets/img/icon-hash.svg" alt="" width="18" height="18" loading="lazy">Hash Generator</a>
+        <a href="/url-encoder/" class="ss-related-link"><img src="/assets/img/icon-url.svg" alt="" width="18" height="18" loading="lazy">URL Encoder</a>
+        <div style="margin-top:16px">
+          <p class="ad-label">Advertisement</p>
+          <div class="ad-slot" style="min-height:250px">
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+            <!-- Replace ca-pub-XXXXXXXXXX and data-ad-slot="XXXXXXXXXX" with your IDs -->
+          </div>
+        </div>
+      </aside>
+    </div>
+    <div class="ad-slot ad-slot--leaderboard">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="how-to-use">
+      <h2>How to Use the Word Counter</h2>
+      <ol class="steps">
+        <li><strong>Step 1</strong> — Paste or type your text into the large textarea at the top of the tool.</li>
+        <li><strong>Step 2</strong> — All statistics update instantly as you type — words, characters, sentences, paragraphs, and reading time.</li>
+        <li><strong>Step 3</strong> — Click "Clear" to reset the textarea and all counters back to zero.</li>
+      </ol>
+    </section>
+    <section class="features">
+      <h2>Features</h2>
+      <ul class="features-list">
+        <li>Real-time word count updates as you type</li>
+        <li>Total character count including spaces</li>
+        <li>Character count excluding spaces</li>
+        <li>Sentence count based on punctuation detection</li>
+        <li>Paragraph count based on blank line separation</li>
+        <li>Estimated reading time at 200 words per minute</li>
+        <li>No data is sent to a server — works fully offline</li>
+      </ul>
+    </section>
+    <div class="ad-slot ad-slot--rectangle" style="margin:0 auto 32px">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="faq">
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-list">
+        <details class="faq-item"><summary class="faq-question">How are words counted? <span class="faq-icon">+</span></summary><div class="faq-answer">Words are counted by splitting the text on whitespace (spaces, tabs, newlines). Consecutive whitespace counts as one separator. An empty or whitespace-only input returns a word count of zero.</div></details>
+        <details class="faq-item"><summary class="faq-question">How is reading time estimated? <span class="faq-icon">+</span></summary><div class="faq-answer">Reading time is calculated by dividing the word count by 200 words per minute, which is a widely accepted average adult reading speed. The result is rounded up to the nearest whole minute.</div></details>
+        <details class="faq-item"><summary class="faq-question">How are sentences detected? <span class="faq-icon">+</span></summary><div class="faq-answer">Sentences are counted by detecting punctuation marks that typically end a sentence: periods (.), exclamation marks (!), and question marks (?). Abbreviations and decimal numbers may slightly affect the count.</div></details>
+        <details class="faq-item"><summary class="faq-question">How are paragraphs counted? <span class="faq-icon">+</span></summary><div class="faq-answer">Paragraphs are detected by splitting the text on one or more blank lines (double newlines). Single line breaks within a block of text are not counted as a new paragraph.</div></details>
+        <details class="faq-item"><summary class="faq-question">Is there a character limit? <span class="faq-icon">+</span></summary><div class="faq-answer">There is no hard character limit imposed by this tool. However, very large texts (millions of characters) may slow down the live update in some browsers. The tool works entirely in your browser, so performance depends on your device.</div></details>
+      </div>
+    </section>
+    <section class="related-tools">
+      <h2>Related Tools</h2>
+      <div class="tool-grid">
+        <a href="/qr-code-generator/" class="tool-card"><img src="/assets/img/icon-qr.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>QR Code Generator</h3><p>Generate QR codes for any text or URL instantly.</p><span class="tool-card-link">Try it →</span></a>
+        <a href="/hash-generator/" class="tool-card"><img src="/assets/img/icon-hash.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Hash Generator</h3><p>Generate MD5, SHA-1, SHA-256 hashes from any text.</p><span class="tool-card-link">Try it →</span></a>
+        <a href="/url-encoder/" class="tool-card"><img src="/assets/img/icon-url.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>URL Encoder</h3><p>Encode and decode URLs and query strings.</p><span class="tool-card-link">Try it →</span></a>
+        <a href="/base64-encoder/" class="tool-card"><img src="/assets/img/icon-hash.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Base64 Encoder</h3><p>Encode and decode Base64 text and files.</p><span class="tool-card-link">Try it →</span></a>
+      </div>
+    </section>
+  </main>
+  <footer id="site-footer" class="site-footer"></footer>
+  <script src="/assets/js/shared.js" defer></script>
+  <script src="/assets/js/tools/word-counter.js" defer></script>
+</body>
+</html>

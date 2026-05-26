@@ -1,0 +1,130 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edit PDF Online Free — Add Text, Shapes &amp; Highlights | AnyConverter</title>
+  <meta name="description" content="Add text, rectangles or highlights to a PDF online for free. Specify page, position and style, preview the list, then download the edited PDF. No signup required.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://anyconverter.io/edit-pdf/">
+  <link rel="alternate" hreflang="en" href="https://anyconverter.io/edit-pdf/"><link rel="alternate" hreflang="es" href="https://anyconverter.io/es/edit-pdf/"><link rel="alternate" hreflang="da" href="https://anyconverter.io/da/edit-pdf/"><link rel="alternate" hreflang="x-default" href="https://anyconverter.io/edit-pdf/">
+  <meta property="og:type" content="website"><meta property="og:title" content="Edit PDF Online Free — Add Text, Shapes &amp; Highlights | AnyConverter"><meta property="og:description" content="Add text, rectangles or highlight boxes to any PDF page online. Free and instant."><meta property="og:url" content="https://anyconverter.io/edit-pdf/"><meta property="og:site_name" content="AnyConverter">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" data-ad-client="ca-pub-XXXXXXXXXX" crossorigin="anonymous"></script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Edit PDF","url":"https://anyconverter.io/edit-pdf/","description":"Add text, rectangles or highlight boxes to PDF pages online for free.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F4F6FF);color:var(--color-text,#1E1B4B)}
+    body{min-height:100vh;display:flex;flex-direction:column}
+    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8FE)}
+    .header-inner{max-width:1280px;width:100%;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;gap:32px}
+    .hero{padding:40px 24px 32px;max-width:1280px;margin:0 auto}
+    .hero h1{font-size:clamp(1.75rem,4vw,2.25rem);font-weight:700;line-height:1.2;margin-bottom:12px}
+    .hero-desc{font-size:1.0625rem;color:var(--color-text-2,#6B7280);max-width:680px;line-height:1.6}
+    .tool-status{display:none;padding:10px 14px;border-radius:8px;font-size:13px;margin-top:12px}
+    .tool-status--error{background:var(--color-error-bg,#FEF2F2);color:var(--color-error,#DC2626)}.tool-status--success{background:var(--color-success-bg,#ECFDF5);color:var(--color-success,#059669)}
+    .upload-area{border:2px dashed var(--color-border,#DDD8FE);border-radius:12px;padding:28px 20px;text-align:center;cursor:pointer;transition:border-color .2s}
+    .upload-area:hover{border-color:var(--color-primary,#4F46E5)}
+    @font-face{font-family:'Inter';font-display:swap}
+  </style>
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+  <header id="site-header" class="site-header"></header>
+  <main id="main-content">
+    <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/">Home</a></li><li><a href="/pdf-merge/">PDF Tools</a></li><li aria-current="page">Edit PDF</li></ol></nav>
+    <section class="hero">
+      <h1>Edit PDF — Add Text &amp; Shapes</h1>
+      <p class="hero-desc">Overlay text, border rectangles or yellow highlights onto any PDF page. Specify coordinates in PDF points, build a list of annotations, then download the edited file.</p>
+    </section>
+    <div class="tool-wrapper">
+      <div class="tool-zone">
+        <div style="padding:24px">
+          <div class="upload-area" onclick="document.getElementById('ed-file').click()">
+            <img src="/assets/img/icon-pdf.svg" alt="" width="36" height="36" style="margin-bottom:10px">
+            <p style="font-size:14px;color:var(--color-text-2,#6B7280);margin-bottom:10px">Drop your PDF here or click to browse</p>
+            <input type="file" id="ed-file" accept=".pdf" style="display:none">
+            <button class="btn btn-secondary" type="button">Choose PDF</button>
+          </div>
+          <div id="ed-info" style="font-size:13px;color:var(--color-text-2,#6B7280);margin-top:10px"></div>
+          <div id="ed-controls" style="display:none;margin-top:16px">
+            <p style="font-size:12px;color:var(--color-text-2,#6B7280);margin-bottom:12px">Coordinates are in PDF points from the bottom-left corner. A4 = 595×842 pt.</p>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px">
+              <div>
+                <label style="display:block;font-size:12px;font-weight:500;margin-bottom:4px">Type</label>
+                <select id="ed-type" style="width:100%;padding:8px 10px;border:1px solid var(--color-border,#DDD8FE);border-radius:6px;font-size:13px">
+                  <option value="text">Text</option>
+                  <option value="rect">Rectangle</option>
+                  <option value="highlight">Highlight</option>
+                </select>
+              </div>
+              <div>
+                <label style="display:block;font-size:12px;font-weight:500;margin-bottom:4px">Page</label>
+                <input type="number" id="ed-page" value="1" min="1" style="width:100%;padding:8px 10px;border:1px solid var(--color-border,#DDD8FE);border-radius:6px;font-size:13px">
+              </div>
+              <div>
+                <label style="display:block;font-size:12px;font-weight:500;margin-bottom:4px">X (pt)</label>
+                <input type="number" id="ed-x" placeholder="72" style="width:100%;padding:8px 10px;border:1px solid var(--color-border,#DDD8FE);border-radius:6px;font-size:13px">
+              </div>
+              <div>
+                <label style="display:block;font-size:12px;font-weight:500;margin-bottom:4px">Y (pt)</label>
+                <input type="number" id="ed-y" placeholder="700" style="width:100%;padding:8px 10px;border:1px solid var(--color-border,#DDD8FE);border-radius:6px;font-size:13px">
+              </div>
+            </div>
+            <div id="ed-text-row" style="margin-bottom:10px">
+              <label style="display:block;font-size:12px;font-weight:500;margin-bottom:4px">Text</label>
+              <input type="text" id="ed-text" placeholder="Enter text to overlay" style="width:100%;padding:8px 10px;border:1px solid var(--color-border,#DDD8FE);border-radius:6px;font-size:13px">
+            </div>
+            <div id="ed-size-row" style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px">
+              <div>
+                <label style="display:block;font-size:12px;font-weight:500;margin-bottom:4px">Font Size (pt)</label>
+                <input type="number" id="ed-size" value="12" min="6" max="72" style="width:100%;padding:8px 10px;border:1px solid var(--color-border,#DDD8FE);border-radius:6px;font-size:13px">
+              </div>
+              <div>
+                <label style="display:block;font-size:12px;font-weight:500;margin-bottom:4px">Colour</label>
+                <input type="color" id="ed-color" value="#000000" style="width:100%;height:38px;padding:3px;border:1px solid var(--color-border,#DDD8FE);border-radius:6px">
+              </div>
+            </div>
+            <div id="ed-dim-row" style="display:none;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px">
+              <div>
+                <label style="display:block;font-size:12px;font-weight:500;margin-bottom:4px">Width (pt)</label>
+                <input type="number" id="ed-rw" value="100" style="width:100%;padding:8px 10px;border:1px solid var(--color-border,#DDD8FE);border-radius:6px;font-size:13px">
+              </div>
+              <div>
+                <label style="display:block;font-size:12px;font-weight:500;margin-bottom:4px">Height (pt)</label>
+                <input type="number" id="ed-rh" value="20" style="width:100%;padding:8px 10px;border:1px solid var(--color-border,#DDD8FE);border-radius:6px;font-size:13px">
+              </div>
+            </div>
+            <button class="btn btn-secondary" id="ed-add-btn" style="margin-bottom:14px">+ Add Annotation</button>
+            <div id="ed-list" style="margin-bottom:14px"></div>
+            <button class="btn btn-primary" id="ed-btn">Apply &amp; Download</button>
+          </div>
+          <div id="ed-status" class="tool-status"></div>
+        </div>
+      </div>
+      <aside class="tool-side">
+        <div class="ss-divider">Related PDF Tools</div>
+        <a href="/add-watermark/" class="ss-related-link"><img src="/assets/img/icon-pdf.svg" alt="" width="18" height="18">Add Watermark</a>
+        <a href="/sign-pdf/" class="ss-related-link"><img src="/assets/img/icon-pdf.svg" alt="" width="18" height="18">Sign PDF</a>
+        <a href="/redact-pdf/" class="ss-related-link"><img src="/assets/img/icon-pdf.svg" alt="" width="18" height="18">Redact PDF</a>
+        <div style="margin-top:16px"><p class="ad-label">Advertisement</p>
+          <div class="ad-slot" style="min-height:250px"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div>
+        </div>
+      </aside>
+    </div>
+    <div class="ad-slot ad-slot--leaderboard"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div>
+    <section class="how-to-use"><h2>How to Edit a PDF</h2><ol class="steps"><li><strong>Step 1</strong> — Upload your PDF (first page dimensions shown).</li><li><strong>Step 2</strong> — Choose the annotation type, page, X/Y position and properties.</li><li><strong>Step 3</strong> — Click "+ Add Annotation" to queue it. Repeat as needed.</li><li><strong>Step 4</strong> — Click "Apply &amp; Download".</li></ol></section>
+    <section class="features"><h2>Features</h2><ul class="features-list"><li>Three annotation types: text overlay, border rectangle, yellow highlight</li><li>Custom font size and colour for text</li><li>Custom width and height for rectangles and highlights</li><li>Queue multiple annotations before applying</li><li>100% browser-based — no server upload</li></ul></section>
+    <div class="ad-slot ad-slot--rectangle" style="margin:0 auto 32px"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div>
+    <section class="faq"><h2>Frequently Asked Questions</h2><div class="faq-list">
+      <details class="faq-item"><summary class="faq-question">How do I find the right coordinates? <span class="faq-icon">+</span></summary><div class="faq-answer">Open the PDF in Adobe Acrobat Reader, enable the coordinate display (View → Show/Hide → Cursor Coordinates), then hover over the target location. Remember PDF coordinates start from the bottom-left — y=0 is the bottom of the page.</div></details>
+      <details class="faq-item"><summary class="faq-question">Can I edit existing text in the PDF? <span class="faq-icon">+</span></summary><div class="faq-answer">No. This tool overlays new content on top of existing pages — it does not modify or replace existing text. True text editing in PDFs requires dedicated editing software.</div></details>
+    </div></section>
+  </main>
+  <footer id="site-footer" class="site-footer"></footer>
+  <script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
+  <script src="/assets/js/shared.js" defer></script>
+  <script src="/assets/js/tools/edit-pdf.js" defer></script>
+</body>
+</html>

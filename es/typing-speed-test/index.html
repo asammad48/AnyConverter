@@ -1,0 +1,153 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prueba de Velocidad de Escritura Online Gratis | AnyConverter</title>
+  <meta name="description" content="Prueba tu velocidad de escritura y precisión online gratis. Obtén tu puntuación en PPM con niveles de dificultad fácil, medio y difícil. Sin registro, resultados instantáneos.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://anyconverter.io/es/typing-speed-test/">
+  <link rel="alternate" hreflang="en" href="https://anyconverter.io/typing-speed-test/">
+  <link rel="alternate" hreflang="es" href="https://anyconverter.io/es/typing-speed-test/">
+  <link rel="alternate" hreflang="da" href="https://anyconverter.io/da/typing-speed-test/">
+  <link rel="alternate" hreflang="x-default" href="https://anyconverter.io/typing-speed-test/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Prueba de Velocidad de Escritura Online Gratis | AnyConverter">
+  <meta property="og:description" content="Prueba tu velocidad de escritura y precisión online gratis. Obtén tu puntuación en PPM con niveles fácil, medio y difícil. Sin registro, resultados instantáneos.">
+  <meta property="og:url" content="https://anyconverter.io/es/typing-speed-test/">
+  <meta property="og:site_name" content="AnyConverter">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" data-ad-client="ca-pub-XXXXXXXXXX" crossorigin="anonymous"></script>
+  <!-- Replace ca-pub-XXXXXXXXXX with your real AdSense publisher ID -->
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Prueba de Velocidad de Escritura","url":"https://anyconverter.io/es/typing-speed-test/","description":"Prueba tu velocidad de escritura y precisión online gratis. Obtén tu puntuación en PPM al instante.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F4F6FF);color:var(--color-text,#1E1B4B)}
+    body{min-height:100vh;display:flex;flex-direction:column}
+    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8FE)}
+    .header-inner{max-width:1280px;width:100%;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;gap:32px}
+    .hero{padding:40px 24px 32px;max-width:1280px;margin:0 auto}
+    .hero h1{font-size:clamp(1.75rem,4vw,2.25rem);font-weight:700;line-height:1.2;margin-bottom:12px}
+    .hero-desc{font-size:1.0625rem;color:var(--color-text-2,#6B7280);max-width:680px;line-height:1.6}
+    @font-face{font-family:'Inter';font-display:swap}
+  </style>
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+  <header id="site-header" class="site-header"></header>
+  <main id="main-content">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol><li><a href="/es/">Inicio</a></li><li aria-current="page">Prueba de Velocidad de Escritura</li></ol>
+    </nav>
+    <section class="hero">
+      <h1>Prueba de Velocidad de Escritura</h1>
+      <p class="hero-desc">Mide qué tan rápido puedes escribir con nuestra prueba de velocidad de escritura gratuita. Elige tu nivel de dificultad y escribe el texto dado lo más rápido y con la mayor precisión posible. Tus PPM (palabras por minuto) y precisión se calculan en tiempo real.</p>
+    </section>
+    <div class="tool-wrapper">
+      <div class="tool-zone">
+        <div style="padding:24px">
+          <div id="tst-setup">
+            <div style="margin-bottom:12px">
+              <label style="font-size:13px;font-weight:500">Dificultad</label>
+              <div style="display:flex;gap:8px;margin-top:6px">
+                <button class="btn btn-primary btn-sm" id="diff-easy">Fácil</button>
+                <button class="btn btn-secondary btn-sm" id="diff-medium">Medio</button>
+                <button class="btn btn-secondary btn-sm" id="diff-hard">Difícil</button>
+              </div>
+            </div>
+            <button class="btn btn-primary" id="btn-start-test">Iniciar prueba</button>
+          </div>
+          <div id="tst-game" style="display:none">
+            <div style="display:flex;justify-content:space-between;margin-bottom:12px">
+              <div class="stat-card" style="flex:1;margin-right:8px"><div class="stat-val" id="tst-timer">60</div><div class="stat-lbl">Segundos restantes</div></div>
+              <div class="stat-card" style="flex:1;margin-right:8px"><div class="stat-val" id="tst-wpm">0</div><div class="stat-lbl">PPM</div></div>
+              <div class="stat-card" style="flex:1"><div class="stat-val" id="tst-acc">100%</div><div class="stat-lbl">Precisión</div></div>
+            </div>
+            <div id="tst-text-display" style="font-size:18px;line-height:1.8;padding:16px;background:var(--color-surface,#fff);border:1px solid var(--color-border,#DDD8FE);border-radius:8px;margin-bottom:12px;letter-spacing:0.02em;user-select:none"></div>
+            <textarea id="tst-input" placeholder="Empieza a escribir aquí..." style="width:100%;padding:12px;border:1px solid var(--color-border,#DDD8FE);border-radius:8px;font-size:16px;resize:none;height:80px" spellcheck="false" autocomplete="off" autocorrect="off"></textarea>
+            <div class="action-bar" style="margin-top:8px">
+              <button class="btn btn-secondary" id="btn-restart-test">Reiniciar</button>
+            </div>
+          </div>
+          <div id="tst-results" style="display:none">
+            <h3 style="margin-bottom:16px;font-size:18px">Tus resultados</h3>
+            <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:16px">
+              <div class="stat-card"><div class="stat-val" id="res-wpm">—</div><div class="stat-lbl">PPM</div></div>
+              <div class="stat-card"><div class="stat-val" id="res-acc">—</div><div class="stat-lbl">Precisión</div></div>
+              <div class="stat-card"><div class="stat-val" id="res-correct">—</div><div class="stat-lbl">Palabras correctas</div></div>
+              <div class="stat-card"><div class="stat-val" id="res-errors">—</div><div class="stat-lbl">Errores</div></div>
+            </div>
+            <button class="btn btn-primary" id="btn-try-again">Intentar de nuevo</button>
+          </div>
+        </div>
+      </div>
+      <aside class="tool-side" aria-label="Opciones">
+        <div class="ss-divider">Herramientas relacionadas</div>
+        <a href="/es/word-counter/" class="ss-related-link"><img src="/assets/img/icon-text.svg" alt="" width="18" height="18" loading="lazy">Contador de palabras</a>
+        <a href="/es/character-counter/" class="ss-related-link"><img src="/assets/img/icon-text.svg" alt="" width="18" height="18" loading="lazy">Contador de caracteres</a>
+        <a href="/es/lorem-ipsum-generator/" class="ss-related-link"><img src="/assets/img/icon-text.svg" alt="" width="18" height="18" loading="lazy">Generador Lorem Ipsum</a>
+        <div style="margin-top:16px">
+          <p class="ad-label">Publicidad</p>
+          <div class="ad-slot" style="min-height:250px">
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+            <!-- Replace ca-pub-XXXXXXXXXX and data-ad-slot="XXXXXXXXXX" with your IDs -->
+          </div>
+        </div>
+      </aside>
+    </div>
+    <div class="ad-slot ad-slot--leaderboard">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="how-to-use">
+      <h2>Cómo usar la Prueba de Velocidad de Escritura</h2>
+      <ol class="steps">
+        <li><strong>Paso 1</strong> — Selecciona tu nivel de dificultad preferido: Fácil, Medio o Difícil.</li>
+        <li><strong>Paso 2</strong> — Haz clic en "Iniciar prueba" y comienza a escribir el texto mostrado en el cuadro de entrada. El temporizador comienza automáticamente cuando escribes tu primer carácter.</li>
+        <li><strong>Paso 3</strong> — Escribe con la mayor precisión y rapidez posible. Cuando terminen los 60 segundos, se mostrarán tus PPM, precisión, palabras correctas y errores.</li>
+      </ol>
+    </section>
+    <section class="features">
+      <h2>Características</h2>
+      <ul class="features-list">
+        <li>Tres niveles de dificultad: Fácil (palabras comunes), Medio (programación) y Difícil (vocabulario técnico)</li>
+        <li>Contador de PPM en tiempo real que se actualiza mientras escribes</li>
+        <li>Texto con código de colores: caracteres correctos en verde, errores en rojo</li>
+        <li>Prueba cronometrada de 60 segundos con cuenta regresiva en vivo</li>
+        <li>Resultados detallados: PPM, porcentaje de precisión, palabras correctas y errores totales</li>
+        <li>Sin registro requerido, funciona completamente en tu navegador</li>
+      </ul>
+    </section>
+    <div class="ad-slot ad-slot--rectangle" style="margin:0 auto 32px">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="faq">
+      <h2>Preguntas frecuentes</h2>
+      <div class="faq-list">
+        <details class="faq-item"><summary class="faq-question">¿Qué son los PPM y cómo se calculan? <span class="faq-icon">+</span></summary><div class="faq-answer">PPM significa Palabras Por Minuto. En esta prueba, cada palabra escrita correctamente completada dentro del período de 60 segundos cuenta como un PPM. Esta es la medida estándar de "PPM bruto" utilizada por la mayoría de las pruebas de escritura.</div></details>
+        <details class="faq-item"><summary class="faq-question">¿Cuál es una buena velocidad de escritura? <span class="faq-icon">+</span></summary><div class="faq-answer">El mecanógrafo promedio logra 40-50 PPM. Una velocidad de 60-80 PPM se considera por encima del promedio y es adecuada para la mayoría de los trabajos de oficina. Los mecanógrafos profesionales a menudo superan los 80-100 PPM, mientras que los competitivos pueden alcanzar más de 120 PPM.</div></details>
+        <details class="faq-item"><summary class="faq-question">¿Cómo funciona el porcentaje de precisión? <span class="faq-icon">+</span></summary><div class="faq-answer">La precisión se calcula en función de la proporción de caracteres escritos correctamente con respecto al total de caracteres escritos. Cada carácter mal escrito reduce tu puntuación de precisión. Apunta a al menos un 95% de precisión para estándares de mecanografía profesional.</div></details>
+        <details class="faq-item"><summary class="faq-question">¿Puedo repetir la prueba con un texto diferente? <span class="faq-icon">+</span></summary><div class="faq-answer">Sí. Después de que aparezcan tus resultados, haz clic en "Intentar de nuevo" para volver a la pantalla de configuración. Cada vez que inicias una nueva prueba, se selecciona aleatoriamente un pasaje de los textos disponibles para tu nivel de dificultad elegido.</div></details>
+        <details class="faq-item"><summary class="faq-question">¿Funciona la prueba en dispositivos móviles? <span class="faq-icon">+</span></summary><div class="faq-answer">Sí, la prueba de velocidad de escritura funciona en dispositivos móviles y tabletas con teclado físico. Sin embargo, para la medición más precisa de PPM, se recomienda un teclado físico, ya que los teclados en pantalla suelen producir velocidades más lentas.</div></details>
+      </div>
+    </section>
+    <section class="related-tools">
+      <h2>Herramientas relacionadas</h2>
+      <div class="tool-grid">
+        <a href="/es/word-counter/" class="tool-card"><img src="/assets/img/icon-text.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Contador de palabras</h3><p>Cuenta palabras, caracteres, oraciones y tiempo de lectura.</p><span class="tool-card-link">Usar →</span></a>
+        <a href="/es/character-counter/" class="tool-card"><img src="/assets/img/icon-text.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Contador de caracteres</h3><p>Cuenta caracteres con y sin espacios para cualquier texto.</p><span class="tool-card-link">Usar →</span></a>
+        <a href="/es/lorem-ipsum-generator/" class="tool-card"><img src="/assets/img/icon-text.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Generador Lorem Ipsum</h3><p>Genera texto de marcador de posición para tus diseños.</p><span class="tool-card-link">Usar →</span></a>
+        <a href="/es/text-case-converter/" class="tool-card"><img src="/assets/img/icon-text.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Conversor de formato de texto</h3><p>Convierte texto entre MAYÚSCULAS, minúsculas, camelCase y más.</p><span class="tool-card-link">Usar →</span></a>
+      </div>
+    </section>
+  </main>
+  <footer id="site-footer" class="site-footer"></footer>
+  <script src="/assets/js/shared.js" defer></script>
+  <script src="/assets/js/tools/typing-speed-test.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,167 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora de Calorías Online Gratis | AnyConverter</title>
+  <meta name="description" content="Calcula tus necesidades calóricas diarias (TDEE) y TMB online gratis. Obtén objetivos calóricos para pérdida o aumento de peso según edad, género, altura, peso y actividad.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://anyconverter.io/es/calorie-calculator/">
+  <link rel="alternate" hreflang="en" href="https://anyconverter.io/calorie-calculator/">
+  <link rel="alternate" hreflang="es" href="https://anyconverter.io/es/calorie-calculator/">
+  <link rel="alternate" hreflang="da" href="https://anyconverter.io/da/calorie-calculator/">
+  <link rel="alternate" hreflang="x-default" href="https://anyconverter.io/calorie-calculator/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Calculadora de Calorías Online Gratis | AnyConverter">
+  <meta property="og:description" content="Calcula tus necesidades calóricas diarias (TDEE) y TMB online gratis. Resultados instantáneos para mantenimiento, pérdida y aumento de peso.">
+  <meta property="og:url" content="https://anyconverter.io/es/calorie-calculator/">
+  <meta property="og:site_name" content="AnyConverter">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" data-ad-client="ca-pub-XXXXXXXXXX" crossorigin="anonymous"></script>
+  <!-- Replace ca-pub-XXXXXXXXXX with your real AdSense publisher ID -->
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Calculadora de Calorías","url":"https://anyconverter.io/es/calorie-calculator/","description":"Calcula tu TMB y TDEE online gratis. Obtén objetivos calóricos diarios para mantenimiento, pérdida de peso y aumento de peso.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F4F6FF);color:var(--color-text,#1E1B4B)}
+    body{min-height:100vh;display:flex;flex-direction:column}
+    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8FE)}
+    .header-inner{max-width:1280px;width:100%;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;gap:32px}
+    .hero{padding:40px 24px 32px;max-width:1280px;margin:0 auto}
+    .hero h1{font-size:clamp(1.75rem,4vw,2.25rem);font-weight:700;line-height:1.2;margin-bottom:12px}
+    .hero-desc{font-size:1.0625rem;color:var(--color-text-2,#6B7280);max-width:680px;line-height:1.6}
+    @font-face{font-family:'Inter';font-display:swap}
+  </style>
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+  <header id="site-header" class="site-header"></header>
+  <main id="main-content">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol><li><a href="/es/">Inicio</a></li><li aria-current="page">Calculadora de Calorías</li></ol>
+    </nav>
+    <section class="hero">
+      <h1>Calculadora de Calorías</h1>
+      <p class="hero-desc">Descubre exactamente cuántas calorías necesitas cada día. Ingresa tu edad, género, peso, altura y nivel de actividad para obtener tu Tasa Metabólica Basal (TMB) y Gasto Energético Total Diario (TDEE), más objetivos calóricos personalizados para pérdida o aumento de peso.</p>
+    </section>
+    <div class="tool-wrapper">
+      <div class="tool-zone">
+        <div style="padding:24px">
+          <div style="display:flex;gap:8px;margin-bottom:16px">
+            <button class="btn btn-primary btn-sm" id="cal-metric-btn" style="flex:1">Métrico (kg/cm)</button>
+            <button class="btn btn-secondary btn-sm" id="cal-imperial-btn" style="flex:1">Imperial (lb/in)</button>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px">
+            <div>
+              <label style="display:block;font-size:13px;font-weight:500;margin-bottom:6px" for="cal-age">Edad (años)</label>
+              <input type="number" id="cal-age" placeholder="30" min="15" max="100" style="width:100%;padding:10px 12px;border:1px solid var(--color-border,#DDD8FE);border-radius:8px;font-size:15px">
+            </div>
+            <div>
+              <label style="display:block;font-size:13px;font-weight:500;margin-bottom:6px">Género</label>
+              <div style="display:flex;gap:8px">
+                <label style="display:flex;align-items:center;gap:6px;font-size:14px;cursor:pointer;padding:8px 12px;border:1px solid var(--color-border,#DDD8FE);border-radius:8px;flex:1"><input type="radio" name="cal-gender" value="male" checked> Masculino</label>
+                <label style="display:flex;align-items:center;gap:6px;font-size:14px;cursor:pointer;padding:8px 12px;border:1px solid var(--color-border,#DDD8FE);border-radius:8px;flex:1"><input type="radio" name="cal-gender" value="female"> Femenino</label>
+              </div>
+            </div>
+            <div>
+              <label style="display:block;font-size:13px;font-weight:500;margin-bottom:6px" for="cal-weight">Peso (<span id="cal-wunit">kg</span>)</label>
+              <input type="number" id="cal-weight" placeholder="70" min="1" style="width:100%;padding:10px 12px;border:1px solid var(--color-border,#DDD8FE);border-radius:8px;font-size:15px">
+            </div>
+            <div>
+              <label style="display:block;font-size:13px;font-weight:500;margin-bottom:6px" for="cal-height">Altura (<span id="cal-hunit">cm</span>)</label>
+              <input type="number" id="cal-height" placeholder="175" min="1" style="width:100%;padding:10px 12px;border:1px solid var(--color-border,#DDD8FE);border-radius:8px;font-size:15px">
+            </div>
+          </div>
+          <div style="margin-bottom:16px">
+            <label style="display:block;font-size:13px;font-weight:500;margin-bottom:6px" for="cal-activity">Nivel de actividad</label>
+            <select id="cal-activity" style="width:100%;padding:10px 12px;border:1px solid var(--color-border,#DDD8FE);border-radius:8px;font-size:14px">
+              <option value="1.2">Sedentario (poco o nada de ejercicio)</option>
+              <option value="1.375">Ligeramente activo (1-3 días/semana)</option>
+              <option value="1.55" selected>Moderadamente activo (3-5 días/semana)</option>
+              <option value="1.725">Muy activo (6-7 días/semana)</option>
+              <option value="1.9">Extra activo (trabajo físico o doble entrenamiento)</option>
+            </select>
+          </div>
+          <div class="action-bar" style="margin-bottom:20px">
+            <button class="btn btn-primary" id="btn-calc-cal">Calcular calorías</button>
+            <button class="btn btn-secondary" id="btn-reset-cal">Restablecer</button>
+          </div>
+          <div id="cal-result" style="display:none">
+            <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:12px">
+              <div class="stat-card"><div class="stat-val" id="cal-bmr">—</div><div class="stat-lbl">TMB (kcal/día)</div></div>
+              <div class="stat-card"><div class="stat-val" id="cal-tdee">—</div><div class="stat-lbl">TDEE (Mantenimiento)</div></div>
+              <div class="stat-card" style="background:var(--color-warning-bg,#FFFBEB)"><div class="stat-val" id="cal-lose">—</div><div class="stat-lbl">Pérdida de peso (−500)</div></div>
+              <div class="stat-card" style="background:var(--color-success-bg,#ECFDF5)"><div class="stat-val" id="cal-gain">—</div><div class="stat-lbl">Aumento de peso (+500)</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <aside class="tool-side" aria-label="Opciones">
+        <div class="ss-divider">Herramientas relacionadas</div>
+        <a href="/es/bmi-calculator/" class="ss-related-link"><img src="/assets/img/icon-calculator.svg" alt="" width="18" height="18" loading="lazy">Calculadora de IMC</a>
+        <a href="/es/percentage-calculator/" class="ss-related-link"><img src="/assets/img/icon-calculator.svg" alt="" width="18" height="18" loading="lazy">Calculadora de porcentajes</a>
+        <a href="/es/loan-calculator/" class="ss-related-link"><img src="/assets/img/icon-calculator.svg" alt="" width="18" height="18" loading="lazy">Calculadora de préstamos</a>
+        <div style="margin-top:16px">
+          <p class="ad-label">Publicidad</p>
+          <div class="ad-slot" style="min-height:250px">
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+            <!-- Replace ca-pub-XXXXXXXXXX and data-ad-slot="XXXXXXXXXX" with your IDs -->
+          </div>
+        </div>
+      </aside>
+    </div>
+    <div class="ad-slot ad-slot--leaderboard">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="how-to-use">
+      <h2>Cómo usar la Calculadora de Calorías</h2>
+      <ol class="steps">
+        <li><strong>Paso 1</strong> — Selecciona tu sistema de unidades (Métrico o Imperial), luego ingresa tu edad, género, peso y altura.</li>
+        <li><strong>Paso 2</strong> — Elige tu nivel de actividad diaria del menú desplegable, que va desde Sedentario hasta Extra Activo.</li>
+        <li><strong>Paso 3</strong> — Haz clic en "Calcular calorías" para ver tu TMB, TDEE (calorías de mantenimiento) y objetivos para pérdida y aumento de peso.</li>
+      </ol>
+    </section>
+    <section class="features">
+      <h2>Características</h2>
+      <ul class="features-list">
+        <li>Usa la ecuación de Mifflin-St Jeor, la fórmula TMB más precisa para la mayoría de los adultos</li>
+        <li>Compatible con unidades métricas (kg/cm) e imperiales (lb/in)</li>
+        <li>Cinco multiplicadores de actividad, de sedentario a extra activo</li>
+        <li>Muestra TMB, TDEE (mantenimiento), objetivo de pérdida de peso (−500 kcal) y objetivo de aumento de peso (+500 kcal)</li>
+        <li>Tarjetas de resultados codificadas por colores para referencia visual rápida</li>
+        <li>Sin cuenta ni almacenamiento de datos personales, el cálculo es completamente local</li>
+      </ul>
+    </section>
+    <div class="ad-slot ad-slot--rectangle" style="margin:0 auto 32px">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="faq">
+      <h2>Preguntas frecuentes</h2>
+      <div class="faq-list">
+        <details class="faq-item"><summary class="faq-question">¿Qué es la TMB y cómo se calcula? <span class="faq-icon">+</span></summary><div class="faq-answer">La TMB (Tasa Metabólica Basal) es el número de calorías que tu cuerpo quema en reposo completo para mantener funciones básicas como respirar y la circulación. Esta calculadora usa la ecuación de Mifflin-St Jeor: Para hombres: (10 × peso kg) + (6,25 × altura cm) − (5 × edad) + 5. Para mujeres: la misma fórmula pero −161 en lugar de +5.</div></details>
+        <details class="faq-item"><summary class="faq-question">¿Qué significa TDEE? <span class="faq-icon">+</span></summary><div class="faq-answer">TDEE significa Gasto Energético Total Diario. Es tu TMB multiplicada por un factor de actividad que tiene en cuenta las calorías quemadas a través del ejercicio y el movimiento diario. El TDEE representa el número de calorías que necesitas cada día para mantener tu peso actual.</div></details>
+        <details class="faq-item"><summary class="faq-question">¿Cuántas calorías debo comer para perder peso? <span class="faq-icon">+</span></summary><div class="faq-answer">Un enfoque común es comer 500 calorías menos que tu TDEE por día, lo que generalmente resulta en aproximadamente 0,45 kg (1 lb) de pérdida de peso por semana. Esta calculadora muestra este valor automáticamente en la tarjeta "Pérdida de peso (−500)". Consulta siempre a un médico antes de hacer cambios dietéticos significativos.</div></details>
+        <details class="faq-item"><summary class="faq-question">¿Qué nivel de actividad debo elegir? <span class="faq-icon">+</span></summary><div class="faq-answer">Elige Sedentario si tienes un trabajo de escritorio y rara vez haces ejercicio. Ligeramente Activo es para personas que hacen ejercicio 1-3 veces por semana. Moderadamente Activo es para quienes hacen ejercicio 3-5 días por semana. Muy Activo aplica a entrenamiento diario intenso. Extra Activo es para atletas o personas con trabajos físicamente exigentes que entrenan dos veces al día.</div></details>
+        <details class="faq-item"><summary class="faq-question">¿Es esta calculadora adecuada para niños o adolescentes? <span class="faq-icon">+</span></summary><div class="faq-answer">La ecuación de Mifflin-St Jeor está validada para adultos de 18 años en adelante. Para niños y adolescentes, las necesidades calóricas se calculan de manera diferente según las etapas de crecimiento. Los padres deben consultar a un pediatra o dietista registrado para obtener orientación precisa para menores.</div></details>
+      </div>
+    </section>
+    <section class="related-tools">
+      <h2>Herramientas relacionadas</h2>
+      <div class="tool-grid">
+        <a href="/es/bmi-calculator/" class="tool-card"><img src="/assets/img/icon-calculator.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Calculadora de IMC</h3><p>Calcula tu Índice de Masa Corporal en unidades métricas o imperiales.</p><span class="tool-card-link">Usar →</span></a>
+        <a href="/es/percentage-calculator/" class="tool-card"><img src="/assets/img/icon-calculator.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Calculadora de porcentajes</h3><p>Calcula porcentajes, cambios y proporciones fácilmente.</p><span class="tool-card-link">Usar →</span></a>
+        <a href="/es/loan-calculator/" class="tool-card"><img src="/assets/img/icon-calculator.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Calculadora de préstamos</h3><p>Calcula cuotas mensuales y el pago total del préstamo.</p><span class="tool-card-link">Usar →</span></a>
+        <a href="/es/age-calculator/" class="tool-card"><img src="/assets/img/icon-clock.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Calculadora de edad</h3><p>Calcula tu edad exacta en años, meses y días.</p><span class="tool-card-link">Usar →</span></a>
+      </div>
+    </section>
+  </main>
+  <footer id="site-footer" class="site-footer"></footer>
+  <script src="/assets/js/shared.js" defer></script>
+  <script src="/assets/js/tools/calorie-calculator.js" defer></script>
+</body>
+</html>

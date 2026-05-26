@@ -1,0 +1,155 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mortgage Calculator Online Free | AnyConverter</title>
+  <meta name="description" content="Calculate your monthly mortgage payment online for free. Enter home price, down payment, interest rate and loan term to get your payment and total interest instantly.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://anyconverter.io/mortgage-calculator/">
+  <link rel="alternate" hreflang="en" href="https://anyconverter.io/mortgage-calculator/">
+  <link rel="alternate" hreflang="es" href="https://anyconverter.io/es/mortgage-calculator/">
+  <link rel="alternate" hreflang="da" href="https://anyconverter.io/da/mortgage-calculator/">
+  <link rel="alternate" hreflang="x-default" href="https://anyconverter.io/mortgage-calculator/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Mortgage Calculator Online Free | AnyConverter">
+  <meta property="og:description" content="Calculate your monthly mortgage payment online for free. Enter home price, down payment, interest rate and loan term to get your payment and total interest instantly.">
+  <meta property="og:url" content="https://anyconverter.io/mortgage-calculator/">
+  <meta property="og:site_name" content="AnyConverter">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" data-ad-client="ca-pub-XXXXXXXXXX" crossorigin="anonymous"></script>
+  <!-- Replace ca-pub-XXXXXXXXXX with your real AdSense publisher ID -->
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Mortgage Calculator","url":"https://anyconverter.io/mortgage-calculator/","description":"Calculate monthly mortgage payment, total interest, and total cost based on home price, down payment, rate, and loan term.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F4F6FF);color:var(--color-text,#1E1B4B)}
+    body{min-height:100vh;display:flex;flex-direction:column}
+    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8FE)}
+    .header-inner{max-width:1280px;width:100%;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;gap:32px}
+    .hero{padding:40px 24px 32px;max-width:1280px;margin:0 auto}
+    .hero h1{font-size:clamp(1.75rem,4vw,2.25rem);font-weight:700;line-height:1.2;margin-bottom:12px}
+    .hero-desc{font-size:1.0625rem;color:var(--color-text-2,#6B7280);max-width:680px;line-height:1.6}
+    @font-face{font-family:'Inter';font-display:swap}
+  </style>
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+  <header id="site-header" class="site-header"></header>
+  <main id="main-content">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol><li><a href="/">Home</a></li><li aria-current="page">Mortgage Calculator</li></ol>
+    </nav>
+    <section class="hero">
+      <h1>Mortgage Calculator</h1>
+      <p class="hero-desc">Plan your home purchase with confidence. Enter the home price, down payment, interest rate, and loan term to instantly calculate your monthly mortgage payment, total interest paid, and the full cost of your loan over its lifetime.</p>
+    </section>
+    <div class="tool-wrapper">
+      <div class="tool-zone">
+        <div style="padding:24px">
+          <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px;margin-bottom:16px">
+            <div>
+              <label style="display:block;font-size:13px;font-weight:500;margin-bottom:6px" for="mort-price">Home Price ($)</label>
+              <input type="number" id="mort-price" placeholder="350000" min="1" style="width:100%;padding:10px 12px;border:1px solid var(--color-border,#DDD8FE);border-radius:8px;font-size:15px">
+            </div>
+            <div>
+              <label style="display:block;font-size:13px;font-weight:500;margin-bottom:6px" for="mort-down">Down Payment ($)</label>
+              <input type="number" id="mort-down" placeholder="70000" min="0" style="width:100%;padding:10px 12px;border:1px solid var(--color-border,#DDD8FE);border-radius:8px;font-size:15px">
+            </div>
+            <div>
+              <label style="display:block;font-size:13px;font-weight:500;margin-bottom:6px" for="mort-rate">Annual Interest Rate (%)</label>
+              <input type="number" id="mort-rate" placeholder="6.5" step="0.01" min="0.01" style="width:100%;padding:10px 12px;border:1px solid var(--color-border,#DDD8FE);border-radius:8px;font-size:15px">
+            </div>
+            <div>
+              <label style="display:block;font-size:13px;font-weight:500;margin-bottom:6px" for="mort-term">Loan Term (years)</label>
+              <select id="mort-term" style="width:100%;padding:10px 12px;border:1px solid var(--color-border,#DDD8FE);border-radius:8px;font-size:14px">
+                <option value="10">10 years</option>
+                <option value="15">15 years</option>
+                <option value="20">20 years</option>
+                <option value="30" selected>30 years</option>
+              </select>
+            </div>
+          </div>
+          <div class="action-bar" style="margin-bottom:20px">
+            <button class="btn btn-primary" id="btn-calc-mort">Calculate</button>
+            <button class="btn btn-secondary" id="btn-reset-mort">Reset</button>
+          </div>
+          <div id="mort-result" style="display:none">
+            <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px;margin-bottom:16px">
+              <div class="stat-card"><div class="stat-val" id="mort-monthly">—</div><div class="stat-lbl">Monthly Payment</div></div>
+              <div class="stat-card"><div class="stat-val" id="mort-principal">—</div><div class="stat-lbl">Loan Amount</div></div>
+              <div class="stat-card"><div class="stat-val" id="mort-interest-total">—</div><div class="stat-lbl">Total Interest</div></div>
+              <div class="stat-card"><div class="stat-val" id="mort-total">—</div><div class="stat-lbl">Total Cost</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <aside class="tool-side" aria-label="Options">
+        <div class="ss-divider">Related Tools</div>
+        <a href="/loan-calculator/" class="ss-related-link"><img src="/assets/img/icon-calculator.svg" alt="" width="18" height="18" loading="lazy">Loan Calculator</a>
+        <a href="/compound-interest-calculator/" class="ss-related-link"><img src="/assets/img/icon-calculator.svg" alt="" width="18" height="18" loading="lazy">Compound Interest Calculator</a>
+        <a href="/percentage-calculator/" class="ss-related-link"><img src="/assets/img/icon-calculator.svg" alt="" width="18" height="18" loading="lazy">Percentage Calculator</a>
+        <div style="margin-top:16px">
+          <p class="ad-label">Advertisement</p>
+          <div class="ad-slot" style="min-height:250px">
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+            <!-- Replace ca-pub-XXXXXXXXXX and data-ad-slot="XXXXXXXXXX" with your IDs -->
+          </div>
+        </div>
+      </aside>
+    </div>
+    <div class="ad-slot ad-slot--leaderboard">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="how-to-use">
+      <h2>How to Use the Mortgage Calculator</h2>
+      <ol class="steps">
+        <li><strong>Step 1</strong> — Enter the home price and your down payment amount in dollars. The loan amount is automatically determined as the difference.</li>
+        <li><strong>Step 2</strong> — Enter the annual interest rate (e.g., 6.5) and select your loan term (10, 15, 20, or 30 years).</li>
+        <li><strong>Step 3</strong> — Click "Calculate" to see your monthly payment, loan amount, total interest paid, and the total cost of the home including all payments.</li>
+      </ol>
+    </section>
+    <section class="features">
+      <h2>Features</h2>
+      <ul class="features-list">
+        <li>Standard fixed-rate mortgage calculation using the amortization formula</li>
+        <li>Shows monthly payment, loan principal, total interest, and total cost</li>
+        <li>Supports loan terms of 10, 15, 20, and 30 years</li>
+        <li>Handles any home price and down payment combination</li>
+        <li>Results formatted as US dollars with two decimal places</li>
+        <li>Instant calculation with no page reload required</li>
+      </ul>
+    </section>
+    <div class="ad-slot ad-slot--rectangle" style="margin:0 auto 32px">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="faq">
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-list">
+        <details class="faq-item"><summary class="faq-question">How is the monthly mortgage payment calculated? <span class="faq-icon">+</span></summary><div class="faq-answer">The monthly payment uses the standard amortization formula: M = P × [r(1+r)^n] ÷ [(1+r)^n − 1], where P is the loan principal, r is the monthly interest rate (annual rate ÷ 12), and n is the total number of payments (years × 12).</div></details>
+        <details class="faq-item"><summary class="faq-question">Does this include property taxes and insurance? <span class="faq-icon">+</span></summary><div class="faq-answer">No. This calculator computes the principal and interest (P&I) portion of your mortgage payment only. Your actual monthly housing cost will also include property taxes, homeowner's insurance, and possibly PMI (private mortgage insurance) if your down payment is less than 20%.</div></details>
+        <details class="faq-item"><summary class="faq-question">What is a good interest rate for a mortgage? <span class="faq-icon">+</span></summary><div class="faq-answer">Mortgage rates vary by country, lender, credit score, loan type, and market conditions. Historically, rates in the US have ranged from 3% to 8% for 30-year fixed mortgages. Use this calculator to compare different rate scenarios and see how even a 0.5% difference affects your monthly payment.</div></details>
+        <details class="faq-item"><summary class="faq-question">Should I choose a 15-year or 30-year mortgage? <span class="faq-icon">+</span></summary><div class="faq-answer">A 15-year mortgage has higher monthly payments but substantially less total interest paid. A 30-year mortgage has lower monthly payments and more flexibility, but you pay significantly more interest over the life of the loan. Use this calculator with both terms to compare the exact numbers for your situation.</div></details>
+        <details class="faq-item"><summary class="faq-question">How does the down payment affect my mortgage? <span class="faq-icon">+</span></summary><div class="faq-answer">A larger down payment reduces your loan principal, which lowers your monthly payment and the total interest you pay. Putting down 20% or more typically eliminates PMI requirements. Even increasing your down payment by a small amount can save thousands of dollars in interest over the life of the loan.</div></details>
+      </div>
+    </section>
+    <section class="related-tools">
+      <h2>Related Tools</h2>
+      <div class="tool-grid">
+        <a href="/loan-calculator/" class="tool-card"><img src="/assets/img/icon-calculator.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Loan Calculator</h3><p>Calculate monthly EMI and total loan payment amount.</p><span class="tool-card-link">Try it →</span></a>
+        <a href="/compound-interest-calculator/" class="tool-card"><img src="/assets/img/icon-calculator.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Compound Interest Calculator</h3><p>See how investments grow with compound interest over time.</p><span class="tool-card-link">Try it →</span></a>
+        <a href="/percentage-calculator/" class="tool-card"><img src="/assets/img/icon-calculator.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Percentage Calculator</h3><p>Calculate percentages, changes, and ratios easily.</p><span class="tool-card-link">Try it →</span></a>
+        <a href="/bmi-calculator/" class="tool-card"><img src="/assets/img/icon-calculator.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>BMI Calculator</h3><p>Calculate your Body Mass Index with metric or imperial units.</p><span class="tool-card-link">Try it →</span></a>
+      </div>
+    </section>
+  </main>
+  <footer id="site-footer" class="site-footer"></footer>
+  <script src="/assets/js/shared.js" defer></script>
+  <script src="/assets/js/tools/mortgage-calculator.js" defer></script>
+</body>
+</html>

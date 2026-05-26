@@ -1,0 +1,153 @@
+﻿<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Skrivetestigheds Test Online Gratis | AnyConverter</title>
+  <meta name="description" content="Test din skrivetestighed i WPM (ord per minut) og nøjagtighed online gratis. Øv dig med tilfældige tekstpassager og spor dine fremskridt. Ingen tilmelding.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://anyconverter.io/da/typing-speed-test/">
+  <link rel="alternate" hreflang="en" href="https://anyconverter.io/typing-speed-test/">
+  <link rel="alternate" hreflang="es" href="https://anyconverter.io/es/typing-speed-test/">
+  <link rel="alternate" hreflang="da" href="https://anyconverter.io/da/typing-speed-test/">
+  <link rel="alternate" hreflang="x-default" href="https://anyconverter.io/typing-speed-test/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Skrivetestigheds Test Online Gratis | AnyConverter">
+  <meta property="og:description" content="Test din skrivetestighed og nøjagtighed i WPM online gratis. Ingen tilmelding nødvendig.">
+  <meta property="og:url" content="https://anyconverter.io/da/typing-speed-test/">
+  <meta property="og:site_name" content="AnyConverter">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" data-ad-client="ca-pub-XXXXXXXXXX" crossorigin="anonymous"></script>
+  <!-- Replace ca-pub-XXXXXXXXXX with your real AdSense publisher ID -->
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Skrivetestigheds Test","url":"https://anyconverter.io/da/typing-speed-test/","description":"Test din skrivetestighed og nøjagtighed online gratis. Få din WPM-score øjeblikkeligt.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F4F6FF);color:var(--color-text,#1E1B4B)}
+    body{min-height:100vh;display:flex;flex-direction:column}
+    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8FE)}
+    .header-inner{max-width:1280px;width:100%;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;gap:32px}
+    .hero{padding:40px 24px 32px;max-width:1280px;margin:0 auto}
+    .hero h1{font-size:clamp(1.75rem,4vw,2.25rem);font-weight:700;line-height:1.2;margin-bottom:12px}
+    .hero-desc{font-size:1.0625rem;color:var(--color-text-2,#6B7280);max-width:680px;line-height:1.6}
+    @font-face{font-family:'Inter';font-display:swap}
+  </style>
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+  <header id="site-header" class="site-header"></header>
+  <main id="main-content">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol><li><a href="/da/">Hjem</a></li><li aria-current="page">Skrivetestigheds Test</li></ol>
+    </nav>
+    <section class="hero">
+      <h1>Skrivetestigheds Test</h1>
+      <p class="hero-desc">Mål din skrivetestighed i ord per minut (WPM) og nøjagtighed. Øv dig med tilfældige tekstpassager, se fejl fremhævet i realtid og spor dine fremskridt over tid.</p>
+    </section>
+    <div class="tool-wrapper">
+      <div class="tool-zone">
+        <div style="padding:24px">
+          <div id="tst-setup">
+            <div style="margin-bottom:12px">
+              <label style="font-size:13px;font-weight:500">Sværhedsgrad</label>
+              <div style="display:flex;gap:8px;margin-top:6px">
+                <button class="btn btn-primary btn-sm" id="diff-easy">Let</button>
+                <button class="btn btn-secondary btn-sm" id="diff-medium">Mellem</button>
+                <button class="btn btn-secondary btn-sm" id="diff-hard">Svær</button>
+              </div>
+            </div>
+            <button class="btn btn-primary" id="btn-start-test">Start Test</button>
+          </div>
+          <div id="tst-game" style="display:none">
+            <div style="display:flex;justify-content:space-between;margin-bottom:12px">
+              <div class="stat-card" style="flex:1;margin-right:8px"><div class="stat-val" id="tst-timer">60</div><div class="stat-lbl">Sekunder tilbage</div></div>
+              <div class="stat-card" style="flex:1;margin-right:8px"><div class="stat-val" id="tst-wpm">0</div><div class="stat-lbl">WPM</div></div>
+              <div class="stat-card" style="flex:1"><div class="stat-val" id="tst-acc">100%</div><div class="stat-lbl">Nøjagtighed</div></div>
+            </div>
+            <div id="tst-text-display" style="font-size:18px;line-height:1.8;padding:16px;background:var(--color-surface,#fff);border:1px solid var(--color-border,#DDD8FE);border-radius:8px;margin-bottom:12px;letter-spacing:0.02em;user-select:none"></div>
+            <textarea id="tst-input" placeholder="Begynd at skrive her..." style="width:100%;padding:12px;border:1px solid var(--color-border,#DDD8FE);border-radius:8px;font-size:16px;resize:none;height:80px" spellcheck="false" autocomplete="off" autocorrect="off"></textarea>
+            <div class="action-bar" style="margin-top:8px">
+              <button class="btn btn-secondary" id="btn-restart-test">Genstart</button>
+            </div>
+          </div>
+          <div id="tst-results" style="display:none">
+            <h3 style="margin-bottom:16px;font-size:18px">Dine resultater</h3>
+            <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:16px">
+              <div class="stat-card"><div class="stat-val" id="res-wpm">—</div><div class="stat-lbl">WPM</div></div>
+              <div class="stat-card"><div class="stat-val" id="res-acc">—</div><div class="stat-lbl">Nøjagtighed</div></div>
+              <div class="stat-card"><div class="stat-val" id="res-correct">—</div><div class="stat-lbl">Korrekte ord</div></div>
+              <div class="stat-card"><div class="stat-val" id="res-errors">—</div><div class="stat-lbl">Fejl</div></div>
+            </div>
+            <button class="btn btn-primary" id="btn-try-again">Prøv igen</button>
+          </div>
+        </div>
+      </div>
+      <aside class="tool-side" aria-label="Muligheder">
+        <div class="ss-divider">Relaterede værktøjer</div>
+        <a href="/da/word-counter/" class="ss-related-link"><img src="/assets/img/icon-text.svg" alt="" width="18" height="18" loading="lazy">Ordtæller</a>
+        <a href="/da/character-counter/" class="ss-related-link"><img src="/assets/img/icon-text.svg" alt="" width="18" height="18" loading="lazy">Tegntæller</a>
+        <a href="/da/lorem-ipsum-generator/" class="ss-related-link"><img src="/assets/img/icon-text.svg" alt="" width="18" height="18" loading="lazy">Lorem Ipsum Generator</a>
+        <div style="margin-top:16px">
+          <p class="ad-label">Reklame</p>
+          <div class="ad-slot" style="min-height:250px">
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+            <!-- Replace ca-pub-XXXXXXXXXX and data-ad-slot="XXXXXXXXXX" with your IDs -->
+          </div>
+        </div>
+      </aside>
+    </div>
+    <div class="ad-slot ad-slot--leaderboard">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="how-to-use">
+      <h2>Sådan bruges Skrivetestigheds Testen</h2>
+      <ol class="steps">
+        <li><strong>Trin 1</strong> — Klik Start Test for at begynde testen med en tilfældig tekstpassage.</li>
+        <li><strong>Trin 2</strong> — Skriv passagen så hurtigt og præcist som muligt. Fejl fremhæves i rødt i realtid.</li>
+        <li><strong>Trin 3</strong> — Se dine endelige resultater: WPM, nøjagtighed og antal fejl. Klik Prøv igen for en ny test.</li>
+      </ol>
+    </section>
+    <section class="features">
+      <h2>Funktioner</h2>
+      <ul class="features-list">
+        <li>Måler WPM (ord per minut) og nøjagtighed</li>
+        <li>Tilfældige tekstpassager for hver test</li>
+        <li>Realtids fejlfremhævning</li>
+        <li>Viser endelig WPM, nøjagtighed og fejlantal</li>
+        <li>Tidsgrænse på 60 sekunder</li>
+        <li>Ingen tilmelding nødvendig</li>
+      </ul>
+    </section>
+    <div class="ad-slot ad-slot--rectangle" style="margin:0 auto 32px">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="faq">
+      <h2>Ofte stillede spørgsmål</h2>
+      <div class="faq-list">
+        <details class="faq-item"><summary class="faq-question">Hvad er WPM og hvordan beregnes det? <span class="faq-icon">+</span></summary><div class="faq-answer">WPM står for Words Per Minute (ord per minut). I denne test tæller hvert korrekt skrevet ord gennemført inden for 60-sekunders vinduet som et WPM. Dette er den standard "brutto-WPM"-måling der bruges af de fleste skrivetests.</div></details>
+        <details class="faq-item"><summary class="faq-question">Hvad er en god skrivehastighed? <span class="faq-icon">+</span></summary><div class="faq-answer">Den gennemsnitlige skriver opnår 40–50 WPM. En hastighed på 60–80 WPM anses for over gennemsnittet og egnet til de fleste kontorjob. Professionelle skrivere overstiger ofte 80–100 WPM, mens konkurrenceskrivere kan nå 120+ WPM.</div></details>
+        <details class="faq-item"><summary class="faq-question">Hvordan fungerer nøjagtighedsprocenten? <span class="faq-icon">+</span></summary><div class="faq-answer">Nøjagtighed beregnes ud fra forholdet mellem korrekt skrevne tegn og det samlede antal skrevne tegn. Hvert fejlskrevet tegn reducerer din nøjagtighedsscore. Sigt efter mindst 95% nøjagtighed for professionelle skrivestandarder.</div></details>
+        <details class="faq-item"><summary class="faq-question">Kan jeg tage testen igen med en anden tekst? <span class="faq-icon">+</span></summary><div class="faq-answer">Ja. Når dine resultater vises, skal du klikke "Prøv igen" for at vende tilbage til opsætningsskærmen. Hver gang du starter en ny test, vælges en tilfældig passage fra de tilgængelige tekster for din valgte sværhedsgrad.</div></details>
+        <details class="faq-item"><summary class="faq-question">Fungerer testen på mobile enheder? <span class="faq-icon">+</span></summary><div class="faq-answer">Ja, skrivetestigheds testen fungerer på mobile enheder og tablets med et hardwaretastatur. For den mest præcise WPM-måling anbefales et fysisk tastatur dog, da skærmtastaturer typisk producerer langsommere hastigheder.</div></details>
+      </div>
+    </section>
+    <section class="related-tools">
+      <h2>Relaterede Værktøjer</h2>
+      <div class="tool-grid">
+        <a href="/da/word-counter/" class="tool-card"><img src="/assets/img/icon-text.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Ordtæller</h3><p>Tæl ord, tegn, sætninger og læsetid øjeblikkeligt.</p><span class="tool-card-link">Brug →</span></a>
+        <a href="/da/character-counter/" class="tool-card"><img src="/assets/img/icon-text.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Tegntæller</h3><p>Tæl tegn med og uden mellemrum for enhver tekst.</p><span class="tool-card-link">Brug →</span></a>
+        <a href="/da/lorem-ipsum-generator/" class="tool-card"><img src="/assets/img/icon-text.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Lorem Ipsum Generator</h3><p>Generer pladsholdertekst til dine designs og mockups.</p><span class="tool-card-link">Brug →</span></a>
+        <a href="/da/text-case-converter/" class="tool-card"><img src="/assets/img/icon-text.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Tekst Store/Små Bogstaver Konverter</h3><p>Konverter tekst mellem store bogstaver, små bogstaver, titelformat og mere.</p><span class="tool-card-link">Brug →</span></a>
+      </div>
+    </section>
+  </main>
+  <footer id="site-footer" class="site-footer"></footer>
+  <script src="/assets/js/shared.js" defer></script>
+  <script src="/assets/js/tools/typing-speed-test.js" defer></script>
+</body>
+</html>
