@@ -133,24 +133,24 @@
       <h2>Frequently Asked Questions</h2>
       <div class="faq-list">
         <details class="faq-item">
-          <summary>What is a cron expression?</summary>
-          <p>A cron expression is a 5-field string (minute hour day-of-month month day-of-week) used to schedule recurring tasks in Unix/Linux systems. Each field accepts numbers, wildcards (*), ranges (1-5), steps (*/5), or lists (1,3,5).</p>
+          <summary class="faq-question">What is a cron expression? <span class="faq-icon">+</span></summary>
+          <div class="faq-answer">A cron expression is a 5-field string (minute hour day-of-month month day-of-week) used to schedule recurring tasks in Unix/Linux systems. Each field accepts numbers, wildcards (*), ranges (1-5), steps (*/5), or lists (1,3,5).</div>
         </details>
         <details class="faq-item">
-          <summary>What does */5 mean?</summary>
-          <p>The /5 step notation means "every 5 units". So */5 in the minute field runs every 5 minutes (0, 5, 10, 15…). In the hour field, */2 would run every 2 hours.</p>
+          <summary class="faq-question">What does */5 mean? <span class="faq-icon">+</span></summary>
+          <div class="faq-answer">The /5 step notation means "every 5 units". So */5 in the minute field runs every 5 minutes (0, 5, 10, 15…). In the hour field, */2 would run every 2 hours.</div>
         </details>
         <details class="faq-item">
-          <summary>What does 0 0 * * 1-5 mean?</summary>
-          <p>This runs at midnight (00:00) on every day of the week from Monday (1) to Friday (5), i.e., every weekday at midnight.</p>
+          <summary class="faq-question">What does 0 0 * * 1-5 mean? <span class="faq-icon">+</span></summary>
+          <div class="faq-answer">This runs at midnight (00:00) on every day of the week from Monday (1) to Friday (5), i.e., every weekday at midnight.</div>
         </details>
         <details class="faq-item">
-          <summary>Can cron run multiple times per hour?</summary>
-          <p>Yes. Use */N in the minute field to run every N minutes. For example, */15 runs at 0, 15, 30, and 45 minutes past each hour.</p>
+          <summary class="faq-question">Can cron run multiple times per hour? <span class="faq-icon">+</span></summary>
+          <div class="faq-answer">Yes. Use */N in the minute field to run every N minutes. For example, */15 runs at 0, 15, 30, and 45 minutes past each hour.</div>
         </details>
         <details class="faq-item">
-          <summary>Are seconds supported?</summary>
-          <p>Standard 5-field cron does not include seconds. Some systems use 6-field cron with a leading seconds field, but this parser follows the POSIX 5-field standard.</p>
+          <summary class="faq-question">Are seconds supported? <span class="faq-icon">+</span></summary>
+          <div class="faq-answer">Standard 5-field cron does not include seconds. Some systems use 6-field cron with a leading seconds field, but this parser follows the POSIX 5-field standard.</div>
         </details>
       </div>
     </section>
