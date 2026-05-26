@@ -519,11 +519,82 @@
     '/base64-encoder/', '/hash-generator/', '/age-calculator/'
   ];
 
+  function initToolPageActions() {
+    const hasToolLayout = document.querySelector('.tool-wrapper, .tool-card, .tool-container, .tool-zone');
+    if (!hasToolLayout) return;
+
+    const hero = document.querySelector('.hero');
+    if (!hero || hero.querySelector('.tool-page-actions')) return;
+
+    const actions = document.createElement('div');
+    actions.className = 'tool-page-actions';
+    actions.innerHTML = `
+      <button type="button" class="tool-page-action-btn" data-action="share" aria-label="Share this tool">
+        <span aria-hidden="true">↗</span>
+        <span>Share</span>
+      </button>
+      <button type="button" class="tool-page-action-btn" data-action="copylink" aria-label="Copy tool link">
+        <span aria-hidden="true">🔗</span>
+        <span>Copy Link</span>
+      </button>
+      <button type="button" class="tool-page-action-btn" data-action="favorite" aria-label="Add tool to favorites">
+        <span aria-hidden="true">☆</span>
+        <span>Add to Favorites</span>
+      </button>
+    `;
+
+    const title = hero.querySelector('h1');
+    const toolName = title ? title.textContent.trim() : document.title;
+
+    actions.addEventListener('click', async (event) => {
+      const button = event.target.closest('[data-action]');
+      if (!button) return;
+      const url = window.location.href;
+      const action = button.getAttribute('data-action');
+
+      if (action === 'share') {
+        if (navigator.share) {
+          try {
+            await navigator.share({ title: toolName, text: `Try ${toolName} on AnyConverter`, url });
+            showToast('Share dialog opened.');
+          } catch (err) {
+            if (err && err.name !== 'AbortError') showToast('Share was not completed.');
+          }
+        } else {
+          await navigator.clipboard.writeText(url);
+          showToast('Share is not available on this device. Link copied instead.');
+        }
+      }
+
+      if (action === 'copylink') {
+        await navigator.clipboard.writeText(url);
+        showToast('Tool link copied to clipboard.');
+      }
+
+      if (action === 'favorite') {
+        const key = 'ac_favorite_tools';
+        const current = JSON.parse(localStorage.getItem(key) || '[]');
+        const item = { name: toolName, url };
+        const exists = current.some((fav) => fav.url === url);
+        if (!exists) {
+          current.push(item);
+          localStorage.setItem(key, JSON.stringify(current));
+          showToast('Added to favorites.');
+        } else {
+          showToast('Already in favorites.');
+        }
+      }
+    });
+
+    hero.appendChild(actions);
+  }
+
   /* ===== INIT ===== */
   applyStoredTheme();
   document.addEventListener('DOMContentLoaded', function () {
     renderHeader();
     renderFooter();
+    initToolPageActions();
     initHeader();
     initThemeToggle();
     initLangSwitcher();
