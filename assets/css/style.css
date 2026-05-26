@@ -1560,11 +1560,16 @@ mark.regex-match { background: rgba(255,200,0,0.4); color: transparent; border-r
 .dash-main .tool-categories { max-width: none; padding: 28px 40px 8px; }
 .dash-main .category-section { margin-bottom: 48px; }
 
-/* 4 columns on laptop inside dashboard */
+/* 4 columns on laptop; 5 columns on wide desktop inside dashboard */
 @media (min-width: 1024px) {
   .dash-main .tool-grid {
     grid-template-columns: repeat(4, 1fr);
     gap: 16px;
+  }
+}
+@media (min-width: 1280px) {
+  .dash-main .tool-grid {
+    grid-template-columns: repeat(5, 1fr);
   }
 }
 
