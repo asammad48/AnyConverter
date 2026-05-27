@@ -1171,6 +1171,30 @@ mark.regex-match { background: rgba(255,200,0,0.4); color: transparent; border-r
 .split-panels { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
 @media (max-width: 767px) { .split-panels { grid-template-columns: 1fr; } }
 
+
+/* Equal-height editors with sidebar on desktop */
+@media (min-width: 1200px) {
+  .tool-wrapper { align-items: stretch; }
+  .tool-zone { min-height: 100%; }
+  .tool-zone .split-panels {
+    flex: 1;
+    align-items: stretch;
+    min-height: 0;
+  }
+  .tool-zone .split-panels > .ac-panel {
+    min-height: 0;
+    height: 100%;
+  }
+  .tool-zone .ac-input,
+  .tool-zone .json-view,
+  .tool-zone .log-view,
+  .tool-zone .match-view {
+    min-height: 0;
+    max-height: none;
+    height: 100%;
+  }
+}
+
 /* ===== AC-INPUT (inside panel) ===== */
 .ac-input {
   padding: 14px;
