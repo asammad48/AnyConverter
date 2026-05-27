@@ -74,7 +74,6 @@
   --shadow-lg:    0 10px 24px rgba(21,21,21,0.10), 0 4px 8px rgba(21,21,21,0.05);
   --shadow-focus: 0 0 0 3px rgba(176,74,69,0.2);
   --dot-color:    rgba(176, 74, 69, 0.07);
-  --page-bg-gradient: linear-gradient(155deg, #F7F2EE 0%, #F3E7E4 38%, #F7EFE6 65%, #F5F0EE 100%);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -103,7 +102,6 @@
     --shadow-lg:    0 10px 24px rgba(0,0,0,0.45), 0 4px 8px rgba(0,0,0,0.30);
     --shadow-focus: 0 0 0 3px rgba(200,90,84,0.25);
     --dot-color:    rgba(200, 90, 84, 0.08);
-    --page-bg-gradient: linear-gradient(155deg, #13110F 0%, #1A1614 40%, #171412 100%);
   }
 }
 
@@ -132,7 +130,6 @@
   --shadow-lg:    0 10px 24px rgba(0,0,0,0.45), 0 4px 8px rgba(0,0,0,0.30);
   --shadow-focus: 0 0 0 3px rgba(200,90,84,0.25);
   --dot-color:    rgba(200, 90, 84, 0.08);
-  --page-bg-gradient: linear-gradient(155deg, #13110F 0%, #1A1614 40%, #171412 100%);
 }
 
 /* ===== RESET ===== */
@@ -140,9 +137,8 @@
 html {
   font-family: var(--font-sans);
   background-color: var(--color-bg);
-  background-image: var(--page-bg-gradient), radial-gradient(var(--dot-color) 1px, transparent 1px);
-  background-size: 100% 100%, 28px 28px;
-  background-repeat: no-repeat, repeat;
+  background-image: radial-gradient(var(--dot-color) 1px, transparent 1px);
+  background-size: 28px 28px;
   color: var(--color-text);
   scroll-behavior: smooth;
   overflow-x: hidden;
