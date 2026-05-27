@@ -141,7 +141,8 @@ html {
   font-family: var(--font-sans);
   background-color: var(--color-bg);
   background-image: var(--page-bg-gradient), radial-gradient(var(--dot-color) 1px, transparent 1px);
-  background-size: 28px 28px;
+  background-size: 100% 100%, 28px 28px;
+  background-repeat: no-repeat, repeat;
   color: var(--color-text);
   scroll-behavior: smooth;
   overflow-x: hidden;
