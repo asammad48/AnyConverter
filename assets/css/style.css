@@ -320,12 +320,8 @@ main { flex: 1; }
 /* ===== TOOL CARD ===== */
 .tool-card {
   /* Clean card: soft radial glow emanates from behind the icon (top-left) */
-  background-color: var(--color-surface);
-  background-image: radial-gradient(
-    ellipse at 28px 36px,
-    var(--cat-zone, var(--color-primary-light)) 0%,
-    transparent 66%
-  );
+  background-color: #FFFFFF;
+  background-image: none;
   /* Category-colored top accent stripe */
   border: 1.5px solid var(--color-border);
   border-top: 3px solid var(--cat-accent, var(--color-primary));
@@ -1552,7 +1548,7 @@ mark.regex-match { background: rgba(255,200,0,0.4); color: transparent; border-r
 .dash-quick-card {
   display: flex; align-items: center; gap: 10px;
   padding: 10px 13px;
-  background: var(--color-surface);
+  background: #FFFFFF;
   border: 1px solid var(--color-border);
   border-left: 3px solid var(--dash-accent, var(--color-primary));
   border-radius: 9px;
