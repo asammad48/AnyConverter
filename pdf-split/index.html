@@ -62,19 +62,15 @@
 
           <div class="settings-panel mt-4">
             <h3>Split Mode</h3>
-            <div class="radio-group">
-              <label class="radio-label">
-                <input type="radio" name="split-mode" value="pages" checked>
-                <div><strong>Extract specific pages</strong> — e.g. 1,3,5-8,12</div>
-              </label>
-              <label class="radio-label">
-                <input type="radio" name="split-mode" value="every">
-                <div><strong>Split every N pages</strong> &nbsp; N: <input type="number" id="split-n" value="2" min="1" style="width:60px;display:inline-block"></div>
-              </label>
-              <label class="radio-label">
-                <input type="radio" name="split-mode" value="each">
-                <div><strong>Extract each page as separate PDF</strong></div>
-              </label>
+            <div class="sub-tabs" id="split-mode-tabs" role="tablist" aria-label="Split mode">
+              <button class="sub-tab active" data-mode="pages" type="button" role="tab" aria-selected="true">Extract pages</button>
+              <button class="sub-tab" data-mode="every" type="button" role="tab" aria-selected="false">Every N pages</button>
+              <button class="sub-tab" data-mode="each" type="button" role="tab" aria-selected="false">Each page</button>
+            </div>
+
+            <div id="split-n-section" class="mt-4" style="display:none">
+              <label for="split-n">Split every N pages</label>
+              <input type="number" id="split-n" value="2" min="1" style="width:120px">
             </div>
 
             <div id="page-range-section" class="mt-4">

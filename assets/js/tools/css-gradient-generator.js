@@ -44,15 +44,19 @@
     document.querySelectorAll('.grad-stop').forEach(bindStop);
     document.getElementById('grad-type-linear').addEventListener('click', function() {
       gradType = 'linear';
-      this.className = 'btn btn-primary btn-sm';
-      document.getElementById('grad-type-radial').className = 'btn btn-secondary btn-sm';
+      this.classList.add('active');
+      this.setAttribute('aria-selected', 'true');
+      document.getElementById('grad-type-radial').classList.remove('active');
+      document.getElementById('grad-type-radial').setAttribute('aria-selected', 'false');
       document.getElementById('grad-angle-row').style.display = '';
       update();
     });
     document.getElementById('grad-type-radial').addEventListener('click', function() {
       gradType = 'radial';
-      this.className = 'btn btn-primary btn-sm';
-      document.getElementById('grad-type-linear').className = 'btn btn-secondary btn-sm';
+      this.classList.add('active');
+      this.setAttribute('aria-selected', 'true');
+      document.getElementById('grad-type-linear').classList.remove('active');
+      document.getElementById('grad-type-linear').setAttribute('aria-selected', 'false');
       document.getElementById('grad-angle-row').style.display = 'none';
       update();
     });

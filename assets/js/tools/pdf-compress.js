@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', function () {
   let originalBytes = null;
   let compressedBytes = null;
   let originalFile = null;
+  let compressLevel = 'medium';
 
   function formatBytes(bytes) {
     if (bytes < 1024) return bytes + ' B';
@@ -42,6 +43,18 @@ document.addEventListener('DOMContentLoaded', function () {
     if (this.files[0]) loadFile(this.files[0]);
   });
 
+  document.querySelectorAll('#compress-level-tabs [data-level]').forEach(function(tab) {
+    tab.addEventListener('click', function() {
+      document.querySelectorAll('#compress-level-tabs [data-level]').forEach(function(t) {
+        t.classList.remove('active');
+        t.setAttribute('aria-selected', 'false');
+      });
+      tab.classList.add('active');
+      tab.setAttribute('aria-selected', 'true');
+      compressLevel = tab.dataset.level;
+    });
+  });
+
   document.getElementById('btn-compress').addEventListener('click', async function () {
     if (!originalBytes) return;
     if (!window.PDFLib) { window.showToast('PDF library still loading, please wait', 'info'); return; }
@@ -53,7 +66,7 @@ document.addEventListener('DOMContentLoaded', function () {
     await new Promise(function(r){ setTimeout(r, 0); });
 
     try {
-      const level = document.querySelector('input[name="compress-level"]:checked').value;
+      const level = compressLevel;
       const doc = await window.PDFLib.PDFDocument.load(originalBytes, { ignoreEncryption: true });
 
       const saveOptions = { useObjectStreams: true };

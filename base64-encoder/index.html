@@ -48,12 +48,16 @@
     </section>
     <div class="tool-wrapper">
       <div class="tool-zone">
-        <div class="tab-bar">
-          <button class="tab-btn active" data-tab="text">Text Mode</button>
-          <button class="tab-btn" data-tab="file">File Mode</button>
+        <div class="sub-tabs" role="tablist" aria-label="Base64 input mode">
+          <button class="sub-tab active" data-tab="text" type="button" role="tab" aria-selected="true">Text Mode</button>
+          <button class="sub-tab" data-tab="file" type="button" role="tab" aria-selected="false">File Mode</button>
         </div>
 
         <div class="tab-panel active" id="tab-text">
+          <div class="sub-tabs" role="tablist" aria-label="Base64 text direction" style="margin-bottom:16px">
+            <button class="sub-tab active" id="btn-encode" type="button" role="tab" aria-selected="true">Encode</button>
+            <button class="sub-tab" id="btn-decode" type="button" role="tab" aria-selected="false">Decode</button>
+          </div>
           <div class="two-panel">
             <div>
               <p class="panel-label">Input</p>
@@ -66,8 +70,6 @@
           </div>
           <div class="action-bar">
             <div class="action-bar-left">
-              <button class="btn btn-primary btn-sm" id="btn-encode">Encode →</button>
-              <button class="btn btn-secondary btn-sm" id="btn-decode">← Decode</button>
               <button class="btn btn-secondary btn-sm" id="btn-swap">Swap ⇄</button>
             </div>
             <div class="action-bar-right">

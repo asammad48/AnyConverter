@@ -222,8 +222,12 @@ document.addEventListener('DOMContentLoaded', function () {
   /* ===== SUB-TABS ===== */
   document.querySelectorAll('.sub-tab').forEach(function(tab) {
     tab.addEventListener('click', function() {
-      document.querySelectorAll('.sub-tab').forEach(function(t){ t.classList.remove('active'); });
+      document.querySelectorAll('.sub-tab').forEach(function(t){
+        t.classList.remove('active');
+        t.setAttribute('aria-selected', 'false');
+      });
       tab.classList.add('active');
+      tab.setAttribute('aria-selected', 'true');
       const mode = tab.dataset.mode;
       if (mode === 'format') formatXML();
       else if (mode === 'minify') minifyXML();

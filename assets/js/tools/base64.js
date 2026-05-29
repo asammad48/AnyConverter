@@ -26,14 +26,18 @@ document.addEventListener('DOMContentLoaded', function () {
     if (!togOn('tog-linewrap')) return b64;
     return b64.match(/.{1,76}/g).join('\n');
   }
-  const tabs = document.querySelectorAll('.tab-btn');
+  const tabs = document.querySelectorAll('[data-tab]');
   const panels = document.querySelectorAll('.tab-panel');
 
   tabs.forEach(function (tab) {
     tab.addEventListener('click', function () {
-      tabs.forEach(function (t) { t.classList.remove('active'); });
+      tabs.forEach(function (t) {
+        t.classList.remove('active');
+        t.setAttribute('aria-selected', 'false');
+      });
       panels.forEach(function (p) { p.classList.remove('active'); });
       tab.classList.add('active');
+      tab.setAttribute('aria-selected', 'true');
       document.getElementById('tab-' + tab.dataset.tab).classList.add('active');
     });
   });
@@ -83,12 +87,23 @@ document.addEventListener('DOMContentLoaded', function () {
   var liveMode = 'encode';
   var liveTimer;
 
+  function setTextMode(mode) {
+    liveMode = mode;
+    const encodeBtn = document.getElementById('btn-encode');
+    const decodeBtn = document.getElementById('btn-decode');
+    const isEncode = mode === 'encode';
+    encodeBtn.classList.toggle('active', isEncode);
+    decodeBtn.classList.toggle('active', !isEncode);
+    encodeBtn.setAttribute('aria-selected', isEncode);
+    decodeBtn.setAttribute('aria-selected', !isEncode);
+  }
+
   document.getElementById('btn-encode').addEventListener('click', function() {
-    liveMode = 'encode';
+    setTextMode('encode');
     encodeText();
   });
   document.getElementById('btn-decode').addEventListener('click', function() {
-    liveMode = 'decode';
+    setTextMode('decode');
     decodeText();
   });
 

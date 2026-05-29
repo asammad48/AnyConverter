@@ -45,14 +45,18 @@ document.addEventListener('DOMContentLoaded', function () {
 
   document.getElementById('view-rendered').addEventListener('click', function () {
     document.getElementById('view-rendered').classList.add('active');
+    document.getElementById('view-rendered').setAttribute('aria-selected', 'true');
     document.getElementById('view-source').classList.remove('active');
+    document.getElementById('view-source').setAttribute('aria-selected', 'false');
     mdPreview.style.display = 'block';
     mdSource.style.display = 'none';
   });
 
   document.getElementById('view-source').addEventListener('click', function () {
     document.getElementById('view-source').classList.add('active');
+    document.getElementById('view-source').setAttribute('aria-selected', 'true');
     document.getElementById('view-rendered').classList.remove('active');
+    document.getElementById('view-rendered').setAttribute('aria-selected', 'false');
     mdPreview.style.display = 'none';
     mdSource.style.display = 'block';
   });

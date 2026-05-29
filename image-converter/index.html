@@ -60,11 +60,11 @@
           <div class="settings-row">
             <div class="settings-field">
               <label>Output Format</label>
-              <div class="format-toggles" id="format-toggles">
-                <button class="format-toggle active" data-format="image/png">PNG</button>
-                <button class="format-toggle" data-format="image/jpeg">JPG</button>
-                <button class="format-toggle" data-format="image/webp">WebP</button>
-                <button class="format-toggle" data-format="image/bmp">BMP</button>
+              <div class="sub-tabs" id="format-toggles" role="tablist" aria-label="Output image format">
+                <button class="sub-tab active" data-format="image/png" type="button" role="tab" aria-selected="true">PNG</button>
+                <button class="sub-tab" data-format="image/jpeg" type="button" role="tab" aria-selected="false">JPG</button>
+                <button class="sub-tab" data-format="image/webp" type="button" role="tab" aria-selected="false">WebP</button>
+                <button class="sub-tab" data-format="image/bmp" type="button" role="tab" aria-selected="false">BMP</button>
               </div>
             </div>
           </div>

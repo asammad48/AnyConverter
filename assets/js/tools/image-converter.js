@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const fileInput = document.getElementById('image-input');
   const settingsPanel = document.getElementById('settings-panel');
   const previewSection = document.getElementById('preview-section');
-  const formatToggles = document.querySelectorAll('.format-toggle');
+  const formatToggles = document.querySelectorAll('#format-toggles [data-format]');
   const qualityRow = document.getElementById('quality-row');
   const qualitySlider = document.getElementById('quality-slider');
   const qualityValue = document.getElementById('quality-value');
@@ -83,8 +83,12 @@ document.addEventListener('DOMContentLoaded', function () {
   // Format toggles
   formatToggles.forEach(function (btn) {
     btn.addEventListener('click', function () {
-      formatToggles.forEach(function (b) { b.classList.remove('active'); });
+      formatToggles.forEach(function (b) {
+        b.classList.remove('active');
+        b.setAttribute('aria-selected', 'false');
+      });
       btn.classList.add('active');
+      btn.setAttribute('aria-selected', 'true');
       selectedFormat = btn.dataset.format;
       const needsQuality = selectedFormat === 'image/jpeg' || selectedFormat === 'image/webp';
       qualityRow.style.display = needsQuality ? 'flex' : 'none';

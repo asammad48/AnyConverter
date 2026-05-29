@@ -50,14 +50,18 @@
   document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('html-mode-beautify').addEventListener('click', function() {
       mode = 'beautify';
-      this.className = 'btn btn-primary btn-sm';
-      document.getElementById('html-mode-minify').className = 'btn btn-secondary btn-sm';
+      this.classList.add('active');
+      this.setAttribute('aria-selected', 'true');
+      document.getElementById('html-mode-minify').classList.remove('active');
+      document.getElementById('html-mode-minify').setAttribute('aria-selected', 'false');
       process(); // re-process immediately when switching mode
     });
     document.getElementById('html-mode-minify').addEventListener('click', function() {
       mode = 'minify';
-      this.className = 'btn btn-primary btn-sm';
-      document.getElementById('html-mode-beautify').className = 'btn btn-secondary btn-sm';
+      this.classList.add('active');
+      this.setAttribute('aria-selected', 'true');
+      document.getElementById('html-mode-beautify').classList.remove('active');
+      document.getElementById('html-mode-beautify').setAttribute('aria-selected', 'false');
       process(); // re-process immediately when switching mode
     });
     document.getElementById('btn-html-process').addEventListener('click', process);

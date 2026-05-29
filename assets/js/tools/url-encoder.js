@@ -9,8 +9,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
   modeToggles.forEach(function (btn) {
     btn.addEventListener('click', function () {
-      modeToggles.forEach(function (b) { b.classList.remove('active'); });
+      modeToggles.forEach(function (b) {
+        b.classList.remove('active');
+        b.setAttribute('aria-selected', 'false');
+      });
       btn.classList.add('active');
+      btn.setAttribute('aria-selected', 'true');
       currentMode = btn.dataset.mode;
       const placeholders = {
         component: 'Enter text or query parameter value...',

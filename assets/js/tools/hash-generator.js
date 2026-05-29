@@ -22,15 +22,19 @@ document.addEventListener('DOMContentLoaded', function () {
       if (el && el.textContent !== '—') el.textContent = formatHashVal(el.textContent);
     });
   }
-  const tabs = document.querySelectorAll('.tab-btn');
+  const tabs = document.querySelectorAll('[data-tab]');
   const panels = document.querySelectorAll('.tab-panel');
   let debounceTimer;
 
   tabs.forEach(function (tab) {
     tab.addEventListener('click', function () {
-      tabs.forEach(function (t) { t.classList.remove('active'); });
+      tabs.forEach(function (t) {
+        t.classList.remove('active');
+        t.setAttribute('aria-selected', 'false');
+      });
       panels.forEach(function (p) { p.classList.remove('active'); });
       tab.classList.add('active');
+      tab.setAttribute('aria-selected', 'true');
       document.getElementById('tab-' + tab.dataset.tab).classList.add('active');
     });
   });

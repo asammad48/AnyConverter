@@ -62,19 +62,10 @@
 
           <div class="settings-panel mt-4">
             <h3>Compression Level</h3>
-            <div class="radio-group">
-              <label class="radio-label">
-                <input type="radio" name="compress-level" value="low">
-                <div><strong>Low</strong> — minimal compression, best quality</div>
-              </label>
-              <label class="radio-label">
-                <input type="radio" name="compress-level" value="medium" checked>
-                <div><strong>Medium</strong> — balanced (recommended)</div>
-              </label>
-              <label class="radio-label">
-                <input type="radio" name="compress-level" value="high">
-                <div><strong>High</strong> — maximum compression, smaller file</div>
-              </label>
+            <div class="sub-tabs" id="compress-level-tabs" role="tablist" aria-label="Compression level">
+              <button class="sub-tab" data-level="low" type="button" role="tab" aria-selected="false">Low</button>
+              <button class="sub-tab active" data-level="medium" type="button" role="tab" aria-selected="true">Medium</button>
+              <button class="sub-tab" data-level="high" type="button" role="tab" aria-selected="false">High</button>
             </div>
           </div>
 

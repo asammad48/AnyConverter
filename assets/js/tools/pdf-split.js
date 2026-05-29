@@ -7,7 +7,9 @@ document.addEventListener('DOMContentLoaded', function () {
   const splitResult = document.getElementById('split-result');
   const splitDownloads = document.getElementById('split-downloads');
   const pageRangeSection = document.getElementById('page-range-section');
+  const splitNSection = document.getElementById('split-n-section');
 
+  let splitMode = 'pages';
   let pdfBytes = null;
   let totalPages = 0;
 
@@ -54,9 +56,17 @@ document.addEventListener('DOMContentLoaded', function () {
     return Array.from(pages).sort(function(a,b){return a-b;});
   }
 
-  document.querySelectorAll('input[name="split-mode"]').forEach(function(radio) {
-    radio.addEventListener('change', function() {
-      pageRangeSection.style.display = this.value === 'pages' ? 'block' : 'none';
+  document.querySelectorAll('#split-mode-tabs [data-mode]').forEach(function(tab) {
+    tab.addEventListener('click', function() {
+      document.querySelectorAll('#split-mode-tabs [data-mode]').forEach(function(t) {
+        t.classList.remove('active');
+        t.setAttribute('aria-selected', 'false');
+      });
+      tab.classList.add('active');
+      tab.setAttribute('aria-selected', 'true');
+      splitMode = tab.dataset.mode;
+      pageRangeSection.style.display = splitMode === 'pages' ? 'block' : 'none';
+      splitNSection.style.display = splitMode === 'every' ? 'block' : 'none';
     });
   });
 
@@ -81,7 +91,7 @@ document.addEventListener('DOMContentLoaded', function () {
     if (!pdfBytes || !totalPages) return;
     if (!window.PDFLib) { window.showToast('PDF library still loading', 'info'); return; }
 
-    const mode = document.querySelector('input[name="split-mode"]:checked').value;
+    const mode = splitMode;
     const btn = document.getElementById('btn-split');
     btn.disabled = true; btn.textContent = 'Processing...';
     splitDownloads.innerHTML = '';
