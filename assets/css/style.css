@@ -333,14 +333,14 @@ main { flex: 1; }
   content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse at 0% 0%, color-mix(in srgb, var(--cat-accent, var(--color-primary)) 7%, transparent) 0%, transparent 65%);
+  background: radial-gradient(ellipse at 0% 0%, color-mix(in srgb, var(--color-primary) 6%, transparent) 0%, transparent 65%);
   pointer-events: none;
   transition: opacity 0.22s;
   opacity: 0;
 }
 .tool-card:hover {
   transform: translateY(-4px);
-  border-color: color-mix(in srgb, var(--cat-accent, var(--color-primary)) 45%, var(--color-border));
+  border-color: color-mix(in srgb, var(--color-primary) 35%, var(--color-border));
   box-shadow: 0 8px 24px rgba(21,21,21,0.09), 0 2px 8px rgba(21,21,21,0.05);
 }
 .tool-card:hover::before { opacity: 1; }
@@ -350,12 +350,12 @@ main { flex: 1; }
   flex-shrink: 0;
   padding: 10px;
   border-radius: 12px;
-  background: color-mix(in srgb, var(--cat-accent, var(--color-primary)) 10%, var(--color-surface-2));
+  background: var(--color-primary-light);
   object-fit: contain;
   transition: background 0.22s;
 }
 .tool-card:hover .tool-card-icon {
-  background: color-mix(in srgb, var(--cat-accent, var(--color-primary)) 16%, var(--color-surface-2));
+  background: color-mix(in srgb, var(--color-primary) 14%, var(--color-surface-2));
 }
 .tool-card h3 {
   font-size: 14.5px;
@@ -372,7 +372,7 @@ main { flex: 1; }
 }
 .tool-card-link {
   font-size: 12.5px;
-  color: var(--cat-accent, var(--color-primary));
+  color: var(--color-primary);
   font-weight: 600;
   opacity: 0.75;
   display: inline-flex;
@@ -1694,7 +1694,7 @@ mark.regex-match { background: rgba(255,200,0,0.4); color: transparent; border-r
   transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
 }
 .dash-quick-card:hover {
-  border-color: color-mix(in srgb, var(--dash-accent, var(--color-primary)) 50%, var(--color-border));
+  border-color: color-mix(in srgb, var(--color-primary) 35%, var(--color-border));
   box-shadow: 0 4px 16px rgba(21,21,21,0.08);
   transform: translateY(-2px);
 }
@@ -1704,12 +1704,12 @@ mark.regex-match { background: rgba(255,200,0,0.4); color: transparent; border-r
   flex-shrink: 0;
   padding: 5px;
   border-radius: 8px;
-  background: color-mix(in srgb, var(--dash-accent, var(--color-primary)) 10%, var(--color-surface-2));
+  background: var(--color-primary-light);
   object-fit: contain;
   transition: background 0.2s;
 }
 .dash-quick-card:hover img {
-  background: color-mix(in srgb, var(--dash-accent, var(--color-primary)) 16%, var(--color-surface-2));
+  background: color-mix(in srgb, var(--color-primary) 14%, var(--color-surface-2));
 }
 .dash-quick-card-name { font-size: 12.5px; font-weight: 600; color: var(--color-text); line-height: 1.3; }
 
