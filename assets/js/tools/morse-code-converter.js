@@ -58,8 +58,12 @@
   function setMode(newMode) {
     mode = newMode;
     var isEncode = mode === 'encode';
-    document.getElementById('morse-mode-encode').className = isEncode ? 'btn btn-primary btn-sm' : 'btn btn-secondary btn-sm';
-    document.getElementById('morse-mode-decode').className = isEncode ? 'btn btn-secondary btn-sm' : 'btn btn-primary btn-sm';
+    var encodeBtn = document.getElementById('morse-mode-encode');
+    var decodeBtn = document.getElementById('morse-mode-decode');
+    encodeBtn.classList.toggle('active', isEncode);
+    decodeBtn.classList.toggle('active', !isEncode);
+    encodeBtn.setAttribute('aria-selected', isEncode);
+    decodeBtn.setAttribute('aria-selected', !isEncode);
     document.getElementById('morse-input-label').textContent  = isEncode ? 'Text'       : 'Morse Code';
     document.getElementById('morse-output-label').textContent = isEncode ? 'Morse Code' : 'Text';
     document.getElementById('morse-input').placeholder = isEncode

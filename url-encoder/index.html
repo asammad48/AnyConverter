@@ -48,10 +48,10 @@
     </section>
     <div class="tool-wrapper">
       <div class="tool-zone">
-        <div class="format-toggles mb-4" id="mode-toggles">
-          <button class="format-toggle active" data-mode="component">Encode Component</button>
-          <button class="format-toggle" data-mode="full">Encode Full URL</button>
-          <button class="format-toggle" data-mode="decode">Decode</button>
+        <div class="sub-tabs mb-4" id="mode-toggles" role="tablist" aria-label="URL conversion mode">
+          <button class="sub-tab active" data-mode="component" type="button" role="tab" aria-selected="true">Encode Component</button>
+          <button class="sub-tab" data-mode="full" type="button" role="tab" aria-selected="false">Encode Full URL</button>
+          <button class="sub-tab" data-mode="decode" type="button" role="tab" aria-selected="false">Decode</button>
         </div>
         <label for="url-input" id="input-label">Input</label>
         <textarea id="url-input" placeholder="Enter text or URL to encode..." spellcheck="false" style="min-height:120px"></textarea>

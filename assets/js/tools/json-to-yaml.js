@@ -5,8 +5,12 @@
 
   function setMode(m) {
     mode = m;
-    document.getElementById('jy-mode-j2y').className = m === 'j2y' ? 'btn btn-primary btn-sm' : 'btn btn-secondary btn-sm';
-    document.getElementById('jy-mode-y2j').className = m === 'y2j' ? 'btn btn-primary btn-sm' : 'btn btn-secondary btn-sm';
+    var j2yBtn = document.getElementById('jy-mode-j2y');
+    var y2jBtn = document.getElementById('jy-mode-y2j');
+    j2yBtn.classList.toggle('active', m === 'j2y');
+    y2jBtn.classList.toggle('active', m === 'y2j');
+    j2yBtn.setAttribute('aria-selected', m === 'j2y');
+    y2jBtn.setAttribute('aria-selected', m === 'y2j');
     document.getElementById('jy-input-label').textContent = m === 'j2y' ? 'JSON Input' : 'YAML Input';
     document.getElementById('jy-output-label').textContent = m === 'j2y' ? 'YAML Output' : 'JSON Output';
     document.getElementById('jy-input').placeholder = m === 'j2y' ? '{"key": "value"}' : 'key: value';

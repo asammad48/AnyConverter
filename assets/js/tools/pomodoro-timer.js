@@ -60,7 +60,10 @@
     remaining = MODES[mode].duration;
     ['work','short','long'].forEach(function(k) {
       var btn = document.getElementById('pom-mode-'+k);
-      if (btn) btn.className = k===m ? 'btn btn-primary btn-sm' : 'btn btn-secondary btn-sm';
+      if (btn) {
+        btn.classList.toggle('active', k === m);
+        btn.setAttribute('aria-selected', k === m);
+      }
     });
     render();
   }

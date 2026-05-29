@@ -56,9 +56,9 @@
           <div>
             <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
               <p class="panel-label" style="margin:0">Output</p>
-              <div class="format-toggles" style="gap:4px">
-                <button class="format-toggle active" id="view-rendered">Preview</button>
-                <button class="format-toggle" id="view-source">HTML Source</button>
+              <div class="sub-tabs" role="tablist" aria-label="Markdown output view" style="gap:4px">
+                <button class="sub-tab active" id="view-rendered" type="button" role="tab" aria-selected="true">Preview</button>
+                <button class="sub-tab" id="view-source" type="button" role="tab" aria-selected="false">HTML Source</button>
               </div>
             </div>
             <div id="md-preview" class="markdown-preview"></div>
