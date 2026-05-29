@@ -54,20 +54,33 @@
           <div id="sticky-container" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px;min-height:200px"></div>
         </div>
       </div>
-      <aside class="tool-side">
-        <div style="margin-top:16px"><p class="ad-label">Advertisement</p>
-          <div class="ad-slot" style="min-height:250px"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div>
+      <aside class="tool-side" aria-label="Advertisement">
+        <div style="margin-top:16px">
+          <p class="ad-label">Advertisement</p>
+          <div class="ad-slot" style="min-height:250px">
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+          </div>
         </div>
       </aside>
     </div>
-    <div class="ad-slot ad-slot--leaderboard"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div>
     <section class="how-to-use"><h2>How to Use Sticky Notes</h2><ol class="steps"><li><strong>Step 1</strong> — Choose a colour from the dropdown.</li><li><strong>Step 2</strong> — Click <em>+ Add Note</em> to create a new sticky note.</li><li><strong>Step 3</strong> — Click on the note text area and type your content.</li><li><strong>Step 4</strong> — Click the × button on a note to delete it.</li></ol></section>
     <section class="features"><h2>Features</h2><ul class="features-list"><li>6 colour options: Yellow, Green, Blue, Pink, Purple, Rose</li><li>Editable in-place using contenteditable</li><li>Auto-saves to localStorage on every keystroke</li><li>Notes persist between sessions</li><li>No limit on number of notes</li></ul></section>
-    <div class="ad-slot ad-slot--rectangle" style="margin:0 auto 32px"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div>
     <section class="faq"><h2>Frequently Asked Questions</h2><div class="faq-list">
       <details class="faq-item"><summary class="faq-question">Are my notes private? <span class="faq-icon">+</span></summary><div class="faq-answer">Yes. Notes are stored only in your browser's localStorage. They are never sent to any server. Only you can see them on this device.</div></details>
       <details class="faq-item"><summary class="faq-question">Can I change a note's colour after creating it? <span class="faq-icon">+</span></summary><div class="faq-answer">Not currently — colour is set when you click Add Note. To change it, delete the note and create a new one with the desired colour.</div></details>
     </div></section>
+
+    <section class="related-tools">
+      <h2>Related Tools</h2>
+      <div class="tool-grid">
+        <a href="/todo-list/" class="tool-card"><img src="/assets/img/icon-browser.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>To-Do List</h3><p>Turn notes into actionable tasks.</p><span class="tool-card-link">Try it →</span></a>
+        <a href="/daily-planner/" class="tool-card"><img src="/assets/img/icon-browser.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Daily Planner</h3><p>Organize notes into a daily plan.</p><span class="tool-card-link">Try it →</span></a>
+        <a href="/habit-tracker/" class="tool-card"><img src="/assets/img/icon-browser.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Habit Tracker</h3><p>Convert routines into trackable habits.</p><span class="tool-card-link">Try it →</span></a>
+        <a href="/word-counter/" class="tool-card"><img src="/assets/img/icon-browser.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Word Counter</h3><p>Count words and characters quickly.</p><span class="tool-card-link">Try it →</span></a>
+      </div>
+    </section>
+
   </main>
   <footer id="site-footer" class="site-footer"></footer>
   <script src="/assets/js/shared.js" defer></script>

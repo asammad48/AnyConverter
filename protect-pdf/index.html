@@ -65,24 +65,32 @@
           <div id="pp2-status" class="tool-status"></div>
         </div>
       </div>
-      <aside class="tool-side">
-        <div class="ss-divider">Related PDF Tools</div>
-        <a href="/unlock-pdf/" class="ss-related-link"><img src="/assets/img/icon-pdf.svg" alt="" width="18" height="18">Unlock PDF</a>
-        <a href="/pdf-security/" class="ss-related-link"><img src="/assets/img/icon-pdf.svg" alt="" width="18" height="18">PDF Security</a>
-        <a href="/add-watermark/" class="ss-related-link"><img src="/assets/img/icon-pdf.svg" alt="" width="18" height="18">Add Watermark</a>
-        <div style="margin-top:16px"><p class="ad-label">Advertisement</p>
-          <div class="ad-slot" style="min-height:250px"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div>
+      <aside class="tool-side" aria-label="Advertisement">
+        <div style="margin-top:16px">
+          <p class="ad-label">Advertisement</p>
+          <div class="ad-slot" style="min-height:250px">
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+          </div>
         </div>
       </aside>
     </div>
-    <div class="ad-slot ad-slot--leaderboard"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div>
     <section class="how-to-use"><h2>How to Password Protect a PDF</h2><ol class="steps"><li><strong>Step 1</strong> — Upload your PDF file.</li><li><strong>Step 2</strong> — Enter and confirm your password (minimum 4 characters).</li><li><strong>Step 3</strong> — Click "Protect &amp; Download" to get the encrypted PDF.</li></ol></section>
     <section class="features"><h2>Features</h2><ul class="features-list"><li>AES-based PDF password encryption</li><li>Password visibility toggle</li><li>Confirm password validation to prevent typos</li><li>100% browser-based — your file never leaves your device</li></ul></section>
-    <div class="ad-slot ad-slot--rectangle" style="margin:0 auto 32px"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div>
     <section class="faq"><h2>Frequently Asked Questions</h2><div class="faq-list">
       <details class="faq-item"><summary class="faq-question">Can I remove the password later? <span class="faq-icon">+</span></summary><div class="faq-answer">Yes. Use the Unlock PDF tool on this site to remove the password if you know the current one.</div></details>
       <details class="faq-item"><summary class="faq-question">What encryption is used? <span class="faq-icon">+</span></summary><div class="faq-answer">The pdf-lib library applies RC4-based 128-bit encryption as supported by the PDF specification. For maximum security use a strong, unique password.</div></details>
     </div></section>
+
+    <section class="related-tools">
+      <h2>Related Tools</h2>
+      <div class="tool-grid">
+        <a href="/unlock-pdf/" class="tool-card"><img src="/assets/img/icon-pdf.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Unlock PDF</h3><p>Use the Unlock PDF tool for your PDF workflow.</p><span class="tool-card-link">Try it →</span></a>
+        <a href="/pdf-security/" class="tool-card"><img src="/assets/img/icon-pdf.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>PDF Security</h3><p>Use the PDF Security tool for your PDF workflow.</p><span class="tool-card-link">Try it →</span></a>
+        <a href="/add-watermark/" class="tool-card"><img src="/assets/img/icon-pdf.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Add Watermark</h3><p>Use the Add Watermark tool for your PDF workflow.</p><span class="tool-card-link">Try it →</span></a>
+      </div>
+    </section>
+
   </main>
   <footer id="site-footer" class="site-footer"></footer>
   <script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>

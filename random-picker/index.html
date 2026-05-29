@@ -70,20 +70,33 @@ Grace</textarea>
           </div>
         </div>
       </div>
-      <aside class="tool-side">
-        <div style="margin-top:16px"><p class="ad-label">Advertisement</p>
-          <div class="ad-slot" style="min-height:250px"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div>
+      <aside class="tool-side" aria-label="Advertisement">
+        <div style="margin-top:16px">
+          <p class="ad-label">Advertisement</p>
+          <div class="ad-slot" style="min-height:250px">
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+          </div>
         </div>
       </aside>
     </div>
-    <div class="ad-slot ad-slot--leaderboard"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div>
     <section class="how-to-use"><h2>How to Pick Random Items</h2><ol class="steps"><li><strong>Step 1</strong> — Paste your list of items into the text area (one per line, or comma-separated).</li><li><strong>Step 2</strong> — Select the separator that matches your list format.</li><li><strong>Step 3</strong> — Set how many items to pick.</li><li><strong>Step 4</strong> — Click <em>Pick!</em> to see the selected items highlighted in the pool.</li></ol></section>
     <section class="features"><h2>Features</h2><ul class="features-list"><li>Newline or comma separator</li><li>Pick any number of items (up to the list size)</li><li>Selected items displayed as badges</li><li>Full pool shown with selected items highlighted</li><li>Uses Fisher-Yates shuffle for uniform randomness</li></ul></section>
-    <div class="ad-slot ad-slot--rectangle" style="margin:0 auto 32px"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div>
     <section class="faq"><h2>Frequently Asked Questions</h2><div class="faq-list">
       <details class="faq-item"><summary class="faq-question">Are duplicates possible? <span class="faq-icon">+</span></summary><div class="faq-answer">No. The picker uses a shuffle algorithm that ensures each item can only be selected once per pick. If your list contains duplicate entries they may each be selected independently.</div></details>
       <details class="faq-item"><summary class="faq-question">How large can my list be? <span class="faq-icon">+</span></summary><div class="faq-answer">There is no hard limit. Lists with hundreds of items work fine since all processing is done in the browser with JavaScript.</div></details>
     </div></section>
+
+    <section class="related-tools">
+      <h2>Related Tools</h2>
+      <div class="tool-grid">
+        <a href="/coin-flip/" class="tool-card"><img src="/assets/img/icon-browser.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Coin Flip</h3><p>Make simple yes/no decisions fast.</p><span class="tool-card-link">Try it →</span></a>
+        <a href="/dice-roller/" class="tool-card"><img src="/assets/img/icon-browser.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Dice Roller</h3><p>Roll one or multiple virtual dice.</p><span class="tool-card-link">Try it →</span></a>
+        <a href="/team-picker/" class="tool-card"><img src="/assets/img/icon-browser.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Team Picker</h3><p>Assign participants into random groups.</p><span class="tool-card-link">Try it →</span></a>
+        <a href="/spin-the-wheel/" class="tool-card"><img src="/assets/img/icon-browser.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Spin the Wheel</h3><p>Randomly select an option with a wheel.</p><span class="tool-card-link">Try it →</span></a>
+      </div>
+    </section>
+
   </main>
   <footer id="site-footer" class="site-footer"></footer>
   <script src="/assets/js/shared.js" defer></script>

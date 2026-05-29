@@ -79,24 +79,32 @@
           <div id="rd-status" class="tool-status"></div>
         </div>
       </div>
-      <aside class="tool-side">
-        <div class="ss-divider">Related PDF Tools</div>
-        <a href="/edit-pdf/" class="ss-related-link"><img src="/assets/img/icon-pdf.svg" alt="" width="18" height="18">Edit PDF</a>
-        <a href="/protect-pdf/" class="ss-related-link"><img src="/assets/img/icon-pdf.svg" alt="" width="18" height="18">Protect PDF</a>
-        <a href="/add-watermark/" class="ss-related-link"><img src="/assets/img/icon-pdf.svg" alt="" width="18" height="18">Add Watermark</a>
-        <div style="margin-top:16px"><p class="ad-label">Advertisement</p>
-          <div class="ad-slot" style="min-height:250px"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div>
+      <aside class="tool-side" aria-label="Advertisement">
+        <div style="margin-top:16px">
+          <p class="ad-label">Advertisement</p>
+          <div class="ad-slot" style="min-height:250px">
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+          </div>
         </div>
       </aside>
     </div>
-    <div class="ad-slot ad-slot--leaderboard"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div>
     <section class="how-to-use"><h2>How to Redact a PDF</h2><ol class="steps"><li><strong>Step 1</strong> — Upload your PDF. The first page dimensions are shown.</li><li><strong>Step 2</strong> — Enter the page number, X/Y coordinates, width and height for each redaction.</li><li><strong>Step 3</strong> — Click "+ Add Redaction" to add it to the list. Repeat for more areas.</li><li><strong>Step 4</strong> — Click "Apply Redactions &amp; Download".</li></ol></section>
     <section class="features"><h2>Features</h2><ul class="features-list"><li>Add unlimited redaction rectangles across any pages</li><li>Remove individual redactions before applying</li><li>Coordinates in PDF points (origin bottom-left)</li><li>Redactions are solid black rectangles drawn on the page</li><li>100% browser-based — file stays on your device</li></ul></section>
-    <div class="ad-slot ad-slot--rectangle" style="margin:0 auto 32px"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div>
     <section class="faq"><h2>Frequently Asked Questions</h2><div class="faq-list">
       <details class="faq-item"><summary class="faq-question">How do I find the coordinates of text I want to redact? <span class="faq-icon">+</span></summary><div class="faq-answer">Open the PDF in Adobe Acrobat and hover over the area — it shows coordinates in the status bar. Alternatively use the PDF to JPG tool to get an image and measure pixel positions (remembering that 1 pt ≈ 1 px at 72 DPI).</div></details>
       <details class="faq-item"><summary class="faq-question">Is the underlying text truly removed? <span class="faq-icon">+</span></summary><div class="faq-answer">No. This tool draws opaque black rectangles over the content — it does not remove the underlying text from the PDF structure. For legally compliant redaction, specialist software that permanently removes content is required.</div></details>
     </div></section>
+
+    <section class="related-tools">
+      <h2>Related Tools</h2>
+      <div class="tool-grid">
+        <a href="/edit-pdf/" class="tool-card"><img src="/assets/img/icon-pdf.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Edit PDF</h3><p>Use the Edit PDF tool for your PDF workflow.</p><span class="tool-card-link">Try it →</span></a>
+        <a href="/protect-pdf/" class="tool-card"><img src="/assets/img/icon-pdf.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Protect PDF</h3><p>Use the Protect PDF tool for your PDF workflow.</p><span class="tool-card-link">Try it →</span></a>
+        <a href="/add-watermark/" class="tool-card"><img src="/assets/img/icon-pdf.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Add Watermark</h3><p>Use the Add Watermark tool for your PDF workflow.</p><span class="tool-card-link">Try it →</span></a>
+      </div>
+    </section>
+
   </main>
   <footer id="site-footer" class="site-footer"></footer>
   <script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>

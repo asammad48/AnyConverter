@@ -55,20 +55,33 @@
           <div style="margin-top:8px;font-size:12px;color:var(--color-text-2,#6B7280);text-align:right" id="todo-count">0 items left</div>
         </div>
       </div>
-      <aside class="tool-side">
-        <div style="margin-top:16px"><p class="ad-label">Advertisement</p>
-          <div class="ad-slot" style="min-height:250px"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div>
+      <aside class="tool-side" aria-label="Advertisement">
+        <div style="margin-top:16px">
+          <p class="ad-label">Advertisement</p>
+          <div class="ad-slot" style="min-height:250px">
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+          </div>
         </div>
       </aside>
     </div>
-    <div class="ad-slot ad-slot--leaderboard"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div>
     <section class="how-to-use"><h2>How to Use the To-do List</h2><ol class="steps"><li><strong>Step 1</strong> — Type a task in the input box and click <em>Add</em> or press Enter.</li><li><strong>Step 2</strong> — Check the checkbox next to a task to mark it complete.</li><li><strong>Step 3</strong> — Use the filter buttons to view All, Active, or Completed tasks.</li><li><strong>Step 4</strong> — Click <em>Clear completed</em> to remove all done tasks at once.</li></ol></section>
     <section class="features"><h2>Features</h2><ul class="features-list"><li>Saves to localStorage — tasks persist between sessions</li><li>Filter by All, Active, or Completed</li><li>Clear completed tasks with one click</li><li>Item counter shows remaining active tasks</li><li>Works offline — no internet connection needed after page load</li></ul></section>
-    <div class="ad-slot ad-slot--rectangle" style="margin:0 auto 32px"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div>
     <section class="faq"><h2>Frequently Asked Questions</h2><div class="faq-list">
       <details class="faq-item"><summary class="faq-question">Will my tasks be saved if I close the browser? <span class="faq-icon">+</span></summary><div class="faq-answer">Yes. Tasks are stored in your browser's localStorage and persist between sessions on the same device and browser. Clearing browser data or using private/incognito mode will erase them.</div></details>
       <details class="faq-item"><summary class="faq-question">Can I sync tasks across devices? <span class="faq-icon">+</span></summary><div class="faq-answer">Not currently — localStorage is device and browser-specific. For cross-device sync you would need an account-based service.</div></details>
     </div></section>
+
+    <section class="related-tools">
+      <h2>Related Tools</h2>
+      <div class="tool-grid">
+        <a href="/daily-planner/" class="tool-card"><img src="/assets/img/icon-browser.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Daily Planner</h3><p>Plan your day with structured priorities.</p><span class="tool-card-link">Try it →</span></a>
+        <a href="/habit-tracker/" class="tool-card"><img src="/assets/img/icon-browser.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Habit Tracker</h3><p>Build and monitor daily habits.</p><span class="tool-card-link">Try it →</span></a>
+        <a href="/sticky-notes/" class="tool-card"><img src="/assets/img/icon-browser.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Sticky Notes</h3><p>Save quick notes directly in your browser.</p><span class="tool-card-link">Try it →</span></a>
+        <a href="/pomodoro-timer/" class="tool-card"><img src="/assets/img/icon-browser.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Pomodoro Timer</h3><p>Pair tasks with focus intervals.</p><span class="tool-card-link">Try it →</span></a>
+      </div>
+    </section>
+
   </main>
   <footer id="site-footer" class="site-footer"></footer>
   <script src="/assets/js/shared.js" defer></script>
