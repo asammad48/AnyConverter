@@ -825,6 +825,7 @@ details[open] .faq-icon { transform: rotate(45deg); }
 /* ===== RELATED TOOLS ===== */
 .related-tools { max-width: 1280px; margin: 0 auto; padding: 32px 24px; }
 @media (min-width: 1024px) { .related-tools { padding: 40px 40px; } }
+.related-tools h2 { margin-bottom: 24px; }
 .faq { max-width: 1280px; margin: 0 auto; padding: 32px 24px; }
 @media (min-width: 1024px) { .faq { padding: 40px 40px; } }
 
