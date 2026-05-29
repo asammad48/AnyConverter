@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -32,6 +32,8 @@
     .hero{padding:40px 24px 32px;max-width:1280px;margin:0 auto}
     .hero h1{font-size:clamp(1.75rem,4vw,2.25rem);font-weight:700;line-height:1.2;margin-bottom:12px}
     .hero-desc{font-size:1.0625rem;color:var(--color-text-2,#6B7280);max-width:680px;line-height:1.6}
+    .upload-area{border:2px dashed var(--color-border,#DDD8FE);border-radius:12px;padding:28px 20px;text-align:center;cursor:pointer;transition:border-color .2s}
+    .upload-area:hover,.upload-area.dragover{border-color:var(--color-primary,#4F46E5)}
     @font-face{font-family:'Inter';font-display:swap}
   </style>
   <link rel="stylesheet" href="/assets/css/style.css">
@@ -48,11 +50,11 @@
     </section>
     <div class="tool-wrapper">
       <div class="tool-zone">
-        <div class="drop-zone" id="compress-drop-zone" role="button" tabindex="0" aria-label="Drop PDF here or click to browse">
-          <svg class="drop-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5"/></svg>
-          <p>Drop your PDF here or click to browse</p>
-          <small>Single PDF file</small>
-          <input type="file" id="compress-input" accept=".pdf,application/pdf" aria-label="Upload PDF to compress">
+        <div class="upload-area" id="compress-drop-zone" role="button" tabindex="0" aria-label="Drop PDF here or click to browse">
+          <img src="/assets/img/icon-pdf.svg" alt="" width="36" height="36" style="margin-bottom:10px">
+          <p style="font-size:14px;color:var(--color-text-2,#6B7280);margin-bottom:10px">Drop your PDF here or click to browse</p>
+          <input type="file" id="compress-input" accept=".pdf,application/pdf" aria-label="Upload PDF to compress" style="display:none">
+          <button class="btn btn-secondary" type="button">Choose PDF</button>
         </div>
 
         <div id="compress-settings" style="display:none">
