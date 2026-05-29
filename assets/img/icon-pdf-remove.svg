@@ -1,19 +1,12 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40">
-  <defs>
-    <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#B91C1C"/>
-      <stop offset="100%" stop-color="#F87171"/>
-    </linearGradient>
-  </defs>
-  <rect width="40" height="40" rx="10" fill="url(#g)"/>
-  <path d="M10,7 L22,7 L27,12 L27,33 L10,33 Z" fill="white" opacity="0.2"/>
-  <path d="M10,7 L22,7 L27,12 L27,33 L10,33 Z" fill="none" stroke="white" stroke-width="1.8" stroke-linejoin="round"/>
-  <path d="M22,7 L22,12 L27,12" fill="none" stroke="white" stroke-width="1.5" stroke-linejoin="round"/>
+  <path d="M10,7 L22,7 L27,12 L27,33 L10,33 Z" fill="#B04A45" opacity="0.2"/>
+  <path d="M10,7 L22,7 L27,12 L27,33 L10,33 Z" fill="none" stroke="#B04A45" stroke-width="1.8" stroke-linejoin="round"/>
+  <path d="M22,7 L22,12 L27,12" fill="none" stroke="#B04A45" stroke-width="1.5" stroke-linejoin="round"/>
   <!-- Red minus badge -->
-  <circle cx="29" cy="12" r="7" fill="white"/>
+  <circle cx="29" cy="12" r="7" fill="#B04A45"/>
   <line x1="25" y1="12" x2="33" y2="12" stroke="#B91C1C" stroke-width="2.5" stroke-linecap="round"/>
   <!-- Page lines -->
-  <line x1="13" y1="18" x2="24" y2="18" stroke="white" stroke-width="1.5" stroke-linecap="round" opacity="0.7"/>
-  <line x1="13" y1="22" x2="24" y2="22" stroke="white" stroke-width="1.5" stroke-linecap="round" opacity="0.7"/>
-  <line x1="13" y1="26" x2="20" y2="26" stroke="white" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/>
+  <line x1="13" y1="18" x2="24" y2="18" stroke="#B04A45" stroke-width="1.5" stroke-linecap="round" opacity="0.7"/>
+  <line x1="13" y1="22" x2="24" y2="22" stroke="#B04A45" stroke-width="1.5" stroke-linecap="round" opacity="0.7"/>
+  <line x1="13" y1="26" x2="20" y2="26" stroke="#B04A45" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/>
 </svg>

@@ -1,16 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40">
-  <defs>
-    <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#0EA5E9"/>
-      <stop offset="100%" stop-color="#6366F1"/>
-    </linearGradient>
-  </defs>
-  <rect width="40" height="40" rx="10" fill="url(#g)"/>
   <!-- Circular repeat arrow -->
-  <path d="M13,20 A9,9 0 1,1 27,28" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round"/>
+  <path d="M13,20 A9,9 0 1,1 27,28" fill="none" stroke="#B04A45" stroke-width="2.2" stroke-linecap="round"/>
   <!-- Arrow head -->
-  <polyline points="24,32 27,28 31,30" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <polyline points="24,32 27,28 31,30" fill="none" stroke="#B04A45" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
   <!-- Text lines inside to show "repeat" -->
-  <line x1="15" y1="18" x2="25" y2="18" stroke="white" stroke-width="1.8" stroke-linecap="round" opacity="0.7"/>
-  <line x1="15" y1="22" x2="22" y2="22" stroke="white" stroke-width="1.8" stroke-linecap="round" opacity="0.5"/>
+  <line x1="15" y1="18" x2="25" y2="18" stroke="#B04A45" stroke-width="1.8" stroke-linecap="round" opacity="0.7"/>
+  <line x1="15" y1="22" x2="22" y2="22" stroke="#B04A45" stroke-width="1.8" stroke-linecap="round" opacity="0.5"/>
 </svg>

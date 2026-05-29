@@ -1,16 +1,9 @@
 <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <defs>
-    <linearGradient id="g" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stop-color="#A78BFA"/>
-      <stop offset="100%" stop-color="#5B21B6"/>
-    </linearGradient>
-  </defs>
-  <rect width="40" height="40" rx="10" fill="url(#g)"/>
   <!-- Table (top-left, smaller) -->
-  <rect x="6" y="8" width="19" height="14" rx="2" stroke="white" stroke-width="1.9" fill="none"/>
-  <line x1="6"  y1="13" x2="25" y2="13" stroke="white" stroke-width="1.7"/>
-  <line x1="14" y1="8"  x2="14" y2="22" stroke="white" stroke-width="1.4" opacity="0.7"/>
+  <rect x="6" y="8" width="19" height="14" rx="2" stroke="#B04A45" stroke-width="1.9" fill="none"/>
+  <line x1="6"  y1="13" x2="25" y2="13" stroke="#B04A45" stroke-width="1.7"/>
+  <line x1="14" y1="8"  x2="14" y2="22" stroke="#B04A45" stroke-width="1.4" opacity="0.7"/>
   <!-- Magnifying glass (bottom-right, overlapping) -->
-  <circle cx="27" cy="28" r="7" stroke="white" stroke-width="2.1" fill="none"/>
-  <line x1="32" y1="33" x2="35" y2="36" stroke="white" stroke-width="2.4" stroke-linecap="round"/>
+  <circle cx="27" cy="28" r="7" stroke="#B04A45" stroke-width="2.1" fill="none"/>
+  <line x1="32" y1="33" x2="35" y2="36" stroke="#B04A45" stroke-width="2.4" stroke-linecap="round"/>
 </svg>

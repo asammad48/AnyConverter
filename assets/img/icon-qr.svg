@@ -1,23 +1,16 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40">
-  <defs>
-    <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#1E1B4B"/>
-      <stop offset="100%" stop-color="#6D28D9"/>
-    </linearGradient>
-  </defs>
-  <rect width="40" height="40" rx="10" fill="url(#g)"/>
   <!-- Top-left finder block -->
-  <rect x="8" y="8" width="10" height="10" rx="1.5" fill="none" stroke="white" stroke-width="1.8"/>
-  <rect x="11" y="11" width="4" height="4" rx="0.5" fill="white"/>
+  <rect x="8" y="8" width="10" height="10" rx="1.5" fill="none" stroke="#B04A45" stroke-width="1.8"/>
+  <rect x="11" y="11" width="4" height="4" rx="0.5" fill="#B04A45"/>
   <!-- Top-right finder block -->
-  <rect x="22" y="8" width="10" height="10" rx="1.5" fill="none" stroke="white" stroke-width="1.8"/>
-  <rect x="25" y="11" width="4" height="4" rx="0.5" fill="white"/>
+  <rect x="22" y="8" width="10" height="10" rx="1.5" fill="none" stroke="#B04A45" stroke-width="1.8"/>
+  <rect x="25" y="11" width="4" height="4" rx="0.5" fill="#B04A45"/>
   <!-- Bottom-left finder block -->
-  <rect x="8" y="22" width="10" height="10" rx="1.5" fill="none" stroke="white" stroke-width="1.8"/>
-  <rect x="11" y="25" width="4" height="4" rx="0.5" fill="white"/>
+  <rect x="8" y="22" width="10" height="10" rx="1.5" fill="none" stroke="#B04A45" stroke-width="1.8"/>
+  <rect x="11" y="25" width="4" height="4" rx="0.5" fill="#B04A45"/>
   <!-- Data dots (bottom-right area) -->
-  <rect x="22" y="22" width="3.5" height="3.5" rx="0.5" fill="white" opacity="0.9"/>
-  <rect x="27" y="22" width="3.5" height="3.5" rx="0.5" fill="white" opacity="0.5"/>
-  <rect x="22" y="27" width="3.5" height="3.5" rx="0.5" fill="white" opacity="0.5"/>
-  <rect x="27" y="27" width="3.5" height="3.5" rx="0.5" fill="white" opacity="0.9"/>
+  <rect x="22" y="22" width="3.5" height="3.5" rx="0.5" fill="#B04A45" opacity="0.9"/>
+  <rect x="27" y="22" width="3.5" height="3.5" rx="0.5" fill="#B04A45" opacity="0.5"/>
+  <rect x="22" y="27" width="3.5" height="3.5" rx="0.5" fill="#B04A45" opacity="0.5"/>
+  <rect x="27" y="27" width="3.5" height="3.5" rx="0.5" fill="#B04A45" opacity="0.9"/>
 </svg>

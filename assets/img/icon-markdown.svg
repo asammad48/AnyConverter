@@ -1,16 +1,9 @@
 <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <defs>
-    <linearGradient id="g" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stop-color="#C4B5FD"/>
-      <stop offset="100%" stop-color="#6D28D9"/>
-    </linearGradient>
-  </defs>
-  <rect width="40" height="40" rx="10" fill="url(#g)"/>
   <!-- M shape: bottom-left → top-left → mid-bottom-V → top-right → bottom-right -->
   <path d="M8 27 L8 13 L16 22 L24 13 L24 27"
-        stroke="white" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        stroke="#B04A45" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
   <!-- Down arrow stem -->
-  <line x1="31" y1="13" x2="31" y2="23" stroke="white" stroke-width="2.3" stroke-linecap="round"/>
+  <line x1="31" y1="13" x2="31" y2="23" stroke="#B04A45" stroke-width="2.3" stroke-linecap="round"/>
   <!-- Down arrow head -->
-  <path d="M27 20 L31 25 L35 20" stroke="white" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <path d="M27 20 L31 25 L35 20" stroke="#B04A45" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
 </svg>

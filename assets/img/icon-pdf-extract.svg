@@ -1,21 +1,14 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40">
-  <defs>
-    <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#0891B2"/>
-      <stop offset="100%" stop-color="#22D3EE"/>
-    </linearGradient>
-  </defs>
-  <rect width="40" height="40" rx="10" fill="url(#g)"/>
   <!-- Source doc -->
-  <path d="M7,8 L18,8 L22,12 L22,32 L7,32 Z" fill="white" opacity="0.2"/>
-  <path d="M7,8 L18,8 L22,12 L22,32 L7,32 Z" fill="none" stroke="white" stroke-width="1.8" stroke-linejoin="round"/>
-  <path d="M18,8 L18,12 L22,12" fill="none" stroke="white" stroke-width="1.5" stroke-linejoin="round"/>
+  <path d="M7,8 L18,8 L22,12 L22,32 L7,32 Z" fill="#B04A45" opacity="0.2"/>
+  <path d="M7,8 L18,8 L22,12 L22,32 L7,32 Z" fill="none" stroke="#B04A45" stroke-width="1.8" stroke-linejoin="round"/>
+  <path d="M18,8 L18,12 L22,12" fill="none" stroke="#B04A45" stroke-width="1.5" stroke-linejoin="round"/>
   <!-- Highlighted page being extracted -->
-  <rect x="9" y="16" width="11" height="8" rx="1" fill="white" opacity="0.5"/>
+  <rect x="9" y="16" width="11" height="8" rx="1" fill="#B04A45" opacity="0.5"/>
   <!-- Arrow pointing right/out -->
-  <line x1="23" y1="20" x2="30" y2="20" stroke="white" stroke-width="2.2" stroke-linecap="round"/>
-  <polyline points="27,17 31,20 27,23" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="23" y1="20" x2="30" y2="20" stroke="#B04A45" stroke-width="2.2" stroke-linecap="round"/>
+  <polyline points="27,17 31,20 27,23" fill="none" stroke="#B04A45" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
   <!-- Output doc -->
-  <path d="M30,24 L37,24 L39,26 L39,36 L30,36 Z" fill="white" opacity="0.8"/>
+  <path d="M30,24 L37,24 L39,26 L39,36 L30,36 Z" fill="#B04A45" opacity="0.8"/>
   <path d="M37,24 L37,26 L39,26" fill="none" stroke="url(#g)" stroke-width="1" stroke-linejoin="round"/>
 </svg>

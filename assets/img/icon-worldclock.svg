@@ -1,22 +1,15 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40">
-  <defs>
-    <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#1E3A8A"/>
-      <stop offset="100%" stop-color="#38BDF8"/>
-    </linearGradient>
-  </defs>
-  <rect width="40" height="40" rx="10" fill="url(#g)"/>
   <!-- Globe circle -->
-  <circle cx="20" cy="20" r="12" fill="none" stroke="white" stroke-width="1.8"/>
+  <circle cx="20" cy="20" r="12" fill="none" stroke="#B04A45" stroke-width="1.8"/>
   <!-- Longitude lines -->
-  <ellipse cx="20" cy="20" rx="5" ry="12" fill="none" stroke="white" stroke-width="1.2" opacity="0.6"/>
+  <ellipse cx="20" cy="20" rx="5" ry="12" fill="none" stroke="#B04A45" stroke-width="1.2" opacity="0.6"/>
   <!-- Latitude lines -->
-  <line x1="8" y1="20" x2="32" y2="20" stroke="white" stroke-width="1.2" opacity="0.6"/>
-  <path d="M10,14 Q20,11 30,14" fill="none" stroke="white" stroke-width="1.2" opacity="0.5"/>
-  <path d="M10,26 Q20,29 30,26" fill="none" stroke="white" stroke-width="1.2" opacity="0.5"/>
+  <line x1="8" y1="20" x2="32" y2="20" stroke="#B04A45" stroke-width="1.2" opacity="0.6"/>
+  <path d="M10,14 Q20,11 30,14" fill="none" stroke="#B04A45" stroke-width="1.2" opacity="0.5"/>
+  <path d="M10,26 Q20,29 30,26" fill="none" stroke="#B04A45" stroke-width="1.2" opacity="0.5"/>
   <!-- Clock hand overlay (top-right) -->
-  <circle cx="28" cy="12" r="6" fill="url(#g)" stroke="white" stroke-width="1.5"/>
-  <line x1="28" y1="12" x2="28" y2="9" stroke="white" stroke-width="1.6" stroke-linecap="round"/>
-  <line x1="28" y1="12" x2="30" y2="12" stroke="white" stroke-width="1.6" stroke-linecap="round"/>
-  <circle cx="28" cy="12" r="1" fill="white"/>
+  <circle cx="28" cy="12" r="6" fill="#B04A45" opacity="0.25" stroke="#B04A45" stroke-width="1.5"/>
+  <line x1="28" y1="12" x2="28" y2="9" stroke="#B04A45" stroke-width="1.6" stroke-linecap="round"/>
+  <line x1="28" y1="12" x2="30" y2="12" stroke="#B04A45" stroke-width="1.6" stroke-linecap="round"/>
+  <circle cx="28" cy="12" r="1" fill="#B04A45"/>
 </svg>

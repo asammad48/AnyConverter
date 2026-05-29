@@ -1,21 +1,14 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40">
-  <defs>
-    <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#1E293B"/>
-      <stop offset="100%" stop-color="#475569"/>
-    </linearGradient>
-  </defs>
-  <rect width="40" height="40" rx="10" fill="url(#g)"/>
   <!-- Morse signal: · · · — — — · · · (SOS) -->
   <!-- Row 1: · · · (three dots) -->
-  <circle cx="10" cy="13" r="2.5" fill="white"/>
-  <circle cx="17" cy="13" r="2.5" fill="white"/>
-  <circle cx="24" cy="13" r="2.5" fill="white"/>
+  <circle cx="10" cy="13" r="2.5" fill="#B04A45"/>
+  <circle cx="17" cy="13" r="2.5" fill="#B04A45"/>
+  <circle cx="24" cy="13" r="2.5" fill="#B04A45"/>
   <!-- Row 2: — — (two dashes) -->
-  <rect x="8" y="19" width="8" height="4" rx="2" fill="white"/>
-  <rect x="20" y="19" width="12" height="4" rx="2" fill="white"/>
+  <rect x="8" y="19" width="8" height="4" rx="2" fill="#B04A45"/>
+  <rect x="20" y="19" width="12" height="4" rx="2" fill="#B04A45"/>
   <!-- Row 3: · — · (dot dash dot) -->
-  <circle cx="10" cy="30" r="2.5" fill="white" opacity="0.8"/>
-  <rect x="16" y="28" width="8" height="4" rx="2" fill="white" opacity="0.8"/>
-  <circle cx="30" cy="30" r="2.5" fill="white" opacity="0.8"/>
+  <circle cx="10" cy="30" r="2.5" fill="#B04A45" opacity="0.8"/>
+  <rect x="16" y="28" width="8" height="4" rx="2" fill="#B04A45" opacity="0.8"/>
+  <circle cx="30" cy="30" r="2.5" fill="#B04A45" opacity="0.8"/>
 </svg>

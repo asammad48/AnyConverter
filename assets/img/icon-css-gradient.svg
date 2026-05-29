@@ -1,28 +1,15 @@
 <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <defs>
-    <linearGradient id="g" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stop-color="#F472B6"/>
-      <stop offset="50%" stop-color="#A78BFA"/>
-      <stop offset="100%" stop-color="#60A5FA"/>
-    </linearGradient>
-    <linearGradient id="bar" x1="0" y1="0" x2="28" y2="0" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stop-color="#FCD34D"/>
-      <stop offset="50%" stop-color="#F472B6"/>
-      <stop offset="100%" stop-color="#60A5FA"/>
-    </linearGradient>
-  </defs>
-  <rect width="40" height="40" rx="10" fill="url(#g)"/>
   <!-- Gradient swatch bar -->
   <rect x="6" y="8" width="28" height="10" rx="3" fill="url(#bar)"/>
   <!-- Color stop markers on bar -->
-  <line x1="6" y1="7" x2="6" y2="20" stroke="white" stroke-width="1.8" stroke-linecap="round"/>
-  <line x1="20" y1="7" x2="20" y2="20" stroke="white" stroke-width="1.8" stroke-linecap="round"/>
-  <line x1="34" y1="7" x2="34" y2="20" stroke="white" stroke-width="1.8" stroke-linecap="round"/>
+  <line x1="6" y1="7" x2="6" y2="20" stroke="#B04A45" stroke-width="1.8" stroke-linecap="round"/>
+  <line x1="20" y1="7" x2="20" y2="20" stroke="#B04A45" stroke-width="1.8" stroke-linecap="round"/>
+  <line x1="34" y1="7" x2="34" y2="20" stroke="#B04A45" stroke-width="1.8" stroke-linecap="round"/>
   <!-- CSS curly braces below -->
-  <path d="M13 26 Q10 26 10 24.5 L10 23 Q10 21.5 8 21.5" stroke="white" stroke-width="1.9" stroke-linecap="round" fill="none"/>
-  <path d="M13 26 Q10 26 10 27.5 L10 29 Q10 30.5 8 30.5" stroke="white" stroke-width="1.9" stroke-linecap="round" fill="none"/>
+  <path d="M13 26 Q10 26 10 24.5 L10 23 Q10 21.5 8 21.5" stroke="#B04A45" stroke-width="1.9" stroke-linecap="round" fill="none"/>
+  <path d="M13 26 Q10 26 10 27.5 L10 29 Q10 30.5 8 30.5" stroke="#B04A45" stroke-width="1.9" stroke-linecap="round" fill="none"/>
   <!-- CSS text hint -->
-  <line x1="17" y1="23" x2="28" y2="23" stroke="white" stroke-width="1.6" stroke-linecap="round" opacity="0.8"/>
-  <line x1="17" y1="26" x2="24" y2="26" stroke="white" stroke-width="1.6" stroke-linecap="round" opacity="0.6"/>
-  <line x1="17" y1="29" x2="26" y2="29" stroke="white" stroke-width="1.6" stroke-linecap="round" opacity="0.4"/>
+  <line x1="17" y1="23" x2="28" y2="23" stroke="#B04A45" stroke-width="1.6" stroke-linecap="round" opacity="0.8"/>
+  <line x1="17" y1="26" x2="24" y2="26" stroke="#B04A45" stroke-width="1.6" stroke-linecap="round" opacity="0.6"/>
+  <line x1="17" y1="29" x2="26" y2="29" stroke="#B04A45" stroke-width="1.6" stroke-linecap="round" opacity="0.4"/>
 </svg>

@@ -1,23 +1,16 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40">
-  <defs>
-    <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#DA22FF"/>
-      <stop offset="100%" stop-color="#9733EE"/>
-    </linearGradient>
-  </defs>
-  <rect width="40" height="40" rx="10" fill="url(#g)"/>
   <!-- Spinning wheel / pie with 6 segments -->
-  <circle cx="20" cy="20" r="12" fill="none" stroke="white" stroke-width="2"/>
+  <circle cx="20" cy="20" r="12" fill="none" stroke="#B04A45" stroke-width="2"/>
   <!-- 6 spokes -->
-  <line x1="20" y1="8"  x2="20" y2="32" stroke="white" stroke-width="1.6" opacity="0.7"/>
-  <line x1="9.6" y1="14" x2="30.4" y2="26" stroke="white" stroke-width="1.6" opacity="0.7"/>
-  <line x1="9.6" y1="26" x2="30.4" y2="14" stroke="white" stroke-width="1.6" opacity="0.7"/>
+  <line x1="20" y1="8"  x2="20" y2="32" stroke="#B04A45" stroke-width="1.6" opacity="0.7"/>
+  <line x1="9.6" y1="14" x2="30.4" y2="26" stroke="#B04A45" stroke-width="1.6" opacity="0.7"/>
+  <line x1="9.6" y1="26" x2="30.4" y2="14" stroke="#B04A45" stroke-width="1.6" opacity="0.7"/>
   <!-- Alternating filled segments (top-right, bottom, top-left) -->
-  <path d="M20,20 L20,8 A12,12 0 0,1 30.4,14 Z" fill="white" opacity="0.35"/>
-  <path d="M20,20 L30.4,26 A12,12 0 0,1 9.6,26 Z" fill="white" opacity="0.35"/>
-  <path d="M20,20 L9.6,14 A12,12 0 0,1 20,8 Z" fill="white" opacity="0.35"/>
+  <path d="M20,20 L20,8 A12,12 0 0,1 30.4,14 Z" fill="#B04A45" opacity="0.35"/>
+  <path d="M20,20 L30.4,26 A12,12 0 0,1 9.6,26 Z" fill="#B04A45" opacity="0.35"/>
+  <path d="M20,20 L9.6,14 A12,12 0 0,1 20,8 Z" fill="#B04A45" opacity="0.35"/>
   <!-- Center hub -->
-  <circle cx="20" cy="20" r="3" fill="white"/>
+  <circle cx="20" cy="20" r="3" fill="#B04A45"/>
   <!-- Arrow pointer at top -->
-  <polygon points="20,4 17.5,9 22.5,9" fill="white"/>
+  <polygon points="20,4 17.5,9 22.5,9" fill="#B04A45"/>
 </svg>

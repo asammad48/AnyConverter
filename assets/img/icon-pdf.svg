@@ -1,13 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40">
-  <defs>
-    <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#DC2626"/>
-      <stop offset="100%" stop-color="#F87171"/>
-    </linearGradient>
-  </defs>
-  <rect width="40" height="40" rx="10" fill="url(#g)"/>
-  <path d="M11,6 L24,6 L30,12 L30,34 L11,34 Z" fill="white" opacity="0.2"/>
-  <path d="M11,6 L24,6 L30,12 L30,34 L11,34 Z" fill="none" stroke="white" stroke-width="1.8" stroke-linejoin="round"/>
-  <path d="M24,6 L24,12 L30,12" fill="none" stroke="white" stroke-width="1.6" stroke-linejoin="round"/>
-  <text x="20.5" y="27" font-family="system-ui,sans-serif" font-size="9" font-weight="800" fill="white" text-anchor="middle">PDF</text>
+  <path d="M11,6 L24,6 L30,12 L30,34 L11,34 Z" fill="#B04A45" opacity="0.2"/>
+  <path d="M11,6 L24,6 L30,12 L30,34 L11,34 Z" fill="none" stroke="#B04A45" stroke-width="1.8" stroke-linejoin="round"/>
+  <path d="M24,6 L24,12 L30,12" fill="none" stroke="#B04A45" stroke-width="1.6" stroke-linejoin="round"/>
+  <text x="20.5" y="27" font-family="system-ui,sans-serif" font-size="9" font-weight="800" fill="#B04A45" text-anchor="middle">PDF</text>
 </svg>

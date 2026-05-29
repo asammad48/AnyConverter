@@ -1,26 +1,19 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40">
-  <defs>
-    <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#312E81"/>
-      <stop offset="100%" stop-color="#7C3AED"/>
-    </linearGradient>
-  </defs>
-  <rect width="40" height="40" rx="10" fill="url(#g)"/>
   <!-- Pixel/block letter "A" made from squares -->
   <!-- Column 1 of A -->
-  <rect x="9" y="14" width="4" height="4" rx="0.5" fill="white" opacity="0.9"/>
-  <rect x="9" y="19" width="4" height="4" rx="0.5" fill="white" opacity="0.9"/>
-  <rect x="9" y="24" width="4" height="4" rx="0.5" fill="white" opacity="0.9"/>
+  <rect x="9" y="14" width="4" height="4" rx="0.5" fill="#B04A45" opacity="0.9"/>
+  <rect x="9" y="19" width="4" height="4" rx="0.5" fill="#B04A45" opacity="0.9"/>
+  <rect x="9" y="24" width="4" height="4" rx="0.5" fill="#B04A45" opacity="0.9"/>
   <!-- Top of A -->
-  <rect x="14" y="9" width="4" height="4" rx="0.5" fill="white" opacity="0.9"/>
-  <rect x="14" y="19" width="4" height="4" rx="0.5" fill="white" opacity="0.6"/>
+  <rect x="14" y="9" width="4" height="4" rx="0.5" fill="#B04A45" opacity="0.9"/>
+  <rect x="14" y="19" width="4" height="4" rx="0.5" fill="#B04A45" opacity="0.6"/>
   <!-- Column 3 of A -->
-  <rect x="19" y="14" width="4" height="4" rx="0.5" fill="white" opacity="0.9"/>
-  <rect x="19" y="19" width="4" height="4" rx="0.5" fill="white" opacity="0.9"/>
-  <rect x="19" y="24" width="4" height="4" rx="0.5" fill="white" opacity="0.9"/>
+  <rect x="19" y="14" width="4" height="4" rx="0.5" fill="#B04A45" opacity="0.9"/>
+  <rect x="19" y="19" width="4" height="4" rx="0.5" fill="#B04A45" opacity="0.9"/>
+  <rect x="19" y="24" width="4" height="4" rx="0.5" fill="#B04A45" opacity="0.9"/>
   <!-- Faded cursor block -->
-  <rect x="26" y="9" width="4" height="4" rx="0.5" fill="white" opacity="0.35"/>
-  <rect x="26" y="14" width="4" height="4" rx="0.5" fill="white" opacity="0.25"/>
-  <rect x="26" y="19" width="4" height="4" rx="0.5" fill="white" opacity="0.2"/>
-  <rect x="26" y="24" width="4" height="4" rx="0.5" fill="white" opacity="0.15"/>
+  <rect x="26" y="9" width="4" height="4" rx="0.5" fill="#B04A45" opacity="0.35"/>
+  <rect x="26" y="14" width="4" height="4" rx="0.5" fill="#B04A45" opacity="0.25"/>
+  <rect x="26" y="19" width="4" height="4" rx="0.5" fill="#B04A45" opacity="0.2"/>
+  <rect x="26" y="24" width="4" height="4" rx="0.5" fill="#B04A45" opacity="0.15"/>
 </svg>

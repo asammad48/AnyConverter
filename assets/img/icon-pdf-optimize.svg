@@ -1,14 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40">
-  <defs>
-    <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#047857"/>
-      <stop offset="100%" stop-color="#6EE7B7"/>
-    </linearGradient>
-  </defs>
-  <rect width="40" height="40" rx="10" fill="url(#g)"/>
-  <path d="M9,7 L21,7 L26,12 L26,33 L9,33 Z" fill="white" opacity="0.2"/>
-  <path d="M9,7 L21,7 L26,12 L26,33 L9,33 Z" fill="none" stroke="white" stroke-width="1.8" stroke-linejoin="round"/>
-  <path d="M21,7 L21,12 L26,12" fill="none" stroke="white" stroke-width="1.5" stroke-linejoin="round"/>
+  <path d="M9,7 L21,7 L26,12 L26,33 L9,33 Z" fill="#B04A45" opacity="0.2"/>
+  <path d="M9,7 L21,7 L26,12 L26,33 L9,33 Z" fill="none" stroke="#B04A45" stroke-width="1.8" stroke-linejoin="round"/>
+  <path d="M21,7 L21,12 L26,12" fill="none" stroke="#B04A45" stroke-width="1.5" stroke-linejoin="round"/>
   <!-- Lightning bolt -->
-  <path d="M22,8 L16,21 L20,21 L18,32 L26,17 L22,17 Z" fill="white" opacity="0.9"/>
+  <path d="M22,8 L16,21 L20,21 L18,32 L26,17 L22,17 Z" fill="#B04A45" opacity="0.9"/>
 </svg>

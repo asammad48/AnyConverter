@@ -1,20 +1,13 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40">
-  <defs>
-    <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#11998E"/>
-      <stop offset="100%" stop-color="#38EF7D"/>
-    </linearGradient>
-  </defs>
-  <rect width="40" height="40" rx="10" fill="url(#g)"/>
   <!-- Row 1: checked box + line -->
-  <rect x="9" y="11" width="7" height="7" rx="1.5" fill="none" stroke="white" stroke-width="1.8"/>
-  <polyline points="10.5,14.5 12,16 15,12.5" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-  <line x1="20" y1="14.5" x2="31" y2="14.5" stroke="white" stroke-width="2" stroke-linecap="round"/>
+  <rect x="9" y="11" width="7" height="7" rx="1.5" fill="none" stroke="#B04A45" stroke-width="1.8"/>
+  <polyline points="10.5,14.5 12,16 15,12.5" fill="none" stroke="#B04A45" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="20" y1="14.5" x2="31" y2="14.5" stroke="#B04A45" stroke-width="2" stroke-linecap="round"/>
   <!-- Row 2: checked box + line -->
-  <rect x="9" y="22" width="7" height="7" rx="1.5" fill="none" stroke="white" stroke-width="1.8"/>
-  <polyline points="10.5,25.5 12,27 15,23.5" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-  <line x1="20" y1="25.5" x2="31" y2="25.5" stroke="white" stroke-width="2" stroke-linecap="round"/>
+  <rect x="9" y="22" width="7" height="7" rx="1.5" fill="none" stroke="#B04A45" stroke-width="1.8"/>
+  <polyline points="10.5,25.5 12,27 15,23.5" fill="none" stroke="#B04A45" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="20" y1="25.5" x2="31" y2="25.5" stroke="#B04A45" stroke-width="2" stroke-linecap="round"/>
   <!-- Row 3: empty box + short faded line -->
-  <rect x="9" y="33" width="7" height="7" rx="1.5" fill="none" stroke="white" stroke-width="1.8" opacity="0.4"/>
-  <line x1="20" y1="36.5" x2="28" y2="36.5" stroke="white" stroke-width="2" stroke-linecap="round" opacity="0.35"/>
+  <rect x="9" y="33" width="7" height="7" rx="1.5" fill="none" stroke="#B04A45" stroke-width="1.8" opacity="0.4"/>
+  <line x1="20" y1="36.5" x2="28" y2="36.5" stroke="#B04A45" stroke-width="2" stroke-linecap="round" opacity="0.35"/>
 </svg>

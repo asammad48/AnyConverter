@@ -1,16 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40">
-  <defs>
-    <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#F953C6"/>
-      <stop offset="100%" stop-color="#B91D73"/>
-    </linearGradient>
-  </defs>
-  <rect width="40" height="40" rx="10" fill="url(#g)"/>
   <!-- Shuffle icon: two crossing curved arrows -->
   <!-- Top arrow: left→right (bottom path) -->
-  <path d="M9,15 Q14,15 17,20 Q20,25 26,25 L24,23" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
-  <polyline points="24,27 26,25 24,23" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M9,15 Q14,15 17,20 Q20,25 26,25 L24,23" fill="none" stroke="#B04A45" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <polyline points="24,27 26,25 24,23" fill="none" stroke="#B04A45" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
   <!-- Bottom arrow: right→left (top path) -->
-  <path d="M31,25 Q26,25 23,20 Q20,15 14,15 L16,13" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
-  <polyline points="16,17 14,15 16,13" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M31,25 Q26,25 23,20 Q20,15 14,15 L16,13" fill="none" stroke="#B04A45" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <polyline points="16,17 14,15 16,13" fill="none" stroke="#B04A45" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>
