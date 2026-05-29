@@ -952,21 +952,33 @@ details[open] .faq-icon { transform: rotate(45deg); }
 
 /* Category title — accented per category */
 .category-title {
-  font-size: var(--text-xl); font-weight: 800; margin-bottom: 22px;
-  display: flex; align-items: center; gap: 12px;
-  padding: 14px 18px;
-  background: var(--cat-title-bg, var(--color-surface-2));
-  border-radius: 12px;
+  font-size: var(--text-xl);
+  font-weight: 750;
+  margin-bottom: 22px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 13px 18px;
+  background: var(--color-surface);
+  border: 1.5px solid var(--color-border);
   border-left: 4px solid var(--cat-accent, var(--color-primary));
-  color: var(--cat-title, var(--color-text));
-  letter-spacing: -0.01em;
+  border-radius: 12px;
+  color: var(--color-text);
+  letter-spacing: -0.015em;
+  box-shadow: 0 1px 4px rgba(21,21,21,0.04);
 }
 .category-title img { border-radius: 6px; }
 .category-badge {
-  font-size: 11px; font-weight: 600; padding: 3px 9px;
-  border-radius: var(--radius-full); text-transform: uppercase; letter-spacing: 0.5px;
-  background: var(--color-primary-light); color: var(--color-primary);
+  font-size: 11px;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: var(--radius-full);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  background: color-mix(in srgb, var(--cat-accent, var(--color-primary)) 12%, var(--color-surface-2));
+  color: var(--cat-accent, var(--color-primary));
   margin-left: auto;
+  border: 1px solid color-mix(in srgb, var(--cat-accent, var(--color-primary)) 20%, transparent);
 }
 
 /* ===== TOOL SPECIFIC ===== */
