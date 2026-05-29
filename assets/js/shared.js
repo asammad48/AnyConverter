@@ -330,7 +330,7 @@
   <div class="footer-brand">
     <a href="/" class="logo">
       <img src="/assets/img/logo.svg" alt="AnyConverter" width="28" height="28" loading="lazy">
-      <span>AnyConverter</span>
+      <span class="logo-text">AnyConverter</span>
     </a>
     <p>Free online tools for developers, students, and everyone. No signup. No data uploaded to servers.</p>
     <div class="footer-social">
