@@ -352,10 +352,12 @@ main { flex: 1; }
   border-radius: 12px;
   background: var(--color-primary-light);
   object-fit: contain;
-  transition: background 0.22s;
+  transition: background 0.22s, filter 0.22s;
+  filter: sepia(1) hue-rotate(-35deg) saturate(3) brightness(0.82);
 }
 .tool-card:hover .tool-card-icon {
   background: color-mix(in srgb, var(--color-primary) 14%, var(--color-surface-2));
+  filter: sepia(1) hue-rotate(-35deg) saturate(3.5) brightness(0.78);
 }
 .tool-card h3 {
   font-size: 14.5px;
@@ -1706,10 +1708,12 @@ mark.regex-match { background: rgba(255,200,0,0.4); color: transparent; border-r
   border-radius: 8px;
   background: var(--color-primary-light);
   object-fit: contain;
-  transition: background 0.2s;
+  transition: background 0.2s, filter 0.2s;
+  filter: sepia(1) hue-rotate(-35deg) saturate(3) brightness(0.82);
 }
 .dash-quick-card:hover img {
   background: color-mix(in srgb, var(--color-primary) 14%, var(--color-surface-2));
+  filter: sepia(1) hue-rotate(-35deg) saturate(3.5) brightness(0.78);
 }
 .dash-quick-card-name { font-size: 12.5px; font-weight: 600; color: var(--color-text); line-height: 1.3; }
 
