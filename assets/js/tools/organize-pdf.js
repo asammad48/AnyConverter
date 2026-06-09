@@ -43,7 +43,7 @@
       var src = await PDFLib.PDFDocument.load(pdfBytes);
       var out = await PDFLib.PDFDocument.create();
       var zeroIdx = indices.map(function (n) { return n - 1; });
-      var copied = await out.copyPagesFrom(src, zeroIdx);
+      var copied = await out.copyPages(src, zeroIdx);
       copied.forEach(function (p) { out.addPage(p); });
       var saved = await out.save();
       dl(saved, 'organized.pdf');

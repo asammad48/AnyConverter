@@ -27,7 +27,7 @@
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
     html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F4F6FF);color:var(--color-text,#1E1B4B)}
     body{min-height:100vh;display:flex;flex-direction:column}
-    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8FE)}
+    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8D0)}
     .header-inner{max-width:1280px;width:100%;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;gap:32px}
     .hero{padding:40px 24px 32px;max-width:1280px;margin:0 auto}
     .hero h1{font-size:clamp(1.75rem,4vw,2.25rem);font-weight:700;line-height:1.2;margin-bottom:12px}
@@ -51,15 +51,15 @@
         <div style="padding:24px">
           <div style="margin-bottom:16px">
             <label style="display:block;font-size:13px;font-weight:500;margin-bottom:6px" for="ntw-input">Enter a Number</label>
-            <input type="number" id="ntw-input" placeholder="e.g. 1234567" style="width:100%;padding:12px;border:1px solid var(--color-border,#DDD8FE);border-radius:8px;font-size:18px;font-family:'JetBrains Mono',monospace">
+            <input type="number" id="ntw-input" placeholder="e.g. 1234567" style="width:100%;padding:12px;border:1px solid var(--color-border,#DDD8D0);border-radius:8px;font-size:18px;font-family:'JetBrains Mono',monospace">
           </div>
           <div style="background:var(--color-success-bg,#ECFDF5);border:1px solid var(--color-success-bg,#ECFDF5);border-radius:8px;padding:16px;margin-bottom:12px;min-height:60px">
             <div style="font-size:11px;color:var(--color-text-2,#6B7280);margin-bottom:4px;text-transform:uppercase;letter-spacing:.5px">Words</div>
             <div id="ntw-output" style="font-size:16px;font-weight:500;color:var(--color-success-text,#166534);line-height:1.4"></div>
           </div>
-          <div style="background:var(--color-primary-light,#EEF2FF);border:1px solid var(--color-primary-light,#EEF2FF);border-radius:8px;padding:16px;margin-bottom:16px;min-height:48px">
+          <div style="background:var(--color-primary-light,#F3E7E4);border:1px solid var(--color-primary-light,#F3E7E4);border-radius:8px;padding:16px;margin-bottom:16px;min-height:48px">
             <div style="font-size:11px;color:var(--color-text-2,#6B7280);margin-bottom:4px;text-transform:uppercase;letter-spacing:.5px">Ordinal</div>
-            <div id="ntw-ordinal" style="font-size:14px;color:var(--color-primary,#4F46E5)"></div>
+            <div id="ntw-ordinal" style="font-size:14px;color:var(--color-primary,#B04A45)"></div>
           </div>
           <div class="ac-action-bar">
             <button class="btn btn-primary" id="btn-ntw-copy">Copy Words</button>

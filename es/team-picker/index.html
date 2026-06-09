@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Selector de Equipos Online Gratis — Dividir Personas en Equipos Aleatorios | AnyConverter</title>
+  <meta name="description" content="Divide aleatoriamente una lista de personas en equipos iguales online gratis. Introduce los nombres, elige el número de equipos y obtén tarjetas de equipo codificadas por colores al instante. Sin registro.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://anyconverter.io/es/team-picker/">
+  <link rel="alternate" hreflang="en" href="https://anyconverter.io/team-picker/"><link rel="alternate" hreflang="es" href="https://anyconverter.io/es/team-picker/"><link rel="alternate" hreflang="da" href="https://anyconverter.io/da/team-picker/"><link rel="alternate" hreflang="x-default" href="https://anyconverter.io/team-picker/">
+  <meta property="og:type" content="website"><meta property="og:title" content="Selector de Equipos Online Gratis | AnyConverter"><meta property="og:description" content="Divide personas en equipos aleatorios al instante. Tarjetas con código de colores. Gratis, sin registro."><meta property="og:url" content="https://anyconverter.io/es/team-picker/"><meta property="og:site_name" content="AnyConverter">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" data-ad-client="ca-pub-XXXXXXXXXX" crossorigin="anonymous"></script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Selector de Equipos","url":"https://anyconverter.io/es/team-picker/","description":"Divide aleatoriamente una lista de nombres en equipos equilibrados online gratis.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F4F6FF);color:var(--color-text,#1E1B4B)}
+    body{min-height:100vh;display:flex;flex-direction:column}
+    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8D0)}
+    .header-inner{max-width:1280px;width:100%;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;gap:32px}
+    .hero{padding:40px 24px 32px;max-width:1280px;margin:0 auto}
+    .hero h1{font-size:clamp(1.75rem,4vw,2.25rem);font-weight:700;line-height:1.2;margin-bottom:12px}
+    .hero-desc{font-size:1.0625rem;color:var(--color-text-2,#6B7280);max-width:680px;line-height:1.6}
+    @font-face{font-family:'Inter';font-display:swap}
+  </style>
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+  <header id="site-header" class="site-header"></header>
+  <main id="main-content">
+    <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/es/">Inicio</a></li><li><a href="/es/coin-flip/">Herramientas Aleatorias</a></li><li aria-current="page">Selector de Equipos</li></ol></nav>
+    <section class="hero">
+      <h1>Selector de Equipos Online</h1>
+      <p class="hero-desc">Divide cualquier grupo de personas en equipos aleatorios equilibrados. Pega los nombres, elige cuántos equipos y obtén tarjetas de equipo codificadas por colores en segundos. Perfecto para deportes, juegos y talleres.</p>
+    </section>
+    <div class="tool-wrapper">
+      <div class="tool-zone">
+        <div style="padding:24px">
+          <div style="display:grid;grid-template-columns:1fr 2fr;gap:20px;align-items:start">
+            <div>
+              <label style="display:block;font-size:13px;font-weight:500;margin-bottom:6px">Nombres (uno por línea)</label>
+              <textarea id="tp-members" spellcheck="false" style="width:100%;height:220px;padding:10px 12px;border:1px solid var(--color-border,#DDD8D0);border-radius:8px;font-size:13px;resize:vertical;background:var(--color-surface,#fff);line-height:1.8">Alice
+Bob
+Charlie
+Diana
+Eva
+Frank
+Grace
+Hank</textarea>
+              <div style="display:flex;align-items:center;gap:10px;margin-top:10px;flex-wrap:wrap">
+                <label style="font-size:13px;color:var(--color-text-body,#374151)">Equipos:</label>
+                <input type="number" id="tp-teams" min="2" max="20" value="2" style="width:60px;padding:8px;border:1px solid var(--color-border,#DDD8D0);border-radius:6px;font-size:14px;font-weight:700;text-align:center">
+                <label style="font-size:13px;display:flex;align-items:center;gap:6px;cursor:pointer">
+                  <input type="checkbox" id="tp-shuffle" checked style="accent-color:var(--color-primary,#B04A45)"> Mezclar nombres
+                </label>
+              </div>
+              <button class="btn btn-primary" id="tp-pick" style="margin-top:12px;width:100%">Crear Equipos</button>
+            </div>
+            <div>
+              <div id="tp-result" style="min-height:60px"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <aside class="tool-side" aria-label="Publicidad">
+        <div style="margin-top:16px">
+          <p class="ad-label">Publicidad</p>
+          <div class="ad-slot" style="min-height:250px">
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+          </div>
+        </div>
+      </aside>
+    </div>
+    <section class="how-to-use"><h2>Cómo Crear los Equipos</h2><ol class="steps"><li><strong>Paso 1</strong> — Introduce un nombre por línea en el área de texto.</li><li><strong>Paso 2</strong> — Establece el número de equipos que deseas.</li><li><strong>Paso 3</strong> — Mantén marcada la opción "Mezclar nombres" para una asignación aleatoria (o desmárcala para mantener el orden de la lista).</li><li><strong>Paso 4</strong> — Haz clic en <em>Crear Equipos</em> para ver las tarjetas de equipo con código de colores.</li></ol></section>
+    <section class="features"><h2>Características</h2><ul class="features-list"><li>Distribución por turnos para garantizar equipos equilibrados</li><li>Mezcla opcional para una asignación verdaderamente aleatoria</li><li>Hasta 8 colores de equipo distintos</li><li>Número de miembros del equipo mostrado por tarjeta</li><li>Funciona con cualquier número de personas y equipos</li></ul></section>
+    <section class="faq"><h2>Preguntas Frecuentes</h2><div class="faq-list">
+      <details class="faq-item"><summary class="faq-question">¿Qué ocurre si el número de personas no se divide en partes iguales? <span class="faq-icon">+</span></summary><div class="faq-answer">La herramienta distribuye los miembros por turnos, por lo que algunos equipos tendrán un miembro más que otros. Las tarjetas de equipo muestran el número de miembros para que puedas ver la distribución.</div></details>
+      <details class="faq-item"><summary class="faq-question">¿Puedo mantener los mismos equipos actualizando la página? <span class="faq-icon">+</span></summary><div class="faq-answer">No — la mezcla se vuelve a ejecutar cada vez que haces clic en Crear Equipos. Si quieres conservar los resultados, haz una captura de pantalla o copia las tarjetas antes de hacer clic de nuevo.</div></details>
+    </div></section>
+
+    <section class="related-tools">
+      <h2>Herramientas Relacionadas</h2>
+      <div class="tool-grid">
+        <a href="/es/random-picker/" class="tool-card"><img src="/assets/img/icon-picker.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Selección Aleatoria</h3><p>Elige nombres aleatoriamente de cualquier lista.</p><span class="tool-card-link">Usar →</span></a>
+        <a href="/es/spin-the-wheel/" class="tool-card"><img src="/assets/img/icon-wheel.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Girar la Ruleta</h3><p>Gira para elegir un ganador aleatorio.</p><span class="tool-card-link">Usar →</span></a>
+        <a href="/es/decision-maker/" class="tool-card"><img src="/assets/img/icon-decision.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Decisor</h3><p>Toma decisiones rápidas y justas.</p><span class="tool-card-link">Usar →</span></a>
+        <a href="/es/dice-roller/" class="tool-card"><img src="/assets/img/icon-dice.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Lanzar Dados</h3><p>Usa los dados para juegos y selecciones.</p><span class="tool-card-link">Usar →</span></a>
+      </div>
+    </section>
+
+  </main>
+  <footer id="site-footer" class="site-footer"></footer>
+  <script src="/assets/js/shared.js" defer></script>
+  <script src="/assets/js/tools/team-picker.js" defer></script>
+</body>
+</html>

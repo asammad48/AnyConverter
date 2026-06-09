@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Conversor de Colores Online — HEX RGB HSL CMYK Gratis | AnyConverter</title>
+  <meta name="description" content="Convierte colores entre HEX, RGB, HSL, CMYK y HSB online de forma gratuita. Selector de color interactivo con generador de paleta de tonos. Copia al portapapeles al instante.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://anyconverter.io/es/color-converter/">
+  <link rel="alternate" hreflang="en" href="https://anyconverter.io/color-converter/">
+  <link rel="alternate" hreflang="es" href="https://anyconverter.io/es/color-converter/">
+  <link rel="alternate" hreflang="da" href="https://anyconverter.io/da/color-converter/">
+  <link rel="alternate" hreflang="x-default" href="https://anyconverter.io/color-converter/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Conversor de Colores Online — HEX RGB HSL CMYK Gratis | AnyConverter">
+  <meta property="og:description" content="Convierte colores entre HEX, RGB, HSL, CMYK y HSB online de forma gratuita.">
+  <meta property="og:url" content="https://anyconverter.io/es/color-converter/">
+  <meta property="og:site_name" content="AnyConverter">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" data-ad-client="ca-pub-XXXXXXXXXX" crossorigin="anonymous"></script>
+  <!-- Replace ca-pub-XXXXXXXXXX with your real AdSense publisher ID -->
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Conversor de Colores — HEX, RGB, HSL, CMYK","url":"https://anyconverter.io/es/color-converter/","description":"Convierte colores entre HEX, RGB, HSL, CMYK y HSB online de forma gratuita.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F4F6FF);color:var(--color-text,#1E1B4B)}
+    body{min-height:100vh;display:flex;flex-direction:column}
+    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8D0)}
+    .header-inner{max-width:1280px;width:100%;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;gap:32px}
+    .hero{padding:40px 24px 32px;max-width:1280px;margin:0 auto}
+    .hero h1{font-size:clamp(1.75rem,4vw,2.25rem);font-weight:700;line-height:1.2;margin-bottom:12px}
+    .hero-desc{font-size:1.0625rem;color:var(--color-text-2,#6B7280);max-width:680px;line-height:1.6}
+    @font-face{font-family:'Inter';font-display:swap}
+  </style>
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+  <header id="site-header" class="site-header"></header>
+  <main id="main-content">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol><li><a href="/es/">Inicio</a></li><li aria-current="page">Conversor de Colores</li></ol>
+    </nav>
+    <section class="hero">
+      <h1>Conversor de Colores — HEX, RGB, HSL, CMYK</h1>
+      <p class="hero-desc">Convierte colores entre los formatos HEX, RGB, HSL, CMYK y HSB al instante. Usa el selector de color o escribe cualquier valor directamente. Genera una paleta de tonos con variaciones más claras y más oscuras. Copia cualquier formato con un solo clic.</p>
+    </section>
+    <div class="tool-wrapper">
+      <div class="tool-zone">
+        <div style="display:flex;gap:16px;align-items:flex-start;flex-wrap:wrap;margin-bottom:16px">
+          <div>
+            <label for="color-picker">Selector de Color</label>
+            <input type="color" id="color-picker" value="#5B5BD6" style="width:64px;height:56px;padding:4px;border-radius:12px;border:2px solid var(--color-border);cursor:pointer">
+          </div>
+          <div style="flex:1;min-width:200px">
+            <div class="color-swatch" id="color-swatch" style="background:#5B5BD6;min-width:100%"></div>
+            <div id="color-name" class="text-muted text-sm text-center mt-2"></div>
+          </div>
+        </div>
+
+        <div class="color-formats">
+          <div class="color-format-row">
+            <span class="color-format-label">HEX</span>
+            <input type="text" id="color-hex" value="#5B5BD6" spellcheck="false" maxlength="9">
+            <button class="btn btn-secondary btn-sm" data-copy-color="color-hex">Copiar</button>
+          </div>
+          <div class="color-format-row">
+            <span class="color-format-label">RGB</span>
+            <input type="text" id="color-rgb" value="rgb(91, 91, 214)" spellcheck="false">
+            <button class="btn btn-secondary btn-sm" data-copy-color="color-rgb">Copiar</button>
+          </div>
+          <div class="color-format-row">
+            <span class="color-format-label">HSL</span>
+            <input type="text" id="color-hsl" value="hsl(240, 57%, 60%)" spellcheck="false">
+            <button class="btn btn-secondary btn-sm" data-copy-color="color-hsl">Copiar</button>
+          </div>
+          <div class="color-format-row">
+            <span class="color-format-label">CMYK</span>
+            <input type="text" id="color-cmyk" value="cmyk(57%, 57%, 0%, 16%)" spellcheck="false">
+            <button class="btn btn-secondary btn-sm" data-copy-color="color-cmyk">Copiar</button>
+          </div>
+          <div class="color-format-row">
+            <span class="color-format-label">HSB</span>
+            <input type="text" id="color-hsb" value="hsb(240, 57%, 84%)" spellcheck="false">
+            <button class="btn btn-secondary btn-sm" data-copy-color="color-hsb">Copiar</button>
+          </div>
+        </div>
+
+        <div class="mt-6">
+          <p class="panel-label">Paleta de Colores</p>
+          <div class="color-palette" id="color-palette"></div>
+        </div>
+      </div>
+
+      <aside class="tool-side" aria-label="Opciones">
+        <div class="ss-divider">Opciones</div>
+        <div class="tog-row"><span class="tog-label" id="lbl-uc-hex">HEX en mayúsculas</span><div class="tog off" id="tog-uc-hex" role="switch" aria-checked="false" tabindex="0" aria-labelledby="lbl-uc-hex"></div></div>
+        <div class="tog-row"><span class="tog-label" id="lbl-show-palette">Mostrar paleta de tonos</span><div class="tog" id="tog-show-palette" role="switch" aria-checked="true" tabindex="0" aria-labelledby="lbl-show-palette"></div></div>
+
+        <div class="ss-divider">Valores del color</div>
+        <div class="stats-grid">
+          <div class="stat-card"><div class="stat-val" id="stat-hue">—</div><div class="stat-lbl">Matiz (°)</div></div>
+          <div class="stat-card"><div class="stat-val" id="stat-sat">—</div><div class="stat-lbl">Saturación</div></div>
+          <div class="stat-card"><div class="stat-val" id="stat-light">—</div><div class="stat-lbl">Luminosidad</div></div>
+          <div class="stat-card"><div class="stat-val" id="stat-bright">—</div><div class="stat-lbl">Brillo</div></div>
+        </div>
+
+        <div style="margin-top:8px">
+          <p class="ad-label">Publicidad</p>
+          <div class="ad-slot" style="min-height:250px">
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+            <!-- Replace ca-pub-XXXXXXXXXX and data-ad-slot="XXXXXXXXXX" with your IDs -->
+          </div>
+        </div>
+      </aside>
+    </div>
+    <div class="ad-slot ad-slot--leaderboard">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="how-to-use">
+      <h2>Cómo convertir colores</h2>
+      <ol class="steps">
+        <li><strong>Elige o introduce un color</strong> — Usa el selector de color o escribe un valor HEX, RGB, HSL, CMYK o HSB directamente en cualquier campo.</li>
+        <li><strong>Ver todos los formatos</strong> — Todos los formatos de color se actualizan al instante cuando cambias cualquier valor.</li>
+        <li><strong>Copia tu formato</strong> — Haz clic en Copiar junto a cualquier formato para copiarlo al portapapeles. Haz clic en las muestras de paleta para explorar tonos.</li>
+      </ol>
+    </section>
+    <section class="features">
+      <h2>Características</h2>
+      <ul class="features-list">
+        <li>Convierte HEX, RGB, HSL, CMYK, HSB</li>
+        <li>Selector de color interactivo</li>
+        <li>Paleta de tonos con 11 muestras</li>
+        <li>Edita cualquier formato — los demás se actualizan</li>
+        <li>Copia cualquier formato al portapapeles</li>
+        <li>100% en el navegador, gratuito</li>
+      </ul>
+    </section>
+    <div class="ad-slot ad-slot--rectangle" style="margin:0 auto 32px">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="faq">
+      <h2>Preguntas Frecuentes</h2>
+      <div class="faq-list">
+        <details class="faq-item"><summary class="faq-question">¿Cuál es la diferencia entre HEX y RGB? <span class="faq-icon">+</span></summary><div class="faq-answer">HEX y RGB representan los mismos colores pero en notaciones diferentes. HEX usa un código hexadecimal de 6 dígitos (p. ej. #FF5733), mientras que RGB usa valores decimales para los canales Rojo, Verde y Azul (p. ej. rgb(255, 87, 51)).</div></details>
+        <details class="faq-item"><summary class="faq-question">¿Qué es HSL? <span class="faq-icon">+</span></summary><div class="faq-answer">HSL son las siglas de Matiz (Hue), Saturación y Luminosidad (Lightness). Es un modelo más intuitivo para las personas — piensas en términos de ángulo de color (0–360°), viveza (saturación) y claridad u oscuridad (luminosidad).</div></details>
+        <details class="faq-item"><summary class="faq-question">¿Para qué se usa CMYK? <span class="faq-icon">+</span></summary><div class="faq-answer">CMYK (Cian, Magenta, Amarillo, Negro) se usa en diseño de impresión. Mientras que las pantallas usan RGB (color aditivo), las impresoras usan CMYK (mezcla de color sustractivo).</div></details>
+        <details class="faq-item"><summary class="faq-question">¿Qué es HSB (también llamado HSV)? <span class="faq-icon">+</span></summary><div class="faq-answer">HSB (Matiz, Saturación, Brillo) —también llamado HSV (Value/Valor)— es similar a HSL pero usa Brillo/Valor en lugar de Luminosidad. Se usa en muchas aplicaciones de diseño como Photoshop.</div></details>
+        <details class="faq-item"><summary class="faq-question">¿Cómo encuentro el código HEX de un color en pantalla? <span class="faq-icon">+</span></summary><div class="faq-answer">Usa el selector de color integrado de tu sistema operativo, las herramientas de desarrollo del navegador (inspeccionar elemento → muestra de color) o herramientas de captura de pantalla. Luego pega el valor HEX aquí para convertirlo a otros formatos.</div></details>
+      </div>
+    </section>
+    <section class="related-tools">
+      <h2>Herramientas relacionadas</h2>
+      <div class="tool-grid">
+        <a href="/es/image-converter/" class="tool-card"><img src="/assets/img/icon-image.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Conversor de Imágenes</h3><p>Convierte imágenes entre formatos.</p><span class="tool-card-link">Usar →</span></a>
+        <a href="/es/json-formatter/" class="tool-card"><img src="/assets/img/icon-json.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Formateador JSON</h3><p>Formatea y valida JSON.</p><span class="tool-card-link">Usar →</span></a>
+        <a href="/es/base64-encoder/" class="tool-card"><img src="/assets/img/icon-base64.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Codificador Base64</h3><p>Codifica y decodifica Base64.</p><span class="tool-card-link">Usar →</span></a>
+        <a href="/es/hash-generator/" class="tool-card"><img src="/assets/img/icon-hash.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Generador de Hash</h3><p>Genera hashes criptográficos.</p><span class="tool-card-link">Usar →</span></a>
+        <a href="/es/markdown-html/" class="tool-card"><img src="/assets/img/icon-markdown.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Markdown a HTML</h3><p>Convierte Markdown a HTML.</p><span class="tool-card-link">Usar →</span></a>
+        <a href="/es/timestamp-converter/" class="tool-card"><img src="/assets/img/icon-clock.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Conversor de Marca de Tiempo</h3><p>Convierte marcas de tiempo Unix.</p><span class="tool-card-link">Usar →</span></a>
+      </div>
+    </section>
+  </main>
+  <footer id="site-footer" class="site-footer"></footer>
+  <script src="/assets/js/shared.js" defer></script>
+  <script src="/assets/js/tools/color-converter.js" defer></script>
+</body>
+</html>

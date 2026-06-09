@@ -1205,14 +1205,16 @@ mark.regex-match { background: rgba(255,200,0,0.4); color: transparent; border-r
   border-bottom: 1px solid var(--color-border);
   padding: 0 12px;
   display: flex; align-items: center; gap: 8px;
-  min-height: 44px; flex-shrink: 0; flex-wrap: wrap;
+  height: 44px; min-height: 44px; flex-shrink: 0; flex-wrap: nowrap; overflow: hidden;
 }
-.ac-panel-label { font-size: 12px; font-weight: 500; color: var(--color-text-2); }
-.ac-panel-actions { margin-left: auto; display: flex; gap: 4px; }
+.ac-panel-label { font-size: 12px; font-weight: 500; color: var(--color-text-2); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: 0; }
+.ac-panel-actions { margin-left: auto; display: flex; align-items: center; gap: 4px; flex-shrink: 0; height: 29px; overflow: visible; }
+label.ac-btn { align-self: center; margin-top: 4px; position: relative; top: 1px; }
 .ac-btn {
   font-size: 13px;
   font-weight: 500;
-  padding: 7px 16px;
+  height: 29px;
+  padding: 0 14px;
   border-radius: 20px;
   border: 1.5px solid var(--color-border);
   background: none;
@@ -1226,6 +1228,7 @@ mark.regex-match { background: rgba(255,200,0,0.4); color: transparent; border-r
   align-items: center;
   gap: 5px;
   letter-spacing: 0.01em;
+  box-sizing: border-box;
 }
 .ac-btn:hover {
   color: var(--color-text);
@@ -1317,7 +1320,7 @@ mark.regex-match { background: rgba(255,200,0,0.4); color: transparent; border-r
 /* ===== PER-PANEL STATUS BAR ===== */
 .ac-status {
   display: flex; align-items: center; gap: 8px;
-  padding: 5px 12px; flex-shrink: 0;
+  padding: 0 12px; height: 27px; min-height: 27px; flex-shrink: 0;
   background: var(--color-surface-2);
   border-top: 1px solid var(--color-border);
   font-size: 11px;
@@ -1419,12 +1422,12 @@ mark.regex-match { background: rgba(255,200,0,0.4); color: transparent; border-r
 }
 .ss-divider:first-child { margin-top: 0; }
 .ss-option-row {
-  display: flex; align-items: center; justify-content: space-between;
+  display: flex; align-items: center;
   padding: 6px 10px; margin-bottom: 4px;
   background: var(--color-surface-2);
   border-radius: 6px; border: 1px solid var(--color-border);
 }
-.ss-opt-label { font-size: 12px; color: var(--color-text-2); }
+.ss-opt-label { font-size: 12px; color: var(--color-text-2); width: 65px; flex-shrink: 0; }
 .ss-opt-select {
   font-size: 12px; background: var(--color-surface);
   border: 1px solid var(--color-border); border-radius: 4px;
@@ -1787,10 +1790,11 @@ mark.regex-match { background: rgba(255,200,0,0.4); color: transparent; border-r
 /* ===== FONT SIZE TOGGLE (inside panel header) ===== */
 .font-sz-wrap { display: flex; align-items: center; gap: 2px; margin-left: 4px; }
 .font-sz-btn {
-  font-size: 11px; padding: 4px 7px; border-radius: 4px;
+  font-size: 11px; height: 29px; padding: 0 7px; border-radius: 4px;
   border: 1px solid var(--color-border); background: none;
   color: var(--color-text-2); cursor: pointer; font-family: var(--font-sans);
-  line-height: 1; transition: background 0.1s;
+  line-height: 1; transition: background 0.1s; box-sizing: border-box;
+  display: inline-flex; align-items: center;
 }
 .font-sz-btn:hover { background: var(--color-surface-2); }
 
@@ -1837,6 +1841,64 @@ mark.regex-match { background: rgba(255,200,0,0.4); color: transparent; border-r
 .items-center { align-items: center; }
 .gap-2 { gap: var(--space-2); }
 .gap-4 { gap: var(--space-4); }
+
+/* ===== RESPONSIVE TWO-COLUMN GRID ===== */
+.two-col-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+@media (min-width: 540px) { .two-col-grid { grid-template-columns: 1fr 1fr; } }
+
+.three-col-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+@media (min-width: 480px) { .three-col-grid { grid-template-columns: 1fr 1fr; } }
+@media (min-width: 720px) { .three-col-grid { grid-template-columns: 1fr 1fr 1fr; } }
+
+.four-col-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+@media (min-width: 720px) { .four-col-grid { grid-template-columns: repeat(4, 1fr); } }
+
+/* ===== CSS SHADOW GENERATOR ===== */
+.cs-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+@media (min-width: 600px) { .cs-grid { grid-template-columns: 1fr 1fr; } }
+
+.cs-row {
+  display: flex; align-items: center; gap: 10px;
+  margin-bottom: 10px;
+}
+.cs-label {
+  font-size: 12px; font-weight: 500; color: var(--color-text-2);
+  min-width: 68px; flex-shrink: 0;
+}
+.cs-val {
+  font-size: 12px; color: var(--color-text); min-width: 38px;
+  text-align: right; flex-shrink: 0; font-family: var(--font-mono);
+}
+
+/* ===== TOOL CARD CTA (alias for tool-card-link) ===== */
+.tool-card-cta {
+  font-size: 12.5px;
+  color: var(--color-primary);
+  font-weight: 600;
+  opacity: 0.75;
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  margin-top: 2px;
+  transition: opacity 0.18s, gap 0.18s;
+}
+.tool-card:hover .tool-card-cta { opacity: 1; gap: 7px; }
 
 /* ===== SEARCH BUTTON (header trigger) ===== */
 .search-btn {
@@ -2011,4 +2073,38 @@ mark.search-hl {
   padding: 2px 7px; border-radius: 6px;
   background: var(--color-surface); border: 1.5px solid var(--color-border);
   font-family: inherit; font-size: 10px; color: var(--color-text-2);
+}
+
+/* ===== TOOL-SPECIFIC LAYOUT HELPERS ===== */
+
+/* Spin the Wheel: two-column on desktop, single column on mobile */
+.wheel-layout {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 24px;
+  align-items: start;
+}
+@media (max-width: 640px) {
+  .wheel-layout {
+    grid-template-columns: 1fr;
+  }
+  .wheel-layout canvas { margin: 0 auto; }
+}
+
+/* Daily Planner add-task row: wrap gracefully on mobile */
+.planner-add-row {
+  display: grid;
+  grid-template-columns: 90px 1fr 80px auto;
+  gap: 8px;
+  align-items: end;
+}
+@media (max-width: 600px) {
+  .planner-add-row {
+    grid-template-columns: 1fr 1fr;
+  }
+  .planner-add-row .planner-add-btn {
+    grid-column: 1 / -1;
+    width: 100%;
+    justify-content: center;
+  }
 }

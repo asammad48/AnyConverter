@@ -23,7 +23,7 @@
     } else if (mode === 'fixed') {
       var price2 = parseFloat(document.getElementById('d2-price').value);
       var disc = parseFloat(document.getElementById('d2-disc').value);
-      if (isNaN(price2) || isNaN(disc)) return;
+      if (isNaN(price2) || isNaN(disc) || price2 <= 0) return;
       sp = price2 - disc;
       savings = disc;
       pctOff = (disc / price2 * 100);

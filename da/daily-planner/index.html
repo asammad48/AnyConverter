@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Daglig Planlægger Online Gratis | AnyConverter</title>
+  <meta name="description" content="Planlæg din dag med en gratis online daglig planlægger. Tilføj opgaver med tid og varighed, og afkryds dem efterhånden. Hver dag gemmes separat i din browser.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://anyconverter.io/da/daily-planner/">
+  <link rel="alternate" hreflang="en" href="https://anyconverter.io/daily-planner/"><link rel="alternate" hreflang="es" href="https://anyconverter.io/es/daily-planner/"><link rel="alternate" hreflang="da" href="https://anyconverter.io/da/daily-planner/"><link rel="alternate" hreflang="x-default" href="https://anyconverter.io/daily-planner/">
+  <meta property="og:type" content="website"><meta property="og:title" content="Daglig Planlægger Online Gratis | AnyConverter"><meta property="og:description" content="Gratis online daglig planlægger. Tilføj opgaver med tidspunkter og varigheder. Browserbaseret, ingen tilmelding."><meta property="og:url" content="https://anyconverter.io/da/daily-planner/"><meta property="og:site_name" content="AnyConverter">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" data-ad-client="ca-pub-XXXXXXXXXX" crossorigin="anonymous"></script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Daglig Planlægger","url":"https://anyconverter.io/da/daily-planner/","description":"Gratis online daglig planlægger med tidsbaseret opgaveplanlægning.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F4F6FF);color:var(--color-text,#1E1B4B)}
+    body{min-height:100vh;display:flex;flex-direction:column}
+    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8D0)}
+    .header-inner{max-width:1280px;width:100%;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;gap:32px}
+    .hero{padding:40px 24px 32px;max-width:1280px;margin:0 auto}
+    .hero h1{font-size:clamp(1.75rem,4vw,2.25rem);font-weight:700;line-height:1.2;margin-bottom:12px}
+    .hero-desc{font-size:1.0625rem;color:var(--color-text-2,#6B7280);max-width:680px;line-height:1.6}
+    @font-face{font-family:'Inter';font-display:swap}
+  </style>
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+  <header id="site-header" class="site-header"></header>
+  <main id="main-content">
+    <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/da/">Hjem</a></li><li><a href="/da/todo-list/">Produktivitet</a></li><li aria-current="page">Daglig Planlægger</li></ol></nav>
+    <section class="hero">
+      <h1>Daglig Planlægger Online</h1>
+      <p class="hero-desc">Planlæg din dag med tidsbaserede opgaveindtastninger. Angiv starttidspunkt, opgavenavn og valgfri varighed. Naviger mellem dage og marker opgaver som fuldført.</p>
+    </section>
+    <div class="tool-wrapper">
+      <div class="tool-zone">
+        <div style="padding:24px;max-width:640px">
+          <!-- Datovælger -->
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:20px;flex-wrap:wrap">
+            <label style="font-size:13px;font-weight:600">Dato:</label>
+            <input type="date" id="pl-date" style="padding:8px 12px;border:1px solid var(--color-border,#DDD8D0);border-radius:8px;font-size:14px">
+          </div>
+          <!-- Tilføj opgave -->
+          <div class="planner-add-row" style="margin-bottom:16px">
+            <div>
+              <label style="display:block;font-size:11px;font-weight:500;color:var(--color-text-2,#6B7280);margin-bottom:4px">Tidspunkt</label>
+              <input type="time" id="pl-time" value="09:00" style="width:100%;padding:9px 8px;border:1px solid var(--color-border,#DDD8D0);border-radius:8px;font-size:13px">
+            </div>
+            <div>
+              <label style="display:block;font-size:11px;font-weight:500;color:var(--color-text-2,#6B7280);margin-bottom:4px">Opgave</label>
+              <input type="text" id="pl-task" placeholder="Hvad skal du lave?" style="width:100%;padding:9px 12px;border:1px solid var(--color-border,#DDD8D0);border-radius:8px;font-size:13px">
+            </div>
+            <div>
+              <label style="display:block;font-size:11px;font-weight:500;color:var(--color-text-2,#6B7280);margin-bottom:4px">Varighed (min)</label>
+              <input type="number" id="pl-dur" min="0" max="480" placeholder="30" style="width:100%;padding:9px 8px;border:1px solid var(--color-border,#DDD8D0);border-radius:8px;font-size:13px;text-align:center">
+            </div>
+            <button class="btn btn-primary planner-add-btn" id="pl-add" style="align-self:flex-end">Tilføj</button>
+          </div>
+          <!-- Opgaveliste -->
+          <ul id="pl-list" style="list-style:none;border:1px solid var(--color-border,#DDD8D0);border-radius:10px;overflow:hidden;background:var(--color-surface,#fff);min-height:80px;padding:0 14px"></ul>
+        </div>
+      </div>
+      <aside class="tool-side" aria-label="Reklame">
+        <div style="margin-top:16px">
+          <p class="ad-label">Reklame</p>
+          <div class="ad-slot" style="min-height:250px">
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+          </div>
+        </div>
+      </aside>
+    </div>
+    <section class="how-to-use"><h2>Sådan bruger du den daglige planlægger</h2><ol class="steps"><li><strong>Trin 1</strong> — Vælg en dato (standard er i dag).</li><li><strong>Trin 2</strong> — Indtast et tidspunkt, opgavebeskrivelse og valgfri varighed i minutter.</li><li><strong>Trin 3</strong> — Klik på <em>Tilføj</em> — opgaver sorteres automatisk efter tidspunkt.</li><li><strong>Trin 4</strong> — Afkryds boksen for at markere en opgave som udført, eller × for at slette den.</li></ol></section>
+    <section class="features"><h2>Funktioner</h2><ul class="features-list"><li>Opbevaring per dag — hver dato har sin egen opgaveliste</li><li>Opgaver sorteret kronologisk efter starttidspunkt</li><li>Valgfrit varighedsfelt i minutter</li><li>Afkryds opgaver efterhånden som du fuldfører dem</li><li>Data gemmes automatisk i localStorage</li></ul></section>
+    <section class="faq"><h2>Ofte stillede spørgsmål</h2><div class="faq-list">
+      <details class="faq-item"><summary class="faq-question">Kan jeg se planer for tidligere eller fremtidige datoer? <span class="faq-icon">+</span></summary><div class="faq-answer">Ja. Brug datovælgeren til at navigere til en vilkårlig dato. Hver dags plan gemmes separat i localStorage under sin egen nøgle.</div></details>
+      <details class="faq-item"><summary class="faq-question">Er der en grænse for, hvor mange opgaver jeg kan tilføje per dag? <span class="faq-icon">+</span></summary><div class="faq-answer">Ingen fast grænse. Du kan tilføje så mange opgaver, du har brug for — listen ruller for at vise alle poster.</div></details>
+    </div></section>
+
+    <section class="related-tools">
+      <h2>Relaterede værktøjer</h2>
+      <div class="tool-grid">
+        <a href="/da/todo-list/" class="tool-card"><img src="/assets/img/icon-todo.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Opgaveliste</h3><p>Administrer opgaver med en simpel tjekliste.</p><span class="tool-card-link">Prøv →</span></a>
+        <a href="/da/habit-tracker/" class="tool-card"><img src="/assets/img/icon-habit.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Vanetracker</h3><p>Spor tilbagevendende vaner dag for dag.</p><span class="tool-card-link">Prøv →</span></a>
+        <a href="/da/meeting-timer/" class="tool-card"><img src="/assets/img/icon-meeting.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Mødetimer</h3><p>Hold møder og sessioner på sporet.</p><span class="tool-card-link">Prøv →</span></a>
+        <a href="/da/pomodoro-timer/" class="tool-card"><img src="/assets/img/icon-pomodoro.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Pomodoro-timer</h3><p>Fokuser bedre med tidsafgrænsede arbejdsblokke.</p><span class="tool-card-link">Prøv →</span></a>
+      </div>
+    </section>
+
+  </main>
+  <footer id="site-footer" class="site-footer"></footer>
+  <script src="/assets/js/shared.js" defer></script>
+  <script src="/assets/js/tools/daily-planner.js" defer></script>
+</body>
+</html>

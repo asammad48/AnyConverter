@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Holdvælger Online Gratis — Del Folk op i Tilfældige Hold | AnyConverter</title>
+  <meta name="description" content="Del tilfældigt en liste af personer op i lige store hold online gratis. Indtast navne, vælg antal hold og få farvekodede holdkort øjeblikkeligt. Ingen tilmelding.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://anyconverter.io/da/team-picker/">
+  <link rel="alternate" hreflang="en" href="https://anyconverter.io/team-picker/"><link rel="alternate" hreflang="es" href="https://anyconverter.io/es/team-picker/"><link rel="alternate" hreflang="da" href="https://anyconverter.io/da/team-picker/"><link rel="alternate" hreflang="x-default" href="https://anyconverter.io/team-picker/">
+  <meta property="og:type" content="website"><meta property="og:title" content="Holdvælger Online Gratis | AnyConverter"><meta property="og:description" content="Del folk op i tilfældige hold øjeblikkeligt. Farvekodede kort. Gratis, ingen tilmelding."><meta property="og:url" content="https://anyconverter.io/da/team-picker/"><meta property="og:site_name" content="AnyConverter">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" data-ad-client="ca-pub-XXXXXXXXXX" crossorigin="anonymous"></script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Holdvælger","url":"https://anyconverter.io/da/team-picker/","description":"Del tilfældigt en liste af navne op i balancerede hold online gratis.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F4F6FF);color:var(--color-text,#1E1B4B)}
+    body{min-height:100vh;display:flex;flex-direction:column}
+    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8D0)}
+    .header-inner{max-width:1280px;width:100%;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;gap:32px}
+    .hero{padding:40px 24px 32px;max-width:1280px;margin:0 auto}
+    .hero h1{font-size:clamp(1.75rem,4vw,2.25rem);font-weight:700;line-height:1.2;margin-bottom:12px}
+    .hero-desc{font-size:1.0625rem;color:var(--color-text-2,#6B7280);max-width:680px;line-height:1.6}
+    @font-face{font-family:'Inter';font-display:swap}
+  </style>
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+  <header id="site-header" class="site-header"></header>
+  <main id="main-content">
+    <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/da/">Hjem</a></li><li><a href="/da/coin-flip/">Tilfældighedsværktøjer</a></li><li aria-current="page">Holdvælger</li></ol></nav>
+    <section class="hero">
+      <h1>Holdvælger Online</h1>
+      <p class="hero-desc">Del en hvilken som helst gruppe op i balancerede tilfældige hold. Indsæt navne, vælg antal hold og få farvekodede holdkort på sekunder. Perfekt til sport, spil og workshops.</p>
+    </section>
+    <div class="tool-wrapper">
+      <div class="tool-zone">
+        <div style="padding:24px">
+          <div style="display:grid;grid-template-columns:1fr 2fr;gap:20px;align-items:start">
+            <div>
+              <label style="display:block;font-size:13px;font-weight:500;margin-bottom:6px">Navne (ét pr. linje)</label>
+              <textarea id="tp-members" spellcheck="false" style="width:100%;height:220px;padding:10px 12px;border:1px solid var(--color-border,#DDD8D0);border-radius:8px;font-size:13px;resize:vertical;background:var(--color-surface,#fff);line-height:1.8">Alice
+Bob
+Charlie
+Diana
+Eva
+Frank
+Grace
+Hank</textarea>
+              <div style="display:flex;align-items:center;gap:10px;margin-top:10px;flex-wrap:wrap">
+                <label style="font-size:13px;color:var(--color-text-body,#374151)">Hold:</label>
+                <input type="number" id="tp-teams" min="2" max="20" value="2" style="width:60px;padding:8px;border:1px solid var(--color-border,#DDD8D0);border-radius:6px;font-size:14px;font-weight:700;text-align:center">
+                <label style="font-size:13px;display:flex;align-items:center;gap:6px;cursor:pointer">
+                  <input type="checkbox" id="tp-shuffle" checked style="accent-color:var(--color-primary,#B04A45)"> Bland navne
+                </label>
+              </div>
+              <button class="btn btn-primary" id="tp-pick" style="margin-top:12px;width:100%">Vælg Hold</button>
+            </div>
+            <div>
+              <div id="tp-result" style="min-height:60px"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <aside class="tool-side" aria-label="Reklame">
+        <div style="margin-top:16px">
+          <p class="ad-label">Reklame</p>
+          <div class="ad-slot" style="min-height:250px">
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+          </div>
+        </div>
+      </aside>
+    </div>
+    <section class="how-to-use"><h2>Sådan Vælger Du Hold</h2><ol class="steps"><li><strong>Trin 1</strong> — Indtast ét navn pr. linje i tekstfeltet.</li><li><strong>Trin 2</strong> — Angiv det antal hold du ønsker.</li><li><strong>Trin 3</strong> — Behold "Bland navne" markeret for tilfældig tildeling (eller fjern markeringen for at bevare listeordenen).</li><li><strong>Trin 4</strong> — Klik på <em>Vælg Hold</em> for at se farvekodede holdkort.</li></ol></section>
+    <section class="features"><h2>Funktioner</h2><ul class="features-list"><li>Round-robin-fordeling sikrer balancerede holdstørrelser</li><li>Valgfri blanding for ægte tilfældig tildeling</li><li>Op til 8 forskellige holdfarver</li><li>Antal holdmedlemmer vist på hvert kort</li><li>Fungerer med et vilkårligt antal personer og hold</li></ul></section>
+    <section class="faq"><h2>Ofte Stillede Spørgsmål</h2><div class="faq-list">
+      <details class="faq-item"><summary class="faq-question">Hvad sker der, hvis antallet af personer ikke kan deles ligeligt? <span class="faq-icon">+</span></summary><div class="faq-answer">Værktøjet fordeler medlemmer round-robin, så nogle hold vil have ét medlem mere end andre. Holdkortene viser medlemsantallet, så du kan se fordelingen.</div></details>
+      <details class="faq-item"><summary class="faq-question">Kan jeg beholde de samme hold ved at genindlæse siden? <span class="faq-icon">+</span></summary><div class="faq-answer">Nej — blandingen køres på ny hver gang du klikker Vælg Hold. Hvis du vil gemme resultaterne, skal du tage et skærmbillede eller kopiere holdkortene inden du klikker igen.</div></details>
+    </div></section>
+
+    <section class="related-tools">
+      <h2>Relaterede Værktøjer</h2>
+      <div class="tool-grid">
+        <a href="/da/random-picker/" class="tool-card"><img src="/assets/img/icon-picker.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Tilfældig Vælger</h3><p>Vælg tilfældigt navne fra en liste.</p><span class="tool-card-link">Prøv →</span></a>
+        <a href="/da/spin-the-wheel/" class="tool-card"><img src="/assets/img/icon-wheel.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Drej Hjulet</h3><p>Drej for at vælge en tilfældig vinder.</p><span class="tool-card-link">Prøv →</span></a>
+        <a href="/da/decision-maker/" class="tool-card"><img src="/assets/img/icon-decision.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Beslutningshjælper</h3><p>Træf hurtige og fair valg.</p><span class="tool-card-link">Prøv →</span></a>
+        <a href="/da/dice-roller/" class="tool-card"><img src="/assets/img/icon-dice.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Terningkaster</h3><p>Brug terninger til spil og valg.</p><span class="tool-card-link">Prøv →</span></a>
+      </div>
+    </section>
+
+  </main>
+  <footer id="site-footer" class="site-footer"></footer>
+  <script src="/assets/js/shared.js" defer></script>
+  <script src="/assets/js/tools/team-picker.js" defer></script>
+</body>
+</html>

@@ -60,7 +60,9 @@
     if (!pdfBytes) { setStatus('Please upload a PDF first.', 'error'); return; }
     var canvas = document.getElementById('sp-canvas');
     var sigData = canvas.toDataURL('image/png');
-    if (sigData === canvas.toDataURL()) { setStatus('Please draw your signature first.', 'error'); return; }
+    var blankCanvas = document.createElement('canvas');
+    blankCanvas.width = canvas.width; blankCanvas.height = canvas.height;
+    if (sigData === blankCanvas.toDataURL('image/png')) { setStatus('Please draw your signature first.', 'error'); return; }
     setStatus('Embedding signature…', '');
     try {
       var doc = await PDFLib.PDFDocument.load(pdfBytes);

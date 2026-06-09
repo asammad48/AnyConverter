@@ -18,7 +18,7 @@
     var height = parseFloat(document.getElementById('cal-height').value);
     var gender = document.querySelector('input[name="cal-gender"]:checked').value;
     var activity = parseFloat(document.getElementById('cal-activity').value);
-    if (!age || !weight || !height) return;
+    if (!age || !weight || !height || age <= 0 || weight <= 0 || height <= 0) return;
     var wKg = isMetric ? weight : weight * 0.453592;
     var hCm = isMetric ? height : height * 2.54;
     var bmr = gender === 'male'

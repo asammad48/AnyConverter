@@ -27,12 +27,12 @@
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
     html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F4F6FF);color:var(--color-text,#1E1B4B)}
     body{min-height:100vh;display:flex;flex-direction:column}
-    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8FE)}
+    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8D0)}
     .header-inner{max-width:1280px;width:100%;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;gap:32px}
     .hero{padding:40px 24px 32px;max-width:1280px;margin:0 auto}
     .hero h1{font-size:clamp(1.75rem,4vw,2.25rem);font-weight:700;line-height:1.2;margin-bottom:12px}
     .hero-desc{font-size:1.0625rem;color:var(--color-text-2,#6B7280);max-width:680px;line-height:1.6}
-    #ar-preview-box{background:var(--color-primary-light,#EEF2FF);border:2px dashed var(--color-primary,#4F46E5);border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;color:var(--color-primary,#4F46E5);transition:all .3s;min-width:40px;min-height:20px}
+    #ar-preview-box{background:var(--color-primary-light,#F3E7E4);border:2px dashed var(--color-primary,#B04A45);border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;color:var(--color-primary,#B04A45);transition:all .3s;min-width:40px;min-height:20px}
     @font-face{font-family:'Inter';font-display:swap}
   </style>
   <link rel="stylesheet" href="/assets/css/style.css">
@@ -51,21 +51,21 @@
       <div class="tool-zone">
         <div style="padding:24px">
           <!-- Find ratio -->
-          <div style="padding:18px;border:1px solid var(--color-border,#DDD8FE);border-radius:12px;margin-bottom:20px">
+          <div style="padding:18px;border:1px solid var(--color-border,#DDD8D0);border-radius:12px;margin-bottom:20px">
             <h3 style="font-size:14px;font-weight:600;margin-bottom:14px">Find Aspect Ratio</h3>
             <div style="display:flex;align-items:flex-end;gap:10px;flex-wrap:wrap;margin-bottom:12px">
               <div>
                 <label style="display:block;font-size:12px;font-weight:500;margin-bottom:5px" for="ar-width">Width (px)</label>
-                <input type="number" id="ar-width" placeholder="1920" style="width:120px;padding:9px 11px;border:1px solid var(--color-border,#DDD8FE);border-radius:7px;font-size:14px">
+                <input type="number" id="ar-width" placeholder="1920" style="width:120px;padding:9px 11px;border:1px solid var(--color-border,#DDD8D0);border-radius:7px;font-size:14px">
               </div>
               <span style="font-size:20px;font-weight:700;padding-bottom:8px">×</span>
               <div>
                 <label style="display:block;font-size:12px;font-weight:500;margin-bottom:5px" for="ar-height">Height (px)</label>
-                <input type="number" id="ar-height" placeholder="1080" style="width:120px;padding:9px 11px;border:1px solid var(--color-border,#DDD8FE);border-radius:7px;font-size:14px">
+                <input type="number" id="ar-height" placeholder="1080" style="width:120px;padding:9px 11px;border:1px solid var(--color-border,#DDD8D0);border-radius:7px;font-size:14px">
               </div>
               <button class="btn btn-primary" id="ar-calc-btn">Calculate</button>
             </div>
-            <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px">
+            <div class="three-col-grid">
               <div class="stat-card"><div class="stat-val" id="ar-ratio-out" style="font-size:20px">—</div><div class="stat-lbl">Ratio</div></div>
               <div class="stat-card"><div class="stat-val" id="ar-decimal-out" style="font-size:18px">—</div><div class="stat-lbl">Decimal</div></div>
               <div class="stat-card" style="display:flex;align-items:center;justify-content:center">
@@ -74,18 +74,18 @@
             </div>
           </div>
           <!-- Scale dimensions -->
-          <div style="padding:18px;border:1px solid var(--color-border,#DDD8FE);border-radius:12px;margin-bottom:20px">
+          <div style="padding:18px;border:1px solid var(--color-border,#DDD8D0);border-radius:12px;margin-bottom:20px">
             <h3 style="font-size:14px;font-weight:600;margin-bottom:6px">Scale Dimensions</h3>
             <p style="font-size:12px;color:var(--color-text-2,#6B7280);margin-bottom:12px">Enter a ratio and one dimension to find the other</p>
             <div style="margin-bottom:10px">
               <label style="display:block;font-size:12px;font-weight:500;margin-bottom:5px" for="ar-ratio-input">Aspect Ratio (e.g. 16:9)</label>
-              <input type="text" id="ar-ratio-input" placeholder="16:9" style="width:120px;padding:9px 11px;border:1px solid var(--color-border,#DDD8FE);border-radius:7px;font-size:14px">
+              <input type="text" id="ar-ratio-input" placeholder="16:9" style="width:120px;padding:9px 11px;border:1px solid var(--color-border,#DDD8D0);border-radius:7px;font-size:14px">
             </div>
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+            <div class="two-col-grid">
               <div>
                 <label style="display:block;font-size:12px;font-weight:500;margin-bottom:5px" for="ar-new-width">Known Width</label>
                 <div style="display:flex;gap:6px">
-                  <input type="number" id="ar-new-width" placeholder="1280" style="flex:1;padding:9px 11px;border:1px solid var(--color-border,#DDD8FE);border-radius:7px;font-size:14px">
+                  <input type="number" id="ar-new-width" placeholder="1280" style="flex:1;padding:9px 11px;border:1px solid var(--color-border,#DDD8D0);border-radius:7px;font-size:14px">
                   <button class="btn btn-secondary" id="ar-height-btn" style="font-size:12px;padding:8px 10px">→ Height</button>
                 </div>
                 <div style="margin-top:6px;font-weight:600;font-size:15px" id="ar-new-height-out">—</div>
@@ -93,7 +93,7 @@
               <div>
                 <label style="display:block;font-size:12px;font-weight:500;margin-bottom:5px" for="ar-new-height">Known Height</label>
                 <div style="display:flex;gap:6px">
-                  <input type="number" id="ar-new-height" placeholder="720" style="flex:1;padding:9px 11px;border:1px solid var(--color-border,#DDD8FE);border-radius:7px;font-size:14px">
+                  <input type="number" id="ar-new-height" placeholder="720" style="flex:1;padding:9px 11px;border:1px solid var(--color-border,#DDD8D0);border-radius:7px;font-size:14px">
                   <button class="btn btn-secondary" id="ar-width-btn" style="font-size:12px;padding:8px 10px">→ Width</button>
                 </div>
                 <div style="margin-top:6px;font-weight:600;font-size:15px" id="ar-new-width-out">—</div>

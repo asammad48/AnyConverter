@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contáctanos — AnyConverter</title>
+  <meta name="description" content="Ponte en contacto con el equipo de AnyConverter. Reporta un error, sugiere una nueva herramienta o haz una pregunta. Leemos y respondemos cada mensaje.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://anyconverter.io/es/contact/">
+  <link rel="alternate" hreflang="en" href="https://anyconverter.io/contact/">
+  <link rel="alternate" hreflang="es" href="https://anyconverter.io/es/contact/">
+  <link rel="alternate" hreflang="da" href="https://anyconverter.io/da/contact/">
+  <link rel="alternate" hreflang="x-default" href="https://anyconverter.io/contact/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Contáctanos — AnyConverter">
+  <meta property="og:description" content="Ponte en contacto con el equipo de AnyConverter. Damos la bienvenida a comentarios, reportes de errores y consultas de colaboración.">
+  <meta property="og:url" content="https://anyconverter.io/es/contact/">
+  <meta property="og:site_name" content="AnyConverter">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F4F6FF);color:var(--color-text,#1E1B4B)}
+    body{min-height:100vh;display:flex;flex-direction:column}
+    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8D0)}
+    .header-inner{max-width:1280px;width:100%;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;gap:32px}
+    @font-face{font-family:'Inter';font-display:swap}
+    main{flex:1}
+    .page-wrap{max-width:900px;margin:0 auto;padding:44px 24px 80px}
+    .page-hero{text-align:center;margin-bottom:52px}
+    .page-hero h1{font-size:clamp(1.8rem,4vw,2.4rem);font-weight:800;margin-bottom:12px}
+    .page-hero p{font-size:1rem;color:var(--color-text-2,#6B7280);max-width:500px;margin:0 auto;line-height:1.7}
+    .contact-layout{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:start}
+    @media(max-width:640px){.contact-layout{grid-template-columns:1fr}}
+    .contact-cards{display:flex;flex-direction:column;gap:14px}
+    .contact-card{background:var(--color-surface,#fff);border:1.5px solid var(--color-border-light,#E0E7FF);border-radius:14px;padding:22px 24px;display:flex;gap:16px;align-items:flex-start;text-decoration:none;color:inherit;transition:border-color 0.2s,box-shadow 0.2s,transform 0.2s}
+    .contact-card:hover{border-color:var(--color-primary-hover,#A5B4FC);box-shadow:0 6px 24px rgba(176,74,69,0.12);transform:translateY(-2px)}
+    .contact-card-icon{font-size:1.6rem;flex-shrink:0;margin-top:2px}
+    .contact-card h3{font-size:15px;font-weight:700;color:var(--color-text,#1E1B4B);margin-bottom:4px}
+    .contact-card p{font-size:13.5px;color:var(--color-text-2,#6B7280);line-height:1.5;margin:0}
+    .contact-card .card-link{font-size:13px;color:var(--color-primary,#4F46E5);font-weight:600;margin-top:6px;display:block}
+    .contact-form-wrap{background:var(--color-surface,#fff);border:1.5px solid var(--color-border-light,#E0E7FF);border-radius:16px;padding:32px}
+    .form-title{font-size:1.1rem;font-weight:700;color:var(--color-text,#1E1B4B);margin-bottom:20px}
+    .form-group{margin-bottom:18px}
+    .form-group label{display:block;font-size:13px;font-weight:600;color:var(--color-text-body,#374151);margin-bottom:6px}
+    .form-group input,.form-group textarea,.form-group select{width:100%;padding:10px 14px;border:1.5px solid var(--color-border-light,#E0E7FF);border-radius:10px;font-size:15px;font-family:inherit;color:var(--color-text,#1E1B4B);background:var(--color-surface-2,#EEF1FF);transition:border-color 0.15s}
+    .form-group input:focus,.form-group textarea:focus,.form-group select:focus{outline:none;border-color:var(--color-primary,#4F46E5);background:var(--color-surface,#fff)}
+    .form-group textarea{resize:vertical;min-height:120px;line-height:1.6}
+    .form-submit{width:100%;padding:12px;background:linear-gradient(135deg,var(--color-primary-alt,#6366F1),var(--color-primary,#4F46E5));color:var(--color-surface,#fff);font-size:15px;font-weight:700;border:none;border-radius:10px;cursor:pointer;transition:transform 0.15s,box-shadow 0.15s;font-family:inherit}
+    .form-submit:hover{transform:translateY(-1px);box-shadow:0 4px 16px rgba(176,74,69,0.3)}
+    .success-msg{display:none;background:var(--color-success-bg,#F0FDF4);border:1.5px solid var(--color-success-text,#86EFAC);border-radius:10px;padding:16px 20px;margin-top:16px;font-size:14px;color:var(--color-success-text,#166534);text-align:center}
+    .faq-link{text-align:center;margin-top:40px;padding:20px;background:var(--color-primary-light,#EEF2FF);border-radius:12px;font-size:14px;color:var(--color-text-body,#374151)}
+    .faq-link a{color:var(--color-primary,#4F46E5);font-weight:600}
+  </style>
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+  <header id="site-header" class="site-header"></header>
+
+  <main id="main-content">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="/es/">Inicio</a></li>
+        <li aria-current="page">Contáctanos</li>
+      </ol>
+    </nav>
+
+    <div class="page-wrap">
+
+      <div class="page-hero">
+        <h1>Ponte en Contacto</h1>
+        <p>Leemos cada mensaje. Tanto si has encontrado un error, tienes una idea para una función, o simplemente quieres saludar — nos encantaría saber de ti.</p>
+      </div>
+
+      <div class="contact-layout">
+
+        <div class="contact-cards">
+          <a href="mailto:hello@anyconverter.io" class="contact-card">
+            <div class="contact-card-icon">📧</div>
+            <div>
+              <h3>Consultas Generales</h3>
+              <p>Preguntas, comentarios o cualquier cosa que tengas en mente.</p>
+              <span class="card-link">hello@anyconverter.io</span>
+            </div>
+          </a>
+          <a href="mailto:support@anyconverter.io" class="contact-card">
+            <div class="contact-card-icon">🛠️</div>
+            <div>
+              <h3>Reportar un Error</h3>
+              <p>¿Encontraste una herramienta que no funciona como se espera? ¡Cuéntanos!</p>
+              <span class="card-link">support@anyconverter.io</span>
+            </div>
+          </a>
+          <a href="mailto:security@anyconverter.io" class="contact-card">
+            <div class="contact-card-icon">🔒</div>
+            <div>
+              <h3>Problemas de Seguridad</h3>
+              <p>¿Encontraste una vulnerabilidad? Por favor repórtala de forma responsable.</p>
+              <span class="card-link">security@anyconverter.io</span>
+            </div>
+          </a>
+          <a href="mailto:press@anyconverter.io" class="contact-card">
+            <div class="contact-card-icon">📰</div>
+            <div>
+              <h3>Prensa y Medios</h3>
+              <p>Periodistas, blogueros y consultas de medios de comunicación.</p>
+              <span class="card-link">press@anyconverter.io</span>
+            </div>
+          </a>
+          <div class="contact-card" style="cursor:default">
+            <div class="contact-card-icon">⏱️</div>
+            <div>
+              <h3>Tiempo de Respuesta</h3>
+              <p>Normalmente respondemos en <strong>24–48 horas</strong> en días laborables. No ofrecemos soporte telefónico.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-form-wrap">
+          <div class="form-title">Envíanos un Mensaje</div>
+          <form id="contact-form" novalidate>
+            <div class="form-group">
+              <label for="cf-name">Tu Nombre</label>
+              <input type="text" id="cf-name" name="name" placeholder="Ana García" required>
+            </div>
+            <div class="form-group">
+              <label for="cf-email">Dirección de Correo Electrónico</label>
+              <input type="email" id="cf-email" name="email" placeholder="ana@ejemplo.com" required>
+            </div>
+            <div class="form-group">
+              <label for="cf-subject">Asunto</label>
+              <select id="cf-subject" name="subject">
+                <option value="">— Elige un tema —</option>
+                <option value="bug">Reporte de Error</option>
+                <option value="feature">Solicitud de Función / Herramienta</option>
+                <option value="general">Pregunta General</option>
+                <option value="press">Prensa / Medios</option>
+                <option value="other">Otro</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="cf-message">Mensaje</label>
+              <textarea id="cf-message" name="message" placeholder="Describe tu pregunta, error o idea con todo el detalle que quieras…" required></textarea>
+            </div>
+            <button type="submit" class="form-submit">Enviar Mensaje →</button>
+            <div class="success-msg" id="cf-success">✅ ¡Mensaje enviado! Te responderemos en 24–48 horas.</div>
+          </form>
+        </div>
+
+      </div>
+
+      <div class="faq-link">
+        ¿Buscas respuestas rápidas? Consulta nuestra <a href="/es/faq/">página de preguntas frecuentes</a> — las preguntas más comunes están respondidas allí.
+      </div>
+
+    </div>
+  </main>
+
+  <footer id="site-footer" class="site-footer"></footer>
+  <div id="toast" class="toast" aria-live="polite"></div>
+  <script src="/assets/js/shared.js" defer></script>
+  <script>
+    document.getElementById('contact-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      var name = document.getElementById('cf-name').value.trim();
+      var email = document.getElementById('cf-email').value.trim();
+      var message = document.getElementById('cf-message').value.trim();
+      if (!name || !email || !message) {
+        alert('Por favor completa tu nombre, correo electrónico y mensaje.');
+        return;
+      }
+      // Construct mailto link as fallback (no backend)
+      var subject = document.getElementById('cf-subject').value || 'General Enquiry';
+      var body = 'Name: ' + name + '\n\n' + message;
+      window.location.href = 'mailto:hello@anyconverter.io?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+      document.getElementById('cf-success').style.display = 'block';
+    });
+  </script>
+</body>
+</html>

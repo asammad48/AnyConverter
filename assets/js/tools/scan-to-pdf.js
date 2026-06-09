@@ -25,7 +25,9 @@
       row.style.cssText = 'display:flex;align-items:center;gap:10px;padding:6px 0;border-bottom:1px solid #F0F0F8;font-size:13px';
       var thumb = document.createElement('img');
       thumb.style.cssText = 'width:40px;height:40px;object-fit:cover;border-radius:4px;border:1px solid #E4E4EF';
-      thumb.src = URL.createObjectURL(f);
+      var thumbUrl = URL.createObjectURL(f);
+      thumb.src = thumbUrl;
+      thumb.onload = function() { URL.revokeObjectURL(thumbUrl); };
       var info = document.createElement('span');
       info.textContent = (i+1) + '. ' + f.name + ' (' + (f.size/1024).toFixed(1) + ' KB)';
       info.style.flex = '1';

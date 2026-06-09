@@ -33,10 +33,9 @@
       docA ? renderPage(docA, 'cmp-canvas-a', currentPage) : Promise.resolve(),
       docB ? renderPage(docB, 'cmp-canvas-b', currentPage) : Promise.resolve()
     ]);
+    var totalPages = Math.max(docA ? docA.numPages : 0, docB ? docB.numPages : 0);
     document.getElementById('cmp-page-info').textContent =
-      'Page ' + currentPage + ' / max(' +
-      (docA ? docA.numPages : '?') + ', ' +
-      (docB ? docB.numPages : '?') + ')';
+      'Page ' + currentPage + ' / ' + totalPages;
     setStatus('', '');
   }
 

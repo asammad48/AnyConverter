@@ -17,14 +17,14 @@
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
     html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F4F6FF);color:var(--color-text,#1E1B4B)}
     body{min-height:100vh;display:flex;flex-direction:column}
-    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8FE)}
+    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8D0)}
     .header-inner{max-width:1280px;width:100%;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;gap:32px}
     .hero{padding:40px 24px 32px;max-width:1280px;margin:0 auto}
     .hero h1{font-size:clamp(1.75rem,4vw,2.25rem);font-weight:700;line-height:1.2;margin-bottom:12px}
     .hero-desc{font-size:1.0625rem;color:var(--color-text-2,#6B7280);max-width:680px;line-height:1.6}
     .tool-status{display:none;padding:10px 14px;border-radius:8px;font-size:13px;margin-top:12px}
     .tool-status--success{background:var(--color-success-bg,#ECFDF5);color:var(--color-success,#059669)}
-    .num-input{width:72px;padding:10px 8px;border:1px solid var(--color-border,#DDD8FE);border-radius:8px;font-size:1.2rem;font-weight:700;text-align:center;font-family:monospace}
+    .num-input{width:72px;padding:10px 8px;border:1px solid var(--color-border,#DDD8D0);border-radius:8px;font-size:1.2rem;font-weight:700;text-align:center;font-family:monospace}
     @font-face{font-family:'Inter';font-display:swap}
   </style>
   <link rel="stylesheet" href="/assets/css/style.css">
@@ -58,8 +58,8 @@
           <!-- Display -->
           <div id="cd-display" style="font-size:clamp(2.5rem,8vw,4rem);font-weight:700;font-family:monospace;letter-spacing:0.05em;color:var(--color-text,#1E1B4B);margin-bottom:12px;padding:20px;background:var(--color-bg,#F4F6FF);border-radius:12px">00:05:00</div>
           <!-- Progress bar -->
-          <div style="width:100%;max-width:400px;height:6px;background:var(--color-border,#DDD8FE);border-radius:3px;margin:0 auto 20px;overflow:hidden">
-            <div id="cd-progress" style="height:100%;background:var(--color-primary,#4F46E5);border-radius:3px;width:100%;transition:width .9s linear"></div>
+          <div style="width:100%;max-width:400px;height:6px;background:var(--color-border,#DDD8D0);border-radius:3px;margin:0 auto 20px;overflow:hidden">
+            <div id="cd-progress" style="height:100%;background:var(--color-primary,#B04A45);border-radius:3px;width:100%;transition:width .9s linear"></div>
           </div>
           <!-- Controls -->
           <div style="display:flex;justify-content:center;gap:12px">
@@ -89,10 +89,10 @@
     <section class="related-tools">
       <h2>Related Tools</h2>
       <div class="tool-grid">
-        <a href="/stopwatch/" class="tool-card"><img src="/assets/img/icon-browser.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Stopwatch</h3><p>Measure elapsed time with lap support.</p><span class="tool-card-link">Try it →</span></a>
-        <a href="/pomodoro-timer/" class="tool-card"><img src="/assets/img/icon-browser.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Pomodoro Timer</h3><p>Run structured focus and break sessions.</p><span class="tool-card-link">Try it →</span></a>
-        <a href="/meeting-timer/" class="tool-card"><img src="/assets/img/icon-browser.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Meeting Timer</h3><p>Keep meetings on schedule.</p><span class="tool-card-link">Try it →</span></a>
-        <a href="/world-clock/" class="tool-card"><img src="/assets/img/icon-browser.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>World Clock</h3><p>Check time zones instantly.</p><span class="tool-card-link">Try it →</span></a>
+        <a href="/stopwatch/" class="tool-card"><img src="/assets/img/icon-stopwatch.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Stopwatch</h3><p>Measure elapsed time with lap support.</p><span class="tool-card-link">Try it →</span></a>
+        <a href="/pomodoro-timer/" class="tool-card"><img src="/assets/img/icon-pomodoro.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Pomodoro Timer</h3><p>Run structured focus and break sessions.</p><span class="tool-card-link">Try it →</span></a>
+        <a href="/meeting-timer/" class="tool-card"><img src="/assets/img/icon-meeting.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Meeting Timer</h3><p>Keep meetings on schedule.</p><span class="tool-card-link">Try it →</span></a>
+        <a href="/world-clock/" class="tool-card"><img src="/assets/img/icon-worldclock.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>World Clock</h3><p>Check time zones instantly.</p><span class="tool-card-link">Try it →</span></a>
       </div>
     </section>
 

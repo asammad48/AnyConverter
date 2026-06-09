@@ -107,7 +107,7 @@ document.addEventListener('DOMContentLoaded', function () {
     hexInput.value = hexVal;
 
     swatch.style.background = hex;
-    picker.value = hex.length === 7 ? hex : hex;
+    picker.value = hex.length === 7 ? hex : (hex.length === 4 ? '#' + hex[1]+hex[1]+hex[2]+hex[2]+hex[3]+hex[3] : hex);
     buildPalette(hsl.h, hsl.s);
     updateColorStats(hsl, hsb);
   }

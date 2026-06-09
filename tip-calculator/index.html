@@ -27,7 +27,7 @@
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
     html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F4F6FF);color:var(--color-text,#1E1B4B)}
     body{min-height:100vh;display:flex;flex-direction:column}
-    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8FE)}
+    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8D0)}
     .header-inner{max-width:1280px;width:100%;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;gap:32px}
     .hero{padding:40px 24px 32px;max-width:1280px;margin:0 auto}
     .hero h1{font-size:clamp(1.75rem,4vw,2.25rem);font-weight:700;line-height:1.2;margin-bottom:12px}
@@ -49,14 +49,14 @@
     <div class="tool-wrapper">
       <div class="tool-zone">
         <div style="padding:24px">
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px">
+          <div class="two-col-grid" style="margin-bottom:12px">
             <div>
               <label style="display:block;font-size:13px;font-weight:500;margin-bottom:6px" for="tip-bill">Bill Amount ($)</label>
-              <input type="number" id="tip-bill" placeholder="50.00" min="0" step="0.01" style="width:100%;padding:10px 12px;border:1px solid var(--color-border,#DDD8FE);border-radius:8px;font-size:15px">
+              <input type="number" id="tip-bill" placeholder="50.00" min="0" step="0.01" style="width:100%;padding:10px 12px;border:1px solid var(--color-border,#DDD8D0);border-radius:8px;font-size:15px">
             </div>
             <div>
               <label style="display:block;font-size:13px;font-weight:500;margin-bottom:6px" for="tip-people">Number of People</label>
-              <input type="number" id="tip-people" value="1" min="1" style="width:100%;padding:10px 12px;border:1px solid var(--color-border,#DDD8FE);border-radius:8px;font-size:15px">
+              <input type="number" id="tip-people" value="1" min="1" style="width:100%;padding:10px 12px;border:1px solid var(--color-border,#DDD8D0);border-radius:8px;font-size:15px">
             </div>
           </div>
           <div style="margin-bottom:16px">
@@ -68,7 +68,7 @@
               <button class="btn btn-secondary btn-sm tip-preset" data-pct="20">20%</button>
               <button class="btn btn-secondary btn-sm tip-preset" data-pct="25">25%</button>
             </div>
-            <input type="range" id="tip-slider" min="0" max="50" value="15" style="width:100%;accent-color:var(--color-primary,#4F46E5)">
+            <input type="range" id="tip-slider" min="0" max="50" value="15" style="width:100%;accent-color:var(--color-primary,#B04A45)">
           </div>
           <div id="tip-result" style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:8px">
             <div class="stat-card"><div class="stat-val" id="tip-amount">$0.00</div><div class="stat-lbl">Tip Amount</div></div>

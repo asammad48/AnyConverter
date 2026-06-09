@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Conversor de Markdown a HTML Online Gratis | AnyConverter</title>
+  <meta name="description" content="Convierte Markdown a HTML online de forma gratuita. Vista previa en vivo con salida renderizada y vista del código HTML. Soporta GitHub Flavored Markdown. Sin registro.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://anyconverter.io/es/markdown-html/">
+  <link rel="alternate" hreflang="en" href="https://anyconverter.io/markdown-html/">
+  <link rel="alternate" hreflang="es" href="https://anyconverter.io/es/markdown-html/">
+  <link rel="alternate" hreflang="da" href="https://anyconverter.io/da/markdown-html/">
+  <link rel="alternate" hreflang="x-default" href="https://anyconverter.io/markdown-html/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Conversor de Markdown a HTML Online Gratis | AnyConverter">
+  <meta property="og:description" content="Convierte Markdown a HTML online gratis. Vista previa en vivo con salida renderizada y vista del código fuente HTML.">
+  <meta property="og:url" content="https://anyconverter.io/es/markdown-html/">
+  <meta property="og:site_name" content="AnyConverter">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" data-ad-client="ca-pub-XXXXXXXXXX" crossorigin="anonymous"></script>
+  <!-- Replace ca-pub-XXXXXXXXXX with your real AdSense publisher ID -->
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Conversor de Markdown a HTML","url":"https://anyconverter.io/es/markdown-html/","description":"Convierte Markdown a HTML online de forma gratuita con vista previa en vivo.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F4F6FF);color:var(--color-text,#1E1B4B)}
+    body{min-height:100vh;display:flex;flex-direction:column}
+    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8D0)}
+    .header-inner{max-width:1280px;width:100%;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;gap:32px}
+    .hero{padding:40px 24px 32px;max-width:1280px;margin:0 auto}
+    .hero h1{font-size:clamp(1.75rem,4vw,2.25rem);font-weight:700;line-height:1.2;margin-bottom:12px}
+    .hero-desc{font-size:1.0625rem;color:var(--color-text-2,#6B7280);max-width:680px;line-height:1.6}
+    @font-face{font-family:'Inter';font-display:swap}
+  </style>
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+  <header id="site-header" class="site-header"></header>
+  <main id="main-content">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol><li><a href="/es/">Inicio</a></li><li aria-current="page">Markdown a HTML</li></ol>
+    </nav>
+    <section class="hero">
+      <h1>Conversor de Markdown a HTML</h1>
+      <p class="hero-desc">Convierte Markdown a HTML con vista previa en vivo. Escribe o pega Markdown a la izquierda y ve el HTML renderizado al instante a la derecha. Cambia a la vista del código fuente para copiar el HTML en bruto. Soporta GitHub Flavored Markdown — gratis y en el navegador.</p>
+    </section>
+    <div class="tool-wrapper">
+      <div class="tool-zone">
+        <div class="two-panel">
+          <div>
+            <p class="panel-label">Entrada Markdown</p>
+            <textarea id="md-input" placeholder="# Hola Mundo&#10;&#10;Escribe tu **Markdown** aquí..." spellcheck="false" style="min-height:400px"></textarea>
+          </div>
+          <div>
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+              <p class="panel-label" style="margin:0">Salida</p>
+              <div class="sub-tabs" role="tablist" aria-label="Vista de salida Markdown" style="gap:4px">
+                <button class="sub-tab active" id="view-rendered" type="button" role="tab" aria-selected="true">Vista previa</button>
+                <button class="sub-tab" id="view-source" type="button" role="tab" aria-selected="false">Código HTML</button>
+              </div>
+            </div>
+            <div id="md-preview" class="markdown-preview"></div>
+            <div id="md-source" style="display:none">
+              <div class="code-output-wrapper">
+                <pre class="code-output" id="md-source-code"></pre>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="ac-action-bar">
+          <div class="ac-action-bar-left">
+            <button class="btn btn-secondary btn-sm" id="btn-clear-md">Limpiar</button>
+          </div>
+          <div class="ac-action-bar-right">
+            <button class="btn btn-secondary btn-sm" id="btn-copy-html">Copiar HTML</button>
+            <button class="btn btn-secondary btn-sm" id="btn-download-html">Descargar .html</button>
+          </div>
+        </div>
+      </div>
+      <aside class="tool-side" aria-label="Opciones">
+        <div class="ss-divider">Opciones</div>
+        <div class="tog-row"><span class="tog-label" id="lbl-gfm">GitHub Flavored Markdown</span><div class="tog" id="tog-gfm" role="switch" aria-checked="true" tabindex="0" aria-labelledby="lbl-gfm"></div></div>
+        <div class="tog-row"><span class="tog-label" id="lbl-breaks">Convertir saltos de línea</span><div class="tog off" id="tog-breaks" role="switch" aria-checked="false" tabindex="0" aria-labelledby="lbl-breaks"></div></div>
+        <div class="tog-row"><span class="tog-label" id="lbl-sanitize">Limpiar salida HTML</span><div class="tog" id="tog-sanitize" role="switch" aria-checked="true" tabindex="0" aria-labelledby="lbl-sanitize"></div></div>
+        <div class="ss-divider">Estadísticas</div>
+        <div class="stats-grid">
+          <div class="stat-card"><div class="stat-val" id="stat-lines">0</div><div class="stat-lbl">Líneas</div></div>
+          <div class="stat-card"><div class="stat-val" id="stat-words">0</div><div class="stat-lbl">Palabras</div></div>
+          <div class="stat-card"><div class="stat-val" id="stat-headings">0</div><div class="stat-lbl">Encabezados</div></div>
+          <div class="stat-card"><div class="stat-val" id="stat-codeblocks">0</div><div class="stat-lbl">Bloques de código</div></div>
+        </div>
+        <div style="margin-top:8px">
+          <p class="ad-label">Publicidad</p>
+          <div class="ad-slot" style="min-height:250px">
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+          </div>
+        </div>
+      </aside>
+    </div>
+    <div class="ad-slot ad-slot--leaderboard">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="how-to-use">
+      <h2>Cómo Convertir Markdown a HTML</h2>
+      <ol class="steps">
+        <li><strong>Escribe o pega Markdown</strong> — Introduce tu contenido Markdown en el panel izquierdo. El panel derecho se actualiza en vivo.</li>
+        <li><strong>Previsualiza la salida</strong> — Ve el HTML renderizado en modo Vista previa, o cambia a Código HTML para ver el marcado en bruto.</li>
+        <li><strong>Copia o descarga</strong> — Copia el HTML al portapapeles o descárgalo como archivo .html.</li>
+      </ol>
+    </section>
+    <section class="features">
+      <h2>Características</h2>
+      <ul class="features-list">
+        <li>Vista previa en vivo mientras escribes</li>
+        <li>Vista previa renderizada y vista del código fuente HTML</li>
+        <li>Soporta GitHub Flavored Markdown</li>
+        <li>Copia HTML al portapapeles</li>
+        <li>Descarga como archivo .html</li>
+        <li>100% en el navegador, sin servidor</li>
+      </ul>
+    </section>
+    <div class="ad-slot ad-slot--rectangle" style="margin:0 auto 32px">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="faq">
+      <h2>Preguntas Frecuentes</h2>
+      <div class="faq-list">
+        <details class="faq-item"><summary class="faq-question">¿Qué es Markdown? <span class="faq-icon">+</span></summary><div class="faq-answer">Markdown es un lenguaje de marcado ligero que usa sintaxis de formato de texto plano. Fue diseñado para ser fácil de escribir y leer, y se convierte limpiamente a HTML.</div></details>
+        <details class="faq-item"><summary class="faq-question">¿Qué es GitHub Flavored Markdown? <span class="faq-icon">+</span></summary><div class="faq-answer">GitHub Flavored Markdown (GFM) es un superconjunto del Markdown estándar que añade funciones como tablas, listas de tareas, texto tachado y bloques de código delimitados con resaltado de sintaxis.</div></details>
+        <details class="faq-item"><summary class="faq-question">¿Cómo añado un enlace en Markdown? <span class="faq-icon">+</span></summary><div class="faq-answer">Usa la sintaxis [texto del enlace](URL). Por ejemplo, [AnyConverter](https://anyconverter.io) crea un enlace clicable.</div></details>
+        <details class="faq-item"><summary class="faq-question">¿Cómo añado una imagen en Markdown? <span class="faq-icon">+</span></summary><div class="faq-answer">Usa ![texto alternativo](url-imagen) — similar a un enlace pero con un signo de exclamación al principio. El texto alternativo se muestra si la imagen no carga.</div></details>
+        <details class="faq-item"><summary class="faq-question">¿Puedo usar la salida HTML en mi web? <span class="faq-icon">+</span></summary><div class="faq-answer">Sí. El HTML generado es limpio y está listo para pegar en cualquier página web. Puede que necesites añadir tus propios estilos CSS, ya que esta herramienta no incluye una hoja de estilos en el archivo descargado.</div></details>
+      </div>
+    </section>
+    <section class="related-tools">
+      <h2>Herramientas Relacionadas</h2>
+      <div class="tool-grid">
+        <a href="/es/json-formatter/" class="tool-card"><img src="/assets/img/icon-json.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Formateador JSON</h3><p>Formatea y valida JSON.</p><span class="tool-card-link">Usar →</span></a>
+        <a href="/es/xml-formatter/" class="tool-card"><img src="/assets/img/icon-xml.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Formateador XML</h3><p>Formatea y valida XML.</p><span class="tool-card-link">Usar →</span></a>
+        <a href="/es/base64-encoder/" class="tool-card"><img src="/assets/img/icon-base64.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Codificador Base64</h3><p>Codifica y decodifica Base64.</p><span class="tool-card-link">Usar →</span></a>
+        <a href="/es/url-encoder/" class="tool-card"><img src="/assets/img/icon-url.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Codificador de URL</h3><p>Codifica o decodifica URLs.</p><span class="tool-card-link">Usar →</span></a>
+      </div>
+    </section>
+  </main>
+  <footer id="site-footer" class="site-footer"></footer>
+  <script src="/assets/js/shared.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/9.1.6/marked.min.js" defer></script>
+  <script src="/assets/js/tools/markdown.js" defer></script>
+</body>
+</html>

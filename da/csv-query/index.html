@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSV-forespørgselsværktøj Online — Kør SQL på CSV-filer Gratis | AnyConverter</title>
+  <meta name="description" content="Forespørg CSV-filer med SQL online gratis. Upload en CSV og kør SELECT, WHERE, GROUP BY direkte i din browser med SQL.js. Eksporter resultater som CSV eller JSON.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://anyconverter.io/da/csv-query/">
+  <link rel="alternate" hreflang="en" href="https://anyconverter.io/csv-query/">
+  <link rel="alternate" hreflang="es" href="https://anyconverter.io/es/csv-query/">
+  <link rel="alternate" hreflang="da" href="https://anyconverter.io/da/csv-query/">
+  <link rel="alternate" hreflang="x-default" href="https://anyconverter.io/csv-query/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="CSV-forespørgselsværktøj Online — Kør SQL på CSV-filer Gratis | AnyConverter">
+  <meta property="og:description" content="Forespørg CSV-filer med SQL online gratis. Kør SELECT, WHERE, GROUP BY i din browser. Eksporter resultater som CSV eller JSON.">
+  <meta property="og:url" content="https://anyconverter.io/da/csv-query/">
+  <meta property="og:site_name" content="AnyConverter">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" data-ad-client="ca-pub-XXXXXXXXXX" crossorigin="anonymous"></script>
+  <!-- Replace ca-pub-XXXXXXXXXX with your real AdSense publisher ID -->
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"CSV-forespørgselsværktøj","url":"https://anyconverter.io/da/csv-query/","description":"Forespørg CSV-filer med SQL online gratis. Upload en CSV og kør SELECT, WHERE, GROUP BY direkte i din browser med SQL.js.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F4F6FF);color:var(--color-text,#1E1B4B)}
+    body{min-height:100vh;display:flex;flex-direction:column}
+    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8D0)}
+    .header-inner{max-width:1280px;width:100%;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;gap:32px}
+    .hero{padding:40px 24px 32px;max-width:1280px;margin:0 auto}
+    .hero h1{font-size:clamp(1.75rem,4vw,2.25rem);font-weight:700;line-height:1.2;margin-bottom:12px}
+    .hero-desc{font-size:1.0625rem;color:var(--color-text-2,#6B7280);max-width:680px;line-height:1.6}
+    @font-face{font-family:'Inter';font-display:swap}
+    .query-history{display:flex;flex-direction:column;gap:6px}
+    .history-item{padding:8px 12px;background:var(--color-bg,#F4F6FF);border-radius:6px;font-family:var(--font-mono,monospace);font-size:12px;cursor:pointer;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:var(--color-text,#1E1B4B);border:1px solid var(--color-border,#DDD8D0)}
+    .history-item:hover{background:var(--color-border,#DDD8D0);color:var(--color-text,#1E1B4B)}
+  </style>
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+  <header id="site-header" class="site-header"></header>
+  <main id="main-content">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol><li><a href="/da/">Hjem</a></li><li aria-current="page">CSV-forespørgsel</li></ol>
+    </nav>
+    <section class="hero">
+      <h1>CSV-forespørgselsværktøj — Kør SQL på CSV-filer</h1>
+      <p class="hero-desc">Upload en CSV-fil og forespørg den med SQL direkte i din browser. Brug SELECT, WHERE, GROUP BY, ORDER BY, aggregeringer og meget mere. Resultater er paginerede og kan sorteres efter kolonne. Eksporter til CSV eller JSON. Drevet af SQL.js (SQLite WASM) — dine data forlader aldrig din enhed.</p>
+    </section>
+    <div class="tool-wrapper">
+      <div class="tool-zone">
+        <div class="drop-zone" id="query-drop-zone" role="button" tabindex="0" aria-label="Slip CSV-filen her eller klik for at gennemse">
+          <svg class="drop-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5"/></svg>
+          <p>Slip din CSV-fil her eller klik for at gennemse</p>
+          <small>Enkelt CSV-fil med headerrække</small>
+          <input type="file" id="query-file-input" accept=".csv,text/csv" aria-label="Upload CSV-fil">
+        </div>
+
+        <div id="query-section" style="display:none">
+          <div class="status-bar info mt-4" id="query-file-info"></div>
+
+          <div class="mt-4">
+            <label for="sql-query" style="font-weight:500;margin-bottom:6px;display:block">
+              SQL-forespørgsel
+              <span style="font-size:12px;color:var(--color-text-2,#6B7280);font-weight:400;margin-left:8px">Ctrl+Enter for at køre — tabelnavn: <code style="background:var(--color-bg,#F4F6FF);padding:2px 5px;border-radius:3px">data</code></span>
+            </label>
+            <textarea id="sql-query" spellcheck="false" style="min-height:120px;font-family:var(--font-mono,monospace);font-size:13px;width:100%;resize:vertical">SELECT * FROM data LIMIT 10</textarea>
+          </div>
+
+          <div class="ac-action-bar mt-4">
+            <div class="ac-action-bar-left">
+              <button class="btn btn-primary" id="btn-run-query">Kør forespørgsel ▶</button>
+              <button class="btn btn-secondary" id="btn-format-sql">Formater SQL</button>
+            </div>
+          </div>
+
+          <div id="query-history-section" style="display:none;margin-top:16px">
+            <p class="panel-label" style="margin-bottom:8px">Forespørgselshistorik</p>
+            <div id="query-history" class="query-history"></div>
+          </div>
+        </div>
+
+        <div id="results-section" style="display:none;margin-top:20px">
+          <div class="results-fs-wrap" id="results-fs-wrap">
+            <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:10px">
+              <div class="status-bar info" id="result-stats" style="margin:0;flex:1;min-width:0"></div>
+              <div style="display:flex;gap:6px;flex-shrink:0;align-items:center">
+                <div class="font-sz-wrap"><button class="font-sz-btn" id="btn-tbl-font-down" title="Formindsk tabelskrift">A−</button><button class="font-sz-btn" id="btn-tbl-font-up" title="Forstør tabelskrift">A+</button></div>
+                <button class="btn btn-sm" id="btn-export-csv">Eksporter CSV</button>
+                <button class="btn btn-sm" id="btn-export-json">Eksporter JSON</button>
+                <button class="btn btn-sm" id="btn-fs-results" title="Tabel i fuld skærm">⛶ Fuld skærm</button>
+              </div>
+            </div>
+            <div class="csv-preview" id="results-table"></div>
+            <div id="pagination-bar" style="margin-top:12px;display:flex;gap:6px;flex-wrap:wrap;align-items:center"></div>
+          </div>
+        </div>
+      </div>
+
+      <aside class="tool-side" aria-label="Indstillinger">
+        <div class="ss-divider">Indstillinger</div>
+        <div class="tog-row"><span class="tog-label" id="lbl-has-header">CSV har headerrække</span><div class="tog" id="tog-has-header" role="switch" aria-checked="true" tabindex="0" aria-labelledby="lbl-has-header"></div></div>
+        <div class="ss-option-row">
+          <span class="ss-opt-label">Rækker per side</span>
+          <select class="ss-opt-select" id="opt-rows-per-page">
+            <option value="25">25 rækker</option>
+            <option value="50" selected>50 rækker</option>
+            <option value="100">100 rækker</option>
+          </select>
+        </div>
+
+        <div class="ss-divider">Statistik</div>
+        <div class="stats-grid">
+          <div class="stat-card"><div class="stat-val" id="stat-csv-rows">0</div><div class="stat-lbl">Rækker</div></div>
+          <div class="stat-card"><div class="stat-val" id="stat-csv-cols">0</div><div class="stat-lbl">Kolonner</div></div>
+          <div class="stat-card"><div class="stat-val" id="stat-result-rows">0</div><div class="stat-lbl">Resultater</div></div>
+          <div class="stat-card"><div class="stat-val" id="stat-query-time">—</div><div class="stat-lbl">Tid ms</div></div>
+        </div>
+
+        <div class="ss-divider">Hurtig SQL</div>
+        <div style="display:flex;flex-direction:column;gap:4px">
+          <button class="quick-pat-btn" data-sql="SELECT * FROM data LIMIT 10">SELECT * LIMIT 10</button>
+          <button class="quick-pat-btn" data-sql="SELECT COUNT(*) as count FROM data">Tæl rækker</button>
+          <button class="quick-pat-btn" data-sql="SELECT * FROM data WHERE rowid = 1">Første række</button>
+          <button class="quick-pat-btn" data-sql="SELECT DISTINCT * FROM data LIMIT 50">DISTINCT rækker</button>
+        </div>
+
+        <div style="margin-top:8px">
+          <p class="ad-label">Reklame</p>
+          <div class="ad-slot" style="min-height:250px">
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+            <!-- Replace ca-pub-XXXXXXXXXX and data-ad-slot="XXXXXXXXXX" with your IDs -->
+          </div>
+        </div>
+      </aside>
+    </div>
+    <div class="ad-slot ad-slot--leaderboard">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="how-to-use">
+      <h2>Sådan forespørger du en CSV-fil med SQL</h2>
+      <ol class="steps">
+        <li><strong>Upload din CSV</strong> — Slip eller vælg en CSV-fil med en headerrække. Den indlæses i en in-browser SQLite-database som en tabel ved navn <code>data</code>.</li>
+        <li><strong>Skriv SQL</strong> — Forespørg med fuld SQL: SELECT, WHERE, GROUP BY, ORDER BY, LIMIT, JOINs, aggregeringer. Brug Ctrl+Enter for hurtigt at køre.</li>
+        <li><strong>Udforsk og eksporter</strong> — Sorter resultater ved at klikke på kolonneoverskrifter. Naviger mellem sider. Eksporter hele resultatsættet som CSV eller JSON.</li>
+      </ol>
+    </section>
+    <section class="features">
+      <h2>Funktioner</h2>
+      <ul class="features-list">
+        <li>Fuld SQLite SQL — SELECT, WHERE, GROUP BY, ORDER BY, aggregeringer</li>
+        <li>Paginerede resultater — 50 rækker per side</li>
+        <li>Sorterbare kolonner — klik på overskrifter for at sortere stigende/faldende</li>
+        <li>Eksporter resultater som CSV eller JSON</li>
+        <li>Forespørgselshistorik — de sidste 5 forespørgsler, klik for at gendanne</li>
+        <li>100% browserbaseret — drevet af SQL.js (SQLite WASM)</li>
+      </ul>
+    </section>
+    <div class="ad-slot ad-slot--rectangle" style="margin:0 auto 32px">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="faq">
+      <h2>Ofte stillede spørgsmål</h2>
+      <div class="faq-list">
+        <details class="faq-item"><summary class="faq-question">Hvilken SQL-syntaks understøttes? <span class="faq-icon">+</span></summary><div class="faq-answer">Værktøjet bruger SQL.js, en WebAssembly-version af SQLite. Det understøtter SELECT, WHERE, GROUP BY, ORDER BY, LIMIT, OFFSET, JOINs, underforespørgsler og aggregeringer som COUNT, SUM, AVG, MIN og MAX. De fleste SQLite-funktioner virker også.</div></details>
+        <details class="faq-item"><summary class="faq-question">Hvad er tabelnavnet for min CSV? <span class="faq-icon">+</span></summary><div class="faq-answer">Din CSV indlæses i en tabel kaldet <strong>data</strong>. Kolonnenavne kommer fra den første række (headerrækken) i din CSV. Hvis et kolonnenavn har mellemrum, skal du sætte det i dobbelte anførselstegn: SELECT "fornavn" FROM data.</div></details>
+        <details class="faq-item"><summary class="faq-question">Hvor stor en fil kan jeg forespørge? <span class="faq-icon">+</span></summary><div class="faq-answer">Der er ingen fast grænse — browserens tilgængelige hukommelse er begrænsningen. Filer op til 50 MB fungerer typisk fint. Meget store filer kan tage et øjeblik at indlæse i den in-memory SQLite-database.</div></details>
+        <details class="faq-item"><summary class="faq-question">Sendes mine data til en server? <span class="faq-icon">+</span></summary><div class="faq-answer">Nej. Al behandling kører lokalt i din browser. SQL.js er en WASM-version af SQLite, der kører udelukkende på klientsiden. Dine CSV-data og forespørgselsresultater forlader aldrig din enhed.</div></details>
+        <details class="faq-item"><summary class="faq-question">Kan jeg køre flere forespørgsler på den samme fil? <span class="faq-icon">+</span></summary><div class="faq-answer">Ja. Når en CSV er indlæst, kan du køre så mange forespørgsler, du vil. Historikken gemmer dine sidste 5 forespørgsler til hurtig genbrug. Upload en ny fil for at erstatte det aktuelle datasæt.</div></details>
+      </div>
+    </section>
+    <section class="related-tools">
+      <h2>Relaterede værktøjer</h2>
+      <div class="tool-grid">
+        <a href="/da/csv-to-sql/" class="tool-card"><img src="/assets/img/icon-csv.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>CSV til SQL</h3><p>Konverter CSV til SQL INSERT-sætninger.</p><span class="tool-card-link">Prøv →</span></a>
+        <a href="/da/json-formatter/" class="tool-card"><img src="/assets/img/icon-json.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>JSON-formatering</h3><p>Formater og valider JSON.</p><span class="tool-card-link">Prøv →</span></a>
+        <a href="/da/xml-formatter/" class="tool-card"><img src="/assets/img/icon-xml.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>XML-formatering</h3><p>Formater og valider XML.</p><span class="tool-card-link">Prøv →</span></a>
+        <a href="/da/regex-tester/" class="tool-card"><img src="/assets/img/icon-regex.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Regex-tester</h3><p>Test regulære udtryk live.</p><span class="tool-card-link">Prøv →</span></a>
+        <a href="/da/hash-generator/" class="tool-card"><img src="/assets/img/icon-hash.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Hash-generator</h3><p>Generer MD5, SHA-256, SHA-512 hashes.</p><span class="tool-card-link">Prøv →</span></a>
+        <a href="/da/timestamp-converter/" class="tool-card"><img src="/assets/img/icon-clock.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Tidsstempelkonverter</h3><p>Konverter Unix-tidsstempler til datoer.</p><span class="tool-card-link">Prøv →</span></a>
+      </div>
+    </section>
+  </main>
+
+  <div id="csv-fs-overlay" class="fs-overlay"></div>
+
+  <footer id="site-footer" class="site-footer"></footer>
+  <script src="/assets/js/shared.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.10.2/sql-wasm.js" defer></script>
+  <script src="/assets/js/tools/csv-query.js" defer></script>
+</body>
+</html>

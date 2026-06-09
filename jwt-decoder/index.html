@@ -27,7 +27,7 @@
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
     html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F4F6FF);color:var(--color-text,#1E1B4B)}
     body{min-height:100vh;display:flex;flex-direction:column}
-    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8FE)}
+    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8D0)}
     .header-inner{max-width:1280px;width:100%;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;gap:32px}
     .hero{padding:40px 24px 32px;max-width:1280px;margin:0 auto}
     .hero h1{font-size:clamp(1.75rem,4vw,2.25rem);font-weight:700;line-height:1.2;margin-bottom:12px}
@@ -48,10 +48,10 @@
     </section>
     <div class="tool-wrapper">
       <div class="tool-zone">
-        <div style="padding:24px">
+        <div class="ac-panel" style="padding:24px">
           <div style="margin-bottom:12px">
             <label style="display:block;font-size:13px;font-weight:500;margin-bottom:6px" for="jwt-input">JWT Token</label>
-            <textarea id="jwt-input" placeholder="Paste your JWT token here (eyJ...)" style="width:100%;min-height:100px;padding:12px;border:1px solid var(--color-border,#DDD8FE);border-radius:8px;font-size:13px;font-family:monospace;resize:vertical" spellcheck="false"></textarea>
+            <textarea id="jwt-input" placeholder="Paste your JWT token here (eyJ...)" style="width:100%;min-height:100px;padding:12px;border:1px solid var(--color-border,#DDD8D0);border-radius:8px;font-size:13px;font-family:monospace;resize:vertical" spellcheck="false"></textarea>
           </div>
           <div class="ac-action-bar" style="margin-bottom:16px">
             <button class="btn btn-primary" id="btn-decode-jwt">Decode</button>
@@ -59,16 +59,16 @@
           </div>
           <div id="jwt-result" style="display:none">
             <div style="margin-bottom:12px">
-              <div style="font-size:13px;font-weight:600;color:var(--color-primary,#4F46E5);margin-bottom:6px">Header</div>
-              <pre id="jwt-header" style="background:var(--color-bg,#F4F6FF);border:1px solid var(--color-border,#DDD8FE);border-radius:8px;padding:12px;font-size:13px;overflow-x:auto;white-space:pre-wrap;word-break:break-all"></pre>
+              <div style="font-size:13px;font-weight:600;color:var(--color-primary,#B04A45);margin-bottom:6px">Header</div>
+              <pre id="jwt-header" style="background:var(--color-bg,#F4F6FF);border:1px solid var(--color-border,#DDD8D0);border-radius:8px;padding:12px;font-size:13px;overflow-x:auto;white-space:pre-wrap;word-break:break-all"></pre>
             </div>
             <div style="margin-bottom:12px">
               <div style="font-size:13px;font-weight:600;color:var(--color-success,#059669);margin-bottom:6px">Payload</div>
-              <pre id="jwt-payload" style="background:var(--color-bg,#F4F6FF);border:1px solid var(--color-border,#DDD8FE);border-radius:8px;padding:12px;font-size:13px;overflow-x:auto;white-space:pre-wrap;word-break:break-all"></pre>
+              <pre id="jwt-payload" style="background:var(--color-bg,#F4F6FF);border:1px solid var(--color-border,#DDD8D0);border-radius:8px;padding:12px;font-size:13px;overflow-x:auto;white-space:pre-wrap;word-break:break-all"></pre>
             </div>
             <div>
               <div style="font-size:13px;font-weight:600;color:var(--color-error,#DC2626);margin-bottom:6px">Signature</div>
-              <div id="jwt-sig" style="background:var(--color-bg,#F4F6FF);border:1px solid var(--color-border,#DDD8FE);border-radius:8px;padding:12px;font-size:13px;font-family:monospace;word-break:break-all"></div>
+              <div id="jwt-sig" style="background:var(--color-bg,#F4F6FF);border:1px solid var(--color-border,#DDD8D0);border-radius:8px;padding:12px;font-size:13px;font-family:monospace;word-break:break-all"></div>
             </div>
             <div id="jwt-exp-info" style="margin-top:12px;padding:10px 12px;border-radius:8px;font-size:13px;display:none"></div>
           </div>

@@ -46,7 +46,7 @@
 
   function downloadImg() {
     if (!compressedBlob) return;
-    var ext = document.getElementById('output-format').value.split('/')[1];
+    var ext = document.getElementById('output-format').value.split('/')[1].replace('jpeg', 'jpg');
     var a = document.createElement('a');
     a.href = URL.createObjectURL(compressedBlob);
     a.download = 'compressed.' + ext;

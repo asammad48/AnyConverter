@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Seguimiento de Hábitos Online Gratis | AnyConverter</title>
+  <meta name="description" content="Controla tus hábitos diarios con un seguidor de hábitos online gratuito. Ve la cuadrícula semanal, tasas de cumplimiento y rachas. Los datos se guardan en tu navegador. Sin registro.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://anyconverter.io/es/habit-tracker/">
+  <link rel="alternate" hreflang="en" href="https://anyconverter.io/habit-tracker/"><link rel="alternate" hreflang="es" href="https://anyconverter.io/es/habit-tracker/"><link rel="alternate" hreflang="da" href="https://anyconverter.io/da/habit-tracker/"><link rel="alternate" hreflang="x-default" href="https://anyconverter.io/habit-tracker/">
+  <meta property="og:type" content="website"><meta property="og:title" content="Seguimiento de Hábitos Online Gratis | AnyConverter"><meta property="og:description" content="Controla hábitos con una cuadrícula semanal, rachas y tasas de cumplimiento. Gratis y basado en el navegador."><meta property="og:url" content="https://anyconverter.io/es/habit-tracker/"><meta property="og:site_name" content="AnyConverter">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" data-ad-client="ca-pub-XXXXXXXXXX" crossorigin="anonymous"></script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Seguimiento de Hábitos","url":"https://anyconverter.io/es/habit-tracker/","description":"Seguidor de hábitos online gratuito con cuadrícula semanal y contador de rachas.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F4F6FF);color:var(--color-text,#1E1B4B)}
+    body{min-height:100vh;display:flex;flex-direction:column}
+    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8D0)}
+    .header-inner{max-width:1280px;width:100%;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;gap:32px}
+    .hero{padding:40px 24px 32px;max-width:1280px;margin:0 auto}
+    .hero h1{font-size:clamp(1.75rem,4vw,2.25rem);font-weight:700;line-height:1.2;margin-bottom:12px}
+    .hero-desc{font-size:1.0625rem;color:var(--color-text-2,#6B7280);max-width:680px;line-height:1.6}
+    .habit-table{width:100%;border-collapse:collapse;overflow-x:auto;display:block}
+    @font-face{font-family:'Inter';font-display:swap}
+  </style>
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+  <header id="site-header" class="site-header"></header>
+  <main id="main-content">
+    <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/es/">Inicio</a></li><li><a href="/es/todo-list/">Productividad</a></li><li aria-current="page">Seguimiento de Hábitos</li></ol></nav>
+    <section class="hero">
+      <h1>Seguimiento de Hábitos Online</h1>
+      <p class="hero-desc">Crea y mantén hábitos diarios con una cuadrícula semanal visual. Controla rachas, ve tu tasa de cumplimiento de la semana y mantén la constancia.</p>
+    </section>
+    <div class="tool-wrapper">
+      <div class="tool-zone">
+        <div style="padding:24px">
+          <!-- Agregar hábito -->
+          <div style="display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap">
+            <input type="text" id="habit-input" placeholder="Introduce un nuevo hábito (ej. Beber agua)" style="flex:1;min-width:200px;padding:10px 14px;border:1px solid var(--color-border,#DDD8D0);border-radius:8px;font-size:14px">
+            <button class="btn btn-primary" id="habit-add">Agregar hábito</button>
+          </div>
+          <!-- Etiqueta de semana -->
+          <div id="habit-week-label" style="font-size:12px;color:var(--color-text-2,#6B7280);margin-bottom:10px;font-weight:500"></div>
+          <!-- Tabla -->
+          <div style="overflow-x:auto">
+            <table class="habit-table" style="min-width:560px">
+              <thead id="habit-thead"></thead>
+              <tbody id="habit-list"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <aside class="tool-side" aria-label="Publicidad">
+        <div style="margin-top:16px">
+          <p class="ad-label">Publicidad</p>
+          <div class="ad-slot" style="min-height:250px">
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+          </div>
+        </div>
+      </aside>
+    </div>
+    <section class="how-to-use"><h2>Cómo usar el Seguimiento de Hábitos</h2><ol class="steps"><li><strong>Paso 1</strong> — Escribe el nombre de un hábito y haz clic en <em>Agregar hábito</em>.</li><li><strong>Paso 2</strong> — Haz clic en el círculo de cada día que completaste el hábito esta semana.</li><li><strong>Paso 3</strong> — Observa cómo el contador de racha crece con los días consecutivos.</li><li><strong>Paso 4</strong> — Elimina un hábito con el botón × a la derecha.</li></ol></section>
+    <section class="features"><h2>Características</h2><ul class="features-list"><li>Cuadrícula semanal (lun–dom) para la semana actual</li><li>Contador de racha — rastrea días consecutivos</li><li>Contador Hecho/7 para la tasa de cumplimiento semanal</li><li>La fecha de hoy está resaltada con un anillo</li><li>Los datos persisten en localStorage entre visitas</li></ul></section>
+    <section class="faq"><h2>Preguntas frecuentes</h2><div class="faq-list">
+      <details class="faq-item"><summary class="faq-question">¿Registra hábitos de varias semanas? <span class="faq-icon">+</span></summary><div class="faq-answer">Sí. Los datos de verificación se almacenan por fecha, por lo que siempre puedes volver y mostrará la semana correcta. La pantalla siempre muestra la semana actual, y la racha cuenta días consecutivos hacia atrás desde hoy.</div></details>
+      <details class="faq-item"><summary class="faq-question">¿Puedo marcar días pasados como completados? <span class="faq-icon">+</span></summary><div class="faq-answer">Sí. Haz clic en cualquier círculo del día — incluidos los días pasados — para activarlo o desactivarlo. La racha se recalculará desde hoy hacia atrás.</div></details>
+    </div></section>
+
+    <section class="related-tools">
+      <h2>Herramientas relacionadas</h2>
+      <div class="tool-grid">
+        <a href="/es/todo-list/" class="tool-card"><img src="/assets/img/icon-todo.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Lista de tareas</h3><p>Gestiona tareas puntuales y listas de verificación.</p><span class="tool-card-link">Usar →</span></a>
+        <a href="/es/daily-planner/" class="tool-card"><img src="/assets/img/icon-planner.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Planificador Diario</h3><p>Organiza tu horario y prioridades del día.</p><span class="tool-card-link">Usar →</span></a>
+        <a href="/es/sticky-notes/" class="tool-card"><img src="/assets/img/icon-sticky.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Notas adhesivas</h3><p>Captura recordatorios y pensamientos rápidos.</p><span class="tool-card-link">Usar →</span></a>
+        <a href="/es/pomodoro-timer/" class="tool-card"><img src="/assets/img/icon-pomodoro.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Temporizador Pomodoro</h3><p>Mantén la constancia con sesiones enfocadas.</p><span class="tool-card-link">Usar →</span></a>
+      </div>
+    </section>
+
+  </main>
+  <footer id="site-footer" class="site-footer"></footer>
+  <script src="/assets/js/shared.js" defer></script>
+  <script src="/assets/js/tools/habit-tracker.js" defer></script>
+</body>
+</html>

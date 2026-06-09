@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dividir PDF Online — Extraer Páginas Gratis | AnyConverter</title>
+  <meta name="description" content="Divide un PDF en varios archivos o extrae páginas concretas en línea de forma gratuita. Sin software necesario. Elige rangos de páginas o divide cada N páginas. Procesamiento seguro en el navegador.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://anyconverter.io/es/pdf-split/">
+  <link rel="alternate" hreflang="en" href="https://anyconverter.io/pdf-split/">
+  <link rel="alternate" hreflang="es" href="https://anyconverter.io/es/pdf-split/">
+  <link rel="alternate" hreflang="da" href="https://anyconverter.io/da/pdf-split/">
+  <link rel="alternate" hreflang="x-default" href="https://anyconverter.io/pdf-split/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Dividir PDF Online — Extraer Páginas Gratis | AnyConverter">
+  <meta property="og:description" content="Divide un PDF en varios archivos o extrae páginas concretas en línea de forma gratuita.">
+  <meta property="og:url" content="https://anyconverter.io/es/pdf-split/">
+  <meta property="og:site_name" content="AnyConverter">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" data-ad-client="ca-pub-XXXXXXXXXX" crossorigin="anonymous"></script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Dividir PDF — Extraer Páginas Online","url":"https://anyconverter.io/es/pdf-split/","description":"Divide un PDF en varios archivos o extrae páginas concretas en línea de forma gratuita.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F4F6FF);color:var(--color-text,#1E1B4B)}
+    body{min-height:100vh;display:flex;flex-direction:column}
+    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8D0)}
+    .header-inner{max-width:1280px;width:100%;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;gap:32px}
+    .hero{padding:40px 24px 32px;max-width:1280px;margin:0 auto}
+    .hero h1{font-size:clamp(1.75rem,4vw,2.25rem);font-weight:700;line-height:1.2;margin-bottom:12px}
+    .hero-desc{font-size:1.0625rem;color:var(--color-text-2,#6B7280);max-width:680px;line-height:1.6}
+    .upload-area{border:2px dashed var(--color-border,#DDD8D0);border-radius:12px;padding:28px 20px;text-align:center;cursor:pointer;transition:border-color .2s}
+    .upload-area:hover,.upload-area.dragover{border-color:var(--color-primary,#B04A45)}
+    @font-face{font-family:'Inter';font-display:swap}
+  </style>
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+  <header id="site-header" class="site-header"></header>
+  <main id="main-content">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol><li><a href="/es/">Inicio</a></li><li aria-current="page">Dividir PDF</li></ol>
+    </nav>
+    <section class="hero">
+      <h1>Dividir PDF — Extraer Páginas Online</h1>
+      <p class="hero-desc">Divide un PDF en varios archivos o extrae páginas concretas. Elige el modo de división, previsualiza qué páginas van a cada archivo y descarga los archivos individuales o un archivo ZIP. Completamente en el navegador y privado: sin subida al servidor.</p>
+    </section>
+    <div class="tool-wrapper">
+      <div class="tool-zone">
+        <div class="upload-area" id="split-drop-zone" role="button" tabindex="0" aria-label="Arrastra el PDF aquí o haz clic para buscar">
+          <img src="/assets/img/icon-pdf.svg" alt="" width="36" height="36" style="margin-bottom:10px">
+          <p style="font-size:14px;color:var(--color-text-2,#6B7280);margin-bottom:10px">Arrastra tu PDF aquí o haz clic para buscar</p>
+          <input type="file" id="split-input" accept=".pdf,application/pdf" aria-label="Subir PDF para dividir" style="display:none">
+          <button class="btn btn-secondary" type="button">Seleccionar PDF</button>
+        </div>
+
+        <div id="split-settings" style="display:none">
+          <div class="status-bar info mt-4" id="split-file-info"></div>
+
+          <div class="settings-panel mt-4">
+            <h3>Modo de División</h3>
+            <div class="sub-tabs" id="split-mode-tabs" role="tablist" aria-label="Modo de división">
+              <button class="sub-tab active" data-mode="pages" type="button" role="tab" aria-selected="true">Extraer páginas</button>
+              <button class="sub-tab" data-mode="every" type="button" role="tab" aria-selected="false">Cada N páginas</button>
+              <button class="sub-tab" data-mode="each" type="button" role="tab" aria-selected="false">Cada página</button>
+            </div>
+
+            <div id="split-n-section" class="mt-4" style="display:none">
+              <label for="split-n">Dividir cada N páginas</label>
+              <input type="number" id="split-n" value="2" min="1" style="width:120px">
+            </div>
+
+            <div id="page-range-section" class="mt-4">
+              <label for="page-range">Rango de páginas</label>
+              <input type="text" id="page-range" placeholder="ej. 1,3,5-8,12">
+              <p class="text-sm text-muted mt-2">Usa comas para páginas individuales y guiones para rangos</p>
+            </div>
+          </div>
+
+          <button class="btn btn-primary btn-full mt-4" id="btn-split">Dividir PDF</button>
+
+          <div id="split-result" style="display:none;margin-top:16px">
+            <div class="status-bar success mb-4">✓ ¡División completada!</div>
+            <div id="split-downloads"></div>
+          </div>
+        </div>
+      </div>
+
+      <aside class="tool-side" aria-label="Opciones">
+        <div class="ss-divider">Opciones</div>
+        <div class="ss-option-row">
+          <span class="ss-opt-label">Prefijo de nombre de archivo</span>
+          <input class="ss-opt-input" id="split-prefix" type="text" value="parte" placeholder="parte" maxlength="30">
+        </div>
+        <div class="tog-row"><span class="tog-label" id="lbl-zip-dl">Descargar como ZIP</span><div class="tog off" id="tog-zip-dl" role="switch" aria-checked="false" tabindex="0" aria-labelledby="lbl-zip-dl"></div></div>
+
+        <div class="ss-divider">Estadísticas</div>
+        <div class="stats-grid">
+          <div class="stat-card"><div class="stat-val" id="stat-total-p">—</div><div class="stat-lbl">Total de páginas</div></div>
+          <div class="stat-card"><div class="stat-val" id="stat-sel-p">—</div><div class="stat-lbl">Seleccionadas</div></div>
+          <div class="stat-card"><div class="stat-val" id="stat-parts">—</div><div class="stat-lbl">Archivos de salida</div></div>
+          <div class="stat-card"><div class="stat-val" id="stat-split-size">—</div><div class="stat-lbl">Tamaño de entrada</div></div>
+        </div>
+
+        <div style="margin-top:8px">
+          <p class="ad-label">Publicidad</p>
+          <div class="ad-slot" style="min-height:250px">
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+          </div>
+        </div>
+      </aside>
+    </div>
+    <div class="ad-slot ad-slot--leaderboard">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="how-to-use">
+      <h2>Cómo Dividir un PDF</h2>
+      <ol class="steps">
+        <li><strong>Sube tu PDF</strong> — Arrastra el archivo PDF o haz clic para seleccionarlo. La herramienta muestra el número total de páginas.</li>
+        <li><strong>Elige el modo de división</strong> — Extrae páginas específicas por rango, divide cada N páginas o extrae cada página por separado.</li>
+        <li><strong>Descarga</strong> — Haz clic en Dividir PDF y descarga cada archivo resultante.</li>
+      </ol>
+    </section>
+    <section class="features">
+      <h2>Características</h2>
+      <ul class="features-list">
+        <li>Extrae páginas específicas por rango</li>
+        <li>Divide cada N páginas</li>
+        <li>Extrae cada página por separado</li>
+        <li>Descarga archivos PDF individuales</li>
+        <li>100% privado: sin subida al servidor</li>
+        <li>Basado en pdf-lib</li>
+      </ul>
+    </section>
+    <div class="ad-slot ad-slot--rectangle" style="margin:0 auto 32px">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="faq">
+      <h2>Preguntas Frecuentes</h2>
+      <div class="faq-list">
+        <details class="faq-item"><summary class="faq-question">¿Cómo especifico rangos de páginas? <span class="faq-icon">+</span></summary><div class="faq-answer">Usa comas para separar páginas individuales y guiones para rangos. Ejemplo: 1,3,5-8,12 extrae las páginas 1, 3, 5, 6, 7, 8 y 12.</div></details>
+        <details class="faq-item"><summary class="faq-question">¿Puedo extraer una sola página de un PDF? <span class="faq-icon">+</span></summary><div class="faq-answer">Sí. Usa el modo "Extraer páginas específicas" e introduce solo el número de página que deseas (ej. "5" para obtener únicamente la página 5).</div></details>
+        <details class="faq-item"><summary class="faq-question">¿Se suben mis PDFs a un servidor? <span class="faq-icon">+</span></summary><div class="faq-answer">No. Toda la división ocurre localmente en tu navegador usando la biblioteca JavaScript pdf-lib. Tus archivos nunca abandonan tu dispositivo.</div></details>
+        <details class="faq-item"><summary class="faq-question">¿Qué ocurre con la calidad de las páginas al dividir? <span class="faq-icon">+</span></summary><div class="faq-answer">pdf-lib copia las páginas sin reprocesarlas, por lo que la calidad se preserva perfectamente. El texto, las imágenes y los gráficos son idénticos al original.</div></details>
+        <details class="faq-item"><summary class="faq-question">¿Puedo dividir un PDF grande? <span class="faq-icon">+</span></summary><div class="faq-answer">Sí. No hay un límite de tamaño estricto. Los PDFs muy grandes pueden tardar un momento en procesarse en el navegador, pero toda la división es del lado del cliente sin ninguna subida.</div></details>
+      </div>
+    </section>
+    <section class="related-tools">
+      <h2>Herramientas Relacionadas</h2>
+      <div class="tool-grid">
+        <a href="/es/pdf-merge/" class="tool-card"><img src="/assets/img/icon-pdf.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Unir PDF</h3><p>Combina varios PDFs en uno.</p><span class="tool-card-link">Usar →</span></a>
+        <a href="/es/pdf-compress/" class="tool-card"><img src="/assets/img/icon-pdf.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Comprimir PDF</h3><p>Reduce el tamaño del archivo PDF.</p><span class="tool-card-link">Usar →</span></a>
+        <a href="/es/image-converter/" class="tool-card"><img src="/assets/img/icon-image.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Convertidor de Imágenes</h3><p>Convierte imágenes entre formatos.</p><span class="tool-card-link">Usar →</span></a>
+        <a href="/es/json-formatter/" class="tool-card"><img src="/assets/img/icon-json.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Formateador JSON</h3><p>Formatea y valida JSON.</p><span class="tool-card-link">Usar →</span></a>
+        <a href="/es/hash-generator/" class="tool-card"><img src="/assets/img/icon-hash.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Generador de Hash</h3><p>Verifica la integridad de archivos.</p><span class="tool-card-link">Usar →</span></a>
+        <a href="/es/base64-encoder/" class="tool-card"><img src="/assets/img/icon-base64.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Codificador Base64</h3><p>Codifica archivos a Base64.</p><span class="tool-card-link">Usar →</span></a>
+      </div>
+    </section>
+  </main>
+  <footer id="site-footer" class="site-footer"></footer>
+  <script src="/assets/js/shared.js" defer></script>
+  <script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js" defer></script>
+  <script src="/assets/js/tools/pdf-split.js" defer></script>
+</body>
+</html>

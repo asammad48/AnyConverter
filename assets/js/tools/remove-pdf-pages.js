@@ -57,7 +57,7 @@
       var keep = [];
       for (var i = 1; i <= pageCount; i++) if (!toRemove.has(i)) keep.push(i - 1);
       if (!keep.length) { setStatus('Cannot remove all pages.', 'error'); return; }
-      var copied = await out.copyPagesFrom(src, keep);
+      var copied = await out.copyPages(src, keep);
       copied.forEach(function (p) { out.addPage(p); });
       var saved = await out.save();
       dl(saved, 'pages-removed.pdf');

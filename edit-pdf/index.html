@@ -17,15 +17,15 @@
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
     html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F4F6FF);color:var(--color-text,#1E1B4B)}
     body{min-height:100vh;display:flex;flex-direction:column}
-    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8FE)}
+    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8D0)}
     .header-inner{max-width:1280px;width:100%;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;gap:32px}
     .hero{padding:40px 24px 32px;max-width:1280px;margin:0 auto}
     .hero h1{font-size:clamp(1.75rem,4vw,2.25rem);font-weight:700;line-height:1.2;margin-bottom:12px}
     .hero-desc{font-size:1.0625rem;color:var(--color-text-2,#6B7280);max-width:680px;line-height:1.6}
     .tool-status{display:none;padding:10px 14px;border-radius:8px;font-size:13px;margin-top:12px}
     .tool-status--error{background:var(--color-error-bg,#FEF2F2);color:var(--color-error,#DC2626)}.tool-status--success{background:var(--color-success-bg,#ECFDF5);color:var(--color-success,#059669)}
-    .upload-area{border:2px dashed var(--color-border,#DDD8FE);border-radius:12px;padding:28px 20px;text-align:center;cursor:pointer;transition:border-color .2s}
-    .upload-area:hover{border-color:var(--color-primary,#4F46E5)}
+    .upload-area{border:2px dashed var(--color-border,#DDD8D0);border-radius:12px;padding:28px 20px;text-align:center;cursor:pointer;transition:border-color .2s}
+    .upload-area:hover{border-color:var(--color-primary,#B04A45)}
     @font-face{font-family:'Inter';font-display:swap}
   </style>
   <link rel="stylesheet" href="/assets/css/style.css">
@@ -53,7 +53,7 @@
             <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px">
               <div>
                 <label style="display:block;font-size:12px;font-weight:500;margin-bottom:4px">Type</label>
-                <select id="ed-type" style="width:100%;padding:8px 10px;border:1px solid var(--color-border,#DDD8FE);border-radius:6px;font-size:13px">
+                <select id="ed-type" style="width:100%;padding:8px 10px;border:1px solid var(--color-border,#DDD8D0);border-radius:6px;font-size:13px">
                   <option value="text">Text</option>
                   <option value="rect">Rectangle</option>
                   <option value="highlight">Highlight</option>
@@ -61,39 +61,39 @@
               </div>
               <div>
                 <label style="display:block;font-size:12px;font-weight:500;margin-bottom:4px">Page</label>
-                <input type="number" id="ed-page" value="1" min="1" style="width:100%;padding:8px 10px;border:1px solid var(--color-border,#DDD8FE);border-radius:6px;font-size:13px">
+                <input type="number" id="ed-page" value="1" min="1" style="width:100%;padding:8px 10px;border:1px solid var(--color-border,#DDD8D0);border-radius:6px;font-size:13px">
               </div>
               <div>
                 <label style="display:block;font-size:12px;font-weight:500;margin-bottom:4px">X (pt)</label>
-                <input type="number" id="ed-x" placeholder="72" style="width:100%;padding:8px 10px;border:1px solid var(--color-border,#DDD8FE);border-radius:6px;font-size:13px">
+                <input type="number" id="ed-x" placeholder="72" style="width:100%;padding:8px 10px;border:1px solid var(--color-border,#DDD8D0);border-radius:6px;font-size:13px">
               </div>
               <div>
                 <label style="display:block;font-size:12px;font-weight:500;margin-bottom:4px">Y (pt)</label>
-                <input type="number" id="ed-y" placeholder="700" style="width:100%;padding:8px 10px;border:1px solid var(--color-border,#DDD8FE);border-radius:6px;font-size:13px">
+                <input type="number" id="ed-y" placeholder="700" style="width:100%;padding:8px 10px;border:1px solid var(--color-border,#DDD8D0);border-radius:6px;font-size:13px">
               </div>
             </div>
             <div id="ed-text-row" style="margin-bottom:10px">
               <label style="display:block;font-size:12px;font-weight:500;margin-bottom:4px">Text</label>
-              <input type="text" id="ed-text" placeholder="Enter text to overlay" style="width:100%;padding:8px 10px;border:1px solid var(--color-border,#DDD8FE);border-radius:6px;font-size:13px">
+              <input type="text" id="ed-text" placeholder="Enter text to overlay" style="width:100%;padding:8px 10px;border:1px solid var(--color-border,#DDD8D0);border-radius:6px;font-size:13px">
             </div>
             <div id="ed-size-row" style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px">
               <div>
                 <label style="display:block;font-size:12px;font-weight:500;margin-bottom:4px">Font Size (pt)</label>
-                <input type="number" id="ed-size" value="12" min="6" max="72" style="width:100%;padding:8px 10px;border:1px solid var(--color-border,#DDD8FE);border-radius:6px;font-size:13px">
+                <input type="number" id="ed-size" value="12" min="6" max="72" style="width:100%;padding:8px 10px;border:1px solid var(--color-border,#DDD8D0);border-radius:6px;font-size:13px">
               </div>
               <div>
                 <label style="display:block;font-size:12px;font-weight:500;margin-bottom:4px">Colour</label>
-                <input type="color" id="ed-color" value="#000000" style="width:100%;height:38px;padding:3px;border:1px solid var(--color-border,#DDD8FE);border-radius:6px">
+                <input type="color" id="ed-color" value="#000000" style="width:100%;height:38px;padding:3px;border:1px solid var(--color-border,#DDD8D0);border-radius:6px">
               </div>
             </div>
             <div id="ed-dim-row" style="display:none;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px">
               <div>
                 <label style="display:block;font-size:12px;font-weight:500;margin-bottom:4px">Width (pt)</label>
-                <input type="number" id="ed-rw" value="100" style="width:100%;padding:8px 10px;border:1px solid var(--color-border,#DDD8FE);border-radius:6px;font-size:13px">
+                <input type="number" id="ed-rw" value="100" style="width:100%;padding:8px 10px;border:1px solid var(--color-border,#DDD8D0);border-radius:6px;font-size:13px">
               </div>
               <div>
                 <label style="display:block;font-size:12px;font-weight:500;margin-bottom:4px">Height (pt)</label>
-                <input type="number" id="ed-rh" value="20" style="width:100%;padding:8px 10px;border:1px solid var(--color-border,#DDD8FE);border-radius:6px;font-size:13px">
+                <input type="number" id="ed-rh" value="20" style="width:100%;padding:8px 10px;border:1px solid var(--color-border,#DDD8D0);border-radius:6px;font-size:13px">
               </div>
             </div>
             <button class="btn btn-secondary" id="ed-add-btn" style="margin-bottom:14px">+ Add Annotation</button>

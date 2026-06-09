@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog — Consejos, Guías y Actualizaciones | AnyConverter</title>
+  <meta name="description" content="El blog de AnyConverter. Consejos y guías para usar nuestras herramientas gratuitas en línea, artículos prácticos para desarrolladores y usuarios en general, y novedades del producto.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://anyconverter.io/es/blog/">
+  <link rel="alternate" hreflang="en" href="https://anyconverter.io/blog/">
+  <link rel="alternate" hreflang="es" href="https://anyconverter.io/es/blog/">
+  <link rel="alternate" hreflang="da" href="https://anyconverter.io/da/blog/">
+  <link rel="alternate" hreflang="x-default" href="https://anyconverter.io/blog/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Blog — AnyConverter">
+  <meta property="og:description" content="Consejos, guías y actualizaciones de AnyConverter — tu kit de herramientas gratuitas en línea para desarrolladores y usuarios en general.">
+  <meta property="og:url" content="https://anyconverter.io/es/blog/">
+  <meta property="og:site_name" content="AnyConverter">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F4F6FF);color:var(--color-text,#1E1B4B)}
+    body{min-height:100vh;display:flex;flex-direction:column}
+    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8D0)}
+    .header-inner{max-width:1280px;width:100%;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;gap:32px}
+    @font-face{font-family:'Inter';font-display:swap}
+    main{flex:1}
+    .page-wrap{max-width:960px;margin:0 auto;padding:44px 24px 80px}
+    .page-hero{margin-bottom:48px}
+    .page-hero h1{font-size:clamp(1.8rem,4vw,2.4rem);font-weight:800;margin-bottom:10px}
+    .page-hero p{font-size:1rem;color:var(--color-text-2,#6B7280);max-width:580px;line-height:1.7}
+    .blog-filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:32px}
+    .filter-btn{padding:6px 16px;border-radius:9999px;font-size:13px;font-weight:600;border:1.5px solid var(--color-border-light,#E0E7FF);background:var(--color-surface,#fff);color:var(--color-text-2,#6B7280);cursor:pointer;transition:all 0.15s}
+    .filter-btn.active,.filter-btn:hover{background:var(--color-primary,#4F46E5);color:var(--color-surface,#fff);border-color:var(--color-primary,#4F46E5)}
+    .blog-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:24px}
+    .blog-card{background:var(--color-surface,#fff);border:1.5px solid var(--color-border-light,#E0E7FF);border-radius:16px;overflow:hidden;text-decoration:none;color:inherit;transition:transform 0.2s,box-shadow 0.2s,border-color 0.2s;display:flex;flex-direction:column}
+    .blog-card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(176,74,69,0.12);border-color:var(--color-primary-hover,#A5B4FC)}
+    .blog-card-thumb{height:160px;display:flex;align-items:center;justify-content:center;font-size:3.5rem}
+    .blog-card-body{padding:20px;flex:1;display:flex;flex-direction:column}
+    .blog-tag{display:inline-block;padding:3px 10px;border-radius:9999px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.04em;margin-bottom:10px}
+    .tag-guide{background:var(--color-primary-light,#EEF2FF);color:var(--color-primary,#4F46E5)}
+    .tag-tips{background:var(--color-success-bg,#F0FDF4);color:var(--color-success,#059669)}
+    .tag-update{background:var(--color-warning-bg,#FFFBEB);color:var(--color-warning,#D97706)}
+    .tag-howto{background:var(--color-error-bg,#FEF2F2);color:var(--color-error,#DC2626)}
+    .blog-card h2{font-size:16px;font-weight:700;line-height:1.4;margin-bottom:8px;color:var(--color-text,#1E1B4B)}
+    .blog-card p{font-size:13.5px;color:var(--color-text-2,#6B7280);line-height:1.6;flex:1;margin-bottom:14px}
+    .blog-card-meta{font-size:12px;color:var(--color-text-2,#9CA3AF);display:flex;gap:12px;align-items:center}
+    .coming-soon-banner{background:linear-gradient(135deg,var(--color-primary-light,#EEF2FF),var(--color-surface-2,#EEF1FF));border:1.5px solid var(--color-border,#DDD8D0);border-radius:16px;padding:40px;text-align:center;margin-top:48px}
+    .coming-soon-banner h2{font-size:1.3rem;font-weight:800;color:var(--color-text,#1E1B4B);margin-bottom:10px}
+    .coming-soon-banner p{color:var(--color-text-2,#6B7280);font-size:15px;max-width:480px;margin:0 auto 20px;line-height:1.7}
+    .coming-soon-banner a{display:inline-block;background:var(--color-primary,#4F46E5);color:var(--color-surface,#fff);font-weight:700;padding:10px 24px;border-radius:9999px;text-decoration:none;font-size:14px}
+  </style>
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+  <header id="site-header" class="site-header"></header>
+
+  <main id="main-content">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="/es/">Inicio</a></li>
+        <li aria-current="page">Blog</li>
+      </ol>
+    </nav>
+
+    <div class="page-wrap">
+
+      <div class="page-hero">
+        <h1>Consejos, Guías y Actualizaciones</h1>
+        <p>Artículos prácticos, guías de herramientas y novedades del equipo de AnyConverter. Aprende a sacar el máximo partido a nuestras más de 78 herramientas gratuitas en línea.</p>
+      </div>
+
+      <div class="blog-filters">
+        <button class="filter-btn active">Todos los Artículos</button>
+        <button class="filter-btn">Guías</button>
+        <button class="filter-btn">Consejos y Trucos</button>
+        <button class="filter-btn">Cómo Hacerlo</button>
+        <button class="filter-btn">Actualizaciones</button>
+      </div>
+
+      <div class="blog-grid">
+
+        <a href="/blog/" class="blog-card">
+          <div class="blog-card-thumb" style="background:var(--color-primary-light,#EEF2FF)">📄</div>
+          <div class="blog-card-body">
+            <span class="blog-tag tag-howto">Cómo Hacerlo</span>
+            <h2>Cómo Combinar Varios PDF en un Solo Archivo (Gratis, Sin Subida)</h2>
+            <p>Guía paso a paso para combinar PDF completamente en tu navegador sin necesidad de subir archivos.</p>
+            <div class="blog-card-meta"><span>Mayo 2026</span><span>·</span><span>5 min de lectura</span></div>
+          </div>
+        </a>
+
+        <a href="/blog/" class="blog-card">
+          <div class="blog-card-thumb" style="background:var(--color-success-bg,#F0FDF4)">🔧</div>
+          <div class="blog-card-body">
+            <span class="blog-tag tag-guide">Guía</span>
+            <h2>10 Herramientas para Desarrolladores que Todo Desarrollador Web Debería Guardar</h2>
+            <p>Desde formateadores JSON hasta probadores de expresiones regulares — las utilidades para desarrolladores de AnyConverter que ahorran tiempo cada día.</p>
+            <div class="blog-card-meta"><span>Mayo 2026</span><span>·</span><span>7 min de lectura</span></div>
+          </div>
+        </a>
+
+        <a href="/blog/" class="blog-card">
+          <div class="blog-card-thumb" style="background:var(--color-warning-bg,#FFFBEB)">🔒</div>
+          <div class="blog-card-body">
+            <span class="blog-tag tag-tips">Consejos</span>
+            <h2>Por Qué las Herramientas Basadas en el Navegador Son Más Seguras que las Alternativas en la Nube</h2>
+            <p>Tus archivos nunca abandonan tu dispositivo. Aquí te explicamos por qué eso importa para la privacidad y la seguridad.</p>
+            <div class="blog-card-meta"><span>Abril 2026</span><span>·</span><span>4 min de lectura</span></div>
+          </div>
+        </a>
+
+        <a href="/blog/" class="blog-card">
+          <div class="blog-card-thumb" style="background:var(--color-error-bg,#FEF2F2)">📊</div>
+          <div class="blog-card-body">
+            <span class="blog-tag tag-howto">Cómo Hacerlo</span>
+            <h2>Cómo Consultar Archivos CSV con SQL — Sin Necesidad de una Base de Datos</h2>
+            <p>Usa nuestra herramienta de consulta CSV para ejecutar consultas SELECT directamente sobre archivos CSV en tu navegador.</p>
+            <div class="blog-card-meta"><span>Abril 2026</span><span>·</span><span>6 min de lectura</span></div>
+          </div>
+        </a>
+
+        <a href="/blog/" class="blog-card">
+          <div class="blog-card-thumb" style="background:var(--color-surface-2,#EEF1FF)">⚡</div>
+          <div class="blog-card-body">
+            <span class="blog-tag tag-update">Actualización</span>
+            <h2>Nuevas Herramientas Añadidas: Generador de UUID, Búsqueda de IP, Verificador de Contraseñas</h2>
+            <p>Tres nuevas herramientas se han incorporado al kit de AnyConverter — esto es lo que hacen y cómo usarlas.</p>
+            <div class="blog-card-meta"><span>Marzo 2026</span><span>·</span><span>3 min de lectura</span></div>
+          </div>
+        </a>
+
+        <a href="/blog/" class="blog-card">
+          <div class="blog-card-thumb" style="background:color-mix(in srgb,var(--color-convert,#06B6D4) 12%,var(--color-surface,#fff))">🎯</div>
+          <div class="blog-card-body">
+            <span class="blog-tag tag-tips">Consejos</span>
+            <h2>5 Formas de Usar el Temporizador Pomodoro para Sesiones de Trabajo Profundo</h2>
+            <p>Haz más con ciclos de trabajo y descanso estructurados. Aquí te mostramos cómo personalizar el temporizador para tu flujo de trabajo.</p>
+            <div class="blog-card-meta"><span>Marzo 2026</span><span>·</span><span>5 min de lectura</span></div>
+          </div>
+        </a>
+
+      </div>
+
+      <div class="coming-soon-banner">
+        <h2>Más artículos próximamente</h2>
+        <p>Estamos trabajando en guías detalladas para cada categoría de herramientas. ¿Tienes algún tema que te gustaría que tratáramos? ¡Háznos saber!</p>
+        <a href="/es/contact/">Sugerir un Tema</a>
+      </div>
+
+    </div>
+  </main>
+
+  <footer id="site-footer" class="site-footer"></footer>
+  <div id="toast" class="toast" aria-live="polite"></div>
+  <script src="/assets/js/shared.js" defer></script>
+</body>
+</html>

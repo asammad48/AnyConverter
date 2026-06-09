@@ -20,7 +20,7 @@
       if (!ctx) return;
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       dots.forEach(function (d) {
-        var colors = { 0: '#4F46E5', 1: '#10B981', 2: '#EF4444' };
+        var colors = { 0: '#B04A45', 1: '#10B981', 2: '#EF4444' };
         ctx.beginPath();
         ctx.arc(d.x, d.y, 8, 0, Math.PI * 2);
         ctx.fillStyle = colors[d.btn] || '#888';
@@ -61,11 +61,13 @@
         if (btn === 1) { clicks.middle++; document.getElementById('mouse-middle').textContent = clicks.middle; }
         if (btn === 2) { clicks.right++;  document.getElementById('mouse-right').textContent  = clicks.right; }
         // button states
-        document.getElementById('mouse-btn-left').classList.toggle('mouse-btn--active', true);
+        var btnIds = { 0: 'mouse-btn-left', 1: 'mouse-btn-middle', 2: 'mouse-btn-right' };
+        if (btnIds[btn]) document.getElementById(btnIds[btn]) && document.getElementById(btnIds[btn]).classList.toggle('mouse-btn--active', true);
       });
 
       area.addEventListener('mouseup', function (e) {
-        document.getElementById('mouse-btn-left').classList.toggle('mouse-btn--active', false);
+        var btnIds = { 0: 'mouse-btn-left', 1: 'mouse-btn-middle', 2: 'mouse-btn-right' };
+        if (btnIds[e.button]) document.getElementById(btnIds[e.button]) && document.getElementById(btnIds[e.button]).classList.toggle('mouse-btn--active', false);
       });
 
       area.addEventListener('contextmenu', function (e) { e.preventDefault(); });

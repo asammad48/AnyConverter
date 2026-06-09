@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Seguridad — AnyConverter</title>
+  <meta name="description" content="Descubre cómo AnyConverter protege tus datos. Todas las herramientas se ejecutan en tu navegador — tus archivos nunca abandonan tu dispositivo. Lee sobre nuestras prácticas de seguridad y política de divulgación responsable.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://anyconverter.io/es/security/">
+  <link rel="alternate" hreflang="en" href="https://anyconverter.io/security/">
+  <link rel="alternate" hreflang="es" href="https://anyconverter.io/es/security/">
+  <link rel="alternate" hreflang="da" href="https://anyconverter.io/da/security/">
+  <link rel="alternate" hreflang="x-default" href="https://anyconverter.io/security/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Seguridad — AnyConverter">
+  <meta property="og:description" content="Cómo AnyConverter protege tus datos. Todo el procesamiento ocurre en el lado del cliente, en tu navegador — ningún archivo ni dato se sube a nuestros servidores.">
+  <meta property="og:url" content="https://anyconverter.io/es/security/">
+  <meta property="og:site_name" content="AnyConverter">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F4F6FF);color:var(--color-text,#1E1B4B)}
+    body{min-height:100vh;display:flex;flex-direction:column}
+    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8D0)}
+    .header-inner{max-width:1280px;width:100%;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;gap:32px}
+    @font-face{font-family:'Inter';font-display:swap}
+    main{flex:1}
+    .page-wrap{max-width:800px;margin:0 auto;padding:44px 24px 80px}
+    .page-wrap h1{font-size:clamp(1.8rem,4vw,2.4rem);font-weight:800;line-height:1.2;margin-bottom:8px}
+    .page-meta{font-size:14px;color:var(--color-text-2,#6B7280);margin-bottom:40px;padding-bottom:20px;border-bottom:1px solid var(--color-border-light,#E0E7FF)}
+    .page-wrap h2{font-size:1.15rem;font-weight:700;color:var(--color-text,#1E1B4B);margin:36px 0 12px;padding-bottom:8px;border-bottom:2px solid var(--color-primary-light,#EEF2FF)}
+    .page-wrap p{font-size:15px;line-height:1.78;color:var(--color-text-body,#374151);margin-bottom:14px}
+    .page-wrap ul{padding-left:22px;margin-bottom:14px}
+    .page-wrap li{font-size:15px;line-height:1.78;color:var(--color-text-body,#374151);margin-bottom:6px}
+    .page-wrap a{color:var(--color-primary,#4F46E5)}
+    .page-wrap strong{color:var(--color-text,#1E1B4B)}
+    .security-pillars{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin:24px 0 32px}
+    .pillar{background:var(--color-surface,#fff);border-radius:14px;padding:22px;border:1.5px solid var(--color-border-light,#E0E7FF)}
+    .pillar-icon{font-size:1.8rem;margin-bottom:10px}
+    .pillar h3{font-size:15px;font-weight:700;color:var(--color-text,#1E1B4B);margin-bottom:6px}
+    .pillar p{font-size:14px;color:var(--color-text-2,#6B7280);margin:0;line-height:1.6}
+    .disclosure-box{background:var(--color-success-bg,#F0FDF4);border:1.5px solid var(--color-success-text,#86EFAC);border-radius:12px;padding:24px 28px;margin:24px 0}
+    .disclosure-box h3{font-size:1rem;font-weight:700;color:var(--color-success-text,#166534);margin-bottom:10px}
+    .disclosure-box p{font-size:15px;color:var(--color-text-body,#374151);margin-bottom:10px;line-height:1.7}
+    .disclosure-box p:last-child{margin:0}
+    .disclosure-box a{color:var(--color-success-text,#166534);font-weight:600}
+  </style>
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+  <header id="site-header" class="site-header"></header>
+
+  <main id="main-content">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="/es/">Inicio</a></li>
+        <li aria-current="page">Seguridad</li>
+      </ol>
+    </nav>
+
+    <div class="page-wrap">
+      <h1>Seguridad en AnyConverter</h1>
+      <p class="page-meta">Última actualización: <strong>26 de mayo de 2026</strong></p>
+
+      <p>La seguridad y la privacidad son fundamentales en la forma en que AnyConverter está construido — no son añadidos de último momento. Así es como protegemos tus datos y nuestra plataforma.</p>
+
+      <div class="security-pillars">
+        <div class="pillar">
+          <div class="pillar-icon">🔒</div>
+          <h3>Sin Subida de Archivos</h3>
+          <p>Todo el procesamiento de herramientas ocurre en tu navegador. Los archivos nunca llegan a nuestros servidores.</p>
+        </div>
+        <div class="pillar">
+          <div class="pillar-icon">🔐</div>
+          <h3>HTTPS en Todo Momento</h3>
+          <p>Cada página se sirve mediante TLS. Todas las conexiones están cifradas en tránsito.</p>
+        </div>
+        <div class="pillar">
+          <div class="pillar-icon">🚫</div>
+          <h3>Sin Cuentas</h3>
+          <p>Sin nombres de usuario, contraseñas ni tokens de sesión. Nada que robar.</p>
+        </div>
+        <div class="pillar">
+          <div class="pillar-icon">🛡️</div>
+          <h3>Protección CDN</h3>
+          <p>Servido a través de Cloudflare con protección DDoS y caché de borde.</p>
+        </div>
+      </div>
+
+      <h2>Arquitectura del Lado del Cliente</h2>
+      <p>La propiedad de seguridad más importante de AnyConverter es que <strong>todo el procesamiento de herramientas ocurre dentro de tu navegador</strong>. Cuando usas nuestro combinador de PDF, formateador JSON, conversor de imágenes o cualquier otra herramienta, tus datos son procesados por JavaScript que se ejecuta en tu propio dispositivo.</p>
+      <p>Esto significa:</p>
+      <ul>
+        <li>No podemos ver tus archivos, aunque quisiéramos</li>
+        <li>No existe una base de datos en el servidor que almacene tu contenido</li>
+        <li>Cerrar la pestaña del navegador elimina inmediatamente todos los rastros de tus datos</li>
+        <li>La mayoría de las herramientas siguen funcionando sin conexión después de que se carga la página</li>
+      </ul>
+
+      <h2>HTTPS y Seguridad en el Transporte</h2>
+      <p>Todo el tráfico hacia y desde AnyConverter está cifrado mediante TLS 1.2 o superior. Usamos <strong>HTTP Strict Transport Security (HSTS)</strong> para prevenir ataques de degradación. Nuestros certificados SSL se gestionan automáticamente a través de Cloudflare.</p>
+
+      <h2>Política de Seguridad de Contenido</h2>
+      <p>AnyConverter implementa una estricta Política de Seguridad de Contenido (CSP) para prevenir ataques de scripting entre sitios (XSS). Solo cargamos scripts y recursos de fuentes de confianza (nuestro propio dominio, Google Fonts y bibliotecas CDN explícitamente permitidas).</p>
+
+      <h2>Bibliotecas de Terceros</h2>
+      <p>Cuando usamos bibliotecas JavaScript de terceros (pdf-lib, PapaParse, highlight.js), las cargamos desde CDNs de confianza con hashes de <strong>Integridad de Subrecursos (SRI)</strong> donde es posible, asegurando que el código no haya sido manipulado.</p>
+
+      <h2>Sin Datos de Cuenta que Vulnerar</h2>
+      <p>Dado que AnyConverter no tiene cuentas de usuario, no existe ninguna base de datos de nombres de usuario, correos electrónicos o contraseñas que pueda ser vulnerada. No podemos perder datos que nunca recopilamos.</p>
+
+      <h2>Infraestructura</h2>
+      <p>AnyConverter es un sitio web estático desplegado en <strong>Cloudflare Pages</strong>, una de las plataformas de alojamiento estático más seguras y eficientes disponibles. Cloudflare proporciona mitigación automática de DDoS, reglas WAF y caché de borde en más de 200 ubicaciones globales.</p>
+
+      <div class="disclosure-box">
+        <h3>🔍 Divulgación Responsable</h3>
+        <p>Si descubres una vulnerabilidad de seguridad en AnyConverter, te animamos a reportarla de forma responsable. Tomamos muy en serio todos los informes de seguridad y responderemos con prontitud.</p>
+        <p><strong>Por favor, reporta los problemas de seguridad a:</strong> <a href="mailto:security@anyconverter.io">security@anyconverter.io</a></p>
+        <p>Incluye una descripción clara de la vulnerabilidad, los pasos para reproducirla y el impacto potencial. Te pedimos amablemente que no divulgues públicamente el problema hasta que hayamos tenido un tiempo razonable para investigar y responder (generalmente en un plazo de 72 horas).</p>
+        <p>Actualmente no ofrecemos un programa de recompensas por errores, pero reconoceremos públicamente tu contribución si así lo deseas.</p>
+      </div>
+
+      <h2>Preguntas</h2>
+      <p>Para cualquier pregunta relacionada con la seguridad que no esté cubierta aquí, por favor envía un correo a <a href="mailto:security@anyconverter.io">security@anyconverter.io</a> o visita nuestra <a href="/es/contact/">página de contacto</a>.</p>
+    </div>
+  </main>
+
+  <footer id="site-footer" class="site-footer"></footer>
+  <div id="toast" class="toast" aria-live="polite"></div>
+  <script src="/assets/js/shared.js" defer></script>
+</body>
+</html>

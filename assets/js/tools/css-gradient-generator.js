@@ -23,7 +23,7 @@
     var div = document.createElement('div');
     div.className = 'grad-stop';
     div.style.cssText = 'display:flex;align-items:center;gap:8px';
-    div.innerHTML = '<input type="color" class="stop-color" value="#EC4899" style="width:40px;height:36px;border:none;border-radius:6px;cursor:pointer"><input type="range" class="stop-pos" min="0" max="100" value="50" style="flex:1;accent-color:#4F46E5"><span class="stop-pos-val" style="width:36px;font-size:13px;text-align:right">50%</span><button class="btn btn-secondary btn-sm stop-remove" style="padding:4px 8px">×</button>';
+    div.innerHTML = '<input type="color" class="stop-color" value="#EC4899" style="width:40px;height:36px;border:none;border-radius:6px;cursor:pointer"><input type="range" class="stop-pos" min="0" max="100" value="50" style="flex:1;accent-color:#B04A45"><span class="stop-pos-val" style="width:36px;font-size:13px;text-align:right">50%</span><button class="btn btn-secondary btn-sm stop-remove" style="padding:4px 8px">×</button>';
     container.appendChild(div);
     bindStop(div);
     update();

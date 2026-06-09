@@ -29,7 +29,7 @@
     try {
       var doc = await PDFLib.PDFDocument.load(pdfBytes, { password: pass });
       var out = await PDFLib.PDFDocument.create();
-      var pages = await out.copyPagesFrom(doc, doc.getPages().map(function(_, i){ return i; }));
+      var pages = await out.copyPages(doc, doc.getPages().map(function(_, i){ return i; }));
       pages.forEach(function(p){ out.addPage(p); });
       var saved = await out.save();
       dl(saved, 'unlocked.pdf');

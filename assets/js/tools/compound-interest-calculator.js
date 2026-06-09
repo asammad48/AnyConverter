@@ -6,7 +6,7 @@
     var r = parseFloat(document.getElementById('ci-rate').value) / 100;
     var t = parseFloat(document.getElementById('ci-time').value);
     var n = parseInt(document.getElementById('ci-freq').value, 10);
-    if (!P || !r || !t || P <= 0 || r <= 0 || t <= 0) return;
+    if (!P || !r || !t || !n || P <= 0 || r <= 0 || t <= 0 || n <= 0) return;
     var A = P * Math.pow(1 + r / n, n * t);
     var interest = A - P;
     var growth = ((A - P) / P * 100).toFixed(2);

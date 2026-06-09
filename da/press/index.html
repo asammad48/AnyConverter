@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pressepakke — AnyConverter</title>
+  <meta name="description" content="AnyConverter pressepakke. Brandaktiver, virksomhedsfakta, nøglestatistikker og mediekontaktoplysninger til journalister og bloggere.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://anyconverter.io/da/press/">
+  <link rel="alternate" hreflang="en" href="https://anyconverter.io/press/">
+  <link rel="alternate" hreflang="es" href="https://anyconverter.io/es/press/">
+  <link rel="alternate" hreflang="da" href="https://anyconverter.io/da/press/">
+  <link rel="alternate" hreflang="x-default" href="https://anyconverter.io/press/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Pressepakke — AnyConverter">
+  <meta property="og:description" content="Download logoer, brandaktiver og lær om AnyConverter til pressedækning og mediehenvendelser.">
+  <meta property="og:url" content="https://anyconverter.io/da/press/">
+  <meta property="og:site_name" content="AnyConverter">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F4F6FF);color:var(--color-text,#1E1B4B)}
+    body{min-height:100vh;display:flex;flex-direction:column}
+    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8D0)}
+    .header-inner{max-width:1280px;width:100%;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;gap:32px}
+    @font-face{font-family:'Inter';font-display:swap}
+    main{flex:1}
+    .page-wrap{max-width:860px;margin:0 auto;padding:44px 24px 80px}
+    .page-wrap h1{font-size:clamp(1.8rem,4vw,2.4rem);font-weight:800;line-height:1.2;margin-bottom:8px}
+    .page-meta{font-size:14px;color:var(--color-text-2,#6B7280);margin-bottom:40px}
+    h2{font-size:1.15rem;font-weight:700;color:var(--color-text,#1E1B4B);margin:40px 0 16px;padding-bottom:8px;border-bottom:2px solid var(--color-primary-light,#EEF2FF)}
+    p{font-size:15px;line-height:1.78;color:var(--color-text-body,#374151);margin-bottom:14px}
+    ul{padding-left:22px;margin-bottom:14px}
+    li{font-size:15px;line-height:1.78;color:var(--color-text-body,#374151);margin-bottom:6px}
+    a{color:var(--color-primary,#4F46E5)}
+    strong{color:var(--color-text,#1E1B4B)}
+    .fact-table{width:100%;border-collapse:collapse;margin:16px 0}
+    .fact-table th{background:var(--color-primary-light,#EEF2FF);padding:10px 16px;text-align:left;font-weight:600;font-size:14px;color:var(--color-primary,#4F46E5);border:1px solid var(--color-border-light,#E0E7FF);width:34%}
+    .fact-table td{padding:10px 16px;border:1px solid var(--color-border-light,#E0E7FF);font-size:15px;color:var(--color-text-body,#374151)}
+    .fact-table tr:nth-child(even) td{background:var(--color-surface-2,#EEF1FF)}
+    .logo-preview{background:linear-gradient(135deg,var(--color-text,#1E1B4B),#3730A3);border-radius:16px;padding:48px;text-align:center;margin:16px 0 8px}
+    .logo-preview-inner{display:inline-flex;align-items:center;gap:12px}
+    .logo-preview-icon{width:44px;height:44px;background:linear-gradient(135deg,var(--color-primary-alt,#6366F1),var(--color-primary,#4F46E5));border-radius:10px;display:flex;align-items:center;justify-content:center}
+    .logo-preview-text{font-size:1.5rem;font-weight:800;color:var(--color-surface,#fff)}
+    .logo-note{font-size:13px;color:var(--color-text-2,#6B7280);margin-bottom:24px}
+    .color-swatches{display:flex;gap:12px;flex-wrap:wrap;margin:16px 0}
+    .swatch{border-radius:12px;padding:16px 20px;min-width:140px}
+    .swatch-name{font-size:13px;font-weight:700;margin-bottom:3px}
+    .swatch-hex{font-size:12px;font-family:monospace;opacity:0.8}
+    .usage-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:16px 0}
+    @media(max-width:540px){.usage-grid{grid-template-columns:1fr}}
+    .usage-box{background:var(--color-surface,#fff);border:1.5px solid var(--color-border-light,#E0E7FF);border-radius:12px;padding:20px}
+    .usage-box h3{font-size:14px;font-weight:700;color:var(--color-success,#16A34A);margin-bottom:8px}
+    .usage-box h3.dont{color:var(--color-error,#DC2626)}
+    .usage-box ul{padding-left:18px;margin:0}
+    .usage-box li{font-size:13.5px;color:var(--color-text-body,#374151);margin-bottom:4px}
+    .press-contact{background:linear-gradient(135deg,var(--color-primary-light,#EEF2FF),var(--color-surface-2,#EEF1FF));border-radius:16px;padding:32px;text-align:center;margin-top:16px}
+    .press-contact h3{font-size:1.1rem;font-weight:700;margin-bottom:8px}
+    .press-contact p{font-size:15px;color:var(--color-text-body,#374151);margin-bottom:16px}
+    .press-contact a.btn{display:inline-block;background:var(--color-primary,#4F46E5);color:var(--color-surface,#fff);font-weight:700;padding:11px 24px;border-radius:9999px;text-decoration:none;font-size:14px}
+  </style>
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+  <header id="site-header" class="site-header"></header>
+
+  <main id="main-content">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="/da/">Hjem</a></li>
+        <li aria-current="page">Presse</li>
+      </ol>
+    </nav>
+
+    <div class="page-wrap">
+      <h1>Pressepakke</h1>
+      <p class="page-meta">Til journalister, bloggere og medieprofessionelle. Sidst opdateret: <strong>Maj 2026</strong></p>
+
+      <p>Velkommen til AnyConverters pressepakke. Her finder du alt, hvad du behøver for at skrive præcist om os — virksomhedsfakta, brandaktiver og mediekontakter. Hvis du har brug for noget andet, bedes du <a href="mailto:press@anyconverter.io">sende en e-mail til vores presseteam</a>.</p>
+
+      <h2>Virksomhedsfakta</h2>
+      <table class="fact-table">
+        <tr><th>Produktnavn</th><td>AnyConverter</td></tr>
+        <tr><th>Hjemmeside</th><td><a href="https://anyconverter.io">anyconverter.io</a></td></tr>
+        <tr><th>Grundlagt</th><td>2025</td></tr>
+        <tr><th>Kategori</th><td>Gratis Onlineværktøjer / SaaS-hjælpeprogram</td></tr>
+        <tr><th>Hovedkvarter</th><td>Global (fjernteam)</td></tr>
+        <tr><th>Forretningsmodel</th><td>Gratis at bruge, annoncefinansieret</td></tr>
+        <tr><th>Antal Værktøjer</th><td>78+ værktøjer fordelt på 9 kategorier</td></tr>
+        <tr><th>Sprog</th><td>Engelsk, Spansk, Dansk</td></tr>
+        <tr><th>Teknologi</th><td>Static HTML/CSS/JS · Cloudflare Pages</td></tr>
+        <tr><th>Datapolitik</th><td>100% browserbaseret — ingen filer uploades til servere</td></tr>
+      </table>
+
+      <h2>Kort Beskrivelse</h2>
+      <p><em>"AnyConverter er en gratis samling af 78+ browserbaserede onlineværktøjer til udviklere, studerende og hverdagsbrugere — ingen tilmelding, ingen uploads og ingen omkostninger, for evigt."</em></p>
+
+      <h2>Virksomhedsbeskrivelse</h2>
+      <p>AnyConverter er et gratis onlineværktøjssæt, der giver alle øjeblikkelig adgang til 78+ kraftfulde hjælpeprogrammer — PDF-redigering, udviklerværktøjer, lommeregnere, tekstværktøjer, billedkonvertering og meget mere — helt inden for deres webbrowser. I modsætning til de fleste onlineværktøjer behandler AnyConverter alt på klientsiden: dine filer og data forlader aldrig din enhed, hvilket gør det til en af de mest privatlivsvenlige værktøjssamlinger, der er tilgængelige.</p>
+      <p>AnyConverter finansieres af ikke-påtrængende reklamer, hvilket giver mulighed for at forblive helt gratis uden brugsgrænser, abonnementer eller kontokrav.</p>
+
+      <h2>Nøglestatistikker</h2>
+      <ul>
+        <li><strong>78+ gratis værktøjer</strong> fordelt på 9 kategorier</li>
+        <li><strong>0 bytes uploadet</strong> — al behandling er klientside</li>
+        <li><strong>3 sprog</strong> — engelsk, spansk, dansk</li>
+        <li><strong>Mobilvenlig</strong> — fuldt responsiv på alle enheder</li>
+        <li><strong>Ingen login krævet</strong> — øjeblikkelig adgang, ingen friktion</li>
+      </ul>
+
+      <h2>Brandaktiver</h2>
+
+      <div class="logo-preview">
+        <div class="logo-preview-inner">
+          <div class="logo-preview-icon">
+            <svg width="26" height="26" viewBox="0 0 40 40" fill="none"><path d="M8 20 L20 8 L32 20 L20 32 Z" stroke="white" stroke-width="3" fill="none"/><circle cx="20" cy="20" r="4" fill="white"/></svg>
+          </div>
+          <span class="logo-preview-text">AnyConverter</span>
+        </div>
+      </div>
+      <p class="logo-note">Logo vist på mørk baggrund. SVG-format. For logofiler, kontakt <a href="mailto:press@anyconverter.io">press@anyconverter.io</a>.</p>
+
+      <div class="color-swatches">
+        <div class="swatch" style="background:var(--color-primary,#4F46E5);color:var(--color-surface,#fff)">
+          <div class="swatch-name">Primær Indigo</div>
+          <div class="swatch-hex">var(--color-primary,#4F46E5)</div>
+        </div>
+        <div class="swatch" style="background:var(--color-primary-alt,#6366F1);color:var(--color-surface,#fff)">
+          <div class="swatch-name">Lys Indigo</div>
+          <div class="swatch-hex">var(--color-primary-alt,#6366F1)</div>
+        </div>
+        <div class="swatch" style="background:var(--color-text,#1E1B4B);color:var(--color-surface,#fff)">
+          <div class="swatch-name">Dyb Marineblå</div>
+          <div class="swatch-hex">var(--color-text,#1E1B4B)</div>
+        </div>
+        <div class="swatch" style="background:var(--color-primary-light,#EEF2FF);color:var(--color-primary,#4F46E5);border:1.5px solid var(--color-border-light,#E0E7FF)">
+          <div class="swatch-name">Baggrundstone</div>
+          <div class="swatch-hex">var(--color-primary-light,#EEF2FF)</div>
+        </div>
+      </div>
+
+      <h2>Retningslinjer for Brandbrug</h2>
+      <div class="usage-grid">
+        <div class="usage-box">
+          <h3>✅ Du må gerne</h3>
+          <ul>
+            <li>Skrive om AnyConverter og dets værktøjer</li>
+            <li>Bruge vores logo i redaktionel dækning</li>
+            <li>Linke til anyconverter.io</li>
+            <li>Citere vores virksomhedsbeskrivelse og statistikker</li>
+            <li>Bruge skærmbilleder af vores værktøjer til redaktionelle formål</li>
+          </ul>
+        </div>
+        <div class="usage-box">
+          <h3 class="dont">❌ Undgå venligst</h3>
+          <ul>
+            <li>At ændre eller modificere vores logo</li>
+            <li>At antyde officielt partnerskab eller godkendelse uden aftale</li>
+            <li>At bruge vores brandaktiver til kommercielle formål uden tilladelse</li>
+            <li>At misrepræsentere vores produktfunktioner eller datapraksis</li>
+          </ul>
+        </div>
+      </div>
+
+      <h2>Mediekontakt</h2>
+      <div class="press-contact">
+        <h3>Presse- og Mediehenvendelser</h3>
+        <p>Ved anmodninger om interviews, faktakontrol eller presserelaterede spørgsmål svarer vores medieteam inden for 24 timer på hverdage.</p>
+        <a href="mailto:press@anyconverter.io" class="btn">Send E-mail til Presseteamet</a>
+      </div>
+
+    </div>
+  </main>
+
+  <footer id="site-footer" class="site-footer"></footer>
+  <div id="toast" class="toast" aria-live="polite"></div>
+  <script src="/assets/js/shared.js" defer></script>
+</body>
+</html>

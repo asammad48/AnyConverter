@@ -4,7 +4,9 @@
   function gcd(a, b) { return b === 0 ? a : gcd(b, a % b); }
 
   function simplify(w, h) {
-    var d = gcd(Math.round(w), Math.round(h));
+    var rw = Math.round(w), rh = Math.round(h);
+    if (rw <= 0 || rh <= 0) return w + ':' + h;
+    var d = gcd(rw, rh);
     return Math.round(w/d) + ':' + Math.round(h/d);
   }
 

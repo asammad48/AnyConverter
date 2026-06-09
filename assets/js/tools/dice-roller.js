@@ -22,7 +22,7 @@
 
     resultsEl.innerHTML = rolls.map(r => {
       const face = sides === 6 ? FACES_D6[r - 1] : '';
-      return `<div style="display:inline-flex;flex-direction:column;align-items:center;justify-content:center;width:60px;height:60px;background:#4F46E5;border-radius:10px;color:#fff;font-size:${sides===6?'2rem':'1.4rem'};font-weight:700;margin:4px">${face || r}</div>`;
+      return `<div style="display:inline-flex;flex-direction:column;align-items:center;justify-content:center;width:60px;height:60px;background:#B04A45;border-radius:10px;color:#fff;font-size:${sides===6?'2rem':'1.4rem'};font-weight:700;margin:4px">${face || r}</div>`;
     }).join('');
 
     totalEl.textContent = count > 1 ? `Total: ${total}` : '';

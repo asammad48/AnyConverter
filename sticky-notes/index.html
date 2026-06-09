@@ -17,7 +17,7 @@
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
     html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F4F6FF);color:var(--color-text,#1E1B4B)}
     body{min-height:100vh;display:flex;flex-direction:column}
-    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8FE)}
+    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8D0)}
     .header-inner{max-width:1280px;width:100%;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;gap:32px}
     .hero{padding:40px 24px 32px;max-width:1280px;margin:0 auto}
     .hero h1{font-size:clamp(1.75rem,4vw,2.25rem);font-weight:700;line-height:1.2;margin-bottom:12px}
@@ -40,7 +40,7 @@
           <!-- Controls -->
           <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px;flex-wrap:wrap">
             <label style="font-size:13px;font-weight:500">Note colour:</label>
-            <select id="sticky-color" style="padding:8px 10px;border:1px solid var(--color-border,#DDD8FE);border-radius:8px;font-size:13px">
+            <select id="sticky-color" style="padding:8px 10px;border:1px solid var(--color-border,#DDD8D0);border-radius:8px;font-size:13px">
               <option value="0">🟡 Yellow</option>
               <option value="1">🟢 Green</option>
               <option value="2">🔵 Blue</option>
@@ -74,10 +74,10 @@
     <section class="related-tools">
       <h2>Related Tools</h2>
       <div class="tool-grid">
-        <a href="/todo-list/" class="tool-card"><img src="/assets/img/icon-browser.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>To-Do List</h3><p>Turn notes into actionable tasks.</p><span class="tool-card-link">Try it →</span></a>
-        <a href="/daily-planner/" class="tool-card"><img src="/assets/img/icon-browser.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Daily Planner</h3><p>Organize notes into a daily plan.</p><span class="tool-card-link">Try it →</span></a>
-        <a href="/habit-tracker/" class="tool-card"><img src="/assets/img/icon-browser.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Habit Tracker</h3><p>Convert routines into trackable habits.</p><span class="tool-card-link">Try it →</span></a>
-        <a href="/word-counter/" class="tool-card"><img src="/assets/img/icon-browser.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Word Counter</h3><p>Count words and characters quickly.</p><span class="tool-card-link">Try it →</span></a>
+        <a href="/todo-list/" class="tool-card"><img src="/assets/img/icon-todo.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>To-Do List</h3><p>Turn notes into actionable tasks.</p><span class="tool-card-link">Try it →</span></a>
+        <a href="/daily-planner/" class="tool-card"><img src="/assets/img/icon-planner.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Daily Planner</h3><p>Organize notes into a daily plan.</p><span class="tool-card-link">Try it →</span></a>
+        <a href="/habit-tracker/" class="tool-card"><img src="/assets/img/icon-habit.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Habit Tracker</h3><p>Convert routines into trackable habits.</p><span class="tool-card-link">Try it →</span></a>
+        <a href="/word-counter/" class="tool-card"><img src="/assets/img/icon-wordcount.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Word Counter</h3><p>Count words and characters quickly.</p><span class="tool-card-link">Try it →</span></a>
       </div>
     </section>
 

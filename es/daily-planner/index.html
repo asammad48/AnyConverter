@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Planificador Diario Online Gratis | AnyConverter</title>
+  <meta name="description" content="Organiza tu día con un planificador diario online gratuito. Agrega tareas con hora y duración, márcalas al completarlas. Cada día se guarda por separado en tu navegador.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://anyconverter.io/es/daily-planner/">
+  <link rel="alternate" hreflang="en" href="https://anyconverter.io/daily-planner/"><link rel="alternate" hreflang="es" href="https://anyconverter.io/es/daily-planner/"><link rel="alternate" hreflang="da" href="https://anyconverter.io/da/daily-planner/"><link rel="alternate" hreflang="x-default" href="https://anyconverter.io/daily-planner/">
+  <meta property="og:type" content="website"><meta property="og:title" content="Planificador Diario Online Gratis | AnyConverter"><meta property="og:description" content="Planificador diario online gratuito. Agrega tareas con horas y duraciones. En el navegador, sin registro."><meta property="og:url" content="https://anyconverter.io/es/daily-planner/"><meta property="og:site_name" content="AnyConverter">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" data-ad-client="ca-pub-XXXXXXXXXX" crossorigin="anonymous"></script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Planificador Diario","url":"https://anyconverter.io/es/daily-planner/","description":"Planificador diario online gratuito con programación de tareas basada en el tiempo.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F4F6FF);color:var(--color-text,#1E1B4B)}
+    body{min-height:100vh;display:flex;flex-direction:column}
+    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8D0)}
+    .header-inner{max-width:1280px;width:100%;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;gap:32px}
+    .hero{padding:40px 24px 32px;max-width:1280px;margin:0 auto}
+    .hero h1{font-size:clamp(1.75rem,4vw,2.25rem);font-weight:700;line-height:1.2;margin-bottom:12px}
+    .hero-desc{font-size:1.0625rem;color:var(--color-text-2,#6B7280);max-width:680px;line-height:1.6}
+    @font-face{font-family:'Inter';font-display:swap}
+  </style>
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+  <header id="site-header" class="site-header"></header>
+  <main id="main-content">
+    <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/es/">Inicio</a></li><li><a href="/es/todo-list/">Productividad</a></li><li aria-current="page">Planificador Diario</li></ol></nav>
+    <section class="hero">
+      <h1>Planificador Diario Online</h1>
+      <p class="hero-desc">Organiza tu día con entradas de tareas basadas en el tiempo. Define la hora de inicio, el nombre de la tarea y la duración opcional. Navega entre días y marca las tareas como completadas.</p>
+    </section>
+    <div class="tool-wrapper">
+      <div class="tool-zone">
+        <div style="padding:24px;max-width:640px">
+          <!-- Selector de fecha -->
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:20px;flex-wrap:wrap">
+            <label style="font-size:13px;font-weight:600">Fecha:</label>
+            <input type="date" id="pl-date" style="padding:8px 12px;border:1px solid var(--color-border,#DDD8D0);border-radius:8px;font-size:14px">
+          </div>
+          <!-- Formulario para agregar tarea -->
+          <div class="planner-add-row" style="margin-bottom:16px">
+            <div>
+              <label style="display:block;font-size:11px;font-weight:500;color:var(--color-text-2,#6B7280);margin-bottom:4px">Hora</label>
+              <input type="time" id="pl-time" value="09:00" style="width:100%;padding:9px 8px;border:1px solid var(--color-border,#DDD8D0);border-radius:8px;font-size:13px">
+            </div>
+            <div>
+              <label style="display:block;font-size:11px;font-weight:500;color:var(--color-text-2,#6B7280);margin-bottom:4px">Tarea</label>
+              <input type="text" id="pl-task" placeholder="¿Qué vas a hacer?" style="width:100%;padding:9px 12px;border:1px solid var(--color-border,#DDD8D0);border-radius:8px;font-size:13px">
+            </div>
+            <div>
+              <label style="display:block;font-size:11px;font-weight:500;color:var(--color-text-2,#6B7280);margin-bottom:4px">Duración (min)</label>
+              <input type="number" id="pl-dur" min="0" max="480" placeholder="30" style="width:100%;padding:9px 8px;border:1px solid var(--color-border,#DDD8D0);border-radius:8px;font-size:13px;text-align:center">
+            </div>
+            <button class="btn btn-primary planner-add-btn" id="pl-add" style="align-self:flex-end">Agregar</button>
+          </div>
+          <!-- Lista de tareas -->
+          <ul id="pl-list" style="list-style:none;border:1px solid var(--color-border,#DDD8D0);border-radius:10px;overflow:hidden;background:var(--color-surface,#fff);min-height:80px;padding:0 14px"></ul>
+        </div>
+      </div>
+      <aside class="tool-side" aria-label="Publicidad">
+        <div style="margin-top:16px">
+          <p class="ad-label">Publicidad</p>
+          <div class="ad-slot" style="min-height:250px">
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+          </div>
+        </div>
+      </aside>
+    </div>
+    <section class="how-to-use"><h2>Cómo usar el Planificador Diario</h2><ol class="steps"><li><strong>Paso 1</strong> — Selecciona una fecha (por defecto hoy).</li><li><strong>Paso 2</strong> — Ingresa una hora, descripción de la tarea y duración opcional en minutos.</li><li><strong>Paso 3</strong> — Haz clic en <em>Agregar</em> — las tareas se ordenan automáticamente por hora.</li><li><strong>Paso 4</strong> — Marca la casilla para señalar una tarea como completada, o × para eliminarla.</li></ol></section>
+    <section class="features"><h2>Características</h2><ul class="features-list"><li>Almacenamiento por día — cada fecha tiene su propia lista de tareas</li><li>Tareas ordenadas cronológicamente por hora de inicio</li><li>Campo de duración opcional en minutos</li><li>Marca las tareas al completarlas</li><li>Los datos se guardan automáticamente en localStorage</li></ul></section>
+    <section class="faq"><h2>Preguntas frecuentes</h2><div class="faq-list">
+      <details class="faq-item"><summary class="faq-question">¿Puedo ver planes de días pasados o futuros? <span class="faq-icon">+</span></summary><div class="faq-answer">Sí. Usa el selector de fecha para navegar a cualquier fecha. El plan de cada día se almacena por separado en localStorage con su propia clave.</div></details>
+      <details class="faq-item"><summary class="faq-question">¿Hay un límite de tareas por día? <span class="faq-icon">+</span></summary><div class="faq-answer">No hay límite estricto. Puedes agregar tantas tareas como necesites — la lista se desplaza para mostrar todas las entradas.</div></details>
+    </div></section>
+
+    <section class="related-tools">
+      <h2>Herramientas relacionadas</h2>
+      <div class="tool-grid">
+        <a href="/es/todo-list/" class="tool-card"><img src="/assets/img/icon-todo.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Lista de tareas</h3><p>Gestiona tareas con una lista de verificación.</p><span class="tool-card-link">Usar →</span></a>
+        <a href="/es/habit-tracker/" class="tool-card"><img src="/assets/img/icon-habit.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Seguimiento de Hábitos</h3><p>Controla hábitos recurrentes día a día.</p><span class="tool-card-link">Usar →</span></a>
+        <a href="/es/meeting-timer/" class="tool-card"><img src="/assets/img/icon-meeting.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Temporizador de Reuniones</h3><p>Mantén reuniones y sesiones dentro del tiempo.</p><span class="tool-card-link">Usar →</span></a>
+        <a href="/es/pomodoro-timer/" class="tool-card"><img src="/assets/img/icon-pomodoro.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Temporizador Pomodoro</h3><p>Concéntrate mejor con bloques de trabajo cronometrados.</p><span class="tool-card-link">Usar →</span></a>
+      </div>
+    </section>
+
+  </main>
+  <footer id="site-footer" class="site-footer"></footer>
+  <script src="/assets/js/shared.js" defer></script>
+  <script src="/assets/js/tools/daily-planner.js" defer></script>
+</body>
+</html>

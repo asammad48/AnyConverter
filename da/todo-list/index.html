@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Opgaveliste Online Gratis | AnyConverter</title>
+  <meta name="description" content="Gratis online opgaveliste der gemmes i din browser. Tilføj opgaver, markér dem som færdige, filtrér efter status og fjern gennemførte. Ingen konto, fungerer offline.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://anyconverter.io/da/todo-list/">
+  <link rel="alternate" hreflang="en" href="https://anyconverter.io/todo-list/"><link rel="alternate" hreflang="es" href="https://anyconverter.io/es/todo-list/"><link rel="alternate" hreflang="da" href="https://anyconverter.io/da/todo-list/"><link rel="alternate" hreflang="x-default" href="https://anyconverter.io/todo-list/">
+  <meta property="og:type" content="website"><meta property="og:title" content="Opgaveliste Online Gratis | AnyConverter"><meta property="og:description" content="Gratis online opgaveliste der gemmes i browseren. Filtrér, gennemfør og fjern opgaver."><meta property="og:url" content="https://anyconverter.io/da/todo-list/"><meta property="og:site_name" content="AnyConverter">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" data-ad-client="ca-pub-XXXXXXXXXX" crossorigin="anonymous"></script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Opgaveliste","url":"https://anyconverter.io/da/todo-list/","description":"Gratis online opgaveliste med lokal lagring. Ingen konto nødvendig.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F4F6FF);color:var(--color-text,#1E1B4B)}
+    body{min-height:100vh;display:flex;flex-direction:column}
+    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8D0)}
+    .header-inner{max-width:1280px;width:100%;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;gap:32px}
+    .hero{padding:40px 24px 32px;max-width:1280px;margin:0 auto}
+    .hero h1{font-size:clamp(1.75rem,4vw,2.25rem);font-weight:700;line-height:1.2;margin-bottom:12px}
+    .hero-desc{font-size:1.0625rem;color:var(--color-text-2,#6B7280);max-width:680px;line-height:1.6}
+    @font-face{font-family:'Inter';font-display:swap}
+  </style>
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+  <header id="site-header" class="site-header"></header>
+  <main id="main-content">
+    <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/da/">Hjem</a></li><li><a href="/da/todo-list/">Produktivitet</a></li><li aria-current="page">Opgaveliste</li></ol></nav>
+    <section class="hero">
+      <h1>Opgaveliste Online</h1>
+      <p class="hero-desc">En enkel, vedvarende opgaveliste der gemmes automatisk i din browser. Ingen konto, ingen synkronisering, ingen rod — bare opgaver.</p>
+    </section>
+    <div class="tool-wrapper">
+      <div class="tool-zone">
+        <div style="padding:24px;max-width:600px">
+          <!-- Add task -->
+          <div style="display:flex;gap:8px;margin-bottom:16px">
+            <input type="text" id="todo-input" placeholder="Tilføj en ny opgave…" style="flex:1;padding:10px 14px;border:1px solid var(--color-border,#DDD8D0);border-radius:8px;font-size:14px">
+            <button class="btn btn-primary" id="todo-add">Tilføj</button>
+          </div>
+          <!-- Filter bar -->
+          <div style="display:flex;gap:6px;margin-bottom:14px;flex-wrap:wrap">
+            <button data-filter="all" style="padding:6px 14px;border:1px solid var(--color-border,#DDD8D0);border-radius:20px;font-size:12px;cursor:pointer;background:var(--color-primary,#B04A45);color:var(--color-surface,#fff)">Alle</button>
+            <button data-filter="active" style="padding:6px 14px;border:1px solid var(--color-border,#DDD8D0);border-radius:20px;font-size:12px;cursor:pointer;background:var(--color-surface,#fff);color:var(--color-text-body,#374151)">Aktive</button>
+            <button data-filter="completed" style="padding:6px 14px;border:1px solid var(--color-border,#DDD8D0);border-radius:20px;font-size:12px;cursor:pointer;background:var(--color-surface,#fff);color:var(--color-text-body,#374151)">Gennemførte</button>
+            <button id="todo-clear" style="padding:6px 14px;border:1px solid var(--color-border,#DDD8D0);border-radius:20px;font-size:12px;cursor:pointer;background:var(--color-surface,#fff);color:var(--color-error,#DC2626);margin-left:auto">Ryd gennemførte</button>
+          </div>
+          <!-- List -->
+          <ul id="todo-list" style="list-style:none;border:1px solid var(--color-border,#DDD8D0);border-radius:10px;overflow:hidden;background:var(--color-surface,#fff);min-height:80px;padding:0 14px"></ul>
+          <!-- Footer count -->
+          <div style="margin-top:8px;font-size:12px;color:var(--color-text-2,#6B7280);text-align:right" id="todo-count">0 elementer tilbage</div>
+        </div>
+      </div>
+      <aside class="tool-side" aria-label="Reklame">
+        <div style="margin-top:16px">
+          <p class="ad-label">Reklame</p>
+          <div class="ad-slot" style="min-height:250px">
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+          </div>
+        </div>
+      </aside>
+    </div>
+    <section class="how-to-use"><h2>Sådan Bruger Du Opgavelisten</h2><ol class="steps"><li><strong>Trin 1</strong> — Skriv en opgave i inputfeltet og klik på <em>Tilføj</em> eller tryk Enter.</li><li><strong>Trin 2</strong> — Markér afkrydsningsfeltet ud for en opgave for at markere den som gennemført.</li><li><strong>Trin 3</strong> — Brug filterknapperne til at se Alle, Aktive eller Gennemførte opgaver.</li><li><strong>Trin 4</strong> — Klik på <em>Ryd gennemførte</em> for at fjerne alle udførte opgaver på én gang.</li></ol></section>
+    <section class="features"><h2>Funktioner</h2><ul class="features-list"><li>Gemmer i localStorage — opgaver bevares mellem sessioner</li><li>Filtrér efter Alle, Aktive eller Gennemførte</li><li>Fjern gennemførte opgaver med ét klik</li><li>Elementtæller viser resterende aktive opgaver</li><li>Fungerer offline — ingen internetforbindelse nødvendig efter sideindlæsning</li></ul></section>
+    <section class="faq"><h2>Ofte Stillede Spørgsmål</h2><div class="faq-list">
+      <details class="faq-item"><summary class="faq-question">Gemmes mine opgaver, hvis jeg lukker browseren? <span class="faq-icon">+</span></summary><div class="faq-answer">Ja. Opgaver gemmes i din browsers localStorage og bevares mellem sessioner på den samme enhed og browser. Sletning af browserdata eller brug af privat/inkognitotilstand vil slette dem.</div></details>
+      <details class="faq-item"><summary class="faq-question">Kan jeg synkronisere opgaver på tværs af enheder? <span class="faq-icon">+</span></summary><div class="faq-answer">Ikke i øjeblikket — localStorage er enhed- og browserspecifik. Til synkronisering på tværs af enheder ville du have brug for en kontobaseret tjeneste.</div></details>
+    </div></section>
+
+    <section class="related-tools">
+      <h2>Relaterede Værktøjer</h2>
+      <div class="tool-grid">
+        <a href="/da/daily-planner/" class="tool-card"><img src="/assets/img/icon-planner.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Dagsplanner</h3><p>Planlæg din dag med strukturerede prioriteter.</p><span class="tool-card-link">Prøv →</span></a>
+        <a href="/da/habit-tracker/" class="tool-card"><img src="/assets/img/icon-habit.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Vanesporingsprogram</h3><p>Opbyg og overvåg daglige vaner.</p><span class="tool-card-link">Prøv →</span></a>
+        <a href="/da/sticky-notes/" class="tool-card"><img src="/assets/img/icon-sticky.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Sticky Notes</h3><p>Gem hurtige noter direkte i din browser.</p><span class="tool-card-link">Prøv →</span></a>
+        <a href="/da/pomodoro-timer/" class="tool-card"><img src="/assets/img/icon-pomodoro.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Pomodoro-timer</h3><p>Kombinér opgaver med fokusintervaller.</p><span class="tool-card-link">Prøv →</span></a>
+      </div>
+    </section>
+
+  </main>
+  <footer id="site-footer" class="site-footer"></footer>
+  <script src="/assets/js/shared.js" defer></script>
+  <script src="/assets/js/tools/todo-list.js" defer></script>
+</body>
+</html>

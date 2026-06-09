@@ -4,8 +4,9 @@
   function calcLoan() {
     var P = parseFloat(document.getElementById('loan-amount').value);
     var annualRate = parseFloat(document.getElementById('loan-rate').value);
-    var n = parseInt(document.getElementById('loan-term').value, 10);
-    if (!P || !annualRate || !n || P <= 0 || annualRate <= 0 || n <= 0) return;
+    var years = parseInt(document.getElementById('loan-term').value, 10);
+    if (!P || !annualRate || !years || P <= 0 || annualRate <= 0 || years <= 0) return;
+    var n = years * 12;
     var r = annualRate / 100 / 12;
     var emi = P * r * Math.pow(1 + r, n) / (Math.pow(1 + r, n) - 1);
     var totalPayment = emi * n;

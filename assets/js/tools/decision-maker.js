@@ -26,7 +26,7 @@
 
     decideBtn.disabled = true;
     resultEl.innerHTML = '';
-    displayEl.style.color = '#4F46E5';
+    displayEl.style.color = '#B04A45';
 
     let count = 0;
     const totalSteps = 20;

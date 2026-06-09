@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Terningkaster Online Gratis — d4 d6 d8 d10 d12 d20 | AnyConverter</title>
+  <meta name="description" content="Kast alle terninger online gratis. Understøtter d4, d6, d8, d10, d12 og d20. Kast op til 20 terninger på én gang. Total vises med kastelhistorik. Ingen tilmelding.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://anyconverter.io/da/dice-roller/">
+  <link rel="alternate" hreflang="en" href="https://anyconverter.io/dice-roller/"><link rel="alternate" hreflang="es" href="https://anyconverter.io/es/dice-roller/"><link rel="alternate" hreflang="da" href="https://anyconverter.io/da/dice-roller/"><link rel="alternate" hreflang="x-default" href="https://anyconverter.io/dice-roller/">
+  <meta property="og:type" content="website"><meta property="og:title" content="Terningkaster Online Gratis — d4 d6 d8 d10 d12 d20 | AnyConverter"><meta property="og:description" content="Kast d4, d6, d8, d10, d12 eller d20 online. Flere terninger, se totaler. Gratis."><meta property="og:url" content="https://anyconverter.io/da/dice-roller/"><meta property="og:site_name" content="AnyConverter">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" data-ad-client="ca-pub-XXXXXXXXXX" crossorigin="anonymous"></script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Terningkaster","url":"https://anyconverter.io/da/dice-roller/","description":"Kast d4, d6, d8, d10, d12 og d20 online. Flere terninger, totaler og kastelhistorik.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F4F6FF);color:var(--color-text,#1E1B4B)}
+    body{min-height:100vh;display:flex;flex-direction:column}
+    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8D0)}
+    .header-inner{max-width:1280px;width:100%;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;gap:32px}
+    .hero{padding:40px 24px 32px;max-width:1280px;margin:0 auto}
+    .hero h1{font-size:clamp(1.75rem,4vw,2.25rem);font-weight:700;line-height:1.2;margin-bottom:12px}
+    .hero-desc{font-size:1.0625rem;color:var(--color-text-2,#6B7280);max-width:680px;line-height:1.6}
+    @font-face{font-family:'Inter';font-display:swap}
+  </style>
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+  <header id="site-header" class="site-header"></header>
+  <main id="main-content">
+    <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/da/">Hjem</a></li><li><a href="/da/coin-flip/">Tilfældighedsværktøjer</a></li><li aria-current="page">Terningkaster</li></ol></nav>
+    <section class="hero">
+      <h1>Terningkaster Online</h1>
+      <p class="hero-desc">Kast enhver kombination af polyedriske terninger — d4, d6, d8, d10, d12 eller d20. Kast op til 20 terninger på én gang og se totalen. Perfekt til brætspil og rollespil.</p>
+    </section>
+    <div class="tool-wrapper">
+      <div class="tool-zone">
+        <div style="padding:24px;text-align:center">
+          <!-- Hurtigkast-knapper -->
+          <div style="margin-bottom:20px">
+            <div style="font-size:12px;font-weight:600;color:var(--color-text-2,#6B7280);margin-bottom:10px;text-align:left">Hurtigkast</div>
+            <div style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center">
+              <button class="btn btn-secondary" data-dice="4" style="font-weight:700">d4</button>
+              <button class="btn btn-secondary" data-dice="6" style="font-weight:700">d6</button>
+              <button class="btn btn-secondary" data-dice="8" style="font-weight:700">d8</button>
+              <button class="btn btn-secondary" data-dice="10" style="font-weight:700">d10</button>
+              <button class="btn btn-secondary" data-dice="12" style="font-weight:700">d12</button>
+              <button class="btn btn-secondary" data-dice="20" style="font-weight:700">d20</button>
+            </div>
+          </div>
+          <!-- Brugerdefineret kast -->
+          <div style="display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;margin-bottom:20px;padding:16px;background:var(--color-bg,#F4F6FF);border-radius:10px">
+            <input type="number" id="dice-count" min="1" max="20" value="1" style="width:64px;padding:9px 8px;border:1px solid var(--color-border,#DDD8D0);border-radius:8px;font-size:14px;font-weight:700;text-align:center">
+            <span style="font-size:14px;color:var(--color-text-2,#6B7280)">terninger med</span>
+            <input type="number" id="dice-sides" min="2" max="100" value="6" style="width:72px;padding:9px 8px;border:1px solid var(--color-border,#DDD8D0);border-radius:8px;font-size:14px;font-weight:700;text-align:center">
+            <span style="font-size:14px;color:var(--color-text-2,#6B7280)">sider</span>
+            <button class="btn btn-primary" id="dice-roll">Kast!</button>
+          </div>
+          <!-- Resultater -->
+          <div id="dice-results" style="display:flex;flex-wrap:wrap;justify-content:center;min-height:60px;margin-bottom:8px"></div>
+          <div id="dice-total" style="font-size:1.1rem;font-weight:700;color:var(--color-primary,#B04A45);min-height:24px;margin-bottom:16px"></div>
+          <!-- Historik -->
+          <div id="dice-history" style="display:none;text-align:left;max-width:500px;margin:0 auto">
+            <div style="font-size:12px;font-weight:600;color:var(--color-text-2,#6B7280);margin-bottom:6px">Kastelhistorik</div>
+            <div id="dice-hist-list"></div>
+          </div>
+        </div>
+      </div>
+      <aside class="tool-side" aria-label="Reklame">
+        <div style="margin-top:16px">
+          <p class="ad-label">Reklame</p>
+          <div class="ad-slot" style="min-height:250px">
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+          </div>
+        </div>
+      </aside>
+    </div>
+    <section class="how-to-use"><h2>Sådan kaster du terninger</h2><ol class="steps"><li><strong>Trin 1</strong> — Klik på en hurtigkast-knap (d4 til d20) for et øjeblikkeligt enkelt kast.</li><li><strong>Trin 2</strong> — Eller angiv antal terninger og sider i de brugerdefinerede felter og klik på <em>Kast!</em></li><li><strong>Trin 3</strong> — Hvert terningresultat vises som en brik. Totalen vises nedenfor for flere terninger.</li><li><strong>Trin 4</strong> — De sidste 10 kast vises i historik-afsnittet nedenfor.</li></ol></section>
+    <section class="features"><h2>Funktioner</h2><ul class="features-list"><li>Hurtigkast-knapper til alle standard polyedriske terninger (d4–d20)</li><li>Brugerdefinerede terninger: valgfrit antal sider fra 2 til 100</li><li>Kast op til 20 terninger på én gang med sumtotal</li><li>d6-resultater vist som prikflader ⚀–⚅</li><li>De sidste 10 kast registreret i kastelhistorik</li></ul></section>
+    <section class="faq"><h2>Ofte stillede spørgsmål</h2><div class="faq-list">
+      <details class="faq-item"><summary class="faq-question">Kan jeg kaste ikke-standard terninger som d3 eller d100? <span class="faq-icon">+</span></summary><div class="faq-answer">Ja. Brug de brugerdefinerede kastelfelter og indtast et vilkårligt antal sider mellem 2 og 100. En d100 (procentil-terning) indtastes som 100 sider.</div></details>
+      <details class="faq-item"><summary class="faq-question">Er dette godt til D&amp;D eller andre rollespil? <span class="faq-icon">+</span></summary><div class="faq-answer">Absolut. Alle standard RPG-terninger er tilgængelige som hurtigkast-knapper. Du kan også kaste flere terninger på én gang for at simulere skaderul som 2d6+3 (kast 2 terninger, læg 3 til manuelt).</div></details>
+    </div></section>
+
+    <section class="related-tools">
+      <h2>Relaterede værktøjer</h2>
+      <div class="tool-grid">
+        <a href="/da/coin-flip/" class="tool-card"><img src="/assets/img/icon-coin.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Møntkast</h3><p>Kast en virtuel mønt øjeblikkeligt.</p><span class="tool-card-link">Prøv →</span></a>
+        <a href="/da/random-picker/" class="tool-card"><img src="/assets/img/icon-picker.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Tilfældig vælger</h3><p>Vælg tilfældige værdier fra en liste.</p><span class="tool-card-link">Prøv →</span></a>
+        <a href="/da/team-picker/" class="tool-card"><img src="/assets/img/icon-team.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Holdvælger</h3><p>Del spillere op i tilfældige hold.</p><span class="tool-card-link">Prøv →</span></a>
+        <a href="/da/decision-maker/" class="tool-card"><img src="/assets/img/icon-decision.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Beslutningstager</h3><p>Tag beslutninger med en hjuldreje.</p><span class="tool-card-link">Prøv →</span></a>
+      </div>
+    </section>
+
+  </main>
+  <footer id="site-footer" class="site-footer"></footer>
+  <script src="/assets/js/shared.js" defer></script>
+  <script src="/assets/js/tools/dice-roller.js" defer></script>
+</body>
+</html>

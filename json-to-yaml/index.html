@@ -27,7 +27,7 @@
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
     html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F4F6FF);color:var(--color-text,#1E1B4B)}
     body{min-height:100vh;display:flex;flex-direction:column}
-    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8FE)}
+    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8D0)}
     .header-inner{max-width:1280px;width:100%;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;gap:32px}
     .hero{padding:40px 24px 32px;max-width:1280px;margin:0 auto}
     .hero h1{font-size:clamp(1.75rem,4vw,2.25rem);font-weight:700;line-height:1.2;margin-bottom:12px}
@@ -48,19 +48,19 @@
     </section>
     <div class="tool-wrapper">
       <div class="tool-zone">
-        <div style="padding:24px">
+        <div class="ac-panel" style="padding:24px">
           <div class="sub-tabs" role="tablist" aria-label="Conversion direction" style="margin-bottom:16px">
             <button class="sub-tab active" id="jy-mode-j2y" type="button" role="tab" aria-selected="true">JSON → YAML</button>
             <button class="sub-tab" id="jy-mode-y2j" type="button" role="tab" aria-selected="false">YAML → JSON</button>
           </div>
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+          <div class="two-col-grid">
             <div>
               <label id="jy-input-label" style="display:block;font-size:13px;font-weight:500;margin-bottom:6px">JSON Input</label>
-              <textarea id="jy-input" placeholder='{"key": "value"}' style="width:100%;height:280px;padding:12px;border:1px solid var(--color-border,#DDD8FE);border-radius:8px;font-family:'JetBrains Mono',monospace;font-size:13px;resize:vertical"></textarea>
+              <textarea id="jy-input" placeholder='{"key": "value"}' style="width:100%;height:280px;padding:12px;border:1px solid var(--color-border,#DDD8D0);border-radius:8px;font-family:'JetBrains Mono',monospace;font-size:13px;resize:vertical"></textarea>
             </div>
             <div>
               <label id="jy-output-label" style="display:block;font-size:13px;font-weight:500;margin-bottom:6px">YAML Output</label>
-              <textarea id="jy-output" readonly style="width:100%;height:280px;padding:12px;border:1px solid var(--color-border,#DDD8FE);border-radius:8px;font-family:'JetBrains Mono',monospace;font-size:13px;resize:vertical;background:var(--color-bg,#F4F6FF)"></textarea>
+              <textarea id="jy-output" readonly style="width:100%;height:280px;padding:12px;border:1px solid var(--color-border,#DDD8D0);border-radius:8px;font-family:'JetBrains Mono',monospace;font-size:13px;resize:vertical;background:var(--color-bg,#F4F6FF)"></textarea>
             </div>
           </div>
           <div id="jy-error" style="display:none;color:var(--color-pdf,#EF4444);font-size:13px;margin-top:8px"></div>
@@ -139,22 +139,22 @@
       <h2>Related Tools</h2>
       <div class="tool-grid">
         <a class="tool-card" href="/html-beautifier/">
-          <img src="/assets/img/icon-text.svg" width="32" height="32" loading="lazy" alt="HTML Beautifier icon">
+          <img src="/assets/img/icon-text.svg" width="40" height="40" loading="lazy" alt="" class="tool-card-icon">
           <h3>HTML Beautifier</h3>
           <p>Format and minify HTML code</p>
-          <span class="tool-card-cta">Try it →</span>
+          <span class="tool-card-link">Try it →</span>
         </a>
         <a class="tool-card" href="/cron-expression-parser/">
-          <img src="/assets/img/icon-timer.svg" width="32" height="32" loading="lazy" alt="Cron Parser icon">
+          <img src="/assets/img/icon-timer.svg" width="40" height="40" loading="lazy" alt="" class="tool-card-icon">
           <h3>Cron Parser</h3>
           <p>Decode cron expressions into plain English</p>
-          <span class="tool-card-cta">Try it →</span>
+          <span class="tool-card-link">Try it →</span>
         </a>
         <a class="tool-card" href="/uuid-generator/">
-          <img src="/assets/img/icon-hash.svg" width="32" height="32" loading="lazy" alt="UUID Generator icon">
+          <img src="/assets/img/icon-hash.svg" width="40" height="40" loading="lazy" alt="" class="tool-card-icon">
           <h3>UUID Generator</h3>
           <p>Generate random UUIDs instantly</p>
-          <span class="tool-card-cta">Try it →</span>
+          <span class="tool-card-link">Try it →</span>
         </a>
       </div>
     </section>

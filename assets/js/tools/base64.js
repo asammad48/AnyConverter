@@ -24,6 +24,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   function applyLinewrap(b64) {
     if (!togOn('tog-linewrap')) return b64;
+    if (!b64) return b64;
     return b64.match(/.{1,76}/g).join('\n');
   }
   const tabs = document.querySelectorAll('[data-tab]');

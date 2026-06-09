@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Generador de Sombras CSS Online Gratis | AnyConverter</title>
+  <meta name="description" content="Diseña visualmente box-shadow y text-shadow de CSS con vista previa en tiempo real. Ajusta desplazamiento, desenfoque, dispersión, color y opacidad. Copia el código CSS al instante. Gratis.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://anyconverter.io/es/css-shadow-generator/">
+  <link rel="alternate" hreflang="en" href="https://anyconverter.io/css-shadow-generator/">
+  <link rel="alternate" hreflang="es" href="https://anyconverter.io/es/css-shadow-generator/">
+  <link rel="alternate" hreflang="da" href="https://anyconverter.io/da/css-shadow-generator/">
+  <link rel="alternate" hreflang="x-default" href="https://anyconverter.io/css-shadow-generator/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Generador de Sombras CSS Online Gratis | AnyConverter">
+  <meta property="og:description" content="Diseña box-shadow y text-shadow de CSS visualmente con vista previa en vivo. Copia el CSS listo para usar al instante.">
+  <meta property="og:url" content="https://anyconverter.io/es/css-shadow-generator/">
+  <meta property="og:site_name" content="AnyConverter">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" data-ad-client="ca-pub-XXXXXXXXXX" crossorigin="anonymous"></script>
+  <!-- Replace ca-pub-XXXXXXXXXX with your real AdSense publisher ID -->
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Generador de Sombras CSS","url":"https://anyconverter.io/es/css-shadow-generator/","description":"Diseña box-shadow y text-shadow de CSS visualmente con vista previa en vivo y copia de código CSS con un clic.","applicationCategory":"DeveloperApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F4F6FF);color:var(--color-text,#1E1B4B)}
+    body{min-height:100vh;display:flex;flex-direction:column}
+    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8D0)}
+    .header-inner{max-width:1280px;width:100%;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;gap:32px}
+    .hero{padding:40px 24px 32px;max-width:1280px;margin:0 auto}
+    .hero h1{font-size:clamp(1.75rem,4vw,2.25rem);font-weight:700;line-height:1.2;margin-bottom:12px}
+    .hero-desc{font-size:1.0625rem;color:var(--color-text-2,#6B7280);max-width:680px;line-height:1.6}
+    .cs-row{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+    .cs-label{font-size:12px;font-weight:500;min-width:90px}
+    .cs-val{font-size:12px;color:var(--color-text-2,#6B7280);min-width:34px;text-align:right}
+    @font-face{font-family:'Inter';font-display:swap}
+  </style>
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+  <header id="site-header" class="site-header"></header>
+  <main id="main-content">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol><li><a href="/es/">Inicio</a></li><li aria-current="page">Generador de Sombras CSS</li></ol>
+    </nav>
+    <section class="hero">
+      <h1>Generador de Sombras CSS</h1>
+      <p class="hero-desc">Diseña efectos de box-shadow y text-shadow visualmente con controles deslizantes y una vista previa en vivo. Ajusta desplazamiento horizontal/vertical, desenfoque, dispersión, color y opacidad — luego copia el código CSS listo para usar.</p>
+    </section>
+    <div class="tool-wrapper">
+      <div class="tool-zone">
+        <div class="ac-panel" style="padding:24px">
+          <h3 style="font-size:15px;font-weight:600;margin-bottom:16px">Sombra de Caja</h3>
+          <div class="cs-grid" style="margin-bottom:20px">
+            <div>
+              <div class="cs-row"><span class="cs-label">Desp. H</span><input type="range" id="cs-h-offset" min="-50" max="50" value="4" style="flex:1"><span class="cs-val" id="cs-h-offset-val">4px</span></div>
+              <div class="cs-row"><span class="cs-label">Desp. V</span><input type="range" id="cs-v-offset" min="-50" max="50" value="4" style="flex:1"><span class="cs-val" id="cs-v-offset-val">4px</span></div>
+              <div class="cs-row"><span class="cs-label">Desenfoque</span><input type="range" id="cs-blur" min="0" max="100" value="12" style="flex:1"><span class="cs-val" id="cs-blur-val">12px</span></div>
+              <div class="cs-row"><span class="cs-label">Dispersión</span><input type="range" id="cs-spread" min="-20" max="20" value="0" style="flex:1"><span class="cs-val" id="cs-spread-val">0px</span></div>
+              <div class="cs-row"><span class="cs-label">Color</span><input type="color" id="cs-color" value="#000000" style="width:40px;height:28px;border:none;cursor:pointer"><span style="font-size:12px;color:var(--color-text-2,#6B7280);margin-left:4px">Opacidad:</span><input type="range" id="cs-opacity" min="0" max="1" step="0.05" value="0.2" style="flex:1"><span class="cs-val" id="cs-opacity-val">0.2</span></div>
+              <div class="cs-row"><span class="cs-label">Interior</span><input type="checkbox" id="cs-inset"></div>
+            </div>
+            <div>
+              <div style="background:repeating-conic-gradient(var(--color-border,#DDD8D0) 0% 25%,#F4F4FA 0% 50%) 0 0/20px 20px;border-radius:12px;height:140px;display:flex;align-items:center;justify-content:center;margin-bottom:12px">
+                <div id="cs-preview-box" style="width:80px;height:80px;background:var(--color-surface,#fff);border-radius:8px;box-shadow:4px 4px 12px 0px rgba(0,0,0,0.2)"></div>
+              </div>
+              <div style="position:relative;background:var(--color-code-bg,#0F0F1A);border-radius:8px;padding:12px 14px">
+                <code id="cs-code-box" style="font-size:12px;font-family:monospace;color:var(--color-primary,#B04A45);word-break:break-all">box-shadow: 4px 4px 12px 0px rgba(0,0,0,0.2);</code>
+                <button id="cs-copy-box" class="btn btn-secondary" style="position:absolute;top:8px;right:8px;font-size:11px;padding:3px 8px">Copiar CSS</button>
+              </div>
+            </div>
+          </div>
+          <hr style="border:none;border-top:1px solid var(--color-border,#DDD8D0);margin:24px 0">
+          <h3 style="font-size:15px;font-weight:600;margin-bottom:16px">Sombra de Texto</h3>
+          <div class="cs-grid">
+            <div>
+              <div class="cs-row"><span class="cs-label">Desp. H</span><input type="range" id="cs-t-h-offset" min="-20" max="20" value="2" style="flex:1"><span class="cs-val" id="cs-t-h-val">2px</span></div>
+              <div class="cs-row"><span class="cs-label">Desp. V</span><input type="range" id="cs-t-v-offset" min="-20" max="20" value="2" style="flex:1"><span class="cs-val" id="cs-t-v-val">2px</span></div>
+              <div class="cs-row"><span class="cs-label">Desenfoque</span><input type="range" id="cs-t-blur" min="0" max="30" value="4" style="flex:1"><span class="cs-val" id="cs-t-blur-val">4px</span></div>
+              <div class="cs-row"><span class="cs-label">Color</span><input type="color" id="cs-t-color" value="#000000" style="width:40px;height:28px;border:none;cursor:pointer"><span style="font-size:12px;color:var(--color-text-2,#6B7280);margin-left:4px">Opacidad:</span><input type="range" id="cs-t-opacity" min="0" max="1" step="0.05" value="0.4" style="flex:1"><span class="cs-val" id="cs-t-opacity-val">0.4</span></div>
+            </div>
+            <div>
+              <div style="background:repeating-conic-gradient(var(--color-border,#DDD8D0) 0% 25%,#F4F4FA 0% 50%) 0 0/20px 20px;border-radius:12px;height:100px;display:flex;align-items:center;justify-content:center;margin-bottom:12px">
+                <span id="cs-preview-text" style="font-size:32px;font-weight:700;color:var(--color-text,#1E1B4B);text-shadow:2px 2px 4px rgba(0,0,0,0.4)">AnyText</span>
+              </div>
+              <div style="position:relative;background:var(--color-code-bg,#0F0F1A);border-radius:8px;padding:12px 14px">
+                <code id="cs-code-text" style="font-size:12px;font-family:monospace;color:var(--color-primary,#B04A45);word-break:break-all">text-shadow: 2px 2px 4px rgba(0,0,0,0.4);</code>
+                <button id="cs-copy-text" class="btn btn-secondary" style="position:absolute;top:8px;right:8px;font-size:11px;padding:3px 8px">Copiar CSS</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <aside class="tool-side" aria-label="Opciones">
+        <div style="margin-top:16px">
+          <p class="ad-label">Publicidad</p>
+          <div class="ad-slot" style="min-height:250px">
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+          </div>
+        </div>
+      </aside>
+    </div>
+    <div class="ad-slot ad-slot--leaderboard">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="how-to-use">
+      <h2>Cómo Usar el Generador de Sombras CSS</h2>
+      <ol class="steps">
+        <li><strong>Sombra de Caja:</strong> Arrastra los controles para desplazamiento H/V, desenfoque y dispersión. Elige un color y opacidad. Marca "Interior" para una sombra interna.</li>
+        <li><strong>Sombra de Texto:</strong> Ajusta los controles en la sección Sombra de Texto (sin dispersión ni interior para text-shadow).</li>
+        <li><strong>La vista previa</strong> se actualiza instantáneamente al arrastrar. Haz clic en "Copiar CSS" para copiar el código generado.</li>
+      </ol>
+    </section>
+    <section class="features">
+      <h2>Características</h2>
+      <ul class="features-list">
+        <li>Controles deslizantes para desplazamiento, desenfoque, dispersión, color y opacidad</li>
+        <li>Vista previa en vivo sobre fondo de tablero de ajedrez para contraste</li>
+        <li>Opción de sombra interior para box-shadow</li>
+        <li>Genera color RGBA para un control preciso de la opacidad</li>
+        <li>Copia del código CSS con un clic para sombra de caja y de texto</li>
+        <li>Controles separados para box-shadow y text-shadow</li>
+      </ul>
+    </section>
+    <div class="ad-slot ad-slot--rectangle" style="margin:0 auto 32px">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="faq">
+      <h2>Preguntas Frecuentes</h2>
+      <div class="faq-list">
+        <details class="faq-item"><summary class="faq-question">¿Qué es el valor "Dispersión" en box-shadow? <span class="faq-icon">+</span></summary><div class="faq-answer">La dispersión expande o contrae la sombra más allá del radio de desenfoque. Una dispersión positiva hace la sombra más grande que el elemento; una negativa la hace más pequeña y ajustada, creando un efecto de profundidad más realista.</div></details>
+        <details class="faq-item"><summary class="faq-question">¿Qué hace "Interior"? <span class="faq-icon">+</span></summary><div class="faq-answer">Cuando está marcado, el box-shadow se renderiza dentro del elemento en lugar de fuera. Esto crea un aspecto hundido o en relieve, usado comúnmente en campos de entrada o botones presionados.</div></details>
+        <details class="faq-item"><summary class="faq-question">¿Puede text-shadow usar dispersión o interior? <span class="faq-icon">+</span></summary><div class="faq-answer">No. La propiedad CSS text-shadow solo acepta desplazamiento horizontal, desplazamiento vertical y radio de desenfoque. La dispersión e interior solo son válidos para box-shadow.</div></details>
+      </div>
+    </section>
+    <section class="related-tools">
+      <h2>Herramientas Relacionadas</h2>
+      <div class="tool-grid">
+        <a href="/es/css-gradient-generator/" class="tool-card"><img src="/assets/img/icon-text.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Generador de Gradientes CSS</h3><p>Diseña gradientes CSS lineales y radiales visualmente.</p><span class="tool-card-link">Usar →</span></a>
+        <a href="/es/color-converter/" class="tool-card"><img src="/assets/img/icon-color.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Conversor de Color</h3><p>Convierte colores entre HEX, RGB, HSL, CMYK y HSB.</p><span class="tool-card-link">Usar →</span></a>
+        <a href="/es/px-to-rem/" class="tool-card"><img src="/assets/img/icon-pxrem.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>PX a REM</h3><p>Convierte valores en píxeles a unidades REM y viceversa.</p><span class="tool-card-link">Usar →</span></a>
+      </div>
+    </section>
+  </main>
+  <footer id="site-footer" class="site-footer"></footer>
+  <script src="/assets/js/shared.js" defer></script>
+  <script src="/assets/js/tools/css-shadow-generator.js" defer></script>
+</body>
+</html>

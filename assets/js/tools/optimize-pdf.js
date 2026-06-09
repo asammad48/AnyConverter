@@ -37,7 +37,7 @@
 
       // Copy pages — this strips unreferenced objects
       var indices = src.getPages().map(function(_, i){ return i; });
-      var pages = await out.copyPagesFrom(src, indices);
+      var pages = await out.copyPages(src, indices);
       pages.forEach(function(p){ out.addPage(p); });
 
       // Remove metadata if option checked

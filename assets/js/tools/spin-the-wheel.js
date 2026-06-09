@@ -7,7 +7,7 @@
   const resultEl = document.getElementById('wheel-result');
   const itemsEl  = document.getElementById('wheel-items');
 
-  const COLORS = ['#4F46E5','#7C3AED','#DB2777','#D97706','#059669','#0891B2','#DC2626','#65A30D'];
+  const COLORS = ['#B04A45','#7C3AED','#DB2777','#D97706','#059669','#0891B2','#DC2626','#65A30D'];
 
   let items = ['Option 1','Option 2','Option 3','Option 4','Option 5'];
   let spinning = false;
@@ -19,7 +19,7 @@
   }
 
   function drawWheel(rot) {
-    const cx = canvas.width / 2, cy = canvas.height / 2, r = cx - 10;
+    const cx = canvas.width / 2, cy = canvas.height / 2, r = cx - 22;
     const n = items.length;
     if (n === 0) return;
     const arc = (2 * Math.PI) / n;
@@ -61,11 +61,13 @@
     ctx.lineWidth = 2;
     ctx.stroke();
 
-    // Pointer (right side)
+    // Pointer (right side) — sharp triangle pointing left into wheel
+    const tip  = cx + r + 2;
+    const base = canvas.width - 4;
     ctx.beginPath();
-    ctx.moveTo(canvas.width - 4, cy);
-    ctx.lineTo(canvas.width - 26, cy - 12);
-    ctx.lineTo(canvas.width - 26, cy + 12);
+    ctx.moveTo(tip, cy);
+    ctx.lineTo(base, cy - 13);
+    ctx.lineTo(base, cy + 13);
     ctx.closePath();
     ctx.fillStyle = '#1C1C2E';
     ctx.fill();

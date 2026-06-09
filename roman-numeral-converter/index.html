@@ -27,7 +27,7 @@
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
     html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F4F6FF);color:var(--color-text,#1E1B4B)}
     body{min-height:100vh;display:flex;flex-direction:column}
-    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8FE)}
+    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8D0)}
     .header-inner{max-width:1280px;width:100%;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;gap:32px}
     .hero{padding:40px 24px 32px;max-width:1280px;margin:0 auto}
     .hero h1{font-size:clamp(1.75rem,4vw,2.25rem);font-weight:700;line-height:1.2;margin-bottom:12px}
@@ -50,24 +50,24 @@
       <div class="tool-zone">
         <div style="padding:24px">
           <!-- Number to Roman -->
-          <div style="margin-bottom:24px;padding:20px;border:1px solid var(--color-border,#DDD8FE);border-radius:12px">
+          <div style="margin-bottom:24px;padding:20px;border:1px solid var(--color-border,#DDD8D0);border-radius:12px">
             <h3 style="font-size:15px;font-weight:600;margin-bottom:14px">Number → Roman Numeral</h3>
             <div style="display:flex;gap:10px;align-items:flex-end">
               <div style="flex:1">
                 <label id="rn-number-label" style="display:block;font-size:13px;font-weight:500;margin-bottom:6px" for="rn-number">Enter Number (1–3,999,999)</label>
-                <input type="number" id="rn-number" min="1" max="3999999" placeholder="e.g. 2024" style="width:100%;padding:10px 12px;border:1px solid var(--color-border,#DDD8FE);border-radius:8px;font-size:15px">
+                <input type="number" id="rn-number" min="1" max="3999999" placeholder="e.g. 2024" style="width:100%;padding:10px 12px;border:1px solid var(--color-border,#DDD8D0);border-radius:8px;font-size:15px">
               </div>
               <button class="btn btn-primary" id="rn-to-roman-btn">Convert</button>
             </div>
             <div style="margin-top:14px;padding:14px;background:var(--color-bg,#F4F6FF);border-radius:8px;font-size:24px;font-weight:700;text-align:center;letter-spacing:2px" id="rn-roman-out">—</div>
           </div>
           <!-- Roman to Number -->
-          <div style="padding:20px;border:1px solid var(--color-border,#DDD8FE);border-radius:12px">
+          <div style="padding:20px;border:1px solid var(--color-border,#DDD8D0);border-radius:12px">
             <h3 style="font-size:15px;font-weight:600;margin-bottom:14px">Roman Numeral → Number</h3>
             <div style="display:flex;gap:10px;align-items:flex-end">
               <div style="flex:1">
                 <label style="display:block;font-size:13px;font-weight:500;margin-bottom:6px" for="rn-roman-in">Enter Roman Numeral</label>
-                <input type="text" id="rn-roman-in" placeholder="e.g. MMXXIV" style="width:100%;padding:10px 12px;border:1px solid var(--color-border,#DDD8FE);border-radius:8px;font-size:15px;text-transform:uppercase">
+                <input type="text" id="rn-roman-in" placeholder="e.g. MMXXIV" style="width:100%;padding:10px 12px;border:1px solid var(--color-border,#DDD8D0);border-radius:8px;font-size:15px;text-transform:uppercase">
               </div>
               <button class="btn btn-primary" id="rn-from-roman-btn">Convert</button>
             </div>
@@ -78,7 +78,7 @@
       <aside class="tool-side" aria-label="Options">
         <div class="ss-divider">Quick Reference</div>
         <div style="font-size:13px;padding:0 4px">
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:4px 16px;margin-bottom:8px">
+          <div class="two-col-grid" style="margin-bottom:8px">
             <span style="font-weight:600">I = 1</span><span style="font-weight:600">L = 50</span>
             <span style="font-weight:600">V = 5</span><span style="font-weight:600">C = 100</span>
             <span style="font-weight:600">X = 10</span><span style="font-weight:600">D = 500</span>

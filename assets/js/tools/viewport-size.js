@@ -10,7 +10,7 @@
 
     setText('vp-width',  vw + ' px');
     setText('vp-height', vh + ' px');
-    setText('vp-ratio',  (vw / vh).toFixed(2));
+    setText('vp-ratio',  vh > 0 ? (vw / vh).toFixed(2) : '—');
     setText('scr-width',  sw + ' px');
     setText('scr-height', sh + ' px');
     setText('vp-dpr',    dpr.toFixed(2));

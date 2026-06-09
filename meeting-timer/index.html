@@ -17,7 +17,7 @@
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
     html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F4F6FF);color:var(--color-text,#1E1B4B)}
     body{min-height:100vh;display:flex;flex-direction:column}
-    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8FE)}
+    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8D0)}
     .header-inner{max-width:1280px;width:100%;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;gap:32px}
     .hero{padding:40px 24px 32px;max-width:1280px;margin:0 auto}
     .hero h1{font-size:clamp(1.75rem,4vw,2.25rem);font-weight:700;line-height:1.2;margin-bottom:12px}
@@ -43,11 +43,11 @@
               <div style="display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap;align-items:flex-end">
                 <div>
                   <label style="display:block;font-size:11px;font-weight:500;color:var(--color-text-2,#6B7280);margin-bottom:4px">Agenda Item</label>
-                  <input type="text" id="mt-title" placeholder="e.g. Introductions" style="padding:9px 12px;border:1px solid var(--color-border,#DDD8FE);border-radius:8px;font-size:13px;width:220px">
+                  <input type="text" id="mt-title" placeholder="e.g. Introductions" style="padding:9px 12px;border:1px solid var(--color-border,#DDD8D0);border-radius:8px;font-size:13px;width:220px">
                 </div>
                 <div>
                   <label style="display:block;font-size:11px;font-weight:500;color:var(--color-text-2,#6B7280);margin-bottom:4px">Duration (min)</label>
-                  <input type="number" id="mt-dur" min="1" max="120" value="5" style="width:72px;padding:9px 8px;border:1px solid var(--color-border,#DDD8FE);border-radius:8px;font-size:13px;text-align:center">
+                  <input type="number" id="mt-dur" min="1" max="120" value="5" style="width:72px;padding:9px 8px;border:1px solid var(--color-border,#DDD8D0);border-radius:8px;font-size:13px;text-align:center">
                 </div>
                 <button class="btn btn-secondary" id="mt-add">+ Add</button>
               </div>
@@ -58,8 +58,8 @@
               <div id="mt-current" style="font-size:13px;font-weight:600;color:var(--color-text-2,#6B7280);margin-bottom:10px;min-height:18px">Press Start to begin</div>
               <div id="mt-display" style="font-size:3rem;font-weight:800;font-family:monospace;color:var(--color-text,#1E1B4B);margin-bottom:12px;letter-spacing:0.05em">00:00</div>
               <!-- Progress bar -->
-              <div style="width:100%;height:6px;background:var(--color-border,#DDD8FE);border-radius:3px;margin-bottom:16px;overflow:hidden">
-                <div id="mt-progress" style="height:100%;background:var(--color-primary,#4F46E5);border-radius:3px;width:100%;transition:width 0.9s linear"></div>
+              <div style="width:100%;height:6px;background:var(--color-border,#DDD8D0);border-radius:3px;margin-bottom:16px;overflow:hidden">
+                <div id="mt-progress" style="height:100%;background:var(--color-primary,#B04A45);border-radius:3px;width:100%;transition:width 0.9s linear"></div>
               </div>
               <div style="display:flex;flex-direction:column;gap:8px">
                 <button class="btn btn-primary" id="mt-start">Start Meeting</button>
@@ -90,10 +90,10 @@
     <section class="related-tools">
       <h2>Related Tools</h2>
       <div class="tool-grid">
-        <a href="/countdown-timer/" class="tool-card"><img src="/assets/img/icon-browser.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Countdown Timer</h3><p>Set timed sessions and reminders.</p><span class="tool-card-link">Try it →</span></a>
-        <a href="/stopwatch/" class="tool-card"><img src="/assets/img/icon-browser.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Stopwatch</h3><p>Track elapsed time in real-time.</p><span class="tool-card-link">Try it →</span></a>
-        <a href="/pomodoro-timer/" class="tool-card"><img src="/assets/img/icon-browser.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Pomodoro Timer</h3><p>Use productivity intervals for focus.</p><span class="tool-card-link">Try it →</span></a>
-        <a href="/daily-planner/" class="tool-card"><img src="/assets/img/icon-browser.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Daily Planner</h3><p>Organize tasks and priorities for today.</p><span class="tool-card-link">Try it →</span></a>
+        <a href="/countdown-timer/" class="tool-card"><img src="/assets/img/icon-countdown.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Countdown Timer</h3><p>Set timed sessions and reminders.</p><span class="tool-card-link">Try it →</span></a>
+        <a href="/stopwatch/" class="tool-card"><img src="/assets/img/icon-stopwatch.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Stopwatch</h3><p>Track elapsed time in real-time.</p><span class="tool-card-link">Try it →</span></a>
+        <a href="/pomodoro-timer/" class="tool-card"><img src="/assets/img/icon-pomodoro.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Pomodoro Timer</h3><p>Use productivity intervals for focus.</p><span class="tool-card-link">Try it →</span></a>
+        <a href="/daily-planner/" class="tool-card"><img src="/assets/img/icon-planner.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Daily Planner</h3><p>Organize tasks and priorities for today.</p><span class="tool-card-link">Try it →</span></a>
       </div>
     </section>
 

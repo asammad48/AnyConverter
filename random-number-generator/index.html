@@ -27,7 +27,7 @@
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
     html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F4F6FF);color:var(--color-text,#1E1B4B)}
     body{min-height:100vh;display:flex;flex-direction:column}
-    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8FE)}
+    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8D0)}
     .header-inner{max-width:1280px;width:100%;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;gap:32px}
     .hero{padding:40px 24px 32px;max-width:1280px;margin:0 auto}
     .hero h1{font-size:clamp(1.75rem,4vw,2.25rem);font-weight:700;line-height:1.2;margin-bottom:12px}
@@ -49,19 +49,19 @@
     <div class="tool-wrapper">
       <div class="tool-zone">
         <div style="padding:24px">
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px">
+          <div class="two-col-grid" style="margin-bottom:12px">
             <div>
               <label style="display:block;font-size:13px;font-weight:500;margin-bottom:6px" for="rng-min">Minimum</label>
-              <input type="number" id="rng-min" value="1" style="width:100%;padding:10px 12px;border:1px solid var(--color-border,#DDD8FE);border-radius:8px;font-size:15px">
+              <input type="number" id="rng-min" value="1" style="width:100%;padding:10px 12px;border:1px solid var(--color-border,#DDD8D0);border-radius:8px;font-size:15px">
             </div>
             <div>
               <label style="display:block;font-size:13px;font-weight:500;margin-bottom:6px" for="rng-max">Maximum</label>
-              <input type="number" id="rng-max" value="100" style="width:100%;padding:10px 12px;border:1px solid var(--color-border,#DDD8FE);border-radius:8px;font-size:15px">
+              <input type="number" id="rng-max" value="100" style="width:100%;padding:10px 12px;border:1px solid var(--color-border,#DDD8D0);border-radius:8px;font-size:15px">
             </div>
           </div>
           <div style="margin-bottom:16px">
             <label style="display:block;font-size:13px;font-weight:500;margin-bottom:6px" for="rng-count">How many numbers?</label>
-            <input type="number" id="rng-count" value="1" min="1" max="100" style="width:120px;padding:10px 12px;border:1px solid var(--color-border,#DDD8FE);border-radius:8px;font-size:15px">
+            <input type="number" id="rng-count" value="1" min="1" max="100" style="width:120px;padding:10px 12px;border:1px solid var(--color-border,#DDD8D0);border-radius:8px;font-size:15px">
           </div>
           <div style="margin-bottom:16px">
             <label style="display:flex;align-items:center;gap:8px;font-size:14px;cursor:pointer"><input type="checkbox" id="rng-unique"> No duplicates</label>
@@ -72,8 +72,8 @@
             <button class="btn btn-secondary" id="btn-clear-rng">Clear</button>
           </div>
           <div id="rng-output" style="display:none">
-            <div id="rng-big-number" style="font-size:64px;font-weight:700;text-align:center;color:var(--color-primary,#4F46E5);padding:16px 0;display:none"></div>
-            <div id="rng-list" style="display:flex;flex-wrap:wrap;gap:8px;padding:12px;background:var(--color-bg,#F4F6FF);border:1px solid var(--color-border,#DDD8FE);border-radius:8px;max-height:200px;overflow-y:auto"></div>
+            <div id="rng-big-number" style="font-size:64px;font-weight:700;text-align:center;color:var(--color-primary,#B04A45);padding:16px 0;display:none"></div>
+            <div id="rng-list" style="display:flex;flex-wrap:wrap;gap:8px;padding:12px;background:var(--color-bg,#F4F6FF);border:1px solid var(--color-border,#DDD8D0);border-radius:8px;max-height:200px;overflow-y:auto"></div>
           </div>
         </div>
       </div>

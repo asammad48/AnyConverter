@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lanzador de Dados Online Gratis — d4 d6 d8 d10 d12 d20 | AnyConverter</title>
+  <meta name="description" content="Lanza cualquier dado online de forma gratuita. Soporta d4, d6, d8, d10, d12 y d20. Lanza hasta 20 dados a la vez. Total mostrado con historial de tiradas. Sin registro.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://anyconverter.io/es/dice-roller/">
+  <link rel="alternate" hreflang="en" href="https://anyconverter.io/dice-roller/"><link rel="alternate" hreflang="es" href="https://anyconverter.io/es/dice-roller/"><link rel="alternate" hreflang="da" href="https://anyconverter.io/da/dice-roller/"><link rel="alternate" hreflang="x-default" href="https://anyconverter.io/dice-roller/">
+  <meta property="og:type" content="website"><meta property="og:title" content="Lanzador de Dados Online Gratis — d4 d6 d8 d10 d12 d20 | AnyConverter"><meta property="og:description" content="Lanza d4, d6, d8, d10, d12 o d20 online. Varios dados, ve los totales. Gratis."><meta property="og:url" content="https://anyconverter.io/es/dice-roller/"><meta property="og:site_name" content="AnyConverter">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" data-ad-client="ca-pub-XXXXXXXXXX" crossorigin="anonymous"></script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Lanzador de Dados","url":"https://anyconverter.io/es/dice-roller/","description":"Lanza d4, d6, d8, d10, d12 y d20 online. Múltiples dados, totales e historial.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F4F6FF);color:var(--color-text,#1E1B4B)}
+    body{min-height:100vh;display:flex;flex-direction:column}
+    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8D0)}
+    .header-inner{max-width:1280px;width:100%;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;gap:32px}
+    .hero{padding:40px 24px 32px;max-width:1280px;margin:0 auto}
+    .hero h1{font-size:clamp(1.75rem,4vw,2.25rem);font-weight:700;line-height:1.2;margin-bottom:12px}
+    .hero-desc{font-size:1.0625rem;color:var(--color-text-2,#6B7280);max-width:680px;line-height:1.6}
+    @font-face{font-family:'Inter';font-display:swap}
+  </style>
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+  <header id="site-header" class="site-header"></header>
+  <main id="main-content">
+    <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/es/">Inicio</a></li><li><a href="/es/coin-flip/">Herramientas aleatorias</a></li><li aria-current="page">Lanzador de Dados</li></ol></nav>
+    <section class="hero">
+      <h1>Lanzador de Dados Online</h1>
+      <p class="hero-desc">Lanza cualquier combinación de dados poliédricos — d4, d6, d8, d10, d12 o d20. Lanza hasta 20 dados a la vez y ve el total. Perfecto para juegos de rol de mesa y juegos de mesa.</p>
+    </section>
+    <div class="tool-wrapper">
+      <div class="tool-zone">
+        <div style="padding:24px;text-align:center">
+          <!-- Botones de tirada rápida -->
+          <div style="margin-bottom:20px">
+            <div style="font-size:12px;font-weight:600;color:var(--color-text-2,#6B7280);margin-bottom:10px;text-align:left">Tirada rápida</div>
+            <div style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center">
+              <button class="btn btn-secondary" data-dice="4" style="font-weight:700">d4</button>
+              <button class="btn btn-secondary" data-dice="6" style="font-weight:700">d6</button>
+              <button class="btn btn-secondary" data-dice="8" style="font-weight:700">d8</button>
+              <button class="btn btn-secondary" data-dice="10" style="font-weight:700">d10</button>
+              <button class="btn btn-secondary" data-dice="12" style="font-weight:700">d12</button>
+              <button class="btn btn-secondary" data-dice="20" style="font-weight:700">d20</button>
+            </div>
+          </div>
+          <!-- Tirada personalizada -->
+          <div style="display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;margin-bottom:20px;padding:16px;background:var(--color-bg,#F4F6FF);border-radius:10px">
+            <input type="number" id="dice-count" min="1" max="20" value="1" style="width:64px;padding:9px 8px;border:1px solid var(--color-border,#DDD8D0);border-radius:8px;font-size:14px;font-weight:700;text-align:center">
+            <span style="font-size:14px;color:var(--color-text-2,#6B7280)">dados con</span>
+            <input type="number" id="dice-sides" min="2" max="100" value="6" style="width:72px;padding:9px 8px;border:1px solid var(--color-border,#DDD8D0);border-radius:8px;font-size:14px;font-weight:700;text-align:center">
+            <span style="font-size:14px;color:var(--color-text-2,#6B7280)">caras</span>
+            <button class="btn btn-primary" id="dice-roll">¡Lanzar!</button>
+          </div>
+          <!-- Resultados -->
+          <div id="dice-results" style="display:flex;flex-wrap:wrap;justify-content:center;min-height:60px;margin-bottom:8px"></div>
+          <div id="dice-total" style="font-size:1.1rem;font-weight:700;color:var(--color-primary,#B04A45);min-height:24px;margin-bottom:16px"></div>
+          <!-- Historial -->
+          <div id="dice-history" style="display:none;text-align:left;max-width:500px;margin:0 auto">
+            <div style="font-size:12px;font-weight:600;color:var(--color-text-2,#6B7280);margin-bottom:6px">Historial de tiradas</div>
+            <div id="dice-hist-list"></div>
+          </div>
+        </div>
+      </div>
+      <aside class="tool-side" aria-label="Publicidad">
+        <div style="margin-top:16px">
+          <p class="ad-label">Publicidad</p>
+          <div class="ad-slot" style="min-height:250px">
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+          </div>
+        </div>
+      </aside>
+    </div>
+    <section class="how-to-use"><h2>Cómo lanzar dados</h2><ol class="steps"><li><strong>Paso 1</strong> — Haz clic en un botón de tirada rápida (d4 a d20) para una tirada simple instantánea.</li><li><strong>Paso 2</strong> — O configura el número de dados y caras en los campos personalizados y haz clic en <em>¡Lanzar!</em></li><li><strong>Paso 3</strong> — Cada resultado del dado se muestra como una ficha. El total aparece debajo para múltiples dados.</li><li><strong>Paso 4</strong> — Las últimas 10 tiradas se muestran en la sección de historial.</li></ol></section>
+    <section class="features"><h2>Características</h2><ul class="features-list"><li>Botones de tirada rápida para todos los dados poliédricos estándar (d4–d20)</li><li>Dados personalizados: cualquier número de caras del 2 al 100</li><li>Lanza hasta 20 dados a la vez con total sumado</li><li>Resultados del d6 mostrados como caras con puntos ⚀–⚅</li><li>Últimas 10 tiradas registradas en el historial</li></ul></section>
+    <section class="faq"><h2>Preguntas frecuentes</h2><div class="faq-list">
+      <details class="faq-item"><summary class="faq-question">¿Puedo lanzar dados no estándar como d3 o d100? <span class="faq-icon">+</span></summary><div class="faq-answer">Sí. Usa los campos de tirada personalizada e ingresa cualquier número de caras entre 2 y 100. Un d100 (dado percentil) se introduce como 100 caras.</div></details>
+      <details class="faq-item"><summary class="faq-question">¿Es bueno para D&amp;D u otros juegos de rol? <span class="faq-icon">+</span></summary><div class="faq-answer">Absolutamente. Todos los dados estándar de juegos de rol están disponibles como botones de tirada rápida. También puedes lanzar varios dados a la vez para simular tiradas de daño como 2d6+3 (lanza 2 dados, suma 3 manualmente).</div></details>
+    </div></section>
+
+    <section class="related-tools">
+      <h2>Herramientas relacionadas</h2>
+      <div class="tool-grid">
+        <a href="/es/coin-flip/" class="tool-card"><img src="/assets/img/icon-coin.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Lanzar Moneda</h3><p>Lanza una moneda virtual al instante.</p><span class="tool-card-link">Usar →</span></a>
+        <a href="/es/random-picker/" class="tool-card"><img src="/assets/img/icon-picker.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Selector Aleatorio</h3><p>Elige valores aleatorios de una lista.</p><span class="tool-card-link">Usar →</span></a>
+        <a href="/es/team-picker/" class="tool-card"><img src="/assets/img/icon-team.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Selector de Equipos</h3><p>Divide jugadores en equipos aleatorios.</p><span class="tool-card-link">Usar →</span></a>
+        <a href="/es/decision-maker/" class="tool-card"><img src="/assets/img/icon-decision.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Tomador de Decisiones</h3><p>Toma decisiones con una ruleta giratoria.</p><span class="tool-card-link">Usar →</span></a>
+      </div>
+    </section>
+
+  </main>
+  <footer id="site-footer" class="site-footer"></footer>
+  <script src="/assets/js/shared.js" defer></script>
+  <script src="/assets/js/tools/dice-roller.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cronómetro Online Gratis | AnyConverter</title>
+  <meta name="description" content="Cronómetro online gratuito con temporizador de vueltas. Inicia, pausa, reanuda y registra tiempos de vuelta al instante en tu navegador. Sin descargas ni registro.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://anyconverter.io/es/stopwatch/">
+  <link rel="alternate" hreflang="en" href="https://anyconverter.io/stopwatch/"><link rel="alternate" hreflang="es" href="https://anyconverter.io/es/stopwatch/"><link rel="alternate" hreflang="da" href="https://anyconverter.io/da/stopwatch/"><link rel="alternate" hreflang="x-default" href="https://anyconverter.io/stopwatch/">
+  <meta property="og:type" content="website"><meta property="og:title" content="Cronómetro Online Gratis | AnyConverter"><meta property="og:description" content="Cronómetro online gratuito con temporizador de vueltas. Inicia, pausa y reanuda al instante."><meta property="og:url" content="https://anyconverter.io/es/stopwatch/"><meta property="og:site_name" content="AnyConverter">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" data-ad-client="ca-pub-XXXXXXXXXX" crossorigin="anonymous"></script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Cronómetro","url":"https://anyconverter.io/es/stopwatch/","description":"Cronómetro online gratuito con temporizador de vueltas.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F4F6FF);color:var(--color-text,#1E1B4B)}
+    body{min-height:100vh;display:flex;flex-direction:column}
+    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8D0)}
+    .header-inner{max-width:1280px;width:100%;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;gap:32px}
+    .hero{padding:40px 24px 32px;max-width:1280px;margin:0 auto}
+    .hero h1{font-size:clamp(1.75rem,4vw,2.25rem);font-weight:700;line-height:1.2;margin-bottom:12px}
+    .hero-desc{font-size:1.0625rem;color:var(--color-text-2,#6B7280);max-width:680px;line-height:1.6}
+    @font-face{font-family:'Inter';font-display:swap}
+  </style>
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+  <header id="site-header" class="site-header"></header>
+  <main id="main-content">
+    <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/es/">Inicio</a></li><li><a href="/es/stopwatch/">Productividad</a></li><li aria-current="page">Cronómetro</li></ol></nav>
+    <section class="hero">
+      <h1>Cronómetro Online</h1>
+      <p class="hero-desc">Cronómetro de precisión con temporizador de vueltas. Inicia, pausa, registra vueltas y reinicia — todo en tu navegador con precisión de milisegundos.</p>
+    </section>
+    <div class="tool-wrapper">
+      <div class="tool-zone">
+        <div style="padding:24px;text-align:center">
+          <div id="sw-display" style="font-size:clamp(2.5rem,8vw,4rem);font-weight:700;font-family:monospace;letter-spacing:0.05em;color:var(--color-text,#1E1B4B);margin-bottom:24px;padding:24px;background:var(--color-bg,#F4F6FF);border-radius:12px">00:00:00.00</div>
+          <div style="display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-bottom:24px">
+            <button class="btn btn-primary" id="sw-start" style="min-width:110px">Iniciar</button>
+            <button class="btn btn-secondary" id="sw-lap">Vuelta</button>
+            <button class="btn btn-secondary" id="sw-reset">Reiniciar</button>
+          </div>
+          <div id="sw-laps-container" style="text-align:left;max-width:480px;margin:0 auto">
+            <div style="font-size:12px;font-weight:600;color:var(--color-text-2,#6B7280);display:flex;justify-content:space-between;padding:0 0 6px;border-bottom:2px solid var(--color-border,#DDD8D0);margin-bottom:4px">
+              <span>Vuelta</span><span>Tiempo de Vuelta</span><span>Total</span>
+            </div>
+            <ul id="sw-laps" style="list-style:none;max-height:300px;overflow-y:auto"></ul>
+          </div>
+        </div>
+      </div>
+      <aside class="tool-side" aria-label="Publicidad">
+        <div style="margin-top:16px">
+          <p class="ad-label">Publicidad</p>
+          <div class="ad-slot" style="min-height:250px">
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+          </div>
+        </div>
+      </aside>
+    </div>
+    <section class="how-to-use"><h2>Cómo Usar el Cronómetro</h2><ol class="steps"><li><strong>Paso 1</strong> — Haz clic en <em>Iniciar</em> para comenzar a contar el tiempo.</li><li><strong>Paso 2</strong> — Haz clic en <em>Vuelta</em> para registrar un tiempo parcial sin detener el cronómetro.</li><li><strong>Paso 3</strong> — Haz clic de nuevo en <em>Iniciar</em> (que ahora dice Pausar) para pausar el temporizador.</li><li><strong>Paso 4</strong> — Haz clic en <em>Reiniciar</em> para borrar todos los tiempos y vueltas.</li></ol></section>
+    <section class="features"><h2>Características</h2><ul class="features-list"><li>Precisión de milisegundos con <code>requestAnimationFrame</code> y <code>Date.now()</code></li><li>Registro ilimitado de vueltas — muestra el tiempo de vuelta y el total acumulado</li><li>Controles de inicio, pausa, reanudación y reinicio</li><li>100% basado en el navegador — no se envían datos a ningún lugar</li></ul></section>
+    <section class="faq"><h2>Preguntas Frecuentes</h2><div class="faq-list">
+      <details class="faq-item"><summary class="faq-question">¿Sigue funcionando el cronómetro si cambio de pestaña? <span class="faq-icon">+</span></summary><div class="faq-answer">Sí. El temporizador se basa en marcas de tiempo de <code>Date.now()</code>, por lo que permanece preciso incluso cuando la pestaña está en segundo plano. La pantalla se actualizará cuando regreses a la pestaña.</div></details>
+      <details class="faq-item"><summary class="faq-question">¿Cuántas vueltas puedo registrar? <span class="faq-icon">+</span></summary><div class="faq-answer">No hay límite fijo. Puedes registrar tantas vueltas como desees — la lista se desplaza si supera el tamaño del contenedor.</div></details>
+    </div></section>
+
+    <section class="related-tools">
+      <h2>Herramientas Relacionadas</h2>
+      <div class="tool-grid">
+        <a href="/es/countdown-timer/" class="tool-card"><img src="/assets/img/icon-countdown.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Temporizador de Cuenta Atrás</h3><p>Establece cuentas atrás para tareas y recordatorios.</p><span class="tool-card-link">Usar →</span></a>
+        <a href="/es/pomodoro-timer/" class="tool-card"><img src="/assets/img/icon-pomodoro.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Temporizador Pomodoro</h3><p>Usa intervalos de trabajo concentrado con descansos.</p><span class="tool-card-link">Usar →</span></a>
+        <a href="/es/meeting-timer/" class="tool-card"><img src="/assets/img/icon-meeting.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Temporizador de Reunión</h3><p>Controla la duración de las reuniones.</p><span class="tool-card-link">Usar →</span></a>
+        <a href="/es/world-clock/" class="tool-card"><img src="/assets/img/icon-worldclock.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Reloj Mundial</h3><p>Consulta la hora actual en las principales ciudades.</p><span class="tool-card-link">Usar →</span></a>
+      </div>
+    </section>
+
+  </main>
+  <footer id="site-footer" class="site-footer"></footer>
+  <script src="/assets/js/shared.js" defer></script>
+  <script src="/assets/js/tools/stopwatch.js" defer></script>
+</body>
+</html>

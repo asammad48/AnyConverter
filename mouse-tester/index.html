@@ -26,20 +26,20 @@
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
     html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F4F6FF);color:var(--color-text,#1E1B4B)}
     body{min-height:100vh;display:flex;flex-direction:column}
-    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8FE)}
+    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8D0)}
     .header-inner{max-width:1280px;width:100%;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;gap:32px}
     .hero{padding:40px 24px 32px;max-width:1280px;margin:0 auto}
     .hero h1{font-size:clamp(1.75rem,4vw,2.25rem);font-weight:700;line-height:1.2;margin-bottom:12px}
     .hero-desc{font-size:1.0625rem;color:var(--color-text-2,#6B7280);max-width:680px;line-height:1.6}
     @font-face{font-family:'Inter';font-display:swap}
-    #mouse-area{position:relative;width:100%;height:300px;background:var(--color-surface-2,#EEF1FF);border-radius:12px;overflow:hidden;cursor:crosshair;border:2px dashed var(--color-primary-light,#EEF2FF);user-select:none}
+    #mouse-area{position:relative;width:100%;height:300px;background:var(--color-surface-2,#F5F1EE);border-radius:12px;overflow:hidden;cursor:crosshair;border:2px dashed var(--color-primary-light,#F3E7E4);user-select:none}
     #mouse-canvas{position:absolute;inset:0;width:100%;height:100%}
     #mouse-area-hint{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:var(--color-text-2,#6B7280);font-size:14px;pointer-events:none}
     .mouse-stat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px}
-    .mouse-stat{background:var(--color-bg,#F4F6FF);border:1px solid var(--color-border,#DDD8FE);border-radius:10px;padding:14px;text-align:center}
-    .mouse-stat-val{font-size:1.5rem;font-weight:700;color:var(--color-primary,#4F46E5)}
+    .mouse-stat{background:var(--color-bg,#F4F6FF);border:1px solid var(--color-border,#DDD8D0);border-radius:10px;padding:14px;text-align:center}
+    .mouse-stat-val{font-size:1.5rem;font-weight:700;color:var(--color-primary,#B04A45)}
     .mouse-stat-label{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.5px;color:var(--color-text-2,#6B7280);margin-top:4px}
-    .mouse-btn--active{background:var(--color-primary,#4F46E5) !important;color:var(--color-surface,#fff) !important}
+    .mouse-btn--active{background:var(--color-primary,#B04A45) !important;color:var(--color-surface,#fff) !important}
   </style>
   <link rel="stylesheet" href="/assets/css/style.css">
 </head>
@@ -66,12 +66,12 @@
             <div class="mouse-stat"><div class="mouse-stat-val" id="mouse-right">0</div><div class="mouse-stat-label">Right Clicks</div></div>
           </div>
           <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:12px;font-size:13px">
-            <div style="background:var(--color-bg,#F4F6FF);border:1px solid var(--color-border,#DDD8FE);border-radius:8px;padding:10px;text-align:center">X: <strong id="mouse-x">—</strong></div>
-            <div style="background:var(--color-bg,#F4F6FF);border:1px solid var(--color-border,#DDD8FE);border-radius:8px;padding:10px;text-align:center">Y: <strong id="mouse-y">—</strong></div>
-            <div style="background:var(--color-bg,#F4F6FF);border:1px solid var(--color-border,#DDD8FE);border-radius:8px;padding:10px;text-align:center">Scroll: <strong id="mouse-scroll">—</strong></div>
+            <div style="background:var(--color-bg,#F4F6FF);border:1px solid var(--color-border,#DDD8D0);border-radius:8px;padding:10px;text-align:center">X: <strong id="mouse-x">—</strong></div>
+            <div style="background:var(--color-bg,#F4F6FF);border:1px solid var(--color-border,#DDD8D0);border-radius:8px;padding:10px;text-align:center">Y: <strong id="mouse-y">—</strong></div>
+            <div style="background:var(--color-bg,#F4F6FF);border:1px solid var(--color-border,#DDD8D0);border-radius:8px;padding:10px;text-align:center">Scroll: <strong id="mouse-scroll">—</strong></div>
           </div>
           <div style="margin-top:12px;display:flex;gap:12px;align-items:center">
-            <div id="mouse-btn-left" style="padding:8px 16px;border-radius:8px;background:var(--color-primary-light,#EEF2FF);color:var(--color-primary,#4F46E5);font-weight:600;font-size:13px;transition:all .1s">Left Button</div>
+            <div id="mouse-btn-left" style="padding:8px 16px;border-radius:8px;background:var(--color-primary-light,#F3E7E4);color:var(--color-primary,#B04A45);font-weight:600;font-size:13px;transition:all .1s">Left Button</div>
             <button class="btn btn-secondary btn-sm" id="mouse-clear">Reset</button>
           </div>
         </div>
@@ -116,9 +116,9 @@
     <section class="related-tools">
       <h2>Related Tools</h2>
       <div class="tool-grid">
-        <a href="/keyboard-tester/" class="tool-card"><img src="/assets/img/icon-browser.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Keyboard Tester</h3><p>Test key presses and keyboard response.</p><span class="tool-card-link">Try it →</span></a>
-        <a href="/microphone-tester/" class="tool-card"><img src="/assets/img/icon-browser.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Microphone Tester</h3><p>Validate microphone capture quality.</p><span class="tool-card-link">Try it →</span></a>
-        <a href="/webcam-tester/" class="tool-card"><img src="/assets/img/icon-browser.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Webcam Tester</h3><p>Preview camera stream and permissions.</p><span class="tool-card-link">Try it →</span></a>
+        <a href="/keyboard-tester/" class="tool-card"><img src="/assets/img/icon-keyboard.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Keyboard Tester</h3><p>Test key presses and keyboard response.</p><span class="tool-card-link">Try it →</span></a>
+        <a href="/microphone-tester/" class="tool-card"><img src="/assets/img/icon-mic.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Microphone Tester</h3><p>Validate microphone capture quality.</p><span class="tool-card-link">Try it →</span></a>
+        <a href="/webcam-tester/" class="tool-card"><img src="/assets/img/icon-webcam.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Webcam Tester</h3><p>Preview camera stream and permissions.</p><span class="tool-card-link">Try it →</span></a>
         <a href="/browser-info/" class="tool-card"><img src="/assets/img/icon-browser.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Browser Info</h3><p>Inspect browser and hardware details.</p><span class="tool-card-link">Try it →</span></a>
       </div>
     </section>

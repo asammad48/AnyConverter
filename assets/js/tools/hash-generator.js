@@ -170,7 +170,7 @@ document.addEventListener('DOMContentLoaded', function () {
   function md5Text(buf) {
     const bytes = new Uint8Array(buf);
     const str = Array.from(bytes).map(function(b){return String.fromCharCode(b);}).join('');
-    return md5(new TextDecoder().decode(buf));
+    return md5(str);
   }
 
   dropZone.addEventListener('click', function () { fileInput.click(); });

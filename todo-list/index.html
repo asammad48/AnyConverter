@@ -17,7 +17,7 @@
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
     html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F4F6FF);color:var(--color-text,#1E1B4B)}
     body{min-height:100vh;display:flex;flex-direction:column}
-    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8FE)}
+    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8D0)}
     .header-inner{max-width:1280px;width:100%;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;gap:32px}
     .hero{padding:40px 24px 32px;max-width:1280px;margin:0 auto}
     .hero h1{font-size:clamp(1.75rem,4vw,2.25rem);font-weight:700;line-height:1.2;margin-bottom:12px}
@@ -39,18 +39,18 @@
         <div style="padding:24px;max-width:600px">
           <!-- Add task -->
           <div style="display:flex;gap:8px;margin-bottom:16px">
-            <input type="text" id="todo-input" placeholder="Add a new task…" style="flex:1;padding:10px 14px;border:1px solid var(--color-border,#DDD8FE);border-radius:8px;font-size:14px">
+            <input type="text" id="todo-input" placeholder="Add a new task…" style="flex:1;padding:10px 14px;border:1px solid var(--color-border,#DDD8D0);border-radius:8px;font-size:14px">
             <button class="btn btn-primary" id="todo-add">Add</button>
           </div>
           <!-- Filter bar -->
           <div style="display:flex;gap:6px;margin-bottom:14px;flex-wrap:wrap">
-            <button data-filter="all" style="padding:6px 14px;border:1px solid var(--color-border,#DDD8FE);border-radius:20px;font-size:12px;cursor:pointer;background:var(--color-primary,#4F46E5);color:var(--color-surface,#fff)">All</button>
-            <button data-filter="active" style="padding:6px 14px;border:1px solid var(--color-border,#DDD8FE);border-radius:20px;font-size:12px;cursor:pointer;background:var(--color-surface,#fff);color:var(--color-text-body,#374151)">Active</button>
-            <button data-filter="completed" style="padding:6px 14px;border:1px solid var(--color-border,#DDD8FE);border-radius:20px;font-size:12px;cursor:pointer;background:var(--color-surface,#fff);color:var(--color-text-body,#374151)">Completed</button>
-            <button id="todo-clear" style="padding:6px 14px;border:1px solid var(--color-border,#DDD8FE);border-radius:20px;font-size:12px;cursor:pointer;background:var(--color-surface,#fff);color:var(--color-error,#DC2626);margin-left:auto">Clear completed</button>
+            <button data-filter="all" style="padding:6px 14px;border:1px solid var(--color-border,#DDD8D0);border-radius:20px;font-size:12px;cursor:pointer;background:var(--color-primary,#B04A45);color:var(--color-surface,#fff)">All</button>
+            <button data-filter="active" style="padding:6px 14px;border:1px solid var(--color-border,#DDD8D0);border-radius:20px;font-size:12px;cursor:pointer;background:var(--color-surface,#fff);color:var(--color-text-body,#374151)">Active</button>
+            <button data-filter="completed" style="padding:6px 14px;border:1px solid var(--color-border,#DDD8D0);border-radius:20px;font-size:12px;cursor:pointer;background:var(--color-surface,#fff);color:var(--color-text-body,#374151)">Completed</button>
+            <button id="todo-clear" style="padding:6px 14px;border:1px solid var(--color-border,#DDD8D0);border-radius:20px;font-size:12px;cursor:pointer;background:var(--color-surface,#fff);color:var(--color-error,#DC2626);margin-left:auto">Clear completed</button>
           </div>
           <!-- List -->
-          <ul id="todo-list" style="list-style:none;border:1px solid var(--color-border,#DDD8FE);border-radius:10px;overflow:hidden;background:var(--color-surface,#fff);min-height:80px;padding:0 14px"></ul>
+          <ul id="todo-list" style="list-style:none;border:1px solid var(--color-border,#DDD8D0);border-radius:10px;overflow:hidden;background:var(--color-surface,#fff);min-height:80px;padding:0 14px"></ul>
           <!-- Footer count -->
           <div style="margin-top:8px;font-size:12px;color:var(--color-text-2,#6B7280);text-align:right" id="todo-count">0 items left</div>
         </div>
@@ -75,10 +75,10 @@
     <section class="related-tools">
       <h2>Related Tools</h2>
       <div class="tool-grid">
-        <a href="/daily-planner/" class="tool-card"><img src="/assets/img/icon-browser.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Daily Planner</h3><p>Plan your day with structured priorities.</p><span class="tool-card-link">Try it →</span></a>
-        <a href="/habit-tracker/" class="tool-card"><img src="/assets/img/icon-browser.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Habit Tracker</h3><p>Build and monitor daily habits.</p><span class="tool-card-link">Try it →</span></a>
-        <a href="/sticky-notes/" class="tool-card"><img src="/assets/img/icon-browser.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Sticky Notes</h3><p>Save quick notes directly in your browser.</p><span class="tool-card-link">Try it →</span></a>
-        <a href="/pomodoro-timer/" class="tool-card"><img src="/assets/img/icon-browser.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Pomodoro Timer</h3><p>Pair tasks with focus intervals.</p><span class="tool-card-link">Try it →</span></a>
+        <a href="/daily-planner/" class="tool-card"><img src="/assets/img/icon-planner.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Daily Planner</h3><p>Plan your day with structured priorities.</p><span class="tool-card-link">Try it →</span></a>
+        <a href="/habit-tracker/" class="tool-card"><img src="/assets/img/icon-habit.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Habit Tracker</h3><p>Build and monitor daily habits.</p><span class="tool-card-link">Try it →</span></a>
+        <a href="/sticky-notes/" class="tool-card"><img src="/assets/img/icon-sticky.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Sticky Notes</h3><p>Save quick notes directly in your browser.</p><span class="tool-card-link">Try it →</span></a>
+        <a href="/pomodoro-timer/" class="tool-card"><img src="/assets/img/icon-pomodoro.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Pomodoro Timer</h3><p>Pair tasks with focus intervals.</p><span class="tool-card-link">Try it →</span></a>
       </div>
     </section>
 

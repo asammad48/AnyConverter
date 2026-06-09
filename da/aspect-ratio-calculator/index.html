@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Billedforholdsberegner Online Gratis | AnyConverter</title>
+  <meta name="description" content="Beregn billedforhold og skaler dimensioner, mens du bevarer forholdet. Konverter ethvert bredde/højde-par, brug forudindstillede forhold (16:9, 4:3, 1:1) og få det skalerede resultat øjeblikkeligt.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://anyconverter.io/da/aspect-ratio-calculator/">
+  <link rel="alternate" hreflang="en" href="https://anyconverter.io/aspect-ratio-calculator/">
+  <link rel="alternate" hreflang="es" href="https://anyconverter.io/es/aspect-ratio-calculator/">
+  <link rel="alternate" hreflang="da" href="https://anyconverter.io/da/aspect-ratio-calculator/">
+  <link rel="alternate" hreflang="x-default" href="https://anyconverter.io/aspect-ratio-calculator/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Billedforholdsberegner Online Gratis | AnyConverter">
+  <meta property="og:description" content="Beregn billedforhold, skaler dimensioner og find den manglende bredde eller højde. Gratis, øjeblikkeligt, ingen tilmelding.">
+  <meta property="og:url" content="https://anyconverter.io/da/aspect-ratio-calculator/">
+  <meta property="og:site_name" content="AnyConverter">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" data-ad-client="ca-pub-XXXXXXXXXX" crossorigin="anonymous"></script>
+  <!-- Replace ca-pub-XXXXXXXXXX with your real AdSense publisher ID -->
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Billedforholdsberegner","url":"https://anyconverter.io/da/aspect-ratio-calculator/","description":"Beregn billedforhold og skaler billede- eller videodimensioner, mens du bevarer forholdet.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F4F6FF);color:var(--color-text,#1E1B4B)}
+    body{min-height:100vh;display:flex;flex-direction:column}
+    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8D0)}
+    .header-inner{max-width:1280px;width:100%;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;gap:32px}
+    .hero{padding:40px 24px 32px;max-width:1280px;margin:0 auto}
+    .hero h1{font-size:clamp(1.75rem,4vw,2.25rem);font-weight:700;line-height:1.2;margin-bottom:12px}
+    .hero-desc{font-size:1.0625rem;color:var(--color-text-2,#6B7280);max-width:680px;line-height:1.6}
+    #ar-preview-box{background:var(--color-primary-light,#F3E7E4);border:2px dashed var(--color-primary,#B04A45);border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;color:var(--color-primary,#B04A45);transition:all .3s;min-width:40px;min-height:20px}
+    @font-face{font-family:'Inter';font-display:swap}
+  </style>
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+  <header id="site-header" class="site-header"></header>
+  <main id="main-content">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol><li><a href="/da/">Hjem</a></li><li aria-current="page">Billedforholdsberegner</li></ol>
+    </nav>
+    <section class="hero">
+      <h1>Billedforholdsberegner</h1>
+      <p class="hero-desc">Beregn øjeblikkeligt billedforholdet ud fra enhver bredde og højde. Skaler dimensioner til en ny størrelse, mens forholdet bevares, og brug populære forudindstillinger som 16:9, 4:3 og flere.</p>
+    </section>
+    <div class="tool-wrapper">
+      <div class="tool-zone">
+        <div style="padding:24px">
+          <!-- Find forhold -->
+          <div style="padding:18px;border:1px solid var(--color-border,#DDD8D0);border-radius:12px;margin-bottom:20px">
+            <h3 style="font-size:14px;font-weight:600;margin-bottom:14px">Find Billedforhold</h3>
+            <div style="display:flex;align-items:flex-end;gap:10px;flex-wrap:wrap;margin-bottom:12px">
+              <div>
+                <label style="display:block;font-size:12px;font-weight:500;margin-bottom:5px" for="ar-width">Bredde (px)</label>
+                <input type="number" id="ar-width" placeholder="1920" style="width:120px;padding:9px 11px;border:1px solid var(--color-border,#DDD8D0);border-radius:7px;font-size:14px">
+              </div>
+              <span style="font-size:20px;font-weight:700;padding-bottom:8px">×</span>
+              <div>
+                <label style="display:block;font-size:12px;font-weight:500;margin-bottom:5px" for="ar-height">Højde (px)</label>
+                <input type="number" id="ar-height" placeholder="1080" style="width:120px;padding:9px 11px;border:1px solid var(--color-border,#DDD8D0);border-radius:7px;font-size:14px">
+              </div>
+              <button class="btn btn-primary" id="ar-calc-btn">Beregn</button>
+            </div>
+            <div class="three-col-grid">
+              <div class="stat-card"><div class="stat-val" id="ar-ratio-out" style="font-size:20px">—</div><div class="stat-lbl">Forhold</div></div>
+              <div class="stat-card"><div class="stat-val" id="ar-decimal-out" style="font-size:18px">—</div><div class="stat-lbl">Decimal</div></div>
+              <div class="stat-card" style="display:flex;align-items:center;justify-content:center">
+                <div id="ar-preview-box" style="width:80px;height:45px">—</div>
+              </div>
+            </div>
+          </div>
+          <!-- Skaler dimensioner -->
+          <div style="padding:18px;border:1px solid var(--color-border,#DDD8D0);border-radius:12px;margin-bottom:20px">
+            <h3 style="font-size:14px;font-weight:600;margin-bottom:6px">Skaler Dimensioner</h3>
+            <p style="font-size:12px;color:var(--color-text-2,#6B7280);margin-bottom:12px">Indtast et forhold og én dimension for at finde den anden</p>
+            <div style="margin-bottom:10px">
+              <label style="display:block;font-size:12px;font-weight:500;margin-bottom:5px" for="ar-ratio-input">Billedforhold (f.eks. 16:9)</label>
+              <input type="text" id="ar-ratio-input" placeholder="16:9" style="width:120px;padding:9px 11px;border:1px solid var(--color-border,#DDD8D0);border-radius:7px;font-size:14px">
+            </div>
+            <div class="two-col-grid">
+              <div>
+                <label style="display:block;font-size:12px;font-weight:500;margin-bottom:5px" for="ar-new-width">Kendt bredde</label>
+                <div style="display:flex;gap:6px">
+                  <input type="number" id="ar-new-width" placeholder="1280" style="flex:1;padding:9px 11px;border:1px solid var(--color-border,#DDD8D0);border-radius:7px;font-size:14px">
+                  <button class="btn btn-secondary" id="ar-height-btn" style="font-size:12px;padding:8px 10px">→ Højde</button>
+                </div>
+                <div style="margin-top:6px;font-weight:600;font-size:15px" id="ar-new-height-out">—</div>
+              </div>
+              <div>
+                <label style="display:block;font-size:12px;font-weight:500;margin-bottom:5px" for="ar-new-height">Kendt højde</label>
+                <div style="display:flex;gap:6px">
+                  <input type="number" id="ar-new-height" placeholder="720" style="flex:1;padding:9px 11px;border:1px solid var(--color-border,#DDD8D0);border-radius:7px;font-size:14px">
+                  <button class="btn btn-secondary" id="ar-width-btn" style="font-size:12px;padding:8px 10px">→ Bredde</button>
+                </div>
+                <div style="margin-top:6px;font-weight:600;font-size:15px" id="ar-new-width-out">—</div>
+              </div>
+            </div>
+          </div>
+          <!-- Forudindstillinger -->
+          <div>
+            <h3 style="font-size:14px;font-weight:600;margin-bottom:10px">Almindelige forudindstillinger</h3>
+            <div id="ar-presets" style="display:flex;flex-wrap:wrap;gap:8px"></div>
+          </div>
+        </div>
+      </div>
+      <aside class="tool-side" aria-label="Indstillinger">
+        <div class="ss-divider">Almindelige forhold</div>
+        <div style="font-size:13px;line-height:2;padding:0 4px;color:var(--color-text-2,#6B7280)">
+          <strong style="color:var(--color-text,#1E1B4B)">16:9</strong> — Widescreen video/TV<br>
+          <strong style="color:var(--color-text,#1E1B4B)">4:3</strong> — Klassisk skærm/TV<br>
+          <strong style="color:var(--color-text,#1E1B4B)">1:1</strong> — Kvadrat (Instagram)<br>
+          <strong style="color:var(--color-text,#1E1B4B)">9:16</strong> — Mobil / Reels<br>
+          <strong style="color:var(--color-text,#1E1B4B)">3:2</strong> — DSLR-fotosensor<br>
+          <strong style="color:var(--color-text,#1E1B4B)">21:9</strong> — Ultrawide-skærm
+        </div>
+        <div style="margin-top:16px">
+          <p class="ad-label">Reklame</p>
+          <div class="ad-slot" style="min-height:250px">
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+          </div>
+        </div>
+      </aside>
+    </div>
+    <div class="ad-slot ad-slot--leaderboard">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="how-to-use">
+      <h2>Sådan bruger du billedforholdsberegneren</h2>
+      <ol class="steps">
+        <li><strong>Find et forhold:</strong> Indtast bredde og højde (f.eks. 1920 × 1080) og klik på "Beregn" for at få det forenklede forhold og decimalen.</li>
+        <li><strong>Skaler dimensioner:</strong> Indtast et forhold (f.eks. 16:9) og en kendt bredde eller højde. Klik på "→ Højde" eller "→ Bredde" for at finde den manglende dimension.</li>
+        <li><strong>Forudindstillinger:</strong> Klik på en forudindstillingsknap for automatisk at udfylde almindelige forhold som 16:9 eller 4:3.</li>
+      </ol>
+    </section>
+    <section class="features">
+      <h2>Funktioner</h2>
+      <ul class="features-list">
+        <li>Beregner det forenklede billedforhold ud fra enhver bredde × højde</li>
+        <li>Visuel forhåndsvisning der viser den faktiske proportion</li>
+        <li>Skaler enhver dimension, mens forholdet bevares</li>
+        <li>8 forudindstillede forhold: 16:9, 4:3, 1:1, 21:9, 3:2, 2:3, 9:16, 5:4</li>
+        <li>Decimalforhold til CSS og designværktøjer</li>
+        <li>Bruger GCD-algoritmen til præcis forenkling</li>
+      </ul>
+    </section>
+    <div class="ad-slot ad-slot--rectangle" style="margin:0 auto 32px">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="faq">
+      <h2>Ofte Stillede Spørgsmål</h2>
+      <div class="faq-list">
+        <details class="faq-item"><summary class="faq-question">Hvordan forenkles billedforholdet? <span class="faq-icon">+</span></summary><div class="faq-answer">Beregneren bruger algoritmen for Største Fælles Divisor (GCD) til at reducere bredde og højde til deres mindste heltalsvægtede forhold. For eksempel forenkles 1920:1080 til 16:9, fordi begge tal er delelige med 120.</div></details>
+        <details class="faq-item"><summary class="faq-question">Hvad bruges decimalforholdet til? <span class="faq-icon">+</span></summary><div class="faq-answer">Decimalforholdet (bredde ÷ højde) er nyttigt til CSS aspect-ratio-egenskaben og visse designværktøjer, der accepterer en enkelt decimalværdi i stedet for to tal. For 16:9 er decimalen 1,7778.</div></details>
+        <details class="faq-item"><summary class="faq-question">Kan jeg bruge dette til videoredigering? <span class="faq-icon">+</span></summary><div class="faq-answer">Ja. Dette værktøj bruges ofte til at finde den korrekte højde for en thumbnail givet en bredde (eller omvendt), til at verificere at et beskæring bevarer et bestemt billedforhold, eller til at konvertere mellem standard videodimensioner som 4K (3840×2160) og 1080p (1920×1080).</div></details>
+      </div>
+    </section>
+    <section class="related-tools">
+      <h2>Relaterede værktøjer</h2>
+      <div class="tool-grid">
+        <a href="/da/screen-resolution/" class="tool-card"><img src="/assets/img/icon-screen.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Skærmopløsning</h3><p>Registrer din nuværende skærmopløsning og viewport-størrelse.</p><span class="tool-card-link">Prøv →</span></a>
+        <a href="/da/image-converter/" class="tool-card"><img src="/assets/img/icon-image.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Billedkonverter</h3><p>Konverter billeder mellem PNG, JPG, WebP, AVIF og BMP.</p><span class="tool-card-link">Prøv →</span></a>
+        <a href="/da/image-compressor/" class="tool-card"><img src="/assets/img/icon-image.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Bildekomprimering</h3><p>Komprimer JPEG- og PNG-billeder uden synligt kvalitetstab.</p><span class="tool-card-link">Prøv →</span></a>
+      </div>
+    </section>
+  </main>
+  <footer id="site-footer" class="site-footer"></footer>
+  <script src="/assets/js/shared.js" defer></script>
+  <script src="/assets/js/tools/aspect-ratio-calculator.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Søvnberegner Online Gratis | AnyConverter</title>
+  <meta name="description" content="Beregn det bedste tidspunkt at vågne op eller gå i seng baseret på 90-minutters søvncyklusser. Gratis søvnberegner til at vågne op udhvilet. Ingen tilmelding nødvendig.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://anyconverter.io/da/sleep-calculator/">
+  <link rel="alternate" hreflang="en" href="https://anyconverter.io/sleep-calculator/">
+  <link rel="alternate" hreflang="es" href="https://anyconverter.io/es/sleep-calculator/">
+  <link rel="alternate" hreflang="da" href="https://anyconverter.io/da/sleep-calculator/">
+  <link rel="alternate" hreflang="x-default" href="https://anyconverter.io/sleep-calculator/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Søvnberegner Online Gratis | AnyConverter">
+  <meta property="og:description" content="Find det bedste væknings- eller sengetidspunkt baseret på 90-min søvncyklusser. Gratis og øjeblikkeligt.">
+  <meta property="og:url" content="https://anyconverter.io/da/sleep-calculator/">
+  <meta property="og:site_name" content="AnyConverter">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" data-ad-client="ca-pub-XXXXXXXXXX" crossorigin="anonymous"></script>
+  <!-- Replace ca-pub-XXXXXXXXXX with your real AdSense publisher ID -->
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Søvnberegner","url":"https://anyconverter.io/da/sleep-calculator/","description":"Beregn det bedste væknings- eller sengetidspunkt baseret på 90-minutters søvncyklusser.","applicationCategory":"HealthApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F4F6FF);color:var(--color-text,#1E1B4B)}
+    body{min-height:100vh;display:flex;flex-direction:column}
+    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8D0)}
+    .header-inner{max-width:1280px;width:100%;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;gap:32px}
+    .hero{padding:40px 24px 32px;max-width:1280px;margin:0 auto}
+    .hero h1{font-size:clamp(1.75rem,4vw,2.25rem);font-weight:700;line-height:1.2;margin-bottom:12px}
+    .hero-desc{font-size:1.0625rem;color:var(--color-text-2,#6B7280);max-width:680px;line-height:1.6}
+    @font-face{font-family:'Inter';font-display:swap}
+  </style>
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+  <header id="site-header" class="site-header"></header>
+  <main id="main-content">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol><li><a href="/da/">Hjem</a></li><li aria-current="page">Søvnberegner</li></ol>
+    </nav>
+    <section class="hero">
+      <h1>Søvnberegner</h1>
+      <p class="hero-desc">Vågn op udhvilet. Søvnberegneren bruger 90-minutters søvncyklusser til at foreslå ideelle opvågningstider eller sengetider så du aldrig vågner midt i en cyklus.</p>
+    </section>
+    <div class="tool-wrapper">
+      <div class="tool-zone">
+        <div style="padding:24px">
+          <div style="margin-bottom:24px;padding:20px;border:1px solid var(--color-border,#DDD8D0);border-radius:12px">
+            <h3 style="font-size:15px;font-weight:600;margin-bottom:4px">Jeg vil gå i seng kl.…</h3>
+            <p style="font-size:13px;color:var(--color-text-2,#6B7280);margin-bottom:14px">Find de bedste opvågningstider</p>
+            <div style="display:flex;gap:10px;align-items:flex-end">
+              <div style="flex:1">
+                <label style="display:block;font-size:13px;font-weight:500;margin-bottom:6px" for="sc-bedtime">Sengetid</label>
+                <input type="time" id="sc-bedtime" style="width:100%;padding:10px 12px;border:1px solid var(--color-border,#DDD8D0);border-radius:8px;font-size:15px">
+              </div>
+              <button class="btn btn-primary" id="sc-wakeup-btn">Beregn Opvågningstid →</button>
+            </div>
+          </div>
+          <div style="padding:20px;border:1px solid var(--color-border,#DDD8D0);border-radius:12px;margin-bottom:20px">
+            <h3 style="font-size:15px;font-weight:600;margin-bottom:4px">Jeg skal vågne kl.…</h3>
+            <p style="font-size:13px;color:var(--color-text-2,#6B7280);margin-bottom:14px">Find de bedste sengetider</p>
+            <div style="display:flex;gap:10px;align-items:flex-end">
+              <div style="flex:1">
+                <label style="display:block;font-size:13px;font-weight:500;margin-bottom:6px" for="sc-waketime">Opvågningstid</label>
+                <input type="time" id="sc-waketime" style="width:100%;padding:10px 12px;border:1px solid var(--color-border,#DDD8D0);border-radius:8px;font-size:15px">
+              </div>
+              <button class="btn btn-primary" id="sc-bedtime-btn">Beregn Sengetid →</button>
+            </div>
+          </div>
+          <div id="sc-results" style="display:none"></div>
+        </div>
+      </div>
+      <aside class="tool-side" aria-label="Søvnfakta">
+        <div class="ss-divider">Søvnfakta</div>
+        <p style="font-size:13px;color:var(--color-text-2,#6B7280);line-height:1.6;padding:0 4px">En søvncyklus ≈ <strong>90 minutter</strong>. Voksne har brug for <strong>5–6 cyklusser</strong> (7,5–9 timer). At vågne midt i en cyklus giver groggyhed.</p>
+        <div style="margin-top:16px">
+          <p class="ad-label">Reklame</p>
+          <div class="ad-slot" style="min-height:250px">
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+          </div>
+        </div>
+      </aside>
+    </div>
+    <div class="ad-slot ad-slot--leaderboard">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="how-to-use">
+      <h2>Sådan Bruger Du Søvnberegneren</h2>
+      <ol class="steps">
+        <li><strong>For at finde opvågningstider:</strong> Indtast din sengetid og klik "Beregn Opvågningstid". Du får 4 muligheder (3–6 søvncyklusser) med de optimale fremhævet.</li>
+        <li><strong>For at finde sengetider:</strong> Indtast din påkrævede opvågningstid og klik "Beregn Sengetid". Vælg en sengetid der giver dig 5 eller 6 fulde cyklusser.</li>
+        <li><strong>Tip:</strong> Beregneren tilføjer 14 minutter for den gennemsnitlige tid det tager at falde i søvn.</li>
+      </ol>
+    </section>
+    <section class="features">
+      <h2>Funktioner</h2>
+      <ul class="features-list">
+        <li>Beregner optimale opvågningstider fra en given sengetid</li>
+        <li>Beregner optimale sengetider fra en given opvågningstid</li>
+        <li>Baseret på 90-minutters søvncyklusser (søvnvidenskabelig standard)</li>
+        <li>Tager højde for 14-minutters gennemsnitlig indsovningstid</li>
+        <li>Fremhæver de mest anbefalede muligheder (5–6 cyklusser)</li>
+        <li>Viser samlede sovetimer for hver mulighed</li>
+      </ul>
+    </section>
+    <div class="ad-slot ad-slot--rectangle" style="margin:0 auto 32px">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="faq">
+      <h2>Ofte Stillede Spørgsmål</h2>
+      <div class="faq-list">
+        <details class="faq-item"><summary class="faq-question">Hvorfor er søvncyklusser 90 minutter? <span class="faq-icon">+</span></summary><div class="faq-answer">Forskning viser at en typisk menneskelig søvncyklus (let søvn → dyb søvn → REM-søvn) tager cirka 90 minutter at fuldføre. At vågne op ved slutningen af en cyklus, fremfor midt i, giver dig en mere alert og udhvilet følelse.</div></details>
+        <details class="faq-item"><summary class="faq-question">Hvor mange cyklusser bør jeg sigte efter? <span class="faq-icon">+</span></summary><div class="faq-answer">De fleste voksne har brug for 5–6 komplette søvncyklusser per nat, hvilket svarer til 7,5–9 timers søvn. Beregneren fremhæver disse som "Anbefalede" muligheder.</div></details>
+        <details class="faq-item"><summary class="faq-question">Hvorfor tilføjes 14 minutter? <span class="faq-icon">+</span></summary><div class="faq-answer">Studier viser at det tager den gennemsnitlige person cirka 14 minutter at falde i søvn efter at gå i seng. Beregneren tilføjer denne buffer så cyklustællingen starter fra hvornår du rent faktisk falder i søvn, ikke hvornår du lægger dig ned.</div></details>
+      </div>
+    </section>
+    <section class="related-tools">
+      <h2>Relaterede Værktøjer</h2>
+      <div class="tool-grid">
+        <a href="/da/world-clock/" class="tool-card"><img src="/assets/img/icon-worldclock.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Verdensur</h3><p>Se den aktuelle tid i byer rundt om i verden.</p><span class="tool-card-link">Prøv →</span></a>
+        <a href="/da/pomodoro-timer/" class="tool-card"><img src="/assets/img/icon-timer.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Pomodoro-timer</h3><p>Øg fokus med 25-minutters arbejdssessioner og korte pauser.</p><span class="tool-card-link">Prøv →</span></a>
+        <a href="/da/bmi-calculator/" class="tool-card"><img src="/assets/img/icon-calculator.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>BMI Beregner</h3><p>Beregn dit Body Mass Index med metriske eller imperiale enheder.</p><span class="tool-card-link">Prøv →</span></a>
+      </div>
+    </section>
+  </main>
+  <footer id="site-footer" class="site-footer"></footer>
+  <script src="/assets/js/shared.js" defer></script>
+  <script src="/assets/js/tools/sleep-calculator.js" defer></script>
+</body>
+</html>

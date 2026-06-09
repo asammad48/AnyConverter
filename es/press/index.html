@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kit de Prensa — AnyConverter</title>
+  <meta name="description" content="Kit de prensa de AnyConverter. Recursos de marca, datos de la empresa, estadísticas clave e información de contacto para periodistas y bloggers.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://anyconverter.io/es/press/">
+  <link rel="alternate" hreflang="en" href="https://anyconverter.io/press/">
+  <link rel="alternate" hreflang="es" href="https://anyconverter.io/es/press/">
+  <link rel="alternate" hreflang="da" href="https://anyconverter.io/da/press/">
+  <link rel="alternate" hreflang="x-default" href="https://anyconverter.io/press/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Kit de Prensa — AnyConverter">
+  <meta property="og:description" content="Descarga logotipos, recursos de marca y aprende sobre AnyConverter para cobertura de prensa y consultas de medios.">
+  <meta property="og:url" content="https://anyconverter.io/es/press/">
+  <meta property="og:site_name" content="AnyConverter">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F4F6FF);color:var(--color-text,#1E1B4B)}
+    body{min-height:100vh;display:flex;flex-direction:column}
+    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8D0)}
+    .header-inner{max-width:1280px;width:100%;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;gap:32px}
+    @font-face{font-family:'Inter';font-display:swap}
+    main{flex:1}
+    .page-wrap{max-width:860px;margin:0 auto;padding:44px 24px 80px}
+    .page-wrap h1{font-size:clamp(1.8rem,4vw,2.4rem);font-weight:800;line-height:1.2;margin-bottom:8px}
+    .page-meta{font-size:14px;color:var(--color-text-2,#6B7280);margin-bottom:40px}
+    h2{font-size:1.15rem;font-weight:700;color:var(--color-text,#1E1B4B);margin:40px 0 16px;padding-bottom:8px;border-bottom:2px solid var(--color-primary-light,#EEF2FF)}
+    p{font-size:15px;line-height:1.78;color:var(--color-text-body,#374151);margin-bottom:14px}
+    ul{padding-left:22px;margin-bottom:14px}
+    li{font-size:15px;line-height:1.78;color:var(--color-text-body,#374151);margin-bottom:6px}
+    a{color:var(--color-primary,#4F46E5)}
+    strong{color:var(--color-text,#1E1B4B)}
+    .fact-table{width:100%;border-collapse:collapse;margin:16px 0}
+    .fact-table th{background:var(--color-primary-light,#EEF2FF);padding:10px 16px;text-align:left;font-weight:600;font-size:14px;color:var(--color-primary,#4F46E5);border:1px solid var(--color-border-light,#E0E7FF);width:34%}
+    .fact-table td{padding:10px 16px;border:1px solid var(--color-border-light,#E0E7FF);font-size:15px;color:var(--color-text-body,#374151)}
+    .fact-table tr:nth-child(even) td{background:var(--color-surface-2,#EEF1FF)}
+    .logo-preview{background:linear-gradient(135deg,var(--color-text,#1E1B4B),#3730A3);border-radius:16px;padding:48px;text-align:center;margin:16px 0 8px}
+    .logo-preview-inner{display:inline-flex;align-items:center;gap:12px}
+    .logo-preview-icon{width:44px;height:44px;background:linear-gradient(135deg,var(--color-primary-alt,#6366F1),var(--color-primary,#4F46E5));border-radius:10px;display:flex;align-items:center;justify-content:center}
+    .logo-preview-text{font-size:1.5rem;font-weight:800;color:var(--color-surface,#fff)}
+    .logo-note{font-size:13px;color:var(--color-text-2,#6B7280);margin-bottom:24px}
+    .color-swatches{display:flex;gap:12px;flex-wrap:wrap;margin:16px 0}
+    .swatch{border-radius:12px;padding:16px 20px;min-width:140px}
+    .swatch-name{font-size:13px;font-weight:700;margin-bottom:3px}
+    .swatch-hex{font-size:12px;font-family:monospace;opacity:0.8}
+    .usage-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:16px 0}
+    @media(max-width:540px){.usage-grid{grid-template-columns:1fr}}
+    .usage-box{background:var(--color-surface,#fff);border:1.5px solid var(--color-border-light,#E0E7FF);border-radius:12px;padding:20px}
+    .usage-box h3{font-size:14px;font-weight:700;color:var(--color-success,#16A34A);margin-bottom:8px}
+    .usage-box h3.dont{color:var(--color-error,#DC2626)}
+    .usage-box ul{padding-left:18px;margin:0}
+    .usage-box li{font-size:13.5px;color:var(--color-text-body,#374151);margin-bottom:4px}
+    .press-contact{background:linear-gradient(135deg,var(--color-primary-light,#EEF2FF),var(--color-surface-2,#EEF1FF));border-radius:16px;padding:32px;text-align:center;margin-top:16px}
+    .press-contact h3{font-size:1.1rem;font-weight:700;margin-bottom:8px}
+    .press-contact p{font-size:15px;color:var(--color-text-body,#374151);margin-bottom:16px}
+    .press-contact a.btn{display:inline-block;background:var(--color-primary,#4F46E5);color:var(--color-surface,#fff);font-weight:700;padding:11px 24px;border-radius:9999px;text-decoration:none;font-size:14px}
+  </style>
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+  <header id="site-header" class="site-header"></header>
+
+  <main id="main-content">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="/es/">Inicio</a></li>
+        <li aria-current="page">Prensa</li>
+      </ol>
+    </nav>
+
+    <div class="page-wrap">
+      <h1>Kit de Prensa</h1>
+      <p class="page-meta">Para periodistas, bloggers y profesionales de los medios. Última actualización: <strong>Mayo 2026</strong></p>
+
+      <p>Bienvenido al kit de prensa de AnyConverter. Aquí encontrarás todo lo que necesitas para escribir sobre nosotros con precisión: datos de la empresa, recursos de marca y contactos de medios. Si necesitas algo más, por favor <a href="mailto:press@anyconverter.io">escribe a nuestro equipo de prensa</a>.</p>
+
+      <h2>Datos de la Empresa</h2>
+      <table class="fact-table">
+        <tr><th>Nombre del Producto</th><td>AnyConverter</td></tr>
+        <tr><th>Sitio Web</th><td><a href="https://anyconverter.io">anyconverter.io</a></td></tr>
+        <tr><th>Fundación</th><td>2025</td></tr>
+        <tr><th>Categoría</th><td>Herramientas Gratuitas en Línea / Utilidad SaaS</td></tr>
+        <tr><th>Sede</th><td>Global (equipo remoto)</td></tr>
+        <tr><th>Modelo de Negocio</th><td>Gratuito, financiado por publicidad</td></tr>
+        <tr><th>Número de Herramientas</th><td>Más de 78 herramientas en 9 categorías</td></tr>
+        <tr><th>Idiomas</th><td>Inglés, Español, Danés</td></tr>
+        <tr><th>Tecnología</th><td>Static HTML/CSS/JS · Cloudflare Pages</td></tr>
+        <tr><th>Política de Datos</th><td>100% basado en el navegador — ningún archivo se sube a servidores</td></tr>
+      </table>
+
+      <h2>Descripción en Una Línea</h2>
+      <p><em>"AnyConverter es una colección gratuita de más de 78 herramientas en línea basadas en el navegador para desarrolladores, estudiantes y usuarios en general — sin registro, sin subidas de archivos y sin coste, para siempre."</em></p>
+
+      <h2>Descripción de la Empresa</h2>
+      <p>AnyConverter es un kit de herramientas en línea gratuito que ofrece acceso instantáneo a más de 78 potentes utilidades — edición de PDF, herramientas para desarrolladores, calculadoras, herramientas de texto, conversión de imágenes y más — completamente dentro del navegador web. A diferencia de la mayoría de las herramientas en línea, AnyConverter procesa todo en el lado del cliente: tus archivos y datos nunca abandonan tu dispositivo, lo que lo convierte en una de las colecciones de herramientas más respetuosas con la privacidad disponibles.</p>
+      <p>AnyConverter se financia mediante publicidad no intrusiva, lo que le permite mantenerse completamente gratuito sin límites de uso, sin suscripciones y sin necesidad de crear una cuenta.</p>
+
+      <h2>Estadísticas Clave</h2>
+      <ul>
+        <li><strong>Más de 78 herramientas gratuitas</strong> en 9 categorías</li>
+        <li><strong>0 bytes subidos</strong> — todo el procesamiento es en el lado del cliente</li>
+        <li><strong>3 idiomas</strong> — inglés, español, danés</li>
+        <li><strong>Compatible con dispositivos móviles</strong> — totalmente adaptable en todos los dispositivos</li>
+        <li><strong>Sin inicio de sesión</strong> — acceso instantáneo, sin fricciones</li>
+      </ul>
+
+      <h2>Recursos de Marca</h2>
+
+      <div class="logo-preview">
+        <div class="logo-preview-inner">
+          <div class="logo-preview-icon">
+            <svg width="26" height="26" viewBox="0 0 40 40" fill="none"><path d="M8 20 L20 8 L32 20 L20 32 Z" stroke="white" stroke-width="3" fill="none"/><circle cx="20" cy="20" r="4" fill="white"/></svg>
+          </div>
+          <span class="logo-preview-text">AnyConverter</span>
+        </div>
+      </div>
+      <p class="logo-note">Logotipo mostrado sobre fondo oscuro. Formato SVG. Para obtener los archivos del logotipo, contacta a <a href="mailto:press@anyconverter.io">press@anyconverter.io</a>.</p>
+
+      <div class="color-swatches">
+        <div class="swatch" style="background:var(--color-primary,#4F46E5);color:var(--color-surface,#fff)">
+          <div class="swatch-name">Índigo Principal</div>
+          <div class="swatch-hex">var(--color-primary,#4F46E5)</div>
+        </div>
+        <div class="swatch" style="background:var(--color-primary-alt,#6366F1);color:var(--color-surface,#fff)">
+          <div class="swatch-name">Índigo Claro</div>
+          <div class="swatch-hex">var(--color-primary-alt,#6366F1)</div>
+        </div>
+        <div class="swatch" style="background:var(--color-text,#1E1B4B);color:var(--color-surface,#fff)">
+          <div class="swatch-name">Azul Marino Oscuro</div>
+          <div class="swatch-hex">var(--color-text,#1E1B4B)</div>
+        </div>
+        <div class="swatch" style="background:var(--color-primary-light,#EEF2FF);color:var(--color-primary,#4F46E5);border:1.5px solid var(--color-border-light,#E0E7FF)">
+          <div class="swatch-name">Tono de Fondo</div>
+          <div class="swatch-hex">var(--color-primary-light,#EEF2FF)</div>
+        </div>
+      </div>
+
+      <h2>Directrices de Uso de Marca</h2>
+      <div class="usage-grid">
+        <div class="usage-box">
+          <h3>✅ Puedes</h3>
+          <ul>
+            <li>Escribir sobre AnyConverter y sus herramientas</li>
+            <li>Usar nuestro logotipo en cobertura editorial</li>
+            <li>Enlazar a anyconverter.io</li>
+            <li>Citar nuestra descripción de la empresa y estadísticas</li>
+            <li>Usar capturas de pantalla de nuestras herramientas con fines editoriales</li>
+          </ul>
+        </div>
+        <div class="usage-box">
+          <h3 class="dont">❌ Por favor, no</h3>
+          <ul>
+            <li>Modificar o alterar nuestro logotipo</li>
+            <li>Insinuar una asociación o respaldo oficial sin acuerdo previo</li>
+            <li>Usar nuestros recursos de marca con fines comerciales sin permiso</li>
+            <li>Tergiversar las características de nuestro producto o prácticas de datos</li>
+          </ul>
+        </div>
+      </div>
+
+      <h2>Contacto de Medios</h2>
+      <div class="press-contact">
+        <h3>Consultas de Prensa y Medios</h3>
+        <p>Para solicitudes de entrevistas, verificación de datos o cualquier pregunta relacionada con la prensa, nuestro equipo de medios responde en un plazo de 24 horas en días laborables.</p>
+        <a href="mailto:press@anyconverter.io" class="btn">Contactar al Equipo de Prensa</a>
+      </div>
+
+    </div>
+  </main>
+
+  <footer id="site-footer" class="site-footer"></footer>
+  <div id="toast" class="toast" aria-live="polite"></div>
+  <script src="/assets/js/shared.js" defer></script>
+</body>
+</html>

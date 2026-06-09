@@ -115,8 +115,10 @@
         timer = setInterval(function() {
           timeLeft--;
           document.getElementById('tst-timer').textContent = timeLeft;
-          var words = val.trim().split(/\s+/).filter(function(w) { return w; });
-          document.getElementById('tst-wpm').textContent = words.length;
+          var currentVal = document.getElementById('tst-input').value;
+          var words = currentVal.trim().split(/\s+/).filter(function(w) { return w; });
+          var elapsedMin = (Date.now() - startTime) / 60000;
+          document.getElementById('tst-wpm').textContent = elapsedMin > 0 ? Math.round(words.length / elapsedMin) : 0;
           if (timeLeft <= 0) endTest();
         }, 1000);
       }

@@ -17,7 +17,7 @@
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
     html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F4F6FF);color:var(--color-text,#1E1B4B)}
     body{min-height:100vh;display:flex;flex-direction:column}
-    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8FE)}
+    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8D0)}
     .header-inner{max-width:1280px;width:100%;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;gap:32px}
     .hero{padding:40px 24px 32px;max-width:1280px;margin:0 auto}
     .hero h1{font-size:clamp(1.75rem,4vw,2.25rem);font-weight:700;line-height:1.2;margin-bottom:12px}
@@ -37,10 +37,10 @@
     <div class="tool-wrapper">
       <div class="tool-zone">
         <div style="padding:24px;text-align:center">
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;text-align:left;margin-bottom:20px">
+          <div class="two-col-grid" style="text-align:left;margin-bottom:20px">
             <div>
               <label style="display:block;font-size:13px;font-weight:500;margin-bottom:6px">Options (one per line)</label>
-              <textarea id="dm-options" spellcheck="false" style="width:100%;height:200px;padding:10px 12px;border:1px solid var(--color-border,#DDD8FE);border-radius:8px;font-size:13px;resize:vertical;background:var(--color-surface,#fff);line-height:1.8">Pizza
+              <textarea id="dm-options" spellcheck="false" style="width:100%;height:200px;padding:10px 12px;border:1px solid var(--color-border,#DDD8D0);border-radius:8px;font-size:13px;resize:vertical;background:var(--color-surface,#fff);line-height:1.8">Pizza
 Sushi
 Tacos
 Burger
@@ -74,10 +74,10 @@ Pasta</textarea>
     <section class="related-tools">
       <h2>Related Tools</h2>
       <div class="tool-grid">
-        <a href="/spin-the-wheel/" class="tool-card"><img src="/assets/img/icon-browser.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Spin the Wheel</h3><p>Use a wheel to choose randomly.</p><span class="tool-card-link">Try it →</span></a>
-        <a href="/random-picker/" class="tool-card"><img src="/assets/img/icon-browser.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Random Picker</h3><p>Pick one or more random items.</p><span class="tool-card-link">Try it →</span></a>
-        <a href="/coin-flip/" class="tool-card"><img src="/assets/img/icon-browser.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Coin Flip</h3><p>Decide quickly with heads or tails.</p><span class="tool-card-link">Try it →</span></a>
-        <a href="/dice-roller/" class="tool-card"><img src="/assets/img/icon-browser.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Dice Roller</h3><p>Roll dice for random outcomes.</p><span class="tool-card-link">Try it →</span></a>
+        <a href="/spin-the-wheel/" class="tool-card"><img src="/assets/img/icon-wheel.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Spin the Wheel</h3><p>Use a wheel to choose randomly.</p><span class="tool-card-link">Try it →</span></a>
+        <a href="/random-picker/" class="tool-card"><img src="/assets/img/icon-picker.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Random Picker</h3><p>Pick one or more random items.</p><span class="tool-card-link">Try it →</span></a>
+        <a href="/coin-flip/" class="tool-card"><img src="/assets/img/icon-coin.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Coin Flip</h3><p>Decide quickly with heads or tails.</p><span class="tool-card-link">Try it →</span></a>
+        <a href="/dice-roller/" class="tool-card"><img src="/assets/img/icon-dice.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Dice Roller</h3><p>Roll dice for random outcomes.</p><span class="tool-card-link">Try it →</span></a>
       </div>
     </section>
 

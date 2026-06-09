@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Preguntas Frecuentes — AnyConverter</title>
+  <meta name="description" content="Respuestas a preguntas comunes sobre AnyConverter — herramientas online gratuitas, privacidad de datos, compatibilidad con navegadores, uso sin conexión y más.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://anyconverter.io/es/faq/">
+  <link rel="alternate" hreflang="en" href="https://anyconverter.io/faq/">
+  <link rel="alternate" hreflang="es" href="https://anyconverter.io/es/faq/">
+  <link rel="alternate" hreflang="da" href="https://anyconverter.io/da/faq/">
+  <link rel="alternate" hreflang="x-default" href="https://anyconverter.io/faq/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Preguntas Frecuentes — AnyConverter">
+  <meta property="og:description" content="Respuestas a las preguntas más comunes sobre AnyConverter — privacidad, cómo funcionan las herramientas, compatibilidad con navegadores y más.">
+  <meta property="og:url" content="https://anyconverter.io/es/faq/">
+  <meta property="og:site_name" content="AnyConverter">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {"@type":"Question","name":"¿AnyConverter es realmente gratuito?","acceptedAnswer":{"@type":"Answer","text":"Sí. Cada herramienta de AnyConverter es completamente gratuita sin límites de uso, sin suscripciones y sin niveles premium. Nos financiamos con publicidad no intrusiva."}},
+      {"@type":"Question","name":"¿Necesito crear una cuenta?","acceptedAnswer":{"@type":"Answer","text":"No. AnyConverter no tiene cuentas, ni registros ni inicios de sesión. Solo abre una herramienta y úsala inmediatamente."}},
+      {"@type":"Question","name":"¿Están seguros mis datos?","acceptedAnswer":{"@type":"Answer","text":"Sí. Todo el procesamiento ocurre en tu navegador. Tus archivos, texto y datos nunca se envían a nuestros servidores. No podemos ver tus datos aunque quisiéramos."}},
+      {"@type":"Question","name":"¿Las herramientas funcionan sin conexión?","acceptedAnswer":{"@type":"Answer","text":"La mayoría de las herramientas funcionan sin conexión una vez cargada la página, ya que todo el procesamiento se realiza en tu navegador. Algunas herramientas que requieren datos en tiempo real necesitan conexión a internet."}},
+      {"@type":"Question","name":"¿Qué navegadores son compatibles?","acceptedAnswer":{"@type":"Answer","text":"AnyConverter funciona en todos los navegadores modernos, incluyendo Chrome, Firefox, Safari y Edge. Recomendamos usar la última versión de tu navegador para el mejor rendimiento."}},
+      {"@type":"Question","name":"¿Cómo puedo sugerir una nueva herramienta?","acceptedAnswer":{"@type":"Answer","text":"¡Nos encantan las sugerencias! Usa nuestra página de contacto para enviarnos tu idea. Añadimos regularmente nuevas herramientas basándonos en peticiones de usuarios."}}
+    ]
+  }
+  </script>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F4F6FF);color:var(--color-text,#1E1B4B)}
+    body{min-height:100vh;display:flex;flex-direction:column}
+    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8D0)}
+    .header-inner{max-width:1280px;width:100%;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;gap:32px}
+    @font-face{font-family:'Inter';font-display:swap}
+    main{flex:1}
+    .page-wrap{max-width:800px;margin:0 auto;padding:44px 24px 80px}
+    .page-hero{text-align:center;margin-bottom:48px}
+    .page-hero h1{font-size:clamp(1.8rem,4vw,2.4rem);font-weight:800;margin-bottom:12px}
+    .page-hero p{font-size:1rem;color:var(--color-text-2,#6B7280);max-width:520px;margin:0 auto;line-height:1.7}
+    .faq-category{margin-bottom:48px}
+    .faq-category-title{font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--color-text-2,#6B7280);margin-bottom:16px;padding-bottom:8px;border-bottom:1px solid var(--color-border-light,#E0E7FF)}
+    .faq-item{background:var(--color-surface,#fff);border:1.5px solid var(--color-border-light,#E0E7FF);border-radius:12px;margin-bottom:10px;overflow:hidden}
+    .faq-question{width:100%;text-align:left;padding:18px 20px;font-size:15px;font-weight:600;color:var(--color-text,#1E1B4B);background:none;border:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;line-height:1.4}
+    .faq-question:hover{background:var(--color-surface-2,#EEF1FF)}
+    .faq-chevron{flex-shrink:0;width:20px;height:20px;transition:transform 0.2s;color:var(--color-text-2,#6B7280)}
+    .faq-item.open .faq-chevron{transform:rotate(180deg)}
+    .faq-answer{display:none;padding:0 20px 18px;font-size:15px;color:var(--color-text-body,#374151);line-height:1.75}
+    .faq-item.open .faq-answer{display:block}
+    .faq-answer a{color:var(--color-primary,#4F46E5)}
+    .faq-answer ul{padding-left:20px;margin-top:8px}
+    .faq-answer li{margin-bottom:4px}
+    .contact-cta{background:linear-gradient(135deg,var(--color-primary-light,#EEF2FF),var(--color-success-bg,#F0FDF4));border-radius:16px;padding:36px;text-align:center;margin-top:16px}
+    .contact-cta h2{font-size:1.3rem;font-weight:800;color:var(--color-text,#1E1B4B);margin-bottom:10px}
+    .contact-cta p{color:var(--color-text-2,#6B7280);font-size:15px;margin-bottom:20px}
+    .contact-cta a{display:inline-block;background:var(--color-primary,#4F46E5);color:var(--color-surface,#fff);font-weight:700;padding:12px 28px;border-radius:9999px;text-decoration:none;font-size:15px;transition:transform 0.15s}
+    .contact-cta a:hover{transform:translateY(-2px)}
+  </style>
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+  <header id="site-header" class="site-header"></header>
+
+  <main id="main-content">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="/es/">Inicio</a></li>
+        <li aria-current="page">Preguntas Frecuentes</li>
+      </ol>
+    </nav>
+
+    <div class="page-wrap">
+
+      <div class="page-hero">
+        <h1>Preguntas Frecuentes</h1>
+        <p>Todo lo que necesitas saber sobre AnyConverter. ¿No encuentras tu respuesta? <a href="/es/contact/" style="color:var(--color-primary,#4F46E5)">Contáctanos</a> y te ayudaremos.</p>
+      </div>
+
+      <!-- GENERAL -->
+      <div class="faq-category">
+        <div class="faq-category-title">General</div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            ¿AnyConverter es realmente gratuito?
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-answer">Sí. Cada herramienta de AnyConverter es completamente gratuita sin límites de uso, sin suscripciones y sin niveles premium. Nos financiamos con publicidad no intrusiva, que mantiene las herramientas gratuitas para todos para siempre.</div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            ¿Necesito crear una cuenta?
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-answer">No. AnyConverter no tiene cuentas, ni registros ni inicios de sesión. Solo abre una herramienta y empieza a usarla inmediatamente. Nada que recordar, nada que gestionar.</div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            ¿Cuántas herramientas tiene AnyConverter?
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-answer">AnyConverter tiene actualmente más de 78 herramientas en 9 categorías: Herramientas para Desarrolladores, Herramientas PDF, Datos y Conversión, Herramientas de Uso General, Finanzas, Herramientas de Texto, Utilidades de Desarrollo, Productividad y Herramientas de Navegador. Añadimos regularmente nuevas herramientas basándonos en los comentarios de los usuarios.</div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            ¿Cómo puedo sugerir una nueva herramienta?
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-answer">¡Nos encantan las ideas! Ve a nuestra <a href="/es/contact/">página de contacto</a> y dinos qué herramienta te gustaría ver. Leemos cada sugerencia y muchas de nuestras herramientas fueron creadas a partir de peticiones de usuarios.</div>
+        </div>
+      </div>
+
+      <!-- PRIVACY & SECURITY -->
+      <div class="faq-category">
+        <div class="faq-category-title">Privacidad y Seguridad</div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            ¿Están seguros mis datos? ¿Suben mis archivos?
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-answer">Sí, tus datos están completamente seguros. Todo el procesamiento ocurre <strong>completamente en tu navegador</strong> en tu propio dispositivo. Tus archivos, texto y datos nunca se envían a nuestros servidores. Literalmente no podemos ver en qué estás trabajando, aunque quisiéramos. Puedes verificarlo mirando la pestaña de red de tu navegador — no se realizan solicitudes de subida de archivos.</div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            ¿Rastrean qué herramientas uso?
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-answer">Usamos Google Analytics para recopilar estadísticas de uso <strong>anónimas y agregadas</strong> — cosas como "cuántas personas visitaron la página de Combinar PDF hoy". No podemos identificar usuarios individuales. Para todos los detalles, consulta nuestra <a href="/privacy/">Política de Privacidad</a>.</div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            ¿Es seguro usar AnyConverter para documentos sensibles?
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-answer">Sí. Dado que todo el procesamiento se realiza localmente en tu navegador, incluso los documentos sensibles (contratos, registros financieros, archivos médicos) nunca salen de tu dispositivo. El perfil de riesgo es similar al de usar una aplicación de escritorio en tu propio ordenador.</div>
+        </div>
+      </div>
+
+      <!-- TECHNICAL -->
+      <div class="faq-category">
+        <div class="faq-category-title">Técnico</div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            ¿Qué navegadores son compatibles?
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-answer">AnyConverter funciona en todos los navegadores modernos:
+            <ul>
+              <li>Google Chrome 90+</li>
+              <li>Mozilla Firefox 88+</li>
+              <li>Apple Safari 14+</li>
+              <li>Microsoft Edge 90+</li>
+              <li>Opera 76+</li>
+            </ul>
+            Recomendamos mantener tu navegador actualizado para la mejor experiencia y seguridad.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            ¿Las herramientas funcionan sin conexión?
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-answer">La mayoría de las herramientas funcionan sin conexión una vez cargada la página, ya que todo el procesamiento se realiza en tu navegador. Sin embargo, algunas herramientas requieren datos en tiempo real — Conversor de Divisas (tipos de cambio), Búsqueda de Dirección IP (geolocalización) y Test de Velocidad de Internet — y necesitan una conexión activa a internet.</div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            ¿Hay límites de tamaño de archivo?
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-answer">Como todo el procesamiento ocurre en tu navegador, el único límite es la memoria disponible de tu dispositivo. La mayoría de los ordenadores modernos manejan archivos de hasta varios cientos de megabytes sin problemas. Los archivos muy grandes (más de 500 MB) pueden ser lentos en dispositivos más antiguos.</div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            ¿Por qué algunas herramientas necesitan JavaScript?
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-answer">Todas nuestras herramientas son aplicaciones basadas en el navegador impulsadas por JavaScript. JavaScript es lo que hace que el procesamiento ocurra en tu dispositivo en lugar de en un servidor. Sin JavaScript habilitado, las herramientas no pueden funcionar. Todos los navegadores modernos tienen JavaScript habilitado por defecto.</div>
+        </div>
+      </div>
+
+      <!-- ACCESSIBILITY -->
+      <div class="faq-category">
+        <div class="faq-category-title">Accesibilidad e Idioma</div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            ¿Hay modo oscuro?
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-answer">¡Sí! Haz clic en el icono de luna/sol en la barra de navegación superior para activar el modo oscuro. Tu preferencia se guarda localmente y se recuerda en tu próxima visita.</div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            ¿En qué idiomas está disponible AnyConverter?
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-answer">AnyConverter está disponible actualmente en inglés (EN), español (ES) y danés (DA). Usa el selector de idioma en el pie de página o navega a <a href="/es/">/es/</a> o <a href="/da/">/da/</a>. Se planean más idiomas en el futuro.</div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            ¿AnyConverter es compatible con dispositivos móviles?
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-answer">Sí. Todas las páginas y herramientas son completamente adaptables y optimizadas para pantallas táctiles. La experiencia está diseñada para funcionar bien en teléfonos, tablets y ordenadores de escritorio por igual.</div>
+        </div>
+      </div>
+
+      <div class="contact-cta">
+        <h2>¿Todavía tienes una pregunta?</h2>
+        <p>Estamos encantados de ayudar. Escríbenos y te responderemos rápidamente.</p>
+        <a href="/es/contact/">Contáctanos</a>
+      </div>
+
+    </div>
+  </main>
+
+  <footer id="site-footer" class="site-footer"></footer>
+  <div id="toast" class="toast" aria-live="polite"></div>
+  <script src="/assets/js/shared.js" defer></script>
+  <script>
+    document.querySelectorAll('.faq-question').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var item = this.closest('.faq-item');
+        var isOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item.open').forEach(function(el) {
+          el.classList.remove('open');
+          el.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+        });
+        if (!isOpen) {
+          item.classList.add('open');
+          this.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+  </script>
+</body>
+</html>

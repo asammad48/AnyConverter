@@ -33,7 +33,7 @@
         const li = document.createElement('li');
         li.style.cssText = 'display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid #F0F0F5;';
         li.innerHTML = `
-          <input type="checkbox" id="chk-${t.id}" ${t.done ? 'checked' : ''} style="width:16px;height:16px;accent-color:#4F46E5;cursor:pointer;flex-shrink:0">
+          <input type="checkbox" id="chk-${t.id}" ${t.done ? 'checked' : ''} style="width:16px;height:16px;accent-color:#B04A45;cursor:pointer;flex-shrink:0">
           <label for="chk-${t.id}" style="flex:1;cursor:pointer;font-size:14px;${t.done ? 'text-decoration:line-through;color:#9CA3AF;' : ''}">${escHtml(t.text)}</label>
           <button data-del="${t.id}" style="background:none;border:none;cursor:pointer;color:#DC2626;font-size:16px;line-height:1;padding:2px 4px;" aria-label="Delete">×</button>`;
         li.querySelector(`#chk-${t.id}`).addEventListener('change', e => toggle(t.id, e.target.checked));
@@ -82,7 +82,7 @@
     btn.addEventListener('click', () => {
       filter = btn.dataset.filter;
       document.querySelectorAll('[data-filter]').forEach(b => {
-        b.style.background = b.dataset.filter === filter ? '#4F46E5' : '#fff';
+        b.style.background = b.dataset.filter === filter ? '#B04A45' : '#fff';
         b.style.color = b.dataset.filter === filter ? '#fff' : '#374151';
       });
       render();

@@ -1,4 +1,4 @@
-(function () {
+﻿(function () {
   'use strict';
 
   const KEY = 'ac_habits';
@@ -80,7 +80,7 @@
         const isToday = day === TODAY.toISOString().slice(0, 10);
         cells += `<td style="text-align:center;padding:6px">
           <button data-hid="${h.id}" data-day="${day}"
-            style="width:28px;height:28px;border-radius:50%;border:2px solid ${checked ? '#4F46E5' : '#DDD8FE'};background:${checked ? '#4F46E5' : 'transparent'};cursor:pointer;font-size:14px;color:${checked ? '#fff' : 'transparent'};${isToday ? 'box-shadow:0 0 0 3px #DDD8FE' : ''}"
+            style="width:28px;height:28px;border-radius:50%;border:2px solid ${checked ? 'var(--color-primary,#B04A45)' : 'var(--color-border,#DDD8D0)'};background:${checked ? 'var(--color-primary,#B04A45)' : 'transparent'};cursor:pointer;font-size:14px;color:${checked ? '#fff' : 'transparent'};${isToday ? 'box-shadow:0 0 0 3px var(--color-border,#DDD8D0)' : ''}"
             aria-label="${day}">${checked ? '✓' : '·'}</button>
         </td>`;
       });

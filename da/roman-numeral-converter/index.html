@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Romertal Konverter Online Gratis | AnyConverter</title>
+  <meta name="description" content="Konverter tal til romertal og romertal tilbage til tal. Understøtter 1 til 3.999.999 med vinculum-notation. Gratis online romertal-konverter uden tilmelding.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://anyconverter.io/da/roman-numeral-converter/">
+  <link rel="alternate" hreflang="en" href="https://anyconverter.io/roman-numeral-converter/">
+  <link rel="alternate" hreflang="es" href="https://anyconverter.io/es/roman-numeral-converter/">
+  <link rel="alternate" hreflang="da" href="https://anyconverter.io/da/roman-numeral-converter/">
+  <link rel="alternate" hreflang="x-default" href="https://anyconverter.io/roman-numeral-converter/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Romertal Konverter Online Gratis | AnyConverter">
+  <meta property="og:description" content="Konverter tal til romertal og tilbage. Understøtter 1–3999. Gratis og øjeblikkeligt.">
+  <meta property="og:url" content="https://anyconverter.io/da/roman-numeral-converter/">
+  <meta property="og:site_name" content="AnyConverter">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" data-ad-client="ca-pub-XXXXXXXXXX" crossorigin="anonymous"></script>
+  <!-- Replace ca-pub-XXXXXXXXXX with your real AdSense publisher ID -->
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Romertal Konverter","url":"https://anyconverter.io/da/roman-numeral-converter/","description":"Konverter mellem tal og romertal øjeblikkeligt. Understøtter 1 til 3999.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F4F6FF);color:var(--color-text,#1E1B4B)}
+    body{min-height:100vh;display:flex;flex-direction:column}
+    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8D0)}
+    .header-inner{max-width:1280px;width:100%;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;gap:32px}
+    .hero{padding:40px 24px 32px;max-width:1280px;margin:0 auto}
+    .hero h1{font-size:clamp(1.75rem,4vw,2.25rem);font-weight:700;line-height:1.2;margin-bottom:12px}
+    .hero-desc{font-size:1.0625rem;color:var(--color-text-2,#6B7280);max-width:680px;line-height:1.6}
+    @font-face{font-family:'Inter';font-display:swap}
+  </style>
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+  <header id="site-header" class="site-header"></header>
+  <main id="main-content">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol><li><a href="/da/">Hjem</a></li><li aria-current="page">Romertal Konverter</li></ol>
+    </nav>
+    <section class="hero">
+      <h1>Romertal Konverter</h1>
+      <p class="hero-desc">Konverter et vilkårligt heltal (1–3.999.999) til romertal og afkod romertal tilbage til et heltal. Tal over 3.999 bruger vinculum-notation (en streg over bogstavet ganger det med 1.000).</p>
+    </section>
+    <div class="tool-wrapper">
+      <div class="tool-zone">
+        <div style="padding:24px">
+          <!-- Number to Roman -->
+          <div style="margin-bottom:24px;padding:20px;border:1px solid var(--color-border,#DDD8D0);border-radius:12px">
+            <h3 style="font-size:15px;font-weight:600;margin-bottom:14px">Tal → Romertal</h3>
+            <div style="display:flex;gap:10px;align-items:flex-end">
+              <div style="flex:1">
+                <label id="rn-number-label" style="display:block;font-size:13px;font-weight:500;margin-bottom:6px" for="rn-number">Indtast Tal (1–3.999.999)</label>
+                <input type="number" id="rn-number" min="1" max="3999999" placeholder="f.eks. 2024" style="width:100%;padding:10px 12px;border:1px solid var(--color-border,#DDD8D0);border-radius:8px;font-size:15px">
+              </div>
+              <button class="btn btn-primary" id="rn-to-roman-btn">Konverter</button>
+            </div>
+            <div style="margin-top:14px;padding:14px;background:var(--color-bg,#F4F6FF);border-radius:8px;font-size:24px;font-weight:700;text-align:center;letter-spacing:2px" id="rn-roman-out">—</div>
+          </div>
+          <!-- Roman to Number -->
+          <div style="padding:20px;border:1px solid var(--color-border,#DDD8D0);border-radius:12px">
+            <h3 style="font-size:15px;font-weight:600;margin-bottom:14px">Romertal → Tal</h3>
+            <div style="display:flex;gap:10px;align-items:flex-end">
+              <div style="flex:1">
+                <label style="display:block;font-size:13px;font-weight:500;margin-bottom:6px" for="rn-roman-in">Indtast Romertal</label>
+                <input type="text" id="rn-roman-in" placeholder="f.eks. MMXXIV" style="width:100%;padding:10px 12px;border:1px solid var(--color-border,#DDD8D0);border-radius:8px;font-size:15px;text-transform:uppercase">
+              </div>
+              <button class="btn btn-primary" id="rn-from-roman-btn">Konverter</button>
+            </div>
+            <div style="margin-top:14px;padding:14px;background:var(--color-bg,#F4F6FF);border-radius:8px;font-size:24px;font-weight:700;text-align:center" id="rn-number-out">—</div>
+          </div>
+        </div>
+      </div>
+      <aside class="tool-side" aria-label="Indstillinger">
+        <div class="ss-divider">Hurtig Reference</div>
+        <div style="font-size:13px;padding:0 4px">
+          <div class="two-col-grid" style="margin-bottom:8px">
+            <span style="font-weight:600">I = 1</span><span style="font-weight:600">L = 50</span>
+            <span style="font-weight:600">V = 5</span><span style="font-weight:600">C = 100</span>
+            <span style="font-weight:600">X = 10</span><span style="font-weight:600">D = 500</span>
+            <span style="font-weight:600">M = 1000</span>
+          </div>
+        </div>
+        <div style="margin-top:16px">
+          <p class="ad-label">Reklame</p>
+          <div class="ad-slot" style="min-height:250px">
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+          </div>
+        </div>
+      </aside>
+    </div>
+    <div class="ad-slot ad-slot--leaderboard">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="how-to-use">
+      <h2>Sådan bruger du Romertal Konverteren</h2>
+      <ol class="steps">
+        <li><strong>For at konvertere et tal:</strong> Indtast et heltal fra 1 til 3.999.999 og klik "Konverter".</li>
+        <li><strong>For at afkode romertal:</strong> Skriv et romertal (f.eks. MMXXIV) og klik "Konverter".</li>
+        <li><strong>Tryk Enter</strong> i et af inputfelterne for hurtig konvertering.</li>
+      </ol>
+    </section>
+    <section class="features">
+      <h2>Funktioner</h2>
+      <ul class="features-list">
+        <li>Tovejs: tal til romertal og romertal til tal</li>
+        <li>Understøtter 1–3.999.999 — udvidet rækkevidde med vinculum-notation (streg over bogstav)</li>
+        <li>Håndterer subtraktiv notation (IV, IX, XL, XC, CD, CM) plus udvidede MV̄, MX̄, osv.</li>
+        <li>Validerer input og viser fejl ved ugyldige romertal</li>
+        <li>Indbygget hurtigreferencetabel</li>
+        <li>Tryk Enter for øjeblikkelig konvertering</li>
+      </ul>
+    </section>
+    <div class="ad-slot ad-slot--rectangle" style="margin:0 auto 32px">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="faq">
+      <h2>Ofte Stillede Spørgsmål</h2>
+      <div class="faq-list">
+        <details class="faq-item"><summary class="faq-question">Hvordan fungerer vinculum-notation for tal over 3.999? <span class="faq-icon">+</span></summary><div class="faq-answer">Vinculum-notation placerer en streg (overstreg) over et romertal for at gange dets værdi med 1.000. Så V̄ = 5.000, X̄ = 10.000, L̄ = 50.000, C̄ = 100.000, D̄ = 500.000, M̄ = 1.000.000. For eksempel skrives 4.000 som MV̄ (5.000 − 1.000) og 2.500.000 som M̄M̄D̄.</div></details>
+        <details class="faq-item"><summary class="faq-question">Hvad er subtraktiv notation? <span class="faq-icon">+</span></summary><div class="faq-answer">Subtraktiv notation betyder, at et mindre tal placeret foran et større trækkes fra. For eksempel er IV = 5−1 = 4, og CM = 1000−100 = 900. Dette undgår IIII for 4 eller VIIII for 9.</div></details>
+        <details class="faq-item"><summary class="faq-question">Kan jeg konvertere det aktuelle år? <span class="faq-icon">+</span></summary><div class="faq-answer">Ja. Indtast det aktuelle år (f.eks. 2026), og det konverteres til MMXXVI. Ethvert år mellem 1 og 3.999.999 understøttes — inklusive historiske datoer og fremtidige projektioner.</div></details>
+      </div>
+    </section>
+    <section class="related-tools">
+      <h2>Relaterede Værktøjer</h2>
+      <div class="tool-grid">
+        <a href="/da/number-to-words/" class="tool-card"><img src="/assets/img/icon-text.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Tal til Ord</h3><p>Konverter et vilkårligt tal til dets ordækvivalent.</p><span class="tool-card-link">Prøv →</span></a>
+        <a href="/da/base64-encoder/" class="tool-card"><img src="/assets/img/icon-base64.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Base64-koder</h3><p>Kodér og dekodér Base64-tekst og filer online.</p><span class="tool-card-link">Prøv →</span></a>
+        <a href="/da/age-calculator/" class="tool-card"><img src="/assets/img/icon-calculator.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Aldersberegner</h3><p>Beregn din præcise alder i år, måneder og dage.</p><span class="tool-card-link">Prøv →</span></a>
+      </div>
+    </section>
+  </main>
+  <footer id="site-footer" class="site-footer"></footer>
+  <script src="/assets/js/shared.js" defer></script>
+  <script src="/assets/js/tools/roman-numeral-converter.js" defer></script>
+</body>
+</html>

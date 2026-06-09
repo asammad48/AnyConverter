@@ -1,4 +1,4 @@
-(function () {
+﻿(function () {
   'use strict';
 
   const itemsEl   = document.getElementById('rp-items');
@@ -45,7 +45,7 @@
 
     poolEl.innerHTML = `<div style="font-weight:600;font-size:12px;color:#6B7280;margin-bottom:6px">All items:</div>` +
       items.map(item =>
-        `<span style="display:inline-block;border-radius:20px;padding:3px 10px;font-size:12px;margin:2px;${picked.has(item) ? 'background:#DDD8FE;color:#4F46E5;font-weight:600' : 'background:#F0F0F5;color:#6B7280'}">${escHtml(item)}</span>`
+        `<span style="display:inline-block;border-radius:20px;padding:3px 10px;font-size:12px;margin:2px;${picked.has(item) ? 'background:var(--color-primary-light,#F3E7E4);color:#4F46E5;font-weight:600' : 'background:#F0F0F5;color:#6B7280'}">${escHtml(item)}</span>`
       ).join('');
   }
 

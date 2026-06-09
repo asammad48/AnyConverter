@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tekstgentagelse Online Gratis | AnyConverter</title>
+  <meta name="description" content="Gentag en vilkårlig tekst mange gange øjeblikkeligt. Angiv en brugerdefineret separator, antal gentagelser og linjeskift. Gratis, ingen tilmelding, fungerer i din browser.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://anyconverter.io/da/text-repeater/">
+  <link rel="alternate" hreflang="en" href="https://anyconverter.io/text-repeater/">
+  <link rel="alternate" hreflang="es" href="https://anyconverter.io/es/text-repeater/">
+  <link rel="alternate" hreflang="da" href="https://anyconverter.io/da/text-repeater/">
+  <link rel="alternate" hreflang="x-default" href="https://anyconverter.io/text-repeater/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Tekstgentagelse Online Gratis | AnyConverter">
+  <meta property="og:description" content="Gentag en vilkårlig tekst mange gange med en brugerdefineret separator. Gratis og øjeblikkeligt.">
+  <meta property="og:url" content="https://anyconverter.io/da/text-repeater/">
+  <meta property="og:site_name" content="AnyConverter">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" data-ad-client="ca-pub-XXXXXXXXXX" crossorigin="anonymous"></script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Tekstgentagelse","url":"https://anyconverter.io/da/text-repeater/","description":"Gentag en vilkårlig tekst mange gange med brugerdefineret separator og linjeskift.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F4F6FF);color:var(--color-text,#1E1B4B)}
+    body{min-height:100vh;display:flex;flex-direction:column}
+    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8D0)}
+    .header-inner{max-width:1280px;width:100%;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;gap:32px}
+    .hero{padding:40px 24px 32px;max-width:1280px;margin:0 auto}
+    .hero h1{font-size:clamp(1.75rem,4vw,2.25rem);font-weight:700;line-height:1.2;margin-bottom:12px}
+    .hero-desc{font-size:1.0625rem;color:var(--color-text-2,#6B7280);max-width:680px;line-height:1.6}
+    @font-face{font-family:'Inter';font-display:swap}
+  </style>
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+  <header id="site-header" class="site-header"></header>
+  <main id="main-content">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol><li><a href="/da/">Hjem</a></li><li aria-current="page">Tekstgentagelse</li></ol>
+    </nav>
+    <section class="hero">
+      <h1>Tekstgentagelse</h1>
+      <p class="hero-desc">Gentag et vilkårligt ord, sætning eller tekststykke et valgfrit antal gange med en brugerdefineret separator. Perfekt til at generere testdata, skabe mønstre eller udfylde indhold hurtigt.</p>
+    </section>
+    <div class="tool-wrapper">
+      <div class="tool-zone">
+        <div style="padding:24px">
+          <div style="margin-bottom:14px">
+            <label style="display:block;font-size:13px;font-weight:500;margin-bottom:6px" for="tr-text">Tekst der skal gentages</label>
+            <textarea id="tr-text" rows="3" placeholder="Indtast tekst her…" style="width:100%;padding:10px 12px;border:1px solid var(--color-border,#DDD8D0);border-radius:8px;font-size:15px;resize:vertical"></textarea>
+          </div>
+          <div class="two-col-grid" style="margin-bottom:14px">
+            <div>
+              <label style="display:block;font-size:13px;font-weight:500;margin-bottom:6px" for="tr-times">Antal Gentagelser</label>
+              <input type="number" id="tr-times" value="3" min="1" max="10000" style="width:100%;padding:10px 12px;border:1px solid var(--color-border,#DDD8D0);border-radius:8px;font-size:15px">
+            </div>
+            <div>
+              <label style="display:block;font-size:13px;font-weight:500;margin-bottom:6px" for="tr-separator">Separator</label>
+              <input type="text" id="tr-separator" value=", " placeholder="f.eks. , eller mellemrum" style="width:100%;padding:10px 12px;border:1px solid var(--color-border,#DDD8D0);border-radius:8px;font-size:15px">
+            </div>
+          </div>
+          <div style="margin-bottom:16px;display:flex;align-items:center;gap:8px">
+            <input type="checkbox" id="tr-newline">
+            <label for="tr-newline" style="font-size:13px;cursor:pointer">Tilføj ny linje efter hver gentagelse</label>
+          </div>
+          <div class="ac-action-bar" style="margin-bottom:20px">
+            <button class="btn btn-primary" id="tr-btn">Gentag Tekst</button>
+            <button class="btn btn-secondary" id="tr-clear-btn">Ryd</button>
+          </div>
+          <div id="tr-size-warning" style="display:none;background:var(--color-warning-bg,#FFFBEB);border:1px solid var(--color-warning-bg,#FFFBEB);border-radius:6px;padding:8px 12px;font-size:13px;color:var(--color-warning-text,#92400E);margin-bottom:10px"></div>
+          <div id="tr-result-wrap" style="display:none">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+              <span id="tr-char-count" style="font-size:13px;color:var(--color-text-2,#6B7280)"></span>
+              <button class="btn btn-secondary" id="tr-copy-btn" style="font-size:13px;padding:6px 12px">Kopiér</button>
+            </div>
+            <textarea id="tr-output" rows="8" readonly style="width:100%;padding:10px 12px;border:1px solid var(--color-border,#DDD8D0);border-radius:8px;font-size:14px;font-family:monospace;background:var(--color-bg,#F4F6FF);resize:vertical"></textarea>
+          </div>
+        </div>
+      </div>
+      <aside class="tool-side" aria-label="Indstillinger">
+        <div style="margin-top:16px">
+          <p class="ad-label">Reklame</p>
+          <div class="ad-slot" style="min-height:250px">
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+          </div>
+        </div>
+      </aside>
+    </div>
+    <div class="ad-slot ad-slot--leaderboard">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="how-to-use">
+      <h2>Sådan Bruger Du Tekstgentagelsen</h2>
+      <ol class="steps">
+        <li><strong>Trin 1</strong> — Skriv eller indsæt den tekst du vil gentage.</li>
+        <li><strong>Trin 2</strong> — Angiv antallet af gentagelser (op til 10.000).</li>
+        <li><strong>Trin 3</strong> — Vælg en separator (komma, mellemrum, linjeskift osv.).</li>
+        <li><strong>Trin 4</strong> — Klik på "Gentag Tekst" og kopiér resultatet.</li>
+      </ol>
+    </section>
+    <section class="features">
+      <h2>Funktioner</h2>
+      <ul class="features-list">
+        <li>Gentag en vilkårlig tekst op til 10.000 gange</li>
+        <li>Brugerdefineret separator mellem gentagelserne</li>
+        <li>Valgfrit linjeskift efter hver gentagelse</li>
+        <li>Kopiér til udklipsholder med ét klik</li>
+        <li>Live tegntæller på resultatet</li>
+        <li>Øjeblikkelige resultater uden sideopdatering</li>
+      </ul>
+    </section>
+    <div class="ad-slot ad-slot--rectangle" style="margin:0 auto 32px">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="faq">
+      <h2>Ofte Stillede Spørgsmål</h2>
+      <div class="faq-list">
+        <details class="faq-item"><summary class="faq-question">Hvad er det maksimale antal gentagelser? <span class="faq-icon">+</span></summary><div class="faq-answer">Du kan gentage tekst op til 10.000 gange. Ved meget store resultater behandler browseren alt i hukommelsen uden brug af server.</div></details>
+        <details class="faq-item"><summary class="faq-question">Kan jeg bruge et linjeskift som separator? <span class="faq-icon">+</span></summary><div class="faq-answer">Ja. Lad separatorfeltet være tomt og markér "Tilføj ny linje efter hver gentagelse" for at placere hver gentagelse på sin egen linje.</div></details>
+        <details class="faq-item"><summary class="faq-question">Er der en grænse for tekstlængden? <span class="faq-icon">+</span></summary><div class="faq-answer">Der er ingen fast grænse for inputtekstens længde. Meget lang tekst gentaget tusindvis af gange kan dog bremse browserens rendering. Værktøjet fungerer udelukkende i din browser.</div></details>
+      </div>
+    </section>
+    <section class="related-tools">
+      <h2>Relaterede Værktøjer</h2>
+      <div class="tool-grid">
+        <a href="/da/word-counter/" class="tool-card"><img src="/assets/img/icon-text.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Ordtæller</h3><p>Tæl ord, tegn, sætninger og læsetid.</p><span class="tool-card-link">Prøv →</span></a>
+        <a href="/da/lorem-ipsum-generator/" class="tool-card"><img src="/assets/img/icon-text.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Lorem Ipsum-generator</h3><p>Generer pladsholdertekst i afsnit, sætninger eller ord.</p><span class="tool-card-link">Prøv →</span></a>
+        <a href="/da/fancy-text-generator/" class="tool-card"><img src="/assets/img/icon-text.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Fancy Tekstgenerator</h3><p>Omform tekst til fed, kursiv, script og andre stilarter.</p><span class="tool-card-link">Prøv →</span></a>
+      </div>
+    </section>
+  </main>
+  <footer id="site-footer" class="site-footer"></footer>
+  <script src="/assets/js/shared.js" defer></script>
+  <script src="/assets/js/tools/text-repeater.js" defer></script>
+</body>
+</html>

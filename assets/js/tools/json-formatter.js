@@ -286,12 +286,78 @@ document.addEventListener('DOMContentLoaded', function () {
 
   document.getElementById('btn-to-yaml').addEventListener('click', function() {
     if (!lastParsed) { window.showToast('Format JSON first', 'info'); return; }
-    window.showToast('YAML conversion coming soon', 'info');
+    try {
+      var yaml = jsonToYaml(lastParsed, 0);
+      outputEl.textContent = yaml;
+      outputEl.style.whiteSpace = 'pre-wrap';
+      setOutputStatus('ok', '✓ Converted to YAML', '');
+      currentMode = 'convert';
+    } catch(e) { window.showToast('Conversion failed: ' + e.message, 'error'); }
   });
+
   document.getElementById('btn-to-csv').addEventListener('click', function() {
     if (!lastParsed) { window.showToast('Format JSON first', 'info'); return; }
-    window.showToast('CSV conversion coming soon', 'info');
+    try {
+      var csv = jsonToCsv(lastParsed);
+      outputEl.textContent = csv;
+      outputEl.style.whiteSpace = 'pre-wrap';
+      setOutputStatus('ok', '✓ Converted to CSV', '');
+      currentMode = 'convert';
+    } catch(e) { window.showToast(e.message, 'error'); }
   });
+
+  function jsonToYaml(val, indent) {
+    var pad = '  '.repeat(indent);
+    if (val === null) return 'null';
+    if (typeof val === 'boolean' || typeof val === 'number') return String(val);
+    if (typeof val === 'string') {
+      if (/[:#\[\]{},&*?|<>=!%@`\n\r]/.test(val) || val === '' || /^[\s]|[\s]$/.test(val))
+        return '"' + val.replace(/\\/g,'\\\\').replace(/"/g,'\\"').replace(/\n/g,'\\n') + '"';
+      return val;
+    }
+    if (Array.isArray(val)) {
+      if (val.length === 0) return '[]';
+      return val.map(function(item) {
+        var rendered = jsonToYaml(item, indent + 1);
+        if (typeof item === 'object' && item !== null && !Array.isArray(item)) {
+          return pad + '-\n' + rendered;
+        }
+        return pad + '- ' + rendered;
+      }).join('\n');
+    }
+    if (typeof val === 'object') {
+      var keys = Object.keys(val);
+      if (keys.length === 0) return '{}';
+      return keys.map(function(k) {
+        var v = val[k];
+        var keyStr = /[:#\[\]{},&*?|<>=!%@`\n\r\s]/.test(k) ? '"' + k + '"' : k;
+        if (v !== null && typeof v === 'object') {
+          return pad + keyStr + ':\n' + jsonToYaml(v, indent + 1);
+        }
+        return pad + keyStr + ': ' + jsonToYaml(v, indent + 1);
+      }).join('\n');
+    }
+    return String(val);
+  }
+
+  function jsonToCsv(data) {
+    var rows = Array.isArray(data) ? data : [data];
+    var objects = rows.filter(function(r) { return r !== null && typeof r === 'object' && !Array.isArray(r); });
+    if (objects.length === 0) throw new Error('JSON must be an array of objects to convert to CSV');
+    var headers = [];
+    objects.forEach(function(obj) {
+      Object.keys(obj).forEach(function(k) { if (headers.indexOf(k) === -1) headers.push(k); });
+    });
+    function esc(v) {
+      var s = v === null || v === undefined ? '' : (typeof v === 'object' ? JSON.stringify(v) : String(v));
+      return /[",\n\r]/.test(s) ? '"' + s.replace(/"/g, '""') + '"' : s;
+    }
+    var lines = [headers.map(esc).join(',')];
+    objects.forEach(function(obj) {
+      lines.push(headers.map(function(h) { return esc(obj[h]); }).join(','));
+    });
+    return lines.join('\n');
+  }
 
   document.getElementById('btn-clear').addEventListener('click', function() {
     input.value = '';

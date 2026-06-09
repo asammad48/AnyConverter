@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Farvekonverter Online — HEX RGB HSL CMYK Gratis | AnyConverter</title>
+  <meta name="description" content="Konverter farver mellem HEX, RGB, HSL, CMYK og HSB online gratis. Interaktiv farvevælger med skyggepalette-generator. Kopiér til udklipsholder øjeblikkeligt.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://anyconverter.io/da/color-converter/">
+  <link rel="alternate" hreflang="en" href="https://anyconverter.io/color-converter/">
+  <link rel="alternate" hreflang="es" href="https://anyconverter.io/es/color-converter/">
+  <link rel="alternate" hreflang="da" href="https://anyconverter.io/da/color-converter/">
+  <link rel="alternate" hreflang="x-default" href="https://anyconverter.io/color-converter/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Farvekonverter Online — HEX RGB HSL CMYK Gratis | AnyConverter">
+  <meta property="og:description" content="Konverter farver mellem HEX, RGB, HSL, CMYK og HSB online gratis.">
+  <meta property="og:url" content="https://anyconverter.io/da/color-converter/">
+  <meta property="og:site_name" content="AnyConverter">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" data-ad-client="ca-pub-XXXXXXXXXX" crossorigin="anonymous"></script>
+  <!-- Replace ca-pub-XXXXXXXXXX with your real AdSense publisher ID -->
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Farvekonverter — HEX, RGB, HSL, CMYK","url":"https://anyconverter.io/da/color-converter/","description":"Konverter farver mellem HEX, RGB, HSL, CMYK og HSB online gratis.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F4F6FF);color:var(--color-text,#1E1B4B)}
+    body{min-height:100vh;display:flex;flex-direction:column}
+    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8D0)}
+    .header-inner{max-width:1280px;width:100%;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;gap:32px}
+    .hero{padding:40px 24px 32px;max-width:1280px;margin:0 auto}
+    .hero h1{font-size:clamp(1.75rem,4vw,2.25rem);font-weight:700;line-height:1.2;margin-bottom:12px}
+    .hero-desc{font-size:1.0625rem;color:var(--color-text-2,#6B7280);max-width:680px;line-height:1.6}
+    @font-face{font-family:'Inter';font-display:swap}
+  </style>
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+  <header id="site-header" class="site-header"></header>
+  <main id="main-content">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol><li><a href="/da/">Hjem</a></li><li aria-current="page">Farvekonverter</li></ol>
+    </nav>
+    <section class="hero">
+      <h1>Farvekonverter — HEX, RGB, HSL, CMYK</h1>
+      <p class="hero-desc">Konverter farver mellem HEX, RGB, HSL, CMYK og HSB-formater øjeblikkeligt. Brug farvevælgeren eller skriv en værdi direkte. Genererer en skyggepalet med lysere og mørkere variationer. Kopiér et hvilket som helst format med ét klik.</p>
+    </section>
+    <div class="tool-wrapper">
+      <div class="tool-zone">
+        <div style="display:flex;gap:16px;align-items:flex-start;flex-wrap:wrap;margin-bottom:16px">
+          <div>
+            <label for="color-picker">Farvevælger</label>
+            <input type="color" id="color-picker" value="#5B5BD6" style="width:64px;height:56px;padding:4px;border-radius:12px;border:2px solid var(--color-border);cursor:pointer">
+          </div>
+          <div style="flex:1;min-width:200px">
+            <div class="color-swatch" id="color-swatch" style="background:#5B5BD6;min-width:100%"></div>
+            <div id="color-name" class="text-muted text-sm text-center mt-2"></div>
+          </div>
+        </div>
+
+        <div class="color-formats">
+          <div class="color-format-row">
+            <span class="color-format-label">HEX</span>
+            <input type="text" id="color-hex" value="#5B5BD6" spellcheck="false" maxlength="9">
+            <button class="btn btn-secondary btn-sm" data-copy-color="color-hex">Kopiér</button>
+          </div>
+          <div class="color-format-row">
+            <span class="color-format-label">RGB</span>
+            <input type="text" id="color-rgb" value="rgb(91, 91, 214)" spellcheck="false">
+            <button class="btn btn-secondary btn-sm" data-copy-color="color-rgb">Kopiér</button>
+          </div>
+          <div class="color-format-row">
+            <span class="color-format-label">HSL</span>
+            <input type="text" id="color-hsl" value="hsl(240, 57%, 60%)" spellcheck="false">
+            <button class="btn btn-secondary btn-sm" data-copy-color="color-hsl">Kopiér</button>
+          </div>
+          <div class="color-format-row">
+            <span class="color-format-label">CMYK</span>
+            <input type="text" id="color-cmyk" value="cmyk(57%, 57%, 0%, 16%)" spellcheck="false">
+            <button class="btn btn-secondary btn-sm" data-copy-color="color-cmyk">Kopiér</button>
+          </div>
+          <div class="color-format-row">
+            <span class="color-format-label">HSB</span>
+            <input type="text" id="color-hsb" value="hsb(240, 57%, 84%)" spellcheck="false">
+            <button class="btn btn-secondary btn-sm" data-copy-color="color-hsb">Kopiér</button>
+          </div>
+        </div>
+
+        <div class="mt-6">
+          <p class="panel-label">Farvepalet</p>
+          <div class="color-palette" id="color-palette"></div>
+        </div>
+      </div>
+
+      <aside class="tool-side" aria-label="Indstillinger">
+        <div class="ss-divider">Indstillinger</div>
+        <div class="tog-row"><span class="tog-label" id="lbl-uc-hex">HEX med store bogstaver</span><div class="tog off" id="tog-uc-hex" role="switch" aria-checked="false" tabindex="0" aria-labelledby="lbl-uc-hex"></div></div>
+        <div class="tog-row"><span class="tog-label" id="lbl-show-palette">Vis skyggepalet</span><div class="tog" id="tog-show-palette" role="switch" aria-checked="true" tabindex="0" aria-labelledby="lbl-show-palette"></div></div>
+
+        <div class="ss-divider">Farveværdier</div>
+        <div class="stats-grid">
+          <div class="stat-card"><div class="stat-val" id="stat-hue">—</div><div class="stat-lbl">Farvetone (°)</div></div>
+          <div class="stat-card"><div class="stat-val" id="stat-sat">—</div><div class="stat-lbl">Mætning</div></div>
+          <div class="stat-card"><div class="stat-val" id="stat-light">—</div><div class="stat-lbl">Lyshed</div></div>
+          <div class="stat-card"><div class="stat-val" id="stat-bright">—</div><div class="stat-lbl">Lysstyrke</div></div>
+        </div>
+
+        <div style="margin-top:8px">
+          <p class="ad-label">Reklame</p>
+          <div class="ad-slot" style="min-height:250px">
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+            <!-- Replace ca-pub-XXXXXXXXXX and data-ad-slot="XXXXXXXXXX" with your IDs -->
+          </div>
+        </div>
+      </aside>
+    </div>
+    <div class="ad-slot ad-slot--leaderboard">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="how-to-use">
+      <h2>Sådan konverterer du farver</h2>
+      <ol class="steps">
+        <li><strong>Vælg eller indtast en farve</strong> — Brug farvevælgeren eller skriv en HEX, RGB, HSL, CMYK eller HSB-værdi direkte i et felt.</li>
+        <li><strong>Se alle formater</strong> — Alle farveformater opdateres øjeblikkeligt, når du ændrer en værdi.</li>
+        <li><strong>Kopiér dit format</strong> — Klik på Kopiér ud for et format for at kopiere det til udklipsholderen. Klik på palettens farveprøver for at udforske nuancer.</li>
+      </ol>
+    </section>
+    <section class="features">
+      <h2>Funktioner</h2>
+      <ul class="features-list">
+        <li>Konverter HEX, RGB, HSL, CMYK, HSB</li>
+        <li>Interaktiv farvevælger</li>
+        <li>11-farve skyggepalet</li>
+        <li>Rediger et format — alle andre opdateres</li>
+        <li>Kopiér et hvilket som helst format til udklipsholderen</li>
+        <li>100% browserbaseret, gratis</li>
+      </ul>
+    </section>
+    <div class="ad-slot ad-slot--rectangle" style="margin:0 auto 32px">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="faq">
+      <h2>Ofte Stillede Spørgsmål</h2>
+      <div class="faq-list">
+        <details class="faq-item"><summary class="faq-question">Hvad er forskellen mellem HEX og RGB? <span class="faq-icon">+</span></summary><div class="faq-answer">HEX og RGB repræsenterer de samme farver, men i forskellige notationer. HEX bruger en 6-cifret hexadecimal kode (f.eks. #FF5733), mens RGB bruger decimalværdier for Rød, Grøn og Blå kanaler (f.eks. rgb(255, 87, 51)).</div></details>
+        <details class="faq-item"><summary class="faq-question">Hvad er HSL? <span class="faq-icon">+</span></summary><div class="faq-answer">HSL står for Farvetone (Hue), Mætning (Saturation) og Lyshed (Lightness). Det er en mere intuitiv model for mennesker — du tænker i termer af farvevinkel (0–360°), hvor levende den er (mætning), og hvor lys eller mørk den er (lyshed).</div></details>
+        <details class="faq-item"><summary class="faq-question">Hvad bruges CMYK til? <span class="faq-icon">+</span></summary><div class="faq-answer">CMYK (Cyan, Magenta, Gul, Sort) bruges i printdesign. Mens skærme bruger RGB (additiv farve), bruger printere CMYK (subtraktiv farveblanding).</div></details>
+        <details class="faq-item"><summary class="faq-question">Hvad er HSB (også kaldet HSV)? <span class="faq-icon">+</span></summary><div class="faq-answer">HSB (Farvetone, Mætning, Lysstyrke) — også kaldet HSV (Value) — ligner HSL, men bruger Lysstyrke/Værdi i stedet for Lyshed. Det bruges i mange designapplikationer som Photoshop.</div></details>
+        <details class="faq-item"><summary class="faq-question">Hvordan finder jeg HEX-koden for en farve på skærmen? <span class="faq-icon">+</span></summary><div class="faq-answer">Brug dit operativsystems indbyggede farvevælger, browserens udviklerværktøjer (inspicer element → farveprøve) eller skærmbilledværktøjer. Indsæt derefter HEX-værdien her for at konvertere til andre formater.</div></details>
+      </div>
+    </section>
+    <section class="related-tools">
+      <h2>Relaterede værktøjer</h2>
+      <div class="tool-grid">
+        <a href="/da/image-converter/" class="tool-card"><img src="/assets/img/icon-image.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Billedkonverter</h3><p>Konverter billeder mellem formater.</p><span class="tool-card-link">Prøv →</span></a>
+        <a href="/da/json-formatter/" class="tool-card"><img src="/assets/img/icon-json.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>JSON-formatering</h3><p>Formater og valider JSON.</p><span class="tool-card-link">Prøv →</span></a>
+        <a href="/da/base64-encoder/" class="tool-card"><img src="/assets/img/icon-base64.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Base64-koder</h3><p>Kodér og afkodér Base64.</p><span class="tool-card-link">Prøv →</span></a>
+        <a href="/da/hash-generator/" class="tool-card"><img src="/assets/img/icon-hash.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Hash-generator</h3><p>Generer kryptografiske hashes.</p><span class="tool-card-link">Prøv →</span></a>
+        <a href="/da/markdown-html/" class="tool-card"><img src="/assets/img/icon-markdown.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Markdown til HTML</h3><p>Konverter Markdown til HTML.</p><span class="tool-card-link">Prøv →</span></a>
+        <a href="/da/timestamp-converter/" class="tool-card"><img src="/assets/img/icon-clock.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Tidsstempelkonverter</h3><p>Konverter Unix-tidsstempler.</p><span class="tool-card-link">Prøv →</span></a>
+      </div>
+    </section>
+  </main>
+  <footer id="site-footer" class="site-footer"></footer>
+  <script src="/assets/js/shared.js" defer></script>
+  <script src="/assets/js/tools/color-converter.js" defer></script>
+</body>
+</html>

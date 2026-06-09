@@ -17,15 +17,15 @@
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
     html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F4F6FF);color:var(--color-text,#1E1B4B)}
     body{min-height:100vh;display:flex;flex-direction:column}
-    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8FE)}
+    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8D0)}
     .header-inner{max-width:1280px;width:100%;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;gap:32px}
     .hero{padding:40px 24px 32px;max-width:1280px;margin:0 auto}
     .hero h1{font-size:clamp(1.75rem,4vw,2.25rem);font-weight:700;line-height:1.2;margin-bottom:12px}
     .hero-desc{font-size:1.0625rem;color:var(--color-text-2,#6B7280);max-width:680px;line-height:1.6}
     .tool-status{display:none;padding:10px 14px;border-radius:8px;font-size:13px;margin-top:12px}
     .tool-status--error{background:var(--color-error-bg,#FEF2F2);color:var(--color-error,#DC2626)}.tool-status--success{background:var(--color-success-bg,#ECFDF5);color:var(--color-success,#059669)}
-    .upload-area{border:2px dashed var(--color-border,#DDD8FE);border-radius:12px;padding:28px 20px;text-align:center;cursor:pointer;transition:border-color .2s}
-    .upload-area:hover{border-color:var(--color-primary,#4F46E5)}
+    .upload-area{border:2px dashed var(--color-border,#DDD8D0);border-radius:12px;padding:28px 20px;text-align:center;cursor:pointer;transition:border-color .2s}
+    .upload-area:hover{border-color:var(--color-primary,#B04A45)}
     @font-face{font-family:'Inter';font-display:swap}
   </style>
   <link rel="stylesheet" href="/assets/css/style.css">
@@ -49,7 +49,7 @@
           </div>
           <div style="margin-top:14px">
             <label style="display:block;font-size:13px;font-weight:500;margin-bottom:6px">OCR Language</label>
-            <select id="ocr-lang" style="width:100%;padding:10px 12px;border:1px solid var(--color-border,#DDD8FE);border-radius:8px;font-size:14px">
+            <select id="ocr-lang" style="width:100%;padding:10px 12px;border:1px solid var(--color-border,#DDD8D0);border-radius:8px;font-size:14px">
               <option value="eng">English</option>
               <option value="spa">Spanish</option>
               <option value="fra">French</option>
@@ -64,7 +64,7 @@
           </div>
           <div id="ocr-result" style="display:none;margin-top:16px">
             <label style="display:block;font-size:13px;font-weight:500;margin-bottom:6px">Extracted Text</label>
-            <textarea id="ocr-output" readonly style="width:100%;height:280px;padding:10px 12px;border:1px solid var(--color-border,#DDD8FE);border-radius:8px;font-size:13px;font-family:monospace;resize:vertical;background:var(--color-surface,#fff)"></textarea>
+            <textarea id="ocr-output" readonly style="width:100%;height:280px;padding:10px 12px;border:1px solid var(--color-border,#DDD8D0);border-radius:8px;font-size:13px;font-family:monospace;resize:vertical;background:var(--color-surface,#fff)"></textarea>
             <button class="btn btn-secondary" id="ocr-copy" style="margin-top:8px">Copy Text</button>
           </div>
           <div id="ocr-status" class="tool-status"></div>

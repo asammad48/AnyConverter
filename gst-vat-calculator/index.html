@@ -27,7 +27,7 @@
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
     html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F4F6FF);color:var(--color-text,#1E1B4B)}
     body{min-height:100vh;display:flex;flex-direction:column}
-    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8FE)}
+    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8D0)}
     .header-inner{max-width:1280px;width:100%;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;gap:32px}
     .hero{padding:40px 24px 32px;max-width:1280px;margin:0 auto}
     .hero h1{font-size:clamp(1.75rem,4vw,2.25rem);font-weight:700;line-height:1.2;margin-bottom:12px}
@@ -49,16 +49,16 @@
     <div class="tool-wrapper">
       <div class="tool-zone">
         <div style="padding:24px">
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px">
+          <div class="two-col-grid" style="margin-bottom:12px">
             <div>
               <label style="display:block;font-size:13px;font-weight:500;margin-bottom:6px" for="gst-amount">Amount ($)</label>
-              <input type="number" id="gst-amount" placeholder="100" min="0" step="0.01" style="width:100%;padding:10px 12px;border:1px solid var(--color-border,#DDD8FE);border-radius:8px;font-size:15px">
+              <input type="number" id="gst-amount" placeholder="100" min="0" step="0.01" style="width:100%;padding:10px 12px;border:1px solid var(--color-border,#DDD8D0);border-radius:8px;font-size:15px">
             </div>
             <div>
               <label style="display:block;font-size:13px;font-weight:500;margin-bottom:6px" for="gst-rate">Tax Rate (%)</label>
               <div style="display:flex;gap:6px">
-                <input type="number" id="gst-rate" placeholder="10" step="0.01" min="0" style="flex:1;padding:10px 12px;border:1px solid var(--color-border,#DDD8FE);border-radius:8px;font-size:15px">
-                <select id="gst-preset" style="padding:10px 8px;border:1px solid var(--color-border,#DDD8FE);border-radius:8px;font-size:13px">
+                <input type="number" id="gst-rate" placeholder="10" step="0.01" min="0" style="flex:1;padding:10px 12px;border:1px solid var(--color-border,#DDD8D0);border-radius:8px;font-size:15px">
+                <select id="gst-preset" style="padding:10px 8px;border:1px solid var(--color-border,#DDD8D0);border-radius:8px;font-size:13px">
                   <option value="">Presets</option>
                   <option value="5">5% (India GST)</option>
                   <option value="10">10% (Australia GST)</option>
@@ -75,8 +75,8 @@
           <div style="margin-bottom:16px">
             <label style="font-size:13px;font-weight:500">Amount is:</label>
             <div style="display:flex;gap:8px;margin-top:6px">
-              <label style="display:flex;align-items:center;gap:6px;font-size:14px;cursor:pointer;padding:8px 12px;border:1px solid var(--color-border,#DDD8FE);border-radius:8px"><input type="radio" name="gst-type" value="excl" checked> Excluding tax</label>
-              <label style="display:flex;align-items:center;gap:6px;font-size:14px;cursor:pointer;padding:8px 12px;border:1px solid var(--color-border,#DDD8FE);border-radius:8px"><input type="radio" name="gst-type" value="incl"> Including tax</label>
+              <label style="display:flex;align-items:center;gap:6px;font-size:14px;cursor:pointer;padding:8px 12px;border:1px solid var(--color-border,#DDD8D0);border-radius:8px"><input type="radio" name="gst-type" value="excl" checked> Excluding tax</label>
+              <label style="display:flex;align-items:center;gap:6px;font-size:14px;cursor:pointer;padding:8px 12px;border:1px solid var(--color-border,#DDD8D0);border-radius:8px"><input type="radio" name="gst-type" value="incl"> Including tax</label>
             </div>
           </div>
           <div class="ac-action-bar" style="margin-bottom:20px">
@@ -84,7 +84,7 @@
             <button class="btn btn-secondary" id="btn-reset-gst">Reset</button>
           </div>
           <div id="gst-result" style="display:none">
-            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px">
+            <div class="three-col-grid">
               <div class="stat-card"><div class="stat-val" id="gst-base">—</div><div class="stat-lbl">Base Amount</div></div>
               <div class="stat-card"><div class="stat-val" id="gst-tax-amt">—</div><div class="stat-lbl">Tax Amount</div></div>
               <div class="stat-card"><div class="stat-val" id="gst-total">—</div><div class="stat-lbl">Total (incl. tax)</div></div>

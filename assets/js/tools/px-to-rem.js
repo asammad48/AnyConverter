@@ -2,7 +2,8 @@
   'use strict';
 
   function getBase() {
-    return parseFloat(document.getElementById('pr-base').value) || 16;
+    var b = parseFloat(document.getElementById('pr-base').value);
+    return (b && b > 0) ? b : 16;
   }
 
   function pxToRem() {

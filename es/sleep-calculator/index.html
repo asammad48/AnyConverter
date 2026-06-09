@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora de Sueño Online Gratis | AnyConverter</title>
+  <meta name="description" content="Calcula el mejor momento para despertarte o acostarte basado en ciclos de sueño de 90 minutos. Calculadora de sueño gratuita para despertarte descansado. Sin registro.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://anyconverter.io/es/sleep-calculator/">
+  <link rel="alternate" hreflang="en" href="https://anyconverter.io/sleep-calculator/">
+  <link rel="alternate" hreflang="es" href="https://anyconverter.io/es/sleep-calculator/">
+  <link rel="alternate" hreflang="da" href="https://anyconverter.io/da/sleep-calculator/">
+  <link rel="alternate" hreflang="x-default" href="https://anyconverter.io/sleep-calculator/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Calculadora de Sueño Online Gratis | AnyConverter">
+  <meta property="og:description" content="Encuentra el mejor momento para despertarte o acostarte basado en ciclos de sueño de 90 min. Gratis e instantáneo.">
+  <meta property="og:url" content="https://anyconverter.io/es/sleep-calculator/">
+  <meta property="og:site_name" content="AnyConverter">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" data-ad-client="ca-pub-XXXXXXXXXX" crossorigin="anonymous"></script>
+  <!-- Replace ca-pub-XXXXXXXXXX with your real AdSense publisher ID -->
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Calculadora de Sueño","url":"https://anyconverter.io/es/sleep-calculator/","description":"Calcula el mejor momento para despertarte o acostarte basado en ciclos de sueño de 90 minutos.","applicationCategory":"HealthApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F4F6FF);color:var(--color-text,#1E1B4B)}
+    body{min-height:100vh;display:flex;flex-direction:column}
+    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8D0)}
+    .header-inner{max-width:1280px;width:100%;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;gap:32px}
+    .hero{padding:40px 24px 32px;max-width:1280px;margin:0 auto}
+    .hero h1{font-size:clamp(1.75rem,4vw,2.25rem);font-weight:700;line-height:1.2;margin-bottom:12px}
+    .hero-desc{font-size:1.0625rem;color:var(--color-text-2,#6B7280);max-width:680px;line-height:1.6}
+    @font-face{font-family:'Inter';font-display:swap}
+  </style>
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+  <header id="site-header" class="site-header"></header>
+  <main id="main-content">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol><li><a href="/es/">Inicio</a></li><li aria-current="page">Calculadora de Sueño</li></ol>
+    </nav>
+    <section class="hero">
+      <h1>Calculadora de Sueño</h1>
+      <p class="hero-desc">Despiértate descansado. La calculadora de sueño usa ciclos de sueño de 90 minutos para sugerir los momentos ideales para despertarte o acostarte, de modo que nunca te despiertes a mitad de un ciclo.</p>
+    </section>
+    <div class="tool-wrapper">
+      <div class="tool-zone">
+        <div style="padding:24px">
+          <div style="margin-bottom:24px;padding:20px;border:1px solid var(--color-border,#DDD8D0);border-radius:12px">
+            <h3 style="font-size:15px;font-weight:600;margin-bottom:4px">Quiero acostarme a las…</h3>
+            <p style="font-size:13px;color:var(--color-text-2,#6B7280);margin-bottom:14px">Encuentra los mejores horarios para despertarte</p>
+            <div style="display:flex;gap:10px;align-items:flex-end">
+              <div style="flex:1">
+                <label style="display:block;font-size:13px;font-weight:500;margin-bottom:6px" for="sc-bedtime">Hora de acostarse</label>
+                <input type="time" id="sc-bedtime" style="width:100%;padding:10px 12px;border:1px solid var(--color-border,#DDD8D0);border-radius:8px;font-size:15px">
+              </div>
+              <button class="btn btn-primary" id="sc-wakeup-btn">Calcular Hora de Despertar →</button>
+            </div>
+          </div>
+          <div style="padding:20px;border:1px solid var(--color-border,#DDD8D0);border-radius:12px;margin-bottom:20px">
+            <h3 style="font-size:15px;font-weight:600;margin-bottom:4px">Necesito despertar a las…</h3>
+            <p style="font-size:13px;color:var(--color-text-2,#6B7280);margin-bottom:14px">Encuentra los mejores horarios para acostarte</p>
+            <div style="display:flex;gap:10px;align-items:flex-end">
+              <div style="flex:1">
+                <label style="display:block;font-size:13px;font-weight:500;margin-bottom:6px" for="sc-waketime">Hora de despertar</label>
+                <input type="time" id="sc-waketime" style="width:100%;padding:10px 12px;border:1px solid var(--color-border,#DDD8D0);border-radius:8px;font-size:15px">
+              </div>
+              <button class="btn btn-primary" id="sc-bedtime-btn">Calcular Hora de Acostarse →</button>
+            </div>
+          </div>
+          <div id="sc-results" style="display:none"></div>
+        </div>
+      </div>
+      <aside class="tool-side" aria-label="Opciones">
+        <div class="ss-divider">Datos sobre el Sueño</div>
+        <p style="font-size:13px;color:var(--color-text-2,#6B7280);line-height:1.6;padding:0 4px">Un ciclo de sueño ≈ <strong>90 minutos</strong>. Los adultos necesitan <strong>5–6 ciclos</strong> (7,5–9 horas). Despertarse a mitad del ciclo causa somnolencia.</p>
+        <div style="margin-top:16px">
+          <p class="ad-label">Publicidad</p>
+          <div class="ad-slot" style="min-height:250px">
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+          </div>
+        </div>
+      </aside>
+    </div>
+    <div class="ad-slot ad-slot--leaderboard">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="how-to-use">
+      <h2>Cómo Usar la Calculadora de Sueño</h2>
+      <ol class="steps">
+        <li><strong>Para encontrar horas de despertar:</strong> Introduce tu hora de acostarse y haz clic en "Calcular Hora de Despertar". Verás 4 opciones (3–6 ciclos de sueño) con las óptimas resaltadas.</li>
+        <li><strong>Para encontrar horas de acostarse:</strong> Introduce tu hora de despertar requerida y haz clic en "Calcular Hora de Acostarse". Elige una hora que te dé 5 o 6 ciclos completos.</li>
+        <li><strong>Consejo:</strong> La calculadora añade 14 minutos para el tiempo medio que se tarda en dormirse.</li>
+      </ol>
+    </section>
+    <section class="features">
+      <h2>Características</h2>
+      <ul class="features-list">
+        <li>Calcula horas óptimas de despertar a partir de una hora de acostarse</li>
+        <li>Calcula horas óptimas de acostarse a partir de una hora de despertar</li>
+        <li>Basado en ciclos de sueño de 90 minutos (estándar de la ciencia del sueño)</li>
+        <li>Tiene en cuenta el tiempo medio de inicio del sueño de 14 minutos</li>
+        <li>Resalta las opciones más recomendadas (5–6 ciclos)</li>
+        <li>Muestra las horas totales de sueño para cada opción</li>
+      </ul>
+    </section>
+    <div class="ad-slot ad-slot--rectangle" style="margin:0 auto 32px">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="faq">
+      <h2>Preguntas Frecuentes</h2>
+      <div class="faq-list">
+        <details class="faq-item"><summary class="faq-question">¿Por qué los ciclos de sueño duran 90 minutos? <span class="faq-icon">+</span></summary><div class="faq-answer">Las investigaciones muestran que un ciclo de sueño humano típico (sueño ligero → sueño profundo → sueño REM) tarda unos 90 minutos en completarse. Despertarse al final de un ciclo, en lugar de en medio, te hace sentir más alerta y descansado.</div></details>
+        <details class="faq-item"><summary class="faq-question">¿Cuántos ciclos debo aspirar a tener? <span class="faq-icon">+</span></summary><div class="faq-answer">La mayoría de los adultos necesitan 5–6 ciclos de sueño completos por noche, lo que equivale a 7,5–9 horas de sueño. La calculadora los destaca como opciones "Recomendadas".</div></details>
+        <details class="faq-item"><summary class="faq-question">¿Por qué se añaden 14 minutos? <span class="faq-icon">+</span></summary><div class="faq-answer">Los estudios muestran que la persona promedio tarda unos 14 minutos en dormirse después de meterse en la cama. La calculadora añade este margen para que el recuento de ciclos empiece desde cuando realmente te duermes, no desde cuando te acuestas.</div></details>
+      </div>
+    </section>
+    <section class="related-tools">
+      <h2>Herramientas Relacionadas</h2>
+      <div class="tool-grid">
+        <a href="/es/world-clock/" class="tool-card"><img src="/assets/img/icon-worldclock.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Reloj Mundial</h3><p>Consulta la hora actual en ciudades de todo el mundo.</p><span class="tool-card-link">Usar →</span></a>
+        <a href="/es/pomodoro-timer/" class="tool-card"><img src="/assets/img/icon-timer.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Temporizador Pomodoro</h3><p>Mejora tu concentración con sesiones de trabajo de 25 minutos.</p><span class="tool-card-link">Usar →</span></a>
+        <a href="/es/bmi-calculator/" class="tool-card"><img src="/assets/img/icon-calculator.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Calculadora IMC</h3><p>Calcula tu Índice de Masa Corporal en unidades métricas o imperiales.</p><span class="tool-card-link">Usar →</span></a>
+      </div>
+    </section>
+  </main>
+  <footer id="site-footer" class="site-footer"></footer>
+  <script src="/assets/js/shared.js" defer></script>
+  <script src="/assets/js/tools/sleep-calculator.js" defer></script>
+</body>
+</html>

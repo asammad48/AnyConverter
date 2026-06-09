@@ -32,7 +32,7 @@
     try {
       var doc = await PDFLib.PDFDocument.load(pdfBytes, { ignoreEncryption: true });
       var out = await PDFLib.PDFDocument.create();
-      var pages = await out.copyPagesFrom(doc, doc.getPages().map(function(_, i){ return i; }));
+      var pages = await out.copyPages(doc, doc.getPages().map(function(_, i){ return i; }));
       pages.forEach(function(p){ out.addPage(p); });
 
       var saveOpts = {

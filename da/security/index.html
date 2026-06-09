@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sikkerhed — AnyConverter</title>
+  <meta name="description" content="Lær hvordan AnyConverter holder dine data sikre. Alle værktøjer kører i din browser — dine filer forlader aldrig din enhed. Læs om vores sikkerhedspraksis og politik for ansvarlig afsløring.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://anyconverter.io/da/security/">
+  <link rel="alternate" hreflang="en" href="https://anyconverter.io/security/">
+  <link rel="alternate" hreflang="es" href="https://anyconverter.io/es/security/">
+  <link rel="alternate" hreflang="da" href="https://anyconverter.io/da/security/">
+  <link rel="alternate" hreflang="x-default" href="https://anyconverter.io/security/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Sikkerhed — AnyConverter">
+  <meta property="og:description" content="Hvordan AnyConverter holder dine data sikre. Al behandling sker på klientsiden i din browser — ingen filer eller data uploades nogensinde til vores servere.">
+  <meta property="og:url" content="https://anyconverter.io/da/security/">
+  <meta property="og:site_name" content="AnyConverter">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F4F6FF);color:var(--color-text,#1E1B4B)}
+    body{min-height:100vh;display:flex;flex-direction:column}
+    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8D0)}
+    .header-inner{max-width:1280px;width:100%;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;gap:32px}
+    @font-face{font-family:'Inter';font-display:swap}
+    main{flex:1}
+    .page-wrap{max-width:800px;margin:0 auto;padding:44px 24px 80px}
+    .page-wrap h1{font-size:clamp(1.8rem,4vw,2.4rem);font-weight:800;line-height:1.2;margin-bottom:8px}
+    .page-meta{font-size:14px;color:var(--color-text-2,#6B7280);margin-bottom:40px;padding-bottom:20px;border-bottom:1px solid var(--color-border-light,#E0E7FF)}
+    .page-wrap h2{font-size:1.15rem;font-weight:700;color:var(--color-text,#1E1B4B);margin:36px 0 12px;padding-bottom:8px;border-bottom:2px solid var(--color-primary-light,#EEF2FF)}
+    .page-wrap p{font-size:15px;line-height:1.78;color:var(--color-text-body,#374151);margin-bottom:14px}
+    .page-wrap ul{padding-left:22px;margin-bottom:14px}
+    .page-wrap li{font-size:15px;line-height:1.78;color:var(--color-text-body,#374151);margin-bottom:6px}
+    .page-wrap a{color:var(--color-primary,#4F46E5)}
+    .page-wrap strong{color:var(--color-text,#1E1B4B)}
+    .security-pillars{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin:24px 0 32px}
+    .pillar{background:var(--color-surface,#fff);border-radius:14px;padding:22px;border:1.5px solid var(--color-border-light,#E0E7FF)}
+    .pillar-icon{font-size:1.8rem;margin-bottom:10px}
+    .pillar h3{font-size:15px;font-weight:700;color:var(--color-text,#1E1B4B);margin-bottom:6px}
+    .pillar p{font-size:14px;color:var(--color-text-2,#6B7280);margin:0;line-height:1.6}
+    .disclosure-box{background:var(--color-success-bg,#F0FDF4);border:1.5px solid var(--color-success-text,#86EFAC);border-radius:12px;padding:24px 28px;margin:24px 0}
+    .disclosure-box h3{font-size:1rem;font-weight:700;color:var(--color-success-text,#166534);margin-bottom:10px}
+    .disclosure-box p{font-size:15px;color:var(--color-text-body,#374151);margin-bottom:10px;line-height:1.7}
+    .disclosure-box p:last-child{margin:0}
+    .disclosure-box a{color:var(--color-success-text,#166534);font-weight:600}
+  </style>
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+  <header id="site-header" class="site-header"></header>
+
+  <main id="main-content">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="/da/">Hjem</a></li>
+        <li aria-current="page">Sikkerhed</li>
+      </ol>
+    </nav>
+
+    <div class="page-wrap">
+      <h1>Sikkerhed hos AnyConverter</h1>
+      <p class="page-meta">Sidst opdateret: <strong>26. maj 2026</strong></p>
+
+      <p>Sikkerhed og privatliv er grundlæggende for, hvordan AnyConverter er bygget — det er ikke noget, der er tilføjet som en eftertanke. Sådan beskytter vi dine data og vores platform.</p>
+
+      <div class="security-pillars">
+        <div class="pillar">
+          <div class="pillar-icon">🔒</div>
+          <h3>Ingen Server-Upload</h3>
+          <p>Al behandling af værktøjer sker i din browser. Filer når aldrig vores servere.</p>
+        </div>
+        <div class="pillar">
+          <div class="pillar-icon">🔐</div>
+          <h3>HTTPS Overalt</h3>
+          <p>Alle sider serveres via TLS. Alle forbindelser er krypterede under overførslen.</p>
+        </div>
+        <div class="pillar">
+          <div class="pillar-icon">🚫</div>
+          <h3>Ingen Konti</h3>
+          <p>Ingen brugernavne, adgangskoder eller sessionstokens. Intet at stjæle.</p>
+        </div>
+        <div class="pillar">
+          <div class="pillar-icon">🛡️</div>
+          <h3>CDN-Beskyttelse</h3>
+          <p>Serveret via Cloudflare med DDoS-beskyttelse og edge-caching.</p>
+        </div>
+      </div>
+
+      <h2>Klientside-Arkitektur</h2>
+      <p>Den vigtigste sikkerhedsegenskap ved AnyConverter er, at <strong>al behandling af værktøjer sker inde i din browser</strong>. Når du bruger vores PDF-samler, JSON-formatter, billedkonverter eller et andet værktøj, behandles dine data af JavaScript, der kører på din egen enhed.</p>
+      <p>Det betyder:</p>
+      <ul>
+        <li>Vi kan ikke se dine filer, selvom vi ville</li>
+        <li>Der er ingen server-side database, der gemmer dit indhold</li>
+        <li>Lukning af browserfanen fjerner øjeblikkeligt alle spor af dine data</li>
+        <li>De fleste værktøjer fortsætter med at fungere offline, efter at siden er indlæst</li>
+      </ul>
+
+      <h2>HTTPS og Transportsikkerhed</h2>
+      <p>Al trafik til og fra AnyConverter er krypteret med TLS 1.2 eller højere. Vi bruger <strong>HTTP Strict Transport Security (HSTS)</strong> for at forhindre nedgraderingsangreb. Vores SSL-certifikater administreres automatisk via Cloudflare.</p>
+
+      <h2>Indholdssikkerhedspolitik</h2>
+      <p>AnyConverter implementerer en streng Indholdssikkerhedspolitik (CSP) for at forhindre cross-site scripting-angreb (XSS). Vi indlæser kun scripts og ressourcer fra betroede kilder (vores eget domæne, Google Fonts og eksplicit tilladte CDN-biblioteker).</p>
+
+      <h2>Tredjepartsbiblioteker</h2>
+      <p>Når vi bruger tredjeparts JavaScript-biblioteker (pdf-lib, PapaParse, highlight.js), indlæser vi dem fra betroede CDN'er med <strong>Subressource-integritet (SRI)</strong>-hashes, hvor det er muligt, hvilket sikrer, at koden ikke er blevet manipuleret.</p>
+
+      <h2>Ingen Kontodata at Kompromittere</h2>
+      <p>Fordi AnyConverter ikke har brugerkonti, er der ingen database med brugernavne, e-mails eller adgangskoder, der kan kompromitteres. Vi kan ikke miste data, vi aldrig har indsamlet.</p>
+
+      <h2>Infrastruktur</h2>
+      <p>AnyConverter er et statisk website hostet på <strong>Cloudflare Pages</strong>, en af de mest sikre og effektive statiske hostingplatforme til rådighed. Cloudflare leverer automatisk DDoS-mitigering, WAF-regler og edge-caching på 200+ globale lokationer.</p>
+
+      <div class="disclosure-box">
+        <h3>🔍 Ansvarlig Afsløring</h3>
+        <p>Hvis du opdager en sikkerhedssårbarhed i AnyConverter, opfordrer vi dig til at rapportere det ansvarligt. Vi tager alle sikkerhedsrapporter seriøst og vil reagere hurtigt.</p>
+        <p><strong>Rapporter venligst sikkerhedsproblemer til:</strong> <a href="mailto:security@anyconverter.io">security@anyconverter.io</a></p>
+        <p>Inkluder venligst en klar beskrivelse af sårbarheden, trin til at reproducere den og den potentielle indvirkning. Vi beder venligst om, at du ikke offentliggør problemet, før vi har haft rimelig tid til at undersøge og reagere (typisk inden for 72 timer).</p>
+        <p>Vi tilbyder i øjeblikket ikke et bug bounty-program, men vi vil anerkende dit bidrag offentligt, hvis du ønsker det.</p>
+      </div>
+
+      <h2>Spørgsmål</h2>
+      <p>For sikkerhedsrelaterede spørgsmål, der ikke er dækket her, bedes du sende en e-mail til <a href="mailto:security@anyconverter.io">security@anyconverter.io</a> eller besøge vores <a href="/da/contact/">kontaktside</a>.</p>
+    </div>
+  </main>
+
+  <footer id="site-footer" class="site-footer"></footer>
+  <div id="toast" class="toast" aria-live="polite"></div>
+  <script src="/assets/js/shared.js" defer></script>
+</body>
+</html>

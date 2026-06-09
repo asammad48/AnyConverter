@@ -324,81 +324,57 @@
   </div>
 </div>`;
 
-  /* ===== FOOTER HTML ===== */
-  const footerHTML = `
-<div class="footer-inner">
-  <div class="footer-brand">
-    <a href="/" class="logo">
-      <img src="/assets/img/logo.svg" alt="AnyConverter" width="28" height="28" loading="lazy">
-      <span class="logo-text">AnyConverter</span>
-    </a>
-    <p>Free online tools for developers, students, and everyone. No signup. No data uploaded to servers.</p>
-    <div class="footer-social">
-      <a href="/es/" class="footer-lang-badge" aria-label="Español">🇪🇸 ES</a>
-      <a href="/da/" class="footer-lang-badge" aria-label="Dansk">🇩🇰 DA</a>
-    </div>
-  </div>
-  <div class="footer-links">
-
-    <!-- PRODUCT -->
-    <div class="footer-col">
-      <h3>Product</h3>
-      <ul>
-        <li><a href="/">Home</a></li>
-        <li><a href="/#tools">All Tools</a></li>
-        <li><a href="/pdf-merge/">PDF Tools</a></li>
-        <li><a href="/json-formatter/">Developer Tools</a></li>
-        <li><a href="/internet-speed-test/">Browser Tools</a></li>
-        <li><a href="/age-calculator/">Calculators</a></li>
-        <li><a href="/word-counter/">Text Tools</a></li>
-        <li><a href="/stopwatch/">Productivity</a></li>
-      </ul>
-    </div>
-
-    <!-- FEATURES -->
-    <div class="footer-col">
-      <h3>Features</h3>
-      <ul>
-        <li><a href="/image-converter/">Image Converter</a></li>
-        <li><a href="/qr-code-generator/">QR Code Generator</a></li>
-        <li><a href="/css-gradient-generator/">CSS Generator</a></li>
-        <li><a href="/currency-converter/">Currency Converter</a></li>
-        <li><a href="/password-generator/">Password Generator</a></li>
-        <li><a href="/invoice-generator/">Invoice Generator</a></li>
-        <li><a href="/pomodoro-timer/">Pomodoro Timer</a></li>
-        <li><a href="/typing-speed-test/">Typing Speed Test</a></li>
-      </ul>
-    </div>
-
-    <!-- LEGAL -->
-    <div class="footer-col">
-      <h3>Legal</h3>
-      <ul>
-        <li><a href="/privacy/">Privacy Policy</a></li>
-        <li><a href="/terms/">Terms of Service</a></li>
-        <li><a href="/cookies/">Cookie Policy</a></li>
-        <li><a href="/security/">Security</a></li>
-      </ul>
-    </div>
-
-    <!-- COMPANY -->
-    <div class="footer-col">
-      <h3>Company</h3>
-      <ul>
-        <li><a href="/about/">About Us</a></li>
-        <li><a href="/contact/">Contact Us</a></li>
-        <li><a href="/blog/">Blog</a></li>
-        <li><a href="/press/">Press</a></li>
-        <li><a href="/faq/">FAQ</a></li>
-      </ul>
-    </div>
-
-  </div>
-</div>
-<div class="footer-bottom">
-  <p>© 2026 AnyConverter. All rights reserved.</p>
-  <p>Free online tools — no data uploaded to servers</p>
-</div>`;
+  /* ===== FOOTER TRANSLATIONS ===== */
+  var FOOTER_I18N = {
+    en: {
+      tagline: 'Free online tools for developers, students, and everyone. No signup. No data uploaded to servers.',
+      col1: 'Product',
+      home: 'Home', allTools: 'All Tools', pdfTools: 'PDF Tools', devTools: 'Developer Tools',
+      browserTools: 'Browser Tools', calculators: 'Calculators', textTools: 'Text Tools', productivity: 'Productivity',
+      col2: 'Features',
+      imageConverter: 'Image Converter', qrCode: 'QR Code Generator', cssGenerator: 'CSS Generator',
+      currency: 'Currency Converter', password: 'Password Generator', invoice: 'Invoice Generator',
+      pomodoro: 'Pomodoro Timer', typingTest: 'Typing Speed Test',
+      col3: 'Legal',
+      privacy: 'Privacy Policy', terms: 'Terms of Service', cookies: 'Cookie Policy', security: 'Security',
+      col4: 'Company',
+      about: 'About Us', contact: 'Contact Us', blog: 'Blog', press: 'Press', faq: 'FAQ',
+      rights: '© 2026 AnyConverter. All rights reserved.',
+      noData: 'Free online tools — no data uploaded to servers'
+    },
+    es: {
+      tagline: 'Herramientas online gratuitas para desarrolladores, estudiantes y todos. Sin registro. Sin subida de datos a servidores.',
+      col1: 'Producto',
+      home: 'Inicio', allTools: 'Todas las Herramientas', pdfTools: 'Herramientas PDF', devTools: 'Herramientas para Desarrolladores',
+      browserTools: 'Herramientas de Navegador', calculators: 'Calculadoras', textTools: 'Herramientas de Texto', productivity: 'Productividad',
+      col2: 'Características',
+      imageConverter: 'Conversor de Imágenes', qrCode: 'Generador de Códigos QR', cssGenerator: 'Generador CSS',
+      currency: 'Conversor de Divisas', password: 'Generador de Contraseñas', invoice: 'Generador de Facturas',
+      pomodoro: 'Temporizador Pomodoro', typingTest: 'Test de Velocidad de Escritura',
+      col3: 'Legal',
+      privacy: 'Política de Privacidad', terms: 'Términos de Servicio', cookies: 'Política de Cookies', security: 'Seguridad',
+      col4: 'Empresa',
+      about: 'Sobre Nosotros', contact: 'Contáctanos', blog: 'Blog', press: 'Prensa', faq: 'Preguntas Frecuentes',
+      rights: '© 2026 AnyConverter. Todos los derechos reservados.',
+      noData: 'Herramientas online gratuitas — sin subida de datos a servidores'
+    },
+    da: {
+      tagline: 'Gratis online værktøjer til udviklere, studerende og alle andre. Ingen tilmelding. Ingen data uploades til servere.',
+      col1: 'Produkt',
+      home: 'Hjem', allTools: 'Alle Værktøjer', pdfTools: 'PDF Værktøjer', devTools: 'Udviklerværktøjer',
+      browserTools: 'Browserværktøjer', calculators: 'Beregnere', textTools: 'Tekstværktøjer', productivity: 'Produktivitet',
+      col2: 'Funktioner',
+      imageConverter: 'Billedkonverter', qrCode: 'QR-kode Generator', cssGenerator: 'CSS Generator',
+      currency: 'Valutaomregner', password: 'Adgangskodegenerator', invoice: 'Fakturagenerator',
+      pomodoro: 'Pomodoro-timer', typingTest: 'Skrivehastighedstest',
+      col3: 'Juridisk',
+      privacy: 'Privatlivspolitik', terms: 'Servicevilkår', cookies: 'Cookiepolitik', security: 'Sikkerhed',
+      col4: 'Virksomhed',
+      about: 'Om Os', contact: 'Kontakt Os', blog: 'Blog', press: 'Presse', faq: 'Ofte Stillede Spørgsmål',
+      rights: '© 2026 AnyConverter. Alle rettigheder forbeholdes.',
+      noData: 'Gratis online værktøjer — ingen data uploades til servere'
+    }
+  };
 
   /* ===== SEARCH DATA ===== */
   var TOOLS = [
@@ -622,7 +598,78 @@
 
   function renderFooter() {
     const el = document.getElementById('site-footer');
-    if (el) el.innerHTML = footerHTML;
+    if (!el) return;
+    const path = window.location.pathname;
+    var lang = 'en';
+    var p = '';
+    if (path.startsWith('/es/') || path === '/es') { lang = 'es'; p = '/es'; }
+    else if (path.startsWith('/da/') || path === '/da') { lang = 'da'; p = '/da'; }
+    var t = FOOTER_I18N[lang];
+    el.innerHTML = `
+<div class="footer-inner">
+  <div class="footer-brand">
+    <a href="${p}/" class="logo">
+      <img src="/assets/img/logo.svg" alt="AnyConverter" width="28" height="28" loading="lazy">
+      <span class="logo-text">AnyConverter</span>
+    </a>
+    <p>${t.tagline}</p>
+    <div class="footer-social">
+      <a href="/es/" class="footer-lang-badge" aria-label="Español">🇪🇸 ES</a>
+      <a href="/da/" class="footer-lang-badge" aria-label="Dansk">🇩🇰 DA</a>
+    </div>
+  </div>
+  <div class="footer-links">
+    <div class="footer-col">
+      <h3>${t.col1}</h3>
+      <ul>
+        <li><a href="${p}/">${t.home}</a></li>
+        <li><a href="${p}/#tools">${t.allTools}</a></li>
+        <li><a href="${p}/pdf-merge/">${t.pdfTools}</a></li>
+        <li><a href="${p}/json-formatter/">${t.devTools}</a></li>
+        <li><a href="${p}/internet-speed-test/">${t.browserTools}</a></li>
+        <li><a href="${p}/age-calculator/">${t.calculators}</a></li>
+        <li><a href="${p}/word-counter/">${t.textTools}</a></li>
+        <li><a href="${p}/stopwatch/">${t.productivity}</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h3>${t.col2}</h3>
+      <ul>
+        <li><a href="${p}/image-converter/">${t.imageConverter}</a></li>
+        <li><a href="${p}/qr-code-generator/">${t.qrCode}</a></li>
+        <li><a href="${p}/css-gradient-generator/">${t.cssGenerator}</a></li>
+        <li><a href="${p}/currency-converter/">${t.currency}</a></li>
+        <li><a href="${p}/password-generator/">${t.password}</a></li>
+        <li><a href="${p}/invoice-generator/">${t.invoice}</a></li>
+        <li><a href="${p}/pomodoro-timer/">${t.pomodoro}</a></li>
+        <li><a href="${p}/typing-speed-test/">${t.typingTest}</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h3>${t.col3}</h3>
+      <ul>
+        <li><a href="/privacy/">${t.privacy}</a></li>
+        <li><a href="/terms/">${t.terms}</a></li>
+        <li><a href="/cookies/">${t.cookies}</a></li>
+        <li><a href="/security/">${t.security}</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h3>${t.col4}</h3>
+      <ul>
+        <li><a href="/about/">${t.about}</a></li>
+        <li><a href="/contact/">${t.contact}</a></li>
+        <li><a href="/blog/">${t.blog}</a></li>
+        <li><a href="/press/">${t.press}</a></li>
+        <li><a href="/faq/">${t.faq}</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div class="footer-bottom">
+  <p>${t.rights}</p>
+  <p>${t.noData}</p>
+</div>`;
   }
 
   /* ===== HEADER BEHAVIOR ===== */

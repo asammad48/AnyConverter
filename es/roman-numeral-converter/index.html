@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Convertidor de Números Romanos Online Gratis | AnyConverter</title>
+  <meta name="description" content="Convierte números a numerales romanos y numerales romanos de vuelta a números. Admite del 1 al 3.999.999 con notación vinculum. Convertidor gratuito de números romanos sin registro.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://anyconverter.io/es/roman-numeral-converter/">
+  <link rel="alternate" hreflang="en" href="https://anyconverter.io/roman-numeral-converter/">
+  <link rel="alternate" hreflang="es" href="https://anyconverter.io/es/roman-numeral-converter/">
+  <link rel="alternate" hreflang="da" href="https://anyconverter.io/da/roman-numeral-converter/">
+  <link rel="alternate" hreflang="x-default" href="https://anyconverter.io/roman-numeral-converter/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Convertidor de Números Romanos Online Gratis | AnyConverter">
+  <meta property="og:description" content="Convierte números a numerales romanos y viceversa. Admite del 1 al 3999. Gratis e instantáneo.">
+  <meta property="og:url" content="https://anyconverter.io/es/roman-numeral-converter/">
+  <meta property="og:site_name" content="AnyConverter">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" data-ad-client="ca-pub-XXXXXXXXXX" crossorigin="anonymous"></script>
+  <!-- Replace ca-pub-XXXXXXXXXX with your real AdSense publisher ID -->
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Convertidor de Números Romanos","url":"https://anyconverter.io/es/roman-numeral-converter/","description":"Convierte entre números y numerales romanos al instante. Admite del 1 al 3999.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F4F6FF);color:var(--color-text,#1E1B4B)}
+    body{min-height:100vh;display:flex;flex-direction:column}
+    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8D0)}
+    .header-inner{max-width:1280px;width:100%;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;gap:32px}
+    .hero{padding:40px 24px 32px;max-width:1280px;margin:0 auto}
+    .hero h1{font-size:clamp(1.75rem,4vw,2.25rem);font-weight:700;line-height:1.2;margin-bottom:12px}
+    .hero-desc{font-size:1.0625rem;color:var(--color-text-2,#6B7280);max-width:680px;line-height:1.6}
+    @font-face{font-family:'Inter';font-display:swap}
+  </style>
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+  <header id="site-header" class="site-header"></header>
+  <main id="main-content">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol><li><a href="/es/">Inicio</a></li><li aria-current="page">Convertidor de Números Romanos</li></ol>
+    </nav>
+    <section class="hero">
+      <h1>Convertidor de Números Romanos</h1>
+      <p class="hero-desc">Convierte cualquier entero (1–3.999.999) a numerales romanos y decodifica cualquier numeral romano de vuelta a un entero. Los números superiores a 3.999 usan la notación vinculum (una barra sobre la letra la multiplica por 1.000).</p>
+    </section>
+    <div class="tool-wrapper">
+      <div class="tool-zone">
+        <div style="padding:24px">
+          <!-- Number to Roman -->
+          <div style="margin-bottom:24px;padding:20px;border:1px solid var(--color-border,#DDD8D0);border-radius:12px">
+            <h3 style="font-size:15px;font-weight:600;margin-bottom:14px">Número → Numeral Romano</h3>
+            <div style="display:flex;gap:10px;align-items:flex-end">
+              <div style="flex:1">
+                <label id="rn-number-label" style="display:block;font-size:13px;font-weight:500;margin-bottom:6px" for="rn-number">Introduce un Número (1–3.999.999)</label>
+                <input type="number" id="rn-number" min="1" max="3999999" placeholder="ej. 2024" style="width:100%;padding:10px 12px;border:1px solid var(--color-border,#DDD8D0);border-radius:8px;font-size:15px">
+              </div>
+              <button class="btn btn-primary" id="rn-to-roman-btn">Convertir</button>
+            </div>
+            <div style="margin-top:14px;padding:14px;background:var(--color-bg,#F4F6FF);border-radius:8px;font-size:24px;font-weight:700;text-align:center;letter-spacing:2px" id="rn-roman-out">—</div>
+          </div>
+          <!-- Roman to Number -->
+          <div style="padding:20px;border:1px solid var(--color-border,#DDD8D0);border-radius:12px">
+            <h3 style="font-size:15px;font-weight:600;margin-bottom:14px">Numeral Romano → Número</h3>
+            <div style="display:flex;gap:10px;align-items:flex-end">
+              <div style="flex:1">
+                <label style="display:block;font-size:13px;font-weight:500;margin-bottom:6px" for="rn-roman-in">Introduce un Numeral Romano</label>
+                <input type="text" id="rn-roman-in" placeholder="ej. MMXXIV" style="width:100%;padding:10px 12px;border:1px solid var(--color-border,#DDD8D0);border-radius:8px;font-size:15px;text-transform:uppercase">
+              </div>
+              <button class="btn btn-primary" id="rn-from-roman-btn">Convertir</button>
+            </div>
+            <div style="margin-top:14px;padding:14px;background:var(--color-bg,#F4F6FF);border-radius:8px;font-size:24px;font-weight:700;text-align:center" id="rn-number-out">—</div>
+          </div>
+        </div>
+      </div>
+      <aside class="tool-side" aria-label="Opciones">
+        <div class="ss-divider">Referencia Rápida</div>
+        <div style="font-size:13px;padding:0 4px">
+          <div class="two-col-grid" style="margin-bottom:8px">
+            <span style="font-weight:600">I = 1</span><span style="font-weight:600">L = 50</span>
+            <span style="font-weight:600">V = 5</span><span style="font-weight:600">C = 100</span>
+            <span style="font-weight:600">X = 10</span><span style="font-weight:600">D = 500</span>
+            <span style="font-weight:600">M = 1000</span>
+          </div>
+        </div>
+        <div style="margin-top:16px">
+          <p class="ad-label">Publicidad</p>
+          <div class="ad-slot" style="min-height:250px">
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+          </div>
+        </div>
+      </aside>
+    </div>
+    <div class="ad-slot ad-slot--leaderboard">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="how-to-use">
+      <h2>Cómo Usar el Convertidor de Números Romanos</h2>
+      <ol class="steps">
+        <li><strong>Para convertir un número:</strong> Introduce cualquier entero del 1 al 3.999.999 y haz clic en "Convertir".</li>
+        <li><strong>Para decodificar numerales romanos:</strong> Escribe un numeral romano (ej. MMXXIV) y haz clic en "Convertir".</li>
+        <li><strong>Pulsa Enter</strong> en cualquiera de los campos para una conversión rápida.</li>
+      </ol>
+    </section>
+    <section class="features">
+      <h2>Características</h2>
+      <ul class="features-list">
+        <li>Bidireccional: número a romano y romano a número</li>
+        <li>Admite 1–3.999.999 — rango extendido con notación vinculum (barra sobre la letra)</li>
+        <li>Maneja la notación sustractiva (IV, IX, XL, XC, CD, CM) más extensiones MV̄, MX̄, etc.</li>
+        <li>Valida la entrada y muestra error para numerales romanos inválidos</li>
+        <li>Tabla de referencia rápida incorporada</li>
+        <li>Pulsa Enter para convertir al instante</li>
+      </ul>
+    </section>
+    <div class="ad-slot ad-slot--rectangle" style="margin:0 auto 32px">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="faq">
+      <h2>Preguntas Frecuentes</h2>
+      <div class="faq-list">
+        <details class="faq-item"><summary class="faq-question">¿Cómo funciona la notación vinculum para números superiores a 3.999? <span class="faq-icon">+</span></summary><div class="faq-answer">La notación vinculum coloca una barra (sobrelineado) sobre un numeral romano para multiplicar su valor por 1.000. Así V̄ = 5.000, X̄ = 10.000, L̄ = 50.000, C̄ = 100.000, D̄ = 500.000, M̄ = 1.000.000. Por ejemplo, 4.000 se escribe MV̄ (5.000 − 1.000) y 2.500.000 es M̄M̄D̄.</div></details>
+        <details class="faq-item"><summary class="faq-question">¿Qué es la notación sustractiva? <span class="faq-icon">+</span></summary><div class="faq-answer">La notación sustractiva significa que un numeral menor colocado antes de uno mayor se resta. Por ejemplo, IV = 5−1 = 4, y CM = 1000−100 = 900. Esto evita IIII para el 4 o VIIII para el 9.</div></details>
+        <details class="faq-item"><summary class="faq-question">¿Puedo convertir el año actual? <span class="faq-icon">+</span></summary><div class="faq-answer">Sí. Introduce el año actual (ej. 2026) y se convertirá a MMXXVI. Se admite cualquier año entre 1 y 3.999.999 — incluidas fechas históricas y proyecciones futuras.</div></details>
+      </div>
+    </section>
+    <section class="related-tools">
+      <h2>Herramientas Relacionadas</h2>
+      <div class="tool-grid">
+        <a href="/es/number-to-words/" class="tool-card"><img src="/assets/img/icon-text.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Número a Palabras</h3><p>Convierte cualquier número a su equivalente en palabras en español.</p><span class="tool-card-link">Usar →</span></a>
+        <a href="/es/base64-encoder/" class="tool-card"><img src="/assets/img/icon-base64.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Codificador Base64</h3><p>Codifica y decodifica texto y archivos Base64 online.</p><span class="tool-card-link">Usar →</span></a>
+        <a href="/es/age-calculator/" class="tool-card"><img src="/assets/img/icon-calculator.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Calculadora de Edad</h3><p>Calcula tu edad exacta en años, meses y días.</p><span class="tool-card-link">Usar →</span></a>
+      </div>
+    </section>
+  </main>
+  <footer id="site-footer" class="site-footer"></footer>
+  <script src="/assets/js/shared.js" defer></script>
+  <script src="/assets/js/tools/roman-numeral-converter.js" defer></script>
+</body>
+</html>

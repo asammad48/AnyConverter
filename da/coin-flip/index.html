@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Møntskast Online Gratis — Plat eller Krone | AnyConverter</title>
+  <meta name="description" content="Kast en virtuel mønt online gratis. Få plat eller krone øjeblikkeligt med en kasseanimation. Registrerer dit antal plat og krone. Ingen tilmelding eller download nødvendig.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://anyconverter.io/da/coin-flip/">
+  <link rel="alternate" hreflang="en" href="https://anyconverter.io/coin-flip/"><link rel="alternate" hreflang="es" href="https://anyconverter.io/es/coin-flip/"><link rel="alternate" hreflang="da" href="https://anyconverter.io/da/coin-flip/"><link rel="alternate" hreflang="x-default" href="https://anyconverter.io/coin-flip/">
+  <meta property="og:type" content="website"><meta property="og:title" content="Møntskast Online Gratis — Plat eller Krone | AnyConverter"><meta property="og:description" content="Virtuelt møntskast med animation. Registrerer totaler for plat og krone. Gratis, øjeblikkeligt, ingen tilmelding."><meta property="og:url" content="https://anyconverter.io/da/coin-flip/"><meta property="og:site_name" content="AnyConverter">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" data-ad-client="ca-pub-XXXXXXXXXX" crossorigin="anonymous"></script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Møntskast","url":"https://anyconverter.io/da/coin-flip/","description":"Virtuelt møntskast med animation og plat/krone-tæller.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F4F6FF);color:var(--color-text,#1E1B4B)}
+    body{min-height:100vh;display:flex;flex-direction:column}
+    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8D0)}
+    .header-inner{max-width:1280px;width:100%;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;gap:32px}
+    .hero{padding:40px 24px 32px;max-width:1280px;margin:0 auto}
+    .hero h1{font-size:clamp(1.75rem,4vw,2.25rem);font-weight:700;line-height:1.2;margin-bottom:12px}
+    .hero-desc{font-size:1.0625rem;color:var(--color-text-2,#6B7280);max-width:680px;line-height:1.6}
+    @keyframes coinFlip{0%{transform:rotateY(0)}25%{transform:rotateY(900deg) scale(1.1)}50%{transform:rotateY(1440deg)}75%{transform:rotateY(1620deg) scale(0.95)}100%{transform:rotateY(1800deg) scale(1)}}
+    @font-face{font-family:'Inter';font-display:swap}
+  </style>
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+  <header id="site-header" class="site-header"></header>
+  <main id="main-content">
+    <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/da/">Hjem</a></li><li><a href="/da/coin-flip/">Tilfældighedsværktøjer</a></li><li aria-current="page">Møntskast</li></ol></nav>
+    <section class="hero">
+      <h1>Møntskast Online</h1>
+      <p class="hero-desc">Kast en virtuel mønt for at afgøre mellem plat eller krone. Animeret kast med løbende totaler, så du kan følge resultaterne på tværs af flere kast.</p>
+    </section>
+    <div class="tool-wrapper">
+      <div class="tool-zone">
+        <div style="padding:24px;text-align:center">
+          <!-- Mønt -->
+          <div id="coin" style="width:120px;height:120px;border-radius:50%;background:linear-gradient(135deg,var(--color-primary),var(--color-primary-alt));display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-size:2rem;font-weight:900;color:var(--color-surface,#fff);cursor:pointer;box-shadow:0 8px 32px rgba(176,74,69,0.3)" aria-live="polite">?</div>
+          <div id="coin-result" style="font-size:1.3rem;font-weight:600;min-height:36px;margin-bottom:20px"></div>
+          <div style="display:flex;justify-content:center;gap:12px;margin-bottom:24px">
+            <button class="btn btn-primary" id="coin-flip-btn" style="min-width:130px;font-size:1rem">Kast Mønt</button>
+            <button class="btn btn-secondary" id="coin-reset">Nulstil</button>
+          </div>
+          <!-- Statistik -->
+          <div style="display:flex;justify-content:center;gap:32px;margin-bottom:20px">
+            <div style="text-align:center"><div style="font-size:2rem;font-weight:700;color:var(--color-json,#F59E0B)" id="coin-heads">0</div><div style="font-size:12px;color:var(--color-text-2,#6B7280)">Plat</div></div>
+            <div style="text-align:center"><div style="font-size:2rem;font-weight:700;color:var(--color-text-2,#6B7280)" id="coin-tails">0</div><div style="font-size:12px;color:var(--color-text-2,#6B7280)">Krone</div></div>
+          </div>
+          <!-- Historikchips -->
+          <div id="coin-history" style="display:flex;flex-wrap:wrap;justify-content:center;gap:4px;max-width:400px;margin:0 auto"></div>
+        </div>
+      </div>
+      <aside class="tool-side" aria-label="Reklame">
+        <div style="margin-top:16px">
+          <p class="ad-label">Reklame</p>
+          <div class="ad-slot" style="min-height:250px">
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+          </div>
+        </div>
+      </aside>
+    </div>
+    <section class="how-to-use"><h2>Sådan kaster du mønten</h2><ol class="steps"><li><strong>Trin 1</strong> — Klik på <em>Kast Mønt</em> for at kaste.</li><li><strong>Trin 2</strong> — Se møntanimationen og se resultatet (Plat eller Krone).</li><li><strong>Trin 3</strong> — Tællerne og historikchipsene opdateres automatisk.</li><li><strong>Trin 4</strong> — Klik på <em>Nulstil</em> for at rydde tællingen og historikken.</li></ol></section>
+    <section class="features"><h2>Funktioner</h2><ul class="features-list"><li>Animeret CSS 3D-møntskast</li><li>50/50 tilfældigt resultat ved hjælp af Math.random()</li><li>Løbende tællere for plat og krone</li><li>De sidste 20 kast vist som farvede historikchips</li><li>Nulstilknap der rydder al statistik</li></ul></section>
+    <section class="faq"><h2>Ofte Stillede Spørgsmål</h2><div class="faq-list">
+      <details class="faq-item"><summary class="faq-question">Er møntskastet virkelig 50/50? <span class="faq-icon">+</span></summary><div class="faq-answer">Ja. Resultatet bestemmes af <code>Math.random() &lt; 0.5</code>. JavaScripts PRNG producerer en i det væsentlige ensartet fordeling, hvilket giver hvert resultat 50% sandsynlighed.</div></details>
+      <details class="faq-item"><summary class="faq-question">Kan jeg kaste flere mønter på én gang? <span class="faq-icon">+</span></summary><div class="faq-answer">Ikke på denne side — den er designet til enkelt kast. For flere samtidige kast kan du prøve Terningkasteren med en d2.</div></details>
+    </div></section>
+
+    <section class="related-tools">
+      <h2>Relaterede værktøjer</h2>
+      <div class="tool-grid">
+        <a href="/da/dice-roller/" class="tool-card"><img src="/assets/img/icon-dice.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Terningkaster</h3><p>Kast virtuelle terninger til ethvert spil.</p><span class="tool-card-link">Prøv →</span></a>
+        <a href="/da/random-picker/" class="tool-card"><img src="/assets/img/icon-picker.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Tilfældig Vælger</h3><p>Vælg tilfældige elementer fra din liste.</p><span class="tool-card-link">Prøv →</span></a>
+        <a href="/da/team-picker/" class="tool-card"><img src="/assets/img/icon-team.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Holdvælger</h3><p>Opret tilfældige hold øjeblikkeligt.</p><span class="tool-card-link">Prøv →</span></a>
+        <a href="/da/decision-maker/" class="tool-card"><img src="/assets/img/icon-decision.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Beslutningshjælper</h3><p>Brug en spinner til at træffe hurtige beslutninger.</p><span class="tool-card-link">Prøv →</span></a>
+      </div>
+    </section>
+
+  </main>
+  <footer id="site-footer" class="site-footer"></footer>
+  <script src="/assets/js/shared.js" defer></script>
+  <script src="/assets/js/tools/coin-flip.js" defer></script>
+</body>
+</html>

@@ -27,7 +27,7 @@
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
     html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F4F6FF);color:var(--color-text,#1E1B4B)}
     body{min-height:100vh;display:flex;flex-direction:column}
-    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8FE)}
+    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8D0)}
     .header-inner{max-width:1280px;width:100%;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;gap:32px}
     .hero{padding:40px 24px 32px;max-width:1280px;margin:0 auto}
     .hero h1{font-size:clamp(1.75rem,4vw,2.25rem);font-weight:700;line-height:1.2;margin-bottom:12px}
@@ -55,21 +55,21 @@
             <button class="btn btn-secondary btn-sm" id="disc-mode-sale" style="flex:1">Find Discount %</button>
           </div>
           <div id="disc-form-pct">
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px">
-              <div><label style="display:block;font-size:13px;font-weight:500;margin-bottom:6px" for="d1-price">Original Price ($)</label><input type="number" id="d1-price" placeholder="100" min="0" step="0.01" style="width:100%;padding:10px 12px;border:1px solid var(--color-border,#DDD8FE);border-radius:8px;font-size:15px"></div>
-              <div><label style="display:block;font-size:13px;font-weight:500;margin-bottom:6px" for="d1-pct">Discount (%)</label><input type="number" id="d1-pct" placeholder="20" min="0" max="100" style="width:100%;padding:10px 12px;border:1px solid var(--color-border,#DDD8FE);border-radius:8px;font-size:15px"></div>
+            <div class="two-col-grid" style="margin-bottom:12px">
+              <div><label style="display:block;font-size:13px;font-weight:500;margin-bottom:6px" for="d1-price">Original Price ($)</label><input type="number" id="d1-price" placeholder="100" min="0" step="0.01" style="width:100%;padding:10px 12px;border:1px solid var(--color-border,#DDD8D0);border-radius:8px;font-size:15px"></div>
+              <div><label style="display:block;font-size:13px;font-weight:500;margin-bottom:6px" for="d1-pct">Discount (%)</label><input type="number" id="d1-pct" placeholder="20" min="0" max="100" style="width:100%;padding:10px 12px;border:1px solid var(--color-border,#DDD8D0);border-radius:8px;font-size:15px"></div>
             </div>
           </div>
           <div id="disc-form-fixed" style="display:none">
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px">
-              <div><label style="display:block;font-size:13px;font-weight:500;margin-bottom:6px" for="d2-price">Original Price ($)</label><input type="number" id="d2-price" placeholder="100" min="0" step="0.01" style="width:100%;padding:10px 12px;border:1px solid var(--color-border,#DDD8FE);border-radius:8px;font-size:15px"></div>
-              <div><label style="display:block;font-size:13px;font-weight:500;margin-bottom:6px" for="d2-disc">Discount Amount ($)</label><input type="number" id="d2-disc" placeholder="20" min="0" step="0.01" style="width:100%;padding:10px 12px;border:1px solid var(--color-border,#DDD8FE);border-radius:8px;font-size:15px"></div>
+            <div class="two-col-grid" style="margin-bottom:12px">
+              <div><label style="display:block;font-size:13px;font-weight:500;margin-bottom:6px" for="d2-price">Original Price ($)</label><input type="number" id="d2-price" placeholder="100" min="0" step="0.01" style="width:100%;padding:10px 12px;border:1px solid var(--color-border,#DDD8D0);border-radius:8px;font-size:15px"></div>
+              <div><label style="display:block;font-size:13px;font-weight:500;margin-bottom:6px" for="d2-disc">Discount Amount ($)</label><input type="number" id="d2-disc" placeholder="20" min="0" step="0.01" style="width:100%;padding:10px 12px;border:1px solid var(--color-border,#DDD8D0);border-radius:8px;font-size:15px"></div>
             </div>
           </div>
           <div id="disc-form-sale" style="display:none">
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px">
-              <div><label style="display:block;font-size:13px;font-weight:500;margin-bottom:6px" for="d3-orig">Original Price ($)</label><input type="number" id="d3-orig" placeholder="100" min="0" step="0.01" style="width:100%;padding:10px 12px;border:1px solid var(--color-border,#DDD8FE);border-radius:8px;font-size:15px"></div>
-              <div><label style="display:block;font-size:13px;font-weight:500;margin-bottom:6px" for="d3-sale">Sale Price ($)</label><input type="number" id="d3-sale" placeholder="80" min="0" step="0.01" style="width:100%;padding:10px 12px;border:1px solid var(--color-border,#DDD8FE);border-radius:8px;font-size:15px"></div>
+            <div class="two-col-grid" style="margin-bottom:12px">
+              <div><label style="display:block;font-size:13px;font-weight:500;margin-bottom:6px" for="d3-orig">Original Price ($)</label><input type="number" id="d3-orig" placeholder="100" min="0" step="0.01" style="width:100%;padding:10px 12px;border:1px solid var(--color-border,#DDD8D0);border-radius:8px;font-size:15px"></div>
+              <div><label style="display:block;font-size:13px;font-weight:500;margin-bottom:6px" for="d3-sale">Sale Price ($)</label><input type="number" id="d3-sale" placeholder="80" min="0" step="0.01" style="width:100%;padding:10px 12px;border:1px solid var(--color-border,#DDD8D0);border-radius:8px;font-size:15px"></div>
             </div>
           </div>
           <div class="ac-action-bar" style="margin-bottom:20px">
@@ -77,7 +77,7 @@
             <button class="btn btn-secondary" id="btn-reset-disc">Reset</button>
           </div>
           <div id="disc-result" style="display:none">
-            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px">
+            <div class="three-col-grid">
               <div class="stat-card"><div class="stat-val" id="disc-sale-price">—</div><div class="stat-lbl">Sale Price</div></div>
               <div class="stat-card"><div class="stat-val" id="disc-savings">—</div><div class="stat-lbl">You Save</div></div>
               <div class="stat-card"><div class="stat-val" id="disc-pct-off">—</div><div class="stat-lbl">% Off</div></div>

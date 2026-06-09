@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unix Timestamp Konverter Online — Gratis | AnyConverter</title>
+  <meta name="description" content="Konvertér Unix-tidsstempler til læsbare datoer og omvendt. Gratis timestamp-konverter med understøttelse af UTC, lokal tid og enhver tidszone. Øjeblikkelig konvertering.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://anyconverter.io/da/timestamp-converter/">
+  <link rel="alternate" hreflang="en" href="https://anyconverter.io/timestamp-converter/">
+  <link rel="alternate" hreflang="es" href="https://anyconverter.io/es/timestamp-converter/">
+  <link rel="alternate" hreflang="da" href="https://anyconverter.io/da/timestamp-converter/">
+  <link rel="alternate" hreflang="x-default" href="https://anyconverter.io/timestamp-converter/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Unix Timestamp Konverter Online — Gratis | AnyConverter">
+  <meta property="og:description" content="Konvertér Unix-tidsstempler til læsbare datoer og omvendt. Gratis timestamp-konverter.">
+  <meta property="og:url" content="https://anyconverter.io/da/timestamp-converter/">
+  <meta property="og:site_name" content="AnyConverter">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" data-ad-client="ca-pub-XXXXXXXXXX" crossorigin="anonymous"></script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Unix Timestamp Konverter","url":"https://anyconverter.io/da/timestamp-converter/","description":"Konvertér Unix-tidsstempler til læsbare datoer og omvendt.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F4F6FF);color:var(--color-text,#1E1B4B)}
+    body{min-height:100vh;display:flex;flex-direction:column}
+    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8D0)}
+    .header-inner{max-width:1280px;width:100%;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;gap:32px}
+    .hero{padding:40px 24px 32px;max-width:1280px;margin:0 auto}
+    .hero h1{font-size:clamp(1.75rem,4vw,2.25rem);font-weight:700;line-height:1.2;margin-bottom:12px}
+    .hero-desc{font-size:1.0625rem;color:var(--color-text-2,#6B7280);max-width:680px;line-height:1.6}
+    @font-face{font-family:'Inter';font-display:swap}
+  </style>
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+  <header id="site-header" class="site-header"></header>
+  <main id="main-content">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol><li><a href="/da/">Hjem</a></li><li aria-current="page">Timestamp Konverter</li></ol>
+    </nav>
+    <section class="hero">
+      <h1>Unix Timestamp Konverter</h1>
+      <p class="hero-desc">Konvertér Unix-tidsstempler til læsbare datoer og tidspunkter, eller konvertér datoer tilbage til Unix-tidsstempler. Understøtter sekunder og millisekunder. Viser ISO 8601, RFC 2822 og relativ tid. Gratis og browserbaseret.</p>
+    </section>
+    <div class="tool-wrapper">
+      <div class="tool-zone">
+        <div class="timestamp-grid">
+          <div>
+            <label for="ts-input">Unix Timestamp</label>
+            <div class="input-group">
+              <input type="text" id="ts-input" placeholder="f.eks. 1716278400" spellcheck="false">
+              <button class="btn btn-secondary" id="btn-now" style="white-space:nowrap">Nu</button>
+            </div>
+          </div>
+          <div>
+            <label for="date-input">Dato og tid (UTC)</label>
+            <input type="datetime-local" id="date-input" step="1">
+          </div>
+        </div>
+
+        <div id="ts-outputs" class="ts-outputs">
+          <div class="ts-output-row">
+            <span class="ts-label">Unix (sekunder)</span>
+            <span class="ts-value" id="ts-seconds">—</span>
+            <button class="btn btn-secondary btn-sm" data-copy-ts="ts-seconds">Kopiér</button>
+          </div>
+          <div class="ts-output-row">
+            <span class="ts-label">Unix (millisekunder)</span>
+            <span class="ts-value" id="ts-ms">—</span>
+            <button class="btn btn-secondary btn-sm" data-copy-ts="ts-ms">Kopiér</button>
+          </div>
+          <div class="ts-output-row">
+            <span class="ts-label">ISO 8601</span>
+            <span class="ts-value" id="ts-iso">—</span>
+            <button class="btn btn-secondary btn-sm" data-copy-ts="ts-iso">Kopiér</button>
+          </div>
+          <div class="ts-output-row">
+            <span class="ts-label">RFC 2822</span>
+            <span class="ts-value" id="ts-rfc">—</span>
+            <button class="btn btn-secondary btn-sm" data-copy-ts="ts-rfc">Kopiér</button>
+          </div>
+          <div class="ts-output-row">
+            <span class="ts-label">Lokal Tid</span>
+            <span class="ts-value" id="ts-local">—</span>
+            <button class="btn btn-secondary btn-sm" data-copy-ts="ts-local">Kopiér</button>
+          </div>
+          <div class="ts-output-row">
+            <span class="ts-label">Relativ</span>
+            <span class="ts-value" id="ts-relative">—</span>
+            <button class="btn btn-secondary btn-sm" data-copy-ts="ts-relative">Kopiér</button>
+          </div>
+        </div>
+      </div>
+
+      <aside class="tool-side" aria-label="Indstillinger">
+        <div class="ss-divider">Indstillinger</div>
+        <div class="tog-row"><span class="tog-label" id="lbl-live-ts">Automatisk opdatering (live ur)</span><div class="tog off" id="tog-live-ts" role="switch" aria-checked="false" tabindex="0" aria-labelledby="lbl-live-ts"></div></div>
+        <div class="tog-row"><span class="tog-label" id="lbl-show-ms">Vis millisekunder</span><div class="tog" id="tog-show-ms" role="switch" aria-checked="true" tabindex="0" aria-labelledby="lbl-show-ms"></div></div>
+
+        <div class="ss-divider">Aktuel Tid</div>
+        <div class="stats-grid">
+          <div class="stat-card" style="grid-column:1/-1"><div class="stat-val" id="stat-current-ts" style="font-size:13px;word-break:break-all">—</div><div class="stat-lbl">Unix (sekunder)</div></div>
+          <div class="stat-card"><div class="stat-val" id="stat-tz">UTC</div><div class="stat-lbl">Tidszone</div></div>
+          <div class="stat-card"><div class="stat-val" id="stat-utc-offset">—</div><div class="stat-lbl">UTC-offset</div></div>
+        </div>
+
+        <div style="margin-top:8px">
+          <p class="ad-label">Reklame</p>
+          <div class="ad-slot" style="min-height:250px">
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+          </div>
+        </div>
+      </aside>
+    </div>
+    <div class="ad-slot ad-slot--leaderboard">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="how-to-use">
+      <h2>Sådan Konverterer Du Tidsstempler</h2>
+      <ol class="steps">
+        <li><strong>Indtast et Unix-tidsstempel</strong> — Skriv et Unix-tidsstempel (sekunder eller millisekunder) i venstre felt, eller klik på Nu for at bruge det aktuelle tidspunkt.</li>
+        <li><strong>Eller indtast en dato</strong> — Brug datovælgeren til højre til at vælge en dato og et tidspunkt, der skal konverteres til et Unix-tidsstempel.</li>
+        <li><strong>Kopiér et vilkårligt format</strong> — Alle formater vises simultant. Klik på Kopiér ud for et format for at kopiere det til udklipsholderen.</li>
+      </ol>
+    </section>
+    <section class="features">
+      <h2>Funktioner</h2>
+      <ul class="features-list">
+        <li>Konvertér tidsstempel til/fra dato</li>
+        <li>Viser Unix-sekunder og -millisekunder</li>
+        <li>ISO 8601- og RFC 2822-formater</li>
+        <li>Relativ tid (f.eks. "for 3 timer siden")</li>
+        <li>Registrerer automatisk sekunder vs. millisekunder</li>
+        <li>Kopiér et vilkårligt format til udklipsholderen</li>
+      </ul>
+    </section>
+    <div class="ad-slot ad-slot--rectangle" style="margin:0 auto 32px">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <section class="faq">
+      <h2>Ofte Stillede Spørgsmål</h2>
+      <div class="faq-list">
+        <details class="faq-item"><summary class="faq-question">Hvad er et Unix-tidsstempel? <span class="faq-icon">+</span></summary><div class="faq-answer">Et Unix-tidsstempel er antallet af sekunder (eller millisekunder), der er gået siden den 1. januar 1970 kl. 00:00:00 UTC (Unix-epoken). Det bruges universelt i programmering og databaser.</div></details>
+        <details class="faq-item"><summary class="faq-question">Hvordan ved jeg, om et tidsstempel er i sekunder eller millisekunder? <span class="faq-icon">+</span></summary><div class="faq-answer">Tidsstempler i sekunder har typisk 10 cifre (f.eks. 1716278400). Millisekund-tidsstempler har 13 cifre (f.eks. 1716278400000). Dette værktøj registrerer automatisk, hvilket format du bruger.</div></details>
+        <details class="faq-item"><summary class="faq-question">Hvad er ISO 8601? <span class="faq-icon">+</span></summary><div class="faq-answer">ISO 8601 er en international standard for repræsentation af datoer og tidspunkter. Eksempel: 2024-05-21T12:00:00.000Z. Z'et i slutningen angiver UTC-tidszonen.</div></details>
+        <details class="faq-item"><summary class="faq-question">Hvad er det maksimale Unix-tidsstempel? <span class="faq-icon">+</span></summary><div class="faq-answer">Det maksimale 32-bit Unix-tidsstempel er 2.147.483.647 (19. januar 2038). Dette er år 2038-problemet. Moderne 64-bit systemer kan repræsentere langt større tidsstempler.</div></details>
+        <details class="faq-item"><summary class="faq-question">Hvordan får jeg det aktuelle Unix-tidsstempel? <span class="faq-icon">+</span></summary><div class="faq-answer">Klik på Nu-knappen for at indsætte det aktuelle Unix-tidsstempel øjeblikkeligt. I kode: Date.now() giver millisekunder, Math.floor(Date.now()/1000) giver sekunder.</div></details>
+      </div>
+    </section>
+    <section class="related-tools">
+      <h2>Relaterede Værktøjer</h2>
+      <div class="tool-grid">
+        <a href="/da/json-formatter/" class="tool-card"><img src="/assets/img/icon-json.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>JSON Formatter</h3><p>Formater og valider JSON.</p><span class="tool-card-link">Prøv →</span></a>
+        <a href="/da/hash-generator/" class="tool-card"><img src="/assets/img/icon-hash.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Hash Generator</h3><p>Generer kryptografiske hashværdier.</p><span class="tool-card-link">Prøv →</span></a>
+        <a href="/da/base64-encoder/" class="tool-card"><img src="/assets/img/icon-base64.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Base64 Koder</h3><p>Kodér og dekodér Base64.</p><span class="tool-card-link">Prøv →</span></a>
+        <a href="/da/url-encoder/" class="tool-card"><img src="/assets/img/icon-url.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>URL Koder</h3><p>Kodér eller dekodér URL'er.</p><span class="tool-card-link">Prøv →</span></a>
+        <a href="/da/csv-to-sql/" class="tool-card"><img src="/assets/img/icon-csv.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>CSV til SQL</h3><p>Konvertér CSV til SQL-sætninger.</p><span class="tool-card-link">Prøv →</span></a>
+        <a href="/da/color-converter/" class="tool-card"><img src="/assets/img/icon-color.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Farvekonverter</h3><p>Konvertér farver mellem formater.</p><span class="tool-card-link">Prøv →</span></a>
+      </div>
+    </section>
+  </main>
+  <footer id="site-footer" class="site-footer"></footer>
+  <script src="/assets/js/shared.js" defer></script>
+  <script src="/assets/js/tools/timestamp.js" defer></script>
+</body>
+</html>

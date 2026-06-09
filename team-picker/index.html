@@ -17,7 +17,7 @@
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
     html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F4F6FF);color:var(--color-text,#1E1B4B)}
     body{min-height:100vh;display:flex;flex-direction:column}
-    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8FE)}
+    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8D0)}
     .header-inner{max-width:1280px;width:100%;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;gap:32px}
     .hero{padding:40px 24px 32px;max-width:1280px;margin:0 auto}
     .hero h1{font-size:clamp(1.75rem,4vw,2.25rem);font-weight:700;line-height:1.2;margin-bottom:12px}
@@ -40,7 +40,7 @@
           <div style="display:grid;grid-template-columns:1fr 2fr;gap:20px;align-items:start">
             <div>
               <label style="display:block;font-size:13px;font-weight:500;margin-bottom:6px">Names (one per line)</label>
-              <textarea id="tp-members" spellcheck="false" style="width:100%;height:220px;padding:10px 12px;border:1px solid var(--color-border,#DDD8FE);border-radius:8px;font-size:13px;resize:vertical;background:var(--color-surface,#fff);line-height:1.8">Alice
+              <textarea id="tp-members" spellcheck="false" style="width:100%;height:220px;padding:10px 12px;border:1px solid var(--color-border,#DDD8D0);border-radius:8px;font-size:13px;resize:vertical;background:var(--color-surface,#fff);line-height:1.8">Alice
 Bob
 Charlie
 Diana
@@ -50,9 +50,9 @@ Grace
 Hank</textarea>
               <div style="display:flex;align-items:center;gap:10px;margin-top:10px;flex-wrap:wrap">
                 <label style="font-size:13px;color:var(--color-text-body,#374151)">Teams:</label>
-                <input type="number" id="tp-teams" min="2" max="20" value="2" style="width:60px;padding:8px;border:1px solid var(--color-border,#DDD8FE);border-radius:6px;font-size:14px;font-weight:700;text-align:center">
+                <input type="number" id="tp-teams" min="2" max="20" value="2" style="width:60px;padding:8px;border:1px solid var(--color-border,#DDD8D0);border-radius:6px;font-size:14px;font-weight:700;text-align:center">
                 <label style="font-size:13px;display:flex;align-items:center;gap:6px;cursor:pointer">
-                  <input type="checkbox" id="tp-shuffle" checked style="accent-color:var(--color-primary,#4F46E5)"> Shuffle names
+                  <input type="checkbox" id="tp-shuffle" checked style="accent-color:var(--color-primary,#B04A45)"> Shuffle names
                 </label>
               </div>
               <button class="btn btn-primary" id="tp-pick" style="margin-top:12px;width:100%">Pick Teams</button>
@@ -83,10 +83,10 @@ Hank</textarea>
     <section class="related-tools">
       <h2>Related Tools</h2>
       <div class="tool-grid">
-        <a href="/random-picker/" class="tool-card"><img src="/assets/img/icon-browser.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Random Picker</h3><p>Randomly pick names from any list.</p><span class="tool-card-link">Try it →</span></a>
-        <a href="/spin-the-wheel/" class="tool-card"><img src="/assets/img/icon-browser.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Spin the Wheel</h3><p>Spin to choose a random winner.</p><span class="tool-card-link">Try it →</span></a>
-        <a href="/decision-maker/" class="tool-card"><img src="/assets/img/icon-browser.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Decision Maker</h3><p>Make fast and fair choices.</p><span class="tool-card-link">Try it →</span></a>
-        <a href="/dice-roller/" class="tool-card"><img src="/assets/img/icon-browser.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Dice Roller</h3><p>Use dice rolls for games and selections.</p><span class="tool-card-link">Try it →</span></a>
+        <a href="/random-picker/" class="tool-card"><img src="/assets/img/icon-picker.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Random Picker</h3><p>Randomly pick names from any list.</p><span class="tool-card-link">Try it →</span></a>
+        <a href="/spin-the-wheel/" class="tool-card"><img src="/assets/img/icon-wheel.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Spin the Wheel</h3><p>Spin to choose a random winner.</p><span class="tool-card-link">Try it →</span></a>
+        <a href="/decision-maker/" class="tool-card"><img src="/assets/img/icon-decision.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Decision Maker</h3><p>Make fast and fair choices.</p><span class="tool-card-link">Try it →</span></a>
+        <a href="/dice-roller/" class="tool-card"><img src="/assets/img/icon-dice.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Dice Roller</h3><p>Use dice rolls for games and selections.</p><span class="tool-card-link">Try it →</span></a>
       </div>
     </section>
 
