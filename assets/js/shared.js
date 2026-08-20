@@ -589,7 +589,85 @@
     initLangSwitcher();
     updateMobileLangLinks();
     initSearch();
+    initFileUploadTriggers();
+    initPromptCards();
+    initStaticFaqAccordion();
+    initContactForm();
   });
+
+  function initPromptCards() {
+    document.querySelectorAll('[data-prompt]').forEach(function(card) {
+      function sendCardPrompt() {
+        if (typeof window.sendPrompt === 'function') {
+          window.sendPrompt(card.getAttribute('data-prompt'));
+        }
+      }
+      card.addEventListener('click', sendCardPrompt);
+      card.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          sendCardPrompt();
+        }
+      });
+    });
+  }
+
+  function initFileUploadTriggers() {
+    document.querySelectorAll('[data-file-target]').forEach(function(trigger) {
+      function openFilePicker() {
+        var input = document.getElementById(trigger.getAttribute('data-file-target'));
+        if (input) input.click();
+      }
+      trigger.addEventListener('click', openFilePicker);
+      trigger.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          openFilePicker();
+        }
+      });
+    });
+  }
+
+  function initStaticFaqAccordion() {
+    const questions = document.querySelectorAll('button.faq-question');
+    if (!questions.length) return;
+    questions.forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var item = this.closest('.faq-item');
+        if (!item) return;
+        var isOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item.open').forEach(function(el) {
+          el.classList.remove('open');
+          var question = el.querySelector('.faq-question');
+          if (question) question.setAttribute('aria-expanded', 'false');
+        });
+        if (!isOpen) {
+          item.classList.add('open');
+          this.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+  }
+
+  function initContactForm() {
+    const form = document.getElementById('contact-form');
+    if (!form) return;
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      var name = document.getElementById('cf-name').value.trim();
+      var email = document.getElementById('cf-email').value.trim();
+      var message = document.getElementById('cf-message').value.trim();
+      if (!name || !email || !message) {
+        alert('Please fill in your name, email, and message.');
+        return;
+      }
+      var subject = document.getElementById('cf-subject').value || 'General Enquiry';
+      var body = 'Name: ' + name + '\nEmail: ' + email + '\n\n' + message;
+      window.location.href = 'mailto:hello@anyconverter.io?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+      var success = document.getElementById('cf-success');
+      if (success) success.style.display = 'block';
+    });
+  }
 
   function renderHeader() {
     const el = document.getElementById('site-header');

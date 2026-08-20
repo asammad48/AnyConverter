@@ -2,17 +2,31 @@
 <html lang="da">
 <head>
   <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>OCR PDF — Udtræk Tekst fra Scannet PDF Online Gratis | AnyConverter</title>
-  <meta name="description" content="Udtræk tekst fra scannede PDF-filer eller billeder med OCR online og gratis. Understøtter dansk, engelsk, fransk, tysk og mere. Kopiér den udtrukne tekst med det samme. Ingen tilmelding.">
+  <title>OCR PDF — Udtræk Tekst fra Scannet PDF | AnyConverter</title>
+  <meta name="description" content="Brug pdf ocr gratis i browseren. Fa eksempler, praktiske tips, relaterede vaerktojer og hurtige resultater.">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://anyconverter.io/da/ocr-pdf/">
-  <link rel="alternate" hreflang="en" href="https://anyconverter.io/ocr-pdf/"><link rel="alternate" hreflang="es" href="https://anyconverter.io/es/ocr-pdf/"><link rel="alternate" hreflang="da" href="https://anyconverter.io/da/ocr-pdf/"><link rel="alternate" hreflang="x-default" href="https://anyconverter.io/ocr-pdf/">
-  <meta property="og:type" content="website"><meta property="og:title" content="OCR PDF — Udtræk Tekst fra Scannet PDF Online Gratis | AnyConverter"><meta property="og:description" content="Udtræk tekst fra scannede PDF-filer eller billeder med OCR. Flere sprog. Gratis."><meta property="og:url" content="https://anyconverter.io/da/ocr-pdf/"><meta property="og:site_name" content="AnyConverter">
+  <link rel="alternate" hreflang="en" href="https://anyconverter.io/ocr-pdf/">
+  <link rel="alternate" hreflang="es" href="https://anyconverter.io/es/ocr-pdf/">
+  <link rel="alternate" hreflang="da" href="https://anyconverter.io/da/ocr-pdf/">
+  <link rel="alternate" hreflang="x-default" href="https://anyconverter.io/ocr-pdf/">
+
+<meta property="og:type" content="website"><meta property="og:title" content="OCR PDF — Udtræk Tekst fra Scannet PDF Online Gratis | AnyConverter"><meta property="og:description" content="Brug pdf ocr gratis i browseren. Fa eksempler, praktiske tips, relaterede vaerktojer og hurtige resultater."><meta property="og:url" content="https://anyconverter.io/da/ocr-pdf/"><meta property="og:site_name" content="AnyConverter">
+  <meta property="og:image" content="https://anyconverter.io/assets/img/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="AnyConverter free online tools">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="OCR PDF — Udtræk Tekst fra Scannet PDF | AnyConverter">
+  <meta name="twitter:description" content="Brug pdf ocr gratis i browseren. Fa eksempler, praktiske tips, relaterede vaerktojer og hurtige resultater.">
+  <meta name="twitter:image" content="https://anyconverter.io/assets/img/og-image.png">
   <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" data-ad-client="ca-pub-XXXXXXXXXX" crossorigin="anonymous"></script>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"OCR PDF","url":"https://anyconverter.io/da/ocr-pdf/","description":"Udtræk tekst fra scannede PDF-filer og billeder med OCR-teknologi online og gratis.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
-  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"OCR PDF","url":"https://anyconverter.io/da/ocr-pdf/","description":"Udtræk tekst fra scannede PDF-filer og billeder med OCR-teknologi online og gratis.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Hvorfor er OCR langsom?","acceptedAnswer":{"@type":"Answer","text":"Tesseract.js kører udelukkende i din browser via WebAssembly. Den første kørsel downloader sprogdataene (~8 MB for engelsk) og behandler hver side individuelt. PDF-filer med mange sider tager længere tid. For hurtigere resultater kan du udtrække de sider, du har brug for, med Udtræk Sider-værktøjet først."}},{"@type":"Question","name":"Teksten i min PDF kan allerede markeres — behøver jeg OCR?","acceptedAnswer":{"@type":"Answer","text":"Nej. OCR er kun nødvendigt for scannede PDF-filer, hvor indholdet i bund og grund er et billede. Hvis du kan markere tekst i din PDF-læser, eksisterer tekstlaget allerede, og du kan kopiere det direkte."}}]}</script>
+
+
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
   <style>
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
     html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F4F6FF);color:var(--color-text,#1E1B4B)}
@@ -41,8 +55,8 @@
     <div class="tool-wrapper">
       <div class="tool-zone">
         <div style="padding:24px">
-          <div class="upload-area" onclick="document.getElementById('ocr-file').click()">
-            <img src="/assets/img/icon-pdf.svg" alt="" width="36" height="36" style="margin-bottom:10px">
+          <div class="upload-area" data-file-target="ocr-file" role="button" tabindex="0">
+            <img src="/assets/img/icon-pdf.svg" alt="OCR PDF — Udtræk Tekst fra Scannet PDF icon" width="36" height="36" style="margin-bottom:10px">
             <p style="font-size:14px;color:var(--color-text-2,#6B7280);margin-bottom:10px">Træk en scannet PDF eller et billede (JPG, PNG) hertil, eller klik for at gennemse</p>
             <input type="file" id="ocr-file" accept=".pdf,image/jpeg,image/png,image/jpg" style="display:none">
             <button class="btn btn-secondary" type="button">Vælg Fil</button>
@@ -74,14 +88,26 @@
         <div style="margin-top:16px">
           <p class="ad-label">Reklame</p>
           <div class="ad-slot" style="min-height:250px">
-            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
-            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-          </div>
+            <div class="adsbygoogle" style="display:block" aria-hidden="true"></div>
+</div>
         </div>
       </aside>
     </div>
     <section class="how-to-use"><h2>Sådan Bruger Du OCR på en PDF</h2><ol class="steps"><li><strong>Trin 1</strong> — Vælg en scannet PDF eller en billedfil.</li><li><strong>Trin 2</strong> — Vælg dokumentets sprog.</li><li><strong>Trin 3</strong> — Vent på, at OCR er færdig (kan tage et øjeblik ved PDF-filer med flere sider).</li><li><strong>Trin 4</strong> — Kopiér den udtrukne tekst.</li></ol></section>
     <section class="features"><h2>Funktioner</h2><ul class="features-list"><li>Virker med scannede PDF-filer og billedfiler (JPG, PNG)</li><li>10 sprogmuligheder, herunder engelsk, spansk, fransk, tysk og kinesisk</li><li>Understøtter PDF-filer med flere sider — udtrækker tekst fra alle sider</li><li>Drevet af Tesseract.js — kører udelukkende i browseren</li><li>Kopiér-knap til hurtig adgang til udklipsholderen</li></ul></section>
+    <!-- SEO keyword implementation: 2026-08-21 -->
+    <section class="seo-content" data-seo-keyword-plan="2026-08-21">
+      <h2>Pdf ocr: praktisk brug</h2>
+      <p>Brug pdf ocr, nar du har brug for et hurtigt, klart og privat resultat uden at oprette en konto. Siden daekker ogsa relaterede behov som pdf ocr online, pdf ocr gratis, pdf ocr i browseren, sa du kan vaelge den rigtige arbejdsgang.</p>
+      <h3>Hvornar det er nyttigt</h3>
+      <ul>
+        <li><strong>Bedst til:</strong> Redigere, flette, opdele, konvertere eller beskytte PDF-dokumenter uden desktopsoftware.</li>
+        <li><strong>Nyttige detaljer:</strong> Tjek filraekkefolge, sideintervaller, outputkvalitet og privatliv, for du downloader den faerdige PDF.</li>
+        <li><strong>Naeste trin:</strong> Ga videre til et andet PDF-vaerktoj, nar du skal komprimere, opdele, konvertere billeder, underskrive eller rydde sider op.</li>
+      </ul>
+      <p>Fortsæt eventuelt med <a href="/da/pdf-merge/">Sammensæt PDF-Filer Online</a>, <a href="/da/pdf-split/">Del PDF</a>, <a href="/da/pdf-compress/">Komprimer PDF Online</a>, <a href="/da/edit-pdf/">Rediger PDF</a>.</p>
+    </section>
+
     <section class="faq"><h2>Ofte Stillede Spørgsmål</h2><div class="faq-list">
       <details class="faq-item"><summary class="faq-question">Hvorfor er OCR langsom? <span class="faq-icon">+</span></summary><div class="faq-answer">Tesseract.js kører udelukkende i din browser via WebAssembly. Den første kørsel downloader sprogdataene (~8 MB for engelsk) og behandler hver side individuelt. PDF-filer med mange sider tager længere tid. For hurtigere resultater kan du udtrække de sider, du har brug for, med Udtræk Sider-værktøjet først.</div></details>
       <details class="faq-item"><summary class="faq-question">Teksten i min PDF kan allerede markeres — behøver jeg OCR? <span class="faq-icon">+</span></summary><div class="faq-answer">Nej. OCR er kun nødvendigt for scannede PDF-filer, hvor indholdet i bund og grund er et billede. Hvis du kan markere tekst i din PDF-læser, eksisterer tekstlaget allerede, og du kan kopiere det direkte.</div></details>
@@ -90,16 +116,16 @@
     <section class="related-tools">
       <h2>Relaterede Værktøjer</h2>
       <div class="tool-grid">
-        <a href="/da/scan-to-pdf/" class="tool-card"><img src="/assets/img/icon-pdf.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Scan til PDF</h3><p>Konvertér scannede dokumenter til PDF.</p><span class="tool-card-link">Prøv →</span></a>
-        <a href="/da/pdf-to-jpg/" class="tool-card"><img src="/assets/img/icon-pdf.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>PDF til JPG</h3><p>Konvertér PDF-sider til JPG-billeder.</p><span class="tool-card-link">Prøv →</span></a>
-        <a href="/da/edit-pdf/" class="tool-card"><img src="/assets/img/icon-pdf.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Rediger PDF</h3><p>Rediger indholdet i dine PDF-filer.</p><span class="tool-card-link">Prøv →</span></a>
+        <a href="/da/scan-to-pdf/" class="tool-card"><img src="/assets/img/icon-pdf.svg" alt="Scan til PDF icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Scan til PDF</h3><p>Konvertér scannede dokumenter til PDF.</p><span class="tool-card-link">Prøv →</span></a>
+        <a href="/da/pdf-to-jpg/" class="tool-card"><img src="/assets/img/icon-pdf.svg" alt="PDF til JPG icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>PDF til JPG</h3><p>Konvertér PDF-sider til JPG-billeder.</p><span class="tool-card-link">Prøv →</span></a>
+        <a href="/da/edit-pdf/" class="tool-card"><img src="/assets/img/icon-pdf.svg" alt="Rediger PDF icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Rediger PDF</h3><p>Rediger indholdet i dine PDF-filer.</p><span class="tool-card-link">Prøv →</span></a>
       </div>
     </section>
 
   </main>
   <footer id="site-footer" class="site-footer"></footer>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
-  <script src="https://unpkg.com/tesseract.js@4.1.2/dist/tesseract.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js" defer></script>
+  <script src="https://unpkg.com/tesseract.js@4.1.2/dist/tesseract.min.js" defer></script>
   <script src="/assets/js/shared.js" defer></script>
   <script src="/assets/js/tools/ocr-pdf.js" defer></script>
 </body>

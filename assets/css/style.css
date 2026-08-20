@@ -773,8 +773,8 @@ details[open] .faq-icon { transform: rotate(45deg); }
 .ad-label { font-size: 11px; color: var(--color-text-2); text-align: center; margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.5px; }
 
 /* ===== HOW TO USE ===== */
-.how-to-use, .features { width: 100%; max-width: none; margin: 0; padding: 32px 24px; }
-@media (min-width: 1024px) { .how-to-use, .features { padding: 40px 40px; } }
+.how-to-use, .features, .seo-content { width: 100%; max-width: none; margin: 0; padding: 32px 24px; }
+@media (min-width: 1024px) { .how-to-use, .features, .seo-content { padding: 40px 40px; } }
 .steps { list-style: none; display: flex; flex-direction: column; gap: 16px; counter-reset: steps; }
 .steps li {
   display: flex; gap: 16px; align-items: stretch;
@@ -797,6 +797,12 @@ details[open] .faq-icon { transform: rotate(45deg); }
   font-size: 15px; display: flex; align-items: center; gap: 8px;
 }
 .features-list li::before { content: '✓'; color: var(--color-success); font-weight: 700; }
+.seo-content h2 { margin-bottom: 16px; }
+.seo-content h3 { margin: 20px 0 8px; font-size: var(--text-lg); }
+.seo-content p { max-width: 860px; margin-bottom: 12px; color: var(--color-text-2); line-height: var(--leading-relaxed); }
+.seo-content ul { max-width: 900px; margin: 8px 0 0 20px; color: var(--color-text-2); line-height: var(--leading-relaxed); }
+.seo-content li + li { margin-top: 6px; }
+.seo-content a { font-weight: 600; }
 
 /* ===== FEATURES GRID (homepage) ===== */
 .features-section { background: var(--color-surface); border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border); }

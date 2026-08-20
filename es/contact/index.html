@@ -4,21 +4,32 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contáctanos — AnyConverter</title>
-  <meta name="description" content="Ponte en contacto con el equipo de AnyConverter. Reporta un error, sugiere una nueva herramienta o haz una pregunta. Leemos y respondemos cada mensaje.">
+  <meta name="description" content="Consulta Ponte en Contacto en AnyConverter. Informacion clara sobre privacidad, seguridad, politicas y herramientas online gratis.">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://anyconverter.io/es/contact/">
   <link rel="alternate" hreflang="en" href="https://anyconverter.io/contact/">
   <link rel="alternate" hreflang="es" href="https://anyconverter.io/es/contact/">
   <link rel="alternate" hreflang="da" href="https://anyconverter.io/da/contact/">
   <link rel="alternate" hreflang="x-default" href="https://anyconverter.io/contact/">
-  <meta property="og:type" content="website">
+
+<meta property="og:type" content="website">
   <meta property="og:title" content="Contáctanos — AnyConverter">
-  <meta property="og:description" content="Ponte en contacto con el equipo de AnyConverter. Damos la bienvenida a comentarios, reportes de errores y consultas de colaboración.">
+  <meta property="og:description" content="Consulta Ponte en Contacto en AnyConverter. Informacion clara sobre privacidad, seguridad, politicas y herramientas online gratis.">
   <meta property="og:url" content="https://anyconverter.io/es/contact/">
   <meta property="og:site_name" content="AnyConverter">
+  <meta property="og:image" content="https://anyconverter.io/assets/img/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="AnyConverter free online tools">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Contáctanos — AnyConverter">
+  <meta name="twitter:description" content="Consulta Ponte en Contacto en AnyConverter. Informacion clara sobre privacidad, seguridad, politicas y herramientas online gratis.">
+  <meta name="twitter:image" content="https://anyconverter.io/assets/img/og-image.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"ContactPage","name":"Contáctanos — AnyConverter","url":"https://anyconverter.io/es/contact/","description":"Ponte en contacto con el equipo de AnyConverter. Reporta un error, sugiere una nueva herramienta o haz una pregunta. Leemos y respondemos cada mensaje.","isPartOf":{"@type":"WebSite","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
+
   <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
   <style>
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -156,27 +167,23 @@
       </div>
 
     </div>
+    <!-- SEO keyword implementation: 2026-08-21 -->
+    <section class="seo-content" data-seo-keyword-plan="2026-08-21">
+      <h2>Ponte en Contacto: usos practicos</h2>
+      <p>Usa Ponte en Contacto cuando necesites una respuesta rapida, clara y privada sin crear una cuenta. La pagina tambien cubre variantes relacionadas como Ponte en Contacto AnyConverter, Ponte en Contacto herramientas gratis, Ponte en Contacto privacidad para que puedas elegir el flujo correcto.</p>
+      <h3>Cuándo usarlo</h3>
+      <ul>
+        <li><strong>Ideal para:</strong> Entender AnyConverter, su enfoque de privacidad, politicas, seguridad y categorias de herramientas.</li>
+        <li><strong>Detalles utiles:</strong> Usa estas paginas para confirmar como funciona el sitio, donde se procesan los datos y como contactar al equipo.</li>
+        <li><strong>Siguiente paso:</strong> Vuelve al directorio de herramientas cuando quieras usar PDF, calculadoras, convertidores o utilidades del navegador.</li>
+      </ul>
+      <p>Para continuar, prueba tambien <a href="/es/about/">Construido para Todos. Gratis para Siempre.</a>, <a href="/es/faq/">Preguntas Frecuentes</a>, <a href="/es/privacy/">Política de Privacidad</a>, <a href="/es/security/">Seguridad en AnyConverter</a>.</p>
+    </section>
+
   </main>
 
   <footer id="site-footer" class="site-footer"></footer>
   <div id="toast" class="toast" aria-live="polite"></div>
   <script src="/assets/js/shared.js" defer></script>
-  <script>
-    document.getElementById('contact-form').addEventListener('submit', function(e) {
-      e.preventDefault();
-      var name = document.getElementById('cf-name').value.trim();
-      var email = document.getElementById('cf-email').value.trim();
-      var message = document.getElementById('cf-message').value.trim();
-      if (!name || !email || !message) {
-        alert('Por favor completa tu nombre, correo electrónico y mensaje.');
-        return;
-      }
-      // Construct mailto link as fallback (no backend)
-      var subject = document.getElementById('cf-subject').value || 'General Enquiry';
-      var body = 'Name: ' + name + '\n\n' + message;
-      window.location.href = 'mailto:hello@anyconverter.io?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
-      document.getElementById('cf-success').style.display = 'block';
-    });
-  </script>
 </body>
 </html>

@@ -28,7 +28,8 @@ document.addEventListener('DOMContentLoaded', function () {
     if (!window.marked) { mdPreview.textContent = 'Loading renderer...'; return; }
     try {
       const opts = { gfm: togOn('tog-gfm'), breaks: togOn('tog-breaks') };
-      const html = window.marked.parse(text, opts);
+      const rawHtml = window.marked.parse(text, opts);
+      const html = sanitizeOutput(rawHtml);
       currentHtml = html;
       mdPreview.innerHTML = html;
       mdSourceCode.textContent = html;
@@ -36,6 +37,18 @@ document.addEventListener('DOMContentLoaded', function () {
     } catch(e) {
       mdPreview.textContent = 'Error rendering Markdown.';
     }
+  }
+
+  function sanitizeOutput(html) {
+    if (!togOn('tog-sanitize')) return html;
+    if (window.DOMPurify) {
+      return window.DOMPurify.sanitize(html, { USE_PROFILES: { html: true } });
+    }
+    return html
+      .replace(/<script[\s\S]*?>[\s\S]*?<\/script>/gi, '')
+      .replace(/\son\w+="[^"]*"/gi, '')
+      .replace(/\son\w+='[^']*'/gi, '')
+      .replace(/\s(href|src)=["']javascript:[^"']*["']/gi, '');
   }
 
   mdInput.addEventListener('input', function () {

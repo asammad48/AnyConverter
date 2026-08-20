@@ -1,3 +1,26 @@
+# Canonical path aliases from Search Console cleanup
+/anyconverter_ui_mockup.html / 301
+/high_demand_frontend_tools.html / 301
+/merge-pdf               /pdf-merge/               301
+/combine-pdf             /pdf-merge/               301
+/combine-pdfs            /pdf-merge/               301
+/split-pdf               /pdf-split/               301
+/compress-pdf            /pdf-compress/            301
+/delete-pdf-pages        /remove-pdf-pages/        301
+/remove-pages-pdf        /remove-pdf-pages/        301
+/extract-pages-pdf       /extract-pdf-pages/       301
+/pdf-pages-extractor     /extract-pdf-pages/       301
+/convert-pdf-to-jpg      /pdf-to-jpg/              301
+/convert-jpg-to-pdf      /jpg-to-pdf/              301
+/es/unir-pdf             /es/pdf-merge/            301
+/es/unir-pdfs            /es/pdf-merge/            301
+/es/combinar-pdf         /es/pdf-merge/            301
+/es/eliminar-paginas-pdf /es/remove-pdf-pages/     301
+/es/quitar-paginas-pdf   /es/remove-pdf-pages/     301
+/da/opgaveliste          /da/todo-list/            301
+/da/realkreditberegner   /da/mortgage-calculator/  301
+/da/moentkast            /da/coin-flip/            301
+
 # Trailing slash redirects — EN tool pages
 /json-formatter           /json-formatter/          301
 /xml-formatter            /xml-formatter/           301

@@ -3,16 +3,30 @@
 <head>
   <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Roter PDF-sider Online Gratis | AnyConverter</title>
-  <meta name="description" content="Roter PDF-sider 90, 180 eller 270 grader gratis online. Vælg alle sider eller specifikke sider. Download den roterede PDF øjeblikkeligt. Ingen tilmelding kræves.">
+  <meta name="description" content="Brug rotate PDF online gratis i browseren. Fa eksempler, praktiske tips, relaterede vaerktojer og hurtige resultater.">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://anyconverter.io/da/rotate-pdf/">
-  <link rel="alternate" hreflang="en" href="https://anyconverter.io/rotate-pdf/"><link rel="alternate" hreflang="es" href="https://anyconverter.io/es/rotate-pdf/"><link rel="alternate" hreflang="da" href="https://anyconverter.io/da/rotate-pdf/"><link rel="alternate" hreflang="x-default" href="https://anyconverter.io/rotate-pdf/">
-  <meta property="og:type" content="website"><meta property="og:title" content="Roter PDF-sider Online Gratis | AnyConverter"><meta property="og:description" content="Roter PDF-sider 90°, 180° eller 270°. Alle sider eller specifikke sider. Gratis og øjeblikkeligt."><meta property="og:url" content="https://anyconverter.io/da/rotate-pdf/"><meta property="og:site_name" content="AnyConverter">
+  <link rel="alternate" hreflang="en" href="https://anyconverter.io/rotate-pdf/">
+  <link rel="alternate" hreflang="es" href="https://anyconverter.io/es/rotate-pdf/">
+  <link rel="alternate" hreflang="da" href="https://anyconverter.io/da/rotate-pdf/">
+  <link rel="alternate" hreflang="x-default" href="https://anyconverter.io/rotate-pdf/">
+
+<meta property="og:type" content="website"><meta property="og:title" content="Roter PDF-sider Online Gratis | AnyConverter"><meta property="og:description" content="Brug rotate PDF online gratis i browseren. Fa eksempler, praktiske tips, relaterede vaerktojer og hurtige resultater."><meta property="og:url" content="https://anyconverter.io/da/rotate-pdf/"><meta property="og:site_name" content="AnyConverter">
+  <meta property="og:image" content="https://anyconverter.io/assets/img/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="AnyConverter free online tools">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Roter PDF-sider Online Gratis | AnyConverter">
+  <meta name="twitter:description" content="Brug rotate PDF online gratis i browseren. Fa eksempler, praktiske tips, relaterede vaerktojer og hurtige resultater.">
+  <meta name="twitter:image" content="https://anyconverter.io/assets/img/og-image.png">
   <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" data-ad-client="ca-pub-XXXXXXXXXX" crossorigin="anonymous"></script>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Roter PDF","url":"https://anyconverter.io/da/rotate-pdf/","description":"Roter PDF-sider 90, 180 eller 270 grader gratis online.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
-  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Roter PDF","url":"https://anyconverter.io/da/rotate-pdf/","description":"Roter PDF-sider 90, 180 eller 270 grader gratis online.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Hvorfor viser \"90° med uret\" 270° internt?","acceptedAnswer":{"@type":"Answer","text":"PDF-rotation er mod uret ifølge PDF-specifikationen. Så 90° med uret visuelt svarer til at tilføje 270° til den interne rotationsværdi. Værktøjet håndterer dette automatisk."}},{"@type":"Question","name":"Kan jeg kun rotere landskabssider?","acceptedAnswer":{"@type":"Answer","text":"Ja — indtast manuelt sidenumrene på dine landskabssider i feltet \"Sider\". Du kan identificere dem ved at åbne PDF'en i et fremvisningsprogram først."}}]}</script>
+
+
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
   <style>
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
     html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F4F6FF);color:var(--color-text,#1E1B4B)}
@@ -41,8 +55,8 @@
     <div class="tool-wrapper">
       <div class="tool-zone">
         <div style="padding:24px">
-          <div class="upload-area" onclick="document.getElementById('rot-file').click()">
-            <img src="/assets/img/icon-pdf.svg" alt="" width="36" height="36" style="margin-bottom:10px">
+          <div class="upload-area" data-file-target="rot-file" role="button" tabindex="0">
+            <img src="/assets/img/icon-pdf.svg" alt="Roter PDF-sider Online Gratis icon" width="36" height="36" style="margin-bottom:10px">
             <p style="font-size:14px;color:var(--color-text-2,#6B7280);margin-bottom:10px">Træk din PDF hertil eller klik for at gennemse</p>
             <input type="file" id="rot-file" accept=".pdf" style="display:none">
             <button class="btn btn-secondary" type="button">Vælg PDF</button>
@@ -73,14 +87,26 @@
         <div style="margin-top:16px">
           <p class="ad-label">Reklame</p>
           <div class="ad-slot" style="min-height:250px">
-            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
-            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-          </div>
+            <div class="adsbygoogle" style="display:block" aria-hidden="true"></div>
+</div>
         </div>
       </aside>
     </div>
     <section class="how-to-use"><h2>Sådan roterer du PDF-sider</h2><ol class="steps"><li><strong>Trin 1</strong> — Upload din PDF.</li><li><strong>Trin 2</strong> — Vælg rotationsvinkel (90°, 180° eller 270°).</li><li><strong>Trin 3</strong> — Angiv hvilke sider der skal roteres, eller lad det stå tomt for alle sider.</li><li><strong>Trin 4</strong> — Klik "Roter &amp; Download".</li></ol></section>
     <section class="features"><h2>Funktioner</h2><ul class="features-list"><li>Roter alle sider eller specifikke sider/intervaller</li><li>Tre rotationsmuligheder: 90° med uret, 90° mod uret, 180°</li><li>Rotation er additiv (lægges til eksisterende siderotation)</li><li>100% browserbaseret — ingen serverupload</li></ul></section>
+    <!-- SEO keyword implementation: 2026-08-21 -->
+    <section class="seo-content" data-seo-keyword-plan="2026-08-21">
+      <h2>Rotate PDF online: praktisk brug</h2>
+      <p>Brug rotate PDF online, nar du har brug for et hurtigt, klart og privat resultat uden at oprette en konto. Siden daekker ogsa relaterede behov som rotate PDF pages, change PDF orientation, PDF rotator, sa du kan vaelge den rigtige arbejdsgang.</p>
+      <h3>Hvornar det er nyttigt</h3>
+      <ul>
+        <li><strong>Bedst til:</strong> Redigere, flette, opdele, konvertere eller beskytte PDF-dokumenter uden desktopsoftware.</li>
+        <li><strong>Nyttige detaljer:</strong> Tjek filraekkefolge, sideintervaller, outputkvalitet og privatliv, for du downloader den faerdige PDF.</li>
+        <li><strong>Naeste trin:</strong> Ga videre til et andet PDF-vaerktoj, nar du skal komprimere, opdele, konvertere billeder, underskrive eller rydde sider op.</li>
+      </ul>
+      <p>Fortsæt eventuelt med <a href="/da/pdf-merge/">Sammensæt PDF-Filer Online</a>, <a href="/da/pdf-split/">Del PDF</a>, <a href="/da/pdf-compress/">Komprimer PDF Online</a>, <a href="/da/edit-pdf/">Rediger PDF</a>.</p>
+    </section>
+
     <section class="faq"><h2>Ofte Stillede Spørgsmål</h2><div class="faq-list">
       <details class="faq-item"><summary class="faq-question">Hvorfor viser "90° med uret" 270° internt? <span class="faq-icon">+</span></summary><div class="faq-answer">PDF-rotation er mod uret ifølge PDF-specifikationen. Så 90° med uret visuelt svarer til at tilføje 270° til den interne rotationsværdi. Værktøjet håndterer dette automatisk.</div></details>
       <details class="faq-item"><summary class="faq-question">Kan jeg kun rotere landskabssider? <span class="faq-icon">+</span></summary><div class="faq-answer">Ja — indtast manuelt sidenumrene på dine landskabssider i feltet "Sider". Du kan identificere dem ved at åbne PDF'en i et fremvisningsprogram først.</div></details>
@@ -89,15 +115,15 @@
     <section class="related-tools">
       <h2>Relaterede Værktøjer</h2>
       <div class="tool-grid">
-        <a href="/da/organize-pdf/" class="tool-card"><img src="/assets/img/icon-pdf.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Organiser PDF</h3><p>Brug Organiser PDF-værktøjet til dit PDF-arbejde.</p><span class="tool-card-link">Prøv →</span></a>
-        <a href="/da/crop-pdf/" class="tool-card"><img src="/assets/img/icon-pdf.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Beskær PDF</h3><p>Brug Beskær PDF-værktøjet til dit PDF-arbejde.</p><span class="tool-card-link">Prøv →</span></a>
-        <a href="/da/pdf-merge/" class="tool-card"><img src="/assets/img/icon-pdf.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Flet PDF</h3><p>Brug Flet PDF-værktøjet til dit PDF-arbejde.</p><span class="tool-card-link">Prøv →</span></a>
+        <a href="/da/organize-pdf/" class="tool-card"><img src="/assets/img/icon-pdf.svg" alt="Organiser PDF icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Organiser PDF</h3><p>Brug Organiser PDF-værktøjet til dit PDF-arbejde.</p><span class="tool-card-link">Prøv →</span></a>
+        <a href="/da/crop-pdf/" class="tool-card"><img src="/assets/img/icon-pdf.svg" alt="Beskær PDF icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Beskær PDF</h3><p>Brug Beskær PDF-værktøjet til dit PDF-arbejde.</p><span class="tool-card-link">Prøv →</span></a>
+        <a href="/da/pdf-merge/" class="tool-card"><img src="/assets/img/icon-pdf.svg" alt="Flet PDF icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Flet PDF</h3><p>Brug Flet PDF-værktøjet til dit PDF-arbejde.</p><span class="tool-card-link">Prøv →</span></a>
       </div>
     </section>
 
   </main>
   <footer id="site-footer" class="site-footer"></footer>
-  <script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
+  <script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js" defer></script>
   <script src="/assets/js/shared.js" defer></script>
   <script src="/assets/js/tools/rotate-pdf.js" defer></script>
 </body>

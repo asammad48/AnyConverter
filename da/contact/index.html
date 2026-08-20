@@ -4,21 +4,32 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Kontakt Os — AnyConverter</title>
-  <meta name="description" content="Kontakt AnyConverter-teamet. Rapporter en fejl, foreslå et nyt værktøj, eller stil et spørgsmål. Vi læser og svarer på hver eneste besked.">
+  <meta name="description" content="Laes om Skriv til Os pa AnyConverter. Klar information om privatliv, sikkerhed, politikker og gratis online vaerktojer.">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://anyconverter.io/da/contact/">
   <link rel="alternate" hreflang="en" href="https://anyconverter.io/contact/">
   <link rel="alternate" hreflang="es" href="https://anyconverter.io/es/contact/">
   <link rel="alternate" hreflang="da" href="https://anyconverter.io/da/contact/">
   <link rel="alternate" hreflang="x-default" href="https://anyconverter.io/contact/">
-  <meta property="og:type" content="website">
+
+<meta property="og:type" content="website">
   <meta property="og:title" content="Kontakt Os — AnyConverter">
-  <meta property="og:description" content="Kontakt AnyConverter-teamet. Vi modtager gerne feedback, fejlrapporter og samarbejdsforespørgsler.">
+  <meta property="og:description" content="Laes om Skriv til Os pa AnyConverter. Klar information om privatliv, sikkerhed, politikker og gratis online vaerktojer.">
   <meta property="og:url" content="https://anyconverter.io/da/contact/">
   <meta property="og:site_name" content="AnyConverter">
+  <meta property="og:image" content="https://anyconverter.io/assets/img/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="AnyConverter free online tools">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Kontakt Os — AnyConverter">
+  <meta name="twitter:description" content="Laes om Skriv til Os pa AnyConverter. Klar information om privatliv, sikkerhed, politikker og gratis online vaerktojer.">
+  <meta name="twitter:image" content="https://anyconverter.io/assets/img/og-image.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"ContactPage","name":"Kontakt Os — AnyConverter","url":"https://anyconverter.io/da/contact/","description":"Kontakt AnyConverter-teamet. Rapporter en fejl, foreslå et nyt værktøj, eller stil et spørgsmål. Vi læser og svarer på hver eneste besked.","isPartOf":{"@type":"WebSite","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
+
   <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
   <style>
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -156,27 +167,23 @@
       </div>
 
     </div>
+    <!-- SEO keyword implementation: 2026-08-21 -->
+    <section class="seo-content" data-seo-keyword-plan="2026-08-21">
+      <h2>Skriv til Os: praktisk brug</h2>
+      <p>Brug Skriv til Os, nar du har brug for et hurtigt, klart og privat resultat uden at oprette en konto. Siden daekker ogsa relaterede behov som Skriv til Os AnyConverter, Skriv til Os gratis vaerktojer, Skriv til Os privatliv, sa du kan vaelge den rigtige arbejdsgang.</p>
+      <h3>Hvornar det er nyttigt</h3>
+      <ul>
+        <li><strong>Bedst til:</strong> Forsta AnyConverter, privatliv, politikker, sikkerhed og de tilgaengelige vaerktojskategorier.</li>
+        <li><strong>Nyttige detaljer:</strong> Brug disse sider til at se, hvordan sitet fungerer, hvor data behandles, og hvordan du kontakter teamet.</li>
+        <li><strong>Naeste trin:</strong> Vend tilbage til vaerktojsoversigten, nar du vil bruge PDF-vaerktojer, beregnere, konvertere eller browsernytte.</li>
+      </ul>
+      <p>Fortsæt eventuelt med <a href="/da/about/">Bygget for Alle. Gratis for Altid.</a>, <a href="/da/faq/">Ofte Stillede Spørgsmål</a>, <a href="/da/privacy/">Privatlivspolitik</a>, <a href="/da/security/">Sikkerhed hos AnyConverter</a>.</p>
+    </section>
+
   </main>
 
   <footer id="site-footer" class="site-footer"></footer>
   <div id="toast" class="toast" aria-live="polite"></div>
   <script src="/assets/js/shared.js" defer></script>
-  <script>
-    document.getElementById('contact-form').addEventListener('submit', function(e) {
-      e.preventDefault();
-      var name = document.getElementById('cf-name').value.trim();
-      var email = document.getElementById('cf-email').value.trim();
-      var message = document.getElementById('cf-message').value.trim();
-      if (!name || !email || !message) {
-        alert('Udfyld venligst dit navn, e-mail og besked.');
-        return;
-      }
-      // Construct mailto link as fallback (no backend)
-      var subject = document.getElementById('cf-subject').value || 'General Enquiry';
-      var body = 'Name: ' + name + '\n\n' + message;
-      window.location.href = 'mailto:hello@anyconverter.io?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
-      document.getElementById('cf-success').style.display = 'block';
-    });
-  </script>
 </body>
 </html>

@@ -4,6 +4,7 @@ const path = require('path');
 
 const PORT = 5000;
 const ROOT = __dirname;
+const REDIRECTS_FILE = path.join(ROOT, '_redirects');
 
 const MIME_TYPES = {
   '.html': 'text/html',
@@ -23,8 +24,32 @@ const MIME_TYPES = {
   '.xml': 'application/xml',
 };
 
+function loadRedirects() {
+  if (!fs.existsSync(REDIRECTS_FILE)) return [];
+  return fs.readFileSync(REDIRECTS_FILE, 'utf8')
+    .split(/\r?\n/)
+    .map((line) => line.trim())
+    .filter((line) => line && !line.startsWith('#'))
+    .map((line) => line.split(/\s+/))
+    .filter((parts) => parts.length >= 2)
+    .map(([source, destination, code]) => ({
+      source,
+      destination,
+      code: Number(code) || 302,
+    }));
+}
+
+const redirects = loadRedirects();
+
 const server = http.createServer((req, res) => {
   let urlPath = req.url.split('?')[0];
+  const redirect = redirects.find((rule) => rule.source === urlPath);
+
+  if (redirect) {
+    res.writeHead(redirect.code, { Location: redirect.destination });
+    res.end();
+    return;
+  }
 
   if (urlPath.endsWith('/')) {
     urlPath += 'index.html';

@@ -3,26 +3,36 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CSV-forespørgselsværktøj Online — Kør SQL på CSV-filer Gratis | AnyConverter</title>
-  <meta name="description" content="Forespørg CSV-filer med SQL online gratis. Upload en CSV og kør SELECT, WHERE, GROUP BY direkte i din browser med SQL.js. Eksporter resultater som CSV eller JSON.">
+  <title>CSV-forespørgselsværktøj — Kør SQL på CSV-filer | AnyConverter</title>
+  <meta name="description" content="Brug csv to sql gratis i browseren. Fa eksempler, praktiske tips, relaterede vaerktojer og hurtige resultater.">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://anyconverter.io/da/csv-query/">
   <link rel="alternate" hreflang="en" href="https://anyconverter.io/csv-query/">
   <link rel="alternate" hreflang="es" href="https://anyconverter.io/es/csv-query/">
   <link rel="alternate" hreflang="da" href="https://anyconverter.io/da/csv-query/">
   <link rel="alternate" hreflang="x-default" href="https://anyconverter.io/csv-query/">
-  <meta property="og:type" content="website">
+
+<meta property="og:type" content="website">
   <meta property="og:title" content="CSV-forespørgselsværktøj Online — Kør SQL på CSV-filer Gratis | AnyConverter">
-  <meta property="og:description" content="Forespørg CSV-filer med SQL online gratis. Kør SELECT, WHERE, GROUP BY i din browser. Eksporter resultater som CSV eller JSON.">
+  <meta property="og:description" content="Brug csv to sql gratis i browseren. Fa eksempler, praktiske tips, relaterede vaerktojer og hurtige resultater.">
   <meta property="og:url" content="https://anyconverter.io/da/csv-query/">
   <meta property="og:site_name" content="AnyConverter">
+  <meta property="og:image" content="https://anyconverter.io/assets/img/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="AnyConverter free online tools">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="CSV-forespørgselsværktøj — Kør SQL på CSV-filer | AnyConverter">
+  <meta name="twitter:description" content="Brug csv to sql gratis i browseren. Fa eksempler, praktiske tips, relaterede vaerktojer og hurtige resultater.">
+  <meta name="twitter:image" content="https://anyconverter.io/assets/img/og-image.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" data-ad-client="ca-pub-XXXXXXXXXX" crossorigin="anonymous"></script>
-  <!-- Replace ca-pub-XXXXXXXXXX with your real AdSense publisher ID -->
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"CSV-forespørgselsværktøj","url":"https://anyconverter.io/da/csv-query/","description":"Forespørg CSV-filer med SQL online gratis. Upload en CSV og kør SELECT, WHERE, GROUP BY direkte i din browser med SQL.js.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
-  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"CSV-forespørgselsværktøj","url":"https://anyconverter.io/da/csv-query/","description":"Forespørg CSV-filer med SQL online gratis. Upload en CSV og kør SELECT, WHERE, GROUP BY direkte i din browser med SQL.js.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Hvilken SQL-syntaks understøttes?","acceptedAnswer":{"@type":"Answer","text":"Værktøjet bruger SQL.js, en WebAssembly-version af SQLite. Det understøtter SELECT, WHERE, GROUP BY, ORDER BY, LIMIT, OFFSET, JOINs, underforespørgsler og aggregeringer som COUNT, SUM, AVG, MIN og MAX. De fleste SQLite-funktioner virker også."}},{"@type":"Question","name":"Hvad er tabelnavnet for min CSV?","acceptedAnswer":{"@type":"Answer","text":"Din CSV indlæses i en tabel kaldet data . Kolonnenavne kommer fra den første række (headerrækken) i din CSV. Hvis et kolonnenavn har mellemrum, skal du sætte det i dobbelte anførselstegn: SELECT \"fornavn\" FROM data."}},{"@type":"Question","name":"Hvor stor en fil kan jeg forespørge?","acceptedAnswer":{"@type":"Answer","text":"Der er ingen fast grænse — browserens tilgængelige hukommelse er begrænsningen. Filer op til 50 MB fungerer typisk fint. Meget store filer kan tage et øjeblik at indlæse i den in-memory SQLite-database."}},{"@type":"Question","name":"Sendes mine data til en server?","acceptedAnswer":{"@type":"Answer","text":"Nej. Al behandling kører lokalt i din browser. SQL.js er en WASM-version af SQLite, der kører udelukkende på klientsiden. Dine CSV-data og forespørgselsresultater forlader aldrig din enhed."}},{"@type":"Question","name":"Kan jeg køre flere forespørgsler på den samme fil?","acceptedAnswer":{"@type":"Answer","text":"Ja. Når en CSV er indlæst, kan du køre så mange forespørgsler, du vil. Historikken gemmer dine sidste 5 forespørgsler til hurtig genbrug. Upload en ny fil for at erstatte det aktuelle datasæt."}}]}</script>
+
+
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
   <style>
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
     html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F4F6FF);color:var(--color-text,#1E1B4B)}
@@ -130,17 +140,14 @@
         <div style="margin-top:8px">
           <p class="ad-label">Reklame</p>
           <div class="ad-slot" style="min-height:250px">
-            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
-            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-            <!-- Replace ca-pub-XXXXXXXXXX and data-ad-slot="XXXXXXXXXX" with your IDs -->
-          </div>
+            <div class="adsbygoogle" style="display:block" aria-hidden="true"></div>
+</div>
         </div>
       </aside>
     </div>
     <div class="ad-slot ad-slot--leaderboard">
-      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
-      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-    </div>
+      <div class="adsbygoogle" style="display:block" aria-hidden="true"></div>
+</div>
     <section class="how-to-use">
       <h2>Sådan forespørger du en CSV-fil med SQL</h2>
       <ol class="steps">
@@ -160,10 +167,22 @@
         <li>100% browserbaseret — drevet af SQL.js (SQLite WASM)</li>
       </ul>
     </section>
+    <!-- SEO keyword implementation: 2026-08-21 -->
+    <section class="seo-content" data-seo-keyword-plan="2026-08-21">
+      <h2>Csv to sql: praktisk brug</h2>
+      <p>Brug csv to sql, nar du har brug for et hurtigt, klart og privat resultat uden at oprette en konto. Siden daekker ogsa relaterede behov som csv to sql online, csv to sql validator, csv to sql formatter, sa du kan vaelge den rigtige arbejdsgang.</p>
+      <h3>Hvornar det er nyttigt</h3>
+      <ul>
+        <li><strong>Bedst til:</strong> Indsaette kode, strukturerede data, tokens, hashes eller kodet tekst og fa et laesbart resultat hurtigt.</li>
+        <li><strong>Nyttige detaljer:</strong> Brug eksempler, valideringsbeskeder, kopieringshandlinger og formatering til at fange fejl tidligt.</li>
+        <li><strong>Naeste trin:</strong> Aben en relateret formatter, validator, encoder, parser eller konverter, nar arbejdsgangen skifter format.</li>
+      </ul>
+      <p>Fortsæt eventuelt med <a href="/da/json-formatter/">JSON Formatter og Validator</a>, <a href="/da/regex-tester/">Online Regex Tester</a>, <a href="/da/base64-encoder/">Base64 Encoder og Decoder</a>, <a href="/da/hash-generator/">Hash Generator</a>.</p>
+    </section>
+
     <div class="ad-slot ad-slot--rectangle" style="margin:0 auto 32px">
-      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
-      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-    </div>
+      <div class="adsbygoogle" style="display:block" aria-hidden="true"></div>
+</div>
     <section class="faq">
       <h2>Ofte stillede spørgsmål</h2>
       <div class="faq-list">
@@ -177,12 +196,12 @@
     <section class="related-tools">
       <h2>Relaterede værktøjer</h2>
       <div class="tool-grid">
-        <a href="/da/csv-to-sql/" class="tool-card"><img src="/assets/img/icon-csv.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>CSV til SQL</h3><p>Konverter CSV til SQL INSERT-sætninger.</p><span class="tool-card-link">Prøv →</span></a>
-        <a href="/da/json-formatter/" class="tool-card"><img src="/assets/img/icon-json.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>JSON-formatering</h3><p>Formater og valider JSON.</p><span class="tool-card-link">Prøv →</span></a>
-        <a href="/da/xml-formatter/" class="tool-card"><img src="/assets/img/icon-xml.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>XML-formatering</h3><p>Formater og valider XML.</p><span class="tool-card-link">Prøv →</span></a>
-        <a href="/da/regex-tester/" class="tool-card"><img src="/assets/img/icon-regex.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Regex-tester</h3><p>Test regulære udtryk live.</p><span class="tool-card-link">Prøv →</span></a>
-        <a href="/da/hash-generator/" class="tool-card"><img src="/assets/img/icon-hash.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Hash-generator</h3><p>Generer MD5, SHA-256, SHA-512 hashes.</p><span class="tool-card-link">Prøv →</span></a>
-        <a href="/da/timestamp-converter/" class="tool-card"><img src="/assets/img/icon-clock.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Tidsstempelkonverter</h3><p>Konverter Unix-tidsstempler til datoer.</p><span class="tool-card-link">Prøv →</span></a>
+        <a href="/da/csv-to-sql/" class="tool-card"><img src="/assets/img/icon-csv.svg" alt="CSV til SQL icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>CSV til SQL</h3><p>Konverter CSV til SQL INSERT-sætninger.</p><span class="tool-card-link">Prøv →</span></a>
+        <a href="/da/json-formatter/" class="tool-card"><img src="/assets/img/icon-json.svg" alt="JSON-formatering icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>JSON-formatering</h3><p>Formater og valider JSON.</p><span class="tool-card-link">Prøv →</span></a>
+        <a href="/da/xml-formatter/" class="tool-card"><img src="/assets/img/icon-xml.svg" alt="XML-formatering icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>XML-formatering</h3><p>Formater og valider XML.</p><span class="tool-card-link">Prøv →</span></a>
+        <a href="/da/regex-tester/" class="tool-card"><img src="/assets/img/icon-regex.svg" alt="Regex-tester icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Regex-tester</h3><p>Test regulære udtryk live.</p><span class="tool-card-link">Prøv →</span></a>
+        <a href="/da/hash-generator/" class="tool-card"><img src="/assets/img/icon-hash.svg" alt="Hash-generator icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Hash-generator</h3><p>Generer MD5, SHA-256, SHA-512 hashes.</p><span class="tool-card-link">Prøv →</span></a>
+        <a href="/da/timestamp-converter/" class="tool-card"><img src="/assets/img/icon-clock.svg" alt="Tidsstempelkonverter icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Tidsstempelkonverter</h3><p>Konverter Unix-tidsstempler til datoer.</p><span class="tool-card-link">Prøv →</span></a>
       </div>
     </section>
   </main>

@@ -4,25 +4,35 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>JSON til YAML Konverter Online Gratis | AnyConverter</title>
-  <meta name="description" content="Konverter JSON til YAML og YAML til JSON øjeblikkeligt i din browser. Indsæt dine data og få formateret output med det samme. Ingen serveroplæsning, 100% privat.">
+  <meta name="description" content="Brug JSON til YAML Konverter gratis i browseren. Fa eksempler, praktiske tips, relaterede vaerktojer og hurtige resultater.">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://anyconverter.io/da/json-to-yaml/">
   <link rel="alternate" hreflang="en" href="https://anyconverter.io/json-to-yaml/">
   <link rel="alternate" hreflang="es" href="https://anyconverter.io/es/json-to-yaml/">
   <link rel="alternate" hreflang="da" href="https://anyconverter.io/da/json-to-yaml/">
   <link rel="alternate" hreflang="x-default" href="https://anyconverter.io/json-to-yaml/">
-  <meta property="og:type" content="website">
+
+<meta property="og:type" content="website">
   <meta property="og:title" content="JSON til YAML Konverter Online Gratis | AnyConverter">
-  <meta property="og:description" content="Konverter JSON til YAML og YAML til JSON øjeblikkeligt i din browser. Indsæt dine data og få formateret output med det samme. Ingen serveroplæsning, 100% privat.">
+  <meta property="og:description" content="Brug JSON til YAML Konverter gratis i browseren. Fa eksempler, praktiske tips, relaterede vaerktojer og hurtige resultater.">
   <meta property="og:url" content="https://anyconverter.io/da/json-to-yaml/">
   <meta property="og:site_name" content="AnyConverter">
+  <meta property="og:image" content="https://anyconverter.io/assets/img/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="AnyConverter free online tools">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="JSON til YAML Konverter Online Gratis | AnyConverter">
+  <meta name="twitter:description" content="Brug JSON til YAML Konverter gratis i browseren. Fa eksempler, praktiske tips, relaterede vaerktojer og hurtige resultater.">
+  <meta name="twitter:image" content="https://anyconverter.io/assets/img/og-image.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" data-ad-client="ca-pub-XXXXXXXXXX" crossorigin="anonymous"></script>
-  <!-- Replace ca-pub-XXXXXXXXXX with your real AdSense publisher ID -->
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"JSON til YAML Konverter","url":"https://anyconverter.io/da/json-to-yaml/","description":"Konverter JSON til YAML og YAML til JSON øjeblikkeligt i din browser. Ingen serveroplæsning, 100% privat.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
-  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"JSON til YAML Konverter","url":"https://anyconverter.io/da/json-to-yaml/","description":"Konverter JSON til YAML og YAML til JSON øjeblikkeligt i din browser. Ingen serveroplæsning, 100% privat.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Hvad er YAML?","acceptedAnswer":{"@type":"Answer","text":"YAML (YAML Ain't Markup Language) er et menneskevenligt dataserialiseringsformat. Det bruger indrykning og minimal tegnsætning, hvilket gør det nemmere at læse end JSON. Det bruges bredt til konfigurationsfiler (Docker, Kubernetes, GitHub Actions)."}},{"@type":"Question","name":"Er al JSON gyldig YAML?","acceptedAnswer":{"@type":"Answer","text":"Ja — JSON er teknisk set en delmængde af YAML 1.2. Ethvert gyldigt JSON-dokument er også gyldigt YAML. YAML understøtter dog yderligere funktioner som kommentarer og flerlinjede strenge, som JSON ikke har."}},{"@type":"Question","name":"Understøtter YAML kommentarer?","acceptedAnswer":{"@type":"Answer","text":"Ja. YAML understøtter kommentarer ved hjælp af #-tegnet. JSON understøtter slet ikke kommentarer. Når YAML konverteres til JSON, kasseres kommentarer."}},{"@type":"Question","name":"Hvilken indrykning bruger konverteren?","acceptedAnswer":{"@type":"Answer","text":"Konverteren genererer YAML med 2-mellemrums indrykning, som er den mest almindelige konvention for YAML-filer i moderne værktøjer."}},{"@type":"Question","name":"Sendes mine data til en server?","acceptedAnswer":{"@type":"Answer","text":"Nej. Dette værktøj kører helt i din browser ved hjælp af js-yaml-biblioteket. Dine data uploades aldrig til nogen server, hvilket gør det sikkert til følsomme konfigurationsdata."}}]}</script>
+
+
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
   <style>
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
     html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F4F6FF);color:var(--color-text,#1E1B4B)}
@@ -74,23 +84,20 @@
       </div>
       <aside class="tool-side" aria-label="Muligheder">
         <div class="ss-divider">Relaterede værktøjer</div>
-        <a class="related-link" href="/da/html-beautifier/"><img src="/assets/img/icon-text.svg" width="16" height="16" loading="lazy" alt=""> HTML Formaterer</a>
-        <a class="related-link" href="/da/cron-expression-parser/"><img src="/assets/img/icon-timer.svg" width="16" height="16" loading="lazy" alt=""> Cron Parser</a>
-        <a class="related-link" href="/uuid-generator/"><img src="/assets/img/icon-hash.svg" width="16" height="16" loading="lazy" alt=""> UUID Generator</a>
+        <a class="related-link" href="/da/html-beautifier/"><img src="/assets/img/icon-text.svg" width="16" height="16" loading="lazy" alt="JSON til YAML Konverter Online Gratis icon"> HTML Formaterer</a>
+        <a class="related-link" href="/da/cron-expression-parser/"><img src="/assets/img/icon-timer.svg" width="16" height="16" loading="lazy" alt="JSON til YAML Konverter Online Gratis icon"> Cron Parser</a>
+        <a class="related-link" href="/uuid-generator/"><img src="/assets/img/icon-hash.svg" width="16" height="16" loading="lazy" alt="JSON til YAML Konverter Online Gratis icon"> UUID Generator</a>
         <div style="margin-top:16px">
           <p class="ad-label">Reklame</p>
           <div class="ad-slot" style="min-height:250px">
-            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
-            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-            <!-- Replace ca-pub-XXXXXXXXXX and data-ad-slot="XXXXXXXXXX" with your IDs -->
-          </div>
+            <div class="adsbygoogle" style="display:block" aria-hidden="true"></div>
+</div>
         </div>
       </aside>
     </div>
     <div class="ad-slot ad-slot--leaderboard">
-      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
-      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-    </div>
+      <div class="adsbygoogle" style="display:block" aria-hidden="true"></div>
+</div>
     <section class="how-to-use">
       <h2>Sådan bruges JSON til YAML Konverter</h2>
       <ol class="steps">
@@ -110,10 +117,22 @@
         <li>100% klientside — dine data forlader aldrig browseren</li>
       </ul>
     </section>
+    <!-- SEO keyword implementation: 2026-08-21 -->
+    <section class="seo-content" data-seo-keyword-plan="2026-08-21">
+      <h2>JSON til YAML Konverter: praktisk brug</h2>
+      <p>Brug JSON til YAML Konverter, nar du har brug for et hurtigt, klart og privat resultat uden at oprette en konto. Siden daekker ogsa relaterede behov som JSON til YAML Konverter online, JSON til YAML Konverter validator, JSON til YAML Konverter formatter, sa du kan vaelge den rigtige arbejdsgang.</p>
+      <h3>Hvornar det er nyttigt</h3>
+      <ul>
+        <li><strong>Bedst til:</strong> Indsaette kode, strukturerede data, tokens, hashes eller kodet tekst og fa et laesbart resultat hurtigt.</li>
+        <li><strong>Nyttige detaljer:</strong> Brug eksempler, valideringsbeskeder, kopieringshandlinger og formatering til at fange fejl tidligt.</li>
+        <li><strong>Naeste trin:</strong> Aben en relateret formatter, validator, encoder, parser eller konverter, nar arbejdsgangen skifter format.</li>
+      </ul>
+      <p>Fortsæt eventuelt med <a href="/da/json-formatter/">JSON Formatter og Validator</a>, <a href="/da/regex-tester/">Online Regex Tester</a>, <a href="/da/base64-encoder/">Base64 Encoder og Decoder</a>, <a href="/da/hash-generator/">Hash Generator</a>.</p>
+    </section>
+
     <div class="ad-slot ad-slot--rectangle" style="margin:0 auto 32px">
-      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
-      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-    </div>
+      <div class="adsbygoogle" style="display:block" aria-hidden="true"></div>
+</div>
     <section class="faq">
       <h2>Ofte stillede spørgsmål</h2>
       <div class="faq-list">
