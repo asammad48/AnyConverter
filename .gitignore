@@ -5,3 +5,8 @@
 /.vs/AnyConverter
 /.vs/slnx.sqlite
 /.vs/slnx.sqlite-journal
+
+# Wrangler / Cloudflare local state
+.wrangler/
+.dev.vars*
+!.dev.vars.example

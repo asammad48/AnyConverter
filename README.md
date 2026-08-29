@@ -8,6 +8,13 @@ Deployable to Cloudflare Pages (free hosting, unlimited bandwidth).
 **Tech Stack:** Pure HTML + CSS + Vanilla JS — no frameworks, no build step  
 **Languages:** English, Spanish (Español), Danish (Dansk)
 
+## Live Tool Hubs
+
+- [Free Online PDF Tools](https://anyconverter.io/pdf-tools/)
+- [Free Online Calculators](https://anyconverter.io/calculators/)
+- [Free Online Developer Tools](https://anyconverter.io/developer-tools/)
+- [Free Online Productivity Tools](https://anyconverter.io/productivity-tools/)
+
 ---
 
 ## Quick Start (for Claude Code)

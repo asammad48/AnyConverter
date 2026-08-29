@@ -1,6 +1,10 @@
 # Canonical path aliases from Search Console cleanup
 /anyconverter_ui_mockup.html / 301
 /high_demand_frontend_tools.html / 301
+/es/world-clock/       /world-clock/              301
+/es/world-clock        /world-clock/              301
+/da/world-clock/       /world-clock/              301
+/da/world-clock        /world-clock/              301
 /merge-pdf               /pdf-merge/               301
 /combine-pdf             /pdf-merge/               301
 /combine-pdfs            /pdf-merge/               301

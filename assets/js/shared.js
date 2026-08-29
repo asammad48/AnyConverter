@@ -18,6 +18,7 @@
       <li class="nav-dropdown">
         <button class="nav-link nav-more" aria-expanded="false" aria-haspopup="true">Developer ▾</button>
         <ul class="dropdown-menu" role="menu">
+          <li><a href="/developer-tools/" role="menuitem">All Developer Tools</a></li>
           <li><a href="/json-formatter/" role="menuitem">JSON Formatter</a></li>
           <li><a href="/xml-formatter/" role="menuitem">XML Formatter</a></li>
           <li><a href="/regex-tester/" role="menuitem">Regex Tester</a></li>
@@ -40,6 +41,7 @@
       <li class="nav-dropdown">
         <button class="nav-link nav-more" aria-expanded="false" aria-haspopup="true">PDF Tools ▾</button>
         <ul class="dropdown-menu dropdown-menu--wide" role="menu">
+          <li><a href="/pdf-tools/" role="menuitem">All PDF Tools</a></li>
           <li><a href="/pdf-merge/" role="menuitem">Merge PDF</a></li>
           <li><a href="/pdf-split/" role="menuitem">Split PDF</a></li>
           <li><a href="/pdf-compress/" role="menuitem">Compress PDF</a></li>
@@ -94,6 +96,7 @@
       <li class="nav-dropdown">
         <button class="nav-link nav-more" aria-expanded="false" aria-haspopup="true">Productivity ▾</button>
         <ul class="dropdown-menu" role="menu">
+          <li><a href="/productivity-tools/" role="menuitem">All Productivity Tools</a></li>
           <li><a href="/stopwatch/" role="menuitem">Stopwatch</a></li>
           <li><a href="/countdown-timer/" role="menuitem">Countdown Timer</a></li>
           <li><a href="/todo-list/" role="menuitem">To-do List</a></li>
@@ -114,6 +117,7 @@
       <li class="nav-dropdown">
         <button class="nav-link nav-more" aria-expanded="false" aria-haspopup="true">Calculators ▾</button>
         <ul class="dropdown-menu dropdown-menu--wide" role="menu">
+          <li><a href="/calculators/" role="menuitem">All Calculators</a></li>
           <li><a href="/age-calculator/" role="menuitem">Age Calculator</a></li>
           <li><a href="/bmi-calculator/" role="menuitem">BMI Calculator</a></li>
           <li><a href="/calorie-calculator/" role="menuitem">Calorie Calculator</a></li>

@@ -1,0 +1,33 @@
+# Cloudflare Workers static assets: keep repository/private files out of public deployment.
+.git/
+.github/
+.wrangler/
+.vs/
+.agents/
+.claude/
+attached_assets/
+reports/
+node_modules/
+
+# Local/runtime files
+.env
+.env.*
+!.env.example
+*.log
+*.zip
+*.map
+
+# Repo-only documentation and tooling
+.gitignore
+.assetsignore
+CLAUDE.md
+DESIGN_SYSTEM.md
+FILE_STRUCTURE.md
+PERFORMANCE.md
+README.md
+SEO_SPEC.md
+TOOLS_SPEC.md
+TOPBAR_AND_SHARED.md
+UI_UX_SPEC.md
+skills-lock.json
+server.js
