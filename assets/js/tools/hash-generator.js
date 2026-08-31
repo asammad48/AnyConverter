@@ -1,8 +1,26 @@
 /* Hash Generator — MD5, SHA-1, SHA-256, SHA-512 */
 document.addEventListener('DOMContentLoaded', function () {
+  function byId() {
+    for (let i = 0; i < arguments.length; i++) {
+      const el = document.getElementById(arguments[i]);
+      if (el) return el;
+    }
+    return null;
+  }
+
+  function bindButton(el, handler) {
+    if (!el) return;
+    el.addEventListener('click', handler);
+  }
+
   function isUppercase() {
     const el = document.getElementById('tog-uppercase');
     return el ? !el.classList.contains('off') : false;
+  }
+
+  function isLiveHash() {
+    const el = document.getElementById('tog-livehash');
+    return el ? !el.classList.contains('off') : true;
   }
 
   function formatHashVal(h) { return isUppercase() ? h.toUpperCase() : h; }
@@ -106,26 +124,41 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('hash-sha256').textContent = formatHashVal(await hashBuffer(buf, 'SHA-256'));
     document.getElementById('hash-sha512').textContent = formatHashVal(await hashBuffer(buf, 'SHA-512'));
     updateStats(bytes);
+    const results = document.getElementById('hash-results');
+    if (results) results.style.display = '';
   }
 
   function resetHashes() {
     ['hash-md5','hash-sha1','hash-sha256','hash-sha512'].forEach(function(id){
-      document.getElementById(id).textContent = '—';
+      const el = document.getElementById(id);
+      if (el) el.textContent = '—';
     });
   }
 
-  const textInput = document.getElementById('hash-text-input');
-  textInput.addEventListener('input', function () {
-    clearTimeout(debounceTimer);
-    debounceTimer = setTimeout(function () { hashText(textInput.value); }, 400);
+  const textInput = byId('hash-text-input', 'hash-input');
+  if (textInput) {
+    textInput.addEventListener('input', function () {
+      clearTimeout(debounceTimer);
+      if (isLiveHash()) debounceTimer = setTimeout(function () { hashText(textInput.value); }, 400);
+    });
+  }
+  bindButton(document.getElementById('btn-hash-text'), function () {
+    if (textInput) hashText(textInput.value);
+  });
+  bindButton(document.getElementById('btn-hash-clear'), function () {
+    if (textInput) textInput.value = '';
+    resetHashes();
+    updateStats(0);
+    const results = document.getElementById('hash-results');
+    if (results && results.querySelector('code.hash-value')) results.style.display = 'none';
   });
 
   // File hashing
   const dropZone = document.getElementById('hash-drop-zone');
   const fileInput = document.getElementById('hash-file-input');
-  const fileProgress = document.getElementById('hash-file-progress');
+  const fileProgress = byId('hash-file-progress', 'hash-progress');
   const progressFill = document.getElementById('hash-progress-fill');
-  const progressText = document.getElementById('hash-progress-text');
+  const progressText = byId('hash-progress-text', 'hash-progress-label');
   const fileInfo = document.getElementById('hash-file-info');
 
   function formatBytes(bytes) {
@@ -135,16 +168,16 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   async function hashFile(file) {
-    fileProgress.style.display = 'block';
-    fileInfo.style.display = 'none';
-    progressFill.style.width = '0%';
-    progressText.textContent = 'Reading file...';
+    if (fileProgress) fileProgress.style.display = 'block';
+    if (fileInfo) fileInfo.style.display = 'none';
+    if (progressFill) progressFill.style.width = '0%';
+    if (progressText) progressText.textContent = 'Reading file...';
 
     await new Promise(function(r){ setTimeout(r, 0); });
 
     const buf = await file.arrayBuffer();
-    progressFill.style.width = '50%';
-    progressText.textContent = 'Hashing...';
+    if (progressFill) progressFill.style.width = '50%';
+    if (progressText) progressText.textContent = 'Hashing...';
 
     await new Promise(function(r){ setTimeout(r, 0); });
 
@@ -160,11 +193,15 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('hash-sha256').textContent = formatHashVal(sha256);
     document.getElementById('hash-sha512').textContent = formatHashVal(sha512);
     updateStats(file.size);
+    const results = document.getElementById('hash-results');
+    if (results) results.style.display = '';
 
-    progressFill.style.width = '100%';
-    setTimeout(function () { fileProgress.style.display = 'none'; }, 500);
-    fileInfo.textContent = file.name + ' — ' + formatBytes(file.size);
-    fileInfo.style.display = 'flex';
+    if (progressFill) progressFill.style.width = '100%';
+    if (fileProgress) setTimeout(function () { fileProgress.style.display = 'none'; }, 500);
+    if (fileInfo) {
+      fileInfo.textContent = file.name + ' — ' + formatBytes(file.size);
+      fileInfo.style.display = 'flex';
+    }
   }
 
   function md5Text(buf) {
@@ -173,18 +210,21 @@ document.addEventListener('DOMContentLoaded', function () {
     return md5(str);
   }
 
-  dropZone.addEventListener('click', function () { fileInput.click(); });
-  dropZone.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') fileInput.click(); });
-  dropZone.addEventListener('dragover', function (e) { e.preventDefault(); dropZone.classList.add('dragover'); });
-  dropZone.addEventListener('dragleave', function () { dropZone.classList.remove('dragover'); });
-  dropZone.addEventListener('drop', function (e) {
-    e.preventDefault();
-    dropZone.classList.remove('dragover');
-    if (e.dataTransfer.files[0]) hashFile(e.dataTransfer.files[0]);
-  });
-  fileInput.addEventListener('change', function () {
-    if (this.files[0]) hashFile(this.files[0]);
-  });
+  if (dropZone && fileInput) {
+    dropZone.addEventListener('click', function () { fileInput.click(); });
+    dropZone.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') fileInput.click(); });
+    dropZone.addEventListener('dragover', function (e) { e.preventDefault(); dropZone.classList.add('dragover'); });
+    dropZone.addEventListener('dragleave', function () { dropZone.classList.remove('dragover'); });
+    dropZone.addEventListener('drop', function (e) {
+      e.preventDefault();
+      dropZone.classList.remove('dragover');
+      if (e.dataTransfer.files[0]) hashFile(e.dataTransfer.files[0]);
+    });
+    fileInput.addEventListener('click', function(e) { e.stopPropagation(); });
+    fileInput.addEventListener('change', function () {
+      if (this.files[0]) hashFile(this.files[0]);
+    });
+  }
 
   // Sidebar toggles
   const togUppercase = document.getElementById('tog-uppercase');
@@ -193,6 +233,14 @@ document.addEventListener('DOMContentLoaded', function () {
       togUppercase.classList.toggle('off');
       togUppercase.setAttribute('aria-checked', !togUppercase.classList.contains('off'));
       refreshHashDisplay();
+    });
+  }
+  const togLive = document.getElementById('tog-livehash');
+  if (togLive) {
+    togLive.addEventListener('click', function() {
+      togLive.classList.toggle('off');
+      togLive.setAttribute('aria-checked', !togLive.classList.contains('off'));
+      if (!togLive.classList.contains('off') && textInput && textInput.value.trim()) hashText(textInput.value);
     });
   }
 

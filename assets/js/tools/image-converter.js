@@ -1,30 +1,65 @@
 /* Image Converter */
 document.addEventListener('DOMContentLoaded', function () {
-  const dropZone = document.getElementById('drop-zone');
-  const fileInput = document.getElementById('image-input');
-  const settingsPanel = document.getElementById('settings-panel');
-  const previewSection = document.getElementById('preview-section');
-  const formatToggles = document.querySelectorAll('#format-toggles [data-format]');
+  function byId() {
+    for (let i = 0; i < arguments.length; i++) {
+      const el = document.getElementById(arguments[i]);
+      if (el) return el;
+    }
+    return null;
+  }
+
+  const dropZone = byId('drop-zone', 'img-drop-zone');
+  const fileInput = byId('image-input', 'img-input');
+  const settingsPanel = byId('settings-panel', 'img-settings');
+  const previewSection = byId('preview-section', 'img-result');
+  const formatToggles = document.querySelectorAll('#format-toggles [data-format], #format-toggle [data-format]');
   const qualityRow = document.getElementById('quality-row');
-  const qualitySlider = document.getElementById('quality-slider');
-  const qualityValue = document.getElementById('quality-value');
-  const widthInput = document.getElementById('width-input');
-  const heightInput = document.getElementById('height-input');
-  const aspectRatio = document.getElementById('aspect-ratio');
-  const previewOriginal = document.getElementById('preview-original');
-  const previewConverted = document.getElementById('preview-converted');
-  const metaOriginal = document.getElementById('meta-original');
-  const metaConverted = document.getElementById('meta-converted');
+  const qualitySlider = byId('quality-slider', 'img-quality');
+  const qualityValue = byId('quality-value', 'quality-val');
+  const widthInput = byId('width-input', 'img-width');
+  const heightInput = byId('height-input', 'img-height');
+  const aspectRatio = byId('aspect-ratio', 'img-lock-aspect');
+  const previewOriginal = byId('preview-original', 'img-original-preview');
+  const previewConverted = byId('preview-converted', 'img-converted-preview');
+  const metaOriginal = byId('meta-original', 'img-original-size');
+  const metaConverted = byId('meta-converted', 'img-converted-size');
 
   let originalImage = null;
   let originalWidth = 0;
   let originalHeight = 0;
   let selectedFormat = 'image/png';
+  let lastConvertedBlob = null;
 
   function formatBytes(bytes) {
     if (bytes < 1024) return bytes + ' B';
     if (bytes < 1048576) return (bytes / 1024).toFixed(1) + ' KB';
     return (bytes / 1048576).toFixed(2) + ' MB';
+  }
+
+  function normalizeFormat(format) {
+    if (!format) return 'image/png';
+    if (format.indexOf('/') !== -1) return format;
+    if (format === 'jpg') return 'image/jpeg';
+    return 'image/' + format;
+  }
+
+  function getQuality() {
+    return qualitySlider ? parseInt(qualitySlider.value, 10) / 100 : 0.85;
+  }
+
+  function shouldAutoDownload() {
+    const el = document.getElementById('tog-auto-dl');
+    return el ? !el.classList.contains('off') : true;
+  }
+
+  function downloadBlob(blob, ext) {
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'converted.' + ext;
+    a.click();
+    URL.revokeObjectURL(url);
+    window.showToast('Downloaded!', 'success');
   }
 
   function loadImage(file) {
@@ -34,13 +69,19 @@ document.addEventListener('DOMContentLoaded', function () {
       originalImage = img;
       originalWidth = img.naturalWidth;
       originalHeight = img.naturalHeight;
-      previewOriginal.src = url;
-      metaOriginal.textContent = file.name + ' — ' + originalWidth + '×' + originalHeight + ' — ' + formatBytes(file.size);
-      widthInput.value = originalWidth;
-      heightInput.value = originalHeight;
-      settingsPanel.style.display = 'block';
-      previewSection.style.display = 'block';
-      dropZone.classList.add('has-file');
+      if (previewOriginal) previewOriginal.src = url;
+      if (metaOriginal) metaOriginal.textContent = file.name + ' — ' + originalWidth + '×' + originalHeight + ' — ' + formatBytes(file.size);
+      if (widthInput) widthInput.value = originalWidth;
+      if (heightInput) heightInput.value = originalHeight;
+      if (settingsPanel) settingsPanel.style.display = 'block';
+      if (previewSection) previewSection.style.display = 'block';
+      if (dropZone) dropZone.classList.add('has-file');
+      const info = document.getElementById('img-info');
+      if (info) info.textContent = file.name + ' — ' + originalWidth + '×' + originalHeight + ' — ' + formatBytes(file.size);
+      const statOrig = document.getElementById('stat-orig-size');
+      const statDimensions = document.getElementById('stat-dimensions');
+      if (statOrig) statOrig.textContent = formatBytes(file.size);
+      if (statDimensions) statDimensions.textContent = originalWidth + '×' + originalHeight;
       updatePreview();
     };
     img.src = url;
@@ -49,36 +90,44 @@ document.addEventListener('DOMContentLoaded', function () {
   function updatePreview() {
     if (!originalImage) return;
     const canvas = document.createElement('canvas');
-    const w = parseInt(widthInput.value) || originalWidth;
-    const h = parseInt(heightInput.value) || originalHeight;
+    const w = parseInt(widthInput && widthInput.value, 10) || originalWidth;
+    const h = parseInt(heightInput && heightInput.value, 10) || originalHeight;
     canvas.width = w;
     canvas.height = h;
     const ctx = canvas.getContext('2d');
     ctx.drawImage(originalImage, 0, 0, w, h);
-    const quality = parseInt(qualitySlider.value) / 100;
+    const quality = getQuality();
     canvas.toBlob(function (blob) {
       if (!blob) return;
       const url = URL.createObjectURL(blob);
-      previewConverted.src = url;
+      lastConvertedBlob = blob;
+      if (previewConverted) previewConverted.src = url;
       const ext = selectedFormat.split('/')[1].replace('jpeg', 'jpg');
-      metaConverted.textContent = 'Converted — ' + w + '×' + h + ' — ~' + formatBytes(blob.size) + ' (' + ext.toUpperCase() + ')';
+      if (metaConverted) metaConverted.textContent = 'Converted — ' + w + '×' + h + ' — ~' + formatBytes(blob.size) + ' (' + ext.toUpperCase() + ')';
+      const statOut = document.getElementById('stat-out-size');
+      const statFormat = document.getElementById('stat-format');
+      if (statOut) statOut.textContent = formatBytes(blob.size);
+      if (statFormat) statFormat.textContent = ext.toUpperCase();
     }, selectedFormat, quality);
   }
 
   // Drop zone
-  dropZone.addEventListener('click', function () { fileInput.click(); });
-  dropZone.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') fileInput.click(); });
-  dropZone.addEventListener('dragover', function (e) { e.preventDefault(); dropZone.classList.add('dragover'); });
-  dropZone.addEventListener('dragleave', function () { dropZone.classList.remove('dragover'); });
-  dropZone.addEventListener('drop', function (e) {
-    e.preventDefault();
-    dropZone.classList.remove('dragover');
-    const file = e.dataTransfer.files[0];
-    if (file && file.type.startsWith('image/')) loadImage(file);
-  });
-  fileInput.addEventListener('change', function () {
-    if (this.files[0]) loadImage(this.files[0]);
-  });
+  if (dropZone && fileInput) {
+    dropZone.addEventListener('click', function () { fileInput.click(); });
+    dropZone.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') fileInput.click(); });
+    dropZone.addEventListener('dragover', function (e) { e.preventDefault(); dropZone.classList.add('dragover'); });
+    dropZone.addEventListener('dragleave', function () { dropZone.classList.remove('dragover'); });
+    dropZone.addEventListener('drop', function (e) {
+      e.preventDefault();
+      dropZone.classList.remove('dragover');
+      const file = e.dataTransfer.files[0];
+      if (file && file.type.startsWith('image/')) loadImage(file);
+    });
+    fileInput.addEventListener('click', function(e) { e.stopPropagation(); });
+    fileInput.addEventListener('change', function () {
+      if (this.files[0]) loadImage(this.files[0]);
+    });
+  }
 
   // Format toggles
   formatToggles.forEach(function (btn) {
@@ -89,56 +138,86 @@ document.addEventListener('DOMContentLoaded', function () {
       });
       btn.classList.add('active');
       btn.setAttribute('aria-selected', 'true');
-      selectedFormat = btn.dataset.format;
+      selectedFormat = normalizeFormat(btn.dataset.format);
       const needsQuality = selectedFormat === 'image/jpeg' || selectedFormat === 'image/webp';
-      qualityRow.style.display = needsQuality ? 'flex' : 'none';
+      if (qualityRow) qualityRow.style.display = needsQuality ? 'flex' : 'none';
       updatePreview();
     });
   });
 
   // Quality slider
-  qualitySlider.addEventListener('input', function () {
-    qualityValue.textContent = this.value;
-    updatePreview();
-  });
+  if (qualitySlider) {
+    qualitySlider.addEventListener('input', function () {
+      if (qualityValue) qualityValue.textContent = this.value;
+      updatePreview();
+    });
+  }
 
   // Resize with aspect ratio
-  widthInput.addEventListener('input', function () {
-    if (aspectRatio.checked && originalWidth && originalHeight) {
+  if (widthInput) widthInput.addEventListener('input', function () {
+    if (aspectRatio && aspectRatio.checked && originalWidth && originalHeight) {
       const w = parseInt(this.value);
-      if (w) heightInput.value = Math.round(w * originalHeight / originalWidth);
+      if (w && heightInput) heightInput.value = Math.round(w * originalHeight / originalWidth);
     }
     updatePreview();
   });
-  heightInput.addEventListener('input', function () {
-    if (aspectRatio.checked && originalWidth && originalHeight) {
+  if (heightInput) heightInput.addEventListener('input', function () {
+    if (aspectRatio && aspectRatio.checked && originalWidth && originalHeight) {
       const h = parseInt(this.value);
-      if (h) widthInput.value = Math.round(h * originalWidth / originalHeight);
+      if (h && widthInput) widthInput.value = Math.round(h * originalWidth / originalHeight);
     }
     updatePreview();
   });
 
   // Convert & Download
-  document.getElementById('btn-convert').addEventListener('click', function () {
+  function convertImage() {
     if (!originalImage) return;
     const canvas = document.createElement('canvas');
-    const w = parseInt(widthInput.value) || originalWidth;
-    const h = parseInt(heightInput.value) || originalHeight;
+    const w = parseInt(widthInput && widthInput.value, 10) || originalWidth;
+    const h = parseInt(heightInput && heightInput.value, 10) || originalHeight;
     canvas.width = w;
     canvas.height = h;
     const ctx = canvas.getContext('2d');
     ctx.drawImage(originalImage, 0, 0, w, h);
-    const quality = parseInt(qualitySlider.value) / 100;
+    const quality = getQuality();
     const ext = selectedFormat.split('/')[1].replace('jpeg', 'jpg');
     canvas.toBlob(function (blob) {
       if (!blob) { window.showToast('This format is not supported by your browser.', 'error'); return; }
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = 'converted.' + ext;
-      a.click();
-      URL.revokeObjectURL(url);
-      window.showToast('Downloaded!', 'success');
+      lastConvertedBlob = blob;
+      if (previewSection) previewSection.style.display = 'block';
+      if (previewConverted) previewConverted.src = URL.createObjectURL(blob);
+      if (metaConverted) metaConverted.textContent = 'Converted — ' + w + '×' + h + ' — ' + formatBytes(blob.size) + ' (' + ext.toUpperCase() + ')';
+      if (shouldAutoDownload()) downloadBlob(blob, ext);
     }, selectedFormat, quality);
-  });
+  }
+  const convertBtn = byId('btn-convert', 'btn-convert-img');
+  if (convertBtn) convertBtn.addEventListener('click', convertImage);
+  const downloadBtn = document.getElementById('btn-download-img');
+  if (downloadBtn) {
+    downloadBtn.addEventListener('click', function() {
+      if (!lastConvertedBlob) { convertImage(); return; }
+      const ext = selectedFormat.split('/')[1].replace('jpeg', 'jpg');
+      downloadBlob(lastConvertedBlob, ext);
+    });
+  }
+
+  function initToggle(id, initialOn) {
+    const el = document.getElementById(id);
+    if (!el) return;
+    function update(on) {
+      el.classList.toggle('off', !on);
+      el.setAttribute('aria-checked', on);
+    }
+    update(initialOn);
+    function activate() {
+      const on = !el.classList.contains('off');
+      update(!on);
+    }
+    el.addEventListener('click', activate);
+    el.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); activate(); }
+    });
+  }
+  initToggle('tog-strip-meta', true);
+  initToggle('tog-auto-dl', true);
 });

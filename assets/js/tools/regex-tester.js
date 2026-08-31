@@ -30,6 +30,148 @@ document.addEventListener('DOMContentLoaded', function () {
       .replace(/>/g,'&gt;').replace(/"/g,'&quot;');
   }
 
+  if (!logTextarea && document.getElementById('regex-test-input')) {
+    const testInput = document.getElementById('regex-test-input');
+    const overlay = document.getElementById('regex-highlight-overlay');
+    const errorBox = document.getElementById('regex-error');
+    const statsBox = document.getElementById('regex-stats');
+    const matchesBox = document.getElementById('regex-matches');
+    const matchList = document.getElementById('regex-match-list');
+
+    function setToggle(id, initialOn, onChange) {
+      const el = document.getElementById(id);
+      if (!el) return;
+      function update(on) {
+        el.classList.toggle('off', !on);
+        el.setAttribute('aria-checked', on);
+        if (onChange) onChange(on);
+      }
+      update(initialOn);
+      function activate() {
+        update(el.classList.contains('off'));
+      }
+      el.addEventListener('click', activate);
+      el.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); activate(); }
+      });
+    }
+
+    function localFlags() {
+      let f = '';
+      document.querySelectorAll('.flag-btn[data-flag]').forEach(function(btn) {
+        if (btn.classList.contains('active')) f += btn.dataset.flag;
+      });
+      return f || 'g';
+    }
+
+    function collectMatches(pattern, text, flags) {
+      const all = [];
+      const re = new RegExp(pattern, flags.indexOf('g') === -1 ? flags + 'g' : flags);
+      let m;
+      let guard = 0;
+      while ((m = re.exec(text)) !== null && guard < 5000) {
+        all.push({ index: m.index, end: m.index + m[0].length, full: m[0], groups: m.slice(1), named: m.groups || {} });
+        guard++;
+        if (m[0].length === 0) re.lastIndex++;
+      }
+      return all;
+    }
+
+    function renderHighlight(text, matches) {
+      if (!overlay) return;
+      let html = '';
+      let pos = 0;
+      matches.slice().sort(function(a, b) { return a.index - b.index; }).forEach(function(m) {
+        html += escHtml(text.slice(pos, m.index));
+        html += '<mark>' + escHtml(text.slice(m.index, m.end)) + '</mark>';
+        pos = m.end;
+      });
+      html += escHtml(text.slice(pos));
+      overlay.innerHTML = html || '';
+    }
+
+    function runLocalTest() {
+      const pattern = patternInput.value;
+      const text = testInput.value;
+      const lines = text ? text.split('\n').length : 0;
+      if (statLines) statLines.textContent = lines;
+      if (statBytes) statBytes.textContent = text.length;
+
+      if (!pattern) {
+        if (errorBox) errorBox.style.display = 'none';
+        if (statsBox) statsBox.style.display = 'none';
+        if (matchesBox) matchesBox.style.display = 'none';
+        if (overlay) overlay.innerHTML = '';
+        if (statMatches) statMatches.textContent = '0';
+        if (statGroups) statGroups.textContent = '0';
+        return;
+      }
+
+      let matches;
+      try {
+        matches = collectMatches(pattern, text, localFlags());
+        if (errorBox) errorBox.style.display = 'none';
+      } catch (e) {
+        if (errorBox) {
+          errorBox.style.display = '';
+          errorBox.textContent = e.message;
+        }
+        if (matchesBox) matchesBox.style.display = 'none';
+        if (statsBox) statsBox.style.display = 'none';
+        if (statMatches) statMatches.textContent = '0';
+        if (statGroups) statGroups.textContent = '0';
+        renderHighlight(text, []);
+        return;
+      }
+
+      lastMatches = matches;
+      const groupCount = matches.length ? matches[0].groups.length : 0;
+      if (statMatches) statMatches.textContent = matches.length;
+      if (statGroups) statGroups.textContent = groupCount;
+      if (statsBox) {
+        statsBox.style.display = '';
+        statsBox.textContent = matches.length + ' match' + (matches.length === 1 ? '' : 'es') + ' found';
+      }
+      renderHighlight(text, matches);
+
+      if (matchList && matchesBox) {
+        matchesBox.style.display = matches.length ? '' : 'none';
+        matchList.innerHTML = matches.slice(0, 100).map(function(m, i) {
+          const groups = m.groups.filter(function(g) { return g !== undefined; });
+          return '<div class="match-item"><strong>Match ' + (i + 1) + '</strong>: <code>' +
+            escHtml(m.full) + '</code>' +
+            (groups.length ? '<div class="text-sm text-muted">Groups: ' + groups.map(escHtml).join(', ') + '</div>' : '') +
+            '</div>';
+        }).join('');
+      }
+    }
+
+    document.querySelectorAll('.flag-btn[data-flag]').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        btn.classList.toggle('active');
+        runLocalTest();
+      });
+    });
+    document.querySelectorAll('.quick-pat-btn').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        patternInput.value = btn.dataset.pattern || '';
+        runLocalTest();
+        patternInput.focus();
+      });
+    });
+    setToggle('tog-linenums', true, runLocalTest);
+    setToggle('tog-groups', false, runLocalTest);
+    patternInput.addEventListener('input', function() {
+      clearTimeout(debounceTimer);
+      debounceTimer = setTimeout(runLocalTest, 200);
+    });
+    testInput.addEventListener('input', function() {
+      clearTimeout(debounceTimer);
+      debounceTimer = setTimeout(runLocalTest, 200);
+    });
+    return;
+  }
+
   /* ===== FLAGS ===== */
   const flagBtns = document.querySelectorAll('.flag-btn[data-flag]');
   flagBtns.forEach(function(btn) {

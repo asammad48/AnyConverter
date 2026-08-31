@@ -1,8 +1,22 @@
 /* JSON Formatter & Validator — with collapsible nodes */
 document.addEventListener('DOMContentLoaded', function () {
+  function byId() {
+    for (let i = 0; i < arguments.length; i++) {
+      const el = document.getElementById(arguments[i]);
+      if (el) return el;
+    }
+    return null;
+  }
+
+  function bind(el, eventName, handler) {
+    if (el) el.addEventListener(eventName, handler);
+  }
+
   const input      = document.getElementById('json-input');
-  const outputEl   = document.getElementById('json-output');
-  const fileUpload = document.getElementById('file-upload');
+  const outputEl   = byId('json-output-code', 'json-output');
+  const fileUpload = byId('file-upload', 'json-file');
+  const outputSection = document.getElementById('json-output-section');
+  const statusBar = document.getElementById('json-status');
 
   const inputStatusOk   = document.getElementById('input-status-ok');
   const inputStatusErr  = document.getElementById('input-status-err');
@@ -30,12 +44,14 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   function getIndent() {
-    const v = document.getElementById('opt-indent').value;
+    const opt = document.getElementById('opt-indent');
+    const v = opt ? opt.value : '2';
     return v === 'tab' ? '\t' : ' '.repeat(parseInt(v, 10));
   }
 
   function sortObj(obj) {
-    const sort = document.getElementById('opt-sort').value;
+    const sortOpt = document.getElementById('opt-sort');
+    const sort = sortOpt ? sortOpt.value : 'none';
     if (sort === 'none') return obj;
     const keys = Object.keys(obj).sort(sort === 'asc' ? undefined : (a,b) => b.localeCompare(a));
     const out = {};
@@ -103,7 +119,8 @@ document.addEventListener('DOMContentLoaded', function () {
         ? '[ ' + count + (count === 1 ? ' item' : ' items') + ' ]'
         : '{ ' + count + (count === 1 ? ' key' : ' keys') + ' }';
 
-      const sortedEntries = (!isArr && document.getElementById('opt-sort').value !== 'none')
+      const sortOpt = document.getElementById('opt-sort');
+      const sortedEntries = (!isArr && sortOpt && sortOpt.value !== 'none')
         ? Object.entries(sortObj(Object.fromEntries(entries)))
         : entries;
 
@@ -132,12 +149,12 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   /* ===== TOGGLE HANDLER ===== */
-  outputEl.addEventListener('click', function(e) {
+  bind(outputEl, 'click', function(e) {
     const tog = e.target.closest('.j-toggle[data-nid]');
     if (!tog) return;
     toggleNode(tog.dataset.nid);
   });
-  outputEl.addEventListener('keydown', function(e) {
+  bind(outputEl, 'keydown', function(e) {
     if (e.key !== 'Enter' && e.key !== ' ') return;
     const tog = e.target.closest('.j-toggle[data-nid]');
     if (!tog) return;
@@ -163,12 +180,12 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   /* ===== COLLAPSE / EXPAND ALL ===== */
-  document.getElementById('btn-collapse-all').addEventListener('click', function() {
+  bind(document.getElementById('btn-collapse-all'), 'click', function() {
     outputEl.querySelectorAll('.j-node-open').forEach(function(el){ el.style.display = 'none'; });
     outputEl.querySelectorAll('.j-node-body').forEach(function(el){ el.style.display = 'none'; });
     outputEl.querySelectorAll('.j-node-collapsed').forEach(function(el){ el.style.display = ''; });
   });
-  document.getElementById('btn-expand-all').addEventListener('click', function() {
+  bind(document.getElementById('btn-expand-all'), 'click', function() {
     outputEl.querySelectorAll('.j-node-open').forEach(function(el){ el.style.display = ''; });
     outputEl.querySelectorAll('.j-node-body').forEach(function(el){ el.style.display = ''; });
     outputEl.querySelectorAll('.j-node-collapsed').forEach(function(el){ el.style.display = 'none'; });
@@ -176,21 +193,31 @@ document.addEventListener('DOMContentLoaded', function () {
 
   /* ===== STATUS HELPERS ===== */
   function setInputStatus(state, msg, info) {
-    inputStatusOk.style.display  = state === 'ok'  ? '' : 'none';
-    inputStatusErr.style.display = state === 'err' ? '' : 'none';
-    if (state === 'ok')  inputStatusOk.textContent  = msg;
-    if (state === 'err') inputStatusErr.textContent = msg;
-    inputStatusInfo.style.display = info ? '' : 'none';
-    if (info) inputStatusInfo.textContent = info;
+    if (inputStatusOk) inputStatusOk.style.display  = state === 'ok'  ? '' : 'none';
+    if (inputStatusErr) inputStatusErr.style.display = state === 'err' ? '' : 'none';
+    if (state === 'ok' && inputStatusOk) inputStatusOk.textContent  = msg;
+    if (state === 'err' && inputStatusErr) inputStatusErr.textContent = msg;
+    if (inputStatusInfo) inputStatusInfo.style.display = info ? '' : 'none';
+    if (info && inputStatusInfo) inputStatusInfo.textContent = info;
+    if (statusBar) {
+      statusBar.style.display = msg || info ? '' : 'none';
+      statusBar.className = 'status-bar ' + (state === 'err' ? 'error' : state === 'ok' ? 'success' : 'info');
+      statusBar.textContent = msg || info || '';
+    }
   }
 
   function setOutputStatus(state, msg, info) {
-    outputStatusOk.style.display  = state === 'ok'  ? '' : 'none';
-    outputStatusErr.style.display = state === 'err' ? '' : 'none';
-    if (state === 'ok')  outputStatusOk.textContent  = msg;
-    if (state === 'err') outputStatusErr.textContent = msg;
-    outputStatusInfo.style.display = info ? '' : 'none';
-    if (info) outputStatusInfo.textContent = info;
+    if (outputStatusOk) outputStatusOk.style.display  = state === 'ok'  ? '' : 'none';
+    if (outputStatusErr) outputStatusErr.style.display = state === 'err' ? '' : 'none';
+    if (state === 'ok' && outputStatusOk) outputStatusOk.textContent  = msg;
+    if (state === 'err' && outputStatusErr) outputStatusErr.textContent = msg;
+    if (outputStatusInfo) outputStatusInfo.style.display = info ? '' : 'none';
+    if (info && outputStatusInfo) outputStatusInfo.textContent = info;
+    if (statusBar && state === 'err') {
+      statusBar.style.display = '';
+      statusBar.className = 'status-bar error';
+      statusBar.textContent = msg || info || '';
+    }
   }
 
   function updateStats(parsed, rawStr) {
@@ -211,6 +238,7 @@ document.addEventListener('DOMContentLoaded', function () {
   /* ===== CORE OPERATIONS ===== */
   function runFormat() {
     const raw = input.value.trim();
+    if (outputSection) outputSection.style.display = raw ? '' : 'none';
     if (!raw) {
       outputEl.innerHTML = '<span style="color:#4A5568;font-style:italic;font-size:11px">Output will appear here…</span>';
       setInputStatus(null, '', 'Paste or type JSON');
@@ -223,12 +251,14 @@ document.addEventListener('DOMContentLoaded', function () {
       const parsed = JSON.parse(raw);
       lastParsed = parsed;
       const indentChar = getIndent();
-      const formatted = JSON.stringify(parsed, null, indentChar === '\t' ? '\t' : parseInt(document.getElementById('opt-indent').value, 10));
+      const optIndent = document.getElementById('opt-indent');
+      const formatted = JSON.stringify(parsed, null, indentChar === '\t' ? '\t' : parseInt(optIndent ? optIndent.value : '2', 10));
       const lines = formatted.split('\n').length;
       const html = buildTree(parsed);
       outputEl.innerHTML = html;
       if (collapseOnLoad) {
-        document.getElementById('btn-collapse-all').click();
+        const collapseBtn = document.getElementById('btn-collapse-all');
+        if (collapseBtn) collapseBtn.click();
       }
       const s = countStats(parsed);
       setInputStatus('ok', '✓ Valid JSON', raw.length + ' chars');
@@ -250,6 +280,7 @@ document.addEventListener('DOMContentLoaded', function () {
   function runMinify() {
     const raw = input.value.trim();
     if (!raw) return;
+    if (outputSection) outputSection.style.display = '';
     try {
       const parsed = JSON.parse(raw);
       const minified = JSON.stringify(parsed);
@@ -266,6 +297,7 @@ document.addEventListener('DOMContentLoaded', function () {
   function runValidate() {
     const raw = input.value.trim();
     if (!raw) { setInputStatus(null,'','Please enter JSON to validate'); return; }
+    if (outputSection) outputSection.style.display = '';
     try {
       JSON.parse(raw);
       setInputStatus('ok', '✓ Valid JSON — no errors found', '');
@@ -280,11 +312,11 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   /* ===== ACTIONS ===== */
-  document.getElementById('btn-format').addEventListener('click', runFormat);
-  document.getElementById('btn-minify').addEventListener('click', function() { currentMode = 'minify'; runMinify(); });
-  document.getElementById('btn-validate').addEventListener('click', function() { currentMode = 'validate'; runValidate(); });
+  bind(document.getElementById('btn-format'), 'click', runFormat);
+  bind(document.getElementById('btn-minify'), 'click', function() { currentMode = 'minify'; runMinify(); });
+  bind(document.getElementById('btn-validate'), 'click', function() { currentMode = 'validate'; runValidate(); });
 
-  document.getElementById('btn-to-yaml').addEventListener('click', function() {
+  bind(document.getElementById('btn-to-yaml'), 'click', function() {
     if (!lastParsed) { window.showToast('Format JSON first', 'info'); return; }
     try {
       var yaml = jsonToYaml(lastParsed, 0);
@@ -295,7 +327,7 @@ document.addEventListener('DOMContentLoaded', function () {
     } catch(e) { window.showToast('Conversion failed: ' + e.message, 'error'); }
   });
 
-  document.getElementById('btn-to-csv').addEventListener('click', function() {
+  bind(document.getElementById('btn-to-csv'), 'click', function() {
     if (!lastParsed) { window.showToast('Format JSON first', 'info'); return; }
     try {
       var csv = jsonToCsv(lastParsed);
@@ -359,13 +391,13 @@ document.addEventListener('DOMContentLoaded', function () {
     return lines.join('\n');
   }
 
-  document.getElementById('btn-clear').addEventListener('click', function() {
+  bind(document.getElementById('btn-clear'), 'click', function() {
     input.value = '';
     runFormat();
     input.focus();
   });
 
-  document.getElementById('btn-paste').addEventListener('click', async function() {
+  bind(document.getElementById('btn-paste'), 'click', async function() {
     try {
       const text = await navigator.clipboard.readText();
       input.value = text;
@@ -375,12 +407,17 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 
-  document.getElementById('btn-copy-output').addEventListener('click', function() {
+  bind(document.getElementById('btn-copy-input'), 'click', function() {
+    window.copyToClipboard(input.value);
+  });
+
+  bind(document.getElementById('btn-copy-output'), 'click', function() {
     const raw = input.value.trim();
     if (!raw) return;
     try {
       const parsed = JSON.parse(raw);
-      const indentV = document.getElementById('opt-indent').value;
+      const optIndent = document.getElementById('opt-indent');
+      const indentV = optIndent ? optIndent.value : '2';
       const indent = indentV === 'tab' ? '\t' : parseInt(indentV, 10);
       window.copyToClipboard(JSON.stringify(parsed, null, indent));
     } catch(_) {
@@ -388,13 +425,14 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 
-  document.getElementById('btn-download').addEventListener('click', function() {
+  bind(document.getElementById('btn-download'), 'click', function() {
     const raw = input.value.trim();
     if (!raw) return;
     let content = raw;
     try {
       const parsed = JSON.parse(raw);
-      const indentV = document.getElementById('opt-indent').value;
+      const optIndent = document.getElementById('opt-indent');
+      const indentV = optIndent ? optIndent.value : '2';
       content = JSON.stringify(parsed, null, indentV === 'tab' ? '\t' : parseInt(indentV, 10));
     } catch(_) {}
     const blob = new Blob([content], { type: 'application/json' });
@@ -405,7 +443,7 @@ document.addEventListener('DOMContentLoaded', function () {
     window.showToast('Downloaded formatted.json', 'success');
   });
 
-  fileUpload.addEventListener('change', function() {
+  bind(fileUpload, 'change', function() {
     const file = fileUpload.files[0];
     if (!file) return;
     window.showToast('Loading ' + file.name + '…', 'info');
@@ -419,7 +457,7 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
   /* ===== AUTO-FORMAT ON INPUT ===== */
-  input.addEventListener('input', function() {
+  bind(input, 'input', function() {
     clearTimeout(debounceTimer);
     debounceTimer = setTimeout(function() {
       if (autoFormat) runFormat();
@@ -465,7 +503,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
   initToggle('tog-autoformat', true, function(on) {
     autoFormat = on;
-    document.getElementById('auto-format-label').textContent = 'Auto-format: ' + (on ? 'ON' : 'OFF');
+    const label = document.getElementById('auto-format-label');
+    if (label) label.textContent = 'Auto-format: ' + (on ? 'ON' : 'OFF');
   });
   initToggle('tog-collapse', false, function(on) { collapseOnLoad = on; });
   initToggle('tog-linenums', false, function(on) {
@@ -478,8 +517,8 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
   /* ===== OPTION CHANGES ===== */
-  document.getElementById('opt-indent').addEventListener('change', function() { if (autoFormat && input.value.trim()) runFormat(); });
-  document.getElementById('opt-sort').addEventListener('change', function() { if (autoFormat && input.value.trim()) runFormat(); });
+  bind(document.getElementById('opt-indent'), 'change', function() { if (autoFormat && input.value.trim()) runFormat(); });
+  bind(document.getElementById('opt-sort'), 'change', function() { if (autoFormat && input.value.trim()) runFormat(); });
 
   /* ===== FONT SIZE ===== */
   const fontSizes = [11, 13, 15, 17];
@@ -560,7 +599,7 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
   /* ===== TAB KEY IN TEXTAREA ===== */
-  input.addEventListener('keydown', function(e) {
+  bind(input, 'keydown', function(e) {
     if (e.key === 'Tab') {
       e.preventDefault();
       const s = input.selectionStart, end = input.selectionEnd;

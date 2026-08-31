@@ -150,26 +150,11 @@
     <section class="faq">
       <h2>Preguntas Frecuentes</h2>
       <div class="faq-list">
-        <details class="faq-item">
-          <summary>¿Qué es una expresión cron?</summary>
-          <p>Una expresión cron es una cadena de 5 campos (minuto hora día-del-mes mes día-de-la-semana) usada para programar tareas recurrentes en sistemas Unix/Linux. Cada campo acepta números, comodines (*), rangos (1-5), pasos (*/5) o listas (1,3,5).</p>
-        </details>
-        <details class="faq-item">
-          <summary>¿Qué significa */5?</summary>
-          <p>La notación de paso /5 significa "cada 5 unidades". Así, */5 en el campo de minutos se ejecuta cada 5 minutos (0, 5, 10, 15…). En el campo de horas, */2 se ejecutaría cada 2 horas.</p>
-        </details>
-        <details class="faq-item">
-          <summary>¿Qué significa 0 0 * * 1-5?</summary>
-          <p>Esto se ejecuta a medianoche (00:00) de lunes (1) a viernes (5), es decir, cada día laborable a medianoche.</p>
-        </details>
-        <details class="faq-item">
-          <summary>¿Puede cron ejecutarse varias veces por hora?</summary>
-          <p>Sí. Usa */N en el campo de minutos para ejecutar cada N minutos. Por ejemplo, */15 se ejecuta en los minutos 0, 15, 30 y 45 de cada hora.</p>
-        </details>
-        <details class="faq-item">
-          <summary>¿Se admiten segundos?</summary>
-          <p>El cron estándar de 5 campos no incluye segundos. Algunos sistemas usan cron de 6 campos con un campo inicial de segundos, pero este analizador sigue el estándar POSIX de 5 campos.</p>
-        </details>
+        <details class="faq-item"><summary class="faq-question">¿Qué es una expresión cron? <span class="faq-icon">+</span></summary><div class="faq-answer">Una expresión cron es una cadena de 5 campos (minuto hora día-del-mes mes día-de-la-semana) usada para programar tareas recurrentes en sistemas Unix/Linux. Cada campo acepta números, comodines (*), rangos (1-5), pasos (*/5) o listas (1,3,5).</div></details>
+        <details class="faq-item"><summary class="faq-question">¿Qué significa */5? <span class="faq-icon">+</span></summary><div class="faq-answer">La notación de paso /5 significa "cada 5 unidades". Así, */5 en el campo de minutos se ejecuta cada 5 minutos (0, 5, 10, 15…). En el campo de horas, */2 se ejecutaría cada 2 horas.</div></details>
+        <details class="faq-item"><summary class="faq-question">¿Qué significa 0 0 * * 1-5? <span class="faq-icon">+</span></summary><div class="faq-answer">Esto se ejecuta a medianoche (00:00) de lunes (1) a viernes (5), es decir, cada día laborable a medianoche.</div></details>
+        <details class="faq-item"><summary class="faq-question">¿Puede cron ejecutarse varias veces por hora? <span class="faq-icon">+</span></summary><div class="faq-answer">Sí. Usa */N en el campo de minutos para ejecutar cada N minutos. Por ejemplo, */15 se ejecuta en los minutos 0, 15, 30 y 45 de cada hora.</div></details>
+        <details class="faq-item"><summary class="faq-question">¿Se admiten segundos? <span class="faq-icon">+</span></summary><div class="faq-answer">El cron estándar de 5 campos no incluye segundos. Algunos sistemas usan cron de 6 campos con un campo inicial de segundos, pero este analizador sigue el estándar POSIX de 5 campos.</div></details>
       </div>
     </section>
     <section class="related-tools">

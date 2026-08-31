@@ -150,26 +150,11 @@
     <section class="faq">
       <h2>Ofte stillede spørgsmål</h2>
       <div class="faq-list">
-        <details class="faq-item">
-          <summary>Hvad er et cron-udtryk?</summary>
-          <p>Et cron-udtryk er en streng med 5 felter (minut time dag-i-måneden måned ugedag) brugt til at planlægge tilbagevendende opgaver i Unix/Linux-systemer. Hvert felt accepterer tal, jokertegn (*), intervaller (1-5), trin (*/5) eller lister (1,3,5).</p>
-        </details>
-        <details class="faq-item">
-          <summary>Hvad betyder */5?</summary>
-          <p>Trin-notationen /5 betyder "hver 5. enhed". Så */5 i minutfeltet kører hvert 5. minut (0, 5, 10, 15…). I timefeltet ville */2 køre hver 2. time.</p>
-        </details>
-        <details class="faq-item">
-          <summary>Hvad betyder 0 0 * * 1-5?</summary>
-          <p>Dette kører ved midnat (00:00) på alle hverdage fra mandag (1) til fredag (5), dvs. hver hverdag ved midnat.</p>
-        </details>
-        <details class="faq-item">
-          <summary>Kan cron køre flere gange i timen?</summary>
-          <p>Ja. Brug */N i minutfeltet for at køre hvert N. minut. For eksempel kører */15 ved minutterne 0, 15, 30 og 45 i hver time.</p>
-        </details>
-        <details class="faq-item">
-          <summary>Understøttes sekunder?</summary>
-          <p>Standard 5-felts cron inkluderer ikke sekunder. Nogle systemer bruger 6-felts cron med et foranstillet sekunderfelt, men denne parser følger POSIX 5-felts standarden.</p>
-        </details>
+        <details class="faq-item"><summary class="faq-question">Hvad er et cron-udtryk? <span class="faq-icon">+</span></summary><div class="faq-answer">Et cron-udtryk er en streng med 5 felter (minut time dag-i-måneden måned ugedag) brugt til at planlægge tilbagevendende opgaver i Unix/Linux-systemer. Hvert felt accepterer tal, jokertegn (*), intervaller (1-5), trin (*/5) eller lister (1,3,5).</div></details>
+        <details class="faq-item"><summary class="faq-question">Hvad betyder */5? <span class="faq-icon">+</span></summary><div class="faq-answer">Trin-notationen /5 betyder "hver 5. enhed". Så */5 i minutfeltet kører hvert 5. minut (0, 5, 10, 15…). I timefeltet ville */2 køre hver 2. time.</div></details>
+        <details class="faq-item"><summary class="faq-question">Hvad betyder 0 0 * * 1-5? <span class="faq-icon">+</span></summary><div class="faq-answer">Dette kører ved midnat (00:00) på alle hverdage fra mandag (1) til fredag (5), dvs. hver hverdag ved midnat.</div></details>
+        <details class="faq-item"><summary class="faq-question">Kan cron køre flere gange i timen? <span class="faq-icon">+</span></summary><div class="faq-answer">Ja. Brug */N i minutfeltet for at køre hvert N. minut. For eksempel kører */15 ved minutterne 0, 15, 30 og 45 i hver time.</div></details>
+        <details class="faq-item"><summary class="faq-question">Understøttes sekunder? <span class="faq-icon">+</span></summary><div class="faq-answer">Standard 5-felts cron inkluderer ikke sekunder. Nogle systemer bruger 6-felts cron med et foranstillet sekunderfelt, men denne parser følger POSIX 5-felts standarden.</div></details>
       </div>
     </section>
     <section class="related-tools">

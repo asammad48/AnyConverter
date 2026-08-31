@@ -1,15 +1,32 @@
 /* PDF Merge */
 document.addEventListener('DOMContentLoaded', function () {
-  const dropZone = document.getElementById('pdf-drop-zone');
-  const fileInput = document.getElementById('pdf-input');
-  const fileAddInput = document.getElementById('pdf-add');
-  const fileList = document.getElementById('file-list');
-  const mergeOptions = document.getElementById('merge-options');
+  function byId() {
+    for (let i = 0; i < arguments.length; i++) {
+      const el = document.getElementById(arguments[i]);
+      if (el) return el;
+    }
+    return null;
+  }
+
+  const dropZone = byId('pdf-drop-zone', 'merge-drop-zone');
+  const fileInput = byId('pdf-input', 'merge-input');
+  const fileAddInput = byId('pdf-add', 'merge-add');
+  const fileList = byId('file-list', 'merge-files');
+  const mergeOptions = byId('merge-options', 'merge-file-list');
   const totalSize = document.getElementById('total-size');
+  const statTotalSize = document.getElementById('stat-total-size');
   const mergeProgress = document.getElementById('merge-progress');
   const mergeProgressFill = document.getElementById('merge-progress-fill');
-  const mergeProgressText = document.getElementById('merge-progress-text');
+  const mergeProgressText = byId('merge-progress-text', 'merge-progress-label');
   const mergeResult = document.getElementById('merge-result');
+  const clearButton = document.getElementById('btn-clear-merge');
+  const downloadButton = byId('btn-download-merged', 'btn-download-merge');
+  const outputFilename = byId('output-filename', 'merge-output-name');
+  const mergeCount = document.getElementById('merge-count');
+  const blankSepToggle = document.getElementById('tog-blank-sep');
+  const sortAlphaToggle = document.getElementById('tog-sort-alpha');
+
+  if (!dropZone || !fileInput || !fileList || !mergeOptions || !mergeProgress || !mergeProgressFill || !mergeProgressText || !mergeResult) return;
 
   let files = [];
   let mergedBytes = null;
@@ -20,9 +37,56 @@ document.addEventListener('DOMContentLoaded', function () {
     return (bytes / 1048576).toFixed(2) + ' MB';
   }
 
+  function isToggleOn(el) {
+    return !!el && !el.classList.contains('off');
+  }
+
+  function setToggle(el, on) {
+    if (!el) return;
+    el.classList.toggle('off', !on);
+    el.setAttribute('aria-checked', on ? 'true' : 'false');
+  }
+
+  function bindToggle(el, onChange) {
+    if (!el) return;
+    function toggle() {
+      const on = el.classList.contains('off');
+      setToggle(el, on);
+      if (onChange) onChange(on);
+    }
+    el.addEventListener('click', toggle);
+    el.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        toggle();
+      }
+    });
+    const labelId = el.getAttribute('aria-labelledby');
+    const label = labelId ? document.getElementById(labelId) : null;
+    if (label) label.addEventListener('click', toggle);
+  }
+
+  function sortFilesIfNeeded() {
+    if (isToggleOn(sortAlphaToggle)) {
+      files.sort(function (a, b) {
+        return a.name.localeCompare(b.name, undefined, { sensitivity: 'base' });
+      });
+    }
+  }
+
   function renderFileList() {
+    sortFilesIfNeeded();
     fileList.innerHTML = '';
-    if (files.length === 0) { mergeOptions.style.display = 'none'; return; }
+    if (files.length === 0) {
+      mergeOptions.style.display = 'none';
+      mergeResult.style.display = 'none';
+      if (totalSize) totalSize.textContent = '';
+      if (mergeCount) mergeCount.textContent = '';
+      const fc = document.getElementById('stat-file-count');
+      if (fc) fc.textContent = '0';
+      if (statTotalSize) statTotalSize.textContent = '0 B';
+      return;
+    }
     mergeOptions.style.display = 'block';
     let total = 0;
     files.forEach(function (f, i) {
@@ -55,13 +119,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
       fileList.appendChild(li);
     });
-    totalSize.textContent = 'Total: ' + files.length + ' file(s) — ' + formatBytes(total);
+    if (totalSize) totalSize.textContent = 'Total: ' + files.length + ' file(s) — ' + formatBytes(total);
+    if (mergeCount) mergeCount.textContent = '(' + files.length + ')';
     mergeResult.style.display = 'none';
 
     const fc = document.getElementById('stat-file-count');
-    const ts = document.getElementById('stat-total-size');
     if (fc) fc.textContent = files.length;
-    if (ts) ts.textContent = formatBytes(total);
+    if (statTotalSize) statTotalSize.textContent = formatBytes(total);
   }
 
   function addFiles(newFiles) {
@@ -71,16 +135,39 @@ document.addEventListener('DOMContentLoaded', function () {
     renderFileList();
   }
 
-  dropZone.addEventListener('click', function () { fileInput.click(); });
-  dropZone.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') fileInput.click(); });
+  bindToggle(blankSepToggle);
+  bindToggle(sortAlphaToggle, function () {
+    renderFileList();
+  });
+
+  dropZone.addEventListener('click', function (e) {
+    if (e.target === fileInput) return;
+    fileInput.click();
+  });
+  dropZone.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      fileInput.click();
+    }
+  });
   dropZone.addEventListener('dragover', function (e) { e.preventDefault(); dropZone.classList.add('dragover'); });
   dropZone.addEventListener('dragleave', function () { dropZone.classList.remove('dragover'); });
   dropZone.addEventListener('drop', function (e) {
     e.preventDefault(); dropZone.classList.remove('dragover');
     addFiles(e.dataTransfer.files);
   });
+  fileInput.addEventListener('click', function (e) { e.stopPropagation(); });
   fileInput.addEventListener('change', function () { addFiles(this.files); this.value = ''; });
-  fileAddInput.addEventListener('change', function () { addFiles(this.files); this.value = ''; });
+  if (fileAddInput) fileAddInput.addEventListener('change', function () { addFiles(this.files); this.value = ''; });
+  if (clearButton) clearButton.addEventListener('click', function () {
+    files = [];
+    mergedBytes = null;
+    renderFileList();
+    fileList.innerHTML = '';
+    mergeOptions.style.display = 'none';
+    if (mergeCount) mergeCount.textContent = '';
+    if (statTotalSize) statTotalSize.textContent = '0 B';
+  });
 
   document.getElementById('btn-merge').addEventListener('click', async function () {
     if (files.length < 2) { window.showToast('Please add at least 2 PDF files', 'error'); return; }
@@ -102,6 +189,9 @@ document.addEventListener('DOMContentLoaded', function () {
         const doc = await window.PDFLib.PDFDocument.load(bytes);
         const pages = await merged.copyPages(doc, doc.getPageIndices());
         pages.forEach(function(p){ merged.addPage(p); });
+        if (isToggleOn(blankSepToggle) && i < files.length - 1) {
+          merged.addPage();
+        }
       }
       mergeProgressFill.style.width = '100%';
       mergeProgressText.textContent = 'Finalizing...';
@@ -120,11 +210,11 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 
-  document.getElementById('btn-download-merged').addEventListener('click', function () {
+  if (downloadButton) downloadButton.addEventListener('click', function () {
     if (!mergedBytes) return;
     const blob = new Blob([mergedBytes], { type: 'application/pdf' });
     const url = URL.createObjectURL(blob);
-    const filename = document.getElementById('output-filename').value || 'merged.pdf';
+    const filename = (outputFilename && outputFilename.value) || 'merged.pdf';
     const a = document.createElement('a');
     a.href = url; a.download = filename; a.click();
     URL.revokeObjectURL(url);

@@ -29,7 +29,8 @@ document.addEventListener('DOMContentLoaded', function () {
   const progMsg     = document.getElementById('prog-msg');
   const logSection  = document.getElementById('csv-log-section');
   const logEl       = document.getElementById('csv-log');
-  const genBtn      = document.getElementById('btn-generate-sql');
+  const genBtns     = Array.from(document.querySelectorAll('#btn-generate-sql'));
+  const genBtn      = genBtns[genBtns.length - 1] || document.getElementById('btn-generate-sql');
   const statRows    = document.getElementById('stat-rows');
   const statCols    = document.getElementById('stat-cols');
   const statSize    = document.getElementById('stat-size');
@@ -37,6 +38,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   /* ===== LOG ===== */
   function logMsg(text, type) {
+    if (!logSection || !logEl) return;
     logSection.style.display = '';
     const now = new Date();
     const ts  = now.toTimeString().slice(0,8);
@@ -48,8 +50,33 @@ document.addEventListener('DOMContentLoaded', function () {
     logEl.scrollTop = logEl.scrollHeight;
   }
 
+  function visibleValue(id, fallback) {
+    const els = Array.from(document.querySelectorAll('#' + id));
+    const visible = els.filter(function(el) { return el.offsetParent !== null; });
+    const el = (visible.length ? visible[visible.length - 1] : els[els.length - 1]);
+    return el ? el.value : fallback;
+  }
+
+  function setGenerateDisabled(disabled) {
+    genBtns.forEach(function(btn) { btn.disabled = disabled; });
+  }
+
+  function setGenerateBusy(btn, busy) {
+    genBtns.forEach(function(b) {
+      b.disabled = busy;
+      b.innerHTML = busy ? '<span class="spinner"></span> Generating…' : 'Generate SQL';
+    });
+    if (btn) btn.disabled = busy;
+  }
+
+  function showSqlOptions() {
+    const section = document.getElementById('sql-options-section');
+    if (section) section.style.display = '';
+  }
+
   /* ===== PROGRESS ===== */
   function setProgress(pct, msg, title) {
+    if (!progress || !progTitle || !progPct || !progFill || !progMsg) return;
     progress.classList.add('visible');
     if (title) progTitle.textContent = title;
     progPct.textContent = Math.round(pct) + '%';
@@ -58,7 +85,7 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   function hideProgress() {
-    progress.classList.remove('visible');
+    if (progress) progress.classList.remove('visible');
   }
 
   /* ===== FORMAT HELPERS ===== */
@@ -106,13 +133,16 @@ document.addEventListener('DOMContentLoaded', function () {
       if (e.dataTransfer.files[0]) loadFile(e.dataTransfer.files[0]);
     });
   }
-  fileInput.addEventListener('change', function(){ if (this.files[0]) loadFile(this.files[0]); });
+  if (fileInput) {
+    fileInput.addEventListener('click', function(e) { e.stopPropagation(); });
+    fileInput.addEventListener('change', function(){ if (this.files[0]) loadFile(this.files[0]); });
+  }
 
   /* ===== LOAD FILE WITH CHUNK PROCESSING ===== */
   function loadFile(file) {
     fileSize = file.size;
-    dropZone.style.display = 'none';
-    logEl.innerHTML = '';
+    if (dropZone) dropZone.style.display = 'none';
+    if (logEl) logEl.innerHTML = '';
     logMsg('File loaded: ' + file.name + ' (' + fmtBytes(file.size) + ')', 'ok');
     logMsg('Detecting delimiter…', '');
     setProgress(0, 'Initialising…', file.name);
@@ -158,7 +188,8 @@ document.addEventListener('DOMContentLoaded', function () {
           if (statCols) statCols.textContent = headers.length;
           renderColumnTypes();
           document.getElementById('csv-preview-section').style.display = '';
-          genBtn.disabled = false;
+          showSqlOptions();
+          setGenerateDisabled(false);
         }
 
         const dataRows = hasHeader ? rows : (chunkNum === 1 ? rows.slice(1) : rows);
@@ -228,9 +259,9 @@ document.addEventListener('DOMContentLoaded', function () {
     if (!raw) { window.showToast('Paste some CSV data first', 'info'); return; }
     if (!window.Papa) { window.showToast('CSV parser loading — please wait', 'info'); return; }
 
-    logEl.innerHTML = '';
+    if (logEl) logEl.innerHTML = '';
     logMsg('Parsing pasted CSV…', '');
-    logSection.style.display = '';
+    if (logSection) logSection.style.display = '';
 
     const hasHeader = document.getElementById('csv-header').checked;
     const delimVal  = document.getElementById('csv-delimiter').value;
@@ -263,7 +294,8 @@ document.addEventListener('DOMContentLoaded', function () {
     renderPreview();
     renderColumnTypes();
     document.getElementById('csv-preview-section').style.display = '';
-    genBtn.disabled = false;
+    showSqlOptions();
+    setGenerateDisabled(false);
 
     if (statRows) statRows.textContent = totalRows.toLocaleString();
     if (statCols) statCols.textContent = headers.length;
@@ -276,13 +308,14 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
   /* ===== CLEAR CSV ===== */
-  document.getElementById('btn-clear-csv').addEventListener('click', function() {
+  const clearCsvBtn = document.getElementById('btn-clear-csv');
+  if (clearCsvBtn) clearCsvBtn.addEventListener('click', function() {
     document.getElementById('csv-input').value = '';
     parsedData = null; headers = []; columnTypes = []; totalRows = 0;
     document.getElementById('csv-preview-section').style.display = 'none';
     document.getElementById('sql-output-section').style.display  = 'none';
-    logSection.style.display = 'none';
-    genBtn.disabled = true;
+    if (logSection) logSection.style.display = 'none';
+    setGenerateDisabled(true);
     if (statRows)  statRows.textContent  = '0';
     if (statCols)  statCols.textContent  = '0';
     if (statStmts) statStmts.textContent = '0';
@@ -375,8 +408,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
   /* ===== BUILD SQL ===== */
   function buildSQL() {
-    const tableName = document.getElementById('table-name').value || 'my_table';
-    const dialect   = document.getElementById('sql-dialect').value;
+    const tableName = visibleValue('table-name', 'my_table') || 'my_table';
+    const dialect   = visibleValue('sql-dialect', 'mysql') || 'mysql';
     const genCreate = togVal('tog-create');
     const genInsert = togVal('tog-insert');
     const genDrop   = togVal('tog-drop');
@@ -421,10 +454,9 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   /* ===== GENERATE SQL ===== */
-  genBtn.addEventListener('click', async function() {
+  async function generateSQL(btn) {
     if (!parsedData) return;
-    genBtn.disabled = true;
-    genBtn.innerHTML = '<span class="spinner"></span> Generating…';
+    setGenerateBusy(btn, true);
     await new Promise(function(r){ setTimeout(r, 0); });
     const sql = buildSQL();
     const code = document.getElementById('sql-output-code');
@@ -434,10 +466,12 @@ document.addEventListener('DOMContentLoaded', function () {
     const stmtCount = (sql.match(/INSERT INTO/g) || []).length;
     document.getElementById('sql-stats').textContent = parsedData.length.toLocaleString() + ' rows · ' + stmtCount.toLocaleString() + ' INSERT statements · ' + fmtBytes(new TextEncoder().encode(sql).length);
     if (statStmts) statStmts.textContent = stmtCount.toLocaleString();
-    genBtn.disabled = false;
-    genBtn.textContent = 'Generate SQL';
+    setGenerateBusy(btn, false);
     window.showToast('SQL generated — ' + stmtCount.toLocaleString() + ' INSERT statements', 'success');
     document.getElementById('sql-output-section').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+  genBtns.forEach(function(btn) {
+    btn.addEventListener('click', function() { generateSQL(btn); });
   });
 
   document.getElementById('btn-copy-sql').addEventListener('click', function(){

@@ -4,6 +4,14 @@
 
 No third-party backlink submissions have been posted yet. Each external listing is a public profile or public post, so final submission should happen only after confirming the exact profile text, logo/screenshot, contact email, and account credentials.
 
+Chrome exploration update, 2026-08-30: submission assets are prepared locally and Tier 1 account gates were checked. SaaSHub has a live URL-first submission form ready for user approval before continuing; Indie Hackers and likely SourceForge require login before meaningful submission work can proceed. Crunchbase showed a session verification page before the add-profile form.
+
+Submission work update, 2026-08-30: Product Hunt was created and scheduled through the logged-in launch flow. DEV Community logged-in editor had a full article draft with links and tags, previewed successfully, and was waiting at `Save Draft` / `Publish`. AlternativeTo is logged in as `asammad48`, but `Suggest new application` is disabled until the account email is verified.
+
+Product Hunt result, 2026-08-30: AnyConverter is available at `https://www.producthunt.com/products/anyconverter?launch=anyconverter`. Product Hunt displayed the launch visibility time as August 31 at 12:01am PT, shown in the browser as 12:01pm GMT+5.
+
+DEV Community result, 2026-08-31: Article is published at `https://dev.to/abdul_sammad_f1d023bbf333/validate-api-payloads-in-your-browser-without-uploading-data-5ddd`. DEV displays the post date as Aug 30. Verified the article includes working links to `https://anyconverter.io/developer-tools/`, `https://anyconverter.io/json-formatter/`, `https://anyconverter.io/base64-encoder/`, `https://anyconverter.io/url-encoder/`, `https://anyconverter.io/jwt-decoder/`, and `https://anyconverter.io/timestamp-converter/`; each returned HTTP 200 during the 2026-08-31 check.
+
 ## Safety Rules
 
 - Prioritize reputable directories, product communities, software catalogs, review sites, GitHub, and relevant editorial/community posts.
@@ -20,7 +28,17 @@ Name: AnyConverter
 
 Website: https://anyconverter.io/
 
+Company: AppSync Innovations
+
+Contact email: asammad48@gmail.com
+
 Category: Online tools, productivity tools, file conversion, PDF tools, developer utilities
+
+Prepared assets:
+
+- Logo SVG: `D:/AnyConverter_New/AnyConverter/assets/img/logo.svg`
+- Open Graph image: `D:/AnyConverter_New/AnyConverter/assets/img/og-image.png`
+- Homepage screenshot: `D:/AnyConverter_New/AnyConverter/reports/anyconverter-homepage-screenshot.png`
 
 Short description:
 AnyConverter is a free browser-based toolkit for PDF tasks, calculators, developer utilities, image conversion, productivity tools, and everyday file workflows.
@@ -57,18 +75,18 @@ Suggested anchor mix:
 
 | Target | Type | Best link | Anchor | Status | Notes |
 | --- | --- | --- | --- | --- | --- |
-| Product Hunt | Launch/community | Homepage | AnyConverter | Ready | Good for discovery and branded authority. Needs product images and account login. |
-| AlternativeTo | Software alternative directory | Homepage or hub | AnyConverter | Ready | Suitable if positioned as an alternative to Smallpdf, iLovePDF, Convertio, Browserling-style utility sites. |
-| SaaSHub | Software directory | Homepage | AnyConverter | Ready | Free listing path; use software/toolkit category. |
-| StackShare | Software/tools stack profile | Developer tools hub | AnyConverter developer tools | Ready | Useful if framed as a web/developer utility collection. |
-| SourceForge | Software listing | Homepage | AnyConverter | Ready | Better if a public repo/release is available. |
-| Crunchbase | Company/profile | Homepage | AnyConverter | Ready | Brand/profile link, not usually quick ranking power but reputable. |
+| Product Hunt | Launch/community | Homepage | AnyConverter | Scheduled/published | Product created at `https://www.producthunt.com/products/anyconverter?launch=anyconverter`. Name: AnyConverter. Tagline: "Free browser tools for PDFs, dev work and daily tasks." Tag: Productivity. Pricing: Free. Funding: Bootstrapped. Product Hunt displayed launch visibility time as August 31 at 12:01am PT / 12:01pm GMT+5. |
+| AlternativeTo | Software alternative directory | Homepage or hub | AnyConverter | Email verification required | Logged in as `asammad48`, but page says email verification is needed and `Suggest new application` is disabled until account approval. |
+| SaaSHub | Software directory | Homepage | AnyConverter | Awaiting user approval | `https://www.saashub.com/services/submit` has a live Website URL field and Continue button. Needs explicit approval before transmitting `https://anyconverter.io/` to SaaSHub. |
+| StackShare | Software/tools stack profile | Developer tools hub | AnyConverter developer tools | Route needs recheck/login | `https://stackshare.io/create-stack` returned 404 while signed out. Need sign-in and current add-tool/profile route. |
+| SourceForge | Software listing | Homepage | AnyConverter | Login likely required | `https://sourceforge.net/create/` offers Create Your Project Now and Import from GitHub. Better after public repo/release is ready. |
+| Crunchbase | Company/profile | Homepage | AnyConverter | Browser verification/login required | `https://www.crunchbase.com/add-new` showed session verification before the form. Needs user/browser verification, then registered account flow. |
 | G2 | Software review site | Homepage | AnyConverter | Needs fit check | Works if listed as productivity/PDF/software utility; reviews help later. |
 | Capterra/GetApp | Software directory | Homepage | AnyConverter | Needs fit check | Good authority, but approval may be selective. |
 | TrustRadius | Review platform | Homepage | AnyConverter | Needs fit check | Stronger once real users can review. |
-| Indie Hackers | Community launch/story | Homepage + hubs | AnyConverter | Ready | Write a build/launch post, not a thin link drop. |
+| Indie Hackers | Community launch/story | Homepage + hubs | AnyConverter | Login required | Products page is visible, but adding/voting routes point to sign-up. Use a build/launch post, not a thin link drop. |
 | Hacker News Show HN | Launch/community | Homepage | AnyConverter | Ready | Use only with a meaningful Show HN post. |
-| DEV Community | Editorial post | Developer tools hub | Free online developer tools | Ready | Publish a useful article, e.g. "How to validate and transform API payloads in the browser." |
+| DEV Community | Editorial post | Developer tools hub | Free online developer tools | Published | Published URL: `https://dev.to/abdul_sammad_f1d023bbf333/validate-api-payloads-in-your-browser-without-uploading-data-5ddd`. Title: "Validate API payloads in your browser without uploading data." Tags: `webdev`, `javascript`, `productivity`, `tooling`. Verified links to developer hub and JSON/Base64/URL/JWT/timestamp tools on 2026-08-31. |
 | GitHub repository README | Owned public repo | Homepage + hubs | AnyConverter | Implemented locally | README now includes hub links; backlink becomes live after pushing to public GitHub. |
 
 ## Tier 2: Secondary But Acceptable Targets

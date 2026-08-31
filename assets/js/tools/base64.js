@@ -1,5 +1,13 @@
 /* Base64 Encoder & Decoder */
 document.addEventListener('DOMContentLoaded', function () {
+  function byId() {
+    for (let i = 0; i < arguments.length; i++) {
+      const el = document.getElementById(arguments[i]);
+      if (el) return el;
+    }
+    return null;
+  }
+
   function togOn(id) {
     const el = document.getElementById(id);
     return el ? !el.classList.contains('off') : false;
@@ -44,9 +52,31 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
   // Text mode
-  const textInput = document.getElementById('text-input');
-  const textOutput = document.getElementById('text-output');
-  const textStatus = document.getElementById('text-status');
+  const textInput = byId('text-input', 'b64-input');
+  const textOutput = byId('text-output', 'b64-output-code');
+  const textStatus = byId('text-status', 'b64-output-section');
+
+  function getOutputValue(el) {
+    return el && 'value' in el ? el.value : el ? el.textContent : '';
+  }
+
+  function setOutputValue(el, value) {
+    if (!el) return;
+    if ('value' in el) el.value = value;
+    else el.textContent = value;
+  }
+
+  function showTextResult() {
+    const section = document.getElementById('b64-output-section');
+    if (section) section.style.display = 'block';
+  }
+
+  function setStatus(text, type) {
+    if (!textStatus || textStatus.id === 'b64-output-section') return;
+    textStatus.textContent = text;
+    textStatus.className = 'status-bar ' + type;
+    textStatus.style.display = 'flex';
+  }
 
   function encodeText() {
     const val = textInput.value;
@@ -55,15 +85,12 @@ document.addEventListener('DOMContentLoaded', function () {
       let encoded = btoa(unescape(encodeURIComponent(val)));
       encoded = applyUrlSafe(encoded);
       encoded = applyLinewrap(encoded);
-      textOutput.value = encoded;
+      setOutputValue(textOutput, encoded);
       updateStats(val, encoded);
-      textStatus.textContent = '✓ Encoded successfully';
-      textStatus.className = 'status-bar success';
-      textStatus.style.display = 'flex';
+      showTextResult();
+      setStatus('✓ Encoded successfully', 'success');
     } catch (e) {
-      textStatus.textContent = '✗ Encoding failed: ' + e.message;
-      textStatus.className = 'status-bar error';
-      textStatus.style.display = 'flex';
+      setStatus('✗ Encoding failed: ' + e.message, 'error');
     }
   }
 
@@ -72,15 +99,12 @@ document.addEventListener('DOMContentLoaded', function () {
     if (!val) return;
     try {
       const decoded = decodeURIComponent(escape(atob(val)));
-      textOutput.value = decoded;
+      setOutputValue(textOutput, decoded);
       updateStats(val, decoded);
-      textStatus.textContent = '✓ Decoded successfully';
-      textStatus.className = 'status-bar success';
-      textStatus.style.display = 'flex';
+      showTextResult();
+      setStatus('✓ Decoded successfully', 'success');
     } catch (e) {
-      textStatus.textContent = '✗ Invalid Base64: ' + e.message;
-      textStatus.className = 'status-bar error';
-      textStatus.style.display = 'flex';
+      setStatus('✗ Invalid Base64: ' + e.message, 'error');
     }
   }
 
@@ -93,19 +117,38 @@ document.addEventListener('DOMContentLoaded', function () {
     const encodeBtn = document.getElementById('btn-encode');
     const decodeBtn = document.getElementById('btn-decode');
     const isEncode = mode === 'encode';
-    encodeBtn.classList.toggle('active', isEncode);
-    decodeBtn.classList.toggle('active', !isEncode);
-    encodeBtn.setAttribute('aria-selected', isEncode);
-    decodeBtn.setAttribute('aria-selected', !isEncode);
+    if (encodeBtn) {
+      encodeBtn.classList.toggle('active', isEncode);
+      encodeBtn.setAttribute('aria-selected', isEncode);
+    }
+    if (decodeBtn) {
+      decodeBtn.classList.toggle('active', !isEncode);
+      decodeBtn.setAttribute('aria-selected', !isEncode);
+    }
   }
 
-  document.getElementById('btn-encode').addEventListener('click', function() {
+  const encodeBtn = document.getElementById('btn-encode');
+  const decodeBtn = document.getElementById('btn-decode');
+  if (encodeBtn) encodeBtn.addEventListener('click', function() {
     setTextMode('encode');
     encodeText();
   });
-  document.getElementById('btn-decode').addEventListener('click', function() {
+  if (decodeBtn) decodeBtn.addEventListener('click', function() {
     setTextMode('decode');
     decodeText();
+  });
+
+  const convertBtn = document.getElementById('btn-b64-convert');
+  if (convertBtn) convertBtn.addEventListener('click', function () {
+    const checked = document.querySelector('input[name="b64-mode"]:checked');
+    setTextMode(checked && checked.value === 'decode' ? 'decode' : 'encode');
+    if (liveMode === 'decode') decodeText();
+    else encodeText();
+  });
+  document.querySelectorAll('input[name="b64-mode"]').forEach(function (radio) {
+    radio.addEventListener('change', function () {
+      if (radio.checked) setTextMode(radio.value === 'decode' ? 'decode' : 'encode');
+    });
   });
 
   // Live conversion: runs 350ms after user stops typing
@@ -113,8 +156,8 @@ document.addEventListener('DOMContentLoaded', function () {
     clearTimeout(liveTimer);
     liveTimer = setTimeout(function() {
       if (!textInput.value) {
-        textOutput.value = '';
-        textStatus.style.display = 'none';
+        setOutputValue(textOutput, '');
+        if (textStatus) textStatus.style.display = 'none';
         return;
       }
       if (liveMode === 'encode') encodeText();
@@ -122,30 +165,30 @@ document.addEventListener('DOMContentLoaded', function () {
     }, 350);
   });
 
-  document.getElementById('btn-swap').addEventListener('click', function () {
+  byId('btn-swap', 'btn-b64-swap').addEventListener('click', function () {
     const tmp = textInput.value;
-    textInput.value = textOutput.value;
-    textOutput.value = tmp;
+    textInput.value = getOutputValue(textOutput);
+    setOutputValue(textOutput, tmp);
   });
 
-  document.getElementById('btn-clear-text').addEventListener('click', function () {
+  byId('btn-clear-text', 'btn-b64-clear').addEventListener('click', function () {
     textInput.value = '';
-    textOutput.value = '';
-    textStatus.style.display = 'none';
+    setOutputValue(textOutput, '');
+    if (textStatus) textStatus.style.display = 'none';
   });
 
-  document.getElementById('btn-copy-text').addEventListener('click', function () {
-    window.copyToClipboard(textOutput.value);
+  byId('btn-copy-text', 'btn-b64-copy').addEventListener('click', function () {
+    window.copyToClipboard(getOutputValue(textOutput));
   });
 
   // File mode
-  const fileDropZone = document.getElementById('file-drop-zone');
-  const fileInput = document.getElementById('file-input');
-  const fileResult = document.getElementById('file-result');
-  const fileInfo = document.getElementById('file-info');
-  const fileOutput = document.getElementById('file-output');
+  const fileDropZone = byId('file-drop-zone', 'b64-file-drop');
+  const fileInput = byId('file-input', 'b64-file-input');
+  const fileResult = byId('file-result', 'b64-file-result');
+  const fileInfo = byId('file-info', 'b64-file-info');
+  const fileOutput = byId('file-output', 'b64-file-output');
   const dataUrlOutput = document.getElementById('data-url-output');
-  const imagePreviewB64 = document.getElementById('image-preview-b64');
+  const imagePreviewB64 = byId('image-preview-b64', 'b64-img-preview');
   const b64PreviewImg = document.getElementById('b64-preview-img');
 
   function formatBytes(bytes) {
@@ -160,8 +203,8 @@ document.addEventListener('DOMContentLoaded', function () {
       const dataUrl = e.target.result;
       const b64 = dataUrl.split(',')[1];
       fileInfo.textContent = file.name + ' — ' + formatBytes(file.size) + ' — ' + file.type;
-      fileOutput.value = b64;
-      dataUrlOutput.value = dataUrl;
+      setOutputValue(fileOutput, b64);
+      if (dataUrlOutput) dataUrlOutput.value = dataUrl;
       fileResult.style.display = 'block';
 
       if (file.type.startsWith('image/')) {
@@ -177,7 +220,7 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   fileDropZone.addEventListener('click', function () { fileInput.click(); });
-  fileDropZone.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') fileInput.click(); });
+  fileDropZone.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); fileInput.click(); } });
   fileDropZone.addEventListener('dragover', function (e) { e.preventDefault(); fileDropZone.classList.add('dragover'); });
   fileDropZone.addEventListener('dragleave', function () { fileDropZone.classList.remove('dragover'); });
   fileDropZone.addEventListener('drop', function (e) {
@@ -188,17 +231,20 @@ document.addEventListener('DOMContentLoaded', function () {
   fileInput.addEventListener('change', function () {
     if (this.files[0]) encodeFile(this.files[0]);
   });
+  fileInput.addEventListener('click', function (e) { e.stopPropagation(); });
 
-  document.getElementById('btn-copy-b64').addEventListener('click', function () {
-    window.copyToClipboard(fileOutput.value);
+  byId('btn-copy-b64', 'btn-b64-file-copy').addEventListener('click', function () {
+    window.copyToClipboard(getOutputValue(fileOutput));
   });
 
-  document.getElementById('btn-copy-dataurl').addEventListener('click', function () {
+  const copyDataUrlBtn = document.getElementById('btn-copy-dataurl');
+  if (copyDataUrlBtn) copyDataUrlBtn.addEventListener('click', function () {
     window.copyToClipboard(dataUrlOutput.value);
   });
 
-  document.getElementById('btn-download-b64').addEventListener('click', function () {
-    const content = fileOutput.value;
+  const downloadB64Btn = document.getElementById('btn-download-b64');
+  if (downloadB64Btn) downloadB64Btn.addEventListener('click', function () {
+    const content = getOutputValue(fileOutput);
     if (!content) return;
     const blob = new Blob([content], { type: 'text/plain' });
     const url = URL.createObjectURL(blob);
@@ -214,7 +260,7 @@ document.addEventListener('DOMContentLoaded', function () {
     el.addEventListener('click', function() {
       el.classList.toggle('off');
       el.setAttribute('aria-checked', !el.classList.contains('off'));
-      if (textInput.value && textOutput.value) encodeText();
+      if (textInput.value && getOutputValue(textOutput)) encodeText();
     });
   });
 });

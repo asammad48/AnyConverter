@@ -1,7 +1,21 @@
 /* XML Formatter & Validator */
 document.addEventListener('DOMContentLoaded', function () {
+  function byId() {
+    for (let i = 0; i < arguments.length; i++) {
+      const el = document.getElementById(arguments[i]);
+      if (el) return el;
+    }
+    return null;
+  }
+
+  function bind(el, eventName, handler) {
+    if (el) el.addEventListener(eventName, handler);
+  }
+
   const input     = document.getElementById('xml-input');
-  const outputEl  = document.getElementById('xml-output');
+  const outputEl  = byId('xml-output-code', 'xml-output');
+  const outputSection = document.getElementById('xml-output-section');
+  const statusBar = document.getElementById('xml-status');
   const inputOk   = document.getElementById('input-ok');
   const inputErr  = document.getElementById('input-err');
   const inputInfo = document.getElementById('input-info');
@@ -13,26 +27,37 @@ document.addEventListener('DOMContentLoaded', function () {
   let debounceTimer;
 
   function getIndent() {
-    const v = document.getElementById('opt-indent').value;
+    const opt = document.getElementById('opt-indent');
+    const v = opt ? opt.value : '2';
     return v === 'tab' ? '\t' : ' '.repeat(parseInt(v, 10));
   }
 
   function setInputStatus(state, msg, info) {
-    inputOk.style.display  = state === 'ok'  ? '' : 'none';
-    inputErr.style.display = state === 'err' ? '' : 'none';
-    if (state === 'ok')  inputOk.textContent  = msg;
-    if (state === 'err') inputErr.textContent = msg;
-    inputInfo.style.display = info ? '' : 'none';
-    if (info) inputInfo.textContent = info;
+    if (inputOk) inputOk.style.display  = state === 'ok'  ? '' : 'none';
+    if (inputErr) inputErr.style.display = state === 'err' ? '' : 'none';
+    if (state === 'ok' && inputOk) inputOk.textContent  = msg;
+    if (state === 'err' && inputErr) inputErr.textContent = msg;
+    if (inputInfo) inputInfo.style.display = info ? '' : 'none';
+    if (info && inputInfo) inputInfo.textContent = info;
+    if (statusBar) {
+      statusBar.style.display = msg || info ? '' : 'none';
+      statusBar.className = 'status-bar ' + (state === 'err' ? 'error' : state === 'ok' ? 'success' : 'info');
+      statusBar.textContent = msg || info || '';
+    }
   }
 
   function setOutputStatus(state, msg, info) {
-    outputOk.style.display  = state === 'ok'  ? '' : 'none';
-    outputErr.style.display = state === 'err' ? '' : 'none';
-    if (state === 'ok')  outputOk.textContent  = msg;
-    if (state === 'err') outputErr.textContent = msg;
-    outputInfo.style.display = info ? '' : 'none';
-    if (info) outputInfo.textContent = info;
+    if (outputOk) outputOk.style.display  = state === 'ok'  ? '' : 'none';
+    if (outputErr) outputErr.style.display = state === 'err' ? '' : 'none';
+    if (state === 'ok' && outputOk) outputOk.textContent  = msg;
+    if (state === 'err' && outputErr) outputErr.textContent = msg;
+    if (outputInfo) outputInfo.style.display = info ? '' : 'none';
+    if (info && outputInfo) outputInfo.textContent = info;
+    if (statusBar && state === 'err') {
+      statusBar.style.display = '';
+      statusBar.className = 'status-bar error';
+      statusBar.textContent = msg || info || '';
+    }
   }
 
   function parseXML(str) {
@@ -110,6 +135,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   function formatXML() {
     const raw = input.value.trim();
+    if (outputSection) outputSection.style.display = raw ? '' : 'none';
     if (!raw) {
       outputEl.innerHTML = '<span style="color:#4A5568;font-style:italic;font-size:11px">Output will appear here…</span>';
       setInputStatus(null, '', 'Paste or type XML');
@@ -137,6 +163,9 @@ document.addEventListener('DOMContentLoaded', function () {
     // Display with syntax colors
     const escaped = escXml(formatted);
     outputEl.innerHTML = colorizeXml(escaped);
+    if (outputEl.parentElement && outputEl.parentElement.tagName === 'PRE') {
+      outputEl.parentElement.style.whiteSpace = 'pre-wrap';
+    }
 
     const stats = countElements(root, 0);
     setInputStatus('ok', '✓ Valid XML', raw.length + ' chars');
@@ -158,6 +187,7 @@ document.addEventListener('DOMContentLoaded', function () {
   function minifyXML() {
     const raw = input.value.trim();
     if (!raw) return;
+    if (outputSection) outputSection.style.display = '';
     const result = parseXML(raw);
     if (result.error) { setInputStatus('err', '✕ ' + result.error, ''); return; }
     const minified = new XMLSerializer().serializeToString(result.doc)
@@ -171,6 +201,7 @@ document.addEventListener('DOMContentLoaded', function () {
   function validateXML() {
     const raw = input.value.trim();
     if (!raw) { setInputStatus(null,'','Please enter XML'); return; }
+    if (outputSection) outputSection.style.display = '';
     const result = parseXML(raw);
     if (result.error) {
       setInputStatus('err', '✕ ' + result.error, '');
@@ -186,13 +217,13 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   /* ===== ACTIONS ===== */
-  document.getElementById('btn-format').addEventListener('click', formatXML);
-  document.getElementById('btn-minify').addEventListener('click', minifyXML);
-  document.getElementById('btn-validate').addEventListener('click', validateXML);
-  document.getElementById('btn-clear').addEventListener('click', function() { input.value = ''; formatXML(); });
-  document.getElementById('btn-copy-input').addEventListener('click', function() { window.copyToClipboard(input.value); });
-  document.getElementById('btn-copy-output').addEventListener('click', function() { window.copyToClipboard(outputEl.textContent); });
-  document.getElementById('btn-download').addEventListener('click', function() {
+  bind(byId('btn-format', 'btn-format-xml'), 'click', formatXML);
+  bind(byId('btn-minify', 'btn-minify-xml'), 'click', minifyXML);
+  bind(byId('btn-validate', 'btn-validate-xml'), 'click', validateXML);
+  bind(byId('btn-clear', 'btn-clear-xml'), 'click', function() { input.value = ''; formatXML(); });
+  bind(document.getElementById('btn-copy-input'), 'click', function() { window.copyToClipboard(input.value); });
+  bind(byId('btn-copy-output', 'btn-copy-xml'), 'click', function() { window.copyToClipboard(outputEl.textContent); });
+  bind(byId('btn-download', 'btn-download-xml'), 'click', function() {
     const content = outputEl.textContent;
     if (!content || content.includes('Output will appear here')) return;
     const blob = new Blob([content], { type: 'text/xml' });
@@ -202,7 +233,7 @@ document.addEventListener('DOMContentLoaded', function () {
     URL.revokeObjectURL(url);
     window.showToast('Downloaded formatted.xml', 'success');
   });
-  document.getElementById('file-upload').addEventListener('change', function() {
+  bind(byId('file-upload', 'xml-file'), 'change', function() {
     const file = this.files[0];
     if (!file) return;
     const reader = new FileReader();
@@ -212,7 +243,7 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
   /* ===== AUTO-FORMAT ===== */
-  input.addEventListener('input', function() {
+  bind(input, 'input', function() {
     clearTimeout(debounceTimer);
     debounceTimer = setTimeout(function() {
       if (autoFormat) formatXML();
@@ -247,7 +278,8 @@ document.addEventListener('DOMContentLoaded', function () {
       el.setAttribute('aria-checked', !cur);
       if (id === 'tog-auto') {
         autoFormat = !cur;
-        document.getElementById('auto-label').textContent = 'Auto-format: ' + (!cur ? 'ON' : 'OFF');
+        const autoLabel = document.getElementById('auto-label');
+        if (autoLabel) autoLabel.textContent = 'Auto-format: ' + (!cur ? 'ON' : 'OFF');
       }
       if (id === 'tog-decl' && autoFormat && input.value.trim()) formatXML();
     }
@@ -256,5 +288,5 @@ document.addEventListener('DOMContentLoaded', function () {
   }
   initToggle('tog-auto', true);
   initToggle('tog-decl', true);
-  document.getElementById('opt-indent').addEventListener('change', function() { if (autoFormat && input.value.trim()) formatXML(); });
+  bind(document.getElementById('opt-indent'), 'change', function() { if (autoFormat && input.value.trim()) formatXML(); });
 });
