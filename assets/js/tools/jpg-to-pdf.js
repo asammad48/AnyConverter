@@ -20,7 +20,7 @@
     Array.from(files).forEach(function (f, i) {
       var item = document.createElement('div');
       item.style.cssText = 'display:flex;align-items:center;gap:8px;padding:6px 0;border-bottom:1px solid var(--color-border-light,#ECE7DF);font-size:13px';
-      item.innerHTML = '<span style="color:var(--color-text-2,#3F3A36)">' + (i+1) + '.</span><span>' + f.name + '</span><span style="color:#9898C0;margin-left:auto">' + (f.size/1024).toFixed(1) + ' KB</span>';
+      item.innerHTML = '<span style="color:var(--color-text-2,#3F3A36)">' + (i+1) + '.</span><span>' + f.name + '</span><span style="color:var(--color-text-3,#7C7169);margin-left:auto">' + (f.size/1024).toFixed(1) + ' KB</span>';
       list.appendChild(item);
     });
     document.getElementById('j2p-controls').style.display = 'block';

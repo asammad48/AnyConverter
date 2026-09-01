@@ -35,23 +35,23 @@
 <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
   <style>
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-    html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F4F6FF);color:var(--color-text,#151515)}
+    html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F7F6F3);color:var(--color-text,#151515)}
     body{min-height:100vh;display:flex;flex-direction:column}
-    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8FE)}
+    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8D0)}
     .header-inner{max-width:1280px;width:100%;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;gap:32px}
     .hero{padding:40px 24px 32px;max-width:1280px;margin:0 auto}
     .hero h1{font-size:clamp(1.75rem,4vw,2.25rem);font-weight:700;line-height:1.2;margin-bottom:12px}
     .hero-desc{font-size:1.0625rem;color:var(--color-text-2,#6B7280);max-width:680px;line-height:1.6}
     @font-face{font-family:'Inter';font-display:swap}
     .mic-meter-wrap{background:var(--color-surface-2,#F5F1EE);border-radius:12px;padding:24px;margin:8px 0}
-    .mic-meter-track{background:var(--color-border,#DDD8FE);border-radius:99px;height:32px;overflow:hidden;margin:12px 0}
+    .mic-meter-track{background:var(--color-border,#DDD8D0);border-radius:99px;height:32px;overflow:hidden;margin:12px 0}
     #mic-bar{height:100%;width:0%;border-radius:99px;background:var(--color-primary,#B04A45);transition:width .05s}
     .mic-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:8px}
     .mic-stat{background:var(--color-surface,#fff);border-radius:8px;padding:12px;text-align:center}
     .mic-stat-val{font-size:1.25rem;font-weight:700;color:var(--color-primary,#B04A45)}
     .mic-stat-label{font-size:11px;color:var(--color-text-2,#6B7280);font-weight:600;text-transform:uppercase;letter-spacing:.5px;margin-top:2px}
   </style>
-  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="/assets/css/style.css?v=20260902">
 </head>
 <body>
   <header id="site-header" class="site-header"></header>
@@ -141,7 +141,7 @@
     </section>
   </main>
   <footer id="site-footer" class="site-footer"></footer>
-  <script src="/assets/js/shared.js" defer></script>
+  <script src="/assets/js/shared.js?v=20260902" defer></script>
   <script src="/assets/js/tools/microphone-tester.js" defer></script>
 </body>
 </html>

@@ -35,9 +35,9 @@
 <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
   <style>
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-    html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F4F6FF);color:var(--color-text,#151515)}
+    html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F7F6F3);color:var(--color-text,#151515)}
     body{min-height:100vh;display:flex;flex-direction:column}
-    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8FE)}
+    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8D0)}
     .header-inner{max-width:1280px;width:100%;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;gap:32px}
     .hero{padding:40px 24px 32px;max-width:1280px;margin:0 auto}
     .hero h1{font-size:clamp(1.75rem,4vw,2.25rem);font-weight:700;line-height:1.2;margin-bottom:12px}
@@ -47,16 +47,16 @@
     .kb-board{display:flex;flex-direction:column;gap:4px}
     .kb-nav{display:flex;flex-direction:column;gap:4px}
     .kb-row{display:flex;gap:4px;align-items:stretch}
-    .kb-key{display:inline-flex;align-items:center;justify-content:center;min-width:40px;height:40px;padding:0 6px;background:var(--color-surface,#fff);border:1px solid var(--color-border,#DDD8FE);border-radius:6px;font-size:11px;font-weight:600;color:#444;cursor:default;user-select:none;transition:background .1s,color .1s;white-space:nowrap;flex:1}
+    .kb-key{display:inline-flex;align-items:center;justify-content:center;min-width:40px;height:40px;padding:0 6px;background:var(--color-surface,#fff);border:1px solid var(--color-border,#DDD8D0);border-radius:6px;font-size:11px;font-weight:600;color:#444;cursor:default;user-select:none;transition:background .1s,color .1s;white-space:nowrap;flex:1}
     .kb-key--active{background:var(--color-primary,#B04A45) !important;color:var(--color-surface,#fff) !important;border-color:var(--color-primary,#B04A45)}
-    .kb-log-row{display:flex;gap:8px;align-items:center;padding:4px 0;border-bottom:1px solid var(--color-bg,#F4F6FF);font-size:12px}
+    .kb-log-row{display:flex;gap:8px;align-items:center;padding:4px 0;border-bottom:1px solid var(--color-bg,#F7F6F3);font-size:12px}
     .kb-log-type{padding:2px 6px;border-radius:4px;font-weight:600;font-size:11px}
     .kb-log-type--down{background:var(--color-primary-light,#F3E7E4);color:var(--color-primary,#B04A45)}
     .kb-log-type--up{background:var(--color-success-bg,#ECFDF5);color:var(--color-success,#059669)}
     .kb-log-code{font-family:monospace;color:#666}
     .kb-log-key{font-weight:600}
   </style>
-  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="/assets/css/style.css?v=20260902">
 </head>
 <body>
   <header id="site-header" class="site-header"></header>
@@ -78,7 +78,7 @@
           <div id="keyboard-wrap"></div>
           <div style="margin-top:20px">
             <div style="font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.5px;color:var(--color-text-2,#6B7280);margin-bottom:8px">Registro de Teclas</div>
-            <div id="kb-log" style="max-height:140px;overflow-y:auto;border:1px solid var(--color-border,#DDD8FE);border-radius:8px;padding:8px 12px"></div>
+            <div id="kb-log" style="max-height:140px;overflow-y:auto;border:1px solid var(--color-border,#DDD8D0);border-radius:8px;padding:8px 12px"></div>
           </div>
         </div>
       </div>
@@ -141,7 +141,7 @@
     </section>
   </main>
   <footer id="site-footer" class="site-footer"></footer>
-  <script src="/assets/js/shared.js" defer></script>
+  <script src="/assets/js/shared.js?v=20260902" defer></script>
   <script src="/assets/js/tools/keyboard-tester.js" defer></script>
 </body>
 </html>

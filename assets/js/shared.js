@@ -187,7 +187,7 @@
   <nav aria-label="Mobile navigation">
     <ul>
       <li><a href="/">🏠 All Tools</a></li>
-      <li style="padding:6px 0 2px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:#9898C0;pointer-events:none">Developer</li>
+      <li style="padding:6px 0 2px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--color-text-3,#7C7169);pointer-events:none">Developer</li>
       <li><a href="/json-formatter/">JSON Formatter</a></li>
       <li><a href="/xml-formatter/">XML Formatter</a></li>
       <li><a href="/regex-tester/">Regex Tester</a></li>
@@ -200,7 +200,7 @@
       <li><a href="/password-strength-checker/">Password Strength</a></li>
       <li><a href="/ip-address-lookup/">IP Address Lookup</a></li>
       <li><a href="/screen-resolution/">Screen Resolution</a></li>
-      <li style="padding:6px 0 2px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:#9898C0;pointer-events:none">Text &amp; Writing</li>
+      <li style="padding:6px 0 2px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--color-text-3,#7C7169);pointer-events:none">Text &amp; Writing</li>
       <li><a href="/word-counter/">Word Counter</a></li>
       <li><a href="/character-counter/">Character Counter</a></li>
       <li><a href="/text-case-converter/">Text Case Converter</a></li>
@@ -211,7 +211,7 @@
       <li><a href="/morse-code-converter/">Morse Code Converter</a></li>
       <li><a href="/text-repeater/">Text Repeater</a></li>
       <li><a href="/number-to-words/">Number to Words</a></li>
-      <li style="padding:6px 0 2px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:#9898C0;pointer-events:none">Data &amp; Conversion</li>
+      <li style="padding:6px 0 2px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--color-text-3,#7C7169);pointer-events:none">Data &amp; Conversion</li>
       <li><a href="/csv-to-sql/">CSV to SQL</a></li>
       <li><a href="/csv-query/">CSV Query</a></li>
       <li><a href="/timestamp-converter/">Timestamp Converter</a></li>
@@ -223,7 +223,7 @@
       <li><a href="/roman-numeral-converter/">Roman Numeral</a></li>
       <li><a href="/image-converter/">Image Converter</a></li>
       <li><a href="/image-compressor/">Image Compressor</a></li>
-      <li style="padding:6px 0 2px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:#9898C0;pointer-events:none">PDF Tools</li>
+      <li style="padding:6px 0 2px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--color-text-3,#7C7169);pointer-events:none">PDF Tools</li>
       <li><a href="/pdf-merge/">PDF Merge</a></li>
       <li><a href="/pdf-split/">PDF Split</a></li>
       <li><a href="/pdf-compress/">PDF Compress</a></li>
@@ -248,7 +248,7 @@
       <li><a href="/edit-pdf/">Edit PDF</a></li>
       <li><a href="/redact-pdf/">Redact PDF</a></li>
       <li><a href="/compare-pdf/">Compare PDF</a></li>
-      <li style="padding:6px 0 2px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:#9898C0;pointer-events:none">Productivity &amp; Utility</li>
+      <li style="padding:6px 0 2px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--color-text-3,#7C7169);pointer-events:none">Productivity &amp; Utility</li>
       <li><a href="/stopwatch/">Stopwatch</a></li>
       <li><a href="/countdown-timer/">Countdown Timer</a></li>
       <li><a href="/todo-list/">To-do List</a></li>
@@ -262,7 +262,7 @@
       <li><a href="/random-picker/">Random Picker</a></li>
       <li><a href="/decision-maker/">Decision Maker</a></li>
       <li><a href="/team-picker/">Team Picker</a></li>
-      <li style="padding:6px 0 2px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:#9898C0;pointer-events:none">General Public</li>
+      <li style="padding:6px 0 2px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--color-text-3,#7C7169);pointer-events:none">General Public</li>
       <li><a href="/age-calculator/">Age Calculator</a></li>
       <li><a href="/bmi-calculator/">BMI Calculator</a></li>
       <li><a href="/calorie-calculator/">Calorie Calculator</a></li>
@@ -273,7 +273,7 @@
       <li><a href="/world-clock/">World Clock</a></li>
       <li><a href="/sleep-calculator/">Sleep Calculator</a></li>
       <li><a href="/blood-type-compatibility/">Blood Type Compatibility</a></li>
-      <li style="padding:6px 0 2px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:#9898C0;pointer-events:none">Finance</li>
+      <li style="padding:6px 0 2px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--color-text-3,#7C7169);pointer-events:none">Finance</li>
       <li><a href="/currency-converter/">Currency Converter</a></li>
       <li><a href="/compound-interest-calculator/">Compound Interest</a></li>
       <li><a href="/loan-calculator/">Loan Calculator</a></li>
@@ -282,14 +282,14 @@
       <li><a href="/percentage-calculator/">Percentage Calculator</a></li>
       <li><a href="/gst-vat-calculator/">GST / VAT Calculator</a></li>
       <li><a href="/tip-calculator/">Tip Calculator</a></li>
-      <li style="padding:6px 0 2px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:#9898C0;pointer-events:none">CSS &amp; Design</li>
+      <li style="padding:6px 0 2px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--color-text-3,#7C7169);pointer-events:none">CSS &amp; Design</li>
       <li><a href="/css-gradient-generator/">CSS Gradient Generator</a></li>
       <li><a href="/css-shadow-generator/">CSS Shadow Generator</a></li>
       <li><a href="/px-to-rem/">PX to REM</a></li>
       <li><a href="/aspect-ratio-calculator/">Aspect Ratio Calculator</a></li>
       <li><a href="/privacy-policy-generator/">Privacy Policy Generator</a></li>
       <li><a href="/random-number-generator/">Random Number Generator</a></li>
-      <li style="padding:6px 0 2px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:#9898C0;pointer-events:none">Browser Tools</li>
+      <li style="padding:6px 0 2px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--color-text-3,#7C7169);pointer-events:none">Browser Tools</li>
       <li><a href="/internet-speed-test/">Internet Speed Test</a></li>
       <li><a href="/keyboard-tester/">Keyboard Tester</a></li>
       <li><a href="/mouse-tester/">Mouse Tester</a></li>

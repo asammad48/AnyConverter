@@ -35,16 +35,16 @@
 <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
   <style>
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-    html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F4F6FF);color:var(--color-text,#151515)}
+    html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F7F6F3);color:var(--color-text,#151515)}
     body{min-height:100vh;display:flex;flex-direction:column}
-    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8FE)}
+    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8D0)}
     .header-inner{max-width:1280px;width:100%;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;gap:32px}
     .hero{padding:40px 24px 32px;max-width:1280px;margin:0 auto}
     .hero h1{font-size:clamp(1.75rem,4vw,2.25rem);font-weight:700;line-height:1.2;margin-bottom:12px}
     .hero-desc{font-size:1.0625rem;color:var(--color-text-2,#6B7280);max-width:680px;line-height:1.6}
     @font-face{font-family:'Inter';font-display:swap}
   </style>
-  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="/assets/css/style.css?v=20260902">
 </head>
 <body>
   <header id="site-header" class="site-header"></header>
@@ -76,8 +76,8 @@
               <div class="stat-card" style="flex:1;margin-right:8px"><div class="stat-val" id="tst-wpm">0</div><div class="stat-lbl">PPM</div></div>
               <div class="stat-card" style="flex:1"><div class="stat-val" id="tst-acc">100%</div><div class="stat-lbl">Precisión</div></div>
             </div>
-            <div id="tst-text-display" style="font-size:18px;line-height:1.8;padding:16px;background:var(--color-surface,#fff);border:1px solid var(--color-border,#DDD8FE);border-radius:8px;margin-bottom:12px;letter-spacing:0.02em;user-select:none"></div>
-            <textarea id="tst-input" placeholder="Empieza a escribir aquí..." style="width:100%;padding:12px;border:1px solid var(--color-border,#DDD8FE);border-radius:8px;font-size:16px;resize:none;height:80px" spellcheck="false" autocomplete="off" autocorrect="off"></textarea>
+            <div id="tst-text-display" style="font-size:18px;line-height:1.8;padding:16px;background:var(--color-surface,#fff);border:1px solid var(--color-border,#DDD8D0);border-radius:8px;margin-bottom:12px;letter-spacing:0.02em;user-select:none"></div>
+            <textarea id="tst-input" placeholder="Empieza a escribir aquí..." style="width:100%;padding:12px;border:1px solid var(--color-border,#DDD8D0);border-radius:8px;font-size:16px;resize:none;height:80px" spellcheck="false" autocomplete="off" autocorrect="off"></textarea>
             <div class="action-bar" style="margin-top:8px">
               <button class="btn btn-secondary" id="btn-restart-test">Reiniciar</button>
             </div>
@@ -166,7 +166,7 @@
     </section>
   </main>
   <footer id="site-footer" class="site-footer"></footer>
-  <script src="/assets/js/shared.js" defer></script>
+  <script src="/assets/js/shared.js?v=20260902" defer></script>
   <script src="/assets/js/tools/typing-speed-test.js" defer></script>
 </body>
 </html>

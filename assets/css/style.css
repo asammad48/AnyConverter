@@ -1247,6 +1247,19 @@ mark.regex-match { background: rgba(255,200,0,0.4); color: transparent; border-r
     width: 100%;
     min-height: 0;
   }
+  .tool-side[aria-label="Advertisement"],
+  .tool-side[aria-label="Publicidad"],
+  .tool-side[aria-label="Reklame"] {
+    display: none;
+  }
+  .tool-side:has(> div > .ad-label):not(:has(.ss-divider)):not(:has(.tog-row)):not(:has(.stats-grid)):not(:has(.ss-option-row)):not(:has(input)):not(:has(select)):not(:has(button)) {
+    display: none;
+  }
+  .tool-side > div:has(> .ad-label),
+  .tool-side .ad-label,
+  .tool-side .ad-slot {
+    display: none;
+  }
 }
 
 /* ===== AC-PANEL (white block) ===== */

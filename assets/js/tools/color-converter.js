@@ -189,5 +189,5 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
   // Init
-  updateFromHex('#5B5BD6');
+  updateFromHex('#B04A45');
 });

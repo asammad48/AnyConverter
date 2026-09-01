@@ -35,16 +35,16 @@
 <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
   <style>
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-    html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F4F6FF);color:var(--color-text,#151515)}
+    html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F7F6F3);color:var(--color-text,#151515)}
     body{min-height:100vh;display:flex;flex-direction:column}
-    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8FE)}
+    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8D0)}
     .header-inner{max-width:1280px;width:100%;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;gap:32px}
     .hero{padding:40px 24px 32px;max-width:1280px;margin:0 auto}
     .hero h1{font-size:clamp(1.75rem,4vw,2.25rem);font-weight:700;line-height:1.2;margin-bottom:12px}
     .hero-desc{font-size:1.0625rem;color:var(--color-text-2,#6B7280);max-width:680px;line-height:1.6}
     @font-face{font-family:'Inter';font-display:swap}
   </style>
-  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="/assets/css/style.css?v=20260902">
 </head>
 <body>
   <header id="site-header" class="site-header"></header>
@@ -66,27 +66,27 @@
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px">
             <div>
               <label style="display:block;font-size:13px;font-weight:500;margin-bottom:6px" for="cal-age">Alder (år)</label>
-              <input type="number" id="cal-age" placeholder="30" min="15" max="100" style="width:100%;padding:10px 12px;border:1px solid var(--color-border,#DDD8FE);border-radius:8px;font-size:15px">
+              <input type="number" id="cal-age" placeholder="30" min="15" max="100" style="width:100%;padding:10px 12px;border:1px solid var(--color-border,#DDD8D0);border-radius:8px;font-size:15px">
             </div>
             <div>
               <label style="display:block;font-size:13px;font-weight:500;margin-bottom:6px">Køn</label>
               <div style="display:flex;gap:8px">
-                <label style="display:flex;align-items:center;gap:6px;font-size:14px;cursor:pointer;padding:8px 12px;border:1px solid var(--color-border,#DDD8FE);border-radius:8px;flex:1"><input type="radio" name="cal-gender" value="male" checked> Mand</label>
-                <label style="display:flex;align-items:center;gap:6px;font-size:14px;cursor:pointer;padding:8px 12px;border:1px solid var(--color-border,#DDD8FE);border-radius:8px;flex:1"><input type="radio" name="cal-gender" value="female"> Kvinde</label>
+                <label style="display:flex;align-items:center;gap:6px;font-size:14px;cursor:pointer;padding:8px 12px;border:1px solid var(--color-border,#DDD8D0);border-radius:8px;flex:1"><input type="radio" name="cal-gender" value="male" checked> Mand</label>
+                <label style="display:flex;align-items:center;gap:6px;font-size:14px;cursor:pointer;padding:8px 12px;border:1px solid var(--color-border,#DDD8D0);border-radius:8px;flex:1"><input type="radio" name="cal-gender" value="female"> Kvinde</label>
               </div>
             </div>
             <div>
               <label style="display:block;font-size:13px;font-weight:500;margin-bottom:6px" for="cal-weight">Vægt (<span id="cal-wunit">kg</span>)</label>
-              <input type="number" id="cal-weight" placeholder="70" min="1" style="width:100%;padding:10px 12px;border:1px solid var(--color-border,#DDD8FE);border-radius:8px;font-size:15px">
+              <input type="number" id="cal-weight" placeholder="70" min="1" style="width:100%;padding:10px 12px;border:1px solid var(--color-border,#DDD8D0);border-radius:8px;font-size:15px">
             </div>
             <div>
               <label style="display:block;font-size:13px;font-weight:500;margin-bottom:6px" for="cal-height">Højde (<span id="cal-hunit">cm</span>)</label>
-              <input type="number" id="cal-height" placeholder="175" min="1" style="width:100%;padding:10px 12px;border:1px solid var(--color-border,#DDD8FE);border-radius:8px;font-size:15px">
+              <input type="number" id="cal-height" placeholder="175" min="1" style="width:100%;padding:10px 12px;border:1px solid var(--color-border,#DDD8D0);border-radius:8px;font-size:15px">
             </div>
           </div>
           <div style="margin-bottom:16px">
             <label style="display:block;font-size:13px;font-weight:500;margin-bottom:6px" for="cal-activity">Aktivitetsniveau</label>
-            <select id="cal-activity" style="width:100%;padding:10px 12px;border:1px solid var(--color-border,#DDD8FE);border-radius:8px;font-size:14px">
+            <select id="cal-activity" style="width:100%;padding:10px 12px;border:1px solid var(--color-border,#DDD8D0);border-radius:8px;font-size:14px">
               <option value="1.2">Stillesiddende (lidt eller ingen motion)</option>
               <option value="1.375">Let aktiv (1-3 dage/uge)</option>
               <option value="1.55" selected>Moderat aktiv (3-5 dage/uge)</option>
@@ -180,7 +180,7 @@
     </section>
   </main>
   <footer id="site-footer" class="site-footer"></footer>
-  <script src="/assets/js/shared.js" defer></script>
+  <script src="/assets/js/shared.js?v=20260902" defer></script>
   <script src="/assets/js/tools/calorie-calculator.js" defer></script>
 </body>
 </html>

@@ -35,7 +35,7 @@
 <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
   <style>
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-    html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F4F6FF);color:var(--color-text,#151515)}
+    html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F7F6F3);color:var(--color-text,#151515)}
     body{min-height:100vh;display:flex;flex-direction:column}
     .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8D0)}
     .header-inner{max-width:1280px;width:100%;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;gap:32px}
@@ -47,12 +47,12 @@
     #mouse-canvas{position:absolute;inset:0;width:100%;height:100%}
     #mouse-area-hint{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:var(--color-text-2,#6B7280);font-size:14px;pointer-events:none}
     .mouse-stat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px}
-    .mouse-stat{background:var(--color-bg,#F4F6FF);border:1px solid var(--color-border,#DDD8D0);border-radius:10px;padding:14px;text-align:center}
+    .mouse-stat{background:var(--color-bg,#F7F6F3);border:1px solid var(--color-border,#DDD8D0);border-radius:10px;padding:14px;text-align:center}
     .mouse-stat-val{font-size:1.5rem;font-weight:700;color:var(--color-primary,#B04A45)}
     .mouse-stat-label{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.5px;color:var(--color-text-2,#6B7280);margin-top:4px}
     .mouse-btn--active{background:var(--color-primary,#B04A45) !important;color:var(--color-surface,#fff) !important}
   </style>
-  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="/assets/css/style.css?v=20260902">
 </head>
 <body>
   <header id="site-header" class="site-header"></header>
@@ -77,9 +77,9 @@
             <div class="mouse-stat"><div class="mouse-stat-val" id="mouse-right">0</div><div class="mouse-stat-label">Right Clicks</div></div>
           </div>
           <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:12px;font-size:13px">
-            <div style="background:var(--color-bg,#F4F6FF);border:1px solid var(--color-border,#DDD8D0);border-radius:8px;padding:10px;text-align:center">X: <strong id="mouse-x">—</strong></div>
-            <div style="background:var(--color-bg,#F4F6FF);border:1px solid var(--color-border,#DDD8D0);border-radius:8px;padding:10px;text-align:center">Y: <strong id="mouse-y">—</strong></div>
-            <div style="background:var(--color-bg,#F4F6FF);border:1px solid var(--color-border,#DDD8D0);border-radius:8px;padding:10px;text-align:center">Scroll: <strong id="mouse-scroll">—</strong></div>
+            <div style="background:var(--color-bg,#F7F6F3);border:1px solid var(--color-border,#DDD8D0);border-radius:8px;padding:10px;text-align:center">X: <strong id="mouse-x">—</strong></div>
+            <div style="background:var(--color-bg,#F7F6F3);border:1px solid var(--color-border,#DDD8D0);border-radius:8px;padding:10px;text-align:center">Y: <strong id="mouse-y">—</strong></div>
+            <div style="background:var(--color-bg,#F7F6F3);border:1px solid var(--color-border,#DDD8D0);border-radius:8px;padding:10px;text-align:center">Scroll: <strong id="mouse-scroll">—</strong></div>
           </div>
           <div style="margin-top:12px;display:flex;gap:12px;align-items:center">
             <div id="mouse-btn-left" style="padding:8px 16px;border-radius:8px;background:var(--color-primary-light,#F3E7E4);color:var(--color-primary,#B04A45);font-weight:600;font-size:13px;transition:all .1s">Left Button</div>
@@ -148,7 +148,7 @@
 
   </main>
   <footer id="site-footer" class="site-footer"></footer>
-  <script src="/assets/js/shared.js" defer></script>
+  <script src="/assets/js/shared.js?v=20260902" defer></script>
   <script src="/assets/js/tools/mouse-tester.js" defer></script>
 </body>
 </html>

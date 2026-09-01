@@ -12,6 +12,43 @@ document.addEventListener('DOMContentLoaded', function () {
   const prefixInput = document.getElementById('split-prefix');
   const selectedStat = document.getElementById('stat-sel-p');
   const partsStat = document.getElementById('stat-parts');
+  const lang = (document.documentElement.lang || 'en').slice(0, 2);
+  const messageCatalog = {
+    en: {
+      pages: 'pages',
+      loadingLibrary: 'PDF library loading, please wait',
+      readError: 'Could not read PDF: ',
+      download: 'Download ',
+      processing: 'Processing...',
+      libraryStillLoading: 'PDF library still loading',
+      enterRanges: 'Please enter page ranges',
+      noValidPages: 'No valid pages in range',
+      splitError: 'Error splitting PDF: '
+    },
+    es: {
+      pages: 'páginas',
+      loadingLibrary: 'La biblioteca PDF se está cargando, espera un momento',
+      readError: 'No se pudo leer el PDF: ',
+      download: 'Descargar ',
+      processing: 'Procesando...',
+      libraryStillLoading: 'La biblioteca PDF todavía se está cargando',
+      enterRanges: 'Introduce rangos de páginas',
+      noValidPages: 'No hay páginas válidas en el rango',
+      splitError: 'Error al dividir el PDF: '
+    },
+    da: {
+      pages: 'sider',
+      loadingLibrary: 'PDF-biblioteket indlæses, vent et øjeblik',
+      readError: 'PDF kunne ikke læses: ',
+      download: 'Hent ',
+      processing: 'Behandler...',
+      libraryStillLoading: 'PDF-biblioteket indlæses stadig',
+      enterRanges: 'Indtast sideintervaller',
+      noValidPages: 'Ingen gyldige sider i intervallet',
+      splitError: 'Fejl ved deling af PDF: '
+    }
+  };
+  const messages = messageCatalog[lang] || messageCatalog.en;
 
   let splitMode = 'pages';
   let pdfBytes = null;
@@ -62,12 +99,12 @@ document.addEventListener('DOMContentLoaded', function () {
     const reader = new FileReader();
     reader.onload = async function (e) {
       pdfBytes = new Uint8Array(e.target.result);
-      if (!window.PDFLib) { window.showToast('PDF library loading, please wait', 'info'); return; }
+      if (!window.PDFLib) { window.showToast(messages.loadingLibrary, 'info'); return; }
       try {
         const doc = await window.PDFLib.PDFDocument.load(pdfBytes);
         totalPages = doc.getPageCount();
         lastOutputs = [];
-        fileInfoBar.textContent = file.name + ' — ' + totalPages + ' pages — ' + formatBytes(file.size);
+        fileInfoBar.textContent = file.name + ' - ' + totalPages + ' ' + messages.pages + ' - ' + formatBytes(file.size);
         splitSettings.style.display = 'block';
         splitResult.style.display = 'none';
         const sp = document.getElementById('stat-total-p');
@@ -75,7 +112,7 @@ document.addEventListener('DOMContentLoaded', function () {
         if (sp) sp.textContent = totalPages;
         if (ss) ss.textContent = formatBytes(file.size);
       } catch(e) {
-        window.showToast('Could not read PDF: ' + e.message, 'error');
+        window.showToast(messages.readError + e.message, 'error');
       }
     };
     reader.readAsArrayBuffer(file);
@@ -216,7 +253,7 @@ document.addEventListener('DOMContentLoaded', function () {
     if (isToggleOn(zipToggle)) {
       const zipBtn = document.createElement('button');
       zipBtn.className = 'btn btn-primary btn-full';
-      zipBtn.textContent = 'Download ' + prefix + '.zip ↓';
+      zipBtn.textContent = messages.download + prefix + '.zip ↓';
       zipBtn.addEventListener('click', function () {
         downloadZip(outputs, prefix + '.zip');
       });
@@ -227,7 +264,7 @@ document.addEventListener('DOMContentLoaded', function () {
     outputs.forEach(function (output, index) {
       const btn2 = document.createElement('button');
       btn2.className = (index === 0 ? 'btn btn-primary' : 'btn btn-secondary') + ' btn-full mb-2';
-      btn2.textContent = 'Download ' + output.name + ' ↓';
+      btn2.textContent = messages.download + output.name + ' ↓';
       btn2.addEventListener('click', function () {
         downloadPdf(output.bytes, output.name);
       });
@@ -246,12 +283,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
   document.getElementById('btn-split').addEventListener('click', async function () {
     if (!pdfBytes || !totalPages) return;
-    if (!window.PDFLib) { window.showToast('PDF library still loading', 'info'); return; }
+    if (!window.PDFLib) { window.showToast(messages.libraryStillLoading, 'info'); return; }
 
     const mode = splitMode;
     const btn = document.getElementById('btn-split');
     const originalBtnText = btn.textContent;
-    btn.disabled = true; btn.textContent = 'Processing...';
+    btn.disabled = true; btn.textContent = messages.processing;
     splitDownloads.innerHTML = '';
 
     try {
@@ -261,9 +298,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
       if (mode === 'pages') {
         const rangeStr = document.getElementById('page-range').value.trim();
-        if (!rangeStr) { window.showToast('Please enter page ranges', 'error'); return; }
+        if (!rangeStr) { window.showToast(messages.enterRanges, 'error'); return; }
         const pages = parsePageRanges(rangeStr, totalPages);
-        if (pages.length === 0) { window.showToast('No valid pages in range', 'error'); return; }
+        if (pages.length === 0) { window.showToast(messages.noValidPages, 'error'); return; }
         const bytes = await extractPages(pages);
         selectedCount = pages.length;
         outputs.push({ bytes: bytes, name: prefix + '_pages_' + pages.join('_') + '.pdf' });
@@ -298,7 +335,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
       splitResult.style.display = 'block';
     } catch(e) {
-      window.showToast('Error splitting PDF: ' + e.message, 'error');
+      window.showToast(messages.splitError + e.message, 'error');
     } finally {
       btn.disabled = false; btn.textContent = originalBtnText;
     }

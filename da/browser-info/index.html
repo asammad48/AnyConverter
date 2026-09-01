@@ -35,20 +35,20 @@
 <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
   <style>
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-    html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F4F6FF);color:var(--color-text,#151515)}
+    html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F7F6F3);color:var(--color-text,#151515)}
     body{min-height:100vh;display:flex;flex-direction:column}
-    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8FE)}
+    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8D0)}
     .header-inner{max-width:1280px;width:100%;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;gap:32px}
     .hero{padding:40px 24px 32px;max-width:1280px;margin:0 auto}
     .hero h1{font-size:clamp(1.75rem,4vw,2.25rem);font-weight:700;line-height:1.2;margin-bottom:12px}
     .hero-desc{font-size:1.0625rem;color:var(--color-text-2,#6B7280);max-width:680px;line-height:1.6}
     @font-face{font-family:'Inter';font-display:swap}
     #browser-info-table{width:100%;border-collapse:collapse}
-    #browser-info-table th{text-align:left;padding:9px 12px;font-size:13px;font-weight:600;color:var(--color-text-2,#6B7280);background:var(--color-bg,#F4F6FF);width:40%;border-bottom:1px solid var(--color-border,#DDD8FE)}
-    #browser-info-table td{padding:9px 12px;font-size:13px;border-bottom:1px solid var(--color-border,#DDD8FE);font-family:'JetBrains Mono',monospace}
+    #browser-info-table th{text-align:left;padding:9px 12px;font-size:13px;font-weight:600;color:var(--color-text-2,#6B7280);background:var(--color-bg,#F7F6F3);width:40%;border-bottom:1px solid var(--color-border,#DDD8D0)}
+    #browser-info-table td{padding:9px 12px;font-size:13px;border-bottom:1px solid var(--color-border,#DDD8D0);font-family:'JetBrains Mono',monospace}
     #browser-info-table tr:hover td,#browser-info-table tr:hover th{background:var(--color-surface-2,#F5F1EE)}
   </style>
-  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="/assets/css/style.css?v=20260902">
 </head>
 <body>
   <header id="site-header" class="site-header"></header>
@@ -66,7 +66,7 @@
           <div style="margin-bottom:12px;display:flex;justify-content:flex-end">
             <button class="btn btn-primary btn-sm" id="browser-copy">Kopiér Alt</button>
           </div>
-          <div style="border:1px solid var(--color-border,#DDD8FE);border-radius:10px;overflow:hidden">
+          <div style="border:1px solid var(--color-border,#DDD8D0);border-radius:10px;overflow:hidden">
             <table id="browser-info-table"><tbody></tbody></table>
           </div>
         </div>
@@ -129,7 +129,7 @@
     </section>
   </main>
   <footer id="site-footer" class="site-footer"></footer>
-  <script src="/assets/js/shared.js" defer></script>
+  <script src="/assets/js/shared.js?v=20260902" defer></script>
   <script src="/assets/js/tools/browser-info.js" defer></script>
 </body>
 </html>
