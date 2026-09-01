@@ -33,7 +33,7 @@
   <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
   <style>
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-    html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F4F6FF);color:var(--color-text,#1E1B4B)}
+    html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F7F6F3);color:var(--color-text,#151515)}
     body{min-height:100vh;display:flex;flex-direction:column}
     .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8D0)}
     .header-inner{max-width:1280px;width:100%;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;gap:32px}
@@ -42,19 +42,19 @@
     .page-wrap{max-width:860px;margin:0 auto;padding:44px 24px 80px}
     .page-wrap h1{font-size:clamp(1.8rem,4vw,2.4rem);font-weight:800;line-height:1.2;margin-bottom:8px}
     .page-meta{font-size:14px;color:var(--color-text-2,#6B7280);margin-bottom:40px}
-    h2{font-size:1.15rem;font-weight:700;color:var(--color-text,#1E1B4B);margin:40px 0 16px;padding-bottom:8px;border-bottom:2px solid var(--color-primary-light,#EEF2FF)}
+    h2{font-size:1.15rem;font-weight:700;color:var(--color-text,#151515);margin:40px 0 16px;padding-bottom:8px;border-bottom:2px solid var(--color-primary-light,#F3E7E4)}
     p{font-size:15px;line-height:1.78;color:var(--color-text-body,#374151);margin-bottom:14px}
     ul{padding-left:22px;margin-bottom:14px}
     li{font-size:15px;line-height:1.78;color:var(--color-text-body,#374151);margin-bottom:6px}
-    a{color:var(--color-primary,#4F46E5)}
-    strong{color:var(--color-text,#1E1B4B)}
+    a{color:var(--color-primary,#B04A45)}
+    strong{color:var(--color-text,#151515)}
     .fact-table{width:100%;border-collapse:collapse;margin:16px 0}
-    .fact-table th{background:var(--color-primary-light,#EEF2FF);padding:10px 16px;text-align:left;font-weight:600;font-size:14px;color:var(--color-primary,#4F46E5);border:1px solid var(--color-border-light,#E0E7FF);width:34%}
-    .fact-table td{padding:10px 16px;border:1px solid var(--color-border-light,#E0E7FF);font-size:15px;color:var(--color-text-body,#374151)}
-    .fact-table tr:nth-child(even) td{background:var(--color-surface-2,#EEF1FF)}
-    .logo-preview{background:linear-gradient(135deg,var(--color-text,#1E1B4B),#3730A3);border-radius:16px;padding:48px;text-align:center;margin:16px 0 8px}
+    .fact-table th{background:var(--color-primary-light,#F3E7E4);padding:10px 16px;text-align:left;font-weight:600;font-size:14px;color:var(--color-primary,#B04A45);border:1px solid var(--color-border-light,#ECE7DF);width:34%}
+    .fact-table td{padding:10px 16px;border:1px solid var(--color-border-light,#ECE7DF);font-size:15px;color:var(--color-text-body,#374151)}
+    .fact-table tr:nth-child(even) td{background:var(--color-surface-2,#F5F1EE)}
+    .logo-preview{background:linear-gradient(135deg,var(--color-text,#151515),#3F3A36);border-radius:16px;padding:48px;text-align:center;margin:16px 0 8px}
     .logo-preview-inner{display:inline-flex;align-items:center;gap:12px}
-    .logo-preview-icon{width:44px;height:44px;background:linear-gradient(135deg,var(--color-primary-alt,#6366F1),var(--color-primary,#4F46E5));border-radius:10px;display:flex;align-items:center;justify-content:center}
+    .logo-preview-icon{width:44px;height:44px;background:linear-gradient(135deg,var(--color-primary-alt,#C28A3D),var(--color-primary,#B04A45));border-radius:10px;display:flex;align-items:center;justify-content:center}
     .logo-preview-text{font-size:1.5rem;font-weight:800;color:var(--color-surface,#fff)}
     .logo-note{font-size:13px;color:var(--color-text-2,#6B7280);margin-bottom:24px}
     .color-swatches{display:flex;gap:12px;flex-wrap:wrap;margin:16px 0}
@@ -63,15 +63,15 @@
     .swatch-hex{font-size:12px;font-family:monospace;opacity:0.8}
     .usage-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:16px 0}
     @media(max-width:540px){.usage-grid{grid-template-columns:1fr}}
-    .usage-box{background:var(--color-surface,#fff);border:1.5px solid var(--color-border-light,#E0E7FF);border-radius:12px;padding:20px}
+    .usage-box{background:var(--color-surface,#fff);border:1.5px solid var(--color-border-light,#ECE7DF);border-radius:12px;padding:20px}
     .usage-box h3{font-size:14px;font-weight:700;color:var(--color-success,#16A34A);margin-bottom:8px}
     .usage-box h3.dont{color:var(--color-error,#DC2626)}
     .usage-box ul{padding-left:18px;margin:0}
     .usage-box li{font-size:13.5px;color:var(--color-text-body,#374151);margin-bottom:4px}
-    .press-contact{background:linear-gradient(135deg,var(--color-primary-light,#EEF2FF),var(--color-surface-2,#EEF1FF));border-radius:16px;padding:32px;text-align:center;margin-top:16px}
+    .press-contact{background:linear-gradient(135deg,var(--color-primary-light,#F3E7E4),var(--color-surface-2,#F5F1EE));border-radius:16px;padding:32px;text-align:center;margin-top:16px}
     .press-contact h3{font-size:1.1rem;font-weight:700;margin-bottom:8px}
     .press-contact p{font-size:15px;color:var(--color-text-body,#374151);margin-bottom:16px}
-    .press-contact a.btn{display:inline-block;background:var(--color-primary,#4F46E5);color:var(--color-surface,#fff);font-weight:700;padding:11px 24px;border-radius:9999px;text-decoration:none;font-size:14px}
+    .press-contact a.btn{display:inline-block;background:var(--color-primary,#B04A45);color:var(--color-surface,#fff);font-weight:700;padding:11px 24px;border-radius:9999px;text-decoration:none;font-size:14px}
   </style>
   <link rel="stylesheet" href="/assets/css/style.css">
 </head>
@@ -135,21 +135,21 @@
       <p class="logo-note">Logo vist på mørk baggrund. SVG-format. For logofiler, kontakt <a href="mailto:press@anyconverter.io">press@anyconverter.io</a>.</p>
 
       <div class="color-swatches">
-        <div class="swatch" style="background:var(--color-primary,#4F46E5);color:var(--color-surface,#fff)">
-          <div class="swatch-name">Primær Indigo</div>
-          <div class="swatch-hex">var(--color-primary,#4F46E5)</div>
+        <div class="swatch" style="background:var(--color-primary,#B04A45);color:var(--color-surface,#fff)">
+          <div class="swatch-name">Primær Rød</div>
+          <div class="swatch-hex">var(--color-primary,#B04A45)</div>
         </div>
-        <div class="swatch" style="background:var(--color-primary-alt,#6366F1);color:var(--color-surface,#fff)">
-          <div class="swatch-name">Lys Indigo</div>
-          <div class="swatch-hex">var(--color-primary-alt,#6366F1)</div>
+        <div class="swatch" style="background:var(--color-primary-alt,#C28A3D);color:var(--color-surface,#fff)">
+          <div class="swatch-name">Accentguld</div>
+          <div class="swatch-hex">var(--color-primary-alt,#C28A3D)</div>
         </div>
-        <div class="swatch" style="background:var(--color-text,#1E1B4B);color:var(--color-surface,#fff)">
-          <div class="swatch-name">Dyb Marineblå</div>
-          <div class="swatch-hex">var(--color-text,#1E1B4B)</div>
+        <div class="swatch" style="background:var(--color-text,#151515);color:var(--color-surface,#fff)">
+          <div class="swatch-name">Kulsort</div>
+          <div class="swatch-hex">var(--color-text,#151515)</div>
         </div>
-        <div class="swatch" style="background:var(--color-primary-light,#EEF2FF);color:var(--color-primary,#4F46E5);border:1.5px solid var(--color-border-light,#E0E7FF)">
-          <div class="swatch-name">Baggrundstone</div>
-          <div class="swatch-hex">var(--color-primary-light,#EEF2FF)</div>
+        <div class="swatch" style="background:var(--color-primary-light,#F3E7E4);color:var(--color-primary,#B04A45);border:1.5px solid var(--color-border-light,#ECE7DF)">
+          <div class="swatch-name">Varm Tone</div>
+          <div class="swatch-hex">var(--color-primary-light,#F3E7E4)</div>
         </div>
       </div>
 

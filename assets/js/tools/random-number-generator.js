@@ -33,7 +33,7 @@
       list.style.display = 'flex';
       nums.forEach(function(n) {
         var span = document.createElement('span');
-        span.style.cssText = 'padding:6px 12px;background:#fff;border:1px solid #E4E4EF;border-radius:6px;font-family:monospace;font-weight:600;font-size:14px';
+        span.style.cssText = 'padding:6px 12px;background:var(--color-surface,#fff);border:1px solid var(--color-border,#DDD8D0);border-radius:6px;font-family:monospace;font-weight:600;font-size:14px';
         span.textContent = n;
         list.appendChild(span);
       });

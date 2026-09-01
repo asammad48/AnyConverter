@@ -2,7 +2,7 @@
   function addRow() {
     var tbody = document.getElementById('inv-items');
     var tr = document.createElement('tr');
-    tr.innerHTML = '<td><input type="text" class="inv-desc" placeholder="Item description" style="width:100%;padding:6px 8px;border:1px solid #E4E4EF;border-radius:4px;font-size:13px"></td><td><input type="number" class="inv-qty" value="1" min="0" style="width:60px;padding:6px 8px;border:1px solid #E4E4EF;border-radius:4px;font-size:13px"></td><td><input type="number" class="inv-rate" value="0" min="0" step="0.01" style="width:80px;padding:6px 8px;border:1px solid #E4E4EF;border-radius:4px;font-size:13px"></td><td class="inv-amount" style="padding:6px 8px;font-size:13px;text-align:right">0.00</td><td><button type="button" class="btn btn-secondary btn-sm inv-remove" style="padding:4px 8px">×</button></td>';
+    tr.innerHTML = '<td><input type="text" class="inv-desc" placeholder="Item description" style="width:100%;padding:6px 8px;border:1px solid var(--color-border,#DDD8D0);border-radius:4px;font-size:13px"></td><td><input type="number" class="inv-qty" value="1" min="0" style="width:60px;padding:6px 8px;border:1px solid var(--color-border,#DDD8D0);border-radius:4px;font-size:13px"></td><td><input type="number" class="inv-rate" value="0" min="0" step="0.01" style="width:80px;padding:6px 8px;border:1px solid var(--color-border,#DDD8D0);border-radius:4px;font-size:13px"></td><td class="inv-amount" style="padding:6px 8px;font-size:13px;text-align:right">0.00</td><td><button type="button" class="btn btn-secondary btn-sm inv-remove" style="padding:4px 8px">×</button></td>';
     tbody.appendChild(tr);
     bindRow(tr);
     recalc();

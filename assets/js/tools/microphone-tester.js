@@ -33,7 +33,7 @@
       var avg = sum / data.length;
       var pct = Math.min(100, (avg / 128) * 100 * 2);
       bar.style.width = pct + '%';
-      bar.style.background = pct > 80 ? '#EF4444' : pct > 50 ? '#F59E0B' : '#4F46E5';
+      bar.style.background = pct > 80 ? '#EF4444' : pct > 50 ? '#F59E0B' : 'var(--color-primary,#B04A45)';
 
       // Approximate dB
       var db = avg > 0 ? Math.round(20 * Math.log10(avg / 128)) : -60;

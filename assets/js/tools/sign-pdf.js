@@ -26,7 +26,7 @@
   function initCanvas() {
     var canvas = document.getElementById('sp-canvas');
     var ctx = canvas.getContext('2d');
-    ctx.strokeStyle = '#1E1B4B'; ctx.lineWidth = 2.5;
+    ctx.strokeStyle = '#151515'; ctx.lineWidth = 2.5;
     ctx.lineCap = 'round'; ctx.lineJoin = 'round';
 
     function start(e) { e.preventDefault(); drawing = true; var p = getPos(canvas, e); lastX = p.x; lastY = p.y; }

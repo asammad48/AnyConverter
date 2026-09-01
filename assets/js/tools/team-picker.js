@@ -8,11 +8,11 @@
   const shuffleEl = document.getElementById('tp-shuffle');
 
   const TEAM_COLORS = [
-    '#DDD8FE', '#D1FAE5', '#FEF3C7', '#FCE7F3', '#DBEAFE',
+    '#F3E7E4', '#D1FAE5', '#FEF3C7', '#FCE7F3', '#DBEAFE',
     '#FFE4E6', '#ECFDF5', '#FEF9C3'
   ];
   const TEAM_TEXT = [
-    '#4F46E5', '#059669', '#D97706', '#DB2777', '#2563EB',
+    'var(--color-primary,#B04A45)', '#059669', '#D97706', '#DB2777', '#2563EB',
     '#DC2626', '#047857', '#B45309'
   ];
 
@@ -58,7 +58,7 @@
         const fg = TEAM_TEXT[i % TEAM_TEXT.length];
         return `<div style="background:${bg};border-radius:10px;padding:14px;">
           <div style="font-weight:700;font-size:13px;color:${fg};margin-bottom:8px">Team ${i + 1} (${team.length})</div>
-          ${team.map(m => `<div style="font-size:13px;padding:3px 0;color:#374151">• ${escHtml(m)}</div>`).join('')}
+          ${team.map(m => `<div style="font-size:13px;padding:3px 0;color:var(--color-text-body,#6F625A)">• ${escHtml(m)}</div>`).join('')}
         </div>`;
       }).join('') + '</div>';
   }

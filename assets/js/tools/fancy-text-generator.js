@@ -25,9 +25,9 @@
     STYLES.forEach(function(style) {
       var fancy = applyStyle(text, style);
       var row = document.createElement('div');
-      row.style.cssText = 'display:flex;align-items:center;gap:8px;padding:10px 12px;background:#fff;border:1px solid #E4E4EF;border-radius:8px';
+      row.style.cssText = 'display:flex;align-items:center;gap:8px;padding:10px 12px;background:var(--color-surface,#fff);border:1px solid var(--color-border,#DDD8D0);border-radius:8px';
       var label = document.createElement('span');
-      label.style.cssText = 'font-size:11px;color:#9CA3AF;min-width:80px;flex-shrink:0';
+      label.style.cssText = 'font-size:11px;color:var(--color-text-3,#7C7169);min-width:80px;flex-shrink:0';
       label.textContent = style.name;
       var text_el = document.createElement('span');
       text_el.style.cssText = 'flex:1;font-size:18px;word-break:break-all';

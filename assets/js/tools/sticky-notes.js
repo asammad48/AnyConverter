@@ -21,7 +21,7 @@
   function render() {
     container.innerHTML = '';
     if (notes.length === 0) {
-      container.innerHTML = '<p style="color:#9CA3AF;font-size:13px;text-align:center;padding:40px 0;grid-column:1/-1">No sticky notes yet. Click "+ Add Note" to create one.</p>';
+      container.innerHTML = '<p style="color:var(--color-text-3,#7C7169);font-size:13px;text-align:center;padding:40px 0;grid-column:1/-1">No sticky notes yet. Click "+ Add Note" to create one.</p>';
       return;
     }
     notes.forEach(n => {

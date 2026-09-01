@@ -64,7 +64,7 @@
 
     if (habits.length === 0) {
       listEl.innerHTML = `
-        <tr><td colspan="9" style="text-align:center;padding:32px;color:#9CA3AF;font-size:13px">
+        <tr><td colspan="9" style="text-align:center;padding:32px;color:var(--color-text-3,#7C7169);font-size:13px">
           No habits yet. Add one above to start tracking.
         </td></tr>`;
       return;
@@ -84,7 +84,7 @@
             aria-label="${day}">${checked ? '✓' : '·'}</button>
         </td>`;
       });
-      cells += `<td style="text-align:center;padding:6px;font-size:12px;color:#6B7280">${doneThisWeek}/7</td>`;
+      cells += `<td style="text-align:center;padding:6px;font-size:12px;color:var(--color-text-2,#3F3A36)">${doneThisWeek}/7</td>`;
       cells += `<td style="text-align:center;padding:6px;font-size:12px;color:#F59E0B">${streak > 0 ? '🔥' + streak : '—'}</td>`;
       cells += `<td style="text-align:center;padding:6px"><button data-del="${h.id}" style="background:none;border:none;cursor:pointer;color:#DC2626;font-size:16px" aria-label="Delete">×</button></td>`;
       tr.innerHTML = cells;
@@ -127,12 +127,12 @@
   // Render header with day abbr
   const thead = document.getElementById('habit-thead');
   if (thead) {
-    let headers = '<th style="font-size:12px;font-weight:600;text-align:left;padding:8px 8px;color:#374151">Habit</th>';
+    let headers = '<th style="font-size:12px;font-weight:600;text-align:left;padding:8px 8px;color:var(--color-text-body,#6F625A)">Habit</th>';
     DAY_ABBR.forEach(d => {
-      headers += `<th style="font-size:11px;font-weight:600;text-align:center;padding:8px 4px;color:#6B7280;width:36px">${d}</th>`;
+      headers += `<th style="font-size:11px;font-weight:600;text-align:center;padding:8px 4px;color:var(--color-text-2,#3F3A36);width:36px">${d}</th>`;
     });
-    headers += '<th style="font-size:11px;text-align:center;color:#6B7280">Done</th>';
-    headers += '<th style="font-size:11px;text-align:center;color:#6B7280">Streak</th>';
+    headers += '<th style="font-size:11px;text-align:center;color:var(--color-text-2,#3F3A36)">Done</th>';
+    headers += '<th style="font-size:11px;text-align:center;color:var(--color-text-2,#3F3A36)">Streak</th>';
     headers += '<th></th>';
     thead.innerHTML = `<tr>${headers}</tr>`;
   }

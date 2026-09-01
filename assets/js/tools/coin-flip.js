@@ -30,13 +30,13 @@
       if (history.length > 20) history.pop();
 
       coinEl.textContent = isHeads ? 'H' : 'T';
-      coinEl.style.background = isHeads ? 'linear-gradient(135deg,#F59E0B,#D97706)' : 'linear-gradient(135deg,#6B7280,#374151)';
+      coinEl.style.background = isHeads ? 'linear-gradient(135deg,#F59E0B,#D97706)' : 'linear-gradient(135deg,var(--color-text-2,#3F3A36),var(--color-text-body,#6F625A))';
       resultEl.innerHTML = `<strong style="font-size:1.2em">${isHeads ? '🟡 Heads' : '⚫ Tails'}</strong>`;
       headsEl.textContent = counts.H;
       tailsEl.textContent = counts.T;
 
       historyEl.innerHTML = history.map(s =>
-        `<span style="display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:50%;font-size:11px;font-weight:700;color:#fff;background:${s==='H'?'#F59E0B':'#6B7280'}">${s}</span>`
+        `<span style="display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:50%;font-size:11px;font-weight:700;color:#fff;background:${s==='H'?'#F59E0B':'var(--color-text-2,#3F3A36)'}">${s}</span>`
       ).join('');
 
       flipping = false;
@@ -54,6 +54,6 @@
     historyEl.innerHTML = '';
     resultEl.textContent = '';
     coinEl.textContent = '?';
-    coinEl.style.background = 'linear-gradient(135deg,#4F46E5,#7C3AED)';
+    coinEl.style.background = 'linear-gradient(135deg,var(--color-primary,#B04A45),var(--color-primary-alt,#C28A3D))';
   });
 })();

@@ -51,7 +51,7 @@
       var pw = generatePassword(len, upper, lower, nums, syms);
       pws.push(pw);
       var row = document.createElement('div');
-      row.style.cssText = 'display:flex;align-items:center;gap:8px;padding:10px 12px;background:#fff;border:1px solid #E4E4EF;border-radius:8px;font-family:monospace;font-size:14px;word-break:break-all';
+      row.style.cssText = 'display:flex;align-items:center;gap:8px;padding:10px 12px;background:var(--color-surface,#fff);border:1px solid var(--color-border,#DDD8D0);border-radius:8px;font-family:monospace;font-size:14px;word-break:break-all';
       var span = document.createElement('span');
       span.style.flex = '1';
       span.textContent = pw;

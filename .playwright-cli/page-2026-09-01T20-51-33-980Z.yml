@@ -1,0 +1,943 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - link "Skip to content" [ref=e3] [cursor=pointer]:
+      - /url: "#main-content"
+    - generic [ref=e4]:
+      - link "AnyConverter Home" [ref=e5] [cursor=pointer]:
+        - /url: /
+        - generic [ref=e6]: AnyConverter
+      - navigation "Main navigation" [ref=e7]:
+        - list [ref=e8]:
+          - listitem [ref=e9]:
+            - button "Developer ▾" [ref=e10] [cursor=pointer]
+          - listitem [ref=e11]:
+            - button "PDF Tools ▾" [ref=e12] [cursor=pointer]
+          - listitem [ref=e13]:
+            - button "Text ▾" [ref=e14] [cursor=pointer]
+          - listitem [ref=e15]:
+            - button "Productivity ▾" [ref=e16] [cursor=pointer]
+          - listitem [ref=e17]:
+            - button "Calculators ▾" [ref=e18] [cursor=pointer]
+          - listitem [ref=e19]:
+            - button "Browser ▾" [ref=e20] [cursor=pointer]
+      - generic [ref=e21]:
+        - button "Search tools" [ref=e22] [cursor=pointer]:
+          - generic [ref=e26]: Search tools…
+          - generic [ref=e27]: Ctrl K
+        - button "Select language" [ref=e29] [cursor=pointer]:
+          - generic [ref=e30]: 🇺🇸
+          - generic [ref=e31]: EN
+          - generic [aria-hidden] [ref=e32]: ▾
+        - button "Toggle dark mode" [ref=e33] [cursor=pointer]: 🌙
+  - main [ref=e34]:
+    - generic [ref=e35]:
+      - generic [ref=e36]: ✦ 78+ tools — no signup, no cost, forever free
+      - heading "Free Online Tools — Convert, Calculate & Create" [level=1] [ref=e37]
+      - paragraph [ref=e38]: 78+ powerful tools for developers and everyday users. Format JSON, edit PDFs, track habits, calculate finances and more — all free, no signup, 100% in your browser.
+      - list [ref=e39]:
+        - listitem [ref=e40]: 🔒 100% Private
+        - listitem [ref=e41]: ⚡ No File Uploads
+        - listitem [ref=e42]: 🌐 Works Offline
+        - listitem [ref=e43]: 📱 Mobile Friendly
+        - listitem [ref=e44]: 🛠 78+ Tools
+    - generic [ref=e45]:
+      - generic [ref=e46]:
+        - generic [ref=e47]: Quick Access
+        - link "View all tools →" [ref=e48] [cursor=pointer]:
+          - /url: "#all-tools"
+      - generic [ref=e49]:
+        - link "Free Converter Tools — JSON, PDF, Image & More icon JSON Formatter" [ref=e50] [cursor=pointer]:
+          - /url: /json-formatter/
+          - img "Free Converter Tools — JSON, PDF, Image & More icon" [ref=e51]
+          - generic [ref=e52]: JSON Formatter
+        - link "Free Converter Tools — JSON, PDF, Image & More icon PDF Merge" [ref=e53] [cursor=pointer]:
+          - /url: /pdf-merge/
+          - img "Free Converter Tools — JSON, PDF, Image & More icon" [ref=e54]
+          - generic [ref=e55]: PDF Merge
+        - link "Free Converter Tools — JSON, PDF, Image & More icon Image Compressor" [ref=e56] [cursor=pointer]:
+          - /url: /image-compressor/
+          - img "Free Converter Tools — JSON, PDF, Image & More icon" [ref=e57]
+          - generic [ref=e58]: Image Compressor
+        - link "Free Converter Tools — JSON, PDF, Image & More icon QR Code Generator" [ref=e59] [cursor=pointer]:
+          - /url: /qr-code-generator/
+          - img "Free Converter Tools — JSON, PDF, Image & More icon" [ref=e60]
+          - generic [ref=e61]: QR Code Generator
+        - link "Free Converter Tools — JSON, PDF, Image & More icon Word Counter" [ref=e62] [cursor=pointer]:
+          - /url: /word-counter/
+          - img "Free Converter Tools — JSON, PDF, Image & More icon" [ref=e63]
+          - generic [ref=e64]: Word Counter
+        - link "Free Converter Tools — JSON, PDF, Image & More icon Password Generator" [ref=e65] [cursor=pointer]:
+          - /url: /password-generator/
+          - img "Free Converter Tools — JSON, PDF, Image & More icon" [ref=e66]
+          - generic [ref=e67]: Password Generator
+        - link "Free Converter Tools — JSON, PDF, Image & More icon Stopwatch" [ref=e68] [cursor=pointer]:
+          - /url: /stopwatch/
+          - img "Free Converter Tools — JSON, PDF, Image & More icon" [ref=e69]
+          - generic [ref=e70]: Stopwatch
+        - link "Free Converter Tools — JSON, PDF, Image & More icon Currency Converter" [ref=e71] [cursor=pointer]:
+          - /url: /currency-converter/
+          - img "Free Converter Tools — JSON, PDF, Image & More icon" [ref=e72]
+          - generic [ref=e73]: Currency Converter
+    - generic [ref=e74]:
+      - region [ref=e75]:
+        - heading "Free Converter Tools — JSON, PDF, Image & More icon Developer Tools 7 tools" [level=2] [ref=e76]:
+          - img "Free Converter Tools — JSON, PDF, Image & More icon" [ref=e77]
+          - text: Developer Tools
+          - generic [ref=e78]: 7 tools
+        - generic [ref=e79]:
+          - link "JSON Formatter icon JSON Formatter Format, beautify and validate JSON with syntax highlighting. Try it →" [ref=e80] [cursor=pointer]:
+            - /url: /json-formatter/
+            - img "JSON Formatter icon" [ref=e81]
+            - heading "JSON Formatter" [level=3] [ref=e82]
+            - paragraph [ref=e83]: Format, beautify and validate JSON with syntax highlighting.
+            - generic [ref=e84]: Try it →
+          - link "XML Formatter icon XML Formatter Format and validate XML online with error detection. Try it →" [ref=e85] [cursor=pointer]:
+            - /url: /xml-formatter/
+            - img "XML Formatter icon" [ref=e86]
+            - heading "XML Formatter" [level=3] [ref=e87]
+            - paragraph [ref=e88]: Format and validate XML online with error detection.
+            - generic [ref=e89]: Try it →
+          - link "Regex Tester icon Regex Tester Test regular expressions with live match highlighting. Try it →" [ref=e90] [cursor=pointer]:
+            - /url: /regex-tester/
+            - img "Regex Tester icon" [ref=e91]
+            - heading "Regex Tester" [level=3] [ref=e92]
+            - paragraph [ref=e93]: Test regular expressions with live match highlighting.
+            - generic [ref=e94]: Try it →
+          - link "Hash Generator icon Hash Generator Generate MD5, SHA-1, SHA-256, SHA-512 hashes instantly. Try it →" [ref=e95] [cursor=pointer]:
+            - /url: /hash-generator/
+            - img "Hash Generator icon" [ref=e96]
+            - heading "Hash Generator" [level=3] [ref=e97]
+            - paragraph [ref=e98]: Generate MD5, SHA-1, SHA-256, SHA-512 hashes instantly.
+            - generic [ref=e99]: Try it →
+          - link "Base64 Encoder icon Base64 Encoder Encode and decode Base64 text and files online. Try it →" [ref=e100] [cursor=pointer]:
+            - /url: /base64-encoder/
+            - img "Base64 Encoder icon" [ref=e101]
+            - heading "Base64 Encoder" [level=3] [ref=e102]
+            - paragraph [ref=e103]: Encode and decode Base64 text and files online.
+            - generic [ref=e104]: Try it →
+          - link "URL Encoder icon URL Encoder Encode or decode URLs and query parameters online. Try it →" [ref=e105] [cursor=pointer]:
+            - /url: /url-encoder/
+            - img "URL Encoder icon" [ref=e106]
+            - heading "URL Encoder" [level=3] [ref=e107]
+            - paragraph [ref=e108]: Encode or decode URLs and query parameters online.
+            - generic [ref=e109]: Try it →
+          - link "Screen Resolution icon Screen Resolution Detect screen resolution, viewport size, DPR and colour depth instantly. Try it →" [ref=e110] [cursor=pointer]:
+            - /url: /screen-resolution/
+            - img "Screen Resolution icon" [ref=e111]
+            - heading "Screen Resolution" [level=3] [ref=e112]
+            - paragraph [ref=e113]: Detect screen resolution, viewport size, DPR and colour depth instantly.
+            - generic [ref=e114]: Try it →
+      - region [ref=e115]:
+        - heading "Free Converter Tools — JSON, PDF, Image & More icon PDF Tools 23 tools" [level=2] [ref=e116]:
+          - img "Free Converter Tools — JSON, PDF, Image & More icon" [ref=e117]
+          - text: PDF Tools
+          - generic [ref=e118]: 23 tools
+        - generic [ref=e119]:
+          - link "PDF Merge icon PDF Merge Combine multiple PDF files into one. Drag to reorder pages. Try it →" [ref=e120] [cursor=pointer]:
+            - /url: /pdf-merge/
+            - img "PDF Merge icon" [ref=e121]
+            - heading "PDF Merge" [level=3] [ref=e122]
+            - paragraph [ref=e123]: Combine multiple PDF files into one. Drag to reorder pages.
+            - generic [ref=e124]: Try it →
+          - link "PDF Split icon PDF Split Split a PDF into multiple files or extract specific pages. Try it →" [ref=e125] [cursor=pointer]:
+            - /url: /pdf-split/
+            - img "PDF Split icon" [ref=e126]
+            - heading "PDF Split" [level=3] [ref=e127]
+            - paragraph [ref=e128]: Split a PDF into multiple files or extract specific pages.
+            - generic [ref=e129]: Try it →
+          - link "PDF Compress icon PDF Compress Reduce PDF file size without losing quality. Try it →" [ref=e130] [cursor=pointer]:
+            - /url: /pdf-compress/
+            - img "PDF Compress icon" [ref=e131]
+            - heading "PDF Compress" [level=3] [ref=e132]
+            - paragraph [ref=e133]: Reduce PDF file size without losing quality.
+            - generic [ref=e134]: Try it →
+          - link "Organize PDF icon Organize PDF Reorder pages to any custom sequence — or duplicate and remove them. Try it →" [ref=e135] [cursor=pointer]:
+            - /url: /organize-pdf/
+            - img "Organize PDF icon" [ref=e136]
+            - heading "Organize PDF" [level=3] [ref=e137]
+            - paragraph [ref=e138]: Reorder pages to any custom sequence — or duplicate and remove them.
+            - generic [ref=e139]: Try it →
+          - link "Remove PDF Pages icon Remove PDF Pages Delete individual pages or ranges from a PDF instantly. Try it →" [ref=e140] [cursor=pointer]:
+            - /url: /remove-pdf-pages/
+            - img "Remove PDF Pages icon" [ref=e141]
+            - heading "Remove PDF Pages" [level=3] [ref=e142]
+            - paragraph [ref=e143]: Delete individual pages or ranges from a PDF instantly.
+            - generic [ref=e144]: Try it →
+          - link "Extract PDF Pages icon Extract PDF Pages Save specific pages or ranges as a new standalone PDF file. Try it →" [ref=e145] [cursor=pointer]:
+            - /url: /extract-pdf-pages/
+            - img "Extract PDF Pages icon" [ref=e146]
+            - heading "Extract PDF Pages" [level=3] [ref=e147]
+            - paragraph [ref=e148]: Save specific pages or ranges as a new standalone PDF file.
+            - generic [ref=e149]: Try it →
+          - link "Rotate PDF icon Rotate PDF Rotate all pages or specific pages 90°, 180° or 270°. Try it →" [ref=e150] [cursor=pointer]:
+            - /url: /rotate-pdf/
+            - img "Rotate PDF icon" [ref=e151]
+            - heading "Rotate PDF" [level=3] [ref=e152]
+            - paragraph [ref=e153]: Rotate all pages or specific pages 90°, 180° or 270°.
+            - generic [ref=e154]: Try it →
+          - link "Crop PDF icon Crop PDF Trim page margins by entering top, bottom, left and right crop values. Try it →" [ref=e155] [cursor=pointer]:
+            - /url: /crop-pdf/
+            - img "Crop PDF icon" [ref=e156]
+            - heading "Crop PDF" [level=3] [ref=e157]
+            - paragraph [ref=e158]: Trim page margins by entering top, bottom, left and right crop values.
+            - generic [ref=e159]: Try it →
+          - link "Add Page Numbers icon Add Page Numbers Stamp page numbers at header or footer with custom font size and prefix. Try it →" [ref=e160] [cursor=pointer]:
+            - /url: /add-page-numbers/
+            - img "Add Page Numbers icon" [ref=e161]
+            - heading "Add Page Numbers" [level=3] [ref=e162]
+            - paragraph [ref=e163]: Stamp page numbers at header or footer with custom font size and prefix.
+            - generic [ref=e164]: Try it →
+          - link "Add Watermark icon Add Watermark Stamp a custom text watermark on every page. Adjustable opacity and colour. Try it →" [ref=e165] [cursor=pointer]:
+            - /url: /add-watermark/
+            - img "Add Watermark icon" [ref=e166]
+            - heading "Add Watermark" [level=3] [ref=e167]
+            - paragraph [ref=e168]: Stamp a custom text watermark on every page. Adjustable opacity and colour.
+            - generic [ref=e169]: Try it →
+          - link "Protect PDF icon Protect PDF Add a password to a PDF to prevent unauthorised access. Try it →" [ref=e170] [cursor=pointer]:
+            - /url: /protect-pdf/
+            - img "Protect PDF icon" [ref=e171]
+            - heading "Protect PDF" [level=3] [ref=e172]
+            - paragraph [ref=e173]: Add a password to a PDF to prevent unauthorised access.
+            - generic [ref=e174]: Try it →
+          - link "Unlock PDF icon Unlock PDF Remove the password from a PDF you own and download the unlocked copy. Try it →" [ref=e175] [cursor=pointer]:
+            - /url: /unlock-pdf/
+            - img "Unlock PDF icon" [ref=e176]
+            - heading "Unlock PDF" [level=3] [ref=e177]
+            - paragraph [ref=e178]: Remove the password from a PDF you own and download the unlocked copy.
+            - generic [ref=e179]: Try it →
+          - 'link "PDF Security icon PDF Security Set granular permissions: restrict printing, copying, editing and more. Try it →" [ref=e180] [cursor=pointer]':
+            - /url: /pdf-security/
+            - img "PDF Security icon" [ref=e181]
+            - heading "PDF Security" [level=3] [ref=e182]
+            - paragraph [ref=e183]: "Set granular permissions: restrict printing, copying, editing and more."
+            - generic [ref=e184]: Try it →
+          - link "Optimize PDF icon Optimize PDF Shrink PDF size by removing unused objects. Shows before/after savings. Try it →" [ref=e185] [cursor=pointer]:
+            - /url: /optimize-pdf/
+            - img "Optimize PDF icon" [ref=e186]
+            - heading "Optimize PDF" [level=3] [ref=e187]
+            - paragraph [ref=e188]: Shrink PDF size by removing unused objects. Shows before/after savings.
+            - generic [ref=e189]: Try it →
+          - link "JPG to PDF icon JPG to PDF Convert one or more JPG/PNG images into a single PDF file. Try it →" [ref=e190] [cursor=pointer]:
+            - /url: /jpg-to-pdf/
+            - img "JPG to PDF icon" [ref=e191]
+            - heading "JPG to PDF" [level=3] [ref=e192]
+            - paragraph [ref=e193]: Convert one or more JPG/PNG images into a single PDF file.
+            - generic [ref=e194]: Try it →
+          - link "PDF to JPG icon PDF to JPG Render each PDF page as a high-quality JPG or PNG image. Try it →" [ref=e195] [cursor=pointer]:
+            - /url: /pdf-to-jpg/
+            - img "PDF to JPG icon" [ref=e196]
+            - heading "PDF to JPG" [level=3] [ref=e197]
+            - paragraph [ref=e198]: Render each PDF page as a high-quality JPG or PNG image.
+            - generic [ref=e199]: Try it →
+          - link "Scan to PDF icon Scan to PDF Combine scanned photos into a single PDF with thumbnail previews. Try it →" [ref=e200] [cursor=pointer]:
+            - /url: /scan-to-pdf/
+            - img "Scan to PDF icon" [ref=e201]
+            - heading "Scan to PDF" [level=3] [ref=e202]
+            - paragraph [ref=e203]: Combine scanned photos into a single PDF with thumbnail previews.
+            - generic [ref=e204]: Try it →
+          - link "OCR PDF icon OCR PDF Extract text from scanned PDFs and images using Tesseract OCR. Try it →" [ref=e205] [cursor=pointer]:
+            - /url: /ocr-pdf/
+            - img "OCR PDF icon" [ref=e206]
+            - heading "OCR PDF" [level=3] [ref=e207]
+            - paragraph [ref=e208]: Extract text from scanned PDFs and images using Tesseract OCR.
+            - generic [ref=e209]: Try it →
+          - link "HTML to PDF icon HTML to PDF Convert HTML code to a multi-page PDF with a live preview editor. Try it →" [ref=e210] [cursor=pointer]:
+            - /url: /html-to-pdf/
+            - img "HTML to PDF icon" [ref=e211]
+            - heading "HTML to PDF" [level=3] [ref=e212]
+            - paragraph [ref=e213]: Convert HTML code to a multi-page PDF with a live preview editor.
+            - generic [ref=e214]: Try it →
+          - link "Fill PDF Forms icon Fill PDF Forms Fill text fields, checkboxes and dropdowns in any fillable PDF. Try it →" [ref=e215] [cursor=pointer]:
+            - /url: /pdf-forms/
+            - img "Fill PDF Forms icon" [ref=e216]
+            - heading "Fill PDF Forms" [level=3] [ref=e217]
+            - paragraph [ref=e218]: Fill text fields, checkboxes and dropdowns in any fillable PDF.
+            - generic [ref=e219]: Try it →
+          - link "Sign PDF icon Sign PDF Draw your signature and embed it into any PDF page instantly. Try it →" [ref=e220] [cursor=pointer]:
+            - /url: /sign-pdf/
+            - img "Sign PDF icon" [ref=e221]
+            - heading "Sign PDF" [level=3] [ref=e222]
+            - paragraph [ref=e223]: Draw your signature and embed it into any PDF page instantly.
+            - generic [ref=e224]: Try it →
+          - link "Edit PDF icon Edit PDF Add text, border rectangles or yellow highlights to any PDF page. Try it →" [ref=e225] [cursor=pointer]:
+            - /url: /edit-pdf/
+            - img "Edit PDF icon" [ref=e226]
+            - heading "Edit PDF" [level=3] [ref=e227]
+            - paragraph [ref=e228]: Add text, border rectangles or yellow highlights to any PDF page.
+            - generic [ref=e229]: Try it →
+          - link "Redact PDF icon Redact PDF Cover sensitive areas with black rectangles using coordinate input. Try it →" [ref=e230] [cursor=pointer]:
+            - /url: /redact-pdf/
+            - img "Redact PDF icon" [ref=e231]
+            - heading "Redact PDF" [level=3] [ref=e232]
+            - paragraph [ref=e233]: Cover sensitive areas with black rectangles using coordinate input.
+            - generic [ref=e234]: Try it →
+          - link "Compare PDF icon Compare PDF View two PDFs side by side and navigate pages together to spot differences. Try it →" [ref=e235] [cursor=pointer]:
+            - /url: /compare-pdf/
+            - img "Compare PDF icon" [ref=e236]
+            - heading "Compare PDF" [level=3] [ref=e237]
+            - paragraph [ref=e238]: View two PDFs side by side and navigate pages together to spot differences.
+            - generic [ref=e239]: Try it →
+      - region [ref=e240]:
+        - heading "Free Converter Tools — JSON, PDF, Image & More icon Data & Conversion Tools 7 tools" [level=2] [ref=e241]:
+          - img "Free Converter Tools — JSON, PDF, Image & More icon" [ref=e242]
+          - text: Data & Conversion Tools
+          - generic [ref=e243]: 7 tools
+        - generic [ref=e244]:
+          - link "CSV to SQL icon CSV to SQL Convert CSV to SQL INSERT statements with auto type detection. Try it →" [ref=e245] [cursor=pointer]:
+            - /url: /csv-to-sql/
+            - img "CSV to SQL icon" [ref=e246]
+            - heading "CSV to SQL" [level=3] [ref=e247]
+            - paragraph [ref=e248]: Convert CSV to SQL INSERT statements with auto type detection.
+            - generic [ref=e249]: Try it →
+          - link "CSV Query icon CSV Query Run SQL queries on CSV files directly in your browser. Try it →" [ref=e250] [cursor=pointer]:
+            - /url: /csv-query/
+            - img "CSV Query icon" [ref=e251]
+            - heading "CSV Query" [level=3] [ref=e252]
+            - paragraph [ref=e253]: Run SQL queries on CSV files directly in your browser.
+            - generic [ref=e254]: Try it →
+          - link "Timestamp Converter icon Timestamp Converter Convert Unix timestamps to human-readable dates and back. Try it →" [ref=e255] [cursor=pointer]:
+            - /url: /timestamp-converter/
+            - img "Timestamp Converter icon" [ref=e256]
+            - heading "Timestamp Converter" [level=3] [ref=e257]
+            - paragraph [ref=e258]: Convert Unix timestamps to human-readable dates and back.
+            - generic [ref=e259]: Try it →
+          - link "Markdown to HTML icon Markdown to HTML Convert Markdown to HTML with live preview. Try it →" [ref=e260] [cursor=pointer]:
+            - /url: /markdown-html/
+            - img "Markdown to HTML icon" [ref=e261]
+            - heading "Markdown to HTML" [level=3] [ref=e262]
+            - paragraph [ref=e263]: Convert Markdown to HTML with live preview.
+            - generic [ref=e264]: Try it →
+          - link "Color Converter icon Color Converter Convert colors between HEX, RGB, HSL, CMYK and HSB. Try it →" [ref=e265] [cursor=pointer]:
+            - /url: /color-converter/
+            - img "Color Converter icon" [ref=e266]
+            - heading "Color Converter" [level=3] [ref=e267]
+            - paragraph [ref=e268]: Convert colors between HEX, RGB, HSL, CMYK and HSB.
+            - generic [ref=e269]: Try it →
+          - link "Image Converter icon Image Converter Convert images between PNG, JPG, WebP, AVIF and BMP. Try it →" [ref=e270] [cursor=pointer]:
+            - /url: /image-converter/
+            - img "Image Converter icon" [ref=e271]
+            - heading "Image Converter" [level=3] [ref=e272]
+            - paragraph [ref=e273]: Convert images between PNG, JPG, WebP, AVIF and BMP.
+            - generic [ref=e274]: Try it →
+          - link "Roman Numeral Converter icon Roman Numeral Converter Convert numbers to Roman numerals and decode Roman numerals back to integers. Try it →" [ref=e275] [cursor=pointer]:
+            - /url: /roman-numeral-converter/
+            - img "Roman Numeral Converter icon" [ref=e276]
+            - heading "Roman Numeral Converter" [level=3] [ref=e277]
+            - paragraph [ref=e278]: Convert numbers to Roman numerals and decode Roman numerals back to integers.
+            - generic [ref=e279]: Try it →
+      - region [ref=e280]:
+        - heading "Free Converter Tools — JSON, PDF, Image & More icon General Public Tools 11 tools" [level=2] [ref=e281]:
+          - img "Free Converter Tools — JSON, PDF, Image & More icon" [ref=e282]
+          - text: General Public Tools
+          - generic [ref=e283]: 11 tools
+        - generic [ref=e284]:
+          - link "Age Calculator icon Age Calculator Calculate your exact age in years, months and days. Try it →" [ref=e285] [cursor=pointer]:
+            - /url: /age-calculator/
+            - img "Age Calculator icon" [ref=e286]
+            - heading "Age Calculator" [level=3] [ref=e287]
+            - paragraph [ref=e288]: Calculate your exact age in years, months and days.
+            - generic [ref=e289]: Try it →
+          - link "BMI Calculator icon BMI Calculator Calculate Body Mass Index with metric or imperial units. Try it →" [ref=e290] [cursor=pointer]:
+            - /url: /bmi-calculator/
+            - img "BMI Calculator icon" [ref=e291]
+            - heading "BMI Calculator" [level=3] [ref=e292]
+            - paragraph [ref=e293]: Calculate Body Mass Index with metric or imperial units.
+            - generic [ref=e294]: Try it →
+          - link "Calorie Calculator icon Calorie Calculator Calculate your daily calorie needs based on age, weight and activity. Try it →" [ref=e295] [cursor=pointer]:
+            - /url: /calorie-calculator/
+            - img "Calorie Calculator icon" [ref=e296]
+            - heading "Calorie Calculator" [level=3] [ref=e297]
+            - paragraph [ref=e298]: Calculate your daily calorie needs based on age, weight and activity.
+            - generic [ref=e299]: Try it →
+          - link "QR Code Generator icon QR Code Generator Generate QR codes for URLs, text, email or phone numbers. Try it →" [ref=e300] [cursor=pointer]:
+            - /url: /qr-code-generator/
+            - img "QR Code Generator icon" [ref=e301]
+            - heading "QR Code Generator" [level=3] [ref=e302]
+            - paragraph [ref=e303]: Generate QR codes for URLs, text, email or phone numbers.
+            - generic [ref=e304]: Try it →
+          - link "Image Compressor icon Image Compressor Compress JPEG and PNG images without visible quality loss. Try it →" [ref=e305] [cursor=pointer]:
+            - /url: /image-compressor/
+            - img "Image Compressor icon" [ref=e306]
+            - heading "Image Compressor" [level=3] [ref=e307]
+            - paragraph [ref=e308]: Compress JPEG and PNG images without visible quality loss.
+            - generic [ref=e309]: Try it →
+          - link "Typing Speed Test icon Typing Speed Test Measure your typing speed in WPM and accuracy. Try it →" [ref=e310] [cursor=pointer]:
+            - /url: /typing-speed-test/
+            - img "Typing Speed Test icon" [ref=e311]
+            - heading "Typing Speed Test" [level=3] [ref=e312]
+            - paragraph [ref=e313]: Measure your typing speed in WPM and accuracy.
+            - generic [ref=e314]: Try it →
+          - link "Pomodoro Timer icon Pomodoro Timer Boost focus with 25-minute work sessions and short breaks. Try it →" [ref=e315] [cursor=pointer]:
+            - /url: /pomodoro-timer/
+            - img "Pomodoro Timer icon" [ref=e316]
+            - heading "Pomodoro Timer" [level=3] [ref=e317]
+            - paragraph [ref=e318]: Boost focus with 25-minute work sessions and short breaks.
+            - generic [ref=e319]: Try it →
+          - link "Invoice Generator icon Invoice Generator Create and download professional PDF invoices for free. Try it →" [ref=e320] [cursor=pointer]:
+            - /url: /invoice-generator/
+            - img "Invoice Generator icon" [ref=e321]
+            - heading "Invoice Generator" [level=3] [ref=e322]
+            - paragraph [ref=e323]: Create and download professional PDF invoices for free.
+            - generic [ref=e324]: Try it →
+          - link "World Clock icon World Clock Live current time in 40+ cities. Day/night indicator and DST-aware. Try it →" [ref=e325] [cursor=pointer]:
+            - /url: /world-clock/
+            - img "World Clock icon" [ref=e326]
+            - heading "World Clock" [level=3] [ref=e327]
+            - paragraph [ref=e328]: Live current time in 40+ cities. Day/night indicator and DST-aware.
+            - generic [ref=e329]: Try it →
+          - link "Sleep Calculator icon Sleep Calculator Find the best wake-up or bedtime based on 90-minute sleep cycles. Try it →" [ref=e330] [cursor=pointer]:
+            - /url: /sleep-calculator/
+            - img "Sleep Calculator icon" [ref=e331]
+            - heading "Sleep Calculator" [level=3] [ref=e332]
+            - paragraph [ref=e333]: Find the best wake-up or bedtime based on 90-minute sleep cycles.
+            - generic [ref=e334]: Try it →
+          - link "Blood Type Compatibility icon Blood Type Compatibility Check which blood types you can donate to or receive from, with a full chart. Try it →" [ref=e335] [cursor=pointer]:
+            - /url: /blood-type-compatibility/
+            - img "Blood Type Compatibility icon" [ref=e336]
+            - heading "Blood Type Compatibility" [level=3] [ref=e337]
+            - paragraph [ref=e338]: Check which blood types you can donate to or receive from, with a full chart.
+            - generic [ref=e339]: Try it →
+      - region [ref=e340]:
+        - heading "Free Converter Tools — JSON, PDF, Image & More icon Finance Calculators 8 tools" [level=2] [ref=e341]:
+          - img "Free Converter Tools — JSON, PDF, Image & More icon" [ref=e342]
+          - text: Finance Calculators
+          - generic [ref=e343]: 8 tools
+        - generic [ref=e344]:
+          - link "Currency Converter icon Currency Converter Convert between 150+ currencies with live exchange rates. Try it →" [ref=e345] [cursor=pointer]:
+            - /url: /currency-converter/
+            - img "Currency Converter icon" [ref=e346]
+            - heading "Currency Converter" [level=3] [ref=e347]
+            - paragraph [ref=e348]: Convert between 150+ currencies with live exchange rates.
+            - generic [ref=e349]: Try it →
+          - link "Compound Interest Calculator icon Compound Interest Calculator See how your money grows with compound interest over time. Try it →" [ref=e350] [cursor=pointer]:
+            - /url: /compound-interest-calculator/
+            - img "Compound Interest Calculator icon" [ref=e351]
+            - heading "Compound Interest Calculator" [level=3] [ref=e352]
+            - paragraph [ref=e353]: See how your money grows with compound interest over time.
+            - generic [ref=e354]: Try it →
+          - link "Loan Calculator icon Loan Calculator Calculate monthly loan payments and total interest costs. Try it →" [ref=e355] [cursor=pointer]:
+            - /url: /loan-calculator/
+            - img "Loan Calculator icon" [ref=e356]
+            - heading "Loan Calculator" [level=3] [ref=e357]
+            - paragraph [ref=e358]: Calculate monthly loan payments and total interest costs.
+            - generic [ref=e359]: Try it →
+          - link "Mortgage Calculator icon Mortgage Calculator Calculate monthly mortgage payments and total loan cost. Try it →" [ref=e360] [cursor=pointer]:
+            - /url: /mortgage-calculator/
+            - img "Mortgage Calculator icon" [ref=e361]
+            - heading "Mortgage Calculator" [level=3] [ref=e362]
+            - paragraph [ref=e363]: Calculate monthly mortgage payments and total loan cost.
+            - generic [ref=e364]: Try it →
+          - link "Discount Calculator icon Discount Calculator Find the final price after a discount and your savings. Try it →" [ref=e365] [cursor=pointer]:
+            - /url: /discount-calculator/
+            - img "Discount Calculator icon" [ref=e366]
+            - heading "Discount Calculator" [level=3] [ref=e367]
+            - paragraph [ref=e368]: Find the final price after a discount and your savings.
+            - generic [ref=e369]: Try it →
+          - link "Percentage Calculator icon Percentage Calculator Calculate percentages, changes and ratios instantly. Try it →" [ref=e370] [cursor=pointer]:
+            - /url: /percentage-calculator/
+            - img "Percentage Calculator icon" [ref=e371]
+            - heading "Percentage Calculator" [level=3] [ref=e372]
+            - paragraph [ref=e373]: Calculate percentages, changes and ratios instantly.
+            - generic [ref=e374]: Try it →
+          - link "GST / VAT Calculator icon GST / VAT Calculator Add or remove tax from any amount at any rate. Try it →" [ref=e375] [cursor=pointer]:
+            - /url: /gst-vat-calculator/
+            - img "GST / VAT Calculator icon" [ref=e376]
+            - heading "GST / VAT Calculator" [level=3] [ref=e377]
+            - paragraph [ref=e378]: Add or remove tax from any amount at any rate.
+            - generic [ref=e379]: Try it →
+          - link "Tip Calculator icon Tip Calculator Calculate tip and split the bill between multiple people. Try it →" [ref=e380] [cursor=pointer]:
+            - /url: /tip-calculator/
+            - img "Tip Calculator icon" [ref=e381]
+            - heading "Tip Calculator" [level=3] [ref=e382]
+            - paragraph [ref=e383]: Calculate tip and split the bill between multiple people.
+            - generic [ref=e384]: Try it →
+      - region [ref=e385]:
+        - heading "Free Converter Tools — JSON, PDF, Image & More icon Text & Writing Tools 9 tools" [level=2] [ref=e386]:
+          - img "Free Converter Tools — JSON, PDF, Image & More icon" [ref=e387]
+          - text: Text & Writing Tools
+          - generic [ref=e388]: 9 tools
+        - generic [ref=e389]:
+          - link "Word Counter icon Word Counter Count words, characters, sentences and reading time. Try it →" [ref=e390] [cursor=pointer]:
+            - /url: /word-counter/
+            - img "Word Counter icon" [ref=e391]
+            - heading "Word Counter" [level=3] [ref=e392]
+            - paragraph [ref=e393]: Count words, characters, sentences and reading time.
+            - generic [ref=e394]: Try it →
+          - link "Character Counter icon Character Counter Count characters with platform limits for Twitter, LinkedIn and more. Try it →" [ref=e395] [cursor=pointer]:
+            - /url: /character-counter/
+            - img "Character Counter icon" [ref=e396]
+            - heading "Character Counter" [level=3] [ref=e397]
+            - paragraph [ref=e398]: Count characters with platform limits for Twitter, LinkedIn and more.
+            - generic [ref=e399]: Try it →
+          - link "Text Case Converter icon Text Case Converter Convert text to uppercase, lowercase, title case, camelCase and more. Try it →" [ref=e400] [cursor=pointer]:
+            - /url: /text-case-converter/
+            - img "Text Case Converter icon" [ref=e401]
+            - heading "Text Case Converter" [level=3] [ref=e402]
+            - paragraph [ref=e403]: Convert text to uppercase, lowercase, title case, camelCase and more.
+            - generic [ref=e404]: Try it →
+          - link "Text Diff Checker icon Text Diff Checker Compare two texts and highlight added and removed lines. Try it →" [ref=e405] [cursor=pointer]:
+            - /url: /text-diff-checker/
+            - img "Text Diff Checker icon" [ref=e406]
+            - heading "Text Diff Checker" [level=3] [ref=e407]
+            - paragraph [ref=e408]: Compare two texts and highlight added and removed lines.
+            - generic [ref=e409]: Try it →
+          - link "Lorem Ipsum Generator icon Lorem Ipsum Generator Generate placeholder text in paragraphs, sentences or words. Try it →" [ref=e410] [cursor=pointer]:
+            - /url: /lorem-ipsum-generator/
+            - img "Lorem Ipsum Generator icon" [ref=e411]
+            - heading "Lorem Ipsum Generator" [level=3] [ref=e412]
+            - paragraph [ref=e413]: Generate placeholder text in paragraphs, sentences or words.
+            - generic [ref=e414]: Try it →
+          - link "Fancy Text Generator icon Fancy Text Generator Transform text into bold, italic, script, circled and 8 more styles. Try it →" [ref=e415] [cursor=pointer]:
+            - /url: /fancy-text-generator/
+            - img "Fancy Text Generator icon" [ref=e416]
+            - heading "Fancy Text Generator" [level=3] [ref=e417]
+            - paragraph [ref=e418]: Transform text into bold, italic, script, circled and 8 more styles.
+            - generic [ref=e419]: Try it →
+          - link "ASCII Art Generator icon ASCII Art Generator Convert text to large block letter ASCII art. Try it →" [ref=e420] [cursor=pointer]:
+            - /url: /ascii-art-generator/
+            - img "ASCII Art Generator icon" [ref=e421]
+            - heading "ASCII Art Generator" [level=3] [ref=e422]
+            - paragraph [ref=e423]: Convert text to large block letter ASCII art.
+            - generic [ref=e424]: Try it →
+          - link "Morse Code Converter icon Morse Code Converter Convert text to Morse code and decode Morse back to text. Try it →" [ref=e425] [cursor=pointer]:
+            - /url: /morse-code-converter/
+            - img "Morse Code Converter icon" [ref=e426]
+            - heading "Morse Code Converter" [level=3] [ref=e427]
+            - paragraph [ref=e428]: Convert text to Morse code and decode Morse back to text.
+            - generic [ref=e429]: Try it →
+          - link "Text Repeater icon Text Repeater Repeat any text up to 10,000 times with a custom separator and line breaks. Try it →" [ref=e430] [cursor=pointer]:
+            - /url: /text-repeater/
+            - img "Text Repeater icon" [ref=e431]
+            - heading "Text Repeater" [level=3] [ref=e432]
+            - paragraph [ref=e433]: Repeat any text up to 10,000 times with a custom separator and line breaks.
+            - generic [ref=e434]: Try it →
+      - region [ref=e435]:
+        - heading "Free Converter Tools — JSON, PDF, Image & More icon Developer Extras 15 tools" [level=2] [ref=e436]:
+          - img "Free Converter Tools — JSON, PDF, Image & More icon" [ref=e437]
+          - text: Developer Extras
+          - generic [ref=e438]: 15 tools
+        - generic [ref=e439]:
+          - link "JSON ↔ YAML Converter icon JSON ↔ YAML Converter Convert between JSON and YAML instantly in your browser. Try it →" [ref=e440] [cursor=pointer]:
+            - /url: /json-to-yaml/
+            - img "JSON ↔ YAML Converter icon" [ref=e441]
+            - heading "JSON ↔ YAML Converter" [level=3] [ref=e442]
+            - paragraph [ref=e443]: Convert between JSON and YAML instantly in your browser.
+            - generic [ref=e444]: Try it →
+          - link "HTML Beautifier icon HTML Beautifier Beautify or minify HTML code with one click. Try it →" [ref=e445] [cursor=pointer]:
+            - /url: /html-beautifier/
+            - img "HTML Beautifier icon" [ref=e446]
+            - heading "HTML Beautifier" [level=3] [ref=e447]
+            - paragraph [ref=e448]: Beautify or minify HTML code with one click.
+            - generic [ref=e449]: Try it →
+          - link "Cron Expression Parser icon Cron Expression Parser Decode any cron expression into plain English instantly. Try it →" [ref=e450] [cursor=pointer]:
+            - /url: /cron-expression-parser/
+            - img "Cron Expression Parser icon" [ref=e451]
+            - heading "Cron Expression Parser" [level=3] [ref=e452]
+            - paragraph [ref=e453]: Decode any cron expression into plain English instantly.
+            - generic [ref=e454]: Try it →
+          - link "JWT Decoder icon JWT Decoder Decode and inspect JWT tokens with expiration checking. Try it →" [ref=e455] [cursor=pointer]:
+            - /url: /jwt-decoder/
+            - img "JWT Decoder icon" [ref=e456]
+            - heading "JWT Decoder" [level=3] [ref=e457]
+            - paragraph [ref=e458]: Decode and inspect JWT tokens with expiration checking.
+            - generic [ref=e459]: Try it →
+          - link "UUID Generator icon UUID Generator Generate cryptographically secure UUID v4 identifiers. Try it →" [ref=e460] [cursor=pointer]:
+            - /url: /uuid-generator/
+            - img "UUID Generator icon" [ref=e461]
+            - heading "UUID Generator" [level=3] [ref=e462]
+            - paragraph [ref=e463]: Generate cryptographically secure UUID v4 identifiers.
+            - generic [ref=e464]: Try it →
+          - link "Password Generator icon Password Generator Generate strong, secure passwords with custom settings. Try it →" [ref=e465] [cursor=pointer]:
+            - /url: /password-generator/
+            - img "Password Generator icon" [ref=e466]
+            - heading "Password Generator" [level=3] [ref=e467]
+            - paragraph [ref=e468]: Generate strong, secure passwords with custom settings.
+            - generic [ref=e469]: Try it →
+          - link "Password Strength Checker icon Password Strength Checker Check how strong your password is with a 7-point checklist. Try it →" [ref=e470] [cursor=pointer]:
+            - /url: /password-strength-checker/
+            - img "Password Strength Checker icon" [ref=e471]
+            - heading "Password Strength Checker" [level=3] [ref=e472]
+            - paragraph [ref=e473]: Check how strong your password is with a 7-point checklist.
+            - generic [ref=e474]: Try it →
+          - link "IP Address Lookup icon IP Address Lookup Look up geolocation, ISP and timezone for any IP address. Try it →" [ref=e475] [cursor=pointer]:
+            - /url: /ip-address-lookup/
+            - img "IP Address Lookup icon" [ref=e476]
+            - heading "IP Address Lookup" [level=3] [ref=e477]
+            - paragraph [ref=e478]: Look up geolocation, ISP and timezone for any IP address.
+            - generic [ref=e479]: Try it →
+          - link "CSS Gradient Generator icon CSS Gradient Generator Design linear and radial CSS gradients visually. Try it →" [ref=e480] [cursor=pointer]:
+            - /url: /css-gradient-generator/
+            - img "CSS Gradient Generator icon" [ref=e481]
+            - heading "CSS Gradient Generator" [level=3] [ref=e482]
+            - paragraph [ref=e483]: Design linear and radial CSS gradients visually.
+            - generic [ref=e484]: Try it →
+          - link "Random Number Generator icon Random Number Generator Generate cryptographically secure random numbers in any range. Try it →" [ref=e485] [cursor=pointer]:
+            - /url: /random-number-generator/
+            - img "Random Number Generator icon" [ref=e486]
+            - heading "Random Number Generator" [level=3] [ref=e487]
+            - paragraph [ref=e488]: Generate cryptographically secure random numbers in any range.
+            - generic [ref=e489]: Try it →
+          - link "Number to Words icon Number to Words Convert any number to its English word equivalent instantly. Try it →" [ref=e490] [cursor=pointer]:
+            - /url: /number-to-words/
+            - img "Number to Words icon" [ref=e491]
+            - heading "Number to Words" [level=3] [ref=e492]
+            - paragraph [ref=e493]: Convert any number to its English word equivalent instantly.
+            - generic [ref=e494]: Try it →
+          - link "Privacy Policy Generator icon Privacy Policy Generator Generate a free, customisable privacy policy for your website or app in seconds. Try it →" [ref=e495] [cursor=pointer]:
+            - /url: /privacy-policy-generator/
+            - img "Privacy Policy Generator icon" [ref=e496]
+            - heading "Privacy Policy Generator" [level=3] [ref=e497]
+            - paragraph [ref=e498]: Generate a free, customisable privacy policy for your website or app in seconds.
+            - generic [ref=e499]: Try it →
+          - link "PX to REM icon PX to REM Convert pixel values to REM and back with a customisable base font size. Try it →" [ref=e500] [cursor=pointer]:
+            - /url: /px-to-rem/
+            - img "PX to REM icon" [ref=e501]
+            - heading "PX to REM" [level=3] [ref=e502]
+            - paragraph [ref=e503]: Convert pixel values to REM and back with a customisable base font size.
+            - generic [ref=e504]: Try it →
+          - link "CSS Shadow Generator icon CSS Shadow Generator Design box-shadow and text-shadow visually with live preview and CSS copy. Try it →" [ref=e505] [cursor=pointer]:
+            - /url: /css-shadow-generator/
+            - img "CSS Shadow Generator icon" [ref=e506]
+            - heading "CSS Shadow Generator" [level=3] [ref=e507]
+            - paragraph [ref=e508]: Design box-shadow and text-shadow visually with live preview and CSS copy.
+            - generic [ref=e509]: Try it →
+          - link "Aspect Ratio Calculator icon Aspect Ratio Calculator Calculate aspect ratios and scale dimensions while preserving the ratio. Try it →" [ref=e510] [cursor=pointer]:
+            - /url: /aspect-ratio-calculator/
+            - img "Aspect Ratio Calculator icon" [ref=e511]
+            - heading "Aspect Ratio Calculator" [level=3] [ref=e512]
+            - paragraph [ref=e513]: Calculate aspect ratios and scale dimensions while preserving the ratio.
+            - generic [ref=e514]: Try it →
+      - region [ref=e515]:
+        - heading "Free Converter Tools — JSON, PDF, Image & More icon Productivity & Utility 13 tools" [level=2] [ref=e516]:
+          - img "Free Converter Tools — JSON, PDF, Image & More icon" [ref=e517]
+          - text: Productivity & Utility
+          - generic [ref=e518]: 13 tools
+        - generic [ref=e519]:
+          - link "Stopwatch icon Stopwatch Precision stopwatch with lap timer and millisecond accuracy. Try it →" [ref=e520] [cursor=pointer]:
+            - /url: /stopwatch/
+            - img "Stopwatch icon" [ref=e521]
+            - heading "Stopwatch" [level=3] [ref=e522]
+            - paragraph [ref=e523]: Precision stopwatch with lap timer and millisecond accuracy.
+            - generic [ref=e524]: Try it →
+          - link "Countdown Timer icon Countdown Timer Set any countdown with presets for Pomodoro, 10 min and 1 hour. Try it →" [ref=e525] [cursor=pointer]:
+            - /url: /countdown-timer/
+            - img "Countdown Timer icon" [ref=e526]
+            - heading "Countdown Timer" [level=3] [ref=e527]
+            - paragraph [ref=e528]: Set any countdown with presets for Pomodoro, 10 min and 1 hour.
+            - generic [ref=e529]: Try it →
+          - link "To-do List icon To-do List Simple persistent task list that saves to your browser automatically. Try it →" [ref=e530] [cursor=pointer]:
+            - /url: /todo-list/
+            - img "To-do List icon" [ref=e531]
+            - heading "To-do List" [level=3] [ref=e532]
+            - paragraph [ref=e533]: Simple persistent task list that saves to your browser automatically.
+            - generic [ref=e534]: Try it →
+          - link "Sticky Notes icon Sticky Notes Colourful digital sticky notes in 6 colours. Auto-saves to browser. Try it →" [ref=e535] [cursor=pointer]:
+            - /url: /sticky-notes/
+            - img "Sticky Notes icon" [ref=e536]
+            - heading "Sticky Notes" [level=3] [ref=e537]
+            - paragraph [ref=e538]: Colourful digital sticky notes in 6 colours. Auto-saves to browser.
+            - generic [ref=e539]: Try it →
+          - link "Habit Tracker icon Habit Tracker Track daily habits with a weekly grid and streak counter. Try it →" [ref=e540] [cursor=pointer]:
+            - /url: /habit-tracker/
+            - img "Habit Tracker icon" [ref=e541]
+            - heading "Habit Tracker" [level=3] [ref=e542]
+            - paragraph [ref=e543]: Track daily habits with a weekly grid and streak counter.
+            - generic [ref=e544]: Try it →
+          - link "Daily Planner icon Daily Planner Schedule your day with timed tasks and optional durations. Try it →" [ref=e545] [cursor=pointer]:
+            - /url: /daily-planner/
+            - img "Daily Planner icon" [ref=e546]
+            - heading "Daily Planner" [level=3] [ref=e547]
+            - paragraph [ref=e548]: Schedule your day with timed tasks and optional durations.
+            - generic [ref=e549]: Try it →
+          - link "Meeting Timer icon Meeting Timer Agenda timer that auto-advances through items to keep meetings on track. Try it →" [ref=e550] [cursor=pointer]:
+            - /url: /meeting-timer/
+            - img "Meeting Timer icon" [ref=e551]
+            - heading "Meeting Timer" [level=3] [ref=e552]
+            - paragraph [ref=e553]: Agenda timer that auto-advances through items to keep meetings on track.
+            - generic [ref=e554]: Try it →
+          - link "Spin the Wheel icon Spin the Wheel Customisable spinning wheel for random decisions and game picks. Try it →" [ref=e555] [cursor=pointer]:
+            - /url: /spin-the-wheel/
+            - img "Spin the Wheel icon" [ref=e556]
+            - heading "Spin the Wheel" [level=3] [ref=e557]
+            - paragraph [ref=e558]: Customisable spinning wheel for random decisions and game picks.
+            - generic [ref=e559]: Try it →
+          - link "Coin Flip icon Coin Flip Virtual coin flip with animation and heads/tails counter. Try it →" [ref=e560] [cursor=pointer]:
+            - /url: /coin-flip/
+            - img "Coin Flip icon" [ref=e561]
+            - heading "Coin Flip" [level=3] [ref=e562]
+            - paragraph [ref=e563]: Virtual coin flip with animation and heads/tails counter.
+            - generic [ref=e564]: Try it →
+          - link "Dice Roller icon Dice Roller Roll d4, d6, d8, d10, d12 or d20 — up to 20 dice at once. Try it →" [ref=e565] [cursor=pointer]:
+            - /url: /dice-roller/
+            - img "Dice Roller icon" [ref=e566]
+            - heading "Dice Roller" [level=3] [ref=e567]
+            - paragraph [ref=e568]: Roll d4, d6, d8, d10, d12 or d20 — up to 20 dice at once.
+            - generic [ref=e569]: Try it →
+          - link "Random Picker icon Random Picker Pick random items from any list. Highlights selections in the pool. Try it →" [ref=e570] [cursor=pointer]:
+            - /url: /random-picker/
+            - img "Random Picker icon" [ref=e571]
+            - heading "Random Picker" [level=3] [ref=e572]
+            - paragraph [ref=e573]: Pick random items from any list. Highlights selections in the pool.
+            - generic [ref=e574]: Try it →
+          - link "Decision Maker icon Decision Maker Can't decide? Enter options and let the animated picker choose for you. Try it →" [ref=e575] [cursor=pointer]:
+            - /url: /decision-maker/
+            - img "Decision Maker icon" [ref=e576]
+            - heading "Decision Maker" [level=3] [ref=e577]
+            - paragraph [ref=e578]: Can't decide? Enter options and let the animated picker choose for you.
+            - generic [ref=e579]: Try it →
+          - link "Team Picker icon Team Picker Split a list of names into balanced random teams with colour-coded cards. Try it →" [ref=e580] [cursor=pointer]:
+            - /url: /team-picker/
+            - img "Team Picker icon" [ref=e581]
+            - heading "Team Picker" [level=3] [ref=e582]
+            - paragraph [ref=e583]: Split a list of names into balanced random teams with colour-coded cards.
+            - generic [ref=e584]: Try it →
+      - region [ref=e585]:
+        - heading "Free Converter Tools — JSON, PDF, Image & More icon Browser Tools 9 tools" [level=2] [ref=e586]:
+          - img "Free Converter Tools — JSON, PDF, Image & More icon" [ref=e587]
+          - text: Browser Tools
+          - generic [ref=e588]: 9 tools
+        - generic [ref=e589]:
+          - link "Internet Speed Test icon Internet Speed Test Test your download speed, upload speed, and ping latency in your browser. Try it →" [ref=e590] [cursor=pointer]:
+            - /url: /internet-speed-test/
+            - img "Internet Speed Test icon" [ref=e591]
+            - heading "Internet Speed Test" [level=3] [ref=e592]
+            - paragraph [ref=e593]: Test your download speed, upload speed, and ping latency in your browser.
+            - generic [ref=e594]: Try it →
+          - link "Keyboard Tester icon Keyboard Tester Press any key and see it light up. Detect stuck or broken keys instantly. Try it →" [ref=e595] [cursor=pointer]:
+            - /url: /keyboard-tester/
+            - img "Keyboard Tester icon" [ref=e596]
+            - heading "Keyboard Tester" [level=3] [ref=e597]
+            - paragraph [ref=e598]: Press any key and see it light up. Detect stuck or broken keys instantly.
+            - generic [ref=e599]: Try it →
+          - link "Mouse Tester icon Mouse Tester Test all mouse buttons, scroll wheel, and pointer tracking in real time. Try it →" [ref=e600] [cursor=pointer]:
+            - /url: /mouse-tester/
+            - img "Mouse Tester icon" [ref=e601]
+            - heading "Mouse Tester" [level=3] [ref=e602]
+            - paragraph [ref=e603]: Test all mouse buttons, scroll wheel, and pointer tracking in real time.
+            - generic [ref=e604]: Try it →
+          - link "Webcam Tester icon Webcam Tester Check your webcam with a live preview, resolution info, and snapshot download. Try it →" [ref=e605] [cursor=pointer]:
+            - /url: /webcam-tester/
+            - img "Webcam Tester icon" [ref=e606]
+            - heading "Webcam Tester" [level=3] [ref=e607]
+            - paragraph [ref=e608]: Check your webcam with a live preview, resolution info, and snapshot download.
+            - generic [ref=e609]: Try it →
+          - link "Microphone Tester icon Microphone Tester Live audio level meter to verify your mic is picking up sound correctly. Try it →" [ref=e610] [cursor=pointer]:
+            - /url: /microphone-tester/
+            - img "Microphone Tester icon" [ref=e611]
+            - heading "Microphone Tester" [level=3] [ref=e612]
+            - paragraph [ref=e613]: Live audio level meter to verify your mic is picking up sound correctly.
+            - generic [ref=e614]: Try it →
+          - link "Dead Pixel Checker icon Dead Pixel Checker Cycle through 8 solid-color fullscreen tests to find dead or stuck pixels. Try it →" [ref=e615] [cursor=pointer]:
+            - /url: /dead-pixel-checker/
+            - img "Dead Pixel Checker icon" [ref=e616]
+            - heading "Dead Pixel Checker" [level=3] [ref=e617]
+            - paragraph [ref=e618]: Cycle through 8 solid-color fullscreen tests to find dead or stuck pixels.
+            - generic [ref=e619]: Try it →
+          - link "Monitor Color Test icon Monitor Color Test 8 fullscreen patterns to evaluate your monitor's color accuracy and sharpness. Try it →" [ref=e620] [cursor=pointer]:
+            - /url: /monitor-color-test/
+            - img "Monitor Color Test icon" [ref=e621]
+            - heading "Monitor Color Test" [level=3] [ref=e622]
+            - paragraph [ref=e623]: 8 fullscreen patterns to evaluate your monitor's color accuracy and sharpness.
+            - generic [ref=e624]: Try it →
+          - link "Browser Info Viewer icon Browser Info Viewer See your browser, OS, screen resolution, CPU, timezone and 20+ other details. Try it →" [ref=e625] [cursor=pointer]:
+            - /url: /browser-info/
+            - img "Browser Info Viewer icon" [ref=e626]
+            - heading "Browser Info Viewer" [level=3] [ref=e627]
+            - paragraph [ref=e628]: See your browser, OS, screen resolution, CPU, timezone and 20+ other details.
+            - generic [ref=e629]: Try it →
+          - link "Viewport Size Checker icon Viewport Size Checker Live viewport width, height, DPR, orientation and CSS breakpoint — updates on resize. Try it →" [ref=e630] [cursor=pointer]:
+            - /url: /viewport-size/
+            - img "Viewport Size Checker icon" [ref=e631]
+            - heading "Viewport Size Checker" [level=3] [ref=e632]
+            - paragraph [ref=e633]: Live viewport width, height, DPR, orientation and CSS breakpoint — updates on resize.
+            - generic [ref=e634]: Try it →
+    - region [ref=e635]:
+      - heading "Tool collections for common workflows" [level=2] [ref=e636]
+      - paragraph [ref=e637]: Browse focused AnyConverter collections when you need a full set of related tools, examples, and private browser-based workflows in one place.
+      - list [ref=e638]:
+        - listitem [ref=e639]:
+          - link "Free online PDF tools" [ref=e640] [cursor=pointer]:
+            - /url: /pdf-tools/
+          - text: for merging, splitting, compressing, editing, filling, signing, and organizing PDF files.
+        - listitem [ref=e641]:
+          - link "Free online calculators" [ref=e642] [cursor=pointer]:
+            - /url: /calculators/
+          - text: for discounts, GST/VAT, percentages, loans, mortgages, tips, BMI, age, calories, and sleep.
+        - listitem [ref=e643]:
+          - link "Free developer tools" [ref=e644] [cursor=pointer]:
+            - /url: /developer-tools/
+          - text: for JSON, XML, Base64, URLs, UUIDs, hashes, JWTs, regex, CSV, and CSS utilities.
+        - listitem [ref=e645]:
+          - link "Free productivity tools" [ref=e646] [cursor=pointer]:
+            - /url: /productivity-tools/
+          - text: for notes, task lists, timers, daily planning, habits, meetings, random picks, and decisions.
+    - generic [ref=e647]:
+      - generic [ref=e648]:
+        - generic [ref=e649]: Need something else?
+        - generic [ref=e650]: All 78+ tools are free, no signup required. Works in every modern browser.
+      - link "Browse All Tools" [ref=e651] [cursor=pointer]:
+        - /url: "#all-tools"
+    - paragraph [ref=e653]: Advertisement
+    - region [ref=e654]:
+      - generic [ref=e655]:
+        - heading "Why Developers & Users Love AnyConverter" [level=2] [ref=e656]
+        - paragraph [ref=e657]: Everything you need, right in your browser — no installs, no accounts, no waiting.
+        - generic [ref=e658]:
+          - generic [ref=e659]:
+            - generic [aria-hidden] [ref=e660]: 🔒
+            - heading "100% Private" [level=3] [ref=e661]
+            - paragraph [ref=e662]: All processing happens locally in your browser. Your files and data never leave your device or touch our servers.
+          - generic [ref=e663]:
+            - generic [aria-hidden] [ref=e664]: ⚡
+            - heading "Instant & Free Forever" [level=3] [ref=e665]
+            - paragraph [ref=e666]: No subscriptions, no paywalls, no hidden fees. All 78+ tools are permanently free with no usage limits.
+          - generic [ref=e667]:
+            - generic [aria-hidden] [ref=e668]: 🚀
+            - heading "Zero Signup Required" [level=3] [ref=e669]
+            - paragraph [ref=e670]: Open any tool and start working immediately. No account, no email address, no friction — ever.
+          - generic [ref=e671]:
+            - generic [aria-hidden] [ref=e672]: 📱
+            - heading "Works on Every Device" [level=3] [ref=e673]
+            - paragraph [ref=e674]: Fully responsive design works beautifully on desktop, tablet and mobile. Even works offline after first load.
+          - generic [ref=e675]:
+            - generic [aria-hidden] [ref=e676]: 🛠
+            - heading "78+ Tools in One Place" [level=3] [ref=e677]
+            - paragraph [ref=e678]: Developer utilities, PDF editors, calculators, productivity apps, browser testers and more — all under one roof.
+          - generic [ref=e679]:
+            - generic [aria-hidden] [ref=e680]: 🌐
+            - heading "Multi-Language Support" [level=3] [ref=e681]
+            - paragraph [ref=e682]: Available in English, Español and Dansk with full SEO support. More languages coming soon.
+    - generic [ref=e683]:
+      - 'heading "Free online tools: practical uses" [level=2] [ref=e684]'
+      - paragraph [ref=e685]: Use free online tools when you need a fast, clear, private result without creating an account. This page also supports related needs like PDF tools, calculators, converters so you can choose the right workflow.
+      - heading "When it helps" [level=3] [ref=e686]
+      - list [ref=e687]:
+        - listitem [ref=e688]:
+          - strong [ref=e689]: "Best for:"
+          - text: Understanding AnyConverter, its privacy approach, policies, security posture, and available tool categories.
+        - listitem [ref=e690]:
+          - strong [ref=e691]: "Helpful details:"
+          - text: Use these pages to verify how the site works, where data is processed, and how to contact the team.
+        - listitem [ref=e692]:
+          - strong [ref=e693]: "Next step:"
+          - text: Return to the tool directory when you are ready to use PDF tools, calculators, converters, or browser utilities.
+      - paragraph [ref=e694]:
+        - text: For the next step, try
+        - link "Built for Everyone. Free Forever." [ref=e695] [cursor=pointer]:
+          - /url: /about/
+        - text: ","
+        - link "Frequently Asked Questions" [ref=e696] [cursor=pointer]:
+          - /url: /faq/
+        - text: ","
+        - link "Privacy Policy" [ref=e697] [cursor=pointer]:
+          - /url: /privacy/
+        - text: ","
+        - link "Security at AnyConverter" [ref=e698] [cursor=pointer]:
+          - /url: /security/
+        - text: .
+  - contentinfo [ref=e699]:
+    - generic [ref=e700]:
+      - generic [ref=e701]:
+        - link "AnyConverter AnyConverter" [ref=e702] [cursor=pointer]:
+          - /url: /
+          - img "AnyConverter" [ref=e703]
+          - generic [ref=e704]: AnyConverter
+        - paragraph [ref=e705]: Free online tools for developers, students, and everyone. No signup. No data uploaded to servers.
+        - generic [ref=e706]:
+          - link "Español" [ref=e707] [cursor=pointer]:
+            - /url: /es/
+            - text: 🇪🇸 ES
+          - link "Dansk" [ref=e708] [cursor=pointer]:
+            - /url: /da/
+            - text: 🇩🇰 DA
+      - generic [ref=e709]:
+        - generic [ref=e710]:
+          - heading "Product" [level=3] [ref=e711]
+          - list [ref=e712]:
+            - listitem [ref=e713]:
+              - link "Home" [ref=e714] [cursor=pointer]:
+                - /url: /
+            - listitem [ref=e715]:
+              - link "All Tools" [ref=e716] [cursor=pointer]:
+                - /url: /#tools
+            - listitem [ref=e717]:
+              - link "PDF Tools" [ref=e718] [cursor=pointer]:
+                - /url: /pdf-merge/
+            - listitem [ref=e719]:
+              - link "Developer Tools" [ref=e720] [cursor=pointer]:
+                - /url: /json-formatter/
+            - listitem [ref=e721]:
+              - link "Browser Tools" [ref=e722] [cursor=pointer]:
+                - /url: /internet-speed-test/
+            - listitem [ref=e723]:
+              - link "Calculators" [ref=e724] [cursor=pointer]:
+                - /url: /age-calculator/
+            - listitem [ref=e725]:
+              - link "Text Tools" [ref=e726] [cursor=pointer]:
+                - /url: /word-counter/
+            - listitem [ref=e727]:
+              - link "Productivity" [ref=e728] [cursor=pointer]:
+                - /url: /stopwatch/
+        - generic [ref=e729]:
+          - heading "Features" [level=3] [ref=e730]
+          - list [ref=e731]:
+            - listitem [ref=e732]:
+              - link "Image Converter" [ref=e733] [cursor=pointer]:
+                - /url: /image-converter/
+            - listitem [ref=e734]:
+              - link "QR Code Generator" [ref=e735] [cursor=pointer]:
+                - /url: /qr-code-generator/
+            - listitem [ref=e736]:
+              - link "CSS Generator" [ref=e737] [cursor=pointer]:
+                - /url: /css-gradient-generator/
+            - listitem [ref=e738]:
+              - link "Currency Converter" [ref=e739] [cursor=pointer]:
+                - /url: /currency-converter/
+            - listitem [ref=e740]:
+              - link "Password Generator" [ref=e741] [cursor=pointer]:
+                - /url: /password-generator/
+            - listitem [ref=e742]:
+              - link "Invoice Generator" [ref=e743] [cursor=pointer]:
+                - /url: /invoice-generator/
+            - listitem [ref=e744]:
+              - link "Pomodoro Timer" [ref=e745] [cursor=pointer]:
+                - /url: /pomodoro-timer/
+            - listitem [ref=e746]:
+              - link "Typing Speed Test" [ref=e747] [cursor=pointer]:
+                - /url: /typing-speed-test/
+        - generic [ref=e748]:
+          - heading "Legal" [level=3] [ref=e749]
+          - list [ref=e750]:
+            - listitem [ref=e751]:
+              - link "Privacy Policy" [ref=e752] [cursor=pointer]:
+                - /url: /privacy/
+            - listitem [ref=e753]:
+              - link "Terms of Service" [ref=e754] [cursor=pointer]:
+                - /url: /terms/
+            - listitem [ref=e755]:
+              - link "Cookie Policy" [ref=e756] [cursor=pointer]:
+                - /url: /cookies/
+            - listitem [ref=e757]:
+              - link "Security" [ref=e758] [cursor=pointer]:
+                - /url: /security/
+        - generic [ref=e759]:
+          - heading "Company" [level=3] [ref=e760]
+          - list [ref=e761]:
+            - listitem [ref=e762]:
+              - link "About Us" [ref=e763] [cursor=pointer]:
+                - /url: /about/
+            - listitem [ref=e764]:
+              - link "Contact Us" [ref=e765] [cursor=pointer]:
+                - /url: /contact/
+            - listitem [ref=e766]:
+              - link "Blog" [ref=e767] [cursor=pointer]:
+                - /url: /blog/
+            - listitem [ref=e768]:
+              - link "Press" [ref=e769] [cursor=pointer]:
+                - /url: /press/
+            - listitem [ref=e770]:
+              - link "FAQ" [ref=e771] [cursor=pointer]:
+                - /url: /faq/
+    - generic [ref=e772]:
+      - paragraph [ref=e773]: © 2026 AnyConverter. All rights reserved.
+      - paragraph [ref=e774]: Free online tools — no data uploaded to servers

@@ -29,7 +29,7 @@
 <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
   <style>
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-    html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F4F6FF);color:var(--color-text,#1E1B4B)}
+    html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F4F6FF);color:var(--color-text,#151515)}
     body{min-height:100vh;display:flex;flex-direction:column}
     .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8D0)}
     .header-inner{max-width:1280px;width:100%;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;gap:32px}
@@ -67,7 +67,7 @@
             <span style="font-size:2rem;font-weight:700;color:var(--color-text-2,#6B7280);padding-bottom:18px">:</span>
             <div style="text-align:center"><input type="number" id="cd-seconds" class="num-input" min="0" max="59" value="0"><div style="font-size:11px;color:var(--color-text-2,#6B7280);margin-top:4px">SS</div></div>
           </div>
-          <div id="cd-display" style="font-size:clamp(2.5rem,8vw,4rem);font-weight:700;font-family:monospace;letter-spacing:0.05em;color:var(--color-text,#1E1B4B);margin-bottom:12px;padding:20px;background:var(--color-bg,#F4F6FF);border-radius:12px">00:05:00</div>
+          <div id="cd-display" style="font-size:clamp(2.5rem,8vw,4rem);font-weight:700;font-family:monospace;letter-spacing:0.05em;color:var(--color-text,#151515);margin-bottom:12px;padding:20px;background:var(--color-bg,#F4F6FF);border-radius:12px">00:05:00</div>
           <div style="width:100%;max-width:400px;height:6px;background:var(--color-border,#DDD8D0);border-radius:3px;margin:0 auto 20px;overflow:hidden">
             <div id="cd-progress" style="height:100%;background:var(--color-primary,#B04A45);border-radius:3px;width:100%;transition:width .9s linear"></div>
           </div>
@@ -87,7 +87,7 @@
         </div>
       </aside>
     </div>
-    <section class="how-to-use"><h2>Sådan bruger du nedtællingstimeren</h2><ol class="steps"><li><strong>Trin 1</strong> — Klik på en hurtig forudindstilling (5 min, 10 min, 25 min, 1 time) eller indtast en tilpasset tid.</li><li><strong>Trin 2</strong> — Klik <em>Start</em> for at begynde nedtællingen.</li><li><strong>Trin 3</strong> — Klik <em>Start</em> igen (nu siger den Pause) for at sætte på pause, derefter Genoptag for at fortsætte.</li><li><strong>Trin 4</strong> — En lydalarm afspilles når timeren når nul.</li></ol></section>
+    <section class="how-to-use"><h2>Sådan bruger du nedtællingstimeren</h2><ol class="steps"><li>Klik på en hurtig forudindstilling (5 min, 10 min, 25 min, 1 time) eller indtast en tilpasset tid.</li><li>Klik <em>Start</em> for at begynde nedtællingen.</li><li>Klik <em>Start</em> igen (nu siger den Pause) for at sætte på pause, derefter Genoptag for at fortsætte.</li><li>En lydalarm afspilles når timeren når nul.</li></ol></section>
     <section class="features"><h2>Funktioner</h2><ul class="features-list"><li>Hurtige forudindstillinger: 5 min, 10 min, 25 min (Pomodoro), 1 time</li><li>Tilpasset tid op til 99 timer</li><li>Visuel fremskridtslinje der skrumper efterhånden som tiden går</li><li>Lydalarm via Web Audio API — ingen filer nødvendige</li><li>Pause og genoptag til enhver tid</li></ul></section>
     <section class="seo-content">
       <h2>Nedtæller til fokus, madlavning og pauser</h2>

@@ -37,9 +37,9 @@
     historyEl.style.display = rollHistory.length ? 'block' : 'none';
     histList.innerHTML = rollHistory.map(e => {
       const time = new Date(e.time).toLocaleTimeString();
-      return `<div style="font-size:12px;padding:6px 0;border-bottom:1px solid #F0F0F5;display:flex;justify-content:space-between;">
+      return `<div style="font-size:12px;padding:6px 0;border-bottom:1px solid var(--color-border-light,#ECE7DF);display:flex;justify-content:space-between;">
         <span><strong>d${e.sides}</strong> ×${e.count}: [${e.rolls.join(', ')}]${e.count>1?' = '+e.total:''}</span>
-        <span style="color:#9CA3AF">${time}</span>
+        <span style="color:var(--color-text-3,#7C7169)">${time}</span>
       </div>`;
     }).join('');
   }

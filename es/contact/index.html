@@ -33,7 +33,7 @@
   <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
   <style>
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-    html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F4F6FF);color:var(--color-text,#1E1B4B)}
+    html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F4F6FF);color:var(--color-text,#151515)}
     body{min-height:100vh;display:flex;flex-direction:column}
     .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8D0)}
     .header-inner{max-width:1280px;width:100%;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;gap:32px}
@@ -46,24 +46,24 @@
     .contact-layout{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:start}
     @media(max-width:640px){.contact-layout{grid-template-columns:1fr}}
     .contact-cards{display:flex;flex-direction:column;gap:14px}
-    .contact-card{background:var(--color-surface,#fff);border:1.5px solid var(--color-border-light,#E0E7FF);border-radius:14px;padding:22px 24px;display:flex;gap:16px;align-items:flex-start;text-decoration:none;color:inherit;transition:border-color 0.2s,box-shadow 0.2s,transform 0.2s}
+    .contact-card{background:var(--color-surface,#fff);border:1.5px solid var(--color-border-light,#ECE7DF);border-radius:14px;padding:22px 24px;display:flex;gap:16px;align-items:flex-start;text-decoration:none;color:inherit;transition:border-color 0.2s,box-shadow 0.2s,transform 0.2s}
     .contact-card:hover{border-color:var(--color-primary-hover,#A5B4FC);box-shadow:0 6px 24px rgba(176,74,69,0.12);transform:translateY(-2px)}
     .contact-card-icon{font-size:1.6rem;flex-shrink:0;margin-top:2px}
-    .contact-card h3{font-size:15px;font-weight:700;color:var(--color-text,#1E1B4B);margin-bottom:4px}
+    .contact-card h3{font-size:15px;font-weight:700;color:var(--color-text,#151515);margin-bottom:4px}
     .contact-card p{font-size:13.5px;color:var(--color-text-2,#6B7280);line-height:1.5;margin:0}
-    .contact-card .card-link{font-size:13px;color:var(--color-primary,#4F46E5);font-weight:600;margin-top:6px;display:block}
-    .contact-form-wrap{background:var(--color-surface,#fff);border:1.5px solid var(--color-border-light,#E0E7FF);border-radius:16px;padding:32px}
-    .form-title{font-size:1.1rem;font-weight:700;color:var(--color-text,#1E1B4B);margin-bottom:20px}
+    .contact-card .card-link{font-size:13px;color:var(--color-primary,#B04A45);font-weight:600;margin-top:6px;display:block}
+    .contact-form-wrap{background:var(--color-surface,#fff);border:1.5px solid var(--color-border-light,#ECE7DF);border-radius:16px;padding:32px}
+    .form-title{font-size:1.1rem;font-weight:700;color:var(--color-text,#151515);margin-bottom:20px}
     .form-group{margin-bottom:18px}
     .form-group label{display:block;font-size:13px;font-weight:600;color:var(--color-text-body,#374151);margin-bottom:6px}
-    .form-group input,.form-group textarea,.form-group select{width:100%;padding:10px 14px;border:1.5px solid var(--color-border-light,#E0E7FF);border-radius:10px;font-size:15px;font-family:inherit;color:var(--color-text,#1E1B4B);background:var(--color-surface-2,#EEF1FF);transition:border-color 0.15s}
-    .form-group input:focus,.form-group textarea:focus,.form-group select:focus{outline:none;border-color:var(--color-primary,#4F46E5);background:var(--color-surface,#fff)}
+    .form-group input,.form-group textarea,.form-group select{width:100%;padding:10px 14px;border:1.5px solid var(--color-border-light,#ECE7DF);border-radius:10px;font-size:15px;font-family:inherit;color:var(--color-text,#151515);background:var(--color-surface-2,#F5F1EE);transition:border-color 0.15s}
+    .form-group input:focus,.form-group textarea:focus,.form-group select:focus{outline:none;border-color:var(--color-primary,#B04A45);background:var(--color-surface,#fff)}
     .form-group textarea{resize:vertical;min-height:120px;line-height:1.6}
-    .form-submit{width:100%;padding:12px;background:linear-gradient(135deg,var(--color-primary-alt,#6366F1),var(--color-primary,#4F46E5));color:var(--color-surface,#fff);font-size:15px;font-weight:700;border:none;border-radius:10px;cursor:pointer;transition:transform 0.15s,box-shadow 0.15s;font-family:inherit}
+    .form-submit{width:100%;padding:12px;background:linear-gradient(135deg,var(--color-primary-alt,#C28A3D),var(--color-primary,#B04A45));color:var(--color-surface,#fff);font-size:15px;font-weight:700;border:none;border-radius:10px;cursor:pointer;transition:transform 0.15s,box-shadow 0.15s;font-family:inherit}
     .form-submit:hover{transform:translateY(-1px);box-shadow:0 4px 16px rgba(176,74,69,0.3)}
     .success-msg{display:none;background:var(--color-success-bg,#F0FDF4);border:1.5px solid var(--color-success-text,#86EFAC);border-radius:10px;padding:16px 20px;margin-top:16px;font-size:14px;color:var(--color-success-text,#166534);text-align:center}
-    .faq-link{text-align:center;margin-top:40px;padding:20px;background:var(--color-primary-light,#EEF2FF);border-radius:12px;font-size:14px;color:var(--color-text-body,#374151)}
-    .faq-link a{color:var(--color-primary,#4F46E5);font-weight:600}
+    .faq-link{text-align:center;margin-top:40px;padding:20px;background:var(--color-primary-light,#F3E7E4);border-radius:12px;font-size:14px;color:var(--color-text-body,#374151)}
+    .faq-link a{color:var(--color-primary,#B04A45);font-weight:600}
   </style>
   <link rel="stylesheet" href="/assets/css/style.css">
 </head>

@@ -38,14 +38,14 @@
     const shuffled = shuffle(items);
     const picked = new Set(shuffled.slice(0, n));
 
-    resultEl.innerHTML = `<div style="font-weight:600;font-size:13px;color:#374151;margin-bottom:8px">Selected (${n}):</div>` +
+    resultEl.innerHTML = `<div style="font-weight:600;font-size:13px;color:var(--color-text-body,#6F625A);margin-bottom:8px">Selected (${n}):</div>` +
       [...picked].map(item =>
-        `<span style="display:inline-block;background:#4F46E5;color:#fff;border-radius:20px;padding:4px 14px;font-size:13px;margin:3px">${escHtml(item)}</span>`
+        `<span style="display:inline-block;background:var(--color-primary,#B04A45);color:#fff;border-radius:20px;padding:4px 14px;font-size:13px;margin:3px">${escHtml(item)}</span>`
       ).join('');
 
-    poolEl.innerHTML = `<div style="font-weight:600;font-size:12px;color:#6B7280;margin-bottom:6px">All items:</div>` +
+    poolEl.innerHTML = `<div style="font-weight:600;font-size:12px;color:var(--color-text-2,#3F3A36);margin-bottom:6px">All items:</div>` +
       items.map(item =>
-        `<span style="display:inline-block;border-radius:20px;padding:3px 10px;font-size:12px;margin:2px;${picked.has(item) ? 'background:var(--color-primary-light,#F3E7E4);color:#4F46E5;font-weight:600' : 'background:#F0F0F5;color:#6B7280'}">${escHtml(item)}</span>`
+        `<span style="display:inline-block;border-radius:20px;padding:3px 10px;font-size:12px;margin:2px;${picked.has(item) ? 'background:var(--color-primary-light,#F3E7E4);color:var(--color-primary,#B04A45);font-weight:600' : 'background:var(--color-border-light,#ECE7DF);color:var(--color-text-2,#3F3A36)'}">${escHtml(item)}</span>`
       ).join('');
   }
 

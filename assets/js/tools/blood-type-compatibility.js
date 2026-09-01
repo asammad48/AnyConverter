@@ -43,13 +43,13 @@
   }
 
   function renderGrid(selected) {
-    var table = '<table style="width:100%;border-collapse:collapse;font-size:13px"><thead><tr><th style="padding:6px;text-align:left;border-bottom:2px solid #E4E4EF">Blood Type</th><th style="padding:6px;border-bottom:2px solid #E4E4EF">Can Donate To</th><th style="padding:6px;border-bottom:2px solid #E4E4EF">Can Receive From</th></tr></thead><tbody>';
+    var table = '<table style="width:100%;border-collapse:collapse;font-size:13px"><thead><tr><th style="padding:6px;text-align:left;border-bottom:2px solid var(--color-border,#DDD8D0)">Blood Type</th><th style="padding:6px;border-bottom:2px solid var(--color-border,#DDD8D0)">Can Donate To</th><th style="padding:6px;border-bottom:2px solid var(--color-border,#DDD8D0)">Can Receive From</th></tr></thead><tbody>';
     ALL_TYPES.forEach(function(t) {
       var info = COMPATIBILITY[t];
-      var hl = t === selected ? 'background:#EEF2FF;font-weight:600' : '';
-      table += '<tr style="' + hl + '"><td style="padding:6px;border-bottom:1px solid #F0F0F8">' + t + '</td>' +
-        '<td style="padding:6px;border-bottom:1px solid #F0F0F8">' + info.donateTo.join(', ') + '</td>' +
-        '<td style="padding:6px;border-bottom:1px solid #F0F0F8">' + info.receiveFrom.join(', ') + '</td></tr>';
+      var hl = t === selected ? 'background:var(--color-primary-light,#F3E7E4);font-weight:600' : '';
+      table += '<tr style="' + hl + '"><td style="padding:6px;border-bottom:1px solid var(--color-border-light,#ECE7DF)">' + t + '</td>' +
+        '<td style="padding:6px;border-bottom:1px solid var(--color-border-light,#ECE7DF)">' + info.donateTo.join(', ') + '</td>' +
+        '<td style="padding:6px;border-bottom:1px solid var(--color-border-light,#ECE7DF)">' + info.receiveFrom.join(', ') + '</td></tr>';
     });
     table += '</tbody></table>';
     document.getElementById('bt-grid').innerHTML = table;

@@ -16,6 +16,8 @@ document.addEventListener('DOMContentLoaded', function () {
   let splitMode = 'pages';
   let pdfBytes = null;
   let totalPages = 0;
+  let lastOutputs = [];
+  let lastPrefix = 'part';
 
   function formatBytes(bytes) {
     if (bytes < 1024) return bytes + ' B';
@@ -33,10 +35,11 @@ document.addEventListener('DOMContentLoaded', function () {
     el.setAttribute('aria-checked', on ? 'true' : 'false');
   }
 
-  function bindToggle(el) {
+  function bindToggle(el, onChange) {
     if (!el) return;
     function toggle() {
       setToggle(el, el.classList.contains('off'));
+      if (typeof onChange === 'function') onChange();
     }
     el.addEventListener('click', toggle);
     el.addEventListener('keydown', function (e) {
@@ -63,6 +66,7 @@ document.addEventListener('DOMContentLoaded', function () {
       try {
         const doc = await window.PDFLib.PDFDocument.load(pdfBytes);
         totalPages = doc.getPageCount();
+        lastOutputs = [];
         fileInfoBar.textContent = file.name + ' — ' + totalPages + ' pages — ' + formatBytes(file.size);
         splitSettings.style.display = 'block';
         splitResult.style.display = 'none';
@@ -206,6 +210,31 @@ document.addEventListener('DOMContentLoaded', function () {
     URL.revokeObjectURL(url);
   }
 
+  function renderDownloadButtons(outputs, prefix) {
+    splitDownloads.innerHTML = '';
+
+    if (isToggleOn(zipToggle)) {
+      const zipBtn = document.createElement('button');
+      zipBtn.className = 'btn btn-primary btn-full';
+      zipBtn.textContent = 'Download ' + prefix + '.zip ↓';
+      zipBtn.addEventListener('click', function () {
+        downloadZip(outputs, prefix + '.zip');
+      });
+      splitDownloads.appendChild(zipBtn);
+      return;
+    }
+
+    outputs.forEach(function (output, index) {
+      const btn2 = document.createElement('button');
+      btn2.className = (index === 0 ? 'btn btn-primary' : 'btn btn-secondary') + ' btn-full mb-2';
+      btn2.textContent = 'Download ' + output.name + ' ↓';
+      btn2.addEventListener('click', function () {
+        downloadPdf(output.bytes, output.name);
+      });
+      splitDownloads.appendChild(btn2);
+    });
+  }
+
   async function extractPages(pageNums) {
     const doc = await window.PDFLib.PDFDocument.load(pdfBytes);
     const newDoc = await window.PDFLib.PDFDocument.create();
@@ -263,25 +292,9 @@ document.addEventListener('DOMContentLoaded', function () {
       if (selectedStat) selectedStat.textContent = selectedCount;
       if (partsStat) partsStat.textContent = outputs.length;
 
-      if (isToggleOn(zipToggle)) {
-        const zipBtn = document.createElement('button');
-        zipBtn.className = 'btn btn-primary btn-full';
-        zipBtn.textContent = 'Download ' + prefix + '.zip ↓';
-        zipBtn.addEventListener('click', function () {
-          downloadZip(outputs, prefix + '.zip');
-        });
-        splitDownloads.appendChild(zipBtn);
-      } else {
-        outputs.forEach(function (output, index) {
-          const btn2 = document.createElement('button');
-          btn2.className = (index === 0 ? 'btn btn-primary' : 'btn btn-secondary') + ' btn-full mb-2';
-          btn2.textContent = 'Download ' + output.name + ' ↓';
-          btn2.addEventListener('click', function () {
-            downloadPdf(output.bytes, output.name);
-          });
-          splitDownloads.appendChild(btn2);
-        });
-      }
+      lastOutputs = outputs;
+      lastPrefix = prefix;
+      renderDownloadButtons(lastOutputs, lastPrefix);
 
       splitResult.style.display = 'block';
     } catch(e) {
@@ -291,7 +304,11 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 
-  bindToggle(zipToggle);
+  bindToggle(zipToggle, function () {
+    if (lastOutputs.length && splitResult.style.display !== 'none') {
+      renderDownloadButtons(lastOutputs, lastPrefix);
+    }
+  });
   dropZone.addEventListener('click', function () { fileInput.click(); });
   dropZone.addEventListener('keydown', function (e) {
     if (e.key === 'Enter' || e.key === ' ') {

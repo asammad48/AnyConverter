@@ -33,9 +33,9 @@
     var r = checkStrength(pw);
     var pct = pw ? Math.round((r.score / 7) * 100) : 0;
     document.getElementById('psc-bar').style.width = pct + '%';
-    document.getElementById('psc-bar').style.background = r.color || '#E4E4EF';
+    document.getElementById('psc-bar').style.background = r.color || 'var(--color-border,#DDD8D0)';
     document.getElementById('psc-label').textContent = r.label;
-    document.getElementById('psc-label').style.color = r.color || '#9CA3AF';
+    document.getElementById('psc-label').style.color = r.color || 'var(--color-text-3,#7C7169)';
     var checks = [
       {id:'psc-c-len8', ok: r.checks.length8, text:'At least 8 characters'},
       {id:'psc-c-len12', ok: r.checks.length12, text:'At least 12 characters'},

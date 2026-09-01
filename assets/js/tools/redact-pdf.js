@@ -44,10 +44,10 @@
   function updateRedactionList() {
     var list = document.getElementById('rd-list');
     list.innerHTML = '';
-    if (!redactions.length) { list.innerHTML = '<p style="color:#6B7280;font-size:12px">No redactions added yet.</p>'; return; }
+    if (!redactions.length) { list.innerHTML = '<p style="color:var(--color-text-2,#3F3A36);font-size:12px">No redactions added yet.</p>'; return; }
     redactions.forEach(function (r, i) {
       var row = document.createElement('div');
-      row.style.cssText = 'display:flex;align-items:center;gap:8px;font-size:12px;padding:4px 0;border-bottom:1px solid #F0F0F8';
+      row.style.cssText = 'display:flex;align-items:center;gap:8px;font-size:12px;padding:4px 0;border-bottom:1px solid var(--color-border-light,#ECE7DF)';
       row.innerHTML = '<span style="flex:1">Page ' + r.page + ': x=' + r.x + ', y=' + r.y + ', w=' + r.w + ', h=' + r.h + '</span>';
       var btn = document.createElement('button');
       btn.textContent = '✕'; btn.style.cssText = 'background:none;border:none;cursor:pointer;color:#EF4444';

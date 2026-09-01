@@ -60,8 +60,8 @@
     const lapTime = elapsed - prev;
     laps.push(lapTime);
     const li = document.createElement('li');
-    li.style.cssText = 'display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid #E4E4EF;font-size:13px;';
-    li.innerHTML = `<span style="color:#5C5C7A">Lap ${laps.length}</span><span>${fmt(lapTime)}</span><span style="color:#9CA3AF">${fmt(elapsed)}</span>`;
+    li.style.cssText = 'display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid var(--color-border,#DDD8D0);font-size:13px;';
+    li.innerHTML = `<span style="color:var(--color-text-2,#3F3A36)">Lap ${laps.length}</span><span>${fmt(lapTime)}</span><span style="color:var(--color-text-3,#7C7169)">${fmt(elapsed)}</span>`;
     lapList.prepend(li);
   }
 

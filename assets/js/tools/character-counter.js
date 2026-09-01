@@ -32,7 +32,7 @@
       var pct = Math.min(100, Math.round(used / l.limit * 100));
       var over = used > l.limit;
       var color = over ? '#EF4444' : pct > 80 ? '#F59E0B' : '#22C55E';
-      return '<div><div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:3px"><span>' + l.name + '</span><span style="color:' + color + ';font-weight:500">' + used + ' / ' + l.limit + (over ? ' (+' + (used - l.limit) + ')' : '') + '</span></div><div style="height:4px;border-radius:2px;background:#E4E4EF;overflow:hidden"><div style="height:100%;width:' + pct + '%;background:' + color + ';border-radius:2px"></div></div></div>';
+      return '<div><div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:3px"><span>' + l.name + '</span><span style="color:' + color + ';font-weight:500">' + used + ' / ' + l.limit + (over ? ' (+' + (used - l.limit) + ')' : '') + '</span></div><div style="height:4px;border-radius:2px;background:var(--color-border,#DDD8D0);overflow:hidden"><div style="height:100%;width:' + pct + '%;background:' + color + ';border-radius:2px"></div></div></div>';
     }).join('');
   }
 

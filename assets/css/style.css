@@ -536,9 +536,9 @@ main { flex: 1; }
 
 @media (prefers-color-scheme: dark) {
   .category-section[data-cat="developer"] {
-    --cat-zone: rgba(79,70,229,0.14); --cat-border: rgba(165,180,252,0.3);
-    --cat-accent: #A5B4FC; --cat-title: #A5B4FC; --cat-title-bg: rgba(79,70,229,0.15);
-    --cat-glow: rgba(165,180,252,0.22);
+    --cat-zone: rgba(200,90,84,0.14); --cat-border: rgba(200,90,84,0.3);
+    --cat-accent: #C85A54; --cat-title: #C85A54; --cat-title-bg: rgba(200,90,84,0.15);
+    --cat-glow: rgba(200,90,84,0.22);
   }
   .category-section[data-cat="pdf"] {
     --cat-zone: rgba(220,38,38,0.12); --cat-border: rgba(252,165,165,0.25);
@@ -612,7 +612,9 @@ main { flex: 1; }
 
 /* ===== FORM INPUTS ===== */
 input[type="text"], input[type="number"], input[type="email"],
-input[type="url"], select, textarea {
+input[type="url"], input[type="date"], input[type="time"],
+input[type="datetime-local"], input[type="month"], input[type="week"],
+select, textarea {
   background: var(--color-surface-2);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
@@ -620,8 +622,21 @@ input[type="url"], select, textarea {
   font-family: var(--font-sans);
   font-size: 15px;
   color: var(--color-text);
+  color-scheme: light;
   transition: border-color 0.15s, box-shadow 0.15s;
   width: 100%;
+}
+.dark input[type="date"], .dark input[type="time"],
+.dark input[type="datetime-local"], .dark input[type="month"],
+.dark input[type="week"] {
+  color-scheme: dark;
+}
+@media (prefers-color-scheme: dark) {
+  input[type="date"], input[type="time"],
+  input[type="datetime-local"], input[type="month"],
+  input[type="week"] {
+    color-scheme: dark;
+  }
 }
 input:focus, select:focus, textarea:focus {
   outline: none;
@@ -1181,28 +1196,6 @@ mark.regex-match { background: rgba(255,200,0,0.4); color: transparent; border-r
 /* Focus ring */
 :focus-visible { outline: 2px solid var(--color-primary); outline-offset: 2px; }
 
-/* ===== DARK MODE VIA CLASS ===== */
-:root.dark {
-  --color-primary:        #818CF8;
-  --color-primary-hover:  #A5B4FC;
-  --color-primary-light:  #1E1E3A;
-  --color-bg:             #0F0F1A;
-  --color-surface:        #18182A;
-  --color-surface-2:      #22223A;
-  --color-border:         #2E2E48;
-  --color-border-focus:   #818CF8;
-  --color-text:           #EDEDF8;
-  --color-text-2:         #9898C0;
-  --color-text-3:         #5C5C80;
-  --color-success-bg:     #052E16;
-  --color-error-bg:       #450A0A;
-  --color-warning-bg:     #451A03;
-  --dot-color:            rgba(129, 140, 248, 0.06);
-  --color-text-body:      #C4C4D4;
-  --color-border-light:   #2E2E48;
-  --color-success-text:   #86EFAC;
-  --color-warning-text:   #FDE68A;
-}
 /* Dark mode json-view syntax */
 :root.dark .j-key    { color: #86EFAC; }
 :root.dark .j-str    { color: #7DD3FC; }
@@ -1248,7 +1241,13 @@ mark.regex-match { background: rgba(255,200,0,0.4); color: transparent; border-r
   border-radius: 12px;
   padding: 14px;
 }
-@media (max-width: 1199px) { .tool-side { display: none; } }
+@media (max-width: 1199px) {
+  .tool-wrapper { flex-direction: column; }
+  .tool-side {
+    width: 100%;
+    min-height: 0;
+  }
+}
 
 /* ===== AC-PANEL (white block) ===== */
 .ac-panel {
@@ -1500,6 +1499,13 @@ label.ac-btn { align-self: center; margin-top: 4px; position: relative; top: 1px
   margin-top: 4px;
 }
 .ss-opt-input:focus { border-color: var(--color-primary); }
+
+#gst-rate { min-width: 0; }
+#gst-preset {
+  width: auto;
+  min-width: 118px;
+  flex: 0 0 min(46%, 180px);
+}
 
 /* ===== TOGGLE COMPONENT ===== */
 .tog-row {

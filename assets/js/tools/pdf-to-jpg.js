@@ -41,7 +41,7 @@
         wrap.style.cssText = 'display:inline-block;margin:6px;text-align:center;font-size:12px';
         var img = document.createElement('img');
         img.src = dataUrl;
-        img.style.cssText = 'max-width:160px;max-height:200px;border:1px solid #E4E4EF;border-radius:4px;display:block;margin-bottom:4px';
+        img.style.cssText = 'max-width:160px;max-height:200px;border:1px solid var(--color-border,#DDD8D0);border-radius:4px;display:block;margin-bottom:4px';
         wrap.appendChild(img);
         wrap.appendChild(document.createTextNode('Page ' + i));
         preview.appendChild(wrap);

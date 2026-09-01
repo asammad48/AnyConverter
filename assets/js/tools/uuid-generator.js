@@ -20,7 +20,7 @@
       if (upper) uuid = uuid.toUpperCase();
       uuids.push(uuid);
       var row = document.createElement('div');
-      row.style.cssText = 'display:flex;align-items:center;gap:8px;padding:6px 8px;background:#fff;border:1px solid #E4E4EF;border-radius:6px';
+      row.style.cssText = 'display:flex;align-items:center;gap:8px;padding:6px 8px;background:var(--color-surface,#fff);border:1px solid var(--color-border,#DDD8D0);border-radius:6px';
       var span = document.createElement('span');
       span.style.cssText = 'flex:1;font-family:monospace;font-size:13px;word-break:break-all';
       span.textContent = uuid;

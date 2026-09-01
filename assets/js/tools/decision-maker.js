@@ -44,7 +44,7 @@
         const winner = options[Math.floor(Math.random() * options.length)];
         displayEl.textContent = winner;
         displayEl.style.color = '#059669';
-        resultEl.innerHTML = `<p style="font-size:13px;color:#374151;margin-top:8px">✅ Decision made: <strong>${escHtml(winner)}</strong></p>`;
+        resultEl.innerHTML = `<p style="font-size:13px;color:var(--color-text-body,#6F625A);margin-top:8px">✅ Decision made: <strong>${escHtml(winner)}</strong></p>`;
         decideBtn.disabled = false;
       }
     }
@@ -57,5 +57,5 @@
 
   // Shake button easter egg
   displayEl.textContent = '?';
-  displayEl.style.color = '#9CA3AF';
+  displayEl.style.color = 'var(--color-text-3,#7C7169)';
 })();

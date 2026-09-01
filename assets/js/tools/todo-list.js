@@ -27,14 +27,14 @@
     });
     listEl.innerHTML = '';
     if (visible.length === 0) {
-      listEl.innerHTML = '<li style="text-align:center;color:#9CA3AF;padding:24px;font-size:13px">No tasks here</li>';
+      listEl.innerHTML = '<li style="text-align:center;color:var(--color-text-3,#7C7169);padding:24px;font-size:13px">No tasks here</li>';
     } else {
       visible.forEach(t => {
         const li = document.createElement('li');
-        li.style.cssText = 'display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid #F0F0F5;';
+        li.style.cssText = 'display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--color-border-light,#ECE7DF);';
         li.innerHTML = `
           <input type="checkbox" id="chk-${t.id}" ${t.done ? 'checked' : ''} style="width:16px;height:16px;accent-color:#B04A45;cursor:pointer;flex-shrink:0">
-          <label for="chk-${t.id}" style="flex:1;cursor:pointer;font-size:14px;${t.done ? 'text-decoration:line-through;color:#9CA3AF;' : ''}">${escHtml(t.text)}</label>
+          <label for="chk-${t.id}" style="flex:1;cursor:pointer;font-size:14px;${t.done ? 'text-decoration:line-through;color:var(--color-text-3,#7C7169);' : ''}">${escHtml(t.text)}</label>
           <button data-del="${t.id}" style="background:none;border:none;cursor:pointer;color:#DC2626;font-size:16px;line-height:1;padding:2px 4px;" aria-label="Delete">×</button>`;
         li.querySelector(`#chk-${t.id}`).addEventListener('change', e => toggle(t.id, e.target.checked));
         li.querySelector(`[data-del="${t.id}"]`).addEventListener('click', () => remove(t.id));
@@ -82,8 +82,8 @@
     btn.addEventListener('click', () => {
       filter = btn.dataset.filter;
       document.querySelectorAll('[data-filter]').forEach(b => {
-        b.style.background = b.dataset.filter === filter ? '#B04A45' : '#fff';
-        b.style.color = b.dataset.filter === filter ? '#fff' : '#374151';
+        b.style.background = b.dataset.filter === filter ? '#B04A45' : 'var(--color-surface,#fff)';
+        b.style.color = b.dataset.filter === filter ? '#fff' : 'var(--color-text-body,#6F625A)';
       });
       render();
     });

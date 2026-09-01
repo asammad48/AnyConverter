@@ -48,13 +48,13 @@
 
   function renderResults(results, title, subtitle) {
     var wrap = document.getElementById('sc-results');
-    var html = '<h3 style="margin-bottom:4px">' + title + '</h3><p style="color:#5C5C7A;font-size:13px;margin-bottom:16px">' + subtitle + ' (takes ~' + FALL_ASLEEP + ' min to fall asleep)</p>';
+    var html = '<h3 style="margin-bottom:4px">' + title + '</h3><p style="color:var(--color-text-2,#3F3A36);font-size:13px;margin-bottom:16px">' + subtitle + ' (takes ~' + FALL_ASLEEP + ' min to fall asleep)</p>';
     html += '<div style="display:grid;gap:8px">';
     results.forEach(function(r, i) {
       var best = i === 1 || i === 2;
-      html += '<div style="display:flex;align-items:center;justify-content:space-between;padding:12px 16px;border-radius:8px;background:' + (best ? '#EEF2FF' : '#F8F8FC') + ';border:1px solid ' + (best ? '#C7D2FE' : '#E4E4EF') + '">' +
-        '<div><span style="font-weight:600;font-size:16px">' + r.time + '</span>' + (best ? ' <span style="font-size:11px;background:#4F46E5;color:#fff;padding:2px 6px;border-radius:4px">Recommended</span>' : '') + '</div>' +
-        '<div style="text-align:right;font-size:13px;color:#5C5C7A">' + r.cycles + ' cycles · ' + r.hours + ' hrs</div>' +
+      html += '<div style="display:flex;align-items:center;justify-content:space-between;padding:12px 16px;border-radius:8px;background:' + (best ? 'var(--color-primary-light,#F3E7E4)' : 'var(--color-surface-2,#F5F1EE)') + ';border:1px solid ' + (best ? 'var(--color-border-focus,#B04A45)' : 'var(--color-border,#DDD8D0)') + '">' +
+        '<div><span style="font-weight:600;font-size:16px">' + r.time + '</span>' + (best ? ' <span style="font-size:11px;background:var(--color-primary,#B04A45);color:#fff;padding:2px 6px;border-radius:4px">Recommended</span>' : '') + '</div>' +
+        '<div style="text-align:right;font-size:13px;color:var(--color-text-2,#3F3A36)">' + r.cycles + ' cycles · ' + r.hours + ' hrs</div>' +
         '</div>';
     });
     html += '</div>';

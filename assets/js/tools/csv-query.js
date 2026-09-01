@@ -183,7 +183,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const pageRows = sorted.slice((currentPage - 1) * PAGE_SIZE, currentPage * PAGE_SIZE);
 
     if (!currentColumns.length) {
-      resultsTable.innerHTML = '<p style="padding:16px;color:#5C5C7A">No results.</p>';
+      resultsTable.innerHTML = '<p style="padding:16px;color:var(--color-text-2,#3F3A36)">No results.</p>';
       resultStats.textContent = '0 rows';
       paginationBar.innerHTML = '';
       return;

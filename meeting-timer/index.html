@@ -29,7 +29,7 @@
 <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
   <style>
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-    html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F4F6FF);color:var(--color-text,#1E1B4B)}
+    html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F4F6FF);color:var(--color-text,#151515)}
     body{min-height:100vh;display:flex;flex-direction:column}
     .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8D0)}
     .header-inner{max-width:1280px;width:100%;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;gap:32px}
@@ -70,7 +70,7 @@
             <!-- Timer panel -->
             <div style="background:var(--color-bg,#F4F6FF);border-radius:12px;padding:20px;text-align:center">
               <div id="mt-current" style="font-size:13px;font-weight:600;color:var(--color-text-2,#6B7280);margin-bottom:10px;min-height:18px">Press Start to begin</div>
-              <div id="mt-display" style="font-size:3rem;font-weight:800;font-family:monospace;color:var(--color-text,#1E1B4B);margin-bottom:12px;letter-spacing:0.05em">00:00</div>
+              <div id="mt-display" style="font-size:3rem;font-weight:800;font-family:monospace;color:var(--color-text,#151515);margin-bottom:12px;letter-spacing:0.05em">00:00</div>
               <!-- Progress bar -->
               <div style="width:100%;height:6px;background:var(--color-border,#DDD8D0);border-radius:3px;margin-bottom:16px;overflow:hidden">
                 <div id="mt-progress" style="height:100%;background:var(--color-primary,#B04A45);border-radius:3px;width:100%;transition:width 0.9s linear"></div>
@@ -93,7 +93,7 @@
         </div>
       </aside>
     </div>
-    <section class="how-to-use"><h2>How to Use the Meeting Timer</h2><ol class="steps"><li><strong>Step 1</strong> — Add agenda items with a title and duration in minutes.</li><li><strong>Step 2</strong> — Click <em>Start Meeting</em> to begin timing the first item.</li><li><strong>Step 3</strong> — The timer auto-advances when each item's time runs out.</li><li><strong>Step 4</strong> — Click <em>Skip to Next</em> to move on early, or <em>Reset</em> to start over.</li></ol></section>
+    <section class="how-to-use"><h2>How to Use the Meeting Timer</h2><ol class="steps"><li>Add agenda items with a title and duration in minutes.</li><li>Click <em>Start Meeting</em> to begin timing the first item.</li><li>The timer auto-advances when each item's time runs out.</li><li>Click <em>Skip to Next</em> to move on early, or <em>Reset</em> to start over.</li></ol></section>
     <section class="features"><h2>Features</h2><ul class="features-list"><li>Agenda items with name and duration</li><li>Auto-advances to next item when time expires</li><li>Progress bar turns red when under 20% time remaining</li><li>Skip button to move ahead manually</li><li>Agenda saved to localStorage between visits</li></ul></section>
     <!-- SEO keyword implementation: 2026-08-21 -->
     <section class="seo-content" data-seo-keyword-plan="2026-08-21">

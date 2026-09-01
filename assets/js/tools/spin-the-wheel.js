@@ -57,7 +57,7 @@
     ctx.arc(cx, cy, 18, 0, 2 * Math.PI);
     ctx.fillStyle = '#fff';
     ctx.fill();
-    ctx.strokeStyle = '#E4E4EF';
+    ctx.strokeStyle = '#DDD8D0';
     ctx.lineWidth = 2;
     ctx.stroke();
 

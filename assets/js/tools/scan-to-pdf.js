@@ -19,12 +19,12 @@
   function updateList() {
     var container = document.getElementById('s2p-list');
     container.innerHTML = '';
-    if (!fileList.length) { container.innerHTML = '<p style="color:#6B7280;font-size:13px">No images selected yet.</p>'; return; }
+    if (!fileList.length) { container.innerHTML = '<p style="color:var(--color-text-2,#3F3A36);font-size:13px">No images selected yet.</p>'; return; }
     fileList.forEach(function (f, i) {
       var row = document.createElement('div');
-      row.style.cssText = 'display:flex;align-items:center;gap:10px;padding:6px 0;border-bottom:1px solid #F0F0F8;font-size:13px';
+      row.style.cssText = 'display:flex;align-items:center;gap:10px;padding:6px 0;border-bottom:1px solid var(--color-border-light,#ECE7DF);font-size:13px';
       var thumb = document.createElement('img');
-      thumb.style.cssText = 'width:40px;height:40px;object-fit:cover;border-radius:4px;border:1px solid #E4E4EF';
+      thumb.style.cssText = 'width:40px;height:40px;object-fit:cover;border-radius:4px;border:1px solid var(--color-border,#DDD8D0)';
       var thumbUrl = URL.createObjectURL(f);
       thumb.src = thumbUrl;
       thumb.onload = function() { URL.revokeObjectURL(thumbUrl); };

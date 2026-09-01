@@ -51,10 +51,10 @@
   function updateAnnotList() {
     var list = document.getElementById('ed-list');
     list.innerHTML = '';
-    if (!annotations.length) { list.innerHTML = '<p style="color:#6B7280;font-size:12px">No annotations added yet.</p>'; return; }
+    if (!annotations.length) { list.innerHTML = '<p style="color:var(--color-text-2,#3F3A36);font-size:12px">No annotations added yet.</p>'; return; }
     annotations.forEach(function (a, i) {
       var row = document.createElement('div');
-      row.style.cssText = 'display:flex;align-items:center;gap:8px;font-size:12px;padding:4px 0;border-bottom:1px solid #F0F0F8';
+      row.style.cssText = 'display:flex;align-items:center;gap:8px;font-size:12px;padding:4px 0;border-bottom:1px solid var(--color-border-light,#ECE7DF)';
       var desc = a.type === 'text' ? 'Text "' + a.text.slice(0,20) + '" p.' + a.page + ' @(' + a.x + ',' + a.y + ')'
                                    : 'Rect p.' + a.page + ' @(' + a.x + ',' + a.y + ') ' + a.w + '×' + a.h;
       row.innerHTML = '<span style="flex:1">' + desc + '</span>';

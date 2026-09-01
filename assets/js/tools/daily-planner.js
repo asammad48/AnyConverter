@@ -26,17 +26,17 @@
     taskList.innerHTML = '';
     const sorted = [...tasks].sort((a, b) => a.time.localeCompare(b.time));
     if (sorted.length === 0) {
-      taskList.innerHTML = '<li style="color:#9CA3AF;font-size:13px;text-align:center;padding:24px">No tasks planned for this day.</li>';
+      taskList.innerHTML = '<li style="color:var(--color-text-3,#7C7169);font-size:13px;text-align:center;padding:24px">No tasks planned for this day.</li>';
       return;
     }
     sorted.forEach(t => {
       const li = document.createElement('li');
-      li.style.cssText = 'display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid #F0F0F5;';
-      const dur = t.dur ? `<span style="font-size:11px;color:#9CA3AF;margin-left:4px">${t.dur} min</span>` : '';
+      li.style.cssText = 'display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--color-border-light,#ECE7DF);';
+      const dur = t.dur ? `<span style="font-size:11px;color:var(--color-text-3,#7C7169);margin-left:4px">${t.dur} min</span>` : '';
       li.innerHTML = `
-        <span style="font-size:12px;font-weight:600;color:#4F46E5;min-width:42px">${t.time}</span>
-        <span style="flex:1;font-size:13px;${t.done ? 'text-decoration:line-through;color:#9CA3AF' : ''}">${escHtml(t.task)}${dur}</span>
-        <input type="checkbox" ${t.done ? 'checked' : ''} data-cid="${t.id}" style="accent-color:#4F46E5;cursor:pointer">
+        <span style="font-size:12px;font-weight:600;color:var(--color-primary,#B04A45);min-width:42px">${t.time}</span>
+        <span style="flex:1;font-size:13px;${t.done ? 'text-decoration:line-through;color:var(--color-text-3,#7C7169)' : ''}">${escHtml(t.task)}${dur}</span>
+        <input type="checkbox" ${t.done ? 'checked' : ''} data-cid="${t.id}" style="accent-color:var(--color-primary,#B04A45);cursor:pointer">
         <button data-del="${t.id}" style="background:none;border:none;color:#DC2626;cursor:pointer;font-size:16px;line-height:1" aria-label="Delete">×</button>`;
       li.querySelector(`[data-cid="${t.id}"]`).addEventListener('change', e => {
         const task = tasks.find(x => x.id === t.id);

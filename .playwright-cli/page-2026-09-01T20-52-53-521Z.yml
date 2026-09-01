@@ -1,0 +1,407 @@
+- generic [ref=f1e1]:
+  - banner [ref=f1e2]:
+    - link "Skip to content" [ref=f1e3] [cursor=pointer]:
+      - /url: "#main-content"
+    - generic [ref=f1e4]:
+      - link "AnyConverter Home" [ref=f1e5] [cursor=pointer]:
+        - /url: /
+        - generic [ref=f1e6]: AnyConverter
+      - navigation "Main navigation" [ref=f1e7]:
+        - list [ref=f1e8]:
+          - listitem [ref=f1e9]:
+            - button "Developer ▾" [ref=f1e10] [cursor=pointer]
+          - listitem [ref=f1e11]:
+            - button "PDF Tools ▾" [ref=f1e12] [cursor=pointer]
+          - listitem [ref=f1e13]:
+            - button "Text ▾" [ref=f1e14] [cursor=pointer]
+          - listitem [ref=f1e15]:
+            - button "Productivity ▾" [ref=f1e16] [cursor=pointer]
+          - listitem [ref=f1e17]:
+            - button "Calculators ▾" [ref=f1e18] [cursor=pointer]
+          - listitem [ref=f1e19]:
+            - button "Browser ▾" [ref=f1e20] [cursor=pointer]
+      - generic [ref=f1e21]:
+        - button "Search tools" [ref=f1e22] [cursor=pointer]:
+          - generic [ref=f1e26]: Search tools…
+          - generic [ref=f1e27]: Ctrl K
+        - button "Select language" [ref=f1e29] [cursor=pointer]:
+          - generic [ref=f1e30]: 🇺🇸
+          - generic [ref=f1e31]: EN
+          - generic [aria-hidden] [ref=f1e32]: ▾
+        - button "Toggle dark mode" [ref=f1e33] [cursor=pointer]: 🌙
+  - main [ref=f1e34]:
+    - navigation "Breadcrumb" [ref=f1e35]:
+      - list [ref=f1e36]:
+        - listitem [ref=f1e37]:
+          - link "Home" [ref=f1e38] [cursor=pointer]:
+            - /url: /
+          - text: /
+        - listitem [ref=f1e39]: JSON Formatter
+    - generic [ref=f1e40]:
+      - heading "JSON Formatter & Validator" [level=1] [ref=f1e41]
+      - paragraph [ref=f1e42]: Instantly format, beautify and validate your JSON. Paste JSON and get live formatted output with collapsible nodes and syntax highlighting. 100% free, 100% private — runs in your browser.
+      - generic [ref=f1e43]:
+        - button "Go to related tools section" [ref=f1e44] [cursor=pointer]:
+          - generic [aria-hidden] [ref=f1e45]: ▦
+          - generic [ref=f1e46]: Related Tools
+        - button "Share this tool" [ref=f1e47] [cursor=pointer]:
+          - generic [aria-hidden] [ref=f1e48]: ↗
+          - generic [ref=f1e49]: Share
+        - button "Copy tool link" [ref=f1e50] [cursor=pointer]:
+          - generic [aria-hidden] [ref=f1e51]: 🔗
+          - generic [ref=f1e52]: Copy Link
+        - button "Add tool to favorites" [ref=f1e53] [cursor=pointer]:
+          - generic [aria-hidden] [ref=f1e54]: ☆
+          - generic [ref=f1e55]: Add to Favorites
+    - generic [ref=f1e56]:
+      - generic [ref=f1e57]:
+        - tablist [ref=f1e58]:
+          - tab "Formatter" [selected] [ref=f1e59] [cursor=pointer]
+          - tab "Minifier" [ref=f1e60] [cursor=pointer]
+          - tab "Validator" [ref=f1e61] [cursor=pointer]
+          - tab "Converter" [ref=f1e62] [cursor=pointer]
+        - generic [ref=f1e63]:
+          - generic [ref=f1e64]:
+            - generic [ref=f1e65]:
+              - generic [ref=f1e66]: "{ }"
+              - generic [ref=f1e67]: Input
+              - generic [ref=f1e68]:
+                - generic "Upload JSON file" [ref=f1e69] [cursor=pointer]: Upload
+                - button "Paste" [ref=f1e70] [cursor=pointer]
+                - button "Clear" [ref=f1e71] [cursor=pointer]
+                - generic [ref=f1e72]:
+                  - button "A−" [ref=f1e73] [cursor=pointer]
+                  - button "A+" [ref=f1e74] [cursor=pointer]
+                - button "⛶" [ref=f1e75] [cursor=pointer]
+            - textbox "JSON input" [ref=f1e76]:
+              - /placeholder: Paste JSON here — auto-formats on input…
+              - text: "{\"site\":\"AnyConverter\",\"tools\":78,\"private\":true,\"categories\":[\"PDF\",\"Images\",\"JSON\",\"Calculators\"]}"
+            - generic [ref=f1e77]:
+              - generic [ref=f1e296]: ✓ Valid JSON
+              - generic [ref=f1e78]: 100 chars
+          - generic [ref=f1e79]:
+            - generic [ref=f1e80]:
+              - generic [ref=f1e81]: ✦
+              - generic [ref=f1e82]: Output
+              - generic [ref=f1e83]:
+                - button "Copy" [ref=f1e84] [cursor=pointer]
+                - button "Download" [ref=f1e85] [cursor=pointer]
+                - button "Collapse all" [ref=f1e86] [cursor=pointer]
+                - button "Expand all" [ref=f1e87] [cursor=pointer]
+                - button "⛶" [ref=f1e88] [cursor=pointer]
+            - generic "Formatted JSON output" [ref=f1e89]:
+              - generic [ref=f1e297]:
+                - button "Collapse node" [expanded] [ref=f1e298] [cursor=pointer]: ▾
+                - generic [ref=f1e299]: "{"
+              - generic [ref=f1e300]:
+                - generic [ref=f1e301]:
+                  - generic [aria-hidden]: ▾
+                  - generic [ref=f1e302]: "\"site\""
+                  - generic [ref=f1e303]: ":"
+                  - generic [ref=f1e304]: "\"AnyConverter\""
+                  - generic [ref=f1e305]: ","
+                - generic [ref=f1e306]:
+                  - generic [aria-hidden]: ▾
+                  - generic [ref=f1e307]: "\"tools\""
+                  - generic [ref=f1e308]: ":"
+                  - generic [ref=f1e309]: "78"
+                  - generic [ref=f1e310]: ","
+                - generic [ref=f1e311]:
+                  - generic [aria-hidden]: ▾
+                  - generic [ref=f1e312]: "\"private\""
+                  - generic [ref=f1e313]: ":"
+                  - generic [ref=f1e314]: "true"
+                  - generic [ref=f1e315]: ","
+                - generic [ref=f1e316]:
+                  - button "Collapse node" [expanded] [ref=f1e317] [cursor=pointer]: ▾
+                  - generic [ref=f1e318]: "\"categories\""
+                  - generic [ref=f1e319]: ":"
+                  - generic [ref=f1e320]: "["
+                - generic [ref=f1e321]:
+                  - generic [ref=f1e322]:
+                    - generic [aria-hidden]: ▾
+                    - generic [ref=f1e323]: "\"PDF\""
+                    - generic [ref=f1e324]: ","
+                  - generic [ref=f1e325]:
+                    - generic [aria-hidden]: ▾
+                    - generic [ref=f1e326]: "\"Images\""
+                    - generic [ref=f1e327]: ","
+                  - generic [ref=f1e328]:
+                    - generic [aria-hidden]: ▾
+                    - generic [ref=f1e329]: "\"JSON\""
+                    - generic [ref=f1e330]: ","
+                  - generic [ref=f1e331]:
+                    - generic [aria-hidden]: ▾
+                    - generic [ref=f1e332]: "\"Calculators\""
+                  - generic [ref=f1e333]:
+                    - generic [aria-hidden]: ▾
+                    - generic [ref=f1e334]: "]"
+                - generic [ref=f1e335]:
+                  - generic [aria-hidden]: ▾
+                  - generic [ref=f1e336]: "}"
+            - generic [ref=f1e90]:
+              - generic [ref=f1e337]: ✓ Formatted
+              - generic [ref=f1e338]: 11 lines · 4 keys
+        - generic [ref=f1e91]:
+          - button "Format" [active] [ref=f1e92] [cursor=pointer]
+          - button "Minify" [ref=f1e93] [cursor=pointer]
+          - button "Validate" [ref=f1e94] [cursor=pointer]
+          - button "→ YAML" [ref=f1e95] [cursor=pointer]
+          - button "→ CSV" [ref=f1e96] [cursor=pointer]
+          - generic [ref=f1e97]: "Auto-format: ON"
+      - complementary "Options" [ref=f1e99]:
+        - generic [ref=f1e101]:
+          - generic [ref=f1e102]: Indent
+          - combobox [ref=f1e103] [cursor=pointer]:
+            - option "2 spaces" [selected]
+            - option "4 spaces"
+            - option "Tab"
+        - generic [ref=f1e104]:
+          - generic [ref=f1e105]: Sort keys
+          - combobox [ref=f1e106] [cursor=pointer]:
+            - option "None" [selected]
+            - option "A → Z"
+            - option "Z → A"
+        - generic [ref=f1e107]:
+          - generic [ref=f1e108]: Font size
+          - combobox [ref=f1e109] [cursor=pointer]:
+            - option "Small (11px)"
+            - option "Normal (13px)" [selected]
+            - option "Medium (15px)"
+            - option "Large (17px)"
+        - generic [ref=f1e110]:
+          - generic [ref=f1e111] [cursor=pointer]: Auto-format on paste
+          - switch "Auto-format on paste" [checked] [ref=f1e112] [cursor=pointer]
+        - generic [ref=f1e113]:
+          - generic [ref=f1e114] [cursor=pointer]: Collapse all on load
+          - switch "Collapse all on load" [ref=f1e115] [cursor=pointer]
+        - generic [ref=f1e116]:
+          - generic [ref=f1e117] [cursor=pointer]: Show line numbers
+          - switch "Show line numbers" [ref=f1e118] [cursor=pointer]
+        - generic [ref=f1e119]:
+          - generic [ref=f1e120] [cursor=pointer]: Wrap long lines
+          - switch "Wrap long lines" [ref=f1e121] [cursor=pointer]
+        - generic [ref=f1e122]: Stats
+        - generic [ref=f1e123]:
+          - generic [ref=f1e124]:
+            - generic [ref=f1e125]: "4"
+            - generic [ref=f1e126]: Keys
+          - generic [ref=f1e127]:
+            - generic [ref=f1e128]: "2"
+            - generic [ref=f1e129]: Depth
+          - generic [ref=f1e130]:
+            - generic [ref=f1e131]: 100 B
+            - generic [ref=f1e132]: Bytes
+          - generic [ref=f1e133]:
+            - generic [ref=f1e134]: "0"
+            - generic [ref=f1e135]: Errors
+        - paragraph [ref=f1e137]: Advertisement
+    - paragraph [ref=f1e140]: Advertisement
+    - generic [ref=f1e141]:
+      - heading "How to Format JSON" [level=2] [ref=f1e142]
+      - list [ref=f1e143]:
+        - listitem [ref=f1e144]:
+          - strong [ref=f1e145]: Paste your JSON
+          - text: — Copy your JSON and paste it into the input area. Output formats automatically as you type.
+        - listitem [ref=f1e146]:
+          - strong [ref=f1e147]: Explore the tree
+          - text: — Click ▾ toggles to collapse/expand any object or array node. Use Collapse All / Expand All to navigate large structures.
+        - listitem [ref=f1e148]:
+          - strong [ref=f1e149]: Copy or Download
+          - text: — Copy the formatted output to your clipboard or download it as a .json file.
+    - generic [ref=f1e150]:
+      - heading "Features" [level=2] [ref=f1e151]
+      - list [ref=f1e152]:
+        - listitem [ref=f1e153]: ✓ Live auto-format as you type (200ms debounce)
+        - listitem [ref=f1e154]: "✓ Collapsible nodes — collapse any {} or [] instantly"
+        - listitem [ref=f1e155]: ✓ Syntax highlighting with color-coded tokens
+        - listitem [ref=f1e156]: ✓ JSON validation with exact error position
+        - listitem [ref=f1e157]: ✓ Minify JSON to reduce file size
+        - listitem [ref=f1e158]: ✓ Upload .json files directly
+        - listitem [ref=f1e159]: ✓ Download formatted output as .json
+        - listitem [ref=f1e160]: ✓ 100% private — runs in your browser
+    - generic [ref=f1e161]:
+      - 'heading "JSON formatter: practical uses" [level=2] [ref=f1e162]'
+      - paragraph [ref=f1e163]: Use JSON formatter when you need a fast, clear, private result without creating an account. This page also supports related needs like JSON beautifier, JSON validator, format JSON online so you can choose the right workflow.
+      - heading "When it helps" [level=3] [ref=f1e164]
+      - list [ref=f1e165]:
+        - listitem [ref=f1e166]:
+          - strong [ref=f1e167]: "Best for:"
+          - text: Pasting code, structured data, tokens, hashes, or encoded text and getting a readable result quickly.
+        - listitem [ref=f1e168]:
+          - strong [ref=f1e169]: "Helpful details:"
+          - text: Use the examples, validation messages, copy actions, and formatting options to catch mistakes before you ship.
+        - listitem [ref=f1e170]:
+          - strong [ref=f1e171]: "Next step:"
+          - text: Open a related formatter, validator, encoder, parser, or converter when your workflow moves to another format.
+      - paragraph [ref=f1e172]:
+        - text: For the next step, try
+        - link "Regex Tester & Log Extractor" [ref=f1e173] [cursor=pointer]:
+          - /url: /regex-tester/
+        - text: ","
+        - link "Base64 Encoder & Decoder" [ref=f1e174] [cursor=pointer]:
+          - /url: /base64-encoder/
+        - text: ","
+        - link "Hash Generator" [ref=f1e175] [cursor=pointer]:
+          - /url: /hash-generator/
+        - text: ","
+        - link "Unix Timestamp Converter" [ref=f1e176] [cursor=pointer]:
+          - /url: /timestamp-converter/
+        - text: .
+    - paragraph [ref=f1e178]: Advertisement
+    - generic [ref=f1e179]:
+      - heading "Frequently Asked Questions" [level=2] [ref=f1e180]
+      - generic [ref=f1e181]:
+        - group [ref=f1e182]:
+          - generic "What is a JSON formatter? +" [ref=f1e183] [cursor=pointer]:
+            - text: What is a JSON formatter?
+            - generic [ref=f1e184]: +
+        - group [ref=f1e185]:
+          - generic "Is my JSON data safe? +" [ref=f1e186] [cursor=pointer]:
+            - text: Is my JSON data safe?
+            - generic [ref=f1e187]: +
+        - group [ref=f1e188]:
+          - generic "Can this tool validate JSON? +" [ref=f1e189] [cursor=pointer]:
+            - text: Can this tool validate JSON?
+            - generic [ref=f1e190]: +
+        - group [ref=f1e191]:
+          - generic "What is JSON minification? +" [ref=f1e192] [cursor=pointer]:
+            - text: What is JSON minification?
+            - generic [ref=f1e193]: +
+        - group [ref=f1e194]:
+          - generic "What file types can I upload? +" [ref=f1e195] [cursor=pointer]:
+            - text: What file types can I upload?
+            - generic [ref=f1e196]: +
+    - generic [ref=f1e197]:
+      - heading "Related Tools" [level=2] [ref=f1e198]
+      - generic [ref=f1e199]:
+        - link "XML Formatter icon XML Formatter Format and validate XML online. Try it →" [ref=f1e200] [cursor=pointer]:
+          - /url: /xml-formatter/
+          - img "XML Formatter icon" [ref=f1e201]
+          - heading "XML Formatter" [level=3] [ref=f1e202]
+          - paragraph [ref=f1e203]: Format and validate XML online.
+          - generic [ref=f1e204]: Try it →
+        - link "Regex / Log Extractor icon Regex / Log Extractor Test regex patterns and extract log matches. Try it →" [ref=f1e205] [cursor=pointer]:
+          - /url: /regex-tester/
+          - img "Regex / Log Extractor icon" [ref=f1e206]
+          - heading "Regex / Log Extractor" [level=3] [ref=f1e207]
+          - paragraph [ref=f1e208]: Test regex patterns and extract log matches.
+          - generic [ref=f1e209]: Try it →
+        - link "CSV to SQL icon CSV to SQL Convert CSV files to SQL INSERT statements. Try it →" [ref=f1e210] [cursor=pointer]:
+          - /url: /csv-to-sql/
+          - img "CSV to SQL icon" [ref=f1e211]
+          - heading "CSV to SQL" [level=3] [ref=f1e212]
+          - paragraph [ref=f1e213]: Convert CSV files to SQL INSERT statements.
+          - generic [ref=f1e214]: Try it →
+        - link "Base64 Encoder icon Base64 Encoder Encode and decode Base64 text and files. Try it →" [ref=f1e215] [cursor=pointer]:
+          - /url: /base64-encoder/
+          - img "Base64 Encoder icon" [ref=f1e216]
+          - heading "Base64 Encoder" [level=3] [ref=f1e217]
+          - paragraph [ref=f1e218]: Encode and decode Base64 text and files.
+          - generic [ref=f1e219]: Try it →
+  - contentinfo [ref=f1e220]:
+    - generic [ref=f1e221]:
+      - generic [ref=f1e222]:
+        - link "AnyConverter AnyConverter" [ref=f1e223] [cursor=pointer]:
+          - /url: /
+          - img "AnyConverter" [ref=f1e224]
+          - generic [ref=f1e225]: AnyConverter
+        - paragraph [ref=f1e226]: Free online tools for developers, students, and everyone. No signup. No data uploaded to servers.
+        - generic [ref=f1e227]:
+          - link "Español" [ref=f1e228] [cursor=pointer]:
+            - /url: /es/
+            - text: 🇪🇸 ES
+          - link "Dansk" [ref=f1e229] [cursor=pointer]:
+            - /url: /da/
+            - text: 🇩🇰 DA
+      - generic [ref=f1e230]:
+        - generic [ref=f1e231]:
+          - heading "Product" [level=3] [ref=f1e232]
+          - list [ref=f1e233]:
+            - listitem [ref=f1e234]:
+              - link "Home" [ref=f1e235] [cursor=pointer]:
+                - /url: /
+            - listitem [ref=f1e236]:
+              - link "All Tools" [ref=f1e237] [cursor=pointer]:
+                - /url: /#tools
+            - listitem [ref=f1e238]:
+              - link "PDF Tools" [ref=f1e239] [cursor=pointer]:
+                - /url: /pdf-merge/
+            - listitem [ref=f1e240]:
+              - link "Developer Tools" [ref=f1e241] [cursor=pointer]:
+                - /url: /json-formatter/
+            - listitem [ref=f1e242]:
+              - link "Browser Tools" [ref=f1e243] [cursor=pointer]:
+                - /url: /internet-speed-test/
+            - listitem [ref=f1e244]:
+              - link "Calculators" [ref=f1e245] [cursor=pointer]:
+                - /url: /age-calculator/
+            - listitem [ref=f1e246]:
+              - link "Text Tools" [ref=f1e247] [cursor=pointer]:
+                - /url: /word-counter/
+            - listitem [ref=f1e248]:
+              - link "Productivity" [ref=f1e249] [cursor=pointer]:
+                - /url: /stopwatch/
+        - generic [ref=f1e250]:
+          - heading "Features" [level=3] [ref=f1e251]
+          - list [ref=f1e252]:
+            - listitem [ref=f1e253]:
+              - link "Image Converter" [ref=f1e254] [cursor=pointer]:
+                - /url: /image-converter/
+            - listitem [ref=f1e255]:
+              - link "QR Code Generator" [ref=f1e256] [cursor=pointer]:
+                - /url: /qr-code-generator/
+            - listitem [ref=f1e257]:
+              - link "CSS Generator" [ref=f1e258] [cursor=pointer]:
+                - /url: /css-gradient-generator/
+            - listitem [ref=f1e259]:
+              - link "Currency Converter" [ref=f1e260] [cursor=pointer]:
+                - /url: /currency-converter/
+            - listitem [ref=f1e261]:
+              - link "Password Generator" [ref=f1e262] [cursor=pointer]:
+                - /url: /password-generator/
+            - listitem [ref=f1e263]:
+              - link "Invoice Generator" [ref=f1e264] [cursor=pointer]:
+                - /url: /invoice-generator/
+            - listitem [ref=f1e265]:
+              - link "Pomodoro Timer" [ref=f1e266] [cursor=pointer]:
+                - /url: /pomodoro-timer/
+            - listitem [ref=f1e267]:
+              - link "Typing Speed Test" [ref=f1e268] [cursor=pointer]:
+                - /url: /typing-speed-test/
+        - generic [ref=f1e269]:
+          - heading "Legal" [level=3] [ref=f1e270]
+          - list [ref=f1e271]:
+            - listitem [ref=f1e272]:
+              - link "Privacy Policy" [ref=f1e273] [cursor=pointer]:
+                - /url: /privacy/
+            - listitem [ref=f1e274]:
+              - link "Terms of Service" [ref=f1e275] [cursor=pointer]:
+                - /url: /terms/
+            - listitem [ref=f1e276]:
+              - link "Cookie Policy" [ref=f1e277] [cursor=pointer]:
+                - /url: /cookies/
+            - listitem [ref=f1e278]:
+              - link "Security" [ref=f1e279] [cursor=pointer]:
+                - /url: /security/
+        - generic [ref=f1e280]:
+          - heading "Company" [level=3] [ref=f1e281]
+          - list [ref=f1e282]:
+            - listitem [ref=f1e283]:
+              - link "About Us" [ref=f1e284] [cursor=pointer]:
+                - /url: /about/
+            - listitem [ref=f1e285]:
+              - link "Contact Us" [ref=f1e286] [cursor=pointer]:
+                - /url: /contact/
+            - listitem [ref=f1e287]:
+              - link "Blog" [ref=f1e288] [cursor=pointer]:
+                - /url: /blog/
+            - listitem [ref=f1e289]:
+              - link "Press" [ref=f1e290] [cursor=pointer]:
+                - /url: /press/
+            - listitem [ref=f1e291]:
+              - link "FAQ" [ref=f1e292] [cursor=pointer]:
+                - /url: /faq/
+    - generic [ref=f1e293]:
+      - paragraph [ref=f1e294]: © 2026 AnyConverter. All rights reserved.
+      - paragraph [ref=f1e295]: Free online tools — no data uploaded to servers

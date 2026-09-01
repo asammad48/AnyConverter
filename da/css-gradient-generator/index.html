@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="da">
 <head>
   <meta charset="UTF-8">
@@ -29,13 +29,13 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"CSS Gradient Generator","url":"https://anyconverter.io/da/css-gradient-generator/","description":"Opret smukke CSS-gradienter online gratis. Design lineære og radiale gradienter med tilpassede farver og stop.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Hvilke browsere understøtter CSS-gradienter?","acceptedAnswer":{"@type":"Answer","text":"Alle moderne browsere (Chrome, Firefox, Safari, Edge) understøtter fuldt ud CSS-gradienter uden nogen leverandørpræfikser. Internet Explorer 10+ understøtter dem også med -ms- præfikset, men dette værktøj genererer standard CSS, der fungerer i alle moderne browsere."}},{"@type":"Question","name":"Hvad er et farvestop?","acceptedAnswer":{"@type":"Answer","text":"Et farvestop definerer, hvor en bestemt farve vises langs gradienten. Hvert stop har en farve og en position (0%–100%). Browseren interpolerer jævnt mellem stop."}},{"@type":"Question","name":"Hvordan bruger jeg CSS'en i mit projekt?","acceptedAnswer":{"@type":"Answer","text":"Kopier den genererede CSS og brug den som værdien for egenskaben `background` eller `background-image` i din CSS-fil: `background: linear-gradient(90deg, var(--color-primary,#4F46E5) 0%, var(--color-convert,#06B6D4) 100%);`"}},{"@type":"Question","name":"Kan jeg lave transparente gradienter?","acceptedAnswer":{"@type":"Answer","text":"Ja. Brug en farvevælger, der understøtter transparens, eller rediger manuelt den genererede CSS til at bruge rgba() farveværdier med en alfakanal."}}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Hvilke browsere understøtter CSS-gradienter?","acceptedAnswer":{"@type":"Answer","text":"Alle moderne browsere (Chrome, Firefox, Safari, Edge) understøtter fuldt ud CSS-gradienter uden nogen leverandørpræfikser. Internet Explorer 10+ understøtter dem også med -ms- præfikset, men dette værktøj genererer standard CSS, der fungerer i alle moderne browsere."}},{"@type":"Question","name":"Hvad er et farvestop?","acceptedAnswer":{"@type":"Answer","text":"Et farvestop definerer, hvor en bestemt farve vises langs gradienten. Hvert stop har en farve og en position (0%–100%). Browseren interpolerer jævnt mellem stop."}},{"@type":"Question","name":"Hvordan bruger jeg CSS'en i mit projekt?","acceptedAnswer":{"@type":"Answer","text":"Kopier den genererede CSS og brug den som værdien for egenskaben `background` eller `background-image` i din CSS-fil: `background: linear-gradient(90deg, var(--color-primary,#B04A45) 0%, var(--color-convert,#06B6D4) 100%);`"}},{"@type":"Question","name":"Kan jeg lave transparente gradienter?","acceptedAnswer":{"@type":"Answer","text":"Ja. Brug en farvevælger, der understøtter transparens, eller rediger manuelt den genererede CSS til at bruge rgba() farveværdier med en alfakanal."}}]}</script>
 
 
 <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
   <style>
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-    html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F4F6FF);color:var(--color-text,#1E1B4B)}
+    html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F4F6FF);color:var(--color-text,#151515)}
     body{min-height:100vh;display:flex;flex-direction:column}
     .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8FE)}
     .header-inner{max-width:1280px;width:100%;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;gap:32px}
@@ -65,21 +65,21 @@
           </div>
           <div id="grad-angle-row" style="margin-bottom:16px;display:flex;align-items:center;gap:12px">
             <label style="font-size:13px;font-weight:500;white-space:nowrap">Vinkel</label>
-            <input type="range" id="grad-angle" min="0" max="360" value="90" style="flex:1;accent-color:var(--color-primary,#4F46E5)">
+            <input type="range" id="grad-angle" min="0" max="360" value="90" style="flex:1;accent-color:var(--color-primary,#B04A45)">
             <span id="grad-angle-val" style="font-size:13px;min-width:32px">90</span><span style="font-size:13px">°</span>
           </div>
           <div style="margin-bottom:12px">
             <div style="font-size:13px;font-weight:500;margin-bottom:8px">Farvestop</div>
             <div id="grad-stops" style="display:flex;flex-direction:column;gap:8px">
               <div class="grad-stop" style="display:flex;align-items:center;gap:8px">
-                <input type="color" class="stop-color" value="var(--color-primary,#4F46E5)" style="width:40px;height:36px;border:none;border-radius:6px;cursor:pointer">
-                <input type="range" class="stop-pos" min="0" max="100" value="0" style="flex:1;accent-color:var(--color-primary,#4F46E5)">
+                <input type="color" class="stop-color" value="#B04A45" style="width:40px;height:36px;border:none;border-radius:6px;cursor:pointer">
+                <input type="range" class="stop-pos" min="0" max="100" value="0" style="flex:1;accent-color:var(--color-primary,#B04A45)">
                 <span class="stop-pos-val" style="width:36px;font-size:13px;text-align:right">0%</span>
                 <button class="btn btn-secondary btn-sm stop-remove" style="padding:4px 8px">×</button>
               </div>
               <div class="grad-stop" style="display:flex;align-items:center;gap:8px">
-                <input type="color" class="stop-color" value="var(--color-convert,#06B6D4)" style="width:40px;height:36px;border:none;border-radius:6px;cursor:pointer">
-                <input type="range" class="stop-pos" min="0" max="100" value="100" style="flex:1;accent-color:var(--color-primary,#4F46E5)">
+                <input type="color" class="stop-color" value="#06B6D4" style="width:40px;height:36px;border:none;border-radius:6px;cursor:pointer">
+                <input type="range" class="stop-pos" min="0" max="100" value="100" style="flex:1;accent-color:var(--color-primary,#B04A45)">
                 <span class="stop-pos-val" style="width:36px;font-size:13px;text-align:right">100%</span>
                 <button class="btn btn-secondary btn-sm stop-remove" style="padding:4px 8px">×</button>
               </div>
@@ -115,9 +115,9 @@
     <section class="how-to-use">
       <h2>Sådan bruges CSS Gradient Generator</h2>
       <ol class="steps">
-        <li><strong>Trin 1</strong> — Vælg Lineær eller Radial gradienttype.</li>
-        <li><strong>Trin 2</strong> — Indstil vinklen (for lineær) og juster farvestop med farvevælgerne og skyderne.</li>
-        <li><strong>Trin 3</strong> — Kopier den genererede CSS-kode og indsæt den i dit stylesheet.</li>
+        <li>Vælg Lineær eller Radial gradienttype.</li>
+        <li>Indstil vinklen (for lineær) og juster farvestop med farvevælgerne og skyderne.</li>
+        <li>Kopier den genererede CSS-kode og indsæt den i dit stylesheet.</li>
       </ol>
     </section>
     <section class="features">
@@ -152,7 +152,7 @@
       <div class="faq-list">
         <details class="faq-item"><summary class="faq-question">Hvilke browsere understøtter CSS-gradienter? <span class="faq-icon">+</span></summary><div class="faq-answer">Alle moderne browsere (Chrome, Firefox, Safari, Edge) understøtter fuldt ud CSS-gradienter uden nogen leverandørpræfikser. Internet Explorer 10+ understøtter dem også med -ms- præfikset, men dette værktøj genererer standard CSS, der fungerer i alle moderne browsere.</div></details>
         <details class="faq-item"><summary class="faq-question">Hvad er et farvestop? <span class="faq-icon">+</span></summary><div class="faq-answer">Et farvestop definerer, hvor en bestemt farve vises langs gradienten. Hvert stop har en farve og en position (0%–100%). Browseren interpolerer jævnt mellem stop.</div></details>
-        <details class="faq-item"><summary class="faq-question">Hvordan bruger jeg CSS'en i mit projekt? <span class="faq-icon">+</span></summary><div class="faq-answer">Kopier den genererede CSS og brug den som værdien for egenskaben `background` eller `background-image` i din CSS-fil: `background: linear-gradient(90deg, var(--color-primary,#4F46E5) 0%, var(--color-convert,#06B6D4) 100%);`</div></details>
+        <details class="faq-item"><summary class="faq-question">Hvordan bruger jeg CSS'en i mit projekt? <span class="faq-icon">+</span></summary><div class="faq-answer">Kopier den genererede CSS og brug den som værdien for egenskaben `background` eller `background-image` i din CSS-fil: `background: linear-gradient(90deg, var(--color-primary,#B04A45) 0%, var(--color-convert,#06B6D4) 100%);`</div></details>
         <details class="faq-item"><summary class="faq-question">Kan jeg lave transparente gradienter? <span class="faq-icon">+</span></summary><div class="faq-answer">Ja. Brug en farvevælger, der understøtter transparens, eller rediger manuelt den genererede CSS til at bruge rgba() farveværdier med en alfakanal.</div></details>
       </div>
     </section>

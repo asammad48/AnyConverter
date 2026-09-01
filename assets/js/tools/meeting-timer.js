@@ -36,18 +36,18 @@
   function renderAgenda() {
     listEl.innerHTML = '';
     if (agenda.length === 0) {
-      listEl.innerHTML = '<li style="color:#9CA3AF;font-size:13px;text-align:center;padding:20px">No agenda items. Add items above.</li>';
+      listEl.innerHTML = '<li style="color:var(--color-text-3,#7C7169);font-size:13px;text-align:center;padding:20px">No agenda items. Add items above.</li>';
       return;
     }
     agenda.forEach((item, i) => {
       const li = document.createElement('li');
       const isActive = i === currentIdx;
       const isDone   = i < currentIdx;
-      li.style.cssText = `display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:8px;margin-bottom:6px;font-size:13px;${isActive ? 'background:var(--color-primary-light,#F3E7E4);border:1px solid #4F46E5' : isDone ? 'background:#F0FDF4;' : 'background:#F9F9FB;border:1px solid #E4E4EF'}`;
+      li.style.cssText = `display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:8px;margin-bottom:6px;font-size:13px;${isActive ? 'background:var(--color-primary-light,#F3E7E4);border:1px solid var(--color-primary,#B04A45)' : isDone ? 'background:#F0FDF4;' : 'background:var(--color-surface-2,#F5F1EE);border:1px solid var(--color-border,#DDD8D0)'}`;
       li.innerHTML = `
-        <span style="width:22px;height:22px;border-radius:50%;background:${isActive?'var(--color-primary,#B04A45)':isDone?'#059669':'#E4E4EF'};color:#fff;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0">${isDone?'✓':i+1}</span>
-        <span style="flex:1;${isDone?'text-decoration:line-through;color:#9CA3AF':''}">${escHtml(item.title)}</span>
-        <span style="font-size:12px;color:${isActive?'var(--color-primary,#B04A45)':'#9CA3AF'};font-weight:600">${item.dur} min</span>
+        <span style="width:22px;height:22px;border-radius:50%;background:${isActive?'var(--color-primary,#B04A45)':isDone?'#059669':'var(--color-border,#DDD8D0)'};color:#fff;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0">${isDone?'✓':i+1}</span>
+        <span style="flex:1;${isDone?'text-decoration:line-through;color:var(--color-text-3,#7C7169)':''}">${escHtml(item.title)}</span>
+        <span style="font-size:12px;color:${isActive?'var(--color-primary,#B04A45)':'var(--color-text-3,#7C7169)'};font-weight:600">${item.dur} min</span>
         ${!running&&currentIdx===-1?`<button data-del="${item.id}" style="background:none;border:none;color:#DC2626;cursor:pointer;font-size:15px" aria-label="Delete">×</button>`:''}`;
       const delBtn = li.querySelector(`[data-del]`);
       if (delBtn) {

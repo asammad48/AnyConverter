@@ -25,7 +25,7 @@
       container.innerHTML = '';
 
       if (!fields.length) {
-        container.innerHTML = '<p style="color:#6B7280;font-size:13px">No fillable form fields found in this PDF.</p>';
+        container.innerHTML = '<p style="color:var(--color-text-2,#3F3A36);font-size:13px">No fillable form fields found in this PDF.</p>';
         document.getElementById('pf-info').textContent = 'Loaded: ' + file.name + ' — no form fields found.';
         document.getElementById('pf-controls').style.display = 'block';
         return;
@@ -40,7 +40,7 @@
         row.style.cssText = 'margin-bottom:12px';
 
         var label = document.createElement('label');
-        label.style.cssText = 'display:block;font-size:12px;font-weight:500;margin-bottom:4px;color:#5C5C7A';
+        label.style.cssText = 'display:block;font-size:12px;font-weight:500;margin-bottom:4px;color:var(--color-text-2,#3F3A36)';
         label.textContent = name + ' (' + type.replace('PDF','') + ')';
 
         var input;
@@ -52,7 +52,7 @@
         } else if (type === 'PDFDropdown' || type === 'PDFOptionList') {
           input = document.createElement('select');
           input.id = 'pf-' + name;
-          input.style.cssText = 'width:100%;padding:8px 10px;border:1px solid #E4E4EF;border-radius:6px;font-size:13px';
+          input.style.cssText = 'width:100%;padding:8px 10px;border:1px solid var(--color-border,#DDD8D0);border-radius:6px;font-size:13px';
           try {
             field.getOptions().forEach(function (opt) {
               var o = document.createElement('option');
@@ -64,7 +64,7 @@
           input = document.createElement('input');
           input.type = 'text';
           input.id = 'pf-' + name;
-          input.style.cssText = 'width:100%;padding:8px 10px;border:1px solid #E4E4EF;border-radius:6px;font-size:13px';
+          input.style.cssText = 'width:100%;padding:8px 10px;border:1px solid var(--color-border,#DDD8D0);border-radius:6px;font-size:13px';
           try { input.value = field.getText() || ''; } catch(e) {}
           input.placeholder = 'Enter value…';
         }

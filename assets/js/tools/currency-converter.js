@@ -69,8 +69,8 @@
       if (!rates[code]) return;
       var rate = from === base ? rates[code] : rates[code] / (rates[from] || 1);
       var div = document.createElement('div');
-      div.style.cssText = 'padding:8px 10px;background:#fff;border:1px solid #E4E4EF;border-radius:8px;font-size:13px';
-      div.innerHTML = '<div style="font-weight:600">' + code + '</div><div style="color:#5C5C7A">' + rate.toFixed(4) + '</div>';
+      div.style.cssText = 'padding:8px 10px;background:var(--color-surface,#fff);border:1px solid var(--color-border,#DDD8D0);border-radius:8px;font-size:13px';
+      div.innerHTML = '<div style="font-weight:600">' + code + '</div><div style="color:var(--color-text-2,#3F3A36)">' + rate.toFixed(4) + '</div>';
       grid.appendChild(div);
     });
     document.getElementById('cc-popular').style.display = 'block';

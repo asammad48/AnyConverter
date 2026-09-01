@@ -272,7 +272,7 @@ document.addEventListener('DOMContentLoaded', function () {
       setOutputStatus('err', msg, '');
       outputEl.innerHTML =
         '<div style="padding:16px;background:#FEF2F2;border-left:3px solid #DC2626;border-radius:4px;color:#991B1B;font-size:12px">' +
-        '<strong>✕ Invalid JSON</strong><br><span style="color:#6B7280;margin-top:6px;display:block">' + escHtml(e.message) + '</span></div>';
+        '<strong>✕ Invalid JSON</strong><br><span style="color:var(--color-text-2,#3F3A36);margin-top:6px;display:block">' + escHtml(e.message) + '</span></div>';
       if (statErrors) statErrors.textContent = '1';
     }
   }
