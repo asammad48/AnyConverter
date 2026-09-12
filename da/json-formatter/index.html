@@ -29,7 +29,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"JSON Formatter","url":"https://anyconverter.io/da/json-formatter/","description":"Formater og valider JSON øjeblikkeligt gratis.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Er det sikkert at indsætte private data?","acceptedAnswer":{"@type":"Answer","text":"Ja. Al behandling sker i din browser. Dine data sendes aldrig til en server."}},{"@type":"Question","name":"Hvad gør minificering?","acceptedAnswer":{"@type":"Answer","text":"Minificering fjerner unødvendige mellemrum, linjeskift og indrykning fra JSON, hvilket reducerer filstørrelsen for hurtigere overførsler."}},{"@type":"Question","name":"Hvad er den maksimale filstørrelse?","acceptedAnswer":{"@type":"Answer","text":"Der er ingen fast grænse. Meget store filer (over 10 MB) kan være langsomme at behandle, men værktøjet klarer det på de fleste moderne enheder."}}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Er det sikkert at indsætte private data?","acceptedAnswer":{"@type":"Answer","text":"Ja. Al behandling sker i din browser. Dine data behandles i browseren til denne opgave."}},{"@type":"Question","name":"Hvad gør minificering?","acceptedAnswer":{"@type":"Answer","text":"Minificering fjerner unødvendige mellemrum, linjeskift og indrykning fra JSON, hvilket reducerer filstørrelsen for hurtigere overførsler."}},{"@type":"Question","name":"Hvad er den maksimale filstørrelse?","acceptedAnswer":{"@type":"Answer","text":"Der er ingen fast grænse. Meget store filer (over 10 MB) kan være langsomme at behandle, men værktøjet klarer det på de fleste moderne enheder."}}]}</script>
 
 
 <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
@@ -55,7 +55,7 @@
     </nav>
     <section class="hero">
       <h1>JSON Formatter og Validator</h1>
-      <p class="hero-desc">Formater, forskønne og valider JSON øjeblikkeligt. Indsæt din JSON eller upload en .json-fil. Syntaksfremhævning er inkluderet. Al behandling sker i din browser — dine data forlader aldrig din enhed.</p>
+      <p class="hero-desc">Formater, forskønne og valider JSON øjeblikkeligt. Indsæt din JSON eller upload en .json-fil. Syntaksfremhævning er inkluderet. Al behandling sker i din browser — data behandles i browseren.</p>
     </section>
     <div class="tool-wrapper">
       <div class="tool-zone">
@@ -85,9 +85,9 @@
           </div>
         </div>
       </div>
-      <aside class="tool-side" aria-label="Options">
+      <aside class="tool-side" aria-label="Indstillinger">
 
-        <div class="ss-divider">Options</div>
+        <div class="ss-divider">Indstillinger</div>
         <div class="ss-option-row">
           <span class="ss-opt-label">Indent</span>
           <select class="ss-opt-select" id="opt-indent">
@@ -97,7 +97,7 @@
           </select>
         </div>
         <div class="ss-option-row">
-          <span class="ss-opt-label">Sort keys</span>
+          <span class="ss-opt-label">Sortér nøgler</span>
           <select class="ss-opt-select" id="opt-sort">
             <option value="none" selected>None</option>
             <option value="asc">A → Z</option>
@@ -106,23 +106,23 @@
         </div>
 
         <div class="tog-row">
-          <span class="tog-label" id="lbl-autoformat">Auto-format on paste</span>
+          <span class="tog-label" id="lbl-autoformat">Formatér automatisk ved indsættelse</span>
           <div class="tog" id="tog-autoformat" role="switch" aria-checked="true" tabindex="0" aria-labelledby="lbl-autoformat"></div>
         </div>
         <div class="tog-row">
-          <span class="tog-label" id="lbl-collapse">Collapse all on load</span>
+          <span class="tog-label" id="lbl-collapse">Fold alt sammen ved indlæsning</span>
           <div class="tog off" id="tog-collapse" role="switch" aria-checked="false" tabindex="0" aria-labelledby="lbl-collapse"></div>
         </div>
         <div class="tog-row">
-          <span class="tog-label" id="lbl-linenums">Show line numbers</span>
+          <span class="tog-label" id="lbl-linenums">Vis linjenumre</span>
           <div class="tog off" id="tog-linenums" role="switch" aria-checked="false" tabindex="0" aria-labelledby="lbl-linenums"></div>
         </div>
         <div class="tog-row">
-          <span class="tog-label" id="lbl-wrap">Wrap long lines</span>
+          <span class="tog-label" id="lbl-wrap">Ombryd lange linjer</span>
           <div class="tog off" id="tog-wrap" role="switch" aria-checked="false" tabindex="0" aria-labelledby="lbl-wrap"></div>
         </div>
 
-        <div class="ss-divider">Stats</div>
+        <div class="ss-divider">Statistik</div>
         <div class="stats-grid">
           <div class="stat-card"><div class="stat-val" id="stat-keys">0</div><div class="stat-lbl">Keys</div></div>
           <div class="stat-card"><div class="stat-val" id="stat-depth">0</div><div class="stat-lbl">Depth</div></div>
@@ -130,7 +130,7 @@
           <div class="stat-card"><div class="stat-val" id="stat-errors">0</div><div class="stat-lbl">Errors</div></div>
         </div>
 
-        <div class="ss-divider">Related Tools</div>
+        <div class="ss-divider">Relaterede værktøjer</div>
         <a href="/da/xml-formatter/" class="ss-related-link">
           <img src="/assets/img/icon-xml.svg" alt="JSON Formatter Online Gratis icon" width="18" height="18" loading="lazy">
           XML Formatter
@@ -150,7 +150,7 @@
 
         <!-- AdSense sidebar slot -->
         <div style="margin-top:8px">
-          <p class="ad-label">Advertisement</p>
+          <p class="ad-label">Annonce</p>
           <div class="ad-slot" style="min-height:250px">
             <div class="adsbygoogle" style="display:block" aria-hidden="true"></div>
 </div>
@@ -177,7 +177,7 @@
         <li>Minificering for at reducere filstørrelsen</li>
         <li>Syntaksfremhævning i outputtet</li>
         <li>Understøttelse af filupload</li>
-        <li>100% behandling i browseren</li>
+        <li>Behandling i browseren</li>
       </ul>
     </section>
     <!-- SEO keyword implementation: 2026-08-21 -->
@@ -199,7 +199,7 @@
     <section class="faq">
       <h2>Ofte stillede spørgsmål</h2>
       <div class="faq-list">
-        <details class="faq-item"><summary class="faq-question">Er det sikkert at indsætte private data? <span class="faq-icon">+</span></summary><div class="faq-answer">Ja. Al behandling sker i din browser. Dine data sendes aldrig til en server.</div></details>
+        <details class="faq-item"><summary class="faq-question">Er det sikkert at indsætte private data? <span class="faq-icon">+</span></summary><div class="faq-answer">Ja. Al behandling sker i din browser. Dine data behandles i browseren til denne opgave.</div></details>
         <details class="faq-item"><summary class="faq-question">Hvad gør minificering? <span class="faq-icon">+</span></summary><div class="faq-answer">Minificering fjerner unødvendige mellemrum, linjeskift og indrykning fra JSON, hvilket reducerer filstørrelsen for hurtigere overførsler.</div></details>
         <details class="faq-item"><summary class="faq-question">Hvad er den maksimale filstørrelse? <span class="faq-icon">+</span></summary><div class="faq-answer">Der er ingen fast grænse. Meget store filer (over 10 MB) kan være langsomme at behandle, men værktøjet klarer det på de fleste moderne enheder.</div></details>
       </div>

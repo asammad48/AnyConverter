@@ -29,7 +29,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"JWT Dekoder","url":"https://anyconverter.io/da/jwt-decoder/","description":"Dekod og inspicér JWT tokens online gratis. 100% klientside — tokenet forlader aldrig browseren.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Hvad er et JWT token?","acceptedAnswer":{"@type":"Answer","text":"JWT (JSON Web Token) er en åben standard (RFC 7519) til sikker transmission af information mellem parter som et JSON-objekt. JWT bruges almindeligvis til autentifikation og autorisation i webapplikationer. De består af tre dele: header, payload og signatur, adskilt af punktummer."}},{"@type":"Question","name":"Er det sikkert at indsætte mit JWT token her?","acceptedAnswer":{"@type":"Answer","text":"Denne dekoder er 100% klientside. Dit token dekodes udelukkende i din browser ved hjælp af JavaScript og sendes aldrig til nogen server. For sikkerhedsfølsomme produktionstokens er det dog altid sikreste at dekode lokalt ved hjælp af dit programmeringssprog JWT-bibliotek."}},{"@type":"Question","name":"Kan dette værktøj verificere JWT-signaturen?","acceptedAnswer":{"@type":"Answer","text":"Nej. Signaturverificering kræver den hemmelige nøgle eller offentlige nøgle der bruges til at signere tokenet. Dette værktøj dekoder kun headeren og payloaden (som blot er Base64url-kodet, ikke krypteret) og viser den rå signaturtekst. Brug dit server-side JWT-bibliotek til faktisk signaturverificering."}},{"@type":"Question","name":"Hvilke JWT-algoritmer understøttes?","acceptedAnswer":{"@type":"Answer","text":"Dekoderen fungerer med ethvert standard JWT uanset algoritme (HS256, RS256, ES256 osv.), fordi den kun dekoder den Base64url-kodede header og payload. Algoritmefelt i headeren vises, men selve signaturen verificeres ikke."}},{"@type":"Question","name":"Hvorfor viser udløbskontrollen det forkerte tidspunkt?","acceptedAnswer":{"@type":"Answer","text":"Udløbet vises i din lokale browsertidszone ved hjælp af JavaScript's Date.toLocaleString(). JWT exp-krav er Unix-tidsstempler (sekunder siden 1. januar 1970 UTC). Konverteringen til lokal tid sker automatisk af dekoderen."}}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Hvad er et JWT token?","acceptedAnswer":{"@type":"Answer","text":"JWT (JSON Web Token) er en åben standard (RFC 7519) til sikker transmission af information mellem parter som et JSON-objekt. JWT bruges almindeligvis til autentifikation og autorisation i webapplikationer. De består af tre dele: header, payload og signatur, adskilt af punktummer."}},{"@type":"Question","name":"Er det sikkert at indsætte mit JWT token her?","acceptedAnswer":{"@type":"Answer","text":"Denne dekoder er 100% klientside. Dit token dekodes i browseren ved hjælp af JavaScript til denne opgave. For sikkerhedsfølsomme produktionstokens er det dog altid sikreste at dekode lokalt ved hjælp af dit programmeringssprog JWT-bibliotek."}},{"@type":"Question","name":"Kan dette værktøj verificere JWT-signaturen?","acceptedAnswer":{"@type":"Answer","text":"Nej. Signaturverificering kræver den hemmelige nøgle eller offentlige nøgle der bruges til at signere tokenet. Dette værktøj dekoder kun headeren og payloaden (som blot er Base64url-kodet, ikke krypteret) og viser den rå signaturtekst. Brug dit server-side JWT-bibliotek til faktisk signaturverificering."}},{"@type":"Question","name":"Hvilke JWT-algoritmer understøttes?","acceptedAnswer":{"@type":"Answer","text":"Dekoderen fungerer med ethvert standard JWT uanset algoritme (HS256, RS256, ES256 osv.), fordi den kun dekoder den Base64url-kodede header og payload. Algoritmefelt i headeren vises, men selve signaturen verificeres ikke."}},{"@type":"Question","name":"Hvorfor viser udløbskontrollen det forkerte tidspunkt?","acceptedAnswer":{"@type":"Answer","text":"Udløbet vises i din lokale browsertidszone ved hjælp af JavaScript's Date.toLocaleString(). JWT exp-krav er Unix-tidsstempler (sekunder siden 1. januar 1970 UTC). Konverteringen til lokal tid sker automatisk af dekoderen."}}]}</script>
 
 
 <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
@@ -54,7 +54,7 @@
     </nav>
     <section class="hero">
       <h1>JWT Dekoder</h1>
-      <p class="hero-desc">Dekod og inspicér ethvert JWT-token øjeblikkeligt. Se den Base64-kodede header, JSON-payload og udløbsstatus. Alt sker i din browser — tokenet forlader aldrig din enhed.</p>
+      <p class="hero-desc">Dekod og inspicér ethvert JWT-token øjeblikkeligt. Se den Base64-kodede header, JSON-payload og udløbsstatus. Alt sker i din browser — tokenet behandles i browseren.</p>
     </section>
     <div class="tool-wrapper">
       <div class="tool-zone">
@@ -117,7 +117,7 @@
         <li>Formateret JSON visning med pæn indrykning</li>
         <li>Realtidsdekodning mens du skriver eller indsætter</li>
         <li>Understøtter RS256, HS256 og alle standard JWT formater</li>
-        <li>100% klientside — token forlader aldrig browseren</li>
+        <li>Klientsidebehandling af tokenet</li>
       </ul>
     </section>
     <!-- SEO keyword implementation: 2026-08-21 -->
@@ -145,7 +145,7 @@
         </details>
         <details class="faq-item">
           <summary class="faq-question">Er det sikkert at indsætte mit JWT token her? <span class="faq-icon">+</span></summary>
-          <div class="faq-answer">Denne dekoder er 100% klientside. Dit token dekodes udelukkende i din browser ved hjælp af JavaScript og sendes aldrig til nogen server. For sikkerhedsfølsomme produktionstokens er det dog altid sikreste at dekode lokalt ved hjælp af dit programmeringssprog JWT-bibliotek.</div>
+          <div class="faq-answer">Denne dekoder er 100% klientside. Dit token dekodes i browseren ved hjælp af JavaScript til denne opgave. For sikkerhedsfølsomme produktionstokens er det dog altid sikreste at dekode lokalt ved hjælp af dit programmeringssprog JWT-bibliotek.</div>
         </details>
         <details class="faq-item">
           <summary class="faq-question">Kan dette værktøj verificere JWT-signaturen? <span class="faq-icon">+</span></summary>

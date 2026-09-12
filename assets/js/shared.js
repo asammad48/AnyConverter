@@ -61,7 +61,8 @@
           <li><a href="/scan-to-pdf/" role="menuitem">Scan to PDF</a></li>
           <li><a href="/sign-pdf/" role="menuitem">Sign PDF</a></li>
           <li><a href="/edit-pdf/" role="menuitem">Edit PDF</a></li>
-          <li><a href="/redact-pdf/" role="menuitem">Redact PDF</a></li>
+          <li><a href="/redact-pdf/" role="menuitem">Blackout PDF</a></li>
+          <li><a href="/pdf-metadata-remover/" role="menuitem">PDF Metadata Remover</a></li>
           <li><a href="/optimize-pdf/" role="menuitem">Optimize PDF</a></li>
           <li><a href="/pdf-forms/" role="menuitem">Fill PDF Forms</a></li>
           <li><a href="/pdf-security/" role="menuitem">PDF Security</a></li>
@@ -246,7 +247,8 @@
       <li><a href="/pdf-forms/">Fill PDF Forms</a></li>
       <li><a href="/sign-pdf/">Sign PDF</a></li>
       <li><a href="/edit-pdf/">Edit PDF</a></li>
-      <li><a href="/redact-pdf/">Redact PDF</a></li>
+      <li><a href="/redact-pdf/">Blackout PDF</a></li>
+      <li><a href="/pdf-metadata-remover/">PDF Metadata Remover</a></li>
       <li><a href="/compare-pdf/">Compare PDF</a></li>
       <li style="padding:6px 0 2px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--color-text-3,#7C7169);pointer-events:none">Productivity &amp; Utility</li>
       <li><a href="/stopwatch/">Stopwatch</a></li>
@@ -421,7 +423,8 @@
     {n:'Scan to PDF',             u:'/scan-to-pdf/',                 d:'Convert scanned documents to PDF',                  i:'/assets/img/icon-pdf.svg',               c:'PDF',          k:'scan document convert digitize image'},
     {n:'Sign PDF',                u:'/sign-pdf/',                    d:'Add a digital signature to a PDF',                  i:'/assets/img/icon-pdf.svg',               c:'PDF',          k:'sign signature digital electronic'},
     {n:'Edit PDF',                u:'/edit-pdf/',                    d:'Edit text and images in a PDF',                     i:'/assets/img/icon-pdf.svg',               c:'PDF',          k:'edit modify change text images annotate'},
-    {n:'Redact PDF',              u:'/redact-pdf/',                  d:'Permanently remove sensitive content from PDF',     i:'/assets/img/icon-pdf.svg',               c:'PDF',          k:'redact remove hide sensitive privacy blackout'},
+    {n:'Blackout PDF',            u:'/redact-pdf/',                  d:'Cover PDF content with black rectangles',           i:'/assets/img/icon-pdf.svg',               c:'PDF',          k:'redact remove hide sensitive privacy blackout'},
+    {n:'PDF Metadata Remover',    u:'/pdf-metadata-remover/',        d:'Inspect and clear common PDF document properties',  i:'/assets/img/icon-pdf.svg',               c:'PDF',          k:'metadata remove author title keywords creator producer privacy document properties'},
     {n:'Compare PDF',             u:'/compare-pdf/',                 d:'View two PDF files side by side',                   i:'/assets/img/icon-pdf.svg',               c:'PDF',          k:'compare diff differences side by side'},
     {n:'Fill PDF Forms',          u:'/pdf-forms/',                   d:'Fill in PDF form fields online',                    i:'/assets/img/icon-pdf.svg',               c:'PDF',          k:'fill form fields online interactive'},
     {n:'PDF Security',            u:'/pdf-security/',                d:'Apply security and permissions to PDF',             i:'/assets/img/icon-pdf.svg',               c:'PDF',          k:'security permissions rights encrypt protect'},
@@ -498,6 +501,57 @@
     '/json-formatter/', '/pdf-merge/', '/word-counter/',
     '/base64-encoder/', '/hash-generator/', '/age-calculator/'
   ];
+
+  var NON_LOCALIZED_PATHS = {
+    '/calculators/': true,
+    '/developer-tools/': true,
+    '/pdf-metadata-remover/': true,
+    '/pdf-tools/': true,
+    '/productivity-tools/': true,
+    '/world-clock/': true
+  };
+
+  function currentPageLang() {
+    var path = window.location.pathname;
+    if (path.startsWith('/es/') || path === '/es') return 'es';
+    if (path.startsWith('/da/') || path === '/da') return 'da';
+    return 'en';
+  }
+
+  function splitLocalPath(rawPath) {
+    var match = String(rawPath || '').match(/^([^?#]*)(\?[^#]*)?(#.*)?$/);
+    return {
+      path: match ? match[1] : rawPath,
+      suffix: (match && match[2] ? match[2] : '') + (match && match[3] ? match[3] : '')
+    };
+  }
+
+  function removeLocalePrefix(path) {
+    var cleanPath = path.replace(/^\/(es|da)(\/|$)/, '/');
+    if (!cleanPath.startsWith('/')) cleanPath = '/' + cleanPath;
+    return cleanPath || '/';
+  }
+
+  function localizedPathForLang(rawPath, targetLang, fallbackHomeForMissing) {
+    if (!rawPath || rawPath.charAt(0) !== '/' || rawPath.startsWith('/assets/')) return rawPath;
+    var parts = splitLocalPath(rawPath);
+    var cleanPath = removeLocalePrefix(parts.path);
+
+    if (targetLang === 'en') return cleanPath + parts.suffix;
+    if (NON_LOCALIZED_PATHS[cleanPath]) {
+      return (fallbackHomeForMissing ? '/' + targetLang + '/' : cleanPath) + parts.suffix;
+    }
+    if (cleanPath === '/') return '/' + targetLang + '/' + parts.suffix;
+    return '/' + targetLang + cleanPath + parts.suffix;
+  }
+
+  function localizeSharedNavigation(container) {
+    var lang = currentPageLang();
+    if (lang === 'en' || !container) return;
+    container.querySelectorAll('a[href^="/"]').forEach(function (link) {
+      link.setAttribute('href', localizedPathForLang(link.getAttribute('href'), lang, false));
+    });
+  }
 
   function initToolPageActions() {
     const hasToolLayout = document.querySelector('.tool-wrapper, .tool-card, .tool-container, .tool-zone');
@@ -675,7 +729,10 @@
 
   function renderHeader() {
     const el = document.getElementById('site-header');
-    if (el) el.innerHTML = headerHTML;
+    if (el) {
+      el.innerHTML = headerHTML;
+      localizeSharedNavigation(el);
+    }
   }
 
   function renderFooter() {
@@ -730,20 +787,20 @@
     <div class="footer-col">
       <h3>${t.col3}</h3>
       <ul>
-        <li><a href="/privacy/">${t.privacy}</a></li>
-        <li><a href="/terms/">${t.terms}</a></li>
-        <li><a href="/cookies/">${t.cookies}</a></li>
-        <li><a href="/security/">${t.security}</a></li>
+        <li><a href="${p}/privacy/">${t.privacy}</a></li>
+        <li><a href="${p}/terms/">${t.terms}</a></li>
+        <li><a href="${p}/cookies/">${t.cookies}</a></li>
+        <li><a href="${p}/security/">${t.security}</a></li>
       </ul>
     </div>
     <div class="footer-col">
       <h3>${t.col4}</h3>
       <ul>
-        <li><a href="/about/">${t.about}</a></li>
-        <li><a href="/contact/">${t.contact}</a></li>
-        <li><a href="/blog/">${t.blog}</a></li>
-        <li><a href="/press/">${t.press}</a></li>
-        <li><a href="/faq/">${t.faq}</a></li>
+        <li><a href="${p}/about/">${t.about}</a></li>
+        <li><a href="${p}/contact/">${t.contact}</a></li>
+        <li><a href="${p}/blog/">${t.blog}</a></li>
+        <li><a href="${p}/press/">${t.press}</a></li>
+        <li><a href="${p}/faq/">${t.faq}</a></li>
       </ul>
     </div>
   </div>
@@ -908,11 +965,7 @@
 
   function buildLangUrl(targetLang) {
     const path = window.location.pathname;
-    // Remove existing lang prefix
-    let cleanPath = path.replace(/^\/(es|da)(\/|$)/, '/');
-    if (!cleanPath.startsWith('/')) cleanPath = '/' + cleanPath;
-    if (targetLang === 'en') return cleanPath || '/';
-    return '/' + targetLang + cleanPath;
+    return localizedPathForLang(path, targetLang, true);
   }
 
   function updateMobileLangLinks() {
@@ -1087,8 +1140,9 @@
       var html = label ? '<li class="search-section-label">' + escapeHtml(label) + '</li>' : '';
       html += tools.map(function (t) {
         var name = q ? hlMatch(t.n, q) : escapeHtml(t.n);
+        var href = localizedPathForLang(t.u, currentPageLang(), false);
         return '<li>' +
-          '<a href="' + t.u + '" class="search-result-item">' +
+          '<a href="' + href + '" class="search-result-item">' +
             '<img src="' + t.i + '" alt="" class="search-result-icon" width="36" height="36" loading="lazy">' +
             '<div class="search-result-info">' +
               '<div class="search-result-name">' + name + '</div>' +

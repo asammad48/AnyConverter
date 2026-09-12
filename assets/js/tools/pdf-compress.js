@@ -10,6 +10,21 @@ document.addEventListener('DOMContentLoaded', function () {
   let compressedBytes = null;
   let originalFile = null;
   let compressLevel = 'medium';
+  let pdfLibPromise = null;
+
+  function loadPdfLib() {
+    if (window.PDFLib) return Promise.resolve(window.PDFLib);
+    if (pdfLibPromise) return pdfLibPromise;
+    pdfLibPromise = new Promise(function (resolve, reject) {
+      const script = document.createElement('script');
+      script.src = 'https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js';
+      script.defer = true;
+      script.onload = function () { resolve(window.PDFLib); };
+      script.onerror = function () { reject(new Error('PDF library failed to load')); };
+      document.head.appendChild(script);
+    });
+    return pdfLibPromise;
+  }
 
   function formatBytes(bytes) {
     if (bytes < 1024) return bytes + ' B';
@@ -26,6 +41,9 @@ document.addEventListener('DOMContentLoaded', function () {
       originalSizeBar.textContent = file.name + ' — ' + formatBytes(file.size);
       compressResult.style.display = 'none';
       dropZone.classList.add('has-file');
+      loadPdfLib().catch(function (error) {
+        window.showToast(error.message, 'error');
+      });
     };
     reader.readAsArrayBuffer(file);
   }
@@ -57,7 +75,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
   document.getElementById('btn-compress').addEventListener('click', async function () {
     if (!originalBytes) return;
-    if (!window.PDFLib) { window.showToast('PDF library still loading, please wait', 'info'); return; }
 
     const btn = document.getElementById('btn-compress');
     btn.disabled = true;
@@ -66,6 +83,7 @@ document.addEventListener('DOMContentLoaded', function () {
     await new Promise(function(r){ setTimeout(r, 0); });
 
     try {
+      await loadPdfLib();
       const level = compressLevel;
       const doc = await window.PDFLib.PDFDocument.load(originalBytes, { ignoreEncryption: true });
 

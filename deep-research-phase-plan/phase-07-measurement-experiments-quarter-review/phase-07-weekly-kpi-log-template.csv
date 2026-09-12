@@ -1,0 +1,7 @@
+week_start_utc,week_end_utc,metric_id,metric_name,value,status,source_system,source_file_or_export,window_start,window_end,dimensions,owner,notes
+2026-09-14,2026-09-20,KPI-01,Intended canonical pages,342,observed,local snapshot,phase-07-local-measurement-snapshot.json,2026-09-12,2026-09-12,"all local HTML",Codex,"Local repository only; not deployed indexing evidence"
+2026-09-14,2026-09-20,KPI-02,Indexed canonical pages,,unknown,GSC Page Indexing,pending current export,,,,search owner,"Requires current GSC access"
+2026-09-14,2026-09-20,KPI-08,Non-branded impressions,,unknown,GSC Performance,pending current export,,,,search owner,"Do not use dated 2026-08-20 export as current value"
+2026-09-14,2026-09-20,KPI-14,Organic tool starts,,unknown,analytics,pending provider export,,,,analytics owner,"Requires Phase 04 event dictionary implementation"
+2026-09-14,2026-09-20,KPI-18,Good CWV URL percentage,,unknown,GSC CWV or CrUX,pending field export,,,,performance owner,"Lab Lighthouse is separate from field CWV"
+2026-09-14,2026-09-20,KPI-23,Editorial links earned,,pending,outreach/link log,pending outreach log,,,,authority owner,"No outreach result claim without contact log"

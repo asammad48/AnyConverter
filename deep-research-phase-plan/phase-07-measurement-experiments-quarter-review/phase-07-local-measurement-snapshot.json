@@ -1,0 +1,992 @@
+{
+  "generatedAt": "2026-09-12T15:54:29.715Z",
+  "origin": "https://anyconverter.io",
+  "localRepositoryState": {
+    "sitemapUrlCount": 342,
+    "sitemapParseable": true,
+    "sitemapHasXhtmlNamespace": true,
+    "sitemapAlternateCount": 1356,
+    "htmlPageCount": 342,
+    "intendedCanonicalPages": 342,
+    "noindexPages": [],
+    "canonicalMismatches": [],
+    "missingFromSitemap": []
+  },
+  "historicalGsc": {
+    "status": "observed-historical-export",
+    "exportDate": "2026-08-20",
+    "sourceDirectory": "reports/gsc-2026-08-20/anyconverter.io-Performance-on-Search-2026-08-20",
+    "filters": [
+      {
+        "Filter": "Search type",
+        "Value": "Web"
+      },
+      {
+        "Filter": "Date",
+        "Value": "Last 3 months"
+      }
+    ],
+    "querySummary": {
+      "clicks": 1,
+      "impressions": 3863,
+      "uniqueQueries": 1003,
+      "brandedClicks": 0,
+      "brandedImpressions": 13,
+      "nonBrandedClicks": 1,
+      "nonBrandedImpressions": 3850,
+      "queriesPosition1To10": 9,
+      "queriesPosition11To20": 14
+    },
+    "topPagesSample": [
+      {
+        "Top pages": "https://anyconverter.io/",
+        "Clicks": "2",
+        "Impressions": "77",
+        "CTR": "2.6%",
+        "Position": "41.87"
+      },
+      {
+        "Top pages": "https://anyconverter.io/es/pdf-merge/",
+        "Clicks": "1",
+        "Impressions": "312",
+        "CTR": "0.32%",
+        "Position": "75.61"
+      },
+      {
+        "Top pages": "http://anyconverter.io/",
+        "Clicks": "1",
+        "Impressions": "17",
+        "CTR": "5.88%",
+        "Position": "10.65"
+      },
+      {
+        "Top pages": "https://anyconverter.io/da/screen-resolution/",
+        "Clicks": "1",
+        "Impressions": "6",
+        "CTR": "16.67%",
+        "Position": "25.17"
+      },
+      {
+        "Top pages": "http://anyconverter.io/es/morse-code-converter/",
+        "Clicks": "1",
+        "Impressions": "2",
+        "CTR": "50%",
+        "Position": "6"
+      },
+      {
+        "Top pages": "https://anyconverter.io/discount-calculator/",
+        "Clicks": "0",
+        "Impressions": "506",
+        "CTR": "0%",
+        "Position": "30.39"
+      },
+      {
+        "Top pages": "https://anyconverter.io/internet-speed-test/",
+        "Clicks": "0",
+        "Impressions": "393",
+        "CTR": "0%",
+        "Position": "79.63"
+      },
+      {
+        "Top pages": "https://anyconverter.io/pdf-forms/",
+        "Clicks": "0",
+        "Impressions": "372",
+        "CTR": "0%",
+        "Position": "81.19"
+      },
+      {
+        "Top pages": "https://anyconverter.io/es/remove-pdf-pages/",
+        "Clicks": "0",
+        "Impressions": "334",
+        "CTR": "0%",
+        "Position": "85.17"
+      },
+      {
+        "Top pages": "https://anyconverter.io/da/internet-speed-test/",
+        "Clicks": "0",
+        "Impressions": "284",
+        "CTR": "0%",
+        "Position": "70.25"
+      }
+    ],
+    "devices": [
+      {
+        "Device": "Desktop",
+        "Clicks": "4",
+        "Impressions": "5268",
+        "CTR": "0.08%",
+        "Position": "71.37"
+      },
+      {
+        "Device": "Mobile",
+        "Clicks": "2",
+        "Impressions": "953",
+        "CTR": "0.21%",
+        "Position": "40.72"
+      },
+      {
+        "Device": "Tablet",
+        "Clicks": "0",
+        "Impressions": "179",
+        "CTR": "0%",
+        "Position": "67.44"
+      }
+    ],
+    "countries": [
+      {
+        "Country": "Denmark",
+        "Clicks": "1",
+        "Impressions": "936",
+        "CTR": "0.11%",
+        "Position": "61.88"
+      },
+      {
+        "Country": "United States",
+        "Clicks": "1",
+        "Impressions": "752",
+        "CTR": "0.13%",
+        "Position": "71.7"
+      },
+      {
+        "Country": "Mexico",
+        "Clicks": "1",
+        "Impressions": "192",
+        "CTR": "0.52%",
+        "Position": "65.09"
+      },
+      {
+        "Country": "Australia",
+        "Clicks": "1",
+        "Impressions": "25",
+        "CTR": "4%",
+        "Position": "61.28"
+      },
+      {
+        "Country": "Taiwan",
+        "Clicks": "1",
+        "Impressions": "3",
+        "CTR": "33.33%",
+        "Position": "6.33"
+      },
+      {
+        "Country": "Madagascar",
+        "Clicks": "1",
+        "Impressions": "1",
+        "CTR": "100%",
+        "Position": "1"
+      },
+      {
+        "Country": "Spain",
+        "Clicks": "0",
+        "Impressions": "974",
+        "CTR": "0%",
+        "Position": "72.18"
+      },
+      {
+        "Country": "India",
+        "Clicks": "0",
+        "Impressions": "361",
+        "CTR": "0%",
+        "Position": "73.72"
+      },
+      {
+        "Country": "Colombia",
+        "Clicks": "0",
+        "Impressions": "246",
+        "CTR": "0%",
+        "Position": "76.93"
+      },
+      {
+        "Country": "United Kingdom",
+        "Clicks": "0",
+        "Impressions": "229",
+        "CTR": "0%",
+        "Position": "63.17"
+      },
+      {
+        "Country": "Peru",
+        "Clicks": "0",
+        "Impressions": "178",
+        "CTR": "0%",
+        "Position": "73.95"
+      },
+      {
+        "Country": "Indonesia",
+        "Clicks": "0",
+        "Impressions": "174",
+        "CTR": "0%",
+        "Position": "71.56"
+      },
+      {
+        "Country": "Philippines",
+        "Clicks": "0",
+        "Impressions": "170",
+        "CTR": "0%",
+        "Position": "66.38"
+      },
+      {
+        "Country": "Chile",
+        "Clicks": "0",
+        "Impressions": "149",
+        "CTR": "0%",
+        "Position": "73.83"
+      },
+      {
+        "Country": "Argentina",
+        "Clicks": "0",
+        "Impressions": "126",
+        "CTR": "0%",
+        "Position": "63.33"
+      },
+      {
+        "Country": "Canada",
+        "Clicks": "0",
+        "Impressions": "107",
+        "CTR": "0%",
+        "Position": "74.9"
+      },
+      {
+        "Country": "Malaysia",
+        "Clicks": "0",
+        "Impressions": "98",
+        "CTR": "0%",
+        "Position": "70.45"
+      },
+      {
+        "Country": "Turkey",
+        "Clicks": "0",
+        "Impressions": "95",
+        "CTR": "0%",
+        "Position": "66.93"
+      },
+      {
+        "Country": "United Arab Emirates",
+        "Clicks": "0",
+        "Impressions": "87",
+        "CTR": "0%",
+        "Position": "76.05"
+      },
+      {
+        "Country": "France",
+        "Clicks": "0",
+        "Impressions": "85",
+        "CTR": "0%",
+        "Position": "67.32"
+      },
+      {
+        "Country": "Vietnam",
+        "Clicks": "0",
+        "Impressions": "82",
+        "CTR": "0%",
+        "Position": "59.8"
+      },
+      {
+        "Country": "Pakistan",
+        "Clicks": "0",
+        "Impressions": "72",
+        "CTR": "0%",
+        "Position": "56.92"
+      },
+      {
+        "Country": "Ecuador",
+        "Clicks": "0",
+        "Impressions": "72",
+        "CTR": "0%",
+        "Position": "75.47"
+      },
+      {
+        "Country": "Bangladesh",
+        "Clicks": "0",
+        "Impressions": "70",
+        "CTR": "0%",
+        "Position": "62.83"
+      },
+      {
+        "Country": "Italy",
+        "Clicks": "0",
+        "Impressions": "67",
+        "CTR": "0%",
+        "Position": "65.43"
+      },
+      {
+        "Country": "Thailand",
+        "Clicks": "0",
+        "Impressions": "63",
+        "CTR": "0%",
+        "Position": "29.25"
+      },
+      {
+        "Country": "Saudi Arabia",
+        "Clicks": "0",
+        "Impressions": "52",
+        "CTR": "0%",
+        "Position": "70.31"
+      },
+      {
+        "Country": "Israel",
+        "Clicks": "0",
+        "Impressions": "45",
+        "CTR": "0%",
+        "Position": "43.56"
+      },
+      {
+        "Country": "Russia",
+        "Clicks": "0",
+        "Impressions": "44",
+        "CTR": "0%",
+        "Position": "61.57"
+      },
+      {
+        "Country": "Morocco",
+        "Clicks": "0",
+        "Impressions": "41",
+        "CTR": "0%",
+        "Position": "64.78"
+      },
+      {
+        "Country": "Ukraine",
+        "Clicks": "0",
+        "Impressions": "38",
+        "CTR": "0%",
+        "Position": "49.84"
+      },
+      {
+        "Country": "Netherlands",
+        "Clicks": "0",
+        "Impressions": "33",
+        "CTR": "0%",
+        "Position": "57.12"
+      },
+      {
+        "Country": "Germany",
+        "Clicks": "0",
+        "Impressions": "32",
+        "CTR": "0%",
+        "Position": "53.41"
+      },
+      {
+        "Country": "Brazil",
+        "Clicks": "0",
+        "Impressions": "31",
+        "CTR": "0%",
+        "Position": "51.9"
+      },
+      {
+        "Country": "Algeria",
+        "Clicks": "0",
+        "Impressions": "31",
+        "CTR": "0%",
+        "Position": "71.16"
+      },
+      {
+        "Country": "Greece",
+        "Clicks": "0",
+        "Impressions": "25",
+        "CTR": "0%",
+        "Position": "27.96"
+      },
+      {
+        "Country": "Panama",
+        "Clicks": "0",
+        "Impressions": "22",
+        "CTR": "0%",
+        "Position": "69.86"
+      },
+      {
+        "Country": "Venezuela",
+        "Clicks": "0",
+        "Impressions": "20",
+        "CTR": "0%",
+        "Position": "60.4"
+      },
+      {
+        "Country": "Kenya",
+        "Clicks": "0",
+        "Impressions": "20",
+        "CTR": "0%",
+        "Position": "77.05"
+      },
+      {
+        "Country": "Guatemala",
+        "Clicks": "0",
+        "Impressions": "19",
+        "CTR": "0%",
+        "Position": "68.89"
+      },
+      {
+        "Country": "Poland",
+        "Clicks": "0",
+        "Impressions": "18",
+        "CTR": "0%",
+        "Position": "34.67"
+      },
+      {
+        "Country": "Costa Rica",
+        "Clicks": "0",
+        "Impressions": "18",
+        "CTR": "0%",
+        "Position": "66.94"
+      },
+      {
+        "Country": "Sri Lanka",
+        "Clicks": "0",
+        "Impressions": "18",
+        "CTR": "0%",
+        "Position": "81.39"
+      },
+      {
+        "Country": "Nigeria",
+        "Clicks": "0",
+        "Impressions": "17",
+        "CTR": "0%",
+        "Position": "61.06"
+      },
+      {
+        "Country": "Hungary",
+        "Clicks": "0",
+        "Impressions": "16",
+        "CTR": "0%",
+        "Position": "8.69"
+      },
+      {
+        "Country": "El Salvador",
+        "Clicks": "0",
+        "Impressions": "16",
+        "CTR": "0%",
+        "Position": "71.81"
+      },
+      {
+        "Country": "Norway",
+        "Clicks": "0",
+        "Impressions": "15",
+        "CTR": "0%",
+        "Position": "55.13"
+      },
+      {
+        "Country": "Jordan",
+        "Clicks": "0",
+        "Impressions": "15",
+        "CTR": "0%",
+        "Position": "60.6"
+      },
+      {
+        "Country": "Japan",
+        "Clicks": "0",
+        "Impressions": "14",
+        "CTR": "0%",
+        "Position": "42.43"
+      },
+      {
+        "Country": "Honduras",
+        "Clicks": "0",
+        "Impressions": "13",
+        "CTR": "0%",
+        "Position": "64.08"
+      },
+      {
+        "Country": "Singapore",
+        "Clicks": "0",
+        "Impressions": "13",
+        "CTR": "0%",
+        "Position": "66.54"
+      },
+      {
+        "Country": "Uruguay",
+        "Clicks": "0",
+        "Impressions": "13",
+        "CTR": "0%",
+        "Position": "80.23"
+      },
+      {
+        "Country": "Bolivia",
+        "Clicks": "0",
+        "Impressions": "13",
+        "CTR": "0%",
+        "Position": "81.92"
+      },
+      {
+        "Country": "Nepal",
+        "Clicks": "0",
+        "Impressions": "13",
+        "CTR": "0%",
+        "Position": "83.46"
+      },
+      {
+        "Country": "Tunisia",
+        "Clicks": "0",
+        "Impressions": "12",
+        "CTR": "0%",
+        "Position": "31.42"
+      },
+      {
+        "Country": "Egypt",
+        "Clicks": "0",
+        "Impressions": "12",
+        "CTR": "0%",
+        "Position": "49.67"
+      },
+      {
+        "Country": "Lebanon",
+        "Clicks": "0",
+        "Impressions": "12",
+        "CTR": "0%",
+        "Position": "70.17"
+      },
+      {
+        "Country": "South Africa",
+        "Clicks": "0",
+        "Impressions": "12",
+        "CTR": "0%",
+        "Position": "78.58"
+      },
+      {
+        "Country": "Dominican Republic",
+        "Clicks": "0",
+        "Impressions": "11",
+        "CTR": "0%",
+        "Position": "30.36"
+      },
+      {
+        "Country": "Romania",
+        "Clicks": "0",
+        "Impressions": "11",
+        "CTR": "0%",
+        "Position": "51"
+      },
+      {
+        "Country": "Cambodia",
+        "Clicks": "0",
+        "Impressions": "11",
+        "CTR": "0%",
+        "Position": "68.36"
+      },
+      {
+        "Country": "South Korea",
+        "Clicks": "0",
+        "Impressions": "10",
+        "CTR": "0%",
+        "Position": "23.8"
+      },
+      {
+        "Country": "Iraq",
+        "Clicks": "0",
+        "Impressions": "10",
+        "CTR": "0%",
+        "Position": "37"
+      },
+      {
+        "Country": "Belgium",
+        "Clicks": "0",
+        "Impressions": "10",
+        "CTR": "0%",
+        "Position": "51.4"
+      },
+      {
+        "Country": "Paraguay",
+        "Clicks": "0",
+        "Impressions": "10",
+        "CTR": "0%",
+        "Position": "80.7"
+      },
+      {
+        "Country": "Sweden",
+        "Clicks": "0",
+        "Impressions": "9",
+        "CTR": "0%",
+        "Position": "26.78"
+      },
+      {
+        "Country": "Kuwait",
+        "Clicks": "0",
+        "Impressions": "9",
+        "CTR": "0%",
+        "Position": "30.11"
+      },
+      {
+        "Country": "Qatar",
+        "Clicks": "0",
+        "Impressions": "9",
+        "CTR": "0%",
+        "Position": "53.56"
+      },
+      {
+        "Country": "Portugal",
+        "Clicks": "0",
+        "Impressions": "8",
+        "CTR": "0%",
+        "Position": "49.88"
+      },
+      {
+        "Country": "Ireland",
+        "Clicks": "0",
+        "Impressions": "7",
+        "CTR": "0%",
+        "Position": "42.71"
+      },
+      {
+        "Country": "Luxembourg",
+        "Clicks": "0",
+        "Impressions": "7",
+        "CTR": "0%",
+        "Position": "79.86"
+      },
+      {
+        "Country": "Austria",
+        "Clicks": "0",
+        "Impressions": "6",
+        "CTR": "0%",
+        "Position": "26"
+      },
+      {
+        "Country": "Armenia",
+        "Clicks": "0",
+        "Impressions": "6",
+        "CTR": "0%",
+        "Position": "55.67"
+      },
+      {
+        "Country": "Hong Kong",
+        "Clicks": "0",
+        "Impressions": "6",
+        "CTR": "0%",
+        "Position": "63.17"
+      },
+      {
+        "Country": "Switzerland",
+        "Clicks": "0",
+        "Impressions": "6",
+        "CTR": "0%",
+        "Position": "69"
+      },
+      {
+        "Country": "Andorra",
+        "Clicks": "0",
+        "Impressions": "6",
+        "CTR": "0%",
+        "Position": "73"
+      },
+      {
+        "Country": "Puerto Rico",
+        "Clicks": "0",
+        "Impressions": "6",
+        "CTR": "0%",
+        "Position": "78.67"
+      },
+      {
+        "Country": "Finland",
+        "Clicks": "0",
+        "Impressions": "5",
+        "CTR": "0%",
+        "Position": "57.8"
+      },
+      {
+        "Country": "Myanmar (Burma)",
+        "Clicks": "0",
+        "Impressions": "5",
+        "CTR": "0%",
+        "Position": "62.6"
+      },
+      {
+        "Country": "Trinidad & Tobago",
+        "Clicks": "0",
+        "Impressions": "5",
+        "CTR": "0%",
+        "Position": "70.4"
+      },
+      {
+        "Country": "New Zealand",
+        "Clicks": "0",
+        "Impressions": "5",
+        "CTR": "0%",
+        "Position": "77.8"
+      },
+      {
+        "Country": "Ghana",
+        "Clicks": "0",
+        "Impressions": "5",
+        "CTR": "0%",
+        "Position": "78.8"
+      },
+      {
+        "Country": "Jamaica",
+        "Clicks": "0",
+        "Impressions": "4",
+        "CTR": "0%",
+        "Position": "23.5"
+      },
+      {
+        "Country": "Bahrain",
+        "Clicks": "0",
+        "Impressions": "4",
+        "CTR": "0%",
+        "Position": "25.75"
+      },
+      {
+        "Country": "Georgia",
+        "Clicks": "0",
+        "Impressions": "4",
+        "CTR": "0%",
+        "Position": "42"
+      },
+      {
+        "Country": "Afghanistan",
+        "Clicks": "0",
+        "Impressions": "4",
+        "CTR": "0%",
+        "Position": "55.25"
+      },
+      {
+        "Country": "Cyprus",
+        "Clicks": "0",
+        "Impressions": "4",
+        "CTR": "0%",
+        "Position": "55.25"
+      },
+      {
+        "Country": "Lithuania",
+        "Clicks": "0",
+        "Impressions": "4",
+        "CTR": "0%",
+        "Position": "62"
+      },
+      {
+        "Country": "Nicaragua",
+        "Clicks": "0",
+        "Impressions": "4",
+        "CTR": "0%",
+        "Position": "63.25"
+      },
+      {
+        "Country": "Serbia",
+        "Clicks": "0",
+        "Impressions": "4",
+        "CTR": "0%",
+        "Position": "65.5"
+      },
+      {
+        "Country": "Brunei",
+        "Clicks": "0",
+        "Impressions": "3",
+        "CTR": "0%",
+        "Position": "6"
+      },
+      {
+        "Country": "Slovakia",
+        "Clicks": "0",
+        "Impressions": "3",
+        "CTR": "0%",
+        "Position": "6"
+      },
+      {
+        "Country": "Czechia",
+        "Clicks": "0",
+        "Impressions": "3",
+        "CTR": "0%",
+        "Position": "6.33"
+      },
+      {
+        "Country": "Syria",
+        "Clicks": "0",
+        "Impressions": "3",
+        "CTR": "0%",
+        "Position": "9"
+      },
+      {
+        "Country": "Moldova",
+        "Clicks": "0",
+        "Impressions": "3",
+        "CTR": "0%",
+        "Position": "34.67"
+      },
+      {
+        "Country": "Uganda",
+        "Clicks": "0",
+        "Impressions": "3",
+        "CTR": "0%",
+        "Position": "62"
+      },
+      {
+        "Country": "Bulgaria",
+        "Clicks": "0",
+        "Impressions": "3",
+        "CTR": "0%",
+        "Position": "76"
+      },
+      {
+        "Country": "Oman",
+        "Clicks": "0",
+        "Impressions": "3",
+        "CTR": "0%",
+        "Position": "80.67"
+      },
+      {
+        "Country": "Libya",
+        "Clicks": "0",
+        "Impressions": "2",
+        "CTR": "0%",
+        "Position": "7.5"
+      },
+      {
+        "Country": "Albania",
+        "Clicks": "0",
+        "Impressions": "2",
+        "CTR": "0%",
+        "Position": "8"
+      },
+      {
+        "Country": "Kazakhstan",
+        "Clicks": "0",
+        "Impressions": "2",
+        "CTR": "0%",
+        "Position": "11"
+      },
+      {
+        "Country": "Tanzania",
+        "Clicks": "0",
+        "Impressions": "2",
+        "CTR": "0%",
+        "Position": "44"
+      },
+      {
+        "Country": "Cape Verde",
+        "Clicks": "0",
+        "Impressions": "2",
+        "CTR": "0%",
+        "Position": "47"
+      },
+      {
+        "Country": "Slovenia",
+        "Clicks": "0",
+        "Impressions": "2",
+        "CTR": "0%",
+        "Position": "66.5"
+      },
+      {
+        "Country": "Latvia",
+        "Clicks": "0",
+        "Impressions": "2",
+        "CTR": "0%",
+        "Position": "73"
+      },
+      {
+        "Country": "Namibia",
+        "Clicks": "0",
+        "Impressions": "2",
+        "CTR": "0%",
+        "Position": "75"
+      },
+      {
+        "Country": "Palestine",
+        "Clicks": "0",
+        "Impressions": "2",
+        "CTR": "0%",
+        "Position": "86.5"
+      },
+      {
+        "Country": "Estonia",
+        "Clicks": "0",
+        "Impressions": "2",
+        "CTR": "0%",
+        "Position": "87.5"
+      },
+      {
+        "Country": "Malta",
+        "Clicks": "0",
+        "Impressions": "2",
+        "CTR": "0%",
+        "Position": "90"
+      },
+      {
+        "Country": "Macau",
+        "Clicks": "0",
+        "Impressions": "1",
+        "CTR": "0%",
+        "Position": "5"
+      },
+      {
+        "Country": "Sint Maarten",
+        "Clicks": "0",
+        "Impressions": "1",
+        "CTR": "0%",
+        "Position": "7"
+      },
+      {
+        "Country": "Cuba",
+        "Clicks": "0",
+        "Impressions": "1",
+        "CTR": "0%",
+        "Position": "8"
+      },
+      {
+        "Country": "Iran",
+        "Clicks": "0",
+        "Impressions": "1",
+        "CTR": "0%",
+        "Position": "8"
+      },
+      {
+        "Country": "Zambia",
+        "Clicks": "0",
+        "Impressions": "1",
+        "CTR": "0%",
+        "Position": "9"
+      },
+      {
+        "Country": "Maldives",
+        "Clicks": "0",
+        "Impressions": "1",
+        "CTR": "0%",
+        "Position": "10"
+      },
+      {
+        "Country": "Rwanda",
+        "Clicks": "0",
+        "Impressions": "1",
+        "CTR": "0%",
+        "Position": "76"
+      },
+      {
+        "Country": "Croatia",
+        "Clicks": "0",
+        "Impressions": "1",
+        "CTR": "0%",
+        "Position": "81"
+      },
+      {
+        "Country": "Iceland",
+        "Clicks": "0",
+        "Impressions": "1",
+        "CTR": "0%",
+        "Position": "81"
+      },
+      {
+        "Country": "Macedonia",
+        "Clicks": "0",
+        "Impressions": "1",
+        "CTR": "0%",
+        "Position": "82"
+      },
+      {
+        "Country": "Belize",
+        "Clicks": "0",
+        "Impressions": "1",
+        "CTR": "0%",
+        "Position": "91"
+      },
+      {
+        "Country": "Uzbekistan",
+        "Clicks": "0",
+        "Impressions": "1",
+        "CTR": "0%",
+        "Position": "94"
+      }
+    ]
+  },
+  "currentExternalEvidence": {
+    "googleSearchConsole": "pending-access-unavailable",
+    "analytics": "pending-access-unavailable",
+    "cruxOrFieldCwv": "pending-access-unavailable",
+    "referringDomains": "pending-access-unavailable",
+    "outreachOutcomes": "pending-access-unavailable"
+  }
+}

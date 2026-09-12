@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>URL Encoder &amp; Decoder Online — Free | AnyConverter</title>
-  <meta name="description" content="Use url encoder for free in your browser. Get instant results, practical examples, related tools, and no signup.">
+  <meta name="description" content="Encode URL components, encode full URLs, or decode percent-encoded text. Supports plus-space mode, live conversion, and decode errors.">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://anyconverter.io/url-encoder/">
   <link rel="alternate" hreflang="en" href="https://anyconverter.io/url-encoder/">
@@ -14,7 +14,7 @@
 
 <meta property="og:type" content="website">
   <meta property="og:title" content="URL Encoder &amp; Decoder Online — Free | AnyConverter">
-  <meta property="og:description" content="Use url encoder for free in your browser. Get instant results, practical examples, related tools, and no signup.">
+  <meta property="og:description" content="Encode URL components, encode full URLs, or decode percent-encoded text. Supports plus-space mode, live conversion, and decode errors.">
   <meta property="og:url" content="https://anyconverter.io/url-encoder/">
   <meta property="og:site_name" content="AnyConverter">
   <meta property="og:image" content="https://anyconverter.io/assets/img/og-image.png">
@@ -23,13 +23,13 @@
   <meta property="og:image:alt" content="AnyConverter free online tools">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="URL Encoder &amp; Decoder Online — Free | AnyConverter">
-  <meta name="twitter:description" content="Use url encoder for free in your browser. Get instant results, practical examples, related tools, and no signup.">
+  <meta name="twitter:description" content="Encode URL components, encode full URLs, or decode percent-encoded text. Supports plus-space mode, live conversion, and decode errors.">
   <meta name="twitter:image" content="https://anyconverter.io/assets/img/og-image.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"URL Encoder & Decoder","url":"https://anyconverter.io/url-encoder/","description":"Encode or decode URLs and query parameters online. Free URL encoder.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is URL encoding?","acceptedAnswer":{"@type":"Answer","text":"URL encoding converts special characters in a URL to their percent-encoded equivalents. For example, a space becomes %20 and & becomes %26. This ensures URLs are transmitted correctly."}},{"@type":"Question","name":"When should I use Encode Component vs Encode Full URL?","acceptedAnswer":{"@type":"Answer","text":"Use Encode Component for individual query parameter values — it encodes everything including / and ?. Use Encode Full URL when you want to keep the URL structure intact but encode unsafe characters."}},{"@type":"Question","name":"What characters are encoded?","acceptedAnswer":{"@type":"Answer","text":"Encode Component encodes all characters except letters, digits, and -_.~. Encode Full URL also preserves :/?#[]@!$&'()*+,;= which are valid URL characters."}},{"@type":"Question","name":"What is %20 vs?","acceptedAnswer":{"@type":"Answer","text":"%20 is the standard percent-encoding for a space. The + sign also represents a space but only in query strings (form data). This tool uses %20 for standard URL encoding."}},{"@type":"Question","name":"Is URL decoding safe?","acceptedAnswer":{"@type":"Answer","text":"Yes. URL decoding is safe and reversible. All processing happens in your browser and no data is sent to any server."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"URL Encoder & Decoder","url":"https://anyconverter.io/url-encoder/","description":"Encode URL components, encode full URLs, or decode percent-encoded text with plus-space and live conversion options.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is URL encoding?","acceptedAnswer":{"@type":"Answer","text":"URL encoding turns characters into percent-encoded sequences so they can be used safely in URL components, query values, or full URLs."}},{"@type":"Question","name":"When should I use Encode Component vs Encode Full URL?","acceptedAnswer":{"@type":"Answer","text":"Use Encode Component for a single parameter value because it encodes separators like / and ?. Use Encode Full URL when you want to keep URL separators intact."}},{"@type":"Question","name":"What does plus-space mode do?","acceptedAnswer":{"@type":"Answer","text":"Plus-space mode writes spaces as + during encoding, which is useful for form-style query strings. Decode mode also treats plus signs as spaces."}},{"@type":"Question","name":"Can decoding fail?","acceptedAnswer":{"@type":"Answer","text":"Yes. Decode mode can show an error when the input contains malformed or incomplete percent escapes."}},{"@type":"Question","name":"Does Full URL mode encode everything?","acceptedAnswer":{"@type":"Answer","text":"No. Full URL mode preserves URL syntax characters, while Component mode encodes more characters for parameter values."}}]}</script>
 
 
 <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
@@ -54,7 +54,7 @@
     </nav>
     <section class="hero">
       <h1>URL Encoder &amp; Decoder</h1>
-      <p class="hero-desc">Encode or decode URL components and full URLs online. Use percent-encoding to safely include special characters in URLs, or decode encoded URLs back to human-readable form. Instant, free, browser-based.</p>
+      <p class="hero-desc">Encode query values, encode a full URL, or decode percent-encoded text. Use component mode for parameter values, full URL mode for URL structure, and plus-space mode for form-style spaces.</p>
     </section>
     <div class="tool-wrapper">
       <div class="tool-zone">
@@ -118,20 +118,20 @@
         <li>Encode URL components (encodeURIComponent)</li>
         <li>Encode full URLs (preserves ://&amp;=?#)</li>
         <li>Decode percent-encoded URLs</li>
+        <li>Optional + for spaces during encoding</li>
         <li>Swap input and output</li>
         <li>Live conversion on input</li>
-        <li>100% browser-based, no server</li>
       </ul>
     </section>
     <!-- SEO keyword implementation: 2026-08-21 -->
     <section class="seo-content" data-seo-keyword-plan="2026-08-21">
-      <h2>Url encoder: practical uses</h2>
-      <p>Use url encoder when you need a fast, clear, private result without creating an account. This page also supports related needs like url encoder online, url encoder validator, url encoder formatter so you can choose the right workflow.</p>
-      <h3>When it helps</h3>
+      <h2>URL encoder for components and full URLs</h2>
+      <p>Use URL Encoder to prepare query parameter values, encode a full URL while preserving its structure, or decode percent-encoded text back into readable form.</p>
+      <h3>Example workflow</h3>
       <ul>
-        <li><strong>Best for:</strong> Pasting code, structured data, tokens, hashes, or encoded text and getting a readable result quickly.</li>
-        <li><strong>Helpful details:</strong> Use the examples, validation messages, copy actions, and formatting options to catch mistakes before you ship.</li>
-        <li><strong>Next step:</strong> Open a related formatter, validator, encoder, parser, or converter when your workflow moves to another format.</li>
+        <li><strong>Query values:</strong> Choose Encode Component before placing text inside a single query parameter.</li>
+        <li><strong>Form-style spaces:</strong> Turn on Encode spaces as + when a target system expects plus signs in query strings.</li>
+        <li><strong>Limits:</strong> Decode can fail on invalid percent escapes, and Full URL mode intentionally preserves URL syntax characters.</li>
       </ul>
       <p>For the next step, try <a href="/json-formatter/">JSON Formatter &amp; Validator</a>, <a href="/regex-tester/">Regex Tester &amp; Log Extractor</a>, <a href="/base64-encoder/">Base64 Encoder &amp; Decoder</a>, <a href="/hash-generator/">Hash Generator</a>.</p>
     </section>
@@ -142,11 +142,11 @@
     <section class="faq">
       <h2>Frequently Asked Questions</h2>
       <div class="faq-list">
-        <details class="faq-item"><summary class="faq-question">What is URL encoding? <span class="faq-icon">+</span></summary><div class="faq-answer">URL encoding converts special characters in a URL to their percent-encoded equivalents. For example, a space becomes %20 and & becomes %26. This ensures URLs are transmitted correctly.</div></details>
-        <details class="faq-item"><summary class="faq-question">When should I use Encode Component vs Encode Full URL? <span class="faq-icon">+</span></summary><div class="faq-answer">Use Encode Component for individual query parameter values — it encodes everything including / and ?. Use Encode Full URL when you want to keep the URL structure intact but encode unsafe characters.</div></details>
-        <details class="faq-item"><summary class="faq-question">What characters are encoded? <span class="faq-icon">+</span></summary><div class="faq-answer">Encode Component encodes all characters except letters, digits, and -_.~. Encode Full URL also preserves :/?#[]@!$&'()*+,;= which are valid URL characters.</div></details>
-        <details class="faq-item"><summary class="faq-question">What is %20 vs +? <span class="faq-icon">+</span></summary><div class="faq-answer">%20 is the standard percent-encoding for a space. The + sign also represents a space but only in query strings (form data). This tool uses %20 for standard URL encoding.</div></details>
-        <details class="faq-item"><summary class="faq-question">Is URL decoding safe? <span class="faq-icon">+</span></summary><div class="faq-answer">Yes. URL decoding is safe and reversible. All processing happens in your browser and no data is sent to any server.</div></details>
+        <details class="faq-item"><summary class="faq-question">What is URL encoding? <span class="faq-icon">+</span></summary><div class="faq-answer">URL encoding turns characters into percent-encoded sequences so they can be used safely in URL components, query values, or full URLs.</div></details>
+        <details class="faq-item"><summary class="faq-question">When should I use Encode Component vs Encode Full URL? <span class="faq-icon">+</span></summary><div class="faq-answer">Use Encode Component for a single parameter value because it encodes separators like / and ?. Use Encode Full URL when you want to keep URL separators intact.</div></details>
+        <details class="faq-item"><summary class="faq-question">What does plus-space mode do? <span class="faq-icon">+</span></summary><div class="faq-answer">Plus-space mode writes spaces as + during encoding, which is useful for form-style query strings. Decode mode also treats plus signs as spaces.</div></details>
+        <details class="faq-item"><summary class="faq-question">Can decoding fail? <span class="faq-icon">+</span></summary><div class="faq-answer">Yes. Decode mode can show an error when the input contains malformed or incomplete percent escapes.</div></details>
+        <details class="faq-item"><summary class="faq-question">Does Full URL mode encode everything? <span class="faq-icon">+</span></summary><div class="faq-answer">No. Full URL mode preserves URL syntax characters, while Component mode encodes more characters for parameter values.</div></details>
       </div>
     </section>
     <section class="related-tools">

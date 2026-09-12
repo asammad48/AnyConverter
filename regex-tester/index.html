@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Regex Tester &amp; Log Extractor Online — Free | AnyConverter</title>
-  <meta name="description" content="Use regex tester for free in your browser. Get instant results, practical examples, related tools, and no signup.">
+  <meta name="description" content="Test JavaScript regular expressions on pasted text or log files, inspect capture groups, and export matches as CSV or JSON.">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://anyconverter.io/regex-tester/">
   <link rel="alternate" hreflang="en" href="https://anyconverter.io/regex-tester/">
@@ -14,7 +14,7 @@
 
 <meta property="og:type" content="website">
   <meta property="og:title" content="Regex Tester &amp; Log Extractor Online — Free | AnyConverter">
-  <meta property="og:description" content="Use regex tester for free in your browser. Get instant results, practical examples, related tools, and no signup.">
+  <meta property="og:description" content="Test JavaScript regular expressions on pasted text or log files, inspect capture groups, and export matches as CSV or JSON.">
   <meta property="og:url" content="https://anyconverter.io/regex-tester/">
   <meta property="og:site_name" content="AnyConverter">
   <meta property="og:image" content="https://anyconverter.io/assets/img/og-image.png">
@@ -23,13 +23,13 @@
   <meta property="og:image:alt" content="AnyConverter free online tools">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Regex Tester &amp; Log Extractor Online — Free | AnyConverter">
-  <meta name="twitter:description" content="Use regex tester for free in your browser. Get instant results, practical examples, related tools, and no signup.">
+  <meta name="twitter:description" content="Test JavaScript regular expressions on pasted text or log files, inspect capture groups, and export matches as CSV or JSON.">
   <meta name="twitter:image" content="https://anyconverter.io/assets/img/og-image.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Regex Tester & Log Extractor","url":"https://anyconverter.io/regex-tester/","description":"Test regular expressions and extract log patterns online with live highlighting and CSV export.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What does the g flag do?","acceptedAnswer":{"@type":"Answer","text":"The g (global) flag finds all matches in the string. Without it, only the first match is returned."}},{"@type":"Question","name":"How do capture groups work?","acceptedAnswer":{"@type":"Answer","text":"Wrap parts of your pattern in parentheses () to create capture groups. Each group is extracted separately and shown in a different color. Named groups use (?<name>...) syntax."}},{"@type":"Question","name":"How do I export matches?","acceptedAnswer":{"@type":"Answer","text":"Click → CSV to download a spreadsheet with one row per match and columns for each capture group. Click → JSON to get a JSON array of all matches."}},{"@type":"Question","name":"What regex flavor does this use?","acceptedAnswer":{"@type":"Answer","text":"This tester uses JavaScript's built-in RegExp engine (ECMAScript regex), which supports lookaheads, lookbehinds, named groups, Unicode, and all standard quantifiers."}},{"@type":"Question","name":"Can I test against large log files?","acceptedAnswer":{"@type":"Answer","text":"Yes. Use the Upload .log button to load a file directly from disk. The tool processes it entirely in your browser — nothing is sent to any server."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Regex Tester & Log Extractor","url":"https://anyconverter.io/regex-tester/","description":"Test JavaScript regular expressions against pasted text or log files with highlighting, capture groups, and CSV or JSON export.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What does the g flag do?","acceptedAnswer":{"@type":"Answer","text":"The g (global) flag lets the tester collect matches throughout the string. The page also adds global matching internally when it needs to list all matches."}},{"@type":"Question","name":"How do capture groups work?","acceptedAnswer":{"@type":"Answer","text":"Wrap parts of your pattern in parentheses () to create capture groups. Captured values are shown with each match. Named groups use (?<name>...) syntax when supported by the browser."}},{"@type":"Question","name":"How do I export matches?","acceptedAnswer":{"@type":"Answer","text":"Click CSV to download one row per match with capture groups in separate columns, or click JSON to download the extracted match objects."}},{"@type":"Question","name":"What regex flavor does this use?","acceptedAnswer":{"@type":"Answer","text":"This tester uses the browser's JavaScript RegExp engine. PCRE-only syntax or features not supported by the current browser may fail."}},{"@type":"Question","name":"Can I test against large log files?","acceptedAnswer":{"@type":"Answer","text":"Yes, but very large logs can be slow in the browser. The page warns when an uploaded file is over 10 MB, collects up to 5000 matches, and shows up to 200 detailed match rows."}}]}</script>
 
 
 <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
@@ -54,7 +54,7 @@
     </nav>
     <section class="hero">
       <h1>Regex Tester &amp; Log Extractor</h1>
-      <p class="hero-desc">Enter a regex pattern and paste log text to extract all matches with capture group highlighting. Color-coded groups, quick pattern library, and CSV/JSON export. 100% free — runs in your browser.</p>
+      <p class="hero-desc">Test JavaScript regular expressions against pasted text or uploaded log files. Inspect highlighted matches, capture groups, quick patterns, and CSV or JSON exports.</p>
     </section>
 
     <div class="tool-wrapper">
@@ -202,18 +202,21 @@
         <li>Export all matches to CSV or JSON</li>
         <li>Supports g, i, m, s flags</li>
         <li>Upload .log / .txt files directly</li>
-        <li>100% browser-based — no server</li>
+        <li>Uses the browser JavaScript RegExp engine</li>
+        <li>Collects up to 5000 matches and shows up to 200 detailed rows</li>
       </ul>
     </section>
     <!-- SEO keyword implementation: 2026-08-21 -->
     <section class="seo-content" data-seo-keyword-plan="2026-08-21">
-      <h2>Regex tester: practical uses</h2>
-      <p>Use regex tester when you need a fast, clear, private result without creating an account. This page also supports related needs like regular expression tester, regex validator, test regex online so you can choose the right workflow.</p>
-      <h3>When it helps</h3>
+      <h2>Regex Tester: JavaScript matches, groups, and exports</h2>
+      <p>Use Regex Tester to try a JavaScript regular expression against pasted text or a log file. The page highlights matches, lists capture groups, and lets you export extracted matches as CSV or JSON.</p>
+      <h3>Example workflow</h3>
+      <p>Paste an application log, choose the HTTP status quick pattern, toggle flags if needed, and export the matched rows with capture groups for further analysis.</p>
+      <h3>Limits to check</h3>
       <ul>
-        <li><strong>Best for:</strong> Pasting code, structured data, tokens, hashes, or encoded text and getting a readable result quickly.</li>
-        <li><strong>Helpful details:</strong> Use the examples, validation messages, copy actions, and formatting options to catch mistakes before you ship.</li>
-        <li><strong>Next step:</strong> Open a related formatter, validator, encoder, parser, or converter when your workflow moves to another format.</li>
+        <li><strong>Regex flavor:</strong> Patterns use JavaScript <code>RegExp</code>, so PCRE-only syntax may fail.</li>
+        <li><strong>Large logs:</strong> Uploaded files over 10 MB trigger a warning and may be slow to process.</li>
+        <li><strong>Match cap:</strong> The script collects up to 5000 matches and displays up to 200 detailed rows.</li>
       </ul>
       <p>For the next step, try <a href="/json-formatter/">JSON Formatter &amp; Validator</a>, <a href="/base64-encoder/">Base64 Encoder &amp; Decoder</a>, <a href="/hash-generator/">Hash Generator</a>, <a href="/timestamp-converter/">Unix Timestamp Converter</a>.</p>
     </section>
@@ -225,11 +228,11 @@
     <section class="faq">
       <h2>Frequently Asked Questions</h2>
       <div class="faq-list">
-        <details class="faq-item"><summary class="faq-question">What does the g flag do? <span class="faq-icon">+</span></summary><div class="faq-answer">The g (global) flag finds all matches in the string. Without it, only the first match is returned.</div></details>
-        <details class="faq-item"><summary class="faq-question">How do capture groups work? <span class="faq-icon">+</span></summary><div class="faq-answer">Wrap parts of your pattern in parentheses () to create capture groups. Each group is extracted separately and shown in a different color. Named groups use (?&lt;name&gt;...) syntax.</div></details>
-        <details class="faq-item"><summary class="faq-question">How do I export matches? <span class="faq-icon">+</span></summary><div class="faq-answer">Click → CSV to download a spreadsheet with one row per match and columns for each capture group. Click → JSON to get a JSON array of all matches.</div></details>
-        <details class="faq-item"><summary class="faq-question">What regex flavor does this use? <span class="faq-icon">+</span></summary><div class="faq-answer">This tester uses JavaScript's built-in RegExp engine (ECMAScript regex), which supports lookaheads, lookbehinds, named groups, Unicode, and all standard quantifiers.</div></details>
-        <details class="faq-item"><summary class="faq-question">Can I test against large log files? <span class="faq-icon">+</span></summary><div class="faq-answer">Yes. Use the Upload .log button to load a file directly from disk. The tool processes it entirely in your browser — nothing is sent to any server.</div></details>
+        <details class="faq-item"><summary class="faq-question">What does the g flag do? <span class="faq-icon">+</span></summary><div class="faq-answer">The g (global) flag lets the tester collect matches throughout the string. The page also adds global matching internally when it needs to list all matches.</div></details>
+        <details class="faq-item"><summary class="faq-question">How do capture groups work? <span class="faq-icon">+</span></summary><div class="faq-answer">Wrap parts of your pattern in parentheses () to create capture groups. Captured values are shown with each match. Named groups use (?&lt;name&gt;...) syntax when supported by the browser.</div></details>
+        <details class="faq-item"><summary class="faq-question">How do I export matches? <span class="faq-icon">+</span></summary><div class="faq-answer">Click CSV to download one row per match with capture groups in separate columns, or click JSON to download the extracted match objects.</div></details>
+        <details class="faq-item"><summary class="faq-question">What regex flavor does this use? <span class="faq-icon">+</span></summary><div class="faq-answer">This tester uses the browser's JavaScript RegExp engine. PCRE-only syntax or features not supported by the current browser may fail.</div></details>
+        <details class="faq-item"><summary class="faq-question">Can I test against large log files? <span class="faq-icon">+</span></summary><div class="faq-answer">Yes, but very large logs can be slow in the browser. The page warns when an uploaded file is over 10 MB, collects up to 5000 matches, and shows up to 200 detailed match rows.</div></details>
       </div>
     </section>
 

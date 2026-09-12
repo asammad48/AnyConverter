@@ -28,7 +28,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Security — AnyConverter","url":"https://anyconverter.io/security/","description":"Learn how AnyConverter keeps your data safe. All tools run in your browser — your files never leave your device. Read about our security practices and","isPartOf":{"@type":"WebSite","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Security — AnyConverter","url":"https://anyconverter.io/security/","description":"Learn how AnyConverter approaches browser-side processing, transport security, CDN dependencies, and responsible disclosure.","isPartOf":{"@type":"WebSite","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
 
   <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
   <style>
@@ -74,15 +74,15 @@
 
     <div class="page-wrap">
       <h1>Security at AnyConverter</h1>
-      <p class="page-meta">Last updated: <strong>May 26, 2026</strong></p>
+      <p class="page-meta">Last updated: <strong>September 12, 2026</strong></p>
 
       <p>Security and privacy are core to how AnyConverter is built — not bolted on as an afterthought. Here's how we protect your data and our platform.</p>
 
       <div class="security-pillars">
         <div class="pillar">
           <div class="pillar-icon">🔒</div>
-          <h3>No Server Uploads</h3>
-          <p>All tool processing happens in your browser. Files never reach our servers.</p>
+          <h3>Browser-Side Processing</h3>
+          <p>Tools are designed to process selected files and pasted text in your browser instead of an AnyConverter processing API.</p>
         </div>
         <div class="pillar">
           <div class="pillar-icon">🔐</div>
@@ -92,7 +92,7 @@
         <div class="pillar">
           <div class="pillar-icon">🚫</div>
           <h3>No Accounts</h3>
-          <p>No usernames, passwords, or session tokens. Nothing to steal.</p>
+          <p>No usernames, account passwords, or account session tokens are required to use the tools.</p>
         </div>
         <div class="pillar">
           <div class="pillar-icon">🛡️</div>
@@ -102,29 +102,29 @@
       </div>
 
       <h2>Client-Side Architecture</h2>
-      <p>The single most important security property of AnyConverter is that <strong>all tool processing happens inside your browser</strong>. When you use our PDF merger, JSON formatter, image converter, or any other tool, your data is processed by JavaScript running on your own device.</p>
+      <p>The main security property of AnyConverter is that tool work is designed to run inside your browser. When you use a PDF merger, JSON formatter, image converter, or similar tool, your file or text content is handled by JavaScript running on your device.</p>
       <p>This means:</p>
       <ul>
-        <li>We cannot see your files, even if we wanted to</li>
-        <li>There is no server-side database storing your content</li>
-        <li>Closing the browser tab immediately removes all traces of your data</li>
-        <li>Most tools continue working offline after the page loads</li>
+        <li>The current architecture has no AnyConverter content-processing upload API</li>
+        <li>There is no account database tied to tool usage</li>
+        <li>Downloaded files and browser storage remain under your browser and device controls</li>
+        <li>Offline availability varies by tool, browser cache state, and required libraries</li>
       </ul>
 
       <h2>HTTPS &amp; Transport Security</h2>
       <p>All traffic to and from AnyConverter is encrypted using TLS 1.2 or higher. We use <strong>HTTP Strict Transport Security (HSTS)</strong> to prevent downgrade attacks. Our SSL certificates are managed automatically through Cloudflare.</p>
 
       <h2>Content Security Policy</h2>
-      <p>AnyConverter implements a strict Content Security Policy (CSP) to prevent cross-site scripting (XSS) attacks. We only load scripts and resources from trusted sources (our own domain, Google Fonts, and explicitly permitted CDN libraries).</p>
+      <p>AnyConverter uses a Content Security Policy (CSP) to limit where scripts and resources can load from. The policy permits our own domain, Google Fonts, and selected CDN hosts used by tool pages.</p>
 
       <h2>Third-Party Libraries</h2>
-      <p>Where we use third-party JavaScript libraries (pdf-lib, PapaParse, highlight.js), we load them from trusted CDNs with <strong>Subresource Integrity (SRI)</strong> hashes where possible, ensuring the code hasn't been tampered with.</p>
+      <p>Where we use third-party JavaScript libraries such as pdf-lib, PapaParse, PDF.js, Tesseract.js, SQL.js, or highlight.js, they are scoped to pages that need them and reviewed during release checks. CDN resources should be pinned by version and tracked in the dependency inventory.</p>
 
       <h2>No Account Data to Breach</h2>
       <p>Because AnyConverter has no user accounts, there is no database of usernames, emails, or passwords that could be breached. We cannot lose data we never collected.</p>
 
       <h2>Infrastructure</h2>
-      <p>AnyConverter is a static website deployed on <strong>Cloudflare Pages</strong>, one of the most secure and performant static hosting platforms available. Cloudflare provides automatic DDoS mitigation, WAF rules, and edge caching at 200+ global locations.</p>
+      <p>AnyConverter is maintained as a static website intended for deployment on Cloudflare Pages. Static hosting reduces server-side application attack surface, while deployment settings and edge protections should be verified during each release.</p>
 
       <div class="disclosure-box">
         <h3>🔍 Responsible Disclosure</h3>
@@ -140,7 +140,7 @@
     <!-- SEO keyword implementation: 2026-08-21 -->
     <section class="seo-content" data-seo-keyword-plan="2026-08-21">
       <h2>AnyConverter security: practical uses</h2>
-      <p>Use AnyConverter security when you need a fast, clear, private result without creating an account. This page also supports related needs like privacy-first online tools, browser-based file processing, secure PDF tools so you can choose the right workflow.</p>
+      <p>Use this page to understand AnyConverter's browser-side processing model, transport security, CDN dependency controls, and responsible disclosure process.</p>
       <h3>When it helps</h3>
       <ul>
         <li><strong>Best for:</strong> Understanding AnyConverter, its privacy approach, policies, security posture, and available tool categories.</li>
