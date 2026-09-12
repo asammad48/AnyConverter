@@ -10,3 +10,4 @@
 .wrangler/
 .dev.vars*
 !.dev.vars.example
+/output/lighthouse
