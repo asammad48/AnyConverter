@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CSV Query Tool Online — Run SQL on CSV Files Free | AnyConverter</title>
-  <meta name="description" content="Use csv to sql for free in your browser. Get instant results, practical examples, related tools, and no signup.">
+  <meta name="description" content="Upload a CSV, query an in-memory SQL.js table named data, sort paginated results, and export answers as CSV or JSON.">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://anyconverter.io/csv-query/">
   <link rel="alternate" hreflang="en" href="https://anyconverter.io/csv-query/">
@@ -14,7 +14,7 @@
 
 <meta property="og:type" content="website">
   <meta property="og:title" content="CSV Query Tool Online — Run SQL on CSV Files Free | AnyConverter">
-  <meta property="og:description" content="Use csv to sql for free in your browser. Get instant results, practical examples, related tools, and no signup.">
+  <meta property="og:description" content="Upload a CSV, query an in-memory SQL.js table named data, sort paginated results, and export answers as CSV or JSON.">
   <meta property="og:url" content="https://anyconverter.io/csv-query/">
   <meta property="og:site_name" content="AnyConverter">
   <meta property="og:image" content="https://anyconverter.io/assets/img/og-image.png">
@@ -23,13 +23,13 @@
   <meta property="og:image:alt" content="AnyConverter free online tools">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="CSV Query Tool Online — Run SQL on CSV Files Free | AnyConverter">
-  <meta name="twitter:description" content="Use csv to sql for free in your browser. Get instant results, practical examples, related tools, and no signup.">
+  <meta name="twitter:description" content="Upload a CSV, query an in-memory SQL.js table named data, sort paginated results, and export answers as CSV or JSON.">
   <meta name="twitter:image" content="https://anyconverter.io/assets/img/og-image.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"CSV Query Tool","url":"https://anyconverter.io/csv-query/","description":"Query CSV files with SQL online for free. Upload a CSV and run SELECT, WHERE, GROUP BY queries directly in your browser using SQL.js.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What SQL syntax is supported?","acceptedAnswer":{"@type":"Answer","text":"The tool uses SQL.js, a WebAssembly build of SQLite. It supports SELECT, WHERE, GROUP BY, ORDER BY, LIMIT, OFFSET, JOINs, subqueries, and aggregates like COUNT, SUM, AVG, MIN, and MAX. Most SQLite functions work too."}},{"@type":"Question","name":"What is the table name for my CSV?","acceptedAnswer":{"@type":"Answer","text":"Your CSV is loaded into a table called data . Column names come from the first row (header row) of your CSV. If a column name has spaces, wrap it in double quotes: SELECT \"first name\" FROM data."}},{"@type":"Question","name":"How large a file can I query?","acceptedAnswer":{"@type":"Answer","text":"There is no hard limit — the browser's available memory is the constraint. Files up to 50MB typically work well. Very large files may take a moment to load into the in-memory SQLite database."}},{"@type":"Question","name":"Is my data sent to a server?","acceptedAnswer":{"@type":"Answer","text":"No. All processing runs locally in your browser. SQL.js is a WASM build of SQLite that runs entirely client-side. Your CSV data and query results never leave your device."}},{"@type":"Question","name":"Can I run multiple queries on the same file?","acceptedAnswer":{"@type":"Answer","text":"Yes. Once a CSV is loaded, you can run as many queries as you like. The query history keeps your last 5 queries for quick re-use. Upload a new file to replace the current dataset."}}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What SQL syntax is supported?","acceptedAnswer":{"@type":"Answer","text":"The tool uses SQL.js, a WebAssembly build of SQLite. It supports SELECT, WHERE, GROUP BY, ORDER BY, LIMIT, OFFSET, JOINs, subqueries, and aggregates like COUNT, SUM, AVG, MIN, and MAX."}},{"@type":"Question","name":"What is the table name for my CSV?","acceptedAnswer":{"@type":"Answer","text":"Your CSV is loaded into a table called data. Column names come from the first row when the header-row option is on. If a column name has spaces, wrap it in double quotes, such as SELECT \"first name\" FROM data."}},{"@type":"Question","name":"How large a file can I query?","acceptedAnswer":{"@type":"Answer","text":"There is no explicit file-size limit in the page script. The practical limit is the browser memory available for parsing the CSV, loading SQL.js, and storing the in-memory table."}},{"@type":"Question","name":"Is my data sent to a server?","acceptedAnswer":{"@type":"Answer","text":"The CSV is loaded into SQL.js in your browser tab after the SQL.js WebAssembly file loads from a CDN. The tool does not set up a server-side database for your file."}},{"@type":"Question","name":"Can I run multiple queries on the same file?","acceptedAnswer":{"@type":"Answer","text":"Yes. Once a CSV is loaded, you can run multiple queries against the same in-memory table. The query history keeps your last 5 queries for quick re-use."}}]}</script>
 
 
 <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
@@ -57,7 +57,7 @@
     </nav>
     <section class="hero">
       <h1>CSV Query Tool — Run SQL on CSV Files</h1>
-      <p class="hero-desc">Upload a CSV file and query it with SQL directly in your browser. Use SELECT, WHERE, GROUP BY, ORDER BY, aggregates, and more. Results are paginated and sortable by column. Export to CSV or JSON. Powered by SQL.js (SQLite WASM) — your data never leaves your device.</p>
+      <p class="hero-desc">Upload a CSV file and query it with SQL in an in-memory SQL.js table named <code>data</code>. Use SELECT, WHERE, GROUP BY, ORDER BY, and aggregates, then sort paginated results or export them as CSV or JSON.</p>
     </section>
     <div class="tool-wrapper">
       <div class="tool-zone">
@@ -164,20 +164,23 @@
         <li>Sortable columns — click headers to sort asc/desc</li>
         <li>Export results as CSV or JSON</li>
         <li>Query history — last 5 queries, click to restore</li>
-        <li>100% browser-based — powered by SQL.js (SQLite WASM)</li>
+        <li>CSV loads into an in-memory SQL.js table named <code>data</code></li>
+        <li>Columns are loaded as text, so cast values when numeric comparisons matter</li>
       </ul>
     </section>
     <!-- SEO keyword implementation: 2026-08-21 -->
     <section class="seo-content" data-seo-keyword-plan="2026-08-21">
-      <h2>Csv to sql: practical uses</h2>
-      <p>Use csv to sql when you need a fast, clear, private result without creating an account. This page also supports related needs like csv to sql online, csv to sql validator, csv to sql formatter so you can choose the right workflow.</p>
-      <h3>When it helps</h3>
+      <h2>CSV Query: run SQL on an uploaded CSV</h2>
+      <p>Use CSV Query to analyze a CSV without setting up a database. The page parses your file, creates an in-memory SQL.js table named <code>data</code>, and runs queries against that table in the browser tab.</p>
+      <h3>Example workflow</h3>
+      <p>Upload a sales CSV, run <code>SELECT region, COUNT(*) FROM data GROUP BY region</code>, inspect the paginated result table, and export the answer as CSV or JSON.</p>
+      <h3>Limits to check</h3>
       <ul>
-        <li><strong>Best for:</strong> Pasting code, structured data, tokens, hashes, or encoded text and getting a readable result quickly.</li>
-        <li><strong>Helpful details:</strong> Use the examples, validation messages, copy actions, and formatting options to catch mistakes before you ship.</li>
-        <li><strong>Next step:</strong> Open a related formatter, validator, encoder, parser, or converter when your workflow moves to another format.</li>
+        <li><strong>Table name:</strong> Query <code>data</code>; wrap column names with spaces in double quotes.</li>
+        <li><strong>Column types:</strong> CSV columns are loaded as text, so numeric comparisons may need casts.</li>
+        <li><strong>Memory:</strong> Very large CSV files can be limited by browser memory and SQL.js WebAssembly loading.</li>
       </ul>
-      <p>For the next step, try <a href="/json-formatter/">JSON Formatter &amp; Validator</a>, <a href="/regex-tester/">Regex Tester &amp; Log Extractor</a>, <a href="/base64-encoder/">Base64 Encoder &amp; Decoder</a>, <a href="/hash-generator/">Hash Generator</a>.</p>
+      <p>For related data work, try <a href="/csv-to-sql/">CSV to SQL</a> when you need a SQL script, <a href="/json-formatter/">JSON Formatter &amp; Validator</a>, <a href="/regex-tester/">Regex Tester &amp; Log Extractor</a>, or <a href="/timestamp-converter/">Timestamp Converter</a>.</p>
     </section>
 
     <div class="ad-slot ad-slot--rectangle" style="margin:0 auto 32px">
@@ -186,11 +189,11 @@
     <section class="faq">
       <h2>Frequently Asked Questions</h2>
       <div class="faq-list">
-        <details class="faq-item"><summary class="faq-question">What SQL syntax is supported? <span class="faq-icon">+</span></summary><div class="faq-answer">The tool uses SQL.js, a WebAssembly build of SQLite. It supports SELECT, WHERE, GROUP BY, ORDER BY, LIMIT, OFFSET, JOINs, subqueries, and aggregates like COUNT, SUM, AVG, MIN, and MAX. Most SQLite functions work too.</div></details>
-        <details class="faq-item"><summary class="faq-question">What is the table name for my CSV? <span class="faq-icon">+</span></summary><div class="faq-answer">Your CSV is loaded into a table called <strong>data</strong>. Column names come from the first row (header row) of your CSV. If a column name has spaces, wrap it in double quotes: SELECT "first name" FROM data.</div></details>
-        <details class="faq-item"><summary class="faq-question">How large a file can I query? <span class="faq-icon">+</span></summary><div class="faq-answer">There is no hard limit — the browser's available memory is the constraint. Files up to 50MB typically work well. Very large files may take a moment to load into the in-memory SQLite database.</div></details>
-        <details class="faq-item"><summary class="faq-question">Is my data sent to a server? <span class="faq-icon">+</span></summary><div class="faq-answer">No. All processing runs locally in your browser. SQL.js is a WASM build of SQLite that runs entirely client-side. Your CSV data and query results never leave your device.</div></details>
-        <details class="faq-item"><summary class="faq-question">Can I run multiple queries on the same file? <span class="faq-icon">+</span></summary><div class="faq-answer">Yes. Once a CSV is loaded, you can run as many queries as you like. The query history keeps your last 5 queries for quick re-use. Upload a new file to replace the current dataset.</div></details>
+        <details class="faq-item"><summary class="faq-question">What SQL syntax is supported? <span class="faq-icon">+</span></summary><div class="faq-answer">The tool uses SQL.js, a WebAssembly build of SQLite. It supports SELECT, WHERE, GROUP BY, ORDER BY, LIMIT, OFFSET, JOINs, subqueries, and aggregates like COUNT, SUM, AVG, MIN, and MAX.</div></details>
+        <details class="faq-item"><summary class="faq-question">What is the table name for my CSV? <span class="faq-icon">+</span></summary><div class="faq-answer">Your CSV is loaded into a table called <strong>data</strong>. Column names come from the first row when the header-row option is on. If a column name has spaces, wrap it in double quotes, such as SELECT "first name" FROM data.</div></details>
+        <details class="faq-item"><summary class="faq-question">How large a file can I query? <span class="faq-icon">+</span></summary><div class="faq-answer">There is no explicit file-size limit in the page script. The practical limit is the browser memory available for parsing the CSV, loading SQL.js, and storing the in-memory table.</div></details>
+        <details class="faq-item"><summary class="faq-question">Is my data sent to a server? <span class="faq-icon">+</span></summary><div class="faq-answer">The CSV is loaded into SQL.js in your browser tab after the SQL.js WebAssembly file loads from a CDN. The tool does not set up a server-side database for your file.</div></details>
+        <details class="faq-item"><summary class="faq-question">Can I run multiple queries on the same file? <span class="faq-icon">+</span></summary><div class="faq-answer">Yes. Once a CSV is loaded, you can run multiple queries against the same in-memory table. The query history keeps your last 5 queries for quick re-use.</div></details>
       </div>
     </section>
     <section class="related-tools">

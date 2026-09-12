@@ -23,6 +23,15 @@
   </url>
 
   <url>
+    <loc>https://anyconverter.io/pdf-metadata-remover/</loc>
+    <lastmod>2026-09-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://anyconverter.io/pdf-metadata-remover/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://anyconverter.io/pdf-metadata-remover/"/>
+  </url>
+
+  <url>
     <loc>https://anyconverter.io/calculators/</loc>
     <lastmod>2026-08-26</lastmod>
     <changefreq>monthly</changefreq>

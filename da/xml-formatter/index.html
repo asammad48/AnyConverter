@@ -29,7 +29,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"XML Formatter","url":"https://anyconverter.io/da/xml-formatter/","description":"Formater og valider XML online gratis.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Sendes mine data til en server?","acceptedAnswer":{"@type":"Answer","text":"Nej. XML-formatteren bruger browserens DOMParser. Al behandling er lokal og dine data forlader aldrig din enhed."}},{"@type":"Question","name":"Hvilke XML-filtyper understøttes?","acceptedAnswer":{"@type":"Answer","text":"Alle gyldige XML-filer understøttes, herunder XHTML, SVG, RSS, Atom, SOAP og andre XML-baserede formater."}}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Sendes mine data til en server?","acceptedAnswer":{"@type":"Answer","text":"Nej. XML-formatteren bruger browserens DOMParser. Al behandling er lokal og data behandles i browseren."}},{"@type":"Question","name":"Hvilke XML-filtyper understøttes?","acceptedAnswer":{"@type":"Answer","text":"Alle gyldige XML-filer understøttes, herunder XHTML, SVG, RSS, Atom, SOAP og andre XML-baserede formater."}}]}</script>
 
 
 <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
@@ -84,8 +84,8 @@
           </div>
         </div>
       </div>
-      <aside class="tool-side" aria-label="Options">
-        <div class="ss-divider">Options</div>
+      <aside class="tool-side" aria-label="Indstillinger">
+        <div class="ss-divider">Indstillinger</div>
         <div class="ss-option-row">
           <span class="ss-opt-label">Indent</span>
           <select class="ss-opt-select" id="opt-indent">
@@ -94,10 +94,10 @@
             <option value="tab">Tab</option>
           </select>
         </div>
-        <div class="tog-row"><span class="tog-label" id="lbl-auto">Auto-format on paste</span><div class="tog" id="tog-auto" role="switch" aria-checked="true" tabindex="0" aria-labelledby="lbl-auto"></div></div>
+        <div class="tog-row"><span class="tog-label" id="lbl-auto">Formatér automatisk ved indsættelse</span><div class="tog" id="tog-auto" role="switch" aria-checked="true" tabindex="0" aria-labelledby="lbl-auto"></div></div>
         <div class="tog-row"><span class="tog-label" id="lbl-decl">XML declaration</span><div class="tog" id="tog-decl" role="switch" aria-checked="true" tabindex="0" aria-labelledby="lbl-decl"></div></div>
 
-        <div class="ss-divider">Stats</div>
+        <div class="ss-divider">Statistik</div>
         <div class="stats-grid">
           <div class="stat-card"><div class="stat-val" id="stat-elements">0</div><div class="stat-lbl">Elements</div></div>
           <div class="stat-card"><div class="stat-val" id="stat-depth">0</div><div class="stat-lbl">Depth</div></div>
@@ -105,13 +105,13 @@
           <div class="stat-card"><div class="stat-val" id="stat-errors">0</div><div class="stat-lbl">Errors</div></div>
         </div>
 
-        <div class="ss-divider">Related Tools</div>
+        <div class="ss-divider">Relaterede værktøjer</div>
         <a href="/da/json-formatter/" class="ss-related-link"><img src="/assets/img/icon-json.svg" alt="XML Formatter Online Gratis icon" width="18" height="18" loading="lazy">JSON Formatter</a>
         <a href="/da/regex-tester/" class="ss-related-link"><img src="/assets/img/icon-regex.svg" alt="XML Formatter Online Gratis icon" width="18" height="18" loading="lazy">Regex / Logs</a>
         <a href="/da/csv-to-sql/" class="ss-related-link"><img src="/assets/img/icon-csv.svg" alt="XML Formatter Online Gratis icon" width="18" height="18" loading="lazy">CSV → SQL</a>
 
         <div style="margin-top:8px">
-          <p class="ad-label">Advertisement</p>
+          <p class="ad-label">Annonce</p>
           <div class="ad-slot" style="min-height:250px">
             <div class="adsbygoogle" style="display:block" aria-hidden="true"></div>
 </div>
@@ -136,7 +136,7 @@
         <li>Validering med klare fejlmeddelelser</li>
         <li>Minificering for hurtigere overførsler</li>
         <li>XML syntaksfremhævning</li>
-        <li>100% behandling i browseren</li>
+        <li>Behandling i browseren</li>
       </ul>
     </section>
     <!-- SEO keyword implementation: 2026-08-21 -->
@@ -158,7 +158,7 @@
     <section class="faq">
       <h2>Ofte stillede spørgsmål</h2>
       <div class="faq-list">
-        <details class="faq-item"><summary class="faq-question">Sendes mine data til en server? <span class="faq-icon">+</span></summary><div class="faq-answer">Nej. XML-formatteren bruger browserens DOMParser. Al behandling er lokal og dine data forlader aldrig din enhed.</div></details>
+        <details class="faq-item"><summary class="faq-question">Sendes mine data til en server? <span class="faq-icon">+</span></summary><div class="faq-answer">Nej. XML-formatteren bruger browserens DOMParser. Al behandling er lokal og data behandles i browseren.</div></details>
         <details class="faq-item"><summary class="faq-question">Hvilke XML-filtyper understøttes? <span class="faq-icon">+</span></summary><div class="faq-answer">Alle gyldige XML-filer understøttes, herunder XHTML, SVG, RSS, Atom, SOAP og andre XML-baserede formater.</div></details>
       </div>
     </section>

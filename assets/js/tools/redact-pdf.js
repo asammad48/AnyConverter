@@ -44,7 +44,7 @@
   function updateRedactionList() {
     var list = document.getElementById('rd-list');
     list.innerHTML = '';
-    if (!redactions.length) { list.innerHTML = '<p style="color:var(--color-text-2,#3F3A36);font-size:12px">No redactions added yet.</p>'; return; }
+    if (!redactions.length) { list.innerHTML = '<p style="color:var(--color-text-2,#3F3A36);font-size:12px">No blackouts added yet.</p>'; return; }
     redactions.forEach(function (r, i) {
       var row = document.createElement('div');
       row.style.cssText = 'display:flex;align-items:center;gap:8px;font-size:12px;padding:4px 0;border-bottom:1px solid var(--color-border-light,#ECE7DF)';
@@ -58,8 +58,8 @@
 
   async function processRedact() {
     if (!pdfBytes) { setStatus('Please upload a PDF first.', 'error'); return; }
-    if (!redactions.length) { setStatus('Add at least one redaction area.', 'error'); return; }
-    setStatus('Applying redactions…', '');
+    if (!redactions.length) { setStatus('Add at least one blackout area.', 'error'); return; }
+    setStatus('Applying blackouts…', '');
     try {
       var doc = await PDFLib.PDFDocument.load(pdfBytes);
       redactions.forEach(function (r) {
@@ -69,8 +69,8 @@
           color: PDFLib.rgb(0, 0, 0), borderWidth: 0 });
       });
       var saved = await doc.save();
-      dl(saved, 'redacted.pdf');
-      setStatus('Done! ' + redactions.length + ' area(s) redacted.', 'success');
+      dl(saved, 'blackout.pdf');
+      setStatus('Done! ' + redactions.length + ' area(s) covered with black rectangles.', 'success');
     } catch (e) { setStatus('Error: ' + e.message, 'error'); }
   }
 

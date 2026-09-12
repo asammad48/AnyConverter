@@ -1,0 +1,61 @@
+{
+  "generatedAt": "2026-09-12T13:33:44.554Z",
+  "origin": "https://anyconverter.io",
+  "counts": {
+    "pages": 342,
+    "clusters": 118,
+    "sitemapUrls": 342,
+    "byLocale": {
+      "en": 118,
+      "es": 112,
+      "da": 112
+    },
+    "completeEnEsDaClusters": 112,
+    "enOnlyClusters": 6
+  },
+  "missingLocaleClusters": [
+    {
+      "base": "/calculators/",
+      "en": true,
+      "es": false,
+      "da": false
+    },
+    {
+      "base": "/developer-tools/",
+      "en": true,
+      "es": false,
+      "da": false
+    },
+    {
+      "base": "/pdf-metadata-remover/",
+      "en": true,
+      "es": false,
+      "da": false
+    },
+    {
+      "base": "/pdf-tools/",
+      "en": true,
+      "es": false,
+      "da": false
+    },
+    {
+      "base": "/productivity-tools/",
+      "en": true,
+      "es": false,
+      "da": false
+    },
+    {
+      "base": "/world-clock/",
+      "en": true,
+      "es": false,
+      "da": false
+    }
+  ],
+  "technicalIssues": [],
+  "technicalIssueCounts": {},
+  "sitemapIssues": [],
+  "sitemapIssueCounts": {},
+  "contentFindings": [],
+  "contentFindingCounts": {},
+  "status": "pass"
+}

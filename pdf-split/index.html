@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Split PDF Online — Extract Pages Free | AnyConverter</title>
-  <meta name="description" content="Use split PDF online for free in your browser. Get instant results, practical examples, related tools, and no signup.">
+  <meta name="description" content="Split one PDF by page range, every N pages, or each page. Enter ranges like 1-3,7,10-12 and download separate PDFs or a ZIP.">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://anyconverter.io/pdf-split/">
   <link rel="alternate" hreflang="en" href="https://anyconverter.io/pdf-split/">
@@ -14,7 +14,7 @@
 
 <meta property="og:type" content="website">
   <meta property="og:title" content="Split PDF Online — Extract Pages Free | AnyConverter">
-  <meta property="og:description" content="Use split PDF online for free in your browser. Get instant results, practical examples, related tools, and no signup.">
+  <meta property="og:description" content="Split one PDF by page range, every N pages, or each page. Enter ranges like 1-3,7,10-12 and download separate PDFs or a ZIP.">
   <meta property="og:url" content="https://anyconverter.io/pdf-split/">
   <meta property="og:site_name" content="AnyConverter">
   <meta property="og:image" content="https://anyconverter.io/assets/img/og-image.png">
@@ -23,13 +23,13 @@
   <meta property="og:image:alt" content="AnyConverter free online tools">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Split PDF Online — Extract Pages Free | AnyConverter">
-  <meta name="twitter:description" content="Use split PDF online for free in your browser. Get instant results, practical examples, related tools, and no signup.">
+  <meta name="twitter:description" content="Split one PDF by page range, every N pages, or each page. Enter ranges like 1-3,7,10-12 and download separate PDFs or a ZIP.">
   <meta name="twitter:image" content="https://anyconverter.io/assets/img/og-image.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Split PDF — Extract Pages Online","url":"https://anyconverter.io/pdf-split/","description":"Split a PDF into multiple files or extract specific pages online for free.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do I specify page ranges?","acceptedAnswer":{"@type":"Answer","text":"Use commas to separate individual pages and dashes for ranges. Example: 1,3,5-8,12 extracts pages 1, 3, 5, 6, 7, 8, and 12."}},{"@type":"Question","name":"Can I extract just one page from a PDF?","acceptedAnswer":{"@type":"Answer","text":"Yes. Use Extract specific pages mode and enter just the page number you want (e.g. \"5\" to get only page 5)."}},{"@type":"Question","name":"Are my PDFs uploaded to a server?","acceptedAnswer":{"@type":"Answer","text":"No. All splitting happens locally in your browser using the pdf-lib JavaScript library. Your files never leave your device."}},{"@type":"Question","name":"What happens to the page quality when splitting?","acceptedAnswer":{"@type":"Answer","text":"pdf-lib copies pages without re-processing them, so quality is perfectly preserved. Text, images and graphics remain identical to the original."}},{"@type":"Question","name":"Can I split a large PDF?","acceptedAnswer":{"@type":"Answer","text":"Yes. There is no hard size limit. Very large PDFs may take a moment to process in the browser, but all splitting is done client-side without any upload."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Split PDF — Extract Pages Online","url":"https://anyconverter.io/pdf-split/","description":"Split one PDF by page range, every N pages, or each page, with optional ZIP download and custom filename prefix.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do I specify page ranges?","acceptedAnswer":{"@type":"Answer","text":"Use commas for individual pages and dashes for ranges. Example: 1,3,5-8,12 extracts pages 1, 3, 5, 6, 7, 8, and 12."}},{"@type":"Question","name":"Can I extract just one page from a PDF?","acceptedAnswer":{"@type":"Answer","text":"Yes. Use Extract pages mode and enter a single page number, such as 5, to create an output file with that page."}},{"@type":"Question","name":"Can I download split files as a ZIP?","acceptedAnswer":{"@type":"Answer","text":"Yes. Turn on the ZIP option when you want the split PDF files packaged together instead of downloaded individually."}},{"@type":"Question","name":"What happens to duplicate page numbers?","acceptedAnswer":{"@type":"Answer","text":"In page-range mode, valid page numbers are sorted and deduplicated before the output PDF is created."}},{"@type":"Question","name":"Can I split a large PDF?","acceptedAnswer":{"@type":"Answer","text":"The page does not set a fixed size limit, but encrypted, malformed, or very large PDFs can fail if they cannot be loaded in browser memory."}}]}</script>
 
 
 <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
@@ -56,7 +56,7 @@
     </nav>
     <section class="hero">
       <h1>Split PDF — Extract Pages Online</h1>
-      <p class="hero-desc">Split a PDF into multiple files or extract specific pages. Choose your split mode, preview which pages go where, then download individual files or a ZIP archive. Completely browser-based and private — no server uploads.</p>
+      <p class="hero-desc">Turn one PDF into smaller files by page range, every N pages, or individual page. Enter ranges like 1-3, 7, 10-12, then download separate files or a ZIP.</p>
     </section>
     <div class="tool-wrapper">
       <div class="tool-zone">
@@ -141,21 +141,22 @@
         <li>Split every N pages</li>
         <li>Extract each page separately</li>
         <li>Download individual PDF files</li>
-        <li>100% private — no server upload</li>
+        <li>Optional ZIP download</li>
+        <li>Custom filename prefix</li>
         <li>Powered by pdf-lib</li>
       </ul>
     </section>
     <!-- SEO keyword implementation: 2026-08-21 -->
     <section class="seo-content" data-seo-keyword-plan="2026-08-21">
-      <h2>Split PDF online: practical uses</h2>
-      <p>Use split PDF online when you need a fast, clear, private result without creating an account. This page also supports related needs like extract PDF pages, separate PDF pages, split PDF file so you can choose the right workflow.</p>
-      <h3>When it helps</h3>
+      <h2>Split PDF online by range or interval</h2>
+      <p>Use Split PDF to create smaller PDF files from one source document. The page loads the PDF, copies the requested pages into new documents, and creates downloadable outputs with your chosen prefix.</p>
+      <h3>Example workflow</h3>
       <ul>
-        <li><strong>Best for:</strong> Combining, editing, converting, or protecting documents without installing desktop PDF software.</li>
-        <li><strong>Helpful details:</strong> Check file order, page range, output quality, and browser privacy before downloading the finished PDF.</li>
-        <li><strong>Next step:</strong> Move to another PDF action when you need compression, splitting, images, signatures, forms, or page cleanup.</li>
+        <li><strong>Section extract:</strong> Upload a 30-page packet and enter 1-2, 9-14 to extract the cover and one section.</li>
+        <li><strong>Batch output:</strong> Use every N pages for equal-sized parts, or each page for one file per page.</li>
+        <li><strong>Limits:</strong> One source PDF is handled at a time, and browser memory limits apply for very large files.</li>
       </ul>
-      <p>For the next step, try <a href="/pdf-merge/">Merge PDF Files Online</a>, <a href="/pdf-compress/">Compress PDF Online</a>, <a href="/edit-pdf/">Edit PDF</a>, <a href="/pdf-to-jpg/">PDF to JPG Converter</a>.</p>
+      <p>For related workflows, try <a href="/pdf-merge/">Merge PDF Files Online</a> to recombine split files, <a href="/organize-pdf/">Organize PDF</a> for custom page order, or <a href="/pdf-to-jpg/">PDF to JPG Converter</a> for page images.</p>
     </section>
 
     <div class="ad-slot ad-slot--rectangle" style="margin:0 auto 32px">
@@ -164,11 +165,11 @@
     <section class="faq">
       <h2>Frequently Asked Questions</h2>
       <div class="faq-list">
-        <details class="faq-item"><summary class="faq-question">How do I specify page ranges? <span class="faq-icon">+</span></summary><div class="faq-answer">Use commas to separate individual pages and dashes for ranges. Example: 1,3,5-8,12 extracts pages 1, 3, 5, 6, 7, 8, and 12.</div></details>
-        <details class="faq-item"><summary class="faq-question">Can I extract just one page from a PDF? <span class="faq-icon">+</span></summary><div class="faq-answer">Yes. Use Extract specific pages mode and enter just the page number you want (e.g. "5" to get only page 5).</div></details>
-        <details class="faq-item"><summary class="faq-question">Are my PDFs uploaded to a server? <span class="faq-icon">+</span></summary><div class="faq-answer">No. All splitting happens locally in your browser using the pdf-lib JavaScript library. Your files never leave your device.</div></details>
-        <details class="faq-item"><summary class="faq-question">What happens to the page quality when splitting? <span class="faq-icon">+</span></summary><div class="faq-answer">pdf-lib copies pages without re-processing them, so quality is perfectly preserved. Text, images and graphics remain identical to the original.</div></details>
-        <details class="faq-item"><summary class="faq-question">Can I split a large PDF? <span class="faq-icon">+</span></summary><div class="faq-answer">Yes. There is no hard size limit. Very large PDFs may take a moment to process in the browser, but all splitting is done client-side without any upload.</div></details>
+        <details class="faq-item"><summary class="faq-question">How do I specify page ranges? <span class="faq-icon">+</span></summary><div class="faq-answer">Use commas for individual pages and dashes for ranges. Example: 1,3,5-8,12 extracts pages 1, 3, 5, 6, 7, 8, and 12.</div></details>
+        <details class="faq-item"><summary class="faq-question">Can I extract just one page from a PDF? <span class="faq-icon">+</span></summary><div class="faq-answer">Yes. Use Extract pages mode and enter a single page number, such as 5, to create an output file with that page.</div></details>
+        <details class="faq-item"><summary class="faq-question">Can I download split files as a ZIP? <span class="faq-icon">+</span></summary><div class="faq-answer">Yes. Turn on the ZIP option when you want the split PDF files packaged together instead of downloaded individually.</div></details>
+        <details class="faq-item"><summary class="faq-question">What happens to duplicate page numbers? <span class="faq-icon">+</span></summary><div class="faq-answer">In page-range mode, valid page numbers are sorted and deduplicated before the output PDF is created.</div></details>
+        <details class="faq-item"><summary class="faq-question">Can I split a large PDF? <span class="faq-icon">+</span></summary><div class="faq-answer">The page does not set a fixed size limit, but encrypted, malformed, or very large PDFs can fail if they cannot be loaded in browser memory.</div></details>
       </div>
     </section>
     <section class="related-tools">

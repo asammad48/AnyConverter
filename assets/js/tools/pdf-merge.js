@@ -30,6 +30,21 @@ document.addEventListener('DOMContentLoaded', function () {
 
   let files = [];
   let mergedBytes = null;
+  let pdfLibPromise = null;
+
+  function loadPdfLib() {
+    if (window.PDFLib) return Promise.resolve(window.PDFLib);
+    if (pdfLibPromise) return pdfLibPromise;
+    pdfLibPromise = new Promise(function (resolve, reject) {
+      const script = document.createElement('script');
+      script.src = 'https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js';
+      script.defer = true;
+      script.onload = function () { resolve(window.PDFLib); };
+      script.onerror = function () { reject(new Error('PDF library failed to load')); };
+      document.head.appendChild(script);
+    });
+    return pdfLibPromise;
+  }
 
   function formatBytes(bytes) {
     if (bytes < 1024) return bytes + ' B';
@@ -133,6 +148,11 @@ document.addEventListener('DOMContentLoaded', function () {
       if (f.type === 'application/pdf' || f.name.endsWith('.pdf')) files.push(f);
     });
     renderFileList();
+    if (files.length) {
+      loadPdfLib().catch(function (error) {
+        window.showToast(error.message, 'error');
+      });
+    }
   }
 
   bindToggle(blankSepToggle);
@@ -171,7 +191,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
   document.getElementById('btn-merge').addEventListener('click', async function () {
     if (files.length < 2) { window.showToast('Please add at least 2 PDF files', 'error'); return; }
-    if (!window.PDFLib) { window.showToast('PDF library is still loading, please wait', 'info'); return; }
 
     const btn = document.getElementById('btn-merge');
     btn.disabled = true;
@@ -180,6 +199,7 @@ document.addEventListener('DOMContentLoaded', function () {
     mergeResult.style.display = 'none';
 
     try {
+      await loadPdfLib();
       const merged = await window.PDFLib.PDFDocument.create();
       for (let i = 0; i < files.length; i++) {
         mergeProgressFill.style.width = Math.round((i / files.length) * 90) + '%';

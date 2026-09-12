@@ -10,7 +10,7 @@
 ## Critical CSS Inline Pattern
 
 Every page MUST inline the above-fold critical CSS in `<head>`.
-This prevents render-blocking and achieves LCP under 1s.
+This reduces render-blocking risk. Validate LCP in the Phase 04 performance gate; do not claim a sub-second result without current evidence.
 
 ### What goes inline (critical):
 ```css
@@ -126,7 +126,7 @@ async function processInChunks(rows, chunkSize = 500) {
 ## Font Loading Optimization
 
 ```html
-<!-- In <head>, before stylesheet -->
+<!-- Optional on pages that need brand fonts. Do not load web fonts on Phase 04 priority pages without fresh Lighthouse evidence. -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
@@ -135,7 +135,7 @@ async function processInChunks(rows, chunkSize = 500) {
   href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
 ```
 
-System font fallback (prevents CLS while Inter loads):
+System font fallback (preferred for Phase 04 priority pages):
 ```css
 body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI',
@@ -182,8 +182,8 @@ Optimal sequence for each page:
 3. Google Fonts preconnect (parallel with HTML parse)
 4. style.css loads (non-blocking thanks to rel=stylesheet after critical)
 5. DOM ready
-6. deferred scripts run: shared.js → tool JS → CDN libs
-7. Tool is interactive (~200-400ms total)
+6. deferred scripts run: shared.js, CDN libraries, and tool JS
+7. Tool becomes interactive; record current timing in Lighthouse and browser smoke evidence
 8. AdSense loads last (async, doesn't block anything)
 ```
 

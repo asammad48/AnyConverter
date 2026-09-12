@@ -1,7 +1,7 @@
 # AnyConverter — Project README
 
 ## What This Is
-A free, static, multi-language online tools website with 15+ converter and formatter tools.
+A free, static, multi-language online tools website with browser-side converter, formatter, PDF, image, calculator, productivity, and developer utilities.
 Deployable to Cloudflare Pages (free hosting, unlimited bandwidth).
 
 **Live URL:** https://anyconverter.io  
@@ -51,10 +51,10 @@ Claude Code will automatically read `CLAUDE.md` and all spec files, then generat
 
 ## Tools Being Built
 
-### Frontend-only (pure browser, zero server)
+### Browser-side tools
 | Tool | URL | Library Used |
 |------|-----|-------------|
-| JSON Formatter | /json-formatter/ | highlight.js |
+| JSON Formatter | /json-formatter/ | Built-in JSON APIs |
 | XML Formatter | /xml-formatter/ | DOMParser (built-in) |
 | Image Converter | /image-converter/ | Canvas API (built-in) |
 | Base64 Encoder | /base64-encoder/ | btoa/atob (built-in) |
@@ -123,7 +123,7 @@ To add a new language (e.g., French `/fr/`):
 ## Design Principles
 
 - **Clean & Fast:** Users have a task — don't get in their way
-- **Privacy first:** All processing in browser, nothing uploaded
+- **Privacy first:** Tool content is designed to be processed in the browser; third-party libraries and services are documented separately
 - **No clutter:** Tool is prominent, ads are respectful
 - **Mobile-first:** Works perfectly on phone
 - **Dark mode:** Automatic via CSS prefers-color-scheme
@@ -145,10 +145,10 @@ To add a new language (e.g., French `/fr/`):
 
 | Metric | Target | How achieved |
 |--------|--------|-------------|
-| LCP | < 1.5s | Critical CSS inlined, text-only hero |
-| CLS | < 0.05 | Explicit image dimensions, ad slot min-heights |
-| INP | < 100ms | Deferred scripts, async heavy ops |
-| PageSpeed | > 95 | No render-blocking, system font fallbacks |
+| LCP | <= 2.5s | Critical CSS, small first viewport, scoped dependencies |
+| CLS | <= 0.1 | Explicit image dimensions, reserved ad slots |
+| INP | <= 200ms field target | Deferred scripts, chunked heavy operations |
+| Lighthouse TBT | <= 200ms lab proxy | Release-gate performance smoke checks |
 
 ---
 
