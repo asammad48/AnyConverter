@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora de Descuentos Acumulados Gratis | AnyConverter</title>
+  <meta name="description" content="Suma descuentos, cupones, 3x2 y cashback gratis. Ve el precio real, la diferencia por acumulación, y el mejor orden para aplicar los descuentos.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://anyconverter.io/es/discount-stacking-calculator/">
+  <link rel="alternate" hreflang="en" href="https://anyconverter.io/discount-stacking-calculator/">
+  <link rel="alternate" hreflang="es" href="https://anyconverter.io/es/discount-stacking-calculator/">
+  <link rel="alternate" hreflang="da" href="https://anyconverter.io/da/discount-stacking-calculator/">
+  <link rel="alternate" hreflang="x-default" href="https://anyconverter.io/discount-stacking-calculator/">
+
+<meta property="og:type" content="website">
+  <meta property="og:title" content="Calculadora de Descuentos Acumulados Gratis | AnyConverter">
+  <meta property="og:description" content="Suma descuentos, cupones, 3x2 y cashback gratis. Ve el precio real, la diferencia por acumulación, y el mejor orden para aplicar los descuentos.">
+  <meta property="og:url" content="https://anyconverter.io/es/discount-stacking-calculator/">
+  <meta property="og:site_name" content="AnyConverter">
+  <meta property="og:image" content="https://anyconverter.io/assets/img/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="AnyConverter free online tools">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Calculadora de Descuentos Acumulados Gratis | AnyConverter">
+  <meta name="twitter:description" content="Suma descuentos, cupones, 3x2 y cashback gratis. Ve el precio real, la diferencia por acumulación, y el mejor orden para aplicar los descuentos.">
+  <meta name="twitter:image" content="https://anyconverter.io/assets/img/og-image.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Calculadora de Descuentos Acumulados","url":"https://anyconverter.io/es/discount-stacking-calculator/","description":"Suma descuentos porcentuales, cupones, mínimos de compra, 3x2 y cashback, y ve el precio real, la diferencia y el mejor orden.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"¿Un 20 % más un 10 % de descuento es un 30 %?","acceptedAnswer":{"@type":"Answer","text":"No. El segundo descuento se aplica sobre el precio ya rebajado, así que el total es un 28 %, no un 30 %."}},{"@type":"Question","name":"¿Importa el orden de los descuentos?","acceptedAnswer":{"@type":"Answer","text":"No si todos son porcentajes. Sí importa al combinar porcentajes con importes fijos, compras mínimas, topes u ofertas 3x2. La calculadora muestra el mejor y el peor orden."}},{"@type":"Question","name":"¿Y el IVA?","acceptedAnswer":{"@type":"Answer","text":"En España el IVA ya está incluido en el precio, así que el descuento también reduce el IVA. En otros países el impuesto se suele añadir sobre el precio rebajado en caja."}},{"@type":"Question","name":"¿Cómo calculo un 3x2?","acceptedAnswer":{"@type":"Answer","text":"Añade \"Compra X y llévate Y gratis\" con X = 2 e Y = 1 e indica la cantidad. Una de cada tres unidades sale gratis."}},{"@type":"Question","name":"¿El cashback es un descuento?","acceptedAnswer":{"@type":"Answer","text":"No en caja. Pagas el precio rebajado completo y recuperas el dinero después, por eso se muestra por separado como \"coste tras cashback\"."}},{"@type":"Question","name":"¿Aceptará la tienda mi combinación de descuentos?","acceptedAnswer":{"@type":"Answer","text":"La calculadora solo hace las cuentas. Revisa las condiciones, ya que muchas tiendas limitan qué descuentos se pueden combinar."}}]}</script>
+
+
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F7F6F3);color:var(--color-text,#151515)}
+    body{min-height:100vh;display:flex;flex-direction:column}
+    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8D0)}
+    .header-inner{max-width:1280px;width:100%;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;gap:32px}
+    .hero{padding:40px 24px 32px;max-width:1280px;margin:0 auto}
+    .hero h1{font-size:clamp(1.75rem,4vw,2.25rem);font-weight:700;line-height:1.2;margin-bottom:12px}
+    .hero-desc{font-size:1.0625rem;color:var(--color-text-2,#6B7280);max-width:680px;line-height:1.6}
+    @font-face{font-family:'Inter';font-display:swap}
+  </style>
+  <link rel="stylesheet" href="/assets/css/style.css?v=20260902">
+</head>
+<body>
+  <header id="site-header" class="site-header"></header>
+  <main id="main-content">
+    <nav class="breadcrumb" aria-label="Ruta de navegación">
+      <ol><li><a href="/es/">Inicio</a></li><li aria-current="page">Calculadora de Descuentos Acumulados</li></ol>
+    </nav>
+    <section class="hero">
+      <h1>Calculadora de Descuentos Acumulados</h1>
+      <p class="hero-desc">Un 20 % de descuento más un 10 % no es un 30 % — es un 28 %, porque el segundo descuento se aplica sobre el precio ya rebajado. Añade cada cupón, mínimo de compra, oferta 3x2 y cashback para ver lo que realmente pagas.</p>
+    </section>
+
+    <div class="tool-wrapper">
+      <div class="tool-zone">
+        <div style="padding:24px">
+
+          <div class="two-col-grid" style="margin-bottom:12px">
+            <div><label style="display:block;font-size:13px;font-weight:500;margin-bottom:6px" for="ds-price">Precio</label><input type="text" inputmode="decimal" autocomplete="off" id="ds-price" placeholder="1000" style="width:100%;padding:10px 12px;border:1px solid var(--color-border,#DDD8D0);border-radius:8px;font-size:15px"></div>
+            <div><label style="display:block;font-size:13px;font-weight:500;margin-bottom:6px" for="ds-qty">Cantidad</label><input type="text" inputmode="decimal" autocomplete="off" id="ds-qty" value="1" style="width:100%;padding:10px 12px;border:1px solid var(--color-border,#DDD8D0);border-radius:8px;font-size:15px"></div>
+          </div>
+          <div class="two-col-grid" style="margin-bottom:16px">
+            <div><label style="display:block;font-size:13px;font-weight:500;margin-bottom:6px" for="ds-shipping">Envío</label><input type="text" inputmode="decimal" autocomplete="off" id="ds-shipping" placeholder="0" style="width:100%;padding:10px 12px;border:1px solid var(--color-border,#DDD8D0);border-radius:8px;font-size:15px"></div>
+            <div><label style="display:block;font-size:13px;font-weight:500;margin-bottom:6px" for="ds-tax-rate">Tasa de IVA/impuesto (%)</label><input type="text" inputmode="decimal" autocomplete="off" id="ds-tax-rate" placeholder="21" style="width:100%;padding:10px 12px;border:1px solid var(--color-border,#DDD8D0);border-radius:8px;font-size:15px"></div>
+          </div>
+
+          <div style="margin-bottom:16px">
+            <label style="font-size:13px;font-weight:500">Impuestos</label>
+            <div style="display:flex;gap:8px;margin-top:6px;flex-wrap:wrap">
+              <label style="display:flex;align-items:center;gap:6px;font-size:14px;cursor:pointer;padding:8px 12px;border:1px solid var(--color-border,#DDD8D0);border-radius:8px"><input type="radio" name="ds-tax" value="vi" checked> IVA incluido en el precio</label>
+              <label style="display:flex;align-items:center;gap:6px;font-size:14px;cursor:pointer;padding:8px 12px;border:1px solid var(--color-border,#DDD8D0);border-radius:8px"><input type="radio" name="ds-tax" value="st"> Añadir impuesto en caja</label>
+              <label style="display:flex;align-items:center;gap:6px;font-size:14px;cursor:pointer;padding:8px 12px;border:1px solid var(--color-border,#DDD8D0);border-radius:8px"><input type="radio" name="ds-tax" value="none"> Sin impuestos</label>
+            </div>
+          </div>
+
+          <div class="ss-divider" style="margin:0 0 8px">Descuentos (en el orden aplicado)</div>
+          <div id="ds-steps"></div>
+          <div style="margin:12px 0">
+            <button class="ac-btn" id="ds-add-step" type="button">+ Añadir descuento</button>
+          </div>
+
+          <div class="status-bar error" id="ds-error" style="display:none" role="alert" aria-live="polite"></div>
+
+          <div class="ac-action-bar" style="margin-bottom:16px">
+            <button class="btn btn-secondary" id="btn-reset-ds">Reiniciar</button>
+            <button class="ac-btn" id="ds-btn-copy-summary">Copiar resumen</button>
+            <span id="ds-copy-status" style="font-size:12px;color:var(--color-success)"></span>
+          </div>
+
+          <div id="ds-result" style="display:none" aria-live="polite">
+            <div class="three-col-grid">
+              <div class="stat-card"><div class="stat-val" id="ds-pay">—</div><div class="stat-lbl">Pagas</div></div>
+              <div class="stat-card"><div class="stat-val" id="ds-save">—</div><div class="stat-lbl">Ahorras</div></div>
+              <div class="stat-card"><div class="stat-val" id="ds-save-pct">—</div><div class="stat-lbl">Descuento total</div></div>
+            </div>
+            <div class="two-col-grid" style="margin-top:10px">
+              <div class="stat-card"><div class="stat-val" id="ds-per-unit">—</div><div class="stat-lbl">Por unidad</div></div>
+              <div class="stat-card" id="ds-advertised-row" style="display:none"><div class="stat-val" id="ds-advertised">—</div><div class="stat-lbl">Suma de descuentos</div></div>
+            </div>
+            <div id="ds-gap-row" style="display:none;margin-top:10px" class="status-bar error">
+              <div><strong>Diferencia por acumulación: <span id="ds-gap"></span></strong><div id="ds-gap-sentence" style="font-weight:400;margin-top:2px"></div></div>
+            </div>
+            <div id="ds-vat-row" style="display:none;margin-top:10px" class="status-bar info">
+              IVA incluido: <span id="ds-vat-inside"></span> · Precio sin IVA: <span id="ds-price-excl-vat"></span>
+            </div>
+            <div id="ds-tax-row" style="display:none;margin-top:10px" class="status-bar info">
+              Impuesto sobre ventas: <span id="ds-sales-tax"></span>
+            </div>
+            <div id="ds-cashback-row" style="display:none;margin-top:10px" class="status-bar info">
+              Cashback: <span id="ds-cashback"></span> · Coste tras cashback: <span id="ds-net-after-cashback"></span>
+            </div>
+            <p style="margin-top:10px;font-size:14px" id="ds-single-equivalent"></p>
+
+            <div style="overflow-x:auto;margin-top:16px">
+              <table style="width:100%;border-collapse:collapse;font-size:13px">
+                <thead><tr style="text-align:left;color:var(--color-text-2)"><th style="padding:6px 8px">Descuento</th><th style="padding:6px 8px">Precio antes</th><th style="padding:6px 8px">Importe</th><th style="padding:6px 8px">Precio después</th><th style="padding:6px 8px">Nota</th></tr></thead>
+                <tbody id="ds-table-body"></tbody>
+              </table>
+            </div>
+
+            <details class="faq-item" style="margin-top:16px">
+              <summary class="faq-question">Análisis del orden <span class="faq-icon">+</span></summary>
+              <div class="faq-answer">
+                <p id="ds-order-result"></p>
+                <p style="margin-top:6px"><button class="ac-btn" id="ds-use-best-order" type="button">Usar el mejor orden</button></p>
+                <p style="margin-top:10px;font-size:12px;color:var(--color-text-3)">La tienda decide el orden y si los cupones se pueden combinar. Revisa las condiciones.</p>
+              </div>
+            </details>
+
+            <details class="faq-item" style="margin-top:8px">
+              <summary class="faq-question">Calcula el % extra necesario <span class="faq-icon">+</span></summary>
+              <div class="faq-answer">
+                <label style="display:block;font-size:13px;font-weight:500;margin-bottom:6px" for="ds-target-price">Precio objetivo</label>
+                <input type="text" inputmode="decimal" autocomplete="off" id="ds-target-price" placeholder="600" style="width:160px;padding:10px 12px;border:1px solid var(--color-border,#DDD8D0);border-radius:8px;font-size:15px">
+                <p style="margin-top:8px" id="ds-extra-result"></p>
+              </div>
+            </details>
+          </div>
+
+        </div>
+      </div>
+      <aside class="tool-side" aria-label="Opciones">
+        <div style="margin-top:0">
+          <p class="ad-label">Publicidad</p>
+          <div class="ad-slot" style="min-height:250px">
+            <div class="adsbygoogle" style="display:block" aria-hidden="true"></div>
+</div>
+        </div>
+      </aside>
+    </div>
+
+    <div class="ad-slot ad-slot--leaderboard">
+      <div class="adsbygoogle" style="display:block" aria-hidden="true"></div>
+</div>
+
+    <section class="how-to-use">
+      <h2>Cómo usar la calculadora</h2>
+      <ol class="steps">
+        <li>Introduce el precio, la cantidad y el envío, y elige si el impuesto está incluido en el precio, se añade en caja, o no aplica.</li>
+        <li>Añade cada descuento en el orden en que tu tienda los aplica: porcentaje, un cupón fijo, un mínimo de compra, un 3x2 o cashback.</li>
+        <li>Consulta el resultado: lo que pagas, el porcentaje de descuento real, la diferencia frente a la suma de descuentos, y si otro orden ahorraría más.</li>
+      </ol>
+    </section>
+
+    <section class="features">
+      <h2>Características</h2>
+      <ul class="features-list">
+        <li>11 tipos de descuento: porcentaje, importe fijo, porcentaje con tope, mínimos de compra, precio nuevo, 3x2/compra X y llévate Y gratis, cada N.ª unidad, descuento por cantidad y cashback</li>
+        <li>Muestra la "diferencia por acumulación" entre la suma de descuentos anunciada y lo que realmente ahorras</li>
+        <li>Análisis del orden: indica si tu orden ya es el mejor, o cuánto ahorrarías con otro orden</li>
+        <li>Precio con IVA incluido (España) o con impuesto añadido en caja (estilo EE. UU.)</li>
+        <li>El cashback se muestra por separado del precio en caja, ya que se paga después y no se descuenta al momento</li>
+        <li>Tabla paso a paso con el precio antes y después de cada descuento, con una nota cuando un paso no se aplica</li>
+        <li>"Calcula el % extra necesario" para llegar a un precio objetivo, y un botón para copiar el resumen</li>
+        <li>Funciona totalmente en tu navegador: sin registro, sin enviar datos a ningún sitio</li>
+      </ul>
+    </section>
+
+    <section class="seo-content">
+      <h2>Por qué un 20 % + 10 % no es un 30 % de descuento</h2>
+      <p>Los descuentos acumulados se multiplican, no se suman. Cada descuento se aplica sobre el <strong>precio ya rebajado</strong>: precio final = precio × (1 − d₁) × (1 − d₂). Un 20 % de descuento seguido de un 10 % da 1 − (0,8 × 0,9) = <strong>28 %</strong> de descuento, no un 30 %. En una tele de 800 € con un 40 % más un 10 % extra, pagas 432 €, no 400 € — una diferencia de 32 € entre lo que sugiere el cartel y lo que realmente ahorras.</p>
+      <h3>Cuándo importa el orden de los descuentos</h3>
+      <p>Con descuentos porcentuales únicamente, el orden nunca cambia el resultado. Empieza a importar al combinar importes fijos, cupones de mínimo de compra, topes u ofertas 3x2. Un carrito de 55 € con un 10 % de descuento y un cupón de "10 € de descuento a partir de 50 €": si aplicas primero el cupón de mínimo, pagas 40,50 €; si aplicas primero el porcentaje, el subtotal baja a 49,50 € — por debajo del mínimo de 50 €, así que el cupón deja de ser válido y pagas 49,50 €.</p>
+      <h3>IVA incluido frente a impuesto añadido</h3>
+      <p>En España el IVA ya está dentro del precio de venta, así que un descuento también reduce el IVA — no se añade nada en caja. En EE. UU. el impuesto sobre ventas se suele añadir sobre el precio ya rebajado en caja.</p>
+      <h3>Ofertas 3x2 y cashback</h3>
+      <p>El "3x2" y "compra X y llévate Y gratis" hacen gratis las unidades más baratas que califican; el "cashback" no es un descuento en caja — pagas el precio rebajado completo y el dinero vuelve después, por eso se muestra como un "coste tras cashback" independiente.</p>
+      <p>¿Conoces el precio de oferta pero no el original? Prueba la <a href="/es/reverse-percentage-calculator/">Calculadora de Porcentaje Inverso</a>. Para un solo descuento, usa la <a href="/es/discount-calculator/">Calculadora de Descuentos</a> o la <a href="/es/percentage-calculator/">Calculadora de Porcentajes</a>.</p>
+    </section>
+
+    <div class="ad-slot ad-slot--rectangle" style="margin:0 auto 32px">
+      <div class="adsbygoogle" style="display:block" aria-hidden="true"></div>
+</div>
+
+    <section class="faq">
+      <h2>Preguntas Frecuentes</h2>
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary class="faq-question">¿Un 20 % más un 10 % de descuento es un 30 %? <span class="faq-icon">+</span></summary>
+          <div class="faq-answer">No. El segundo descuento se aplica sobre el precio ya rebajado, así que el total es un 28 %, no un 30 %.</div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-question">¿Importa el orden de los descuentos? <span class="faq-icon">+</span></summary>
+          <div class="faq-answer">No si todos son porcentajes. Sí importa al combinar porcentajes con importes fijos, compras mínimas, topes u ofertas 3x2. La calculadora muestra el mejor y el peor orden.</div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-question">¿Y el IVA? <span class="faq-icon">+</span></summary>
+          <div class="faq-answer">En España el IVA ya está incluido en el precio, así que el descuento también reduce el IVA. En otros países el impuesto se suele añadir sobre el precio rebajado en caja.</div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-question">¿Cómo calculo un 3x2? <span class="faq-icon">+</span></summary>
+          <div class="faq-answer">Añade "Compra X y llévate Y gratis" con X = 2 e Y = 1 e indica la cantidad. Una de cada tres unidades sale gratis.</div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-question">¿El cashback es un descuento? <span class="faq-icon">+</span></summary>
+          <div class="faq-answer">No en caja. Pagas el precio rebajado completo y recuperas el dinero después, por eso se muestra por separado como "coste tras cashback".</div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-question">¿Aceptará la tienda mi combinación de descuentos? <span class="faq-icon">+</span></summary>
+          <div class="faq-answer">La calculadora solo hace las cuentas. Revisa las condiciones, ya que muchas tiendas limitan qué descuentos se pueden combinar.</div>
+        </details>
+      </div>
+    </section>
+
+    <section class="related-tools">
+      <h2>Herramientas Relacionadas</h2>
+      <div class="tool-grid">
+        <a href="/es/reverse-percentage-calculator/" class="tool-card">
+          <img src="/assets/img/icon-calculator.svg" alt="Calculadora de Porcentaje Inverso icon" class="tool-card-icon" width="40" height="40" loading="lazy">
+          <h3>Calculadora de Porcentaje Inverso</h3>
+          <p>Calcula el valor original antes de una subida, descuento o IVA.</p>
+          <span class="tool-card-link">Usar →</span>
+        </a>
+        <a href="/es/discount-calculator/" class="tool-card">
+          <img src="/assets/img/icon-calculator.svg" alt="Calculadora de Descuentos icon" class="tool-card-icon" width="40" height="40" loading="lazy">
+          <h3>Calculadora de Descuentos</h3>
+          <p>Calcula un precio rebajado y el ahorro.</p>
+          <span class="tool-card-link">Usar →</span>
+        </a>
+        <a href="/es/percentage-calculator/" class="tool-card">
+          <img src="/assets/img/icon-calculator.svg" alt="Calculadora de Porcentajes icon" class="tool-card-icon" width="40" height="40" loading="lazy">
+          <h3>Calculadora de Porcentajes</h3>
+          <p>Calcula porcentajes, subidas y bajadas rápidamente.</p>
+          <span class="tool-card-link">Usar →</span>
+        </a>
+        <a href="/es/gst-vat-calculator/" class="tool-card">
+          <img src="/assets/img/icon-calculator.svg" alt="Calculadora de IVA / GST icon" class="tool-card-icon" width="40" height="40" loading="lazy">
+          <h3>Calculadora de IVA / GST</h3>
+          <p>Añade o quita impuestos de cualquier importe.</p>
+          <span class="tool-card-link">Usar →</span>
+        </a>
+      </div>
+    </section>
+  </main>
+  <footer id="site-footer" class="site-footer"></footer>
+  <script src="/assets/js/shared.js?v=20260902" defer></script>
+  <script src="/assets/js/tools/discount-stacking.js" defer></script>
+</body>
+</html>

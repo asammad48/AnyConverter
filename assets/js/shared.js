@@ -135,6 +135,7 @@
           <li><a href="/percentage-calculator/" role="menuitem">Percentage Calculator</a></li>
           <li><a href="/gst-vat-calculator/" role="menuitem">GST / VAT Calculator</a></li>
           <li><a href="/reverse-percentage-calculator/" role="menuitem">Reverse Percentage Calculator</a></li>
+          <li><a href="/discount-stacking-calculator/" role="menuitem">Discount Stacking Calculator</a></li>
           <li><a href="/tip-calculator/" role="menuitem">Tip Calculator</a></li>
         </ul>
       </li>
@@ -285,6 +286,7 @@
       <li><a href="/percentage-calculator/">Percentage Calculator</a></li>
       <li><a href="/gst-vat-calculator/">GST / VAT Calculator</a></li>
       <li><a href="/reverse-percentage-calculator/">Reverse Percentage Calculator</a></li>
+      <li><a href="/discount-stacking-calculator/">Discount Stacking Calculator</a></li>
       <li><a href="/tip-calculator/">Tip Calculator</a></li>
       <li style="padding:6px 0 2px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--color-text-3,#7C7169);pointer-events:none">CSS &amp; Design</li>
       <li><a href="/css-gradient-generator/">CSS Gradient Generator</a></li>
@@ -484,6 +486,7 @@
     {n:'Percentage Calculator',   u:'/percentage-calculator/',       d:'Calculate percentages quickly',                     i:'/assets/img/icon-calculator.svg',        c:'Calculator',   k:'percentage percent calculate ratio proportion math'},
     {n:'GST / VAT Calculator',    u:'/gst-vat-calculator/',          d:'Calculate GST and VAT amounts',                     i:'/assets/img/icon-calculator.svg',        c:'Finance',      k:'gst vat tax calculate inclusive exclusive'},
     {n:'Reverse Percentage Calculator',u:'/reverse-percentage-calculator/',d:'Find the original value before a % increase, discount, or VAT', i:'/assets/img/icon-calculator.svg', c:'Finance',    k:'reverse percentage calculator find original price remove vat margin markup'},
+    {n:'Discount Stacking Calculator', u:'/discount-stacking-calculator/', d:'See what stacked percent, coupon and multi-buy discounts really cost', i:'/assets/img/icon-calculator.svg', c:'Finance', k:'discount stacking calculator stacked coupons multi buy cashback 20 percent 10 percent'},
     {n:'Tip Calculator',          u:'/tip-calculator/',              d:'Calculate tip and split the bill',                  i:'/assets/img/icon-calculator.svg',        c:'Finance',      k:'tip bill split restaurant gratuity'},
     {n:'Random Number Generator', u:'/random-number-generator/',     d:'Generate cryptographically secure random numbers',  i:'/assets/img/icon-calculator.svg',        c:'Calculator',   k:'random number generate range secure crypto'},
     {n:'Blood Type Compatibility',u:'/blood-type-compatibility/',    d:'Check blood type donation compatibility',           i:'/assets/img/icon-calculator.svg',        c:'Calculator',   k:'blood type compatibility donor recipient abo rh'},
