@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Parquet to CSV Converter – Free, No Upload | AnyConverter</title>
+  <meta name="description" content="Convert Parquet files to CSV in your browser. Snappy and Gzip compression, exact big-number decimals, Excel-ready output. No upload, no sign-up.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://anyconverter.io/parquet-to-csv/">
+  <link rel="alternate" hreflang="en" href="https://anyconverter.io/parquet-to-csv/">
+  <link rel="alternate" hreflang="es" href="https://anyconverter.io/es/parquet-to-csv/">
+  <link rel="alternate" hreflang="da" href="https://anyconverter.io/da/parquet-to-csv/">
+  <link rel="alternate" hreflang="x-default" href="https://anyconverter.io/parquet-to-csv/">
+
+<meta property="og:type" content="website">
+  <meta property="og:title" content="Parquet to CSV Converter – Free, No Upload | AnyConverter">
+  <meta property="og:description" content="Convert Parquet files to CSV in your browser. Snappy and Gzip compression, exact big-number decimals, Excel-ready output. No upload, no sign-up.">
+  <meta property="og:url" content="https://anyconverter.io/parquet-to-csv/">
+  <meta property="og:site_name" content="AnyConverter">
+  <meta property="og:image" content="https://anyconverter.io/assets/img/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="AnyConverter free online tools">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Parquet to CSV Converter – Free, No Upload | AnyConverter">
+  <meta name="twitter:description" content="Convert Parquet files to CSV in your browser. Snappy and Gzip compression, exact big-number decimals, Excel-ready output. No upload, no sign-up.">
+  <meta name="twitter:image" content="https://anyconverter.io/assets/img/og-image.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Parquet to CSV Converter","url":"https://anyconverter.io/parquet-to-csv/","description":"Convert Apache Parquet files to CSV entirely in your browser, with exact 64-bit integers and decimals, a schema viewer, and Excel-ready delimiter/decimal presets. No upload.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is my Parquet file uploaded?","acceptedAnswer":{"@type":"Answer","text":"No. The file is read directly by your browser and the CSV is created on your device."}},{"@type":"Question","name":"Why does my CSV open as one column in Excel?","acceptedAnswer":{"@type":"Answer","text":"Excel in many European regions expects semicolons as the delimiter. The Danish and Spanish versions of this page use semicolons, a comma decimal separator, and a UTF-8 BOM by default."}},{"@type":"Question","name":"What happens to nested list or struct columns?","acceptedAnswer":{"@type":"Answer","text":"Lists and structs are written as JSON text in the CSV cell, so the data is preserved and round-trippable even though it is not flattened into separate columns."}},{"@type":"Question","name":"Will large numbers and decimals stay exact?","acceptedAnswer":{"@type":"Answer","text":"64-bit integers are converted using exact digit strings rather than floating-point numbers, so large IDs are not rounded."}},{"@type":"Question","name":"What is a Parquet file?","acceptedAnswer":{"@type":"Answer","text":"Parquet is a columnar, compressed, typed file format used by Spark, Databricks, BigQuery, pandas, and Polars, among others."}}]}</script>
+
+
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F7F6F3);color:var(--color-text,#151515)}
+    body{min-height:100vh;display:flex;flex-direction:column}
+    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8D0)}
+    .header-inner{max-width:1280px;width:100%;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;gap:32px}
+    .hero{padding:28px 24px 20px;max-width:1280px;margin:0 auto}
+    .hero h1{font-size:clamp(1.5rem,3.5vw,2rem);font-weight:700;line-height:1.2;margin-bottom:8px}
+    .hero-desc{font-size:1rem;color:var(--color-text-2,#6B7280);max-width:680px;line-height:1.6}
+    @font-face{font-family:'Inter';font-display:swap}
+  </style>
+  <link rel="stylesheet" href="/assets/css/style.css?v=20260902">
+</head>
+<body>
+  <header id="site-header" class="site-header"></header>
+  <main id="main-content">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol><li><a href="/">Home</a></li><li aria-current="page">Parquet to CSV Converter</li></ol>
+    </nav>
+    <section class="hero">
+      <h1>Parquet to CSV Converter</h1>
+      <p class="hero-desc">🔒 Runs in your browser — nothing is uploaded. Drop a .parquet file to see its schema and preview, then download an Excel-ready CSV with exact big integers and decimals.</p>
+    </section>
+
+    <div class="tool-wrapper">
+      <div class="tool-zone">
+        <div style="padding:24px">
+
+          <div class="drop-zone" id="pq-dropzone" role="button" tabindex="0" aria-label="Drop a Parquet file here or click to upload">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="40" height="40" aria-hidden="true" style="color:var(--color-text-2,#6B7280)"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5"/></svg>
+            <p style="margin-top:8px;font-weight:500">Drop a .parquet file here, or click to upload</p>
+            <small style="color:var(--color-text-2,#6B7280)">Snappy, Gzip, Zstd, Brotli compression supported</small>
+            <input type="file" id="pq-file" accept=".parquet" style="display:none" aria-label="Upload Parquet file">
+          </div>
+
+          <div class="status-bar error" id="pq-error" style="display:none;margin-top:12px" role="alert" aria-live="polite"></div>
+          <div class="status-bar info" id="pq-status-row" style="display:none;margin-top:12px"><span id="pq-status"></span></div>
+
+          <div id="pq-result" style="display:none;margin-top:16px" aria-live="polite">
+            <p id="pq-detected" style="font-weight:600;margin-bottom:10px"></p>
+
+            <div class="sub-tabs" role="tablist" style="margin-bottom:10px">
+              <button class="sub-tab active" role="tab" data-pq-tab="preview">Preview</button>
+              <button class="sub-tab" role="tab" data-pq-tab="schema">Schema</button>
+            </div>
+
+            <div id="pq-panel-preview">
+              <div style="overflow-x:auto">
+                <table style="width:100%;border-collapse:collapse;font-size:13px">
+                  <thead><tr id="pq-preview-head" style="text-align:left;color:var(--color-text-2)"></tr></thead>
+                  <tbody id="pq-preview-body"></tbody>
+                </table>
+              </div>
+            </div>
+
+            <div id="pq-panel-schema" style="display:none">
+              <div style="overflow-x:auto">
+                <table style="width:100%;border-collapse:collapse;font-size:13px">
+                  <thead><tr style="text-align:left;color:var(--color-text-2)"><th style="padding:6px 8px">Column</th><th style="padding:6px 8px">Type</th></tr></thead>
+                  <tbody id="pq-schema-body"></tbody>
+                </table>
+              </div>
+            </div>
+
+            <div class="ac-action-bar" style="margin-top:16px">
+              <button class="btn btn-primary" id="pq-btn-download">Download CSV</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <aside class="tool-side" aria-label="Options">
+        <div style="margin-top:0">
+          <p class="ad-label">Advertisement</p>
+          <div class="ad-slot" style="min-height:250px">
+            <div class="adsbygoogle" style="display:block" aria-hidden="true"></div>
+</div>
+        </div>
+      </aside>
+    </div>
+
+    <div class="ad-slot ad-slot--leaderboard">
+      <div class="adsbygoogle" style="display:block" aria-hidden="true"></div>
+</div>
+
+    <section class="how-to-use">
+      <h2>How to Convert Parquet to CSV</h2>
+      <ol class="steps">
+        <li>Drop a .parquet file onto the page, or click to choose one from your computer.</li>
+        <li>Check the Preview and Schema tabs to confirm the columns and data look right.</li>
+        <li>Click "Download CSV" to save an Excel-ready CSV file — nothing is uploaded at any point.</li>
+      </ol>
+    </section>
+
+    <section class="features">
+      <h2>Features</h2>
+      <ul class="features-list">
+        <li>Reads Snappy, Gzip, Zstd, and Brotli compressed Parquet files</li>
+        <li>64-bit integers are converted to exact digit strings, never rounded through floating-point numbers</li>
+        <li>Schema tab shows every column's name and type straight from the file's own metadata</li>
+        <li>Nested list and struct columns are written as JSON text in the CSV, so no data is silently dropped</li>
+        <li>Danish and Spanish pages default to semicolon-delimited, comma-decimal CSV with a UTF-8 BOM for Excel</li>
+        <li>Runs entirely client-side — no signup, no file size uploaded to any server</li>
+      </ul>
+    </section>
+
+    <section class="seo-content">
+      <h2>What a Parquet file is</h2>
+      <p>Apache Parquet is a columnar, compressed, typed file format used by Spark, Databricks, Snowflake exports, AWS Athena/Glue, BigQuery exports, pandas, Polars, and DuckDB. Because it stores data by column rather than by row, it compresses well and is fast to query — but it isn't human-readable, which is why converting it to CSV is often the fastest way to open it in Excel or a text editor.</p>
+      <h3>Why decimals and big IDs break in other converters</h3>
+      <p>Parquet can store 64-bit integers larger than JavaScript's safe integer range, and DECIMAL columns as scaled integers. A converter that reads these through ordinary floating-point numbers silently corrupts them — a 19-digit ID can come out changed in the last few digits. This tool keeps large integers as exact digit strings instead of routing them through floating-point math.</p>
+      <h3>Opening the CSV in Excel</h3>
+      <p>Excel in Denmark, Spain, and much of Europe expects a semicolon-delimited CSV with a comma as the decimal separator; the US/UK default expects a comma delimiter and a period. This page's Danish and Spanish versions default to the semicolon/comma-decimal/BOM combination that opens correctly without a manual import wizard.</p>
+      <p>For other structured-data conversions, try <a href="/csv-to-sql/">CSV to SQL</a>, <a href="/csv-query/">CSV Query</a>, or the <a href="/json-formatter/">JSON Formatter</a>.</p>
+    </section>
+
+    <div class="ad-slot ad-slot--rectangle" style="margin:0 auto 32px">
+      <div class="adsbygoogle" style="display:block" aria-hidden="true"></div>
+</div>
+
+    <section class="faq">
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary class="faq-question">Is my Parquet file uploaded? <span class="faq-icon">+</span></summary>
+          <div class="faq-answer">No. The file is read directly by your browser and the CSV is created on your device.</div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-question">Why does my CSV open as one column in Excel? <span class="faq-icon">+</span></summary>
+          <div class="faq-answer">Excel in many European regions expects semicolons as the delimiter. The Danish and Spanish versions of this page use semicolons, a comma decimal separator, and a UTF-8 BOM by default.</div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-question">What happens to nested list or struct columns? <span class="faq-icon">+</span></summary>
+          <div class="faq-answer">Lists and structs are written as JSON text in the CSV cell, so the data is preserved and round-trippable even though it is not flattened into separate columns.</div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-question">Will large numbers and decimals stay exact? <span class="faq-icon">+</span></summary>
+          <div class="faq-answer">64-bit integers are converted using exact digit strings rather than floating-point numbers, so large IDs are not rounded.</div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-question">What is a Parquet file? <span class="faq-icon">+</span></summary>
+          <div class="faq-answer">Parquet is a columnar, compressed, typed file format used by Spark, Databricks, BigQuery, pandas, and Polars, among others.</div>
+        </details>
+      </div>
+    </section>
+
+    <section class="related-tools">
+      <h2>Related Tools</h2>
+      <div class="tool-grid">
+        <a href="/csv-to-sql/" class="tool-card">
+          <img src="/assets/img/icon-csv.svg" alt="CSV to SQL icon" class="tool-card-icon" width="40" height="40" loading="lazy">
+          <h3>CSV to SQL</h3>
+          <p>Convert CSV files to SQL INSERT statements.</p>
+          <span class="tool-card-link">Try it →</span>
+        </a>
+        <a href="/csv-query/" class="tool-card">
+          <img src="/assets/img/icon-csv-query.svg" alt="CSV Query icon" class="tool-card-icon" width="40" height="40" loading="lazy">
+          <h3>CSV Query</h3>
+          <p>Run SQL queries on CSV files in your browser.</p>
+          <span class="tool-card-link">Try it →</span>
+        </a>
+        <a href="/json-formatter/" class="tool-card">
+          <img src="/assets/img/icon-json.svg" alt="JSON Formatter icon" class="tool-card-icon" width="40" height="40" loading="lazy">
+          <h3>JSON Formatter</h3>
+          <p>Validate, format, and inspect JSON.</p>
+          <span class="tool-card-link">Try it →</span>
+        </a>
+        <a href="/camt053-to-csv/" class="tool-card">
+          <img src="/assets/img/icon-csv.svg" alt="CAMT.053 to CSV icon" class="tool-card-icon" width="40" height="40" loading="lazy">
+          <h3>CAMT.053 to CSV</h3>
+          <p>Convert ISO 20022 bank statements to CSV.</p>
+          <span class="tool-card-link">Try it →</span>
+        </a>
+      </div>
+    </section>
+  </main>
+  <footer id="site-footer" class="site-footer"></footer>
+  <script src="/assets/js/shared.js?v=20260902" defer></script>
+  <script src="/assets/js/tools/parquet-to-csv.js" defer></script>
+</body>
+</html>
