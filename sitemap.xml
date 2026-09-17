@@ -609,6 +609,17 @@
   </url>
 
   <url>
+    <loc>https://anyconverter.io/json-compare/</loc>
+    <lastmod>2026-09-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://anyconverter.io/json-compare/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://anyconverter.io/es/json-compare/"/>
+    <xhtml:link rel="alternate" hreflang="da" href="https://anyconverter.io/da/json-compare/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://anyconverter.io/json-compare/"/>
+  </url>
+
+  <url>
     <loc>https://anyconverter.io/json-to-yaml/</loc>
     <lastmod>2026-08-21</lastmod>
     <changefreq>monthly</changefreq>
@@ -1872,6 +1883,17 @@
   </url>
 
   <url>
+    <loc>https://anyconverter.io/es/json-compare/</loc>
+    <lastmod>2026-09-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://anyconverter.io/json-compare/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://anyconverter.io/es/json-compare/"/>
+    <xhtml:link rel="alternate" hreflang="da" href="https://anyconverter.io/da/json-compare/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://anyconverter.io/json-compare/"/>
+  </url>
+
+  <url>
     <loc>https://anyconverter.io/es/json-to-yaml/</loc>
     <lastmod>2026-08-21</lastmod>
     <changefreq>monthly</changefreq>
@@ -3123,6 +3145,17 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://anyconverter.io/es/json-formatter/"/>
     <xhtml:link rel="alternate" hreflang="da" href="https://anyconverter.io/da/json-formatter/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://anyconverter.io/json-formatter/"/>
+  </url>
+
+  <url>
+    <loc>https://anyconverter.io/da/json-compare/</loc>
+    <lastmod>2026-09-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://anyconverter.io/json-compare/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://anyconverter.io/es/json-compare/"/>
+    <xhtml:link rel="alternate" hreflang="da" href="https://anyconverter.io/da/json-compare/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://anyconverter.io/json-compare/"/>
   </url>
 
   <url>

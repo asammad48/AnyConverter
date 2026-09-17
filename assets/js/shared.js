@@ -20,6 +20,7 @@
         <ul class="dropdown-menu" role="menu">
           <li><a href="/developer-tools/" role="menuitem">All Developer Tools</a></li>
           <li><a href="/json-formatter/" role="menuitem">JSON Formatter</a></li>
+          <li><a href="/json-compare/" role="menuitem">JSON Compare</a></li>
           <li><a href="/xml-formatter/" role="menuitem">XML Formatter</a></li>
           <li><a href="/regex-tester/" role="menuitem">Regex Tester</a></li>
           <li><a href="/base64-encoder/" role="menuitem">Base64 Encoder</a></li>
@@ -192,6 +193,7 @@
       <li><a href="/">🏠 All Tools</a></li>
       <li style="padding:6px 0 2px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--color-text-3,#7C7169);pointer-events:none">Developer</li>
       <li><a href="/json-formatter/">JSON Formatter</a></li>
+      <li><a href="/json-compare/">JSON Compare</a></li>
       <li><a href="/xml-formatter/">XML Formatter</a></li>
       <li><a href="/regex-tester/">Regex Tester</a></li>
       <li><a href="/hash-generator/">Hash Generator</a></li>
@@ -390,6 +392,7 @@
   var TOOLS = [
     // Developer Tools
     {n:'JSON Formatter',          u:'/json-formatter/',              d:'Format, validate and beautify JSON',                i:'/assets/img/icon-json.svg',              c:'Developer',    k:'pretty print validate parse indent'},
+    {n:'JSON Compare',            u:'/json-compare/',                d:'Find real differences between two JSON files',      i:'/assets/img/icon-json.svg',              c:'Developer',    k:'json compare diff json diff two files array match key ignore order'},
     {n:'XML Formatter',           u:'/xml-formatter/',               d:'Format and validate XML documents',                 i:'/assets/img/icon-xml.svg',               c:'Developer',    k:'pretty print validate markup parse'},
     {n:'Regex Tester',            u:'/regex-tester/',                d:'Test and debug regular expressions live',           i:'/assets/img/icon-regex.svg',             c:'Developer',    k:'regexp pattern match test debug'},
     {n:'Base64 Encoder',          u:'/base64-encoder/',              d:'Encode and decode Base64 strings',                  i:'/assets/img/icon-base64.svg',            c:'Developer',    k:'encode decode binary string convert'},

@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Comparar JSON Online – Ver Diferencias Gratis | AnyConverter</title>
+  <meta name="description" content="Compara dos archivos JSON lado a lado gratis. Ignora el orden de claves, empareja arrays por ID, omite marcas de tiempo, y exporta JSON Patch. Privado.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://anyconverter.io/es/json-compare/">
+  <link rel="alternate" hreflang="en" href="https://anyconverter.io/json-compare/">
+  <link rel="alternate" hreflang="es" href="https://anyconverter.io/es/json-compare/">
+  <link rel="alternate" hreflang="da" href="https://anyconverter.io/da/json-compare/">
+  <link rel="alternate" hreflang="x-default" href="https://anyconverter.io/json-compare/">
+
+<meta property="og:type" content="website">
+  <meta property="og:title" content="Comparar JSON Online – Ver Diferencias Gratis | AnyConverter">
+  <meta property="og:description" content="Compara dos archivos JSON lado a lado gratis. Ignora el orden de claves, empareja arrays por ID, omite marcas de tiempo, y exporta JSON Patch. Privado.">
+  <meta property="og:url" content="https://anyconverter.io/es/json-compare/">
+  <meta property="og:site_name" content="AnyConverter">
+  <meta property="og:image" content="https://anyconverter.io/assets/img/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="AnyConverter free online tools">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Comparar JSON Online – Ver Diferencias Gratis | AnyConverter">
+  <meta name="twitter:description" content="Compara dos archivos JSON lado a lado gratis. Ignora el orden de claves, empareja arrays por ID, omite marcas de tiempo, y exporta JSON Patch. Privado.">
+  <meta name="twitter:image" content="https://anyconverter.io/assets/img/og-image.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Comparar JSON","url":"https://anyconverter.io/es/json-compare/","description":"Compara dos documentos JSON de forma semántica: ignora el orden de claves, empareja arrays por ID o posición, ignora rutas ruidosas, y exporta un JSON Patch. Funciona totalmente en tu navegador.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"¿Importa el orden de las claves?","acceptedAnswer":{"@type":"Answer","text":"No. Los objetos se comparan por clave, así que {\"a\":1,\"b\":2} y {\"b\":2,\"a\":1} son iguales."}},{"@type":"Question","name":"¿Cómo comparo arrays con distinto orden?","acceptedAnswer":{"@type":"Answer","text":"Usa el modo Inteligente o Por clave. Los elementos se emparejan por un ID como id, y solo verás los cambios reales."}},{"@type":"Question","name":"¿Puedo ignorar campos como marcas de tiempo?","acceptedAnswer":{"@type":"Answer","text":"Sí. Añade rutas como $..updatedAt en Ignorar rutas."}},{"@type":"Question","name":"¿Se sube mi JSON?","acceptedAnswer":{"@type":"Answer","text":"No. La comparación se hace en tu navegador; no se envía nada a ningún servidor."}},{"@type":"Question","name":"¿Qué es JSON Patch?","acceptedAnswer":{"@type":"Answer","text":"Un estándar (RFC 6902) con la lista de operaciones que convierten el primer documento en el segundo. Puedes exportarlo y aplicarlo en tu código."}}]}</script>
+
+
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F7F6F3);color:var(--color-text,#151515)}
+    body{min-height:100vh;display:flex;flex-direction:column}
+    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8D0)}
+    .header-inner{max-width:1280px;width:100%;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;gap:32px}
+    .hero{padding:28px 24px 20px;max-width:1280px;margin:0 auto}
+    .hero h1{font-size:clamp(1.5rem,3.5vw,2rem);font-weight:700;line-height:1.2;margin-bottom:8px}
+    .hero-desc{font-size:1rem;color:var(--color-text-2,#6B7280);max-width:680px;line-height:1.6}
+    @font-face{font-family:'Inter';font-display:swap}
+  </style>
+  <link rel="stylesheet" href="/assets/css/style.css?v=20260902">
+</head>
+<body>
+  <header id="site-header" class="site-header"></header>
+  <main id="main-content">
+    <nav class="breadcrumb" aria-label="Ruta de navegación">
+      <ol><li><a href="/es/">Inicio</a></li><li aria-current="page">Comparar JSON</li></ol>
+    </nav>
+    <section class="hero">
+      <h1>Comparar JSON: Encuentra Diferencias Entre Dos Archivos</h1>
+      <p class="hero-desc">Pega el original en A y la nueva versión en B. El orden de las claves nunca importa, y los arrays se pueden emparejar por un campo ID en lugar de por posición, así una lista reordenada no te inunda de cambios falsos.</p>
+    </section>
+
+    <div class="tool-wrapper">
+      <div class="tool-zone">
+        <div class="split-panels">
+          <div class="ac-panel">
+            <div class="ac-panel-header">
+              <span class="ac-panel-label">Original (A)</span>
+              <div class="ac-panel-actions">
+                <label class="ac-btn" style="cursor:pointer">Subir<input type="file" id="jc-a-file" accept=".json,application/json" style="display:none"></label>
+              </div>
+            </div>
+            <textarea class="ac-input" id="jc-a" placeholder='{"a": 1, "b": 2}' spellcheck="false" autocomplete="off" aria-label="JSON original (A)"></textarea>
+          </div>
+          <div class="ac-panel">
+            <div class="ac-panel-header">
+              <span class="ac-panel-label">Modificado (B)</span>
+              <div class="ac-panel-actions">
+                <label class="ac-btn" style="cursor:pointer">Subir<input type="file" id="jc-b-file" accept=".json,application/json" style="display:none"></label>
+              </div>
+            </div>
+            <textarea class="ac-input" id="jc-b" placeholder='{"b": 2, "a": 1, "c": 3}' spellcheck="false" autocomplete="off" aria-label="JSON modificado (B)"></textarea>
+          </div>
+        </div>
+
+        <div class="ac-action-bar" style="margin-top:12px">
+          <button class="btn btn-primary" id="btn-compare-jc">Comparar</button>
+          <button class="ac-btn" id="btn-swap-jc">⇄ Intercambiar</button>
+          <button class="ac-btn" id="btn-reset-jc">Reiniciar</button>
+        </div>
+
+        <div class="status-bar error" id="jc-error" style="display:none;margin-top:8px" role="alert" aria-live="polite"></div>
+
+        <div id="jc-result" style="display:none;margin-top:16px" aria-live="polite">
+          <div class="status-bar success" id="jc-identical" style="display:none"></div>
+          <div id="jc-summary-row" style="display:none">
+            <p id="jc-diff-count" style="font-weight:600;margin-bottom:8px"></p>
+            <div class="stats-grid">
+              <div class="stat-card"><div class="stat-val" id="jc-count-added">0</div><div class="stat-lbl">Añadido</div></div>
+              <div class="stat-card"><div class="stat-val" id="jc-count-removed">0</div><div class="stat-lbl">Eliminado</div></div>
+              <div class="stat-card"><div class="stat-val" id="jc-count-changed">0</div><div class="stat-lbl">Cambiado</div></div>
+              <div class="stat-card"><div class="stat-val" id="jc-count-type-changed">0</div><div class="stat-lbl">Tipo cambiado</div></div>
+              <div class="stat-card"><div class="stat-val" id="jc-count-moved">0</div><div class="stat-lbl">Movido</div></div>
+            </div>
+          </div>
+          <div id="jc-warnings" style="margin-top:8px"></div>
+
+          <div id="jc-full-result" style="margin-top:12px">
+            <div style="overflow-x:auto">
+              <table style="width:100%;border-collapse:collapse;font-size:13px">
+                <thead><tr style="text-align:left;color:var(--color-text-2)"><th style="padding:6px 8px">Tipo</th><th style="padding:6px 8px">Ruta</th><th style="padding:6px 8px">A</th><th style="padding:6px 8px">B</th></tr></thead>
+                <tbody id="jc-changes-body"></tbody>
+              </table>
+            </div>
+          </div>
+
+          <div id="jc-keys-only-result" style="display:none;margin-top:12px" class="two-col-grid">
+            <div>
+              <h3 style="font-size:14px;margin-bottom:6px">Falta en A (<span id="jc-missing-a-count">0</span>)</h3>
+              <ul id="jc-missing-a-list" style="padding-left:18px;font-size:13px"></ul>
+            </div>
+            <div>
+              <h3 style="font-size:14px;margin-bottom:6px">Falta en B (<span id="jc-missing-b-count">0</span>)</h3>
+              <ul id="jc-missing-b-list" style="padding-left:18px;font-size:13px"></ul>
+            </div>
+          </div>
+
+          <div class="ac-action-bar" style="margin-top:16px">
+            <button class="ac-btn" id="jc-btn-export-patch">Exportar JSON Patch</button>
+            <button class="ac-btn" id="jc-btn-export-md">Informe .md</button>
+            <button class="ac-btn" id="jc-btn-export-csv">Informe .csv</button>
+            <button class="ac-btn" id="jc-btn-copy-summary">Copiar resumen</button>
+            <span id="jc-copy-status" style="font-size:12px;color:var(--color-success)"></span>
+          </div>
+        </div>
+      </div>
+
+      <aside class="tool-side" aria-label="Opciones">
+        <div class="ss-divider">Opciones</div>
+        <div class="ss-option-row">
+          <span class="ss-opt-label">Emparejar arrays</span>
+          <select class="ss-opt-select" id="jc-array-mode">
+            <option value="smart" selected>Inteligente</option>
+            <option value="index">Por posición</option>
+            <option value="unordered">Ignorar orden</option>
+            <option value="key">Por clave</option>
+          </select>
+        </div>
+        <div class="ss-option-row" id="jc-match-key-row">
+          <span class="ss-opt-label">Clave</span>
+          <input class="ss-opt-input" id="jc-match-key" placeholder="auto (id, uuid, key…)" style="flex:1;padding:6px 8px;border:1px solid var(--color-border,#DDD8D0);border-radius:6px;font-size:12px">
+        </div>
+
+        <div class="tog-row">
+          <span class="tog-label" id="lbl-jc-ignore-case">Ignorar mayúsculas</span>
+          <div class="tog off" id="jc-opt-ignore-case" role="switch" aria-checked="false" tabindex="0" aria-labelledby="lbl-jc-ignore-case"></div>
+        </div>
+        <div class="tog-row">
+          <span class="tog-label" id="lbl-jc-trim">Recortar espacios</span>
+          <div class="tog off" id="jc-opt-trim" role="switch" aria-checked="false" tabindex="0" aria-labelledby="lbl-jc-trim"></div>
+        </div>
+        <div class="tog-row">
+          <span class="tog-label" id="lbl-jc-null">Tratar null como ausente</span>
+          <div class="tog off" id="jc-opt-null-missing" role="switch" aria-checked="false" tabindex="0" aria-labelledby="lbl-jc-null"></div>
+        </div>
+        <div class="tog-row">
+          <span class="tog-label" id="lbl-jc-coerce">Tratar "1" y 1 como iguales</span>
+          <div class="tog off" id="jc-opt-coercion" role="switch" aria-checked="false" tabindex="0" aria-labelledby="lbl-jc-coerce"></div>
+        </div>
+        <div class="tog-row">
+          <span class="tog-label" id="lbl-jc-keys">Comparar solo claves</span>
+          <div class="tog off" id="jc-opt-keys-only" role="switch" aria-checked="false" tabindex="0" aria-labelledby="lbl-jc-keys"></div>
+        </div>
+
+        <div class="ss-option-row">
+          <span class="ss-opt-label">Tolerancia numérica</span>
+          <input class="ss-opt-input" id="jc-opt-tolerance" value="0" style="width:70px;padding:6px 8px;border:1px solid var(--color-border,#DDD8D0);border-radius:6px;font-size:12px">
+        </div>
+
+        <div class="ss-divider">Ignorar rutas</div>
+        <textarea id="jc-ignore-paths" placeholder="$..updatedAt&#10;$.meta.*" style="width:100%;min-height:70px;padding:8px;border:1px solid var(--color-border,#DDD8D0);border-radius:8px;font-size:12px;font-family:var(--font-mono,monospace)"></textarea>
+
+        <div style="margin-top:16px">
+          <p class="ad-label">Publicidad</p>
+          <div class="ad-slot" style="min-height:250px">
+            <div class="adsbygoogle" style="display:block" aria-hidden="true"></div>
+</div>
+        </div>
+      </aside>
+    </div>
+
+    <div class="ad-slot ad-slot--leaderboard">
+      <div class="adsbygoogle" style="display:block" aria-hidden="true"></div>
+</div>
+
+    <section class="how-to-use">
+      <h2>Cómo Comparar Dos Archivos JSON</h2>
+      <ol class="steps">
+        <li>Pega o sube el JSON original en A, y la nueva versión en B.</li>
+        <li>Elige cómo emparejar los arrays — Inteligente (detecta un campo ID automáticamente), Por posición, Ignorar orden o Por clave — y añade las rutas que quieras ignorar, como marcas de tiempo.</li>
+        <li>Pulsa "Comparar" y revisa el resumen y la lista de cambios, y exporta un JSON Patch o un informe cuando termines.</li>
+      </ol>
+    </section>
+
+    <section class="features">
+      <h2>Características</h2>
+      <ul class="features-list">
+        <li>Comparación semántica: el orden de las claves nunca cuenta como diferencia</li>
+        <li>Cuatro modos de emparejar arrays, incluido el emparejamiento por un ID detectado automáticamente para que las listas reordenadas no generen diferencias falsas</li>
+        <li>Rutas a ignorar con comodines (p. ej. <code>$..updatedAt</code>) para omitir campos ruidosos como marcas de tiempo</li>
+        <li>Tolerancia numérica, comparación de texto sin distinguir mayúsculas ni espacios, y conversión de tipos opcional</li>
+        <li>Modo "Comparar solo claves" para archivos de traducción: ve exactamente qué claves faltan en cada lado</li>
+        <li>Exporta un JSON Patch estándar (RFC 6902), verificado automáticamente al volver a aplicarlo sobre A y comprobar que coincide con B</li>
+        <li>Exporta un informe de cambios en Markdown o CSV</li>
+        <li>Funciona totalmente en tu navegador: sin registro, sin enviar datos a ningún sitio</li>
+      </ul>
+    </section>
+
+    <section class="seo-content">
+      <h2>Por qué el orden de los arrays genera diferencias falsas</h2>
+      <p>Un diff de texto línea a línea trata el JSON como texto, así que el formato, el orden de claves y los espacios generan ruido. Un diff semántico analiza ambos lados y compara los datos: los objetos son mapas sin orden, así que el orden de claves nunca importa, pero los arrays son más complicados — muchos arrays reales son en realidad listas de registros con un ID (usuarios, pedidos, permisos), y compararlos estrictamente por posición convierte un solo registro insertado en decenas de líneas "cambiadas". Emparejar los elementos del array por clave (o automáticamente con el modo Inteligente) soluciona esto.</p>
+      <h3>Cómo ignorar marcas de tiempo y otro ruido</h3>
+      <p>Añade un patrón como <code>$..updatedAt</code> en "Ignorar rutas" para omitir un campo dondequiera que aparezca, o <code>$.meta.requestId</code> para omitir solo una ruta concreta. Es útil en pruebas de regresión de API, donde las marcas de tiempo y los ID de solicitud cambian en cada llamada sin ser diferencias reales.</p>
+      <h3>JSON Patch, explicado</h3>
+      <p>JSON Patch (RFC 6902) es una lista estándar de operaciones — añadir, eliminar, reemplazar — que transforma el primer documento en el segundo. Expórtalo aquí y aplícalo en tu código donde ya soporte el estándar.</p>
+      <p>Para formatear y validar un solo documento JSON, usa el <a href="/es/json-formatter/">Formateador JSON</a>. Para otras conversiones de datos estructurados, prueba <a href="/es/csv-to-sql/">CSV a SQL</a> o el <a href="/es/base64-encoder/">Codificador Base64</a>.</p>
+    </section>
+
+    <div class="ad-slot ad-slot--rectangle" style="margin:0 auto 32px">
+      <div class="adsbygoogle" style="display:block" aria-hidden="true"></div>
+</div>
+
+    <section class="faq">
+      <h2>Preguntas Frecuentes</h2>
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary class="faq-question">¿Importa el orden de las claves? <span class="faq-icon">+</span></summary>
+          <div class="faq-answer">No. Los objetos se comparan por clave, así que <code>{"a":1,"b":2}</code> y <code>{"b":2,"a":1}</code> son iguales.</div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-question">¿Cómo comparo arrays con distinto orden? <span class="faq-icon">+</span></summary>
+          <div class="faq-answer">Usa el modo "Inteligente" o "Por clave". Los elementos se emparejan por un ID como <code>id</code>, y solo verás los cambios reales.</div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-question">¿Puedo ignorar campos como marcas de tiempo? <span class="faq-icon">+</span></summary>
+          <div class="faq-answer">Sí. Añade rutas como <code>$..updatedAt</code> en "Ignorar rutas".</div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-question">¿Se sube mi JSON? <span class="faq-icon">+</span></summary>
+          <div class="faq-answer">No. La comparación se hace en tu navegador; no se envía nada a ningún servidor.</div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-question">¿Qué es JSON Patch? <span class="faq-icon">+</span></summary>
+          <div class="faq-answer">Un estándar (RFC 6902) con la lista de operaciones que convierten el primer documento en el segundo. Puedes exportarlo y aplicarlo en tu código.</div>
+        </details>
+      </div>
+    </section>
+
+    <section class="related-tools">
+      <h2>Herramientas Relacionadas</h2>
+      <div class="tool-grid">
+        <a href="/es/json-formatter/" class="tool-card">
+          <img src="/assets/img/icon-json.svg" alt="Formateador JSON icon" class="tool-card-icon" width="40" height="40" loading="lazy">
+          <h3>Formateador JSON</h3>
+          <p>Valida, formatea, minifica e inspecciona JSON.</p>
+          <span class="tool-card-link">Usar →</span>
+        </a>
+        <a href="/es/csv-to-sql/" class="tool-card">
+          <img src="/assets/img/icon-csv.svg" alt="CSV a SQL icon" class="tool-card-icon" width="40" height="40" loading="lazy">
+          <h3>CSV a SQL</h3>
+          <p>Convierte archivos CSV en sentencias SQL INSERT.</p>
+          <span class="tool-card-link">Usar →</span>
+        </a>
+        <a href="/es/base64-encoder/" class="tool-card">
+          <img src="/assets/img/icon-base64.svg" alt="Codificador Base64 icon" class="tool-card-icon" width="40" height="40" loading="lazy">
+          <h3>Codificador Base64</h3>
+          <p>Codifica y decodifica texto y archivos Base64.</p>
+          <span class="tool-card-link">Usar →</span>
+        </a>
+        <a href="/es/json-to-yaml/" class="tool-card">
+          <img src="/assets/img/icon-csv.svg" alt="JSON a YAML icon" class="tool-card-icon" width="40" height="40" loading="lazy">
+          <h3>JSON ↔ YAML</h3>
+          <p>Convierte entre formatos JSON y YAML.</p>
+          <span class="tool-card-link">Usar →</span>
+        </a>
+      </div>
+    </section>
+  </main>
+  <footer id="site-footer" class="site-footer"></footer>
+  <script src="/assets/js/shared.js?v=20260902" defer></script>
+  <script src="/assets/js/tools/json-compare.js" defer></script>
+</body>
+</html>
