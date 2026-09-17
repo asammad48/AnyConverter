@@ -64,6 +64,10 @@
         compressorsMod = cmod;
         return mod;
       }).catch(function () { return mod; });
+    }).catch(function () {
+      var e = new Error(t('err_lib'));
+      e.code = 'lib';
+      throw e;
     });
   }
 
@@ -220,7 +224,8 @@
         })
         .catch(function (e) {
           show('pq-status-row', false);
-          showError(t('err_read', { msg: (e && e.message) || String(e) }));
+          if (e && e.code === 'lib') showError(t('err_lib'));
+          else showError(t('err_read', { msg: (e && e.message) || String(e) }));
         });
     });
   }

@@ -27,7 +27,7 @@
       doctype_blocked: 'XML med DOCTYPE er ikke tilladt af sikkerhedshensyn',
       parse_error: 'Kunne ikke læse filen som XML: {msg}',
       opening: 'Primosaldo', closing: 'Ultimosaldo',
-      reconciled: 'Afstemt', not_reconciled: 'Difference: {amount}',
+      reconciled: 'Afstemt', not_reconciled: 'Forskel: {amount}',
       why_text: 'Typiske årsager: ventende posteringer er med, der mangler sider eller filer, eller banken bruger en anden konvention for tilbageførsler.',
       n_transactions: '{count} transaktioner',
       pending_notice: '{count} posteringer har status ventende',

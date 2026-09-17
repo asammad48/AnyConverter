@@ -25,7 +25,9 @@
       err_number: 'Enter a valid price and quantity.',
       till_diff: 'Rounding each step changes the total by {amount}.',
       copied: 'Summary copied',
-      summary_text: '{price} with {steps} = {paid} ({real} off, not {sum}).'
+      summary_text: '{price} with {steps} = {paid} ({real} off, not {sum}).',
+      field_off: 'Off', field_amount: 'Amount',
+      move_up: 'Move up', move_down: 'Move down', remove: 'Remove'
     },
     da: {
       you_pay: 'Du betaler', you_save: 'Du sparer', effective_pct: 'Samlet rabat',
@@ -48,7 +50,9 @@
       err_number: 'Indtast en gyldig pris og antal.',
       till_diff: 'Afrunding af hvert trin ændrer totalen med {amount}.',
       copied: 'Opsummering kopieret',
-      summary_text: '{price} med {steps} = {paid} ({real} rabat, ikke {sum}).'
+      summary_text: '{price} med {steps} = {paid} ({real} rabat, ikke {sum}).',
+      field_off: 'Rabat', field_amount: 'Beløb',
+      move_up: 'Flyt op', move_down: 'Flyt ned', remove: 'Fjern'
     },
     es: {
       you_pay: 'Pagas', you_save: 'Ahorras', effective_pct: 'Descuento total',
@@ -71,7 +75,9 @@
       err_number: 'Introduce un precio y una cantidad válidos.',
       till_diff: 'Redondear cada paso cambia el total en {amount}.',
       copied: 'Resumen copiado',
-      summary_text: '{price} con {steps} = {paid} ({real} de descuento, no {sum}).'
+      summary_text: '{price} con {steps} = {paid} ({real} de descuento, no {sum}).',
+      field_off: 'Descuento', field_amount: 'Importe',
+      move_up: 'Subir', move_down: 'Bajar', remove: 'Eliminar'
     }
   }[LANG];
 
@@ -117,13 +123,13 @@
       case 'fixed': return [{ k: 'amount', label: STEP_LABEL.fixed, v: step.amount }];
       case 'pct_cap': return [{ k: 'pct', label: '%', v: step.pct }, { k: 'cap', label: STEP_LABEL.pct_cap, v: step.cap }];
       case 'pct_min': return [{ k: 'pct', label: '%', v: step.pct }, { k: 'min', label: STEP_LABEL.pct_min, v: step.min }];
-      case 'fixed_min': return [{ k: 'amount', label: 'Off', v: step.amount }, { k: 'min', label: STEP_LABEL.fixed_min, v: step.min }];
+      case 'fixed_min': return [{ k: 'amount', label: t('field_off'), v: step.amount }, { k: 'min', label: STEP_LABEL.fixed_min, v: step.min }];
       case 'price_set': return [{ k: 'price', label: STEP_LABEL.price_set, v: step.price }];
       case 'multibuy_free': return [{ k: 'x', label: 'X', v: step.x }, { k: 'y', label: 'Y', v: step.y }];
       case 'multibuy_nth': return [{ k: 'n', label: 'N', v: step.n }, { k: 'pct', label: '%', v: step.pct }];
       case 'qty_pct': return [{ k: 'qty', label: STEP_LABEL.qty_pct, v: step.qty }, { k: 'pct', label: '%', v: step.pct }];
       case 'cashback_pct': return [{ k: 'pct', label: '%', v: step.pct }];
-      case 'cashback_fixed': return [{ k: 'amount', label: 'Amount', v: step.amount }];
+      case 'cashback_fixed': return [{ k: 'amount', label: t('field_amount'), v: step.amount }];
     }
     return [];
   }
@@ -185,7 +191,7 @@
       });
 
       var upBtn = document.createElement('button');
-      upBtn.className = 'ac-btn'; upBtn.type = 'button'; upBtn.textContent = '↑'; upBtn.title = 'Move up';
+      upBtn.className = 'ac-btn'; upBtn.type = 'button'; upBtn.textContent = '↑'; upBtn.title = t('move_up');
       upBtn.disabled = idx === 0;
       upBtn.addEventListener('click', function () {
         if (idx > 0) { var tmp = steps[idx - 1]; steps[idx - 1] = steps[idx]; steps[idx] = tmp; renderSteps(); compute(); }
@@ -193,7 +199,7 @@
       row.appendChild(upBtn);
 
       var downBtn = document.createElement('button');
-      downBtn.className = 'ac-btn'; downBtn.type = 'button'; downBtn.textContent = '↓'; downBtn.title = 'Move down';
+      downBtn.className = 'ac-btn'; downBtn.type = 'button'; downBtn.textContent = '↓'; downBtn.title = t('move_down');
       downBtn.disabled = idx === steps.length - 1;
       downBtn.addEventListener('click', function () {
         if (idx < steps.length - 1) { var tmp = steps[idx + 1]; steps[idx + 1] = steps[idx]; steps[idx] = tmp; renderSteps(); compute(); }
@@ -201,7 +207,7 @@
       row.appendChild(downBtn);
 
       var rmBtn = document.createElement('button');
-      rmBtn.className = 'ac-btn'; rmBtn.type = 'button'; rmBtn.textContent = '✕'; rmBtn.title = 'Remove';
+      rmBtn.className = 'ac-btn'; rmBtn.type = 'button'; rmBtn.textContent = '✕'; rmBtn.title = t('remove');
       rmBtn.addEventListener('click', function () { steps.splice(idx, 1); renderSteps(); compute(); });
       row.appendChild(rmBtn);
 

@@ -5,6 +5,7 @@
   var STR = {
     en: {
       err_lib: 'The barcode library did not load. Check your connection and reload the page.',
+      err_render: 'Could not render this value as {type}: {msg}',
       err_empty: 'Enter at least one value.',
       err_charset: '"{char}" is not allowed in {type}',
       err_length: '{type} needs {expected} digits, got {actual}',
@@ -19,6 +20,7 @@
     },
     da: {
       err_lib: 'Stregkode-biblioteket kunne ikke indlæses. Tjek din forbindelse, og genindlæs siden.',
+      err_render: 'Kunne ikke tegne denne værdi som {type}: {msg}',
       err_empty: 'Indtast mindst én værdi.',
       err_charset: '"{char}" er ikke tilladt i {type}',
       err_length: '{type} kræver {expected} cifre, fik {actual}',
@@ -33,6 +35,7 @@
     },
     es: {
       err_lib: 'No se pudo cargar la librería de códigos de barras. Comprueba tu conexión y recarga la página.',
+      err_render: 'No se pudo dibujar este valor como {type}: {msg}',
       err_empty: 'Introduce al menos un valor.',
       err_charset: '"{char}" no está permitido en {type}',
       err_length: '{type} necesita {expected} dígitos, tiene {actual}',
@@ -126,12 +129,12 @@
   }
 
   function renderOne(svgEl, type, value) {
-    if (typeof JsBarcode !== 'function') { showError(t('err_lib')); return false; }
+    if (typeof JsBarcode !== 'function') return { ok: false, reason: 'lib' };
     try {
       JsBarcode(svgEl, value, { format: type, lineColor: '#000', width: 2, height: 70, displayValue: true, margin: 10, fontSize: 14 });
-      return true;
+      return { ok: true };
     } catch (e) {
-      return false;
+      return { ok: false, reason: 'render', message: e && e.message };
     }
   }
 
@@ -149,8 +152,11 @@
       return;
     }
     showError(null);
-    var okRender = renderOne(svg, type, result.value);
-    if (!okRender) { showError(t('err_lib')); return; }
+    var renderResult = renderOne(svg, type, result.value);
+    if (!renderResult.ok) {
+      showError(renderResult.reason === 'lib' ? t('err_lib') : t('err_render', { type: type, msg: renderResult.message || '?' }));
+      return;
+    }
     notesEl.textContent = (result.notes || []).join(' · ');
     show('bc-single-actions', true);
   }
@@ -215,7 +221,10 @@
       card.style.cssText = 'text-align:center;padding:10px';
       if (result.ok) {
         var svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-        if (!renderOne(svg, type, result.value)) result = { ok: false, error: t('err_lib') };
+        var renderResult = renderOne(svg, type, result.value);
+        if (!renderResult.ok) {
+          result = { ok: false, error: renderResult.reason === 'lib' ? t('err_lib') : t('err_render', { type: type, msg: renderResult.message || '?' }) };
+        }
       }
       if (result.ok) {
         ok++;

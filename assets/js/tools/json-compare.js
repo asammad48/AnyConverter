@@ -9,6 +9,7 @@
       invalid_side: '{side} is not valid JSON: {msg}',
       key_not_unique: 'Key "{key}" is not unique in {side} ({count} duplicates) — falling back to smart matching for this array',
       large_array_index: 'Large array compared by position',
+      unsafe_integer_warning: 'This JSON has numbers larger than 9,007,199,254,740,991 (2^53). JavaScript cannot represent them exactly, so two different large numbers can incorrectly show as equal — treat comparisons on these fields as approximate.',
       missing_in_a: 'Missing in A',
       missing_in_b: 'Missing in B',
       copied: 'Copied to clipboard',
@@ -21,6 +22,7 @@
       invalid_side: '{side} er ikke gyldig JSON: {msg}',
       key_not_unique: 'Nøglen "{key}" er ikke unik i {side} ({count} dubletter) — bruger smart matching for dette array',
       large_array_index: 'Stort array sammenlignet efter position',
+      unsafe_integer_warning: 'Denne JSON indeholder tal større end 9.007.199.254.740.991 (2^53). JavaScript kan ikke repræsentere dem præcist, så to forskellige store tal kan fejlagtigt vises som ens — betragt sammenligninger af disse felter som omtrentlige.',
       missing_in_a: 'Mangler i A',
       missing_in_b: 'Mangler i B',
       copied: 'Kopieret til udklipsholder',
@@ -33,6 +35,7 @@
       invalid_side: '{side} no es JSON válido: {msg}',
       key_not_unique: 'La clave "{key}" no es única en {side} ({count} duplicados); usando comparación inteligente para este array',
       large_array_index: 'Array grande comparado por posición',
+      unsafe_integer_warning: 'Este JSON tiene números mayores que 9.007.199.254.740.991 (2^53). JavaScript no puede representarlos con exactitud, así que dos números grandes distintos pueden aparecer como iguales por error — trata las comparaciones de estos campos como aproximadas.',
       missing_in_a: 'Falta en A',
       missing_in_b: 'Falta en B',
       copied: 'Copiado al portapapeles',
@@ -326,6 +329,16 @@
 
   function deepEqual(a, b) { return stableStringify(a) === stableStringify(b); }
 
+  function hasUnsafeInteger(text) {
+    var stripped = text.replace(/"(?:[^"\\]|\\.)*"/g, '""');
+    var re = /-?\d{16,}\b/g;
+    var m;
+    while ((m = re.exec(stripped))) {
+      if (!Number.isSafeInteger(Number(m[0]))) return true;
+    }
+    return false;
+  }
+
   function downloadText(filename, text, mime) {
     var blob = new Blob([text], { type: mime || 'text/plain' });
     var url = URL.createObjectURL(blob);
@@ -361,6 +374,8 @@
     try { b = JSON.parse(bText); } catch (e) { showError(t('invalid_side', { side: 'B', msg: e.message })); return; }
     showError(null);
 
+    var unsafeIntWarning = (hasUnsafeInteger(aText) || hasUnsafeInteger(bText)) ? t('unsafe_integer_warning') : null;
+
     var opts = {
       arrayMode: document.getElementById('jc-array-mode').value,
       matchKey: document.getElementById('jc-match-key').value.trim(),
@@ -385,6 +400,8 @@
       setText('jc-missing-b-count', String(missingInB.length));
       document.getElementById('jc-missing-a-list').innerHTML = missingInA.map(function (k) { return '<li>' + k + '</li>'; }).join('') || '<li>—</li>';
       document.getElementById('jc-missing-b-list').innerHTML = missingInB.map(function (k) { return '<li>' + k + '</li>'; }).join('') || '<li>—</li>';
+      var warnEl0 = document.getElementById('jc-warnings');
+      if (warnEl0) warnEl0.innerHTML = unsafeIntWarning ? '<div class="status-bar info">' + unsafeIntWarning + '</div>' : '';
       show('jc-result', true);
       return;
     }
@@ -415,6 +432,7 @@
     setText('jc-count-type-changed', String(counts.type_changed));
     setText('jc-count-moved', String(counts.moved));
 
+    if (unsafeIntWarning) warnings.unshift(unsafeIntWarning);
     var warnEl = document.getElementById('jc-warnings');
     if (warnEl) warnEl.innerHTML = warnings.map(function (w) { return '<div class="status-bar info">' + w + '</div>'; }).join('');
 

@@ -43,6 +43,7 @@ document.addEventListener('DOMContentLoaded', function () {
       noSearch: 'No search yet', noMatches: 'No matches found',
       formatterOnly: 'Search works in Formatter view',
       autoFormatLabel: function(on){ return 'Auto-format: ' + (on ? 'ON' : 'OFF'); },
+      exitFullscreen: 'Exit fullscreen', enterFullscreen: 'Fullscreen',
       matchCount: function(i,n){ return (i+1) + ' of ' + n; },
       invalidRegex: 'Invalid regex pattern', pathNotFound: 'Path not found', pathFound: 'Path found',
       emptyBookmarks: 'No bookmarks yet',
@@ -56,6 +57,7 @@ document.addEventListener('DOMContentLoaded', function () {
       noSearch: 'Ingen søgning endnu', noMatches: 'Ingen resultater fundet',
       formatterOnly: 'Søgning virker i Formatter-visning',
       autoFormatLabel: function(on){ return 'Auto-formatering: ' + (on ? 'TIL' : 'FRA'); },
+      exitFullscreen: 'Luk fuldskærm', enterFullscreen: 'Fuldskærm',
       matchCount: function(i,n){ return (i+1) + ' af ' + n; },
       invalidRegex: 'Ugyldigt regex-mønster', pathNotFound: 'Sti ikke fundet', pathFound: 'Sti fundet',
       emptyBookmarks: 'Ingen bogmærker endnu',
@@ -69,6 +71,7 @@ document.addEventListener('DOMContentLoaded', function () {
       noSearch: 'Sin búsqueda todavía', noMatches: 'No se encontraron coincidencias',
       formatterOnly: 'La búsqueda funciona en la vista Formatter',
       autoFormatLabel: function(on){ return 'Autoformato: ' + (on ? 'ACTIVADO' : 'DESACTIVADO'); },
+      exitFullscreen: 'Salir de pantalla completa', enterFullscreen: 'Pantalla completa',
       matchCount: function(i,n){ return (i+1) + ' de ' + n; },
       invalidRegex: 'Patrón de expresión regular no válido', pathNotFound: 'Ruta no encontrada', pathFound: 'Ruta encontrada',
       emptyBookmarks: 'Aún no hay marcadores',
@@ -752,7 +755,7 @@ document.addEventListener('DOMContentLoaded', function () {
     panel.classList.add('is-fullscreen');
     btn.classList.add('fs-active');
     btn.textContent = '✕';
-    btn.title = 'Exit fullscreen';
+    btn.title = T.exitFullscreen;
     if (fsOverlay) fsOverlay.classList.add('active');
     document.body.style.overflow = 'hidden';
   }
@@ -764,7 +767,7 @@ document.addEventListener('DOMContentLoaded', function () {
     if (fsOverlay) fsOverlay.classList.remove('active');
     ['btn-fs-input', 'btn-fs-output'].forEach(function(id) {
       const b = document.getElementById(id);
-      if (b) { b.classList.remove('fs-active'); b.textContent = '⛶'; b.title = 'Fullscreen'; }
+      if (b) { b.classList.remove('fs-active'); b.textContent = '⛶'; b.title = T.enterFullscreen; }
     });
     fsPanel = null;
   }
