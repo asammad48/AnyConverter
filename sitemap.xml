@@ -983,6 +983,17 @@
   </url>
 
   <url>
+    <loc>https://anyconverter.io/barcode-generator/</loc>
+    <lastmod>2026-09-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://anyconverter.io/barcode-generator/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://anyconverter.io/es/barcode-generator/"/>
+    <xhtml:link rel="alternate" hreflang="da" href="https://anyconverter.io/da/barcode-generator/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://anyconverter.io/barcode-generator/"/>
+  </url>
+
+  <url>
     <loc>https://anyconverter.io/random-number-generator/</loc>
     <lastmod>2026-08-21</lastmod>
     <changefreq>monthly</changefreq>
@@ -2268,6 +2279,17 @@
   </url>
 
   <url>
+    <loc>https://anyconverter.io/es/barcode-generator/</loc>
+    <lastmod>2026-09-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://anyconverter.io/barcode-generator/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://anyconverter.io/es/barcode-generator/"/>
+    <xhtml:link rel="alternate" hreflang="da" href="https://anyconverter.io/da/barcode-generator/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://anyconverter.io/barcode-generator/"/>
+  </url>
+
+  <url>
     <loc>https://anyconverter.io/es/random-number-generator/</loc>
     <lastmod>2026-08-21</lastmod>
     <changefreq>monthly</changefreq>
@@ -3541,6 +3563,17 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://anyconverter.io/es/qr-code-generator/"/>
     <xhtml:link rel="alternate" hreflang="da" href="https://anyconverter.io/da/qr-code-generator/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://anyconverter.io/qr-code-generator/"/>
+  </url>
+
+  <url>
+    <loc>https://anyconverter.io/da/barcode-generator/</loc>
+    <lastmod>2026-09-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://anyconverter.io/barcode-generator/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://anyconverter.io/es/barcode-generator/"/>
+    <xhtml:link rel="alternate" hreflang="da" href="https://anyconverter.io/da/barcode-generator/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://anyconverter.io/barcode-generator/"/>
   </url>
 
   <url>

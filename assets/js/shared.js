@@ -92,6 +92,7 @@
           <li><a href="/image-converter/" role="menuitem">Image Converter</a></li>
           <li><a href="/image-compressor/" role="menuitem">Image Compressor</a></li>
           <li><a href="/qr-code-generator/" role="menuitem">QR Code Generator</a></li>
+          <li><a href="/barcode-generator/" role="menuitem">Barcode Generator</a></li>
         </ul>
       </li>
 
@@ -275,6 +276,7 @@
       <li><a href="/bmi-calculator/">BMI Calculator</a></li>
       <li><a href="/calorie-calculator/">Calorie Calculator</a></li>
       <li><a href="/qr-code-generator/">QR Code Generator</a></li>
+      <li><a href="/barcode-generator/">Barcode Generator</a></li>
       <li><a href="/typing-speed-test/">Typing Speed Test</a></li>
       <li><a href="/pomodoro-timer/">Pomodoro Timer</a></li>
       <li><a href="/invoice-generator/">Invoice Generator</a></li>
@@ -457,6 +459,7 @@
     {n:'Image Converter',         u:'/image-converter/',             d:'Convert images between different formats',          i:'/assets/img/icon-text.svg',              c:'Media',        k:'image convert jpg png webp gif bmp format'},
     {n:'Image Compressor',        u:'/image-compressor/',            d:'Compress images without quality loss',              i:'/assets/img/icon-text.svg',              c:'Media',        k:'image compress reduce size optimize jpg png'},
     {n:'QR Code Generator',       u:'/qr-code-generator/',           d:'Generate QR codes for any URL or text',             i:'/assets/img/icon-text.svg',              c:'Tools',        k:'qr code generate scan url link barcode'},
+    {n:'Barcode Generator',       u:'/barcode-generator/',           d:'Create Code 128, EAN-13, UPC-A and Code 39 barcodes', i:'/assets/img/icon-text.svg',            c:'Tools',        k:'barcode generator code128 ean13 upc code39 create scan check digit'},
     // Data & Conversion
     {n:'Timestamp Converter',     u:'/timestamp-converter/',         d:'Convert Unix timestamps to readable dates',         i:'/assets/img/icon-clock.svg',             c:'Data',         k:'timestamp unix epoch date time convert'},
     {n:'Color Converter',         u:'/color-converter/',             d:'Convert colors between HEX, RGB and HSL',           i:'/assets/img/icon-color.svg',             c:'Data',         k:'color hex rgb hsl hsv convert picker'},
