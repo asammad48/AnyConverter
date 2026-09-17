@@ -1205,6 +1205,8 @@ mark.regex-match { background: rgba(255,200,0,0.4); color: transparent; border-r
 :root.dark .j-bracket { color: #E2E8F0; }
 :root.dark .j-toggle { color: #4A5568; }
 :root.dark .j-toggle:hover { background: rgba(255,255,255,0.08); color: #94A3B8; }
+:root.dark .j-search-hit { background: #854D0E; color: #FEF08A; }
+:root.dark .j-search-hit.j-search-current { background: #FB923C; color: #431407; }
 :root.dark .json-view { background: var(--color-code-bg); color: var(--color-code-text); }
 
 /* ===== TOPBAR — 56px ===== */
@@ -1386,6 +1388,8 @@ label.ac-btn { align-self: center; margin-top: 4px; position: relative; top: 1px
 .j-toggle:hover { background: rgba(79,70,229,0.08); color: #6D28D9; }
 .j-toggle.invis { opacity: 0; cursor: default; pointer-events: none; }
 .j-collapsed-hint { color: #9CA3AF; font-style: italic; font-size: 11px; }
+.j-search-hit { background: #FEF08A; border-radius: 2px; }
+.j-search-hit.j-search-current { background: #FB923C; color: #431407; }
 
 /* ===== PER-PANEL STATUS BAR ===== */
 .ac-status {

@@ -36,6 +36,51 @@ document.addEventListener('DOMContentLoaded', function () {
   let currentMode = 'format';
   let lastParsed = null;
 
+  /* ===== I18N STRINGS (search / bookmarks dynamic text) ===== */
+  const LANG = document.documentElement.lang || 'en';
+  const STR = {
+    en: {
+      noSearch: 'No search yet', noMatches: 'No matches found',
+      formatterOnly: 'Search works in Formatter view',
+      autoFormatLabel: function(on){ return 'Auto-format: ' + (on ? 'ON' : 'OFF'); },
+      matchCount: function(i,n){ return (i+1) + ' of ' + n; },
+      invalidRegex: 'Invalid regex pattern', pathNotFound: 'Path not found', pathFound: 'Path found',
+      emptyBookmarks: 'No bookmarks yet',
+      savedToast: function(n){ return 'Saved "' + n + '"'; }, deletedToast: 'Bookmark deleted',
+      nameRequired: 'Enter a name to save this bookmark',
+      invalidJsonToast: 'Fix JSON errors before saving a bookmark',
+      limitToast: 'Bookmark limit reached (30) — delete one to add more',
+      loadedToast: function(n){ return 'Loaded "' + n + '"'; }
+    },
+    da: {
+      noSearch: 'Ingen søgning endnu', noMatches: 'Ingen resultater fundet',
+      formatterOnly: 'Søgning virker i Formatter-visning',
+      autoFormatLabel: function(on){ return 'Auto-formatering: ' + (on ? 'TIL' : 'FRA'); },
+      matchCount: function(i,n){ return (i+1) + ' af ' + n; },
+      invalidRegex: 'Ugyldigt regex-mønster', pathNotFound: 'Sti ikke fundet', pathFound: 'Sti fundet',
+      emptyBookmarks: 'Ingen bogmærker endnu',
+      savedToast: function(n){ return 'Gemte "' + n + '"'; }, deletedToast: 'Bogmærke slettet',
+      nameRequired: 'Indtast et navn for at gemme dette bogmærke',
+      invalidJsonToast: 'Ret JSON-fejl før du gemmer et bogmærke',
+      limitToast: 'Bogmærkegrænse nået (30) — slet ét for at tilføje flere',
+      loadedToast: function(n){ return 'Indlæste "' + n + '"'; }
+    },
+    es: {
+      noSearch: 'Sin búsqueda todavía', noMatches: 'No se encontraron coincidencias',
+      formatterOnly: 'La búsqueda funciona en la vista Formatter',
+      autoFormatLabel: function(on){ return 'Autoformato: ' + (on ? 'ACTIVADO' : 'DESACTIVADO'); },
+      matchCount: function(i,n){ return (i+1) + ' de ' + n; },
+      invalidRegex: 'Patrón de expresión regular no válido', pathNotFound: 'Ruta no encontrada', pathFound: 'Ruta encontrada',
+      emptyBookmarks: 'Aún no hay marcadores',
+      savedToast: function(n){ return 'Guardado "' + n + '"'; }, deletedToast: 'Marcador eliminado',
+      nameRequired: 'Escribe un nombre para guardar este marcador',
+      invalidJsonToast: 'Corrige los errores de JSON antes de guardar un marcador',
+      limitToast: 'Límite de marcadores alcanzado (30): elimina uno para añadir más',
+      loadedToast: function(n){ return 'Cargado "' + n + '"'; }
+    }
+  };
+  const T = STR[LANG] || STR.en;
+
   /* ===== UTILITIES ===== */
   function escHtml(s) {
     return String(s)
@@ -84,24 +129,25 @@ document.addEventListener('DOMContentLoaded', function () {
   function buildTree(data) {
     let nid = 0;
 
-    function render(val, key, depth, isLast) {
+    function render(val, key, depth, isLast, path) {
       const ind    = ' '.repeat(depth * 2);
       const comma  = isLast ? '' : '<span class="j-bracket">,</span>';
       const keyHtml = key !== null
         ? '<span class="j-key">"' + escHtml(key) + '"</span><span class="j-bracket">: </span>'
         : '';
+      const pathAttr = ' data-path="' + escHtml(path) + '"';
 
       if (val === null) {
-        return '<div class="j-line"><span class="j-toggle invis" aria-hidden="true">▾</span>' + ind + keyHtml + '<span class="j-null">null</span>' + comma + '</div>';
+        return '<div class="j-line"' + pathAttr + '><span class="j-toggle invis" aria-hidden="true">▾</span>' + ind + keyHtml + '<span class="j-null">null</span>' + comma + '</div>';
       }
       if (typeof val === 'string') {
-        return '<div class="j-line"><span class="j-toggle invis" aria-hidden="true">▾</span>' + ind + keyHtml + '<span class="j-str">"' + escHtml(val) + '"</span>' + comma + '</div>';
+        return '<div class="j-line"' + pathAttr + '><span class="j-toggle invis" aria-hidden="true">▾</span>' + ind + keyHtml + '<span class="j-str">"' + escHtml(val) + '"</span>' + comma + '</div>';
       }
       if (typeof val === 'number') {
-        return '<div class="j-line"><span class="j-toggle invis" aria-hidden="true">▾</span>' + ind + keyHtml + '<span class="j-num">' + val + '</span>' + comma + '</div>';
+        return '<div class="j-line"' + pathAttr + '><span class="j-toggle invis" aria-hidden="true">▾</span>' + ind + keyHtml + '<span class="j-num">' + val + '</span>' + comma + '</div>';
       }
       if (typeof val === 'boolean') {
-        return '<div class="j-line"><span class="j-toggle invis" aria-hidden="true">▾</span>' + ind + keyHtml + '<span class="j-bool">' + val + '</span>' + comma + '</div>';
+        return '<div class="j-line"' + pathAttr + '><span class="j-toggle invis" aria-hidden="true">▾</span>' + ind + keyHtml + '<span class="j-bool">' + val + '</span>' + comma + '</div>';
       }
 
       const isArr   = Array.isArray(val);
@@ -111,7 +157,7 @@ document.addEventListener('DOMContentLoaded', function () {
       const close   = isArr ? ']' : '}';
 
       if (count === 0) {
-        return '<div class="j-line"><span class="j-toggle invis" aria-hidden="true">▾</span>' + ind + keyHtml + '<span class="j-bracket">' + open + close + '</span>' + comma + '</div>';
+        return '<div class="j-line"' + pathAttr + '><span class="j-toggle invis" aria-hidden="true">▾</span>' + ind + keyHtml + '<span class="j-bracket">' + open + close + '</span>' + comma + '</div>';
       }
 
       const id   = ++nid;
@@ -125,11 +171,12 @@ document.addEventListener('DOMContentLoaded', function () {
         : entries;
 
       const childHtml = sortedEntries.map(function(e, i) {
-        return render(e[1], isArr ? null : e[0], depth + 1, i === sortedEntries.length - 1);
+        const childPath = path ? path + '.' + e[0] : e[0];
+        return render(e[1], isArr ? null : e[0], depth + 1, i === sortedEntries.length - 1, childPath);
       }).join('');
 
       return (
-        '<div class="j-line j-node-open" data-nid="' + id + '">' +
+        '<div class="j-line j-node-open" data-nid="' + id + '"' + pathAttr + '>' +
           '<span class="j-toggle" data-nid="' + id + '" role="button" aria-expanded="true" aria-label="Collapse node" tabindex="0">▾</span>' +
           ind + keyHtml + '<span class="j-bracket">' + open + '</span>' +
         '</div>' +
@@ -137,7 +184,7 @@ document.addEventListener('DOMContentLoaded', function () {
           childHtml +
           '<div class="j-line"><span class="j-toggle invis" aria-hidden="true">▾</span>' + ind + '<span class="j-bracket">' + close + '</span>' + comma + '</div>' +
         '</div>' +
-        '<div class="j-line j-node-collapsed" data-nid="' + id + '" style="display:none">' +
+        '<div class="j-line j-node-collapsed" data-nid="' + id + '" style="display:none"' + pathAttr + '>' +
           '<span class="j-toggle" data-nid="' + id + '" role="button" aria-expanded="false" aria-label="Expand node" tabindex="0">▶</span>' +
           ind + keyHtml +
           '<span class="j-bracket">{ </span><span class="j-collapsed-hint">' + hint + '</span><span class="j-bracket"> }</span>' + comma +
@@ -145,7 +192,17 @@ document.addEventListener('DOMContentLoaded', function () {
       );
     }
 
-    return render(data, null, 0, true);
+    return render(data, null, 0, true, '');
+  }
+
+  /* ===== PATH NORMALIZATION (for path-query search mode) ===== */
+  function normalizePath(p) {
+    p = String(p || '').trim();
+    if (p.charAt(0) === '$') p = p.slice(1);
+    p = p.replace(/\[(\d+)\]/g, '.$1');
+    p = p.replace(/^\.+/, '').replace(/\.+$/, '');
+    p = p.replace(/\.{2,}/g, '.');
+    return p;
   }
 
   /* ===== TOGGLE HANDLER ===== */
@@ -180,15 +237,141 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   /* ===== COLLAPSE / EXPAND ALL ===== */
-  bind(document.getElementById('btn-collapse-all'), 'click', function() {
+  function collapseAllNodes() {
     outputEl.querySelectorAll('.j-node-open').forEach(function(el){ el.style.display = 'none'; });
     outputEl.querySelectorAll('.j-node-body').forEach(function(el){ el.style.display = 'none'; });
     outputEl.querySelectorAll('.j-node-collapsed').forEach(function(el){ el.style.display = ''; });
-  });
-  bind(document.getElementById('btn-expand-all'), 'click', function() {
+  }
+  function expandAllNodes() {
     outputEl.querySelectorAll('.j-node-open').forEach(function(el){ el.style.display = ''; });
     outputEl.querySelectorAll('.j-node-body').forEach(function(el){ el.style.display = ''; });
     outputEl.querySelectorAll('.j-node-collapsed').forEach(function(el){ el.style.display = 'none'; });
+  }
+  bind(document.getElementById('btn-collapse-all'), 'click', collapseAllNodes);
+  bind(document.getElementById('btn-expand-all'), 'click', expandAllNodes);
+
+  /* ===== SEARCH (key / value / both / regex / path) ===== */
+  const searchQueryEl = document.getElementById('search-query');
+  const searchModeEl  = document.getElementById('search-mode');
+  const searchPrevBtn = document.getElementById('search-prev');
+  const searchNextBtn = document.getElementById('search-next');
+  const searchCountEl = document.getElementById('search-count');
+
+  let searchMatches = [];
+  let searchIndex = -1;
+  let searchDebounce;
+
+  function setSearchCount(msg) {
+    if (searchCountEl) searchCountEl.textContent = msg;
+  }
+
+  function clearSearchHighlights() {
+    if (!outputEl) return;
+    outputEl.querySelectorAll('.j-search-hit').forEach(function(el) {
+      el.classList.remove('j-search-hit', 'j-search-current');
+    });
+  }
+
+  function highlightCurrentMatch() {
+    outputEl.querySelectorAll('.j-search-current').forEach(function(el){ el.classList.remove('j-search-current'); });
+    const line = searchMatches[searchIndex];
+    if (!line) return;
+    line.querySelectorAll('.j-search-hit').forEach(function(el){ el.classList.add('j-search-current'); });
+    line.scrollIntoView({ block: 'center' });
+    setSearchCount(T.matchCount(searchIndex, searchMatches.length));
+  }
+
+  function runSearch() {
+    clearSearchHighlights();
+    searchMatches = [];
+    searchIndex = -1;
+    const query = searchQueryEl.value.trim();
+    const mode  = searchModeEl ? searchModeEl.value : 'both';
+    expandAllNodes();
+
+    if (mode === 'path') {
+      const norm = normalizePath(query);
+      const all = outputEl.querySelectorAll('[data-path]');
+      let found = null;
+      for (let i = 0; i < all.length; i++) {
+        if (all[i].style.display === 'none') continue;
+        if (all[i].dataset.path === norm) { found = all[i]; break; }
+      }
+      if (found) {
+        found.classList.add('j-search-hit', 'j-search-current');
+        searchMatches = [found];
+        searchIndex = 0;
+        found.scrollIntoView({ block: 'center' });
+        setSearchCount(T.pathFound);
+      } else {
+        setSearchCount(T.pathNotFound);
+      }
+      return;
+    }
+
+    let re = null;
+    if (mode === 'regex') {
+      try { re = new RegExp(query, 'i'); }
+      catch (e) { setSearchCount(T.invalidRegex); return; }
+    }
+    const q = query.toLowerCase();
+    function testText(t) { return re ? re.test(t) : t.toLowerCase().indexOf(q) !== -1; }
+
+    outputEl.querySelectorAll('[data-path]').forEach(function(line) {
+      if (line.style.display === 'none') return;
+      const keySpan = line.querySelector('.j-key');
+      const valSpan = line.querySelector('.j-str, .j-num, .j-bool, .j-null');
+      let hit = false;
+      if (keySpan && (mode === 'key' || mode === 'both' || mode === 'regex')) {
+        const kt = keySpan.textContent.replace(/^"|"$/g, '');
+        if (testText(kt)) { keySpan.classList.add('j-search-hit'); hit = true; }
+      }
+      if (valSpan && (mode === 'value' || mode === 'both' || mode === 'regex')) {
+        let vt = valSpan.textContent;
+        if (valSpan.classList.contains('j-str')) vt = vt.replace(/^"|"$/g, '');
+        if (testText(vt)) { valSpan.classList.add('j-search-hit'); hit = true; }
+      }
+      if (hit) searchMatches.push(line);
+    });
+
+    if (searchMatches.length === 0) { setSearchCount(T.noMatches); return; }
+    searchIndex = 0;
+    highlightCurrentMatch();
+  }
+
+  function refreshSearch() {
+    if (!searchQueryEl) return;
+    const query = searchQueryEl.value.trim();
+    if (!query) {
+      clearSearchHighlights();
+      searchMatches = []; searchIndex = -1;
+      setSearchCount(T.noSearch);
+      return;
+    }
+    if (currentMode !== 'format') {
+      clearSearchHighlights();
+      searchMatches = []; searchIndex = -1;
+      setSearchCount(T.formatterOnly);
+      return;
+    }
+    runSearch();
+  }
+
+  function navSearch(dir) {
+    if (searchMatches.length === 0) return;
+    searchIndex = (searchIndex + dir + searchMatches.length) % searchMatches.length;
+    highlightCurrentMatch();
+  }
+
+  bind(searchQueryEl, 'input', function() {
+    clearTimeout(searchDebounce);
+    searchDebounce = setTimeout(refreshSearch, 200);
+  });
+  bind(searchModeEl, 'change', refreshSearch);
+  bind(searchPrevBtn, 'click', function(){ navSearch(-1); });
+  bind(searchNextBtn, 'click', function(){ navSearch(1); });
+  bind(searchQueryEl, 'keydown', function(e) {
+    if (e.key === 'Enter') { e.preventDefault(); navSearch(e.shiftKey ? -1 : 1); }
   });
 
   /* ===== STATUS HELPERS ===== */
@@ -245,6 +428,7 @@ document.addEventListener('DOMContentLoaded', function () {
       setOutputStatus(null, '', '');
       clearStats();
       lastParsed = null;
+      refreshSearch();
       return;
     }
     try {
@@ -265,6 +449,7 @@ document.addEventListener('DOMContentLoaded', function () {
       setOutputStatus('ok', '✓ Formatted', lines + ' lines · ' + s.keys + ' keys');
       updateStats(parsed, raw);
       input.style.borderColor = '';
+      refreshSearch();
     } catch (e) {
       lastParsed = null;
       const msg = '✕ ' + e.message;
@@ -274,6 +459,7 @@ document.addEventListener('DOMContentLoaded', function () {
         '<div style="padding:16px;background:#FEF2F2;border-left:3px solid #DC2626;border-radius:4px;color:#991B1B;font-size:12px">' +
         '<strong>✕ Invalid JSON</strong><br><span style="color:var(--color-text-2,#3F3A36);margin-top:6px;display:block">' + escHtml(e.message) + '</span></div>';
       if (statErrors) statErrors.textContent = '1';
+      refreshSearch();
     }
   }
 
@@ -288,15 +474,17 @@ document.addEventListener('DOMContentLoaded', function () {
       outputEl.style.whiteSpace = 'pre-wrap';
       setInputStatus('ok', '✓ Valid JSON', '');
       setOutputStatus('ok', '✓ Minified', formatBytes(new TextEncoder().encode(minified).length));
+      refreshSearch();
     } catch (e) {
       setInputStatus('err', '✕ ' + e.message, '');
       setOutputStatus('err', '✕ ' + e.message, '');
+      refreshSearch();
     }
   }
 
   function runValidate() {
     const raw = input.value.trim();
-    if (!raw) { setInputStatus(null,'','Please enter JSON to validate'); return; }
+    if (!raw) { setInputStatus(null,'','Please enter JSON to validate'); refreshSearch(); return; }
     if (outputSection) outputSection.style.display = '';
     try {
       JSON.parse(raw);
@@ -304,10 +492,12 @@ document.addEventListener('DOMContentLoaded', function () {
       setOutputStatus('ok', '✓ Valid JSON', '');
       outputEl.innerHTML = '<div style="padding:20px;text-align:center;color:#16A34A;font-size:14px;font-weight:600">✓ JSON is valid</div>';
       if (statErrors) statErrors.textContent = '0';
+      refreshSearch();
     } catch (e) {
       setInputStatus('err', '✕ ' + e.message, '');
       setOutputStatus('err', '✕ ' + e.message, '');
       if (statErrors) statErrors.textContent = '1';
+      refreshSearch();
     }
   }
 
@@ -324,6 +514,7 @@ document.addEventListener('DOMContentLoaded', function () {
       outputEl.style.whiteSpace = 'pre-wrap';
       setOutputStatus('ok', '✓ Converted to YAML', '');
       currentMode = 'convert';
+      refreshSearch();
     } catch(e) { window.showToast('Conversion failed: ' + e.message, 'error'); }
   });
 
@@ -335,6 +526,7 @@ document.addEventListener('DOMContentLoaded', function () {
       outputEl.style.whiteSpace = 'pre-wrap';
       setOutputStatus('ok', '✓ Converted to CSV', '');
       currentMode = 'convert';
+      refreshSearch();
     } catch(e) { window.showToast(e.message, 'error'); }
   });
 
@@ -478,6 +670,7 @@ document.addEventListener('DOMContentLoaded', function () {
       if (currentMode === 'format') runFormat();
       else if (currentMode === 'minify') runMinify();
       else if (currentMode === 'validate') runValidate();
+      else refreshSearch();
     });
   });
 
@@ -504,7 +697,7 @@ document.addEventListener('DOMContentLoaded', function () {
   initToggle('tog-autoformat', true, function(on) {
     autoFormat = on;
     const label = document.getElementById('auto-format-label');
-    if (label) label.textContent = 'Auto-format: ' + (on ? 'ON' : 'OFF');
+    if (label) label.textContent = T.autoFormatLabel(on);
   });
   initToggle('tog-collapse', false, function(on) { collapseOnLoad = on; });
   initToggle('tog-linenums', false, function(on) {
@@ -607,4 +800,83 @@ document.addEventListener('DOMContentLoaded', function () {
       input.selectionStart = input.selectionEnd = s + 2;
     }
   });
+
+  /* ===== BOOKMARKS (local-only, localStorage) ===== */
+  const BOOKMARK_KEY   = 'ac_json_bookmarks';
+  const BOOKMARK_LIMIT = 30;
+  const bookmarkNameEl  = document.getElementById('bookmark-name');
+  const bookmarkSaveBtn = document.getElementById('btn-bookmark-save');
+  const bookmarkListEl  = document.getElementById('bookmark-list');
+
+  function loadBookmarks() {
+    try { return JSON.parse(localStorage.getItem(BOOKMARK_KEY)) || []; }
+    catch (e) { return []; }
+  }
+  function saveBookmarks(list) {
+    try { localStorage.setItem(BOOKMARK_KEY, JSON.stringify(list)); } catch (e) {}
+  }
+
+  function renderBookmarks() {
+    if (!bookmarkListEl) return;
+    const list = loadBookmarks();
+    if (list.length === 0) {
+      bookmarkListEl.innerHTML = '<p style="font-size:11px;color:var(--color-text-3,#9CA3AF);text-align:center;padding:8px 0;margin:0">' + T.emptyBookmarks + '</p>';
+      return;
+    }
+    bookmarkListEl.innerHTML = list.map(function(bm) {
+      return '<div class="stat-card" data-bm-id="' + bm.id + '" style="display:flex;align-items:center;justify-content:space-between;padding:6px 8px;text-align:left;cursor:pointer">' +
+        '<span style="font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1" title="' + escHtml(bm.name) + '">' + escHtml(bm.name) + '</span>' +
+        '<button class="ac-btn" data-bm-del="' + bm.id + '" title="Delete bookmark" aria-label="Delete bookmark" style="padding:2px 6px;height:auto;margin-left:6px">×</button>' +
+      '</div>';
+    }).join('');
+  }
+
+  bind(bookmarkSaveBtn, 'click', function() {
+    const raw = input.value.trim();
+    if (!raw) { window.showToast(T.nameRequired, 'info'); return; }
+    try { JSON.parse(raw); }
+    catch (e) { window.showToast(T.invalidJsonToast, 'error'); return; }
+    const name = (bookmarkNameEl && bookmarkNameEl.value.trim()) || '';
+    if (!name) {
+      window.showToast(T.nameRequired, 'info');
+      if (bookmarkNameEl) bookmarkNameEl.focus();
+      return;
+    }
+    const list = loadBookmarks();
+    if (list.length >= BOOKMARK_LIMIT) { window.showToast(T.limitToast, 'info'); return; }
+    list.unshift({ id: Date.now(), name: name, json: raw });
+    saveBookmarks(list);
+    renderBookmarks();
+    if (bookmarkNameEl) bookmarkNameEl.value = '';
+    window.showToast(T.savedToast(name), 'success');
+  });
+
+  bind(bookmarkListEl, 'click', function(e) {
+    const delBtn = e.target.closest('[data-bm-del]');
+    if (delBtn) {
+      e.stopPropagation();
+      const id = delBtn.getAttribute('data-bm-del');
+      let list = loadBookmarks();
+      const removed = list.find(function(b){ return String(b.id) === String(id); });
+      list = list.filter(function(b){ return String(b.id) !== String(id); });
+      saveBookmarks(list);
+      renderBookmarks();
+      if (removed) window.showToast(T.deletedToast, 'info');
+      return;
+    }
+    const row = e.target.closest('[data-bm-id]');
+    if (row) {
+      const id = row.getAttribute('data-bm-id');
+      const list = loadBookmarks();
+      const bm = list.find(function(b){ return String(b.id) === String(id); });
+      if (bm) {
+        input.value = bm.json;
+        runFormat();
+        window.showToast(T.loadedToast(bm.name), 'success');
+      }
+    }
+  });
+
+  renderBookmarks();
+  refreshSearch();
 });

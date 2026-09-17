@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="da">
 <head>
   <meta charset="UTF-8">
@@ -28,63 +28,130 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"JSON Formatter","url":"https://anyconverter.io/da/json-formatter/","description":"Formater og valider JSON øjeblikkeligt gratis.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Er det sikkert at indsætte private data?","acceptedAnswer":{"@type":"Answer","text":"Ja. Al behandling sker i din browser. Dine data behandles i browseren til denne opgave."}},{"@type":"Question","name":"Hvad gør minificering?","acceptedAnswer":{"@type":"Answer","text":"Minificering fjerner unødvendige mellemrum, linjeskift og indrykning fra JSON, hvilket reducerer filstørrelsen for hurtigere overførsler."}},{"@type":"Question","name":"Hvad er den maksimale filstørrelse?","acceptedAnswer":{"@type":"Answer","text":"Der er ingen fast grænse. Meget store filer (over 10 MB) kan være langsomme at behandle, men værktøjet klarer det på de fleste moderne enheder."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"JSON Formatter","url":"https://anyconverter.io/da/json-formatter/","description":"Formater, valider, søg og opsæt bogmærker i JSON øjeblikkeligt gratis.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Hvad er en JSON-formatter?","acceptedAnswer":{"@type":"Answer","text":"En JSON-formatter parser rå eller minificeret JSON og skriver den tilbage med læsbar indrykning og linjeskift."}},{"@type":"Question","name":"Kan dette værktøj validere JSON?","acceptedAnswer":{"@type":"Answer","text":"Ja. Siden parser din indtastning med JSON.parse og viser en syntaksfejlmeddelelse, hvis JSON'en er ugyldig."}},{"@type":"Question","name":"Kan jeg konvertere JSON til CSV?","acceptedAnswer":{"@type":"Answer","text":"CSV-konvertering fungerer, når JSON'en er et objekt eller et array af objekter. Andre JSON-strukturer bør forblive i JSON- eller YAML-output."}},{"@type":"Question","name":"Hvad er JSON-minificering?","acceptedAnswer":{"@type":"Answer","text":"Minificering fjerner unødvendige mellemrum og linjeskift fra gyldig JSON, samtidig med at de parsede data bevares."}},{"@type":"Question","name":"Hvilke filtyper kan jeg uploade?","acceptedAnswer":{"@type":"Answer","text":"Du kan uploade en .json-fil med knappen Upload. Filen indlæses i inputfeltet til formatering eller validering."}},{"@type":"Question","name":"Hvordan fungerer JSON-søgning?","acceptedAnswer":{"@type":"Answer","text":"Søg i nøglen, værdien eller begge med almindelig tekst, regex eller en sti som a.b[0].c adskilt med punktum/klammer. Resultater fremhæves, og du kan navigere mellem dem med knapperne Forrige/Næste."}},{"@type":"Question","name":"Gemmes bogmærker online?","acceptedAnswer":{"@type":"Answer","text":"Nej. Bogmærker gemmes kun i din browsers lokale lager, så de forbliver på denne enhed og uploades aldrig."}}]}</script>
 
 
 <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+
   <style>
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
     html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F7F6F3);color:var(--color-text,#151515)}
     body{min-height:100vh;display:flex;flex-direction:column}
     .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8D0)}
     .header-inner{max-width:1280px;width:100%;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;gap:32px}
-    .hero{padding:40px 24px 32px;max-width:1280px;margin:0 auto}
-    .hero h1{font-size:clamp(1.75rem,4vw,2.25rem);font-weight:700;line-height:1.2;margin-bottom:12px}
-    .hero-desc{font-size:1.0625rem;color:var(--color-text-2,#6B7280);max-width:680px;line-height:1.6}
+    .hero{padding:28px 24px 20px;max-width:1280px;margin:0 auto}
+    .hero h1{font-size:clamp(1.5rem,3.5vw,2rem);font-weight:700;line-height:1.2;margin-bottom:8px}
+    .hero-desc{font-size:1rem;color:var(--color-text-2,#6B7280);max-width:680px;line-height:1.6}
     @font-face{font-family:'Inter';font-display:swap}
   </style>
+
   <link rel="stylesheet" href="/assets/css/style.css?v=20260902">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
 </head>
 <body>
+
   <header id="site-header" class="site-header"></header>
+
   <main id="main-content">
     <nav class="breadcrumb" aria-label="Breadcrumb">
-      <ol><li><a href="/da/">Hjem</a></li><li aria-current="page">JSON Formatter</li></ol>
+      <ol>
+        <li><a href="/da/">Hjem</a></li>
+        <li aria-current="page">JSON Formatter</li>
+      </ol>
     </nav>
+
     <section class="hero">
       <h1>JSON Formatter og Validator</h1>
-      <p class="hero-desc">Formater, forskønne og valider JSON øjeblikkeligt. Indsæt din JSON eller upload en .json-fil. Syntaksfremhævning er inkluderet. Al behandling sker i din browser — data behandles i browseren.</p>
+      <p class="hero-desc">Validér, formatér, minificér og undersøg JSON med indrykningskontrol og en sammenklappelig trævisning. Søg i nøgler og værdier, gem lokale bogmærker, eksportér til YAML, eller konverter til CSV, når JSON-strukturen understøtter rækker og kolonner.</p>
     </section>
+
+    <!-- Tool area -->
     <div class="tool-wrapper">
       <div class="tool-zone">
-        <div class="input-wrapper">
-          <textarea id="json-input" placeholder="Indsæt din JSON her..." spellcheck="false" style="min-height:300px;font-family:var(--font-mono);font-size:13px"></textarea>
+
+        <!-- Sub-tabs -->
+        <div class="sub-tabs" role="tablist">
+          <button class="sub-tab active" role="tab" data-mode="format" aria-selected="true">Formatter</button>
+          <button class="sub-tab" role="tab" data-mode="minify" aria-selected="false">Minifier</button>
+          <button class="sub-tab" role="tab" data-mode="validate" aria-selected="false">Validator</button>
+          <button class="sub-tab" role="tab" data-mode="convert" aria-selected="false">Konverter</button>
         </div>
-        <div class="action-bar">
-          <div class="action-bar-left">
-            <button class="btn btn-primary" id="btn-format">Formater ↵</button>
-            <button class="btn btn-secondary" id="btn-minify">Minificer</button>
-            <button class="btn btn-secondary" id="btn-validate">Valider</button>
-          </div>
-          <div class="action-bar-right">
-            <button class="btn btn-secondary btn-sm" id="btn-clear">Ryd</button>
-            <button class="btn btn-secondary btn-sm" id="btn-copy-input">Kopier input</button>
-            <label class="btn btn-secondary btn-sm" style="cursor:pointer">Upload .json<input type="file" id="json-file" accept=".json,application/json" style="display:none"></label>
-          </div>
-        </div>
-        <div id="json-status" class="status-bar" style="display:none"></div>
-        <div id="json-output-section" style="display:none">
-          <div class="code-output-wrapper mt-4">
-            <pre class="code-output" id="json-output"><code id="json-output-code" class="language-json"></code></pre>
-            <div class="code-output-actions">
-              <button class="btn btn-sm" id="btn-copy-output">Kopier</button>
-              <button class="btn btn-sm" id="btn-download">Download</button>
+
+        <!-- Split panels -->
+        <div class="split-panels">
+
+          <!-- Input panel -->
+          <div class="ac-panel">
+            <div class="ac-panel-header">
+              <span style="font-size:14px;color:var(--color-text-3)">{ }</span>
+              <span class="ac-panel-label">Input</span>
+              <div class="ac-panel-actions">
+                <label class="ac-btn" style="cursor:pointer" title="Upload JSON-fil">
+                  Upload
+                  <input type="file" id="file-upload" accept=".json,application/json" style="display:none">
+                </label>
+                <button class="ac-btn" id="btn-paste" title="Indsæt fra udklipsholder">Indsæt</button>
+                <button class="ac-btn" id="btn-clear" title="Ryd input">Ryd</button>
+                <div class="font-sz-wrap"><button class="font-sz-btn" id="btn-font-down" title="Formindsk skriftstørrelse">A−</button><button class="font-sz-btn" id="btn-font-up" title="Forøg skriftstørrelse">A+</button></div>
+                <button class="ac-btn" id="btn-fs-input" title="Fuldskærm input">⛶</button>
+              </div>
+            </div>
+            <textarea
+              class="ac-input"
+              id="json-input"
+              placeholder="Indsæt JSON her — formaterer automatisk, mens du skriver…"
+              spellcheck="false"
+              autocomplete="off"
+              aria-label="JSON input"
+              aria-describedby="input-status"
+            ></textarea>
+            <div class="ac-status" id="input-status">
+              <span class="ac-status-ok" id="input-status-ok" style="display:none">✓ Gyldig JSON</span>
+              <span class="ac-status-err" id="input-status-err" style="display:none"></span>
+              <span class="ac-status-info" id="input-status-info">Indsæt eller skriv JSON</span>
             </div>
           </div>
+
+          <!-- Output panel -->
+          <div class="ac-panel">
+            <div class="ac-panel-header">
+              <span style="font-size:14px;color:var(--color-text-3)">✦</span>
+              <span class="ac-panel-label">Output</span>
+              <div class="ac-panel-actions">
+                <button class="ac-btn" id="btn-copy-output" title="Kopiér til udklipsholder">Kopiér</button>
+                <button class="ac-btn" id="btn-download" title="Download som .json">Download</button>
+                <button class="ac-btn" id="btn-collapse-all" title="Fold alle noder sammen">Fold alt sammen</button>
+                <button class="ac-btn" id="btn-expand-all" title="Fold alle noder ud">Fold alt ud</button>
+                <button class="ac-btn" id="btn-fs-output" title="Fuldskærm output">⛶</button>
+              </div>
+            </div>
+            <div class="json-view" id="json-output" aria-label="Formateret JSON-output" aria-live="polite">
+              <span style="color:var(--color-text-2,#6B7280);font-style:italic;font-size:11px">Output vises her…</span>
+            </div>
+            <div class="ac-status" id="output-status">
+              <span class="ac-status-ok" id="output-status-ok" style="display:none">✓ Formateret</span>
+              <span class="ac-status-err" id="output-status-err" style="display:none"></span>
+              <span class="ac-status-info" id="output-status-info"></span>
+            </div>
+          </div>
+
+        </div><!-- /split-panels -->
+
+        <!-- Action bar -->
+        <div class="ac-action-bar">
+          <button class="ac-btn primary" id="btn-format">Formatér</button>
+          <button class="ac-btn" id="btn-minify">Minificér</button>
+          <button class="ac-btn" id="btn-validate">Validér</button>
+          <button class="ac-btn" id="btn-to-yaml">→ YAML</button>
+          <button class="ac-btn" id="btn-to-csv">→ CSV</button>
+          <div class="ac-action-bar-right">
+            <span style="font-size:11px;color:var(--color-text-3)" id="auto-format-label">Auto-formatering: TIL</span>
+          </div>
         </div>
-      </div>
+
+      </div><!-- /tool-zone -->
+
+      <!-- Sidebar -->
       <aside class="tool-side" aria-label="Indstillinger">
 
         <div class="ss-divider">Indstillinger</div>
@@ -102,6 +169,15 @@
             <option value="none" selected>None</option>
             <option value="asc">A → Z</option>
             <option value="desc">Z → A</option>
+          </select>
+        </div>
+        <div class="ss-option-row">
+          <span class="ss-opt-label">Skriftstr.</span>
+          <select class="ss-opt-select" id="opt-font-size">
+            <option value="11">Lille (11px)</option>
+            <option value="13" selected>Normal (13px)</option>
+            <option value="15">Mellem (15px)</option>
+            <option value="17">Stor (17px)</option>
           </select>
         </div>
 
@@ -122,6 +198,37 @@
           <div class="tog off" id="tog-wrap" role="switch" aria-checked="false" tabindex="0" aria-labelledby="lbl-wrap"></div>
         </div>
 
+        <div class="ss-divider">Søgning</div>
+        <div class="ss-option-row">
+          <span class="ss-opt-label">Søg</span>
+          <input class="ss-opt-input" id="search-query" placeholder="Søg i nøgler eller værdier…" autocomplete="off" style="flex:1;padding:6px 8px;border:1px solid var(--color-border,#DDD8D0);border-radius:6px;font-size:12px" aria-label="Søg i JSON">
+        </div>
+        <div class="ss-option-row">
+          <span class="ss-opt-label">Tilstand</span>
+          <select class="ss-opt-select" id="search-mode" style="flex:1">
+            <option value="both" selected>Nøgle + værdi</option>
+            <option value="key">Kun nøgle</option>
+            <option value="value">Kun værdi</option>
+            <option value="regex">Regex</option>
+            <option value="path">Sti (a.b[0].c)</option>
+          </select>
+        </div>
+        <div class="ss-option-row" style="justify-content:space-between">
+          <button class="ac-btn" id="search-prev" title="Forrige resultat">‹ Forrige</button>
+          <span style="font-size:11px;color:var(--color-text-2,#6B7280)" id="search-count" aria-live="polite">Ingen søgning endnu</span>
+          <button class="ac-btn" id="search-next" title="Næste resultat">Næste ›</button>
+        </div>
+
+        <div class="ss-divider">Bogmærker <span style="font-weight:400;text-transform:none;font-size:10px;color:var(--color-text-3,#9CA3AF)">(gemt i denne browser)</span></div>
+        <div class="ss-option-row">
+          <span class="ss-opt-label">Navn</span>
+          <input class="ss-opt-input" id="bookmark-name" placeholder="f.eks. API-svar" autocomplete="off" style="flex:1;padding:6px 8px;border:1px solid var(--color-border,#DDD8D0);border-radius:6px;font-size:12px" aria-label="Bogmærkenavn">
+        </div>
+        <button class="ac-btn" id="btn-bookmark-save" style="width:100%;margin-bottom:6px;justify-content:center">+ Gem nuværende JSON</button>
+        <div id="bookmark-list" style="display:flex;flex-direction:column;gap:4px;max-height:160px;overflow:auto;margin-bottom:4px">
+          <p style="font-size:11px;color:var(--color-text-3,#9CA3AF);text-align:center;padding:8px 0;margin:0">Ingen bogmærker endnu</p>
+        </div>
+
         <div class="ss-divider">Statistik</div>
         <div class="stats-grid">
           <div class="stat-card"><div class="stat-val" id="stat-keys">0</div><div class="stat-lbl">Keys</div></div>
@@ -129,24 +236,6 @@
           <div class="stat-card"><div class="stat-val" id="stat-bytes">0</div><div class="stat-lbl">Bytes</div></div>
           <div class="stat-card"><div class="stat-val" id="stat-errors">0</div><div class="stat-lbl">Errors</div></div>
         </div>
-
-        <div class="ss-divider">Relaterede værktøjer</div>
-        <a href="/da/xml-formatter/" class="ss-related-link">
-          <img src="/assets/img/icon-xml.svg" alt="JSON Formatter Online Gratis icon" width="18" height="18" loading="lazy">
-          XML Formatter
-        </a>
-        <a href="/da/regex-tester/" class="ss-related-link">
-          <img src="/assets/img/icon-regex.svg" alt="JSON Formatter Online Gratis icon" width="18" height="18" loading="lazy">
-          Regex / Logs
-        </a>
-        <a href="/da/csv-to-sql/" class="ss-related-link">
-          <img src="/assets/img/icon-csv.svg" alt="JSON Formatter Online Gratis icon" width="18" height="18" loading="lazy">
-          CSV → SQL
-        </a>
-        <a href="/da/base64-encoder/" class="ss-related-link">
-          <img src="/assets/img/icon-base64.svg" alt="JSON Formatter Online Gratis icon" width="18" height="18" loading="lazy">
-          Base64 Encoder
-        </a>
 
         <!-- AdSense sidebar slot -->
         <div style="margin-top:8px">
@@ -157,27 +246,37 @@
         </div>
 
       </aside>
-    </div>
+    </div><!-- /tool-wrapper -->
+
+    <!-- AdSense leaderboard -->
     <div class="ad-slot ad-slot--leaderboard">
+      <p class="ad-label">Annonce</p>
       <div class="adsbygoogle" style="display:block" aria-hidden="true"></div>
 </div>
+
     <section class="how-to-use">
       <h2>Sådan formaterer du JSON</h2>
       <ol class="steps">
-        <li><strong>Indsæt din JSON</strong> — Indsæt JSON-indholdet i tekstfeltet eller upload en .json-fil.</li>
-        <li><strong>Formater eller valider</strong> — Klik på "Formater" for at forskønne JSON med indrykning, eller "Valider" for at tjekke for syntaksfejl.</li>
-        <li><strong>Kopier eller download</strong> — Kopier resultatet til udklipsholderen eller download det som .json-fil.</li>
+        <li><strong>Indsæt din JSON</strong> — Kopiér din JSON, og indsæt den i inputfeltet. Output formateres automatisk, mens du skriver.</li>
+        <li><strong>Udforsk trævisningen</strong> — Klik på ▾-ikonerne for at folde et objekt eller array sammen/ud. Brug Fold alt sammen/Fold alt ud til at navigere i store strukturer.</li>
+        <li><strong>Kopiér eller download</strong> — Kopiér det formaterede output til udklipsholderen, eller download det som en .json-fil.</li>
+        <li><strong>Søg eller book mærke</strong> — Brug sidepanelet til at søge i nøgler, værdier, regex eller en sti som <code>a.b[0].c</code>, eller gem den nuværende JSON som et lokalt bogmærke.</li>
       </ol>
     </section>
+
     <section class="features">
       <h2>Funktioner</h2>
       <ul class="features-list">
-        <li>Øjeblikkelig formatering med indrykning</li>
-        <li>Validering med detaljerede fejlmeddelelser</li>
-        <li>Minificering for at reducere filstørrelsen</li>
-        <li>Syntaksfremhævning i outputtet</li>
-        <li>Understøttelse af filupload</li>
-        <li>Behandling i browseren</li>
+        <li>Live auto-formatering, mens du skriver (200ms forsinkelse)</li>
+        <li>Sammenklappelige noder — fold ethvert {} eller [] sammen med det samme</li>
+        <li>Syntaksfremhævning med farvekodede tokens</li>
+        <li>JSON-validering med præcis fejlposition</li>
+        <li>Minificér JSON for at reducere filstørrelsen</li>
+        <li>Upload .json-filer direkte</li>
+        <li>Download formateret output som .json</li>
+        <li>YAML-eksport og CSV-konvertering for understøttede JSON-strukturer</li>
+        <li>Søg efter nøgle, værdi, regex eller sti med fremhævede resultater</li>
+        <li>Lokale bogmærker — gem JSON-udklip i din browser til senere</li>
       </ul>
     </section>
     <!-- SEO keyword implementation: 2026-08-21 -->
@@ -194,28 +293,80 @@
     </section>
 
     <div class="ad-slot ad-slot--rectangle" style="margin:0 auto 32px">
+      <p class="ad-label">Annonce</p>
       <div class="adsbygoogle" style="display:block" aria-hidden="true"></div>
 </div>
+
     <section class="faq">
       <h2>Ofte stillede spørgsmål</h2>
       <div class="faq-list">
-        <details class="faq-item"><summary class="faq-question">Er det sikkert at indsætte private data? <span class="faq-icon">+</span></summary><div class="faq-answer">Ja. Al behandling sker i din browser. Dine data behandles i browseren til denne opgave.</div></details>
-        <details class="faq-item"><summary class="faq-question">Hvad gør minificering? <span class="faq-icon">+</span></summary><div class="faq-answer">Minificering fjerner unødvendige mellemrum, linjeskift og indrykning fra JSON, hvilket reducerer filstørrelsen for hurtigere overførsler.</div></details>
-        <details class="faq-item"><summary class="faq-question">Hvad er den maksimale filstørrelse? <span class="faq-icon">+</span></summary><div class="faq-answer">Der er ingen fast grænse. Meget store filer (over 10 MB) kan være langsomme at behandle, men værktøjet klarer det på de fleste moderne enheder.</div></details>
+        <details class="faq-item">
+          <summary class="faq-question">Hvad er en JSON-formatter? <span class="faq-icon">+</span></summary>
+          <div class="faq-answer">En JSON-formatter parser rå eller minificeret JSON og skriver den tilbage med læsbar indrykning og linjeskift.</div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-question">Kan dette værktøj validere JSON? <span class="faq-icon">+</span></summary>
+          <div class="faq-answer">Ja. Siden parser din indtastning med JSON.parse og viser en syntaksfejlmeddelelse, hvis JSON'en er ugyldig.</div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-question">Kan jeg konvertere JSON til CSV? <span class="faq-icon">+</span></summary>
+          <div class="faq-answer">CSV-konvertering fungerer, når JSON'en er et objekt eller et array af objekter. Andre JSON-strukturer bør forblive i JSON- eller YAML-output.</div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-question">Hvad er JSON-minificering? <span class="faq-icon">+</span></summary>
+          <div class="faq-answer">Minificering fjerner unødvendige mellemrum og linjeskift fra gyldig JSON, samtidig med at de parsede data bevares.</div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-question">Hvilke filtyper kan jeg uploade? <span class="faq-icon">+</span></summary>
+          <div class="faq-answer">Du kan uploade en .json-fil med knappen Upload. Filen indlæses i inputfeltet til formatering eller validering.</div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-question">Hvordan fungerer JSON-søgning? <span class="faq-icon">+</span></summary>
+          <div class="faq-answer">Søg i nøglen, værdien eller begge med almindelig tekst, regex eller en sti som a.b[0].c adskilt med punktum/klammer. Resultater fremhæves, og du kan navigere mellem dem med knapperne Forrige/Næste.</div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-question">Gemmes bogmærker online? <span class="faq-icon">+</span></summary>
+          <div class="faq-answer">Nej. Bogmærker gemmes kun i din browsers lokale lager, så de forbliver på denne enhed og uploades aldrig.</div>
+        </details>
       </div>
     </section>
+
     <section class="related-tools">
       <h2>Relaterede værktøjer</h2>
       <div class="tool-grid">
-        <a href="/da/xml-formatter/" class="tool-card"><img src="/assets/img/icon-xml.svg" alt="XML Formatter icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>XML Formatter</h3><p>Formater og valider XML.</p><span class="tool-card-link">Brug →</span></a>
-        <a href="/da/csv-to-sql/" class="tool-card"><img src="/assets/img/icon-csv.svg" alt="CSV til SQL icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>CSV til SQL</h3><p>Konverter CSV til SQL-sætninger.</p><span class="tool-card-link">Brug →</span></a>
-        <a href="/da/hash-generator/" class="tool-card"><img src="/assets/img/icon-hash.svg" alt="Hash Generator icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Hash Generator</h3><p>Generer kryptografiske hashes.</p><span class="tool-card-link">Brug →</span></a>
+        <a href="/da/xml-formatter/" class="tool-card">
+          <img src="/assets/img/icon-xml.svg" alt="XML Formatter icon" class="tool-card-icon" width="40" height="40" loading="lazy">
+          <h3>XML Formatter</h3>
+          <p>Formater og valider XML online.</p>
+          <span class="tool-card-link">Prøv →</span>
+        </a>
+        <a href="/da/regex-tester/" class="tool-card">
+          <img src="/assets/img/icon-regex.svg" alt="Regex / Log Extractor icon" class="tool-card-icon" width="40" height="40" loading="lazy">
+          <h3>Regex / Log Extractor</h3>
+          <p>Test regex-mønstre og udtræk log-match.</p>
+          <span class="tool-card-link">Prøv →</span>
+        </a>
+        <a href="/da/csv-to-sql/" class="tool-card">
+          <img src="/assets/img/icon-csv.svg" alt="CSV to SQL icon" class="tool-card-icon" width="40" height="40" loading="lazy">
+          <h3>CSV til SQL</h3>
+          <p>Konverter CSV-filer til SQL INSERT-sætninger.</p>
+          <span class="tool-card-link">Prøv →</span>
+        </a>
+        <a href="/da/base64-encoder/" class="tool-card">
+          <img src="/assets/img/icon-base64.svg" alt="Base64 Encoder icon" class="tool-card-icon" width="40" height="40" loading="lazy">
+          <h3>Base64 Encoder</h3>
+          <p>Kod og afkod Base64-tekst og filer.</p>
+          <span class="tool-card-link">Prøv →</span>
+        </a>
       </div>
     </section>
   </main>
+
+  <div id="fs-overlay" class="fs-overlay"></div>
+
   <footer id="site-footer" class="site-footer"></footer>
+
   <script src="/assets/js/shared.js?v=20260902" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" defer></script>
   <script src="/assets/js/tools/json-formatter.js" defer></script>
 </body>
 </html>
