@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CSV-forespørgselsværktøj — Kør SQL på CSV-filer | AnyConverter</title>
-  <meta name="description" content="Brug csv to sql gratis i browseren. Fa eksempler, praktiske tips, relaterede vaerktojer og hurtige resultater.">
+  <meta name="description" content="Foresporg CSV-data med SQL-lignende filtre i browseren, se raekker, koer eksempler og eksporter resultater Med klare trin, praktiske resultater og ingen konto.">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://anyconverter.io/da/csv-query/">
   <link rel="alternate" hreflang="en" href="https://anyconverter.io/csv-query/">
@@ -13,8 +13,8 @@
   <link rel="alternate" hreflang="x-default" href="https://anyconverter.io/csv-query/">
 
 <meta property="og:type" content="website">
-  <meta property="og:title" content="CSV-forespørgselsværktøj Online — Kør SQL på CSV-filer Gratis | AnyConverter">
-  <meta property="og:description" content="Brug csv to sql gratis i browseren. Fa eksempler, praktiske tips, relaterede vaerktojer og hurtige resultater.">
+  <meta property="og:title" content="CSV-forespørgselsværktøj — Kør SQL på CSV-filer | AnyConverter">
+  <meta property="og:description" content="Foresporg CSV-data med SQL-lignende filtre i browseren, se raekker, koer eksempler og eksporter resultater Med klare trin, praktiske resultater og ingen konto.">
   <meta property="og:url" content="https://anyconverter.io/da/csv-query/">
   <meta property="og:site_name" content="AnyConverter">
   <meta property="og:image" content="https://anyconverter.io/assets/img/og-image.png">
@@ -23,7 +23,7 @@
   <meta property="og:image:alt" content="AnyConverter free online tools">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="CSV-forespørgselsværktøj — Kør SQL på CSV-filer | AnyConverter">
-  <meta name="twitter:description" content="Brug csv to sql gratis i browseren. Fa eksempler, praktiske tips, relaterede vaerktojer og hurtige resultater.">
+  <meta name="twitter:description" content="Foresporg CSV-data med SQL-lignende filtre i browseren, se raekker, koer eksempler og eksporter resultater Med klare trin, praktiske resultater og ingen konto.">
   <meta name="twitter:image" content="https://anyconverter.io/assets/img/og-image.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -61,11 +61,34 @@
     </section>
     <div class="tool-wrapper">
       <div class="tool-zone">
-        <div class="drop-zone" id="query-drop-zone" role="button" tabindex="0" aria-label="Slip CSV-filen her eller klik for at gennemse">
-          <svg class="drop-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5"/></svg>
-          <p>Slip din CSV-fil her eller klik for at gennemse</p>
-          <small>Enkelt CSV-fil med headerrække</small>
-          <input type="file" id="query-file-input" accept=".csv,text/csv" aria-label="Upload CSV-fil">
+        <div class="sub-tabs">
+          <button class="sub-tab active" data-query-tab="paste">Indsæt CSV</button>
+          <button class="sub-tab" data-query-tab="upload">Upload fil</button>
+          <button class="sub-tab" data-query-tab="sample">Eksempel</button>
+        </div>
+
+        <div id="query-tab-paste" class="ac-panel">
+          <div class="ac-panel-header">
+            <span class="ac-panel-label">CSV-input</span>
+            <button class="ac-btn" id="btn-load-pasted-csv" type="button">Indlæs CSV</button>
+          </div>
+          <textarea id="query-csv-input" class="ac-input" placeholder="Indsæt CSV-data her. Første række skal være kolonnenavne." spellcheck="false" style="min-height:160px"></textarea>
+        </div>
+
+        <div id="query-tab-upload" style="display:none">
+          <div class="drop-zone" id="query-drop-zone" role="button" tabindex="0" aria-label="Træk CSV-filen hertil, eller klik for at gennemse">
+            <svg class="drop-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5"/></svg>
+            <p>Træk din CSV-fil hertil, eller klik for at gennemse</p>
+            <small>Én CSV-fil med overskriftsrække</small>
+            <input type="file" id="query-file-input" accept=".csv,text/csv" aria-label="Upload CSV-fil">
+          </div>
+        </div>
+
+        <div id="query-tab-sample" class="ac-panel" style="display:none">
+          <div class="ac-card-grid">
+            <button class="ac-sample-card" id="btn-query-sample-sales" type="button"><strong>sales.csv</strong><span>Indlæs ordrer og kør en grupperet SUM-forespørgsel.</span></button>
+            <button class="ac-sample-card" id="btn-query-sample-users" type="button"><strong>users.csv</strong><span>Indlæs brugere med manglende værdier til null-tjek.</span></button>
+          </div>
         </div>
 
         <div id="query-section" style="display:none">
@@ -82,7 +105,9 @@
           <div class="ac-action-bar mt-4">
             <div class="ac-action-bar-left">
               <button class="btn btn-primary" id="btn-run-query">Kør forespørgsel ▶</button>
-              <button class="btn btn-secondary" id="btn-format-sql">Formater SQL</button>
+              <button class="btn btn-secondary" id="btn-format-sql">Formatér SQL</button>
+              <button class="btn btn-secondary" id="btn-send-query-sql" type="button">Generer SQL →</button>
+              <button class="btn btn-secondary" id="btn-clear-query-all" type="button">Ryd alt</button>
             </div>
           </div>
 
@@ -97,7 +122,7 @@
             <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:10px">
               <div class="status-bar info" id="result-stats" style="margin:0;flex:1;min-width:0"></div>
               <div style="display:flex;gap:6px;flex-shrink:0;align-items:center">
-                <div class="font-sz-wrap"><button class="font-sz-btn" id="btn-tbl-font-down" title="Formindsk tabelskrift">A−</button><button class="font-sz-btn" id="btn-tbl-font-up" title="Forstør tabelskrift">A+</button></div>
+                <div class="font-sz-wrap"><button class="font-sz-btn" id="btn-tbl-font-down" title="Mindre tabelskrift">A−</button><button class="font-sz-btn" id="btn-tbl-font-up" title="Større tabelskrift">A+</button></div>
                 <button class="btn btn-sm" id="btn-export-csv">Eksporter CSV</button>
                 <button class="btn btn-sm" id="btn-export-json">Eksporter JSON</button>
                 <button class="btn btn-sm" id="btn-fs-results" title="Tabel i fuld skærm">⛶ Fuld skærm</button>
@@ -111,9 +136,9 @@
 
       <aside class="tool-side" aria-label="Indstillinger">
         <div class="ss-divider">Indstillinger</div>
-        <div class="tog-row"><span class="tog-label" id="lbl-has-header">CSV har headerrække</span><div class="tog" id="tog-has-header" role="switch" aria-checked="true" tabindex="0" aria-labelledby="lbl-has-header"></div></div>
+        <div class="tog-row"><span class="tog-label" id="lbl-has-header">CSV har overskriftsrække</span><div class="tog" id="tog-has-header" role="switch" aria-checked="true" tabindex="0" aria-labelledby="lbl-has-header"></div></div>
         <div class="ss-option-row">
-          <span class="ss-opt-label">Rækker per side</span>
+          <span class="ss-opt-label">Rækker pr. side</span>
           <select class="ss-opt-select" id="opt-rows-per-page">
             <option value="25">25 rækker</option>
             <option value="50" selected>50 rækker</option>
@@ -126,19 +151,22 @@
           <div class="stat-card"><div class="stat-val" id="stat-csv-rows">0</div><div class="stat-lbl">Rækker</div></div>
           <div class="stat-card"><div class="stat-val" id="stat-csv-cols">0</div><div class="stat-lbl">Kolonner</div></div>
           <div class="stat-card"><div class="stat-val" id="stat-result-rows">0</div><div class="stat-lbl">Resultater</div></div>
-          <div class="stat-card"><div class="stat-val" id="stat-query-time">—</div><div class="stat-lbl">Tid ms</div></div>
+          <div class="stat-card"><div class="stat-val" id="stat-query-time">—</div><div class="stat-lbl">Forespørgsel ms</div></div>
         </div>
+
+        <div class="ss-divider">Kolonneprofil</div>
+        <div id="query-profile" class="ac-mini-panel">Indlæs CSV-data for at se kolonnerne.</div>
 
         <div class="ss-divider">Hurtig SQL</div>
         <div style="display:flex;flex-direction:column;gap:4px">
           <button class="quick-pat-btn" data-sql="SELECT * FROM data LIMIT 10">SELECT * LIMIT 10</button>
-          <button class="quick-pat-btn" data-sql="SELECT COUNT(*) as count FROM data">Tæl rækker</button>
+          <button class="quick-pat-btn" data-sql="SELECT COUNT(*) as count FROM data">COUNT rækker</button>
           <button class="quick-pat-btn" data-sql="SELECT * FROM data WHERE rowid = 1">Første række</button>
           <button class="quick-pat-btn" data-sql="SELECT DISTINCT * FROM data LIMIT 50">DISTINCT rækker</button>
         </div>
 
         <div style="margin-top:8px">
-          <p class="ad-label">Reklame</p>
+          <p class="ad-label">Annonce</p>
           <div class="ad-slot" style="min-height:250px">
             <div class="adsbygoogle" style="display:block" aria-hidden="true"></div>
 </div>
@@ -212,6 +240,6 @@
   <script src="/assets/js/shared.js?v=20260902" defer></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js" defer></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.10.2/sql-wasm.js" defer></script>
-  <script src="/assets/js/tools/csv-query.js" defer></script>
+  <script src="/assets/js/tools/csv-query.js?v=20260928-clear-all" defer></script>
 </body>
 </html>

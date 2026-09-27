@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Unir PDF Online Gratis — Combinar Archivos PDF | AnyConverter</title>
-  <meta name="description" content="Usa unir PDF online gratis en el navegador. Incluye ejemplos, usos comunes, herramientas relacionadas y resultados rapidos.">
+  <meta name="description" content="Une archivos PDF online, reordena documentos y descarga un solo PDF combinado con una guia de privacidad clara.">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://anyconverter.io/es/pdf-merge/">
   <link rel="alternate" hreflang="en" href="https://anyconverter.io/pdf-merge/">
@@ -13,8 +13,8 @@
   <link rel="alternate" hreflang="x-default" href="https://anyconverter.io/pdf-merge/">
 
 <meta property="og:type" content="website">
-  <meta property="og:title" content="Unir PDF Online Gratis | AnyConverter">
-  <meta property="og:description" content="Usa unir PDF online gratis en el navegador. Incluye ejemplos, usos comunes, herramientas relacionadas y resultados rapidos.">
+  <meta property="og:title" content="Unir PDF Online Gratis — Combinar Archivos PDF | AnyConverter">
+  <meta property="og:description" content="Une archivos PDF online, reordena documentos y descarga un solo PDF combinado con una guia de privacidad clara.">
   <meta property="og:url" content="https://anyconverter.io/es/pdf-merge/">
   <meta property="og:site_name" content="AnyConverter">
   <meta property="og:image" content="https://anyconverter.io/assets/img/og-image.png">
@@ -23,7 +23,7 @@
   <meta property="og:image:alt" content="AnyConverter free online tools">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Unir PDF Online Gratis — Combinar Archivos PDF | AnyConverter">
-  <meta name="twitter:description" content="Usa unir PDF online gratis en el navegador. Incluye ejemplos, usos comunes, herramientas relacionadas y resultados rapidos.">
+  <meta name="twitter:description" content="Une archivos PDF online, reordena documentos y descarga un solo PDF combinado con una guia de privacidad clara.">
   <meta name="twitter:image" content="https://anyconverter.io/assets/img/og-image.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -54,14 +54,14 @@
     </nav>
     <section class="hero">
       <h1>Unir Archivos PDF Online</h1>
-      <p class="hero-desc">Combina varios archivos PDF en uno solo de forma gratuita. Arrastra los archivos para reordenarlos y haz clic en "Unir PDF" para obtener el documento combinado. Todo el procesamiento ocurre en tu navegador — sin subidas al servidor, completamente privado.</p>
+      <p class="hero-desc">Une varios PDF en un solo archivo con un flujo claro para ordenar, revisar y descargar. La página mantiene la privacidad visible y facilita continuar con comprimir o numerar páginas.</p>
     </section>
     <div class="tool-wrapper">
       <div class="tool-zone">
         <div class="drop-zone" id="merge-drop-zone" role="button" tabindex="0" aria-label="Arrastra archivos PDF aquí o haz clic para seleccionar">
           <svg class="drop-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5"/></svg>
           <p>Arrastra archivos PDF aquí o haz clic para seleccionar</p>
-          <small>Selecciona varios archivos PDF</small>
+          <div class="ac-upload-actions"><button class="btn btn-secondary" type="button">Elegir PDF</button></div><small>Selecciona varios archivos PDF</small>
           <input type="file" id="merge-input" accept=".pdf,application/pdf" multiple>
         </div>
         <div id="merge-file-list" style="display:none">
@@ -92,21 +92,21 @@
       </div>
       <aside class="tool-side" aria-label="Opciones">
         <div class="ss-divider">Opciones</div>
-        <div class="tog-row"><span class="tog-label" id="lbl-blank-sep">Blank page between files</span><div class="tog off" id="tog-blank-sep" role="switch" aria-checked="false" tabindex="0" aria-labelledby="lbl-blank-sep"></div></div>
-        <div class="tog-row"><span class="tog-label" id="lbl-sort-alpha">Sort files alphabetically</span><div class="tog off" id="tog-sort-alpha" role="switch" aria-checked="false" tabindex="0" aria-labelledby="lbl-sort-alpha"></div></div>
+        <div class="tog-row"><span class="tog-label" id="lbl-blank-sep">Página en blanco entre archivos</span><div class="tog off" id="tog-blank-sep" role="switch" aria-checked="false" tabindex="0" aria-labelledby="lbl-blank-sep"></div></div>
+        <div class="tog-row"><span class="tog-label" id="lbl-sort-alpha">Ordenar archivos alfabéticamente</span><div class="tog off" id="tog-sort-alpha" role="switch" aria-checked="false" tabindex="0" aria-labelledby="lbl-sort-alpha"></div></div>
 
         <div class="ss-divider">Estadísticas</div>
         <div class="stats-grid">
-          <div class="stat-card"><div class="stat-val" id="stat-file-count">0</div><div class="stat-lbl">Files</div></div>
-          <div class="stat-card"><div class="stat-val" id="stat-total-pages">0</div><div class="stat-lbl">Total pages</div></div>
-          <div class="stat-card"><div class="stat-val" id="stat-total-size">0 B</div><div class="stat-lbl">Total size</div></div>
-          <div class="stat-card"><div class="stat-val" id="stat-merge-status">—</div><div class="stat-lbl">Status</div></div>
+          <div class="stat-card"><div class="stat-val" id="stat-file-count">0</div><div class="stat-lbl">Archivos</div></div>
+          <div class="stat-card"><div class="stat-val" id="stat-total-pages">0</div><div class="stat-lbl">Páginas totales</div></div>
+          <div class="stat-card"><div class="stat-val" id="stat-total-size">0 B</div><div class="stat-lbl">Tamaño total</div></div>
+          <div class="stat-card"><div class="stat-val" id="stat-merge-status">—</div><div class="stat-lbl">Estado</div></div>
         </div>
 
         <div class="ss-divider">Herramientas relacionadas</div>
-        <a href="/es/pdf-split/" class="ss-related-link"><img src="/assets/img/icon-pdf.svg" alt="Unir PDF Online Gratis — Combinar Archivos PDF icon" width="18" height="18" loading="lazy">PDF Split</a>
-        <a href="/es/pdf-compress/" class="ss-related-link"><img src="/assets/img/icon-pdf.svg" alt="Unir PDF Online Gratis — Combinar Archivos PDF icon" width="18" height="18" loading="lazy">PDF Compress</a>
-        <a href="/es/image-converter/" class="ss-related-link"><img src="/assets/img/icon-image.svg" alt="Unir PDF Online Gratis — Combinar Archivos PDF icon" width="18" height="18" loading="lazy">Image Converter</a>
+        <a href="/es/pdf-split/" class="ss-related-link"><img src="/assets/img/icon-pdf.svg" alt="Unir PDF Online Gratis — Combinar Archivos PDF icon" width="18" height="18" loading="lazy">Dividir PDF</a>
+        <a href="/es/pdf-compress/" class="ss-related-link"><img src="/assets/img/icon-pdf.svg" alt="Unir PDF Online Gratis — Combinar Archivos PDF icon" width="18" height="18" loading="lazy">Comprimir PDF</a>
+        <a href="/es/image-converter/" class="ss-related-link"><img src="/assets/img/icon-image.svg" alt="Unir PDF Online Gratis — Combinar Archivos PDF icon" width="18" height="18" loading="lazy">Convertidor de imágenes</a>
 
         <div style="margin-top:8px">
           <p class="ad-label">Anuncio</p>
@@ -120,37 +120,36 @@
       <div class="adsbygoogle" style="display:block" aria-hidden="true"></div>
 </div>
     <section class="how-to-use">
-      <h2>Cómo unir archivos PDF</h2>
+      <h2>Cómo usar Unir PDF</h2>
       <ol class="steps">
-        <li><strong>Sube los PDFs</strong> — Arrastra varios archivos PDF o haz clic para seleccionarlos.</li>
-        <li><strong>Reordena si es necesario</strong> — Arrastra los archivos en la lista para cambiar el orden en el que se combinarán.</li>
-        <li><strong>Une y descarga</strong> — Haz clic en "Unir PDF" y descarga el documento combinado.</li>
+        <li>Agrega dos o más archivos PDF.</li>
+        <li>Ordena los archivos y revisa páginas, tamaño y nombre de salida.</li>
+        <li>Pulsa unir PDF y descarga el archivo combinado.</li>
       </ol>
     </section>
     <section class="features">
-      <h2>Características</h2>
+      <h2>Funciones principales</h2>
       <ul class="features-list">
-        <li>Une cualquier número de PDFs</li>
-        <li>Reordenado por arrastre (drag &amp; drop)</li>
-        <li>Nombre personalizable del archivo de salida</li>
-        <li>Procesamiento en el navegador; el archivo no se sube al servidor para esta tarea</li>
-        <li>Powered by pdf-lib</li>
+        <li>Tarjetas de archivo con orden claro</li>
+        <li>Botones táctiles para reordenar y quitar archivos</li>
+        <li>Nombre de salida editable</li>
+        <li>Resultado con descarga y siguientes herramientas</li>
+        <li>Procesamiento local indicado junto al área de carga</li>
       </ul>
     </section>
     <!-- SEO keyword implementation: 2026-08-21 -->
-    <section class="seo-content" data-seo-keyword-plan="2026-08-21">
-      <h2>Unir PDF online: usos practicos</h2>
-      <p>Usa unir PDF online cuando necesites una respuesta rapida, clara y privada sin crear una cuenta. La pagina tambien cubre variantes relacionadas como combinar PDF, juntar PDF, unir archivos PDF para que puedas elegir el flujo correcto.</p>
-      <h3>Cuándo usarlo</h3>
+    <section class="seo-content" data-language-refresh="2026-09-27">
+      <h2>Unir PDF para resultados claros</h2>
+      <p>Usa unir PDF online gratis para combinar documentos, informes o recibos sin instalar software. El texto conserva términos como combinar PDF, fusionar PDF y unir archivos PDF de forma natural.</p>
+      <h3>Por qué ayuda</h3>
       <ul>
-        <li><strong>Ideal para:</strong> Editar, unir, dividir, convertir o proteger documentos PDF sin instalar software de escritorio.</li>
-        <li><strong>Detalles utiles:</strong> Revisa el orden de archivos, rangos de paginas, calidad de salida y privacidad antes de descargar el PDF final.</li>
-        <li><strong>Siguiente paso:</strong> Abre otra accion PDF cuando necesites comprimir, dividir, convertir imagenes, firmar, crear formularios o limpiar paginas.</li>
+        <li><strong>Mejor para:</strong> Combinar informes, formularios, recibos, contratos y documentos escaneados.</li>
+        <li><strong>Privacidad:</strong> La página mantiene el aviso de privacidad cerca del área de trabajo.</li>
+        <li><strong>Siguiente paso:</strong> Comprime el PDF unido o agrega números de página cuando el archivo final esté listo.</li>
       </ul>
-      <p>Para continuar, prueba tambien <a href="/es/pdf-split/">Dividir PDF</a>, <a href="/es/pdf-compress/">Comprimir PDF Online</a>, <a href="/es/edit-pdf/">Editar PDF</a>, <a href="/es/pdf-to-jpg/">Convertidor PDF a JPG</a>.</p>
     </section>
 
-    <div class="ad-slot ad-slot--rectangle" style="margin:0 auto 32px">
+<div class="ad-slot ad-slot--rectangle" style="margin:0 auto 32px">
       <div class="adsbygoogle" style="display:block" aria-hidden="true"></div>
 </div>
     <section class="faq">
@@ -164,9 +163,9 @@
     <section class="related-tools">
       <h2>Herramientas Relacionadas</h2>
       <div class="tool-grid">
-        <a href="/es/pdf-compress/" class="tool-card"><img src="/assets/img/icon-pdf.svg" alt="PDF Compress icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>PDF Compress</h3><p>Reduce el tamaño de archivos PDF.</p><span class="tool-card-link">Usar →</span></a>
-        <a href="/es/pdf-split/" class="tool-card"><img src="/assets/img/icon-pdf.svg" alt="PDF Split icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>PDF Split</h3><p>Divide o extrae páginas de un PDF.</p><span class="tool-card-link">Usar →</span></a>
-        <a href="/es/image-converter/" class="tool-card"><img src="/assets/img/icon-image.svg" alt="Image Converter icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Image Converter</h3><p>Convierte entre PNG, JPG, WebP.</p><span class="tool-card-link">Usar →</span></a>
+        <a href="/es/pdf-compress/" class="tool-card"><img src="/assets/img/icon-pdf.svg" alt="Icono de Comprimir PDF" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Comprimir PDF</h3><p>Reduce el tamaño de archivos PDF.</p><span class="tool-card-link">Usar →</span></a>
+        <a href="/es/pdf-split/" class="tool-card"><img src="/assets/img/icon-pdf.svg" alt="Icono de Dividir PDF" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Dividir PDF</h3><p>Divide o extrae páginas de un PDF.</p><span class="tool-card-link">Usar →</span></a>
+        <a href="/es/image-converter/" class="tool-card"><img src="/assets/img/icon-image.svg" alt="Icono de Convertidor de imágenes" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Convertidor de imágenes</h3><p>Convierte entre PNG, JPG, WebP.</p><span class="tool-card-link">Usar →</span></a>
       </div>
     </section>
   </main>

@@ -28,6 +28,7 @@
 
     // Pixel dimensions at current DPR
     setText('vp-phys', Math.round(vw * dpr) + ' × ' + Math.round(vh * dpr) + ' px');
+    updatePrototype(vw, vh, dpr, bp);
   }
 
   function setText(id, val) {
@@ -36,6 +37,7 @@
   }
 
   document.addEventListener('DOMContentLoaded', function () {
+    addPrototypePanel();
     update();
     window.addEventListener('resize', update);
     window.addEventListener('orientationchange', function(){ setTimeout(update, 100); });
@@ -53,4 +55,27 @@
       setTimeout(function(){ btn.textContent = origText; }, 2000);
     });
   });
+
+  function addPrototypePanel() {
+    var zone = document.querySelector('.tool-zone > div') || document.querySelector('.tool-zone');
+    if (!zone || document.getElementById('viewport-ruler')) return;
+    var panel = document.createElement('div');
+    panel.className = 'ac-mini-panel';
+    panel.style.marginTop = '14px';
+    panel.innerHTML = '<div class="ac-result-kicker">Breakpoint ruler</div><div class="viewport-ruler" id="viewport-ruler"><span class="viewport-ruler__mark" id="viewport-ruler-mark"></span></div><p id="viewport-extra" class="prototype-muted-note" style="margin:10px 0 0"></p><div class="ac-result-kicker" style="margin-top:12px">Resize log</div><div id="viewport-log" style="display:flex;flex-direction:column;gap:6px;margin-top:8px"></div>';
+    zone.appendChild(panel);
+  }
+
+  function updatePrototype(vw, vh, dpr, bp) {
+    var mark = document.getElementById('viewport-ruler-mark');
+    if (mark) mark.style.left = Math.max(0, Math.min(100, vw / 1600 * 100)) + '%';
+    setText('viewport-extra', 'Color scheme: ' + (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') + ' · DPR: ' + dpr.toFixed(2) + ' · ' + bp);
+    var log = document.getElementById('viewport-log');
+    if (!log) return;
+    var item = document.createElement('div');
+    item.className = 'ac-quality-row';
+    item.innerHTML = '<span>' + new Date().toLocaleTimeString() + '</span><strong>' + vw + ' × ' + vh + '</strong>';
+    log.insertBefore(item, log.firstChild);
+    while (log.children.length > 10) log.removeChild(log.lastChild);
+  }
 })();

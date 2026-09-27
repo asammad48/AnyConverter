@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>BMI Beregner Online Gratis | AnyConverter</title>
-  <meta name="description" content="Brug bmi beregner gratis i browseren. Fa eksempler, praktiske tips, relaterede vaerktojer og hurtige resultater.">
+  <meta name="description" content="Beregn voksen-BMI, vaegtkategori, sundt vaegtinterval og valgfrit talje-hojde-forhold i et privat browservaerktoj.">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://anyconverter.io/da/bmi-calculator/">
   <link rel="alternate" hreflang="en" href="https://anyconverter.io/bmi-calculator/">
@@ -14,7 +14,7 @@
 
 <meta property="og:type" content="website">
   <meta property="og:title" content="BMI Beregner Online Gratis | AnyConverter">
-  <meta property="og:description" content="Brug bmi beregner gratis i browseren. Fa eksempler, praktiske tips, relaterede vaerktojer og hurtige resultater.">
+  <meta property="og:description" content="Beregn voksen-BMI, vaegtkategori, sundt vaegtinterval og valgfrit talje-hojde-forhold i et privat browservaerktoj.">
   <meta property="og:url" content="https://anyconverter.io/da/bmi-calculator/">
   <meta property="og:site_name" content="AnyConverter">
   <meta property="og:image" content="https://anyconverter.io/assets/img/og-image.png">
@@ -23,7 +23,7 @@
   <meta property="og:image:alt" content="AnyConverter free online tools">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="BMI Beregner Online Gratis | AnyConverter">
-  <meta name="twitter:description" content="Brug bmi beregner gratis i browseren. Fa eksempler, praktiske tips, relaterede vaerktojer og hurtige resultater.">
+  <meta name="twitter:description" content="Beregn voksen-BMI, vaegtkategori, sundt vaegtinterval og valgfrit talje-hojde-forhold i et privat browservaerktoj.">
   <meta name="twitter:image" content="https://anyconverter.io/assets/img/og-image.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -54,14 +54,14 @@
     </nav>
     <section class="hero">
       <h1>BMI Beregner</h1>
-      <p class="hero-desc">Beregn dit Body Mass Index øjeblikkeligt med understøttelse af både metrisk (kg/cm) og britisk (lb/in) enhedssystem. Få din BMI-score, vægtkategori og sunde vægtinterval på få sekunder — ingen konto nødvendig.</p>
+      <p class="hero-desc">Beregn BMI med det samme og se kategori, sundt vægtinterval og en tydelig forklaring på resultatet. Beregningen sker i browseren, uden at sundhedsdata sendes videre.</p>
     </section>
     <div class="tool-wrapper">
       <div class="tool-zone">
         <div style="padding:24px">
-          <div style="display:flex;gap:8px;margin-bottom:16px">
-            <button class="btn btn-primary btn-sm" id="unit-metric" style="flex:1">Metrisk (kg/cm)</button>
-            <button class="btn btn-secondary btn-sm" id="unit-imperial" style="flex:1">Britisk (lb/in)</button>
+          <div class="ac-segmented">
+            <button class="btn btn-primary btn-sm" id="unit-metric">Metrisk (kg/cm)</button>
+            <button class="btn btn-secondary btn-sm" id="unit-imperial">Britisk (lb/in)</button>
           </div>
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px">
             <div>
@@ -73,21 +73,32 @@
               <input type="number" id="bmi-height" placeholder="175" min="1" style="width:100%;padding:10px 12px;border:1px solid var(--color-border,#DDD8D0);border-radius:8px;font-size:15px">
             </div>
           </div>
+          <div style="margin-bottom:16px">
+            <label style="display:block;font-size:13px;font-weight:500;margin-bottom:6px" for="bmi-waist">Taljemål (<span id="waist-unit">cm</span>, valgfrit)</label>
+            <input type="number" id="bmi-waist" placeholder="82" min="1" style="width:100%;padding:10px 12px;border:1px solid var(--color-border,#DDD8D0);border-radius:8px;font-size:15px">
+            <p style="margin:6px 0 0;font-size:12px;color:var(--color-text-2,#6B7280);line-height:1.4">Giver dit talje-højde-forhold. BMI for personer under 18 kræver percentilkurver.</p>
+          </div>
           <div class="action-bar" style="margin-bottom:20px">
             <button class="btn btn-primary" id="btn-calc-bmi">Beregn BMI</button>
             <button class="btn btn-secondary" id="btn-reset-bmi">Nulstil</button>
           </div>
           <div id="bmi-result" style="display:none">
-            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:16px">
-              <div class="stat-card"><div class="stat-val" id="bmi-value">—</div><div class="stat-lbl">BMI-score</div></div>
-              <div class="stat-card"><div class="stat-val" id="bmi-category" style="font-size:14px">—</div><div class="stat-lbl">Kategori</div></div>
-              <div class="stat-card"><div class="stat-val" id="bmi-healthy">—</div><div class="stat-lbl">Sundt interval</div></div>
-            </div>
-            <div style="height:8px;border-radius:4px;background:linear-gradient(to right,#3B82F6 0%,#22C55E 18.5%,#22C55E 25%,#F59E0B 30%,#EF4444 40%,#7C2D12 100%);margin-bottom:8px;position:relative">
-              <div id="bmi-marker" style="position:absolute;top:-4px;width:16px;height:16px;border-radius:50%;background:var(--color-text,#151515);border:2px solid var(--color-surface,#fff);transform:translateX(-50%);transition:left 0.3s;left:0%"></div>
-            </div>
-            <div style="display:flex;justify-content:space-between;font-size:11px;color:var(--color-text-2,#6B7280)">
-              <span>Undervægt</span><span>Normal</span><span>Overvægt</span><span>Fedme</span>
+            <div class="ac-result-panel" aria-live="polite">
+              <span class="ac-result-kicker">Dit BMI</span>
+              <div class="bmi-result-value">
+                <strong id="bmi-value">—</strong>
+                <span class="bmi-pill" id="bmi-category">—</span>
+              </div>
+              <div class="bmi-scale" aria-label="BMI-skala fra 15 til 40">
+                <div class="bmi-scale__bar" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+                <span class="bmi-scale__marker" id="bmi-marker" aria-hidden="true"></span>
+                <div class="bmi-scale__ticks"><span>15</span><span>18,5</span><span>25</span><span>30</span><span>40</span></div>
+              </div>
+              <span style="font-size:14px;font-weight:600" id="bmi-healthy">—</span>
+              <span style="font-size:14px;display:none" id="bmi-waist-note"></span>
+              <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center">
+                <button class="btn btn-secondary" id="btn-copy-bmi" type="button">Kopiér</button>
+              </div>
             </div>
           </div>
         </div>
@@ -109,38 +120,36 @@
       <div class="adsbygoogle" style="display:block" aria-hidden="true"></div>
 </div>
     <section class="how-to-use">
-      <h2>Sådan bruges BMI Beregneren</h2>
+      <h2>Sådan bruger du BMI Beregner</h2>
       <ol class="steps">
-        <li>Vælg dit enhedssystem: Metrisk (kg og cm) eller Britisk (lb og tommer).</li>
-        <li>Indtast din vægt og højde i de respektive felter.</li>
-        <li>Klik på "Beregn BMI" for øjeblikkeligt at se din BMI-score, vægtkategori og sunde vægtinterval.</li>
+        <li>Vælg metriske eller britiske enheder.</li>
+        <li>Indtast højde og vægt for at få BMI med det samme.</li>
+        <li>Brug kategorien og vægtintervallet som generel vejledning, ikke som diagnose.</li>
       </ol>
     </section>
     <section class="features">
-      <h2>Funktioner</h2>
+      <h2>Vigtige funktioner</h2>
       <ul class="features-list">
-        <li>Understøtter både metrisk (kg/cm) og britisk (lb/in) enheder</li>
-        <li>Øjeblikkelig BMI-score med én decimals præcision</li>
-        <li>Vægtkategori: Undervægt, Normal, Overvægt eller Fedme</li>
-        <li>Sundt vægtinterval vist for din højde</li>
-        <li>Visuel BMI-skala med markør, der viser din position</li>
-        <li>Ingen data sendes til en server — alle beregninger i browseren</li>
+        <li>Live BMI-beregning</li>
+        <li>Kategori med tydelig markering</li>
+        <li>Sundt vægtinterval for den indtastede højde</li>
+        <li>Valgfri talje-til-højde-vurdering</li>
+        <li>Dansk tekst med korrekte æ, ø og å i brugerrettet kopi</li>
       </ul>
     </section>
     <!-- SEO keyword implementation: 2026-08-21 -->
-    <section class="seo-content" data-seo-keyword-plan="2026-08-21">
-      <h2>Bmi beregner: praktisk brug</h2>
-      <p>Brug bmi beregner, nar du har brug for et hurtigt, klart og privat resultat uden at oprette en konto. Siden daekker ogsa relaterede behov som bmi beregner online, bmi beregner formel, bmi beregner eksempel, sa du kan vaelge den rigtige arbejdsgang.</p>
-      <h3>Hvornar det er nyttigt</h3>
+    <section class="seo-content" data-language-refresh="2026-09-27">
+      <h2>BMI Beregner til klare resultater</h2>
+      <p>Denne BMI calculator på dansk understøtter søgninger efter BMI beregner, beregn BMI og normal vægt. Teksten er praktisk, forsigtig og skrevet til brugere, der vil have et hurtigt overblik.</p>
+      <h3>Hvorfor det hjælper</h3>
       <ul>
-        <li><strong>Bedst til:</strong> Fa et hurtigt svar og samtidig se formler, antagelser og eksempler bag tallet.</li>
-        <li><strong>Nyttige detaljer:</strong> Indtast realistiske vaerdier, sammenlign scenarier og brug forklaringen til at forsta det endelige resultat.</li>
-        <li><strong>Naeste trin:</strong> Prov en relateret beregner, nar beslutningen ogsa kraever procent, priser, lan, skat, drikkepenge eller alder.</li>
+        <li><strong>Bedst til:</strong> Hurtig voksen-BMI, vægtkategori og generelt sundt vægtinterval.</li>
+        <li><strong>Privatliv:</strong> Siden holder privatlivsbeskeden tæt på selve værktøjet.</li>
+        <li><strong>Næste trin:</strong> Brug resultatet som generel vejledning og kontakt sundhedsfaglig hjælp ved medicinske spørgsmål.</li>
       </ul>
-      <p>Fortsæt eventuelt med <a href="/da/percentage-calculator/">Procentberegner</a>, <a href="/da/discount-calculator/">Rabatberegner</a>, <a href="/da/tip-calculator/">Drikkepenge Beregner</a>, <a href="/da/loan-calculator/">Lånberegner</a>.</p>
     </section>
 
-    <div class="ad-slot ad-slot--rectangle" style="margin:0 auto 32px">
+<div class="ad-slot ad-slot--rectangle" style="margin:0 auto 32px">
       <div class="adsbygoogle" style="display:block" aria-hidden="true"></div>
 </div>
     <section class="faq">

@@ -14,5 +14,13 @@
 # Local validation artifacts
 output/lighthouse/
 output/playwright/*.png
+output/playwright/gsc-tool-screenshots-*/
+output/playwright/qa-*/
+output/playwright/password-bmi-*/
+output/playwright/sticky-notes-*/
+output/playwright/tool-page-audit/
+output/playwright/tool-page-design-audit/
+output/playwright/four-pages.pdf
 test-results/
+/output/attached-tool-page-system/design_handoff_anyconverter_tools/screens
 /output

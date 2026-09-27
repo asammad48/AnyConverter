@@ -1,7 +1,11 @@
 (function () {
   'use strict';
+  function t(m) { return (window.acT ? window.acT(m) : m.en); }
 
   var pressed = {};
+  var tested = {};
+  var lastDown = {};
+  var maxRollover = 0;
 
   var ROWS = [
     [['Escape','Esc'],['F1'],['F2'],['F3'],['F4'],['F5'],['F6'],['F7'],['F8'],['F9'],['F10'],['F11'],['F12']],
@@ -81,11 +85,45 @@
     nav.appendChild(arrows);
 
     wrap.appendChild(nav);
+    // #keyboard-wrap is a horizontally scrolling flex row; the stats panel must
+    // sit below it, otherwise it is pushed off the side of the tool card.
+    var meta = document.createElement('div');
+    meta.className = 'ac-mini-panel kb-stats';
+    meta.innerHTML =
+      '<div class="ac-card-grid">' +
+      '<div><strong id="kb-tested-count">0 / 0</strong><span>' +
+        t({ en: 'Keys tested', es: 'Teclas probadas', da: 'Testede taster' }) + '</span></div>' +
+      '<div><strong id="kb-rollover">0</strong><span>' +
+        t({ en: 'Rollover max', es: 'Máximo simultáneo', da: 'Maks. samtidige' }) + '</span></div>' +
+      '<div><strong id="kb-chatter">0</strong><span>' +
+        t({ en: 'Chatter flags', es: 'Rebotes detectados', da: 'Registrerede præl' }) + '</span></div>' +
+      '</div><p class="prototype-muted-note" style="margin:10px 0 0">' +
+      t({
+        en: 'Tested keys stay highlighted. Chatter flags repeated keydown events within 30 ms.',
+        es: 'Las teclas probadas quedan resaltadas. Se marcan los eventos keydown repetidos en menos de 30 ms.',
+        da: 'Testede taster forbliver fremhævet. Gentagne keydown-hændelser inden for 30 ms markeres.'
+      }) + '</p>';
+    wrap.parentElement.insertBefore(meta, wrap.nextSibling);
+    updateStats();
   }
 
   function highlightKey(code, on) {
     var el = document.getElementById('key-' + code);
-    if (el) el.classList.toggle('kb-key--active', on);
+    if (el) {
+      el.classList.toggle('kb-key--active', on);
+      if (tested[code]) el.classList.add('kb-key--tested');
+    }
+  }
+
+  function updateStats() {
+    var total = document.querySelectorAll('.kb-key').length;
+    var count = Object.keys(tested).length;
+    var down = Object.keys(pressed).filter(function(k) { return pressed[k]; }).length;
+    maxRollover = Math.max(maxRollover, down);
+    var testedEl = document.getElementById('kb-tested-count');
+    var rolloverEl = document.getElementById('kb-rollover');
+    if (testedEl) testedEl.textContent = count + ' / ' + total;
+    if (rolloverEl) rolloverEl.textContent = maxRollover;
   }
 
   function logKey(code, key, type) {
@@ -105,10 +143,18 @@
 
     document.addEventListener('keydown', function (e) {
       e.preventDefault();
+      var now = performance.now();
+      if (lastDown[e.code] && now - lastDown[e.code] < 30) {
+        var chatter = document.getElementById('kb-chatter');
+        if (chatter) chatter.textContent = String((parseInt(chatter.textContent, 10) || 0) + 1);
+      }
+      lastDown[e.code] = now;
       pressed[e.code] = true;
+      tested[e.code] = true;
       highlightKey(e.code, true);
       logKey(e.code, e.key, 'down');
       document.getElementById('kb-last').textContent = e.key + ' (' + e.code + ')';
+      updateStats();
     });
 
     document.addEventListener('keyup', function (e) {
@@ -116,14 +162,22 @@
       pressed[e.code] = false;
       highlightKey(e.code, false);
       logKey(e.code, e.key, 'up');
+      updateStats();
     });
 
     document.getElementById('kb-clear').addEventListener('click', function () {
       Object.keys(pressed).forEach(function (c) { highlightKey(c, false); });
       pressed = {};
+      tested = {};
+      lastDown = {};
+      maxRollover = 0;
       var log = document.getElementById('kb-log');
       if (log) log.innerHTML = '';
       document.getElementById('kb-last').textContent = '—';
+      document.querySelectorAll('.kb-key').forEach(function(key) { key.classList.remove('kb-key--tested'); });
+      var chatter = document.getElementById('kb-chatter');
+      if (chatter) chatter.textContent = '0';
+      updateStats();
     });
   });
 })();

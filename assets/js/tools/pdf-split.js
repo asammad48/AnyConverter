@@ -111,6 +111,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const ss = document.getElementById('stat-split-size');
         if (sp) sp.textContent = totalPages;
         if (ss) ss.textContent = formatBytes(file.size);
+        renderSplitPagePicker();
       } catch(e) {
         window.showToast(messages.readError + e.message, 'error');
       }
@@ -131,6 +132,65 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     });
     return Array.from(pages).sort(function(a,b){return a-b;});
+  }
+
+  function ensureSplitPagePicker() {
+    if (document.getElementById('split-page-picker')) return;
+    if (!pageRangeSection) return;
+    const picker = document.createElement('div');
+    picker.id = 'split-page-picker';
+    picker.className = 'pdf-page-picker';
+    picker.innerHTML = '<div class="ac-chip-row" style="margin:8px 0 10px"><button class="ac-chip" type="button" data-split-quick="odd">Odd</button><button class="ac-chip" type="button" data-split-quick="even">Even</button><button class="ac-chip" type="button" data-split-quick="first-half">First half</button><button class="ac-chip" type="button" data-split-quick="clear">Clear</button></div><div id="split-page-grid" class="pdf-page-grid"></div><div id="split-selection-note" class="prototype-muted-note"></div>';
+    pageRangeSection.appendChild(picker);
+    picker.querySelectorAll('[data-split-quick]').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        const type = btn.dataset.splitQuick;
+        const vals = [];
+        if (type === 'odd') for (let i = 1; i <= totalPages; i += 2) vals.push(i);
+        if (type === 'even') for (let i = 2; i <= totalPages; i += 2) vals.push(i);
+        if (type === 'first-half') for (let i = 1; i <= Math.ceil(totalPages / 2); i++) vals.push(i);
+        const input = document.getElementById('page-range');
+        if (input) input.value = vals.join(', ');
+        updateSplitSelection();
+      });
+    });
+    const input = document.getElementById('page-range');
+    if (input) input.addEventListener('input', updateSplitSelection);
+  }
+
+  function renderSplitPagePicker() {
+    ensureSplitPagePicker();
+    const grid = document.getElementById('split-page-grid');
+    if (!grid) return;
+    grid.innerHTML = '';
+    for (let i = 1; i <= totalPages; i++) {
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'pdf-page-chip';
+      btn.dataset.page = i;
+      btn.textContent = i;
+      btn.addEventListener('click', function() {
+        const input = document.getElementById('page-range');
+        const selected = new Set(parsePageRanges(input.value, totalPages));
+        const p = parseInt(btn.dataset.page, 10);
+        selected.has(p) ? selected.delete(p) : selected.add(p);
+        input.value = Array.from(selected).sort(function(a,b){return a-b;}).join(', ');
+        updateSplitSelection();
+      });
+      grid.appendChild(btn);
+    }
+    updateSplitSelection();
+  }
+
+  function updateSplitSelection() {
+    const input = document.getElementById('page-range');
+    const selected = input ? parsePageRanges(input.value, totalPages) : [];
+    const note = document.getElementById('split-selection-note');
+    if (note) note.textContent = selected.length ? selected.length + ' page(s) selected for this split output.' : 'Select pages for the custom range output.';
+    document.querySelectorAll('#split-page-grid .pdf-page-chip').forEach(function(btn) {
+      btn.classList.toggle('active', selected.indexOf(parseInt(btn.dataset.page, 10)) >= 0);
+    });
+    if (selectedStat) selectedStat.textContent = selected.length;
   }
 
   document.querySelectorAll('#split-mode-tabs [data-mode]').forEach(function(tab) {

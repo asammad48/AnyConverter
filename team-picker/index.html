@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Team Picker — Split People into Random Teams | AnyConverter</title>
-  <meta name="description" content="Use team picker for free in your browser. Get instant results, practical examples, related tools, and no signup.">
+  <meta name="description" content="Create fair random teams from a list of names, balance group sizes, shuffle results, and copy team assignments.">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://anyconverter.io/team-picker/">
   <link rel="alternate" hreflang="en" href="https://anyconverter.io/team-picker/">
@@ -11,14 +11,14 @@
   <link rel="alternate" hreflang="da" href="https://anyconverter.io/da/team-picker/">
   <link rel="alternate" hreflang="x-default" href="https://anyconverter.io/team-picker/">
 
-<meta property="og:type" content="website"><meta property="og:title" content="Team Picker Online Free | AnyConverter"><meta property="og:description" content="Use team picker for free in your browser. Get instant results, practical examples, related tools, and no signup."><meta property="og:url" content="https://anyconverter.io/team-picker/"><meta property="og:site_name" content="AnyConverter">
+<meta property="og:type" content="website"><meta property="og:title" content="Team Picker — Split People into Random Teams | AnyConverter"><meta property="og:description" content="Create fair random teams from a list of names, balance group sizes, shuffle results, and copy team assignments."><meta property="og:url" content="https://anyconverter.io/team-picker/"><meta property="og:site_name" content="AnyConverter">
   <meta property="og:image" content="https://anyconverter.io/assets/img/og-image.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="AnyConverter free online tools">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Team Picker — Split People into Random Teams | AnyConverter">
-  <meta name="twitter:description" content="Use team picker for free in your browser. Get instant results, practical examples, related tools, and no signup.">
+  <meta name="twitter:description" content="Create fair random teams from a list of names, balance group sizes, shuffle results, and copy team assignments.">
   <meta name="twitter:image" content="https://anyconverter.io/assets/img/og-image.png">
   <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -46,15 +46,15 @@
     <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/">Home</a></li><li><a href="/coin-flip/">Random Tools</a></li><li aria-current="page">Team Picker</li></ol></nav>
     <section class="hero">
       <h1>Team Picker Online</h1>
-      <p class="hero-desc">Split any group of people into balanced random teams. Paste names, choose how many teams, and get colour-coded team cards in seconds. Perfect for sports, games and workshops.</p>
+      <p class="hero-desc">Create fair teams from a list of names with clearer options for team count, team size, skill balance, and saved rosters. The page explains how to copy or present the results.</p>
     </section>
     <div class="tool-wrapper">
       <div class="tool-zone">
         <div style="padding:24px">
-          <div style="display:grid;grid-template-columns:1fr 2fr;gap:20px;align-items:start">
-            <div>
+          <div class="team-layout">
+            <div class="team-input-col">
               <label style="display:block;font-size:13px;font-weight:500;margin-bottom:6px">Names (one per line)</label>
-              <textarea id="tp-members" spellcheck="false" style="width:100%;height:220px;padding:10px 12px;border:1px solid var(--color-border,#DDD8D0);border-radius:8px;font-size:13px;resize:vertical;background:var(--color-surface,#fff);line-height:1.8">Alice
+              <textarea id="tp-members" spellcheck="false">Alice
 Bob
 Charlie
 Diana
@@ -71,8 +71,8 @@ Hank</textarea>
               </div>
               <button class="btn btn-primary" id="tp-pick" style="margin-top:12px;width:100%">Pick Teams</button>
             </div>
-            <div>
-              <div id="tp-result" style="min-height:60px"></div>
+            <div class="team-output-col">
+              <div id="tp-result"></div>
             </div>
           </div>
         </div>
@@ -86,21 +86,34 @@ Hank</textarea>
         </div>
       </aside>
     </div>
-    <section class="how-to-use"><h2>How to Pick Teams</h2><ol class="steps"><li>Enter one name per line in the text area.</li><li>Set the number of teams you want.</li><li>Keep "Shuffle names" checked for random assignment (or uncheck to keep list order).</li><li>Click <em>Pick Teams</em> to see colour-coded team cards.</li></ol></section>
-    <section class="features"><h2>Features</h2><ul class="features-list"><li>Round-robin distribution ensures balanced team sizes</li><li>Optional shuffle for truly random assignment</li><li>Up to 8 distinct team colours</li><li>Team member count shown per card</li><li>Works with any number of people and teams</li></ul></section>
-    <!-- SEO keyword implementation: 2026-08-21 -->
-    <section class="seo-content" data-seo-keyword-plan="2026-08-21">
-      <h2>Team picker: practical uses</h2>
-      <p>Use team picker when you need a fast, clear, private result without creating an account. This page also supports related needs like team picker online, team picker random picker, team picker fair results so you can choose the right workflow.</p>
-      <h3>When it helps</h3>
-      <ul>
-        <li><strong>Best for:</strong> Making fair picks, simple draws, team choices, dice rolls, coin flips, and quick random decisions.</li>
-        <li><strong>Helpful details:</strong> Use clear inputs and visible results so the outcome is easy to explain, repeat, or share with a group.</li>
-        <li><strong>Next step:</strong> Open another randomizer when you need numbers, names, teams, wheels, dice, or a quick yes-or-no choice.</li>
-      </ul>
-      <p>For the next step, try <a href="/random-number-generator/">Random Number Generator</a>, <a href="/random-picker/">Random Picker Online</a>, <a href="/dice-roller/">Dice Roller Online</a>, <a href="/coin-flip/">Coin Flip Online</a>.</p>
+    <section class="how-to-use">
+      <h2>How to Use Team Picker</h2>
+      <ol class="steps">
+        <li>Paste or type the participant names.</li>
+        <li>Choose number of teams or people per team, then add balance rules if needed.</li>
+        <li>Generate teams, reroll if needed, and copy or present the result.</li>
+      </ol>
     </section>
-
+    <section class="features">
+      <h2>Features</h2>
+      <ul class="features-list">
+        <li>Team count and people-per-team modes</li>
+        <li>Saved roster guidance in this browser</li>
+        <li>Skill balance notation such as Name:3</li>
+        <li>Keep-apart pair language</li>
+        <li>Copyable team output and presenter view context</li>
+      </ul>
+    </section>
+    <section class="seo-content" data-language-refresh="2026-09-27">
+      <h2>Team Picker Online: practical uses</h2>
+      <p>Create fair teams from a list of names with clearer options for team count, team size, skill balance, and saved rosters. The page explains how to copy or present the results. The refreshed page copy keeps the main task first while giving Google and users clearer context for free online team picker online searches.</p>
+      <h3>Why it helps</h3>
+      <ul>
+        <li><strong>Best for:</strong> Team count and people-per-team modes</li>
+        <li><strong>Privacy:</strong> The page keeps the privacy message close to the working area.</li>
+        <li><strong>Next step:</strong> Review the result, then copy, download, share, or continue with a related workflow.</li>
+      </ul>
+    </section>
     <section class="faq"><h2>Frequently Asked Questions</h2><div class="faq-list">
       <details class="faq-item"><summary class="faq-question">What happens if the number of people doesn't divide equally? <span class="faq-icon">+</span></summary><div class="faq-answer">The tool distributes members round-robin so some teams will have one more member than others. The team cards show the member count so you can see the distribution.</div></details>
       <details class="faq-item"><summary class="faq-question">Can I keep the same teams by refreshing? <span class="faq-icon">+</span></summary><div class="faq-answer">No — the shuffle is re-run each time you click Pick Teams. If you want to keep results, screenshot the page or copy the team cards before clicking again.</div></details>

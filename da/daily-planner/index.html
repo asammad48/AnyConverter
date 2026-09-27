@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Daglig Planlægger Online Gratis | AnyConverter</title>
-  <meta name="description" content="Brug planner daily online gratis i browseren. Fa eksempler, praktiske tips, relaterede vaerktojer og hurtige resultater.">
+  <meta name="description" content="Planlaeg dagen med tidslinje, opgaver, varigheder, hurtige skabeloner og lokal lagring i browseren Med klare trin, praktiske resultater og ingen konto.">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://anyconverter.io/da/daily-planner/">
   <link rel="alternate" hreflang="en" href="https://anyconverter.io/daily-planner/">
@@ -11,14 +11,14 @@
   <link rel="alternate" hreflang="da" href="https://anyconverter.io/da/daily-planner/">
   <link rel="alternate" hreflang="x-default" href="https://anyconverter.io/daily-planner/">
 
-<meta property="og:type" content="website"><meta property="og:title" content="Daglig Planlægger Online Gratis | AnyConverter"><meta property="og:description" content="Brug planner daily online gratis i browseren. Fa eksempler, praktiske tips, relaterede vaerktojer og hurtige resultater."><meta property="og:url" content="https://anyconverter.io/da/daily-planner/"><meta property="og:site_name" content="AnyConverter">
+<meta property="og:type" content="website"><meta property="og:title" content="Daglig Planlægger Online Gratis | AnyConverter"><meta property="og:description" content="Planlaeg dagen med tidslinje, opgaver, varigheder, hurtige skabeloner og lokal lagring i browseren Med klare trin, praktiske resultater og ingen konto."><meta property="og:url" content="https://anyconverter.io/da/daily-planner/"><meta property="og:site_name" content="AnyConverter">
   <meta property="og:image" content="https://anyconverter.io/assets/img/og-image.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="AnyConverter free online tools">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Daglig Planlægger Online Gratis | AnyConverter">
-  <meta name="twitter:description" content="Brug planner daily online gratis i browseren. Fa eksempler, praktiske tips, relaterede vaerktojer og hurtige resultater.">
+  <meta name="twitter:description" content="Planlaeg dagen med tidslinje, opgaver, varigheder, hurtige skabeloner og lokal lagring i browseren Med klare trin, praktiske resultater og ingen konto.">
   <meta name="twitter:image" content="https://anyconverter.io/assets/img/og-image.png">
   <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -50,30 +50,53 @@
     </section>
     <div class="tool-wrapper">
       <div class="tool-zone">
-        <div style="padding:24px;max-width:640px">
-          <!-- Datovælger -->
-          <div style="display:flex;align-items:center;gap:10px;margin-bottom:20px;flex-wrap:wrap">
-            <label style="font-size:13px;font-weight:600">Dato:</label>
-            <input type="date" id="pl-date" style="padding:8px 12px;border:1px solid var(--color-border,#DDD8D0);border-radius:8px;font-size:14px">
+        <div class="planner-grid">
+          <div class="planner-controls">
+            <div class="ac-settings-row">
+              <label class="ac-field"><span>Dato</span>
+                <input type="date" id="pl-date">
+              </label>
+              <label class="ac-field"><span>Opgave</span>
+                <input type="text" id="pl-task" placeholder="f.eks. Skriv rapport">
+              </label>
+              <label class="ac-field planner-time-field"><span>Start</span>
+                <input type="time" id="pl-time" value="09:00">
+              </label>
+            </div>
+            <div class="planner-field-group">
+              <span class="planner-group-label">Varighed</span>
+              <div class="planner-chips" id="pl-dur-chips">
+                <button class="planner-chip" type="button" data-dur="15">15 m</button>
+                <button class="planner-chip is-active" type="button" data-dur="30">30 m</button>
+                <button class="planner-chip" type="button" data-dur="60">1 h</button>
+                <button class="planner-chip" type="button" data-dur="90">1.5 h</button>
+              </div>
+            </div>
+            <input type="number" id="pl-dur" min="1" max="480" value="30" hidden>
+            <button class="btn btn-primary planner-add-btn" id="pl-add">Tilføj til i dag</button>
+            <div class="planner-field-group">
+              <span class="planner-group-label">Start med</span>
+              <div class="planner-quick-row">
+                <button class="btn btn-secondary" id="pl-template-work" type="button">Arbejdsdag</button>
+                <button class="btn btn-secondary" id="pl-template-study" type="button">Studiedag</button>
+                <button class="btn btn-secondary" id="pl-clear" type="button">Ryd</button>
+              </div>
+            </div>
+            <div class="planner-alert" id="pl-conflict" style="display:none"></div>
+            <div class="ac-card-grid" id="pl-stats">
+              <div><strong id="pl-stat-planned">0 h 0 m</strong><span>Planlagt</span></div>
+              <div><strong id="pl-stat-left">0 h 0 m</strong><span>Mangler</span></div>
+              <div><strong id="pl-stat-free">0 h 0 m</strong><span>Fri i dag</span></div>
+            </div>
+            <div class="planner-actions planner-quick-row">
+              <button class="btn btn-secondary" id="pl-late" type="button">Jeg er forsinket · +15 m</button>
+              <button class="btn btn-secondary" id="pl-export" type="button">Hent .ics</button>
+              <button class="btn btn-secondary" id="pl-carry" type="button">Flyt uafsluttet til i morgen</button>
+            </div>
           </div>
-          <!-- Tilføj opgave -->
-          <div class="planner-add-row" style="margin-bottom:16px">
-            <div>
-              <label style="display:block;font-size:11px;font-weight:500;color:var(--color-text-2,#6B7280);margin-bottom:4px">Tidspunkt</label>
-              <input type="time" id="pl-time" value="09:00" style="width:100%;padding:9px 8px;border:1px solid var(--color-border,#DDD8D0);border-radius:8px;font-size:13px">
-            </div>
-            <div>
-              <label style="display:block;font-size:11px;font-weight:500;color:var(--color-text-2,#6B7280);margin-bottom:4px">Opgave</label>
-              <input type="text" id="pl-task" placeholder="Hvad skal du lave?" style="width:100%;padding:9px 12px;border:1px solid var(--color-border,#DDD8D0);border-radius:8px;font-size:13px">
-            </div>
-            <div>
-              <label style="display:block;font-size:11px;font-weight:500;color:var(--color-text-2,#6B7280);margin-bottom:4px">Varighed (min)</label>
-              <input type="number" id="pl-dur" min="0" max="480" placeholder="30" style="width:100%;padding:9px 8px;border:1px solid var(--color-border,#DDD8D0);border-radius:8px;font-size:13px;text-align:center">
-            </div>
-            <button class="btn btn-primary planner-add-btn" id="pl-add" style="align-self:flex-end">Tilføj</button>
+          <div class="planner-timeline" aria-label="Dagens tidslinje">
+            <div class="planner-timeline__inner" id="pl-timeline"></div>
           </div>
-          <!-- Opgaveliste -->
-          <ul id="pl-list" style="list-style:none;border:1px solid var(--color-border,#DDD8D0);border-radius:10px;overflow:hidden;background:var(--color-surface,#fff);min-height:80px;padding:0 14px"></ul>
         </div>
       </div>
       <aside class="tool-side" aria-label="Reklame">

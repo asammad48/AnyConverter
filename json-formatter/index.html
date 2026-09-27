@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -41,9 +41,12 @@
     "provider": { "@type": "Organization", "name": "AnyConverter", "url": "https://anyconverter.io" }
   }
   </script>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is a JSON formatter?","acceptedAnswer":{"@type":"Answer","text":"A JSON formatter parses raw or minified JSON and writes it back with readable indentation and line breaks."}},{"@type":"Question","name":"Can this tool validate JSON?","acceptedAnswer":{"@type":"Answer","text":"Yes. The page parses your input with JSON.parse and shows a syntax error message when the JSON is invalid."}},{"@type":"Question","name":"Can I convert JSON to CSV?","acceptedAnswer":{"@type":"Answer","text":"CSV conversion works when the JSON is an object or an array of objects. Other JSON shapes should stay in JSON or YAML output."}},{"@type":"Question","name":"What is JSON minification?","acceptedAnswer":{"@type":"Answer","text":"Minification removes unnecessary whitespace and line breaks from valid JSON while preserving the parsed data."}},{"@type":"Question","name":"What file types can I upload?","acceptedAnswer":{"@type":"Answer","text":"You can upload a .json file using the Upload button. The file is loaded into the input area for formatting or validation."}}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is a JSON formatter?","acceptedAnswer":{"@type":"Answer","text":"A JSON formatter parses raw or minified JSON and writes it back with readable indentation and line breaks."}},{"@type":"Question","name":"Can this tool validate JSON?","acceptedAnswer":{"@type":"Answer","text":"Yes. The page parses your input with JSON.parse and shows a syntax error message when the JSON is invalid."}},{"@type":"Question","name":"Can I convert JSON to CSV?","acceptedAnswer":{"@type":"Answer","text":"CSV conversion works when the JSON is an object or an array of objects. Other JSON shapes should stay in JSON or YAML output."}},{"@type":"Question","name":"What is JSON minification?","acceptedAnswer":{"@type":"Answer","text":"Minification removes unnecessary whitespace and line breaks from valid JSON while preserving the parsed data."}},{"@type":"Question","name":"What file types can I upload?","acceptedAnswer":{"@type":"Answer","text":"You can upload a .json file using the Upload button. The file is loaded into the input area for formatting or validation."}},{"@type":"Question","name":"How does JSON search work?","acceptedAnswer":{"@type":"Answer","text":"Search the key, value, or both, with plain text, regex, or a dot/bracket path like a.b[0].c. Matches are highlighted and you can jump between them with the Prev/Next buttons."}},{"@type":"Question","name":"Are bookmarks saved online?","acceptedAnswer":{"@type":"Answer","text":"No. Bookmarks are stored only in your browser's local storage, so they stay on this device and are never uploaded."}}]}</script>
 
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
 
   <style>
@@ -58,7 +61,7 @@
     @font-face{font-family:'Inter';font-display:swap}
   </style>
 
-  <link rel="stylesheet" href="/assets/css/style.css?v=20260902">
+  <link rel="stylesheet" href="/assets/css/style.css?v=20260928-json-fix">
 </head>
 <body>
 
@@ -210,6 +213,37 @@
           <div class="tog off" id="tog-wrap" role="switch" aria-checked="false" tabindex="0" aria-labelledby="lbl-wrap"></div>
         </div>
 
+        <div class="ss-divider">Search</div>
+        <div class="ss-option-row">
+          <span class="ss-opt-label">Find</span>
+          <input class="ss-opt-input" id="search-query" placeholder="Search keys or values…" autocomplete="off" style="flex:1;padding:6px 8px;border:1px solid var(--color-border,#DDD8D0);border-radius:6px;font-size:12px" aria-label="Search JSON">
+        </div>
+        <div class="ss-option-row">
+          <span class="ss-opt-label">Mode</span>
+          <select class="ss-opt-select" id="search-mode" style="flex:1">
+            <option value="both" selected>Key + Value</option>
+            <option value="key">Key only</option>
+            <option value="value">Value only</option>
+            <option value="regex">Regex</option>
+            <option value="path">Path (a.b[0].c)</option>
+          </select>
+        </div>
+        <div class="ss-option-row" style="justify-content:space-between">
+          <button class="ac-btn" id="search-prev" title="Previous match">‹ Prev</button>
+          <span style="font-size:11px;color:var(--color-text-2,#6B7280)" id="search-count" aria-live="polite">No search yet</span>
+          <button class="ac-btn" id="search-next" title="Next match">Next ›</button>
+        </div>
+
+        <div class="ss-divider">Bookmarks <span style="font-weight:400;text-transform:none;font-size:10px;color:var(--color-text-3,#9CA3AF)">(saved in this browser)</span></div>
+        <div class="ss-option-row">
+          <span class="ss-opt-label">Name</span>
+          <input class="ss-opt-input" id="bookmark-name" placeholder="e.g. API response" autocomplete="off" style="flex:1;padding:6px 8px;border:1px solid var(--color-border,#DDD8D0);border-radius:6px;font-size:12px" aria-label="Bookmark name">
+        </div>
+        <button class="ac-btn" id="btn-bookmark-save" style="width:100%;margin-bottom:6px;justify-content:center">+ Save current JSON</button>
+        <div id="bookmark-list" style="display:flex;flex-direction:column;gap:4px;max-height:160px;overflow:auto;margin-bottom:4px">
+          <p style="font-size:11px;color:var(--color-text-3,#9CA3AF);text-align:center;padding:8px 0;margin:0">No bookmarks yet</p>
+        </div>
+
         <div class="ss-divider">Stats</div>
         <div class="stats-grid">
           <div class="stat-card"><div class="stat-val" id="stat-keys">0</div><div class="stat-lbl">Keys</div></div>
@@ -241,6 +275,7 @@
         <li><strong>Paste your JSON</strong> — Copy your JSON and paste it into the input area. Output formats automatically as you type.</li>
         <li><strong>Explore the tree</strong> — Click ▾ toggles to collapse/expand any object or array node. Use Collapse All / Expand All to navigate large structures.</li>
         <li><strong>Copy or Download</strong> — Copy the formatted output to your clipboard or download it as a .json file.</li>
+        <li><strong>Search or bookmark</strong> — Use the sidebar to search keys, values, regex, or a path like <code>a.b[0].c</code>, or save the current JSON as a local bookmark for later.</li>
       </ol>
     </section>
 
@@ -255,6 +290,8 @@
         <li>Upload .json files directly</li>
         <li>Download formatted output as .json</li>
         <li>YAML export and CSV conversion for supported JSON shapes</li>
+        <li>Search by key, value, regex, or path with highlighted matches</li>
+        <li>Local bookmarks — save JSON snippets in your browser for later</li>
       </ul>
     </section>
     <!-- SEO keyword implementation: 2026-08-21 -->
@@ -299,6 +336,14 @@
         <details class="faq-item">
           <summary class="faq-question">What file types can I upload? <span class="faq-icon">+</span></summary>
           <div class="faq-answer">You can upload a .json file using the Upload button. The file is loaded into the input area for formatting or validation.</div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-question">How does JSON search work? <span class="faq-icon">+</span></summary>
+          <div class="faq-answer">Search the key, value, or both, with plain text, regex, or a dot/bracket path like a.b[0].c. Matches are highlighted and you can jump between them with the Prev/Next buttons.</div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-question">Are bookmarks saved online? <span class="faq-icon">+</span></summary>
+          <div class="faq-answer">No. Bookmarks are stored only in your browser's local storage, so they stay on this device and are never uploaded.</div>
         </details>
       </div>
     </section>

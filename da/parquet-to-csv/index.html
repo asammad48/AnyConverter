@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Parquet til CSV – Gratis Konverter Uden Upload | AnyConverter</title>
+  <meta name="description" content="Konvertér Parquet-filer til CSV direkte i browseren. Snappy og Gzip, præcise store tal og decimaler, klar til dansk Excel. Uden upload.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://anyconverter.io/da/parquet-to-csv/">
+  <link rel="alternate" hreflang="en" href="https://anyconverter.io/parquet-to-csv/">
+  <link rel="alternate" hreflang="es" href="https://anyconverter.io/es/parquet-to-csv/">
+  <link rel="alternate" hreflang="da" href="https://anyconverter.io/da/parquet-to-csv/">
+  <link rel="alternate" hreflang="x-default" href="https://anyconverter.io/parquet-to-csv/">
+
+<meta property="og:type" content="website">
+  <meta property="og:title" content="Parquet til CSV – Gratis Konverter Uden Upload | AnyConverter">
+  <meta property="og:description" content="Konvertér Parquet-filer til CSV direkte i browseren. Snappy og Gzip, præcise store tal og decimaler, klar til dansk Excel. Uden upload.">
+  <meta property="og:url" content="https://anyconverter.io/da/parquet-to-csv/">
+  <meta property="og:site_name" content="AnyConverter">
+  <meta property="og:image" content="https://anyconverter.io/assets/img/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="AnyConverter free online tools">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Parquet til CSV – Gratis Konverter Uden Upload | AnyConverter">
+  <meta name="twitter:description" content="Konvertér Parquet-filer til CSV direkte i browseren. Snappy og Gzip, præcise store tal og decimaler, klar til dansk Excel. Uden upload.">
+  <meta name="twitter:image" content="https://anyconverter.io/assets/img/og-image.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Parquet til CSV","url":"https://anyconverter.io/da/parquet-to-csv/","description":"Konvertér Apache Parquet-filer til CSV direkte i din browser, med præcise 64-bit heltal og decimaler, skemavisning og danske Excel-indstillinger. Ingen upload.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Bliver min Parquet-fil uploadet?","acceptedAnswer":{"@type":"Answer","text":"Nej. Filen læses direkte af din browser, og CSV-filen laves på din egen enhed."}},{"@type":"Question","name":"Hvorfor åbner min CSV som én kolonne i Excel?","acceptedAnswer":{"@type":"Answer","text":"Dansk Excel forventer semikolon som skilletegn. Den danske side bruger som standard semikolon, decimalkomma og en UTF-8 BOM."}},{"@type":"Question","name":"Hvad sker der med indlejrede liste- eller strukturkolonner?","acceptedAnswer":{"@type":"Answer","text":"Lister og strukturer skrives som JSON-tekst i CSV-cellen, så data bevares, selvom de ikke deles ud i separate kolonner."}},{"@type":"Question","name":"Bevares store tal og decimaler præcist?","acceptedAnswer":{"@type":"Answer","text":"64-bit heltal konverteres som præcise cifferstrenge og ikke via kommatal, så store ID'er ikke afrundes."}},{"@type":"Question","name":"Hvad er en Parquet-fil?","acceptedAnswer":{"@type":"Answer","text":"Parquet er et kolonnebaseret, komprimeret og typet filformat brugt af bl.a. Spark, Databricks, BigQuery, pandas og Polars."}}]}</script>
+
+
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F7F6F3);color:var(--color-text,#151515)}
+    body{min-height:100vh;display:flex;flex-direction:column}
+    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8D0)}
+    .header-inner{max-width:1280px;width:100%;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;gap:32px}
+    .hero{padding:28px 24px 20px;max-width:1280px;margin:0 auto}
+    .hero h1{font-size:clamp(1.5rem,3.5vw,2rem);font-weight:700;line-height:1.2;margin-bottom:8px}
+    .hero-desc{font-size:1rem;color:var(--color-text-2,#6B7280);max-width:680px;line-height:1.6}
+    @font-face{font-family:'Inter';font-display:swap}
+  </style>
+  <link rel="stylesheet" href="/assets/css/style.css?v=20260902">
+</head>
+<body>
+  <header id="site-header" class="site-header"></header>
+  <main id="main-content">
+    <nav class="breadcrumb" aria-label="Brødkrumme">
+      <ol><li><a href="/da/">Hjem</a></li><li aria-current="page">Parquet til CSV</li></ol>
+    </nav>
+    <section class="hero">
+      <h1>Konvertér Parquet til CSV</h1>
+      <p class="hero-desc">🔒 Kører i din browser — intet uploades. Træk en .parquet-fil ind for at se skema og forhåndsvisning, og download derefter en Excel-klar CSV med præcise store heltal og decimaler.</p>
+    </section>
+
+    <div class="tool-wrapper">
+      <div class="tool-zone">
+        <div style="padding:24px">
+
+          <div class="drop-zone" id="pq-dropzone" role="button" tabindex="0" aria-label="Træk en Parquet-fil herind eller klik for at uploade">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="40" height="40" aria-hidden="true" style="color:var(--color-text-2,#6B7280)"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5"/></svg>
+            <p style="margin-top:8px;font-weight:500">Træk en .parquet-fil herind, eller klik for at uploade</p>
+            <small style="color:var(--color-text-2,#6B7280)">Snappy, Gzip, Zstd og Brotli-komprimering understøttes</small>
+            <input type="file" id="pq-file" accept=".parquet" style="display:none" aria-label="Upload Parquet-fil">
+          </div>
+
+          <div class="status-bar error" id="pq-error" style="display:none;margin-top:12px" role="alert" aria-live="polite"></div>
+          <div class="status-bar info" id="pq-status-row" style="display:none;margin-top:12px"><span id="pq-status"></span></div>
+
+          <div id="pq-result" style="display:none;margin-top:16px" aria-live="polite">
+            <p id="pq-detected" style="font-weight:600;margin-bottom:10px"></p>
+
+            <div class="sub-tabs" role="tablist" style="margin-bottom:10px">
+              <button class="sub-tab active" role="tab" data-pq-tab="preview">Forhåndsvisning</button>
+              <button class="sub-tab" role="tab" data-pq-tab="schema">Skema</button>
+            </div>
+
+            <div id="pq-panel-preview">
+              <div style="overflow-x:auto">
+                <table style="width:100%;border-collapse:collapse;font-size:13px">
+                  <thead><tr id="pq-preview-head" style="text-align:left;color:var(--color-text-2)"></tr></thead>
+                  <tbody id="pq-preview-body"></tbody>
+                </table>
+              </div>
+            </div>
+
+            <div id="pq-panel-schema" style="display:none">
+              <div style="overflow-x:auto">
+                <table style="width:100%;border-collapse:collapse;font-size:13px">
+                  <thead><tr style="text-align:left;color:var(--color-text-2)"><th style="padding:6px 8px">Kolonne</th><th style="padding:6px 8px">Type</th></tr></thead>
+                  <tbody id="pq-schema-body"></tbody>
+                </table>
+              </div>
+            </div>
+
+            <div class="ac-action-bar" style="margin-top:16px">
+              <button class="btn btn-primary" id="pq-btn-download">Download CSV</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <aside class="tool-side" aria-label="Muligheder">
+        <div style="margin-top:0">
+          <p class="ad-label">Reklame</p>
+          <div class="ad-slot" style="min-height:250px">
+            <div class="adsbygoogle" style="display:block" aria-hidden="true"></div>
+</div>
+        </div>
+      </aside>
+    </div>
+
+    <div class="ad-slot ad-slot--leaderboard">
+      <div class="adsbygoogle" style="display:block" aria-hidden="true"></div>
+</div>
+
+    <section class="how-to-use">
+      <h2>Sådan Konverterer Du Parquet til CSV</h2>
+      <ol class="steps">
+        <li>Træk en .parquet-fil ind på siden, eller klik for at vælge en fra din computer.</li>
+        <li>Tjek Forhåndsvisning- og Skema-fanerne for at bekræfte, at kolonnerne og dataene ser rigtige ud.</li>
+        <li>Klik "Download CSV" for at gemme en Excel-klar CSV-fil — intet uploades på noget tidspunkt.</li>
+      </ol>
+    </section>
+
+    <section class="features">
+      <h2>Funktioner</h2>
+      <ul class="features-list">
+        <li>Læser Snappy-, Gzip-, Zstd- og Brotli-komprimerede Parquet-filer</li>
+        <li>64-bit heltal konverteres til præcise cifferstrenge og afrundes aldrig via kommatal</li>
+        <li>Skema-fanen viser hver kolonnes navn og type direkte fra filens egne metadata</li>
+        <li>Indlejrede liste- og strukturkolonner skrives som JSON-tekst i CSV'en, så ingen data går tabt</li>
+        <li>Den danske og spanske side bruger som standard semikolon-adskilt CSV med decimalkomma og en UTF-8 BOM til Excel</li>
+        <li>Kører helt lokalt — ingen tilmelding, ingen filer sendes til en server</li>
+      </ul>
+    </section>
+
+    <section class="seo-content">
+      <h2>Hvad en Parquet-fil er</h2>
+      <p>Apache Parquet er et kolonnebaseret, komprimeret og typet filformat brugt af Spark, Databricks, Snowflake-eksporter, AWS Athena/Glue, BigQuery-eksporter, pandas, Polars og DuckDB. Fordi data gemmes efter kolonne i stedet for række, komprimeres det godt og forespørges hurtigt — men det er ikke læsbart for mennesker, hvilket er hvorfor konvertering til CSV ofte er den hurtigste måde at åbne det i Excel eller en teksteditor.</p>
+      <h3>Hvorfor decimaler og store ID'er går i stykker i andre konvertere</h3>
+      <p>Parquet kan gemme 64-bit heltal, der er større end JavaScripts sikre heltalsområde, og DECIMAL-kolonner som skalerede heltal. En konverter, der læser disse gennem almindelige kommatal, ødelægger dem stille og roligt — et 19-cifret ID kan ende med at være ændret i de sidste cifre. Dette værktøj bevarer store heltal som præcise cifferstrenge i stedet for at sende dem gennem kommatal-matematik.</p>
+      <h3>Åbning af CSV'en i Excel</h3>
+      <p>Dansk Excel forventer en semikolon-adskilt CSV med komma som decimaltegn. Denne sides danske version bruger som standard semikolon/decimalkomma/BOM-kombinationen, der åbner korrekt uden en manuel importguide.</p>
+      <p>Til andre konverteringer af strukturerede data, prøv <a href="/da/csv-to-sql/">CSV til SQL</a>, <a href="/da/csv-query/">CSV Query</a> eller <a href="/da/json-formatter/">JSON Formatter</a>.</p>
+    </section>
+
+    <div class="ad-slot ad-slot--rectangle" style="margin:0 auto 32px">
+      <div class="adsbygoogle" style="display:block" aria-hidden="true"></div>
+</div>
+
+    <section class="faq">
+      <h2>Ofte Stillede Spørgsmål</h2>
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary class="faq-question">Bliver min Parquet-fil uploadet? <span class="faq-icon">+</span></summary>
+          <div class="faq-answer">Nej. Filen læses direkte af din browser, og CSV-filen laves på din egen enhed.</div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-question">Hvorfor åbner min CSV som én kolonne i Excel? <span class="faq-icon">+</span></summary>
+          <div class="faq-answer">Dansk Excel forventer semikolon som skilletegn. Den danske side bruger som standard semikolon, decimalkomma og en UTF-8 BOM.</div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-question">Hvad sker der med indlejrede liste- eller strukturkolonner? <span class="faq-icon">+</span></summary>
+          <div class="faq-answer">Lister og strukturer skrives som JSON-tekst i CSV-cellen, så data bevares, selvom de ikke deles ud i separate kolonner.</div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-question">Bevares store tal og decimaler præcist? <span class="faq-icon">+</span></summary>
+          <div class="faq-answer">64-bit heltal konverteres som præcise cifferstrenge og ikke via kommatal, så store ID'er ikke afrundes.</div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-question">Hvad er en Parquet-fil? <span class="faq-icon">+</span></summary>
+          <div class="faq-answer">Parquet er et kolonnebaseret, komprimeret og typet filformat brugt af bl.a. Spark, Databricks, BigQuery, pandas og Polars.</div>
+        </details>
+      </div>
+    </section>
+
+    <section class="related-tools">
+      <h2>Relaterede Værktøjer</h2>
+      <div class="tool-grid">
+        <a href="/da/csv-to-sql/" class="tool-card">
+          <img src="/assets/img/icon-csv.svg" alt="CSV til SQL icon" class="tool-card-icon" width="40" height="40" loading="lazy">
+          <h3>CSV til SQL</h3>
+          <p>Konvertér CSV-filer til SQL INSERT-sætninger.</p>
+          <span class="tool-card-link">Brug →</span>
+        </a>
+        <a href="/da/csv-query/" class="tool-card">
+          <img src="/assets/img/icon-csv-query.svg" alt="CSV Query icon" class="tool-card-icon" width="40" height="40" loading="lazy">
+          <h3>CSV Query</h3>
+          <p>Kør SQL-forespørgsler på CSV-filer i din browser.</p>
+          <span class="tool-card-link">Brug →</span>
+        </a>
+        <a href="/da/json-formatter/" class="tool-card">
+          <img src="/assets/img/icon-json.svg" alt="JSON Formatter icon" class="tool-card-icon" width="40" height="40" loading="lazy">
+          <h3>JSON Formatter</h3>
+          <p>Validér, formatér og udforsk JSON.</p>
+          <span class="tool-card-link">Brug →</span>
+        </a>
+        <a href="/da/camt053-to-csv/" class="tool-card">
+          <img src="/assets/img/icon-csv.svg" alt="CAMT.053 til CSV icon" class="tool-card-icon" width="40" height="40" loading="lazy">
+          <h3>CAMT.053 til CSV</h3>
+          <p>Konvertér ISO 20022-kontoudtog til CSV.</p>
+          <span class="tool-card-link">Brug →</span>
+        </a>
+      </div>
+    </section>
+  </main>
+  <footer id="site-footer" class="site-footer"></footer>
+  <script src="/assets/js/shared.js?v=20260902" defer></script>
+  <script src="/assets/js/tools/parquet-to-csv.js" defer></script>
+</body>
+</html>

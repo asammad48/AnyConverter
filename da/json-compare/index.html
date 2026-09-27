@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sammenlign JSON – Find Forskelle Gratis | AnyConverter</title>
+  <meta name="description" content="Sammenlign to JSON-filer side om side gratis. Ignorér nøglerækkefølge, match arrays på ID, spring tidsstempler over, og eksportér JSON Patch. Privat og gratis.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://anyconverter.io/da/json-compare/">
+  <link rel="alternate" hreflang="en" href="https://anyconverter.io/json-compare/">
+  <link rel="alternate" hreflang="es" href="https://anyconverter.io/es/json-compare/">
+  <link rel="alternate" hreflang="da" href="https://anyconverter.io/da/json-compare/">
+  <link rel="alternate" hreflang="x-default" href="https://anyconverter.io/json-compare/">
+
+<meta property="og:type" content="website">
+  <meta property="og:title" content="Sammenlign JSON – Find Forskelle Gratis | AnyConverter">
+  <meta property="og:description" content="Sammenlign to JSON-filer side om side gratis. Ignorér nøglerækkefølge, match arrays på ID, spring tidsstempler over, og eksportér JSON Patch. Privat og gratis.">
+  <meta property="og:url" content="https://anyconverter.io/da/json-compare/">
+  <meta property="og:site_name" content="AnyConverter">
+  <meta property="og:image" content="https://anyconverter.io/assets/img/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="AnyConverter free online tools">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Sammenlign JSON – Find Forskelle Gratis | AnyConverter">
+  <meta name="twitter:description" content="Sammenlign to JSON-filer side om side gratis. Ignorér nøglerækkefølge, match arrays på ID, spring tidsstempler over, og eksportér JSON Patch. Privat og gratis.">
+  <meta name="twitter:image" content="https://anyconverter.io/assets/img/og-image.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Sammenlign JSON","url":"https://anyconverter.io/da/json-compare/","description":"Sammenlign to JSON-dokumenter semantisk: ignorér nøglerækkefølge, match arrays på ID eller position, ignorér støjende stier, og eksportér en JSON Patch. Kører helt i din browser.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Betyder rækkefølgen af nøgler noget?","acceptedAnswer":{"@type":"Answer","text":"Nej. Objekter sammenlignes på nøgle, så {\"a\":1,\"b\":2} og {\"b\":2,\"a\":1} er ens."}},{"@type":"Question","name":"Hvordan sammenligner jeg arrays, hvor rækkefølgen er ændret?","acceptedAnswer":{"@type":"Answer","text":"Brug Smart eller Efter nøgle. Elementer matches på fx id, så en omsorteret liste kun viser reelle ændringer."}},{"@type":"Question","name":"Kan jeg ignorere felter som tidsstempler?","acceptedAnswer":{"@type":"Answer","text":"Ja. Tilføj stier som $..updatedAt under Ignorér stier."}},{"@type":"Question","name":"Bliver min JSON uploadet?","acceptedAnswer":{"@type":"Answer","text":"Nej. Begge filer sammenlignes i din browser, og intet sendes til en server."}},{"@type":"Question","name":"Hvad er JSON Patch?","acceptedAnswer":{"@type":"Answer","text":"En standard (RFC 6902) med en liste af operationer, der gør det første dokument til det andet. Du kan eksportere den og bruge den i din kode."}}]}</script>
+
+
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F7F6F3);color:var(--color-text,#151515)}
+    body{min-height:100vh;display:flex;flex-direction:column}
+    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8D0)}
+    .header-inner{max-width:1280px;width:100%;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;gap:32px}
+    .hero{padding:28px 24px 20px;max-width:1280px;margin:0 auto}
+    .hero h1{font-size:clamp(1.5rem,3.5vw,2rem);font-weight:700;line-height:1.2;margin-bottom:8px}
+    .hero-desc{font-size:1rem;color:var(--color-text-2,#6B7280);max-width:680px;line-height:1.6}
+    @font-face{font-family:'Inter';font-display:swap}
+  </style>
+  <link rel="stylesheet" href="/assets/css/style.css?v=20260902">
+</head>
+<body>
+  <header id="site-header" class="site-header"></header>
+  <main id="main-content">
+    <nav class="breadcrumb" aria-label="Brødkrumme">
+      <ol><li><a href="/da/">Hjem</a></li><li aria-current="page">Sammenlign JSON</li></ol>
+    </nav>
+    <section class="hero">
+      <h1>Sammenlign JSON: Find Forskellene Mellem To JSON-filer</h1>
+      <p class="hero-desc">Indsæt den oprindelige i A og den nye version i B. Nøglerækkefølge betyder aldrig noget, og arrays kan matches på et ID-felt i stedet for position, så en omsorteret liste ikke drukner dig i falske ændringer.</p>
+    </section>
+
+    <div class="tool-wrapper">
+      <div class="tool-zone">
+        <div class="split-panels">
+          <div class="ac-panel">
+            <div class="ac-panel-header">
+              <span class="ac-panel-label">Original (A)</span>
+              <div class="ac-panel-actions">
+                <label class="ac-btn" style="cursor:pointer">Upload<input type="file" id="jc-a-file" accept=".json,application/json" style="display:none"></label>
+              </div>
+            </div>
+            <textarea class="ac-input" id="jc-a" placeholder='{"a": 1, "b": 2}' spellcheck="false" autocomplete="off" aria-label="Original JSON (A)"></textarea>
+          </div>
+          <div class="ac-panel">
+            <div class="ac-panel-header">
+              <span class="ac-panel-label">Ændret (B)</span>
+              <div class="ac-panel-actions">
+                <label class="ac-btn" style="cursor:pointer">Upload<input type="file" id="jc-b-file" accept=".json,application/json" style="display:none"></label>
+              </div>
+            </div>
+            <textarea class="ac-input" id="jc-b" placeholder='{"b": 2, "a": 1, "c": 3}' spellcheck="false" autocomplete="off" aria-label="Ændret JSON (B)"></textarea>
+          </div>
+        </div>
+
+        <div class="ac-action-bar" style="margin-top:12px">
+          <button class="btn btn-primary" id="btn-compare-jc">Sammenlign</button>
+          <button class="ac-btn" id="btn-swap-jc">⇄ Byt om</button>
+          <button class="ac-btn" id="btn-reset-jc">Nulstil</button>
+        </div>
+
+        <div class="status-bar error" id="jc-error" style="display:none;margin-top:8px" role="alert" aria-live="polite"></div>
+
+        <div id="jc-result" style="display:none;margin-top:16px" aria-live="polite">
+          <div class="status-bar success" id="jc-identical" style="display:none"></div>
+          <div id="jc-summary-row" style="display:none">
+            <p id="jc-diff-count" style="font-weight:600;margin-bottom:8px"></p>
+            <div class="stats-grid">
+              <div class="stat-card"><div class="stat-val" id="jc-count-added">0</div><div class="stat-lbl">Tilføjet</div></div>
+              <div class="stat-card"><div class="stat-val" id="jc-count-removed">0</div><div class="stat-lbl">Fjernet</div></div>
+              <div class="stat-card"><div class="stat-val" id="jc-count-changed">0</div><div class="stat-lbl">Ændret</div></div>
+              <div class="stat-card"><div class="stat-val" id="jc-count-type-changed">0</div><div class="stat-lbl">Type ændret</div></div>
+              <div class="stat-card"><div class="stat-val" id="jc-count-moved">0</div><div class="stat-lbl">Flyttet</div></div>
+            </div>
+          </div>
+          <div id="jc-warnings" style="margin-top:8px"></div>
+
+          <div id="jc-full-result" style="margin-top:12px">
+            <div style="overflow-x:auto">
+              <table style="width:100%;border-collapse:collapse;font-size:13px">
+                <thead><tr style="text-align:left;color:var(--color-text-2)"><th style="padding:6px 8px">Type</th><th style="padding:6px 8px">Sti</th><th style="padding:6px 8px">A</th><th style="padding:6px 8px">B</th></tr></thead>
+                <tbody id="jc-changes-body"></tbody>
+              </table>
+            </div>
+          </div>
+
+          <div id="jc-keys-only-result" style="display:none;margin-top:12px" class="two-col-grid">
+            <div>
+              <h3 style="font-size:14px;margin-bottom:6px">Mangler i A (<span id="jc-missing-a-count">0</span>)</h3>
+              <ul id="jc-missing-a-list" style="padding-left:18px;font-size:13px"></ul>
+            </div>
+            <div>
+              <h3 style="font-size:14px;margin-bottom:6px">Mangler i B (<span id="jc-missing-b-count">0</span>)</h3>
+              <ul id="jc-missing-b-list" style="padding-left:18px;font-size:13px"></ul>
+            </div>
+          </div>
+
+          <div class="ac-action-bar" style="margin-top:16px">
+            <button class="ac-btn" id="jc-btn-export-patch">Eksportér JSON Patch</button>
+            <button class="ac-btn" id="jc-btn-export-md">Rapport .md</button>
+            <button class="ac-btn" id="jc-btn-export-csv">Rapport .csv</button>
+            <button class="ac-btn" id="jc-btn-copy-summary">Kopiér opsummering</button>
+            <span id="jc-copy-status" style="font-size:12px;color:var(--color-success)"></span>
+          </div>
+        </div>
+      </div>
+
+      <aside class="tool-side" aria-label="Muligheder">
+        <div class="ss-divider">Muligheder</div>
+        <div class="ss-option-row">
+          <span class="ss-opt-label">Match af arrays</span>
+          <select class="ss-opt-select" id="jc-array-mode">
+            <option value="smart" selected>Smart</option>
+            <option value="index">Efter position</option>
+            <option value="unordered">Ignorér rækkefølge</option>
+            <option value="key">Efter nøgle</option>
+          </select>
+        </div>
+        <div class="ss-option-row" id="jc-match-key-row">
+          <span class="ss-opt-label">Match-nøgle</span>
+          <input class="ss-opt-input" id="jc-match-key" placeholder="auto (id, uuid, key…)" style="flex:1;padding:6px 8px;border:1px solid var(--color-border,#DDD8D0);border-radius:6px;font-size:12px">
+        </div>
+
+        <div class="tog-row">
+          <span class="tog-label" id="lbl-jc-ignore-case">Ignorér store/små bogstaver</span>
+          <div class="tog off" id="jc-opt-ignore-case" role="switch" aria-checked="false" tabindex="0" aria-labelledby="lbl-jc-ignore-case"></div>
+        </div>
+        <div class="tog-row">
+          <span class="tog-label" id="lbl-jc-trim">Fjern mellemrum i tekst</span>
+          <div class="tog off" id="jc-opt-trim" role="switch" aria-checked="false" tabindex="0" aria-labelledby="lbl-jc-trim"></div>
+        </div>
+        <div class="tog-row">
+          <span class="tog-label" id="lbl-jc-null">Behandl null som manglende</span>
+          <div class="tog off" id="jc-opt-null-missing" role="switch" aria-checked="false" tabindex="0" aria-labelledby="lbl-jc-null"></div>
+        </div>
+        <div class="tog-row">
+          <span class="tog-label" id="lbl-jc-coerce">Behandl "1" og 1 som ens</span>
+          <div class="tog off" id="jc-opt-coercion" role="switch" aria-checked="false" tabindex="0" aria-labelledby="lbl-jc-coerce"></div>
+        </div>
+        <div class="tog-row">
+          <span class="tog-label" id="lbl-jc-keys">Sammenlign kun nøgler</span>
+          <div class="tog off" id="jc-opt-keys-only" role="switch" aria-checked="false" tabindex="0" aria-labelledby="lbl-jc-keys"></div>
+        </div>
+
+        <div class="ss-option-row">
+          <span class="ss-opt-label">Tolerance for tal</span>
+          <input class="ss-opt-input" id="jc-opt-tolerance" value="0" style="width:70px;padding:6px 8px;border:1px solid var(--color-border,#DDD8D0);border-radius:6px;font-size:12px">
+        </div>
+
+        <div class="ss-divider">Ignorér stier</div>
+        <textarea id="jc-ignore-paths" placeholder="$..updatedAt&#10;$.meta.*" style="width:100%;min-height:70px;padding:8px;border:1px solid var(--color-border,#DDD8D0);border-radius:8px;font-size:12px;font-family:var(--font-mono,monospace)"></textarea>
+
+        <div style="margin-top:16px">
+          <p class="ad-label">Reklame</p>
+          <div class="ad-slot" style="min-height:250px">
+            <div class="adsbygoogle" style="display:block" aria-hidden="true"></div>
+</div>
+        </div>
+      </aside>
+    </div>
+
+    <div class="ad-slot ad-slot--leaderboard">
+      <div class="adsbygoogle" style="display:block" aria-hidden="true"></div>
+</div>
+
+    <section class="how-to-use">
+      <h2>Sådan Sammenligner Du To JSON-filer</h2>
+      <ol class="steps">
+        <li>Indsæt eller upload den oprindelige JSON i A, og den nye version i B.</li>
+        <li>Vælg hvordan arrays skal matches — Smart (finder automatisk et ID-felt), Efter position, Ignorér rækkefølge eller Efter nøgle — og angiv stier, der skal ignoreres, fx tidsstempler.</li>
+        <li>Klik "Sammenlign" og gennemgå opsummeringen og ændringslisten, og eksportér en JSON Patch eller en rapport.</li>
+      </ol>
+    </section>
+
+    <section class="features">
+      <h2>Funktioner</h2>
+      <ul class="features-list">
+        <li>Semantisk sammenligning — nøglerækkefølge tæller aldrig som en forskel</li>
+        <li>Fire måder at matche arrays på, inkl. match på et automatisk fundet ID, så omsorterede lister ikke giver falske forskelle</li>
+        <li>Ignorér stier med wildcards (fx <code>$..updatedAt</code>) for at springe støjende felter som tidsstempler over</li>
+        <li>Tolerance for tal, ufølsom for store/små bogstaver og mellemrum, samt valgfri typetvang</li>
+        <li>"Sammenlign kun nøgler" til oversættelsesfiler — se præcis hvilke nøgler der mangler på hver side</li>
+        <li>Eksportér en standard JSON Patch (RFC 6902), selv-verificeret ved at genanvende den på A og bekræfte, at den er lig B</li>
+        <li>Eksportér en Markdown- eller CSV-rapport</li>
+        <li>Kører helt i din browser — ingen tilmelding, ingen data sendes nogen steder hen</li>
+      </ul>
+    </section>
+
+    <section class="seo-content">
+      <h2>Hvorfor rækkefølgen af arrays giver falske forskelle</h2>
+      <p>En tekstbaseret diff behandler JSON som tekst, så formatering, nøglerækkefølge og mellemrum bliver til støj. En semantisk diff sammenligner selve dataene i stedet: objekter er ikke-rækkefølgede, så nøglerækkefølge betyder aldrig noget, men arrays er sværere — mange arrays i virkeligheden er lister af poster med et ID (brugere, ordrer, rettigheder), og at sammenligne dem strengt efter position gør én indsat post til dusinvis af "ændrede" linjer. At matche array-elementer på nøgle (eller automatisk via Smart-tilstand) løser det.</p>
+      <h3>Sådan ignorerer du tidsstempler og anden støj</h3>
+      <p>Tilføj et mønster som <code>$..updatedAt</code> under "Ignorér stier" for at springe et felt over, uanset hvor det optræder, eller <code>$.meta.requestId</code> for kun én bestemt sti. Det er nyttigt ved API-regressionstest, hvor tidsstempler og request-ID'er ændrer sig ved hvert kald uden at være reelle forskelle.</p>
+      <h3>JSON Patch, forklaret</h3>
+      <p>JSON Patch (RFC 6902) er en standardliste af operationer — tilføj, fjern, erstat — der omdanner det første dokument til det andet. Eksportér den her, og brug den i din kode, hvor standarden allerede understøttes.</p>
+      <p>Til at formatere og validere et enkelt JSON-dokument, brug <a href="/da/json-formatter/">JSON Formatter</a>. Til andre konverteringer af strukturerede data, prøv <a href="/da/csv-to-sql/">CSV til SQL</a> eller <a href="/da/base64-encoder/">Base64 Encoder</a>.</p>
+    </section>
+
+    <div class="ad-slot ad-slot--rectangle" style="margin:0 auto 32px">
+      <div class="adsbygoogle" style="display:block" aria-hidden="true"></div>
+</div>
+
+    <section class="faq">
+      <h2>Ofte Stillede Spørgsmål</h2>
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary class="faq-question">Betyder rækkefølgen af nøgler noget? <span class="faq-icon">+</span></summary>
+          <div class="faq-answer">Nej. Objekter sammenlignes på nøgle, så <code>{"a":1,"b":2}</code> og <code>{"b":2,"a":1}</code> er ens.</div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-question">Hvordan sammenligner jeg arrays, hvor rækkefølgen er ændret? <span class="faq-icon">+</span></summary>
+          <div class="faq-answer">Brug "Smart" eller "Efter nøgle". Elementer matches på fx <code>id</code>, så en omsorteret liste kun viser reelle ændringer.</div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-question">Kan jeg ignorere felter som tidsstempler? <span class="faq-icon">+</span></summary>
+          <div class="faq-answer">Ja. Tilføj stier som <code>$..updatedAt</code> under "Ignorér stier".</div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-question">Bliver min JSON uploadet? <span class="faq-icon">+</span></summary>
+          <div class="faq-answer">Nej. Begge filer sammenlignes i din browser, og intet sendes til en server.</div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-question">Hvad er JSON Patch? <span class="faq-icon">+</span></summary>
+          <div class="faq-answer">En standard (RFC 6902) med en liste af operationer, der gør det første dokument til det andet. Du kan eksportere den og bruge den i din kode.</div>
+        </details>
+      </div>
+    </section>
+
+    <section class="related-tools">
+      <h2>Relaterede Værktøjer</h2>
+      <div class="tool-grid">
+        <a href="/da/json-formatter/" class="tool-card">
+          <img src="/assets/img/icon-json.svg" alt="JSON Formatter icon" class="tool-card-icon" width="40" height="40" loading="lazy">
+          <h3>JSON Formatter</h3>
+          <p>Validér, formatér, minificér og udforsk JSON.</p>
+          <span class="tool-card-link">Brug →</span>
+        </a>
+        <a href="/da/csv-to-sql/" class="tool-card">
+          <img src="/assets/img/icon-csv.svg" alt="CSV til SQL icon" class="tool-card-icon" width="40" height="40" loading="lazy">
+          <h3>CSV til SQL</h3>
+          <p>Konvertér CSV-filer til SQL INSERT-sætninger.</p>
+          <span class="tool-card-link">Brug →</span>
+        </a>
+        <a href="/da/base64-encoder/" class="tool-card">
+          <img src="/assets/img/icon-base64.svg" alt="Base64 Encoder icon" class="tool-card-icon" width="40" height="40" loading="lazy">
+          <h3>Base64 Encoder</h3>
+          <p>Kod og afkod Base64-tekst og -filer.</p>
+          <span class="tool-card-link">Brug →</span>
+        </a>
+        <a href="/da/json-to-yaml/" class="tool-card">
+          <img src="/assets/img/icon-csv.svg" alt="JSON til YAML icon" class="tool-card-icon" width="40" height="40" loading="lazy">
+          <h3>JSON ↔ YAML</h3>
+          <p>Konvertér mellem JSON- og YAML-formater.</p>
+          <span class="tool-card-link">Brug →</span>
+        </a>
+      </div>
+    </section>
+  </main>
+  <footer id="site-footer" class="site-footer"></footer>
+  <script src="/assets/js/shared.js?v=20260902" defer></script>
+  <script src="/assets/js/tools/json-compare.js" defer></script>
+</body>
+</html>

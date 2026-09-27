@@ -1,4 +1,5 @@
 (function() {
+  function t(m) { return (window.acT ? window.acT(m) : m.en); }
 
   /* ── API adapters ─────────────────────────────────────────────
      Each adapter normalises the response into a common shape.
@@ -109,28 +110,82 @@
 
   /* ── Render results ────────────────────────────────────────── */
   function renderResult(d) {
-    var fields = [
-      { label: 'IP Address',  val: d.ip },
-      { label: 'City',        val: d.city },
-      { label: 'Region',      val: d.region },
-      { label: 'Country',     val: d.country },
-      { label: 'Postal Code', val: d.postal },
-      { label: 'Latitude',    val: d.latitude },
-      { label: 'Longitude',   val: d.longitude },
-      { label: 'Timezone',    val: d.timezone },
-      { label: 'UTC Offset',  val: d.utc },
-      { label: 'ISP / Org',   val: d.org },
-      { label: 'ASN',         val: d.asn },
-      { label: 'Currency',    val: d.currency },
-      { label: 'Languages',   val: d.languages }
+    var L = {
+      ip:        t({ en: 'IP Address', es: 'Dirección IP', da: 'IP-adresse' }),
+      city:      t({ en: 'City', es: 'Ciudad', da: 'By' }),
+      region:    t({ en: 'Región', es: 'Región', da: 'Región' }),
+      country:   t({ en: 'Country', es: 'País', da: 'Land' }),
+      postal:    t({ en: 'Postal Code', es: 'Código postal', da: 'Postnummer' }),
+      lat:       t({ en: 'Latitude', es: 'Latitud', da: 'Breddegrad' }),
+      lon:       t({ en: 'Longitude', es: 'Longitud', da: 'Længdegrad' }),
+      tz:        t({ en: 'Timezone', es: 'Zona horaria', da: 'Tidszone' }),
+      utc:       t({ en: 'UTC Offset', es: 'Desfase UTC', da: 'UTC-forskydning' }),
+      org:       t({ en: 'ISP / Org', es: 'ISP / Organización', da: 'ISP / Organisation' }),
+      asn:       t({ en: 'ASN', es: 'ASN', da: 'ASN' }),
+      cur:       t({ en: 'Currency', es: 'Moneda', da: 'Valuta' }),
+      lang:      t({ en: 'Languages', es: 'Idiomas', da: 'Sprog' })
+    };
+    var all = [
+      { label: L.ip,      val: d.ip },
+      { label: L.city,    val: d.city },
+      { label: L.region,  val: d.region },
+      { label: L.country, val: d.country },
+      { label: L.postal,  val: d.postal },
+      { label: L.lat,     val: d.latitude },
+      { label: L.lon,     val: d.longitude },
+      { label: L.tz,      val: d.timezone },
+      { label: L.utc,     val: d.utc },
+      { label: L.org,     val: d.org },
+      { label: L.asn,     val: d.asn },
+      { label: L.cur,     val: d.currency },
+      { label: L.lang,    val: d.languages }
     ];
+    // The design forbids placeholder rows: drop anything the API did not return.
+    var fields = all.filter(function(f) {
+      var v = f.val == null ? '' : String(f.val).trim();
+      return v !== '' && v !== '—' && v !== '-';
+    });
     var results = document.getElementById('ip-results');
-    results.innerHTML = fields.map(function(f) {
-      return '<div style="display:flex;gap:12px;padding:10px 0;border-bottom:1px solid var(--color-border,#DDD8D0)">' +
-        '<span style="font-size:13px;color:var(--color-text-3,#7C7169);min-width:130px;flex-shrink:0">' + f.label + '</span>' +
-        '<span style="font-size:14px;font-weight:500">' + f.val + '</span></div>';
-    }).join('');
+    results.innerHTML = '<dl class="ip-result-list">' + fields.map(function(f) {
+      return '<div class="ip-result-row"><dt>' + f.label + '</dt><dd>' + f.val + '</dd></div>';
+    }).join('') + '</dl>' +
+      '<div class="ac-chip-row ip-result-actions">' +
+      '<button class="ac-chip" type="button" id="ip-copy-report">' + t({ en: 'Copy report', es: 'Copiar informe', da: 'Kopier rapport' }) + '</button>' +
+      '<a class="ac-chip" id="ip-map-link" target="_blank" rel="noopener">' + t({ en: 'Open map', es: 'Abrir mapa', da: 'Åbn kort' }) + '</a></div>' +
+      '<p class="prototype-muted-note">' + t({
+        en: 'Location is approximate and based on public IP routing, not exact device GPS.',
+        es: 'La ubicación es aproximada y se basa en el enrutamiento IP público, no en el GPS del dispositivo.',
+        da: 'Placeringen er omtrentlig og bygger på offentlig IP-routing, ikke enhedens GPS.'
+      }) + '</p>';
     results.style.display = 'block';
+    var copy = document.getElementById('ip-copy-report');
+    if (copy) copy.addEventListener('click', function() {
+      var report = fields.map(function(f) { return f.label + ': ' + f.val; }).join('\n');
+      if (window.copyToClipboard) window.copyToClipboard(report);
+      else navigator.clipboard.writeText(report).catch(function(){});
+    });
+    var map = document.getElementById('ip-map-link');
+    if (map) {
+      var lat = parseFloat(d.latitude), lng = parseFloat(d.longitude);
+      if (isFinite(lat) && isFinite(lng)) map.href = 'https://www.openstreetmap.org/?mlat=' + lat + '&mlon=' + lng + '#map=10/' + lat + '/' + lng;
+      else map.style.display = 'none';
+    }
+    updateLookupQuality(d);
+  }
+
+  function updateLookupQuality(d) {
+    var side = document.querySelector('.tool-side');
+    if (!side) return;
+    var panel = document.getElementById('ip-quality');
+    if (!panel) {
+      panel = document.createElement('div');
+      panel.id = 'ip-quality';
+      panel.className = 'ac-mini-panel';
+      panel.style.marginTop = '12px';
+      side.appendChild(panel);
+    }
+    var geo = d.latitude !== '—' && d.longitude !== '—';
+    panel.innerHTML = '<strong>Lookup quality</strong><div class="ac-quality-row"><span>IP detected</span><span class="ac-status-pill">' + d.ip + '</span></div><div class="ac-quality-row"><span>Approx. location</span><span class="ac-status-pill ' + (geo ? '' : 'is-warn') + '">' + (geo ? 'Available' : 'Limited') + '</span></div><p class="prototype-muted-note">Uses fallback public IP lookup services. VPNs, mobile networks, and corporate gateways can change the shown city or region.</p>';
   }
 
   /* ── Main lookup function ──────────────────────────────────── */
@@ -142,6 +197,8 @@
     error.style.display   = 'none';
     btn.disabled    = true;
     btn.textContent = 'Looking up…';
+    var q = document.getElementById('ip-quality');
+    if (q) q.innerHTML = '<strong>Lookup quality</strong><p class="prototype-muted-note">Trying public IP lookup services…</p>';
 
     lookupWithFallback(ip || '')
       .then(function(data) { renderResult(data); })

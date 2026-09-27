@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>GST Calculator Online Free | AnyConverter</title>
-  <meta name="description" content="Use a GST calculator online for goods and services tax, VAT, tax-inclusive prices, and pre-tax amounts. Free browser calculator.">
+  <meta name="description" content="Add or remove GST and VAT from prices, compare tax rates, and see subtotal, tax, and total instantly Includes clear steps, practical results, and no signup.">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://anyconverter.io/gst-vat-calculator/">
   <link rel="alternate" hreflang="en" href="https://anyconverter.io/gst-vat-calculator/">
@@ -14,7 +14,7 @@
 
 <meta property="og:type" content="website">
   <meta property="og:title" content="GST Calculator Online Free | AnyConverter">
-  <meta property="og:description" content="Use a GST calculator online for goods and services tax, VAT, tax-inclusive prices, and pre-tax amounts. Free browser calculator.">
+  <meta property="og:description" content="Add or remove GST and VAT from prices, compare tax rates, and see subtotal, tax, and total instantly Includes clear steps, practical results, and no signup.">
   <meta property="og:url" content="https://anyconverter.io/gst-vat-calculator/">
   <meta property="og:site_name" content="AnyConverter">
   <meta property="og:image" content="https://anyconverter.io/assets/img/og-image.png">
@@ -23,7 +23,7 @@
   <meta property="og:image:alt" content="AnyConverter free online tools">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="GST Calculator Online Free | AnyConverter">
-  <meta name="twitter:description" content="Use a GST calculator online for goods and services tax, VAT, tax-inclusive prices, and pre-tax amounts. Free browser calculator.">
+  <meta name="twitter:description" content="Add or remove GST and VAT from prices, compare tax rates, and see subtotal, tax, and total instantly Includes clear steps, practical results, and no signup.">
   <meta name="twitter:image" content="https://anyconverter.io/assets/img/og-image.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -54,7 +54,7 @@
     </nav>
     <section class="hero">
       <h1>GST / VAT Calculator</h1>
-      <p class="hero-desc">Add or remove GST and VAT from any amount instantly. Choose from tax rate presets for Australia, India, UK, EU, and Nordic countries, or enter a custom rate. No signup needed.</p>
+      <p class="hero-desc">Add or remove GST/VAT from a price and see net, tax, and gross values clearly. The page explains common country presets, India CGST/SGST splits, and invoice-style tax comparisons.</p>
     </section>
     <div class="tool-wrapper">
       <div class="tool-zone">
@@ -93,11 +93,15 @@
             <button class="btn btn-primary" id="btn-calc-gst">Calculate Tax</button>
             <button class="btn btn-secondary" id="btn-reset-gst">Reset</button>
           </div>
-          <div id="gst-result" style="display:none">
-            <div class="three-col-grid">
-              <div class="stat-card"><div class="stat-val" id="gst-base">—</div><div class="stat-lbl">Base Amount</div></div>
-              <div class="stat-card"><div class="stat-val" id="gst-tax-amt">—</div><div class="stat-lbl">Tax Amount</div></div>
-              <div class="stat-card"><div class="stat-val" id="gst-total">—</div><div class="stat-lbl">Total (incl. tax)</div></div>
+          <div id="gst-result" class="gst-result" style="display:none">
+            <div class="gst-result-kicker">Result</div>
+            <div class="gst-result-total">
+              <span class="gst-amount" id="gst-total">0.00</span>
+              <span class="gst-caption" id="gst-total-caption">Total (incl. tax)</span>
+            </div>
+            <div class="gst-breakdown">
+              <div><strong id="gst-base">0.00</strong><span>Base amount</span></div>
+              <div><strong id="gst-tax-amt">0.00</strong><span>Tax amount</span></div>
             </div>
           </div>
         </div>
@@ -117,42 +121,34 @@
     <section class="how-to-use">
       <h2>How to Use GST / VAT Calculator</h2>
       <ol class="steps">
-        <li>Enter your amount and select or type a tax rate. Use a preset (like 10% for Australia GST or 20% for UK VAT) or enter any custom rate.</li>
-        <li>Choose whether your amount already includes tax ("Including tax") or is the pre-tax base ("Excluding tax").</li>
-        <li>Click "Calculate Tax" to see the base amount, tax amount, and total including tax.</li>
+        <li>Choose whether you are adding tax to a net price or removing tax from a gross price.</li>
+        <li>Select a preset rate or enter a custom tax percentage.</li>
+        <li>Review net amount, tax amount, gross amount, and any available split lines.</li>
       </ol>
     </section>
     <section class="features">
       <h2>Features</h2>
       <ul class="features-list">
-        <li>Add tax to a base amount or extract tax from a tax-inclusive price</li>
-        <li>Eight preset tax rates covering Australia, India, UK, EU, NZ, Canada, and Nordic countries</li>
-        <li>Custom tax rate input for any percentage</li>
-        <li>Shows base amount, tax amount, and total simultaneously</li>
-        <li>Supports any currency — just change the amount</li>
-        <li>Instant results with no page reload required</li>
+        <li>Add tax and remove tax modes</li>
+        <li>Country preset rate guidance</li>
+        <li>India CGST and SGST split context</li>
+        <li>Formula language for invoices and receipts</li>
+        <li>Copy-friendly tax breakdown</li>
       </ul>
     </section>
     <!-- SEO keyword implementation: 2026-08-21 -->
-    <section class="seo-content" data-seo-keyword-plan="2026-08-21">
-      <h2>Goods and services tax calculator</h2>
-      <p>Use this goods and services tax calculator to add GST to a net amount or remove GST from a tax-inclusive total. It also works as a VAT calculator when your region uses value added tax instead of GST.</p>
-      <h3>GST formulas</h3>
+    <section class="seo-content" data-language-refresh="2026-09-27">
+      <h2>GST / VAT Calculator: practical uses</h2>
+      <p>This GST/VAT calculator supports GST calculator, VAT calculator, add tax, remove tax, net price, gross price, and CGST SGST searches with direct examples and clear formulas.</p>
+      <h3>Why it helps</h3>
       <ul>
-        <li><strong>Add GST:</strong> total = base amount x (1 + GST rate / 100).</li>
-        <li><strong>Remove GST:</strong> base amount = total / (1 + GST rate / 100).</li>
-        <li><strong>GST amount:</strong> total minus base amount.</li>
+        <li><strong>Best for:</strong> Checking invoices, receipts, product prices, and tax-inclusive totals.</li>
+        <li><strong>Privacy:</strong> The page keeps the privacy message close to the working area.</li>
+        <li><strong>Next step:</strong> Use the discount calculator first if the price changes before tax is applied.</li>
       </ul>
-      <h3>When it helps</h3>
-      <ul>
-        <li><strong>Best for:</strong> Getting a quick answer while still seeing the formula, assumptions, and examples behind the number.</li>
-        <li><strong>Helpful details:</strong> Enter realistic values, compare scenarios, and use the explanation to understand what changed the final result.</li>
-        <li><strong>Next step:</strong> Try a related calculator when the same decision needs percentages, prices, loans, tax, tips, age, or health estimates.</li>
-      </ul>
-      <p>For the next step, try <a href="/percentage-calculator/">Percentage Calculator</a>, <a href="/discount-calculator/">Discount Calculator</a>, <a href="/tip-calculator/">Tip Calculator</a>, <a href="/bmi-calculator/">BMI Calculator</a>.</p>
     </section>
 
-    <div class="ad-slot ad-slot--rectangle" style="margin:0 auto 32px">
+<div class="ad-slot ad-slot--rectangle" style="margin:0 auto 32px">
       <div class="adsbygoogle" style="display:block" aria-hidden="true"></div>
 </div>
     <section class="faq">

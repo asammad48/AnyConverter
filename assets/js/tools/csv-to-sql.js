@@ -1,5 +1,6 @@
 /* CSV to SQL Converter — with chunked processing and progress log */
 document.addEventListener('DOMContentLoaded', function () {
+  function t(m) { return (window.acT ? window.acT(m) : m.en); }
 
   /* ===== SUB-TABS ===== */
   document.querySelectorAll('.sub-tab').forEach(function(tab) {
@@ -9,6 +10,8 @@ document.addEventListener('DOMContentLoaded', function () {
       const target = tab.dataset.tab;
       document.getElementById('tab-paste').style.display = target === 'paste' ? '' : 'none';
       document.getElementById('tab-upload').style.display = target === 'upload' ? '' : 'none';
+      const sampleTab = document.getElementById('tab-sample');
+      if (sampleTab) sampleTab.style.display = target === 'sample' ? '' : 'none';
     });
   });
 
@@ -35,6 +38,9 @@ document.addEventListener('DOMContentLoaded', function () {
   const statCols    = document.getElementById('stat-cols');
   const statSize    = document.getElementById('stat-size');
   const statStmts   = document.getElementById('stat-stmts');
+  const queryCsvBtn = document.getElementById('btn-query-csv');
+  const SALES_SAMPLE = 'order_id,region,product,qty,amount,order_date\n1001,North,Desk lamp,2,59.90,2026-08-01\n1002,South,Office chair,1,249.00,2026-08-01\n1003,East,Desk lamp,4,119.80,2026-08-02\n1004,North,Monitor arm,1,89.50,2026-08-03\n1005,West,Office chair,2,498.00,2026-08-03\n1006,South,Cable tray,6,71.40,2026-08-04\n1007,East,Monitor arm,2,179.00,2026-08-05\n1008,North,Office chair,1,249.00,2026-08-06\n1009,West,Desk lamp,3,89.85,2026-08-06\n1010,South,Monitor arm,1,89.50,2026-08-07\n1011,North,Cable tray,10,119.00,2026-08-08\n1012,East,Office chair,1,249.00,2026-08-09';
+  const USERS_SAMPLE = 'id,name,email,signup,active\n1,Ana Silva,ana@example.com,2026-01-04,true\n2,Jonas Berg,jonas@example.com,2026-01-19,true\n3,Mei Chen,,2026-02-02,false\n4,Oskar Lund,oskar@example.com,n/a,true\n5,Priya Nair,priya@example.com,2026-03-11,true';
 
   /* ===== LOG ===== */
   function logMsg(text, type) {
@@ -57,14 +63,24 @@ document.addEventListener('DOMContentLoaded', function () {
     return el ? el.value : fallback;
   }
 
+  var pendingAutoGenerate = false;
   function setGenerateDisabled(disabled) {
     genBtns.forEach(function(btn) { btn.disabled = disabled; });
+    if (queryCsvBtn) queryCsvBtn.disabled = disabled;
+    if (!disabled && pendingAutoGenerate) {
+      pendingAutoGenerate = false;
+      var gen = document.getElementById('btn-generate-sql');
+      if (gen) setTimeout(function() { gen.click(); }, 0);
+    }
   }
 
   function setGenerateBusy(btn, busy) {
     genBtns.forEach(function(b) {
+      if (!b.dataset.label) b.dataset.label = b.textContent.trim();
       b.disabled = busy;
-      b.innerHTML = busy ? '<span class="spinner"></span> Generating…' : 'Generate SQL';
+      b.innerHTML = busy
+        ? '<span class="spinner"></span> ' + t({ en: 'Generating…', es: 'Generando…', da: 'Genererer…' })
+        : b.dataset.label;
     });
     if (btn) btn.disabled = busy;
   }
@@ -72,6 +88,23 @@ document.addEventListener('DOMContentLoaded', function () {
   function showSqlOptions() {
     const section = document.getElementById('sql-options-section');
     if (section) section.style.display = '';
+  }
+
+  function setPasteText(text, name, tableName) {
+    const input = document.getElementById('csv-input');
+    if (input) input.value = text;
+    const table = document.getElementById('table-name');
+    if (table && tableName) table.value = tableName;
+    document.querySelectorAll('.sub-tab').forEach(function(t) {
+      t.classList.toggle('active', t.dataset.tab === 'paste');
+    });
+    document.getElementById('tab-paste').style.display = '';
+    document.getElementById('tab-upload').style.display = 'none';
+    const sample = document.getElementById('tab-sample');
+    if (sample) sample.style.display = 'none';
+    if (logEl) logEl.innerHTML = '';
+    logMsg(t({ en: 'Sample loaded: ', es: 'Ejemplo cargado: ', da: 'Eksempel indlæst: ' }) + name, 'ok');
+    document.getElementById('btn-parse-csv').click();
   }
 
   /* ===== PROGRESS ===== */
@@ -143,8 +176,8 @@ document.addEventListener('DOMContentLoaded', function () {
     fileSize = file.size;
     if (dropZone) dropZone.style.display = 'none';
     if (logEl) logEl.innerHTML = '';
-    logMsg('File loaded: ' + file.name + ' (' + fmtBytes(file.size) + ')', 'ok');
-    logMsg('Detecting delimiter…', '');
+    logMsg(t({ en: 'File loaded: ', es: 'Archivo cargado: ', da: 'Fil indlæst: ' }) + file.name + ' (' + fmtBytes(file.size) + ')', 'ok');
+    logMsg(t({ en: 'Detecting delimiter…', es: 'Detectando delimitador…', da: 'Finder separator…' }), '');
     setProgress(0, 'Initialising…', file.name);
     if (statSize) statSize.textContent = fmtBytes(file.size).split(' ')[0];
     parsedData  = [];
@@ -178,13 +211,13 @@ document.addEventListener('DOMContentLoaded', function () {
           const delim = results.meta.delimiter || ',';
           detectedDelim = delim;
           const delimName = delim === ',' ? 'comma' : delim === ';' ? 'semicolon' : delim === '\t' ? 'tab' : delim;
-          logMsg('Delimiter detected: ' + delimName, 'ok');
+          logMsg(t({ en: 'Delimiter detected: ', es: 'Delimitador detectado: ', da: 'Separator fundet: ' }) + delimName, 'ok');
           if (hasHeader) {
             headers = results.meta.fields || [];
           } else {
             headers = rows[0] ? rows[0].map(function(_, i){ return 'col' + i; }) : [];
           }
-          logMsg('Headers: ' + headers.length + ' columns found', 'ok');
+          logMsg(t({ en: 'Headers: ', es: 'Cabeceras: ', da: 'Overskrifter: ' }) + headers.length + t({ en: ' columns found', es: ' columnas encontradas', da: ' kolonner fundet' }), 'ok');
           if (statCols) statCols.textContent = headers.length;
           renderColumnTypes();
           document.getElementById('csv-preview-section').style.display = '';
@@ -218,22 +251,22 @@ document.addEventListener('DOMContentLoaded', function () {
           'Chunk ' + chunkNum + ' done — ' + totalRows.toLocaleString() + ' rows loaded',
           file.name
         );
-        logMsg('Chunk ' + chunkNum + ' done — ' + totalRows.toLocaleString() + ' rows total', 'warn');
+        logMsg(t({ en: 'Chunk ', es: 'Bloque ', da: 'Blok ' }) + chunkNum + t({ en: ' done — ', es: ' completado — ', da: ' færdig — ' }) + totalRows.toLocaleString() + t({ en: ' rows total', es: ' filas en total', da: ' rækker i alt' }), 'warn');
 
         if (statRows) statRows.textContent = totalRows.toLocaleString();
       },
 
       complete: function() {
         setProgress(100, 'Done! ' + totalRows.toLocaleString() + ' rows ready', file.name);
-        logMsg('All chunks processed — ' + totalRows.toLocaleString() + ' rows ready', 'ok');
-        logMsg('Column types auto-detected — click to override', 'ok');
+        logMsg(t({ en: 'All chunks processed — ', es: 'Todos los bloques procesados — ', da: 'Alle blokke behandlet — ' }) + totalRows.toLocaleString() + t({ en: ' rows ready', es: ' filas listas', da: ' rækker klar' }), 'ok');
+        logMsg(t({ en: 'Column types auto-detected — click to override', es: 'Tipos de columna detectados — haz clic para cambiar', da: 'Kolonnetyper fundet automatisk — klik for at ændre' }), 'ok');
         document.getElementById('csv-preview-section').scrollIntoView({ behavior: 'smooth', block: 'start' });
         setTimeout(hideProgress, 1500);
         if (statRows) statRows.textContent = totalRows.toLocaleString();
       },
 
       error: function(err) {
-        logMsg('Error: ' + err.message, 'err');
+        logMsg(t({ en: 'Error: ', es: 'Error: ', da: 'Fejl: ' }) + err.message, 'err');
         window.showToast('Parse error: ' + err.message, 'error');
         hideProgress();
       }
@@ -260,7 +293,7 @@ document.addEventListener('DOMContentLoaded', function () {
     if (!window.Papa) { window.showToast('CSV parser loading — please wait', 'info'); return; }
 
     if (logEl) logEl.innerHTML = '';
-    logMsg('Parsing pasted CSV…', '');
+    logMsg(t({ en: 'Parsing pasted CSV…', es: 'Analizando el CSV pegado…', da: 'Behandler indsat CSV…' }), '');
     if (logSection) logSection.style.display = '';
 
     const hasHeader = document.getElementById('csv-header').checked;
@@ -281,8 +314,8 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     const delimName = (result.meta.delimiter || ',') === ',' ? 'comma' : result.meta.delimiter;
-    logMsg('Delimiter: ' + delimName, 'ok');
-    logMsg('Columns: ' + headers.length + ', Rows: ' + totalRows.toLocaleString(), 'ok');
+    logMsg(t({ en: 'Delimiter: ', es: 'Delimitador: ', da: 'Separator: ' }) + delimName, 'ok');
+    logMsg(t({ en: 'Columns: ', es: 'Columnas: ', da: 'Kolonner: ' }) + headers.length + t({ en: ', Rows: ', es: ', Filas: ', da: ', Rækker: ' }) + totalRows.toLocaleString(), 'ok');
 
     columnTypes = headers.map(function(h, i) {
       const vals = parsedData.slice(0, 50).map(function(row){
@@ -302,7 +335,7 @@ document.addEventListener('DOMContentLoaded', function () {
     if (statSize) statSize.textContent = fmtBytes(new TextEncoder().encode(raw).length).split(' ')[0];
 
     document.getElementById('csv-stats').textContent = headers.length + ' columns · ' + totalRows.toLocaleString() + ' rows';
-    logMsg('Ready — configure column types and click Generate SQL', 'ok');
+    logMsg(t({ en: 'Ready — configure column types and click Generate SQL', es: 'Listo — configura los tipos de columna y pulsa Generar SQL', da: 'Klar — konfigurér kolonnetyper og klik Generer SQL' }), 'ok');
 
     document.getElementById('csv-preview-section').scrollIntoView({ behavior: 'smooth', block: 'start' });
   });
@@ -319,6 +352,42 @@ document.addEventListener('DOMContentLoaded', function () {
     if (statRows)  statRows.textContent  = '0';
     if (statCols)  statCols.textContent  = '0';
     if (statStmts) statStmts.textContent = '0';
+  });
+
+  const sampleSales = document.getElementById('btn-sample-sales');
+  if (sampleSales) sampleSales.addEventListener('click', function() {
+    setPasteText(SALES_SAMPLE, 'sales.csv', 'sales');
+  });
+  const sampleUsers = document.getElementById('btn-sample-users');
+  if (sampleUsers) sampleUsers.addEventListener('click', function() {
+    setPasteText(USERS_SAMPLE, 'users.csv', 'users');
+  });
+
+  // The design forbids a zero-value empty state and a dead primary button, so
+  // start on the sales sample unless the page was opened with handed-off data.
+  (function seedSample() {
+    const input = document.getElementById('csv-input');
+    if (!input || input.value.trim()) return;
+    let handoff = null;
+    try { handoff = localStorage.getItem('ac:csv-handoff'); } catch (e) {}
+    if (handoff) return;
+    pendingAutoGenerate = true;
+    setPasteText(SALES_SAMPLE, 'sales.csv', 'sales');
+  })();
+
+  if (queryCsvBtn) queryCsvBtn.addEventListener('click', function() {
+    const raw = document.getElementById('csv-input').value.trim();
+    if (!raw && !parsedData) {
+      window.showToast('Load or paste CSV data first', 'info');
+      return;
+    }
+    try {
+      localStorage.setItem('ac:csv-handoff', JSON.stringify({
+        text: raw || window.Papa.unparse(parsedData),
+        name: (document.getElementById('table-name').value || 'data') + '.csv'
+      }));
+    } catch (e) {}
+    window.location.href = '/csv-query/?from=csv-to-sql';
   });
 
   /* ===== PREVIEW TABLE ===== */

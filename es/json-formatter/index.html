@@ -1,10 +1,10 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Formateador JSON Online Gratis | AnyConverter</title>
-  <meta name="description" content="Usa formateador JSON gratis en el navegador. Incluye ejemplos, usos comunes, herramientas relacionadas y resultados rapidos.">
+  <meta name="description" content="Formatea, valida y minifica JSON gratis. Busca por clave o valor, guarda marcadores locales y explora los datos en una vista de árbol plegable, en tu navegador.">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://anyconverter.io/es/json-formatter/">
   <link rel="alternate" hreflang="en" href="https://anyconverter.io/json-formatter/">
@@ -14,7 +14,7 @@
 
 <meta property="og:type" content="website">
   <meta property="og:title" content="Formateador JSON Online Gratis | AnyConverter">
-  <meta property="og:description" content="Usa formateador JSON gratis en el navegador. Incluye ejemplos, usos comunes, herramientas relacionadas y resultados rapidos.">
+  <meta property="og:description" content="Formatea, valida y minifica JSON gratis. Busca por clave o valor, guarda marcadores locales y explora los datos en una vista de árbol plegable, en tu navegador.">
   <meta property="og:url" content="https://anyconverter.io/es/json-formatter/">
   <meta property="og:site_name" content="AnyConverter">
   <meta property="og:image" content="https://anyconverter.io/assets/img/og-image.png">
@@ -23,68 +23,135 @@
   <meta property="og:image:alt" content="AnyConverter free online tools">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Formateador JSON Online Gratis | AnyConverter">
-  <meta name="twitter:description" content="Usa formateador JSON gratis en el navegador. Incluye ejemplos, usos comunes, herramientas relacionadas y resultados rapidos.">
+  <meta name="twitter:description" content="Formatea, valida y minifica JSON gratis. Busca por clave o valor, guarda marcadores locales y explora los datos en una vista de árbol plegable, en tu navegador.">
   <meta name="twitter:image" content="https://anyconverter.io/assets/img/og-image.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Formateador JSON","url":"https://anyconverter.io/es/json-formatter/","description":"Formatea y valida JSON al instante de forma gratuita.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"¿Es seguro pegar datos privados?","acceptedAnswer":{"@type":"Answer","text":"Sí. Todo el procesamiento se realiza en tu navegador. Tus datos se procesan en tu navegador para esta tarea."}},{"@type":"Question","name":"¿Qué tamaño máximo de JSON puedo formatear?","acceptedAnswer":{"@type":"Answer","text":"No hay límite estricto. Archivos muy grandes (más de 10MB) pueden ser lentos, pero la herramienta los procesará correctamente en la mayoría de los dispositivos modernos."}},{"@type":"Question","name":"¿Qué hace la minificación?","acceptedAnswer":{"@type":"Answer","text":"La minificación elimina espacios, saltos de línea y sangría innecesarios del JSON, reduciendo el tamaño del archivo para transferencias más rápidas."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Formateador JSON","url":"https://anyconverter.io/es/json-formatter/","description":"Formatea, valida, busca y guarda marcadores de JSON al instante de forma gratuita.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"¿Qué es un formateador JSON?","acceptedAnswer":{"@type":"Answer","text":"Un formateador JSON analiza JSON en bruto o minificado y lo vuelve a escribir con sangría y saltos de línea legibles."}},{"@type":"Question","name":"¿Puede esta herramienta validar JSON?","acceptedAnswer":{"@type":"Answer","text":"Sí. La página analiza tu entrada con JSON.parse y muestra un mensaje de error de sintaxis cuando el JSON no es válido."}},{"@type":"Question","name":"¿Puedo convertir JSON a CSV?","acceptedAnswer":{"@type":"Answer","text":"La conversión a CSV funciona cuando el JSON es un objeto o un array de objetos. Otras formas de JSON deben mantenerse en formato JSON o YAML."}},{"@type":"Question","name":"¿Qué es la minificación de JSON?","acceptedAnswer":{"@type":"Answer","text":"La minificación elimina espacios y saltos de línea innecesarios del JSON válido, conservando los datos analizados."}},{"@type":"Question","name":"¿Qué tipos de archivo puedo subir?","acceptedAnswer":{"@type":"Answer","text":"Puedes subir un archivo .json con el botón Subir. El archivo se carga en el área de entrada para formatear o validar."}},{"@type":"Question","name":"¿Cómo funciona la búsqueda en JSON?","acceptedAnswer":{"@type":"Answer","text":"Busca en la clave, el valor o ambos, con texto simple, expresiones regulares o una ruta con puntos/corchetes como a.b[0].c. Las coincidencias se resaltan y puedes navegar entre ellas con los botones Anterior/Siguiente."}},{"@type":"Question","name":"¿Los marcadores se guardan en línea?","acceptedAnswer":{"@type":"Answer","text":"No. Los marcadores se guardan solo en el almacenamiento local de tu navegador, por lo que permanecen en este dispositivo y nunca se suben."}}]}</script>
 
 
 <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+
   <style>
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
     html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F7F6F3);color:var(--color-text,#151515)}
     body{min-height:100vh;display:flex;flex-direction:column}
     .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8D0)}
     .header-inner{max-width:1280px;width:100%;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;gap:32px}
-    .hero{padding:40px 24px 32px;max-width:1280px;margin:0 auto}
-    .hero h1{font-size:clamp(1.75rem,4vw,2.25rem);font-weight:700;line-height:1.2;margin-bottom:12px}
-    .hero-desc{font-size:1.0625rem;color:var(--color-text-2,#6B7280);max-width:680px;line-height:1.6}
+    .hero{padding:28px 24px 20px;max-width:1280px;margin:0 auto}
+    .hero h1{font-size:clamp(1.5rem,3.5vw,2rem);font-weight:700;line-height:1.2;margin-bottom:8px}
+    .hero-desc{font-size:1rem;color:var(--color-text-2,#6B7280);max-width:680px;line-height:1.6}
     @font-face{font-family:'Inter';font-display:swap}
   </style>
-  <link rel="stylesheet" href="/assets/css/style.css?v=20260902">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
+
+  <link rel="stylesheet" href="/assets/css/style.css?v=20260928-json-fix">
 </head>
 <body>
+
   <header id="site-header" class="site-header"></header>
+
   <main id="main-content">
     <nav class="breadcrumb" aria-label="Breadcrumb">
-      <ol><li><a href="/es/">Inicio</a></li><li aria-current="page">Formateador JSON</li></ol>
+      <ol>
+        <li><a href="/es/">Inicio</a></li>
+        <li aria-current="page">Formateador JSON</li>
+      </ol>
     </nav>
+
     <section class="hero">
       <h1>Formateador y Validador de JSON</h1>
-      <p class="hero-desc">Formatea, embellece y valida JSON al instante. Pega tu JSON o sube un archivo .json. Resaltado de sintaxis incluido. Todo el procesamiento se realiza en tu navegador — tus datos no salen de tu dispositivo.</p>
+      <p class="hero-desc">Valida, formatea, minifica e inspecciona JSON con control de sangría y una vista de árbol plegable. Busca claves y valores, guarda marcadores locales, exporta a YAML o convierte a CSV cuando la forma del JSON admita filas y columnas.</p>
     </section>
+
+    <!-- Tool area -->
     <div class="tool-wrapper">
       <div class="tool-zone">
-        <div class="input-wrapper">
-          <textarea id="json-input" placeholder="Pega tu JSON aquí..." spellcheck="false" style="min-height:300px;font-family:var(--font-mono);font-size:13px"></textarea>
+
+        <!-- Sub-tabs -->
+        <div class="sub-tabs" role="tablist">
+          <button class="sub-tab active" role="tab" data-mode="format" aria-selected="true">Formatter</button>
+          <button class="sub-tab" role="tab" data-mode="minify" aria-selected="false">Minifier</button>
+          <button class="sub-tab" role="tab" data-mode="validate" aria-selected="false">Validator</button>
+          <button class="sub-tab" role="tab" data-mode="convert" aria-selected="false">Convertidor</button>
         </div>
-        <div class="action-bar">
-          <div class="action-bar-left">
-            <button class="btn btn-primary" id="btn-format">Formatear ↵</button>
-            <button class="btn btn-secondary" id="btn-minify">Minificar</button>
-            <button class="btn btn-secondary" id="btn-validate">Validar</button>
-          </div>
-          <div class="action-bar-right">
-            <button class="btn btn-secondary btn-sm" id="btn-clear">Limpiar</button>
-            <button class="btn btn-secondary btn-sm" id="btn-copy-input">Copiar entrada</button>
-            <label class="btn btn-secondary btn-sm" style="cursor:pointer">Subir .json<input type="file" id="json-file" accept=".json,application/json" style="display:none"></label>
-          </div>
-        </div>
-        <div id="json-status" class="status-bar" style="display:none"></div>
-        <div id="json-output-section" style="display:none">
-          <div class="code-output-wrapper mt-4">
-            <pre class="code-output" id="json-output"><code id="json-output-code" class="language-json"></code></pre>
-            <div class="code-output-actions">
-              <button class="btn btn-sm" id="btn-copy-output">Copiar</button>
-              <button class="btn btn-sm" id="btn-download">Descargar</button>
+
+        <!-- Split panels -->
+        <div class="split-panels">
+
+          <!-- Input panel -->
+          <div class="ac-panel">
+            <div class="ac-panel-header">
+              <span style="font-size:14px;color:var(--color-text-3)">{ }</span>
+              <span class="ac-panel-label">Entrada</span>
+              <div class="ac-panel-actions">
+                <label class="ac-btn" style="cursor:pointer" title="Subir archivo JSON">
+                  Subir
+                  <input type="file" id="file-upload" accept=".json,application/json" style="display:none">
+                </label>
+                <button class="ac-btn" id="btn-paste" title="Pegar desde el portapapeles">Pegar</button>
+                <button class="ac-btn" id="btn-clear" title="Limpiar entrada">Limpiar</button>
+                <div class="font-sz-wrap"><button class="font-sz-btn" id="btn-font-down" title="Reducir tamaño de fuente">A−</button><button class="font-sz-btn" id="btn-font-up" title="Aumentar tamaño de fuente">A+</button></div>
+                <button class="ac-btn" id="btn-fs-input" title="Pantalla completa de entrada">⛶</button>
+              </div>
+            </div>
+            <textarea
+              class="ac-input"
+              id="json-input"
+              placeholder="Pega tu JSON aquí — se formatea automáticamente…"
+              spellcheck="false"
+              autocomplete="off"
+              aria-label="Entrada JSON"
+              aria-describedby="input-status"
+            ></textarea>
+            <div class="ac-status" id="input-status">
+              <span class="ac-status-ok" id="input-status-ok" style="display:none">✓ JSON válido</span>
+              <span class="ac-status-err" id="input-status-err" style="display:none"></span>
+              <span class="ac-status-info" id="input-status-info">Pega o escribe JSON</span>
             </div>
           </div>
+
+          <!-- Output panel -->
+          <div class="ac-panel">
+            <div class="ac-panel-header">
+              <span style="font-size:14px;color:var(--color-text-3)">✦</span>
+              <span class="ac-panel-label">Salida</span>
+              <div class="ac-panel-actions">
+                <button class="ac-btn" id="btn-copy-output" title="Copiar al portapapeles">Copiar</button>
+                <button class="ac-btn" id="btn-download" title="Descargar como .json">Descargar</button>
+                <button class="ac-btn" id="btn-collapse-all" title="Contraer todos los nodos">Contraer todo</button>
+                <button class="ac-btn" id="btn-expand-all" title="Expandir todos los nodos">Expandir todo</button>
+                <button class="ac-btn" id="btn-fs-output" title="Pantalla completa de salida">⛶</button>
+              </div>
+            </div>
+            <div class="json-view" id="json-output" aria-label="Salida JSON formateada" aria-live="polite">
+              <span style="color:var(--color-text-2,#6B7280);font-style:italic;font-size:11px">La salida aparecerá aquí…</span>
+            </div>
+            <div class="ac-status" id="output-status">
+              <span class="ac-status-ok" id="output-status-ok" style="display:none">✓ Formateado</span>
+              <span class="ac-status-err" id="output-status-err" style="display:none"></span>
+              <span class="ac-status-info" id="output-status-info"></span>
+            </div>
+          </div>
+
+        </div><!-- /split-panels -->
+
+        <!-- Action bar -->
+        <div class="ac-action-bar">
+          <button class="ac-btn primary" id="btn-format">Formatear</button>
+          <button class="ac-btn" id="btn-minify">Minificar</button>
+          <button class="ac-btn" id="btn-validate">Validar</button>
+          <button class="ac-btn" id="btn-to-yaml">→ YAML</button>
+          <button class="ac-btn" id="btn-to-csv">→ CSV</button>
+          <div class="ac-action-bar-right">
+            <span style="font-size:11px;color:var(--color-text-3)" id="auto-format-label">Autoformato: ACTIVADO</span>
+          </div>
         </div>
-      </div>
+
+      </div><!-- /tool-zone -->
+
+      <!-- Sidebar -->
       <aside class="tool-side" aria-label="Opciones">
 
         <div class="ss-divider">Opciones</div>
@@ -102,6 +169,15 @@
             <option value="none" selected>None</option>
             <option value="asc">A → Z</option>
             <option value="desc">Z → A</option>
+          </select>
+        </div>
+        <div class="ss-option-row">
+          <span class="ss-opt-label">Tamaño</span>
+          <select class="ss-opt-select" id="opt-font-size">
+            <option value="11">Pequeño (11px)</option>
+            <option value="13" selected>Normal (13px)</option>
+            <option value="15">Mediano (15px)</option>
+            <option value="17">Grande (17px)</option>
           </select>
         </div>
 
@@ -122,6 +198,37 @@
           <div class="tog off" id="tog-wrap" role="switch" aria-checked="false" tabindex="0" aria-labelledby="lbl-wrap"></div>
         </div>
 
+        <div class="ss-divider">Búsqueda</div>
+        <div class="ss-option-row">
+          <span class="ss-opt-label">Buscar</span>
+          <input class="ss-opt-input" id="search-query" placeholder="Buscar claves o valores…" autocomplete="off" style="flex:1;padding:6px 8px;border:1px solid var(--color-border,#DDD8D0);border-radius:6px;font-size:12px" aria-label="Buscar en JSON">
+        </div>
+        <div class="ss-option-row">
+          <span class="ss-opt-label">Modo</span>
+          <select class="ss-opt-select" id="search-mode" style="flex:1">
+            <option value="both" selected>Clave + valor</option>
+            <option value="key">Solo clave</option>
+            <option value="value">Solo valor</option>
+            <option value="regex">Regex</option>
+            <option value="path">Ruta (a.b[0].c)</option>
+          </select>
+        </div>
+        <div class="ss-option-row" style="justify-content:space-between">
+          <button class="ac-btn" id="search-prev" title="Coincidencia anterior">‹ Anterior</button>
+          <span style="font-size:11px;color:var(--color-text-2,#6B7280)" id="search-count" aria-live="polite">Sin búsqueda todavía</span>
+          <button class="ac-btn" id="search-next" title="Siguiente coincidencia">Siguiente ›</button>
+        </div>
+
+        <div class="ss-divider">Marcadores <span style="font-weight:400;text-transform:none;font-size:10px;color:var(--color-text-3,#9CA3AF)">(guardados en este navegador)</span></div>
+        <div class="ss-option-row">
+          <span class="ss-opt-label">Nombre</span>
+          <input class="ss-opt-input" id="bookmark-name" placeholder="p. ej. respuesta API" autocomplete="off" style="flex:1;padding:6px 8px;border:1px solid var(--color-border,#DDD8D0);border-radius:6px;font-size:12px" aria-label="Nombre del marcador">
+        </div>
+        <button class="ac-btn" id="btn-bookmark-save" style="width:100%;margin-bottom:6px;justify-content:center">+ Guardar JSON actual</button>
+        <div id="bookmark-list" style="display:flex;flex-direction:column;gap:4px;max-height:160px;overflow:auto;margin-bottom:4px">
+          <p style="font-size:11px;color:var(--color-text-3,#9CA3AF);text-align:center;padding:8px 0;margin:0">Aún no hay marcadores</p>
+        </div>
+
         <div class="ss-divider">Estadísticas</div>
         <div class="stats-grid">
           <div class="stat-card"><div class="stat-val" id="stat-keys">0</div><div class="stat-lbl">Keys</div></div>
@@ -129,24 +236,6 @@
           <div class="stat-card"><div class="stat-val" id="stat-bytes">0</div><div class="stat-lbl">Bytes</div></div>
           <div class="stat-card"><div class="stat-val" id="stat-errors">0</div><div class="stat-lbl">Errors</div></div>
         </div>
-
-        <div class="ss-divider">Herramientas relacionadas</div>
-        <a href="/es/xml-formatter/" class="ss-related-link">
-          <img src="/assets/img/icon-xml.svg" alt="Formateador JSON Online Gratis icon" width="18" height="18" loading="lazy">
-          XML Formatter
-        </a>
-        <a href="/es/regex-tester/" class="ss-related-link">
-          <img src="/assets/img/icon-regex.svg" alt="Formateador JSON Online Gratis icon" width="18" height="18" loading="lazy">
-          Regex / Logs
-        </a>
-        <a href="/es/csv-to-sql/" class="ss-related-link">
-          <img src="/assets/img/icon-csv.svg" alt="Formateador JSON Online Gratis icon" width="18" height="18" loading="lazy">
-          CSV → SQL
-        </a>
-        <a href="/es/base64-encoder/" class="ss-related-link">
-          <img src="/assets/img/icon-base64.svg" alt="Formateador JSON Online Gratis icon" width="18" height="18" loading="lazy">
-          Base64 Encoder
-        </a>
 
         <!-- AdSense sidebar slot -->
         <div style="margin-top:8px">
@@ -157,66 +246,127 @@
         </div>
 
       </aside>
-    </div>
+    </div><!-- /tool-wrapper -->
+
+    <!-- AdSense leaderboard -->
     <div class="ad-slot ad-slot--leaderboard">
+      <p class="ad-label">Anuncio</p>
       <div class="adsbygoogle" style="display:block" aria-hidden="true"></div>
 </div>
+
     <section class="how-to-use">
       <h2>Cómo formatear JSON</h2>
       <ol class="steps">
-        <li><strong>Pega tu JSON</strong> — Pega el contenido JSON en el área de texto o sube un archivo .json.</li>
-        <li><strong>Formatea o valida</strong> — Haz clic en "Formatear" para embellecer el JSON con sangría o en "Validar" para verificar errores de sintaxis.</li>
-        <li><strong>Copia o descarga</strong> — Copia el resultado al portapapeles o descárgalo como archivo .json.</li>
+        <li><strong>Pega tu JSON</strong> — Copia tu JSON y pégalo en el área de entrada. La salida se formatea automáticamente mientras escribes.</li>
+        <li><strong>Explora el árbol</strong> — Haz clic en los iconos ▾ para contraer o expandir cualquier objeto o array. Usa Contraer todo / Expandir todo para navegar por estructuras grandes.</li>
+        <li><strong>Copia o descarga</strong> — Copia la salida formateada al portapapeles o descárgala como archivo .json.</li>
+        <li><strong>Busca o guarda un marcador</strong> — Usa el panel lateral para buscar claves, valores, con regex o una ruta como <code>a.b[0].c</code>, o guarda el JSON actual como marcador local.</li>
       </ol>
     </section>
+
     <section class="features">
       <h2>Características</h2>
       <ul class="features-list">
-        <li>Formateado instantáneo con sangría configurable</li>
-        <li>Validación con mensajes de error detallados</li>
-        <li>Minificación para reducir el tamaño</li>
-        <li>Resaltado de sintaxis en el resultado</li>
-        <li>Soporte para subida de archivos</li>
-        <li>100% procesamiento en el navegador</li>
+        <li>Autoformato en vivo mientras escribes (retardo de 200ms)</li>
+        <li>Nodos plegables — contrae cualquier {} o [] al instante</li>
+        <li>Resaltado de sintaxis con tokens codificados por color</li>
+        <li>Validación de JSON con la posición exacta del error</li>
+        <li>Minifica JSON para reducir el tamaño del archivo</li>
+        <li>Sube archivos .json directamente</li>
+        <li>Descarga la salida formateada como .json</li>
+        <li>Exportación a YAML y conversión a CSV para formas de JSON compatibles</li>
+        <li>Busca por clave, valor, regex o ruta con coincidencias resaltadas</li>
+        <li>Marcadores locales — guarda fragmentos de JSON en tu navegador para más tarde</li>
       </ul>
     </section>
     <!-- SEO keyword implementation: 2026-08-21 -->
     <section class="seo-content" data-seo-keyword-plan="2026-08-21">
-      <h2>Formateador JSON: usos practicos</h2>
-      <p>Usa formateador JSON cuando necesites una respuesta rapida, clara y privada sin crear una cuenta. La pagina tambien cubre variantes relacionadas como embellecer JSON, validar JSON, formato JSON online para que puedas elegir el flujo correcto.</p>
+      <h2>Formateador JSON: usos prácticos</h2>
+      <p>Usa formateador JSON cuando necesites una respuesta rápida, clara y privada sin crear una cuenta. La página también cubre variantes relacionadas como embellecer JSON, validar JSON, formato JSON online para que puedas elegir el flujo correcto.</p>
       <h3>Cuándo usarlo</h3>
       <ul>
-        <li><strong>Ideal para:</strong> Pegar codigo, datos estructurados, tokens, hashes o texto codificado y obtener un resultado claro al instante.</li>
-        <li><strong>Detalles utiles:</strong> Usa ejemplos, mensajes de validacion, acciones de copia y opciones de formato para detectar errores antes de publicar.</li>
-        <li><strong>Siguiente paso:</strong> Continua con otro formateador, validador, codificador, parser o convertidor cuando cambie el formato de trabajo.</li>
+        <li><strong>Ideal para:</strong> Pegar código, datos estructurados, tokens, hashes o texto codificado y obtener un resultado claro al instante.</li>
+        <li><strong>Detalles útiles:</strong> Usa ejemplos, mensajes de validación, acciones de copia y opciones de formato para detectar errores antes de publicar.</li>
+        <li><strong>Siguiente paso:</strong> Continúa con otro formateador, validador, codificador, parser o convertidor cuando cambie el formato de trabajo.</li>
       </ul>
-      <p>Para continuar, prueba tambien <a href="/es/regex-tester/">Probador de Expresiones Regulares</a>, <a href="/es/base64-encoder/">Codificador y Decodificador Base64</a>, <a href="/es/hash-generator/">Generador de Hash</a>, <a href="/es/timestamp-converter/">Convertidor de Timestamp Unix</a>.</p>
+      <p>Para continuar, prueba también <a href="/es/regex-tester/">Probador de Expresiones Regulares</a>, <a href="/es/base64-encoder/">Codificador y Decodificador Base64</a>, <a href="/es/hash-generator/">Generador de Hash</a>, <a href="/es/timestamp-converter/">Convertidor de Timestamp Unix</a>.</p>
     </section>
 
     <div class="ad-slot ad-slot--rectangle" style="margin:0 auto 32px">
+      <p class="ad-label">Anuncio</p>
       <div class="adsbygoogle" style="display:block" aria-hidden="true"></div>
 </div>
+
     <section class="faq">
       <h2>Preguntas Frecuentes</h2>
       <div class="faq-list">
-        <details class="faq-item"><summary class="faq-question">¿Es seguro pegar datos privados? <span class="faq-icon">+</span></summary><div class="faq-answer">Sí. Todo el procesamiento se realiza en tu navegador. Tus datos se procesan en tu navegador para esta tarea.</div></details>
-        <details class="faq-item"><summary class="faq-question">¿Qué tamaño máximo de JSON puedo formatear? <span class="faq-icon">+</span></summary><div class="faq-answer">No hay límite estricto. Archivos muy grandes (más de 10MB) pueden ser lentos, pero la herramienta los procesará correctamente en la mayoría de los dispositivos modernos.</div></details>
-        <details class="faq-item"><summary class="faq-question">¿Qué hace la minificación? <span class="faq-icon">+</span></summary><div class="faq-answer">La minificación elimina espacios, saltos de línea y sangría innecesarios del JSON, reduciendo el tamaño del archivo para transferencias más rápidas.</div></details>
+        <details class="faq-item">
+          <summary class="faq-question">¿Qué es un formateador JSON? <span class="faq-icon">+</span></summary>
+          <div class="faq-answer">Un formateador JSON analiza JSON en bruto o minificado y lo vuelve a escribir con sangría y saltos de línea legibles.</div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-question">¿Puede esta herramienta validar JSON? <span class="faq-icon">+</span></summary>
+          <div class="faq-answer">Sí. La página analiza tu entrada con JSON.parse y muestra un mensaje de error de sintaxis cuando el JSON no es válido.</div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-question">¿Puedo convertir JSON a CSV? <span class="faq-icon">+</span></summary>
+          <div class="faq-answer">La conversión a CSV funciona cuando el JSON es un objeto o un array de objetos. Otras formas de JSON deben mantenerse en formato JSON o YAML.</div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-question">¿Qué es la minificación de JSON? <span class="faq-icon">+</span></summary>
+          <div class="faq-answer">La minificación elimina espacios y saltos de línea innecesarios del JSON válido, conservando los datos analizados.</div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-question">¿Qué tipos de archivo puedo subir? <span class="faq-icon">+</span></summary>
+          <div class="faq-answer">Puedes subir un archivo .json con el botón Subir. El archivo se carga en el área de entrada para formatear o validar.</div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-question">¿Cómo funciona la búsqueda en JSON? <span class="faq-icon">+</span></summary>
+          <div class="faq-answer">Busca en la clave, el valor o ambos, con texto simple, expresiones regulares o una ruta con puntos/corchetes como a.b[0].c. Las coincidencias se resaltan y puedes navegar entre ellas con los botones Anterior/Siguiente.</div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-question">¿Los marcadores se guardan en línea? <span class="faq-icon">+</span></summary>
+          <div class="faq-answer">No. Los marcadores se guardan solo en el almacenamiento local de tu navegador, por lo que permanecen en este dispositivo y nunca se suben.</div>
+        </details>
       </div>
     </section>
+
     <section class="related-tools">
       <h2>Herramientas Relacionadas</h2>
       <div class="tool-grid">
-        <a href="/es/xml-formatter/" class="tool-card"><img src="/assets/img/icon-xml.svg" alt="XML Formatter icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>XML Formatter</h3><p>Formatea y valida XML.</p><span class="tool-card-link">Usar →</span></a>
-        <a href="/es/csv-to-sql/" class="tool-card"><img src="/assets/img/icon-csv.svg" alt="CSV to SQL icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>CSV to SQL</h3><p>Convierte CSV a sentencias SQL.</p><span class="tool-card-link">Usar →</span></a>
-        <a href="/es/base64-encoder/" class="tool-card"><img src="/assets/img/icon-base64.svg" alt="Base64 Encoder icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Base64 Encoder</h3><p>Codifica y decodifica Base64.</p><span class="tool-card-link">Usar →</span></a>
-        <a href="/es/hash-generator/" class="tool-card"><img src="/assets/img/icon-hash.svg" alt="Hash Generator icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Hash Generator</h3><p>Genera hashes criptográficos.</p><span class="tool-card-link">Usar →</span></a>
+        <a href="/es/xml-formatter/" class="tool-card">
+          <img src="/assets/img/icon-xml.svg" alt="XML Formatter icon" class="tool-card-icon" width="40" height="40" loading="lazy">
+          <h3>XML Formatter</h3>
+          <p>Formatea y valida XML en línea.</p>
+          <span class="tool-card-link">Probar →</span>
+        </a>
+        <a href="/es/regex-tester/" class="tool-card">
+          <img src="/assets/img/icon-regex.svg" alt="Regex / Log Extractor icon" class="tool-card-icon" width="40" height="40" loading="lazy">
+          <h3>Regex / Log Extractor</h3>
+          <p>Prueba expresiones regulares y extrae coincidencias de logs.</p>
+          <span class="tool-card-link">Probar →</span>
+        </a>
+        <a href="/es/csv-to-sql/" class="tool-card">
+          <img src="/assets/img/icon-csv.svg" alt="CSV to SQL icon" class="tool-card-icon" width="40" height="40" loading="lazy">
+          <h3>CSV a SQL</h3>
+          <p>Convierte archivos CSV a sentencias SQL INSERT.</p>
+          <span class="tool-card-link">Probar →</span>
+        </a>
+        <a href="/es/base64-encoder/" class="tool-card">
+          <img src="/assets/img/icon-base64.svg" alt="Base64 Encoder icon" class="tool-card-icon" width="40" height="40" loading="lazy">
+          <h3>Base64 Encoder</h3>
+          <p>Codifica y decodifica texto y archivos Base64.</p>
+          <span class="tool-card-link">Probar →</span>
+        </a>
       </div>
     </section>
   </main>
+
+  <div id="fs-overlay" class="fs-overlay"></div>
+
   <footer id="site-footer" class="site-footer"></footer>
+
   <script src="/assets/js/shared.js?v=20260902" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" defer></script>
   <script src="/assets/js/tools/json-formatter.js" defer></script>
 </body>
 </html>

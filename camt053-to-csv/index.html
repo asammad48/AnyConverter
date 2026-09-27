@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CAMT.053 to CSV Converter – Free &amp; Private | AnyConverter</title>
+  <meta name="description" content="Convert CAMT.053 XML bank statements to CSV for Excel. Signed amounts, direction-aware counterparties, and a balance check. No upload — runs in your browser.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://anyconverter.io/camt053-to-csv/">
+  <link rel="alternate" hreflang="en" href="https://anyconverter.io/camt053-to-csv/">
+  <link rel="alternate" hreflang="es" href="https://anyconverter.io/es/camt053-to-csv/">
+  <link rel="alternate" hreflang="da" href="https://anyconverter.io/da/camt053-to-csv/">
+  <link rel="alternate" hreflang="x-default" href="https://anyconverter.io/camt053-to-csv/">
+
+<meta property="og:type" content="website">
+  <meta property="og:title" content="CAMT.053 to CSV Converter – Free &amp; Private | AnyConverter">
+  <meta property="og:description" content="Convert CAMT.053 XML bank statements to CSV for Excel. Signed amounts, direction-aware counterparties, and a balance check. No upload — runs in your browser.">
+  <meta property="og:url" content="https://anyconverter.io/camt053-to-csv/">
+  <meta property="og:site_name" content="AnyConverter">
+  <meta property="og:image" content="https://anyconverter.io/assets/img/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="AnyConverter free online tools">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="CAMT.053 to CSV Converter – Free &amp; Private | AnyConverter">
+  <meta name="twitter:description" content="Convert CAMT.053 XML bank statements to CSV for Excel. Signed amounts, direction-aware counterparties, and a balance check. No upload — runs in your browser.">
+  <meta name="twitter:image" content="https://anyconverter.io/assets/img/og-image.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"CAMT.053 to CSV Converter","url":"https://anyconverter.io/camt053-to-csv/","description":"Convert ISO 20022 CAMT.053/052/054 bank statement XML files to CSV, with signed amounts, direction-aware counterparties, and an opening/closing balance check. Runs entirely in your browser.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is my bank statement uploaded?","acceptedAnswer":{"@type":"Answer","text":"No. The XML is read and converted in your browser. Nothing is sent to our servers."}},{"@type":"Question","name":"Which versions are supported?","acceptedAnswer":{"@type":"Answer","text":"camt.053 versions such as 001.02, 001.04, 001.06 and 001.08, plus camt.052 and camt.054. Fields are read by element name, so unrecognized versions still parse."}},{"@type":"Question","name":"Why are all amounts positive in my file?","acceptedAnswer":{"@type":"Answer","text":"CAMT stores amounts without a sign and uses CdtDbtInd (CRDT or DBIT) for direction. The converter adds a signed amount column."}},{"@type":"Question","name":"What is the balance check?","acceptedAnswer":{"@type":"Answer","text":"We add booked entries to the opening balance and compare with the closing balance in the file. A green check means nothing is missing."}},{"@type":"Question","name":"Will the CSV open correctly in Excel?","acceptedAnswer":{"@type":"Answer","text":"Yes. The Danish and Spanish pages use a semicolon delimiter, comma decimal separator, and a UTF-8 BOM by default, matching regional Excel settings."}}]}</script>
+
+
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F7F6F3);color:var(--color-text,#151515)}
+    body{min-height:100vh;display:flex;flex-direction:column}
+    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8D0)}
+    .header-inner{max-width:1280px;width:100%;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;gap:32px}
+    .hero{padding:28px 24px 20px;max-width:1280px;margin:0 auto}
+    .hero h1{font-size:clamp(1.5rem,3.5vw,2rem);font-weight:700;line-height:1.2;margin-bottom:8px}
+    .hero-desc{font-size:1rem;color:var(--color-text-2,#6B7280);max-width:680px;line-height:1.6}
+    @font-face{font-family:'Inter';font-display:swap}
+  </style>
+  <link rel="stylesheet" href="/assets/css/style.css?v=20260902">
+</head>
+<body>
+  <header id="site-header" class="site-header"></header>
+  <main id="main-content">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol><li><a href="/">Home</a></li><li aria-current="page">CAMT.053 to CSV Converter</li></ol>
+    </nav>
+    <section class="hero">
+      <h1>CAMT.053 to CSV Converter (ISO 20022 Bank Statements)</h1>
+      <p class="hero-desc">🔒 Bank data never leaves your browser. Drop a CAMT.053, .052, or .054 XML file to get a signed-amount CSV with the correct counterparty on every row, plus an opening/closing balance check so you know nothing is missing.</p>
+    </section>
+
+    <div class="tool-wrapper">
+      <div class="tool-zone">
+        <div style="padding:24px">
+
+          <div class="drop-zone" id="camt-dropzone" role="button" tabindex="0" aria-label="Drop CAMT.053 XML file here or click to upload">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="40" height="40" aria-hidden="true" style="color:var(--color-text-2,#6B7280)"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5"/></svg>
+            <p style="margin-top:8px;font-weight:500">Drop a CAMT.053, .052, or .054 XML file here, or click to upload</p>
+            <small style="color:var(--color-text-2,#6B7280)">.xml, .camt, .053, .052, .054, .txt</small>
+            <input type="file" id="camt-file" accept=".xml,.camt,.053,.052,.054,.txt" style="display:none" aria-label="Upload CAMT XML file">
+          </div>
+
+          <div style="margin-top:12px;display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+            <button class="ac-btn" id="camt-btn-sample" type="button">Try a sample statement</button>
+          </div>
+
+          <details class="faq-item" style="margin-top:12px">
+            <summary class="faq-question">Or paste XML directly <span class="faq-icon">+</span></summary>
+            <div class="faq-answer">
+              <textarea id="camt-paste" placeholder="<Document>...</Document>" style="width:100%;min-height:120px;padding:10px;border:1px solid var(--color-border,#DDD8D0);border-radius:8px;font-size:12px;font-family:var(--font-mono,monospace)"></textarea>
+              <button class="ac-btn" id="camt-btn-parse-paste" type="button" style="margin-top:8px">Parse pasted XML</button>
+            </div>
+          </details>
+
+          <div class="status-bar error" id="camt-error" style="display:none;margin-top:12px" role="alert" aria-live="polite"></div>
+
+          <div id="camt-result" style="display:none;margin-top:16px" aria-live="polite">
+            <p id="camt-detected" style="font-weight:600;margin-bottom:10px"></p>
+            <div id="camt-statements"></div>
+
+            <div style="overflow-x:auto;margin-top:12px">
+              <table style="width:100%;border-collapse:collapse;font-size:13px">
+                <thead><tr style="text-align:left;color:var(--color-text-2)"><th style="padding:6px 8px">Date</th><th style="padding:6px 8px">Counterparty</th><th style="padding:6px 8px">Text</th><th style="padding:6px 8px;text-align:right">Amount</th><th style="padding:6px 8px;text-align:right">Balance</th><th style="padding:6px 8px">Status</th></tr></thead>
+                <tbody id="camt-preview-body"></tbody>
+              </table>
+            </div>
+
+            <div class="ac-action-bar" style="margin-top:16px">
+              <button class="btn btn-primary" id="camt-btn-download">Download CSV</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <aside class="tool-side" aria-label="Options">
+        <div style="margin-top:0">
+          <p class="ad-label">Advertisement</p>
+          <div class="ad-slot" style="min-height:250px">
+            <div class="adsbygoogle" style="display:block" aria-hidden="true"></div>
+</div>
+        </div>
+      </aside>
+    </div>
+
+    <div class="ad-slot ad-slot--leaderboard">
+      <div class="adsbygoogle" style="display:block" aria-hidden="true"></div>
+</div>
+
+    <section class="how-to-use">
+      <h2>How to Convert CAMT.053 to CSV</h2>
+      <ol class="steps">
+        <li>Drop your bank's CAMT.053 (or .052 / .054) XML file onto the page, or try the built-in sample statement.</li>
+        <li>Check the opening/closing balance card — a green checkmark confirms every booked entry is accounted for.</li>
+        <li>Review the preview table, then click "Download CSV" to get a spreadsheet-ready file with a signed amount and running balance.</li>
+      </ol>
+    </section>
+
+    <section class="features">
+      <h2>Features</h2>
+      <ul class="features-list">
+        <li>Supports camt.053 (versions 001.02 through 001.08+), plus camt.052 and camt.054, by reading elements by name rather than a fixed schema version</li>
+        <li>Signed amount column — CAMT stores amounts unsigned and uses a separate direction code, which most naive converters get wrong</li>
+        <li>Direction-aware counterparty: the debtor for money in, the creditor for money out, not always the same field</li>
+        <li>Balance check per statement: opening balance plus booked entries compared against the closing balance in the file</li>
+        <li>Batch entries (e.g. a payroll run) are labeled with their transaction count instead of producing one confusing merged row</li>
+        <li>ISO 11649 creditor reference (RF number) checksum validation</li>
+        <li>Danish and Spanish pages default to semicolon-delimited, comma-decimal CSV with a UTF-8 BOM, so it opens correctly in Excel</li>
+        <li>Rejects any file containing a DOCTYPE declaration for safety, and never uploads your bank data anywhere</li>
+      </ul>
+    </section>
+
+    <section class="seo-content">
+      <h2>What CAMT.053 is</h2>
+      <p>CAMT.053 ("BankToCustomerStatement") is the ISO 20022 XML message a bank sends for an end-of-day or period account statement — the modern replacement for the older SWIFT MT940 format, used throughout SEPA and increasingly worldwide. Its siblings, camt.052 (intraday report) and camt.054 (debit/credit notification), share the same entry structure and are supported here too.</p>
+      <h3>Reading CdtDbtInd and reversals</h3>
+      <p>Every entry's amount (<code>Amt</code>) is always positive; the direction comes from a separate <code>CdtDbtInd</code> field (<code>CRDT</code> or <code>DBIT</code>). A useful spreadsheet needs a signed amount, which is exactly what this converter adds. For reversed entries, the direction code already reflects the reversal itself.</p>
+      <h3>Batch payments explained</h3>
+      <p>A single entry — like a payroll run — can bundle many individual transactions (<code>TxDtls</code>) inside it. This converter keeps one row per bank entry and labels a batch with its transaction count, so a 200-person payroll run doesn't produce 200 confusing rows with the same reference.</p>
+      <h3>Why the balance check matters</h3>
+      <p>Because the opening balance plus every booked entry should equal the closing balance in the file, this converter runs that check automatically. A green checkmark means the statement is internally consistent; a mismatch usually means pending entries, a missing page, or a different reversal convention from your bank.</p>
+      <p>For other structured-data conversions, try <a href="/csv-to-sql/">CSV to SQL</a>, <a href="/csv-query/">CSV Query</a>, or the <a href="/xml-formatter/">XML Formatter</a>.</p>
+    </section>
+
+    <div class="ad-slot ad-slot--rectangle" style="margin:0 auto 32px">
+      <div class="adsbygoogle" style="display:block" aria-hidden="true"></div>
+</div>
+
+    <section class="faq">
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary class="faq-question">Is my bank statement uploaded? <span class="faq-icon">+</span></summary>
+          <div class="faq-answer">No. The XML is read and converted in your browser. Nothing is sent to our servers.</div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-question">Which versions are supported? <span class="faq-icon">+</span></summary>
+          <div class="faq-answer">camt.053 versions such as 001.02, 001.04, 001.06 and 001.08, plus camt.052 and camt.054. Fields are read by element name, so unrecognized versions still parse.</div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-question">Why are all amounts positive in my file? <span class="faq-icon">+</span></summary>
+          <div class="faq-answer">CAMT stores amounts without a sign and uses CdtDbtInd (CRDT/DBIT) for direction. The converter adds a signed amount column.</div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-question">What is the balance check? <span class="faq-icon">+</span></summary>
+          <div class="faq-answer">We add booked entries to the opening balance and compare with the closing balance in the file. A green check means nothing is missing.</div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-question">Will the CSV open correctly in Excel? <span class="faq-icon">+</span></summary>
+          <div class="faq-answer">Yes. The Danish and Spanish pages use a semicolon delimiter, comma decimal separator, and a UTF-8 BOM by default, matching regional Excel settings.</div>
+        </details>
+      </div>
+    </section>
+
+    <section class="related-tools">
+      <h2>Related Tools</h2>
+      <div class="tool-grid">
+        <a href="/csv-to-sql/" class="tool-card">
+          <img src="/assets/img/icon-csv.svg" alt="CSV to SQL icon" class="tool-card-icon" width="40" height="40" loading="lazy">
+          <h3>CSV to SQL</h3>
+          <p>Convert CSV files to SQL INSERT statements.</p>
+          <span class="tool-card-link">Try it →</span>
+        </a>
+        <a href="/csv-query/" class="tool-card">
+          <img src="/assets/img/icon-csv-query.svg" alt="CSV Query icon" class="tool-card-icon" width="40" height="40" loading="lazy">
+          <h3>CSV Query</h3>
+          <p>Run SQL queries on CSV files in your browser.</p>
+          <span class="tool-card-link">Try it →</span>
+        </a>
+        <a href="/xml-formatter/" class="tool-card">
+          <img src="/assets/img/icon-xml.svg" alt="XML Formatter icon" class="tool-card-icon" width="40" height="40" loading="lazy">
+          <h3>XML Formatter</h3>
+          <p>Format and validate XML online.</p>
+          <span class="tool-card-link">Try it →</span>
+        </a>
+        <a href="/json-compare/" class="tool-card">
+          <img src="/assets/img/icon-json.svg" alt="JSON Compare icon" class="tool-card-icon" width="40" height="40" loading="lazy">
+          <h3>JSON Compare</h3>
+          <p>Find real differences between two JSON files.</p>
+          <span class="tool-card-link">Try it →</span>
+        </a>
+      </div>
+    </section>
+  </main>
+  <footer id="site-footer" class="site-footer"></footer>
+  <script src="/assets/js/shared.js?v=20260902" defer></script>
+  <script src="/assets/js/tools/camt053-to-csv.js" defer></script>
+</body>
+</html>

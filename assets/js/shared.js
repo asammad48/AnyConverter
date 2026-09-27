@@ -3,6 +3,23 @@
 (function () {
   'use strict';
 
+  /* ===== TOOL STRING LOCALISATION =====
+     Tool scripts that build UI at runtime use these so injected controls
+     follow <html lang> instead of defaulting to English. */
+  function acLang() {
+    var l = (document.documentElement.getAttribute('lang') || 'en').toLowerCase();
+    if (l.indexOf('es') === 0) return 'es';
+    if (l.indexOf('da') === 0) return 'da';
+    return 'en';
+  }
+  function acT(map) {
+    if (!map) return '';
+    var l = acLang();
+    return map[l] != null ? map[l] : (map.en != null ? map.en : '');
+  }
+  window.acLang = acLang;
+  window.acT = acT;
+
   /* ===== HEADER HTML ===== */
   const headerHTML = `
 <a href="#main-content" class="skip-link">Skip to content</a>
@@ -20,6 +37,7 @@
         <ul class="dropdown-menu" role="menu">
           <li><a href="/developer-tools/" role="menuitem">All Developer Tools</a></li>
           <li><a href="/json-formatter/" role="menuitem">JSON Formatter</a></li>
+          <li><a href="/json-compare/" role="menuitem">JSON Compare</a></li>
           <li><a href="/xml-formatter/" role="menuitem">XML Formatter</a></li>
           <li><a href="/regex-tester/" role="menuitem">Regex Tester</a></li>
           <li><a href="/base64-encoder/" role="menuitem">Base64 Encoder</a></li>
@@ -87,9 +105,12 @@
           <li><a href="/roman-numeral-converter/" role="menuitem">Roman Numeral</a></li>
           <li><a href="/markdown-html/" role="menuitem">Markdown to HTML</a></li>
           <li><a href="/csv-to-sql/" role="menuitem">CSV to SQL</a></li>
+          <li><a href="/camt053-to-csv/" role="menuitem">CAMT.053 to CSV</a></li>
+          <li><a href="/parquet-to-csv/" role="menuitem">Parquet to CSV</a></li>
           <li><a href="/image-converter/" role="menuitem">Image Converter</a></li>
           <li><a href="/image-compressor/" role="menuitem">Image Compressor</a></li>
           <li><a href="/qr-code-generator/" role="menuitem">QR Code Generator</a></li>
+          <li><a href="/barcode-generator/" role="menuitem">Barcode Generator</a></li>
         </ul>
       </li>
 
@@ -134,6 +155,8 @@
           <li><a href="/discount-calculator/" role="menuitem">Discount Calculator</a></li>
           <li><a href="/percentage-calculator/" role="menuitem">Percentage Calculator</a></li>
           <li><a href="/gst-vat-calculator/" role="menuitem">GST / VAT Calculator</a></li>
+          <li><a href="/reverse-percentage-calculator/" role="menuitem">Reverse Percentage Calculator</a></li>
+          <li><a href="/discount-stacking-calculator/" role="menuitem">Discount Stacking Calculator</a></li>
           <li><a href="/tip-calculator/" role="menuitem">Tip Calculator</a></li>
         </ul>
       </li>
@@ -190,6 +213,7 @@
       <li><a href="/">🏠 All Tools</a></li>
       <li style="padding:6px 0 2px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--color-text-3,#7C7169);pointer-events:none">Developer</li>
       <li><a href="/json-formatter/">JSON Formatter</a></li>
+      <li><a href="/json-compare/">JSON Compare</a></li>
       <li><a href="/xml-formatter/">XML Formatter</a></li>
       <li><a href="/regex-tester/">Regex Tester</a></li>
       <li><a href="/hash-generator/">Hash Generator</a></li>
@@ -214,6 +238,8 @@
       <li><a href="/number-to-words/">Number to Words</a></li>
       <li style="padding:6px 0 2px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--color-text-3,#7C7169);pointer-events:none">Data &amp; Conversion</li>
       <li><a href="/csv-to-sql/">CSV to SQL</a></li>
+      <li><a href="/camt053-to-csv/">CAMT.053 to CSV</a></li>
+      <li><a href="/parquet-to-csv/">Parquet to CSV</a></li>
       <li><a href="/csv-query/">CSV Query</a></li>
       <li><a href="/timestamp-converter/">Timestamp Converter</a></li>
       <li><a href="/markdown-html/">Markdown to HTML</a></li>
@@ -269,6 +295,7 @@
       <li><a href="/bmi-calculator/">BMI Calculator</a></li>
       <li><a href="/calorie-calculator/">Calorie Calculator</a></li>
       <li><a href="/qr-code-generator/">QR Code Generator</a></li>
+      <li><a href="/barcode-generator/">Barcode Generator</a></li>
       <li><a href="/typing-speed-test/">Typing Speed Test</a></li>
       <li><a href="/pomodoro-timer/">Pomodoro Timer</a></li>
       <li><a href="/invoice-generator/">Invoice Generator</a></li>
@@ -283,6 +310,8 @@
       <li><a href="/discount-calculator/">Discount Calculator</a></li>
       <li><a href="/percentage-calculator/">Percentage Calculator</a></li>
       <li><a href="/gst-vat-calculator/">GST / VAT Calculator</a></li>
+      <li><a href="/reverse-percentage-calculator/">Reverse Percentage Calculator</a></li>
+      <li><a href="/discount-stacking-calculator/">Discount Stacking Calculator</a></li>
       <li><a href="/tip-calculator/">Tip Calculator</a></li>
       <li style="padding:6px 0 2px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--color-text-3,#7C7169);pointer-events:none">CSS &amp; Design</li>
       <li><a href="/css-gradient-generator/">CSS Gradient Generator</a></li>
@@ -386,6 +415,7 @@
   var TOOLS = [
     // Developer Tools
     {n:'JSON Formatter',          u:'/json-formatter/',              d:'Format, validate and beautify JSON',                i:'/assets/img/icon-json.svg',              c:'Developer',    k:'pretty print validate parse indent'},
+    {n:'JSON Compare',            u:'/json-compare/',                d:'Find real differences between two JSON files',      i:'/assets/img/icon-json.svg',              c:'Developer',    k:'json compare diff json diff two files array match key ignore order'},
     {n:'XML Formatter',           u:'/xml-formatter/',               d:'Format and validate XML documents',                 i:'/assets/img/icon-xml.svg',               c:'Developer',    k:'pretty print validate markup parse'},
     {n:'Regex Tester',            u:'/regex-tester/',                d:'Test and debug regular expressions live',           i:'/assets/img/icon-regex.svg',             c:'Developer',    k:'regexp pattern match test debug'},
     {n:'Base64 Encoder',          u:'/base64-encoder/',              d:'Encode and decode Base64 strings',                  i:'/assets/img/icon-base64.svg',            c:'Developer',    k:'encode decode binary string convert'},
@@ -443,10 +473,13 @@
     {n:'Roman Numeral Converter', u:'/roman-numeral-converter/',     d:'Convert between Arabic and Roman numerals',         i:'/assets/img/icon-roman.svg',             c:'Text',         k:'roman numeral convert arabic xiv iv mcm'},
     {n:'Markdown to HTML',        u:'/markdown-html/',               d:'Convert Markdown to HTML instantly',                i:'/assets/img/icon-markdown.svg',          c:'Text',         k:'markdown html convert preview render md'},
     {n:'CSV to SQL',              u:'/csv-to-sql/',                  d:'Convert CSV data to SQL INSERT statements',         i:'/assets/img/icon-csv.svg',               c:'Data',         k:'csv sql insert convert table database'},
+    {n:'CAMT.053 to CSV',         u:'/camt053-to-csv/',              d:'Convert ISO 20022 bank statements to CSV',          i:'/assets/img/icon-csv.svg',               c:'Data',         k:'camt053 camt.053 iso 20022 bank statement to csv excel mt940'},
+    {n:'Parquet to CSV',          u:'/parquet-to-csv/',              d:'Convert Parquet files to CSV in your browser',      i:'/assets/img/icon-csv.svg',               c:'Data',         k:'parquet to csv convert parquet viewer schema snappy'},
     {n:'CSV Query',               u:'/csv-query/',                   d:'Run SQL queries on CSV files in your browser',      i:'/assets/img/icon-csv-query.svg',         c:'Data',         k:'csv sql query filter select database'},
     {n:'Image Converter',         u:'/image-converter/',             d:'Convert images between different formats',          i:'/assets/img/icon-text.svg',              c:'Media',        k:'image convert jpg png webp gif bmp format'},
     {n:'Image Compressor',        u:'/image-compressor/',            d:'Compress images without quality loss',              i:'/assets/img/icon-text.svg',              c:'Media',        k:'image compress reduce size optimize jpg png'},
     {n:'QR Code Generator',       u:'/qr-code-generator/',           d:'Generate QR codes for any URL or text',             i:'/assets/img/icon-text.svg',              c:'Tools',        k:'qr code generate scan url link barcode'},
+    {n:'Barcode Generator',       u:'/barcode-generator/',           d:'Create Code 128, EAN-13, UPC-A and Code 39 barcodes', i:'/assets/img/icon-text.svg',            c:'Tools',        k:'barcode generator code128 ean13 upc code39 create scan check digit'},
     // Data & Conversion
     {n:'Timestamp Converter',     u:'/timestamp-converter/',         d:'Convert Unix timestamps to readable dates',         i:'/assets/img/icon-clock.svg',             c:'Data',         k:'timestamp unix epoch date time convert'},
     {n:'Color Converter',         u:'/color-converter/',             d:'Convert colors between HEX, RGB and HSL',           i:'/assets/img/icon-color.svg',             c:'Data',         k:'color hex rgb hsl hsv convert picker'},
@@ -481,6 +514,8 @@
     {n:'Discount Calculator',     u:'/discount-calculator/',         d:'Calculate discounted prices and savings',           i:'/assets/img/icon-calculator.svg',        c:'Finance',      k:'discount percent off sale price savings'},
     {n:'Percentage Calculator',   u:'/percentage-calculator/',       d:'Calculate percentages quickly',                     i:'/assets/img/icon-calculator.svg',        c:'Calculator',   k:'percentage percent calculate ratio proportion math'},
     {n:'GST / VAT Calculator',    u:'/gst-vat-calculator/',          d:'Calculate GST and VAT amounts',                     i:'/assets/img/icon-calculator.svg',        c:'Finance',      k:'gst vat tax calculate inclusive exclusive'},
+    {n:'Reverse Percentage Calculator',u:'/reverse-percentage-calculator/',d:'Find the original value before a % increase, discount, or VAT', i:'/assets/img/icon-calculator.svg', c:'Finance',    k:'reverse percentage calculator find original price remove vat margin markup'},
+    {n:'Discount Stacking Calculator', u:'/discount-stacking-calculator/', d:'See what stacked percent, coupon and multi-buy discounts really cost', i:'/assets/img/icon-calculator.svg', c:'Finance', k:'discount stacking calculator stacked coupons multi buy cashback 20 percent 10 percent'},
     {n:'Tip Calculator',          u:'/tip-calculator/',              d:'Calculate tip and split the bill',                  i:'/assets/img/icon-calculator.svg',        c:'Finance',      k:'tip bill split restaurant gratuity'},
     {n:'Random Number Generator', u:'/random-number-generator/',     d:'Generate cryptographically secure random numbers',  i:'/assets/img/icon-calculator.svg',        c:'Calculator',   k:'random number generate range secure crypto'},
     {n:'Blood Type Compatibility',u:'/blood-type-compatibility/',    d:'Check blood type donation compatibility',           i:'/assets/img/icon-calculator.svg',        c:'Calculator',   k:'blood type compatibility donor recipient abo rh'},
@@ -558,26 +593,86 @@
     if (!hasToolLayout) return;
 
     const hero = document.querySelector('.hero');
-    if (!hero || hero.querySelector('.tool-page-actions')) return;
+    const breadcrumb = document.querySelector('.breadcrumb');
+    const actionHost = breadcrumb || hero;
+    if (!actionHost || actionHost.querySelector('.tool-page-actions')) return;
 
     const actions = document.createElement('div');
     actions.className = 'tool-page-actions';
+    const lang = currentPageLang();
+    const actionCopy = {
+      en: {
+        related: 'Related Tools',
+        share: 'Share',
+        copy: 'Copy Link',
+        favorite: 'Add to Favorites',
+        relatedLabel: 'Go to related tools section',
+        shareLabel: 'Share this tool',
+        copyLabel: 'Copy tool link',
+        favoriteLabel: 'Add tool to favorites',
+        tryText: 'Try {tool} on AnyConverter',
+        relatedMissing: 'Related tools section is not available on this page.',
+        shareOpened: 'Share dialog opened.',
+        shareFallback: 'Share is not available on this device. Link copied instead.',
+        shareIncomplete: 'Share was not completed.',
+        copied: 'Tool link copied to clipboard.',
+        added: 'Added to favorites.',
+        exists: 'Already in favorites.'
+      },
+      es: {
+        related: 'Herramientas relacionadas',
+        share: 'Compartir',
+        copy: 'Copiar enlace',
+        favorite: 'Agregar a favoritos',
+        relatedLabel: 'Ir a la seccion de herramientas relacionadas',
+        shareLabel: 'Compartir esta herramienta',
+        copyLabel: 'Copiar enlace de la herramienta',
+        favoriteLabel: 'Agregar herramienta a favoritos',
+        tryText: 'Prueba {tool} en AnyConverter',
+        relatedMissing: 'La seccion de herramientas relacionadas no esta disponible en esta pagina.',
+        shareOpened: 'Dialogo para compartir abierto.',
+        shareFallback: 'Compartir no esta disponible en este dispositivo. Se copio el enlace.',
+        shareIncomplete: 'No se completo la accion de compartir.',
+        copied: 'Enlace de la herramienta copiado.',
+        added: 'Agregado a favoritos.',
+        exists: 'Ya esta en favoritos.'
+      },
+      da: {
+        related: 'Relaterede værktøjer',
+        share: 'Del',
+        copy: 'Kopiér link',
+        favorite: 'Føj til favoritter',
+        relatedLabel: 'Gå til relaterede værktøjer',
+        shareLabel: 'Del dette værktøj',
+        copyLabel: 'Kopiér værktøjslink',
+        favoriteLabel: 'Føj værktøj til favoritter',
+        tryText: 'Prøv {tool} på AnyConverter',
+        relatedMissing: 'Sektionen med relaterede værktøjer er ikke tilgængelig på denne side.',
+        shareOpened: 'Delingsdialog åbnet.',
+        shareFallback: 'Deling er ikke tilgængelig på denne enhed. Linket blev kopieret i stedet.',
+        shareIncomplete: 'Deling blev ikke gennemført.',
+        copied: 'Værktøjslink kopieret.',
+        added: 'Føjet til favoritter.',
+        exists: 'Findes allerede i favoritter.'
+      }
+    };
+    const t = actionCopy[lang] || actionCopy.en;
     actions.innerHTML = `
-      <button type="button" class="ac-btn tool-page-action-btn" data-action="related" aria-label="Go to related tools section">
+      <button type="button" class="ac-btn tool-page-action-btn" data-action="related" aria-label="${t.relatedLabel}">
         <span aria-hidden="true">▦</span>
-        <span>Related Tools</span>
+        <span>${t.related}</span>
       </button>
-      <button type="button" class="ac-btn tool-page-action-btn" data-action="share" aria-label="Share this tool">
+      <button type="button" class="ac-btn tool-page-action-btn" data-action="share" aria-label="${t.shareLabel}">
         <span aria-hidden="true">↗</span>
-        <span>Share</span>
+        <span>${t.share}</span>
       </button>
-      <button type="button" class="ac-btn tool-page-action-btn" data-action="copylink" aria-label="Copy tool link">
-        <span aria-hidden="true">🔗</span>
-        <span>Copy Link</span>
+      <button type="button" class="ac-btn tool-page-action-btn" data-action="copylink" aria-label="${t.copyLabel}">
+        <span aria-hidden="true">⌁</span>
+        <span>${t.copy}</span>
       </button>
-      <button type="button" class="ac-btn tool-page-action-btn" data-action="favorite" aria-label="Add tool to favorites">
+      <button type="button" class="ac-btn tool-page-action-btn" data-action="favorite" aria-label="${t.favoriteLabel}">
         <span aria-hidden="true">☆</span>
-        <span>Add to Favorites</span>
+        <span>${t.favorite}</span>
       </button>
     `;
 
@@ -595,53 +690,138 @@
         if (relatedSection) {
           relatedSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
         } else {
-          showToast('Related tools section is not available on this page.');
+          showToast(t.relatedMissing);
         }
       }
 
       if (action === 'share') {
         if (navigator.share) {
           try {
-            await navigator.share({ title: toolName, text: `Try ${toolName} on AnyConverter`, url });
-            showToast('Share dialog opened.');
+            await navigator.share({ title: toolName, text: t.tryText.replace('{tool}', toolName), url });
+            showToast(t.shareOpened);
           } catch (err) {
-            if (err && err.name !== 'AbortError') showToast('Share was not completed.');
+            if (err && err.name !== 'AbortError') showToast(t.shareIncomplete);
           }
         } else {
           await navigator.clipboard.writeText(url);
-          showToast('Share is not available on this device. Link copied instead.');
+          showToast(t.shareFallback);
         }
       }
 
       if (action === 'copylink') {
         await navigator.clipboard.writeText(url);
-        showToast('Tool link copied to clipboard.');
+        showToast(t.copied);
       }
 
       if (action === 'favorite') {
-        const key = 'ac_favorite_tools';
+        const key = 'ac:fav';
         const current = JSON.parse(localStorage.getItem(key) || '[]');
         const item = { name: toolName, url };
         const exists = current.some((fav) => fav.url === url);
         if (!exists) {
           current.push(item);
           localStorage.setItem(key, JSON.stringify(current));
-          showToast('Added to favorites.');
+          showToast(t.added);
         } else {
-          showToast('Already in favorites.');
+          showToast(t.exists);
         }
       }
     });
 
-    hero.appendChild(actions);
+    actionHost.appendChild(actions);
+  }
+
+  function initToolTrustBadge() {
+    const wrapper = document.querySelector('.tool-wrapper');
+    const zone = document.querySelector('.tool-zone');
+    if (!wrapper || !zone || zone.querySelector('.ac-trust-badge')) return;
+
+    const lang = currentPageLang();
+    const path = removeLocalePrefix(window.location.pathname);
+    const externalTools = {
+      '/ip-address-lookup/': 'ipapi.co',
+      '/internet-speed-test/': 'Cloudflare'
+    };
+    const mixedTools = {
+      '/ocr-pdf/': true
+    };
+
+    let mode = 'local';
+    let service = '';
+    if (externalTools[path]) {
+      mode = 'external';
+      service = externalTools[path];
+    } else if (mixedTools[path]) {
+      mode = 'mixed';
+    }
+
+    const copy = {
+      en: {
+        local: 'Processed in your browser. Nothing is uploaded to our servers.',
+        mixed: 'Your file stays in your browser. OCR language data may download once for recognition.',
+        external: 'Uses {service} for this lookup or test. That service may receive your IP address.'
+      },
+      es: {
+        local: 'Procesado en tu navegador. Nada se sube a nuestros servidores.',
+        mixed: 'Tu archivo permanece en el navegador. Los datos de idioma para OCR pueden descargarse una vez.',
+        external: 'Usa {service} para esta consulta o prueba. Ese servicio puede recibir tu dirección IP.'
+      },
+      da: {
+        local: 'Behandles i din browser. Intet uploades til vores servere.',
+        mixed: 'Din fil bliver i browseren. OCR-sprogdata kan blive hentet en enkelt gang.',
+        external: 'Bruger {service} til denne opslag eller test. Tjenesten kan modtage din IP-adresse.'
+      }
+    };
+
+    const text = (copy[lang] || copy.en)[mode].replace('{service}', service);
+    const badge = document.createElement('p');
+    badge.className = 'ac-trust-badge ac-trust-badge--' + mode;
+    badge.setAttribute('data-trust-mode', mode);
+    badge.textContent = text;
+    zone.appendChild(badge);
+  }
+
+  function initToolRailAdOrder() {
+    document.querySelectorAll('.tool-side').forEach(function (rail) {
+      const adSlot = rail.querySelector('.ad-slot');
+      if (!adSlot) return;
+      const adBlock = adSlot.closest('div') || adSlot;
+      if (rail.firstElementChild !== adBlock) {
+        rail.insertBefore(adBlock, rail.firstElementChild);
+      }
+    });
+  }
+
+  function initAnalytics() {
+    const meta = document.querySelector('meta[name="google-analytics-id"]');
+    const measurementId = (window.AC_GA_MEASUREMENT_ID || (meta && meta.content) || '').trim();
+    if (!/^G-[A-Z0-9]+$/i.test(measurementId)) return;
+    if (document.querySelector('script[data-ac-google-analytics]')) return;
+
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = window.gtag || function () { window.dataLayer.push(arguments); };
+    window.gtag('js', new Date());
+    window.gtag('config', measurementId, {
+      anonymize_ip: true,
+      transport_type: 'beacon'
+    });
+
+    const script = document.createElement('script');
+    script.async = true;
+    script.src = 'https://www.googletagmanager.com/gtag/js?id=' + encodeURIComponent(measurementId);
+    script.setAttribute('data-ac-google-analytics', measurementId);
+    document.head.appendChild(script);
   }
 
   /* ===== INIT ===== */
   applyStoredTheme();
+  initAnalytics();
   document.addEventListener('DOMContentLoaded', function () {
     renderHeader();
     renderFooter();
+    initToolRailAdOrder();
     initToolPageActions();
+    initToolTrustBadge();
     initHeader();
     initThemeToggle();
     initLangSwitcher();
