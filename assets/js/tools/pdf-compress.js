@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const compressSettings = document.getElementById('compress-settings');
   const originalSizeBar = document.getElementById('original-size-bar');
   const compressResult = document.getElementById('compress-result');
+  let noteEl = null;
 
   let originalBytes = null;
   let compressedBytes = null;
@@ -44,8 +45,18 @@ document.addEventListener('DOMContentLoaded', function () {
       loadPdfLib().catch(function (error) {
         window.showToast(error.message, 'error');
       });
+      ensureHonestNote();
     };
     reader.readAsArrayBuffer(file);
+  }
+
+  function ensureHonestNote() {
+    if (noteEl || !compressSettings) return;
+    noteEl = document.createElement('div');
+    noteEl.className = 'ac-mini-panel';
+    noteEl.style.marginTop = '12px';
+    noteEl.innerHTML = '<strong>What this compression can do</strong><p class="prototype-muted-note">This browser tool rebuilds and optimizes PDF structure. It does not downsample embedded photos, so scanned PDFs may show little or no size reduction.</p>';
+    compressSettings.appendChild(noteEl);
   }
 
   dropZone.addEventListener('click', function () { fileInput.click(); });
@@ -105,6 +116,7 @@ document.addEventListener('DOMContentLoaded', function () {
         document.getElementById('result-saved').style.color = 'var(--color-warning)';
         document.getElementById('compress-bar-fill').style.width = '0%';
         window.showToast('This PDF is already optimized. File size unchanged.', 'info');
+        if (noteEl) noteEl.innerHTML = '<strong>No fake compression applied</strong><p class="prototype-muted-note">The output was not smaller, so the download keeps the valid optimized PDF without claiming a false saving. Image recompression is not performed in this browser tool.</p>';
       } else {
         document.getElementById('result-saved').textContent = pct + '%';
         document.getElementById('result-saved').style.color = 'var(--color-success)';

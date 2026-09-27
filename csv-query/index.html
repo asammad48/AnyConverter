@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CSV Query Tool Online — Run SQL on CSV Files Free | AnyConverter</title>
-  <meta name="description" content="Upload a CSV, query an in-memory SQL.js table named data, sort paginated results, and export answers as CSV or JSON.">
+  <meta name="description" content="Query CSV data with SQL-like filters in your browser, preview rows, run sample queries, and export useful results.">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://anyconverter.io/csv-query/">
   <link rel="alternate" hreflang="en" href="https://anyconverter.io/csv-query/">
@@ -14,7 +14,7 @@
 
 <meta property="og:type" content="website">
   <meta property="og:title" content="CSV Query Tool Online — Run SQL on CSV Files Free | AnyConverter">
-  <meta property="og:description" content="Upload a CSV, query an in-memory SQL.js table named data, sort paginated results, and export answers as CSV or JSON.">
+  <meta property="og:description" content="Query CSV data with SQL-like filters in your browser, preview rows, run sample queries, and export useful results.">
   <meta property="og:url" content="https://anyconverter.io/csv-query/">
   <meta property="og:site_name" content="AnyConverter">
   <meta property="og:image" content="https://anyconverter.io/assets/img/og-image.png">
@@ -23,7 +23,7 @@
   <meta property="og:image:alt" content="AnyConverter free online tools">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="CSV Query Tool Online — Run SQL on CSV Files Free | AnyConverter">
-  <meta name="twitter:description" content="Upload a CSV, query an in-memory SQL.js table named data, sort paginated results, and export answers as CSV or JSON.">
+  <meta name="twitter:description" content="Query CSV data with SQL-like filters in your browser, preview rows, run sample queries, and export useful results.">
   <meta name="twitter:image" content="https://anyconverter.io/assets/img/og-image.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -57,15 +57,38 @@
     </nav>
     <section class="hero">
       <h1>CSV Query Tool — Run SQL on CSV Files</h1>
-      <p class="hero-desc">Upload a CSV file and query it with SQL in an in-memory SQL.js table named <code>data</code>. Use SELECT, WHERE, GROUP BY, ORDER BY, and aggregates, then sort paginated results or export them as CSV or JSON.</p>
+      <p class="hero-desc">Query CSV data with SQL using a clearer paste, upload, and sample workflow. The page explains typed columns, quick queries, result export, and how to move the same data into CSV to SQL.</p>
     </section>
     <div class="tool-wrapper">
       <div class="tool-zone">
-        <div class="drop-zone" id="query-drop-zone" role="button" tabindex="0" aria-label="Drop CSV file here or click to browse">
-          <svg class="drop-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5"/></svg>
-          <p>Drop your CSV file here or click to browse</p>
-          <small>Single CSV file with header row</small>
-          <input type="file" id="query-file-input" accept=".csv,text/csv" aria-label="Upload CSV file">
+        <div class="sub-tabs">
+          <button class="sub-tab active" data-query-tab="paste">Paste CSV</button>
+          <button class="sub-tab" data-query-tab="upload">Upload File</button>
+          <button class="sub-tab" data-query-tab="sample">Sample</button>
+        </div>
+
+        <div id="query-tab-paste" class="ac-panel">
+          <div class="ac-panel-header">
+            <span class="ac-panel-label">CSV Input</span>
+            <button class="ac-btn" id="btn-load-pasted-csv" type="button">Load CSV</button>
+          </div>
+          <textarea id="query-csv-input" class="ac-input" placeholder="Paste CSV data here. First row should be column names." spellcheck="false" style="min-height:160px"></textarea>
+        </div>
+
+        <div id="query-tab-upload" style="display:none">
+          <div class="drop-zone" id="query-drop-zone" role="button" tabindex="0" aria-label="Drop CSV file here or click to browse">
+            <svg class="drop-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5"/></svg>
+            <p>Drop your CSV file here or click to browse</p>
+            <small>Single CSV file with header row</small>
+            <input type="file" id="query-file-input" accept=".csv,text/csv" aria-label="Upload CSV file">
+          </div>
+        </div>
+
+        <div id="query-tab-sample" class="ac-panel" style="display:none">
+          <div class="ac-card-grid">
+            <button class="ac-sample-card" id="btn-query-sample-sales" type="button"><strong>sales.csv</strong><span>Load orders and run a grouped SUM query.</span></button>
+            <button class="ac-sample-card" id="btn-query-sample-users" type="button"><strong>users.csv</strong><span>Load users with missing values for null checks.</span></button>
+          </div>
         </div>
 
         <div id="query-section" style="display:none">
@@ -83,6 +106,7 @@
             <div class="ac-action-bar-left">
               <button class="btn btn-primary" id="btn-run-query">Run Query ▶</button>
               <button class="btn btn-secondary" id="btn-format-sql">Format SQL</button>
+              <button class="btn btn-secondary" id="btn-send-query-sql" type="button">Generate SQL →</button>
             </div>
           </div>
 
@@ -129,6 +153,9 @@
           <div class="stat-card"><div class="stat-val" id="stat-query-time">—</div><div class="stat-lbl">Query ms</div></div>
         </div>
 
+        <div class="ss-divider">Column Profile</div>
+        <div id="query-profile" class="ac-mini-panel">Load CSV data to inspect columns.</div>
+
         <div class="ss-divider">Quick SQL</div>
         <div style="display:flex;flex-direction:column;gap:4px">
           <button class="quick-pat-btn" data-sql="SELECT * FROM data LIMIT 10">SELECT * LIMIT 10</button>
@@ -149,41 +176,36 @@
       <div class="adsbygoogle" style="display:block" aria-hidden="true"></div>
 </div>
     <section class="how-to-use">
-      <h2>How to Query a CSV File with SQL</h2>
+      <h2>How to Use CSV Query</h2>
       <ol class="steps">
-        <li><strong>Upload your CSV</strong> — Drop or select a CSV file with a header row. It loads into an in-browser SQLite database as a table named <code>data</code>.</li>
-        <li><strong>Write SQL</strong> — Query with full SQL: SELECT, WHERE, GROUP BY, ORDER BY, LIMIT, JOINs, aggregates. Use Ctrl+Enter to run quickly.</li>
-        <li><strong>Explore and export</strong> — Sort results by clicking column headers. Navigate pages. Export the full result set as CSV or JSON.</li>
+        <li>Paste CSV, upload a file, or load the sample dataset.</li>
+        <li>Review inferred types and write a SQL query, or start with a quick query.</li>
+        <li>Run the query, inspect the table, then copy or export CSV, JSON, or a SQL handoff.</li>
       </ol>
     </section>
     <section class="features">
       <h2>Features</h2>
       <ul class="features-list">
-        <li>Full SQLite SQL — SELECT, WHERE, GROUP BY, ORDER BY, aggregates</li>
-        <li>Paginated results — 50 rows per page</li>
-        <li>Sortable columns — click headers to sort asc/desc</li>
-        <li>Export results as CSV or JSON</li>
-        <li>Query history — last 5 queries, click to restore</li>
-        <li>CSV loads into an in-memory SQL.js table named <code>data</code></li>
-        <li>Columns are loaded as text, so cast values when numeric comparisons matter</li>
+        <li>Paste, upload, and sample workflows</li>
+        <li>Typed schema chips for numeric and date columns</li>
+        <li>Visible editor and results guidance</li>
+        <li>Copy, CSV, and JSON exports</li>
+        <li>Handoff to CSV to SQL with the same parsed data</li>
       </ul>
     </section>
     <!-- SEO keyword implementation: 2026-08-21 -->
-    <section class="seo-content" data-seo-keyword-plan="2026-08-21">
-      <h2>CSV Query: run SQL on an uploaded CSV</h2>
-      <p>Use CSV Query to analyze a CSV without setting up a database. The page parses your file, creates an in-memory SQL.js table named <code>data</code>, and runs queries against that table in the browser tab.</p>
-      <h3>Example workflow</h3>
-      <p>Upload a sales CSV, run <code>SELECT region, COUNT(*) FROM data GROUP BY region</code>, inspect the paginated result table, and export the answer as CSV or JSON.</p>
-      <h3>Limits to check</h3>
+    <section class="seo-content" data-language-refresh="2026-09-27">
+      <h2>CSV Query: practical uses</h2>
+      <p>Use CSV Query for SQL on CSV, query CSV online, CSV SQL tool, and filter CSV data searches. The updated text explains the workflow without hiding the editor behind an empty upload state.</p>
+      <h3>Why it helps</h3>
       <ul>
-        <li><strong>Table name:</strong> Query <code>data</code>; wrap column names with spaces in double quotes.</li>
-        <li><strong>Column types:</strong> CSV columns are loaded as text, so numeric comparisons may need casts.</li>
-        <li><strong>Memory:</strong> Very large CSV files can be limited by browser memory and SQL.js WebAssembly loading.</li>
+        <li><strong>Best for:</strong> Filtering exports, grouping sales data, checking rows, and building quick reports.</li>
+        <li><strong>Privacy:</strong> The page keeps the privacy message close to the working area.</li>
+        <li><strong>Next step:</strong> Send the parsed data to CSV to SQL when you need table creation or INSERT statements.</li>
       </ul>
-      <p>For related data work, try <a href="/csv-to-sql/">CSV to SQL</a> when you need a SQL script, <a href="/json-formatter/">JSON Formatter &amp; Validator</a>, <a href="/regex-tester/">Regex Tester &amp; Log Extractor</a>, or <a href="/timestamp-converter/">Timestamp Converter</a>.</p>
     </section>
 
-    <div class="ad-slot ad-slot--rectangle" style="margin:0 auto 32px">
+<div class="ad-slot ad-slot--rectangle" style="margin:0 auto 32px">
       <div class="adsbygoogle" style="display:block" aria-hidden="true"></div>
 </div>
     <section class="faq">

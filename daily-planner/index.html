@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Daily Planner Online Free | AnyConverter</title>
-  <meta name="description" content="Use planner online for free in your browser. Get instant results, practical examples, related tools, and no signup.">
+  <meta name="description" content="Plan the day with a timeline, tasks, duration estimates, quick templates, and browser-local storage for a focused schedule.">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://anyconverter.io/daily-planner/">
   <link rel="alternate" hreflang="en" href="https://anyconverter.io/daily-planner/">
@@ -11,14 +11,14 @@
   <link rel="alternate" hreflang="da" href="https://anyconverter.io/da/daily-planner/">
   <link rel="alternate" hreflang="x-default" href="https://anyconverter.io/daily-planner/">
 
-<meta property="og:type" content="website"><meta property="og:title" content="Daily Planner Online Free | AnyConverter"><meta property="og:description" content="Use planner online for free in your browser. Get instant results, practical examples, related tools, and no signup."><meta property="og:url" content="https://anyconverter.io/daily-planner/"><meta property="og:site_name" content="AnyConverter">
+<meta property="og:type" content="website"><meta property="og:title" content="Daily Planner Online Free | AnyConverter"><meta property="og:description" content="Plan the day with a timeline, tasks, duration estimates, quick templates, and browser-local storage for a focused schedule."><meta property="og:url" content="https://anyconverter.io/daily-planner/"><meta property="og:site_name" content="AnyConverter">
   <meta property="og:image" content="https://anyconverter.io/assets/img/og-image.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="AnyConverter free online tools">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Daily Planner Online Free | AnyConverter">
-  <meta name="twitter:description" content="Use planner online for free in your browser. Get instant results, practical examples, related tools, and no signup.">
+  <meta name="twitter:description" content="Plan the day with a timeline, tasks, duration estimates, quick templates, and browser-local storage for a focused schedule.">
   <meta name="twitter:image" content="https://anyconverter.io/assets/img/og-image.png">
   <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -46,34 +46,57 @@
     <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/">Home</a></li><li><a href="/todo-list/">Productivity</a></li><li aria-current="page">Daily Planner</li></ol></nav>
     <section class="hero">
       <h1>Daily Planner Online</h1>
-      <p class="hero-desc">Schedule your day with time-based task entries. Set start time, task name, and optional duration. Navigate between days and mark tasks complete.</p>
+      <p class="hero-desc">Plan a day with a clearer timeline, conflict, template, and export workflow. The page explains how tasks persist locally and how unfinished items can move forward.</p>
     </section>
     <div class="tool-wrapper">
       <div class="tool-zone">
-        <div style="padding:24px;max-width:640px">
-          <!-- Date selector -->
-          <div style="display:flex;align-items:center;gap:10px;margin-bottom:20px;flex-wrap:wrap">
-            <label style="font-size:13px;font-weight:600">Date:</label>
-            <input type="date" id="pl-date" style="padding:8px 12px;border:1px solid var(--color-border,#DDD8D0);border-radius:8px;font-size:14px">
+        <div class="planner-grid">
+          <div class="planner-controls">
+            <div class="ac-settings-row">
+              <label class="ac-field"><span>Date</span>
+                <input type="date" id="pl-date">
+              </label>
+              <label class="ac-field"><span>What</span>
+                <input type="text" id="pl-task" placeholder="e.g. Write report">
+              </label>
+              <label class="ac-field planner-time-field"><span>Start</span>
+                <input type="time" id="pl-time" value="09:00">
+              </label>
+            </div>
+            <div class="planner-field-group">
+              <span class="planner-group-label">Length</span>
+              <div class="planner-chips" id="pl-dur-chips">
+                <button class="planner-chip" type="button" data-dur="15">15 m</button>
+                <button class="planner-chip is-active" type="button" data-dur="30">30 m</button>
+                <button class="planner-chip" type="button" data-dur="60">1 h</button>
+                <button class="planner-chip" type="button" data-dur="90">1.5 h</button>
+              </div>
+            </div>
+            <input type="number" id="pl-dur" min="1" max="480" value="30" hidden>
+            <button class="btn btn-primary planner-add-btn" id="pl-add">Add to today</button>
+            <div class="planner-field-group">
+              <span class="planner-group-label">Start from</span>
+              <div class="planner-quick-row">
+                <button class="btn btn-secondary" id="pl-template-work" type="button">Workday</button>
+                <button class="btn btn-secondary" id="pl-template-study" type="button">Study day</button>
+                <button class="btn btn-secondary" id="pl-clear" type="button">Clear</button>
+              </div>
+            </div>
+            <div class="planner-alert" id="pl-conflict" style="display:none"></div>
+            <div class="ac-card-grid" id="pl-stats">
+              <div><strong id="pl-stat-planned">0 h 0 m</strong><span>Planned</span></div>
+              <div><strong id="pl-stat-left">0 h 0 m</strong><span>Still to do</span></div>
+              <div><strong id="pl-stat-free">0 h 0 m</strong><span>Free today</span></div>
+            </div>
+            <div class="planner-actions planner-quick-row">
+              <button class="btn btn-secondary" id="pl-late" type="button">Running late · shift +15 m</button>
+              <button class="btn btn-secondary" id="pl-export" type="button">Download .ics</button>
+              <button class="btn btn-secondary" id="pl-carry" type="button">Carry unfinished to tomorrow</button>
+            </div>
           </div>
-          <!-- Add task form -->
-          <div class="planner-add-row" style="margin-bottom:16px">
-            <div>
-              <label style="display:block;font-size:11px;font-weight:500;color:var(--color-text-2,#6B7280);margin-bottom:4px">Time</label>
-              <input type="time" id="pl-time" value="09:00" style="width:100%;padding:9px 8px;border:1px solid var(--color-border,#DDD8D0);border-radius:8px;font-size:13px">
-            </div>
-            <div>
-              <label style="display:block;font-size:11px;font-weight:500;color:var(--color-text-2,#6B7280);margin-bottom:4px">Task</label>
-              <input type="text" id="pl-task" placeholder="What are you doing?" style="width:100%;padding:9px 12px;border:1px solid var(--color-border,#DDD8D0);border-radius:8px;font-size:13px">
-            </div>
-            <div>
-              <label style="display:block;font-size:11px;font-weight:500;color:var(--color-text-2,#6B7280);margin-bottom:4px">Duration (min)</label>
-              <input type="number" id="pl-dur" min="0" max="480" placeholder="30" style="width:100%;padding:9px 8px;border:1px solid var(--color-border,#DDD8D0);border-radius:8px;font-size:13px;text-align:center">
-            </div>
-            <button class="btn btn-primary planner-add-btn" id="pl-add" style="align-self:flex-end">Add</button>
+          <div class="planner-timeline" aria-label="Today timeline">
+            <div class="planner-timeline__inner" id="pl-timeline"></div>
           </div>
-          <!-- Task list -->
-          <ul id="pl-list" style="list-style:none;border:1px solid var(--color-border,#DDD8D0);border-radius:10px;overflow:hidden;background:var(--color-surface,#fff);min-height:80px;padding:0 14px"></ul>
         </div>
       </div>
       <aside class="tool-side" aria-label="Advertisement">
@@ -85,21 +108,34 @@
         </div>
       </aside>
     </div>
-    <section class="how-to-use"><h2>How to Use the Daily Planner</h2><ol class="steps"><li>Select a date (defaults to today).</li><li>Enter a time, task description, and optional duration in minutes.</li><li>Click <em>Add</em> — tasks are sorted by time automatically.</li><li>Check the checkbox to mark a task as done, or × to delete it.</li></ol></section>
-    <section class="features"><h2>Features</h2><ul class="features-list"><li>Per-day storage — each date has its own task list</li><li>Tasks sorted chronologically by start time</li><li>Optional duration field in minutes</li><li>Check off tasks as you complete them</li><li>Data saves to localStorage automatically</li></ul></section>
-    <!-- SEO keyword implementation: 2026-08-21 -->
-    <section class="seo-content" data-seo-keyword-plan="2026-08-21">
-      <h2>Planner online: practical uses</h2>
-      <p>Use planner online when you need a fast, clear, private result without creating an account. This page also supports related needs like planner online so you can choose the right workflow.</p>
-      <h3>When it helps</h3>
-      <ul>
-        <li><strong>Best for:</strong> Running a focused task, timer, plan, note, checklist, or habit flow directly in the browser.</li>
-        <li><strong>Helpful details:</strong> Keep the page open while you work, use the saved or live state where available, and reset when the session changes.</li>
-        <li><strong>Next step:</strong> Move to another planning or timing tool when you need a timer, list, notes, daily plan, or habit tracker.</li>
-      </ul>
-      <p>For the next step, try <a href="/pomodoro-timer/">Pomodoro Timer</a>, <a href="/todo-list/">To-do List Online</a>, <a href="/habit-tracker/">Habit Tracker Online</a>, <a href="/countdown-timer/">Countdown Timer Online</a>.</p>
+    <section class="how-to-use">
+      <h2>How to Use Daily Planner</h2>
+      <ol class="steps">
+        <li>Add tasks with start time, duration, and title.</li>
+        <li>Review the day timeline and fix overlaps or conflicts.</li>
+        <li>Export, print, or carry unfinished work forward when available.</li>
+      </ol>
     </section>
-
+    <section class="features">
+      <h2>Features</h2>
+      <ul class="features-list">
+        <li>Day timeline guidance</li>
+        <li>Now-line and conflict language</li>
+        <li>Workday and study-day template context</li>
+        <li>Local persistence in this browser</li>
+        <li>Export and print workflow copy</li>
+      </ul>
+    </section>
+    <section class="seo-content" data-language-refresh="2026-09-27">
+      <h2>Daily Planner Online: practical uses</h2>
+      <p>Plan a day with a clearer timeline, conflict, template, and export workflow. The page explains how tasks persist locally and how unfinished items can move forward. The refreshed page copy keeps the main task first while giving Google and users clearer context for free online daily planner online searches.</p>
+      <h3>Why it helps</h3>
+      <ul>
+        <li><strong>Best for:</strong> Day timeline guidance</li>
+        <li><strong>Privacy:</strong> The page keeps the privacy message close to the working area.</li>
+        <li><strong>Next step:</strong> Review the result, then copy, download, share, or continue with a related workflow.</li>
+      </ul>
+    </section>
     <section class="faq"><h2>Frequently Asked Questions</h2><div class="faq-list">
       <details class="faq-item"><summary class="faq-question">Can I view plans for past or future dates? <span class="faq-icon">+</span></summary><div class="faq-answer">Yes. Use the date picker to navigate to any date. Each day's plan is stored separately in localStorage under its own key.</div></details>
       <details class="faq-item"><summary class="faq-question">Is there a limit to how many tasks I can add per day? <span class="faq-icon">+</span></summary><div class="faq-answer">No hard limit. You can add as many tasks as you need — the list scrolls to accommodate all entries.</div></details>

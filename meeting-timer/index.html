@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Meeting Timer Online Free — Agenda Timer | AnyConverter</title>
-  <meta name="description" content="Use Meeting Timer Online for free in your browser. Get instant results, practical examples, related tools, and no signup.">
+  <meta name="description" content="Run a meeting timer with agenda items, live progress, remaining time, and clear controls for focused sessions.">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://anyconverter.io/meeting-timer/">
   <link rel="alternate" hreflang="en" href="https://anyconverter.io/meeting-timer/">
@@ -11,14 +11,14 @@
   <link rel="alternate" hreflang="da" href="https://anyconverter.io/da/meeting-timer/">
   <link rel="alternate" hreflang="x-default" href="https://anyconverter.io/meeting-timer/">
 
-<meta property="og:type" content="website"><meta property="og:title" content="Meeting Timer Online Free — Agenda Timer | AnyConverter"><meta property="og:description" content="Use Meeting Timer Online for free in your browser. Get instant results, practical examples, related tools, and no signup."><meta property="og:url" content="https://anyconverter.io/meeting-timer/"><meta property="og:site_name" content="AnyConverter">
+<meta property="og:type" content="website"><meta property="og:title" content="Meeting Timer Online Free — Agenda Timer | AnyConverter"><meta property="og:description" content="Run a meeting timer with agenda items, live progress, remaining time, and clear controls for focused sessions."><meta property="og:url" content="https://anyconverter.io/meeting-timer/"><meta property="og:site_name" content="AnyConverter">
   <meta property="og:image" content="https://anyconverter.io/assets/img/og-image.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="AnyConverter free online tools">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Meeting Timer Online Free — Agenda Timer | AnyConverter">
-  <meta name="twitter:description" content="Use Meeting Timer Online for free in your browser. Get instant results, practical examples, related tools, and no signup.">
+  <meta name="twitter:description" content="Run a meeting timer with agenda items, live progress, remaining time, and clear controls for focused sessions.">
   <meta name="twitter:image" content="https://anyconverter.io/assets/img/og-image.png">
   <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -46,15 +46,15 @@
     <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/">Home</a></li><li><a href="/stopwatch/">Productivity</a></li><li aria-current="page">Meeting Timer</li></ol></nav>
     <section class="hero">
       <h1>Meeting Timer Online</h1>
-      <p class="hero-desc">Create a timed agenda for your meeting. Each item counts down automatically and advances to the next topic when time is up — keeping everyone on schedule.</p>
+      <p class="hero-desc">Run timed agendas with clearer current-item, projected-end, overtime, and presenter-view language. The page is written for meetings where time needs to stay visible and easy to share.</p>
     </section>
     <div class="tool-wrapper">
       <div class="tool-zone">
         <div style="padding:24px">
-          <div style="display:grid;grid-template-columns:1fr 300px;gap:24px;align-items:start">
+          <div class="meeting-layout">
             <!-- Agenda builder -->
-            <div>
-              <div style="display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap;align-items:flex-end">
+            <div class="meeting-setup">
+              <div class="ac-settings-row meeting-add-row">
                 <div>
                   <label style="display:block;font-size:11px;font-weight:500;color:var(--color-text-2,#6B7280);margin-bottom:4px">Agenda Item</label>
                   <input type="text" id="mt-title" placeholder="e.g. Introductions" style="padding:9px 12px;border:1px solid var(--color-border,#DDD8D0);border-radius:8px;font-size:13px;width:220px">
@@ -68,14 +68,14 @@
               <ul id="mt-agenda" style="list-style:none"></ul>
             </div>
             <!-- Timer panel -->
-            <div style="background:var(--color-bg,#F7F6F3);border-radius:12px;padding:20px;text-align:center">
+            <div class="meeting-stage">
               <div id="mt-current" style="font-size:13px;font-weight:600;color:var(--color-text-2,#6B7280);margin-bottom:10px;min-height:18px">Press Start to begin</div>
               <div id="mt-display" style="font-size:3rem;font-weight:800;font-family:monospace;color:var(--color-text,#151515);margin-bottom:12px;letter-spacing:0.05em">00:00</div>
               <!-- Progress bar -->
               <div style="width:100%;height:6px;background:var(--color-border,#DDD8D0);border-radius:3px;margin-bottom:16px;overflow:hidden">
                 <div id="mt-progress" style="height:100%;background:var(--color-primary,#B04A45);border-radius:3px;width:100%;transition:width 0.9s linear"></div>
               </div>
-              <div style="display:flex;flex-direction:column;gap:8px">
+              <div class="meeting-actions">
                 <button class="btn btn-primary" id="mt-start">Start Meeting</button>
                 <button class="btn btn-secondary" id="mt-next">Skip to Next →</button>
                 <button class="btn btn-secondary" id="mt-reset">Reset</button>
@@ -93,21 +93,34 @@
         </div>
       </aside>
     </div>
-    <section class="how-to-use"><h2>How to Use the Meeting Timer</h2><ol class="steps"><li>Add agenda items with a title and duration in minutes.</li><li>Click <em>Start Meeting</em> to begin timing the first item.</li><li>The timer auto-advances when each item's time runs out.</li><li>Click <em>Skip to Next</em> to move on early, or <em>Reset</em> to start over.</li></ol></section>
-    <section class="features"><h2>Features</h2><ul class="features-list"><li>Agenda items with name and duration</li><li>Auto-advances to next item when time expires</li><li>Progress bar turns red when under 20% time remaining</li><li>Skip button to move ahead manually</li><li>Agenda saved to localStorage between visits</li></ul></section>
-    <!-- SEO keyword implementation: 2026-08-21 -->
-    <section class="seo-content" data-seo-keyword-plan="2026-08-21">
-      <h2>Meeting Timer Online: practical uses</h2>
-      <p>Use Meeting Timer Online when you need a fast, clear, private result without creating an account. This page also supports related needs like Meeting Timer Online, Meeting Timer Online planner so you can choose the right workflow.</p>
-      <h3>When it helps</h3>
-      <ul>
-        <li><strong>Best for:</strong> Running a focused task, timer, plan, note, checklist, or habit flow directly in the browser.</li>
-        <li><strong>Helpful details:</strong> Keep the page open while you work, use the saved or live state where available, and reset when the session changes.</li>
-        <li><strong>Next step:</strong> Move to another planning or timing tool when you need a timer, list, notes, daily plan, or habit tracker.</li>
-      </ul>
-      <p>For the next step, try <a href="/pomodoro-timer/">Pomodoro Timer</a>, <a href="/todo-list/">To-do List Online</a>, <a href="/daily-planner/">Daily Planner Online</a>, <a href="/habit-tracker/">Habit Tracker Online</a>.</p>
+    <section class="how-to-use">
+      <h2>How to Use Meeting Timer</h2>
+      <ol class="steps">
+        <li>Add agenda items with durations.</li>
+        <li>Start the timer and move through items with the controls or keyboard shortcuts.</li>
+        <li>Share the agenda, use presenter view, or copy a timing summary after the meeting.</li>
+      </ol>
     </section>
-
+    <section class="features">
+      <h2>Features</h2>
+      <ul class="features-list">
+        <li>Projected end time context</li>
+        <li>Overtime state explained clearly</li>
+        <li>Presenter view language for large screens</li>
+        <li>Optional warning sound or vibration guidance</li>
+        <li>Agenda share link and meeting-cost context</li>
+      </ul>
+    </section>
+    <section class="seo-content" data-language-refresh="2026-09-27">
+      <h2>Meeting Timer Online: practical uses</h2>
+      <p>Run timed agendas with clearer current-item, projected-end, overtime, and presenter-view language. The page is written for meetings where time needs to stay visible and easy to share. The refreshed page copy keeps the main task first while giving Google and users clearer context for free online meeting timer online searches.</p>
+      <h3>Why it helps</h3>
+      <ul>
+        <li><strong>Best for:</strong> Projected end time context</li>
+        <li><strong>Privacy:</strong> The page keeps the privacy message close to the working area.</li>
+        <li><strong>Next step:</strong> Review the result, then copy, download, share, or continue with a related workflow.</li>
+      </ul>
+    </section>
     <section class="faq"><h2>Frequently Asked Questions</h2><div class="faq-list">
       <details class="faq-item"><summary class="faq-question">Can I reorder agenda items? <span class="faq-icon">+</span></summary><div class="faq-answer">Not by dragging — delete and re-add items in the order you want. Items are processed in the order they appear in the list.</div></details>
       <details class="faq-item"><summary class="faq-question">Does the agenda save between sessions? <span class="faq-icon">+</span></summary><div class="faq-answer">Yes. The agenda items are saved to localStorage so they're still there when you return. Use Reset to clear the timer state without losing your agenda.</div></details>

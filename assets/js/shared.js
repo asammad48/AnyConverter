@@ -3,6 +3,23 @@
 (function () {
   'use strict';
 
+  /* ===== TOOL STRING LOCALISATION =====
+     Tool scripts that build UI at runtime use these so injected controls
+     follow <html lang> instead of defaulting to English. */
+  function acLang() {
+    var l = (document.documentElement.getAttribute('lang') || 'en').toLowerCase();
+    if (l.indexOf('es') === 0) return 'es';
+    if (l.indexOf('da') === 0) return 'da';
+    return 'en';
+  }
+  function acT(map) {
+    if (!map) return '';
+    var l = acLang();
+    return map[l] != null ? map[l] : (map.en != null ? map.en : '');
+  }
+  window.acLang = acLang;
+  window.acT = acT;
+
   /* ===== HEADER HTML ===== */
   const headerHTML = `
 <a href="#main-content" class="skip-link">Skip to content</a>
@@ -576,26 +593,86 @@
     if (!hasToolLayout) return;
 
     const hero = document.querySelector('.hero');
-    if (!hero || hero.querySelector('.tool-page-actions')) return;
+    const breadcrumb = document.querySelector('.breadcrumb');
+    const actionHost = breadcrumb || hero;
+    if (!actionHost || actionHost.querySelector('.tool-page-actions')) return;
 
     const actions = document.createElement('div');
     actions.className = 'tool-page-actions';
+    const lang = currentPageLang();
+    const actionCopy = {
+      en: {
+        related: 'Related Tools',
+        share: 'Share',
+        copy: 'Copy Link',
+        favorite: 'Add to Favorites',
+        relatedLabel: 'Go to related tools section',
+        shareLabel: 'Share this tool',
+        copyLabel: 'Copy tool link',
+        favoriteLabel: 'Add tool to favorites',
+        tryText: 'Try {tool} on AnyConverter',
+        relatedMissing: 'Related tools section is not available on this page.',
+        shareOpened: 'Share dialog opened.',
+        shareFallback: 'Share is not available on this device. Link copied instead.',
+        shareIncomplete: 'Share was not completed.',
+        copied: 'Tool link copied to clipboard.',
+        added: 'Added to favorites.',
+        exists: 'Already in favorites.'
+      },
+      es: {
+        related: 'Herramientas relacionadas',
+        share: 'Compartir',
+        copy: 'Copiar enlace',
+        favorite: 'Agregar a favoritos',
+        relatedLabel: 'Ir a la seccion de herramientas relacionadas',
+        shareLabel: 'Compartir esta herramienta',
+        copyLabel: 'Copiar enlace de la herramienta',
+        favoriteLabel: 'Agregar herramienta a favoritos',
+        tryText: 'Prueba {tool} en AnyConverter',
+        relatedMissing: 'La seccion de herramientas relacionadas no esta disponible en esta pagina.',
+        shareOpened: 'Dialogo para compartir abierto.',
+        shareFallback: 'Compartir no esta disponible en este dispositivo. Se copio el enlace.',
+        shareIncomplete: 'No se completo la accion de compartir.',
+        copied: 'Enlace de la herramienta copiado.',
+        added: 'Agregado a favoritos.',
+        exists: 'Ya esta en favoritos.'
+      },
+      da: {
+        related: 'Relaterede værktøjer',
+        share: 'Del',
+        copy: 'Kopiér link',
+        favorite: 'Føj til favoritter',
+        relatedLabel: 'Gå til relaterede værktøjer',
+        shareLabel: 'Del dette værktøj',
+        copyLabel: 'Kopiér værktøjslink',
+        favoriteLabel: 'Føj værktøj til favoritter',
+        tryText: 'Prøv {tool} på AnyConverter',
+        relatedMissing: 'Sektionen med relaterede værktøjer er ikke tilgængelig på denne side.',
+        shareOpened: 'Delingsdialog åbnet.',
+        shareFallback: 'Deling er ikke tilgængelig på denne enhed. Linket blev kopieret i stedet.',
+        shareIncomplete: 'Deling blev ikke gennemført.',
+        copied: 'Værktøjslink kopieret.',
+        added: 'Føjet til favoritter.',
+        exists: 'Findes allerede i favoritter.'
+      }
+    };
+    const t = actionCopy[lang] || actionCopy.en;
     actions.innerHTML = `
-      <button type="button" class="ac-btn tool-page-action-btn" data-action="related" aria-label="Go to related tools section">
+      <button type="button" class="ac-btn tool-page-action-btn" data-action="related" aria-label="${t.relatedLabel}">
         <span aria-hidden="true">▦</span>
-        <span>Related Tools</span>
+        <span>${t.related}</span>
       </button>
-      <button type="button" class="ac-btn tool-page-action-btn" data-action="share" aria-label="Share this tool">
+      <button type="button" class="ac-btn tool-page-action-btn" data-action="share" aria-label="${t.shareLabel}">
         <span aria-hidden="true">↗</span>
-        <span>Share</span>
+        <span>${t.share}</span>
       </button>
-      <button type="button" class="ac-btn tool-page-action-btn" data-action="copylink" aria-label="Copy tool link">
-        <span aria-hidden="true">🔗</span>
-        <span>Copy Link</span>
+      <button type="button" class="ac-btn tool-page-action-btn" data-action="copylink" aria-label="${t.copyLabel}">
+        <span aria-hidden="true">⌁</span>
+        <span>${t.copy}</span>
       </button>
-      <button type="button" class="ac-btn tool-page-action-btn" data-action="favorite" aria-label="Add tool to favorites">
+      <button type="button" class="ac-btn tool-page-action-btn" data-action="favorite" aria-label="${t.favoriteLabel}">
         <span aria-hidden="true">☆</span>
-        <span>Add to Favorites</span>
+        <span>${t.favorite}</span>
       </button>
     `;
 
@@ -613,53 +690,138 @@
         if (relatedSection) {
           relatedSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
         } else {
-          showToast('Related tools section is not available on this page.');
+          showToast(t.relatedMissing);
         }
       }
 
       if (action === 'share') {
         if (navigator.share) {
           try {
-            await navigator.share({ title: toolName, text: `Try ${toolName} on AnyConverter`, url });
-            showToast('Share dialog opened.');
+            await navigator.share({ title: toolName, text: t.tryText.replace('{tool}', toolName), url });
+            showToast(t.shareOpened);
           } catch (err) {
-            if (err && err.name !== 'AbortError') showToast('Share was not completed.');
+            if (err && err.name !== 'AbortError') showToast(t.shareIncomplete);
           }
         } else {
           await navigator.clipboard.writeText(url);
-          showToast('Share is not available on this device. Link copied instead.');
+          showToast(t.shareFallback);
         }
       }
 
       if (action === 'copylink') {
         await navigator.clipboard.writeText(url);
-        showToast('Tool link copied to clipboard.');
+        showToast(t.copied);
       }
 
       if (action === 'favorite') {
-        const key = 'ac_favorite_tools';
+        const key = 'ac:fav';
         const current = JSON.parse(localStorage.getItem(key) || '[]');
         const item = { name: toolName, url };
         const exists = current.some((fav) => fav.url === url);
         if (!exists) {
           current.push(item);
           localStorage.setItem(key, JSON.stringify(current));
-          showToast('Added to favorites.');
+          showToast(t.added);
         } else {
-          showToast('Already in favorites.');
+          showToast(t.exists);
         }
       }
     });
 
-    hero.appendChild(actions);
+    actionHost.appendChild(actions);
+  }
+
+  function initToolTrustBadge() {
+    const wrapper = document.querySelector('.tool-wrapper');
+    const zone = document.querySelector('.tool-zone');
+    if (!wrapper || !zone || zone.querySelector('.ac-trust-badge')) return;
+
+    const lang = currentPageLang();
+    const path = removeLocalePrefix(window.location.pathname);
+    const externalTools = {
+      '/ip-address-lookup/': 'ipapi.co',
+      '/internet-speed-test/': 'Cloudflare'
+    };
+    const mixedTools = {
+      '/ocr-pdf/': true
+    };
+
+    let mode = 'local';
+    let service = '';
+    if (externalTools[path]) {
+      mode = 'external';
+      service = externalTools[path];
+    } else if (mixedTools[path]) {
+      mode = 'mixed';
+    }
+
+    const copy = {
+      en: {
+        local: 'Processed in your browser. Nothing is uploaded to our servers.',
+        mixed: 'Your file stays in your browser. OCR language data may download once for recognition.',
+        external: 'Uses {service} for this lookup or test. That service may receive your IP address.'
+      },
+      es: {
+        local: 'Procesado en tu navegador. Nada se sube a nuestros servidores.',
+        mixed: 'Tu archivo permanece en el navegador. Los datos de idioma para OCR pueden descargarse una vez.',
+        external: 'Usa {service} para esta consulta o prueba. Ese servicio puede recibir tu dirección IP.'
+      },
+      da: {
+        local: 'Behandles i din browser. Intet uploades til vores servere.',
+        mixed: 'Din fil bliver i browseren. OCR-sprogdata kan blive hentet en enkelt gang.',
+        external: 'Bruger {service} til denne opslag eller test. Tjenesten kan modtage din IP-adresse.'
+      }
+    };
+
+    const text = (copy[lang] || copy.en)[mode].replace('{service}', service);
+    const badge = document.createElement('p');
+    badge.className = 'ac-trust-badge ac-trust-badge--' + mode;
+    badge.setAttribute('data-trust-mode', mode);
+    badge.textContent = text;
+    zone.appendChild(badge);
+  }
+
+  function initToolRailAdOrder() {
+    document.querySelectorAll('.tool-side').forEach(function (rail) {
+      const adSlot = rail.querySelector('.ad-slot');
+      if (!adSlot) return;
+      const adBlock = adSlot.closest('div') || adSlot;
+      if (rail.firstElementChild !== adBlock) {
+        rail.insertBefore(adBlock, rail.firstElementChild);
+      }
+    });
+  }
+
+  function initAnalytics() {
+    const meta = document.querySelector('meta[name="google-analytics-id"]');
+    const measurementId = (window.AC_GA_MEASUREMENT_ID || (meta && meta.content) || '').trim();
+    if (!/^G-[A-Z0-9]+$/i.test(measurementId)) return;
+    if (document.querySelector('script[data-ac-google-analytics]')) return;
+
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = window.gtag || function () { window.dataLayer.push(arguments); };
+    window.gtag('js', new Date());
+    window.gtag('config', measurementId, {
+      anonymize_ip: true,
+      transport_type: 'beacon'
+    });
+
+    const script = document.createElement('script');
+    script.async = true;
+    script.src = 'https://www.googletagmanager.com/gtag/js?id=' + encodeURIComponent(measurementId);
+    script.setAttribute('data-ac-google-analytics', measurementId);
+    document.head.appendChild(script);
   }
 
   /* ===== INIT ===== */
   applyStoredTheme();
+  initAnalytics();
   document.addEventListener('DOMContentLoaded', function () {
     renderHeader();
     renderFooter();
+    initToolRailAdOrder();
     initToolPageActions();
+    initToolTrustBadge();
     initHeader();
     initThemeToggle();
     initLangSwitcher();

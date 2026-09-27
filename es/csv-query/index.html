@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Herramienta de Consulta CSV — Ejecuta SQL en | AnyConverter</title>
-  <meta name="description" content="Usa csv to sql gratis en el navegador. Incluye ejemplos, usos comunes, herramientas relacionadas y resultados rapidos.">
+  <meta name="description" content="Consulta datos CSV con filtros tipo SQL en el navegador, previsualiza filas, ejecuta ejemplos y exporta resultados.">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://anyconverter.io/es/csv-query/">
   <link rel="alternate" hreflang="en" href="https://anyconverter.io/csv-query/">
@@ -13,8 +13,8 @@
   <link rel="alternate" hreflang="x-default" href="https://anyconverter.io/csv-query/">
 
 <meta property="og:type" content="website">
-  <meta property="og:title" content="Herramienta de Consulta CSV Online — Ejecuta SQL en Archivos CSV Gratis | AnyConverter">
-  <meta property="og:description" content="Usa csv to sql gratis en el navegador. Incluye ejemplos, usos comunes, herramientas relacionadas y resultados rapidos.">
+  <meta property="og:title" content="Herramienta de Consulta CSV — Ejecuta SQL en | AnyConverter">
+  <meta property="og:description" content="Consulta datos CSV con filtros tipo SQL en el navegador, previsualiza filas, ejecuta ejemplos y exporta resultados.">
   <meta property="og:url" content="https://anyconverter.io/es/csv-query/">
   <meta property="og:site_name" content="AnyConverter">
   <meta property="og:image" content="https://anyconverter.io/assets/img/og-image.png">
@@ -23,7 +23,7 @@
   <meta property="og:image:alt" content="AnyConverter free online tools">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Herramienta de Consulta CSV — Ejecuta SQL en | AnyConverter">
-  <meta name="twitter:description" content="Usa csv to sql gratis en el navegador. Incluye ejemplos, usos comunes, herramientas relacionadas y resultados rapidos.">
+  <meta name="twitter:description" content="Consulta datos CSV con filtros tipo SQL en el navegador, previsualiza filas, ejecuta ejemplos y exporta resultados.">
   <meta name="twitter:image" content="https://anyconverter.io/assets/img/og-image.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -61,11 +61,34 @@
     </section>
     <div class="tool-wrapper">
       <div class="tool-zone">
-        <div class="drop-zone" id="query-drop-zone" role="button" tabindex="0" aria-label="Suelta el archivo CSV aquí o haz clic para buscar">
-          <svg class="drop-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5"/></svg>
-          <p>Suelta tu archivo CSV aquí o haz clic para buscar</p>
-          <small>Archivo CSV con fila de encabezado</small>
-          <input type="file" id="query-file-input" accept=".csv,text/csv" aria-label="Subir archivo CSV">
+        <div class="sub-tabs">
+          <button class="sub-tab active" data-query-tab="paste">Pegar CSV</button>
+          <button class="sub-tab" data-query-tab="upload">Subir archivo</button>
+          <button class="sub-tab" data-query-tab="sample">Ejemplo</button>
+        </div>
+
+        <div id="query-tab-paste" class="ac-panel">
+          <div class="ac-panel-header">
+            <span class="ac-panel-label">Entrada CSV</span>
+            <button class="ac-btn" id="btn-load-pasted-csv" type="button">Cargar CSV</button>
+          </div>
+          <textarea id="query-csv-input" class="ac-input" placeholder="Pega aquí los datos CSV. La primera fila debe ser el nombre de las columnas." spellcheck="false" style="min-height:160px"></textarea>
+        </div>
+
+        <div id="query-tab-upload" style="display:none">
+          <div class="drop-zone" id="query-drop-zone" role="button" tabindex="0" aria-label="Arrastra el archivo CSV aquí o haz clic para buscar">
+            <svg class="drop-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5"/></svg>
+            <p>Arrastra tu archivo CSV aquí o haz clic para buscar</p>
+            <small>Un archivo CSV con fila de cabecera</small>
+            <input type="file" id="query-file-input" accept=".csv,text/csv" aria-label="Subir archivo CSV">
+          </div>
+        </div>
+
+        <div id="query-tab-sample" class="ac-panel" style="display:none">
+          <div class="ac-card-grid">
+            <button class="ac-sample-card" id="btn-query-sample-sales" type="button"><strong>sales.csv</strong><span>Carga pedidos y ejecuta una consulta SUM agrupada.</span></button>
+            <button class="ac-sample-card" id="btn-query-sample-users" type="button"><strong>users.csv</strong><span>Carga usuarios con valores vacíos para comprobar nulos.</span></button>
+          </div>
         </div>
 
         <div id="query-section" style="display:none">
@@ -74,7 +97,7 @@
           <div class="mt-4">
             <label for="sql-query" style="font-weight:500;margin-bottom:6px;display:block">
               Consulta SQL
-              <span style="font-size:12px;color:var(--color-text-2,#6B7280);font-weight:400;margin-left:8px">Ctrl+Enter para ejecutar — nombre de tabla: <code style="background:var(--color-bg,#F7F6F3);padding:2px 5px;border-radius:3px">data</code></span>
+              <span style="font-size:12px;color:var(--color-text-2,#6B7280);font-weight:400;margin-left:8px">Ctrl+Intro para ejecutar — nombre de tabla: <code style="background:var(--color-bg,#F7F6F3);padding:2px 5px;border-radius:3px">data</code></span>
             </label>
             <textarea id="sql-query" spellcheck="false" style="min-height:120px;font-family:var(--font-mono,monospace);font-size:13px;width:100%;resize:vertical">SELECT * FROM data LIMIT 10</textarea>
           </div>
@@ -83,6 +106,7 @@
             <div class="ac-action-bar-left">
               <button class="btn btn-primary" id="btn-run-query">Ejecutar consulta ▶</button>
               <button class="btn btn-secondary" id="btn-format-sql">Formatear SQL</button>
+              <button class="btn btn-secondary" id="btn-send-query-sql" type="button">Generar SQL →</button>
             </div>
           </div>
 
@@ -97,7 +121,7 @@
             <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:10px">
               <div class="status-bar info" id="result-stats" style="margin:0;flex:1;min-width:0"></div>
               <div style="display:flex;gap:6px;flex-shrink:0;align-items:center">
-                <div class="font-sz-wrap"><button class="font-sz-btn" id="btn-tbl-font-down" title="Reducir fuente de tabla">A−</button><button class="font-sz-btn" id="btn-tbl-font-up" title="Aumentar fuente de tabla">A+</button></div>
+                <div class="font-sz-wrap"><button class="font-sz-btn" id="btn-tbl-font-down" title="Reducir fuente de la tabla">A−</button><button class="font-sz-btn" id="btn-tbl-font-up" title="Aumentar fuente de la tabla">A+</button></div>
                 <button class="btn btn-sm" id="btn-export-csv">Exportar CSV</button>
                 <button class="btn btn-sm" id="btn-export-json">Exportar JSON</button>
                 <button class="btn btn-sm" id="btn-fs-results" title="Tabla en pantalla completa">⛶ Pantalla completa</button>
@@ -111,7 +135,7 @@
 
       <aside class="tool-side" aria-label="Opciones">
         <div class="ss-divider">Opciones</div>
-        <div class="tog-row"><span class="tog-label" id="lbl-has-header">El CSV tiene fila de encabezado</span><div class="tog" id="tog-has-header" role="switch" aria-checked="true" tabindex="0" aria-labelledby="lbl-has-header"></div></div>
+        <div class="tog-row"><span class="tog-label" id="lbl-has-header">El CSV tiene fila de cabecera</span><div class="tog" id="tog-has-header" role="switch" aria-checked="true" tabindex="0" aria-labelledby="lbl-has-header"></div></div>
         <div class="ss-option-row">
           <span class="ss-opt-label">Filas por página</span>
           <select class="ss-opt-select" id="opt-rows-per-page">
@@ -126,15 +150,18 @@
           <div class="stat-card"><div class="stat-val" id="stat-csv-rows">0</div><div class="stat-lbl">Filas</div></div>
           <div class="stat-card"><div class="stat-val" id="stat-csv-cols">0</div><div class="stat-lbl">Columnas</div></div>
           <div class="stat-card"><div class="stat-val" id="stat-result-rows">0</div><div class="stat-lbl">Resultados</div></div>
-          <div class="stat-card"><div class="stat-val" id="stat-query-time">—</div><div class="stat-lbl">Tiempo ms</div></div>
+          <div class="stat-card"><div class="stat-val" id="stat-query-time">—</div><div class="stat-lbl">ms de consulta</div></div>
         </div>
+
+        <div class="ss-divider">Perfil de columnas</div>
+        <div id="query-profile" class="ac-mini-panel">Carga datos CSV para inspeccionar las columnas.</div>
 
         <div class="ss-divider">SQL rápido</div>
         <div style="display:flex;flex-direction:column;gap:4px">
           <button class="quick-pat-btn" data-sql="SELECT * FROM data LIMIT 10">SELECT * LIMIT 10</button>
-          <button class="quick-pat-btn" data-sql="SELECT COUNT(*) as count FROM data">Contar filas</button>
+          <button class="quick-pat-btn" data-sql="SELECT COUNT(*) as count FROM data">COUNT filas</button>
           <button class="quick-pat-btn" data-sql="SELECT * FROM data WHERE rowid = 1">Primera fila</button>
-          <button class="quick-pat-btn" data-sql="SELECT DISTINCT * FROM data LIMIT 50">Filas DISTINCT</button>
+          <button class="quick-pat-btn" data-sql="SELECT DISTINCT * FROM data LIMIT 50">DISTINCT filas</button>
         </div>
 
         <div style="margin-top:8px">

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Temporizador de Reuniones — Agenda con Tiempo | AnyConverter</title>
-  <meta name="description" content="Usa Temporizador de Reuniones Online gratis en el navegador. Incluye ejemplos, usos comunes, herramientas relacionadas y resultados rapidos.">
+  <meta name="description" content="Usa un temporizador de reuniones con agenda, progreso en vivo, tiempo restante y controles claros para sesiones enfocadas.">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://anyconverter.io/es/meeting-timer/">
   <link rel="alternate" hreflang="en" href="https://anyconverter.io/meeting-timer/">
@@ -11,14 +11,14 @@
   <link rel="alternate" hreflang="da" href="https://anyconverter.io/da/meeting-timer/">
   <link rel="alternate" hreflang="x-default" href="https://anyconverter.io/meeting-timer/">
 
-<meta property="og:type" content="website"><meta property="og:title" content="Temporizador de Reuniones Online Gratis — Agenda con Tiempo | AnyConverter"><meta property="og:description" content="Usa Temporizador de Reuniones Online gratis en el navegador. Incluye ejemplos, usos comunes, herramientas relacionadas y resultados rapidos."><meta property="og:url" content="https://anyconverter.io/es/meeting-timer/"><meta property="og:site_name" content="AnyConverter">
+<meta property="og:type" content="website"><meta property="og:title" content="Temporizador de Reuniones — Agenda con Tiempo | AnyConverter"><meta property="og:description" content="Usa un temporizador de reuniones con agenda, progreso en vivo, tiempo restante y controles claros para sesiones enfocadas."><meta property="og:url" content="https://anyconverter.io/es/meeting-timer/"><meta property="og:site_name" content="AnyConverter">
   <meta property="og:image" content="https://anyconverter.io/assets/img/og-image.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="AnyConverter free online tools">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Temporizador de Reuniones — Agenda con Tiempo | AnyConverter">
-  <meta name="twitter:description" content="Usa Temporizador de Reuniones Online gratis en el navegador. Incluye ejemplos, usos comunes, herramientas relacionadas y resultados rapidos.">
+  <meta name="twitter:description" content="Usa un temporizador de reuniones con agenda, progreso en vivo, tiempo restante y controles claros para sesiones enfocadas.">
   <meta name="twitter:image" content="https://anyconverter.io/assets/img/og-image.png">
   <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -51,10 +51,10 @@
     <div class="tool-wrapper">
       <div class="tool-zone">
         <div style="padding:24px">
-          <div style="display:grid;grid-template-columns:1fr 300px;gap:24px;align-items:start">
+          <div class="meeting-layout">
             <!-- Agenda builder -->
-            <div>
-              <div style="display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap;align-items:flex-end">
+            <div class="meeting-setup">
+              <div class="ac-settings-row meeting-add-row">
                 <div>
                   <label style="display:block;font-size:11px;font-weight:500;color:var(--color-text-2,#6B7280);margin-bottom:4px">Punto del orden del día</label>
                   <input type="text" id="mt-title" placeholder="ej. Presentaciones" style="padding:9px 12px;border:1px solid var(--color-border,#DDD8D0);border-radius:8px;font-size:13px;width:220px">
@@ -68,14 +68,14 @@
               <ul id="mt-agenda" style="list-style:none"></ul>
             </div>
             <!-- Timer panel -->
-            <div style="background:var(--color-bg,#F7F6F3);border-radius:12px;padding:20px;text-align:center">
+            <div class="meeting-stage">
               <div id="mt-current" style="font-size:13px;font-weight:600;color:var(--color-text-2,#6B7280);margin-bottom:10px;min-height:18px">Pulsa Iniciar para comenzar</div>
               <div id="mt-display" style="font-size:3rem;font-weight:800;font-family:monospace;color:var(--color-text,#151515);margin-bottom:12px;letter-spacing:0.05em">00:00</div>
               <!-- Progress bar -->
               <div style="width:100%;height:6px;background:var(--color-border,#DDD8D0);border-radius:3px;margin-bottom:16px;overflow:hidden">
                 <div id="mt-progress" style="height:100%;background:var(--color-primary,#B04A45);border-radius:3px;width:100%;transition:width 0.9s linear"></div>
               </div>
-              <div style="display:flex;flex-direction:column;gap:8px">
+              <div class="meeting-actions">
                 <button class="btn btn-primary" id="mt-start">Iniciar Reunión</button>
                 <button class="btn btn-secondary" id="mt-next">Saltar al Siguiente →</button>
                 <button class="btn btn-secondary" id="mt-reset">Reiniciar</button>

@@ -21,6 +21,8 @@
   function setStatus(msg) {
     var el = document.getElementById('speed-status');
     if (el) el.textContent = msg;
+    var phase = document.getElementById('speed-phase');
+    if (phase) phase.textContent = msg;
   }
 
   async function measurePing() {
@@ -95,11 +97,13 @@
     setVal('speed-upload',   '—', 'Upload');
 
     try {
-      await measurePing();
-      await measureDownload();
+      var ping = await measurePing();
+      var down = await measureDownload();
       var up = await measureUpload();
       if (!up) setVal('speed-upload', 'N/A', 'Upload');
       setStatus(t.done);
+      renderMeaning(down, up || 0, ping);
+      saveHistory(down, up || 0, ping);
     } catch (e) {
       setStatus(t.fail);
     }
@@ -109,7 +113,54 @@
   }
 
   document.addEventListener('DOMContentLoaded', function () {
+    addPrototypePanels();
     var btn = document.getElementById('speed-btn');
     if (btn) btn.addEventListener('click', runTest);
   });
+
+  function addPrototypePanels() {
+    var zone = document.querySelector('.tool-zone > div') || document.querySelector('.tool-zone');
+    if (!zone || document.getElementById('speed-quality')) return;
+    var panel = document.createElement('div');
+    panel.className = 'ac-mini-panel';
+    panel.style.marginTop = '14px';
+    panel.innerHTML = '<div class="ac-result-kicker">Phase</div><div id="speed-phase" style="font-weight:700;margin:6px 0 12px">Ready</div><div id="speed-quality" style="display:flex;flex-direction:column;gap:8px"></div><div class="ac-result-kicker" style="margin-top:12px">Recent runs</div><div id="speed-history" style="display:flex;flex-direction:column;gap:6px;margin-top:8px"></div>';
+    zone.appendChild(panel);
+    renderMeaning(0, 0, 0);
+    renderHistory();
+  }
+
+  function quality(label, ok, warn) {
+    var cls = ok ? '' : warn ? ' is-warn' : ' is-bad';
+    return '<div class="ac-quality-row"><span>' + label + '</span><span class="ac-status-pill' + cls + '">' + (ok ? 'OK' : warn ? 'Borderline' : 'Poor') + '</span></div>';
+  }
+
+  function renderMeaning(down, up, ping) {
+    var el = document.getElementById('speed-quality');
+    if (!el) return;
+    el.innerHTML =
+      quality('4K streaming', down >= 25, down >= 12) +
+      quality('HD video calls', down >= 5 && up >= 3 && ping <= 100, down >= 3 && up >= 1.5) +
+      quality('Online gaming', down >= 10 && ping <= 60, ping <= 120) +
+      quality('Large uploads', up >= 10, up >= 3);
+  }
+
+  function saveHistory(down, up, ping) {
+    try {
+      var list = JSON.parse(localStorage.getItem('ac:speed:history') || '[]');
+      list.unshift({ at: new Date().toLocaleString(), down: fmt(down), up: up ? fmt(up) : 'N/A', ping: Math.round(ping) + ' ms' });
+      localStorage.setItem('ac:speed:history', JSON.stringify(list.slice(0, 10)));
+      renderHistory();
+    } catch (e) {}
+  }
+
+  function renderHistory() {
+    var el = document.getElementById('speed-history');
+    if (!el) return;
+    var list = [];
+    try { list = JSON.parse(localStorage.getItem('ac:speed:history') || '[]'); } catch (e) {}
+    el.innerHTML = list.length ? list.slice(0, 3).map(function(item) {
+      return '<div class="ac-quality-row"><span>' + item.at + '</span><strong>' + item.down + ' / ' + item.up + ' · ' + item.ping + '</strong></div>';
+    }).join('') : '<p class="prototype-muted-note" style="margin:0">Run a test to save local history.</p>';
+  }
 })();

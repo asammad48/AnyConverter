@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sammensæt PDF Online Gratis | AnyConverter</title>
-  <meta name="description" content="Brug flet PDF online gratis i browseren. Fa eksempler, praktiske tips, relaterede vaerktojer og hurtige resultater.">
+  <meta name="description" content="Flet PDF-filer online, sorter dokumenter og download en samlet PDF med klar privatlivsvenlig behandling Med klare trin, praktiske resultater og ingen konto.">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://anyconverter.io/da/pdf-merge/">
   <link rel="alternate" hreflang="en" href="https://anyconverter.io/pdf-merge/">
@@ -14,7 +14,7 @@
 
 <meta property="og:type" content="website">
   <meta property="og:title" content="Sammensæt PDF Online Gratis | AnyConverter">
-  <meta property="og:description" content="Brug flet PDF online gratis i browseren. Fa eksempler, praktiske tips, relaterede vaerktojer og hurtige resultater.">
+  <meta property="og:description" content="Flet PDF-filer online, sorter dokumenter og download en samlet PDF med klar privatlivsvenlig behandling Med klare trin, praktiske resultater og ingen konto.">
   <meta property="og:url" content="https://anyconverter.io/da/pdf-merge/">
   <meta property="og:site_name" content="AnyConverter">
   <meta property="og:image" content="https://anyconverter.io/assets/img/og-image.png">
@@ -23,7 +23,7 @@
   <meta property="og:image:alt" content="AnyConverter free online tools">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Sammensæt PDF Online Gratis | AnyConverter">
-  <meta name="twitter:description" content="Brug flet PDF online gratis i browseren. Fa eksempler, praktiske tips, relaterede vaerktojer og hurtige resultater.">
+  <meta name="twitter:description" content="Flet PDF-filer online, sorter dokumenter og download en samlet PDF med klar privatlivsvenlig behandling Med klare trin, praktiske resultater og ingen konto.">
   <meta name="twitter:image" content="https://anyconverter.io/assets/img/og-image.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -61,7 +61,7 @@
         <div class="drop-zone" id="merge-drop-zone" role="button" tabindex="0" aria-label="Træk PDF-filer hertil eller klik for at vælge">
           <svg class="drop-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5"/></svg>
           <p>Træk PDF-filer hertil eller klik for at vælge</p>
-          <small>Vælg flere PDF-filer</small>
+          <div class="ac-upload-actions"><button class="btn btn-secondary" type="button">Vælg PDF</button></div><small>Vælg flere PDF-filer</small>
           <input type="file" id="merge-input" accept=".pdf,application/pdf" multiple>
         </div>
         <div id="merge-file-list" style="display:none">
@@ -92,14 +92,14 @@
       </div>
       <aside class="tool-side" aria-label="Indstillinger">
         <div class="ss-divider">Indstillinger</div>
-        <div class="tog-row"><span class="tog-label" id="lbl-blank-sep">Blank page between files</span><div class="tog off" id="tog-blank-sep" role="switch" aria-checked="false" tabindex="0" aria-labelledby="lbl-blank-sep"></div></div>
-        <div class="tog-row"><span class="tog-label" id="lbl-sort-alpha">Sort files alphabetically</span><div class="tog off" id="tog-sort-alpha" role="switch" aria-checked="false" tabindex="0" aria-labelledby="lbl-sort-alpha"></div></div>
+        <div class="tog-row"><span class="tog-label" id="lbl-blank-sep">Tom side mellem filer</span><div class="tog off" id="tog-blank-sep" role="switch" aria-checked="false" tabindex="0" aria-labelledby="lbl-blank-sep"></div></div>
+        <div class="tog-row"><span class="tog-label" id="lbl-sort-alpha">Sortér filer alfabetisk</span><div class="tog off" id="tog-sort-alpha" role="switch" aria-checked="false" tabindex="0" aria-labelledby="lbl-sort-alpha"></div></div>
 
         <div class="ss-divider">Statistik</div>
         <div class="stats-grid">
-          <div class="stat-card"><div class="stat-val" id="stat-file-count">0</div><div class="stat-lbl">Files</div></div>
-          <div class="stat-card"><div class="stat-val" id="stat-total-pages">0</div><div class="stat-lbl">Total pages</div></div>
-          <div class="stat-card"><div class="stat-val" id="stat-total-size">0 B</div><div class="stat-lbl">Total size</div></div>
+          <div class="stat-card"><div class="stat-val" id="stat-file-count">0</div><div class="stat-lbl">Filer</div></div>
+          <div class="stat-card"><div class="stat-val" id="stat-total-pages">0</div><div class="stat-lbl">Sider i alt</div></div>
+          <div class="stat-card"><div class="stat-val" id="stat-total-size">0 B</div><div class="stat-lbl">Samlet størrelse</div></div>
           <div class="stat-card"><div class="stat-val" id="stat-merge-status">—</div><div class="stat-lbl">Status</div></div>
         </div>
 

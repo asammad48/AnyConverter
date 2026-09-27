@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Calculadora de IVA / GST Online Gratis | AnyConverter</title>
-  <meta name="description" content="Usa Calculadora de IVA / GST gratis en el navegador. Incluye ejemplos, usos comunes, herramientas relacionadas y resultados rapidos.">
+  <meta name="description" content="Anade o quita GST e IVA de precios, compara tasas y ve subtotal, impuesto y total al instante Incluye pasos claros, resultados practicos y sin registro.">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://anyconverter.io/es/gst-vat-calculator/">
   <link rel="alternate" hreflang="en" href="https://anyconverter.io/gst-vat-calculator/">
@@ -14,7 +14,7 @@
 
 <meta property="og:type" content="website">
   <meta property="og:title" content="Calculadora de IVA / GST Online Gratis | AnyConverter">
-  <meta property="og:description" content="Usa Calculadora de IVA / GST gratis en el navegador. Incluye ejemplos, usos comunes, herramientas relacionadas y resultados rapidos.">
+  <meta property="og:description" content="Anade o quita GST e IVA de precios, compara tasas y ve subtotal, impuesto y total al instante Incluye pasos claros, resultados practicos y sin registro.">
   <meta property="og:url" content="https://anyconverter.io/es/gst-vat-calculator/">
   <meta property="og:site_name" content="AnyConverter">
   <meta property="og:image" content="https://anyconverter.io/assets/img/og-image.png">
@@ -23,7 +23,7 @@
   <meta property="og:image:alt" content="AnyConverter free online tools">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Calculadora de IVA / GST Online Gratis | AnyConverter">
-  <meta name="twitter:description" content="Usa Calculadora de IVA / GST gratis en el navegador. Incluye ejemplos, usos comunes, herramientas relacionadas y resultados rapidos.">
+  <meta name="twitter:description" content="Anade o quita GST e IVA de precios, compara tasas y ve subtotal, impuesto y total al instante Incluye pasos claros, resultados practicos y sin registro.">
   <meta name="twitter:image" content="https://anyconverter.io/assets/img/og-image.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -93,11 +93,15 @@
             <button class="btn btn-primary" id="btn-calc-gst">Calcular impuesto</button>
             <button class="btn btn-secondary" id="btn-reset-gst">Restablecer</button>
           </div>
-          <div id="gst-result" style="display:none">
-            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px">
-              <div class="stat-card"><div class="stat-val" id="gst-base">—</div><div class="stat-lbl">Base imponible</div></div>
-              <div class="stat-card"><div class="stat-val" id="gst-tax-amt">—</div><div class="stat-lbl">Importe del impuesto</div></div>
-              <div class="stat-card"><div class="stat-val" id="gst-total">—</div><div class="stat-lbl">Total (con impuesto)</div></div>
+          <div id="gst-result" class="gst-result" style="display:none">
+            <div class="gst-result-kicker">Resultado</div>
+            <div class="gst-result-total">
+              <span class="gst-amount" id="gst-total">0.00</span>
+              <span class="gst-caption" id="gst-total-caption">Total (con impuesto)</span>
+            </div>
+            <div class="gst-breakdown">
+              <div><strong id="gst-base">0.00</strong><span>Base imponible</span></div>
+              <div><strong id="gst-tax-amt">0.00</strong><span>Importe del impuesto</span></div>
             </div>
           </div>
         </div>

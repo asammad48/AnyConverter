@@ -1,5 +1,7 @@
 ﻿(function () {
   'use strict';
+  function t(m) { return (window.acT ? window.acT(m) : m.en); }
+  var startLabel = (document.getElementById('mt-start') || {}).textContent || 'Start Meeting';
 
   const KEY = 'ac_meeting';
   let agenda = [];
@@ -18,6 +20,7 @@
   const displayEl = document.getElementById('mt-display');
   const currentEl = document.getElementById('mt-current');
   const progressEl = document.getElementById('mt-progress');
+  let currentTotal = 0;
 
   function load() {
     try { agenda = JSON.parse(localStorage.getItem(KEY)) || []; } catch (e) { agenda = []; }
@@ -36,7 +39,7 @@
   function renderAgenda() {
     listEl.innerHTML = '';
     if (agenda.length === 0) {
-      listEl.innerHTML = '<li style="color:var(--color-text-3,#7C7169);font-size:13px;text-align:center;padding:20px">No agenda items. Add items above.</li>';
+      listEl.innerHTML = '<li class="ac-empty">' + t({ en: 'No agenda items yet. Add the first one above.', es: 'Aún no hay puntos. Añade el primero arriba.', da: 'Ingen punkter endnu. Tilføj det første ovenfor.' }) + '</li>';
       return;
     }
     agenda.forEach((item, i) => {
@@ -71,9 +74,13 @@
       const item = agenda[currentIdx];
       currentEl.textContent = `Now: ${item.title}`;
       const total = item.dur * 60;
+      currentTotal = total;
       const pct = total > 0 ? Math.max(0, (remaining / total) * 100) : 0;
       progressEl.style.width = pct + '%';
       progressEl.style.background = pct < 20 ? '#DC2626' : 'var(--color-primary,#B04A45)';
+      var ring = document.getElementById('mt-ring');
+      if (ring) ring.style.setProperty('--ring-progress', pct + '%');
+      updateProjection();
     }
   }
 
@@ -81,18 +88,19 @@
     currentIdx = idx;
     if (idx >= agenda.length) { finish(); return; }
     remaining = agenda[idx].dur * 60;
+    currentTotal = remaining;
     updateDisplay();
     renderAgenda();
   }
 
   function finish() {
     stop();
-    currentEl.textContent = '✅ Meeting complete!';
+    currentEl.textContent = '✅ ' + t({ en: 'Meeting complete!', es: '¡Reunión completada!', da: 'Mødet er færdigt!' });
     displayEl.textContent = '00:00';
     progressEl.style.width = '0%';
     currentIdx = -1;
     nextBtn.disabled = true;
-    startBtn.textContent = 'Start Meeting';
+    startBtn.textContent = startLabel;
     startBtn.disabled = true;
     renderAgenda();
   }
@@ -102,7 +110,7 @@
     if (!running) {
       if (currentIdx === -1) startItem(0);
       running = true;
-      startBtn.textContent = 'Pause';
+      startBtn.textContent = t({ en: 'Pause', es: 'Pausar', da: 'Pause' });
       nextBtn.disabled = false;
       intervalId = setInterval(() => {
         remaining--;
@@ -120,7 +128,7 @@
   function stop() {
     running = false;
     clearInterval(intervalId);
-    startBtn.textContent = currentIdx >= 0 ? 'Resume' : 'Start Meeting';
+    startBtn.textContent = currentIdx >= 0 ? t({ en: 'Resume', es: 'Reanudar', da: 'Fortsæt' }) : startLabel;
   }
 
   function nextItem() {
@@ -136,11 +144,11 @@
     currentIdx = -1;
     remaining = 0;
     displayEl.textContent = '00:00';
-    currentEl.textContent = 'Press Start to begin';
+    currentEl.textContent = t({ en: 'Press Start to begin', es: 'Pulsa Iniciar para empezar', da: 'Tryk Start for at begynde' });
     progressEl.style.width = '100%';
     nextBtn.disabled = true;
     startBtn.disabled = false;
-    startBtn.textContent = 'Start Meeting';
+    startBtn.textContent = startLabel;
     renderAgenda();
   }
 
@@ -161,6 +169,34 @@
   resetBtn.addEventListener('click', reset);
 
   load();
+  addPrototypeRing();
   renderAgenda();
   nextBtn.disabled = true;
+
+  function addPrototypeRing() {
+    if (document.getElementById('mt-ring') || !displayEl.parentElement) return;
+    var ring = document.createElement('div');
+    ring.className = 'meeting-ring';
+    ring.id = 'mt-ring';
+    ring.innerHTML = '<div class="meeting-ring__inner"></div>';
+    displayEl.parentElement.insertBefore(ring, displayEl);
+    ring.querySelector('.meeting-ring__inner').appendChild(displayEl);
+    var projection = document.createElement('p');
+    projection.id = 'mt-projection';
+    projection.className = 'prototype-muted-note';
+    projection.style.textAlign = 'center';
+    projection.style.margin = '0 0 12px';
+    ring.parentElement.insertBefore(projection, ring.nextSibling);
+    updateProjection();
+  }
+
+  function updateProjection() {
+    var el = document.getElementById('mt-projection');
+    if (!el) return;
+    var planned = agenda.reduce((sum, item) => sum + item.dur, 0);
+    var end = new Date(Date.now() + planned * 60000);
+    el.textContent = agenda.length
+      ? t({ en: 'Projected end: ', es: 'Fin previsto: ', da: 'Forventet slut: ' }) + end.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) + ' · ' + planned + t({ en: ' min agenda', es: ' min de agenda', da: ' min dagsorden' })
+      : t({ en: 'Add agenda items to see the projected end time.', es: 'Añade puntos para ver la hora de fin prevista.', da: 'Tilføj punkter for at se forventet sluttid.' });
+  }
 })();
