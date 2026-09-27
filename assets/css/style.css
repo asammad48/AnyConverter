@@ -1347,6 +1347,30 @@ label.ac-btn { align-self: center; margin-top: 4px; position: relative; top: 1px
   }
 }
 
+.tool-zone .split-panels:has(#json-input) {
+  flex: 0 1 auto;
+  align-items: start;
+}
+.tool-zone .split-panels:has(#json-input) > .ac-panel {
+  height: auto;
+}
+#json-input.ac-input,
+#json-output.json-view {
+  flex: 0 0 auto;
+  height: 700px;
+  min-height: 700px;
+  max-height: 700px;
+  overflow: auto;
+}
+#json-input.ac-input {
+  /* user may drag taller; content never auto-expands it */
+  resize: vertical;
+  max-height: none;
+}
+#json-output.json-view {
+  overscroll-behavior: contain;
+}
+
 /* ===== AC-INPUT (inside panel) ===== */
 .ac-input {
   padding: 14px;
@@ -1552,6 +1576,44 @@ label.ac-btn { align-self: center; margin-top: 4px; position: relative; top: 1px
 .stat-val { font-size: 18px; font-weight: 700; color: var(--color-primary); }
 .stat-lbl { font-size: 11px; color: var(--color-text-3); margin-top: 2px; }
 
+#bc-grid {
+  gap: 16px !important;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr)) !important;
+}
+.bc-list-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+  overflow: hidden;
+}
+.bc-svg-wrap {
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+  padding: 8px 10px;
+  background: #fff;
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+}
+.bc-svg-wrap svg {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto;
+}
+.bc-caption {
+  max-width: 100%;
+  font-size: 12px;
+  color: var(--color-text-2);
+  overflow-wrap: anywhere;
+}
+.bc-download-btn {
+  font-size: 11px;
+}
+
 /* ===== PROGRESS WRAP ===== */
 .ac-progress-wrap {
   background: var(--color-surface-2); border-radius: 10px;
@@ -1648,7 +1710,9 @@ label.ac-btn { align-self: center; margin-top: 4px; position: relative; top: 1px
   max-height: none; overflow: hidden;
 }
 .ac-panel.is-fullscreen .ac-input,
-.ac-panel.is-fullscreen .json-view {
+.ac-panel.is-fullscreen .json-view,
+.ac-panel.is-fullscreen #json-input.ac-input,
+.ac-panel.is-fullscreen #json-output.json-view {
   min-height: calc(100dvh - 90px);
   max-height: calc(100dvh - 90px);
   height:     calc(100dvh - 90px);

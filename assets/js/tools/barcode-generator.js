@@ -217,8 +217,7 @@
 
       var result = validate(type, value);
       var card = document.createElement('div');
-      card.className = 'stat-card';
-      card.style.cssText = 'text-align:center;padding:10px';
+      card.className = 'stat-card bc-list-card';
       if (result.ok) {
         var svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
         var renderResult = renderOne(svg, type, result.value);
@@ -228,15 +227,18 @@
       }
       if (result.ok) {
         ok++;
-        card.appendChild(svg);
+        var svgWrap = document.createElement('div');
+        svgWrap.className = 'bc-svg-wrap';
+        svgWrap.appendChild(svg);
+        card.appendChild(svgWrap);
         if (caption) {
           var cap = document.createElement('div');
-          cap.style.cssText = 'font-size:12px;color:var(--color-text-2);margin-top:4px';
+          cap.className = 'bc-caption';
           cap.textContent = caption;
           card.appendChild(cap);
         }
         var dl = document.createElement('button');
-        dl.className = 'ac-btn'; dl.style.marginTop = '6px'; dl.style.fontSize = '11px';
+        dl.className = 'ac-btn bc-download-btn';
         dl.textContent = 'PNG';
         dl.addEventListener('click', function () { svgToPngDownload(svg, (value.replace(/[\/\\:*?"<>|]/g, '_') || 'barcode') + '.png'); });
         card.appendChild(dl);

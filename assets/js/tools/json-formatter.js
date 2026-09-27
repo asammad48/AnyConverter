@@ -280,8 +280,16 @@ document.addEventListener('DOMContentLoaded', function () {
     const line = searchMatches[searchIndex];
     if (!line) return;
     line.querySelectorAll('.j-search-hit').forEach(function(el){ el.classList.add('j-search-current'); });
-    line.scrollIntoView({ block: 'center' });
+    scrollOutputLineIntoView(line);
     setSearchCount(T.matchCount(searchIndex, searchMatches.length));
+  }
+
+  function scrollOutputLineIntoView(line) {
+    if (!outputEl || !line || typeof line.getBoundingClientRect !== 'function') return;
+    const outRect = outputEl.getBoundingClientRect();
+    const lineRect = line.getBoundingClientRect();
+    const centeredDelta = (lineRect.top - outRect.top) - ((outputEl.clientHeight - lineRect.height) / 2);
+    outputEl.scrollTo({ top: Math.max(0, outputEl.scrollTop + centeredDelta), behavior: 'auto' });
   }
 
   function runSearch() {
@@ -304,7 +312,7 @@ document.addEventListener('DOMContentLoaded', function () {
         found.classList.add('j-search-hit', 'j-search-current');
         searchMatches = [found];
         searchIndex = 0;
-        found.scrollIntoView({ block: 'center' });
+        scrollOutputLineIntoView(found);
         setSearchCount(T.pathFound);
       } else {
         setSearchCount(T.pathNotFound);
@@ -505,7 +513,7 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   /* ===== ACTIONS ===== */
-  bind(document.getElementById('btn-format'), 'click', runFormat);
+  bind(document.getElementById('btn-format'), 'click', function() { currentMode = 'format'; runFormat(); });
   bind(document.getElementById('btn-minify'), 'click', function() { currentMode = 'minify'; runMinify(); });
   bind(document.getElementById('btn-validate'), 'click', function() { currentMode = 'validate'; runValidate(); });
 

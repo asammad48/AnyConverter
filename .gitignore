@@ -14,4 +14,5 @@
 # Local validation artifacts
 output/lighthouse/
 output/playwright/*.png
+output/playwright/gsc-tool-screenshots-*/
 test-results/
