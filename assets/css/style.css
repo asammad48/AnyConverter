@@ -2504,7 +2504,7 @@ mark.search-hl {
   --ac-radius: 12px;
   --ac-control-radius: 8px;
   --ac-hit: 44px;
-  --ac-max: 1280px;
+  --ac-max: 1440px;
   --color-primary: var(--ac-accent);
   --color-primary-hover: var(--ac-accent-ink);
   --color-primary-light: var(--ac-accent-soft);
@@ -2565,7 +2565,7 @@ body:has(.tool-wrapper) main {
   width: 100%;
   max-width: var(--ac-max);
   margin: 0 auto;
-  padding: 18px 32px 40px;
+  padding: 18px clamp(20px, 2vw, 28px) 40px;
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -4898,14 +4898,147 @@ body:has(.tool-wrapper) .ac-panel {
 
 body:has(.tool-wrapper) .ac-panel-header {
   height: auto;
-  min-height: 48px;
+  min-height: 42px;
   flex-wrap: wrap;
   overflow: visible;
+  gap: 8px;
+  padding: 8px 12px !important;
+}
+
+body:has(.tool-wrapper) .ac-panel-actions {
+  gap: 6px;
+}
+
+body:has(.tool-wrapper) .ac-panel-header .ac-btn,
+body:has(.tool-wrapper) .ac-panel-header .btn,
+body:has(.tool-wrapper) .font-sz-btn {
+  height: 34px;
+  min-height: 34px;
+  padding: 0 12px;
+  border-radius: 8px !important;
+  font-size: 13px !important;
+  line-height: 1;
+}
+
+body:has(.tool-wrapper) .font-sz-btn,
+body:has(.tool-wrapper) .ac-panel-header .ac-btn[id*="fs"],
+body:has(.tool-wrapper) .ac-panel-header .btn[id*="fs"] {
+  width: 34px;
+  min-width: 34px;
+  padding: 0 !important;
+}
+
+body:has(.tool-wrapper) .font-sz-wrap {
+  display: inline-flex;
+  gap: 4px;
 }
 
 body:has(.tool-wrapper) .ac-panel > .ac-input,
 body:has(.tool-wrapper) .ac-panel > textarea {
   border-radius: 0 0 12px 12px;
+}
+
+/* JSON formatter has many panel actions; keep them on one clean row. */
+body:has(#json-input) .ac-panel-header {
+  flex-wrap: nowrap;
+  gap: 6px;
+  padding: 7px 10px !important;
+}
+
+body:has(#json-input) .ac-panel-header > span:first-child {
+  flex: 0 0 auto;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+body:has(#json-input) .ac-panel-header .ac-panel-label {
+  flex: 0 0 auto;
+}
+
+body:has(#json-input) .ac-panel-actions {
+  flex: 1 1 auto;
+  justify-content: flex-end;
+  min-width: 0;
+  gap: 4px;
+  height: auto;
+}
+
+body:has(#json-input) .ac-panel-header .ac-btn,
+body:has(#json-input) .font-sz-btn {
+  height: 32px;
+  min-height: 32px;
+  padding: 0 10px;
+  font-size: 12px !important;
+}
+
+body:has(#json-input) label.ac-btn {
+  margin-top: 0;
+  margin-bottom: 0;
+  align-self: auto;
+  top: 0;
+}
+
+body:has(#json-input) .font-sz-btn,
+body:has(#json-input) #btn-fs-input,
+body:has(#json-input) #btn-fs-output {
+  width: 32px;
+  min-width: 32px;
+  padding: 0 !important;
+}
+
+body:has(#json-input) #btn-fs-input,
+body:has(#json-input) #btn-fs-output {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 32px;
+  font-size: 14px !important;
+  line-height: 1;
+}
+
+body:has(#json-input) #json-input.ac-input,
+body:has(#json-input) #json-output.json-view {
+  border: 0 !important;
+  border-radius: 0 0 12px 12px !important;
+  font-size: var(--panel-font-size, 13px) !important;
+  line-height: 1.55;
+}
+
+body:has(#json-input) #json-input.ac-input::placeholder {
+  color: var(--ac-muted);
+  font-size: 13px;
+}
+
+body:has(#json-input) #json-output.json-view > span {
+  font-size: 12px !important;
+}
+
+/* Shared side options: compact dropdown rows across tools. */
+body:has(.tool-wrapper) .tool-side {
+  font-size: 13px;
+}
+
+body:has(.tool-wrapper) .tool-side .ss-divider {
+  margin-bottom: 12px;
+  font-size: 12px;
+}
+
+body:has(.tool-wrapper) .tool-side .ss-option-row {
+  min-height: 46px;
+  padding: 8px 10px;
+  gap: 10px;
+}
+
+body:has(.tool-wrapper) .tool-side .ss-opt-label {
+  font-size: 13px;
+}
+
+body:has(.tool-wrapper) .tool-side .ss-opt-select {
+  min-height: 36px;
+  height: 36px;
+  padding: 0 34px 0 10px;
+  border-radius: 8px;
+  font-size: 13px !important;
 }
 
 /* Status bars inside a tool card read as information, not as an error */

@@ -97,9 +97,9 @@
   function load(date) {
     try {
       const saved = localStorage.getItem(keyForDate(date));
-      tasks = saved ? JSON.parse(saved) : template('work');
+      tasks = saved ? JSON.parse(saved) : [];
     } catch (e) {
-      tasks = template('work');
+      tasks = [];
     }
   }
 

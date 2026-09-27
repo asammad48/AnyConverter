@@ -222,6 +222,55 @@ document.addEventListener('DOMContentLoaded', function () {
     if (qt) qt.textContent = ms + ' ms';
   }
 
+  function clearAll() {
+    if (typeof exitCsvFs === 'function') exitCsvFs();
+    if (db) { db.close(); db = null; }
+    currentResults = [];
+    currentColumns = [];
+    currentPage = 1;
+    sortCol = -1;
+    sortAsc = true;
+    queryHistory = [];
+    loadedCsvText = '';
+    loadedName = 'data.csv';
+    loadedHeaders = [];
+    loadedRows = [];
+
+    if (pasteInput) pasteInput.value = '';
+    if (fileInput) fileInput.value = '';
+    if (queryInput) queryInput.value = '';
+    if (fileInfoBar) fileInfoBar.textContent = '';
+    if (resultsTable) resultsTable.innerHTML = '';
+    if (resultStats) resultStats.textContent = '';
+    if (paginationBar) paginationBar.innerHTML = '';
+    if (historyList) historyList.innerHTML = '';
+    if (profileBox) profileBox.textContent = t({
+      en: 'Load CSV data to inspect columns.',
+      es: 'Carga datos CSV para inspeccionar las columnas.',
+      da: 'Indlæs CSV-data for at se kolonnerne.'
+    });
+    if (querySection) querySection.style.display = 'none';
+    if (resultsSection) resultsSection.style.display = 'none';
+    const historySection = document.getElementById('query-history-section');
+    if (historySection) historySection.style.display = 'none';
+
+    const sr = document.getElementById('stat-csv-rows');
+    const sc = document.getElementById('stat-csv-cols');
+    const rr = document.getElementById('stat-result-rows');
+    const qt = document.getElementById('stat-query-time');
+    if (sr) sr.textContent = '0';
+    if (sc) sc.textContent = '0';
+    if (rr) rr.textContent = '0';
+    if (qt) qt.textContent = '—';
+
+    try { localStorage.removeItem('ac:csv-handoff'); } catch (e) {}
+    window.showToast(t({
+      en: 'CSV Query cleared',
+      es: 'Consulta CSV borrada',
+      da: 'CSV-forespørgsel ryddet'
+    }), 'success');
+  }
+
   document.getElementById('btn-format-sql').addEventListener('click', function () {
     const keywords = ['SELECT', 'FROM', 'WHERE', 'GROUP BY', 'ORDER BY', 'HAVING', 'LIMIT', 'OFFSET',
       'JOIN', 'LEFT JOIN', 'RIGHT JOIN', 'INNER JOIN', 'ON', 'AND', 'OR', 'UNION'];
@@ -231,6 +280,9 @@ document.addEventListener('DOMContentLoaded', function () {
     });
     queryInput.value = sql.replace(/^\n+/, '').trim();
   });
+
+  const clearAllBtn = document.getElementById('btn-clear-query-all');
+  if (clearAllBtn) clearAllBtn.addEventListener('click', clearAll);
 
   function addToHistory(sql) {
     queryHistory = queryHistory.filter(function (q) { return q !== sql; });
