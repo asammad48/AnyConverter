@@ -3,6 +3,8 @@
 (function () {
   'use strict';
 
+  window.AC_GA_MEASUREMENT_ID = window.AC_GA_MEASUREMENT_ID || 'G-SX6V3QC5YY';
+
   /* ===== TOOL STRING LOCALISATION =====
      Tool scripts that build UI at runtime use these so injected controls
      follow <html lang> instead of defaulting to English. */
