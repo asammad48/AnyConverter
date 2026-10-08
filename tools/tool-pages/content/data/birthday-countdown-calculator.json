@@ -1,0 +1,245 @@
+{
+ "en": {
+  "name": "Birthday Countdown Calculator",
+  "card": "Live countdown, age and calendar reminder",
+  "desc": "Free birthday countdown calculator: see months, days and hours until your next birthday, the weekday it falls on and the age you turn. Leap-day aware.",
+  "h1": "Birthday Countdown Calculator",
+  "lede": "See exactly how long until the next birthday, live to the second. Get the age, weekday, birthstone and a yearly calendar reminder, and save birthdays on this device.",
+  "howH": "How to count down to a birthday",
+  "how": [
+   [
+    "Enter the birth date",
+    "Your own or someone else’s. The year is used for the age."
+   ],
+   [
+    "Watch the countdown",
+    "Days, hours, minutes and seconds update live, in your own time zone."
+   ],
+   [
+    "Save or add a reminder",
+    "Save the birthday on this device, or download a yearly calendar reminder."
+   ]
+  ],
+  "featH": "More than a number of days",
+  "feats": [
+   [
+    "Live countdown",
+    "Days, hours, minutes and seconds until midnight on the birthday, in your local time."
+   ],
+   [
+    "Yearly calendar reminder",
+    "Download an .ics file that repeats every year in Google Calendar, Outlook or Apple Calendar."
+   ],
+   [
+    "Leap-day birthdays",
+    "Choose whether 29 February is celebrated on 28 February or 1 March in other years."
+   ],
+   [
+    "Saved on this device",
+    "Keep a list of birthdays in your browser and add an optional photo that never leaves your device."
+   ]
+  ],
+  "explainH": "How the countdown works",
+  "explain": [
+   "The countdown finds the next date your birthday falls on, measured from midnight in your own time zone. If this year’s birthday has already passed, it moves to next year automatically, and on the day itself it shows a birthday message instead.",
+   "Alongside the countdown you see the age you are turning, the weekday of your next birthday, how many days you have been alive, your Sun sign and your birthstone. For a birthday on 29 February, you choose whether non-leap years count from 28 February or 1 March, since conventions differ.",
+   "Saved birthdays and photos are kept only in this browser’s storage. Nothing is uploaded, and birth dates are never sent to analytics."
+  ],
+  "faq": [
+   [
+    "How many days until my birthday?",
+    "Enter your birth date and the counter shows the days, hours, minutes and seconds until the next one, in your local time zone."
+   ],
+   [
+    "What happens after my birthday passes?",
+    "The countdown automatically moves to the same date next year."
+   ],
+   [
+    "Does it update live?",
+    "Yes, every second."
+   ],
+   [
+    "Can I add it to my calendar?",
+    "Yes. Download the .ics reminder; it repeats every year in most calendar apps."
+   ],
+   [
+    "Can I save birthdays?",
+    "Yes. Saved birthdays are kept in your browser on this device only."
+   ],
+   [
+    "What about February 29 birthdays?",
+    "Choose whether to celebrate on 28 February or 1 March in non-leap years. The countdown and calendar reminder follow your choice."
+   ],
+   [
+    "Can I use a photo?",
+    "Yes, optionally. The photo is shown on this page only and never uploaded."
+   ],
+   [
+    "Is my birth date private?",
+    "Yes. It stays in your browser and is never sent to analytics or a server."
+   ]
+  ]
+ },
+ "es": {
+  "name": "Cuenta Regresiva para tu Cumpleaños",
+  "card": "Cuenta en vivo, edad y recordatorio",
+  "desc": "Cuenta regresiva para tu cumpleaños gratis: mira los meses, días y horas que faltan, qué día de la semana cae y cuántos cumples. Funciona con el 29 de febrero.",
+  "h1": "Cuenta Regresiva para tu Cumpleaños",
+  "lede": "Mira exactamente cuánto falta para el próximo cumpleaños, en vivo al segundo. Con la edad, el día de la semana, la piedra de nacimiento y un recordatorio anual, y guarda cumpleaños en este dispositivo.",
+  "howH": "Cómo hacer la cuenta atrás",
+  "how": [
+   [
+    "Introduce la fecha de nacimiento",
+    "La tuya o la de otra persona. El año se usa para la edad."
+   ],
+   [
+    "Mira la cuenta atrás",
+    "Días, horas, minutos y segundos en vivo, en tu propia zona horaria."
+   ],
+   [
+    "Guárdalo o añade un recordatorio",
+    "Guarda el cumpleaños en este dispositivo o descarga un recordatorio anual."
+   ]
+  ],
+  "featH": "Más que un número de días",
+  "feats": [
+   [
+    "Cuenta atrás en vivo",
+    "Días, horas, minutos y segundos hasta la medianoche del cumpleaños, en tu hora local."
+   ],
+   [
+    "Recordatorio anual",
+    "Descarga un archivo .ics que se repite cada año en Google Calendar, Outlook o el calendario de Apple."
+   ],
+   [
+    "Cumpleaños el 29 de febrero",
+    "Elige si se celebra el 28 de febrero o el 1 de marzo en los años no bisiestos."
+   ],
+   [
+    "Guardado en este dispositivo",
+    "Guarda una lista de cumpleaños en tu navegador y añade una foto opcional que no sale de tu dispositivo."
+   ]
+  ],
+  "explainH": "Cómo funciona la cuenta atrás",
+  "explain": [
+   "La cuenta atrás busca la próxima vez que cae tu cumpleaños, contando desde la medianoche en tu zona horaria. Si el de este año ya pasó, pasa al año siguiente automáticamente, y el mismo día muestra un mensaje de felicitación.",
+   "Junto a la cuenta verás la edad que cumples, el día de la semana del próximo cumpleaños, cuántos días llevas vivo, tu signo solar y tu piedra de nacimiento. Si naciste un 29 de febrero, eliges si en los años no bisiestos cuenta el 28 de febrero o el 1 de marzo, porque la costumbre varía.",
+   "Los cumpleaños guardados y las fotos solo se almacenan en este navegador. No se sube nada y las fechas nunca se envían a analítica."
+  ],
+  "faq": [
+   [
+    "¿Cuántos días faltan para mi cumpleaños?",
+    "Introduce tu fecha y el contador muestra los días, horas, minutos y segundos hasta el próximo, en tu zona horaria."
+   ],
+   [
+    "¿Qué pasa cuando ya ha pasado?",
+    "La cuenta pasa automáticamente al mismo día del año siguiente."
+   ],
+   [
+    "¿Se actualiza en vivo?",
+    "Sí, cada segundo."
+   ],
+   [
+    "¿Puedo añadirlo al calendario?",
+    "Sí. Descarga el recordatorio .ics; se repite cada año en la mayoría de calendarios."
+   ],
+   [
+    "¿Puedo guardar cumpleaños?",
+    "Sí. Se guardan en tu navegador, solo en este dispositivo."
+   ],
+   [
+    "¿Qué pasa con el 29 de febrero?",
+    "Elige si celebrarlo el 28 de febrero o el 1 de marzo en los años no bisiestos. La cuenta y el recordatorio siguen tu elección."
+   ],
+   [
+    "¿Puedo usar una foto?",
+    "Sí, de forma opcional. Solo se muestra en esta página y nunca se sube."
+   ],
+   [
+    "¿Mi fecha es privada?",
+    "Sí. Se queda en tu navegador y no se envía a analítica ni a un servidor."
+   ]
+  ]
+ },
+ "da": {
+  "name": "Fødselsdagsnedtælling",
+  "card": "Live nedtælling, alder og kalenderpåmindelse",
+  "desc": "Gratis fødselsdagsnedtælling: se måneder, dage og timer til din næste fødselsdag, hvilken ugedag den falder på, og hvor gammel du bliver. Klarer 29. februar.",
+  "h1": "Fødselsdagsnedtælling",
+  "lede": "Se præcis hvor længe der er til næste fødselsdag, live på sekundet. Få alder, ugedag, månedssten og en årlig kalenderpåmindelse, og gem fødselsdage på denne enhed.",
+  "howH": "Sådan tæller du ned til en fødselsdag",
+  "how": [
+   [
+    "Indtast fødselsdatoen",
+    "Din egen eller en andens. Året bruges til alderen."
+   ],
+   [
+    "Se nedtællingen",
+    "Dage, timer, minutter og sekunder opdateres live i din egen tidszone."
+   ],
+   [
+    "Gem eller tilføj en påmindelse",
+    "Gem fødselsdagen på denne enhed, eller download en årlig kalenderpåmindelse."
+   ]
+  ],
+  "featH": "Mere end et antal dage",
+  "feats": [
+   [
+    "Live nedtælling",
+    "Dage, timer, minutter og sekunder til midnat på fødselsdagen, i din lokale tid."
+   ],
+   [
+    "Årlig kalenderpåmindelse",
+    "Download en .ics-fil, der gentages hvert år i Google Kalender, Outlook eller Apple Kalender."
+   ],
+   [
+    "Skuddagsfødselsdage",
+    "Vælg om 29. februar fejres den 28. februar eller 1. marts i andre år."
+   ],
+   [
+    "Gemt på denne enhed",
+    "Gem en liste over fødselsdage i din browser, og tilføj et valgfrit foto, der aldrig forlader enheden."
+   ]
+  ],
+  "explainH": "Sådan virker nedtællingen",
+  "explain": [
+   "Nedtællingen finder den næste dato, din fødselsdag falder på, regnet fra midnat i din egen tidszone. Er årets fødselsdag allerede overstået, skifter den automatisk til næste år, og på selve dagen vises en fødselsdagshilsen i stedet.",
+   "Ved siden af nedtællingen ser du den alder, du fylder, ugedagen for næste fødselsdag, hvor mange dage du har levet, dit soltegn og din månedssten. Er du født 29. februar, vælger du, om ikke-skudår tæller fra 28. februar eller 1. marts, da skikken varierer.",
+   "Gemte fødselsdage og fotos ligger kun i denne browsers lager. Intet uploades, og fødselsdatoer sendes aldrig til statistik."
+  ],
+  "faq": [
+   [
+    "Hvor mange dage er der til min fødselsdag?",
+    "Indtast din fødselsdato, så viser tælleren dage, timer, minutter og sekunder til den næste, i din lokale tidszone."
+   ],
+   [
+    "Hvad sker der bagefter?",
+    "Nedtællingen flytter automatisk til samme dato næste år."
+   ],
+   [
+    "Opdateres den live?",
+    "Ja, hvert sekund."
+   ],
+   [
+    "Kan jeg tilføje det til kalenderen?",
+    "Ja. Download .ics-påmindelsen; den gentages hvert år i de fleste kalenderapps."
+   ],
+   [
+    "Kan jeg gemme fødselsdage?",
+    "Ja. De gemmes kun i din browser på denne enhed."
+   ],
+   [
+    "Hvad med 29. februar?",
+    "Vælg om dagen fejres 28. februar eller 1. marts i ikke-skudår. Nedtælling og påmindelse følger dit valg."
+   ],
+   [
+    "Kan jeg bruge et foto?",
+    "Ja, hvis du vil. Det vises kun på denne side og uploades aldrig."
+   ],
+   [
+    "Er min fødselsdato privat?",
+    "Ja. Den bliver i din browser og sendes aldrig til statistik eller en server."
+   ]
+  ]
+ }
+}

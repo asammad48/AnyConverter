@@ -1,0 +1,245 @@
+{
+ "en": {
+  "name": "Name Numerology Calculator",
+  "card": "Destiny, Soul Urge and Personality from your name",
+  "desc": "Free name numerology calculator: find your Destiny, Soul Urge and Personality numbers with Pythagorean or Chaldean values, every letter and step shown.",
+  "h1": "Name Numerology Calculator",
+  "lede": "Find the Destiny, Soul Urge and Personality numbers hidden in your name. Choose Pythagorean or Chaldean values and see every letter and every step.",
+  "howH": "How to calculate your name number",
+  "how": [
+   [
+    "Type your full birth name",
+    "Use the name on your birth certificate. Accents and letters like ñ, æ or ø are converted for you."
+   ],
+   [
+    "Choose a system",
+    "Pythagorean is the most common. Chaldean uses different letter values and is popular in Indian numerology."
+   ],
+   [
+    "Read the three numbers",
+    "Destiny uses every letter, Soul Urge the vowels and Personality the consonants. Every step is shown."
+   ]
+  ],
+  "featH": "What this calculator does differently",
+  "feats": [
+   [
+    "Both systems, side by side",
+    "Switch between Pythagorean and Chaldean and see exactly which letter values change."
+   ],
+   [
+    "Every letter and every step",
+    "Each letter shows its value, and each total shows how it was reduced to a single digit."
+   ],
+   [
+    "Transparent accent handling",
+    "Accented and Nordic letters are converted to their base letter, and the page tells you which ones."
+   ],
+   [
+    "Compare two spellings",
+    "Check a nickname or married name next to your birth name."
+   ]
+  ],
+  "explainH": "How name numerology is calculated",
+  "explain": [
+   "Each letter of the alphabet is given a number. In the Pythagorean system the letters run 1 to 9 in order, so A=1, I=9, J=1 and so on. The Chaldean system uses older values from 1 to 8 and has no letter worth 9. Because the tables differ, the same name usually gives different numbers in each system.",
+   "The Destiny number (also called Expression) adds every letter in your name. Soul Urge adds only the vowels A, E, I, O and U, and Personality adds the consonants. Each total is reduced by adding its digits until one digit remains, except 11, 22 and 33, which are kept as master numbers if you leave that option on. Example: ANA in Pythagorean is 1+5+1 = 7.",
+   "Numerology is a symbolic tradition, not a science. Use the results for reflection and fun. Your name is processed in this browser tab and is never uploaded."
+  ],
+  "faq": [
+   [
+    "Which name should I use?",
+    "Use your full name as it appears on your birth certificate for a traditional reading. You can test nicknames or a married name separately with the compare field."
+   ],
+   [
+    "Pythagorean or Chaldean?",
+    "They use different letter values, so the results can differ. Pythagorean is the most common in Western numerology; Chaldean is older and widely used in Indian numerology."
+   ],
+   [
+    "What is the Destiny number?",
+    "It is calculated from every letter of your name and is also called the Expression number."
+   ],
+   [
+    "What is the Soul Urge number?",
+    "It is traditionally calculated from the vowels in your name: A, E, I, O and U."
+   ],
+   [
+    "What is the Personality number?",
+    "It is calculated from the consonants in your name."
+   ],
+   [
+    "Are 11, 22 and 33 reduced?",
+    "No, not when “Keep master numbers” is on. They are shown as master numbers. Turn the option off to reduce them to 2, 4 and 6."
+   ],
+   [
+    "Do accents change the result?",
+    "No. Accented letters are converted to their base letter (é → E, ñ → N, ø → O, æ → AE), and the calculator lists every conversion it made."
+   ],
+   [
+    "Is name numerology scientific?",
+    "No. It is a traditional symbolic practice. Treat the numbers as entertainment and a prompt for reflection."
+   ]
+  ]
+ },
+ "es": {
+  "name": "Calculadora de Numerología del Nombre",
+  "card": "Destino, alma y personalidad a partir de tu nombre",
+  "desc": "Calculadora de numerología del nombre gratis: obtén tus números de destino, alma y personalidad con valores pitagóricos o caldeos y cada paso a la vista.",
+  "h1": "Calculadora de Numerología del Nombre",
+  "lede": "Descubre los números de destino, alma y personalidad de tu nombre. Elige valores pitagóricos o caldeos y mira cada letra y cada paso.",
+  "howH": "Cómo calcular el número de tu nombre",
+  "how": [
+   [
+    "Escribe tu nombre completo",
+    "Usa el nombre de tu partida de nacimiento. Los acentos y la ñ se convierten automáticamente."
+   ],
+   [
+    "Elige un sistema",
+    "El pitagórico es el más habitual. El caldeo usa otros valores y es muy popular en la numerología india."
+   ],
+   [
+    "Lee los tres números",
+    "Destino usa todas las letras, alma las vocales y personalidad las consonantes. Verás cada paso."
+   ]
+  ],
+  "featH": "Lo que hace distinta a esta calculadora",
+  "feats": [
+   [
+    "Los dos sistemas",
+    "Cambia entre pitagórico y caldeo y mira exactamente qué valores de letras cambian."
+   ],
+   [
+    "Cada letra y cada paso",
+    "Cada letra muestra su valor y cada total muestra cómo se reduce a una cifra."
+   ],
+   [
+    "Acentos explicados",
+    "Las letras con tilde, la ñ y las letras nórdicas se convierten a su letra base y te decimos cuáles."
+   ],
+   [
+    "Compara dos nombres",
+    "Prueba un apodo o el apellido de casada junto a tu nombre de nacimiento."
+   ]
+  ],
+  "explainH": "Cómo se calcula la numerología del nombre",
+  "explain": [
+   "Cada letra del alfabeto tiene un número. En el sistema pitagórico las letras van del 1 al 9 en orden: A=1, I=9, J=1, etc. El sistema caldeo usa valores más antiguos del 1 al 8 y ninguna letra vale 9. Por eso un mismo nombre suele dar números distintos en cada sistema.",
+   "El número de destino (o de expresión) suma todas las letras del nombre. El número del alma suma solo las vocales A, E, I, O y U, y el de personalidad suma las consonantes. Cada total se reduce sumando sus cifras hasta quedar en una, salvo 11, 22 y 33, que se conservan como números maestros si mantienes esa opción. Ejemplo: ANA en pitagórico es 1+5+1 = 7.",
+   "La numerología es una tradición simbólica, no una ciencia. Usa los resultados como reflexión y entretenimiento. Tu nombre se procesa en esta pestaña del navegador y nunca se sube."
+  ],
+  "faq": [
+   [
+    "¿Qué nombre debo usar?",
+    "Usa tu nombre completo de nacimiento para una lectura tradicional. Puedes probar apodos o el apellido de casada por separado con el campo de comparación."
+   ],
+   [
+    "¿Pitagórica o caldea?",
+    "Usan valores de letras diferentes y pueden dar resultados distintos. La pitagórica es la más común en Occidente; la caldea es más antigua y muy usada en la India."
+   ],
+   [
+    "¿Qué es el número de destino?",
+    "Se calcula con todas las letras del nombre. También se llama número de expresión."
+   ],
+   [
+    "¿Qué es el número del alma?",
+    "Tradicionalmente se calcula con las vocales del nombre: A, E, I, O y U."
+   ],
+   [
+    "¿Qué es el número de personalidad?",
+    "Se calcula con las consonantes del nombre."
+   ],
+   [
+    "¿Se reducen 11, 22 y 33?",
+    "No, si la opción «Conservar números maestros» está activada. Desactívala para reducirlos a 2, 4 y 6."
+   ],
+   [
+    "¿Los acentos cambian el resultado?",
+    "No. Las letras con tilde se convierten a su letra base (é → E, ñ → N) y la calculadora muestra cada conversión."
+   ],
+   [
+    "¿La numerología del nombre es científica?",
+    "No. Es una tradición simbólica. Tómala como entretenimiento y una forma de reflexionar."
+   ]
+  ]
+ },
+ "da": {
+  "name": "Navnenumerologi-beregner",
+  "card": "Skæbnetal, sjælstal og personlighedstal fra dit navn",
+  "desc": "Gratis navnenumerologi-beregner: find skæbnetal, sjælstal og personlighedstal med pythagoræiske eller kaldæiske værdier – hvert bogstav og trin vises.",
+  "h1": "Navnenumerologi-beregner",
+  "lede": "Find skæbnetal, sjælstal og personlighedstal i dit navn. Vælg pythagoræiske eller kaldæiske værdier, og se hvert bogstav og hvert trin.",
+  "howH": "Sådan beregner du dit navnetal",
+  "how": [
+   [
+    "Skriv dit fulde fødselsnavn",
+    "Brug navnet fra din fødselsattest. Æ, ø, å og accenter omregnes automatisk."
+   ],
+   [
+    "Vælg et system",
+    "Pythagoræisk er det mest udbredte. Kaldæisk bruger andre bogstavværdier og er populært i indisk numerologi."
+   ],
+   [
+    "Læs de tre tal",
+    "Skæbnetallet bruger alle bogstaver, sjælstallet vokalerne og personlighedstallet konsonanterne. Alle trin vises."
+   ]
+  ],
+  "featH": "Det gør denne beregner anderledes",
+  "feats": [
+   [
+    "Begge systemer",
+    "Skift mellem pythagoræisk og kaldæisk, og se præcis hvilke bogstavværdier der ændres."
+   ],
+   [
+    "Hvert bogstav og hvert trin",
+    "Hvert bogstav viser sin værdi, og hver sum viser, hvordan den reduceres til ét ciffer."
+   ],
+   [
+    "Tydelig håndtering af æ, ø og å",
+    "Danske bogstaver og accenter omregnes til grundbogstaver, og siden viser hvilke."
+   ],
+   [
+    "Sammenlign to stavemåder",
+    "Tjek et kælenavn eller gift navn ved siden af dit fødselsnavn."
+   ]
+  ],
+  "explainH": "Sådan beregnes navnenumerologi",
+  "explain": [
+   "Hvert bogstav i alfabetet har et tal. I det pythagoræiske system går bogstaverne fra 1 til 9 i rækkefølge, så A=1, I=9, J=1 osv. Det kaldæiske system bruger ældre værdier fra 1 til 8, og intet bogstav har værdien 9. Derfor giver samme navn som regel forskellige tal i de to systemer.",
+   "Skæbnetallet lægger alle bogstaver i navnet sammen. Sjælstallet bruger kun vokalerne A, E, I, O og U, og personlighedstallet konsonanterne. Hver sum reduceres ved at lægge cifrene sammen, indtil der er ét ciffer tilbage, undtagen 11, 22 og 33, som bevares som mestertal, hvis den indstilling er slået til. Æ tæller som A+E, ø som O og å som A. Eksempel: ANA i pythagoræisk er 1+5+1 = 7.",
+   "Numerologi er en symbolsk tradition, ikke videnskab. Brug resultaterne til eftertanke og underholdning. Dit navn behandles i denne browserfane og uploades aldrig."
+  ],
+  "faq": [
+   [
+    "Hvilket navn skal jeg bruge?",
+    "Brug dit fulde fødselsnavn for en traditionel aflæsning. Kælenavne eller gift navn kan testes separat i sammenligningsfeltet."
+   ],
+   [
+    "Pythagoræisk eller kaldæisk?",
+    "Systemerne bruger forskellige bogstavværdier, så resultatet kan være forskelligt. Pythagoræisk er mest udbredt i Vesten; kaldæisk er ældre og bruges meget i Indien."
+   ],
+   [
+    "Hvad er skæbnetallet?",
+    "Det beregnes ud fra alle bogstaver i navnet og kaldes også udtrykstallet."
+   ],
+   [
+    "Hvad er sjælstallet?",
+    "Det beregnes traditionelt ud fra vokalerne i navnet: A, E, I, O og U."
+   ],
+   [
+    "Hvad er personlighedstallet?",
+    "Det beregnes ud fra konsonanterne i navnet."
+   ],
+   [
+    "Reduceres 11, 22 og 33?",
+    "Nej, ikke når »Bevar mestertal« er slået til. Slå det fra for at reducere dem til 2, 4 og 6."
+   ],
+   [
+    "Ændrer æ, ø, å og accenter resultatet?",
+    "De omregnes tydeligt til grundbogstaver (æ → AE, ø → O, å → A, é → E), og beregneren viser hver omregning."
+   ],
+   [
+    "Er navnenumerologi videnskabelig?",
+    "Nej. Det er en symbolsk tradition. Brug tallene som underholdning og til eftertanke."
+   ]
+  ]
+ }
+}

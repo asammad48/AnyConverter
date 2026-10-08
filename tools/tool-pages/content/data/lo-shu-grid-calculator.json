@@ -1,0 +1,245 @@
+{
+ "en": {
+  "name": "Lo Shu Grid Calculator",
+  "card": "3×3 grid, missing numbers and arrows",
+  "desc": "Free Lo Shu Grid calculator: build your 3×3 grid from your birth date and see repeated and missing numbers, all eight planes and arrows, and the method used.",
+  "h1": "Lo Shu Grid Calculator",
+  "lede": "Enter your birth date to build your Lo Shu Grid. See repeated and missing numbers, all eight planes and arrows, and your Driver and Destiny numbers.",
+  "howH": "How to make your Lo Shu Grid",
+  "how": [
+   [
+    "Enter your birth date",
+    "Only the date is needed. Zeros are ignored."
+   ],
+   [
+    "Choose the method",
+    "Classic uses the date digits. The Vedic option also places your Driver and Destiny numbers."
+   ],
+   [
+    "Read the grid",
+    "See which numbers repeat, which are missing, and which lines are complete or empty."
+   ]
+  ],
+  "featH": "More than a basic grid",
+  "feats": [
+   [
+    "Planes and arrows",
+    "All eight lines are checked: complete lines are strengths, empty lines are gaps."
+   ],
+   [
+    "Missing and repeated numbers",
+    "Each number shows its count and its traditional meaning."
+   ],
+   [
+    "Classic or Vedic method",
+    "Add the Driver and Destiny numbers to the grid with one switch, as Indian numerology does."
+   ],
+   [
+    "Download the grid",
+    "Save your grid as an image without uploading your birth date."
+   ]
+  ],
+  "explainH": "How the Lo Shu Grid works",
+  "explain": [
+   "The Lo Shu Grid is a 3×3 magic square from Chinese tradition in which every row, column and diagonal adds up to 15. The numbers sit in fixed places: 4 9 2 on top, 3 5 7 in the middle and 8 1 6 at the bottom. In numerology, each digit of your birth date is placed in its cell, so a date with three 1s shows 111 in the bottom middle.",
+   "Empty cells are your missing numbers, and repeated digits are said to strengthen that quality. Lines matter too: a full row, column or diagonal is called an arrow of strength, and a completely empty one an arrow of weakness. Example for 15 July 1990: digits 1, 5, 7, 1, 9, 9 give 11 in the 1 cell, 99 in the 9 cell, and the Will plane (9–5–1) complete.",
+   "In the Vedic or Indian method, the Driver number (your day of birth reduced) and the Destiny number (the whole date reduced) are added to the grid as well. This is a symbolic tradition, not a science. The date stays in your browser."
+  ],
+  "faq": [
+   [
+    "What is a Lo Shu Grid?",
+    "A 3×3 number grid based on the Lo Shu magic square, used in modern numerology to map the digits of your birth date."
+   ],
+   [
+    "What data do I need?",
+    "Only your birth date. No time, place or name is required for the core grid."
+   ],
+   [
+    "What do repeated numbers mean?",
+    "A number that appears more than once is traditionally read as a stronger, sometimes excessive, version of that quality. The count is shown in each cell."
+   ],
+   [
+    "What are missing numbers?",
+    "Digits from 1 to 9 that do not appear in your birth date. Tradition links each to a quality to develop."
+   ],
+   [
+    "What are arrows or planes?",
+    "The eight lines of the grid. A complete line is an arrow of strength; an empty line is an arrow of weakness."
+   ],
+   [
+    "Is birth time required?",
+    "No. The standard grid uses only the date."
+   ],
+   [
+    "Can I download the grid?",
+    "Yes. Download it as a PNG image. It is created in your browser and nothing is uploaded."
+   ],
+   [
+    "Is Lo Shu numerology scientific?",
+    "No. It is a traditional interpretive system. Use it for reflection and fun."
+   ]
+  ]
+ },
+ "es": {
+  "name": "Calculadora de Cuadrícula Lo Shu",
+  "card": "Cuadrícula 3×3, números faltantes y flechas",
+  "desc": "Calculadora de cuadrícula Lo Shu gratis: crea tu cuadrícula 3×3 con tu fecha de nacimiento y mira números repetidos y faltantes, planos, flechas y el método.",
+  "h1": "Calculadora de Cuadrícula Lo Shu",
+  "lede": "Introduce tu fecha de nacimiento para crear tu cuadrícula Lo Shu. Mira números repetidos y faltantes, los ocho planos y flechas, y tus números conductor y de destino.",
+  "howH": "Cómo hacer tu cuadrícula Lo Shu",
+  "how": [
+   [
+    "Introduce tu fecha de nacimiento",
+    "Solo hace falta la fecha. Los ceros no se cuentan."
+   ],
+   [
+    "Elige el método",
+    "El clásico usa las cifras de la fecha. El védico añade también tu número conductor y tu número de destino."
+   ],
+   [
+    "Lee la cuadrícula",
+    "Mira qué números se repiten, cuáles faltan y qué líneas están completas o vacías."
+   ]
+  ],
+  "featH": "Más que una cuadrícula básica",
+  "feats": [
+   [
+    "Planos y flechas",
+    "Se revisan las ocho líneas: las completas son fortalezas y las vacías, carencias."
+   ],
+   [
+    "Números faltantes y repetidos",
+    "Cada número muestra cuántas veces aparece y su significado tradicional."
+   ],
+   [
+    "Método clásico o védico",
+    "Añade el número conductor y el de destino con un interruptor, como en la numerología india."
+   ],
+   [
+    "Descarga la cuadrícula",
+    "Guárdala como imagen sin subir tu fecha de nacimiento."
+   ]
+  ],
+  "explainH": "Cómo funciona la cuadrícula Lo Shu",
+  "explain": [
+   "La cuadrícula Lo Shu es un cuadrado mágico 3×3 de la tradición china en el que cada fila, columna y diagonal suma 15. Los números ocupan posiciones fijas: 4 9 2 arriba, 3 5 7 en el centro y 8 1 6 abajo. En numerología, cada cifra de tu fecha de nacimiento se coloca en su casilla, así que una fecha con tres unos muestra 111 en la casilla inferior central.",
+   "Las casillas vacías son tus números faltantes, y las cifras repetidas refuerzan esa cualidad. Las líneas también cuentan: una fila, columna o diagonal completa es una flecha de fortaleza, y una totalmente vacía, una flecha de debilidad. Ejemplo para el 15 de julio de 1990: las cifras 1, 5, 7, 1, 9, 9 dan 11 en la casilla del 1, 99 en la del 9 y el plano de la voluntad (9–5–1) completo.",
+   "En el método védico o indio se añaden también el número conductor (el día de nacimiento reducido) y el de destino (la fecha completa reducida). Es una tradición simbólica, no una ciencia. La fecha se queda en tu navegador."
+  ],
+  "faq": [
+   [
+    "¿Qué es la cuadrícula Lo Shu?",
+    "Una cuadrícula numérica 3×3 basada en el cuadrado mágico Lo Shu, usada en numerología para situar las cifras de tu fecha de nacimiento."
+   ],
+   [
+    "¿Qué datos necesito?",
+    "Solo tu fecha de nacimiento. No hace falta hora, lugar ni nombre."
+   ],
+   [
+    "¿Qué significan los números repetidos?",
+    "Un número que aparece varias veces se interpreta como una versión más intensa de esa cualidad. Cada casilla muestra el recuento."
+   ],
+   [
+    "¿Qué son los números faltantes?",
+    "Las cifras del 1 al 9 que no aparecen en tu fecha. La tradición asocia cada una a una cualidad por desarrollar."
+   ],
+   [
+    "¿Qué son las flechas o planos?",
+    "Las ocho líneas de la cuadrícula. Una línea completa es una flecha de fortaleza; una vacía, una flecha de debilidad."
+   ],
+   [
+    "¿Necesito la hora de nacimiento?",
+    "No. La cuadrícula estándar solo usa la fecha."
+   ],
+   [
+    "¿Puedo descargarla?",
+    "Sí, como imagen PNG. Se crea en tu navegador y no se sube nada."
+   ],
+   [
+    "¿Es científica?",
+    "No. Es un sistema interpretativo tradicional. Úsalo para reflexionar y como entretenimiento."
+   ]
+  ]
+ },
+ "da": {
+  "name": "Lo Shu-gitterberegner",
+  "card": "3×3-gitter, manglende tal og linjer",
+  "desc": "Gratis Lo Shu-gitterberegner: lav dit 3×3-gitter ud fra fødselsdatoen, og se gentagne og manglende tal, alle otte linjer og pile samt metoden bag.",
+  "h1": "Lo Shu-gitterberegner",
+  "lede": "Indtast din fødselsdato for at lave dit Lo Shu-gitter. Se gentagne og manglende tal, alle otte linjer og pile samt dit driver- og skæbnetal.",
+  "howH": "Sådan laver du dit Lo Shu-gitter",
+  "how": [
+   [
+    "Indtast din fødselsdato",
+    "Kun datoen skal bruges. Nuller tæller ikke med."
+   ],
+   [
+    "Vælg metode",
+    "Klassisk bruger datoens cifre. Den vediske metode tilføjer også dit driver- og skæbnetal."
+   ],
+   [
+    "Læs gitteret",
+    "Se hvilke tal der gentages, hvilke der mangler, og hvilke linjer der er fulde eller tomme."
+   ]
+  ],
+  "featH": "Mere end et simpelt gitter",
+  "feats": [
+   [
+    "Linjer og pile",
+    "Alle otte linjer tjekkes: fulde linjer er styrker, tomme linjer er mangler."
+   ],
+   [
+    "Manglende og gentagne tal",
+    "Hvert tal viser antal og traditionel betydning."
+   ],
+   [
+    "Klassisk eller vedisk metode",
+    "Tilføj driver- og skæbnetallet til gitteret med ét klik, som i indisk numerologi."
+   ],
+   [
+    "Download gitteret",
+    "Gem gitteret som billede uden at uploade din fødselsdato."
+   ]
+  ],
+  "explainH": "Sådan virker Lo Shu-gitteret",
+  "explain": [
+   "Lo Shu-gitteret er et 3×3 magisk kvadrat fra kinesisk tradition, hvor hver række, kolonne og diagonal giver 15. Tallene har faste pladser: 4 9 2 øverst, 3 5 7 i midten og 8 1 6 nederst. I numerologi placeres hvert ciffer i din fødselsdato i sin rude, så en dato med tre 1-taller viser 111 i ruden nederst i midten.",
+   "Tomme ruder er dine manglende tal, og gentagne cifre siges at forstærke den egenskab. Linjerne tæller også: en fuld række, kolonne eller diagonal kaldes en styrkepil, og en helt tom en svaghedspil. Eksempel for 15. juli 1990: cifrene 1, 5, 7, 1, 9, 9 giver 11 i 1-ruden, 99 i 9-ruden og en fuld viljelinje (9–5–1).",
+   "I den vediske eller indiske metode tilføjes også drivertallet (fødselsdagen reduceret) og skæbnetallet (hele datoen reduceret). Det er en symbolsk tradition, ikke videnskab. Datoen bliver i din browser."
+  ],
+  "faq": [
+   [
+    "Hvad er et Lo Shu-gitter?",
+    "Et 3×3-talgitter baseret på det magiske Lo Shu-kvadrat, som bruges i numerologi til at placere cifrene i din fødselsdato."
+   ],
+   [
+    "Hvilke oplysninger skal jeg bruge?",
+    "Kun fødselsdatoen. Tidspunkt, sted og navn er ikke nødvendige."
+   ],
+   [
+    "Hvad betyder gentagne tal?",
+    "Et tal, der optræder flere gange, tolkes traditionelt som en stærkere udgave af egenskaben. Antallet vises i ruden."
+   ],
+   [
+    "Hvad er manglende tal?",
+    "Cifre fra 1 til 9, som ikke findes i din fødselsdato. Traditionen knytter hvert af dem til en egenskab, der kan udvikles."
+   ],
+   [
+    "Hvad er linjer eller planer?",
+    "Gitterets otte linjer. En fuld linje er en styrkepil; en tom linje er en svaghedspil."
+   ],
+   [
+    "Skal jeg bruge fødselstidspunkt?",
+    "Nej. Det klassiske gitter bruger kun datoen."
+   ],
+   [
+    "Kan gitteret downloades?",
+    "Ja, som PNG-billede. Det laves i din browser, og intet uploades."
+   ],
+   [
+    "Er Lo Shu videnskabeligt?",
+    "Nej. Det er et traditionelt fortolkningssystem. Brug det til eftertanke og underholdning."
+   ]
+  ]
+ }
+}

@@ -1,0 +1,246 @@
+{
+ "en": {
+  "name": "Tarot Birth Card Calculator",
+  "card": "Your Major Arcana from your birth date",
+  "desc": "Free Tarot birth card calculator: find your Personality and Soul cards from your birth date using the Mary K. Greer method, with every step explained.",
+  "h1": "Tarot Birth Card Calculator",
+  "lede": "Enter your birth date to find your Tarot birth cards. You’ll see your Personality and Soul cards, every step of the arithmetic, and what each card stands for.",
+  "howH": "How to find your Tarot birth card",
+  "how": [
+   [
+    "Enter your birth date",
+    "Day, month and year are all used. No time or place needed."
+   ],
+   [
+    "See the sum and reduction",
+    "Month + day + year is added, then reduced until it is 22 or less."
+   ],
+   [
+    "Read your cards",
+    "Most people get a pair: a Personality card and a Soul card. Some get one card, and a few get three."
+   ]
+  ],
+  "featH": "A clear, fixed method",
+  "feats": [
+   [
+    "The full arithmetic",
+    "Every addition and reduction is shown, so you can check the result by hand."
+   ],
+   [
+    "Personality and Soul cards",
+    "The pair is shown together, with the three-card 19 → 10 → 1 case handled correctly."
+   ],
+   [
+    "Method named, not hidden",
+    "We use Mary K. Greer’s method and explain why other sites can show a different card."
+   ],
+   [
+    "Share card",
+    "Download an image of your birth card without uploading your date."
+   ]
+  ],
+  "explainH": "How the birth card is calculated",
+  "explain": [
+   "A Tarot birth card is a Major Arcana card worked out from your birth date with a fixed formula. This calculator uses the method popularised by Tarot author Mary K. Greer: add the month, the day and the full year as numbers, then add the digits of the total until it is 22 or less.",
+   "If the result is between 10 and 21, it is your Personality card, and adding its two digits gives your Soul card. A result of 22 means The Fool (0) with The Emperor (4). If the result is 9 or less, the Personality and Soul card are the same. Example: 3 March 1985 → 3 + 3 + 1985 = 1991 → 1+9+9+1 = 20 → Judgement (XX) and 2 → The High Priestess (II). The only three-card case is 19: The Sun is the Personality card, The Magician (1) the Soul card, and Wheel of Fortune (10) sits between them as a hidden factor.",
+   "Some sites reduce the date digit by digit instead, which can give a different card. A birth card is symbolic, not a prediction, and your date never leaves your browser."
+  ],
+  "faq": [
+   [
+    "What is a Tarot birth card?",
+    "A Major Arcana card derived from your birth date with a fixed formula. It does not change over time."
+   ],
+   [
+    "How is my card calculated?",
+    "Month + day + year are added, then the digits of the total are added until it is 22 or less. All steps are shown under the result."
+   ],
+   [
+    "Why do some sites give two cards?",
+    "Most dates give a pair: a Personality card (10–21) and a Soul card (its digits added). Different traditions also use different reduction rules."
+   ],
+   [
+    "Is this a tarot reading?",
+    "No. It is a fixed calculation from your birth date, not a shuffled spread."
+   ],
+   [
+    "Does the card change?",
+    "No. With the same formula and birth date you always get the same card."
+   ],
+   [
+    "Can I calculate someone else’s card?",
+    "Yes, if you know their birth date. Please treat other people’s dates with care."
+   ],
+   [
+    "Is the birth date uploaded?",
+    "No. It is calculated in your browser and not sent anywhere."
+   ],
+   [
+    "Is Tarot scientifically predictive?",
+    "No. Tarot is a symbolic tradition, not a scientific method."
+   ]
+  ]
+ },
+ "es": {
+  "name": "Calculadora de Cartas de Nacimiento del Tarot",
+  "card": "Tu Arcano Mayor según tu fecha",
+  "desc": "Calculadora de cartas de nacimiento del tarot gratis: descubre tus cartas de personalidad y del alma con tu fecha de nacimiento y el método de Mary K. Greer.",
+  "h1": "Calculadora de Cartas de Nacimiento del Tarot",
+  "lede": "Introduce tu fecha de nacimiento para descubrir tus arcanos. Verás tu carta de personalidad y la del alma, cada paso del cálculo y lo que representa cada carta.",
+  "howH": "Cómo calcular tu arcano de nacimiento",
+  "how": [
+   [
+    "Introduce tu fecha de nacimiento",
+    "Se usan día, mes y año. No hace falta hora ni lugar."
+   ],
+   [
+    "Mira la suma y la reducción",
+    "Se suman mes + día + año y se reduce hasta llegar a 22 o menos."
+   ],
+   [
+    "Lee tus cartas",
+    "La mayoría obtiene dos: carta de personalidad y carta del alma. Algunas fechas dan una, y unas pocas, tres."
+   ]
+  ],
+  "featH": "Un método claro y fijo",
+  "feats": [
+   [
+    "Todo el cálculo",
+    "Cada suma y reducción aparece, para que puedas comprobarla a mano."
+   ],
+   [
+    "Personalidad y alma",
+    "Ves las dos cartas juntas, y el caso de tres cartas 19 → 10 → 1 se trata correctamente."
+   ],
+   [
+    "Método explicado",
+    "Usamos el método de Mary K. Greer y explicamos por qué otras webs pueden dar otra carta."
+   ],
+   [
+    "Imagen para compartir",
+    "Descarga una imagen de tu arcano sin subir tu fecha."
+   ]
+  ],
+  "explainH": "Cómo se calcula el arcano de nacimiento",
+  "explain": [
+   "El arcano de nacimiento es un Arcano Mayor que se obtiene de tu fecha de nacimiento con una fórmula fija. Esta calculadora usa el método popularizado por la autora Mary K. Greer: suma el mes, el día y el año completo como números y luego suma las cifras del total hasta que quede 22 o menos.",
+   "Si el resultado está entre 10 y 21, es tu carta de personalidad, y la suma de sus dos cifras es tu carta del alma. Un 22 corresponde a El Loco (0) con El Emperador (4). Si el resultado es 9 o menos, ambas cartas coinciden. Ejemplo: 3 de marzo de 1985 → 3 + 3 + 1985 = 1991 → 1+9+9+1 = 20 → El Juicio (XX) y 2 → La Sacerdotisa (II). El único caso de tres cartas es el 19: El Sol es la carta de personalidad, El Mago (1) la carta del alma y La Rueda de la Fortuna (10) queda entre ambas como factor oculto.",
+   "Algunas webs reducen la fecha cifra a cifra, lo que puede dar otra carta. El arcano es simbólico, no una predicción, y tu fecha no sale de tu navegador."
+  ],
+  "faq": [
+   [
+    "¿Qué es un arcano de nacimiento?",
+    "Un Arcano Mayor que se deriva de tu fecha de nacimiento con una fórmula fija. No cambia con el tiempo."
+   ],
+   [
+    "¿Cómo se calcula?",
+    "Se suman mes + día + año y después las cifras del total hasta que quede 22 o menos. Todos los pasos aparecen bajo el resultado."
+   ],
+   [
+    "¿Por qué algunos sitios muestran dos cartas?",
+    "La mayoría de fechas dan una pareja: la carta de personalidad (10–21) y la del alma (la suma de sus cifras). Además, cada tradición reduce de forma distinta."
+   ],
+   [
+    "¿Es una lectura de Tarot?",
+    "No. Es un cálculo fijo a partir de tu fecha, no una tirada."
+   ],
+   [
+    "¿Cambia mi carta?",
+    "No, con la misma fórmula y la misma fecha siempre sale la misma."
+   ],
+   [
+    "¿Puedo calcular la de otra persona?",
+    "Sí, si sabes su fecha. Trata los datos de otras personas con respeto."
+   ],
+   [
+    "¿Se sube mi fecha?",
+    "No. Se calcula en tu navegador y no se envía a ningún sitio."
+   ],
+   [
+    "¿El Tarot predice científicamente el futuro?",
+    "No. Es una tradición simbólica, no un método científico."
+   ]
+  ],
+  "title": "Calculadora de Cartas de Nacimiento del Tarot | AnyConverter"
+ },
+ "da": {
+  "name": "Tarot-fødselskortberegner",
+  "card": "Dit Major Arcana-kort ud fra fødselsdatoen",
+  "desc": "Gratis tarot-fødselskortberegner: find dit personligheds- og sjælekort ud fra fødselsdatoen med Mary K. Greers metode – hvert trin i udregningen vises.",
+  "h1": "Tarot-fødselskortberegner",
+  "lede": "Indtast din fødselsdato for at finde dine tarot-fødselskort. Du ser dit personligheds- og sjælekort, hvert trin i udregningen og hvad kortene står for.",
+  "howH": "Sådan finder du dit tarot-fødselskort",
+  "how": [
+   [
+    "Indtast din fødselsdato",
+    "Dag, måned og år bruges. Tidspunkt og sted er ikke nødvendige."
+   ],
+   [
+    "Se summen og reduktionen",
+    "Måned + dag + år lægges sammen og reduceres, til tallet er 22 eller mindre."
+   ],
+   [
+    "Læs dine kort",
+    "De fleste får et par: et personlighedskort og et sjælekort. Nogle får ét kort, og nogle få tre."
+   ]
+  ],
+  "featH": "En klar og fast metode",
+  "feats": [
+   [
+    "Hele udregningen",
+    "Hver sum og reduktion vises, så du kan tjekke resultatet i hånden."
+   ],
+   [
+    "Personligheds- og sjælekort",
+    "Parret vises samlet, og tilfældet med tre kort, 19 → 10 → 1, håndteres korrekt."
+   ],
+   [
+    "Metoden står åbent",
+    "Vi bruger Mary K. Greers metode og forklarer, hvorfor andre sider kan vise et andet kort."
+   ],
+   [
+    "Billede til deling",
+    "Download et billede af dit fødselskort uden at uploade din dato."
+   ]
+  ],
+  "explainH": "Sådan beregnes fødselskortet",
+  "explain": [
+   "Et tarot-fødselskort er et Major Arcana-kort, der beregnes ud fra din fødselsdato med en fast formel. Beregneren bruger den metode, som tarotforfatteren Mary K. Greer har gjort kendt: læg måned, dag og hele årstallet sammen som tal, og læg derefter cifrene i summen sammen, til den er 22 eller mindre.",
+   "Ligger resultatet mellem 10 og 21, er det dit personlighedskort, og tværsummen af det giver dit sjælekort. Et resultat på 22 betyder Narren (0) sammen med Kejseren (4). Er resultatet 9 eller mindre, er de to kort ens. Eksempel: 3. marts 1985 → 3 + 3 + 1985 = 1991 → 1+9+9+1 = 20 → Dommen (XX) og 2 → Ypperstepræstinden (II). Det eneste tilfælde med tre kort er 19: Solen er personlighedskortet, Magikeren (1) sjælekortet, og Lykkehjulet (10) ligger imellem som skjult faktor.",
+   "Nogle sider reducerer datoen ciffer for ciffer, hvilket kan give et andet kort. Fødselskortet er symbolsk, ikke en forudsigelse, og din dato forlader ikke browseren."
+  ],
+  "faq": [
+   [
+    "Hvad er et tarot-fødselskort?",
+    "Et Major Arcana-kort, der beregnes fra din fødselsdato med en fast formel. Det ændrer sig ikke over tid."
+   ],
+   [
+    "Hvordan beregnes kortet?",
+    "Måned + dag + år lægges sammen, og cifrene i summen lægges sammen, til den er 22 eller mindre. Alle trin vises under resultatet."
+   ],
+   [
+    "Hvorfor viser nogle sider to kort?",
+    "De fleste datoer giver et par: et personlighedskort (10–21) og et sjælekort (tværsummen). Traditionerne bruger også forskellige metoder."
+   ],
+   [
+    "Er det en tarotlæsning?",
+    "Nej. Det er en fast datoberegning, ikke en lægning."
+   ],
+   [
+    "Ændrer kortet sig?",
+    "Nej, med samme metode og dato får du altid samme kort."
+   ],
+   [
+    "Kan jeg beregne en andens kort?",
+    "Ja, hvis du kender datoen, men behandl andres oplysninger respektfuldt."
+   ],
+   [
+    "Uploades datoen?",
+    "Nej. Den beregnes i din browser og sendes ikke."
+   ],
+   [
+    "Kan Tarot videnskabeligt forudsige fremtiden?",
+    "Nej. Tarot er en symbolsk tradition, ikke en videnskabelig metode."
+   ]
+  ]
+ }
+}

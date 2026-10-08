@@ -1,0 +1,245 @@
+{
+ "en": {
+  "name": "Numerology Calculator",
+  "card": "Life Path, Birthday, Destiny and more",
+  "desc": "Free numerology calculator: get your Life Path, Birthday, Personal Year, Destiny, Soul Urge and Personality numbers from your birth date, with full working.",
+  "h1": "Numerology Calculator",
+  "lede": "Enter your birth date, and optionally your name, to get your Life Path, Birthday, Personal Year, Destiny, Soul Urge and Personality numbers with every step shown.",
+  "howH": "How to use the numerology calculator",
+  "how": [
+   [
+    "Enter your birth date",
+    "Life Path, Birthday and Personal Year come from the date alone."
+   ],
+   [
+    "Add your name (optional)",
+    "Your full birth name adds Destiny, Soul Urge and Personality."
+   ],
+   [
+    "Check the working",
+    "Open “Show the working” to see every addition and reduction."
+   ]
+  ],
+  "featH": "A full numerology chart in one place",
+  "feats": [
+   [
+    "Six core numbers",
+    "Life Path, Birthday, Personal Year, Destiny, Soul Urge and Personality together."
+   ],
+   [
+    "Every step visible",
+    "Month, day and year are reduced separately, then combined, so you can check the math."
+   ],
+   [
+    "Master numbers kept",
+    "11, 22 and 33 are kept by default, with a switch to reduce them."
+   ],
+   [
+    "Pythagorean or Chaldean",
+    "Choose the letter system for the name numbers."
+   ]
+  ],
+  "explainH": "How the numbers are calculated",
+  "explain": [
+   "Your Life Path number is the most important number in Western numerology. Reduce the month, the day and the year of your birth to single digits separately, then add them and reduce again. For 15 July 1990: month 7, day 1+5 = 6, year 1+9+9+0 = 19 → 10 → 1, then 7+6+1 = 14 → 5. Reducing the parts first is the most common method and keeps master numbers that a straight digit sum can hide.",
+   "The Birthday number is simply the day of the month reduced. Your Personal Year adds your birth month and day to the current year and describes the theme of the year in numerology. When you add your name, the calculator also gives Destiny (all letters), Soul Urge (vowels) and Personality (consonants).",
+   "Different websites use different reduction rules, so results can vary. Numerology has no scientific support as a way to predict anything. The calculation runs entirely in your browser."
+  ],
+  "faq": [
+   [
+    "What numbers does this calculator calculate?",
+    "Life Path, Birthday and Personal Year from your birth date, plus Destiny, Soul Urge and Personality when you add your name."
+   ],
+   [
+    "Do I need my birth time?",
+    "No. Numerology uses only the calendar date."
+   ],
+   [
+    "Why do calculators give different results?",
+    "They may reduce the full date at once instead of month, day and year separately, use a different letter system, or not keep master numbers."
+   ],
+   [
+    "What is my Life Path number?",
+    "It is derived from your complete birth date and is seen as the main theme of your life in numerology."
+   ],
+   [
+    "What are master numbers?",
+    "11, 22 and 33. Many traditions keep them instead of reducing them to 2, 4 and 6."
+   ],
+   [
+    "Can I calculate without a name?",
+    "Yes. The date-based numbers work on their own."
+   ],
+   [
+    "Is my information uploaded?",
+    "No. The calculation runs in your browser and nothing is sent to a server or to analytics."
+   ],
+   [
+    "Is numerology predictive?",
+    "No scientific evidence supports numerology as a way to predict events. Treat it as reflection and entertainment."
+   ]
+  ]
+ },
+ "es": {
+  "name": "Calculadora de Numerología",
+  "card": "Camino de vida, destino y más",
+  "desc": "Calculadora de numerología gratis: obtén camino de vida, número de cumpleaños, año personal, destino, alma y personalidad con el cálculo completo.",
+  "h1": "Calculadora de Numerología",
+  "lede": "Introduce tu fecha de nacimiento y, si quieres, tu nombre para obtener tu camino de vida, número de cumpleaños, año personal, destino, alma y personalidad, con cada paso a la vista.",
+  "howH": "Cómo usar la calculadora de numerología",
+  "how": [
+   [
+    "Introduce tu fecha de nacimiento",
+    "El camino de vida, el número de cumpleaños y el año personal salen solo de la fecha."
+   ],
+   [
+    "Añade tu nombre (opcional)",
+    "Con tu nombre completo obtienes destino, alma y personalidad."
+   ],
+   [
+    "Revisa el cálculo",
+    "Abre «Ver el cálculo» para comprobar cada suma y reducción."
+   ]
+  ],
+  "featH": "Una carta numerológica completa",
+  "feats": [
+   [
+    "Seis números clave",
+    "Camino de vida, cumpleaños, año personal, destino, alma y personalidad juntos."
+   ],
+   [
+    "Cada paso a la vista",
+    "Mes, día y año se reducen por separado y luego se suman, para que puedas comprobarlo."
+   ],
+   [
+    "Números maestros",
+    "11, 22 y 33 se conservan por defecto, con opción de reducirlos."
+   ],
+   [
+    "Pitagórica o caldea",
+    "Elige el sistema de letras para los números del nombre."
+   ]
+  ],
+  "explainH": "Cómo se calculan los números",
+  "explain": [
+   "El camino de vida es el número más importante de la numerología occidental. Se reducen por separado el mes, el día y el año de nacimiento, se suman y se vuelve a reducir. Para el 15 de julio de 1990: mes 7, día 1+5 = 6, año 1+9+9+0 = 19 → 10 → 1, y 7+6+1 = 14 → 5. Reducir primero cada parte es el método más habitual y conserva números maestros que una suma directa puede ocultar.",
+   "El número de cumpleaños es el día del mes reducido. El año personal suma tu mes y día de nacimiento al año en curso y describe el tema del año. Si añades tu nombre, también obtienes destino (todas las letras), alma (vocales) y personalidad (consonantes).",
+   "Cada web puede usar reglas de reducción distintas, así que los resultados pueden variar. La numerología no tiene base científica para predecir nada. El cálculo se hace por completo en tu navegador."
+  ],
+  "faq": [
+   [
+    "¿Qué números calcula?",
+    "Camino de vida, número de cumpleaños y año personal a partir de la fecha, y destino, alma y personalidad si añades tu nombre."
+   ],
+   [
+    "¿Necesito mi hora de nacimiento?",
+    "No. Basta con la fecha."
+   ],
+   [
+    "¿Por qué obtengo resultados distintos en otras webs?",
+    "Pueden reducir la fecha completa de una vez, usar otro sistema de letras o no conservar los números maestros."
+   ],
+   [
+    "¿Qué es mi camino de vida?",
+    "Se deriva de tu fecha de nacimiento completa y en numerología se considera el tema principal de tu vida."
+   ],
+   [
+    "¿Qué son los números maestros?",
+    "Normalmente 11, 22 y 33. Muchas tradiciones los conservan en lugar de reducirlos."
+   ],
+   [
+    "¿Puedo calcular sin nombre?",
+    "Sí. Los números basados en la fecha funcionan por sí solos."
+   ],
+   [
+    "¿Se suben mis datos?",
+    "No. El cálculo se realiza en el navegador y nada se envía a un servidor ni a analítica."
+   ],
+   [
+    "¿La numerología predice el futuro?",
+    "No está científicamente validada como método de predicción. Tómala como reflexión y entretenimiento."
+   ]
+  ]
+ },
+ "da": {
+  "name": "Numerologi-beregner",
+  "card": "Livstal, skæbnetal og mere",
+  "desc": "Gratis numerologi-beregner: få livstal, fødselsdagstal, personligt år, skæbnetal, sjælstal og personlighedstal ud fra din fødselsdato – med udregning.",
+  "h1": "Numerologi-beregner",
+  "lede": "Indtast din fødselsdato og eventuelt dit navn, og få livstal, fødselsdagstal, personligt år, skæbnetal, sjælstal og personlighedstal med alle trin vist.",
+  "howH": "Sådan bruger du numerologi-beregneren",
+  "how": [
+   [
+    "Indtast din fødselsdato",
+    "Livstal, fødselsdagstal og personligt år beregnes ud fra datoen alene."
+   ],
+   [
+    "Tilføj dit navn (valgfrit)",
+    "Dit fulde fødselsnavn giver skæbnetal, sjælstal og personlighedstal."
+   ],
+   [
+    "Tjek udregningen",
+    "Åbn »Vis udregningen« for at se hver sum og reduktion."
+   ]
+  ],
+  "featH": "Et komplet numerologisk kort",
+  "feats": [
+   [
+    "Seks centrale tal",
+    "Livstal, fødselsdagstal, personligt år, skæbnetal, sjælstal og personlighedstal samlet."
+   ],
+   [
+    "Alle trin vises",
+    "Måned, dag og år reduceres hver for sig og lægges derefter sammen, så du kan tjekke det."
+   ],
+   [
+    "Mestertal bevares",
+    "11, 22 og 33 bevares som standard, med mulighed for at reducere dem."
+   ],
+   [
+    "Pythagoræisk eller kaldæisk",
+    "Vælg bogstavsystemet til navnetallene."
+   ]
+  ],
+  "explainH": "Sådan beregnes tallene",
+  "explain": [
+   "Livstallet er det vigtigste tal i vestlig numerologi. Reducér fødselsmåned, -dag og -år hver for sig til ét ciffer, læg dem sammen, og reducér igen. For 15. juli 1990: måned 7, dag 1+5 = 6, år 1+9+9+0 = 19 → 10 → 1, og 7+6+1 = 14 → 5. At reducere delene først er den mest almindelige metode og bevarer mestertal, som en direkte tværsum kan skjule.",
+   "Fødselsdagstallet er dagen i måneden reduceret. Det personlige år lægger din fødselsmåned og -dag til det aktuelle år og beskriver årets tema. Tilføjer du dit navn, får du også skæbnetal (alle bogstaver), sjælstal (vokaler) og personlighedstal (konsonanter).",
+   "Forskellige sider bruger forskellige reduktionsregler, så resultaterne kan variere. Numerologi har ingen videnskabelig dokumentation som forudsigelsesmetode. Beregningen kører helt i din browser."
+  ],
+  "faq": [
+   [
+    "Hvilke tal beregnes?",
+    "Livstal, fødselsdagstal og personligt år fra datoen, samt skæbnetal, sjælstal og personlighedstal, hvis du tilføjer dit navn."
+   ],
+   [
+    "Skal jeg kende fødselstidspunktet?",
+    "Nej. Fødselsdatoen er nok."
+   ],
+   [
+    "Hvorfor får jeg forskellige resultater andre steder?",
+    "Metoder og reduktionsregler varierer: nogle tager tværsummen af hele datoen på én gang, bruger et andet bogstavsystem eller bevarer ikke mestertal."
+   ],
+   [
+    "Hvad er mit livstal?",
+    "Det beregnes fra hele fødselsdatoen og ses i numerologien som livets hovedtema."
+   ],
+   [
+    "Hvad er mestertal?",
+    "Typisk 11, 22 og 33. Mange traditioner bevarer dem i stedet for at reducere dem."
+   ],
+   [
+    "Kan jeg beregne uden navn?",
+    "Ja. De datobaserede tal virker stadig."
+   ],
+   [
+    "Bliver mine data uploadet?",
+    "Nej. Beregningen sker i browseren, og intet sendes til en server eller til statistik."
+   ],
+   [
+    "Kan numerologi forudsige fremtiden?",
+    "Metoden er ikke videnskabeligt valideret. Brug den til eftertanke og underholdning."
+   ]
+  ]
+ }
+}

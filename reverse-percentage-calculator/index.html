@@ -32,6 +32,7 @@
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do I calculate a reverse percentage?","acceptedAnswer":{"@type":"Answer","text":"Divide the final value by the multiplier. After a 20% discount you pay 80%, so divide by 0.8. After a 10% increase, divide by 1.1."}},{"@type":"Question","name":"Why can't I just subtract the percentage?","acceptedAnswer":{"@type":"Answer","text":"The percentage was taken from the original value, not from the new value. 132 minus 10% gives 118.80, but the correct original value is 120."}},{"@type":"Question","name":"How do I remove VAT from a price?","acceptedAnswer":{"@type":"Answer","text":"Divide by 1 plus the VAT rate. With 20% VAT, 600 divided by 1.2 is 500 before VAT."}},{"@type":"Question","name":"What's the difference between margin and markup?","acceptedAnswer":{"@type":"Answer","text":"Markup is profit as a percent of cost; margin is profit as a percent of the selling price. A 30% margin equals about a 42.86% markup."}},{"@type":"Question","name":"Does the order of several percentage changes matter?","acceptedAnswer":{"@type":"Answer","text":"No. Multiplication is commutative, so a 10% increase followed by a 20% decrease gives the same result as a 20% decrease followed by a 10% increase."}},{"@type":"Question","name":"Is this reverse percentage calculator free?","acceptedAnswer":{"@type":"Answer","text":"Yes. It's completely free, with no signup, and every calculation runs in your browser — nothing is uploaded to a server."}}]}</script>
 
 
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://anyconverter.io/"},{"@type":"ListItem","position":2,"name":"Calculators","item":"https://anyconverter.io/calculators/"},{"@type":"ListItem","position":3,"name":"Reverse Percentage Calculator","item":"https://anyconverter.io/reverse-percentage-calculator/"}]}</script>
 <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
   <style>
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -44,13 +45,13 @@
     .hero-desc{font-size:1.0625rem;color:var(--color-text-2,#6B7280);max-width:680px;line-height:1.6}
     @font-face{font-family:'Inter';font-display:swap}
   </style>
-  <link rel="stylesheet" href="/assets/css/style.css?v=20260902">
+  <link rel="stylesheet" href="/assets/css/style.css?v=20261008">
 </head>
 <body>
   <header id="site-header" class="site-header"></header>
   <main id="main-content">
     <nav class="breadcrumb" aria-label="Breadcrumb">
-      <ol><li><a href="/">Home</a></li><li aria-current="page">Reverse Percentage Calculator</li></ol>
+      <ol><li><a href="/">Home</a></li><li><a href="/calculators/">Calculators</a></li><li aria-current="page">Reverse Percentage Calculator</li></ol>
     </nav>
     <section class="hero">
       <h1>Reverse Percentage Calculator</h1>
@@ -322,28 +323,22 @@
     <section class="related-tools">
       <h2>Related Tools</h2>
       <div class="tool-grid">
-        <a href="/percentage-calculator/" class="tool-card">
-          <img src="/assets/img/icon-calculator.svg" alt="Percentage Calculator icon" class="tool-card-icon" width="40" height="40" loading="lazy">
-          <h3>Percentage Calculator</h3>
-          <p>Calculate percentages, increases, and decreases quickly.</p>
+        <a href="/percentage-difference-calculator/" class="tool-card">
+          <img src="/assets/img/icon-calculator.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy">
+          <h3>Percentage Difference Calculator</h3>
+          <p>Compare two values without a “before” and “after”.</p>
           <span class="tool-card-link">Try it →</span>
         </a>
-        <a href="/gst-vat-calculator/" class="tool-card">
-          <img src="/assets/img/icon-calculator.svg" alt="GST / VAT Calculator icon" class="tool-card-icon" width="40" height="40" loading="lazy">
-          <h3>GST / VAT Calculator</h3>
-          <p>Add or remove tax from any amount with global tax presets.</p>
+        <a href="/price-increase-calculator/" class="tool-card">
+          <img src="/assets/img/icon-calculator.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy">
+          <h3>Price Increase Calculator</h3>
+          <p>New price after a % rise, or the % between two prices.</p>
           <span class="tool-card-link">Try it →</span>
         </a>
-        <a href="/discount-calculator/" class="tool-card">
-          <img src="/assets/img/icon-calculator.svg" alt="Discount Calculator icon" class="tool-card-icon" width="40" height="40" loading="lazy">
-          <h3>Discount Calculator</h3>
-          <p>Calculate discounted prices and savings forward.</p>
-          <span class="tool-card-link">Try it →</span>
-        </a>
-        <a href="/tip-calculator/" class="tool-card">
-          <img src="/assets/img/icon-calculator.svg" alt="Tip Calculator icon" class="tool-card-icon" width="40" height="40" loading="lazy">
-          <h3>Tip Calculator</h3>
-          <p>Calculate tip amount and split the bill per person.</p>
+        <a href="/discount-stacking-calculator/" class="tool-card">
+          <img src="/assets/img/icon-calculator.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy">
+          <h3>Discount Stacking Calculator</h3>
+          <p>Stack coupons and successive % discounts and see the real total.</p>
           <span class="tool-card-link">Try it →</span>
         </a>
       </div>
@@ -351,7 +346,7 @@
 
   </main>
   <footer id="site-footer" class="site-footer"></footer>
-  <script src="/assets/js/shared.js?v=20260928-ga4" defer></script>
+  <script src="/assets/js/shared.js?v=20261008-slugs" defer></script>
   <script src="/assets/js/tools/reverse-percentage.js" defer></script>
 </body>
 </html>

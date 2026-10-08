@@ -134,6 +134,9 @@
           <li><a href="/random-picker/" role="menuitem">Random Picker</a></li>
           <li><a href="/decision-maker/" role="menuitem">Decision Maker</a></li>
           <li><a href="/team-picker/" role="menuitem">Team Picker</a></li>
+          <li><a href="/numerology-astrology/" role="menuitem">Numerology &amp; Astrology</a></li>
+          <li><a href="/fun-relationships/" role="menuitem">Fun &amp; Relationships</a></li>
+          <li><a href="/date-time/" role="menuitem">Date &amp; Time</a></li>
         </ul>
       </li>
 
@@ -159,6 +162,13 @@
           <li><a href="/gst-vat-calculator/" role="menuitem">GST / VAT Calculator</a></li>
           <li><a href="/reverse-percentage-calculator/" role="menuitem">Reverse Percentage Calculator</a></li>
           <li><a href="/discount-stacking-calculator/" role="menuitem">Discount Stacking Calculator</a></li>
+          <li><a href="/percentage-difference-calculator/" role="menuitem">Percentage Difference</a></li>
+          <li><a href="/price-increase-calculator/" role="menuitem">Price Increase Calculator</a></li>
+          <li><a href="/pay-rise-calculator/" role="menuitem">Pay Rise Calculator</a></li>
+          <li><a href="/margin-vs-markup-calculator/" role="menuitem">Margin vs Markup</a></li>
+          <li><a href="/unit-price-calculator/" role="menuitem">Unit Price Calculator</a></li>
+          <li><a href="/rise-over-run-calculator/" role="menuitem">Rise Over Run</a></li>
+          <li><a href="/slope-grade-angle-calculator/" role="menuitem">Slope, Grade &amp; Angle</a></li>
           <li><a href="/tip-calculator/" role="menuitem">Tip Calculator</a></li>
         </ul>
       </li>
@@ -314,7 +324,24 @@
       <li><a href="/gst-vat-calculator/">GST / VAT Calculator</a></li>
       <li><a href="/reverse-percentage-calculator/">Reverse Percentage Calculator</a></li>
       <li><a href="/discount-stacking-calculator/">Discount Stacking Calculator</a></li>
+      <li><a href="/percentage-difference-calculator/">Percentage Difference</a></li>
+      <li><a href="/price-increase-calculator/">Price Increase Calculator</a></li>
+      <li><a href="/pay-rise-calculator/">Pay Rise Calculator</a></li>
+      <li><a href="/margin-vs-markup-calculator/">Margin vs Markup</a></li>
+      <li><a href="/unit-price-calculator/">Unit Price Calculator</a></li>
+      <li><a href="/rise-over-run-calculator/">Rise Over Run</a></li>
+      <li><a href="/slope-grade-angle-calculator/">Slope, Grade &amp; Angle</a></li>
       <li><a href="/tip-calculator/">Tip Calculator</a></li>
+      <li style="padding:6px 0 2px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--color-text-3,#7C7169);pointer-events:none">Numerology, Fun &amp; Dates</li>
+      <li><a href="/numerology-astrology/">Numerology &amp; Astrology</a></li>
+      <li><a href="/numerology-calculator/">Numerology Calculator</a></li>
+      <li><a href="/moon-sign-calculator/">Moon Sign Calculator</a></li>
+      <li><a href="/rising-sign-calculator/">Rising Sign Calculator</a></li>
+      <li><a href="/fun-relationships/">Fun &amp; Relationships</a></li>
+      <li><a href="/love-calculator/">Love Calculator</a></li>
+      <li><a href="/magic-8-ball/">Magic 8 Ball</a></li>
+      <li><a href="/date-time/">Date &amp; Time</a></li>
+      <li><a href="/birthday-countdown-calculator/">Birthday Countdown</a></li>
       <li style="padding:6px 0 2px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--color-text-3,#7C7169);pointer-events:none">CSS &amp; Design</li>
       <li><a href="/css-gradient-generator/">CSS Gradient Generator</a></li>
       <li><a href="/css-shadow-generator/">CSS Shadow Generator</a></li>
@@ -518,6 +545,23 @@
     {n:'GST / VAT Calculator',    u:'/gst-vat-calculator/',          d:'Calculate GST and VAT amounts',                     i:'/assets/img/icon-calculator.svg',        c:'Finance',      k:'gst vat tax calculate inclusive exclusive'},
     {n:'Reverse Percentage Calculator',u:'/reverse-percentage-calculator/',d:'Find the original value before a % increase, discount, or VAT', i:'/assets/img/icon-calculator.svg', c:'Finance',    k:'reverse percentage calculator find original price remove vat margin markup'},
     {n:'Discount Stacking Calculator', u:'/discount-stacking-calculator/', d:'See what stacked percent, coupon and multi-buy discounts really cost', i:'/assets/img/icon-calculator.svg', c:'Finance', k:'discount stacking calculator stacked coupons multi buy cashback 20 percent 10 percent'},
+    {n:'Percentage Difference Calculator', u:'/percentage-difference-calculator/', d:'Compare two values: % difference, % change and points', i:'/assets/img/icon-calculator.svg', c:'Calculator', k:'percentage difference percent change percentage points compare two numbers'},
+    {n:'Price Increase Calculator', u:'/price-increase-calculator/', d:'New price after a % increase, or the % between two prices', i:'/assets/img/icon-calculator.svg', c:'Finance', k:'price increase percent rise new price shrinkflation inflation'},
+    {n:'Pay Rise Calculator',     u:'/pay-rise-calculator/',         d:'New salary after a raise, and the real raise after inflation', i:'/assets/img/icon-calculator.svg', c:'Finance', k:'pay rise salary raise increase wage inflation hourly monthly'},
+    {n:'Margin vs Markup Calculator', u:'/margin-vs-markup-calculator/', d:'Margin and markup from cost and price, or the price needed', i:'/assets/img/icon-calculator.svg', c:'Finance', k:'margin markup profit gross margin selling price cost avance recargo'},
+    {n:'Unit Price Calculator',   u:'/unit-price-calculator/',       d:'Compare pack sizes by price per kg, litre or item', i:'/assets/img/icon-calculator.svg', c:'Finance', k:'unit price per kg per litre compare pack size cheapest grocery'},
+    {n:'Rise Over Run Calculator', u:'/rise-over-run-calculator/',   d:'Slope from rise and run or two points', i:'/assets/img/icon-calculator.svg', c:'Calculator', k:'rise over run slope two points gradient line equation'},
+    {n:'Slope, Grade & Angle Calculator', u:'/slope-grade-angle-calculator/', d:'Convert slope ratio, percent grade and degrees', i:'/assets/img/icon-calculator.svg', c:'Calculator', k:'slope grade angle degrees percent ratio roof pitch ramp'},
+    {n:'Name Numerology Calculator', u:'/name-numerology-calculator/', d:'Destiny, Soul Urge and Personality numbers from your name', i:'/assets/img/icon-calculator.svg', c:'Numerology', k:'name numerology destiny expression soul urge personality pythagorean chaldean'},
+    {n:'Numerology Calculator',   u:'/numerology-calculator/',       d:'Life Path, Birthday, Personal Year and name numbers', i:'/assets/img/icon-calculator.svg', c:'Numerology', k:'numerology life path birthday number personal year'},
+    {n:'Lo Shu Grid Calculator',  u:'/lo-shu-grid-calculator/',      d:'Build your Lo Shu Grid with missing and repeated numbers', i:'/assets/img/icon-calculator.svg', c:'Numerology', k:'lo shu grid magic square numerology driver destiny'},
+    {n:'Moon Sign Calculator',    u:'/moon-sign-calculator/',        d:'Your Moon sign from birth date, time and place', i:'/assets/img/icon-calculator.svg', c:'Astrology', k:'moon sign lunar zodiac astrology birth chart'},
+    {n:'Rising Sign Calculator',  u:'/rising-sign-calculator/',      d:'Ascendant sign and degree from your birth time and place', i:'/assets/img/icon-calculator.svg', c:'Astrology', k:'rising sign ascendant astrology big three birth time'},
+    {n:'Tarot Birth Card Calculator', u:'/tarot-birth-card-calculator/', d:'Your Tarot birth cards from your birth date', i:'/assets/img/icon-calculator.svg', c:'Numerology', k:'tarot birth card major arcana personality soul card'},
+    {n:'Love Calculator',         u:'/love-calculator/',             d:'A fun love percentage from two names', i:'/assets/img/icon-calculator.svg', c:'Fun', k:'love calculator names compatibility crush test'},
+    {n:'FLAMES Calculator',       u:'/flames-calculator/',           d:'Play the classic FLAMES name game', i:'/assets/img/icon-calculator.svg', c:'Fun', k:'flames game friends love affection marriage enemies siblings'},
+    {n:'Magic 8 Ball',            u:'/magic-8-ball/',                d:'Ask a yes-or-no question and shake the ball', i:'/assets/img/icon-calculator.svg', c:'Fun', k:'magic 8 ball eight ball yes no answer'},
+    {n:'Birthday Countdown Calculator', u:'/birthday-countdown-calculator/', d:'Days, hours and minutes until your next birthday', i:'/assets/img/icon-timer.svg', c:'Date & Time', k:'birthday countdown days until birthday age next birthday'},
     {n:'Tip Calculator',          u:'/tip-calculator/',              d:'Calculate tip and split the bill',                  i:'/assets/img/icon-calculator.svg',        c:'Finance',      k:'tip bill split restaurant gratuity'},
     {n:'Random Number Generator', u:'/random-number-generator/',     d:'Generate cryptographically secure random numbers',  i:'/assets/img/icon-calculator.svg',        c:'Calculator',   k:'random number generate range secure crypto'},
     {n:'Blood Type Compatibility',u:'/blood-type-compatibility/',    d:'Check blood type donation compatibility',           i:'/assets/img/icon-calculator.svg',        c:'Calculator',   k:'blood type compatibility donor recipient abo rh'},
@@ -540,13 +584,101 @@
   ];
 
   var NON_LOCALIZED_PATHS = {
-    '/calculators/': true,
     '/developer-tools/': true,
     '/pdf-metadata-remover/': true,
     '/pdf-tools/': true,
     '/productivity-tools/': true,
     '/world-clock/': true
   };
+
+  /* BEGIN generated: localized slugs (tools/tool-pages/build.js) */
+  var LOCALIZED_SLUGS = {
+    "/calculators/": {
+      "es": "/es/calculadoras/",
+      "da": "/da/beregnere/"
+    },
+    "/numerology-astrology/": {
+      "es": "/es/numerologia-astrologia/",
+      "da": "/da/numerologi-astrologi/"
+    },
+    "/fun-relationships/": {
+      "es": "/es/diversion-compatibilidad/",
+      "da": "/da/sjov-relationer/"
+    },
+    "/date-time/": {
+      "es": "/es/fecha-hora/",
+      "da": "/da/dato-tid/"
+    },
+    "/rise-over-run-calculator/": {
+      "es": "/es/calculadora-pendiente-elevacion-recorrido/",
+      "da": "/da/haeldningsberegner-stigning-afstand/"
+    },
+    "/pay-rise-calculator/": {
+      "es": "/es/calculadora-aumento-salarial/",
+      "da": "/da/loenstigningsberegner/"
+    },
+    "/price-increase-calculator/": {
+      "es": "/es/calculadora-aumento-precio/",
+      "da": "/da/prisforhoejelsesberegner/"
+    },
+    "/margin-vs-markup-calculator/": {
+      "es": "/es/calculadora-margen-recargo/",
+      "da": "/da/margin-avanceberegner/"
+    },
+    "/unit-price-calculator/": {
+      "es": "/es/calculadora-precio-unitario/",
+      "da": "/da/enhedsprisberegner/"
+    },
+    "/percentage-difference-calculator/": {
+      "es": "/es/calculadora-diferencia-porcentual/",
+      "da": "/da/procentforskelberegner/"
+    },
+    "/slope-grade-angle-calculator/": {
+      "es": "/es/calculadora-pendiente-porcentaje-angulo/",
+      "da": "/da/haeldning-stigningsprocent-vinkel-beregner/"
+    },
+    "/name-numerology-calculator/": {
+      "es": "/es/calculadora-numerologia-nombre/",
+      "da": "/da/navnenumerologi-beregner/"
+    },
+    "/numerology-calculator/": {
+      "es": "/es/calculadora-numerologia/",
+      "da": "/da/numerologi-beregner/"
+    },
+    "/moon-sign-calculator/": {
+      "es": "/es/calculadora-signo-lunar/",
+      "da": "/da/maanetegnsberegner/"
+    },
+    "/rising-sign-calculator/": {
+      "es": "/es/calculadora-ascendente/",
+      "da": "/da/ascendantberegner/"
+    },
+    "/lo-shu-grid-calculator/": {
+      "es": "/es/calculadora-cuadricula-lo-shu/",
+      "da": "/da/lo-shu-gitterberegner/"
+    },
+    "/tarot-birth-card-calculator/": {
+      "es": "/es/calculadora-cartas-nacimiento-tarot/",
+      "da": "/da/tarot-foedselskortberegner/"
+    },
+    "/love-calculator/": {
+      "es": "/es/calculadora-del-amor/",
+      "da": "/da/kaerlighedsberegner/"
+    },
+    "/flames-calculator/": {
+      "es": "/es/calculadora-flames/",
+      "da": "/da/flames-beregner/"
+    },
+    "/magic-8-ball/": {
+      "es": "/es/bola-8-magica/",
+      "da": "/da/magic-8-ball/"
+    },
+    "/birthday-countdown-calculator/": {
+      "es": "/es/cuenta-regresiva-cumpleanos/",
+      "da": "/da/foedselsdagsnedtaelling/"
+    }
+  };
+  /* END generated: localized slugs */
 
   function currentPageLang() {
     var path = window.location.pathname;
@@ -569,12 +701,25 @@
     return cleanPath || '/';
   }
 
+  /* Reverse lookup for pages whose Spanish/Danish URL uses a translated slug. */
+  var ENGLISH_PATH_FOR = {};
+  Object.keys(LOCALIZED_SLUGS).forEach(function (en) {
+    ENGLISH_PATH_FOR[LOCALIZED_SLUGS[en].es] = en;
+    ENGLISH_PATH_FOR[LOCALIZED_SLUGS[en].da] = en;
+  });
+
+  function englishPathFor(path) {
+    var withSlash = path.charAt(path.length - 1) === '/' ? path : path + '/';
+    return ENGLISH_PATH_FOR[withSlash] || removeLocalePrefix(path);
+  }
+
   function localizedPathForLang(rawPath, targetLang, fallbackHomeForMissing) {
     if (!rawPath || rawPath.charAt(0) !== '/' || rawPath.startsWith('/assets/')) return rawPath;
     var parts = splitLocalPath(rawPath);
-    var cleanPath = removeLocalePrefix(parts.path);
+    var cleanPath = englishPathFor(parts.path);
 
     if (targetLang === 'en') return cleanPath + parts.suffix;
+    if (LOCALIZED_SLUGS[cleanPath]) return LOCALIZED_SLUGS[cleanPath][targetLang] + parts.suffix;
     if (NON_LOCALIZED_PATHS[cleanPath]) {
       return (fallbackHomeForMissing ? '/' + targetLang + '/' : cleanPath) + parts.suffix;
     }
@@ -1146,6 +1291,13 @@
   }
 
   function buildLangUrl(targetLang) {
+    const alt = document.querySelector('link[rel="alternate"][hreflang="' + targetLang + '"]');
+    if (alt) {
+      try {
+        const u = new URL(alt.getAttribute('href'), window.location.origin);
+        if (u.hostname === window.location.hostname || /(^|\.)anyconverter\.io$/.test(u.hostname)) return u.pathname;
+      } catch (e) { /* fall back to the path rules below */ }
+    }
     const path = window.location.pathname;
     return localizedPathForLang(path, targetLang, true);
   }

@@ -1,0 +1,245 @@
+{
+ "en": {
+  "name": "FLAMES Calculator",
+  "card": "The classic name game, step by step",
+  "desc": "Free FLAMES calculator: enter two names and play the classic Friends, Love, Affection, Marriage, Enemies, Siblings game, with every round of counting shown.",
+  "h1": "FLAMES Calculator",
+  "lede": "Enter two names and play the classic FLAMES game. Watch the shared letters cancel, see every round of counting, and get your result.",
+  "howH": "How to play FLAMES",
+  "how": [
+   [
+    "Type two names",
+    "Full names or first names both work. Spaces, capitals and accents are ignored."
+   ],
+   [
+    "Watch the letters cancel",
+    "Letters the names share are crossed out in pairs. The letters left over are counted."
+   ],
+   [
+    "Count around FLAMES",
+    "Count around the word FLAMES with that number, removing a letter each time, until one is left."
+   ]
+  ],
+  "featH": "FLAMES, shown properly",
+  "feats": [
+   [
+    "Crossed-out letters",
+    "See exactly which letters cancel in each name."
+   ],
+   [
+    "Every elimination round",
+    "Each round of counting around FLAMES is listed, so you can check it by hand."
+   ],
+   [
+    "Same names, same answer",
+    "Nothing is random. Swap the names and you still get the same result."
+   ],
+   [
+    "Jump to the Love Calculator",
+    "Get a percentage for the same pair in one tap."
+   ]
+  ],
+  "explainH": "How FLAMES is calculated",
+  "explain": [
+   "FLAMES stands for Friends, Love, Affection, Marriage, Enemies and Siblings. Write both names, cross out every letter they have in common (one for one, so two A’s in one name only cancel two A’s in the other), and count the letters that remain.",
+   "Then count around the letters F-L-A-M-E-S using that number. The letter you land on is removed, and you start counting again from the next letter. Repeat until one letter is left: that is your result. Example: “Ana” and “Leo” share no letters, so 6 remain. Counting 6 removes S, then F, A, L and E in turn, leaving M for Marriage.",
+   "FLAMES is a traditional playground game, not relationship science. The names stay in your browser."
+  ],
+  "faq": [
+   [
+    "What does FLAMES stand for?",
+    "Friends, Love, Affection, Marriage, Enemies and Siblings."
+   ],
+   [
+    "How is FLAMES calculated?",
+    "Cancel the letters both names share, count the letters left, and use that number to eliminate letters from FLAMES until one remains."
+   ],
+   [
+    "Are results random?",
+    "No. The same names always give the same result, in either order."
+   ],
+   [
+    "Does capitalization matter?",
+    "No. Upper and lower case are treated the same."
+   ],
+   [
+    "What about spaces or accents?",
+    "Spaces are ignored and accented letters are converted to their base letter, so José and Jose give the same result."
+   ],
+   [
+    "Is FLAMES accurate?",
+    "It is a traditional game, not relationship science."
+   ],
+   [
+    "Can I share the result?",
+    "Yes. Download a share image, or copy a link that shows only your initials and the result."
+   ],
+   [
+    "Are names uploaded?",
+    "No. Everything runs in your browser."
+   ]
+  ]
+ },
+ "es": {
+  "name": "Calculadora FLAMES",
+  "card": "El juego de nombres clásico, paso a paso",
+  "desc": "Calculadora FLAMES gratis: escribe dos nombres y juega al clásico juego de amigos, amor, cariño, matrimonio, enemigos o hermanos, con cada ronda a la vista.",
+  "h1": "Calculadora FLAMES",
+  "lede": "Introduce dos nombres y juega al clásico FLAMES. Mira cómo se tachan las letras comunes, cada ronda del conteo y vuestro resultado.",
+  "howH": "Cómo se juega a FLAMES",
+  "how": [
+   [
+    "Escribe dos nombres",
+    "Sirven nombres completos o solo el nombre. Se ignoran espacios, mayúsculas y tildes."
+   ],
+   [
+    "Mira cómo se tachan las letras",
+    "Las letras que comparten los nombres se tachan por pares. Se cuentan las que sobran."
+   ],
+   [
+    "Cuenta alrededor de FLAMES",
+    "Cuenta con ese número alrededor de FLAMES, quitando una letra cada vez, hasta que quede una."
+   ]
+  ],
+  "featH": "FLAMES, bien explicado",
+  "feats": [
+   [
+    "Letras tachadas",
+    "Mira exactamente qué letras se cancelan en cada nombre."
+   ],
+   [
+    "Cada ronda de eliminación",
+    "Cada vuelta alrededor de FLAMES aparece en la lista para que puedas comprobarla a mano."
+   ],
+   [
+    "Mismos nombres, misma respuesta",
+    "Nada es aleatorio. Aunque cambies el orden, el resultado es el mismo."
+   ],
+   [
+    "Salta a la calculadora del amor",
+    "Obtén un porcentaje para la misma pareja con un toque."
+   ]
+  ],
+  "explainH": "Cómo se calcula FLAMES",
+  "explain": [
+   "FLAMES viene del inglés: Friends (amigos), Love (amor), Affection (cariño), Marriage (matrimonio), Enemies (enemigos) y Siblings (hermanos). Escribe los dos nombres, tacha las letras que tienen en común (una por una: dos A en un nombre solo cancelan dos A en el otro) y cuenta las que quedan.",
+   "Después cuenta alrededor de F-L-A-M-E-S con ese número. La letra en la que caes se elimina y vuelves a contar desde la siguiente. Repite hasta que quede una: ese es el resultado. Ejemplo: «Ana» y «Leo» no comparten letras, quedan 6. Contando 6 se eliminan S, F, A, L y E, y queda M: matrimonio.",
+   "FLAMES es un juego tradicional, no una ciencia de las relaciones. Los nombres se quedan en tu navegador."
+  ],
+  "faq": [
+   [
+    "¿Qué significa FLAMES?",
+    "Friends, Love, Affection, Marriage, Enemies y Siblings: amigos, amor, cariño, matrimonio, enemigos y hermanos."
+   ],
+   [
+    "¿Cómo se calcula?",
+    "Se cancelan las letras comunes, se cuentan las que sobran y con ese número se eliminan letras de FLAMES hasta que queda una."
+   ],
+   [
+    "¿Es aleatorio?",
+    "No. Los mismos nombres dan siempre el mismo resultado, en cualquier orden."
+   ],
+   [
+    "¿Importan las mayúsculas?",
+    "No."
+   ],
+   [
+    "¿Qué pasa con espacios y tildes?",
+    "Los espacios se ignoran y las tildes se quitan, así que José y Jose dan lo mismo."
+   ],
+   [
+    "¿Es exacto?",
+    "Es un juego tradicional, no una ciencia."
+   ],
+   [
+    "¿Puedo compartirlo?",
+    "Sí. Descarga una imagen o copia un enlace que solo muestra vuestras iniciales y el resultado."
+   ],
+   [
+    "¿Se suben los nombres?",
+    "No. Todo funciona en tu navegador."
+   ]
+  ]
+ },
+ "da": {
+  "name": "FLAMES-beregner",
+  "card": "Den klassiske navneleg, trin for trin",
+  "desc": "Gratis FLAMES-beregner: skriv to navne og spil den klassiske leg om venner, kærlighed, hengivenhed, ægteskab, fjender og søskende – med hver runde vist.",
+  "h1": "FLAMES-beregner",
+  "lede": "Indtast to navne og spil den klassiske FLAMES-leg. Se de fælles bogstaver blive streget ud, hver tællerunde og jeres resultat.",
+  "howH": "Sådan spiller du FLAMES",
+  "how": [
+   [
+    "Skriv to navne",
+    "Fulde navne eller fornavne virker begge. Mellemrum, store bogstaver og accenter ignoreres."
+   ],
+   [
+    "Se bogstaverne blive streget ud",
+    "Bogstaver, som navnene deler, streges ud parvis. De resterende bogstaver tælles."
+   ],
+   [
+    "Tæl rundt i FLAMES",
+    "Tæl rundt i ordet FLAMES med det tal, og fjern et bogstav hver gang, til der er ét tilbage."
+   ]
+  ],
+  "featH": "FLAMES, vist ordentligt",
+  "feats": [
+   [
+    "Overstregede bogstaver",
+    "Se præcis hvilke bogstaver der går ud i hvert navn."
+   ],
+   [
+    "Hver eliminationsrunde",
+    "Hver runde rundt i FLAMES vises, så du kan tjekke det i hånden."
+   ],
+   [
+    "Samme navne, samme svar",
+    "Intet er tilfældigt. Byt om på navnene, og du får stadig samme resultat."
+   ],
+   [
+    "Videre til kærlighedsberegneren",
+    "Få en procent for samme par med ét tryk."
+   ]
+  ],
+  "explainH": "Sådan beregnes FLAMES",
+  "explain": [
+   "FLAMES står for de engelske ord Friends (venner), Love (kærlighed), Affection (hengivenhed), Marriage (ægteskab), Enemies (fjender) og Siblings (søskende). Skriv begge navne, stryg de bogstaver, de har til fælles (ét for ét, så to A’er i det ene navn kun går ud mod to A’er i det andet), og tæl de resterende.",
+   "Tæl derefter rundt i F-L-A-M-E-S med det tal. Det bogstav, du lander på, fjernes, og du tæller videre fra det næste. Gentag, til der er ét bogstav tilbage: det er resultatet. Eksempel: »Ana« og »Leo« har ingen fælles bogstaver, så der er 6 tilbage. Med 6 fjernes S, F, A, L og E, og M står tilbage: ægteskab.",
+   "FLAMES er en traditionel leg, ikke parforholdsvidenskab. Navnene bliver i din browser."
+  ],
+  "faq": [
+   [
+    "Hvad står FLAMES for?",
+    "Friends, Love, Affection, Marriage, Enemies og Siblings: venner, kærlighed, hengivenhed, ægteskab, fjender og søskende."
+   ],
+   [
+    "Hvordan beregnes FLAMES?",
+    "Fjern fælles bogstaver, tæl resten, og brug tallet til at fjerne bogstaver fra FLAMES, til ét er tilbage."
+   ],
+   [
+    "Er resultatet tilfældigt?",
+    "Nej. Samme navne giver altid samme resultat, uanset rækkefølge."
+   ],
+   [
+    "Betyder store/små bogstaver noget?",
+    "Nej."
+   ],
+   [
+    "Hvad med mellemrum og accenter?",
+    "Mellemrum ignoreres, og accenter fjernes. Æ tæller som AE, ø som O og å som A."
+   ],
+   [
+    "Er FLAMES præcist?",
+    "Det er en leg, ikke videnskab."
+   ],
+   [
+    "Kan jeg dele resultatet?",
+    "Ja. Download et billede, eller kopiér et link, der kun viser jeres initialer og resultatet."
+   ],
+   [
+    "Uploades navnene?",
+    "Nej. Alt kører i din browser."
+   ]
+  ]
+ }
+}

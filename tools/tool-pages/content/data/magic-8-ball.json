@@ -1,0 +1,245 @@
+{
+ "en": {
+  "name": "Magic 8 Ball Online",
+  "card": "Ask a yes-or-no question and shake",
+  "desc": "Free Magic 8 Ball online: ask a yes-or-no question, tap or shake the ball and get one of the 20 classic answers. Random, private and just for fun.",
+  "h1": "Magic 8 Ball Online",
+  "lede": "Think of a yes-or-no question, then tap or shake the ball. One of the 20 classic answers appears instantly. Just for fun.",
+  "howH": "How to use the Magic 8 Ball",
+  "how": [
+   [
+    "Think of a yes-or-no question",
+    "Type it if you like. It stays on your device either way."
+   ],
+   [
+    "Tap or shake",
+    "Tap the ball, press Space, or shake your phone after allowing motion access."
+   ],
+   [
+    "Read the answer",
+    "One of the 20 classic answers appears in the window. Ask again as often as you want."
+   ]
+  ],
+  "featH": "Small toy, done carefully",
+  "feats": [
+   [
+    "Shake your phone",
+    "Real shake detection on phones that allow motion access, with a tap fallback everywhere else."
+   ],
+   [
+    "The classic answer set",
+    "10 yes, 5 maybe and 5 no answers, in natural English, Spanish and Danish."
+   ],
+   [
+    "Sound and motion you control",
+    "Turn sound on or off, and motion follows your reduced-motion setting."
+   ],
+   [
+    "Share the answer only",
+    "Share an image or text of the answer, with your question left out unless you choose to include it."
+   ]
+  ],
+  "explainH": "How the Magic 8 Ball works",
+  "explain": [
+   "The original Magic 8 Ball is a toy from the 1950s: a black ball filled with liquid and a 20-sided die printed with answers. When you turn it over, one face floats up to the window. Ten answers are positive, five are non-committal and five are negative.",
+   "This online version keeps the same 20 answers and the same odds. Each shake picks one at random using your browser’s secure random number generator, so every answer is equally likely and earlier answers have no effect on the next.",
+   "It is a game, not a fortune teller. Your question is never sent anywhere, and history is off unless you turn it on, in which case it is kept only until you close the tab."
+  ],
+  "faq": [
+   [
+    "How does the Magic 8 Ball work?",
+    "Each shake picks one of the 20 classic answers at random. Ten say yes, five say maybe and five say no."
+   ],
+   [
+    "Do I need to type my question?",
+    "No. Typing it is optional. Just think of it and shake."
+   ],
+   [
+    "Can I shake my phone?",
+    "Yes, on phones whose browser allows motion access. Tap “Enable shake” first if your phone asks for permission."
+   ],
+   [
+    "Are answers really predictive?",
+    "No. It is entertainment, and every answer is equally likely."
+   ],
+   [
+    "Is my question stored?",
+    "No. History is off by default. If you turn it on, it is kept in this tab only."
+   ],
+   [
+    "Can I turn off sound and motion?",
+    "Yes. Sound is off by default, and motion can be switched off. Your device’s reduced-motion setting is respected."
+   ],
+   [
+    "Can I share an answer?",
+    "Yes, as an image or text. Your question is only included if you choose to."
+   ],
+   [
+    "Is it free?",
+    "Yes, free and with no sign-up."
+   ]
+  ]
+ },
+ "es": {
+  "name": "Bola 8 Mágica Online",
+  "card": "Haz una pregunta de sí o no y agita",
+  "desc": "Bola 8 mágica online gratis: haz una pregunta de sí o no, toca o agita la bola y recibe una de las 20 respuestas clásicas. Aleatoria, privada y por diversión.",
+  "h1": "Bola 8 Mágica Online",
+  "lede": "Piensa una pregunta de sí o no y toca o agita la bola. Al instante aparece una de las 20 respuestas clásicas. Solo por diversión.",
+  "howH": "Cómo usar la Bola Mágica 8",
+  "how": [
+   [
+    "Piensa una pregunta de sí o no",
+    "Escríbela si quieres. En cualquier caso se queda en tu dispositivo."
+   ],
+   [
+    "Toca o agita",
+    "Toca la bola, pulsa la barra espaciadora o agita el móvil tras permitir el acceso al movimiento."
+   ],
+   [
+    "Lee la respuesta",
+    "En la ventana aparece una de las 20 respuestas clásicas. Pregunta todas las veces que quieras."
+   ]
+  ],
+  "featH": "Un juguete pequeño, bien hecho",
+  "feats": [
+   [
+    "Agita el móvil",
+    "Detección real del movimiento en móviles que lo permiten, y toque en el resto."
+   ],
+   [
+    "Las respuestas clásicas",
+    "10 de sí, 5 de quizá y 5 de no, en un español natural."
+   ],
+   [
+    "Sonido y animación a tu gusto",
+    "Activa o desactiva el sonido; la animación respeta tu ajuste de movimiento reducido."
+   ],
+   [
+    "Comparte solo la respuesta",
+    "Comparte una imagen o texto de la respuesta sin tu pregunta, salvo que decidas incluirla."
+   ]
+  ],
+  "explainH": "Cómo funciona la Bola Mágica 8",
+  "explain": [
+   "La Bola Mágica 8 original es un juguete de los años 50: una bola negra llena de líquido con un dado de 20 caras con respuestas. Al darle la vuelta, una cara sube hasta la ventana. Diez respuestas son positivas, cinco neutras y cinco negativas.",
+   "Esta versión online mantiene las mismas 20 respuestas y las mismas probabilidades. Cada vez que agitas se elige una al azar con el generador aleatorio seguro del navegador, así que todas son igual de probables y las anteriores no influyen en la siguiente.",
+   "Es un juego, no una adivina. Tu pregunta nunca se envía a ningún sitio y el historial está desactivado salvo que lo actives; en ese caso, solo se guarda hasta que cierres la pestaña."
+  ],
+  "faq": [
+   [
+    "¿Cómo funciona?",
+    "Cada vez que agitas se elige al azar una de las 20 respuestas clásicas: diez de sí, cinco de quizá y cinco de no."
+   ],
+   [
+    "¿Debo escribir la pregunta?",
+    "No, es opcional. Basta con pensarla y agitar."
+   ],
+   [
+    "¿Puedo agitar el móvil?",
+    "Sí, si el navegador permite acceder al movimiento. Toca «Activar agitar» si te pide permiso."
+   ],
+   [
+    "¿Predice de verdad?",
+    "No. Es entretenimiento y todas las respuestas son igual de probables."
+   ],
+   [
+    "¿Se guarda mi pregunta?",
+    "No. El historial está desactivado por defecto; si lo activas, solo se guarda en esta pestaña."
+   ],
+   [
+    "¿Puedo desactivar sonido y animación?",
+    "Sí. El sonido viene apagado y la animación se puede desactivar. Se respeta el ajuste de movimiento reducido de tu dispositivo."
+   ],
+   [
+    "¿Puedo compartir una respuesta?",
+    "Sí, como imagen o texto. La pregunta solo se incluye si lo eliges."
+   ],
+   [
+    "¿Es gratis?",
+    "Sí, gratis y sin registro."
+   ]
+  ]
+ },
+ "da": {
+  "name": "Magic 8 Ball Online",
+  "card": "Stil et ja/nej-spørgsmål og ryst",
+  "desc": "Gratis Magic 8 Ball online: stil et ja/nej-spørgsmål, tryk på eller ryst kuglen, og få et af de 20 klassiske svar. Tilfældigt, privat og kun for sjov.",
+  "h1": "Magic 8 Ball Online",
+  "lede": "Tænk på et ja/nej-spørgsmål, og tryk på eller ryst kuglen. Et af de 20 klassiske svar dukker op med det samme. Kun for sjov.",
+  "howH": "Sådan bruger du Magic 8 Ball",
+  "how": [
+   [
+    "Tænk på et ja/nej-spørgsmål",
+    "Skriv det, hvis du vil. Det bliver på din enhed under alle omstændigheder."
+   ],
+   [
+    "Tryk eller ryst",
+    "Tryk på kuglen, tryk mellemrum, eller ryst telefonen, når du har givet adgang til bevægelse."
+   ],
+   [
+    "Læs svaret",
+    "Et af de 20 klassiske svar dukker op i vinduet. Spørg igen, så tit du vil."
+   ]
+  ],
+  "featH": "Lille legetøj, lavet ordentligt",
+  "feats": [
+   [
+    "Ryst telefonen",
+    "Ægte rystegenkendelse på telefoner, der tillader det, og tryk alle andre steder."
+   ],
+   [
+    "De klassiske svar",
+    "10 ja, 5 måske og 5 nej, på naturligt dansk."
+   ],
+   [
+    "Du styrer lyd og bevægelse",
+    "Slå lyd til eller fra; animationen følger din indstilling for reduceret bevægelse."
+   ],
+   [
+    "Del kun svaret",
+    "Del et billede eller tekst med svaret uden dit spørgsmål, medmindre du selv vælger det."
+   ]
+  ],
+  "explainH": "Sådan virker Magic 8 Ball",
+  "explain": [
+   "Den originale Magic 8 Ball er et stykke legetøj fra 1950’erne: en sort kugle fyldt med væske og en terning med 20 sider, som hver har et svar. Når du vender kuglen, flyder én side op til vinduet. Ti svar er positive, fem er uafklarede og fem er negative.",
+   "Denne onlineudgave har de samme 20 svar og de samme odds. Hver rystelse vælger et tilfældigt svar med browserens sikre tilfældighedsgenerator, så alle svar er lige sandsynlige, og tidligere svar påvirker ikke det næste.",
+   "Det er en leg, ikke en spåkone. Dit spørgsmål sendes aldrig nogen steder hen, og historik er slået fra, medmindre du slår den til; så gemmes den kun, indtil du lukker fanen."
+  ],
+  "faq": [
+   [
+    "Hvordan virker Magic 8 Ball?",
+    "Hver rystelse vælger tilfældigt et af de 20 klassiske svar: ti ja, fem måske og fem nej."
+   ],
+   [
+    "Skal jeg skrive spørgsmålet?",
+    "Nej, det er valgfrit. Tænk på det, og ryst."
+   ],
+   [
+    "Kan jeg ryste telefonen?",
+    "Ja, hvis browseren giver adgang til bevægelse. Tryk »Slå rystning til«, hvis telefonen beder om tilladelse."
+   ],
+   [
+    "Kan den virkelig forudsige noget?",
+    "Nej. Det er underholdning, og alle svar er lige sandsynlige."
+   ],
+   [
+    "Gemmes mit spørgsmål?",
+    "Nej. Historik er slået fra som standard; slår du den til, gemmes den kun i denne fane."
+   ],
+   [
+    "Kan lyd og animation slås fra?",
+    "Ja. Lyd er slået fra som standard, og animation kan slås fra. Din enheds indstilling for reduceret bevægelse respekteres."
+   ],
+   [
+    "Kan jeg dele et svar?",
+    "Ja, som billede eller tekst. Spørgsmålet kommer kun med, hvis du vælger det."
+   ],
+   [
+    "Er det gratis?",
+    "Ja, gratis og uden tilmelding."
+   ]
+  ]
+ }
+}

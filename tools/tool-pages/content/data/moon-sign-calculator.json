@@ -1,0 +1,245 @@
+{
+ "en": {
+  "name": "Moon Sign Calculator",
+  "card": "Moon sign, degree and certainty",
+  "desc": "Free Moon sign calculator using a real astronomical ephemeris: enter birth date, time and place to get your Moon sign, exact degree and Moon phase.",
+  "h1": "Moon Sign Calculator",
+  "lede": "Find your Moon sign from your birth date, time and place. You get the exact degree, and if you don’t know your birth time, an honest answer about whether the sign is certain.",
+  "howH": "How to find your Moon sign",
+  "how": [
+   [
+    "Enter your birth date",
+    "Add the time if you know it. If not, tick “I don’t know my birth time”."
+   ],
+   [
+    "Choose where you were born",
+    "Pick a city from the built-in list or enter coordinates. The time zone, including daylight saving, is applied for that date."
+   ],
+   [
+    "Read the result",
+    "You get the sign and degree, or, without a time, either one certain sign or the two possible signs and the time the Moon changed."
+   ]
+  ],
+  "featH": "Honest about what the data can tell you",
+  "feats": [
+   [
+    "Unknown birth time handled honestly",
+    "The whole day is checked. If the Moon changed sign that day, you see both signs and the exact switch time instead of a guess."
+   ],
+   [
+    "Exact degree",
+    "See the Moon’s position to the arc-minute, plus a warning if it sits right on a sign boundary."
+   ],
+   [
+    "Moon phase at birth",
+    "Phase name and how much of the Moon was lit."
+   ],
+   [
+    "No location lookup",
+    "Cities are built into the page, so your birthplace search never leaves the device."
+   ]
+  ],
+  "explainH": "How your Moon sign is calculated",
+  "explain": [
+   "Your Moon sign is the zodiac sign the Moon was passing through at the moment you were born. The calculator converts your local birth time to Universal Time using the time-zone rules in force on that date, then computes the Moon’s ecliptic longitude with the open-source Astronomy Engine ephemeris (based on the VSOP87 and ELP lunar theories, accurate to well under a hundredth of a degree). Each sign covers 30°: Aries 0–30°, Taurus 30–60° and so on.",
+   "The Moon moves about 13° a day, so it changes sign every two to three days. That is why the birth time often does not matter, but sometimes it does. Without a time we check the Moon at the start and end of your birth day: if both fall in the same sign the answer is certain; if not, you get both candidates and the local time of the change.",
+   "The astronomical position is measurable. The personality meanings attached to Moon signs come from astrology and are not scientifically established. Everything is calculated in your browser."
+  ],
+  "faq": [
+   [
+    "What is my Moon sign?",
+    "It is the zodiac sign the Moon occupied at the moment of your birth."
+   ],
+   [
+    "Do I need my birth time?",
+    "Often not for the sign itself. It matters if the Moon changed sign on your birth day, and the calculator tells you when that is the case."
+   ],
+   [
+    "What if I don’t know my birth time?",
+    "Tick “I don’t know my birth time”. You will see either one certain sign or two possible signs with the time the Moon switched."
+   ],
+   [
+    "Why is birthplace needed?",
+    "It sets the time zone, including historical daylight saving rules, so your local birth time can be converted correctly."
+   ],
+   [
+    "Is Moon sign the same as zodiac sign?",
+    "No. “Zodiac sign” or “star sign” usually means your Sun sign, which the calculator also shows."
+   ],
+   [
+    "How accurate is the result?",
+    "The Moon’s position comes from the Astronomy Engine ephemeris and is accurate to a fraction of an arcminute. In practice the accuracy of your birth time and place is the limiting factor: the Moon moves about half a degree per hour."
+   ],
+   [
+    "Does the calculator store my birth details?",
+    "No. Date, time and place are processed in your browser and are not stored or sent anywhere."
+   ],
+   [
+    "Is the interpretation scientific?",
+    "The astronomical position is. The personality interpretation is astrology and is not scientifically established."
+   ]
+  ]
+ },
+ "es": {
+  "name": "Calculadora de Signo Lunar",
+  "card": "Signo lunar, grado y certeza",
+  "desc": "Calculadora de signo lunar gratis con efemérides astronómicas reales: introduce fecha, hora y lugar de nacimiento y obtén tu signo, grado exacto y fase.",
+  "h1": "Calculadora de Signo Lunar",
+  "lede": "Descubre tu signo lunar con tu fecha, hora y lugar de nacimiento. Obtienes el grado exacto y, si no sabes la hora, una respuesta sincera sobre si el signo es seguro.",
+  "howH": "Cómo saber tu signo lunar",
+  "how": [
+   [
+    "Introduce tu fecha de nacimiento",
+    "Añade la hora si la sabes. Si no, marca «No sé mi hora de nacimiento»."
+   ],
+   [
+    "Elige dónde naciste",
+    "Busca tu ciudad en la lista o introduce coordenadas. Se aplica la zona horaria de esa fecha, con horario de verano."
+   ],
+   [
+    "Lee el resultado",
+    "Obtienes el signo y el grado, o, sin hora, un signo seguro o los dos posibles con la hora del cambio."
+   ]
+  ],
+  "featH": "Sincera con lo que dicen tus datos",
+  "feats": [
+   [
+    "Hora desconocida, respuesta honesta",
+    "Se revisa el día entero. Si la Luna cambió de signo ese día, ves los dos signos y la hora exacta del cambio, no una suposición."
+   ],
+   [
+    "Grado exacto",
+    "La posición de la Luna al minuto de arco, con aviso si está justo en el límite entre signos."
+   ],
+   [
+    "Fase lunar al nacer",
+    "El nombre de la fase y qué parte de la Luna estaba iluminada."
+   ],
+   [
+    "Sin servicios de ubicación",
+    "Las ciudades están incluidas en la página: tu búsqueda no sale del dispositivo."
+   ]
+  ],
+  "explainH": "Cómo se calcula tu signo lunar",
+  "explain": [
+   "Tu signo lunar es el signo del zodiaco por el que pasaba la Luna en el momento de tu nacimiento. La calculadora convierte tu hora local a tiempo universal con las reglas horarias vigentes en esa fecha y calcula la longitud eclíptica de la Luna con las efemérides de código abierto Astronomy Engine (basadas en las teorías VSOP87 y ELP, con una precisión muy inferior a una centésima de grado). Cada signo ocupa 30°: Aries de 0 a 30°, Tauro de 30 a 60°, etc.",
+   "La Luna avanza unos 13° al día, así que cambia de signo cada dos o tres días. Por eso la hora muchas veces no importa, pero a veces sí. Sin hora, comprobamos la Luna al principio y al final del día: si ambas caen en el mismo signo, la respuesta es segura; si no, ves los dos candidatos y la hora local del cambio.",
+   "La posición astronómica se puede medir. Los significados de personalidad asociados al signo lunar vienen de la astrología y no están validados científicamente. Todo se calcula en tu navegador."
+  ],
+  "faq": [
+   [
+    "¿Cuál es mi signo lunar?",
+    "El signo del zodiaco en el que estaba la Luna en el momento de tu nacimiento."
+   ],
+   [
+    "¿Necesito la hora?",
+    "Muchas veces no para el signo. Importa si la Luna cambió de signo el día que naciste, y la calculadora te lo indica."
+   ],
+   [
+    "¿Y si no sé la hora?",
+    "Marca «No sé mi hora de nacimiento». Verás un signo seguro o los dos posibles con la hora del cambio."
+   ],
+   [
+    "¿Por qué se necesita el lugar?",
+    "Para aplicar la zona horaria y el horario de verano de esa fecha y convertir bien tu hora local."
+   ],
+   [
+    "¿Es lo mismo que mi signo del zodiaco?",
+    "No. «Signo del zodiaco» suele referirse al signo solar, que la calculadora también muestra."
+   ],
+   [
+    "¿Qué tan preciso es?",
+    "La posición de la Luna se obtiene de las efemérides Astronomy Engine, con una precisión de una fracción de minuto de arco. En la práctica, lo que limita es la exactitud de tu hora y lugar de nacimiento: la Luna avanza aproximadamente medio grado por hora."
+   ],
+   [
+    "¿Se guardan mis datos?",
+    "No. Fecha, hora y lugar se procesan en tu navegador y no se guardan ni se envían."
+   ],
+   [
+    "¿La interpretación es científica?",
+    "La posición astronómica sí se calcula; la interpretación astrológica no está validada científicamente."
+   ]
+  ]
+ },
+ "da": {
+  "name": "Månetegnsberegner",
+  "card": "Månetegn, grad og sikkerhed",
+  "desc": "Gratis månetegnsberegner med rigtige astronomiske efemerider: indtast fødselsdato, tidspunkt og sted, og få dit månetegn, præcise grad og månefase.",
+  "h1": "Månetegnsberegner",
+  "lede": "Find dit månetegn ud fra fødselsdato, tidspunkt og sted. Du får den præcise grad, og hvis du ikke kender dit fødselstidspunkt, et ærligt svar om, hvorvidt tegnet er sikkert.",
+  "howH": "Sådan finder du dit månetegn",
+  "how": [
+   [
+    "Indtast din fødselsdato",
+    "Tilføj tidspunktet, hvis du kender det. Ellers markér »Jeg kender ikke mit fødselstidspunkt«."
+   ],
+   [
+    "Vælg fødested",
+    "Find byen på listen, eller indtast koordinater. Tidszonen og sommertid for datoen bruges automatisk."
+   ],
+   [
+    "Læs resultatet",
+    "Du får tegn og grad, eller uden tidspunkt enten ét sikkert tegn eller de to mulige tegn og tidspunktet for skiftet."
+   ]
+  ],
+  "featH": "Ærlig om, hvad dine data kan fortælle",
+  "feats": [
+   [
+    "Ukendt fødselstid håndteres ærligt",
+    "Hele dagen tjekkes. Skiftede Månen tegn den dag, ser du begge tegn og det præcise skiftetidspunkt i stedet for et gæt."
+   ],
+   [
+    "Præcis grad",
+    "Månens position på bueminuttet, med advarsel hvis den står lige på grænsen mellem to tegn."
+   ],
+   [
+    "Månefase ved fødslen",
+    "Fasens navn og hvor stor en del af Månen der var oplyst."
+   ],
+   [
+    "Intet opslag af placering",
+    "Byerne er indbygget i siden, så din søgning efter fødested forlader aldrig enheden."
+   ]
+  ],
+  "explainH": "Sådan beregnes dit månetegn",
+  "explain": [
+   "Dit månetegn er det stjernetegn, Månen passerede, da du blev født. Beregneren omregner din lokale fødselstid til universaltid med de tidszoneregler, der gjaldt på datoen, og beregner Månens ekliptiske længde med den open source-baserede Astronomy Engine-efemeride (bygget på teorierne VSOP87 og ELP, nøjagtig til langt under en hundrededel grad). Hvert tegn dækker 30°: Vædderen 0–30°, Tyren 30–60° osv.",
+   "Månen bevæger sig ca. 13° i døgnet og skifter derfor tegn hver anden til tredje dag. Derfor betyder fødselstidspunktet ofte ikke noget, men nogle gange gør det. Uden tidspunkt tjekker vi Månen ved starten og slutningen af din fødselsdag: står den i samme tegn begge gange, er svaret sikkert; ellers får du begge muligheder og det lokale tidspunkt for skiftet.",
+   "Den astronomiske position kan måles. De personlighedstræk, der knyttes til månetegn, stammer fra astrologien og er ikke videnskabeligt dokumenterede. Alt beregnes i din browser."
+  ],
+  "faq": [
+   [
+    "Hvad er mit månetegn?",
+    "Det tegn Månen stod i, da du blev født."
+   ],
+   [
+    "Skal jeg kende klokkeslættet?",
+    "Ofte ikke for selve tegnet. Det er vigtigt, hvis Månen skiftede tegn på din fødselsdag, og beregneren fortæller dig, når det er tilfældet."
+   ],
+   [
+    "Hvad hvis jeg ikke kender tiden?",
+    "Markér »Jeg kender ikke mit fødselstidspunkt«. Du ser enten ét sikkert tegn eller to muligheder med tidspunktet for skiftet."
+   ],
+   [
+    "Hvorfor skal fødested bruges?",
+    "Det bestemmer tidszonen, inklusive historisk sommertid, så din lokale fødselstid omregnes korrekt."
+   ],
+   [
+    "Er månetegn det samme som stjernetegn?",
+    "Nej. Med stjernetegn menes normalt soltegnet, som beregneren også viser."
+   ],
+   [
+    "Hvor præcist er resultatet?",
+    "Månens position kommer fra Astronomy Engine-efemeriden og er nøjagtig til en brøkdel af et bueminut. I praksis er det nøjagtigheden af dine fødselsdata, der begrænser: Månen flytter sig cirka en halv grad i timen."
+   ],
+   [
+    "Gemmes mine fødselsdata?",
+    "Nej. Dato, tid og sted behandles i din browser og gemmes eller sendes ikke."
+   ],
+   [
+    "Er fortolkningen videnskabelig?",
+    "Positionen kan beregnes astronomisk; personlighedsfortolkningen er astrologi og ikke videnskabeligt fastslået."
+   ]
+  ]
+ }
+}

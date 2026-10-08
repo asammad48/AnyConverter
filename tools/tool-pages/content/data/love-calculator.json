@@ -1,0 +1,245 @@
+{
+ "en": {
+  "name": "Love Calculator by Names",
+  "card": "Names or birthdays, same result every time",
+  "desc": "Free love calculator by names: type two names for a fun love percentage worked out from the letters, with every step shown. For entertainment only.",
+  "h1": "Love Calculator by Names",
+  "lede": "Type two names to get your love percentage. The result is calculated from the letters, so the same names always give the same score. Add birthdays for a detailed breakdown.",
+  "howH": "How to use the Love Calculator",
+  "how": [
+   [
+    "Type two names",
+    "First names work fine. Order and capital letters don’t matter."
+   ],
+   [
+    "Add birthdays for more detail",
+    "Detailed mode mixes in star-sign elements and Life Path numbers."
+   ],
+   [
+    "Share the result",
+    "Download a share card or copy a link that shows only your initials and score."
+   ]
+  ],
+  "featH": "A love calculator you can check",
+  "feats": [
+   [
+    "Same names, same score",
+    "No random numbers. The result is calculated from the letters, so you can repeat it any time."
+   ],
+   [
+    "See how it was counted",
+    "The classic LOVES method is shown step by step, from letter counts to the final two digits."
+   ],
+   [
+    "Detailed mode with birthdays",
+    "Combines the name score with zodiac elements and numerology for a three-part breakdown."
+   ],
+   [
+    "Privacy-safe sharing",
+    "The share link carries initials and the score only, never full names."
+   ]
+  ],
+  "explainH": "How the score is calculated",
+  "explain": [
+   "The Instant mode uses the classic “LOVES” method from the school playground. Count how many times the letters L, O, V, E and S appear in both names together. That gives five numbers. Add each neighbouring pair and keep the last digit, which leaves four numbers, then three, then two. Those two digits are your percentage. Because only letter counts are used, swapping the names gives the same result.",
+   "Detailed mode takes 60% from the name score, 20% from how well your Sun-sign elements match (fire, earth, air, water) and 20% from how close your Life Path numbers are. Example: same element scores 90, fire with air or earth with water scores 80, other pairs 55.",
+   "It is a game. A low score says nothing about a real relationship. Names and birthdays are processed in your browser and never sent to analytics."
+  ],
+  "faq": [
+   [
+    "How does the Love Calculator work?",
+    "It counts the letters L, O, V, E and S in both names and adds neighbouring numbers until two digits are left. Every step is shown under the result."
+   ],
+   [
+    "Will the same names get the same score?",
+    "Yes, every time, and in either order."
+   ],
+   [
+    "Is the score scientifically accurate?",
+    "No. It is entertainment based on letters, not a measure of a relationship."
+   ],
+   [
+    "Can I use birthdays too?",
+    "Yes. Switch to Detailed mode to add star-sign elements and Life Path numbers."
+   ],
+   [
+    "Are names stored?",
+    "No. They are only used in your browser and are never sent to analytics or a server."
+   ],
+   [
+    "Can I share my result?",
+    "Yes. Download a share image, or copy a link that shows only your initials and the score."
+   ],
+   [
+    "Can I compare crushes or friends?",
+    "Yes. Try as many pairs as you like. Just keep it light."
+   ],
+   [
+    "Does a low score mean a bad relationship?",
+    "Absolutely not. It is a letter game."
+   ]
+  ]
+ },
+ "es": {
+  "name": "Calculadora del Amor por Nombres",
+  "card": "Por nombres o fechas, siempre el mismo resultado",
+  "desc": "Calculadora del amor por nombres gratis: escribe dos nombres y obtén un porcentaje de amor divertido calculado con las letras, paso a paso. Solo por diversión.",
+  "h1": "Calculadora del Amor por Nombres",
+  "lede": "Escribe dos nombres para ver vuestro porcentaje de amor. El resultado sale de las letras, así que los mismos nombres siempre dan lo mismo. Añade fechas para un análisis detallado.",
+  "howH": "Cómo usar la calculadora del amor",
+  "how": [
+   [
+    "Escribe dos nombres",
+    "Basta con el nombre de pila. El orden y las mayúsculas no importan."
+   ],
+   [
+    "Añade fechas para más detalle",
+    "El modo detallado suma los elementos del zodiaco y el camino de vida."
+   ],
+   [
+    "Comparte el resultado",
+    "Descarga una imagen o copia un enlace que solo muestra vuestras iniciales y el porcentaje."
+   ]
+  ],
+  "featH": "Una calculadora del amor que puedes comprobar",
+  "feats": [
+   [
+    "Mismos nombres, mismo resultado",
+    "Sin números al azar. El resultado sale de las letras, así que puedes repetirlo cuando quieras."
+   ],
+   [
+    "Mira cómo se cuenta",
+    "El método clásico LOVES paso a paso, desde el recuento de letras hasta las dos cifras finales."
+   ],
+   [
+    "Modo detallado con fechas",
+    "Combina los nombres con los elementos del zodiaco y la numerología en un análisis de tres partes."
+   ],
+   [
+    "Compartir con privacidad",
+    "El enlace solo lleva iniciales y porcentaje, nunca los nombres completos."
+   ]
+  ],
+  "explainH": "Cómo se calcula el porcentaje",
+  "explain": [
+   "El modo rápido usa el clásico método «LOVES» del recreo. Cuenta cuántas veces aparecen las letras L, O, V, E y S en los dos nombres juntos. Eso da cinco números. Suma cada par vecino y quédate con la última cifra: quedan cuatro números, luego tres y luego dos. Esas dos cifras son vuestro porcentaje. Como solo se cuentan letras, da igual el orden de los nombres.",
+   "El modo detallado toma un 60 % de los nombres, un 20 % de la afinidad entre los elementos de vuestros signos solares (fuego, tierra, aire, agua) y un 20 % de lo cerca que están vuestros caminos de vida. Por ejemplo: el mismo elemento puntúa 90, fuego con aire o tierra con agua 80 y el resto 55.",
+   "Es un juego. Un porcentaje bajo no dice nada de una relación real. Los nombres y las fechas se procesan en tu navegador y nunca se envían a analítica."
+  ],
+  "faq": [
+   [
+    "¿Cómo funciona?",
+    "Cuenta las letras L, O, V, E y S de los dos nombres y suma números vecinos hasta que quedan dos cifras. Debajo del resultado verás cada paso."
+   ],
+   [
+    "¿Los mismos nombres dan el mismo resultado?",
+    "Sí, siempre y en cualquier orden."
+   ],
+   [
+    "¿Es científicamente exacto?",
+    "No. Es entretenimiento basado en letras, no una medida de la relación."
+   ],
+   [
+    "¿Puedo usar fechas de nacimiento?",
+    "Sí, en el modo detallado, que añade elementos del zodiaco y camino de vida."
+   ],
+   [
+    "¿Se guardan los nombres?",
+    "No. Solo se usan en tu navegador y nunca se envían a analítica ni a un servidor."
+   ],
+   [
+    "¿Puedo compartirlo?",
+    "Sí. Descarga la imagen o copia un enlace que solo muestra vuestras iniciales y el porcentaje."
+   ],
+   [
+    "¿Puedo probar con amigos o crushes?",
+    "Sí, con todas las parejas que quieras. Tómatelo como un juego."
+   ],
+   [
+    "¿Un porcentaje bajo significa mala relación?",
+    "No. Es un juego de letras."
+   ]
+  ]
+ },
+ "da": {
+  "name": "Kærlighedsberegner med navne",
+  "card": "Navne eller fødselsdage, samme resultat hver gang",
+  "desc": "Gratis kærlighedsberegner med navne: skriv to navne og få en sjov kærlighedsprocent beregnet ud fra bogstaverne, trin for trin. Kun til underholdning.",
+  "h1": "Kærlighedsberegner med navne",
+  "lede": "Skriv to navne for at få jeres kærlighedsprocent. Resultatet beregnes ud fra bogstaverne, så de samme navne giver altid samme procent. Tilføj fødselsdage for en detaljeret opdeling.",
+  "howH": "Sådan bruger du kærlighedsberegneren",
+  "how": [
+   [
+    "Skriv to navne",
+    "Fornavne er nok. Rækkefølge og store bogstaver betyder ikke noget."
+   ],
+   [
+    "Tilføj fødselsdage for flere detaljer",
+    "Detaljeret tilstand blander stjernetegnenes elementer og livstal ind."
+   ],
+   [
+    "Del resultatet",
+    "Download et billede, eller kopiér et link, der kun viser jeres initialer og procent."
+   ]
+  ],
+  "featH": "En kærlighedstest, du kan tjekke",
+  "feats": [
+   [
+    "Samme navne, samme procent",
+    "Ingen tilfældige tal. Resultatet beregnes ud fra bogstaverne, så du kan gentage det."
+   ],
+   [
+    "Se hvordan der tælles",
+    "Den klassiske LOVES-metode trin for trin, fra bogstavtælling til de to sidste cifre."
+   ],
+   [
+    "Detaljeret med fødselsdage",
+    "Kombinerer navnene med stjernetegnenes elementer og numerologi i tre dele."
+   ],
+   [
+    "Deling uden fulde navne",
+    "Linket indeholder kun initialer og procent, aldrig fulde navne."
+   ]
+  ],
+  "explainH": "Sådan beregnes procenten",
+  "explain": [
+   "Hurtig tilstand bruger den klassiske »LOVES«-metode fra skolegården. Tæl hvor mange gange bogstaverne L, O, V, E og S optræder i begge navne tilsammen. Det giver fem tal. Læg hvert nabopar sammen, og behold sidste ciffer, så er der fire tal, så tre og så to. De to cifre er jeres procent. Fordi der kun tælles bogstaver, giver det samme resultat, uanset hvilket navn der står først.",
+   "Detaljeret tilstand vægter navnene 60 %, hvor godt jeres soltegns elementer passer sammen (ild, jord, luft, vand) 20 % og hvor tæt jeres livstal er på hinanden 20 %. Eksempel: samme element giver 90, ild med luft eller jord med vand 80, andre par 55.",
+   "Det er en leg. En lav procent siger intet om et rigtigt forhold. Navne og fødselsdage behandles i din browser og sendes aldrig til statistik."
+  ],
+  "faq": [
+   [
+    "Hvordan virker den?",
+    "Den tæller bogstaverne L, O, V, E og S i begge navne og lægger nabotal sammen, til der er to cifre tilbage. Alle trin vises under resultatet."
+   ],
+   [
+    "Giver de samme navne samme resultat?",
+    "Ja, hver gang og i begge rækkefølger."
+   ],
+   [
+    "Er procenten videnskabeligt præcis?",
+    "Nej, det er underholdning baseret på bogstaver."
+   ],
+   [
+    "Kan jeg bruge fødselsdatoer?",
+    "Ja, i detaljeret tilstand, som tilføjer elementer og livstal."
+   ],
+   [
+    "Gemmes navnene?",
+    "Nej. De bruges kun i din browser og sendes aldrig til statistik eller en server."
+   ],
+   [
+    "Kan resultatet deles?",
+    "Ja. Download et billede, eller kopiér et link, der kun viser jeres initialer og procent."
+   ],
+   [
+    "Kan jeg teste venner eller crushes?",
+    "Ja, så mange par du vil. Bare hold det let."
+   ],
+   [
+    "Betyder en lav score et dårligt forhold?",
+    "Nej. Det er en bogstavleg."
+   ]
+  ]
+ }
+}
