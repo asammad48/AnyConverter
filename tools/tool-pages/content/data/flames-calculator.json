@@ -78,7 +78,8 @@
     "Are names uploaded?",
     "No. Everything runs in your browser."
    ]
-  ]
+  ],
+  "note": "A playground classic, played for laughs. FLAMES counts letters – it can’t tell who your friends or your future spouse will be."
  },
  "es": {
   "name": "Calculadora FLAMES",
@@ -159,7 +160,8 @@
     "¿Se suben los nombres?",
     "No. Todo funciona en tu navegador."
    ]
-  ]
+  ],
+  "note": "Un clásico del recreo, para reírse un rato. FLAMES cuenta letras; no puede saber quiénes serán tus amigos ni tu pareja."
  },
  "da": {
   "name": "FLAMES-beregner",
@@ -240,6 +242,7 @@
     "Uploades navnene?",
     "Nej. Alt kører i din browser."
    ]
-  ]
+  ],
+  "note": "En klassiker fra skolegården, til grin og hygge. FLAMES tæller bogstaver – den kan ikke vide, hvem der bliver dine venner eller din kæreste."
  }
 }

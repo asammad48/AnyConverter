@@ -97,13 +97,13 @@ const seo = {
 };
 
 const i18n = {
-  en: { a: 'Value A', b: 'Value B', pctIn: 'Both values are percentages', diff: 'Percentage difference', chAB: 'Percent change A → B', chBA: 'Percent change B → A', pp: 'Percentage points', abs: 'Absolute difference',
+  en: { ppU: 'pp', a: 'Value A', b: 'Value B', pctIn: 'Both values are percentages', diff: 'Percentage difference', chAB: 'Percent change A → B', chBA: 'Percent change B → A', pp: 'Percentage points', abs: 'Absolute difference',
     inc: 'increase', dec: 'decrease', same: 'no change', work: 'Show the working', wk: { d: '|A − B|', avg: 'Average (A + B) ÷ 2', r: 'Difference ÷ average', ab: '(B − A) ÷ A', ba: '(A − B) ÷ B' },
     zeroAvg: 'The average of the two values is zero, so a percentage difference is undefined.', mixed: 'The values have opposite signs. A percentage difference is not meaningful here.', empty: 'Enter two numbers.', copy: 'Copy result' },
-  es: { a: 'Valor A', b: 'Valor B', pctIn: 'Ambos valores son porcentajes', diff: 'Diferencia porcentual', chAB: 'Variación A → B', chBA: 'Variación B → A', pp: 'Puntos porcentuales', abs: 'Diferencia absoluta',
+  es: { ppU: 'p. p.', a: 'Valor A', b: 'Valor B', pctIn: 'Ambos valores son porcentajes', diff: 'Diferencia porcentual', chAB: 'Variación A → B', chBA: 'Variación B → A', pp: 'Puntos porcentuales', abs: 'Diferencia absoluta',
     inc: 'subida', dec: 'bajada', same: 'sin cambio', work: 'Ver el cálculo', wk: { d: '|A − B|', avg: 'Media (A + B) ÷ 2', r: 'Diferencia ÷ media', ab: '(B − A) ÷ A', ba: '(A − B) ÷ B' },
     zeroAvg: 'La media de los dos valores es cero, así que la diferencia porcentual no está definida.', mixed: 'Los valores tienen signos opuestos. La diferencia porcentual no tiene sentido aquí.', empty: 'Introduce dos números.', copy: 'Copiar resultado' },
-  da: { a: 'Værdi A', b: 'Værdi B', pctIn: 'Begge værdier er procenter', diff: 'Procentforskel', chAB: 'Procentvis ændring A → B', chBA: 'Procentvis ændring B → A', pp: 'Procentpoint', abs: 'Absolut forskel',
+  da: { ppU: 'procentpoint', a: 'Værdi A', b: 'Værdi B', pctIn: 'Begge værdier er procenter', diff: 'Procentforskel', chAB: 'Procentvis ændring A → B', chBA: 'Procentvis ændring B → A', pp: 'Procentpoint', abs: 'Absolut forskel',
     inc: 'stigning', dec: 'fald', same: 'ingen ændring', work: 'Vis udregningen', wk: { d: '|A − B|', avg: 'Gennemsnit (A + B) ÷ 2', r: 'Forskel ÷ gennemsnit', ab: '(B − A) ÷ A', ba: '(A − B) ÷ B' },
     zeroAvg: 'Gennemsnittet af de to værdier er nul, så procentforskellen er ikke defineret.', mixed: 'Værdierne har modsat fortegn. Procentforskel giver ikke mening her.', empty: 'Indtast to tal.', copy: 'Kopiér resultat' }
 };

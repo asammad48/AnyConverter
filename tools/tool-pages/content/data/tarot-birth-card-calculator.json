@@ -78,7 +78,8 @@
     "Is Tarot scientifically predictive?",
     "No. Tarot is a symbolic tradition, not a scientific method."
    ]
-  ]
+  ],
+  "note": "Birth cards are a way to reflect on yourself through Tarot imagery. They don’t predict events, and no two readers interpret them quite the same way."
  },
  "es": {
   "name": "Calculadora de Cartas de Nacimiento del Tarot",
@@ -160,7 +161,8 @@
     "No. Es una tradición simbólica, no un método científico."
    ]
   ],
-  "title": "Calculadora de Cartas de Nacimiento del Tarot | AnyConverter"
+  "title": "Calculadora de Cartas de Nacimiento del Tarot | AnyConverter",
+  "note": "Las cartas de nacimiento son una forma de reflexionar sobre ti a través de las imágenes del tarot. No predicen acontecimientos y cada lector las interpreta a su manera."
  },
  "da": {
   "name": "Tarot-fødselskortberegner",
@@ -241,6 +243,7 @@
     "Kan Tarot videnskabeligt forudsige fremtiden?",
     "Nej. Tarot er en symbolsk tradition, ikke en videnskabelig metode."
    ]
-  ]
+  ],
+  "note": "Fødselskort er en måde at reflektere over dig selv gennem tarottens billeder. De forudsiger ikke begivenheder, og ingen to læsere tolker dem helt ens."
  }
 }

@@ -78,7 +78,8 @@
     "Does a low score mean a bad relationship?",
     "Absolutely not. It is a letter game."
    ]
-  ]
+  ],
+  "note": "Just for fun: the score comes from the letters in your names, not from anything about your real relationship. Only you two know that part."
  },
  "es": {
   "name": "Calculadora del Amor por Nombres",
@@ -159,7 +160,8 @@
     "¿Un porcentaje bajo significa mala relación?",
     "No. Es un juego de letras."
    ]
-  ]
+  ],
+  "note": "Solo por diversión: el porcentaje sale de las letras de vuestros nombres, no de vuestra relación real. Esa parte solo la conocéis vosotros."
  },
  "da": {
   "name": "Kærlighedsberegner med navne",
@@ -240,6 +242,7 @@
     "Betyder en lav score et dårligt forhold?",
     "Nej. Det er en bogstavleg."
    ]
-  ]
+  ],
+  "note": "Bare for sjov: procenten kommer fra bogstaverne i jeres navne, ikke fra jeres rigtige forhold. Den del kender kun I to."
  }
 }

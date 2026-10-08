@@ -52,7 +52,7 @@
     <section class="hero">
       <h1>Numerologi-beregner</h1>
       <p class="hero-desc">Indtast din fødselsdato og eventuelt dit navn, og få livstal, fødselsdagstal, personligt år, skæbnetal, sjælstal og personlighedstal med alle trin vist.</p>
-      <p class="hero-note" role="note">Kun til underholdning. Resultaterne er ikke videnskabelige og forudsiger intet.</p>
+      <p class="hero-note" role="note">Numerologi er en symbolsk tradition, ikke videnskab. Brug dine tal som en anledning til eftertanke – regnestykket er ægte, betydningerne er folketro.</p>
     </section>
 
     <div class="tool-wrapper">
@@ -60,7 +60,7 @@
         <div class="calc" id="calc-root" data-tool="numerology-calculator">
           <div class="calc-grid">
             <div class="calc-field"><label for="nu-dob">Fødselsdato</label><input class="calc-input calc-input--lg" type="date" id="nu-dob" min="1900-01-01" max="2100-12-31" value="1990-07-15"></div>
-            <div class="calc-field"><label for="nu-name">Fulde fødselsnavn (valgfrit)</label><input class="calc-input calc-input--lg" type="text" id="nu-name" autocomplete="off" placeholder="Giver skæbnetal, sjælstal og personlighedstal"></div>
+            <div class="calc-field"><label for="nu-name">Fulde fødselsnavn (valgfrit)</label><input class="calc-input calc-input--lg" type="text" id="nu-name" autocomplete="off" placeholder="Valgfrit"><span class="calc-hint">Giver skæbnetal, sjælstal og personlighedstal</span></div>
           </div>
           <div class="calc-grid" id="nu-opts" hidden>
             <div class="calc-field"><span class="calc-label" id="nu-sys-l">Bogstavsystem</span><div class="calc-seg" id="nu-sys" role="group" aria-labelledby="nu-sys-l"><button type="button" data-value="py" aria-pressed="true">Pythagoræisk</button><button type="button" data-value="ch" aria-pressed="false">Kaldæisk</button></div></div>
@@ -191,7 +191,7 @@
     </section>
   </main>
   <footer id="site-footer" class="site-footer"></footer>
-  <script type="application/json" id="tool-i18n">{"lang":"da","tool":"numerology-calculator","dob":"Fødselsdato","name":"Fulde fødselsnavn (valgfrit)","ph":"Giver skæbnetal, sjælstal og personlighedstal","sys":"Bogstavsystem","syss":["Pythagoræisk","Kaldæisk"],"keep":"Bevar mestertal 11, 22, 33","labels":{"lp":"Livstal","bd":"Fødselsdagstal","py":"Personligt år","de":"Skæbnetal","so":"Sjælstal","pe":"Personlighedstal"},"work":"Vis udregningen","wk":{"m":"Måned","d":"Dag","y":"År","conv":"Omregnede bogstaver"},"bad":"Indtast en gyldig fødselsdato.","kick":"Numerologi","cy":"for {y}","card":"↓ Billede til deling","copy":"Kopiér resultater"}</script>
+  <script type="application/json" id="tool-i18n">{"lang":"da","tool":"numerology-calculator","dob":"Fødselsdato","name":"Fulde fødselsnavn (valgfrit)","ph":"Valgfrit","phHint":"Giver skæbnetal, sjælstal og personlighedstal","sys":"Bogstavsystem","syss":["Pythagoræisk","Kaldæisk"],"keep":"Bevar mestertal 11, 22, 33","labels":{"lp":"Livstal","bd":"Fødselsdagstal","py":"Personligt år","de":"Skæbnetal","so":"Sjælstal","pe":"Personlighedstal"},"work":"Vis udregningen","wk":{"m":"Måned","d":"Dag","y":"År","conv":"Omregnede bogstaver"},"bad":"Indtast en gyldig fødselsdato.","kick":"Numerologi","cy":"for {y}","card":"↓ Billede til deling","copy":"Kopiér resultater"}</script>
   <script src="/assets/js/shared.js?v=20261008-slugs" defer></script>
   <script src="/assets/js/tools/calc-kit.js?v=20261008" defer></script>
   <script src="/assets/js/tools/numerology-core.js?v=20261008" defer></script>

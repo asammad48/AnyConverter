@@ -19,7 +19,7 @@ function html(A, p, withUnknown) {
   <input class="calc-input" type="text" id="${p}-city" autocomplete="off" placeholder="${A.placePh}" aria-controls="${p}-suggest">
   <div class="calc-suggest" id="${p}-suggest" hidden></div>
   <span class="calc-hint" id="${p}-picked" hidden></span>
-  <span class="calc-hint" id="${p}-nocity" style="color:var(--color-error)" hidden>${A.noCity}</span>
+  <span class="calc-hint" id="${p}-nocity" style="color:var(--ac-accent-ink)" hidden>${A.noCity}</span>
   <button type="button" class="calc-link" id="${p}-to-manual">${A.manualBtn}</button>
 </div>
 <div class="calc-panel" id="${p}-manual-box" hidden>

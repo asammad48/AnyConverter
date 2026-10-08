@@ -42,7 +42,7 @@
     }
     var bi = pct < 31 ? 0 : pct < 56 ? 1 : pct < 76 ? 2 : pct < 91 ? 3 : 4;
     K.text('lv-pct', K.pct(pct, 0));
-    K.$('lv-ring').style.background = 'conic-gradient(var(--color-primary) ' + (pct * 3.6) + 'deg, var(--color-border-light) 0)';
+    K.$('lv-ring').style.background = 'conic-gradient(var(--color-primary) ' + (pct * 3.6) + 'deg, var(--ac-line) 0)';
     K.text('lv-msg', T.msg[bi]);
     K.text('lv-pair', a + ' + ' + b);
     K.show('lv-parts', parts.length > 1);

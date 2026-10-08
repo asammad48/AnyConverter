@@ -18,8 +18,9 @@
       '<div class="calc-field"><label for="' + id + '-n">' + K.esc(T.name) + '</label><input class="calc-input" type="text" id="' + id + '-n" autocomplete="off" placeholder="' + K.esc(K.tpl(T.namePh, { n: n })) + '"></div>' +
       '<div class="calc-field"><label for="' + id + '-p">' + K.esc(T.price) + '</label><input class="calc-input" type="text" inputmode="decimal" autocomplete="off" id="' + id + '-p" value="' + K.esc(v[0]) + '"></div>' +
       '<div class="calc-field"><label for="' + id + '-c">' + K.esc(T.count) + '</label><input class="calc-input" type="text" inputmode="decimal" autocomplete="off" id="' + id + '-c" value="' + K.esc(v[1]) + '"></div>' +
-      '<div class="calc-field"><label for="' + id + '-s">' + K.esc(T.size) + '</label><div style="display:flex;gap:6px"><input class="calc-input" type="text" inputmode="decimal" autocomplete="off" id="' + id + '-s" value="' + K.esc(v[2]) + '" style="min-width:0"><select class="calc-input" id="' + id + '-u" aria-label="' + K.esc(T.unit) + '" style="width:auto">' + opts + '</select></div></div>' +
-      '<button type="button" class="btn btn-secondary btn-sm" data-rm="' + n + '" aria-label="' + K.esc(T.rm) + ' ' + n + '">✕</button>';
+      '<div class="calc-field"><label for="' + id + '-s">' + K.esc(T.size) + '</label><input class="calc-input" type="text" inputmode="decimal" autocomplete="off" id="' + id + '-s" value="' + K.esc(v[2]) + '"></div>' +
+      '<div class="calc-field"><label for="' + id + '-u">' + K.esc(T.unit) + '</label><select class="calc-input" id="' + id + '-u">' + opts + '</select></div>' +
+      '<button type="button" class="btn btn-secondary btn-sm" data-rm="' + n + '" aria-label="' + K.esc(T.rm) + ' ' + n + '">✕ <span class="up-rm-txt">' + K.esc(T.rm) + '</span></button>';
     rows.appendChild(row);
   }
 
@@ -55,7 +56,7 @@
           '<span class="calc-tile-val">' + K.money(pp[0][0]) + ' <small style="font-size:.8rem;font-weight:500">' + K.esc(pp[0][1]) + '</small></span>' +
           (pp[1] ? '<span class="calc-tile-sub">' + K.money(pp[1][0]) + ' ' + K.esc(pp[1][1]) + '</span>' : '') +
           '<span class="calc-tile-sub">' + K.esc(x.desc) + '</span>' +
-          (k > 0 && isFinite(more) ? '<span class="calc-tile-sub" style="color:var(--color-error)">' + K.esc(K.tpl(T.more, { p: K.pct(more, 1) })) + '</span>' : '') + '</div>';
+          (k > 0 && isFinite(more) ? '<span class="calc-tile-sub" style="color:var(--ac-accent-ink)">' + K.esc(K.tpl(T.more, { p: K.pct(more, 1) })) + '</span>' : '') + '</div>';
       }).join('') + '</div>';
     }).join('');
     last = text.join('\n');

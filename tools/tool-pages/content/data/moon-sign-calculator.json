@@ -78,7 +78,8 @@
     "Is the interpretation scientific?",
     "The astronomical position is. The personality interpretation is astrology and is not scientifically established."
    ]
-  ]
+  ],
+  "note": "The Moon’s position is calculated with real astronomy. What your Moon sign says about you belongs to astrology, which is not scientifically established."
  },
  "es": {
   "name": "Calculadora de Signo Lunar",
@@ -159,7 +160,8 @@
     "¿La interpretación es científica?",
     "La posición astronómica sí se calcula; la interpretación astrológica no está validada científicamente."
    ]
-  ]
+  ],
+  "note": "La posición de la Luna se calcula con astronomía real. Lo que tu signo lunar dice de ti pertenece a la astrología, que no está validada científicamente."
  },
  "da": {
   "name": "Månetegnsberegner",
@@ -240,6 +242,7 @@
     "Er fortolkningen videnskabelig?",
     "Positionen kan beregnes astronomisk; personlighedsfortolkningen er astrologi og ikke videnskabeligt fastslået."
    ]
-  ]
+  ],
+  "note": "Månens position beregnes med rigtig astronomi. Hvad dit månetegn siger om dig, hører til astrologien, som ikke er videnskabeligt dokumenteret."
  }
 }

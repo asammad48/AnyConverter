@@ -24,7 +24,7 @@ function tool(t) {
 <div class="calc-field" style="max-width:320px"><label for="tb-dob">${t.dob}</label><input class="calc-input calc-input--lg" type="date" id="tb-dob" min="1000-01-01" max="2100-12-31" value="1985-03-03"></div>
 <div class="calc-err" id="tb-err" role="alert" hidden>${t.bad}</div>
 <div class="calc-out" id="tb-out" aria-live="polite">
-  <div class="calc-tiles" id="tb-cards"></div>
+  <div class="calc-tiles calc-tiles--wide" id="tb-cards"></div>
   <details class="calc-work" open><summary>${t.work}</summary><dl id="tb-work"></dl></details>
   <div class="calc-actions"><button type="button" class="btn btn-secondary btn-sm" id="tb-copy">${t.copy}</button><button type="button" class="btn btn-secondary btn-sm" id="tb-card">${t.card}</button></div>
 </div>`;

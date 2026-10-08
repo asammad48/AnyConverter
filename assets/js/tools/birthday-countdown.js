@@ -55,15 +55,15 @@
     var md = monthsDays(n.t0, n.dt), totalDays = dayDiff(n.t0, n.dt), si = N.sunSign(p.m, p.d);
     var facts = [
       [T.on, new Intl.DateTimeFormat(K.LOCALE, { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' }).format(n.dt)],
-      [T.md, K.tpl(T.mdV, { m: md.m, d: md.d })],
+      [T.md, K.tpl(T.mdV, { m: md.m, mu: T.mo[md.m === 1 ? 0 : 1], d: md.d, du: T.dy[md.d === 1 ? 0 : 1] })],
       [T.total, K.fmt(totalDays, 0)],
       [T.hours, K.fmt(Math.floor(diff / 36e5), 0)],
       [T.lived, K.fmt(dayDiff(new Date(p.y, p.m - 1, p.d), n.t0), 0)],
       [T.sign, T.signs[si]],
       [T.stone, T.stones[p.m - 1]]
     ];
-    K.$('bd-facts').innerHTML = facts.map(function (f) {
-      return '<div class="calc-tile"><span class="calc-tile-lbl">' + K.esc(f[0]) + '</span><span class="calc-tile-val" style="font-size:1.1rem">' + K.esc(f[1]) + '</span></div>';
+    K.$('bd-facts').innerHTML = facts.map(function (f, i) {
+      return '<div class="calc-tile' + (i === 0 ? ' is-span' : '') + '"><span class="calc-tile-lbl">' + K.esc(f[0]) + '</span><span class="calc-tile-val" style="font-size:1.1rem">' + K.esc(f[1]) + '</span></div>';
     }).join('');
     var label = n.today ? K.$('bd-today-t').textContent : (D + ' ' + T.u[0] + ' ' + (who ? K.tpl(T.untilN, { n: who }) : T.until));
     if (!cur || cur.live !== D || cur.today !== n.today || cur.who !== who) K.text('bd-sr', label);

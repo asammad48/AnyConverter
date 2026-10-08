@@ -122,7 +122,7 @@ function tool(t, lang) {
 </div>
 <p class="calc-hint" id="pr-empty" hidden>${t.empty}</p>
 <div class="calc-out" id="pr-out" aria-live="polite">
-  <div class="calc-result"><span class="calc-kicker">${t.newPay}</span><span class="calc-big" id="pr-big"></span><span class="calc-sub" id="pr-sub"></span></div>
+  <div class="calc-result"><span class="calc-kicker" id="pr-k">${t.newPay}</span><span class="calc-big" id="pr-big"></span><span class="calc-sub" id="pr-sub"></span></div>
   <div class="calc-tiles" id="pr-tiles"></div>
   <div class="calc-table-wrap"><table class="calc-table"><thead><tr>${t.table.map((h) => `<th scope="col">${h}</th>`).join('')}</tr></thead><tbody id="pr-table"></tbody></table></div>
   <p class="calc-hint">${t.gross}</p>

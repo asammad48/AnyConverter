@@ -52,7 +52,7 @@
     <section class="hero">
       <h1>Numerology Calculator</h1>
       <p class="hero-desc">Enter your birth date, and optionally your name, to get your Life Path, Birthday, Personal Year, Destiny, Soul Urge and Personality numbers with every step shown.</p>
-      <p class="hero-note" role="note">For entertainment only. Results are not scientific and do not predict anything.</p>
+      <p class="hero-note" role="note">Numerology is a symbolic tradition, not a science. Treat your numbers as a prompt for reflection – the maths is real, the meanings are folklore.</p>
     </section>
 
     <div class="tool-wrapper">
@@ -60,7 +60,7 @@
         <div class="calc" id="calc-root" data-tool="numerology-calculator">
           <div class="calc-grid">
             <div class="calc-field"><label for="nu-dob">Date of birth</label><input class="calc-input calc-input--lg" type="date" id="nu-dob" min="1900-01-01" max="2100-12-31" value="1990-07-15"></div>
-            <div class="calc-field"><label for="nu-name">Full birth name (optional)</label><input class="calc-input calc-input--lg" type="text" id="nu-name" autocomplete="off" placeholder="Adds Destiny, Soul Urge and Personality"></div>
+            <div class="calc-field"><label for="nu-name">Full birth name (optional)</label><input class="calc-input calc-input--lg" type="text" id="nu-name" autocomplete="off" placeholder="Optional"><span class="calc-hint">Adds Destiny, Soul Urge and Personality</span></div>
           </div>
           <div class="calc-grid" id="nu-opts" hidden>
             <div class="calc-field"><span class="calc-label" id="nu-sys-l">Letter system</span><div class="calc-seg" id="nu-sys" role="group" aria-labelledby="nu-sys-l"><button type="button" data-value="py" aria-pressed="true">Pythagorean</button><button type="button" data-value="ch" aria-pressed="false">Chaldean</button></div></div>
@@ -191,7 +191,7 @@
     </section>
   </main>
   <footer id="site-footer" class="site-footer"></footer>
-  <script type="application/json" id="tool-i18n">{"lang":"en","tool":"numerology-calculator","dob":"Date of birth","name":"Full birth name (optional)","ph":"Adds Destiny, Soul Urge and Personality","sys":"Letter system","syss":["Pythagorean","Chaldean"],"keep":"Keep master numbers 11, 22, 33","labels":{"lp":"Life Path","bd":"Birthday","py":"Personal Year","de":"Destiny","so":"Soul Urge","pe":"Personality"},"work":"Show the working","wk":{"m":"Month","d":"Day","y":"Year","conv":"Converted letters"},"bad":"Enter a valid date of birth.","kick":"Numerology","cy":"for {y}","card":"↓ Share image","copy":"Copy results"}</script>
+  <script type="application/json" id="tool-i18n">{"lang":"en","tool":"numerology-calculator","dob":"Date of birth","name":"Full birth name (optional)","ph":"Optional","phHint":"Adds Destiny, Soul Urge and Personality","sys":"Letter system","syss":["Pythagorean","Chaldean"],"keep":"Keep master numbers 11, 22, 33","labels":{"lp":"Life Path","bd":"Birthday","py":"Personal Year","de":"Destiny","so":"Soul Urge","pe":"Personality"},"work":"Show the working","wk":{"m":"Month","d":"Day","y":"Year","conv":"Converted letters"},"bad":"Enter a valid date of birth.","kick":"Numerology","cy":"for {y}","card":"↓ Share image","copy":"Copy results"}</script>
   <script src="/assets/js/shared.js?v=20261008-slugs" defer></script>
   <script src="/assets/js/tools/calc-kit.js?v=20261008" defer></script>
   <script src="/assets/js/tools/numerology-core.js?v=20261008" defer></script>

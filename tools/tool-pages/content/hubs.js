@@ -247,3 +247,64 @@ module.exports = {
     }
   }
 };
+
+/* Extra guidance + FAQ so the smaller hubs are useful pages, not just lists of links. */
+const H = module.exports.hubs;
+const add = (key, lang, section, faq) => { H[key][lang].sections.splice(1, 0, section); H[key][lang].faq = faq; };
+
+add('astro', 'en', { h: 'Where to start', p: [
+  'If you only know your birth date, start with the [[numerology-calculator|numerology calculator]]: it gives your Life Path, Birthday and Personal Year numbers in one go, and you can add your name later. Curious about the letters in your name on their own? The [[name-numerology-calculator|name numerology calculator]] shows every letter’s value so you can compare a nickname or a married name.',
+  'For something more visual, the [[lo-shu-grid-calculator|Lo Shu Grid]] lays your birth date out on a 3×3 square, and the [[tarot-birth-card-calculator|Tarot birth card calculator]] turns the same date into one, two or three Major Arcana cards. If you know your birth time, finish with your [[moon-sign-calculator|Moon sign]] and [[rising-sign-calculator|rising sign]] to complete your Big Three.'] },
+  [['Do I need my birth time?', 'Only for the Moon sign and rising sign. All numerology tools and the Tarot birth card work from the date (and optionally your name).'],
+   ['Why do different websites give different numbers?', 'They use different letter tables, reduction rules or zodiac systems. Each of our pages says exactly which method it uses and shows the working, so you can compare.'],
+   ['Is my information stored?', 'No. Everything is calculated in your browser, and names and birth details are never uploaded or sent to analytics.']]);
+add('astro', 'es', { h: 'Por dónde empezar', p: [
+  'Si solo sabes tu fecha de nacimiento, empieza por la [[numerology-calculator|calculadora de numerología]]: te da el camino de vida, el número de cumpleaños y el año personal de una vez, y puedes añadir tu nombre después. ¿Te interesan solo las letras de tu nombre? La [[name-numerology-calculator|calculadora de numerología del nombre]] muestra el valor de cada letra para que compares un apodo o el apellido de casada.',
+  'Si prefieres algo más visual, la [[lo-shu-grid-calculator|cuadrícula Lo Shu]] coloca tu fecha en un cuadrado de 3×3, y la [[tarot-birth-card-calculator|calculadora de cartas de nacimiento del tarot]] convierte la misma fecha en una, dos o tres cartas de los Arcanos Mayores. Si sabes tu hora de nacimiento, termina con tu [[moon-sign-calculator|signo lunar]] y tu [[rising-sign-calculator|ascendente]] para completar tus tres grandes.'] },
+  [['¿Necesito mi hora de nacimiento?', 'Solo para el signo lunar y el ascendente. Las herramientas de numerología y las cartas del tarot funcionan con la fecha (y, si quieres, con tu nombre).'],
+   ['¿Por qué cada web da números distintos?', 'Usan tablas de letras, reglas de reducción o zodiacos diferentes. Cada una de nuestras páginas indica el método exacto y muestra el cálculo para que puedas comparar.'],
+   ['¿Se guardan mis datos?', 'No. Todo se calcula en tu navegador y los nombres y datos de nacimiento nunca se suben ni se envían a analítica.']]);
+add('astro', 'da', { h: 'Hvor skal du starte?', p: [
+  'Kender du kun din fødselsdato, så start med [[numerology-calculator|numerologi-beregneren]]: den giver livstal, fødselsdagstal og personligt år på én gang, og du kan tilføje dit navn bagefter. Er du nysgerrig på bogstaverne i dit navn? [[name-numerology-calculator|Navnenumerologi-beregneren]] viser værdien af hvert bogstav, så du kan sammenligne med et kælenavn eller et gift navn.',
+  'Vil du have noget mere visuelt, lægger [[lo-shu-grid-calculator|Lo Shu-gitteret]] din fødselsdato ud i et 3×3-kvadrat, og [[tarot-birth-card-calculator|tarot-fødselskortberegneren]] gør samme dato til ét, to eller tre kort fra de store arkana. Kender du dit fødselstidspunkt, så slut af med dit [[moon-sign-calculator|månetegn]] og din [[rising-sign-calculator|ascendant]] for at få dine tre store.'] },
+  [['Skal jeg kende mit fødselstidspunkt?', 'Kun til månetegn og ascendant. Numerologiværktøjerne og tarot-fødselskortet bruger kun datoen (og eventuelt dit navn).'],
+   ['Hvorfor giver forskellige sider forskellige tal?', 'De bruger forskellige bogstavtabeller, reduktionsregler eller dyrekredse. Hver af vores sider oplyser metoden og viser udregningen, så du kan sammenligne.'],
+   ['Bliver mine oplysninger gemt?', 'Nej. Alt beregnes i din browser, og navne og fødselsdata uploades aldrig eller sendes til statistik.']]);
+
+add('fun', 'en', { h: 'Made for sleepovers, classrooms and first dates', p: [
+  'These games work best with other people around. Try FLAMES and the love calculator with the names of a few friends and see who gets “Marriage” or 99%, or pass a phone around and let everyone ask the Magic 8 Ball one question. Because the name games use simple letter-counting rules, they also make a fun, low-stakes way to practise counting and patterns with kids.',
+  'Each game shows how it reached its answer, so nobody can claim the result was rigged – and the share links only contain initials, never full names.'] },
+  [['Are the results real predictions?', 'No. The love calculator and FLAMES count letters, and the Magic 8 Ball picks an answer at random. They are games for fun.'],
+   ['Will the same names always give the same result?', 'Yes. The love calculator and FLAMES are rule-based, so the same names give the same answer every time. The Magic 8 Ball is random on purpose.'],
+   ['Is it safe to type real names?', 'Yes. Names are processed in your browser only and are never uploaded or stored.']]);
+add('fun', 'es', { h: 'Perfectos para fiestas, clases y primeras citas', p: [
+  'Estos juegos son más divertidos en compañía. Prueba FLAMES y la calculadora del amor con los nombres de tus amigos para ver a quién le sale “Matrimonio” o un 99 %, o pasad el móvil y que cada uno le haga una pregunta a la bola 8 mágica. Como los juegos de nombres usan reglas sencillas de contar letras, también son una forma divertida de practicar conteo y patrones con niños.',
+  'Cada juego muestra cómo llegó a su respuesta, así que nadie puede decir que está amañado, y los enlaces para compartir solo llevan iniciales, nunca nombres completos.'] },
+  [['¿Los resultados son predicciones reales?', 'No. La calculadora del amor y FLAMES cuentan letras, y la bola 8 mágica elige una respuesta al azar. Son juegos para divertirse.'],
+   ['¿Los mismos nombres dan siempre el mismo resultado?', 'Sí. La calculadora del amor y FLAMES siguen reglas fijas, así que los mismos nombres dan siempre lo mismo. La bola 8 mágica es aleatoria a propósito.'],
+   ['¿Es seguro escribir nombres reales?', 'Sí. Los nombres se procesan solo en tu navegador y nunca se suben ni se guardan.']]);
+add('fun', 'da', { h: 'Perfekt til fester, klasseværelset og første dates', p: [
+  'Legene er sjovest sammen med andre. Prøv FLAMES og kærlighedsberegneren med jeres venners navne og se, hvem der får “Ægteskab” eller 99 %, eller send telefonen rundt, så alle kan stille Magic 8 Ball ét spørgsmål. Fordi navnelegene bruger enkle regler for at tælle bogstaver, er de også en sjov måde at øve tælling og mønstre på med børn.',
+  'Hver leg viser, hvordan den nåede frem til svaret, så ingen kan påstå, at det er snyd – og delingslinks indeholder kun forbogstaver, aldrig fulde navne.'] },
+  [['Er resultaterne rigtige forudsigelser?', 'Nej. Kærlighedsberegneren og FLAMES tæller bogstaver, og Magic 8 Ball vælger et tilfældigt svar. Det er lege for sjov.'],
+   ['Giver de samme navne altid det samme resultat?', 'Ja. Kærlighedsberegneren og FLAMES følger faste regler, så de samme navne giver altid samme svar. Magic 8 Ball er tilfældig med vilje.'],
+   ['Er det sikkert at skrive rigtige navne?', 'Ja. Navnene behandles kun i din browser og bliver aldrig uploadet eller gemt.']]);
+
+add('date', 'en', { h: 'Which date tool do you need?', p: [
+  'Counting down to a special day? The [[birthday-countdown-calculator|birthday countdown]] shows the days, hours and minutes left, which weekday it falls on and how old you will be – and can add a yearly reminder to your calendar. For a precise age in years, months and days, use the [[age-calculator|age calculator]]; to time a cake in the oven or a presentation, the [[countdown-timer|countdown timer]] and [[stopwatch|stopwatch]] are quicker.',
+  'Developers and anyone reading log files will find the [[timestamp-converter|Unix timestamp converter]] handy, and the [[sleep-calculator|sleep calculator]] helps plan a bedtime around 90-minute sleep cycles.'] },
+  [['Do these tools use my time zone?', 'Yes. They use your device’s clock and time zone, so “today” and “midnight” mean the same thing as on your phone or computer.'],
+   ['How are 29 February birthdays handled?', 'The birthday countdown lets you choose whether non-leap years celebrate on 28 February or 1 March, and the calendar reminder follows the same rule.'],
+   ['Is anything saved?', 'Only if you choose to save a birthday, and then only in your own browser. Nothing is sent to a server.']]);
+add('date', 'es', { h: '¿Qué herramienta de fechas necesitas?', p: [
+  '¿Cuentas los días para una fecha especial? La [[birthday-countdown-calculator|cuenta regresiva para tu cumpleaños]] muestra los días, horas y minutos que faltan, qué día de la semana cae y cuántos años cumples, y puede añadir un recordatorio anual a tu calendario. Para una edad exacta en años, meses y días, usa la [[age-calculator|calculadora de edad]]; para cronometrar un bizcocho o una presentación, el [[countdown-timer|temporizador]] y el [[stopwatch|cronómetro]] son más rápidos.',
+  'Si trabajas con registros o programación, el [[timestamp-converter|conversor de timestamp Unix]] te será útil, y la [[sleep-calculator|calculadora de sueño]] te ayuda a planificar la hora de acostarte según ciclos de 90 minutos.'] },
+  [['¿Usan mi zona horaria?', 'Sí. Usan el reloj y la zona horaria de tu dispositivo, así que “hoy” y “medianoche” significan lo mismo que en tu móvil u ordenador.'],
+   ['¿Qué pasa con los cumpleaños del 29 de febrero?', 'La cuenta regresiva te deja elegir si en los años no bisiestos se celebra el 28 de febrero o el 1 de marzo, y el recordatorio del calendario sigue la misma regla.'],
+   ['¿Se guarda algo?', 'Solo si decides guardar un cumpleaños, y solo en tu propio navegador. No se envía nada a ningún servidor.']]);
+add('date', 'da', { h: 'Hvilket datoværktøj skal du bruge?', p: [
+  'Tæller du ned til en særlig dag? [[birthday-countdown-calculator|Fødselsdagsnedtællingen]] viser dage, timer og minutter, der er tilbage, hvilken ugedag dagen falder på, og hvor gammel du bliver – og kan lægge en årlig påmindelse i din kalender. Til en præcis alder i år, måneder og dage bruger du [[age-calculator|aldersberegneren]]; skal du tage tid på en kage i ovnen eller et oplæg, er [[countdown-timer|nedtælleren]] og [[stopwatch|stopuret]] hurtigere.',
+  'Arbejder du med logfiler eller programmering, er [[timestamp-converter|Unix timestamp-konverteren]] praktisk, og [[sleep-calculator|søvnberegneren]] hjælper dig med at planlægge sengetid efter søvncyklusser på 90 minutter.'] },
+  [['Bruger værktøjerne min tidszone?', 'Ja. De bruger din enheds ur og tidszone, så “i dag” og “midnat” betyder det samme som på din telefon eller computer.'],
+   ['Hvordan håndteres fødselsdage den 29. februar?', 'Fødselsdagsnedtællingen lader dig vælge, om ikke-skudår fejres den 28. februar eller 1. marts, og kalenderpåmindelsen følger samme regel.'],
+   ['Bliver noget gemt?', 'Kun hvis du selv gemmer en fødselsdag, og kun i din egen browser. Intet sendes til en server.']]);

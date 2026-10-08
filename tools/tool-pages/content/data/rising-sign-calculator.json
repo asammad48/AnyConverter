@@ -78,7 +78,8 @@
     "Is ascendant interpretation scientifically proven?",
     "No. Treat the interpretation as astrology, not established psychology."
    ]
-  ]
+  ],
+  "note": "The ascendant is real astronomy: the degree of the zodiac on your eastern horizon at birth. Its personality meaning is astrology, not established science."
  },
  "es": {
   "name": "Calculadora de Ascendente",
@@ -159,7 +160,8 @@
     "¿Está científicamente probado?",
     "No. Toma la interpretación como astrología, no como psicología establecida."
    ]
-  ]
+  ],
+  "note": "El ascendente es astronomía real: el grado del zodiaco en tu horizonte este al nacer. Su significado sobre la personalidad es astrología, no ciencia."
  },
  "da": {
   "name": "Ascendantberegner",
@@ -240,6 +242,7 @@
     "Er fortolkningen videnskabeligt bevist?",
     "Nej. Betragt fortolkningen som astrologi, ikke som psykologi."
    ]
-  ]
+  ],
+  "note": "Ascendanten er ægte astronomi: den grad af dyrekredsen, der stod på din østlige horisont ved fødslen. Betydningen for personligheden er astrologi, ikke videnskab."
  }
 }

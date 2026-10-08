@@ -78,7 +78,8 @@
     "Is it free?",
     "Yes, free and with no sign-up."
    ]
-  ]
+  ],
+  "note": "Every answer is picked at random, just like the toy. Have fun with it, but please don’t make big decisions based on a shake."
  },
  "es": {
   "name": "Bola 8 Mágica Online",
@@ -159,7 +160,8 @@
     "¿Es gratis?",
     "Sí, gratis y sin registro."
    ]
-  ]
+  ],
+  "note": "Cada respuesta sale al azar, igual que en el juguete. Diviértete, pero no tomes decisiones importantes por una sacudida."
  },
  "da": {
   "name": "Magic 8 Ball Online",
@@ -240,6 +242,7 @@
     "Er det gratis?",
     "Ja, gratis og uden tilmelding."
    ]
-  ]
+  ],
+  "note": "Hvert svar trækkes tilfældigt, præcis som i legetøjet. Hav det sjovt, men lad være med at træffe store beslutninger ud fra en rystelse."
  }
 }

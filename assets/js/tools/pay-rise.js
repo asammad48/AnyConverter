@@ -21,7 +21,8 @@
     K.show('pr-empty', !ok); K.show('pr-out', ok);
     if (!ok) return;
     var f = perYear(per, hours), oldY = cur * f, newY = n * f, rp = (n / cur - 1) * 100;
-    K.text('pr-big', K.money(n) + ' ' + T.pers[['year', 'month', 'week', 'hour'].indexOf(per)]);
+    K.text('pr-k', T.newPay + ' · ' + T.pers[['year', 'month', 'week', 'hour'].indexOf(per)]);
+    K.text('pr-big', K.money(n));
     K.text('pr-sub', T.raisePct + ': ' + signedPct(rp) + ' · ' + T.raiseAmt + ': ' + K.money(n - cur));
     var tiles = [[T.raisePct, signedPct(rp)], [T.raiseAmt + ' (' + T.rows[0].toLowerCase() + ')', K.money(newY - oldY)]];
     var inflRaw = K.$('pr-infl').value.trim(), infl = K.val('pr-infl'), work = [];

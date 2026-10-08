@@ -52,7 +52,7 @@
     <section class="hero">
       <h1>Calculadora de Cartas de Nacimiento del Tarot</h1>
       <p class="hero-desc">Introduce tu fecha de nacimiento para descubrir tus arcanos. Verás tu carta de personalidad y la del alma, cada paso del cálculo y lo que representa cada carta.</p>
-      <p class="hero-note" role="note">Solo para entretenimiento. Los resultados no son científicos y no predicen nada.</p>
+      <p class="hero-note" role="note">Las cartas de nacimiento son una forma de reflexionar sobre ti a través de las imágenes del tarot. No predicen acontecimientos y cada lector las interpreta a su manera.</p>
     </section>
 
     <div class="tool-wrapper">
@@ -61,7 +61,7 @@
           <div class="calc-field" style="max-width:320px"><label for="tb-dob">Fecha de nacimiento</label><input class="calc-input calc-input--lg" type="date" id="tb-dob" min="1000-01-01" max="2100-12-31" value="1985-03-03"></div>
           <div class="calc-err" id="tb-err" role="alert" hidden>Introduce una fecha de nacimiento válida.</div>
           <div class="calc-out" id="tb-out" aria-live="polite">
-            <div class="calc-tiles" id="tb-cards"></div>
+            <div class="calc-tiles calc-tiles--wide" id="tb-cards"></div>
             <details class="calc-work" open><summary>Cómo se ha calculado</summary><dl id="tb-work"></dl></details>
             <div class="calc-actions"><button type="button" class="btn btn-secondary btn-sm" id="tb-copy">Copiar resultado</button><button type="button" class="btn btn-secondary btn-sm" id="tb-card">↓ Imagen para compartir</button></div>
           </div>

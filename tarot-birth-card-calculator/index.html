@@ -52,7 +52,7 @@
     <section class="hero">
       <h1>Tarot Birth Card Calculator</h1>
       <p class="hero-desc">Enter your birth date to find your Tarot birth cards. You’ll see your Personality and Soul cards, every step of the arithmetic, and what each card stands for.</p>
-      <p class="hero-note" role="note">For entertainment only. Results are not scientific and do not predict anything.</p>
+      <p class="hero-note" role="note">Birth cards are a way to reflect on yourself through Tarot imagery. They don’t predict events, and no two readers interpret them quite the same way.</p>
     </section>
 
     <div class="tool-wrapper">
@@ -61,7 +61,7 @@
           <div class="calc-field" style="max-width:320px"><label for="tb-dob">Date of birth</label><input class="calc-input calc-input--lg" type="date" id="tb-dob" min="1000-01-01" max="2100-12-31" value="1985-03-03"></div>
           <div class="calc-err" id="tb-err" role="alert" hidden>Enter a valid date of birth.</div>
           <div class="calc-out" id="tb-out" aria-live="polite">
-            <div class="calc-tiles" id="tb-cards"></div>
+            <div class="calc-tiles calc-tiles--wide" id="tb-cards"></div>
             <details class="calc-work" open><summary>How this was calculated</summary><dl id="tb-work"></dl></details>
             <div class="calc-actions"><button type="button" class="btn btn-secondary btn-sm" id="tb-copy">Copy result</button><button type="button" class="btn btn-secondary btn-sm" id="tb-card">↓ Share image</button></div>
           </div>

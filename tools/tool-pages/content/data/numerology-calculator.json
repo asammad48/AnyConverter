@@ -78,7 +78,8 @@
     "Is numerology predictive?",
     "No scientific evidence supports numerology as a way to predict events. Treat it as reflection and entertainment."
    ]
-  ]
+  ],
+  "note": "Numerology is a symbolic tradition, not a science. Treat your numbers as a prompt for reflection – the maths is real, the meanings are folklore."
  },
  "es": {
   "name": "Calculadora de Numerología",
@@ -159,7 +160,8 @@
     "¿La numerología predice el futuro?",
     "No está científicamente validada como método de predicción. Tómala como reflexión y entretenimiento."
    ]
-  ]
+  ],
+  "note": "La numerología es una tradición simbólica, no una ciencia. Toma tus números como una invitación a reflexionar: el cálculo es real, los significados son tradición."
  },
  "da": {
   "name": "Numerologi-beregner",
@@ -240,6 +242,7 @@
     "Kan numerologi forudsige fremtiden?",
     "Metoden er ikke videnskabeligt valideret. Brug den til eftertanke og underholdning."
    ]
-  ]
+  ],
+  "note": "Numerologi er en symbolsk tradition, ikke videnskab. Brug dine tal som en anledning til eftertanke – regnestykket er ægte, betydningerne er folketro."
  }
 }

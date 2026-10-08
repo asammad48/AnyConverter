@@ -78,7 +78,8 @@
     "Is Lo Shu numerology scientific?",
     "No. It is a traditional interpretive system. Use it for reflection and fun."
    ]
-  ]
+  ],
+  "note": "The grid itself is a genuine 3,000-year-old magic square. Reading personality from it is a symbolic tradition, so enjoy it as reflection, not prediction."
  },
  "es": {
   "name": "Calculadora de Cuadrícula Lo Shu",
@@ -159,7 +160,8 @@
     "¿Es científica?",
     "No. Es un sistema interpretativo tradicional. Úsalo para reflexionar y como entretenimiento."
    ]
-  ]
+  ],
+  "note": "La cuadrícula es un cuadrado mágico auténtico de hace miles de años. Leer la personalidad en ella es una tradición simbólica: disfrútala como reflexión, no como predicción."
  },
  "da": {
   "name": "Lo Shu-gitterberegner",
@@ -240,6 +242,7 @@
     "Er Lo Shu videnskabeligt?",
     "Nej. Det er et traditionelt fortolkningssystem. Brug det til eftertanke og underholdning."
    ]
-  ]
+  ],
+  "note": "Selve gitteret er et ægte magisk kvadrat, der er tusinder af år gammelt. At læse personlighed ud af det er en symbolsk tradition – brug det til eftertanke, ikke forudsigelse."
  }
 }

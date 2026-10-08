@@ -23,7 +23,7 @@
     K.text('pd-ba', signed(ba)); K.text('pd-ba-s', dir(ba));
     var isPct = K.$('pd-pct').checked;
     K.show('pd-pp-tile', isPct);
-    K.text('pd-pp', (b - a > 0 ? '+' : b - a < 0 ? '−' : '') + K.fmt(Math.abs(b - a), 4) + ' pp');
+    K.text('pd-pp', (b - a > 0 ? '+' : b - a < 0 ? '−' : '') + K.fmt(Math.abs(b - a), 4) + ' ' + T.ppU);
     K.work('pd-work', [[T.wk.d, K.fmt(a, 6) + ' − ' + K.fmt(b, 6) + ' → ' + K.fmt(d, 6)], [T.wk.avg, '(' + K.fmt(a, 6) + ' + ' + K.fmt(b, 6) + ') ÷ 2 = ' + K.fmt(avg, 6)],
       [T.wk.r, isFinite(pd) ? K.fmt(d, 6) + ' ÷ ' + K.fmt(Math.abs(avg), 6) + ' × 100 = ' + K.pct(pd, 4) : '—'],
       [T.wk.ab, isFinite(ab) ? '(' + K.fmt(b, 6) + ' − ' + K.fmt(a, 6) + ') ÷ ' + K.fmt(Math.abs(a), 6) + ' × 100 = ' + signed(ab) : '—'],

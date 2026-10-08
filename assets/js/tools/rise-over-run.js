@@ -18,7 +18,7 @@
   function tile(k, v) { return '<div class="calc-tile"><span class="calc-tile-lbl">' + K.esc(k) + '</span><span class="calc-tile-val">' + K.esc(v) + '</span></div>'; }
 
   function draw(rise, runv) {
-    var svg = K.$('ro-svg'), W = 420, H = 240, pad = 40;
+    var svg = K.$('ro-svg'), W = 420, H = 240, pad = 36;
     var s = Math.min((W - 2 * pad) / Math.abs(runv || 1), (H - 2 * pad) / Math.abs(rise || 1));
     var w = Math.abs(runv) * s, h = Math.abs(rise) * s;
     if (!isFinite(w) || w < 1) w = 1; if (!isFinite(h)) h = 0;
@@ -32,7 +32,7 @@
       '<line x1="' + ax + '" y1="' + yb + '" x2="' + bx + '" y2="' + yb + '" stroke="var(--color-text-3)" stroke-width="2" stroke-dasharray="5 4"/>' +
       '<line x1="' + cx + '" y1="' + yb + '" x2="' + cx + '" y2="' + (yb - h) + '" stroke="var(--color-text-3)" stroke-width="2" stroke-dasharray="5 4"/>' +
       '<text x="' + (x0 + w / 2) + '" y="' + (yb + 22) + '" text-anchor="middle">' + K.esc(T.runS) + ' ' + K.esc(K.fmt(runv, 4)) + '</text>' +
-      '<text x="' + (cx + (up ? 8 : -8)) + '" y="' + (yb - h / 2) + '" text-anchor="' + (up ? 'start' : 'end') + '">' + K.esc(T.riseS) + ' ' + K.esc(K.fmt(rise, 4)) + '</text>';
+      '<text x="' + (cx + (up ? -8 : 8)) + '" y="' + (yb - h / 2 + 5) + '" text-anchor="' + (up ? 'end' : 'start') + '">' + K.esc(T.riseS) + ' ' + K.esc(K.fmt(rise, 4)) + '</text>';
   }
 
   function run() {

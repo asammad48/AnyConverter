@@ -52,7 +52,7 @@
     <section class="hero">
       <h1>Calculadora de Numerología</h1>
       <p class="hero-desc">Introduce tu fecha de nacimiento y, si quieres, tu nombre para obtener tu camino de vida, número de cumpleaños, año personal, destino, alma y personalidad, con cada paso a la vista.</p>
-      <p class="hero-note" role="note">Solo para entretenimiento. Los resultados no son científicos y no predicen nada.</p>
+      <p class="hero-note" role="note">La numerología es una tradición simbólica, no una ciencia. Toma tus números como una invitación a reflexionar: el cálculo es real, los significados son tradición.</p>
     </section>
 
     <div class="tool-wrapper">
@@ -60,7 +60,7 @@
         <div class="calc" id="calc-root" data-tool="numerology-calculator">
           <div class="calc-grid">
             <div class="calc-field"><label for="nu-dob">Fecha de nacimiento</label><input class="calc-input calc-input--lg" type="date" id="nu-dob" min="1900-01-01" max="2100-12-31" value="1990-07-15"></div>
-            <div class="calc-field"><label for="nu-name">Nombre completo (opcional)</label><input class="calc-input calc-input--lg" type="text" id="nu-name" autocomplete="off" placeholder="Añade destino, alma y personalidad"></div>
+            <div class="calc-field"><label for="nu-name">Nombre completo (opcional)</label><input class="calc-input calc-input--lg" type="text" id="nu-name" autocomplete="off" placeholder="Opcional"><span class="calc-hint">Añade destino, alma y personalidad</span></div>
           </div>
           <div class="calc-grid" id="nu-opts" hidden>
             <div class="calc-field"><span class="calc-label" id="nu-sys-l">Sistema de letras</span><div class="calc-seg" id="nu-sys" role="group" aria-labelledby="nu-sys-l"><button type="button" data-value="py" aria-pressed="true">Pitagórico</button><button type="button" data-value="ch" aria-pressed="false">Caldeo</button></div></div>
@@ -191,7 +191,7 @@
     </section>
   </main>
   <footer id="site-footer" class="site-footer"></footer>
-  <script type="application/json" id="tool-i18n">{"lang":"es","tool":"numerology-calculator","dob":"Fecha de nacimiento","name":"Nombre completo (opcional)","ph":"Añade destino, alma y personalidad","sys":"Sistema de letras","syss":["Pitagórico","Caldeo"],"keep":"Conservar números maestros 11, 22, 33","labels":{"lp":"Camino de vida","bd":"Cumpleaños","py":"Año personal","de":"Destino","so":"Alma","pe":"Personalidad"},"work":"Ver el cálculo","wk":{"m":"Mes","d":"Día","y":"Año","conv":"Letras convertidas"},"bad":"Introduce una fecha de nacimiento válida.","kick":"Numerología","cy":"para {y}","card":"↓ Imagen para compartir","copy":"Copiar resultados"}</script>
+  <script type="application/json" id="tool-i18n">{"lang":"es","tool":"numerology-calculator","dob":"Fecha de nacimiento","name":"Nombre completo (opcional)","ph":"Opcional","phHint":"Añade destino, alma y personalidad","sys":"Sistema de letras","syss":["Pitagórico","Caldeo"],"keep":"Conservar números maestros 11, 22, 33","labels":{"lp":"Camino de vida","bd":"Cumpleaños","py":"Año personal","de":"Destino","so":"Alma","pe":"Personalidad"},"work":"Ver el cálculo","wk":{"m":"Mes","d":"Día","y":"Año","conv":"Letras convertidas"},"bad":"Introduce una fecha de nacimiento válida.","kick":"Numerología","cy":"para {y}","card":"↓ Imagen para compartir","copy":"Copiar resultados"}</script>
   <script src="/assets/js/shared.js?v=20261008-slugs" defer></script>
   <script src="/assets/js/tools/calc-kit.js?v=20261008" defer></script>
   <script src="/assets/js/tools/numerology-core.js?v=20261008" defer></script>

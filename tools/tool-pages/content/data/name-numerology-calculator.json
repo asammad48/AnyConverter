@@ -78,7 +78,8 @@
     "Is name numerology scientific?",
     "No. It is a traditional symbolic practice. Treat the numbers as entertainment and a prompt for reflection."
    ]
-  ]
+  ],
+  "note": "Your name is turned into numbers with a fixed letter table – that part is simple arithmetic. What the numbers “mean” is tradition, not science."
  },
  "es": {
   "name": "Calculadora de Numerología del Nombre",
@@ -159,7 +160,8 @@
     "¿La numerología del nombre es científica?",
     "No. Es una tradición simbólica. Tómala como entretenimiento y una forma de reflexionar."
    ]
-  ]
+  ],
+  "note": "Tu nombre se convierte en números con una tabla fija de letras: esa parte es pura aritmética. Lo que “significan” es tradición, no ciencia."
  },
  "da": {
   "name": "Navnenumerologi-beregner",
@@ -240,6 +242,7 @@
     "Er navnenumerologi videnskabelig?",
     "Nej. Det er en symbolsk tradition. Brug tallene som underholdning og til eftertanke."
    ]
-  ]
+  ],
+  "note": "Dit navn omregnes til tal med en fast bogstavtabel – den del er ren regning. Hvad tallene “betyder”, er tradition og ikke videnskab."
  }
 }

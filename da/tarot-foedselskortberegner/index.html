@@ -52,7 +52,7 @@
     <section class="hero">
       <h1>Tarot-fødselskortberegner</h1>
       <p class="hero-desc">Indtast din fødselsdato for at finde dine tarot-fødselskort. Du ser dit personligheds- og sjælekort, hvert trin i udregningen og hvad kortene står for.</p>
-      <p class="hero-note" role="note">Kun til underholdning. Resultaterne er ikke videnskabelige og forudsiger intet.</p>
+      <p class="hero-note" role="note">Fødselskort er en måde at reflektere over dig selv gennem tarottens billeder. De forudsiger ikke begivenheder, og ingen to læsere tolker dem helt ens.</p>
     </section>
 
     <div class="tool-wrapper">
@@ -61,7 +61,7 @@
           <div class="calc-field" style="max-width:320px"><label for="tb-dob">Fødselsdato</label><input class="calc-input calc-input--lg" type="date" id="tb-dob" min="1000-01-01" max="2100-12-31" value="1985-03-03"></div>
           <div class="calc-err" id="tb-err" role="alert" hidden>Indtast en gyldig fødselsdato.</div>
           <div class="calc-out" id="tb-out" aria-live="polite">
-            <div class="calc-tiles" id="tb-cards"></div>
+            <div class="calc-tiles calc-tiles--wide" id="tb-cards"></div>
             <details class="calc-work" open><summary>Sådan er det beregnet</summary><dl id="tb-work"></dl></details>
             <div class="calc-actions"><button type="button" class="btn btn-secondary btn-sm" id="tb-copy">Kopiér resultat</button><button type="button" class="btn btn-secondary btn-sm" id="tb-card">↓ Billede til deling</button></div>
           </div>
