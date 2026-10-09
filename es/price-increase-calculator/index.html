@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora de Aumento de Precio Online Gratis | AnyConverter</title>
+  <meta name="description" content="Calculadora de aumento de precio gratis: suma un porcentaje a un precio, calcula el % de subida entre dos precios o detecta la reduflación por unidad.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://anyconverter.io/es/price-increase-calculator/">
+  <link rel="alternate" hreflang="en" href="https://anyconverter.io/price-increase-calculator/">
+  <link rel="alternate" hreflang="es" href="https://anyconverter.io/es/price-increase-calculator/">
+  <link rel="alternate" hreflang="da" href="https://anyconverter.io/da/price-increase-calculator/">
+  <link rel="alternate" hreflang="x-default" href="https://anyconverter.io/price-increase-calculator/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Calculadora de Aumento de Precio Online Gratis | AnyConverter">
+  <meta property="og:description" content="Calculadora de aumento de precio gratis: suma un porcentaje a un precio, calcula el % de subida entre dos precios o detecta la reduflación por unidad.">
+  <meta property="og:url" content="https://anyconverter.io/es/price-increase-calculator/">
+  <meta property="og:site_name" content="AnyConverter">
+  <meta property="og:locale" content="es_ES">
+  <meta property="og:image" content="https://anyconverter.io/assets/img/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="AnyConverter free online tools">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Calculadora de Aumento de Precio Online Gratis | AnyConverter">
+  <meta name="twitter:description" content="Calculadora de aumento de precio gratis: suma un porcentaje a un precio, calcula el % de subida entre dos precios o detecta la reduflación por unidad.">
+  <meta name="twitter:image" content="https://anyconverter.io/assets/img/og-image.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Calculadora de Aumento de Precio","url":"https://anyconverter.io/es/price-increase-calculator/","description":"Calculadora de aumento de precio gratis: suma un porcentaje a un precio, calcula el % de subida entre dos precios o detecta la reduflación por unidad.","applicationCategory":"FinanceApplication","operatingSystem":"Any","browserRequirements":"Requires JavaScript","inLanguage":"es","isAccessibleForFree":true,"featureList":["Tres modos","Detector de reduflación","Multiplicador a la vista","Varias subidas seguidas"],"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"AnyConverter","url":"https://anyconverter.io"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://anyconverter.io/es/"},{"@type":"ListItem","position":2,"name":"Calculadoras","item":"https://anyconverter.io/es/calculators/"},{"@type":"ListItem","position":3,"name":"Calculadora de Aumento de Precio","item":"https://anyconverter.io/es/price-increase-calculator/"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"¿Cómo sumo un porcentaje de aumento a un precio?","acceptedAnswer":{"@type":"Answer","text":"Multiplica el precio por 1 más el porcentaje en decimal. Para una subida del 12 %: precio × 1,12."}},{"@type":"Question","name":"¿Cómo calculo el porcentaje de aumento entre dos precios?","acceptedAnswer":{"@type":"Answer","text":"Resta el precio antiguo al nuevo, divide entre el precio antiguo y multiplica por 100."}},{"@type":"Question","name":"¿Una subida del 10 % y luego una bajada del 10 % deja el precio igual?","acceptedAnswer":{"@type":"Answer","text":"No. 100 × 1,10 × 0,90 = 99, así que acabas un 1 % por debajo del inicio."}},{"@type":"Question","name":"¿Qué es la reduflación?","acceptedAnswer":{"@type":"Answer","text":"Una subida encubierta: el envase se reduce mientras el precio se mantiene o sube menos de lo que bajó el tamaño. Compara el precio por unidad para verla."}},{"@type":"Question","name":"¿Cómo quito un aumento de precio?","acceptedAnswer":{"@type":"Answer","text":"Divide el precio nuevo entre (1 + subida ÷ 100). Restar el porcentaje al precio nuevo da un resultado incorrecto."}},{"@type":"Question","name":"¿Incluye el IVA?","acceptedAnswer":{"@type":"Answer","text":"La calculadora trabaja con el precio que introduzcas. Si ambos precios incluyen el mismo tipo de IVA, el porcentaje de subida es el mismo con o sin IVA."}}]}]}</script>
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F7F6F3);color:var(--color-text,#151515)}
+    body{min-height:100vh;display:flex;flex-direction:column}
+    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8D0)}
+    .header-inner{max-width:1280px;width:100%;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;gap:32px}
+    .hero{padding:40px 24px 32px;max-width:1280px;margin:0 auto}
+    .hero h1{font-size:clamp(1.75rem,4vw,2.25rem);font-weight:700;line-height:1.2;margin-bottom:12px}
+    .hero-desc{font-size:1.0625rem;color:var(--color-text-2,#6B7280);max-width:680px;line-height:1.6}
+    @font-face{font-family:'Inter';font-display:swap}
+  </style>
+  <link rel="stylesheet" href="/assets/css/style.css?v=20261008">
+</head>
+<body>
+  <header id="site-header" class="site-header"></header>
+  <main id="main-content">
+    <nav class="breadcrumb" aria-label="Ruta de navegación">
+      <ol><li><a href="/es/">Inicio</a></li><li><a href="/es/calculators/">Calculadoras</a></li><li aria-current="page">Calculadora de Aumento de Precio</li></ol>
+    </nav>
+    <section class="hero">
+      <h1>Calculadora de Aumento de Precio</h1>
+      <p class="hero-desc">Calcula el precio nuevo tras una subida porcentual, cuánto ha subido un precio en porcentaje o la subida real cuando un envase se hace más pequeño. Cada resultado muestra el importe del aumento y la fórmula usada.</p>
+    </section>
+
+    <div class="tool-wrapper">
+      <div class="tool-zone">
+        <div class="calc" id="calc-root" data-tool="price-increase-calculator">
+          <div class="calc-field"><span class="calc-label" id="pi-mode-l">¿Qué quieres calcular?</span><div class="calc-seg" id="pi-mode" role="group" aria-labelledby="pi-mode-l"><button type="button" data-value="pct" aria-pressed="true">Precio nuevo con %</button><button type="button" data-value="two" aria-pressed="false">% entre dos precios</button><button type="button" data-value="size" aria-pressed="false">Reduflación (cambio de tamaño)</button></div></div>
+          <div class="calc-grid" id="pi-f-pct"><div class="calc-field"><label for="pi-old">Precio original</label><input class="calc-input" type="text" inputmode="decimal" autocomplete="off" id="pi-old" value="250"></div><div class="calc-field"><label for="pi-pct">Subida (%)</label><input class="calc-input" type="text" inputmode="decimal" autocomplete="off" id="pi-pct" value="8"></div><div class="calc-field"><label for="pi-pct2">Segunda subida (%) — opcional</label><input class="calc-input" type="text" inputmode="decimal" autocomplete="off" id="pi-pct2" value=""></div></div>
+          <div class="calc-grid" id="pi-f-two" hidden><div class="calc-field"><label for="pi-a">Precio antiguo</label><input class="calc-input" type="text" inputmode="decimal" autocomplete="off" id="pi-a" value="4.50"></div><div class="calc-field"><label for="pi-b">Precio nuevo</label><input class="calc-input" type="text" inputmode="decimal" autocomplete="off" id="pi-b" value="4.95"></div></div>
+          <div class="calc-grid" id="pi-f-size" hidden><div class="calc-field"><label for="pi-p1">Precio antiguo</label><input class="calc-input" type="text" inputmode="decimal" autocomplete="off" id="pi-p1" value="3.00"></div><div class="calc-field"><label for="pi-s1">Tamaño antiguo (g, ml, unidades…)</label><input class="calc-input" type="text" inputmode="decimal" autocomplete="off" id="pi-s1" value="500"></div><div class="calc-field"><label for="pi-p2">Precio nuevo</label><input class="calc-input" type="text" inputmode="decimal" autocomplete="off" id="pi-p2" value="3.00"></div><div class="calc-field"><label for="pi-s2">Tamaño nuevo</label><input class="calc-input" type="text" inputmode="decimal" autocomplete="off" id="pi-s2" value="450"></div></div>
+          <p class="calc-hint" id="pi-empty" hidden>Introduce números positivos válidos.</p>
+          <div class="calc-out" id="pi-out" aria-live="polite">
+            <div class="calc-result"><span class="calc-kicker" id="pi-k"></span><span class="calc-big" id="pi-big"></span><span class="calc-sub" id="pi-sub"></span></div>
+            <div class="calc-tiles" id="pi-tiles"></div>
+            <details class="calc-work"><summary>Ver el cálculo</summary><dl id="pi-work"></dl></details>
+            <div class="calc-actions"><button type="button" class="btn btn-secondary btn-sm" id="pi-copy">Copiar resultado</button></div>
+          </div>
+        </div>
+      </div>
+      <aside class="tool-side" aria-label="Publicidad">
+        <div style="margin-top:0">
+          <p class="ad-label">Publicidad</p>
+          <div class="ad-slot" style="min-height:250px">
+            <!-- AdSense slot 1 (300x600 sticky): add data-ad-client="ca-pub-XXXXXXXXXX" + data-ad-slot when approved -->
+            <div class="adsbygoogle" style="display:block" aria-hidden="true"></div>
+          </div>
+        </div>
+      </aside>
+    </div>
+
+    <div class="ad-slot ad-slot--leaderboard">
+      <!-- AdSense slot 2 (728x90 responsive): add data-ad-client="ca-pub-XXXXXXXXXX" + data-ad-slot when approved -->
+      <div class="adsbygoogle" style="display:block" aria-hidden="true"></div>
+    </div>
+
+    <section class="how-to-use">
+      <h2>Cómo calcular un aumento de precio</h2>
+      <ol class="steps">
+        <li><span><strong>Elige lo que sabes.</strong> Precio antiguo y % de subida, precio antiguo y nuevo, o dos tamaños de envase para una subida encubierta.</span></li>
+        <li><span><strong>Introduce los números.</strong> Sirve cualquier moneda. Los decimales con coma o con punto funcionan.</span></li>
+        <li><span><strong>Lee el resultado.</strong> Obtienes el precio nuevo o el porcentaje, el importe del aumento y el multiplicador que hay que aplicar.</span></li>
+      </ol>
+    </section>
+
+    <section class="features">
+      <h2>Pensada para subidas de precio reales</h2>
+      <ul class="features-list">
+        <li><span><strong>Tres modos</strong> — Sumar un % de subida, calcular el % entre dos precios o comparar el precio por unidad tras un cambio de tamaño.</span></li>
+        <li><span><strong>Detector de reduflación</strong> — Ve la subida real del precio por unidad cuando el envase encoge pero el precio no cambia.</span></li>
+        <li><span><strong>Multiplicador a la vista</strong> — Por ejemplo ×1,08 para una subida del 8 %, para aplicarlo en una hoja de cálculo.</span></li>
+        <li><span><strong>Varias subidas seguidas</strong> — Añade una segunda subida y ve el efecto combinado, que es mayor que la suma.</span></li>
+      </ul>
+    </section>
+
+    <section class="seo-content">
+      <h2>Fórmulas del aumento de precio</h2>
+      <p>Precio nuevo = precio antiguo × (1 + subida ÷ 100). Una subida del 8 % sobre 250 es 250 × 1,08 = 270. Para saber el porcentaje entre dos precios: % de subida = (nuevo − antiguo) ÷ antiguo × 100. Un precio que pasa de 4,50 a 4,95 ha subido 0,45 ÷ 4,50 = 10 %.</p>
+      <p>Dos subidas seguidas se multiplican: un 5 % y luego un 10 % es 1,05 × 1,10 = 1,155, un 15,5 % en total, no un 15 %. Por la misma lógica, al revés, los descuentos acumulados son menores que su suma: mira la <a href="/es/discount-stacking-calculator/">calculadora de descuentos acumulados</a>.</p>
+      <h2>Reduflación: el precio no cambia, el envase sí</h2>
+      <p>Si un paquete de 500 g pasa a 450 g al mismo precio, el precio por gramo ha subido 500 ÷ 450 − 1 = 11,1 %, aunque el precio en la estantería sea el mismo. El modo reduflación compara el precio por unidad antes y después para mostrarte la subida real. Para comparar productos distintos, usa la <a href="/es/unit-price-calculator/">calculadora de precio unitario</a>.</p>
+      <h2>El cálculo al revés</h2>
+      <p>Si solo conoces el precio después de la subida y quieres el original, no restes el porcentaje: 270 − 8 % es 248,40, no 250. Divide entre el multiplicador o usa la <a href="/es/reverse-percentage-calculator/">calculadora de porcentaje inverso</a>. Para sueldos, la <a href="/es/pay-rise-calculator/">calculadora de aumento salarial</a> también muestra el efecto de la inflación.</p>
+      <p>Más en <a href="/es/calculators/">Calculadoras</a>.</p>
+    </section>
+
+    <div class="ad-slot ad-slot--rectangle" style="margin:0 auto 32px">
+      <!-- AdSense slot 3 (336x280): add data-ad-client="ca-pub-XXXXXXXXXX" + data-ad-slot when approved -->
+      <div class="adsbygoogle" style="display:block" aria-hidden="true"></div>
+    </div>
+
+    <section class="faq">
+      <h2>Preguntas Frecuentes</h2>
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary class="faq-question">¿Cómo sumo un porcentaje de aumento a un precio? <span class="faq-icon">+</span></summary>
+          <div class="faq-answer">Multiplica el precio por 1 más el porcentaje en decimal. Para una subida del 12 %: precio × 1,12.</div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-question">¿Cómo calculo el porcentaje de aumento entre dos precios? <span class="faq-icon">+</span></summary>
+          <div class="faq-answer">Resta el precio antiguo al nuevo, divide entre el precio antiguo y multiplica por 100.</div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-question">¿Una subida del 10 % y luego una bajada del 10 % deja el precio igual? <span class="faq-icon">+</span></summary>
+          <div class="faq-answer">No. 100 × 1,10 × 0,90 = 99, así que acabas un 1 % por debajo del inicio.</div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-question">¿Qué es la reduflación? <span class="faq-icon">+</span></summary>
+          <div class="faq-answer">Una subida encubierta: el envase se reduce mientras el precio se mantiene o sube menos de lo que bajó el tamaño. Compara el precio por unidad para verla.</div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-question">¿Cómo quito un aumento de precio? <span class="faq-icon">+</span></summary>
+          <div class="faq-answer">Divide el precio nuevo entre (1 + subida ÷ 100). Restar el porcentaje al precio nuevo da un resultado incorrecto.</div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-question">¿Incluye el IVA? <span class="faq-icon">+</span></summary>
+          <div class="faq-answer">La calculadora trabaja con el precio que introduzcas. Si ambos precios incluyen el mismo tipo de IVA, el porcentaje de subida es el mismo con o sin IVA.</div>
+        </details>
+      </div>
+    </section>
+
+    <section class="related-tools">
+      <h2>Herramientas Relacionadas</h2>
+      <div class="tool-grid">
+        <a href="/es/pay-rise-calculator/" class="tool-card">
+          <img src="/assets/img/icon-calculator.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy">
+          <h3>Calculadora de Aumento Salarial</h3>
+          <p>Sueldo nuevo tras un aumento y el aumento real con inflación.</p>
+          <span class="tool-card-link">Usar →</span>
+        </a>
+        <a href="/es/reverse-percentage-calculator/" class="tool-card">
+          <img src="/assets/img/icon-calculator.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy">
+          <h3>Calculadora de Porcentaje Inverso</h3>
+          <p>Calcula el valor original antes de una subida, descuento o IVA.</p>
+          <span class="tool-card-link">Usar →</span>
+        </a>
+        <a href="/es/unit-price-calculator/" class="tool-card">
+          <img src="/assets/img/icon-calculator.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy">
+          <h3>Calculadora de Precio Unitario</h3>
+          <p>Compara formatos y encuentra el más barato por kg, litro o unidad.</p>
+          <span class="tool-card-link">Usar →</span>
+        </a>
+        <a href="/es/margin-vs-markup-calculator/" class="tool-card">
+          <img src="/assets/img/icon-calculator.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy">
+          <h3>Calculadora de Margen y Recargo</h3>
+          <p>Margen y recargo desde coste y precio, o el precio necesario.</p>
+          <span class="tool-card-link">Usar →</span>
+        </a>
+      </div>
+    </section>
+  </main>
+  <footer id="site-footer" class="site-footer"></footer>
+  <script type="application/json" id="tool-i18n">{"lang":"es","tool":"price-increase-calculator","mode":"¿Qué quieres calcular?","modes":["Precio nuevo con %","% entre dos precios","Reduflación (cambio de tamaño)"],"old":"Precio original","pct":"Subida (%)","pct2":"Segunda subida (%) — opcional","nw":"Precio nuevo","size1":"Tamaño antiguo (g, ml, unidades…)","size2":"Tamaño nuevo","price1":"Precio antiguo","price2":"Precio nuevo","newPrice":"Precio nuevo","incPct":"Subida de precio","incAmt":"Importe de la subida","mult":"Multiplicador","total":"Subida combinada","unit1":"Precio por 100 unidades antes","unit2":"Precio por 100 unidades ahora","unitInc":"Subida real por unidad","shelf":"Cambio del precio de estantería","decrease":"Es una bajada del {p}.","empty":"Introduce números positivos válidos.","work":"Ver el cálculo","copy":"Copiar resultado"}</script>
+  <script src="/assets/js/shared.js?v=20261008-slugs" defer></script>
+  <script src="/assets/js/tools/calc-kit.js?v=20261008" defer></script>
+  <script src="/assets/js/tools/price-increase.js?v=20261008" defer></script>
+</body>
+</html>

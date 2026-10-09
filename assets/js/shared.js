@@ -594,88 +594,20 @@
   /* BEGIN generated: localized slugs (tools/tool-pages/build.js) */
   var LOCALIZED_SLUGS = {
     "/calculators/": {
-      "es": "/es/calculadoras/",
-      "da": "/da/beregnere/"
+      "es": "/es/calculators/",
+      "da": "/da/calculators/"
     },
     "/numerology-astrology/": {
-      "es": "/es/numerologia-astrologia/",
-      "da": "/da/numerologi-astrologi/"
+      "es": "/es/numerology-astrology/",
+      "da": "/da/numerology-astrology/"
     },
     "/fun-relationships/": {
-      "es": "/es/diversion-compatibilidad/",
-      "da": "/da/sjov-relationer/"
+      "es": "/es/fun-relationships/",
+      "da": "/da/fun-relationships/"
     },
     "/date-time/": {
-      "es": "/es/fecha-hora/",
-      "da": "/da/dato-tid/"
-    },
-    "/rise-over-run-calculator/": {
-      "es": "/es/calculadora-pendiente-elevacion-recorrido/",
-      "da": "/da/haeldningsberegner-stigning-afstand/"
-    },
-    "/pay-rise-calculator/": {
-      "es": "/es/calculadora-aumento-salarial/",
-      "da": "/da/loenstigningsberegner/"
-    },
-    "/price-increase-calculator/": {
-      "es": "/es/calculadora-aumento-precio/",
-      "da": "/da/prisforhoejelsesberegner/"
-    },
-    "/margin-vs-markup-calculator/": {
-      "es": "/es/calculadora-margen-recargo/",
-      "da": "/da/margin-avanceberegner/"
-    },
-    "/unit-price-calculator/": {
-      "es": "/es/calculadora-precio-unitario/",
-      "da": "/da/enhedsprisberegner/"
-    },
-    "/percentage-difference-calculator/": {
-      "es": "/es/calculadora-diferencia-porcentual/",
-      "da": "/da/procentforskelberegner/"
-    },
-    "/slope-grade-angle-calculator/": {
-      "es": "/es/calculadora-pendiente-porcentaje-angulo/",
-      "da": "/da/haeldning-stigningsprocent-vinkel-beregner/"
-    },
-    "/name-numerology-calculator/": {
-      "es": "/es/calculadora-numerologia-nombre/",
-      "da": "/da/navnenumerologi-beregner/"
-    },
-    "/numerology-calculator/": {
-      "es": "/es/calculadora-numerologia/",
-      "da": "/da/numerologi-beregner/"
-    },
-    "/moon-sign-calculator/": {
-      "es": "/es/calculadora-signo-lunar/",
-      "da": "/da/maanetegnsberegner/"
-    },
-    "/rising-sign-calculator/": {
-      "es": "/es/calculadora-ascendente/",
-      "da": "/da/ascendantberegner/"
-    },
-    "/lo-shu-grid-calculator/": {
-      "es": "/es/calculadora-cuadricula-lo-shu/",
-      "da": "/da/lo-shu-gitterberegner/"
-    },
-    "/tarot-birth-card-calculator/": {
-      "es": "/es/calculadora-cartas-nacimiento-tarot/",
-      "da": "/da/tarot-foedselskortberegner/"
-    },
-    "/love-calculator/": {
-      "es": "/es/calculadora-del-amor/",
-      "da": "/da/kaerlighedsberegner/"
-    },
-    "/flames-calculator/": {
-      "es": "/es/calculadora-flames/",
-      "da": "/da/flames-beregner/"
-    },
-    "/magic-8-ball/": {
-      "es": "/es/bola-8-magica/",
-      "da": "/da/magic-8-ball/"
-    },
-    "/birthday-countdown-calculator/": {
-      "es": "/es/cuenta-regresiva-cumpleanos/",
-      "da": "/da/foedselsdagsnedtaelling/"
+      "es": "/es/date-time/",
+      "da": "/da/date-time/"
     }
   };
   /* END generated: localized slugs */
