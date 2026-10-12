@@ -77,6 +77,7 @@
           <li><a href="/jpg-to-pdf/" role="menuitem">JPG to PDF</a></li>
           <li><a href="/pdf-to-jpg/" role="menuitem">PDF to JPG</a></li>
           <li><a href="/ocr-pdf/" role="menuitem">OCR PDF</a></li>
+          <li><a href="/pdf-to-word/" role="menuitem">PDF to Word</a></li>
           <li><a href="/html-to-pdf/" role="menuitem">HTML to PDF</a></li>
           <li><a href="/scan-to-pdf/" role="menuitem">Scan to PDF</a></li>
           <li><a href="/sign-pdf/" role="menuitem">Sign PDF</a></li>
@@ -281,6 +282,7 @@
       <li><a href="/pdf-to-jpg/">PDF to JPG</a></li>
       <li><a href="/scan-to-pdf/">Scan to PDF</a></li>
       <li><a href="/ocr-pdf/">OCR PDF</a></li>
+      <li><a href="/pdf-to-word/">PDF to Word</a></li>
       <li><a href="/html-to-pdf/">HTML to PDF</a></li>
       <li><a href="/pdf-forms/">Fill PDF Forms</a></li>
       <li><a href="/sign-pdf/">Sign PDF</a></li>
@@ -478,6 +480,7 @@
     {n:'JPG to PDF',              u:'/jpg-to-pdf/',                  d:'Convert JPG images to a PDF document',              i:'/assets/img/icon-pdf.svg',               c:'PDF',          k:'convert image jpg jpeg png to pdf'},
     {n:'PDF to JPG',              u:'/pdf-to-jpg/',                  d:'Convert PDF pages to JPG images',                   i:'/assets/img/icon-pdf.svg',               c:'PDF',          k:'convert pdf to image jpg jpeg png export'},
     {n:'OCR PDF',                 u:'/ocr-pdf/',                     d:'Extract text from scanned PDF files',               i:'/assets/img/icon-pdf.svg',               c:'PDF',          k:'ocr text extract scanned recognize optical'},
+    {n:'PDF to Word',             u:'/pdf-to-word/',                 d:'Convert a PDF into an editable Word document',      i:'/assets/img/icon-pdf.svg',               c:'PDF',          k:'pdf to word docx doc convert editable ocr'},
     {n:'HTML to PDF',             u:'/html-to-pdf/',                 d:'Convert HTML web pages to PDF',                     i:'/assets/img/icon-pdf.svg',               c:'PDF',          k:'convert html webpage to pdf render'},
     {n:'Scan to PDF',             u:'/scan-to-pdf/',                 d:'Convert scanned documents to PDF',                  i:'/assets/img/icon-pdf.svg',               c:'PDF',          k:'scan document convert digitize image'},
     {n:'Sign PDF',                u:'/sign-pdf/',                    d:'Add a digital signature to a PDF',                  i:'/assets/img/icon-pdf.svg',               c:'PDF',          k:'sign signature digital electronic'},

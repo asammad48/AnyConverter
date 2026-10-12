@@ -1,0 +1,97 @@
+{
+ "title": "Organizar PDF – Ordena, Gira y Borra Páginas, Sin Subir",
+ "desc": "Reordena las páginas de un PDF en tu navegador. Arrástralas, gíralas o bórralas, añade páginas en blanco y arregla escaneos a doble cara con un clic. Gratis.",
+ "ld": {
+  "@context": "https://schema.org",
+  "@graph": [
+   {
+    "@type": "WebApplication",
+    "name": "Organizar páginas PDF: ordena, gira y borra",
+    "url": "https://anyconverter.io/es/organize-pdf/",
+    "description": "Reordena las páginas de un PDF en tu navegador. Arrástralas, gíralas o bórralas, añade páginas en blanco y arregla escaneos a doble cara con un clic. Gratis.",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Any (web browser)",
+    "browserRequirements": "Requires JavaScript",
+    "inLanguage": "es",
+    "isAccessibleForFree": true,
+    "offers": {
+     "@type": "Offer",
+     "price": "0",
+     "priceCurrency": "USD"
+    },
+    "featureList": [
+     "Arregla escaneos a doble cara con un clic",
+     "Deshaz cualquier paso",
+     "Arrastra o usa botones",
+     "Añade páginas en blanco y copias",
+     "Tu PDF no sale de tu dispositivo"
+    ],
+    "publisher": {
+     "@type": "Organization",
+     "name": "AnyConverter",
+     "url": "https://anyconverter.io"
+    }
+   },
+   {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+     {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Inicio",
+      "item": "https://anyconverter.io/es/"
+     },
+     {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Herramientas PDF",
+      "item": "https://anyconverter.io/es/herramientas-pdf/"
+     },
+     {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Organizar PDF",
+      "item": "https://anyconverter.io/es/organize-pdf/"
+     }
+    ]
+   },
+   {
+    "@type": "FAQPage",
+    "mainEntity": [
+     {
+      "@type": "Question",
+      "name": "¿Cómo muevo una página en un PDF?",
+      "acceptedAnswer": {
+       "@type": "Answer",
+       "text": "Arrástrala a su nuevo sitio, o púlsala y usa las flechas izquierda y derecha."
+      }
+     },
+     {
+      "@type": "Question",
+      "name": "¿Puedo arreglar un escaneo a doble cara?",
+      "acceptedAnswer": {
+       "@type": "Answer",
+       "text": "Sí. Elige Arreglar escaneo a doble cara y las caras se vuelven a ordenar."
+      }
+     },
+     {
+      "@type": "Question",
+      "name": "¿Se sube mi PDF?",
+      "acceptedAnswer": {
+       "@type": "Answer",
+       "text": "No. Todo ocurre en tu navegador."
+      }
+     },
+     {
+      "@type": "Question",
+      "name": "¿Se modifica el archivo original?",
+      "acceptedAnswer": {
+       "@type": "Answer",
+       "text": "No. Recibes un PDF nuevo y el original queda como estaba."
+      }
+     }
+    ]
+   }
+  ]
+ }
+}

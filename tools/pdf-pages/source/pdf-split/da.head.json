@@ -1,0 +1,106 @@
+{
+ "title": "Opdel PDF – Efter Sider, Intervaller eller Filstørrelse",
+ "desc": "Opdel en PDF i flere filer i din browser. Klik for at klippe mellem sider, skriv intervaller, del for hver N. side, eller hold hver del under en grænse.",
+ "ld": {
+  "@context": "https://schema.org",
+  "@graph": [
+   {
+    "@type": "WebApplication",
+    "name": "Opdel en PDF i flere filer",
+    "url": "https://anyconverter.io/da/pdf-split/",
+    "description": "Opdel en PDF i flere filer i din browser. Klik for at klippe mellem sider, skriv intervaller, del for hver N. side, eller hold hver del under en grænse.",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Any (web browser)",
+    "browserRequirements": "Requires JavaScript",
+    "inLanguage": "da",
+    "isAccessibleForFree": true,
+    "offers": {
+     "@type": "Offer",
+     "price": "0",
+     "priceCurrency": "USD"
+    },
+    "featureList": [
+     "Klik for at klippe",
+     "Opdel efter filstørrelse",
+     "Intervaller, hver N. side eller én pr. side",
+     "Din PDF er privat",
+     "Tydelige filnavne",
+     "Intet vandmærke eller login"
+    ],
+    "publisher": {
+     "@type": "Organization",
+     "name": "AnyConverter",
+     "url": "https://anyconverter.io"
+    }
+   },
+   {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+     {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Forside",
+      "item": "https://anyconverter.io/da/"
+     },
+     {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "PDF-værktøjer",
+      "item": "https://anyconverter.io/da/pdf-vaerktoejer/"
+     },
+     {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Opdel PDF",
+      "item": "https://anyconverter.io/da/pdf-split/"
+     }
+    ]
+   },
+   {
+    "@type": "FAQPage",
+    "mainEntity": [
+     {
+      "@type": "Question",
+      "name": "Hvordan udtrækker jeg kun nogle sider?",
+      "acceptedAnswer": {
+       "@type": "Answer",
+       "text": "Skriv kun de sider, du vil have, f.eks. 2–4, 9. Sider uden for intervallerne udelades."
+      }
+     },
+     {
+      "@type": "Question",
+      "name": "Kan jeg opdele en PDF, så den passer til en mail?",
+      "acceptedAnswer": {
+       "@type": "Answer",
+       "text": "Ja. Vælg Efter filstørrelse, og angiv grænsen, f.eks. 10 MB, som mange mailtjenester bruger. Hver del holdes under den."
+      }
+     },
+     {
+      "@type": "Question",
+      "name": "Bliver min PDF uploadet?",
+      "acceptedAnswer": {
+       "@type": "Answer",
+       "text": "Nej. Filen læses og opdeles i din browser, og intet sendes til vores servere."
+      }
+     },
+     {
+      "@type": "Question",
+      "name": "Sænker opdeling kvaliteten?",
+      "acceptedAnswer": {
+       "@type": "Answer",
+       "text": "Nej. Siderne kopieres uden at blive komprimeret igen."
+      }
+     },
+     {
+      "@type": "Question",
+      "name": "Hvordan gemmer jeg hver side som sin egen PDF?",
+      "acceptedAnswer": {
+       "@type": "Answer",
+       "text": "Vælg Én pr. side. Du får en ZIP med én PDF for hver side."
+      }
+     }
+    ]
+   }
+  ]
+ }
+}

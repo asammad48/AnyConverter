@@ -1,0 +1,97 @@
+{
+ "title": "Organiser PDF – Flyt, Rotér og Slet Sider, Ingen Upload",
+ "desc": "Omarrangér siderne i en PDF i din browser. Træk siderne på plads, rotér eller slet dem, tilføj blanke sider og ret dobbeltsidede scanninger med ét klik.",
+ "ld": {
+  "@context": "https://schema.org",
+  "@graph": [
+   {
+    "@type": "WebApplication",
+    "name": "Organiser PDF-sider: flyt, rotér og slet",
+    "url": "https://anyconverter.io/da/organize-pdf/",
+    "description": "Omarrangér siderne i en PDF i din browser. Træk siderne på plads, rotér eller slet dem, tilføj blanke sider og ret dobbeltsidede scanninger med ét klik.",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Any (web browser)",
+    "browserRequirements": "Requires JavaScript",
+    "inLanguage": "da",
+    "isAccessibleForFree": true,
+    "offers": {
+     "@type": "Offer",
+     "price": "0",
+     "priceCurrency": "USD"
+    },
+    "featureList": [
+     "Ret dobbeltsidede scanninger med ét klik",
+     "Fortryd hvert trin",
+     "Træk, eller brug knapper",
+     "Tilføj blanke sider og kopier",
+     "Din PDF bliver på din enhed"
+    ],
+    "publisher": {
+     "@type": "Organization",
+     "name": "AnyConverter",
+     "url": "https://anyconverter.io"
+    }
+   },
+   {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+     {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Forside",
+      "item": "https://anyconverter.io/da/"
+     },
+     {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "PDF-værktøjer",
+      "item": "https://anyconverter.io/da/pdf-vaerktoejer/"
+     },
+     {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Organiser PDF",
+      "item": "https://anyconverter.io/da/organize-pdf/"
+     }
+    ]
+   },
+   {
+    "@type": "FAQPage",
+    "mainEntity": [
+     {
+      "@type": "Question",
+      "name": "Hvordan flytter jeg en side i en PDF?",
+      "acceptedAnswer": {
+       "@type": "Answer",
+       "text": "Træk den til den nye plads, eller klik på den og brug venstre- og højrepilene."
+      }
+     },
+     {
+      "@type": "Question",
+      "name": "Kan jeg rette en dobbeltsidet scanning?",
+      "acceptedAnswer": {
+       "@type": "Answer",
+       "text": "Ja. Vælg Ret dobbeltsidet scanning, så sættes for- og bagsider i den rigtige rækkefølge."
+      }
+     },
+     {
+      "@type": "Question",
+      "name": "Bliver min PDF uploadet?",
+      "acceptedAnswer": {
+       "@type": "Answer",
+       "text": "Nej. Alt sker i din browser."
+      }
+     },
+     {
+      "@type": "Question",
+      "name": "Ændres den originale fil?",
+      "acceptedAnswer": {
+       "@type": "Answer",
+       "text": "Nej. Du får en ny PDF, og originalen forbliver uændret."
+      }
+     }
+    ]
+   }
+  ]
+ }
+}

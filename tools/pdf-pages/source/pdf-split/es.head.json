@@ -1,0 +1,106 @@
+{
+ "title": "Dividir PDF – Por Páginas, Rangos o Tamaño, Sin Subir",
+ "desc": "Divide un PDF en varios archivos desde tu navegador. Pulsa entre páginas para cortar, escribe rangos, divide cada N páginas o limita el tamaño de cada parte.",
+ "ld": {
+  "@context": "https://schema.org",
+  "@graph": [
+   {
+    "@type": "WebApplication",
+    "name": "Dividir un PDF en varios archivos",
+    "url": "https://anyconverter.io/es/pdf-split/",
+    "description": "Divide un PDF en varios archivos desde tu navegador. Pulsa entre páginas para cortar, escribe rangos, divide cada N páginas o limita el tamaño de cada parte.",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Any (web browser)",
+    "browserRequirements": "Requires JavaScript",
+    "inLanguage": "es",
+    "isAccessibleForFree": true,
+    "offers": {
+     "@type": "Offer",
+     "price": "0",
+     "priceCurrency": "USD"
+    },
+    "featureList": [
+     "Pulsa para cortar",
+     "Dividir por tamaño",
+     "Rangos, cada N páginas o una por página",
+     "Tu PDF es privado",
+     "Nombres claros",
+     "Sin marca de agua ni registro"
+    ],
+    "publisher": {
+     "@type": "Organization",
+     "name": "AnyConverter",
+     "url": "https://anyconverter.io"
+    }
+   },
+   {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+     {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Inicio",
+      "item": "https://anyconverter.io/es/"
+     },
+     {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Herramientas PDF",
+      "item": "https://anyconverter.io/es/herramientas-pdf/"
+     },
+     {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Dividir PDF",
+      "item": "https://anyconverter.io/es/pdf-split/"
+     }
+    ]
+   },
+   {
+    "@type": "FAQPage",
+    "mainEntity": [
+     {
+      "@type": "Question",
+      "name": "¿Cómo extraigo solo algunas páginas?",
+      "acceptedAnswer": {
+       "@type": "Answer",
+       "text": "Escribe solo las páginas que quieres, como 2–4, 9. Las páginas que no estén en ningún rango se quedan fuera."
+      }
+     },
+     {
+      "@type": "Question",
+      "name": "¿Puedo dividir un PDF para que quepa en un correo?",
+      "acceptedAnswer": {
+       "@type": "Answer",
+       "text": "Sí. Elige Por tamaño e indica el límite, por ejemplo 10 MB para muchos servicios de correo. Cada parte se queda por debajo."
+      }
+     },
+     {
+      "@type": "Question",
+      "name": "¿Se sube mi PDF?",
+      "acceptedAnswer": {
+       "@type": "Answer",
+       "text": "No. El archivo se lee y se divide en tu navegador, y no se envía nada a nuestros servidores."
+      }
+     },
+     {
+      "@type": "Question",
+      "name": "¿Dividir reduce la calidad?",
+      "acceptedAnswer": {
+       "@type": "Answer",
+       "text": "No. Las páginas se copian sin recomprimir."
+      }
+     },
+     {
+      "@type": "Question",
+      "name": "¿Cómo guardo cada página como un PDF?",
+      "acceptedAnswer": {
+       "@type": "Answer",
+       "text": "Elige Una por página. Recibirás un ZIP con un PDF por cada página."
+      }
+     }
+    ]
+   }
+  ]
+ }
+}

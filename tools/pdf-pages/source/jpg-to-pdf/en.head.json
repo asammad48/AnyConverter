@@ -1,0 +1,97 @@
+{
+ "title": "JPG to PDF – Turn Photos into a PDF in Original Quality",
+ "desc": "Combine JPG, PNG and WebP images into one PDF in your browser. Photos keep their original quality and phone pictures come out the right way up.",
+ "ld": {
+  "@context": "https://schema.org",
+  "@graph": [
+   {
+    "@type": "WebApplication",
+    "name": "Convert JPG images to a PDF",
+    "url": "https://anyconverter.io/jpg-to-pdf/",
+    "description": "Combine JPG, PNG and WebP images into one PDF in your browser. Photos keep their original quality and phone pictures come out the right way up.",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Any (web browser)",
+    "browserRequirements": "Requires JavaScript",
+    "inLanguage": "en",
+    "isAccessibleForFree": true,
+    "offers": {
+     "@type": "Offer",
+     "price": "0",
+     "priceCurrency": "USD"
+    },
+    "featureList": [
+     "Original quality for JPG",
+     "Phone photos the right way up",
+     "Fit to image or paper size",
+     "No limit on images",
+     "Your photos stay on your device"
+    ],
+    "publisher": {
+     "@type": "Organization",
+     "name": "AnyConverter",
+     "url": "https://anyconverter.io"
+    }
+   },
+   {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+     {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://anyconverter.io/"
+     },
+     {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "PDF Tools",
+      "item": "https://anyconverter.io/pdf-tools/"
+     },
+     {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "JPG to PDF",
+      "item": "https://anyconverter.io/jpg-to-pdf/"
+     }
+    ]
+   },
+   {
+    "@type": "FAQPage",
+    "mainEntity": [
+     {
+      "@type": "Question",
+      "name": "How do I turn several photos into one PDF?",
+      "acceptedAnswer": {
+       "@type": "Answer",
+       "text": "Add all the photos, put them in order and press Create PDF. Each photo becomes a page."
+      }
+     },
+     {
+      "@type": "Question",
+      "name": "Will my photos lose quality?",
+      "acceptedAnswer": {
+       "@type": "Answer",
+       "text": "JPG photos are placed in the PDF without recompression. Other formats are converted at high quality."
+      }
+     },
+     {
+      "@type": "Question",
+      "name": "Why was my phone photo sideways in other tools?",
+      "acceptedAnswer": {
+       "@type": "Answer",
+       "text": "Phones store rotation as a tag in the photo. This tool reads that tag and turns the page correctly."
+      }
+     },
+     {
+      "@type": "Question",
+      "name": "Are my images uploaded?",
+      "acceptedAnswer": {
+       "@type": "Answer",
+       "text": "No. The PDF is created in your browser."
+      }
+     }
+    ]
+   }
+  ]
+ }
+}

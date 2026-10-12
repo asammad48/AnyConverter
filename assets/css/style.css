@@ -1995,7 +1995,7 @@ label.ac-btn { align-self: center; margin-top: 4px; position: relative; top: 1px
   .ac-action-bar-right,
   .sub-tabs,
   .tab-bar,
-  [style*="display:flex"][style*="gap"] {
+  [style*="display:flex"][style*="gap"]:not(.dc-root *) {
     min-width: 0;
     flex-wrap: wrap !important;
   }
@@ -5517,3 +5517,26 @@ body:has(#sticky-container) .sticky-toast {
 .calc-bar { background: var(--ac-line); }
 .calc-table th, .calc-table td, .calc-suggest button { border-bottom-color: var(--ac-line); }
 @media (max-width: 640px) { .calc-row { border-bottom-color: var(--ac-line); } }
+
+/* ===== PDF tool pages (tool-page design system, rendered by dc-runtime.js) =====
+   The design ships its own inline styles; these rules only undo the site-wide element
+   defaults inside .dc-root so the design renders exactly as drawn. */
+.dc-root { max-width: 1280px; width: 100%; margin: 0 auto; background: #f7f4ef; color: #1f1a17; font-family: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif; line-height: normal; -webkit-font-smoothing: antialiased; color-scheme: light; }
+.dc-root *, .dc-root *::before, .dc-root *::after { box-sizing: revert; margin: revert; padding: revert; }
+.dc-root input, .dc-root select, .dc-root textarea, .dc-root label, .dc-root button { all: revert; }
+.dc-root input, .dc-root textarea, .dc-root select, .dc-root button { font-family: inherit; }
+.dc-root input[type="checkbox"], .dc-root input[type="radio"], .dc-root input[type="range"] { accent-color: #b5412b; }
+.dc-root a { color: #b5412b; text-underline-offset: 2px; }
+.dc-root a:hover { color: #8f2f1d; }
+.dc-root img { max-width: none; height: revert; }
+.dc-root code, .dc-root pre { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+.dc-root summary::marker { color: #b5412b; }
+.dc-root details[open] > summary { color: inherit; }
+.dc-root :focus-visible { outline: 2px solid #b5412b; outline-offset: 2px; }
+.dc-root [style*="overflow-x:auto"] { contain: inline-size; }
+.dc-root .dc-ad { width: 100%; margin: 0 auto; box-sizing: border-box; background: #efe9e2; border: 1px dashed #cfc3b5; border-radius: 10px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; color: #8a8079; font-size: 11px; letter-spacing: .1em; text-transform: uppercase; }
+.dc-root .dc-ad--leader { margin: 0; }
+.dc-root .dc-ad--rect { margin: 0; }
+@media (max-width: 759px) { .dc-root .dc-ad--leader { min-height: 100px; } }
+@keyframes acspin { to { transform: rotate(360deg); } }
+@keyframes acpulse { 50% { opacity: .45; } }

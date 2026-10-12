@@ -1,0 +1,97 @@
+{
+ "title": "Add Page Numbers to PDF – Positions, Formats &amp; Bates",
+ "desc": "Number the pages of a PDF in your browser. Choose the position and style, skip the cover, use Page 1 of 10 or legal Bates numbers, and see a live preview.",
+ "ld": {
+  "@context": "https://schema.org",
+  "@graph": [
+   {
+    "@type": "WebApplication",
+    "name": "Add page numbers to a PDF",
+    "url": "https://anyconverter.io/add-page-numbers/",
+    "description": "Number the pages of a PDF in your browser. Choose the position and style, skip the cover, use Page 1 of 10 or legal Bates numbers, and see a live preview.",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Any (web browser)",
+    "browserRequirements": "Requires JavaScript",
+    "inLanguage": "en",
+    "isAccessibleForFree": true,
+    "offers": {
+     "@type": "Offer",
+     "price": "0",
+     "priceCurrency": "USD"
+    },
+    "featureList": [
+     "See it before you save",
+     "Skip the cover and contents",
+     "Bates numbering for legal files",
+     "Outside corners for books",
+     "Your PDF stays on your device"
+    ],
+    "publisher": {
+     "@type": "Organization",
+     "name": "AnyConverter",
+     "url": "https://anyconverter.io"
+    }
+   },
+   {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+     {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://anyconverter.io/"
+     },
+     {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "PDF Tools",
+      "item": "https://anyconverter.io/pdf-tools/"
+     },
+     {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Add Page Numbers",
+      "item": "https://anyconverter.io/add-page-numbers/"
+     }
+    ]
+   },
+   {
+    "@type": "FAQPage",
+    "mainEntity": [
+     {
+      "@type": "Question",
+      "name": "How do I start numbering on page 3?",
+      "acceptedAnswer": {
+       "@type": "Answer",
+       "text": "Set First numbered page to 3. Set Start at to 1 if you want that page to show 1."
+      }
+     },
+     {
+      "@type": "Question",
+      "name": "Can I add Page 1 of 10?",
+      "acceptedAnswer": {
+       "@type": "Answer",
+       "text": "Yes. Choose the Page 1 of 10 format."
+      }
+     },
+     {
+      "@type": "Question",
+      "name": "What is Bates numbering?",
+      "acceptedAnswer": {
+       "@type": "Answer",
+       "text": "A legal numbering style with a prefix and fixed digits, like ABC-000123. Choose Bates and type your prefix."
+      }
+     },
+     {
+      "@type": "Question",
+      "name": "Is my file uploaded?",
+      "acceptedAnswer": {
+       "@type": "Answer",
+       "text": "No. Everything happens in your browser."
+      }
+     }
+    ]
+   }
+  ]
+ }
+}

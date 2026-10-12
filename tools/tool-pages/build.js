@@ -20,7 +20,7 @@ const HUB_CONTENT = require('./content/hubs');
 const ROOT = path.resolve(__dirname, '..', '..');
 const ASSET_V = '20261008';
 const CSS_HREF = '/assets/css/style.css?v=' + ASSET_V;
-const SHARED_JS = '/assets/js/shared.js?v=20261008-slugs';
+const SHARED_JS = '/assets/js/shared.js?v=20261012';
 const CHECK_ONLY = process.argv.includes('--check');
 
 const warnings = [];

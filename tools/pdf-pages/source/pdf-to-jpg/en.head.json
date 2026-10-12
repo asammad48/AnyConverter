@@ -1,0 +1,106 @@
+{
+ "title": "PDF to JPG – Convert Pages to Images up to 300 DPI",
+ "desc": "Turn PDF pages into JPG, PNG or WebP images in your browser. Choose the resolution and pages, or join every page into one long image. Free, no upload.",
+ "ld": {
+  "@context": "https://schema.org",
+  "@graph": [
+   {
+    "@type": "WebApplication",
+    "name": "Convert PDF pages to JPG images",
+    "url": "https://anyconverter.io/pdf-to-jpg/",
+    "description": "Turn PDF pages into JPG, PNG or WebP images in your browser. Choose the resolution and pages, or join every page into one long image. Free, no upload.",
+    "applicationCategory": "MultimediaApplication",
+    "operatingSystem": "Any (web browser)",
+    "browserRequirements": "Requires JavaScript",
+    "inLanguage": "en",
+    "isAccessibleForFree": true,
+    "offers": {
+     "@type": "Offer",
+     "price": "0",
+     "priceCurrency": "USD"
+    },
+    "featureList": [
+     "One long image",
+     "Choose the resolution",
+     "Only the pages you need",
+     "JPG, PNG or WebP",
+     "Your PDF stays private",
+     "No watermark, no sign-up"
+    ],
+    "publisher": {
+     "@type": "Organization",
+     "name": "AnyConverter",
+     "url": "https://anyconverter.io"
+    }
+   },
+   {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+     {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://anyconverter.io/"
+     },
+     {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "PDF Tools",
+      "item": "https://anyconverter.io/pdf-tools/"
+     },
+     {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "PDF to JPG",
+      "item": "https://anyconverter.io/pdf-to-jpg/"
+     }
+    ]
+   },
+   {
+    "@type": "FAQPage",
+    "mainEntity": [
+     {
+      "@type": "Question",
+      "name": "How do I convert only one page?",
+      "acceptedAnswer": {
+       "@type": "Answer",
+       "text": "Click that page so it is the only one selected, or type its number in the Pages field, then convert."
+      }
+     },
+     {
+      "@type": "Question",
+      "name": "What resolution should I use?",
+      "acceptedAnswer": {
+       "@type": "Answer",
+       "text": "150 DPI for screens and email, 300 DPI if you will print the images."
+      }
+     },
+     {
+      "@type": "Question",
+      "name": "Is my PDF uploaded?",
+      "acceptedAnswer": {
+       "@type": "Answer",
+       "text": "No. The pages are drawn and saved in your browser."
+      }
+     },
+     {
+      "@type": "Question",
+      "name": "Why is my PNG so much larger than the JPG?",
+      "acceptedAnswer": {
+       "@type": "Answer",
+       "text": "PNG keeps every pixel exactly, which suits text but makes photos large. Use JPG or WebP for photos."
+      }
+     },
+     {
+      "@type": "Question",
+      "name": "Can I get the pages as one image?",
+      "acceptedAnswer": {
+       "@type": "Answer",
+       "text": "Yes. Choose One long image and every selected page is stacked from top to bottom."
+      }
+     }
+    ]
+   }
+  ]
+ }
+}

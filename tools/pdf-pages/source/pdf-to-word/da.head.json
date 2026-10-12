@@ -1,0 +1,106 @@
+{
+ "title": "PDF til Word – Redigerbar DOCX, OCR, Ingen Upload",
+ "desc": "Konvertér PDF til et redigerbart Word-dokument. Vælg redigerbar tekst eller præcist layout, konvertér kun de sider, du skal bruge, og genkend scanninger med OCR.",
+ "ld": {
+  "@context": "https://schema.org",
+  "@graph": [
+   {
+    "@type": "WebApplication",
+    "name": "PDF til Word Konverter",
+    "url": "https://anyconverter.io/da/pdf-til-word/",
+    "description": "Konvertér PDF til et redigerbart Word-dokument. Vælg redigerbar tekst eller præcist layout, konvertér kun de sider, du skal bruge, og genkend scanninger med OCR.",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Any (web browser)",
+    "browserRequirements": "Requires JavaScript",
+    "inLanguage": "da",
+    "isAccessibleForFree": true,
+    "offers": {
+     "@type": "Offer",
+     "price": "0",
+     "priceCurrency": "USD"
+    },
+    "featureList": [
+     "To konverteringstyper",
+     "Konvertér kun nogle sider",
+     "OCR på dit sprog",
+     "Din PDF er privat",
+     "Tabeller forbliver tabeller",
+     "Intet vandmærke eller login"
+    ],
+    "publisher": {
+     "@type": "Organization",
+     "name": "AnyConverter",
+     "url": "https://anyconverter.io"
+    }
+   },
+   {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+     {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Forside",
+      "item": "https://anyconverter.io/da/"
+     },
+     {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "PDF",
+      "item": "https://anyconverter.io/da/pdf/"
+     },
+     {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "PDF til Word",
+      "item": "https://anyconverter.io/da/pdf-til-word/"
+     }
+    ]
+   },
+   {
+    "@type": "FAQPage",
+    "mainEntity": [
+     {
+      "@type": "Question",
+      "name": "Er det sikkert at konvertere fortrolige PDF’er?",
+      "acceptedAnswer": {
+       "@type": "Answer",
+       "text": "Ja. Filen behandles i din browser og uploades aldrig, så kontrakter, lønsedler og lægebreve bliver på din enhed."
+      }
+     },
+     {
+      "@type": "Question",
+      "name": "Kan jeg konvertere en scannet PDF til Word?",
+      "acceptedAnswer": {
+       "@type": "Answer",
+       "text": "Ja. Slå tekstgenkendelse til, og vælg dokumentets sprog. Scanninger tager længere tid end digitale PDF’er."
+      }
+     },
+     {
+      "@type": "Question",
+      "name": "Bliver formateringen den samme?",
+      "acceptedAnswer": {
+       "@type": "Answer",
+       "text": "Præcist layout holder udseendet tættest på PDF’en. Redigerbar tekst forenkler layoutet, så det er lettere at redigere."
+      }
+     },
+     {
+      "@type": "Question",
+      "name": "Kan jeg konvertere kun nogle sider?",
+      "acceptedAnswer": {
+       "@type": "Answer",
+       "text": "Ja. Skriv et sideinterval som 1–3, 7, før du konverterer."
+      }
+     },
+     {
+      "@type": "Question",
+      "name": "Hvad med adgangskodebeskyttede PDF’er?",
+      "acceptedAnswer": {
+       "@type": "Answer",
+       "text": "Du bliver bedt om adgangskoden. Den bruges kun i din browser til at åbne filen."
+      }
+     }
+    ]
+   }
+  ]
+ }
+}

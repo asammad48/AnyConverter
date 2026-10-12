@@ -62,7 +62,7 @@
 
   <url>
     <loc>https://anyconverter.io/add-page-numbers/</loc>
-    <lastmod>2026-08-21</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://anyconverter.io/add-page-numbers/"/>
@@ -436,7 +436,7 @@
 
   <url>
     <loc>https://anyconverter.io/extract-pdf-pages/</loc>
-    <lastmod>2026-08-21</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://anyconverter.io/extract-pdf-pages/"/>
@@ -601,7 +601,7 @@
 
   <url>
     <loc>https://anyconverter.io/jpg-to-pdf/</loc>
-    <lastmod>2026-08-21</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://anyconverter.io/jpg-to-pdf/"/>
@@ -776,6 +776,17 @@
   </url>
 
   <url>
+    <loc>https://anyconverter.io/pdf-to-word/</loc>
+    <lastmod>2026-10-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://anyconverter.io/pdf-to-word/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://anyconverter.io/es/pdf-to-word/"/>
+    <xhtml:link rel="alternate" hreflang="da" href="https://anyconverter.io/da/pdf-to-word/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://anyconverter.io/pdf-to-word/"/>
+  </url>
+
+  <url>
     <loc>https://anyconverter.io/ocr-pdf/</loc>
     <lastmod>2026-08-21</lastmod>
     <changefreq>monthly</changefreq>
@@ -799,7 +810,7 @@
 
   <url>
     <loc>https://anyconverter.io/organize-pdf/</loc>
-    <lastmod>2026-08-21</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://anyconverter.io/organize-pdf/"/>
@@ -832,7 +843,7 @@
 
   <url>
     <loc>https://anyconverter.io/pdf-compress/</loc>
-    <lastmod>2026-08-21</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://anyconverter.io/pdf-compress/"/>
@@ -854,7 +865,7 @@
 
   <url>
     <loc>https://anyconverter.io/pdf-merge/</loc>
-    <lastmod>2026-08-21</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://anyconverter.io/pdf-merge/"/>
@@ -876,7 +887,7 @@
 
   <url>
     <loc>https://anyconverter.io/pdf-split/</loc>
-    <lastmod>2026-08-21</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://anyconverter.io/pdf-split/"/>
@@ -887,7 +898,7 @@
 
   <url>
     <loc>https://anyconverter.io/pdf-to-jpg/</loc>
-    <lastmod>2026-08-21</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://anyconverter.io/pdf-to-jpg/"/>
@@ -1041,7 +1052,7 @@
 
   <url>
     <loc>https://anyconverter.io/remove-pdf-pages/</loc>
-    <lastmod>2026-08-21</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://anyconverter.io/remove-pdf-pages/"/>
@@ -1063,7 +1074,7 @@
 
   <url>
     <loc>https://anyconverter.io/rotate-pdf/</loc>
-    <lastmod>2026-08-21</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://anyconverter.io/rotate-pdf/"/>
@@ -1369,7 +1380,7 @@
 
   <url>
     <loc>https://anyconverter.io/es/add-page-numbers/</loc>
-    <lastmod>2026-08-21</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://anyconverter.io/add-page-numbers/"/>
@@ -1743,7 +1754,7 @@
 
   <url>
     <loc>https://anyconverter.io/es/extract-pdf-pages/</loc>
-    <lastmod>2026-08-21</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://anyconverter.io/extract-pdf-pages/"/>
@@ -1908,7 +1919,7 @@
 
   <url>
     <loc>https://anyconverter.io/es/jpg-to-pdf/</loc>
-    <lastmod>2026-08-21</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://anyconverter.io/jpg-to-pdf/"/>
@@ -2083,6 +2094,17 @@
   </url>
 
   <url>
+    <loc>https://anyconverter.io/es/pdf-to-word/</loc>
+    <lastmod>2026-10-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://anyconverter.io/pdf-to-word/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://anyconverter.io/es/pdf-to-word/"/>
+    <xhtml:link rel="alternate" hreflang="da" href="https://anyconverter.io/da/pdf-to-word/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://anyconverter.io/pdf-to-word/"/>
+  </url>
+
+  <url>
     <loc>https://anyconverter.io/es/ocr-pdf/</loc>
     <lastmod>2026-08-21</lastmod>
     <changefreq>monthly</changefreq>
@@ -2106,7 +2128,7 @@
 
   <url>
     <loc>https://anyconverter.io/es/organize-pdf/</loc>
-    <lastmod>2026-08-21</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://anyconverter.io/organize-pdf/"/>
@@ -2139,7 +2161,7 @@
 
   <url>
     <loc>https://anyconverter.io/es/pdf-compress/</loc>
-    <lastmod>2026-08-21</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://anyconverter.io/pdf-compress/"/>
@@ -2161,7 +2183,7 @@
 
   <url>
     <loc>https://anyconverter.io/es/pdf-merge/</loc>
-    <lastmod>2026-08-21</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://anyconverter.io/pdf-merge/"/>
@@ -2183,7 +2205,7 @@
 
   <url>
     <loc>https://anyconverter.io/es/pdf-split/</loc>
-    <lastmod>2026-08-21</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://anyconverter.io/pdf-split/"/>
@@ -2194,7 +2216,7 @@
 
   <url>
     <loc>https://anyconverter.io/es/pdf-to-jpg/</loc>
-    <lastmod>2026-08-21</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://anyconverter.io/pdf-to-jpg/"/>
@@ -2348,7 +2370,7 @@
 
   <url>
     <loc>https://anyconverter.io/es/remove-pdf-pages/</loc>
-    <lastmod>2026-08-21</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://anyconverter.io/remove-pdf-pages/"/>
@@ -2370,7 +2392,7 @@
 
   <url>
     <loc>https://anyconverter.io/es/rotate-pdf/</loc>
-    <lastmod>2026-08-21</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://anyconverter.io/rotate-pdf/"/>
@@ -2667,7 +2689,7 @@
 
   <url>
     <loc>https://anyconverter.io/da/add-page-numbers/</loc>
-    <lastmod>2026-08-21</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://anyconverter.io/add-page-numbers/"/>
@@ -3041,7 +3063,7 @@
 
   <url>
     <loc>https://anyconverter.io/da/extract-pdf-pages/</loc>
-    <lastmod>2026-08-21</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://anyconverter.io/extract-pdf-pages/"/>
@@ -3206,7 +3228,7 @@
 
   <url>
     <loc>https://anyconverter.io/da/jpg-to-pdf/</loc>
-    <lastmod>2026-08-21</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://anyconverter.io/jpg-to-pdf/"/>
@@ -3381,6 +3403,17 @@
   </url>
 
   <url>
+    <loc>https://anyconverter.io/da/pdf-to-word/</loc>
+    <lastmod>2026-10-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://anyconverter.io/pdf-to-word/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://anyconverter.io/es/pdf-to-word/"/>
+    <xhtml:link rel="alternate" hreflang="da" href="https://anyconverter.io/da/pdf-to-word/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://anyconverter.io/pdf-to-word/"/>
+  </url>
+
+  <url>
     <loc>https://anyconverter.io/da/ocr-pdf/</loc>
     <lastmod>2026-08-21</lastmod>
     <changefreq>monthly</changefreq>
@@ -3404,7 +3437,7 @@
 
   <url>
     <loc>https://anyconverter.io/da/organize-pdf/</loc>
-    <lastmod>2026-08-21</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://anyconverter.io/organize-pdf/"/>
@@ -3437,7 +3470,7 @@
 
   <url>
     <loc>https://anyconverter.io/da/pdf-compress/</loc>
-    <lastmod>2026-08-21</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://anyconverter.io/pdf-compress/"/>
@@ -3459,7 +3492,7 @@
 
   <url>
     <loc>https://anyconverter.io/da/pdf-merge/</loc>
-    <lastmod>2026-08-21</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://anyconverter.io/pdf-merge/"/>
@@ -3481,7 +3514,7 @@
 
   <url>
     <loc>https://anyconverter.io/da/pdf-split/</loc>
-    <lastmod>2026-08-21</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://anyconverter.io/pdf-split/"/>
@@ -3492,7 +3525,7 @@
 
   <url>
     <loc>https://anyconverter.io/da/pdf-to-jpg/</loc>
-    <lastmod>2026-08-21</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://anyconverter.io/pdf-to-jpg/"/>
@@ -3646,7 +3679,7 @@
 
   <url>
     <loc>https://anyconverter.io/da/remove-pdf-pages/</loc>
-    <lastmod>2026-08-21</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://anyconverter.io/remove-pdf-pages/"/>
@@ -3668,7 +3701,7 @@
 
   <url>
     <loc>https://anyconverter.io/da/rotate-pdf/</loc>
-    <lastmod>2026-08-21</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://anyconverter.io/rotate-pdf/"/>
@@ -3944,7 +3977,7 @@
   <!-- BEGIN generated: tool-pages -->
   <url>
     <loc>https://anyconverter.io/calculators/</loc>
-    <lastmod>2026-10-09</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://anyconverter.io/calculators/"/>
@@ -3955,7 +3988,7 @@
 
   <url>
     <loc>https://anyconverter.io/es/calculators/</loc>
-    <lastmod>2026-10-09</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://anyconverter.io/calculators/"/>
@@ -3966,7 +3999,7 @@
 
   <url>
     <loc>https://anyconverter.io/da/calculators/</loc>
-    <lastmod>2026-10-09</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://anyconverter.io/calculators/"/>
@@ -3977,7 +4010,7 @@
 
   <url>
     <loc>https://anyconverter.io/numerology-astrology/</loc>
-    <lastmod>2026-10-09</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://anyconverter.io/numerology-astrology/"/>
@@ -3988,7 +4021,7 @@
 
   <url>
     <loc>https://anyconverter.io/es/numerology-astrology/</loc>
-    <lastmod>2026-10-09</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://anyconverter.io/numerology-astrology/"/>
@@ -3999,7 +4032,7 @@
 
   <url>
     <loc>https://anyconverter.io/da/numerology-astrology/</loc>
-    <lastmod>2026-10-09</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://anyconverter.io/numerology-astrology/"/>
@@ -4010,7 +4043,7 @@
 
   <url>
     <loc>https://anyconverter.io/fun-relationships/</loc>
-    <lastmod>2026-10-09</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://anyconverter.io/fun-relationships/"/>
@@ -4021,7 +4054,7 @@
 
   <url>
     <loc>https://anyconverter.io/es/fun-relationships/</loc>
-    <lastmod>2026-10-09</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://anyconverter.io/fun-relationships/"/>
@@ -4032,7 +4065,7 @@
 
   <url>
     <loc>https://anyconverter.io/da/fun-relationships/</loc>
-    <lastmod>2026-10-09</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://anyconverter.io/fun-relationships/"/>
@@ -4043,7 +4076,7 @@
 
   <url>
     <loc>https://anyconverter.io/date-time/</loc>
-    <lastmod>2026-10-09</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://anyconverter.io/date-time/"/>
@@ -4054,7 +4087,7 @@
 
   <url>
     <loc>https://anyconverter.io/es/date-time/</loc>
-    <lastmod>2026-10-09</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://anyconverter.io/date-time/"/>
@@ -4065,7 +4098,7 @@
 
   <url>
     <loc>https://anyconverter.io/da/date-time/</loc>
-    <lastmod>2026-10-09</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://anyconverter.io/date-time/"/>
@@ -4076,7 +4109,7 @@
 
   <url>
     <loc>https://anyconverter.io/rise-over-run-calculator/</loc>
-    <lastmod>2026-10-09</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://anyconverter.io/rise-over-run-calculator/"/>
@@ -4087,7 +4120,7 @@
 
   <url>
     <loc>https://anyconverter.io/es/rise-over-run-calculator/</loc>
-    <lastmod>2026-10-09</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://anyconverter.io/rise-over-run-calculator/"/>
@@ -4098,7 +4131,7 @@
 
   <url>
     <loc>https://anyconverter.io/da/rise-over-run-calculator/</loc>
-    <lastmod>2026-10-09</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://anyconverter.io/rise-over-run-calculator/"/>
@@ -4109,7 +4142,7 @@
 
   <url>
     <loc>https://anyconverter.io/pay-rise-calculator/</loc>
-    <lastmod>2026-10-09</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://anyconverter.io/pay-rise-calculator/"/>
@@ -4120,7 +4153,7 @@
 
   <url>
     <loc>https://anyconverter.io/es/pay-rise-calculator/</loc>
-    <lastmod>2026-10-09</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://anyconverter.io/pay-rise-calculator/"/>
@@ -4131,7 +4164,7 @@
 
   <url>
     <loc>https://anyconverter.io/da/pay-rise-calculator/</loc>
-    <lastmod>2026-10-09</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://anyconverter.io/pay-rise-calculator/"/>
@@ -4142,7 +4175,7 @@
 
   <url>
     <loc>https://anyconverter.io/price-increase-calculator/</loc>
-    <lastmod>2026-10-09</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://anyconverter.io/price-increase-calculator/"/>
@@ -4153,7 +4186,7 @@
 
   <url>
     <loc>https://anyconverter.io/es/price-increase-calculator/</loc>
-    <lastmod>2026-10-09</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://anyconverter.io/price-increase-calculator/"/>
@@ -4164,7 +4197,7 @@
 
   <url>
     <loc>https://anyconverter.io/da/price-increase-calculator/</loc>
-    <lastmod>2026-10-09</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://anyconverter.io/price-increase-calculator/"/>
@@ -4175,7 +4208,7 @@
 
   <url>
     <loc>https://anyconverter.io/margin-vs-markup-calculator/</loc>
-    <lastmod>2026-10-09</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://anyconverter.io/margin-vs-markup-calculator/"/>
@@ -4186,7 +4219,7 @@
 
   <url>
     <loc>https://anyconverter.io/es/margin-vs-markup-calculator/</loc>
-    <lastmod>2026-10-09</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://anyconverter.io/margin-vs-markup-calculator/"/>
@@ -4197,7 +4230,7 @@
 
   <url>
     <loc>https://anyconverter.io/da/margin-vs-markup-calculator/</loc>
-    <lastmod>2026-10-09</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://anyconverter.io/margin-vs-markup-calculator/"/>
@@ -4208,7 +4241,7 @@
 
   <url>
     <loc>https://anyconverter.io/unit-price-calculator/</loc>
-    <lastmod>2026-10-09</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://anyconverter.io/unit-price-calculator/"/>
@@ -4219,7 +4252,7 @@
 
   <url>
     <loc>https://anyconverter.io/es/unit-price-calculator/</loc>
-    <lastmod>2026-10-09</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://anyconverter.io/unit-price-calculator/"/>
@@ -4230,7 +4263,7 @@
 
   <url>
     <loc>https://anyconverter.io/da/unit-price-calculator/</loc>
-    <lastmod>2026-10-09</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://anyconverter.io/unit-price-calculator/"/>
@@ -4241,7 +4274,7 @@
 
   <url>
     <loc>https://anyconverter.io/percentage-difference-calculator/</loc>
-    <lastmod>2026-10-09</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://anyconverter.io/percentage-difference-calculator/"/>
@@ -4252,7 +4285,7 @@
 
   <url>
     <loc>https://anyconverter.io/es/percentage-difference-calculator/</loc>
-    <lastmod>2026-10-09</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://anyconverter.io/percentage-difference-calculator/"/>
@@ -4263,7 +4296,7 @@
 
   <url>
     <loc>https://anyconverter.io/da/percentage-difference-calculator/</loc>
-    <lastmod>2026-10-09</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://anyconverter.io/percentage-difference-calculator/"/>
@@ -4274,7 +4307,7 @@
 
   <url>
     <loc>https://anyconverter.io/slope-grade-angle-calculator/</loc>
-    <lastmod>2026-10-09</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://anyconverter.io/slope-grade-angle-calculator/"/>
@@ -4285,7 +4318,7 @@
 
   <url>
     <loc>https://anyconverter.io/es/slope-grade-angle-calculator/</loc>
-    <lastmod>2026-10-09</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://anyconverter.io/slope-grade-angle-calculator/"/>
@@ -4296,7 +4329,7 @@
 
   <url>
     <loc>https://anyconverter.io/da/slope-grade-angle-calculator/</loc>
-    <lastmod>2026-10-09</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://anyconverter.io/slope-grade-angle-calculator/"/>
@@ -4307,7 +4340,7 @@
 
   <url>
     <loc>https://anyconverter.io/name-numerology-calculator/</loc>
-    <lastmod>2026-10-09</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://anyconverter.io/name-numerology-calculator/"/>
@@ -4318,7 +4351,7 @@
 
   <url>
     <loc>https://anyconverter.io/es/name-numerology-calculator/</loc>
-    <lastmod>2026-10-09</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://anyconverter.io/name-numerology-calculator/"/>
@@ -4329,7 +4362,7 @@
 
   <url>
     <loc>https://anyconverter.io/da/name-numerology-calculator/</loc>
-    <lastmod>2026-10-09</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://anyconverter.io/name-numerology-calculator/"/>
@@ -4340,7 +4373,7 @@
 
   <url>
     <loc>https://anyconverter.io/numerology-calculator/</loc>
-    <lastmod>2026-10-09</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://anyconverter.io/numerology-calculator/"/>
@@ -4351,7 +4384,7 @@
 
   <url>
     <loc>https://anyconverter.io/es/numerology-calculator/</loc>
-    <lastmod>2026-10-09</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://anyconverter.io/numerology-calculator/"/>
@@ -4362,7 +4395,7 @@
 
   <url>
     <loc>https://anyconverter.io/da/numerology-calculator/</loc>
-    <lastmod>2026-10-09</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://anyconverter.io/numerology-calculator/"/>
@@ -4373,7 +4406,7 @@
 
   <url>
     <loc>https://anyconverter.io/moon-sign-calculator/</loc>
-    <lastmod>2026-10-09</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://anyconverter.io/moon-sign-calculator/"/>
@@ -4384,7 +4417,7 @@
 
   <url>
     <loc>https://anyconverter.io/es/moon-sign-calculator/</loc>
-    <lastmod>2026-10-09</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://anyconverter.io/moon-sign-calculator/"/>
@@ -4395,7 +4428,7 @@
 
   <url>
     <loc>https://anyconverter.io/da/moon-sign-calculator/</loc>
-    <lastmod>2026-10-09</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://anyconverter.io/moon-sign-calculator/"/>
@@ -4406,7 +4439,7 @@
 
   <url>
     <loc>https://anyconverter.io/rising-sign-calculator/</loc>
-    <lastmod>2026-10-09</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://anyconverter.io/rising-sign-calculator/"/>
@@ -4417,7 +4450,7 @@
 
   <url>
     <loc>https://anyconverter.io/es/rising-sign-calculator/</loc>
-    <lastmod>2026-10-09</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://anyconverter.io/rising-sign-calculator/"/>
@@ -4428,7 +4461,7 @@
 
   <url>
     <loc>https://anyconverter.io/da/rising-sign-calculator/</loc>
-    <lastmod>2026-10-09</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://anyconverter.io/rising-sign-calculator/"/>
@@ -4439,7 +4472,7 @@
 
   <url>
     <loc>https://anyconverter.io/lo-shu-grid-calculator/</loc>
-    <lastmod>2026-10-09</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://anyconverter.io/lo-shu-grid-calculator/"/>
@@ -4450,7 +4483,7 @@
 
   <url>
     <loc>https://anyconverter.io/es/lo-shu-grid-calculator/</loc>
-    <lastmod>2026-10-09</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://anyconverter.io/lo-shu-grid-calculator/"/>
@@ -4461,7 +4494,7 @@
 
   <url>
     <loc>https://anyconverter.io/da/lo-shu-grid-calculator/</loc>
-    <lastmod>2026-10-09</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://anyconverter.io/lo-shu-grid-calculator/"/>
@@ -4472,7 +4505,7 @@
 
   <url>
     <loc>https://anyconverter.io/tarot-birth-card-calculator/</loc>
-    <lastmod>2026-10-09</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://anyconverter.io/tarot-birth-card-calculator/"/>
@@ -4483,7 +4516,7 @@
 
   <url>
     <loc>https://anyconverter.io/es/tarot-birth-card-calculator/</loc>
-    <lastmod>2026-10-09</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://anyconverter.io/tarot-birth-card-calculator/"/>
@@ -4494,7 +4527,7 @@
 
   <url>
     <loc>https://anyconverter.io/da/tarot-birth-card-calculator/</loc>
-    <lastmod>2026-10-09</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://anyconverter.io/tarot-birth-card-calculator/"/>
@@ -4505,7 +4538,7 @@
 
   <url>
     <loc>https://anyconverter.io/love-calculator/</loc>
-    <lastmod>2026-10-09</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://anyconverter.io/love-calculator/"/>
@@ -4516,7 +4549,7 @@
 
   <url>
     <loc>https://anyconverter.io/es/love-calculator/</loc>
-    <lastmod>2026-10-09</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://anyconverter.io/love-calculator/"/>
@@ -4527,7 +4560,7 @@
 
   <url>
     <loc>https://anyconverter.io/da/love-calculator/</loc>
-    <lastmod>2026-10-09</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://anyconverter.io/love-calculator/"/>
@@ -4538,7 +4571,7 @@
 
   <url>
     <loc>https://anyconverter.io/flames-calculator/</loc>
-    <lastmod>2026-10-09</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://anyconverter.io/flames-calculator/"/>
@@ -4549,7 +4582,7 @@
 
   <url>
     <loc>https://anyconverter.io/es/flames-calculator/</loc>
-    <lastmod>2026-10-09</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://anyconverter.io/flames-calculator/"/>
@@ -4560,7 +4593,7 @@
 
   <url>
     <loc>https://anyconverter.io/da/flames-calculator/</loc>
-    <lastmod>2026-10-09</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://anyconverter.io/flames-calculator/"/>
@@ -4571,7 +4604,7 @@
 
   <url>
     <loc>https://anyconverter.io/magic-8-ball/</loc>
-    <lastmod>2026-10-09</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://anyconverter.io/magic-8-ball/"/>
@@ -4582,7 +4615,7 @@
 
   <url>
     <loc>https://anyconverter.io/es/magic-8-ball/</loc>
-    <lastmod>2026-10-09</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://anyconverter.io/magic-8-ball/"/>
@@ -4593,7 +4626,7 @@
 
   <url>
     <loc>https://anyconverter.io/da/magic-8-ball/</loc>
-    <lastmod>2026-10-09</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://anyconverter.io/magic-8-ball/"/>
@@ -4604,7 +4637,7 @@
 
   <url>
     <loc>https://anyconverter.io/birthday-countdown-calculator/</loc>
-    <lastmod>2026-10-09</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://anyconverter.io/birthday-countdown-calculator/"/>
@@ -4615,7 +4648,7 @@
 
   <url>
     <loc>https://anyconverter.io/es/birthday-countdown-calculator/</loc>
-    <lastmod>2026-10-09</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://anyconverter.io/birthday-countdown-calculator/"/>
@@ -4626,7 +4659,7 @@
 
   <url>
     <loc>https://anyconverter.io/da/birthday-countdown-calculator/</loc>
-    <lastmod>2026-10-09</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://anyconverter.io/birthday-countdown-calculator/"/>
