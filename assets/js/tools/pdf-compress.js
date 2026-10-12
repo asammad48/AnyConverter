@@ -1,155 +1,145 @@
-/* PDF Compress */
-document.addEventListener('DOMContentLoaded', function () {
-  const dropZone = document.getElementById('compress-drop-zone');
-  const fileInput = document.getElementById('compress-input');
-  const compressSettings = document.getElementById('compress-settings');
-  const originalSizeBar = document.getElementById('original-size-bar');
-  const compressResult = document.getElementById('compress-result');
-  let noteEl = null;
-
-  let originalBytes = null;
-  let compressedBytes = null;
-  let originalFile = null;
-  let compressLevel = 'medium';
-  let pdfLibPromise = null;
-
-  function loadPdfLib() {
-    if (window.PDFLib) return Promise.resolve(window.PDFLib);
-    if (pdfLibPromise) return pdfLibPromise;
-    pdfLibPromise = new Promise(function (resolve, reject) {
-      const script = document.createElement('script');
-      script.src = 'https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js';
-      script.defer = true;
-      script.onload = function () { resolve(window.PDFLib); };
-      script.onerror = function () { reject(new Error('PDF library failed to load')); };
-      document.head.appendChild(script);
-    });
-    return pdfLibPromise;
-  }
-
-  function formatBytes(bytes) {
-    if (bytes < 1024) return bytes + ' B';
-    if (bytes < 1048576) return (bytes / 1024).toFixed(1) + ' KB';
-    return (bytes / 1048576).toFixed(2) + ' MB';
-  }
-
-  function loadFile(file) {
-    originalFile = file;
-    const reader = new FileReader();
-    reader.onload = function (e) {
-      originalBytes = new Uint8Array(e.target.result);
-      compressSettings.style.display = 'block';
-      originalSizeBar.textContent = file.name + ' — ' + formatBytes(file.size);
-      compressResult.style.display = 'none';
-      dropZone.classList.add('has-file');
-      loadPdfLib().catch(function (error) {
-        window.showToast(error.message, 'error');
-      });
-      ensureHonestNote();
-    };
-    reader.readAsArrayBuffer(file);
-  }
-
-  function ensureHonestNote() {
-    if (noteEl || !compressSettings) return;
-    noteEl = document.createElement('div');
-    noteEl.className = 'ac-mini-panel';
-    noteEl.style.marginTop = '12px';
-    noteEl.innerHTML = '<strong>What this compression can do</strong><p class="prototype-muted-note">This browser tool rebuilds and optimizes PDF structure. It does not downsample embedded photos, so scanned PDFs may show little or no size reduction.</p>';
-    compressSettings.appendChild(noteEl);
-  }
-
-  dropZone.addEventListener('click', function () { fileInput.click(); });
-  dropZone.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') fileInput.click(); });
-  dropZone.addEventListener('dragover', function (e) { e.preventDefault(); dropZone.classList.add('dragover'); });
-  dropZone.addEventListener('dragleave', function () { dropZone.classList.remove('dragover'); });
-  dropZone.addEventListener('drop', function (e) {
-    e.preventDefault(); dropZone.classList.remove('dragover');
-    const file = e.dataTransfer.files[0];
-    if (file && (file.type === 'application/pdf' || file.name.endsWith('.pdf'))) loadFile(file);
-  });
-  fileInput.addEventListener('change', function () {
-    if (this.files[0]) loadFile(this.files[0]);
-  });
-
-  document.querySelectorAll('#compress-level-tabs [data-level]').forEach(function(tab) {
-    tab.addEventListener('click', function() {
-      document.querySelectorAll('#compress-level-tabs [data-level]').forEach(function(t) {
-        t.classList.remove('active');
-        t.setAttribute('aria-selected', 'false');
-      });
-      tab.classList.add('active');
-      tab.setAttribute('aria-selected', 'true');
-      compressLevel = tab.dataset.level;
-    });
-  });
-
-  document.getElementById('btn-compress').addEventListener('click', async function () {
-    if (!originalBytes) return;
-
-    const btn = document.getElementById('btn-compress');
-    btn.disabled = true;
-    btn.textContent = 'Compressing...';
-
-    await new Promise(function(r){ setTimeout(r, 0); });
-
-    try {
-      await loadPdfLib();
-      const level = compressLevel;
-      const doc = await window.PDFLib.PDFDocument.load(originalBytes, { ignoreEncryption: true });
-
-      const saveOptions = { useObjectStreams: true };
-      if (level === 'medium' || level === 'high') saveOptions.addDefaultPage = false;
-
-      const saved = await doc.save(saveOptions);
-      compressedBytes = saved;
-
-      const origSize = originalBytes.length;
-      const compSize = saved.length;
-      const pct = Math.round((1 - compSize / origSize) * 100);
-
-      document.getElementById('result-original').textContent = formatBytes(origSize);
-      document.getElementById('result-compressed').textContent = formatBytes(compSize);
-
-      if (compSize >= origSize) {
-        document.getElementById('result-saved').textContent = 'No reduction';
-        document.getElementById('result-saved').style.color = 'var(--color-warning)';
-        document.getElementById('compress-bar-fill').style.width = '0%';
-        window.showToast('This PDF is already optimized. File size unchanged.', 'info');
-        if (noteEl) noteEl.innerHTML = '<strong>No fake compression applied</strong><p class="prototype-muted-note">The output was not smaller, so the download keeps the valid optimized PDF without claiming a false saving. Image recompression is not performed in this browser tool.</p>';
-      } else {
-        document.getElementById('result-saved').textContent = pct + '%';
-        document.getElementById('result-saved').style.color = 'var(--color-success)';
-        document.getElementById('compress-bar-fill').style.width = pct + '%';
-      }
-
-      const so = document.getElementById('stat-orig-pdf');
-      const sc = document.getElementById('stat-comp-pdf');
-      const sp = document.getElementById('stat-saved-pct');
-      if (so) so.textContent = formatBytes(origSize);
-      if (sc) sc.textContent = formatBytes(compSize);
-      if (sp) sp.textContent = compSize < origSize ? pct + '%' : '0%';
-
-      const pageCount = doc.getPageCount();
-      const spg = document.getElementById('stat-pdf-pages');
-      if (spg) spg.textContent = pageCount;
-
-      compressResult.style.display = 'block';
-    } catch (e) {
-      window.showToast('Error compressing PDF: ' + e.message, 'error');
-    } finally {
-      btn.disabled = false;
-      btn.textContent = 'Compress PDF';
+/* AnyConverter — pdf-compress tool. Generated by tools/pdf-pages/build.js from the tool-page design; edit tools/pdf-pages/source/pdf-compress/. */
+window.DCTool = function (lang, DCLogic) {
+  var FNS = {
+    en: function () {
+      const PX = {"choose":"Choose PDF","chooseN":"Choose PDFs","sample":"Try a sample PDF","reading":"Reading PDF…","limits":"Any size your device can handle · nothing is uploaded","bad":e=>'This file is a .'+e+'. Choose a PDF.',"locked":n=>n+' is password-protected. Unlock it first, then try again.',"broken":n=>n+' could not be opened. It may be damaged.',"pages":n=>n+(n===1?' page':' pages'),"replace":"Replace file","cancel":"Cancel","dlAll":"Download all (ZIP)","dl":"Download","another":"Start again","change":"Change settings","cont":"Continue with","trust":"Processed in your browser. Your PDF is not uploaded.","samplePage":(i,n)=>'Page '+i+' of '+n,"cancelled":"Cancelled.","fail":"Something went wrong while processing this PDF."};
+      const L = {"h1":"Compress a PDF to the size you need","crumb":"Compress PDF","lede":"Choose how much to shrink it, or just type the size a form or email will accept. You can compare the quality before you download, and if the file can’t get smaller, you keep your original.","dropT":"Drop a PDF here","dropO":"See how small it can get, and check the quality before downloading.","mode":"Compression","modes":["Light","Balanced","Strong","Target size"],"hints":["Keeps text selectable. Removes unused data. Smaller savings.","Pages become images at 150 DPI. Good for scans you will read on screen.","Pages become images at 100 DPI. Smallest files; small text gets softer.","Type the size you need. We try quality levels until it fits."],"target":"Target size (MB)","tgtHint":s=>'This PDF is '+s+' now.',"tgtBad":"Enter a size in MB, for example 2.","gray":"Convert to grayscale","grayHint":"Saves extra space when colour does not matter.","meta":"Remove hidden details","metaHint":"Author, software and dates stored in the file.","run":"Compress PDF","work":(a,b)=>'Compressing page '+a+' of '+b+'…',"tryL":k=>'Attempt '+k+':',"resT":(a,b,p)=>'From '+a+' to '+b+(p>0?' (−'+p+'%)':''),"same":"This PDF is already compact. Your original is kept so it does not get bigger.","miss":t=>'Could not reach '+t+' MB without making pages unreadable. This is the smallest readable version.',"orig":"Original","comp":"Compressed","zoom":"Close-up of page 1","textKept":"Text is still selectable.","textGone":"Pages are now images. Text can be read but not selected.","suffix":"compressed","sname":"scanned-letter.pdf","stitle":"Scanned letter","tip":"Need it under a limit?","tipB":"Choose Target size and type the limit from the form or email, for example 2 MB."};
+      const T = {"home":"Home","fav":"Favorite","saved":"Saved","share":"Share","ad":"Advertisement","copied":"Copied","linkCopied":"Link copied","downloaded":"Downloaded","faved":"Added to favorites","unfaved":"Removed from favorites","search":"Search tools…","nav":["Developer","PDF Tools","Text","Productivity","Calculators","Browser"]};
+      const LOC = "en-US";
+      
+      return { PX: PX, L: L, T: T, LOC: LOC };
+    },
+    es: function () {
+      const PX = {"choose":"Elegir PDF","chooseN":"Elegir PDF","sample":"Probar con un PDF de ejemplo","reading":"Leyendo PDF…","limits":"El tamaño que admita tu dispositivo · no se sube nada","bad":e=>'Este archivo es un .'+e+'. Elige un PDF.',"locked":n=>n+' tiene contraseña. Desbloquéalo primero y vuelve a intentarlo.',"broken":n=>'No se pudo abrir '+n+'. Puede estar dañado.',"pages":n=>n+(n===1?' página':' páginas'),"replace":"Cambiar archivo","cancel":"Cancelar","dlAll":"Descargar todo (ZIP)","dl":"Descargar","another":"Empezar de nuevo","change":"Cambiar ajustes","cont":"Continuar con","trust":"Se procesa en tu navegador. Tu PDF no se sube.","samplePage":(i,n)=>'Página '+i+' de '+n,"cancelled":"Cancelado.","fail":"Algo salió mal al procesar este PDF."};
+      const L = {"h1":"Comprimir un PDF al tamaño que necesitas","crumb":"Comprimir PDF","lede":"Elige cuánto reducirlo o escribe el tamaño que acepta el formulario o el correo. Puedes comparar la calidad antes de descargar y, si el archivo no puede ser más pequeño, te quedas con el original.","dropT":"Suelta aquí un PDF","dropO":"Mira cuánto puede reducirse y revisa la calidad antes de descargar.","mode":"Compresión","modes":["Ligera","Equilibrada","Fuerte","Tamaño objetivo"],"hints":["Conserva el texto seleccionable. Elimina datos sin usar. Ahorro menor.","Las páginas pasan a imagen a 150 ppp. Bien para escaneos que leerás en pantalla.","Las páginas pasan a imagen a 100 ppp. Archivos mínimos; la letra pequeña se suaviza.","Escribe el tamaño que necesitas. Probamos niveles de calidad hasta que quepa."],"target":"Tamaño objetivo (MB)","tgtHint":s=>'Ahora este PDF pesa '+s+'.',"tgtBad":"Escribe un tamaño en MB, por ejemplo 2.","gray":"Pasar a escala de grises","grayHint":"Ahorra más espacio cuando el color no importa.","meta":"Quitar datos ocultos","metaHint":"Autor, programa y fechas guardados en el archivo.","run":"Comprimir PDF","work":(a,b)=>'Comprimiendo página '+a+' de '+b+'…',"tryL":k=>'Intento '+k+':',"resT":(a,b,p)=>'De '+a+' a '+b+(p>0?' (−'+p+' %)':''),"same":"Este PDF ya es compacto. Conservamos tu original para que no pese más.","miss":t=>'No se pudo llegar a '+t+' MB sin que las páginas dejen de leerse. Esta es la versión legible más pequeña.',"orig":"Original","comp":"Comprimido","zoom":"Detalle de la página 1","textKept":"El texto sigue siendo seleccionable.","textGone":"Las páginas ahora son imágenes. El texto se lee, pero no se puede seleccionar.","suffix":"comprimido","sname":"carta-escaneada.pdf","stitle":"Carta escaneada","tip":"¿Tiene que pesar menos de un límite?","tipB":"Elige Tamaño objetivo y escribe el límite del formulario o del correo, por ejemplo 2 MB."};
+      const T = {"home":"Inicio","fav":"Favorito","saved":"Guardado","share":"Compartir","ad":"Publicidad","copied":"Copiado","linkCopied":"Enlace copiado","downloaded":"Descargado","faved":"Añadido a favoritos","unfaved":"Quitado de favoritos","search":"Buscar herramientas…","nav":["Desarrollo","PDF","Texto","Productividad","Calculadoras","Navegador"]};
+      const LOC = "es-ES";
+      
+      return { PX: PX, L: L, T: T, LOC: LOC };
+    },
+    da: function () {
+      const PX = {"choose":"Vælg PDF","chooseN":"Vælg PDF’er","sample":"Prøv med en eksempel-PDF","reading":"Læser PDF…","limits":"Så stor, som din enhed kan klare · intet uploades","bad":e=>'Filen er en .'+e+'. Vælg en PDF.',"locked":n=>n+' er beskyttet med adgangskode. Lås den op først, og prøv igen.',"broken":n=>n+' kunne ikke åbnes. Den kan være beskadiget.',"pages":n=>n+(n===1?' side':' sider'),"replace":"Udskift fil","cancel":"Annullér","dlAll":"Download alle (ZIP)","dl":"Download","another":"Start forfra","change":"Skift indstillinger","cont":"Fortsæt med","trust":"Behandles i din browser. Din PDF uploades ikke.","samplePage":(i,n)=>'Side '+i+' af '+n,"cancelled":"Annulleret.","fail":"Noget gik galt under behandlingen af PDF’en."};
+      const L = {"h1":"Komprimér en PDF til den størrelse, du skal bruge","crumb":"Komprimér PDF","lede":"Vælg, hvor meget den skal skrumpe, eller skriv den størrelse, som formularen eller mailen accepterer. Du kan sammenligne kvaliteten før download, og kan filen ikke blive mindre, beholder du originalen.","dropT":"Slip en PDF her","dropO":"Se, hvor lille den kan blive, og tjek kvaliteten før download.","mode":"Komprimering","modes":["Let","Balanceret","Kraftig","Målstørrelse"],"hints":["Bevarer markerbar tekst. Fjerner ubrugte data. Mindre besparelse.","Siderne bliver til billeder i 150 DPI. Godt til scanninger, du læser på skærm.","Siderne bliver til billeder i 100 DPI. Mindste filer; lille tekst bliver blødere.","Skriv den størrelse, du skal ramme. Vi prøver kvaliteter, til den passer."],"target":"Målstørrelse (MB)","tgtHint":s=>'PDF’en fylder '+s+' nu.',"tgtBad":"Skriv en størrelse i MB, f.eks. 2.","gray":"Lav om til gråtoner","grayHint":"Sparer ekstra plads, når farver ikke betyder noget.","meta":"Fjern skjulte oplysninger","metaHint":"Forfatter, program og datoer gemt i filen.","run":"Komprimér PDF","work":(a,b)=>'Komprimerer side '+a+' af '+b+'…',"tryL":k=>'Forsøg '+k+':',"resT":(a,b,p)=>'Fra '+a+' til '+b+(p>0?' (−'+p+' %)':''),"same":"PDF’en er allerede kompakt. Din original er bevaret, så den ikke bliver større.","miss":t=>'Kunne ikke nå '+t+' MB, uden at siderne blev ulæselige. Dette er den mindste læsbare version.',"orig":"Original","comp":"Komprimeret","zoom":"Nærbillede af side 1","textKept":"Teksten kan stadig markeres.","textGone":"Siderne er nu billeder. Teksten kan læses, men ikke markeres.","suffix":"komprimeret","sname":"scannet-brev.pdf","stitle":"Scannet brev","tip":"Skal den under en grænse?","tipB":"Vælg Målstørrelse, og skriv grænsen fra formularen eller mailen, f.eks. 2 MB."};
+      const T = {"home":"Forside","fav":"Favorit","saved":"Gemt","share":"Del","ad":"Annonce","copied":"Kopieret","linkCopied":"Link kopieret","downloaded":"Downloadet","faved":"Tilføjet til favoritter","unfaved":"Fjernet fra favoritter","search":"Søg værktøjer…","nav":["Udvikler","PDF","Tekst","Produktivitet","Beregnere","Browser"]};
+      const LOC = "da-DK";
+      
+      return { PX: PX, L: L, T: T, LOC: LOC };
     }
-  });
+  };
+  var DCI = (FNS[lang] || FNS.en)();
+  const PX = DCI.PX;
+  const L = DCI.L;
+  class Component extends DCLogic {
+    T = DCI.T;
+    LOC = DCI.LOC;
+    TOOL = 'pdf-compress';
+    state = Object.assign({ view:'desktop', toast:'', seo:false, narrow:typeof window!=='undefined'&&window.innerWidth<760 }, this.init ? this.init() : {});
+  
+    componentDidMount(){ this.track('tool_view'); if(this.fromShare){ try{ const r=new URLSearchParams(location.search).get('r'); if(r) this.fromShare(JSON.parse(decodeURIComponent(escape(atob(r))))); }catch(e){} } this._rs=()=>{ const n=window.innerWidth<760; if(n!==this.state.narrow) this.setState({ narrow:n }); }; window.addEventListener('resize',this._rs); this._rs(); try{ const v=localStorage.getItem('acproto:view'); if(v && v!==this.state.view) this.setState({view:v}); }catch(e){} if(this.mount) this.mount(); }
+    componentWillUnmount(){ clearTimeout(this._tt); window.removeEventListener('resize',this._rs); if(this.unmount) this.unmount(); }
+    setView(v){ this.setState({view:v}); try{ localStorage.setItem('acproto:view',v); }catch(e){} }
+    toast(msg){ this.setState({toast:msg}); clearTimeout(this._tt); this._tt=setTimeout(()=>this.setState({toast:''}),1800); }
+    fallbackCopy(t){ const ta=document.createElement('textarea'); ta.value=t; document.body.appendChild(ta); ta.select(); try{ document.execCommand('copy'); }catch(e){} ta.remove(); }
+    copy(text,msg){ const done=()=>this.toast(msg||this.T.copied); try{ navigator.clipboard.writeText(text).then(done,()=>{ this.fallbackCopy(text); done(); }); }catch(e){ this.fallbackCopy(text); done(); } }
+    download(name,data,mime){ const b=data instanceof Blob?data:new Blob([data],{type:mime||'text/plain'}); const a=document.createElement('a'); a.href=URL.createObjectURL(b); a.download=name; document.body.appendChild(a); a.click(); a.remove(); setTimeout(()=>URL.revokeObjectURL(a.href),2000); this.toast(this.T.downloaded+': '+name); }
+    opts(list,cur,set,labels){ return list.map((v,i)=>{ const on=Array.isArray(cur)?cur.indexOf(v)>-1:v===cur; return { label:labels?labels[i]:String(v), value:v, on, onClick:()=>set(v), bg:on?'#b5412b':'#fff', fg:on?'#fff':'#1f1a17', bd:on?'#b5412b':'#d9cfc3', tbd:on?'#b5412b':'transparent', soft:on?'#f6e6e0':'#fff', softFg:on?'#8f2f1d':'#1f1a17' }; }); }
+    sw(on){ return { track:on?'#b5412b':'#d9cfc3', knob:on?'19px':'3px' }; }
+    num(v){ const n=parseFloat(String(v).replace(',','.')); return isFinite(n)?n:0; }
+    fmt(n,d,loc){ return new Intl.NumberFormat(loc||this.LOC,{minimumFractionDigits:d==null?2:d,maximumFractionDigits:d==null?2:d}).format(n); }
+    on(key){ return (e)=>{ if(!this._ts){ this._ts=1; this.track('tool_input_started'); } this.setState({[key]:e && e.target ? (e.target.type==='checkbox'?e.target.checked:e.target.value) : e}); }; }
+    track(ev,p){ try{ (window.dataLayer=window.dataLayer||[]).push(Object.assign({ event:ev, tool_id:this.TOOL, language:this.LOC.slice(0,2) },p||{})); }catch(e){} }
+    renderVals(){ const nr=!!this.state.narrow; const m=nr||this.state.view==='mobile';
+      const base={ isMobile:m, isDesktop:!m, notNarrow:!nr, outerPad:nr?'0 0 0':'14px 16px 64px', frameMax:nr?'100%':m?'390px':'1280px', frameRadius:nr?'0px':m?'32px':'14px', frameShadow:nr?'none':m?'0 0 0 10px #1f1a17, 0 24px 60px rgba(0,0,0,.28)':'0 0 0 1px #e6ded4, 0 20px 60px rgba(31,26,23,.12)', padX:m?'16px':'40px', h1Size:m?'30px':'46px', frameTop:nr?'0px':m?'12px':'0px', heroPad:m?'20px 16px 18px':'36px 40px 30px', gridCols:m?'1fr':'minmax(0,1fr) 300px', stepCols:m?'1fr':'repeat(3,minmax(0,1fr))', featCols:m?'1fr':'repeat(2,minmax(0,1fr))', relCols:m?'1fr':'repeat(3,minmax(0,1fr))',
+        viewSeg:this.opts(['desktop','mobile'],this.state.view,v=>this.setView(v),['Desktop','Mobile']),
+        seoOpen:!!this.state.seo, toggleSeo:()=>this.setState({seo:!this.state.seo}),
+        toastOn:!!this.state.toast, toastMsg:this.state.toast, onFaq:()=>this.track('faq_expanded'), onRel:()=>this.track('related_tool_clicked'), onLang:()=>this.track('language_switched') };
+      return Object.assign(base, this.vals?this.vals(m):{}); }
+  
+  
+    mount(){ this.libs(); }
+    unmount(){ this._dead=1; this._cx=1; }
+    libs(){ return new Promise(res=>{ const ok=()=>window.PDFLib&&window.pdfjsLib; const go=()=>{ if(!window.pdfjsLib.GlobalWorkerOptions.workerSrc) window.pdfjsLib.GlobalWorkerOptions.workerSrc='https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/build/pdf.worker.min.js'; res(); }; if(ok()) return go(); const t=setInterval(()=>{ if(ok()){ clearInterval(t); go(); } },80); }); }
+    xInit(x){ return Object.assign({ files:[], th:{}, stage:'empty', prog:0, plabel:'', err:'', dz:false, res:null, loading:false }, x||{}); }
+    kb(b){ return b>=1048576 ? this.fmt(b/1048576,b>=10485760?1:2)+' MB' : Math.max(1,Math.round(b/1024))+' KB'; }
+    base(n){ return String(n||'document').replace(/\.pdf$/i,'').replace(/[\\/:*?"<>|]+/g,'').trim().replace(/\s+/g,'-')||'document'; }
+    range1(n){ const a=[]; for(let i=1;i<=n;i++) a.push(i); return a; }
+    toR(arr){ const r=[]; let i=0; while(i<arr.length){ let j=i; while(j+1<arr.length&&arr[j+1]===arr[j]+1) j++; r.push(i===j?String(arr[i]):arr[i]+'-'+arr[j]); i=j+1; } return r.join(', '); }
+    parseList(t,n){ t=String(t||'').trim(); if(!t) return this.range1(n); const set={}; for(const part of t.split(/[,;]+/).map(x=>x.replace(/\s+/g,'')).filter(Boolean)){ const m=part.match(/^(\d+)(?:[-–](\d+))?$/); if(!m) return null; let a=+m[1], b=m[2]?+m[2]:a; if(a>b){ const x=a; a=b; b=x; } if(a<1||b>n) return null; for(let i=a;i<=b;i++) set[i]=1; } return Object.keys(set).map(Number).sort((a,b)=>a-b); }
+    tick(){ return new Promise(r=>setTimeout(r,0)); }
+    async pdims(doc){ const d=[]; for(let i=1;i<=doc.numPages;i++){ const v=(await doc.getPage(i)).getViewport({ scale:1 }); d.push([v.width,v.height]); } return d; }
+    prot(rot,w,h){ return { tf:'rotate('+rot+'deg)'+(rot%180?' scale('+Math.min(1,(w/h)).toFixed(3)+')':''), ar:w+' / '+h }; }
+    pnoop(){ return { ds:()=>{}, dov:()=>{}, dr:()=>{} }; }
+    async addPdfs(list,sample){ const arr=Array.from(list||[]); if(!arr.length){ this.setState({ loading:false }); return; } this.setState({ err:'', loading:true }); await this.libs();
+      for(const f of (this.MULTI?arr:arr.slice(0,1))){
+        if(!sample && !/\.pdf$/i.test(f.name) && f.type!=='application/pdf'){ this.setState({ err:PX.bad((f.name.split('.').pop()||'?').toLowerCase()) }); continue; }
+        let bytes, doc; try{ bytes=new Uint8Array(await f.arrayBuffer()); doc=await window.pdfjsLib.getDocument({ data:bytes.slice() }).promise; }catch(e){ this.setState({ err:e&&e.name==='PasswordException'?PX.locked(f.name):PX.broken(f.name) }); continue; }
+        if(!this.MULTI) this._drop();
+        const id='f'+(this._pv=(this._pv||0)+1)+'_'+Date.now(); (this._docs=this._docs||{})[id]=doc;
+        const it={ id, name:f.name, size:bytes.length, bytes, n:doc.numPages, skip:[] };
+        this.setState(s=>({ files:this.MULTI?s.files.concat([it]):[it], th:this.MULTI?s.th:{}, stage:'ready', res:null }));
+        this.thumbs(id,doc); }
+      this.setState({ loading:false }); if(this.onFiles) this.onFiles(); }
+    _drop(){ (this.state.files||[]).forEach(f=>this._kill(f.id)); }
+    _kill(id){ const d=this._docs&&this._docs[id]; if(d){ try{ d.destroy(); }catch(e){} delete this._docs[id]; } }
+    async thumbs(id,doc){ for(let i=1;i<=Math.min(doc.numPages,300);i++){ if(this._dead||!this._docs[id]) return; try{ const c=await this.draw(doc,i,150,'w'); const b=await new Promise(r=>c.toBlob(r,'image/jpeg',.72)); c.width=1; const u=URL.createObjectURL(b); this.setState(s=>({ th:Object.assign({},s.th,{ [id+':'+i]:u }) })); }catch(e){ return; } } }
+    async draw(doc,i,v,by){ const pg=await doc.getPage(i); const v1=pg.getViewport({ scale:1 }); const sc=by==='w'?v/v1.width:v/72; const vp=pg.getViewport({ scale:sc }); const c=document.createElement('canvas'); c.width=Math.max(1,Math.round(vp.width)); c.height=Math.max(1,Math.round(vp.height)); const x=c.getContext('2d'); x.fillStyle='#fff'; x.fillRect(0,0,c.width,c.height); await pg.render({ canvasContext:x, viewport:vp }).promise; c._pw=v1.width; c._ph=v1.height; return c; }
+    async makeSample(o){ await this.libs(); const P=window.PDFLib, d=await P.PDFDocument.create(); const fb=await d.embedFont(P.StandardFonts.HelveticaBold), fr=await d.embedFont(P.StandardFonts.Helvetica); let img=null; const col=o.color||[0.71,0.25,0.17];
+      if(o.photo){ const c=document.createElement('canvas'); c.width=1600; c.height=1000; const x=c.getContext('2d'); const g=x.createLinearGradient(0,0,1600,1000); g.addColorStop(0,'#e9a48f'); g.addColorStop(.55,'#c9b18a'); g.addColorStop(1,'#3b5ba5'); x.fillStyle=g; x.fillRect(0,0,1600,1000); x.fillStyle='rgba(31,26,23,.55)'; x.beginPath(); x.moveTo(0,700); for(let k=0;k<=10;k++) x.lineTo(160*k,620+70*Math.sin(k*1.3)); x.lineTo(1600,1000); x.lineTo(0,1000); x.fill(); const im=x.getImageData(0,0,1600,1000), a=im.data; for(let k=0;k<a.length;k+=4){ const r=(Math.random()-.5)*46; a[k]+=r; a[k+1]+=r; a[k+2]+=r; } x.putImageData(im,0,0); const b=await new Promise(r=>c.toBlob(r,'image/jpeg',.97)); img=await d.embedJpg(new Uint8Array(await b.arrayBuffer())); }
+      for(let i=1;i<=o.pages;i++){ const p=d.addPage([595.28,841.89]); if(o.blank&&o.blank.indexOf(i)>-1) continue; if(o.land&&o.land.indexOf(i)>-1){ p.setRotation(P.degrees(90)); } p.drawRectangle({ x:0,y:p.getHeight()-80,width:p.getWidth(),height:80,color:P.rgb(col[0],col[1],col[2]) }); p.drawText(o.title,{ x:48,y:p.getHeight()-50,size:22,font:fb,color:P.rgb(1,1,1) }); p.drawText(PX.samplePage(i,o.pages),{ x:48,y:p.getHeight()-114,size:12,font:fr,color:P.rgb(.37,.34,.31) });
+        let y=p.getHeight()-142; if(img){ p.drawImage(img,{ x:48,y:384,width:499.28,height:312 }); y=350; }
+        for(let k=0;k<(img?12:24);k++) p.drawRectangle({ x:48,y:y-k*22,width:380+((i*37+k*53)%120),height:7,color:P.rgb(.88,.85,.81) });
+        p.drawText(String(i),{ x:p.getWidth()/2-12,y:52,size:44,font:fb,color:P.rgb(col[0],col[1],col[2]) }); }
+      d.setTitle(o.title); const bytes=await d.save(); return new File([bytes],o.name,{ type:'application/pdf' }); }
+    async job(fn){ this._cx=0; this.setState({ stage:'working', prog:0, plabel:'', err:'' }); this.track('tool_calculate'); await this.tick();
+      try{ const res=await fn((p,label)=>{ if(this._cx) throw new Error('cx'); this.setState({ prog:Math.max(0,Math.min(1,p)), plabel:label||this.state.plabel }); });
+        res.items.forEach(it=>{ it.size=it.blob.size; if(/^image\//.test(it.blob.type)) it.url=URL.createObjectURL(it.blob); });
+        this.setState({ stage:'done', res, prog:1 }); this.track('file_ready'); }
+      catch(e){ console.warn(e); this.setState({ stage:'ready', prog:0, err:e&&e.message==='cx'?PX.cancelled:PX.fail }); } }
+    saveAll(){ const r=this.state.res; if(!r) return; const it=r.items; if(it.length===1) return this.download(it[0].name,it[0].blob); const z=new window.JSZip(); it.forEach(i=>z.file(i.name,i.blob)); z.generateAsync({ type:'blob' }).then(b=>this.download(r.zip||'anyconverter.zip',b)); }
+    resetAll(){ this._cx=1; this._drop(); this.setState(Object.assign({ files:[], th:{}, stage:'empty', res:null, err:'', prog:0, loading:false }, this.resetExtra?this.resetExtra():{})); }
+    xVals(){ const s=this.state, f0=s.files[0], r=s.res; const items=r?r.items:[];
+      return { isEmpty:!s.files.length, hasFiles:s.files.length>0, isReading:!!s.loading, hasErr:!!s.err, err:s.err,
+        isReady:s.files.length>0&&s.stage==='ready', isWorking:s.stage==='working', isDone:s.stage==='done'&&!!r, notDone:s.stage!=='done',
+        progW:Math.round(s.prog*100)+'%', progPct:Math.round(s.prog*100)+'%', workLabel:s.plabel,
+        dzBd:s.dz?'#b5412b':'#d2c6b8', dzBg:s.dz?'#f6e6e0':'#fbf9f6',
+        dzOver:(e)=>{ e.preventDefault(); if(!this.state.dz) this.setState({ dz:true }); }, dzLeave:()=>this.setState({ dz:false }),
+        dzDrop:(e)=>{ e.preventDefault(); this.setState({ dz:false }); const f=e.dataTransfer&&e.dataTransfer.files; if(f&&f.length) this.addPdfs(Array.from(f)); },
+        onFile:(e)=>{ const f=e.target.files; if(f&&f.length) this.addPdfs(Array.from(f)); e.target.value=''; },
+        onSample:()=>{ this.setState({ loading:true, err:'' }); this.sample(); },
+        docName:f0?f0.name:'', docMeta:f0?PX.pages(f0.n)+' · '+this.kb(f0.size):'', docBgi:f0&&s.th[f0.id+':1']?'url('+s.th[f0.id+':1']+')':'none',
+        onReset:()=>this.resetAll(), onCancel:()=>{ this._cx=1; }, onChange:()=>this.setState({ stage:'ready', res:null }),
+        resTitle:r?r.title:'', resMeta:r?r.meta:'', hasNote:!!(r&&r.note), resNote:r&&r.note?r.note:'', multiRes:items.length>1,
+        resRows:items.map(it=>({ name:it.name, meta:it.meta||this.kb(it.size), bgi:it.url?'url('+it.url+')':'none', tag:it.url?'':'PDF', dl:()=>this.download(it.name,it.blob) })),
+        dlMain:()=>this.saveAll(), dlLabel:items.length>1?PX.dlAll:PX.dl }; }
+  
+  
+    init(){ return this.xInit({ mode:'bal', tgt:'2', gray:false, meta:true }); }
+    sample(){ this.makeSample({ name:L.sname, pages:4, title:L.stitle, photo:true }).then(f=>this.addPdfs([f],true)); }
+    toGray(c){ const x=c.getContext('2d'), d=x.getImageData(0,0,c.width,c.height), a=d.data; for(let k=0;k<a.length;k+=4){ const v=a[k]*.299+a[k+1]*.587+a[k+2]*.114; a[k]=a[k+1]=a[k+2]=v; } x.putImageData(d,0,0); }
+    wipe(d){ if(this.state.meta){ d.setTitle(''); d.setAuthor(''); d.setSubject(''); d.setKeywords([]); d.setCreator(''); d.setProducer(''); } else { d.setProducer('AnyConverter'); } }
+    async rast(doc,P,dpi,q,gray,pr){ const out=await P.PDFDocument.create(), n=doc.numPages; let first=null;
+      for(let i=1;i<=n;i++){ pr((i-1)/n,L.work(i,n)); const c=await this.draw(doc,i,dpi,'dpi'); if(gray) this.toGray(c); const b=await new Promise(r=>c.toBlob(r,'image/jpeg',q)); if(i===1) first=b; const im=await out.embedJpg(new Uint8Array(await b.arrayBuffer())); const pg=out.addPage([c._pw,c._ph]); pg.drawImage(im,{ x:0,y:0,width:c._pw,height:c._ph }); c.width=1; c.height=1; }
+      this.wipe(out); return { bytes:await out.save({ useObjectStreams:true }), first }; }
+    async comp(){ const s=this.state, f=s.files[0], P=window.PDFLib, doc=this._docs[f.id], bn=this.base(f.name), orig=f.size;
+      await this.job(async(pr)=>{ let bytes, first=null, note='', raster=s.mode!=='light', dpi=150;
+        if(!raster){ pr(.3,L.work(1,1)); const d=await P.PDFDocument.load(f.bytes,{ ignoreEncryption:true, updateMetadata:false }); this.wipe(d); bytes=await d.save({ useObjectStreams:true }); }
+        else if(s.mode!=='tgt'){ const st=s.mode==='bal'?[150,.72]:[100,.55]; dpi=st[0]; const r=await this.rast(doc,P,st[0],st[1],s.gray,pr); bytes=r.bytes; first=r.first; }
+        else { const lim=this.num(s.tgt)*1048576, lad=[[150,.8],[150,.65],[130,.6],[110,.55],[96,.5],[80,.42],[72,.35]]; let best=null, bd=150;
+          for(let k=0;k<lad.length;k++){ const r=await this.rast(doc,P,lad[k][0],lad[k][1],s.gray,(p,l)=>pr((k+p)/lad.length,L.tryL(k+1)+' '+l)); if(!best||r.bytes.length<best.bytes.length){ best=r; bd=lad[k][0]; } if(r.bytes.length<=lim){ best=r; bd=lad[k][0]; break; } }
+          bytes=best.bytes; first=best.first; dpi=bd; if(bytes.length>lim) note=L.miss(this.fmt(this.num(s.tgt),1)); }
+        let kept=false; if(bytes.length>=orig){ bytes=f.bytes; kept=true; note=note||L.same; raster=false; first=null; }
+        let prevO=''; if(first){ pr(.99); const c=await this.draw(doc,1,200,'dpi'); prevO=URL.createObjectURL(await new Promise(r=>c.toBlob(r,'image/jpeg',.95))); c.width=1; }
+        return { items:[{ name:bn+'-'+L.suffix+'.pdf', blob:new Blob([bytes],{ type:'application/pdf' }) }], title:L.resT(this.kb(orig),this.kb(bytes.length),kept?0:Math.round((1-bytes.length/orig)*100)), meta:raster?L.textGone:L.textKept, note, prevO, prevC:first?URL.createObjectURL(first):'', o:orig, c:bytes.length }; }); }
+    vals(){ const s=this.state, f=s.files[0], r=s.res; const tgtOk=this.num(s.tgt)>0;
+      return Object.assign(this.xVals(),{
+        modeSeg:this.opts(['light','bal','str','tgt'],s.mode,v=>this.setState({ mode:v, stage:s.files.length?'ready':'empty', res:null }),L.modes), modeHint:L.hints[['light','bal','str','tgt'].indexOf(s.mode)],
+        isTgt:s.mode==='tgt', isRaster:s.mode!=='light', tgt:s.tgt, onTgt:(e)=>this.setState({ tgt:e.target.value }), tgtHint:f?L.tgtHint(this.kb(f.size)):'', tgtBad:s.mode==='tgt'&&!tgtOk,
+        graySw:this.sw(s.gray), togGray:()=>this.setState({ gray:!s.gray }), metaSw:this.sw(s.meta), togMeta:()=>this.setState({ meta:!s.meta }),
+        canRun:!!f&&(s.mode!=='tgt'||tgtOk), onRun:()=>this.comp(),
+        hasPrev:!!(r&&r.prevO&&r.prevC), prevO:r&&r.prevO?'url('+r.prevO+')':'none', prevC:r&&r.prevC?'url('+r.prevC+')':'none', origSz:r?this.kb(r.o):'', compSz:r?this.kb(r.c):'' }); }
+  
+  }
+  
 
-  document.getElementById('btn-download-compressed').addEventListener('click', function () {
-    const bytes = compressedBytes || originalBytes;
-    if (!bytes) return;
-    const blob = new Blob([bytes], { type: 'application/pdf' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url; a.download = 'compressed.pdf'; a.click();
-    URL.revokeObjectURL(url);
-  });
-});
+  return Component;
+};

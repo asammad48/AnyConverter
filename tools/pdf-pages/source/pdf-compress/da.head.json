@@ -1,0 +1,106 @@
+{
+ "title": "Komprimér PDF – Til en Bestemt Størrelse, Ingen Upload",
+ "desc": "Gør en PDF mindre i din browser. Vælg styrke, eller skriv den størrelse, du skal ramme, f.eks. 2 MB, og sammenlign kvaliteten, før du downloader. Gratis.",
+ "ld": {
+  "@context": "https://schema.org",
+  "@graph": [
+   {
+    "@type": "WebApplication",
+    "name": "Komprimér en PDF til den størrelse, du skal bruge",
+    "url": "https://anyconverter.io/da/pdf-compress/",
+    "description": "Gør en PDF mindre i din browser. Vælg styrke, eller skriv den størrelse, du skal ramme, f.eks. 2 MB, og sammenlign kvaliteten, før du downloader. Gratis.",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Any (web browser)",
+    "browserRequirements": "Requires JavaScript",
+    "inLanguage": "da",
+    "isAccessibleForFree": true,
+    "offers": {
+     "@type": "Offer",
+     "price": "0",
+     "priceCurrency": "USD"
+    },
+    "featureList": [
+     "Komprimér til en præcis størrelse",
+     "Tjek kvaliteten før download",
+     "Mulighed for at bevare markerbar tekst",
+     "Gråtoner til print",
+     "Din PDF bliver på din enhed",
+     "Aldrig større end originalen"
+    ],
+    "publisher": {
+     "@type": "Organization",
+     "name": "AnyConverter",
+     "url": "https://anyconverter.io"
+    }
+   },
+   {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+     {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Forside",
+      "item": "https://anyconverter.io/da/"
+     },
+     {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "PDF-værktøjer",
+      "item": "https://anyconverter.io/da/pdf-vaerktoejer/"
+     },
+     {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Komprimér PDF",
+      "item": "https://anyconverter.io/da/pdf-compress/"
+     }
+    ]
+   },
+   {
+    "@type": "FAQPage",
+    "mainEntity": [
+     {
+      "@type": "Question",
+      "name": "Hvordan komprimerer jeg en PDF til under 2 MB?",
+      "acceptedAnswer": {
+       "@type": "Answer",
+       "text": "Vælg Målstørrelse, og skriv 2. Værktøjet prøver forskellige kvaliteter og beholder den bedste, der passer."
+      }
+     },
+     {
+      "@type": "Question",
+      "name": "Kan teksten stadig markeres?",
+      "acceptedAnswer": {
+       "@type": "Answer",
+       "text": "I Let-tilstand, ja. I de kraftigere tilstande bliver siderne til billeder, så teksten kan læses, men ikke markeres eller søges i."
+      }
+     },
+     {
+      "@type": "Question",
+      "name": "Bliver min fil uploadet?",
+      "acceptedAnswer": {
+       "@type": "Answer",
+       "text": "Nej. PDF’en komprimeres i din browser og forlader aldrig din enhed."
+      }
+     },
+     {
+      "@type": "Question",
+      "name": "Hvorfor blev min PDF næsten ikke mindre?",
+      "acceptedAnswer": {
+       "@type": "Answer",
+       "text": "PDF’er med tekst og vektorgrafik er allerede kompakte. De store besparelser kommer fra scanninger og fotos."
+      }
+     },
+     {
+      "@type": "Question",
+      "name": "Kan jeg komprimere en adgangskodebeskyttet PDF?",
+      "acceptedAnswer": {
+       "@type": "Answer",
+       "text": "Ikke endnu. Lås den op først, og komprimér den derefter."
+      }
+     }
+    ]
+   }
+  ]
+ }
+}

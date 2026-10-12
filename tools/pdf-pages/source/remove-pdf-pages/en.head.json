@@ -1,0 +1,97 @@
+{
+ "title": "Remove PDF Pages – Delete Pages &amp; Blank Pages, No Upload",
+ "desc": "Delete pages from a PDF in your browser. Click the pages to remove, type ranges, or let the tool find blank pages from your scanner. Free, no upload.",
+ "ld": {
+  "@context": "https://schema.org",
+  "@graph": [
+   {
+    "@type": "WebApplication",
+    "name": "Remove pages from a PDF",
+    "url": "https://anyconverter.io/remove-pdf-pages/",
+    "description": "Delete pages from a PDF in your browser. Click the pages to remove, type ranges, or let the tool find blank pages from your scanner. Free, no upload.",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Any (web browser)",
+    "browserRequirements": "Requires JavaScript",
+    "inLanguage": "en",
+    "isAccessibleForFree": true,
+    "offers": {
+     "@type": "Offer",
+     "price": "0",
+     "priceCurrency": "USD"
+    },
+    "featureList": [
+     "Finds blank pages for you",
+     "Click or type",
+     "Change your mind",
+     "Your PDF stays on your device",
+     "No watermark, no sign-up"
+    ],
+    "publisher": {
+     "@type": "Organization",
+     "name": "AnyConverter",
+     "url": "https://anyconverter.io"
+    }
+   },
+   {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+     {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://anyconverter.io/"
+     },
+     {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "PDF Tools",
+      "item": "https://anyconverter.io/pdf-tools/"
+     },
+     {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Remove PDF Pages",
+      "item": "https://anyconverter.io/remove-pdf-pages/"
+     }
+    ]
+   },
+   {
+    "@type": "FAQPage",
+    "mainEntity": [
+     {
+      "@type": "Question",
+      "name": "How do I delete one page from a PDF?",
+      "acceptedAnswer": {
+       "@type": "Answer",
+       "text": "Click that page so it shows a cross, then press Remove."
+      }
+     },
+     {
+      "@type": "Question",
+      "name": "Can it remove blank pages from a scan?",
+      "acceptedAnswer": {
+       "@type": "Answer",
+       "text": "Yes. Press Find blank pages and empty pages are marked. Check them, then save."
+      }
+     },
+     {
+      "@type": "Question",
+      "name": "Is my file uploaded?",
+      "acceptedAnswer": {
+       "@type": "Answer",
+       "text": "No. The PDF is edited in your browser."
+      }
+     },
+     {
+      "@type": "Question",
+      "name": "Can I remove all pages?",
+      "acceptedAnswer": {
+       "@type": "Answer",
+       "text": "No. At least one page has to stay."
+      }
+     }
+    ]
+   }
+  ]
+ }
+}

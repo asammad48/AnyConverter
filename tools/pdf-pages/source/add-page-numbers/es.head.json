@@ -1,0 +1,97 @@
+{
+ "title": "Numerar Páginas PDF – Posición, Formato y Numeración Bates",
+ "desc": "Numera las páginas de un PDF en tu navegador. Elige posición y estilo, sáltate la portada y usa Página 1 de 10 o numeración Bates, con vista previa.",
+ "ld": {
+  "@context": "https://schema.org",
+  "@graph": [
+   {
+    "@type": "WebApplication",
+    "name": "Numerar las páginas de un PDF",
+    "url": "https://anyconverter.io/es/add-page-numbers/",
+    "description": "Numera las páginas de un PDF en tu navegador. Elige posición y estilo, sáltate la portada y usa Página 1 de 10 o numeración Bates, con vista previa.",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Any (web browser)",
+    "browserRequirements": "Requires JavaScript",
+    "inLanguage": "es",
+    "isAccessibleForFree": true,
+    "offers": {
+     "@type": "Offer",
+     "price": "0",
+     "priceCurrency": "USD"
+    },
+    "featureList": [
+     "Míralo antes de guardar",
+     "Sáltate la portada y el índice",
+     "Numeración Bates para expedientes",
+     "Esquinas exteriores para libros",
+     "Tu PDF no sale de tu dispositivo"
+    ],
+    "publisher": {
+     "@type": "Organization",
+     "name": "AnyConverter",
+     "url": "https://anyconverter.io"
+    }
+   },
+   {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+     {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Inicio",
+      "item": "https://anyconverter.io/es/"
+     },
+     {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Herramientas PDF",
+      "item": "https://anyconverter.io/es/herramientas-pdf/"
+     },
+     {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Numerar páginas PDF",
+      "item": "https://anyconverter.io/es/add-page-numbers/"
+     }
+    ]
+   },
+   {
+    "@type": "FAQPage",
+    "mainEntity": [
+     {
+      "@type": "Question",
+      "name": "¿Cómo empiezo a numerar en la página 3?",
+      "acceptedAnswer": {
+       "@type": "Answer",
+       "text": "Pon Primera página numerada en 3. Pon Empezar en 1 si quieres que esa página muestre el 1."
+      }
+     },
+     {
+      "@type": "Question",
+      "name": "¿Puedo poner Página 1 de 10?",
+      "acceptedAnswer": {
+       "@type": "Answer",
+       "text": "Sí. Elige el formato Página 1 de 10."
+      }
+     },
+     {
+      "@type": "Question",
+      "name": "¿Qué es la numeración Bates?",
+      "acceptedAnswer": {
+       "@type": "Answer",
+       "text": "Un estilo de numeración jurídico con prefijo y dígitos fijos, como ABC-000123. Elige Bates y escribe tu prefijo."
+      }
+     },
+     {
+      "@type": "Question",
+      "name": "¿Se sube mi archivo?",
+      "acceptedAnswer": {
+       "@type": "Answer",
+       "text": "No. Todo ocurre en tu navegador."
+      }
+     }
+    ]
+   }
+  ]
+ }
+}

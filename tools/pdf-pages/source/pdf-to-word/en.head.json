@@ -1,0 +1,106 @@
+{
+ "title": "PDF to Word Converter – Editable DOCX, OCR, No Upload",
+ "desc": "Convert PDF to an editable Word document. Choose editable text or exact layout, convert only the pages you need, and recognise scanned pages with OCR. No upload.",
+ "ld": {
+  "@context": "https://schema.org",
+  "@graph": [
+   {
+    "@type": "WebApplication",
+    "name": "PDF to Word Converter",
+    "url": "https://anyconverter.io/pdf-to-word/",
+    "description": "Convert PDF to an editable Word document. Choose editable text or exact layout, convert only the pages you need, and recognise scanned pages with OCR. No upload.",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Any (web browser)",
+    "browserRequirements": "Requires JavaScript",
+    "inLanguage": "en",
+    "isAccessibleForFree": true,
+    "offers": {
+     "@type": "Offer",
+     "price": "0",
+     "priceCurrency": "USD"
+    },
+    "featureList": [
+     "Two conversion modes",
+     "Convert only some pages",
+     "OCR in your language",
+     "Your PDF stays private",
+     "Tables stay tables",
+     "No watermark or sign-up"
+    ],
+    "publisher": {
+     "@type": "Organization",
+     "name": "AnyConverter",
+     "url": "https://anyconverter.io"
+    }
+   },
+   {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+     {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://anyconverter.io/"
+     },
+     {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "PDF Tools",
+      "item": "https://anyconverter.io/pdf-tools/"
+     },
+     {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "PDF to Word",
+      "item": "https://anyconverter.io/pdf-to-word/"
+     }
+    ]
+   },
+   {
+    "@type": "FAQPage",
+    "mainEntity": [
+     {
+      "@type": "Question",
+      "name": "Is it safe to convert confidential PDFs?",
+      "acceptedAnswer": {
+       "@type": "Answer",
+       "text": "Yes. The file is processed in your browser and is never uploaded, so contracts, payslips and medical letters stay on your device."
+      }
+     },
+     {
+      "@type": "Question",
+      "name": "Can I convert a scanned PDF to Word?",
+      "acceptedAnswer": {
+       "@type": "Answer",
+       "text": "Yes. Turn on text recognition and choose the document language. Scans take longer than digital PDFs."
+      }
+     },
+     {
+      "@type": "Question",
+      "name": "Will the formatting be the same?",
+      "acceptedAnswer": {
+       "@type": "Answer",
+       "text": "Exact layout keeps the look closest to the PDF. Editable text simplifies the layout so it is easier to edit."
+      }
+     },
+     {
+      "@type": "Question",
+      "name": "Can I convert only some pages?",
+      "acceptedAnswer": {
+       "@type": "Answer",
+       "text": "Yes. Enter a page range such as 1–3, 7 before converting."
+      }
+     },
+     {
+      "@type": "Question",
+      "name": "What about password-protected PDFs?",
+      "acceptedAnswer": {
+       "@type": "Answer",
+       "text": "You will be asked for the password. It is used only in your browser to open the file."
+      }
+     }
+    ]
+   }
+  ]
+ }
+}

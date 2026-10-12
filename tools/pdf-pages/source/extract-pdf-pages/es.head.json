@@ -1,0 +1,97 @@
+{
+ "title": "Extraer Páginas de PDF – Guarda las que Elijas, Sin Subir",
+ "desc": "Elige páginas de un PDF y guárdalas como archivo nuevo en tu navegador. Elige pares o impares con un clic, mantén tu orden o saca un PDF por página.",
+ "ld": {
+  "@context": "https://schema.org",
+  "@graph": [
+   {
+    "@type": "WebApplication",
+    "name": "Extraer páginas de un PDF",
+    "url": "https://anyconverter.io/es/extract-pdf-pages/",
+    "description": "Elige páginas de un PDF y guárdalas como archivo nuevo en tu navegador. Elige pares o impares con un clic, mantén tu orden o saca un PDF por página.",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Any (web browser)",
+    "browserRequirements": "Requires JavaScript",
+    "inLanguage": "es",
+    "isAccessibleForFree": true,
+    "offers": {
+     "@type": "Offer",
+     "price": "0",
+     "priceCurrency": "USD"
+    },
+    "featureList": [
+     "Mantén el orden en que pulsas",
+     "Impares, pares, primera o última",
+     "Un PDF o uno por página",
+     "Tu PDF no sale de tu dispositivo",
+     "Calidad original"
+    ],
+    "publisher": {
+     "@type": "Organization",
+     "name": "AnyConverter",
+     "url": "https://anyconverter.io"
+    }
+   },
+   {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+     {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Inicio",
+      "item": "https://anyconverter.io/es/"
+     },
+     {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Herramientas PDF",
+      "item": "https://anyconverter.io/es/herramientas-pdf/"
+     },
+     {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Extraer páginas PDF",
+      "item": "https://anyconverter.io/es/extract-pdf-pages/"
+     }
+    ]
+   },
+   {
+    "@type": "FAQPage",
+    "mainEntity": [
+     {
+      "@type": "Question",
+      "name": "¿Cómo extraigo una página de un PDF?",
+      "acceptedAnswer": {
+       "@type": "Answer",
+       "text": "Pulsa esa página y luego Extraer. Recibes un PDF de una página."
+      }
+     },
+     {
+      "@type": "Question",
+      "name": "¿Puedo cambiar el orden de las páginas?",
+      "acceptedAnswer": {
+       "@type": "Answer",
+       "text": "Sí. Activa Mantener el orden en que pulso y las páginas se guardan en el orden en que las elegiste."
+      }
+     },
+     {
+      "@type": "Question",
+      "name": "¿Se sube mi archivo?",
+      "acceptedAnswer": {
+       "@type": "Answer",
+       "text": "No. Todo ocurre en tu navegador."
+      }
+     },
+     {
+      "@type": "Question",
+      "name": "¿Cambia la calidad?",
+      "acceptedAnswer": {
+       "@type": "Answer",
+       "text": "No. Las páginas se copian sin recomprimir."
+      }
+     }
+    ]
+   }
+  ]
+ }
+}

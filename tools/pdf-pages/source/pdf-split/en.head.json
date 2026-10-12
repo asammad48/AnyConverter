@@ -1,0 +1,106 @@
+{
+ "title": "Split PDF – By Pages, Ranges or File Size, No Upload",
+ "desc": "Split a PDF into separate files in your browser. Click to cut between pages, type ranges, split every N pages or keep each part under a size limit.",
+ "ld": {
+  "@context": "https://schema.org",
+  "@graph": [
+   {
+    "@type": "WebApplication",
+    "name": "Split a PDF into separate files",
+    "url": "https://anyconverter.io/pdf-split/",
+    "description": "Split a PDF into separate files in your browser. Click to cut between pages, type ranges, split every N pages or keep each part under a size limit.",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Any (web browser)",
+    "browserRequirements": "Requires JavaScript",
+    "inLanguage": "en",
+    "isAccessibleForFree": true,
+    "offers": {
+     "@type": "Offer",
+     "price": "0",
+     "priceCurrency": "USD"
+    },
+    "featureList": [
+     "Click to cut",
+     "Split by file size",
+     "Ranges, every N pages or one per page",
+     "Your PDF stays private",
+     "Clear file names",
+     "No watermark, no sign-up"
+    ],
+    "publisher": {
+     "@type": "Organization",
+     "name": "AnyConverter",
+     "url": "https://anyconverter.io"
+    }
+   },
+   {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+     {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://anyconverter.io/"
+     },
+     {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "PDF Tools",
+      "item": "https://anyconverter.io/pdf-tools/"
+     },
+     {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Split PDF",
+      "item": "https://anyconverter.io/pdf-split/"
+     }
+    ]
+   },
+   {
+    "@type": "FAQPage",
+    "mainEntity": [
+     {
+      "@type": "Question",
+      "name": "How do I extract only some pages?",
+      "acceptedAnswer": {
+       "@type": "Answer",
+       "text": "Type just the pages you want, like 2–4, 9. Pages that are not in any range are left out."
+      }
+     },
+     {
+      "@type": "Question",
+      "name": "Can I split a PDF to fit an email attachment limit?",
+      "acceptedAnswer": {
+       "@type": "Answer",
+       "text": "Yes. Choose By file size and enter the limit, for example 10 MB for many email services. Each part is kept under that size."
+      }
+     },
+     {
+      "@type": "Question",
+      "name": "Is my PDF uploaded?",
+      "acceptedAnswer": {
+       "@type": "Answer",
+       "text": "No. The file is read and split in your browser, and nothing is sent to our servers."
+      }
+     },
+     {
+      "@type": "Question",
+      "name": "Will splitting reduce the quality?",
+      "acceptedAnswer": {
+       "@type": "Answer",
+       "text": "No. Pages are copied without being recompressed."
+      }
+     },
+     {
+      "@type": "Question",
+      "name": "How do I save every page as its own PDF?",
+      "acceptedAnswer": {
+       "@type": "Answer",
+       "text": "Choose One per page. You get a ZIP with one PDF for each page."
+      }
+     }
+    ]
+   }
+  ]
+ }
+}

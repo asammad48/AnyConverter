@@ -1,0 +1,97 @@
+{
+ "title": "Udtræk Sider fra PDF – Gem Valgte Sider som Ny PDF",
+ "desc": "Vælg sider fra en PDF, og gem dem som en ny fil i din browser. Vælg lige eller ulige sider med ét klik, behold din egen rækkefølge, eller få én PDF pr. side.",
+ "ld": {
+  "@context": "https://schema.org",
+  "@graph": [
+   {
+    "@type": "WebApplication",
+    "name": "Udtræk sider fra en PDF",
+    "url": "https://anyconverter.io/da/extract-pdf-pages/",
+    "description": "Vælg sider fra en PDF, og gem dem som en ny fil i din browser. Vælg lige eller ulige sider med ét klik, behold din egen rækkefølge, eller få én PDF pr. side.",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Any (web browser)",
+    "browserRequirements": "Requires JavaScript",
+    "inLanguage": "da",
+    "isAccessibleForFree": true,
+    "offers": {
+     "@type": "Offer",
+     "price": "0",
+     "priceCurrency": "USD"
+    },
+    "featureList": [
+     "Behold den rækkefølge, du klikker",
+     "Ulige, lige, første eller sidste",
+     "Én PDF eller én pr. side",
+     "Din PDF bliver på din enhed",
+     "Original kvalitet"
+    ],
+    "publisher": {
+     "@type": "Organization",
+     "name": "AnyConverter",
+     "url": "https://anyconverter.io"
+    }
+   },
+   {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+     {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Forside",
+      "item": "https://anyconverter.io/da/"
+     },
+     {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "PDF-værktøjer",
+      "item": "https://anyconverter.io/da/pdf-vaerktoejer/"
+     },
+     {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Udtræk PDF-sider",
+      "item": "https://anyconverter.io/da/extract-pdf-pages/"
+     }
+    ]
+   },
+   {
+    "@type": "FAQPage",
+    "mainEntity": [
+     {
+      "@type": "Question",
+      "name": "Hvordan udtrækker jeg én side fra en PDF?",
+      "acceptedAnswer": {
+       "@type": "Answer",
+       "text": "Klik på siden, og tryk Udtræk. Du får en PDF på én side."
+      }
+     },
+     {
+      "@type": "Question",
+      "name": "Kan jeg ændre sidernes rækkefølge?",
+      "acceptedAnswer": {
+       "@type": "Answer",
+       "text": "Ja. Slå Behold den rækkefølge, jeg klikker, til, så gemmes siderne i den rækkefølge, du valgte dem."
+      }
+     },
+     {
+      "@type": "Question",
+      "name": "Bliver min fil uploadet?",
+      "acceptedAnswer": {
+       "@type": "Answer",
+       "text": "Nej. Alt sker i din browser."
+      }
+     },
+     {
+      "@type": "Question",
+      "name": "Ændrer kvaliteten sig?",
+      "acceptedAnswer": {
+       "@type": "Answer",
+       "text": "Nej. Siderne kopieres uden ny komprimering."
+      }
+     }
+    ]
+   }
+  ]
+ }
+}

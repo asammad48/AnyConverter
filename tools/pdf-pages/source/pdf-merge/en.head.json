@@ -1,0 +1,106 @@
+{
+ "title": "Merge PDF Files – Combine PDFs &amp; Pick Pages, No Upload",
+ "desc": "Combine PDF files into one in your browser. Reorder files, leave out pages you don’t need and add blanks for double-sided printing. Free, no upload.",
+ "ld": {
+  "@context": "https://schema.org",
+  "@graph": [
+   {
+    "@type": "WebApplication",
+    "name": "Merge PDF files into one document",
+    "url": "https://anyconverter.io/pdf-merge/",
+    "description": "Combine PDF files into one in your browser. Reorder files, leave out pages you don’t need and add blanks for double-sided printing. Free, no upload.",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Any (web browser)",
+    "browserRequirements": "Requires JavaScript",
+    "inLanguage": "en",
+    "isAccessibleForFree": true,
+    "offers": {
+     "@type": "Offer",
+     "price": "0",
+     "priceCurrency": "USD"
+    },
+    "featureList": [
+     "Choose pages from each file",
+     "Ready for double-sided printing",
+     "No cap on files or size",
+     "Files stay on your device",
+     "Name the file before you save",
+     "No watermark, no sign-up"
+    ],
+    "publisher": {
+     "@type": "Organization",
+     "name": "AnyConverter",
+     "url": "https://anyconverter.io"
+    }
+   },
+   {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+     {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://anyconverter.io/"
+     },
+     {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "PDF Tools",
+      "item": "https://anyconverter.io/pdf-tools/"
+     },
+     {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Merge PDF",
+      "item": "https://anyconverter.io/pdf-merge/"
+     }
+    ]
+   },
+   {
+    "@type": "FAQPage",
+    "mainEntity": [
+     {
+      "@type": "Question",
+      "name": "How many PDFs can I merge at once?",
+      "acceptedAnswer": {
+       "@type": "Answer",
+       "text": "There is no fixed limit. Very large jobs, like hundreds of scanned pages, depend on how much memory your device has."
+      }
+     },
+     {
+      "@type": "Question",
+      "name": "Are my files uploaded anywhere?",
+      "acceptedAnswer": {
+       "@type": "Answer",
+       "text": "No. The files are read and combined in your browser, so nothing is sent to our servers."
+      }
+     },
+     {
+      "@type": "Question",
+      "name": "Can I merge only some pages of a PDF?",
+      "acceptedAnswer": {
+       "@type": "Answer",
+       "text": "Yes. Open the file in the list and click the pages you want to leave out. They are skipped in the merged file."
+      }
+     },
+     {
+      "@type": "Question",
+      "name": "Will the quality change?",
+      "acceptedAnswer": {
+       "@type": "Answer",
+       "text": "No. Pages are copied as they are, without recompressing images or turning text into pictures."
+      }
+     },
+     {
+      "@type": "Question",
+      "name": "Why did a blank page appear in my merged PDF?",
+      "acceptedAnswer": {
+       "@type": "Answer",
+       "text": "You turned on double-sided printing. A blank page is added after any file with an odd number of pages, so the next file starts on a new sheet."
+      }
+     }
+    ]
+   }
+  ]
+ }
+}

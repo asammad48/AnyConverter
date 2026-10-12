@@ -1,0 +1,97 @@
+{
+ "title": "Sidetal i PDF – Tilføj Sidenumre, Format og Bates-nummer",
+ "desc": "Sæt sidetal på en PDF i din browser. Vælg placering og stil, spring forsiden over, brug Side 1 af 10 eller Bates-numre, og se resultatet med det samme.",
+ "ld": {
+  "@context": "https://schema.org",
+  "@graph": [
+   {
+    "@type": "WebApplication",
+    "name": "Tilføj sidetal til en PDF",
+    "url": "https://anyconverter.io/da/add-page-numbers/",
+    "description": "Sæt sidetal på en PDF i din browser. Vælg placering og stil, spring forsiden over, brug Side 1 af 10 eller Bates-numre, og se resultatet med det samme.",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Any (web browser)",
+    "browserRequirements": "Requires JavaScript",
+    "inLanguage": "da",
+    "isAccessibleForFree": true,
+    "offers": {
+     "@type": "Offer",
+     "price": "0",
+     "priceCurrency": "USD"
+    },
+    "featureList": [
+     "Se det, før du gemmer",
+     "Spring forside og indhold over",
+     "Bates-nummerering til juridiske sager",
+     "Yderste hjørner til bøger",
+     "Din PDF bliver på din enhed"
+    ],
+    "publisher": {
+     "@type": "Organization",
+     "name": "AnyConverter",
+     "url": "https://anyconverter.io"
+    }
+   },
+   {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+     {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Forside",
+      "item": "https://anyconverter.io/da/"
+     },
+     {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "PDF-værktøjer",
+      "item": "https://anyconverter.io/da/pdf-vaerktoejer/"
+     },
+     {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Tilføj sidetal",
+      "item": "https://anyconverter.io/da/add-page-numbers/"
+     }
+    ]
+   },
+   {
+    "@type": "FAQPage",
+    "mainEntity": [
+     {
+      "@type": "Question",
+      "name": "Hvordan starter jeg nummereringen på side 3?",
+      "acceptedAnswer": {
+       "@type": "Answer",
+       "text": "Sæt Første side med tal til 3. Sæt Start ved til 1, hvis siden skal vise 1."
+      }
+     },
+     {
+      "@type": "Question",
+      "name": "Kan jeg skrive Side 1 af 10?",
+      "acceptedAnswer": {
+       "@type": "Answer",
+       "text": "Ja. Vælg formatet Side 1 af 10."
+      }
+     },
+     {
+      "@type": "Question",
+      "name": "Hvad er Bates-nummerering?",
+      "acceptedAnswer": {
+       "@type": "Answer",
+       "text": "En juridisk nummereringsstil med præfiks og faste cifre, f.eks. ABC-000123. Vælg Bates, og skriv dit præfiks."
+      }
+     },
+     {
+      "@type": "Question",
+      "name": "Bliver min fil uploadet?",
+      "acceptedAnswer": {
+       "@type": "Answer",
+       "text": "Nej. Alt sker i din browser."
+      }
+     }
+    ]
+   }
+  ]
+ }
+}

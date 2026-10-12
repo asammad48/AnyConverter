@@ -1,0 +1,97 @@
+{
+ "title": "Extract PDF Pages – Save Selected Pages as a New PDF",
+ "desc": "Pick pages from a PDF and save them as a new file in your browser. Select odd or even pages in one click, keep your own order, or get one PDF per page.",
+ "ld": {
+  "@context": "https://schema.org",
+  "@graph": [
+   {
+    "@type": "WebApplication",
+    "name": "Extract pages from a PDF",
+    "url": "https://anyconverter.io/extract-pdf-pages/",
+    "description": "Pick pages from a PDF and save them as a new file in your browser. Select odd or even pages in one click, keep your own order, or get one PDF per page.",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Any (web browser)",
+    "browserRequirements": "Requires JavaScript",
+    "inLanguage": "en",
+    "isAccessibleForFree": true,
+    "offers": {
+     "@type": "Offer",
+     "price": "0",
+     "priceCurrency": "USD"
+    },
+    "featureList": [
+     "Keep the order you click",
+     "Odd, even, first or last",
+     "One PDF or one per page",
+     "Your PDF stays on your device",
+     "Original quality"
+    ],
+    "publisher": {
+     "@type": "Organization",
+     "name": "AnyConverter",
+     "url": "https://anyconverter.io"
+    }
+   },
+   {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+     {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://anyconverter.io/"
+     },
+     {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "PDF Tools",
+      "item": "https://anyconverter.io/pdf-tools/"
+     },
+     {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Extract PDF Pages",
+      "item": "https://anyconverter.io/extract-pdf-pages/"
+     }
+    ]
+   },
+   {
+    "@type": "FAQPage",
+    "mainEntity": [
+     {
+      "@type": "Question",
+      "name": "How do I extract one page from a PDF?",
+      "acceptedAnswer": {
+       "@type": "Answer",
+       "text": "Click that page and press Extract. You get a one-page PDF."
+      }
+     },
+     {
+      "@type": "Question",
+      "name": "Can I change the page order?",
+      "acceptedAnswer": {
+       "@type": "Answer",
+       "text": "Yes. Turn on Keep the order I click and the pages are saved in the order you selected them."
+      }
+     },
+     {
+      "@type": "Question",
+      "name": "Is my file uploaded?",
+      "acceptedAnswer": {
+       "@type": "Answer",
+       "text": "No. Everything happens in your browser."
+      }
+     },
+     {
+      "@type": "Question",
+      "name": "Does the quality change?",
+      "acceptedAnswer": {
+       "@type": "Answer",
+       "text": "No. Pages are copied without recompression."
+      }
+     }
+    ]
+   }
+  ]
+ }
+}

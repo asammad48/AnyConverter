@@ -1,0 +1,106 @@
+{
+ "title": "Unir PDF – Combina Archivos y Elige Páginas, Sin Subir",
+ "desc": "Une varios PDF en uno desde tu navegador. Ordena los archivos, quita las páginas que sobran y añade páginas en blanco para imprimir a doble cara. Gratis.",
+ "ld": {
+  "@context": "https://schema.org",
+  "@graph": [
+   {
+    "@type": "WebApplication",
+    "name": "Unir archivos PDF en un solo documento",
+    "url": "https://anyconverter.io/es/pdf-merge/",
+    "description": "Une varios PDF en uno desde tu navegador. Ordena los archivos, quita las páginas que sobran y añade páginas en blanco para imprimir a doble cara. Gratis.",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Any (web browser)",
+    "browserRequirements": "Requires JavaScript",
+    "inLanguage": "es",
+    "isAccessibleForFree": true,
+    "offers": {
+     "@type": "Offer",
+     "price": "0",
+     "priceCurrency": "USD"
+    },
+    "featureList": [
+     "Elige páginas de cada archivo",
+     "Listo para imprimir a doble cara",
+     "Sin límite de archivos ni tamaño",
+     "Los archivos no salen de tu dispositivo",
+     "Ponle nombre antes de guardar",
+     "Sin marca de agua ni registro"
+    ],
+    "publisher": {
+     "@type": "Organization",
+     "name": "AnyConverter",
+     "url": "https://anyconverter.io"
+    }
+   },
+   {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+     {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Inicio",
+      "item": "https://anyconverter.io/es/"
+     },
+     {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Herramientas PDF",
+      "item": "https://anyconverter.io/es/herramientas-pdf/"
+     },
+     {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Unir PDF",
+      "item": "https://anyconverter.io/es/pdf-merge/"
+     }
+    ]
+   },
+   {
+    "@type": "FAQPage",
+    "mainEntity": [
+     {
+      "@type": "Question",
+      "name": "¿Cuántos PDF puedo unir a la vez?",
+      "acceptedAnswer": {
+       "@type": "Answer",
+       "text": "No hay un límite fijo. En trabajos muy grandes, como cientos de páginas escaneadas, depende de la memoria de tu dispositivo."
+      }
+     },
+     {
+      "@type": "Question",
+      "name": "¿Se suben mis archivos a algún sitio?",
+      "acceptedAnswer": {
+       "@type": "Answer",
+       "text": "No. Los archivos se leen y combinan en tu navegador, así que no se envía nada a nuestros servidores."
+      }
+     },
+     {
+      "@type": "Question",
+      "name": "¿Puedo unir solo algunas páginas de un PDF?",
+      "acceptedAnswer": {
+       "@type": "Answer",
+       "text": "Sí. Abre el archivo en la lista y pulsa las páginas que quieras quitar. No se incluirán en el PDF unido."
+      }
+     },
+     {
+      "@type": "Question",
+      "name": "¿Cambia la calidad?",
+      "acceptedAnswer": {
+       "@type": "Answer",
+       "text": "No. Las páginas se copian tal cual, sin recomprimir imágenes ni convertir el texto en imagen."
+      }
+     },
+     {
+      "@type": "Question",
+      "name": "¿Por qué aparece una página en blanco?",
+      "acceptedAnswer": {
+       "@type": "Answer",
+       "text": "Activaste la impresión a doble cara. Se añade una página en blanco tras cada archivo con número impar de páginas, para que el siguiente empiece en una hoja nueva."
+      }
+     }
+    ]
+   }
+  ]
+ }
+}

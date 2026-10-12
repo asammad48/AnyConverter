@@ -477,3 +477,35 @@
     compute();
   });
 })();
+
+/* Successive discounts quick mode: 1 − (1 − d₁)(1 − d₂)…(1 − dₙ). */
+(function () {
+  var out = document.getElementById('sd-out');
+  if (!out) return;
+  var LANG = (document.documentElement.lang || 'en').split('-')[0];
+  var LOCALE = { en: 'en-US', da: 'da-DK', es: 'es-ES' }[LANG] || 'en-US';
+  var PCT = LANG === 'en' ? '%' : ' %';
+  function fmt(n, d) { return new Intl.NumberFormat(LOCALE, { maximumFractionDigits: d, minimumFractionDigits: 0 }).format(n); }
+  function money(n) { return new Intl.NumberFormat(LOCALE, { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(n); }
+  function parse(s) {
+    s = String(s || '').trim().replace(/\s/g, '');
+    if (LANG !== 'en') s = s.replace(/\./g, '').replace(',', '.'); else s = s.replace(/,/g, '');
+    var n = Number(s);
+    return s !== '' && isFinite(n) ? n : NaN;
+  }
+  function esc(s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;'); }
+  function tile(k, v) { return '<div class="calc-tile"><span class="calc-tile-lbl">' + esc(k) + '</span><span class="calc-tile-val">' + esc(v) + '</span></div>'; }
+  function run() {
+    /* Discounts are separated by ';', '+', '/' or whitespace, and by ',' in English (comma is the decimal mark in es/da). */
+    var raw = document.getElementById('sd-list').value, sep = LANG === 'en' ? /[\s,;+\/]+/ : /[\s;+\/]+|,\s+/;
+    var ds = raw.split(sep).map(function (x) { return parse(x.replace('%', '')); }).filter(function (n) { return isFinite(n) && n >= 0 && n <= 100; });
+    if (!ds.length) { out.innerHTML = ''; return; }
+    var price = parse(document.getElementById('sd-price').value), keep = 1, steps = [];
+    ds.forEach(function (d) { keep *= 1 - d / 100; if (price > 0) steps.push(tile(out.getAttribute('data-step').replace('{d}', fmt(d, 2)), money(price * keep))); });
+    var html = tile(out.getAttribute('data-eq'), fmt((1 - keep) * 100, 3) + PCT) + tile(out.getAttribute('data-sum'), fmt(ds.reduce(function (a, b) { return a + b; }, 0), 2) + PCT);
+    if (price > 0) html += tile(out.getAttribute('data-pay'), money(price * keep)) + steps.join('');
+    out.innerHTML = html;
+  }
+  ['sd-list', 'sd-price'].forEach(function (id) { document.getElementById(id).addEventListener('input', run); });
+  run();
+})();
