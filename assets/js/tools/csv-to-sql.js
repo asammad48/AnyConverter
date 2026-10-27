@@ -132,13 +132,27 @@ document.addEventListener('DOMContentLoaded', function () {
     return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
   }
 
-  function escSql(val) {
+  function escSql(val, dialect) {
     if (val === '' || val === null || val === undefined) return 'NULL';
-    return "'" + String(val).replace(/'/g,"''") + "'";
+    if (dialect === 'sqlserver') {
+      if (val === true || val === 'true') return '1';
+      if (val === false || val === 'false') return '0';
+      // Numeric values don't require quotes
+      if (typeof val === 'number' || (/^-?\d+(\.\d+)?$/.test(String(val).trim()) && !isNaN(Number(val)))) {
+        return String(val).trim();
+      }
+      // Unicode string literals in SQL Server use N'...'
+      return "N'" + String(val).replace(/'/g, "''") + "'";
+    }
+    if (typeof val === 'number' || (/^-?\d+(\.\d+)?$/.test(String(val).trim()) && !isNaN(Number(val)))) {
+      return String(val).trim();
+    }
+    return "'" + String(val).replace(/'/g, "''") + "'";
   }
 
   function quote(name, dialect) {
     if (dialect === 'mysql') return '`' + name + '`';
+    if (dialect === 'sqlserver') return '[' + String(name).replace(/\]/g, ']]') + ']';
     return '"' + name + '"';
   }
 
@@ -491,9 +505,16 @@ document.addEventListener('DOMContentLoaded', function () {
       sql += 'CREATE TABLE ' + quote(tableName, dialect) + ' (\n';
       const colDefs = headers.map(function(h, i) {
         let type = columnTypes[i] || 'VARCHAR(255)';
+        if (dialect === 'sqlserver') {
+          if (type === 'VARCHAR(255)') type = 'NVARCHAR(255)';
+          else if (type === 'TEXT') type = 'NVARCHAR(MAX)';
+          else if (type === 'BOOLEAN') type = 'BIT';
+          else if (type === 'DATETIME') type = 'DATETIME2';
+        }
         if (type === 'AUTO_INCREMENT') {
           if (dialect === 'mysql')      return '  ' + quote(h, dialect) + ' INT AUTO_INCREMENT PRIMARY KEY';
           if (dialect === 'postgresql') return '  ' + quote(h, dialect) + ' SERIAL PRIMARY KEY';
+          if (dialect === 'sqlserver')  return '  ' + quote(h, dialect) + ' INT IDENTITY(1,1) PRIMARY KEY';
           return '  ' + quote(h, dialect) + ' INTEGER PRIMARY KEY AUTOINCREMENT';
         }
         return '  ' + quote(h, dialect) + ' ' + type;
@@ -502,21 +523,31 @@ document.addEventListener('DOMContentLoaded', function () {
     }
     if (genInsert && parsedData && parsedData.length > 0) {
       const colNames = headers.map(function(h){ return quote(h, dialect); }).join(', ');
+      const hasIdentityCol = (dialect === 'sqlserver') && columnTypes.some(function(t) { return t === 'AUTO_INCREMENT'; });
+
+      if (hasIdentityCol) {
+        sql += 'SET IDENTITY_INSERT ' + quote(tableName, dialect) + ' ON;\n\n';
+      }
+
       if (genBatch) {
         for (let s = 0; s < parsedData.length; s += batchSize) {
           const chunk = parsedData.slice(s, s + batchSize);
           sql += 'INSERT INTO ' + quote(tableName, dialect) + ' (' + colNames + ') VALUES\n';
           const valRows = chunk.map(function(row){
-            const vals = headers.map(function(h, i){ return escSql(typeof row === 'object' && !Array.isArray(row) ? row[h] : row[i]); });
+            const vals = headers.map(function(h, i){ return escSql(typeof row === 'object' && !Array.isArray(row) ? row[h] : row[i], dialect); });
             return '  (' + vals.join(', ') + ')';
           });
           sql += valRows.join(',\n') + ';\n';
         }
       } else {
         parsedData.forEach(function(row){
-          const vals = headers.map(function(h, i){ return escSql(typeof row === 'object' && !Array.isArray(row) ? row[h] : row[i]); });
+          const vals = headers.map(function(h, i){ return escSql(typeof row === 'object' && !Array.isArray(row) ? row[h] : row[i], dialect); });
           sql += 'INSERT INTO ' + quote(tableName, dialect) + ' (' + colNames + ') VALUES (' + vals.join(', ') + ');\n';
         });
+      }
+
+      if (hasIdentityCol) {
+        sql += '\nSET IDENTITY_INSERT ' + quote(tableName, dialect) + ' OFF;\n';
       }
     }
     return sql;

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Verdensur Online Gratis — Live Tidszoner | AnyConverter</title>
+  <meta name="description" content="Se den aktuelle tid live i mere end 40 byer og tidszoner verden over. Tidsforskel, natvisning og hurtigt overblik direkte i browseren.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://anyconverter.io/da/world-clock/">
+  <link rel="alternate" hreflang="en" href="https://anyconverter.io/world-clock/">
+  <link rel="alternate" hreflang="es" href="https://anyconverter.io/es/world-clock/">
+  <link rel="alternate" hreflang="da" href="https://anyconverter.io/da/world-clock/">
+  <link rel="alternate" hreflang="x-default" href="https://anyconverter.io/world-clock/">
+<meta property="og:type" content="website">
+  <meta property="og:title" content="Verdensur Gratis Online | AnyConverter">
+  <meta property="og:description" content="Se den præcise lokale tid i over 40 byer og tidszoner verden over i realtid direkte i din browser.">
+  <meta property="og:url" content="https://anyconverter.io/da/world-clock/">
+  <meta property="og:site_name" content="AnyConverter">
+  <meta property="og:image" content="https://anyconverter.io/assets/img/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="AnyConverter free online tools">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Verdensur Gratis Online | AnyConverter">
+  <meta name="twitter:description" content="Se den præcise lokale tid i over 40 byer og tidszoner verden over i realtid direkte i din browser.">
+  <meta name="twitter:image" content="https://anyconverter.io/assets/img/og-image.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Verdensur","url":"https://anyconverter.io/da/world-clock/","description":"Live verdensur, der viser den aktuelle tid i over 40 byer og tidszoner.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Opdateres uret automatisk?","acceptedAnswer":{"@type":"Answer","text":"Ja. Tiden på hvert kort opdateres hvert sekund ved hjælp af JavaScript. Du behøver ikke genindlæse siden."}},{"@type":"Question","name":"Tager det højde for sommertid?","acceptedAnswer":{"@type":"Answer","text":"Ja. Værktøjet bruger browserens indbyggede Intl.DateTimeFormat API med IANA-tidszoneidentifikatorer, hvilket automatisk justerer for sommertid."}},{"@type":"Question","name":"Hvorfor vises et kort mørkt?","acceptedAnswer":{"@type":"Answer","text":"Kort med mørk baggrund angiver, at den lokale tid i den by er mellem 20:00 og 06:00 (nattetimer)."}}]}</script>
+
+
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F7F6F3);color:var(--color-text,#151515)}
+    body{min-height:100vh;display:flex;flex-direction:column}
+    .site-header{position:sticky;top:0;z-index:100;height:56px;background:var(--color-surface,#fff);border-bottom:1px solid var(--color-border,#DDD8D0)}
+    .header-inner{max-width:1280px;width:100%;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;gap:32px}
+    .hero{padding:40px 24px 32px;max-width:1280px;margin:0 auto}
+    .hero h1{font-size:clamp(1.75rem,4vw,2.25rem);font-weight:700;line-height:1.2;margin-bottom:12px}
+    .hero-desc{font-size:1.0625rem;color:var(--color-text-2,#6B7280);max-width:680px;line-height:1.6}
+    .wc-card{position:relative;padding:16px;background:var(--color-surface,#fff);border:1px solid var(--color-border,#DDD8D0);border-radius:12px}
+    .wc-night{background:var(--color-code-bg,#0F0F1A);border-color:#2E2E48;color:#EDEDF8}
+    .wc-night .wc-date,.wc-night .wc-offset{color:var(--color-text-2,#6B7280)}
+    .wc-city{font-size:13px;font-weight:600;color:var(--color-text-2,#6B7280);margin-bottom:4px;text-transform:uppercase;letter-spacing:.5px}
+    .wc-night .wc-city{color:var(--color-text-2,#6B7280)}
+    .wc-time{font-size:28px;font-weight:700;font-family:'JetBrains Mono',monospace;margin-bottom:2px}
+    .wc-date{font-size:12px;color:var(--color-text-2,#6B7280);margin-bottom:2px}
+    .wc-offset{font-size:11px;color:var(--color-text-2,#6B7280)}
+    .wc-remove{position:absolute;top:8px;right:8px;background:none;border:none;cursor:pointer;font-size:14px;color:var(--color-text-2,#6B7280);line-height:1;padding:2px 4px}
+    .wc-remove:hover{color:var(--color-pdf,#EF4444)}
+    @font-face{font-family:'Inter';font-display:swap}
+  </style>
+  <link rel="stylesheet" href="/assets/css/style.css?v=20260902">
+</head>
+<body>
+  <header id="site-header" class="site-header"></header>
+  <main id="main-content">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol><li><a href="/da/">Forside</a></li><li aria-current="page">Verdensur</li></ol>
+    </nav>
+    <section class="hero">
+      <h1>Verdensur Live</h1>
+      <p class="hero-desc">See the live current time in major cities across every time zone. Add or remove cities, and check if it's day or night at a glance. Updates every second.</p>
+    </section>
+    <div class="tool-wrapper">
+      <div class="tool-zone">
+        <div style="padding:24px">
+          <div style="display:flex;gap:10px;margin-bottom:20px;flex-wrap:wrap">
+            <select id="wc-add-select" style="flex:1;min-width:180px;padding:10px 12px;border:1px solid var(--color-border,#DDD8D0);border-radius:8px;font-size:14px"></select>
+            <button class="btn btn-primary" id="wc-add-btn">+ Add City</button>
+          </div>
+          <div id="wc-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px"></div>
+        </div>
+      </div>
+      <aside class="tool-side" aria-label="Options">
+        <div style="margin-top:16px">
+          <p class="ad-label">Annonce</p>
+          <div class="ad-slot" style="min-height:250px">
+            <div class="adsbygoogle" style="display:block" aria-hidden="true"></div>
+</div>
+        </div>
+      </aside>
+    </div>
+    <div class="ad-slot ad-slot--leaderboard">
+      <div class="adsbygoogle" style="display:block" aria-hidden="true"></div>
+</div>
+    <section class="how-to-use">
+      <h2>How to Use the World Clock</h2>
+      <ol class="steps">
+        <li>The clock starts with 10 default cities, all ticking live.</li>
+        <li>Select a city from the dropdown and click "+ Add City" to add it.</li>
+        <li>Click the ✕ on any card to remove a city.</li>
+        <li><strong>Night mode:</strong> Cards with a dark background indicate it is currently night in that city (between 20:00 and 06:00).</li>
+      </ol>
+    </section>
+    <section class="features">
+      <h2>Features</h2>
+      <ul class="features-list">
+        <li>Live time updates every second</li>
+        <li>40+ cities and time zones available</li>
+        <li>Day/night indicator on each clock card</li>
+        <li>UTC offset displayed for each city</li>
+        <li>Add and remove cities on the fly</li>
+        <li>Handles DST automatically via browser timezone API</li>
+      </ul>
+    </section>
+    <!-- SEO keyword implementation: 2026-08-21 -->
+    <section class="seo-content" data-seo-keyword-plan="2026-08-21">
+      <h2>World Clock: practical uses</h2>
+      <p>Use World Clock when you need a fast, clear, private result without creating an account. This page also supports related needs like World Clock online, World Clock free, World Clock planner so you can choose the right workflow.</p>
+      <h3>When it helps</h3>
+      <ul>
+        <li><strong>Best for:</strong> Running a focused task, timer, plan, note, checklist, or habit flow directly in the browser.</li>
+        <li><strong>Helpful details:</strong> Keep the page open while you work, use the saved or live state where available, and reset when the session changes.</li>
+        <li><strong>Next step:</strong> Move to another planning or timing tool when you need a timer, list, notes, daily plan, or habit tracker.</li>
+      </ul>
+      <p>For the next step, try <a href="/pomodoro-timer/">Pomodoro Timer</a>, <a href="/todo-list/">To-do List Online</a>, <a href="/daily-planner/">Daily Planner Online</a>, <a href="/habit-tracker/">Habit Tracker Online</a>.</p>
+    </section>
+
+    <div class="ad-slot ad-slot--rectangle" style="margin:0 auto 32px">
+      <div class="adsbygoogle" style="display:block" aria-hidden="true"></div>
+</div>
+    <section class="faq">
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-list">
+        <details class="faq-item"><summary class="faq-question">Does the clock update automatically? <span class="faq-icon">+</span></summary><div class="faq-answer">Yes. The time on each card refreshes every second using JavaScript's setInterval. There is no need to reload the page.</div></details>
+        <details class="faq-item"><summary class="faq-question">Does it handle Daylight Saving Time? <span class="faq-icon">+</span></summary><div class="faq-answer">Yes. The tool uses the browser's built-in Intl.DateTimeFormat API with IANA timezone identifiers (e.g. America/New_York), which automatically accounts for DST transitions.</div></details>
+        <details class="faq-item"><summary class="faq-question">Why does a card appear dark? <span class="faq-icon">+</span></summary><div class="faq-answer">Cards with a dark background indicate the local time in that city is between 20:00 (8 PM) and 06:00 (6 AM) — considered night-time hours.</div></details>
+      </div>
+    </section>
+    <section class="related-tools">
+      <h2>Relaterede Værktøjer</h2>
+      <div class="tool-grid">
+        <a href="/timestamp-converter/" class="tool-card"><img src="/assets/img/icon-clock.svg" alt="Timestamp Converter icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Timestamp Converter</h3><p>Convert Unix timestamps to human-readable dates.</p><span class="tool-card-link">Try it →</span></a>
+        <a href="/sleep-calculator/" class="tool-card"><img src="/assets/img/icon-sleep.svg" alt="Sleep Calculator icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Sleep Calculator</h3><p>Calculate optimal wake-up and bedtimes based on sleep cycles.</p><span class="tool-card-link">Try it →</span></a>
+        <a href="/pomodoro-timer/" class="tool-card"><img src="/assets/img/icon-timer.svg" alt="Pomodoro Timer icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Pomodoro Timer</h3><p>Boost focus with 25-minute work sessions and short breaks.</p><span class="tool-card-link">Try it →</span></a>
+      </div>
+    </section>
+  </main>
+  <footer id="site-footer" class="site-footer"></footer>
+  <script src="/assets/js/shared.js?v=20261012" defer></script>
+  <script src="/assets/js/tools/world-clock.js" defer></script>
+</body>
+</html>

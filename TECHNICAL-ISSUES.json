@@ -1,0 +1,144 @@
+{
+  "auditDate": "2026-10-25T17:50:00Z",
+  "domain": "anyconverter.io",
+  "scope": "Website-wide technical and SEO baseline audit",
+  "summary": {
+    "criticalIssuesCount": 2,
+    "highIssuesCount": 2,
+    "mediumIssuesCount": 2,
+    "lowIssuesCount": 2
+  },
+  "issues": [
+    {
+      "id": "TECH-001",
+      "severity": "CRITICAL",
+      "category": "Edge Routing / Infrastructure",
+      "title": "HTTP 522 Connection Timed Out on http://www.anyconverter.io/",
+      "url": "http://www.anyconverter.io/",
+      "evidence": {
+        "testCommand": "fetch('http://www.anyconverter.io', { redirect: 'manual' })",
+        "httpStatus": 522,
+        "dnsConfiguration": "CNAME www.anyconverter.io -> anyconverter.io (proxied: true), AAAA anyconverter.io -> 100:: (proxied: true)",
+        "cloudflarePageRules": 0
+      },
+      "impact": "Any search crawler or visitor typing www.anyconverter.io or arriving from unencrypted www links encounters a complete Cloudflare 522 server timeout.",
+      "remediation": "Configure Cloudflare Edge redirect rule or page rule: http://*www.anyconverter.io/* -> https://anyconverter.io/$1 (301 Permanent Redirect) without routing unencrypted traffic to 100::."
+    },
+    {
+      "id": "TECH-002",
+      "severity": "CRITICAL",
+      "category": "URL Normalization / Canonical",
+      "title": "Missing trailing slash on tool routes returns HTTP 404 instead of HTTP 301",
+      "url": "https://anyconverter.io/pdf-to-word",
+      "evidence": {
+        "testCommand": "fetch('https://anyconverter.io/pdf-to-word', { redirect: 'manual' })",
+        "httpStatus": 404,
+        "expectedStatus": 301,
+        "targetUrl": "https://anyconverter.io/pdf-to-word/"
+      },
+      "impact": "Backlinks or user bookmarks lacking the trailing slash land on a 404 Not Found error page, losing incoming link equity and dropping visitors.",
+      "remediation": "Add Cloudflare Transform Rule or _redirects rule: /:slug -> /:slug/ 301 to normalize non-slashed requests before 404 fallback."
+    },
+    {
+      "id": "TECH-003",
+      "severity": "HIGH",
+      "category": "Security / HTTPS Enforcement",
+      "title": "Plain HTTP serves 200 OK without HTTPS redirect (Always Use HTTPS disabled)",
+      "url": "http://anyconverter.io/",
+      "evidence": {
+        "testCommand": "fetch('http://anyconverter.io/', { redirect: 'manual' })",
+        "httpStatus": 200,
+        "gscEvidence": "Google Search Console performance report reveals both http://anyconverter.io/ (10 impressions, 1 click) and http://anyconverter.io/es/morse-code-converter/ being indexed separately."
+      },
+      "impact": "Splits domain equity between HTTP and HTTPS; insecure connection warnings on user browsers; violates Google HTTPS best practices.",
+      "remediation": "Enable 'Always Use HTTPS' toggle in Cloudflare SSL/TLS Edge Certificates settings."
+    },
+    {
+      "id": "TECH-004",
+      "severity": "HIGH",
+      "category": "SEO / Click-Through Rate",
+      "title": "CTR Collapse on Page 1 Asset (/ip-address-lookup/)",
+      "url": "https://anyconverter.io/ip-address-lookup/",
+      "evidence": {
+        "impressions": 45567,
+        "clicks": 31,
+        "ctr": "0.07%",
+        "averagePosition": 9.9,
+        "source": "Google Search Console Live Performance Data (last 3 months)"
+      },
+      "impact": "Ranked on Google Page 1 for high-volume US search terms ('ip address lookup') but failing to capture 99.9% of user clicks due to sub-optimal snippet copy and value proposition.",
+      "remediation": "Rewrite Title tag, Meta Description, Open Graph tags, and add WebPage / FAQ / SoftwareApplication JSON-LD schema emphasizing 'Free Instant IP Lookup - City, ISP, IPv4 & IPv6'."
+    },
+    {
+      "id": "TECH-005",
+      "severity": "MEDIUM",
+      "category": "Security Headers / Analytics",
+      "title": "Content Security Policy in _headers blocks GA4 and Clarity telemetry",
+      "url": "https://anyconverter.io/",
+      "evidence": {
+        "cspPolicy": "script-src 'self' https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://unpkg.com 'wasm-unsafe-eval'",
+        "clarityStatus": "0 sessions recorded across 30 days despite 45k GSC impressions",
+        "codeReference": "assets/js/shared.js loads googletagmanager.com/gtag/js"
+      },
+      "impact": "All user behavior monitoring (Clarity heatmaps, dead clicks, GA4 traffic) is actively blocked by the browser CSP at runtime.",
+      "remediation": "Update _headers to permit https://www.googletagmanager.com, https://www.google-analytics.com, and https://www.clarity.ms in script-src and connect-src."
+    },
+    {
+      "id": "TECH-006",
+      "severity": "MEDIUM",
+      "category": "International SEO / Cluster Completeness",
+      "title": "5 Asymmetric Language Clusters Missing ES and DA Counterparts",
+      "url": "https://anyconverter.io/developer-tools/",
+      "evidence": {
+        "missingRoutes": [
+          "/developer-tools/",
+          "/pdf-metadata-remover/",
+          "/pdf-tools/",
+          "/productivity-tools/",
+          "/world-clock/"
+        ],
+        "auditTool": "tools/phase05-international-seo-audit.js"
+      },
+      "impact": "140 of 145 clusters have complete reciprocal hreflang, but these 5 hubs/tools lack Spanish and Danish counterparts.",
+      "remediation": "Generate localized Spanish (/es/...) and Danish (/da/...) pages for these 5 clusters to achieve 100% reciprocal multilingual parity."
+    },
+    {
+      "id": "TECH-007",
+      "severity": "LOW",
+      "category": "Caching / Edge Headers",
+      "title": "Duplicate Cache-Control Header on Static Assets",
+      "url": "https://anyconverter.io/assets/css/style.css",
+      "evidence": {
+        "headersFile": "_headers",
+        "duplicateRules": "/assets/* and /*.css both emit Cache-Control: public, max-age=31536000, immutable"
+      },
+      "impact": "Redundant HTTP response headers on static CSS/JS assets.",
+      "remediation": "Consolidate path matchers in _headers."
+    },
+    {
+      "id": "TECH-008",
+      "severity": "LOW",
+      "category": "Content / Compliance",
+      "title": "Absolute Privacy Claims Flagged on 11 Localized Pages",
+      "url": "https://anyconverter.io/da/camt053-to-csv/",
+      "evidence": {
+        "flaggedRoutes": [
+          "/da/birthday-countdown-calculator/",
+          "/da/camt053-to-csv/",
+          "/da/love-calculator/",
+          "/da/magic-8-ball/",
+          "/da/moon-sign-calculator/",
+          "/da/pdf-compress/",
+          "/es/birthday-countdown-calculator/",
+          "/es/camt053-to-csv/",
+          "/es/love-calculator/",
+          "/es/magic-8-ball/",
+          "/es/pdf-compress/"
+        ],
+        "validator": "tools/phase05-international-seo-audit.js"
+      },
+      "impact": "Potential compliance and advertising policy concerns regarding absolute privacy guarantees.",
+      "remediation": "Soften phrasing to accurate technical descriptions (e.g., 'Processed locally in your browser without server upload')."
+    }
+  ]
+}

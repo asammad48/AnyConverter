@@ -1,0 +1,160 @@
+{
+  "generatedAt": "2026-10-25T17:52:04.703Z",
+  "classificationCriteria": [
+    "Existing and working",
+    "Existing but defective",
+    "Feasible improvement",
+    "Requires feasibility investigation",
+    "Unnecessary or low value"
+  ],
+  "tools": [
+    {
+      "slug": "ip-address-lookup",
+      "route": "/ip-address-lookup/",
+      "category": "Diagnostics & Testers",
+      "currentArchitecture": "handwritten-legacy",
+      "priority": "CRITICAL_P1",
+      "evidence": "45,567 impressions, position 9.8, 0.07% CTR in GSC",
+      "features": [
+        {
+          "featureName": "Instant Above-the-Fold Hero Display of User IP",
+          "status": "Feasible improvement",
+          "userBenefit": "Users landing from search see their IP immediately in large high-contrast typography without scanning or waiting for UI animations.",
+          "implementationEffort": "Low (CSS/HTML hero card update)",
+          "libraryRequirement": "None (vanilla JS, existing fetch logic)"
+        },
+        {
+          "featureName": "1-Click 'Copy IP' & 'Copy Developer JSON'",
+          "status": "Feasible improvement",
+          "userBenefit": "High utility for IT engineers, developers, and support ticket filing.",
+          "implementationEffort": "Low (navigator.clipboard API with fallback)",
+          "libraryRequirement": "None"
+        },
+        {
+          "featureName": "DNS-over-HTTPS Reverse DNS (PTR) Lookup",
+          "status": "Requires feasibility investigation",
+          "userBenefit": "Displays the hostname associated with the IP (e.g. 1e100.net for Google).",
+          "implementationEffort": "Medium (Use Cloudflare 1.1.1.1 DoH endpoint `https://cloudflare-dns.com/dns-query?name=...&type=PTR`)",
+          "libraryRequirement": "None (native fetch to Cloudflare public DoH API)"
+        },
+        {
+          "featureName": "VPN / Proxy / Hosting Network Classifier",
+          "status": "Feasible improvement",
+          "userBenefit": "Answers the primary user troubleshooting question: 'Is my VPN working?'",
+          "implementationEffort": "Low (Utilize ASN/Org strings already returned by ipinfo/ipapi)",
+          "libraryRequirement": "None"
+        },
+        {
+          "featureName": "Tool Chaining: Seamless Transition to Speed Test & Browser Info",
+          "status": "Feasible improvement",
+          "userBenefit": "Keeps users engaged on site after inspecting IP details, increasing session duration and internal pageviews.",
+          "implementationEffort": "Low (Curated related tool cards in post-lookup view)",
+          "libraryRequirement": "None"
+        }
+      ]
+    },
+    {
+      "slug": "pdf-merge",
+      "route": "/pdf-merge/",
+      "category": "PDF Tools",
+      "currentArchitecture": "redesigned-dc-runtime",
+      "priority": "HIGH_P2",
+      "evidence": "Proven international demand (325 impressions in ES). Strong privacy differentiator.",
+      "features": [
+        {
+          "featureName": "Client-Side Zero-Server Processing via pdf-lib",
+          "status": "Existing and working",
+          "userBenefit": "Absolute document privacy; no file upload; zero file size limits.",
+          "implementationEffort": "Already completed",
+          "libraryRequirement": "pdf-lib (loaded via jsdelivr)"
+        },
+        {
+          "featureName": "Interactive Drag-and-Drop Thumbnail Reordering",
+          "status": "Existing and working",
+          "userBenefit": "Visual confirmation of document sequence before merging.",
+          "implementationEffort": "Already completed",
+          "libraryRequirement": "dc-runtime"
+        },
+        {
+          "featureName": "Post-Merge Action Chaining (Compress Merged PDF)",
+          "status": "Feasible improvement",
+          "userBenefit": "Users merging large documents frequently need immediate file compression for email attachments. Directly passing output buffer to `/pdf-compress/` without re-uploading saves time.",
+          "implementationEffort": "Medium (IndexedDB or memory buffer handoff)",
+          "libraryRequirement": "None"
+        },
+        {
+          "featureName": "Server-side OCR for Scanned PDFs in Merge",
+          "status": "Unnecessary or low value",
+          "userBenefit": "Heavy backend requirement that violates zero-infrastructure client-side principle.",
+          "implementationEffort": "High",
+          "libraryRequirement": "Heavy server OCR backend (rejected)"
+        }
+      ]
+    },
+    {
+      "slug": "mortgage-calculator",
+      "route": "/mortgage-calculator/",
+      "category": "Calculators",
+      "currentArchitecture": "generator-tool-pages",
+      "priority": "MEDIUM_P3",
+      "evidence": "80+ impressions in GSC for Danish query 'realkreditberegner'.",
+      "features": [
+        {
+          "featureName": "Standard Monthly Amortization Table & Interest Split",
+          "status": "Existing and working",
+          "userBenefit": "Clean math calculation of monthly mortgage payments.",
+          "implementationEffort": "Already completed",
+          "libraryRequirement": "calc-kit.js"
+        },
+        {
+          "featureName": "Danish Market Financial Presets (Realkreditlån, Bidragssats)",
+          "status": "Feasible improvement",
+          "userBenefit": "Tailors the Danish version `/da/mortgage-calculator/` to real Danish borrowing conditions.",
+          "implementationEffort": "Low (Parameter presets in Danish localization file)",
+          "libraryRequirement": "None"
+        }
+      ]
+    },
+    {
+      "slug": "discount-calculator",
+      "route": "/discount-calculator/",
+      "category": "Calculators",
+      "currentArchitecture": "generator-tool-pages",
+      "priority": "MEDIUM_P3",
+      "evidence": "506 impressions in GSC with 0 clicks.",
+      "features": [
+        {
+          "featureName": "Base Discount & Savings Calculation",
+          "status": "Existing and working",
+          "userBenefit": "Calculates final price after single percentage discount.",
+          "implementationEffort": "Already completed",
+          "libraryRequirement": "calc-kit.js"
+        },
+        {
+          "featureName": "Stacked / Double Discount + Sales Tax Preset",
+          "status": "Feasible improvement",
+          "userBenefit": "Solves real shopping problem: 'Take an extra 20% off already 30% discounted item plus 8.25% sales tax'.",
+          "implementationEffort": "Low (Math addition to existing tool script)",
+          "libraryRequirement": "None"
+        }
+      ]
+    },
+    {
+      "slug": "legacy-pdf-tools-suite",
+      "route": "/crop-pdf/, /add-watermark/, /unlock-pdf/, etc.",
+      "category": "PDF Tools (15 remaining tools)",
+      "currentArchitecture": "legacy-pdf",
+      "priority": "HIGH_P2",
+      "evidence": "11 tools are modern dc-runtime, 15 remaining tools are legacy layout.",
+      "features": [
+        {
+          "featureName": "Migration of 15 Legacy PDF Tools to Unified dc-runtime Architecture",
+          "status": "Feasible improvement",
+          "userBenefit": "Creates consistent, high-converting UX across all 26 PDF tools; unlocks shared SEO design tokens, mobile optimization, and lightweight client-side rendering.",
+          "implementationEffort": "Medium-High (Batch templates in tools/pdf-pages/source/)",
+          "libraryRequirement": "dc-runtime.js (already in repo)"
+        }
+      ]
+    }
+  ]
+}

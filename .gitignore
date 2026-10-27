@@ -1,10 +1,11 @@
-﻿################################################################################
+################################################################################
 # This .gitignore file was automatically created by Microsoft(R) Visual Studio.
 ################################################################################
 
 /.vs/AnyConverter
 /.vs/slnx.sqlite
 /.vs/slnx.sqlite-journal
+.vs/
 
 # Wrangler / Cloudflare local state
 .wrangler/
@@ -24,3 +25,25 @@ output/playwright/four-pages.pdf
 test-results/
 /output/attached-tool-page-system/design_handoff_anyconverter_tools/screens
 /output
+output_*.json
+
+# Temporary development scratchpad & validation experiments
+scratch/
+
+# Local environment & credentials (never commit secrets)
+.env
+.env.*
+*.local
+credentials.json
+client_secret*.json
+service-account*.json
+gsc-credentials*.json
+*.pem
+*.key
+
+# Agent MCP active credentials and machine-specific configuration
+.agents/mcp_config.json
+.agents/mcp_config.json.*
+.agents/*.bak
+*.bak
+*.backup*

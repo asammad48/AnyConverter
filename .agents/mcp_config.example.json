@@ -1,0 +1,69 @@
+{
+  "mcpServers": {
+    "chrome-devtools": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "chrome-devtools-mcp@latest",
+        "--slim",
+        "--headless"
+      ],
+      "disabled": false
+    },
+    "playwright": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@playwright/mcp@latest",
+        "--headless"
+      ],
+      "disabled": false
+    },
+    "github": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-github"
+      ],
+      "disabled": false
+    },
+    "stitch": {
+      "url": "https://stitch.googleapis.com/mcp",
+      "headers": {
+        "X-Goog-Api-Key": "${STITCH_API_KEY}"
+      },
+      "disabled": false
+    },
+    "google-search-console": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "mcp-gsc@latest"
+      ],
+      "env": {
+        "GOOGLE_GSC_CREDENTIALS_PATH": "${GOOGLE_GSC_CREDENTIALS_PATH}"
+      },
+      "disabled": false
+    },
+    "cloudflare-api": {
+      "url": "https://mcp.cloudflare.com/mcp",
+      "headers": {
+        "Authorization": "Bearer ${CLOUDFLARE_API_TOKEN}"
+      },
+      "disabled": false
+    },
+    "google-analytics": {
+      "command": "uvx",
+      "args": [
+        "--from",
+        "analytics-mcp",
+        "analytics-mcp"
+      ],
+      "env": {
+        "GOOGLE_APPLICATION_CREDENTIALS": "${GOOGLE_APPLICATION_CREDENTIALS}",
+        "GOOGLE_CLOUD_PROJECT": "${GOOGLE_CLOUD_PROJECT}"
+      },
+      "disabled": true
+    }
+  }
+}

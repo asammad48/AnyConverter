@@ -1,8 +1,10 @@
-/* JSON Formatter & Validator — with collapsible nodes */
+/* JSON Formatter & Validator — with collapsible nodes & 100MB Zero-Lag VirtualScroller */
 document.addEventListener('DOMContentLoaded', function () {
+  'use strict';
+
   function byId() {
-    for (let i = 0; i < arguments.length; i++) {
-      const el = document.getElementById(arguments[i]);
+    for (var i = 0; i < arguments.length; i++) {
+      var el = document.getElementById(arguments[i]);
       if (el) return el;
     }
     return null;
@@ -12,33 +14,135 @@ document.addEventListener('DOMContentLoaded', function () {
     if (el) el.addEventListener(eventName, handler);
   }
 
-  const input      = document.getElementById('json-input');
-  const outputEl   = byId('json-output-code', 'json-output');
-  const fileUpload = byId('file-upload', 'json-file');
-  const outputSection = document.getElementById('json-output-section');
-  const statusBar = document.getElementById('json-status');
+  var input         = document.getElementById('json-input');
+  var outputEl      = byId('json-output-code', 'json-output');
+  var fileUpload    = byId('file-upload', 'json-file');
+  var outputSection = document.getElementById('json-output-section');
+  var statusBar     = document.getElementById('json-status');
 
-  const inputStatusOk   = document.getElementById('input-status-ok');
-  const inputStatusErr  = document.getElementById('input-status-err');
-  const inputStatusInfo = document.getElementById('input-status-info');
-  const outputStatusOk  = document.getElementById('output-status-ok');
-  const outputStatusErr = document.getElementById('output-status-err');
-  const outputStatusInfo = document.getElementById('output-status-info');
+  var inputStatusOk    = document.getElementById('input-status-ok');
+  var inputStatusErr   = document.getElementById('input-status-err');
+  var inputStatusInfo  = document.getElementById('input-status-info');
+  var outputStatusOk   = document.getElementById('output-status-ok');
+  var outputStatusErr  = document.getElementById('output-status-err');
+  var outputStatusInfo = document.getElementById('output-status-info');
 
-  const statKeys   = document.getElementById('stat-keys');
-  const statDepth  = document.getElementById('stat-depth');
-  const statBytes  = document.getElementById('stat-bytes');
-  const statErrors = document.getElementById('stat-errors');
+  var statKeys   = document.getElementById('stat-keys');
+  var statDepth  = document.getElementById('stat-depth');
+  var statBytes  = document.getElementById('stat-bytes');
+  var statErrors = document.getElementById('stat-errors');
 
-  let debounceTimer;
-  let autoFormat = true;
-  let collapseOnLoad = false;
-  let currentMode = 'format';
-  let lastParsed = null;
+  var debounceTimer;
+  var autoFormat = true;
+  var collapseOnLoad = false;
+  var currentMode = 'format';
+  var lastParsed = null;
+
+  /* ===== ZERO-LAG & VIRTUALIZATION ENGINE STATE ===== */
+  var LARGE_THRESHOLD = 150 * 1024; // 150 KB: switch to virtual scroller
+  var AUTO_FORMAT_MAX = 100 * 1024; // 100 KB: disable auto-format debounce
+  var MAX_FILE_SIZE = 105 * 1024 * 1024; // 105 MB
+  var LINE_HEIGHT = 22; // 22px per row
+
+  var stagedLargeInput = null;
+  var isVirtualized = false;
+  var virtualText = '';
+  var virtualLineOffsets = null;
+  var virtualTotalLines = 0;
+  var virtualSpacer = null;
+  var virtualViewport = null;
+  var virtualRowPool = [];
+  var virtualCurrentMatchLine = -1;
+  var virtualScrollRaf = null;
+
+  /* ===== WEB WORKER CLIENT ===== */
+  var jsonWorker = null;
+  var workerCallbacks = {};
+  var workerMsgId = 0;
+
+  function initWorker() {
+    if (typeof Worker !== 'undefined') {
+      try {
+        jsonWorker = new Worker('/assets/js/workers/json-worker.js');
+        jsonWorker.onmessage = function (e) {
+          var msg = e.data;
+          var cb = workerCallbacks[msg.id];
+          if (cb) {
+            delete workerCallbacks[msg.id];
+            cb(msg);
+          }
+        };
+        jsonWorker.onerror = function () {
+          jsonWorker = null;
+        };
+      } catch (_) {
+        jsonWorker = null;
+      }
+    }
+  }
+  initWorker();
+
+  function sendWorker(action, payload, transferables) {
+    return new Promise(function (resolve) {
+      var id = ++workerMsgId;
+      payload.id = id;
+      payload.action = action;
+      if (jsonWorker) {
+        workerCallbacks[id] = resolve;
+        if (transferables && transferables.length) {
+          jsonWorker.postMessage(payload, transferables);
+        } else {
+          jsonWorker.postMessage(payload);
+        }
+      } else {
+        runFallbackWorker(action, payload, resolve);
+      }
+    });
+  }
+
+  function runFallbackWorker(action, data, resolve) {
+    setTimeout(function () {
+      try {
+        if (action === 'format') {
+          var raw = data.text;
+          var indentVal = data.indent === 'tab' ? '\t' : (typeof data.indent === 'number' ? data.indent : 2);
+          var parsed = JSON.parse(raw);
+          if (data.sort && data.sort !== 'none') parsed = sortObj(parsed);
+          var formatted = JSON.stringify(parsed, null, indentVal);
+          var s = countStats(parsed);
+          s.bytes = formatted.length;
+
+          var lCount = 1, len = formatted.length;
+          for (var i = 0; i < len; i++) {
+            if (formatted.charCodeAt(i) === 10) lCount++;
+          }
+          var offsets = new Uint32Array(lCount);
+          offsets[0] = 0;
+          var idx = 1;
+          for (var j = 0; j < len; j++) {
+            if (formatted.charCodeAt(j) === 10) offsets[idx++] = j + 1;
+          }
+          resolve({ id: data.id, success: true, action: 'format', formatted: formatted, lineCount: lCount, lineOffsets: offsets.buffer, stats: s });
+        } else if (action === 'minify') {
+          var pMin = JSON.parse(data.text);
+          var minified = JSON.stringify(pMin);
+          resolve({ id: data.id, success: true, action: 'minify', minified: minified, bytes: minified.length });
+        } else if (action === 'validate') {
+          JSON.parse(data.text);
+          resolve({ id: data.id, success: true, action: 'validate', valid: true });
+        } else if (action === 'search') {
+          var matches = searchVirtualText(data.text, data.lineOffsets, data.query, data.isRegex);
+          resolve({ id: data.id, success: true, action: 'search', matches: matches });
+        }
+      } catch (err) {
+        resolve({ id: data.id, success: false, action: action, error: err.message });
+      }
+    }, 0);
+  }
 
   /* ===== I18N STRINGS (search / bookmarks dynamic text) ===== */
-  const LANG = document.documentElement.lang || 'en';
-  const STR = {
+  var LANG = document.documentElement.lang || 'en';
+  var STR = {
     en: {
       noSearch: 'No search yet', noMatches: 'No matches found',
       formatterOnly: 'Search works in Formatter view',
@@ -51,7 +155,10 @@ document.addEventListener('DOMContentLoaded', function () {
       nameRequired: 'Enter a name to save this bookmark',
       invalidJsonToast: 'Fix JSON errors before saving a bookmark',
       limitToast: 'Bookmark limit reached (30) — delete one to add more',
-      loadedToast: function(n){ return 'Loaded "' + n + '"'; }
+      loadedToast: function(n){ return 'Loaded "' + n + '"'; },
+      largePayloadHint: function(size){ return '⚡ Large payload (' + size + ') — click Format or Ctrl+Enter'; },
+      perfModeTitle: '⚡ High-Performance Mode (Zero-Lag)',
+      copyLargeNotice: 'Copying large JSON to clipboard…'
     },
     da: {
       noSearch: 'Ingen søgning endnu', noMatches: 'Ingen resultater fundet',
@@ -65,7 +172,10 @@ document.addEventListener('DOMContentLoaded', function () {
       nameRequired: 'Indtast et navn for at gemme dette bogmærke',
       invalidJsonToast: 'Ret JSON-fejl før du gemmer et bogmærke',
       limitToast: 'Bogmærkegrænse nået (30) — slet ét for at tilføje flere',
-      loadedToast: function(n){ return 'Indlæste "' + n + '"'; }
+      loadedToast: function(n){ return 'Indlæste "' + n + '"'; },
+      largePayloadHint: function(size){ return '⚡ Stor fil (' + size + ') — klik Formatér eller Ctrl+Enter'; },
+      perfModeTitle: '⚡ Højtydende visning (Uden forsinkelse)',
+      copyLargeNotice: 'Kopierer stor JSON til udklipsholder…'
     },
     es: {
       noSearch: 'Sin búsqueda todavía', noMatches: 'No se encontraron coincidencias',
@@ -79,10 +189,13 @@ document.addEventListener('DOMContentLoaded', function () {
       nameRequired: 'Escribe un nombre para guardar este marcador',
       invalidJsonToast: 'Corrige los errores de JSON antes de guardar un marcador',
       limitToast: 'Límite de marcadores alcanzado (30): elimina uno para añadir más',
-      loadedToast: function(n){ return 'Cargado "' + n + '"'; }
+      loadedToast: function(n){ return 'Cargado "' + n + '"'; },
+      largePayloadHint: function(size){ return '⚡ Archivo grande (' + size + ') — haz clic en Formatear o Ctrl+Enter'; },
+      perfModeTitle: '⚡ Modo de alto rendimiento (Sin demoras)',
+      copyLargeNotice: 'Copiando JSON grande al portapapeles…'
     }
   };
-  const T = STR[LANG] || STR.en;
+  var T = STR[LANG] || STR.en;
 
   /* ===== UTILITIES ===== */
   function escHtml(s) {
@@ -92,53 +205,263 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   function getIndent() {
-    const opt = document.getElementById('opt-indent');
-    const v = opt ? opt.value : '2';
+    var opt = document.getElementById('opt-indent');
+    var v = opt ? opt.value : '2';
     return v === 'tab' ? '\t' : ' '.repeat(parseInt(v, 10));
   }
 
+  function getIndentNumber() {
+    var opt = document.getElementById('opt-indent');
+    var v = opt ? opt.value : '2';
+    return v === 'tab' ? 'tab' : parseInt(v, 10);
+  }
+
   function sortObj(obj) {
-    const sortOpt = document.getElementById('opt-sort');
-    const sort = sortOpt ? sortOpt.value : 'none';
+    var sortOpt = document.getElementById('opt-sort');
+    var sort = sortOpt ? sortOpt.value : 'none';
     if (sort === 'none') return obj;
-    const keys = Object.keys(obj).sort(sort === 'asc' ? undefined : (a,b) => b.localeCompare(a));
-    const out = {};
-    keys.forEach(k => { out[k] = obj[k]; });
+    var keys = Object.keys(obj).sort(sort === 'asc' ? undefined : function(a,b){ return b.localeCompare(a); });
+    var out = {};
+    keys.forEach(function(k){ out[k] = obj[k]; });
     return out;
   }
 
   function countStats(val, depth) {
     depth = depth || 0;
-    let keys = 0, maxD = depth;
+    var keys = 0, maxD = depth;
     if (val && typeof val === 'object') {
-      const arr = Array.isArray(val);
-      const entries = arr ? val : Object.values(val);
+      var arr = Array.isArray(val);
+      var entries = arr ? val : Object.values(val);
       keys += arr ? 0 : Object.keys(val).length;
-      entries.forEach(function(v) {
-        const sub = countStats(v, depth + 1);
-        keys += sub.keys;
-        if (sub.depth > maxD) maxD = sub.depth;
-      });
+      if (depth < 40) {
+        entries.forEach(function(v) {
+          var sub = countStats(v, depth + 1);
+          keys += sub.keys;
+          if (sub.depth > maxD) maxD = sub.depth;
+        });
+      }
     }
     return { keys: keys, depth: maxD };
   }
 
   function formatBytes(n) {
     if (n < 1024) return n + ' B';
-    return (n / 1024).toFixed(1) + ' KB';
+    if (n < 1024 * 1024) return (n / 1024).toFixed(1) + ' KB';
+    return (n / (1024 * 1024)).toFixed(2) + ' MB';
   }
 
-  /* ===== COLLAPSIBLE JSON RENDERER ===== */
+  /* ===== FAST LINE COLORIZER FOR VIRTUAL SCROLLER ===== */
+  function colorizeJsonLine(line) {
+    var esc = escHtml(line);
+    return esc.replace(/("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*")(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?/g, function (match, p1, p2, p3, p4) {
+      if (p3) {
+        return '<span class="j-key">' + p1 + '</span><span class="j-bracket">:</span>';
+      } else if (p1) {
+        return '<span class="j-str">' + p1 + '</span>';
+      } else if (p4) {
+        return p4 === 'null' ? '<span class="j-null">null</span>' : '<span class="j-bool">' + p4 + '</span>';
+      } else {
+        return '<span class="j-num">' + match + '</span>';
+      }
+    });
+  }
+
+  /* ===== VIRTUAL SCROLLER (ZERO-LAG FOR LARGE PAYLOADS) ===== */
+  var MAX_SPACER_HEIGHT = 15000000;
+
+  function ensureRowPool(containerHeight) {
+    var neededRows = Math.ceil(containerHeight / LINE_HEIGHT) + 30;
+    var digits = String(virtualTotalLines).length;
+    var lnWidth = Math.max(50, digits * 8 + 14);
+    while (virtualRowPool.length < neededRows) {
+      var row = document.createElement('div');
+      row.className = 'j-vrow';
+      var ln = document.createElement('span');
+      ln.className = 'j-ln';
+      ln.style.width = lnWidth + 'px';
+      ln.style.minWidth = lnWidth + 'px';
+      var code = document.createElement('span');
+      code.className = 'j-code';
+      row.appendChild(ln);
+      row.appendChild(code);
+      virtualViewport.appendChild(row);
+      virtualRowPool.push(row);
+    }
+  }
+
+  function getScrollTopForLine(line, containerHeight) {
+    var rawHeight = virtualTotalLines * LINE_HEIGHT;
+    var isScaled = rawHeight > MAX_SPACER_HEIGHT;
+    var spacerHeight = isScaled ? MAX_SPACER_HEIGHT : rawHeight;
+    var maxScrollTop = Math.max(0, spacerHeight - containerHeight);
+
+    if (!isScaled) {
+      var targetY = line * LINE_HEIGHT;
+      var centerOffset = (containerHeight - LINE_HEIGHT) / 2;
+      return Math.max(0, Math.min(maxScrollTop, Math.round(targetY - centerOffset)));
+    } else {
+      var visibleLinesInView = containerHeight / LINE_HEIGHT;
+      var maxTopLine = Math.max(0, virtualTotalLines - visibleLinesInView);
+      if (maxTopLine <= 0) return 0;
+      var centerOffsetLines = (visibleLinesInView - 1) / 2;
+      var ratio = Math.max(0, Math.min(1, (line - centerOffsetLines) / maxTopLine));
+      return Math.round(ratio * maxScrollTop);
+    }
+  }
+
+  function setupVirtualScroller(formatted, offsetsBuffer, lineCount, stats) {
+    isVirtualized = true;
+    virtualText = formatted;
+    virtualLineOffsets = new Uint32Array(offsetsBuffer);
+    virtualTotalLines = lineCount;
+    virtualCurrentMatchLine = -1;
+
+    // Reset container
+    outputEl.innerHTML = '';
+    outputEl.scrollTop = 0;
+
+    // Sticky performance badge
+    var badge = document.createElement('div');
+    badge.className = 'v-perf-badge';
+    badge.innerHTML = '<span>' + T.perfModeTitle + ' · <strong>' + virtualTotalLines.toLocaleString() + ' lines</strong> (' + formatBytes(virtualText.length) + ')</span>' +
+      '<span class="v-perf-tag">Zero Lag</span>';
+    outputEl.appendChild(badge);
+
+    // Phantom spacer
+    virtualSpacer = document.createElement('div');
+    virtualSpacer.className = 'v-scroll-spacer';
+    var rawHeight = virtualTotalLines * LINE_HEIGHT;
+    var totalHeight = Math.min(rawHeight, MAX_SPACER_HEIGHT);
+    virtualSpacer.style.height = totalHeight + 'px';
+
+    // Viewport
+    virtualViewport = document.createElement('div');
+    virtualViewport.className = 'v-viewport';
+    virtualSpacer.appendChild(virtualViewport);
+    outputEl.appendChild(virtualSpacer);
+
+    // Initial row pool
+    virtualRowPool = [];
+    ensureRowPool(outputEl.clientHeight || 700);
+
+    renderVirtualWindow();
+  }
+
+  function renderVirtualWindow() {
+    if (!isVirtualized || !virtualLineOffsets) return;
+
+    var containerHeight = outputEl.clientHeight || 700;
+    ensureRowPool(containerHeight);
+
+    var rawHeight = virtualTotalLines * LINE_HEIGHT;
+    var isScaled = rawHeight > MAX_SPACER_HEIGHT;
+    var spacerHeight = isScaled ? MAX_SPACER_HEIGHT : rawHeight;
+    var maxScrollTop = Math.max(0, spacerHeight - containerHeight);
+    var scrollTop = Math.max(0, Math.min(outputEl.scrollTop, maxScrollTop));
+
+    var startLine, viewportY;
+
+    if (!isScaled) {
+      startLine = Math.max(0, Math.floor(scrollTop / LINE_HEIGHT) - 5);
+      viewportY = startLine * LINE_HEIGHT;
+    } else {
+      var visibleLinesInView = containerHeight / LINE_HEIGHT;
+      var maxTopLine = Math.max(0, virtualTotalLines - visibleLinesInView);
+      var ratio = maxScrollTop > 0 ? scrollTop / maxScrollTop : 0;
+      var currentTopLine = ratio * maxTopLine;
+      var buffer = Math.min(5, Math.floor(currentTopLine));
+      startLine = Math.floor(currentTopLine) - buffer;
+      var fraction = currentTopLine - Math.floor(currentTopLine);
+      var pixelOffset = fraction * LINE_HEIGHT;
+      viewportY = scrollTop - pixelOffset - (buffer * LINE_HEIGHT);
+    }
+
+    virtualViewport.style.transform = 'translateY(' + viewportY + 'px)';
+
+    var visibleCount = virtualRowPool.length;
+    var endLine = Math.min(virtualTotalLines, startLine + visibleCount);
+
+    for (var i = 0; i < visibleCount; i++) {
+      var row = virtualRowPool[i];
+      var currentLineIdx = startLine + i;
+      if (currentLineIdx < endLine) {
+        row.style.display = 'flex';
+        var startOffset = virtualLineOffsets[currentLineIdx];
+        var endOffset = currentLineIdx + 1 < virtualTotalLines ? virtualLineOffsets[currentLineIdx + 1] - 1 : virtualText.length;
+        var lineText = virtualText.substring(startOffset, endOffset);
+
+        var lnEl = row.firstChild;
+        var codeEl = row.lastChild;
+
+        lnEl.textContent = currentLineIdx + 1;
+        codeEl.innerHTML = colorizeJsonLine(lineText);
+
+        if (currentLineIdx === virtualCurrentMatchLine) {
+          row.classList.add('j-search-current');
+        } else {
+          row.classList.remove('j-search-current');
+        }
+      } else {
+        row.style.display = 'none';
+      }
+    }
+  }
+
+  bind(outputEl, 'scroll', function () {
+    if (!isVirtualized) return;
+    if (virtualScrollRaf) cancelAnimationFrame(virtualScrollRaf);
+    virtualScrollRaf = requestAnimationFrame(renderVirtualWindow);
+  });
+
+  bind(window, 'resize', function () {
+    if (!isVirtualized) return;
+    if (virtualScrollRaf) cancelAnimationFrame(virtualScrollRaf);
+    virtualScrollRaf = requestAnimationFrame(renderVirtualWindow);
+  });
+
+  function searchVirtualText(text, offsetsBuffer, query, isRegex) {
+    var offsets = new Uint32Array(offsetsBuffer);
+    var totalL = offsets.length;
+    var matches = [];
+    var re;
+    try {
+      re = isRegex ? new RegExp(query, 'gi') : new RegExp(query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'gi');
+    } catch (_) {
+      return [];
+    }
+
+    var match;
+    while ((match = re.exec(text)) !== null) {
+      var charIdx = match.index;
+      var low = 0, high = totalL - 1, matchedLine = 0;
+      while (low <= high) {
+        var mid = (low + high) >> 1;
+        if (offsets[mid] <= charIdx) {
+          matchedLine = mid;
+          low = mid + 1;
+        } else {
+          high = mid - 1;
+        }
+      }
+      if (matches.length === 0 || matches[matches.length - 1] !== matchedLine) {
+        matches.push(matchedLine);
+      }
+      if (matches.length >= 2000) break;
+    }
+    return matches;
+  }
+
+  /* ===== COLLAPSIBLE JSON RENDERER (FOR STANDARD SIZED PAYLOADS) ===== */
   function buildTree(data) {
-    let nid = 0;
+    var nid = 0;
 
     function render(val, key, depth, isLast, path) {
-      const ind    = ' '.repeat(depth * 2);
-      const comma  = isLast ? '' : '<span class="j-bracket">,</span>';
-      const keyHtml = key !== null
+      var ind    = ' '.repeat(depth * 2);
+      var comma  = isLast ? '' : '<span class="j-bracket">,</span>';
+      var keyHtml = key !== null
         ? '<span class="j-key">"' + escHtml(key) + '"</span><span class="j-bracket">: </span>'
         : '';
-      const pathAttr = ' data-path="' + escHtml(path) + '"';
+      var pathAttr = ' data-path="' + escHtml(path) + '"';
 
       if (val === null) {
         return '<div class="j-line"' + pathAttr + '><span class="j-toggle invis" aria-hidden="true">▾</span>' + ind + keyHtml + '<span class="j-null">null</span>' + comma + '</div>';
@@ -153,28 +476,28 @@ document.addEventListener('DOMContentLoaded', function () {
         return '<div class="j-line"' + pathAttr + '><span class="j-toggle invis" aria-hidden="true">▾</span>' + ind + keyHtml + '<span class="j-bool">' + val + '</span>' + comma + '</div>';
       }
 
-      const isArr   = Array.isArray(val);
-      const entries = isArr ? val.map(function(v,i){return [String(i),v];}) : Object.entries(val);
-      const count   = entries.length;
-      const open    = isArr ? '[' : '{';
-      const close   = isArr ? ']' : '}';
+      var isArr   = Array.isArray(val);
+      var entries = isArr ? val.map(function(v,i){return [String(i),v];}) : Object.entries(val);
+      var count   = entries.length;
+      var open    = isArr ? '[' : '{';
+      var close   = isArr ? ']' : '}';
 
       if (count === 0) {
         return '<div class="j-line"' + pathAttr + '><span class="j-toggle invis" aria-hidden="true">▾</span>' + ind + keyHtml + '<span class="j-bracket">' + open + close + '</span>' + comma + '</div>';
       }
 
-      const id   = ++nid;
-      const hint = isArr
+      var id   = ++nid;
+      var hint = isArr
         ? '[ ' + count + (count === 1 ? ' item' : ' items') + ' ]'
         : '{ ' + count + (count === 1 ? ' key' : ' keys') + ' }';
 
-      const sortOpt = document.getElementById('opt-sort');
-      const sortedEntries = (!isArr && sortOpt && sortOpt.value !== 'none')
+      var sortOpt = document.getElementById('opt-sort');
+      var sortedEntries = (!isArr && sortOpt && sortOpt.value !== 'none')
         ? Object.entries(sortObj(Object.fromEntries(entries)))
         : entries;
 
-      const childHtml = sortedEntries.map(function(e, i) {
-        const childPath = path ? path + '.' + e[0] : e[0];
+      var childHtml = sortedEntries.map(function(e, i) {
+        var childPath = path ? path + '.' + e[0] : e[0];
         return render(e[1], isArr ? null : e[0], depth + 1, i === sortedEntries.length - 1, childPath);
       }).join('');
 
@@ -198,7 +521,7 @@ document.addEventListener('DOMContentLoaded', function () {
     return render(data, null, 0, true, '');
   }
 
-  /* ===== PATH NORMALIZATION (for path-query search mode) ===== */
+  /* ===== PATH NORMALIZATION ===== */
   function normalizePath(p) {
     p = String(p || '').trim();
     if (p.charAt(0) === '$') p = p.slice(1);
@@ -210,24 +533,26 @@ document.addEventListener('DOMContentLoaded', function () {
 
   /* ===== TOGGLE HANDLER ===== */
   bind(outputEl, 'click', function(e) {
-    const tog = e.target.closest('.j-toggle[data-nid]');
+    if (isVirtualized) return;
+    var tog = e.target.closest('.j-toggle[data-nid]');
     if (!tog) return;
     toggleNode(tog.dataset.nid);
   });
   bind(outputEl, 'keydown', function(e) {
+    if (isVirtualized) return;
     if (e.key !== 'Enter' && e.key !== ' ') return;
-    const tog = e.target.closest('.j-toggle[data-nid]');
+    var tog = e.target.closest('.j-toggle[data-nid]');
     if (!tog) return;
     e.preventDefault();
     toggleNode(tog.dataset.nid);
   });
 
   function toggleNode(nid) {
-    const openLine      = outputEl.querySelector('.j-node-open[data-nid="' + nid + '"]');
-    const body          = outputEl.querySelector('.j-node-body[data-nid="' + nid + '"]');
-    const collapsedLine = outputEl.querySelector('.j-node-collapsed[data-nid="' + nid + '"]');
+    var openLine      = outputEl.querySelector('.j-node-open[data-nid="' + nid + '"]');
+    var body          = outputEl.querySelector('.j-node-body[data-nid="' + nid + '"]');
+    var collapsedLine = outputEl.querySelector('.j-node-collapsed[data-nid="' + nid + '"]');
     if (!openLine || !body || !collapsedLine) return;
-    const expanded = openLine.style.display !== 'none';
+    var expanded = openLine.style.display !== 'none';
     if (expanded) {
       openLine.style.display      = 'none';
       body.style.display          = 'none';
@@ -241,11 +566,16 @@ document.addEventListener('DOMContentLoaded', function () {
 
   /* ===== COLLAPSE / EXPAND ALL ===== */
   function collapseAllNodes() {
+    if (isVirtualized) {
+      window.showToast('Collapsible tree is enabled for files under 150 KB. High-Performance mode keeps 60 FPS scrolling for large files.', 'info');
+      return;
+    }
     outputEl.querySelectorAll('.j-node-open').forEach(function(el){ el.style.display = 'none'; });
     outputEl.querySelectorAll('.j-node-body').forEach(function(el){ el.style.display = 'none'; });
     outputEl.querySelectorAll('.j-node-collapsed').forEach(function(el){ el.style.display = ''; });
   }
   function expandAllNodes() {
+    if (isVirtualized) return;
     outputEl.querySelectorAll('.j-node-open').forEach(function(el){ el.style.display = ''; });
     outputEl.querySelectorAll('.j-node-body').forEach(function(el){ el.style.display = ''; });
     outputEl.querySelectorAll('.j-node-collapsed').forEach(function(el){ el.style.display = 'none'; });
@@ -254,21 +584,26 @@ document.addEventListener('DOMContentLoaded', function () {
   bind(document.getElementById('btn-expand-all'), 'click', expandAllNodes);
 
   /* ===== SEARCH (key / value / both / regex / path) ===== */
-  const searchQueryEl = document.getElementById('search-query');
-  const searchModeEl  = document.getElementById('search-mode');
-  const searchPrevBtn = document.getElementById('search-prev');
-  const searchNextBtn = document.getElementById('search-next');
-  const searchCountEl = document.getElementById('search-count');
+  var searchQueryEl = document.getElementById('search-query');
+  var searchModeEl  = document.getElementById('search-mode');
+  var searchPrevBtn = document.getElementById('search-prev');
+  var searchNextBtn = document.getElementById('search-next');
+  var searchCountEl = document.getElementById('search-count');
 
-  let searchMatches = [];
-  let searchIndex = -1;
-  let searchDebounce;
+  var searchMatches = [];
+  var searchIndex = -1;
+  var searchDebounce;
 
   function setSearchCount(msg) {
     if (searchCountEl) searchCountEl.textContent = msg;
   }
 
   function clearSearchHighlights() {
+    if (isVirtualized) {
+      virtualCurrentMatchLine = -1;
+      renderVirtualWindow();
+      return;
+    }
     if (!outputEl) return;
     outputEl.querySelectorAll('.j-search-hit').forEach(function(el) {
       el.classList.remove('j-search-hit', 'j-search-current');
@@ -276,8 +611,20 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   function highlightCurrentMatch() {
+    if (isVirtualized) {
+      var matchLine = searchMatches[searchIndex];
+      if (typeof matchLine === 'number') {
+        virtualCurrentMatchLine = matchLine;
+        var containerHeight = outputEl.clientHeight || 700;
+        outputEl.scrollTop = getScrollTopForLine(matchLine, containerHeight);
+        renderVirtualWindow();
+        setSearchCount(T.matchCount(searchIndex, searchMatches.length));
+      }
+      return;
+    }
+
     outputEl.querySelectorAll('.j-search-current').forEach(function(el){ el.classList.remove('j-search-current'); });
-    const line = searchMatches[searchIndex];
+    var line = searchMatches[searchIndex];
     if (!line) return;
     line.querySelectorAll('.j-search-hit').forEach(function(el){ el.classList.add('j-search-current'); });
     scrollOutputLineIntoView(line);
@@ -286,25 +633,46 @@ document.addEventListener('DOMContentLoaded', function () {
 
   function scrollOutputLineIntoView(line) {
     if (!outputEl || !line || typeof line.getBoundingClientRect !== 'function') return;
-    const outRect = outputEl.getBoundingClientRect();
-    const lineRect = line.getBoundingClientRect();
-    const centeredDelta = (lineRect.top - outRect.top) - ((outputEl.clientHeight - lineRect.height) / 2);
+    var outRect = outputEl.getBoundingClientRect();
+    var lineRect = line.getBoundingClientRect();
+    var centeredDelta = (lineRect.top - outRect.top) - ((outputEl.clientHeight - lineRect.height) / 2);
     outputEl.scrollTo({ top: Math.max(0, outputEl.scrollTop + centeredDelta), behavior: 'auto' });
   }
 
-  function runSearch() {
+  async function runSearch() {
     clearSearchHighlights();
     searchMatches = [];
     searchIndex = -1;
-    const query = searchQueryEl.value.trim();
-    const mode  = searchModeEl ? searchModeEl.value : 'both';
+    var query = searchQueryEl ? searchQueryEl.value.trim() : '';
+    if (!query) { setSearchCount(T.noSearch); return; }
+    var mode  = searchModeEl ? searchModeEl.value : 'both';
+
+    if (isVirtualized) {
+      // Off-thread or fast search in virtualized text
+      var isReg = mode === 'regex';
+      var res = await sendWorker('search', {
+        text: virtualText,
+        lineOffsets: virtualLineOffsets.buffer,
+        query: query,
+        isRegex: isReg
+      });
+      if (res && res.matches && res.matches.length > 0) {
+        searchMatches = res.matches;
+        searchIndex = 0;
+        highlightCurrentMatch();
+      } else {
+        setSearchCount(T.noMatches);
+      }
+      return;
+    }
+
     expandAllNodes();
 
     if (mode === 'path') {
-      const norm = normalizePath(query);
-      const all = outputEl.querySelectorAll('[data-path]');
-      let found = null;
-      for (let i = 0; i < all.length; i++) {
+      var norm = normalizePath(query);
+      var all = outputEl.querySelectorAll('[data-path]');
+      var found = null;
+      for (var i = 0; i < all.length; i++) {
         if (all[i].style.display === 'none') continue;
         if (all[i].dataset.path === norm) { found = all[i]; break; }
       }
@@ -320,25 +688,25 @@ document.addEventListener('DOMContentLoaded', function () {
       return;
     }
 
-    let re = null;
+    var re = null;
     if (mode === 'regex') {
       try { re = new RegExp(query, 'i'); }
       catch (e) { setSearchCount(T.invalidRegex); return; }
     }
-    const q = query.toLowerCase();
+    var q = query.toLowerCase();
     function testText(t) { return re ? re.test(t) : t.toLowerCase().indexOf(q) !== -1; }
 
     outputEl.querySelectorAll('[data-path]').forEach(function(line) {
       if (line.style.display === 'none') return;
-      const keySpan = line.querySelector('.j-key');
-      const valSpan = line.querySelector('.j-str, .j-num, .j-bool, .j-null');
-      let hit = false;
+      var keySpan = line.querySelector('.j-key');
+      var valSpan = line.querySelector('.j-str, .j-num, .j-bool, .j-null');
+      var hit = false;
       if (keySpan && (mode === 'key' || mode === 'both' || mode === 'regex')) {
-        const kt = keySpan.textContent.replace(/^"|"$/g, '');
+        var kt = keySpan.textContent.replace(/^"|"$/g, '');
         if (testText(kt)) { keySpan.classList.add('j-search-hit'); hit = true; }
       }
       if (valSpan && (mode === 'value' || mode === 'both' || mode === 'regex')) {
-        let vt = valSpan.textContent;
+        var vt = valSpan.textContent;
         if (valSpan.classList.contains('j-str')) vt = vt.replace(/^"|"$/g, '');
         if (testText(vt)) { valSpan.classList.add('j-search-hit'); hit = true; }
       }
@@ -352,7 +720,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   function refreshSearch() {
     if (!searchQueryEl) return;
-    const query = searchQueryEl.value.trim();
+    var query = searchQueryEl.value.trim();
     if (!query) {
       clearSearchHighlights();
       searchMatches = []; searchIndex = -1;
@@ -414,26 +782,24 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }
 
-  function updateStats(parsed, rawStr) {
-    const s = countStats(parsed);
-    if (statKeys)   statKeys.textContent   = s.keys > 999 ? (s.keys/1000).toFixed(1)+'k' : s.keys;
-    if (statDepth)  statDepth.textContent  = s.depth;
-    if (statBytes)  statBytes.textContent  = formatBytes(new TextEncoder().encode(rawStr).length);
-    if (statErrors) statErrors.textContent = 0;
+  function updateStats(keys, depth, bytes, errors) {
+    if (statKeys)   statKeys.textContent   = keys > 999 ? (keys/1000).toFixed(1)+'k' : keys;
+    if (statDepth)  statDepth.textContent  = depth;
+    if (statBytes)  statBytes.textContent  = formatBytes(bytes);
+    if (statErrors) statErrors.textContent = errors != null ? errors : 0;
   }
 
   function clearStats() {
-    if (statKeys)   statKeys.textContent   = '0';
-    if (statDepth)  statDepth.textContent  = '0';
-    if (statBytes)  statBytes.textContent  = '0';
-    if (statErrors) statErrors.textContent = '0';
+    updateStats(0, 0, 0, 0);
   }
 
   /* ===== CORE OPERATIONS ===== */
-  function runFormat() {
-    const raw = input.value.trim();
+  async function runFormat() {
+    var raw = (stagedLargeInput && input.value.startsWith('/* [Loaded:')) ? stagedLargeInput : input.value.trim();
     if (outputSection) outputSection.style.display = raw ? '' : 'none';
     if (!raw) {
+      isVirtualized = false;
+      virtualText = '';
       outputEl.innerHTML = '<span style="color:#4A5568;font-style:italic;font-size:11px">Output will appear here…</span>';
       setInputStatus(null, '', 'Paste or type JSON');
       setOutputStatus(null, '', '');
@@ -442,45 +808,112 @@ document.addEventListener('DOMContentLoaded', function () {
       refreshSearch();
       return;
     }
-    try {
-      const parsed = JSON.parse(raw);
-      lastParsed = parsed;
-      const indentChar = getIndent();
-      const optIndent = document.getElementById('opt-indent');
-      const formatted = JSON.stringify(parsed, null, indentChar === '\t' ? '\t' : parseInt(optIndent ? optIndent.value : '2', 10));
-      const lines = formatted.split('\n').length;
-      const html = buildTree(parsed);
-      outputEl.innerHTML = html;
-      if (collapseOnLoad) {
-        const collapseBtn = document.getElementById('btn-collapse-all');
-        if (collapseBtn) collapseBtn.click();
+
+    var isLarge = raw.length >= LARGE_THRESHOLD;
+
+    if (isLarge) {
+      // High-performance virtual scroller path
+      setOutputStatus('ok', 'Formatting ' + formatBytes(raw.length) + '…', '');
+      var startTime = performance.now();
+      var sortOpt = document.getElementById('opt-sort');
+      var sortVal = sortOpt ? sortOpt.value : 'none';
+      var indentVal = getIndentNumber();
+
+      var res = await sendWorker('format', {
+        text: raw,
+        indent: indentVal,
+        sort: sortVal
+      });
+
+      if (!res.success) {
+        lastParsed = null;
+        isVirtualized = false;
+        virtualText = '';
+        var errShort = '✕ ' + res.error;
+        setInputStatus('err', errShort, '');
+        setOutputStatus('err', errShort, '');
+        outputEl.innerHTML =
+          '<div style="padding:16px;background:#FEF2F2;border-left:3px solid #DC2626;border-radius:4px;color:#991B1B;font-size:12px">' +
+          '<strong>✕ Invalid JSON</strong><br><span style="color:var(--color-text-2,#3F3A36);margin-top:6px;display:block">' + escHtml(res.error) + '</span></div>';
+        if (statErrors) statErrors.textContent = '1';
+        refreshSearch();
+        return;
       }
-      const s = countStats(parsed);
-      setInputStatus('ok', '✓ Valid JSON', raw.length + ' chars');
-      setOutputStatus('ok', '✓ Formatted', lines + ' lines · ' + s.keys + ' keys');
-      updateStats(parsed, raw);
+
+      var dur = (performance.now() - startTime).toFixed(0);
+      setupVirtualScroller(res.formatted, res.lineOffsets, res.lineCount, res.stats);
+
+      setInputStatus('ok', '✓ Valid JSON', formatBytes(raw.length));
+      setOutputStatus('ok', '✓ Formatted in ' + dur + 'ms', res.lineCount.toLocaleString() + ' lines · ' + res.stats.keys.toLocaleString() + ' keys');
+      updateStats(res.stats.keys, res.stats.depth, res.stats.bytes, 0);
       input.style.borderColor = '';
       refreshSearch();
-    } catch (e) {
-      lastParsed = null;
-      const msg = '✕ ' + e.message;
-      setInputStatus('err', msg, '');
-      setOutputStatus('err', msg, '');
-      outputEl.innerHTML =
-        '<div style="padding:16px;background:#FEF2F2;border-left:3px solid #DC2626;border-radius:4px;color:#991B1B;font-size:12px">' +
-        '<strong>✕ Invalid JSON</strong><br><span style="color:var(--color-text-2,#3F3A36);margin-top:6px;display:block">' + escHtml(e.message) + '</span></div>';
-      if (statErrors) statErrors.textContent = '1';
-      refreshSearch();
+
+    } else {
+      // Standard interactive tree path (< 150 KB)
+      isVirtualized = false;
+      virtualText = '';
+      try {
+        var parsed = JSON.parse(raw);
+        lastParsed = parsed;
+        var indentChar = getIndent();
+        var optIndent = document.getElementById('opt-indent');
+        var formatted = JSON.stringify(parsed, null, indentChar === '\t' ? '\t' : parseInt(optIndent ? optIndent.value : '2', 10));
+        var lines = formatted.split('\n').length;
+        var html = buildTree(parsed);
+        outputEl.innerHTML = html;
+        if (collapseOnLoad) {
+          var collapseBtn = document.getElementById('btn-collapse-all');
+          if (collapseBtn) collapseBtn.click();
+        }
+        var s = countStats(parsed);
+        setInputStatus('ok', '✓ Valid JSON', raw.length + ' chars');
+        setOutputStatus('ok', '✓ Formatted', lines + ' lines · ' + s.keys + ' keys');
+        updateStats(s.keys, s.depth, new TextEncoder().encode(raw).length, 0);
+        input.style.borderColor = '';
+        refreshSearch();
+      } catch (e) {
+        lastParsed = null;
+        var msg = '✕ ' + e.message;
+        setInputStatus('err', msg, '');
+        setOutputStatus('err', msg, '');
+        outputEl.innerHTML =
+          '<div style="padding:16px;background:#FEF2F2;border-left:3px solid #DC2626;border-radius:4px;color:#991B1B;font-size:12px">' +
+          '<strong>✕ Invalid JSON</strong><br><span style="color:var(--color-text-2,#3F3A36);margin-top:6px;display:block">' + escHtml(e.message) + '</span></div>';
+        if (statErrors) statErrors.textContent = '1';
+        refreshSearch();
+      }
     }
   }
 
-  function runMinify() {
-    const raw = input.value.trim();
+  async function runMinify() {
+    var raw = input.value.trim();
     if (!raw) return;
     if (outputSection) outputSection.style.display = '';
+
+    if (raw.length >= LARGE_THRESHOLD) {
+      setOutputStatus('ok', 'Minifying ' + formatBytes(raw.length) + '…', '');
+      var res = await sendWorker('minify', { text: raw });
+      if (res.success) {
+        isVirtualized = false;
+        virtualText = res.minified;
+        outputEl.textContent = res.minified;
+        outputEl.style.whiteSpace = 'pre-wrap';
+        setInputStatus('ok', '✓ Valid JSON', '');
+        setOutputStatus('ok', '✓ Minified', formatBytes(res.bytes));
+        refreshSearch();
+      } else {
+        setInputStatus('err', '✕ ' + res.error, '');
+        setOutputStatus('err', '✕ ' + res.error, '');
+      }
+      return;
+    }
+
     try {
-      const parsed = JSON.parse(raw);
-      const minified = JSON.stringify(parsed);
+      var parsed = JSON.parse(raw);
+      var minified = JSON.stringify(parsed);
+      isVirtualized = false;
+      virtualText = minified;
       outputEl.textContent = minified;
       outputEl.style.whiteSpace = 'pre-wrap';
       setInputStatus('ok', '✓ Valid JSON', '');
@@ -493,10 +926,29 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }
 
-  function runValidate() {
-    const raw = input.value.trim();
+  async function runValidate() {
+    var raw = input.value.trim();
     if (!raw) { setInputStatus(null,'','Please enter JSON to validate'); refreshSearch(); return; }
     if (outputSection) outputSection.style.display = '';
+
+    if (raw.length >= LARGE_THRESHOLD) {
+      setOutputStatus('ok', 'Validating ' + formatBytes(raw.length) + '…', '');
+      var res = await sendWorker('validate', { text: raw });
+      if (res.success) {
+        setInputStatus('ok', '✓ Valid JSON — no errors found', formatBytes(raw.length));
+        setOutputStatus('ok', '✓ Valid JSON', '');
+        outputEl.innerHTML = '<div style="padding:20px;text-align:center;color:#16A34A;font-size:14px;font-weight:600">✓ JSON is valid (' + formatBytes(raw.length) + ')</div>';
+        if (statErrors) statErrors.textContent = '0';
+      } else {
+        setInputStatus('err', '✕ ' + res.error, '');
+        setOutputStatus('err', '✕ ' + res.error, '');
+        outputEl.innerHTML = '<div style="padding:16px;background:#FEF2F2;border-left:3px solid #DC2626;border-radius:4px;color:#991B1B;font-size:12px"><strong>✕ Invalid JSON</strong><br><span style="margin-top:6px;display:block">' + escHtml(res.error) + '</span></div>';
+        if (statErrors) statErrors.textContent = '1';
+      }
+      refreshSearch();
+      return;
+    }
+
     try {
       JSON.parse(raw);
       setInputStatus('ok', '✓ Valid JSON — no errors found', '');
@@ -518,6 +970,10 @@ document.addEventListener('DOMContentLoaded', function () {
   bind(document.getElementById('btn-validate'), 'click', function() { currentMode = 'validate'; runValidate(); });
 
   bind(document.getElementById('btn-to-yaml'), 'click', function() {
+    if (isVirtualized) {
+      window.showToast('Exporting large files to YAML requires under 1MB payload', 'info');
+      return;
+    }
     if (!lastParsed) { window.showToast('Format JSON first', 'info'); return; }
     try {
       var yaml = jsonToYaml(lastParsed, 0);
@@ -530,6 +986,10 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
   bind(document.getElementById('btn-to-csv'), 'click', function() {
+    if (isVirtualized) {
+      window.showToast('CSV export is supported for table datasets under 1MB', 'info');
+      return;
+    }
     if (!lastParsed) { window.showToast('Format JSON first', 'info'); return; }
     try {
       var csv = jsonToCsv(lastParsed);
@@ -596,13 +1056,15 @@ document.addEventListener('DOMContentLoaded', function () {
 
   bind(document.getElementById('btn-clear'), 'click', function() {
     input.value = '';
+    isVirtualized = false;
+    virtualText = '';
     runFormat();
     input.focus();
   });
 
   bind(document.getElementById('btn-paste'), 'click', async function() {
     try {
-      const text = await navigator.clipboard.readText();
+      var text = await navigator.clipboard.readText();
       input.value = text;
       runFormat();
     } catch(_) {
@@ -611,57 +1073,99 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
   bind(document.getElementById('btn-copy-input'), 'click', function() {
-    window.copyToClipboard(input.value);
+    window.copyToClipboard(input.value, this);
   });
 
   bind(document.getElementById('btn-copy-output'), 'click', function() {
-    const raw = input.value.trim();
+    var btn = this;
+    if (isVirtualized && virtualText) {
+      if (virtualText.length > 5 * 1024 * 1024) {
+        window.showToast(T.copyLargeNotice, 'info');
+      }
+      window.copyToClipboard(virtualText, btn);
+      return;
+    }
+
+    var raw = input.value.trim();
     if (!raw) return;
     try {
-      const parsed = JSON.parse(raw);
-      const optIndent = document.getElementById('opt-indent');
-      const indentV = optIndent ? optIndent.value : '2';
-      const indent = indentV === 'tab' ? '\t' : parseInt(indentV, 10);
-      window.copyToClipboard(JSON.stringify(parsed, null, indent));
+      var parsed = JSON.parse(raw);
+      var optIndent = document.getElementById('opt-indent');
+      var indentV = optIndent ? optIndent.value : '2';
+      var indent = indentV === 'tab' ? '\t' : parseInt(indentV, 10);
+      window.copyToClipboard(JSON.stringify(parsed, null, indent), btn);
     } catch(_) {
-      window.copyToClipboard(raw);
+      window.copyToClipboard(raw, btn);
     }
   });
 
   bind(document.getElementById('btn-download'), 'click', function() {
-    const raw = input.value.trim();
+    if (isVirtualized && virtualText) {
+      var vBlob = new Blob([virtualText], { type: 'application/json' });
+      var vUrl  = URL.createObjectURL(vBlob);
+      var vA    = document.createElement('a');
+      vA.href = vUrl; vA.download = 'formatted.json'; vA.click();
+      URL.revokeObjectURL(vUrl);
+      window.showToast('Downloaded formatted.json (' + formatBytes(virtualText.length) + ')', 'success');
+      return;
+    }
+
+    var raw = input.value.trim();
     if (!raw) return;
-    let content = raw;
+    var content = raw;
     try {
-      const parsed = JSON.parse(raw);
-      const optIndent = document.getElementById('opt-indent');
-      const indentV = optIndent ? optIndent.value : '2';
+      var parsed = JSON.parse(raw);
+      var optIndent = document.getElementById('opt-indent');
+      var indentV = optIndent ? optIndent.value : '2';
       content = JSON.stringify(parsed, null, indentV === 'tab' ? '\t' : parseInt(indentV, 10));
     } catch(_) {}
-    const blob = new Blob([content], { type: 'application/json' });
-    const url  = URL.createObjectURL(blob);
-    const a    = document.createElement('a');
+    var blob = new Blob([content], { type: 'application/json' });
+    var url  = URL.createObjectURL(blob);
+    var a    = document.createElement('a');
     a.href = url; a.download = 'formatted.json'; a.click();
     URL.revokeObjectURL(url);
     window.showToast('Downloaded formatted.json', 'success');
   });
 
+  /* ===== FILE UPLOAD (UP TO 100MB ZERO-LAG) ===== */
   bind(fileUpload, 'change', function() {
-    const file = fileUpload.files[0];
+    var file = fileUpload.files[0];
     if (!file) return;
-    window.showToast('Loading ' + file.name + '…', 'info');
-    const reader = new FileReader();
+    if (file.size > MAX_FILE_SIZE) {
+      window.showToast('File size (' + formatBytes(file.size) + ') exceeds 100MB limit', 'error');
+      fileUpload.value = '';
+      return;
+    }
+
+    window.showToast('Loading ' + file.name + ' (' + formatBytes(file.size) + ')…', 'info');
+    var reader = new FileReader();
     reader.onload = function(e) {
-      input.value = e.target.result;
+      var content = e.target.result;
+      if (file.size > 2 * 1024 * 1024) {
+        stagedLargeInput = content;
+        input.value = '/* [Loaded: ' + file.name + ' (' + formatBytes(file.size) + ') — Content staged off-thread for peak performance. Click Format or press Ctrl+Enter] */';
+      } else {
+        stagedLargeInput = null;
+        input.value = content;
+      }
       runFormat();
+    };
+    reader.onerror = function() {
+      window.showToast('Failed to read file', 'error');
     };
     reader.readAsText(file);
     fileUpload.value = '';
   });
 
-  /* ===== AUTO-FORMAT ON INPUT ===== */
+  /* ===== AUTO-FORMAT ON INPUT WITH SIZE GUARD ===== */
   bind(input, 'input', function() {
+    stagedLargeInput = null;
     clearTimeout(debounceTimer);
+    var len = input.value.length;
+    if (len > AUTO_FORMAT_MAX) {
+      setInputStatus(null, '', T.largePayloadHint(formatBytes(len)));
+      return;
+    }
     debounceTimer = setTimeout(function() {
       if (autoFormat) runFormat();
       else if (input.value.trim()) {
@@ -669,6 +1173,14 @@ document.addEventListener('DOMContentLoaded', function () {
         catch(e) { setInputStatus('err','✕ ' + e.message,''); }
       }
     }, 200);
+  });
+
+  /* ===== SHORTCUT: CTRL/CMD+ENTER TO FORMAT ===== */
+  bind(input, 'keydown', function(e) {
+    if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
+      e.preventDefault();
+      runFormat();
+    }
   });
 
   /* ===== SUB-TABS ===== */
@@ -687,7 +1199,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   /* ===== TOGGLES ===== */
   function initToggle(id, initialOn, onChange) {
-    const el = document.getElementById(id);
+    var el = document.getElementById(id);
     if (!el) return;
     function update(on) {
       el.classList.toggle('off', !on);
@@ -695,7 +1207,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
     update(initialOn);
     function handleActivate() {
-      const on = !el.classList.contains('off');
+      var on = !el.classList.contains('off');
       update(!on);
       onChange(!on);
     }
@@ -707,13 +1219,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
   initToggle('tog-autoformat', true, function(on) {
     autoFormat = on;
-    const label = document.getElementById('auto-format-label');
+    var label = document.getElementById('auto-format-label');
     if (label) label.textContent = T.autoFormatLabel(on);
   });
   initToggle('tog-collapse', false, function(on) { collapseOnLoad = on; });
   initToggle('tog-linenums', false, function(on) {
-    outputEl.style.counterReset = on ? 'lines' : '';
-    /* line numbers could be added via CSS counter if desired */
+    if (outputEl) outputEl.classList.toggle('show-linenums', on);
   });
   initToggle('tog-wrap', false, function(on) {
     outputEl.style.whiteSpace = on ? 'pre-wrap' : 'pre';
@@ -725,24 +1236,24 @@ document.addEventListener('DOMContentLoaded', function () {
   bind(document.getElementById('opt-sort'), 'change', function() { if (autoFormat && input.value.trim()) runFormat(); });
 
   /* ===== FONT SIZE ===== */
-  const fontSizes = [11, 13, 15, 17];
-  let fontSizeIdx = 1;
+  var fontSizes = [11, 13, 15, 17];
+  var fontSizeIdx = 1;
   function applyFontSize(px) {
     document.documentElement.style.setProperty('--panel-font-size', px + 'px');
-    const sel = document.getElementById('opt-font-size');
+    var sel = document.getElementById('opt-font-size');
     if (sel) sel.value = String(px);
   }
-  const optFontSize = document.getElementById('opt-font-size');
+  var optFontSize = document.getElementById('opt-font-size');
   if (optFontSize) {
     optFontSize.addEventListener('change', function() {
-      const px = parseInt(this.value);
+      var px = parseInt(this.value);
       fontSizeIdx = fontSizes.indexOf(px);
       if (fontSizeIdx < 0) fontSizeIdx = 1;
       applyFontSize(px);
     });
   }
-  const btnFontDown = document.getElementById('btn-font-down');
-  const btnFontUp   = document.getElementById('btn-font-up');
+  var btnFontDown = document.getElementById('btn-font-down');
+  var btnFontUp   = document.getElementById('btn-font-up');
   if (btnFontDown) {
     btnFontDown.addEventListener('click', function() {
       if (fontSizeIdx > 0) { fontSizeIdx--; applyFontSize(fontSizes[fontSizeIdx]); }
@@ -755,8 +1266,8 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   /* ===== FULLSCREEN ===== */
-  const fsOverlay = document.getElementById('fs-overlay');
-  let fsPanel = null;
+  var fsOverlay = document.getElementById('fs-overlay');
+  var fsPanel = null;
 
   function enterFs(panel, btn) {
     fsPanel = panel;
@@ -774,16 +1285,16 @@ document.addEventListener('DOMContentLoaded', function () {
     document.body.style.overflow = '';
     if (fsOverlay) fsOverlay.classList.remove('active');
     ['btn-fs-input', 'btn-fs-output'].forEach(function(id) {
-      const b = document.getElementById(id);
+      var b = document.getElementById(id);
       if (b) { b.classList.remove('fs-active'); b.textContent = '⛶'; b.title = T.enterFullscreen; }
     });
     fsPanel = null;
   }
 
-  const btnFsInput  = document.getElementById('btn-fs-input');
-  const btnFsOutput = document.getElementById('btn-fs-output');
-  const inputPanel  = btnFsInput  ? btnFsInput.closest('.ac-panel')  : null;
-  const outputPanel = btnFsOutput ? btnFsOutput.closest('.ac-panel') : null;
+  var btnFsInput  = document.getElementById('btn-fs-input');
+  var btnFsOutput = document.getElementById('btn-fs-output');
+  var inputPanel  = btnFsInput  ? btnFsInput.closest('.ac-panel')  : null;
+  var outputPanel = btnFsOutput ? btnFsOutput.closest('.ac-panel') : null;
 
   if (btnFsInput && inputPanel) {
     btnFsInput.addEventListener('click', function() {
@@ -806,18 +1317,18 @@ document.addEventListener('DOMContentLoaded', function () {
   bind(input, 'keydown', function(e) {
     if (e.key === 'Tab') {
       e.preventDefault();
-      const s = input.selectionStart, end = input.selectionEnd;
+      var s = input.selectionStart, end = input.selectionEnd;
       input.value = input.value.substring(0, s) + '  ' + input.value.substring(end);
       input.selectionStart = input.selectionEnd = s + 2;
     }
   });
 
   /* ===== BOOKMARKS (local-only, localStorage) ===== */
-  const BOOKMARK_KEY   = 'ac_json_bookmarks';
-  const BOOKMARK_LIMIT = 30;
-  const bookmarkNameEl  = document.getElementById('bookmark-name');
-  const bookmarkSaveBtn = document.getElementById('btn-bookmark-save');
-  const bookmarkListEl  = document.getElementById('bookmark-list');
+  var BOOKMARK_KEY   = 'ac_json_bookmarks';
+  var BOOKMARK_LIMIT = 30;
+  var bookmarkNameEl  = document.getElementById('bookmark-name');
+  var bookmarkSaveBtn = document.getElementById('btn-bookmark-save');
+  var bookmarkListEl  = document.getElementById('bookmark-list');
 
   function loadBookmarks() {
     try { return JSON.parse(localStorage.getItem(BOOKMARK_KEY)) || []; }
@@ -829,7 +1340,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   function renderBookmarks() {
     if (!bookmarkListEl) return;
-    const list = loadBookmarks();
+    var list = loadBookmarks();
     if (list.length === 0) {
       bookmarkListEl.innerHTML = '<p style="font-size:11px;color:var(--color-text-3,#9CA3AF);text-align:center;padding:8px 0;margin:0">' + T.emptyBookmarks + '</p>';
       return;
@@ -837,23 +1348,23 @@ document.addEventListener('DOMContentLoaded', function () {
     bookmarkListEl.innerHTML = list.map(function(bm) {
       return '<div class="stat-card" data-bm-id="' + bm.id + '" style="display:flex;align-items:center;justify-content:space-between;padding:6px 8px;text-align:left;cursor:pointer">' +
         '<span style="font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1" title="' + escHtml(bm.name) + '">' + escHtml(bm.name) + '</span>' +
-        '<button class="ac-btn" data-bm-del="' + bm.id + '" title="Delete bookmark" aria-label="Delete bookmark" style="padding:2px 6px;height:auto;margin-left:6px">×</button>' +
+        '<button class="ac-btn" type="button" data-bm-del="' + bm.id + '" title="Delete bookmark" aria-label="Delete bookmark" style="padding:2px 6px;height:auto;margin-left:6px">×</button>' +
       '</div>';
     }).join('');
   }
 
   bind(bookmarkSaveBtn, 'click', function() {
-    const raw = input.value.trim();
+    var raw = input.value.trim();
     if (!raw) { window.showToast(T.nameRequired, 'info'); return; }
     try { JSON.parse(raw); }
     catch (e) { window.showToast(T.invalidJsonToast, 'error'); return; }
-    const name = (bookmarkNameEl && bookmarkNameEl.value.trim()) || '';
+    var name = (bookmarkNameEl && bookmarkNameEl.value.trim()) || '';
     if (!name) {
       window.showToast(T.nameRequired, 'info');
       if (bookmarkNameEl) bookmarkNameEl.focus();
       return;
     }
-    const list = loadBookmarks();
+    var list = loadBookmarks();
     if (list.length >= BOOKMARK_LIMIT) { window.showToast(T.limitToast, 'info'); return; }
     list.unshift({ id: Date.now(), name: name, json: raw });
     saveBookmarks(list);
@@ -863,23 +1374,23 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
   bind(bookmarkListEl, 'click', function(e) {
-    const delBtn = e.target.closest('[data-bm-del]');
+    var delBtn = e.target.closest('[data-bm-del]');
     if (delBtn) {
       e.stopPropagation();
-      const id = delBtn.getAttribute('data-bm-del');
-      let list = loadBookmarks();
-      const removed = list.find(function(b){ return String(b.id) === String(id); });
+      var id = delBtn.getAttribute('data-bm-del');
+      var list = loadBookmarks();
+      var removed = list.find(function(b){ return String(b.id) === String(id); });
       list = list.filter(function(b){ return String(b.id) !== String(id); });
       saveBookmarks(list);
       renderBookmarks();
       if (removed) window.showToast(T.deletedToast, 'info');
       return;
     }
-    const row = e.target.closest('[data-bm-id]');
+    var row = e.target.closest('[data-bm-id]');
     if (row) {
-      const id = row.getAttribute('data-bm-id');
-      const list = loadBookmarks();
-      const bm = list.find(function(b){ return String(b.id) === String(id); });
+      var bId = row.getAttribute('data-bm-id');
+      var bList = loadBookmarks();
+      var bm = bList.find(function(b){ return String(b.id) === String(bId); });
       if (bm) {
         input.value = bm.json;
         runFormat();
@@ -890,4 +1401,25 @@ document.addEventListener('DOMContentLoaded', function () {
 
   renderBookmarks();
   refreshSearch();
+
+  /* ===== TEST / DIAGNOSTIC HOOK ===== */
+  window._ac_virtualScroller = {
+    setup: setupVirtualScroller,
+    render: renderVirtualWindow,
+    highlight: highlightCurrentMatch,
+    getScrollTopForLine: getScrollTopForLine,
+    setSearchMatches: function(matches, idx) {
+      searchMatches = matches;
+      searchIndex = idx || 0;
+    },
+    getState: function() {
+      return {
+        isVirtualized: isVirtualized,
+        virtualTotalLines: virtualTotalLines,
+        virtualRowPool: virtualRowPool,
+        virtualSpacer: virtualSpacer,
+        virtualViewport: virtualViewport
+      };
+    }
+  };
 });

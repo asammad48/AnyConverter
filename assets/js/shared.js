@@ -171,6 +171,15 @@
           <li><a href="/rise-over-run-calculator/" role="menuitem">Rise Over Run</a></li>
           <li><a href="/slope-grade-angle-calculator/" role="menuitem">Slope, Grade &amp; Angle</a></li>
           <li><a href="/tip-calculator/" role="menuitem">Tip Calculator</a></li>
+          <li><a href="/love-calculator/" role="menuitem">Love Calculator</a></li>
+          <li><a href="/flames-calculator/" role="menuitem">FLAMES Calculator</a></li>
+          <li><a href="/numerology-calculator/" role="menuitem">Numerology Calculator</a></li>
+          <li><a href="/name-numerology-calculator/" role="menuitem">Name Numerology</a></li>
+          <li><a href="/lo-shu-grid-calculator/" role="menuitem">Lo Shu Grid Calculator</a></li>
+          <li><a href="/tarot-birth-card-calculator/" role="menuitem">Tarot Birth Card</a></li>
+          <li><a href="/moon-sign-calculator/" role="menuitem">Moon Sign Calculator</a></li>
+          <li><a href="/rising-sign-calculator/" role="menuitem">Rising Sign Calculator</a></li>
+          <li><a href="/birthday-countdown-calculator/" role="menuitem">Birthday Countdown</a></li>
         </ul>
       </li>
 
@@ -1276,21 +1285,46 @@
   }
 
   /* ===== CLIPBOARD ===== */
-  window.copyToClipboard = async function (text) {
+  window.copyToClipboard = async function (text, triggerEl) {
+    let success = false;
     try {
       await navigator.clipboard.writeText(text);
-      window.showToast('Copied to clipboard!', 'success');
+      success = true;
     } catch (_e) {
-      const ta = document.createElement('textarea');
-      ta.value = text;
-      ta.style.position = 'fixed';
-      ta.style.opacity = '0';
-      document.body.appendChild(ta);
-      ta.select();
-      document.execCommand('copy');
-      ta.remove();
-      window.showToast('Copied to clipboard!', 'success');
+      try {
+        const ta = document.createElement('textarea');
+        ta.value = text;
+        ta.style.position = 'fixed';
+        ta.style.opacity = '0';
+        document.body.appendChild(ta);
+        ta.select();
+        success = document.execCommand('copy');
+        ta.remove();
+      } catch (_err) {
+        success = false;
+      }
     }
+    if (success) {
+      window.showToast('Copied to clipboard!', 'success');
+      const btn = triggerEl || (document.activeElement && (document.activeElement.tagName === 'BUTTON' || document.activeElement.classList.contains('ac-btn')) ? document.activeElement : null);
+      if (btn && !btn.dataset.copying) {
+        btn.dataset.copying = 'true';
+        const origHtml = btn.innerHTML;
+        const origWidth = btn.offsetWidth;
+        if (origWidth) btn.style.minWidth = origWidth + 'px';
+        btn.classList.add('btn-copied');
+        btn.innerHTML = '✓ Copied!';
+        setTimeout(function () {
+          btn.innerHTML = origHtml;
+          btn.classList.remove('btn-copied');
+          btn.style.minWidth = '';
+          delete btn.dataset.copying;
+        }, 1500);
+      }
+    } else {
+      window.showToast('Could not copy to clipboard', 'info');
+    }
+    return success;
   };
 
   function escapeHtml(str) {

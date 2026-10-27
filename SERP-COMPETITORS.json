@@ -1,0 +1,153 @@
+{
+  "researchDate": "2026-10-25",
+  "methodology": "Direct SERP verification, Google Search Central alignment, public Google/Bing search observations, and browser analysis",
+  "queries": [
+    {
+      "query": "ip address lookup",
+      "market": "US",
+      "language": "en",
+      "searchEngine": "Google",
+      "searchIntent": "Utility / Instant Geolocation & Network Check",
+      "anyconverterPerformance": {
+        "observedPosition": 9.8,
+        "impressions": 44106,
+        "clicks": 28,
+        "ctr": "0.06%",
+        "url": "https://anyconverter.io/ip-address-lookup/"
+      },
+      "observedCompetitors": [
+        {
+          "rank": 1,
+          "domain": "whatismyipaddress.com",
+          "title": "What Is My IP Address? Lookup IP, Hide IP, Geolocation",
+          "url": "https://whatismyipaddress.com/ip-lookup",
+          "strengths": [
+            "Massive brand recognition (20+ years authority)",
+            "Instant hero display of public IPv4/IPv6 without requiring clicks",
+            "Rich metadata: Hostname, ISP, City, State, Country, Postal Code, Coordinates, Interactive Map",
+            "VPN / Proxy detection badge",
+            "Educational guides on IP privacy, DNS leaks, and blacklists"
+          ],
+          "weaknesses": [
+            "Extremely heavy display advertising (3-5 banners, video ads, sticky footers) slowing page speed",
+            "Cluttered layout with distracting affiliate VPN offers",
+            "Aggressive tracking cookies and consent modals"
+          ],
+          "opportunityForAnyConverter": "Provide a blistering-fast, zero-bloat, privacy-respecting IP lookup experience: instant 1-click copy, clean typography, interactive OpenStreetMap, ASN badge, and zero intrusive popups."
+        },
+        {
+          "rank": 2,
+          "domain": "ipinfo.io",
+          "title": "IP Address Lookup — Check Details of Any IP Address",
+          "url": "https://ipinfo.io/ip-lookup",
+          "strengths": [
+            "High developer trust and clean UI",
+            "Deep B2B data: ASN, Carrier/Mobile detection, Privacy/VPN classification, Company domain",
+            "Fast API integration examples and JSON payload view"
+          ],
+          "weaknesses": [
+            "Pushes hard to sign up for paid enterprise API plans",
+            "Free tier limited in rate and scope"
+          ],
+          "opportunityForAnyConverter": "Feature a one-click 'Copy JSON' or 'Copy Support Ticket Report' for developers and IT support without requiring account creation."
+        },
+        {
+          "rank": 3,
+          "domain": "iplocation.net",
+          "title": "IP Location Finder - Geolocation Lookup",
+          "url": "https://www.iplocation.net/",
+          "strengths": [
+            "Compares 4 different GeoIP databases side-by-side (MaxMind, IP2Location, DB-IP, ipinfo)",
+            "High search volume capture"
+          ],
+          "weaknesses": [
+            "Severely outdated UI with table layout and heavy ads",
+            "Confusion from contradictory location results across providers"
+          ],
+          "opportunityForAnyConverter": "Offer clear, unified location accuracy indicators ('City-level confidence') instead of confusing conflicting tables."
+        }
+      ]
+    },
+    {
+      "query": "unir pdf",
+      "market": "ES/MX",
+      "language": "es",
+      "searchEngine": "Google",
+      "searchIntent": "Document Processing / Client-side Utility",
+      "anyconverterPerformance": {
+        "observedPosition": 58.9,
+        "impressions": 325,
+        "clicks": 2,
+        "ctr": "0.62%",
+        "url": "https://anyconverter.io/es/pdf-merge/"
+      },
+      "observedCompetitors": [
+        {
+          "rank": 1,
+          "domain": "ilovepdf.com",
+          "title": "Unir PDF - Une archivos PDF online gratis",
+          "url": "https://www.ilovepdf.com/es/unir_pdf",
+          "strengths": [
+            "Household brand name for PDF tools in Spanish-speaking markets",
+            "Visual drag-and-drop page/document reordering with thumbnail previews",
+            "Rotate and delete individual pages before merging",
+            "Google Drive and Dropbox cloud import"
+          ],
+          "weaknesses": [
+            "Documents are uploaded to remote servers (confidentiality and GDPR concerns)",
+            "Strict file size limits (25MB free) and daily task quotas",
+            "Aggressive upsells to Premium subscriptions"
+          ],
+          "opportunityForAnyConverter": "Capitalize on AnyConverter's killer advantage: 100% Client-Side Processing via pdf-lib. No file upload to any server, zero file size limits, zero daily quotas, total confidentiality for business and legal documents."
+        },
+        {
+          "rank": 2,
+          "domain": "smallpdf.com",
+          "title": "Unir PDF online gratis. Combinar archivos PDF",
+          "url": "https://smallpdf.com/es/unir-pdf",
+          "strengths": [
+            "Modern, polished visual interface",
+            "Page-mode combining"
+          ],
+          "weaknesses": [
+            "Extreme usage paywall (limits free users to 1-2 tasks per day before demanding $12/mo)",
+            "Server upload requirement"
+          ],
+          "opportunityForAnyConverter": "Promote 'Sin límites de uso, sin registro y 100% privado en tu navegador'."
+        }
+      ]
+    },
+    {
+      "query": "realkreditberegner",
+      "market": "DK",
+      "language": "da",
+      "searchEngine": "Google",
+      "searchIntent": "Financial Planning / Mortgage Loan Calculation",
+      "anyconverterPerformance": {
+        "observedPosition": 45.2,
+        "impressions": 80,
+        "clicks": 0,
+        "ctr": "0.00%",
+        "url": "https://anyconverter.io/da/mortgage-calculator/"
+      },
+      "observedCompetitors": [
+        {
+          "rank": 1,
+          "domain": "totalkredit.dk",
+          "title": "Beregn realkreditlån - Hvad koster det at låne? | Totalkredit",
+          "url": "https://www.totalkredit.dk/beregnere/beregn-lan/",
+          "strengths": [
+            "Direct integration with real Danish mortgage bond prices and interest rates",
+            "Supports specific Danish loan types: Fastrente, F-kort, RenteMax, Afdragsfrihed",
+            "Calculates Danish property tax (ejendomsværdiskat) and bidragssats"
+          ],
+          "weaknesses": [
+            "Requires extensive personal information and bank contact forms",
+            "Complex for users who just want a fast, independent estimate"
+          ],
+          "opportunityForAnyConverter": "Enhance the Danish mortgage calculator with Danish financial presets (Fastrente 4%, F-kort, bidragssats slider) and clear explanatory Danish copy, providing an instant neutral calculation without bank sales pressure."
+        }
+      ]
+    }
+  ]
+}

@@ -92,6 +92,28 @@ function parsePage(file) {
   const robotsTag = metaTags.find((tag) => /\bname=["']robots["']/i.test(tag));
   const htmlTag = (html.match(/<html\b[^>]*>/i) || [''])[0];
 
+  // Capture all hreflangs as an array to detect duplicate declarations
+  const hreflangEntries = alternateTags.map((tag) => ({
+    lang: attr(tag, 'hreflang'),
+    href: attr(tag, 'href')
+  }));
+  const seenLangs = new Set();
+  const duplicateHreflangs = [];
+  for (const item of hreflangEntries) {
+    if (seenLangs.has(item.lang)) {
+      duplicateHreflangs.push(item.lang);
+    }
+    seenLangs.add(item.lang);
+  }
+
+  // Open Graph & Twitter metadata
+  const ogUrlTag = metaTags.find((tag) => /\bproperty=["']og:url["']/i.test(tag));
+  const ogTitleTag = metaTags.find((tag) => /\bproperty=["']og:title["']/i.test(tag));
+  const ogDescTag = metaTags.find((tag) => /\bproperty=["']og:description["']/i.test(tag));
+
+  // JSON-LD blocks
+  const jsonLdBlocks = [...html.matchAll(/<script\s+type=["']application\/ld\+json["']>([\s\S]*?)<\/script>/gi)].map(m => m[1]);
+
   return {
     file,
     route,
@@ -100,25 +122,40 @@ function parsePage(file) {
     base: baseRoute(route),
     htmlLang: attr(htmlTag, 'lang'),
     canonical: canonicalTag ? attr(canonicalTag, 'href') : '',
+    ogUrl: ogUrlTag ? attr(ogUrlTag, 'content') : '',
+    ogTitle: ogTitleTag ? attr(ogTitleTag, 'content') : '',
+    ogDescription: ogDescTag ? attr(ogDescTag, 'content') : '',
     robots: robotsTag ? attr(robotsTag, 'content') : '',
     title: text(html, /<title>([\s\S]*?)<\/title>/i),
     description: attr(metaTags.find((tag) => /\bname=["']description["']/i.test(tag)) || '', 'content'),
     h1: text(html, /<h1\b[^>]*>([\s\S]*?)<\/h1>/i),
-    hreflang: Object.fromEntries(alternateTags.map((tag) => [attr(tag, 'hreflang'), attr(tag, 'href')])),
+    hreflangEntries,
+    duplicateHreflangs,
+    hreflang: Object.fromEntries(hreflangEntries.map(e => [e.lang, e.href])),
+    jsonLdBlocks,
     text: visibleText(html),
   };
 }
 
 function parseSitemap() {
   const xml = read('sitemap.xml');
-  return [...xml.matchAll(/<url>[\s\S]*?<loc>([^<]+)<\/loc>([\s\S]*?)<\/url>/g)].map((match) => ({
-    loc: match[1].trim(),
-    route: new URL(match[1].trim()).pathname,
-    hreflang: Object.fromEntries(
-      [...match[2].matchAll(/<xhtml:link[^>]*hreflang=["']([^"']+)["'][^>]*href=["']([^"']+)["'][^>]*\/>/g)]
-        .map((linkMatch) => [linkMatch[1], linkMatch[2]])
-    ),
-  }));
+  return [...xml.matchAll(/<url>[\s\S]*?<loc>([^<]+)<\/loc>([\s\S]*?)<\/url>/g)].map((match) => {
+    const rawLinks = [...match[2].matchAll(/<xhtml:link[^>]*hreflang=["']([^"']+)["'][^>]*href=["']([^"']+)["'][^>]*\/>/g)]
+      .map((linkMatch) => ({ lang: linkMatch[1], href: linkMatch[2] }));
+    const seenLangs = new Set();
+    const duplicateHreflangs = [];
+    for (const l of rawLinks) {
+      if (seenLangs.has(l.lang)) duplicateHreflangs.push(l.lang);
+      seenLangs.add(l.lang);
+    }
+    return {
+      loc: match[1].trim(),
+      route: new URL(match[1].trim()).pathname,
+      rawLinks,
+      duplicateHreflangs,
+      hreflang: Object.fromEntries(rawLinks.map(l => [l.lang, l.href])),
+    };
+  });
 }
 
 function scanContent(page) {
@@ -171,6 +208,54 @@ function main() {
 
   for (const page of pages) {
     const expectedCanonical = `${origin}${page.route}`;
+    // 1. Detect duplicate hreflangs
+    if (page.duplicateHreflangs.length > 0) {
+      issue(technicalIssues, 'duplicate-hreflang-tag', {
+        route: page.route,
+        file: page.file,
+        duplicates: page.duplicateHreflangs
+      });
+    }
+
+    // 2. Detect canonical vs og:url mismatch
+    if (page.ogUrl && page.ogUrl !== page.canonical) {
+      issue(technicalIssues, 'canonical-og-url-mismatch', {
+        route: page.route,
+        file: page.file,
+        canonical: page.canonical,
+        ogUrl: page.ogUrl
+      });
+    }
+
+    // 3. Validate JSON-LD syntax & URL
+    for (const block of page.jsonLdBlocks) {
+      try {
+        const parsed = JSON.parse(block);
+        const normUrl = (u) => {
+          try {
+            const parsedUrl = new URL(u);
+            let p = parsedUrl.pathname;
+            if (!p.endsWith('/')) p += '/';
+            return `${parsedUrl.origin}${p}`;
+          } catch (_) { return u; }
+        };
+        if (parsed.url && normUrl(parsed.url) !== normUrl(page.canonical)) {
+          issue(technicalIssues, 'jsonld-canonical-mismatch', {
+            route: page.route,
+            file: page.file,
+            jsonLdUrl: parsed.url,
+            expected: page.canonical
+          });
+        }
+      } catch (err) {
+        issue(technicalIssues, 'malformed-jsonld', {
+          route: page.route,
+          file: page.file,
+          error: err.message
+        });
+      }
+    }
+
     if (page.canonical !== expectedCanonical) {
       issue(technicalIssues, 'canonical-mismatch', {
         route: page.route,

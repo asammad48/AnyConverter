@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Búsqueda de Dirección IP Online Gratis | AnyConverter</title>
-  <meta name="description" content="Consulta tu IP publica, ubicacion aproximada, proveedor, zona horaria y datos de red al instante con una guia clara de privacidad.">
+  <title>¿Cuál es mi dirección IP? — Consulta de IP y Geolocalización | AnyConverter</title>
+  <meta name="description" content="Consulta tu dirección IP pública al instante con geolocalización, proveedor ISP, ciudad, país y ASN. Rápido, privado y 100% gratuito.">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://anyconverter.io/es/ip-address-lookup/">
   <link rel="alternate" hreflang="en" href="https://anyconverter.io/ip-address-lookup/">
@@ -13,8 +13,8 @@
   <link rel="alternate" hreflang="x-default" href="https://anyconverter.io/ip-address-lookup/">
 
 <meta property="og:type" content="website">
-  <meta property="og:title" content="Búsqueda de Dirección IP Online Gratis | AnyConverter">
-  <meta property="og:description" content="Consulta tu IP publica, ubicacion aproximada, proveedor, zona horaria y datos de red al instante con una guia clara de privacidad.">
+  <meta property="og:title" content="¿Cuál es mi dirección IP? — Consulta de IP y Geolocalización | AnyConverter">
+  <meta property="og:description" content="Consulta tu dirección IP pública al instante con geolocalización, proveedor ISP, ciudad, país y ASN. Rápido, privado y 100% gratuito.">
   <meta property="og:url" content="https://anyconverter.io/es/ip-address-lookup/">
   <meta property="og:site_name" content="AnyConverter">
   <meta property="og:image" content="https://anyconverter.io/assets/img/og-image.png">
@@ -22,8 +22,8 @@
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="AnyConverter free online tools">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Búsqueda de Dirección IP Online Gratis | AnyConverter">
-  <meta name="twitter:description" content="Consulta tu IP publica, ubicacion aproximada, proveedor, zona horaria y datos de red al instante con una guia clara de privacidad.">
+  <meta name="twitter:title" content="¿Cuál es mi dirección IP? — Consulta de IP y Geolocalización | AnyConverter">
+  <meta name="twitter:description" content="Consulta tu dirección IP pública al instante con geolocalización, proveedor ISP, ciudad, país y ASN. Rápido, privado y 100% gratuito.">
   <meta name="twitter:image" content="https://anyconverter.io/assets/img/og-image.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -59,6 +59,20 @@
     <div class="tool-wrapper">
       <div class="tool-zone">
         <div style="padding:24px">
+          <!-- Immediate Public IP Hero Card -->
+          <div class="ip-hero-card" id="ip-hero-card">
+            <div class="ip-hero-badge" id="ip-hero-badge">Tu Dirección IP Pública</div>
+            <div class="ip-hero-main">
+              <span class="ip-hero-display" id="ip-hero-display">Detectando IP…</span>
+              <button class="ac-btn" type="button" id="btn-copy-hero-ip" title="Copy IP" aria-label="Copy IP address" style="display:none">Copy</button>
+            </div>
+            <div class="ip-hero-meta" id="ip-hero-meta" style="display:none">
+              <span class="ip-meta-item" id="ip-meta-location">📍 Location: —</span>
+              <span class="ip-meta-item" id="ip-meta-isp">🏢 ISP: —</span>
+              <span class="ip-meta-item" id="ip-meta-asn">🌐 ASN: —</span>
+            </div>
+          </div>
+
           <div style="margin-bottom:16px">
             <label style="display:block;font-size:13px;font-weight:500;margin-bottom:6px" for="ip-input">IP Address (leave blank for your IP)</label>
             <div style="display:flex;gap:8px">

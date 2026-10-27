@@ -95,9 +95,12 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   function decodeText() {
-    const val = textInput.value.trim();
+    let val = textInput.value.trim();
     if (!val) return;
     try {
+      // Normalize URL-safe Base64 and missing padding
+      val = val.replace(/-/g, '+').replace(/_/g, '/');
+      while (val.length % 4 !== 0) { val += '='; }
       const decoded = decodeURIComponent(escape(atob(val)));
       setOutputValue(textOutput, decoded);
       updateStats(val, decoded);

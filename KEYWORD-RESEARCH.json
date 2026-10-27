@@ -1,0 +1,358 @@
+{
+  "generatedAt": "2026-10-25T17:50:51.811Z",
+  "clustersCount": 5,
+  "totalKeywordsTracked": 26,
+  "clusters": [
+    {
+      "clusterId": "ip-address-lookup",
+      "toolSlug": "ip-address-lookup",
+      "targetUrls": {
+        "en": "https://anyconverter.io/ip-address-lookup/",
+        "es": "https://anyconverter.io/es/ip-address-lookup/",
+        "da": "https://anyconverter.io/da/ip-address-lookup/"
+      },
+      "primaryIntent": "Utility / Diagnostic",
+      "findings": "Owns 45,567 impressions in GSC at position 9.8 (Page 1) with 0.07% CTR. Massive organic search opportunity.",
+      "keywords": [
+        {
+          "keyword": "ip address lookup",
+          "language": "en",
+          "market": "us",
+          "intent": "utility",
+          "source": "gsc-live",
+          "impressions": 44106,
+          "clicks": 28,
+          "ctr": "0.06%",
+          "position": 9.8,
+          "confidence": "high",
+          "gap": "CTR is depressed (0.06%). Users search for fast, instant IP, ISP, and location checks without ads or clutter. Snippet lacks action triggers."
+        },
+        {
+          "keyword": "ip lookup",
+          "language": "en",
+          "market": "us",
+          "intent": "utility",
+          "source": "gsc-live",
+          "impressions": 36,
+          "clicks": 1,
+          "ctr": "2.78%",
+          "position": 14.2,
+          "confidence": "high",
+          "gap": "Needs keyword inclusion in secondary heading and FAQ."
+        },
+        {
+          "keyword": "my ip address checker",
+          "language": "en",
+          "market": "us",
+          "intent": "utility / diagnostic",
+          "source": "gsc-live",
+          "impressions": 5,
+          "clicks": 1,
+          "ctr": "20.00%",
+          "position": 8.6,
+          "confidence": "high",
+          "gap": "Above-the-fold display of the user's current detected IP is required immediately without manual input."
+        },
+        {
+          "keyword": "ip address search",
+          "language": "en",
+          "market": "us",
+          "intent": "utility",
+          "source": "gsc-live",
+          "impressions": 13,
+          "clicks": 0,
+          "ctr": "0.00%",
+          "position": 10.5,
+          "confidence": "medium",
+          "gap": "Alternative phrasing to include in intro copy."
+        },
+        {
+          "keyword": "ip address checker",
+          "language": "en",
+          "market": "us",
+          "intent": "utility",
+          "source": "gsc-live",
+          "impressions": 11,
+          "clicks": 0,
+          "ctr": "0.00%",
+          "position": 11.2,
+          "confidence": "medium",
+          "gap": "Synonym cluster member."
+        },
+        {
+          "keyword": "lookup ip address",
+          "language": "en",
+          "market": "us",
+          "intent": "utility",
+          "source": "gsc-live",
+          "impressions": 21,
+          "clicks": 0,
+          "ctr": "0.00%",
+          "position": 12,
+          "confidence": "medium",
+          "gap": "Verb-first query variation."
+        },
+        {
+          "keyword": "ip address lookup free",
+          "language": "en",
+          "market": "us",
+          "intent": "utility",
+          "source": "google-autocomplete",
+          "confidence": "high",
+          "gap": "Missing 'Free' modifier prominence in title and meta snippet."
+        },
+        {
+          "keyword": "ip address lookup location",
+          "language": "en",
+          "market": "us",
+          "intent": "feature-specific",
+          "source": "google-autocomplete",
+          "confidence": "high",
+          "gap": "Highlight City, Country, ISP and coordinates in snippet schema."
+        },
+        {
+          "keyword": "buscar direccion ip",
+          "language": "es",
+          "market": "mx/es",
+          "intent": "utility",
+          "source": "google-autocomplete",
+          "confidence": "high",
+          "gap": "Spanish title should lead with 'Buscar Dirección IP Gratis' and highlight 'Localizar IP y Proveedor'."
+        },
+        {
+          "keyword": "cual es mi direccion ip",
+          "language": "es",
+          "market": "mx/es",
+          "intent": "utility",
+          "source": "google-autocomplete",
+          "confidence": "high",
+          "gap": "Target user wanting immediate self-IP check."
+        },
+        {
+          "keyword": "localizar ip",
+          "language": "es",
+          "market": "mx/es",
+          "intent": "utility",
+          "source": "google-autocomplete",
+          "confidence": "medium",
+          "gap": "High-volume Spanish synonym."
+        },
+        {
+          "keyword": "find ip adresse",
+          "language": "da",
+          "market": "dk",
+          "intent": "utility",
+          "source": "google-autocomplete",
+          "confidence": "high",
+          "gap": "Danish localization should emphasize 'Find IP-adresse gratis' and 'Tjek internetudbyder og placering'."
+        },
+        {
+          "keyword": "hvad er min ip",
+          "language": "da",
+          "market": "dk",
+          "intent": "utility",
+          "source": "google-autocomplete",
+          "confidence": "high",
+          "gap": "Dominant Danish query for self IP lookup."
+        }
+      ]
+    },
+    {
+      "clusterId": "pdf-merge",
+      "toolSlug": "pdf-merge",
+      "targetUrls": {
+        "en": "https://anyconverter.io/pdf-merge/",
+        "es": "https://anyconverter.io/es/pdf-merge/",
+        "da": "https://anyconverter.io/da/pdf-merge/"
+      },
+      "primaryIntent": "Document Processing / Client-side Utility",
+      "findings": "Demonstrates international traction: 325 impressions in ES and Danish impressions in GSC. Redesigned with dc-runtime. Complete privacy advantage (no file uploads).",
+      "keywords": [
+        {
+          "keyword": "unir pdf online",
+          "language": "es",
+          "market": "es/mx",
+          "intent": "utility",
+          "source": "gsc-live",
+          "impressions": 30,
+          "clicks": 1,
+          "ctr": "3.33%",
+          "position": 58.9,
+          "confidence": "high",
+          "gap": "Ranking position is improving (page 6). Emphasize '100% privado y sin subir archivos'."
+        },
+        {
+          "keyword": "unir dos pdf",
+          "language": "es",
+          "market": "es/mx",
+          "intent": "problem-solving",
+          "source": "gsc-live",
+          "impressions": 4,
+          "clicks": 1,
+          "ctr": "25.00%",
+          "position": 76.5,
+          "confidence": "high",
+          "gap": "Specific intent: combining exactly 2 PDFs together."
+        },
+        {
+          "keyword": "unir pdf gratis",
+          "language": "es",
+          "market": "es/mx",
+          "intent": "utility",
+          "source": "google-autocomplete",
+          "confidence": "high",
+          "gap": "Free PDF merging search volume."
+        },
+        {
+          "keyword": "unir pdf sin limite",
+          "language": "es",
+          "market": "es/mx",
+          "intent": "feature-specific",
+          "source": "google-autocomplete",
+          "confidence": "high",
+          "gap": "Key competitive weakness of iLovePDF/Smallpdf is file/size limits. AnyConverter has no upload size limit since it runs locally."
+        },
+        {
+          "keyword": "samle pdf",
+          "language": "da",
+          "market": "dk",
+          "intent": "utility",
+          "source": "google-autocomplete",
+          "confidence": "high",
+          "gap": "Core Danish term for merging PDF files."
+        },
+        {
+          "keyword": "sammenflet pdf filer gratis",
+          "language": "da",
+          "market": "dk",
+          "intent": "utility",
+          "source": "google-autocomplete",
+          "confidence": "high",
+          "gap": "Secondary Danish variant with high transactional intent."
+        },
+        {
+          "keyword": "merge pdf free no upload",
+          "language": "en",
+          "market": "global",
+          "intent": "privacy-focused",
+          "source": "google-autocomplete",
+          "confidence": "high",
+          "gap": "Core differentiator: zero-server processing."
+        }
+      ]
+    },
+    {
+      "clusterId": "mortgage-calculator",
+      "toolSlug": "mortgage-calculator",
+      "targetUrls": {
+        "en": "https://anyconverter.io/mortgage-calculator/",
+        "es": "https://anyconverter.io/es/mortgage-calculator/",
+        "da": "https://anyconverter.io/da/mortgage-calculator/"
+      },
+      "primaryIntent": "Financial Calculation",
+      "findings": "Demonstrates Danish organic demand with 80+ impressions in GSC for 'realkreditberegner'.",
+      "keywords": [
+        {
+          "keyword": "realkreditberegner",
+          "language": "da",
+          "market": "dk",
+          "intent": "financial calculation",
+          "source": "gsc-live",
+          "impressions": 80,
+          "clicks": 0,
+          "ctr": "0.00%",
+          "position": 45.2,
+          "confidence": "high",
+          "gap": "Danish users search specifically for Danish mortgage loan models (realkreditlån, fastforrentet vs variabel). The generic mortgage calculator lacks Danish-specific terminology (bidragssats, tinglysningsafgift)."
+        },
+        {
+          "keyword": "beregn realkreditlån",
+          "language": "da",
+          "market": "dk",
+          "intent": "utility",
+          "source": "google-autocomplete",
+          "confidence": "high",
+          "gap": "Add Danish mortgage context to Danish page FAQ."
+        }
+      ]
+    },
+    {
+      "clusterId": "discount-calculator",
+      "toolSlug": "discount-calculator",
+      "targetUrls": {
+        "en": "https://anyconverter.io/discount-calculator/",
+        "es": "https://anyconverter.io/es/discount-calculator/",
+        "da": "https://anyconverter.io/da/discount-calculator/"
+      },
+      "primaryIntent": "Retail / Shopping Calculation",
+      "findings": "Over 500 impressions in GSC but 0 clicks. High volume retail query cluster.",
+      "keywords": [
+        {
+          "keyword": "discount calculator",
+          "language": "en",
+          "market": "us/global",
+          "intent": "utility",
+          "source": "gsc-live",
+          "impressions": 506,
+          "clicks": 0,
+          "ctr": "0.00%",
+          "position": 30.4,
+          "confidence": "high",
+          "gap": "Position 30 with 500+ impressions. Adding double-discount, sale tax calculation, and quick percentage presets will increase relevance."
+        },
+        {
+          "keyword": "% discount calculator",
+          "language": "en",
+          "market": "us",
+          "intent": "utility",
+          "source": "gsc-live",
+          "impressions": 1,
+          "clicks": 0,
+          "ctr": "0.00%",
+          "position": 58,
+          "confidence": "medium",
+          "gap": "Include percentage symbol in title tag."
+        }
+      ]
+    },
+    {
+      "clusterId": "internet-speed-test",
+      "toolSlug": "internet-speed-test",
+      "targetUrls": {
+        "en": "https://anyconverter.io/internet-speed-test/",
+        "es": "https://anyconverter.io/es/internet-speed-test/",
+        "da": "https://anyconverter.io/da/internet-speed-test/"
+      },
+      "primaryIntent": "Network Diagnostics",
+      "findings": "Over 400 impressions in GSC (EN) and 284 impressions (DA). Position 70-79.",
+      "keywords": [
+        {
+          "keyword": "internet speed test",
+          "language": "en",
+          "market": "us",
+          "intent": "diagnostic",
+          "source": "gsc-live",
+          "impressions": 419,
+          "clicks": 0,
+          "ctr": "0.00%",
+          "position": 79.6,
+          "confidence": "high",
+          "gap": "High competition (Ookla, Fast.com). Requires lightweight client-side ping/jitter and latency metrics to compete."
+        },
+        {
+          "keyword": "hastighedstest internet",
+          "language": "da",
+          "market": "dk",
+          "intent": "diagnostic",
+          "source": "gsc-live",
+          "impressions": 284,
+          "clicks": 0,
+          "ctr": "0.00%",
+          "position": 70.3,
+          "confidence": "high",
+          "gap": "Strong Danish search interest. Needs Danish ISP presets."
+        }
+      ]
+    }
+  ]
+}

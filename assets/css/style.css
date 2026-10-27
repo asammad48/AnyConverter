@@ -1214,6 +1214,173 @@ mark.regex-match { background: rgba(255,200,0,0.4); color: transparent; border-r
 :root.dark .j-toggle:hover { background: rgba(255,255,255,0.08); color: #94A3B8; }
 :root.dark .j-search-hit { background: #854D0E; color: #FEF08A; }
 :root.dark .j-search-hit.j-search-current { background: #FB923C; color: #431407; }
+
+/* IP Address Lookup Hero Card */
+.ip-hero-card {
+  background: var(--color-surface, #FFFFFF);
+  border: 1px solid var(--color-border, #DDD8D0);
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 24px;
+  text-align: center;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+}
+:root.dark .ip-hero-card {
+  background: var(--color-surface, #1E1E1E);
+  border-color: var(--color-border, #333333);
+}
+.ip-hero-badge {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #059669;
+  background: rgba(16, 185, 129, 0.1);
+  padding: 4px 12px;
+  border-radius: 20px;
+  margin-bottom: 12px;
+}
+:root.dark .ip-hero-badge {
+  color: #34D399;
+  background: rgba(16, 185, 129, 0.2);
+}
+.ip-hero-main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 14px;
+  flex-wrap: wrap;
+}
+.ip-hero-display {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: clamp(1.75rem, 5vw, 2.5rem);
+  font-weight: 700;
+  color: var(--color-text, #111827);
+  letter-spacing: -0.02em;
+}
+:root.dark .ip-hero-display {
+  color: #F9FAFB;
+}
+.ip-hero-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  font-size: 13px;
+  color: var(--color-text-2, #4B5563);
+}
+.ip-meta-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--color-bg, #F3F4F6);
+  padding: 6px 14px;
+  border-radius: 6px;
+  font-weight: 500;
+}
+:root.dark .ip-meta-item {
+  background: #2A2A2A;
+  color: #D1D5DB;
+}
+
+/* Tactile Copy Feedback */
+.btn-copied,
+.ac-btn.btn-copied {
+  background-color: #10B981 !important;
+  border-color: #059669 !important;
+  color: #FFFFFF !important;
+  transition: all 0.2s ease !important;
+}
+
+/* Virtual Scroller styles for JSON Formatter (Zero-Lag up to 100MB) */
+.v-perf-badge {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 12px;
+  background: rgba(16, 185, 129, 0.08);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  border-radius: 6px;
+  font-size: 11px;
+  color: #059669;
+  margin-bottom: 8px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  backdrop-filter: blur(4px);
+}
+:root.dark .v-perf-badge {
+  background: rgba(16, 185, 129, 0.15);
+  border-color: rgba(16, 185, 129, 0.35);
+  color: #34D399;
+}
+.v-perf-tag {
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  background: #10B981;
+  color: #FFFFFF;
+  padding: 2px 6px;
+  border-radius: 4px;
+  letter-spacing: 0.03em;
+}
+.v-scroll-spacer {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+.v-viewport {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  contain: content;
+}
+.j-vrow {
+  display: flex;
+  align-items: center;
+  height: 22px;
+  line-height: 22px;
+  white-space: pre;
+  font-family: var(--font-mono);
+  font-size: var(--panel-font-size, 13px);
+  padding: 0 4px;
+}
+.j-vrow:hover {
+  background: rgba(0, 0, 0, 0.03);
+}
+:root.dark .j-vrow:hover {
+  background: rgba(255, 255, 255, 0.04);
+}
+.j-vrow.j-search-current {
+  background: rgba(251, 191, 36, 0.35) !important;
+  border-left: 3px solid #F59E0B;
+}
+.j-ln {
+  display: inline-block;
+  width: 50px;
+  min-width: 50px;
+  text-align: right;
+  padding-right: 12px;
+  margin-right: 8px;
+  color: var(--color-text-3, #9CA3AF);
+  user-select: none;
+  font-size: 11px;
+  border-right: 1px solid var(--color-border, #E5E7EB);
+}
+.j-code {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: pre;
+}
+#json-output:not(.show-linenums) .j-ln {
+  display: none;
+}
 :root.dark .json-view { background: var(--color-code-bg); color: var(--color-code-text); }
 
 /* ===== TOPBAR — 56px ===== */

@@ -67,9 +67,11 @@ document.addEventListener('DOMContentLoaded', function () {
     if (!val) { setOutputs(null); return; }
     let num = parseFloat(val);
     if (isNaN(num)) { setOutputs(null); return; }
-    // Auto-detect ms vs seconds
-    if (num > 1e10) num = num; // likely ms
-    else num = num * 1000;
+    // Auto-detect seconds vs ms vs microseconds vs nanoseconds
+    if (num > 1e16) num = Math.floor(num / 1e6); // nanoseconds -> ms
+    else if (num > 1e13) num = Math.floor(num / 1e3); // microseconds -> ms
+    else if (num > 1e11) num = num; // milliseconds
+    else num = num * 1000; // seconds
     const date = new Date(num);
     setOutputs(date);
     dateInput.value = toDatetimeLocal(date);
