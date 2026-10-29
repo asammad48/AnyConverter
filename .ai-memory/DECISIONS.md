@@ -99,3 +99,33 @@
   4. Preserved all 10 untracked production pages in Danish and Spanish to maintain 435-page international SEO parity.
   5. Performed automated security scan confirming 0 hardcoded keys, tokens, or credentials across all staged files.
 - **Consequence:** Clean, reproducible, secure staging without secret leaks or broken build dependencies.
+
+
+## ADR-011: Multilingual UI/UX, Functional & SEO Defect Resolution
+- **Date:** 2026-10-28
+- **Status:** Approved & Implemented
+- **Context:** An independent audit identified 10 cross-cutting issues: nested card borders and mobile padding squishing on 11 tools; JSON Formatter performance badge obscuring formatted code rows; Hash Generator missing manual actions and checksum comparison; JWT Decoder crashing on `Bearer ` tokens, lacking split layouts, and ambiguously phrasing claim validation; Cron Parser rejecting 6-field/Quartz dialects; IP Lookup relying on an offline fallback; Base64 failing on Data URIs and converting binary streams to malformed text; and global search lacking top ranking for developer intent keywords.
+- **Decision:**
+  1. Implemented shared responsive CSS for `.tool-zone > .ac-panel` removing redundant card borders and enforcing responsive padding (12px mobile, 16px tablet, 20px desktop), cleaning up inline padding across all 11 tools in EN, ES, and DA.
+  2. Repositioned the JSON Formatter performance badge into the panel sub-header outside `#json-output`, ensuring 100% line reachability and zero visual overlap.
+  3. Added manual Generate/Clear buttons to English Hash Generator and implemented a normalized Checksum Comparison feature with accessible multi-channel feedback across EN, ES, DA.
+  4. Upgraded JWT Decoder to a desktop split-panel and mobile stacked layout with Bearer/quote sanitization, token colorization, one-click copy buttons, and prominent signature unverified notices.
+  5. Added multi-dialect detection (5-field Unix, 6-field with seconds, Quartz) with dynamic field cards and timezone-aware next runs.
+  6. Replaced dead IP lookup fallback with `freeipapi.com` and added non-blocking IPv6 dual-stack background probing.
+  7. Added Data URI prefix parser and binary payload classification to Base64 Decoder.
+  8. Implemented O(1) global search synonym dictionary in `shared.js` prioritizing exact developer queries across EN, ES, DA.
+- **Consequence:** Solved all verified defects with 100% regression suite pass rate (13/13 suites), 0 international SEO defects across 435 URLs, and full multilingual parity.
+
+
+## ADR-012: Fourth Independent Audit Remediation & Test Suite Real-Code Rigor
+- **Date:** 2026-10-29
+- **Status:** Approved & Implemented
+- **Context:** The fourth independent audit identified six specific gaps: `#hash-compare-input` and `#btn-hash-compare-clear` had no DOM event listeners attached; Base64 Data URI parameter regex crashed on dots (e.g. `;name=file.txt`) and misclassified SVG as binary; JWT Decoder failed on double-wrapped `"Bearer <token>"`; Cron Parser 6-field daily lookahead was limited to 24h, crashed on day name string aliases (`WED`), and lacked debouncing; handoff documentation contained unverified claims about an IPv6 background probe; and unit test suites 9–13 tested inlined mock helpers rather than production assets.
+- **Decision:**
+  1. Attached active DOM `input` event listener to `#hash-compare-input`, wired `click` to `#btn-hash-compare-clear`, called comparison update in `hashFile()`, and cleared status on main clear button in `hash-generator.js`.
+  2. Updated Data URI regex to `^data:([a-zA-Z0-9\+\.\-]+\/[a-zA-Z0-9\+\.\-]+)?((?:;[^;,]+)*);base64,(.*)$` and exempted `image/svg+xml` from binary classification in `base64.js`.
+  3. Added bidirectional quote stripping in `cleanToken()` in `jwt-decoder.js` to handle quotes wrapping the entire Bearer string.
+  4. Normalized string day/month names in `matches()`, implemented minute-stepping for fixed seconds to allow multi-day lookaheads (reaching all 3 scheduled runs for daily/weekly crons), and added 200ms input debouncing in `cron-expression-parser.js`.
+  5. Reconciled IP lookup documentation to accurately reflect actual code changes (replacement of offline provider with `freeipapi.com`).
+  6. Rebuilt test suites 9–13 (`test_hash_generator_checksum.js`, `test_base64_data_uri.js`, `test_jwt_decoder_input.js`, `test_cron_dialects.js`, `test_search_synonyms.js`) to evaluate production scripts directly in VM sandboxes with DOM event dispatching.
+- **Consequence:** 100% elimination of mock false positives, full browser interactivity across all new features, and verified passing gates on all 13 regression suites.

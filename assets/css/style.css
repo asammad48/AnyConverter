@@ -1302,15 +1302,16 @@ mark.regex-match { background: rgba(255,200,0,0.4); color: transparent; border-r
   justify-content: space-between;
   padding: 6px 12px;
   background: rgba(16, 185, 129, 0.08);
-  border: 1px solid rgba(16, 185, 129, 0.25);
-  border-radius: 6px;
+  border-bottom: 1px solid rgba(16, 185, 129, 0.25);
+  border-left: none;
+  border-right: none;
+  border-top: none;
+  border-radius: 0;
   font-size: 11px;
   color: #059669;
-  margin-bottom: 8px;
-  position: sticky;
-  top: 0;
-  z-index: 10;
-  backdrop-filter: blur(4px);
+  flex-shrink: 0;
+  margin: 0;
+  z-index: 2;
 }
 :root.dark .v-perf-badge {
   background: rgba(16, 185, 129, 0.15);
@@ -2846,6 +2847,35 @@ body:has(.tool-wrapper) .tool-zone {
 body:has(.tool-wrapper) .tool-zone > div[style*="padding"] {
   padding: 0 !important;
 }
+
+/* DES-01: Shared tool panel unification - eliminate nested borders & card-in-card anomalies */
+body:has(.tool-wrapper) .tool-zone > .ac-panel,
+.tool-zone > .ac-panel:not(.split-panels .ac-panel) {
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  padding: 0 !important;
+  margin: 0;
+  overflow: visible;
+  width: 100%;
+}
+
+/* Responsive padding on .tool-zone across mobile and tablet viewports (DES-01) */
+@media (max-width: 768px) {
+  body:has(.tool-wrapper) .tool-zone {
+    padding: 16px;
+    gap: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  body:has(.tool-wrapper) .tool-zone {
+    padding: 12px;
+    gap: 12px;
+  }
+}
+
 
 body:has(.tool-wrapper) .tool-side {
   flex: 1 1 300px;
@@ -5707,3 +5737,28 @@ body:has(#sticky-container) .sticky-toast {
 @media (max-width: 759px) { .dc-root .dc-ad--leader { min-height: 100px; } }
 @keyframes acspin { to { transform: rotate(360deg); } }
 @keyframes acpulse { 50% { opacity: .45; } }
+
+
+/* ===== ACCESSIBILITY & DARK MODE POLISH (WCAG 2.2 AA) ===== */
+:root.dark .hash-compare-section,
+:root.dark #cron-next-runs,
+:root.dark #jwt-token-display {
+  background: var(--color-surface-2, #1E293B) !important;
+  border-color: var(--color-border, #334155) !important;
+  color: var(--color-text, #F8FAFC) !important;
+}
+
+:root.dark .jwt-security-notice {
+  background: rgba(245, 158, 11, 0.15) !important;
+  border-color: rgba(245, 158, 11, 0.35) !important;
+  color: #FBBF24 !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

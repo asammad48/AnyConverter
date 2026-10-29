@@ -57,32 +57,69 @@
       <p class="hero-desc">Paste a three-part JWT to decode its header and payload, view the signature string, and check expiration when an <code>exp</code> claim is present. This is an inspection tool only; it does not verify the token signature.</p>
     </section>
     <div class="tool-wrapper">
-      <div class="tool-zone">
-        <div class="ac-panel" style="padding:24px">
-          <div style="margin-bottom:12px">
-            <label style="display:block;font-size:13px;font-weight:500;margin-bottom:6px" for="jwt-input">JWT Token</label>
-            <textarea id="jwt-input" placeholder="Paste your JWT token here (eyJ...)" style="width:100%;min-height:100px;padding:12px;border:1px solid var(--color-border,#DDD8D0);border-radius:8px;font-size:13px;font-family:monospace;resize:vertical" spellcheck="false"></textarea>
-          </div>
-          <div class="ac-action-bar" style="margin-bottom:16px">
-            <button class="btn btn-primary" id="btn-decode-jwt">Decode</button>
-            <button class="btn btn-secondary" id="btn-clear-jwt">Clear</button>
-          </div>
-          <div id="jwt-result" style="display:none">
-            <div style="margin-bottom:12px">
-              <div style="font-size:13px;font-weight:600;color:var(--color-primary,#B04A45);margin-bottom:6px">Header</div>
-              <pre id="jwt-header" style="background:var(--color-bg,#F7F6F3);border:1px solid var(--color-border,#DDD8D0);border-radius:8px;padding:12px;font-size:13px;overflow-x:auto;white-space:pre-wrap;word-break:break-all"></pre>
+            <div class="tool-zone">
+        <div class="split-panels">
+          <!-- Input Panel -->
+          <div class="ac-panel">
+            <div class="ac-panel-header">
+              <span style="font-size:14px;color:var(--color-primary,#4F46E5)">✦</span>
+              <span class="ac-panel-label">Encoded Token</span>
+              <div class="ac-panel-actions">
+                <button class="ac-btn" id="btn-jwt-example" type="button" title="Load sample token">Sample</button>
+                <button class="ac-btn" id="btn-clear-jwt" type="button" title="Clear input">Clear</button>
+                <button class="ac-btn" id="btn-copy-jwt" type="button" title="Copy raw token">Copy</button>
+              </div>
             </div>
-            <div style="margin-bottom:12px">
-              <div style="font-size:13px;font-weight:600;color:var(--color-success,#059669);margin-bottom:6px">Payload</div>
-              <pre id="jwt-payload" style="background:var(--color-bg,#F7F6F3);border:1px solid var(--color-border,#DDD8D0);border-radius:8px;padding:12px;font-size:13px;overflow-x:auto;white-space:pre-wrap;word-break:break-all"></pre>
+            <textarea id="jwt-input" class="ac-input" placeholder="Paste your JWT token here (eyJ... or Bearer eyJ...)" spellcheck="false" autocomplete="off" style="min-height:220px;height:100%;font-family:var(--font-mono);font-size:13px;line-height:1.5;resize:vertical;padding:12px;border:none"></textarea>
+            <div id="jwt-token-display" style="display:none;padding:10px 12px;background:var(--color-surface-2,#F9FAFB);border-top:1px solid var(--color-border);font-family:var(--font-mono);font-size:12px;word-break:break-all;line-height:1.6">
+              <span id="jwt-part-header" style="color:#DC2626;font-weight:600" title="Header"></span>.<span id="jwt-part-payload" style="color:#7C3AED;font-weight:600" title="Payload"></span>.<span id="jwt-part-sig" style="color:#0284C7;font-weight:600" title="Signature"></span>
             </div>
-            <div>
-              <div style="font-size:13px;font-weight:600;color:var(--color-error,#DC2626);margin-bottom:6px">Signature</div>
-              <div id="jwt-sig" style="background:var(--color-bg,#F7F6F3);border:1px solid var(--color-border,#DDD8D0);border-radius:8px;padding:12px;font-size:13px;font-family:monospace;word-break:break-all"></div>
-            </div>
-            <div id="jwt-exp-info" style="margin-top:12px;padding:10px 12px;border-radius:8px;font-size:13px;display:none"></div>
+            <div id="jwt-error" style="display:none;padding:10px 12px;margin:8px;background:#FEF2F2;border-left:3px solid #DC2626;border-radius:4px;color:#991B1B;font-size:12px"></div>
           </div>
-          <div id="jwt-error" style="display:none;color:var(--color-error,#DC2626);font-size:13px;margin-top:8px"></div>
+
+          <!-- Output Panel -->
+          <div class="ac-panel">
+            <div class="ac-panel-header">
+              <span style="font-size:14px;color:var(--color-success,#059669)">{ }</span>
+              <span class="ac-panel-label">Decoded Claims</span>
+              <div class="ac-panel-actions">
+                <button class="ac-btn" id="btn-copy-header" type="button" title="Copy Header JSON">Copy Header</button>
+                <button class="ac-btn" id="btn-copy-payload" type="button" title="Copy Payload JSON">Copy Payload</button>
+                <button class="ac-btn" id="btn-copy-all" type="button" title="Copy All Decoded">Copy All</button>
+              </div>
+            </div>
+            <div id="jwt-result" style="display:none;padding:12px;flex-direction:column;gap:12px;overflow-y:auto">
+              <!-- Non-verification warning -->
+              <div class="jwt-security-notice" style="padding:8px 12px;background:rgba(245,158,11,0.08);border:1px solid rgba(245,158,11,0.25);border-radius:6px;font-size:11px;color:#B45309;display:flex;align-items:center;gap:6px">
+                <span aria-hidden="true">🔒</span>
+                <span><strong>Signature Unverified:</strong> Decoding inspects client-side claims only; it does not authenticate or cryptographically verify the signature.</span>
+              </div>
+
+              <!-- Header block -->
+              <div class="jwt-block">
+                <div style="font-size:11px;font-weight:700;color:#DC2626;text-transform:uppercase;letter-spacing:0.04em;margin-bottom:4px">Header (Algorithm &amp; Token Type)</div>
+                <pre id="jwt-header" style="margin:0;background:var(--color-code-bg,#0F172A);color:#F8FAFC;border-radius:8px;padding:10px 12px;font-size:12px;font-family:var(--font-mono);overflow-x:auto;white-space:pre-wrap;word-break:break-all"></pre>
+              </div>
+
+              <!-- Payload block -->
+              <div class="jwt-block">
+                <div style="font-size:11px;font-weight:700;color:#7C3AED;text-transform:uppercase;letter-spacing:0.04em;margin-bottom:4px">Payload (Claims &amp; Data)</div>
+                <pre id="jwt-payload" style="margin:0;background:var(--color-code-bg,#0F172A);color:#F8FAFC;border-radius:8px;padding:10px 12px;font-size:12px;font-family:var(--font-mono);overflow-x:auto;white-space:pre-wrap;word-break:break-all"></pre>
+              </div>
+
+              <!-- Expiration status -->
+              <div id="jwt-exp-info" style="display:none;padding:10px 12px;border-radius:8px;font-size:12px;font-weight:500"></div>
+
+              <!-- Signature block -->
+              <div class="jwt-block">
+                <div style="font-size:11px;font-weight:700;color:#0284C7;text-transform:uppercase;letter-spacing:0.04em;margin-bottom:4px">Signature (Base64URL)</div>
+                <div id="jwt-sig" style="background:var(--color-surface-2,#F9FAFB);border:1px solid var(--color-border);border-radius:8px;padding:10px 12px;font-size:12px;font-family:var(--font-mono);word-break:break-all;color:var(--color-text-2)"></div>
+              </div>
+            </div>
+            <div id="jwt-placeholder" style="padding:48px 24px;text-align:center;color:var(--color-text-3,#94A3B8);font-size:13px">
+              Paste a valid JWT token on the left to inspect decoded claims
+            </div>
+          </div>
         </div>
       </div>
       <aside class="tool-side" aria-label="Options">

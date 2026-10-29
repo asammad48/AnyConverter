@@ -9,7 +9,12 @@ const testSuites = [
   { name: 'IP Hero Regression Suite', cmd: 'node tests/test_ip_hero_regression.js' },
   { name: 'Phase 05 Negative Fixtures', cmd: 'node tests/test_phase05_negative_fixtures.js' },
   { name: 'URL Encoder Regression Suite', cmd: 'node tests/test_url_encoder_regression.js' },
-  { name: 'CSV to SQL Server Regression Suite', cmd: 'node tests/test_csv_to_sql_regression.js' }
+  { name: 'CSV to SQL Server Regression Suite', cmd: 'node tests/test_csv_to_sql_regression.js' },
+  { name: 'Base64 Data URI & Binary Suite', cmd: 'node tests/test_base64_data_uri.js' },
+  { name: 'Hash Checksum Verification Suite', cmd: 'node tests/test_hash_generator_checksum.js' },
+  { name: 'JWT Decoder Input & Claims Suite', cmd: 'node tests/test_jwt_decoder_input.js' },
+  { name: 'Cron Expression Dialects Suite', cmd: 'node tests/test_cron_dialects.js' },
+  { name: 'Search Synonyms & Discoverability', cmd: 'node tests/test_search_synonyms.js' }
 ];
 
 console.log('====================================================');

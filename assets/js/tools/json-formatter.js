@@ -320,12 +320,19 @@ document.addEventListener('DOMContentLoaded', function () {
     outputEl.innerHTML = '';
     outputEl.scrollTop = 0;
 
-    // Sticky performance badge
-    var badge = document.createElement('div');
-    badge.className = 'v-perf-badge';
+    // Sticky performance badge placed in panel above outputEl to prevent obscuring code rows (DES-02)
+    var badge = document.getElementById('jf-perf-badge');
+    if (!badge) {
+      badge = document.createElement('div');
+      badge.id = 'jf-perf-badge';
+      badge.className = 'v-perf-badge';
+      if (outputEl.parentNode) {
+        outputEl.parentNode.insertBefore(badge, outputEl);
+      }
+    }
+    badge.style.display = 'flex';
     badge.innerHTML = '<span>' + T.perfModeTitle + ' · <strong>' + virtualTotalLines.toLocaleString() + ' lines</strong> (' + formatBytes(virtualText.length) + ')</span>' +
       '<span class="v-perf-tag">Zero Lag</span>';
-    outputEl.appendChild(badge);
 
     // Phantom spacer
     virtualSpacer = document.createElement('div');
@@ -793,6 +800,11 @@ document.addEventListener('DOMContentLoaded', function () {
     updateStats(0, 0, 0, 0);
   }
 
+  function hidePerfBadge() {
+    var b = document.getElementById('jf-perf-badge');
+    if (b) b.style.display = 'none';
+  }
+
   /* ===== CORE OPERATIONS ===== */
   async function runFormat() {
     var raw = (stagedLargeInput && input.value.startsWith('/* [Loaded:')) ? stagedLargeInput : input.value.trim();
@@ -800,6 +812,7 @@ document.addEventListener('DOMContentLoaded', function () {
     if (!raw) {
       isVirtualized = false;
       virtualText = '';
+      hidePerfBadge();
       outputEl.innerHTML = '<span style="color:#4A5568;font-style:italic;font-size:11px">Output will appear here…</span>';
       setInputStatus(null, '', 'Paste or type JSON');
       setOutputStatus(null, '', '');
@@ -829,6 +842,7 @@ document.addEventListener('DOMContentLoaded', function () {
         lastParsed = null;
         isVirtualized = false;
         virtualText = '';
+        hidePerfBadge();
         var errShort = '✕ ' + res.error;
         setInputStatus('err', errShort, '');
         setOutputStatus('err', errShort, '');
@@ -853,6 +867,7 @@ document.addEventListener('DOMContentLoaded', function () {
       // Standard interactive tree path (< 150 KB)
       isVirtualized = false;
       virtualText = '';
+      hidePerfBadge();
       try {
         var parsed = JSON.parse(raw);
         lastParsed = parsed;
@@ -897,12 +912,14 @@ document.addEventListener('DOMContentLoaded', function () {
       if (res.success) {
         isVirtualized = false;
         virtualText = res.minified;
+        hidePerfBadge();
         outputEl.textContent = res.minified;
         outputEl.style.whiteSpace = 'pre-wrap';
         setInputStatus('ok', '✓ Valid JSON', '');
         setOutputStatus('ok', '✓ Minified', formatBytes(res.bytes));
         refreshSearch();
       } else {
+        hidePerfBadge();
         setInputStatus('err', '✕ ' + res.error, '');
         setOutputStatus('err', '✕ ' + res.error, '');
       }
@@ -914,6 +931,7 @@ document.addEventListener('DOMContentLoaded', function () {
       var minified = JSON.stringify(parsed);
       isVirtualized = false;
       virtualText = minified;
+      hidePerfBadge();
       outputEl.textContent = minified;
       outputEl.style.whiteSpace = 'pre-wrap';
       setInputStatus('ok', '✓ Valid JSON', '');

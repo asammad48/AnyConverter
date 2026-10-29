@@ -98,14 +98,73 @@ document.addEventListener('DOMContentLoaded', function () {
     let val = textInput.value.trim();
     if (!val) return;
     try {
+      var isDataUri = false;
+      var mimeType = null;
+      var dataUriMatch = val.match(/^data:([a-zA-Z0-9\+\.\-]+\/[a-zA-Z0-9\+\.\-]+)?((?:;[^;,]+)*);base64,(.*)$/is);
+      var b64Payload = val;
+
+      if (dataUriMatch) {
+        isDataUri = true;
+        mimeType = (dataUriMatch[1] || 'application/octet-stream').toLowerCase();
+        b64Payload = dataUriMatch[3].trim();
+      }
+
+      // Remove any whitespace or line breaks
+      b64Payload = b64Payload.replace(/\s+/g, '');
       // Normalize URL-safe Base64 and missing padding
-      val = val.replace(/-/g, '+').replace(/_/g, '/');
-      while (val.length % 4 !== 0) { val += '='; }
-      const decoded = decodeURIComponent(escape(atob(val)));
-      setOutputValue(textOutput, decoded);
-      updateStats(val, decoded);
-      showTextResult();
-      setStatus('✓ Decoded successfully', 'success');
+      b64Payload = b64Payload.replace(/-/g, '+').replace(/_/g, '/');
+      while (b64Payload.length % 4 !== 0) { b64Payload += '='; }
+
+      if (!/^[A-Za-z0-9+/=]+$/.test(b64Payload)) {
+        throw new Error('Input contains characters that are not valid Base64.');
+      }
+
+      var binaryStr = atob(b64Payload);
+      var bytes = new Uint8Array(binaryStr.length);
+      for (var i = 0; i < binaryStr.length; i++) bytes[i] = binaryStr.charCodeAt(i);
+
+      // Check whether this is binary or text
+      var isExplicitBinary = mimeType && (/^(image|audio|video)\//.test(mimeType) || mimeType === 'application/pdf' || mimeType === 'application/zip' || mimeType === 'application/octet-stream' || mimeType === 'application/gzip') && mimeType !== 'image/svg+xml';
+      var isExplicitText = mimeType && (/^text\//.test(mimeType) || mimeType === 'image/svg+xml' || mimeType === 'application/json' || mimeType === 'application/xml' || mimeType === 'application/javascript');
+
+      var isBinary = false;
+      if (isExplicitBinary) {
+        isBinary = true;
+      } else if (!isExplicitText) {
+        var nullCount = 0;
+        for (var j = 0; j < Math.min(bytes.length, 512); j++) {
+          if (bytes[j] === 0) nullCount++;
+        }
+        if (nullCount > 0) {
+          isBinary = true;
+        } else {
+          try {
+            new TextDecoder('utf-8', { fatal: true }).decode(bytes);
+            isBinary = false;
+          } catch (_) {
+            isBinary = true;
+          }
+        }
+      }
+
+      if (isBinary) {
+        var summary = '[Binary data: ' + (mimeType || 'application/octet-stream') + ' (' + bytes.length + ' bytes)]';
+        setOutputValue(textOutput, summary);
+        updateStats(val, summary);
+        showTextResult();
+        setStatus('✓ Decoded ' + (isDataUri ? 'Data URI (' + (mimeType || 'binary') + ')' : 'binary data') + ' (' + bytes.length + ' bytes)', 'success');
+      } else {
+        var decoded = '';
+        try {
+          decoded = new TextDecoder('utf-8').decode(bytes);
+        } catch (_) {
+          decoded = decodeURIComponent(escape(binaryStr));
+        }
+        setOutputValue(textOutput, decoded);
+        updateStats(val, decoded);
+        showTextResult();
+        setStatus('✓ ' + (isDataUri ? 'Data URI' : 'Base64') + ' decoded successfully', 'success');
+      }
     } catch (e) {
       setStatus('✗ Invalid Base64: ' + e.message, 'error');
     }

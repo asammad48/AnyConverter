@@ -1418,19 +1418,113 @@
       emptyEl.classList.remove('visible');
     }
 
+        var SYNONYMS = {
+      // English / Developer intents (SEO-02)
+      'bearer': ['/jwt-decoder/'],
+      'jwt': ['/jwt-decoder/'],
+      'token': ['/jwt-decoder/'],
+      'claims': ['/jwt-decoder/'],
+      'jwt decode': ['/jwt-decoder/'],
+      'jwt parser': ['/jwt-decoder/'],
+      'epoch': ['/timestamp-converter/'],
+      'unix time': ['/timestamp-converter/'],
+      'posix': ['/timestamp-converter/'],
+      'sha256': ['/hash-generator/'],
+      'sha-256': ['/hash-generator/'],
+      'sha512': ['/hash-generator/'],
+      'sha-512': ['/hash-generator/'],
+      'md5': ['/hash-generator/'],
+      'checksum': ['/hash-generator/'],
+      'hash file': ['/hash-generator/'],
+      'ipv6': ['/ip-address-lookup/'],
+      'ipv4': ['/ip-address-lookup/'],
+      'my ip': ['/ip-address-lookup/'],
+      'what is my ip': ['/ip-address-lookup/'],
+      'public ip': ['/ip-address-lookup/'],
+      'crontab': ['/cron-expression-parser/'],
+      'cronjob': ['/cron-expression-parser/'],
+      'cron': ['/cron-expression-parser/'],
+      'cron schedule': ['/cron-expression-parser/'],
+      'data uri': ['/base64-encoder/'],
+      'datauri': ['/base64-encoder/'],
+      'base64 image': ['/base64-encoder/'],
+      'yaml': ['/json-to-yaml/'],
+      'json to yaml': ['/json-to-yaml/'],
+      'yaml to json': ['/json-to-yaml/'],
+      'diff json': ['/json-compare/'],
+      'json diff': ['/json-compare/'],
+
+      // Spanish intents (es)
+      'portador': ['/jwt-decoder/'],
+      'marca de tiempo': ['/timestamp-converter/'],
+      'tiempo unix': ['/timestamp-converter/'],
+      'mi ip': ['/ip-address-lookup/'],
+      'cual es mi ip': ['/ip-address-lookup/'],
+      'direccion ip': ['/ip-address-lookup/'],
+      'suma de comprobacion': ['/hash-generator/'],
+      'expresion cron': ['/cron-expression-parser/'],
+      'programador de tareas': ['/cron-expression-parser/'],
+      'unir pdf': ['/pdf-merge/'],
+      'combinar pdf': ['/pdf-merge/'],
+      'dividir pdf': ['/pdf-split/'],
+      'comprimir pdf': ['/pdf-compress/'],
+
+      // Danish intents (da)
+      'tidsstempel': ['/timestamp-converter/'],
+      'unixtid': ['/timestamp-converter/'],
+      'min ip': ['/ip-address-lookup/'],
+      'hvad er min ip': ['/ip-address-lookup/'],
+      'ip adresse': ['/ip-address-lookup/'],
+      'kontrolsum': ['/hash-generator/'],
+      'sammenlaeg pdf': ['/pdf-merge/'],
+      'flet pdf': ['/pdf-merge/'],
+      'opdel pdf': ['/pdf-split/'],
+      'komprimer pdf': ['/pdf-compress/']
+    };
+
     function renderResults(q) {
-      var ql = q.toLowerCase();
-      var nameHits  = TOOLS.filter(function (t) { return t.n.toLowerCase().indexOf(ql) !== -1; });
-      var otherHits = TOOLS.filter(function (t) {
-        return t.n.toLowerCase().indexOf(ql) === -1 &&
-          (t.d.toLowerCase().indexOf(ql) !== -1 ||
-           t.k.toLowerCase().indexOf(ql) !== -1 ||
-           t.c.toLowerCase().indexOf(ql) !== -1);
+      var ql = q.toLowerCase().trim();
+      var seen = {};
+      var synonymHits = [];
+
+      // Exact or prefix synonym match
+      if (SYNONYMS[ql]) {
+        SYNONYMS[ql].forEach(function(u) {
+          var tool = TOOLS.find(function(t) { return t.u === u; });
+          if (tool && !seen[tool.u]) {
+            seen[tool.u] = true;
+            synonymHits.push(tool);
+          }
+        });
+      }
+
+      var nameHits = TOOLS.filter(function(t) {
+        if (seen[t.u]) return false;
+        if (t.n.toLowerCase().indexOf(ql) !== -1) {
+          seen[t.u] = true;
+          return true;
+        }
+        return false;
       });
-      var matched = nameHits.concat(otherHits).slice(0, 8);
+
+      var otherHits = TOOLS.filter(function(t) {
+        if (seen[t.u]) return false;
+        var match = (t.d.toLowerCase().indexOf(ql) !== -1 ||
+                     t.k.toLowerCase().indexOf(ql) !== -1 ||
+                     t.c.toLowerCase().indexOf(ql) !== -1);
+        if (match) seen[t.u] = true;
+        return match;
+      });
+
+      var matched = synonymHits.concat(nameHits, otherHits).slice(0, 8);
+      var lang = currentPageLang();
       if (!matched.length) {
         list.innerHTML = '';
-        emptyEl.textContent = 'No tools found for "' + q + '"';
+        emptyEl.textContent = lang === 'es'
+          ? 'No se encontraron herramientas para "' + q + '"'
+          : (lang === 'da'
+            ? 'Ingen værktøjer fundet for "' + q + '"'
+            : 'No tools found for "' + q + '"');
         emptyEl.classList.add('visible');
       } else {
         emptyEl.textContent = '';

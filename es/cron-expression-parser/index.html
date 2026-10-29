@@ -58,43 +58,31 @@
     </section>
     <div class="tool-wrapper">
       <div class="tool-zone">
-        <div style="padding:24px">
-          <div style="margin-bottom:16px">
-            <label style="display:block;font-size:13px;font-weight:500;margin-bottom:6px" for="cron-input">Cron Expression</label>
-            <input type="text" id="cron-input" value="*/5 * * * *" placeholder="*/5 * * * *" style="width:100%;padding:10px 12px;border:1px solid var(--color-border,#DDD8D0);border-radius:8px;font-family:'JetBrains Mono',monospace;font-size:15px">
+        <div style="margin-bottom:16px">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+            <label style="font-size:13px;font-weight:600" for="cron-input">Expresión Cron</label>
+            <span id="cron-dialect-badge" class="ac-chip" style="font-size:11px;font-weight:600">Cron estándar de 5 campos</span>
           </div>
-          <div id="cron-error" style="display:none;color:var(--color-pdf,#EF4444);font-size:13px;margin-bottom:12px"></div>
-          <div id="cron-description" style="display:none;padding:12px 16px;background:var(--color-success-bg,#ECFDF5);border:1px solid var(--color-success-bg,#ECFDF5);border-radius:8px;font-size:15px;font-weight:500;color:var(--color-success-text,#166534);margin-bottom:16px"></div>
-          <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-bottom:16px">
-            <div style="text-align:center;padding:12px 8px;background:var(--color-bg,#F7F6F3);border:1px solid var(--color-border,#DDD8D0);border-radius:8px">
-              <div id="cron-part-min" style="font-size:18px;font-weight:700;font-family:'JetBrains Mono',monospace">—</div>
-              <div style="font-size:11px;color:var(--color-text-2,#6B7280);margin-top:4px">Minuto</div>
-            </div>
-            <div style="text-align:center;padding:12px 8px;background:var(--color-bg,#F7F6F3);border:1px solid var(--color-border,#DDD8D0);border-radius:8px">
-              <div id="cron-part-hr" style="font-size:18px;font-weight:700;font-family:'JetBrains Mono',monospace">—</div>
-              <div style="font-size:11px;color:var(--color-text-2,#6B7280);margin-top:4px">Hora</div>
-            </div>
-            <div style="text-align:center;padding:12px 8px;background:var(--color-bg,#F7F6F3);border:1px solid var(--color-border,#DDD8D0);border-radius:8px">
-              <div id="cron-part-dom" style="font-size:18px;font-weight:700;font-family:'JetBrains Mono',monospace">—</div>
-              <div style="font-size:11px;color:var(--color-text-2,#6B7280);margin-top:4px">Día</div>
-            </div>
-            <div style="text-align:center;padding:12px 8px;background:var(--color-bg,#F7F6F3);border:1px solid var(--color-border,#DDD8D0);border-radius:8px">
-              <div id="cron-part-mon" style="font-size:18px;font-weight:700;font-family:'JetBrains Mono',monospace">—</div>
-              <div style="font-size:11px;color:var(--color-text-2,#6B7280);margin-top:4px">Mes</div>
-            </div>
-            <div style="text-align:center;padding:12px 8px;background:var(--color-bg,#F7F6F3);border:1px solid var(--color-border,#DDD8D0);border-radius:8px">
-              <div id="cron-part-dow" style="font-size:18px;font-weight:700;font-family:'JetBrains Mono',monospace">—</div>
-              <div style="font-size:11px;color:var(--color-text-2,#6B7280);margin-top:4px">Día sem.</div>
-            </div>
-          </div>
-          <div style="display:flex;flex-wrap:wrap;gap:8px">
-            <button class="btn btn-secondary btn-sm cron-preset" data-val="* * * * *">Cada minuto</button>
-            <button class="btn btn-secondary btn-sm cron-preset" data-val="*/5 * * * *">Cada 5 min</button>
-            <button class="btn btn-secondary btn-sm cron-preset" data-val="0 * * * *">Cada hora</button>
-            <button class="btn btn-secondary btn-sm cron-preset" data-val="0 0 * * *">Diario medianoche</button>
-            <button class="btn btn-secondary btn-sm cron-preset" data-val="0 9 * * 1-5">Laborables 9am</button>
-            <button class="btn btn-secondary btn-sm cron-preset" data-val="0 0 1 * *">Mensual</button>
-          </div>
+          <input type="text" id="cron-input" value="*/5 * * * *" placeholder="*/5 * * * *" style="width:100%;padding:10px 12px;border:1px solid var(--color-border,#DDD8D0);border-radius:8px;font-family:'JetBrains Mono',monospace;font-size:15px">
+        </div>
+        <div id="cron-error" style="display:none;padding:10px 12px;background:#FEF2F2;border-left:3px solid #DC2626;border-radius:4px;color:#991B1B;font-size:13px;margin-bottom:12px"></div>
+        <div id="cron-description" style="display:none;padding:12px 16px;background:var(--color-success-bg,#ECFDF5);border:1px solid var(--color-success-bg,#ECFDF5);border-radius:8px;font-size:15px;font-weight:500;color:var(--color-success-text,#166534);margin-bottom:16px"></div>
+        
+        <div id="cron-fields-container" style="display:grid;grid-template-columns:repeat(auto-fit, minmax(80px, 1fr));gap:10px;margin-bottom:16px"></div>
+
+        <div id="cron-next-runs" style="margin-bottom:16px;padding:12px 14px;background:var(--color-surface-2,#F9FAFB);border:1px solid var(--color-border,#DDD8D0);border-radius:8px">
+          <div style="font-size:12px;font-weight:600;margin-bottom:8px;color:var(--color-text-2)">Próximas ejecuciones programadas</div>
+          <ul id="cron-next-list" style="margin:0;padding-left:18px;font-size:13px;line-height:1.6;font-family:var(--font-mono)"></ul>
+        </div>
+
+        <div style="display:flex;flex-wrap:wrap;gap:8px">
+          <button class="btn btn-secondary btn-sm cron-preset" data-val="* * * * *">Cada minuto</button>
+          <button class="btn btn-secondary btn-sm cron-preset" data-val="*/5 * * * *">Cada 5 min</button>
+          <button class="btn btn-secondary btn-sm cron-preset" data-val="0 * * * *">Cada hora</button>
+          <button class="btn btn-secondary btn-sm cron-preset" data-val="0 0 * * *">Medianoche diario</button>
+          <button class="btn btn-secondary btn-sm cron-preset" data-val="0 9 * * 1-5">Lunes a viernes 9am</button>
+          <button class="btn btn-secondary btn-sm cron-preset" data-val="0 0 1 * *">Primer día del mes</button>
+          <button class="btn btn-secondary btn-sm cron-preset" data-val="*/30 * * * * *">Cada 30s (6 campos)</button>
         </div>
       </div>
       <aside class="tool-side" aria-label="Opciones">

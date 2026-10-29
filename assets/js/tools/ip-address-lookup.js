@@ -47,22 +47,24 @@
     };
   }
 
-  function fromGeolocationDb(data) {
-    if (!data.IPv4) return null;
+  function fromFreeIpApi(data) {
+    if (!data || !data.ipAddress) return null;
+    var asnStr = data.asn ? ('AS' + String(data.asn).replace(/^AS/i, '')) : '—';
+    var orgName = data.asnOrganization || data.isp || '—';
     return {
-      ip:        data.IPv4,
-      city:      data.city         || '—',
-      region:    data.state        || '—',
-      country:   data.country_name || '—',
-      postal:    '—',
-      latitude:  data.latitude     || '—',
-      longitude: data.longitude    || '—',
-      timezone:  '—',
+      ip:        data.ipAddress,
+      city:      data.cityName     || '—',
+      region:    data.regionName   || '—',
+      country:   (data.countryName || '—') + (data.countryCode ? ' (' + data.countryCode + ')' : ''),
+      postal:    data.zipCode      || '—',
+      latitude:  data.latitude != null ? String(data.latitude) : '—',
+      longitude: data.longitude != null ? String(data.longitude) : '—',
+      timezone:  (data.timeZones && data.timeZones[0]) || data.timeZone || '—',
       utc:       '—',
-      org:       '—',
-      asn:       '—',
-      currency:  '—',
-      languages: '—'
+      org:       orgName,
+      asn:       asnStr,
+      currency:  (data.currencies && data.currencies[0]) || '—',
+      languages: (data.languages && data.languages.join(', ')) || '—'
     };
   }
 
@@ -75,12 +77,12 @@
         parse: fromIpinfo
       },
       {
-        url:   ip ? 'https://ipapi.co/' + enc + '/json/' : 'https://ipapi.co/json/',
-        parse: fromIpapi
+        url:   ip ? 'https://freeipapi.com/api/json/' + enc : 'https://freeipapi.com/api/json',
+        parse: fromFreeIpApi
       },
       {
-        url:   ip ? 'https://geolocation-db.com/json/' + enc : 'https://geolocation-db.com/json/',
-        parse: fromGeolocationDb
+        url:   ip ? 'https://ipapi.co/' + enc + '/json/' : 'https://ipapi.co/json/',
+        parse: fromIpapi
       }
     ];
   }

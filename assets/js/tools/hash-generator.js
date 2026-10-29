@@ -34,6 +34,86 @@ document.addEventListener('DOMContentLoaded', function () {
     if (s) s.textContent = '256';
   }
 
+  
+  function getCurrentHashes() {
+    var md5El = document.getElementById('hash-md5');
+    var sha1El = document.getElementById('hash-sha1');
+    var sha256El = document.getElementById('hash-sha256');
+    var sha512El = document.getElementById('hash-sha512');
+    return {
+      md5: (md5El ? md5El.textContent : '').trim().toLowerCase(),
+      sha1: (sha1El ? sha1El.textContent : '').trim().toLowerCase(),
+      sha256: (sha256El ? sha256El.textContent : '').trim().toLowerCase(),
+      sha512: (sha512El ? sha512El.textContent : '').trim().toLowerCase()
+    };
+  }
+
+  function getLang() {
+    var path = window.location.pathname || '';
+    if (path.startsWith('/es/') || path === '/es') return 'es';
+    if (path.startsWith('/da/') || path === '/da') return 'da';
+    return 'en';
+  }
+
+  function updateChecksumComparison() {
+    var inputEl = document.getElementById('hash-compare-input');
+    var statusEl = document.getElementById('hash-compare-status');
+    if (!inputEl || !statusEl) return;
+
+    var expected = inputEl.value.trim().toLowerCase().replace(/^0x/, '');
+    if (!expected) {
+      statusEl.style.display = 'none';
+      statusEl.textContent = '';
+      return;
+    }
+
+    var hashes = getCurrentHashes();
+    var hasGenerated = Object.values(hashes).some(function(h) { return h && h !== '—'; });
+
+    var lang = getLang();
+    if (!hasGenerated) {
+      statusEl.style.display = 'block';
+      statusEl.style.background = 'var(--color-surface-2, #F3F4F6)';
+      statusEl.style.border = '1px solid var(--color-border, #D1D5DB)';
+      statusEl.style.color = 'var(--color-text-2, #4B5563)';
+      statusEl.textContent = lang === 'es'
+        ? 'ℹ Introduce texto o arrastra un archivo para generar los hashes primero.'
+        : (lang === 'da'
+          ? 'ℹ Indtast tekst eller vælg en fil for at generere hashes først.'
+          : 'ℹ Enter text or choose a file to calculate hashes first.');
+      return;
+    }
+
+    var matchedAlgo = null;
+    if (expected === hashes.sha256) matchedAlgo = 'SHA-256';
+    else if (expected === hashes.md5) matchedAlgo = 'MD5';
+    else if (expected === hashes.sha1) matchedAlgo = 'SHA-1';
+    else if (expected === hashes.sha512) matchedAlgo = 'SHA-512';
+
+    statusEl.style.display = 'block';
+    if (matchedAlgo) {
+      statusEl.style.background = '#ECFDF5';
+      statusEl.style.border = '1px solid #10B981';
+      statusEl.style.color = '#065F46';
+      statusEl.innerHTML = '<strong>✓ ' + (lang === 'es' ? 'Coincidencia confirmada' : (lang === 'da' ? 'Match bekræftet' : 'Match confirmed')) + ':</strong> ' +
+        (lang === 'es'
+          ? 'La suma esperada coincide con el hash ' + matchedAlgo + ' calculado.'
+          : (lang === 'da'
+            ? 'Den forventede kontrolsum matcher det genererede ' + matchedAlgo + '-hash.'
+            : 'The expected checksum matches the generated ' + matchedAlgo + ' hash.'));
+    } else {
+      statusEl.style.background = '#FEF2F2';
+      statusEl.style.border = '1px solid #EF4444';
+      statusEl.style.color = '#991B1B';
+      statusEl.innerHTML = '<strong>✕ ' + (lang === 'es' ? 'Discrepancia detectada' : (lang === 'da' ? 'Ingen match' : 'Checksum mismatch')) + ':</strong> ' +
+        (lang === 'es'
+          ? 'El hash esperado no coincide con ninguno de los valores generados (MD5, SHA-1, SHA-256, SHA-512).'
+          : (lang === 'da'
+            ? 'Det forventede hash matcher ikke nogen af de beregnede algoritmer.'
+            : 'The expected hash does not match any calculated algorithm (MD5, SHA-1, SHA-256, SHA-512).'));
+    }
+  }
+
   function refreshHashDisplay() {
     ['hash-md5','hash-sha1','hash-sha256','hash-sha512'].forEach(function(id) {
       const el = document.getElementById(id);
@@ -126,6 +206,7 @@ document.addEventListener('DOMContentLoaded', function () {
     updateStats(bytes);
     const results = document.getElementById('hash-results');
     if (results) results.style.display = '';
+    updateChecksumComparison();
   }
 
   function resetHashes() {
@@ -151,6 +232,20 @@ document.addEventListener('DOMContentLoaded', function () {
     updateStats(0);
     const results = document.getElementById('hash-results');
     if (results && results.querySelector('code.hash-value')) results.style.display = 'none';
+    var compareInput = document.getElementById('hash-compare-input');
+    if (compareInput) compareInput.value = '';
+    updateChecksumComparison();
+  });
+
+  var compareInput = document.getElementById('hash-compare-input');
+  if (compareInput) {
+    compareInput.addEventListener('input', updateChecksumComparison);
+  }
+  bindButton(document.getElementById('btn-hash-compare-clear'), function () {
+    if (compareInput) {
+      compareInput.value = '';
+      updateChecksumComparison();
+    }
   });
 
   // File hashing
@@ -195,6 +290,7 @@ document.addEventListener('DOMContentLoaded', function () {
     updateStats(file.size);
     const results = document.getElementById('hash-results');
     if (results) results.style.display = '';
+    updateChecksumComparison();
 
     if (progressFill) progressFill.style.width = '100%';
     if (fileProgress) setTimeout(function () { fileProgress.style.display = 'none'; }, 500);

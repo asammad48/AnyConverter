@@ -92,6 +92,16 @@
             <div class="hash-result-item"><span class="hash-algo">SHA-512</span><code class="hash-value" id="hash-sha512"></code><button class="btn btn-sm" data-copy="hash-sha512">Kopier</button></div>
           </div>
         </div>
+      
+        <!-- Verificer kontrolsum (LOG-01) -->
+        <div class="hash-compare-section" id="hash-compare-section" style="margin-top:20px;padding:16px;background:var(--color-surface-2,#F9FAFB);border:1px solid var(--color-border,#DDD8D0);border-radius:10px">
+          <label for="hash-compare-input" style="display:block;font-size:13px;font-weight:600;margin-bottom:6px">Verificer kontrolsum (Sammenlign hash)</label>
+          <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+            <input type="text" id="hash-compare-input" placeholder="Indsæt forventet hash for at tjekke match (MD5, SHA-1, SHA-256, SHA-512)..." style="flex:1;min-width:240px;padding:10px 12px;border:1px solid var(--color-border,#DDD8D0);border-radius:8px;font-family:var(--font-mono);font-size:13px" spellcheck="false" autocomplete="off">
+            <button class="btn btn-secondary btn-sm" id="btn-hash-compare-clear" type="button">Ryd</button>
+          </div>
+          <div id="hash-compare-status" aria-live="polite" style="display:none;margin-top:10px;padding:10px 14px;border-radius:6px;font-size:13px;font-weight:500"></div>
+        </div>
       </div>
       <aside class="tool-side" aria-label="Indstillinger">
         <div class="ss-divider">Indstillinger</div>
