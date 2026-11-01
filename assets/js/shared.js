@@ -95,6 +95,7 @@
       <li class="nav-dropdown">
         <button class="nav-link nav-more" aria-expanded="false" aria-haspopup="true">Text ▾</button>
         <ul class="dropdown-menu" role="menu">
+          <li><a href="/text-tools/" role="menuitem">All Text Tools</a></li>
           <li><a href="/word-counter/" role="menuitem">Word Counter</a></li>
           <li><a href="/character-counter/" role="menuitem">Character Counter</a></li>
           <li><a href="/text-case-converter/" role="menuitem">Text Case Converter</a></li>
@@ -187,6 +188,7 @@
       <li class="nav-dropdown">
         <button class="nav-link nav-more" aria-expanded="false" aria-haspopup="true">Browser ▾</button>
         <ul class="dropdown-menu" role="menu">
+          <li><a href="/browser-tools/" role="menuitem">All Browser Tools</a></li>
           <li><a href="/internet-speed-test/" role="menuitem">Internet Speed Test</a></li>
           <li><a href="/keyboard-tester/" role="menuitem">Keyboard Tester</a></li>
           <li><a href="/mouse-tester/" role="menuitem">Mouse Tester</a></li>
@@ -595,13 +597,7 @@
     '/base64-encoder/', '/hash-generator/', '/age-calculator/'
   ];
 
-  var NON_LOCALIZED_PATHS = {
-    '/developer-tools/': true,
-    '/pdf-metadata-remover/': true,
-    '/pdf-tools/': true,
-    '/productivity-tools/': true,
-    '/world-clock/': true
-  };
+  var NON_LOCALIZED_PATHS = {};
 
   /* BEGIN generated: localized slugs (tools/tool-pages/build.js) */
   var LOCALIZED_SLUGS = {
@@ -1034,12 +1030,12 @@
       <ul>
         <li><a href="${p}/">${t.home}</a></li>
         <li><a href="${p}/#tools">${t.allTools}</a></li>
-        <li><a href="${p}/pdf-merge/">${t.pdfTools}</a></li>
-        <li><a href="${p}/json-formatter/">${t.devTools}</a></li>
-        <li><a href="${p}/internet-speed-test/">${t.browserTools}</a></li>
-        <li><a href="${p}/age-calculator/">${t.calculators}</a></li>
-        <li><a href="${p}/word-counter/">${t.textTools}</a></li>
-        <li><a href="${p}/stopwatch/">${t.productivity}</a></li>
+        <li><a href="${p}/pdf-tools/">${t.pdfTools}</a></li>
+        <li><a href="${p}/developer-tools/">${t.devTools}</a></li>
+        <li><a href="${p}/browser-tools/">${t.browserTools}</a></li>
+        <li><a href="${p}/calculators/">${t.calculators}</a></li>
+        <li><a href="${p}/text-tools/">${t.textTools}</a></li>
+        <li><a href="${p}/productivity-tools/">${t.productivity}</a></li>
       </ul>
     </div>
     <div class="footer-col">

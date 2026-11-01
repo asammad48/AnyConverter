@@ -14,7 +14,11 @@ const testSuites = [
   { name: 'Hash Checksum Verification Suite', cmd: 'node tests/test_hash_generator_checksum.js' },
   { name: 'JWT Decoder Input & Claims Suite', cmd: 'node tests/test_jwt_decoder_input.js' },
   { name: 'Cron Expression Dialects Suite', cmd: 'node tests/test_cron_dialects.js' },
-  { name: 'Search Synonyms & Discoverability', cmd: 'node tests/test_search_synonyms.js' }
+  { name: 'Search Synonyms & Discoverability', cmd: 'node tests/test_search_synonyms.js' },
+  { name: 'Sitewide Parity & Inventory Counts Suite', cmd: 'node tests/test_sitewide_parity_and_counts.js' },
+  { name: 'Privacy Statements & Disclosures Regression', cmd: 'node tests/test_privacy_claims_regression.js' },
+  { name: 'Related Tools Semantic Integrity Suite', cmd: 'node tests/test_related_tools_regression.js' },
+  { name: 'Multilingual Localization Quality Suite', cmd: 'node tests/test_localization_regression.js' }
 ];
 
 console.log('====================================================');

@@ -4788,4 +4788,70 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://anyconverter.io/world-clock/"/>
   </url>
 
+  <url>
+    <loc>https://anyconverter.io/text-tools/</loc>
+    <lastmod>2026-10-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://anyconverter.io/text-tools/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://anyconverter.io/es/text-tools/"/>
+    <xhtml:link rel="alternate" hreflang="da" href="https://anyconverter.io/da/text-tools/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://anyconverter.io/text-tools/"/>
+  </url>
+
+  <url>
+    <loc>https://anyconverter.io/es/text-tools/</loc>
+    <lastmod>2026-10-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://anyconverter.io/text-tools/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://anyconverter.io/es/text-tools/"/>
+    <xhtml:link rel="alternate" hreflang="da" href="https://anyconverter.io/da/text-tools/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://anyconverter.io/text-tools/"/>
+  </url>
+
+  <url>
+    <loc>https://anyconverter.io/da/text-tools/</loc>
+    <lastmod>2026-10-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://anyconverter.io/text-tools/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://anyconverter.io/es/text-tools/"/>
+    <xhtml:link rel="alternate" hreflang="da" href="https://anyconverter.io/da/text-tools/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://anyconverter.io/text-tools/"/>
+  </url>
+
+  <url>
+    <loc>https://anyconverter.io/browser-tools/</loc>
+    <lastmod>2026-10-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://anyconverter.io/browser-tools/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://anyconverter.io/es/browser-tools/"/>
+    <xhtml:link rel="alternate" hreflang="da" href="https://anyconverter.io/da/browser-tools/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://anyconverter.io/browser-tools/"/>
+  </url>
+
+  <url>
+    <loc>https://anyconverter.io/es/browser-tools/</loc>
+    <lastmod>2026-10-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://anyconverter.io/browser-tools/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://anyconverter.io/es/browser-tools/"/>
+    <xhtml:link rel="alternate" hreflang="da" href="https://anyconverter.io/da/browser-tools/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://anyconverter.io/browser-tools/"/>
+  </url>
+
+  <url>
+    <loc>https://anyconverter.io/da/browser-tools/</loc>
+    <lastmod>2026-10-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://anyconverter.io/browser-tools/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://anyconverter.io/es/browser-tools/"/>
+    <xhtml:link rel="alternate" hreflang="da" href="https://anyconverter.io/da/browser-tools/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://anyconverter.io/browser-tools/"/>
+  </url>
+
 </urlset>

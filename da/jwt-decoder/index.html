@@ -28,7 +28,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"JWT Dekoder","url":"https://anyconverter.io/da/jwt-decoder/","description":"Dekod og inspicér JWT tokens online gratis. 100% klientside — tokenet forlader aldrig browseren.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"JWT Dekoder","url":"https://anyconverter.io/da/jwt-decoder/","description":"Dekod og inspicér JWT-tokens lokalt i browseren. Se header, JSON-payload og udløbsstatus hurtigt og privat.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Hvad er et JWT token?","acceptedAnswer":{"@type":"Answer","text":"JWT (JSON Web Token) er en åben standard (RFC 7519) til sikker transmission af information mellem parter som et JSON-objekt. JWT bruges almindeligvis til autentifikation og autorisation i webapplikationer. De består af tre dele: header, payload og signatur, adskilt af punktummer."}},{"@type":"Question","name":"Er det sikkert at indsætte mit JWT token her?","acceptedAnswer":{"@type":"Answer","text":"Denne dekoder er 100% klientside. Dit token dekodes i browseren ved hjælp af JavaScript til denne opgave. For sikkerhedsfølsomme produktionstokens er det dog altid sikreste at dekode lokalt ved hjælp af dit programmeringssprog JWT-bibliotek."}},{"@type":"Question","name":"Kan dette værktøj verificere JWT-signaturen?","acceptedAnswer":{"@type":"Answer","text":"Nej. Signaturverificering kræver den hemmelige nøgle eller offentlige nøgle der bruges til at signere tokenet. Dette værktøj dekoder kun headeren og payloaden (som blot er Base64url-kodet, ikke krypteret) og viser den rå signaturtekst. Brug dit server-side JWT-bibliotek til faktisk signaturverificering."}},{"@type":"Question","name":"Hvilke JWT-algoritmer understøttes?","acceptedAnswer":{"@type":"Answer","text":"Dekoderen fungerer med ethvert standard JWT uanset algoritme (HS256, RS256, ES256 osv.), fordi den kun dekoder den Base64url-kodede header og payload. Algoritmefelt i headeren vises, men selve signaturen verificeres ikke."}},{"@type":"Question","name":"Hvorfor viser udløbskontrollen det forkerte tidspunkt?","acceptedAnswer":{"@type":"Answer","text":"Udløbet vises i din lokale browsertidszone ved hjælp af JavaScript's Date.toLocaleString(). JWT exp-krav er Unix-tidsstempler (sekunder siden 1. januar 1970 UTC). Konverteringen til lokal tid sker automatisk af dekoderen."}}]}</script>
 
 
@@ -160,12 +160,12 @@
     <!-- SEO keyword implementation: 2026-08-21 -->
     <section class="seo-content" data-seo-keyword-plan="2026-08-21">
       <h2>Token decoder: praktisk brug</h2>
-      <p>Brug token decoder, nar du har brug for et hurtigt, klart og privat resultat uden at oprette en konto. Siden daekker ogsa relaterede behov som token decoder online, token decoder validator, token decoder formatter, sa du kan vaelge den rigtige arbejdsgang.</p>
-      <h3>Hvornar det er nyttigt</h3>
+      <p>Brug token decoder, når du har brug for et hurtigt, klart og privat resultat uden at oprette en konto. Siden dækker også relaterede behov som token decoder online, token decoder validator, token decoder formatter, så du kan vælge den rigtige arbejdsgang.</p>
+      <h3>Hvornår det er nyttigt</h3>
       <ul>
-        <li><strong>Bedst til:</strong> Indsaette kode, strukturerede data, tokens, hashes eller kodet tekst og fa et laesbart resultat hurtigt.</li>
+        <li><strong>Bedst til:</strong> Indsætte kode, strukturerede data, tokens, hashes eller kodet tekst og få et læsbart resultat hurtigt.</li>
         <li><strong>Nyttige detaljer:</strong> Brug eksempler, valideringsbeskeder, kopieringshandlinger og formatering til at fange fejl tidligt.</li>
-        <li><strong>Naeste trin:</strong> Aben en relateret formatter, validator, encoder, parser eller konverter, nar arbejdsgangen skifter format.</li>
+        <li><strong>Næste trin:</strong> Åbn en relateret formatter, validator, encoder, parser eller konverter, når arbejdsgangen skifter format.</li>
       </ul>
       <p>Fortsæt eventuelt med <a href="/da/json-formatter/">JSON Formatter og Validator</a>, <a href="/da/regex-tester/">Online Regex Tester</a>, <a href="/da/base64-encoder/">Base64 Encoder og Decoder</a>, <a href="/da/hash-generator/">Hash Generator</a>.</p>
     </section>
@@ -201,35 +201,15 @@
     <section class="related-tools">
       <h2>Relaterede Værktøjer</h2>
       <div class="tool-grid">
-        <a href="/da/uuid-generator/" class="tool-card">
-          <img src="/assets/img/icon-hash.svg" alt="UUID Generator icon" class="tool-card-icon" width="40" height="40" loading="lazy">
-          <h3>UUID Generator</h3>
-          <p>Generer sikre UUID v4-identifikatorer i bulk øjeblikkeligt.</p>
-          <span class="tool-card-link">Brug →</span>
-        </a>
-        <a href="/da/hash-generator/" class="tool-card">
-          <img src="/assets/img/icon-hash.svg" alt="Hash Generator icon" class="tool-card-icon" width="40" height="40" loading="lazy">
-          <h3>Hash Generator</h3>
-          <p>Generer MD5, SHA-1, SHA-256 og SHA-512 hash øjeblikkeligt.</p>
-          <span class="tool-card-link">Brug →</span>
-        </a>
-        <a href="/da/base64-encoder/" class="tool-card">
-          <img src="/assets/img/icon-base64.svg" alt="Base64 Encoder icon" class="tool-card-icon" width="40" height="40" loading="lazy">
-          <h3>Base64 Encoder</h3>
-          <p>Kod og afkod Base64-strenge øjeblikkeligt i din browser.</p>
-          <span class="tool-card-link">Brug →</span>
-        </a>
-        <a href="/da/password-generator/" class="tool-card">
-          <img src="/assets/img/icon-lock.svg" alt="Adgangskode Generator icon" class="tool-card-icon" width="40" height="40" loading="lazy">
-          <h3>Adgangskode Generator</h3>
-          <p>Generer stærke, sikre adgangskoder med brugerdefinerede indstillinger.</p>
-          <span class="tool-card-link">Brug →</span>
-        </a>
+        <a href="/da/base64-encoder/" class="tool-card"><img src="/assets/img/icon-base64.svg" alt="Base64 Encoder og Decoder Online Gratis icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Base64 Encoder og Decoder Online Gratis</h3><p>Kodér og dekodér Base64 online gratis.</p><span class="tool-card-link">Prøv det →</span></a>
+        <a href="/da/hash-generator/" class="tool-card"><img src="/assets/img/icon-hash.svg" alt="Hash Generator Online icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Hash Generator Online</h3><p>Generer kryptografiske hashes MD5, SHA-1, SHA-256 og SHA-512 online gratis.</p><span class="tool-card-link">Prøv det →</span></a>
+        <a href="/da/uuid-generator/" class="tool-card"><img src="/assets/img/icon-uuid.svg" alt="UUID Generator Online Gratis icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>UUID Generator Online Gratis</h3><p>Generer UUID v4 og v7 i store maengder, kopier eller download resultater og valider UUID-format i browseren. Med klare trin, praktiske resultater og ingen konto.</p><span class="tool-card-link">Prøv det →</span></a>
+        <a href="/da/cron-expression-parser/" class="tool-card"><img src="/assets/img/icon-timer.svg" alt="Cron Udtryks Parser Online Gratis icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Cron Udtryks Parser Online Gratis</h3><p>Afkod ethvert cron-udtryk til læsbar tekst øjeblikkeligt.</p><span class="tool-card-link">Prøv det →</span></a>
       </div>
     </section>
   </main>
   <footer id="site-footer" class="site-footer"></footer>
-  <script src="/assets/js/shared.js?v=20261012" defer></script>
+  <script src="/assets/js/shared.js?v=20261101" defer></script>
   <script src="/assets/js/tools/jwt-decoder.js" defer></script>
 </body>
 </html>

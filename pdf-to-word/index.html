@@ -86,30 +86,10 @@
     <section class="related-tools">
       <h2>Related Tools</h2>
       <div class="tool-grid">
-        <a href="/ocr-pdf/" class="tool-card">
-          <img src="/assets/img/icon-pdf.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy">
-          <h3>OCR PDF</h3>
-          <p>Extract text from scanned PDF files.</p>
-          <span class="tool-card-link">Try it →</span>
-        </a>
-        <a href="/pdf-compress/" class="tool-card">
-          <img src="/assets/img/icon-pdf.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy">
-          <h3>Compress PDF</h3>
-          <p>Shrink a PDF to a smaller file size.</p>
-          <span class="tool-card-link">Try it →</span>
-        </a>
-        <a href="/pdf-merge/" class="tool-card">
-          <img src="/assets/img/icon-pdf.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy">
-          <h3>Merge PDF</h3>
-          <p>Combine several PDFs into one.</p>
-          <span class="tool-card-link">Try it →</span>
-        </a>
-        <a href="/pdf-to-jpg/" class="tool-card">
-          <img src="/assets/img/icon-pdf.svg" alt="" class="tool-card-icon" width="40" height="40" loading="lazy">
-          <h3>PDF to JPG</h3>
-          <p>Turn PDF pages into images.</p>
-          <span class="tool-card-link">Try it →</span>
-        </a>
+        <a href="/ocr-pdf/" class="tool-card"><img src="/assets/img/icon-ocr-pdf.svg" alt="OCR PDF icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>OCR PDF</h3><p>Extract text from scanned PDFs and images using Tesseract OCR.</p><span class="tool-card-link">Try it →</span></a>
+        <a href="/pdf-to-jpg/" class="tool-card"><img src="/assets/img/icon-pdf-to-jpg.svg" alt="PDF to JPG icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>PDF to JPG</h3><p>Render each PDF page as a high-quality JPG or PNG image.</p><span class="tool-card-link">Try it →</span></a>
+        <a href="/html-to-pdf/" class="tool-card"><img src="/assets/img/icon-html-pdf.svg" alt="HTML to PDF icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>HTML to PDF</h3><p>Convert HTML code to a multi-page PDF with a live preview editor.</p><span class="tool-card-link">Try it →</span></a>
+        <a href="/word-counter/" class="tool-card"><img src="/assets/img/icon-wordcount.svg" alt="Word Counter icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Word Counter</h3><p>Count words, characters, sentences and reading time.</p><span class="tool-card-link">Try it →</span></a>
       </div>
     </section>
   </main>
@@ -163,7 +143,7 @@
 </div>
 <sc-if value="{{ toastOn }}" hint-placeholder-val="{{ false }}"><div role="status" style="position:fixed;left:50%;bottom:28px;transform:translateX(-50%);background:#1f1a17;color:#fff;padding:12px 18px;border-radius:10px;font-size:14px;box-shadow:0 8px 24px rgba(0,0,0,.2);z-index:50">{{ toastMsg }}</div></sc-if>
 </script>
-  <script src="/assets/js/shared.js?v=20261012" defer></script>
+  <script src="/assets/js/shared.js?v=20261101" defer></script>
   <script src="/assets/js/tools/dc-runtime.js?v=20261012" defer></script>
   <script src="/assets/js/tools/pdf-to-word.js?v=20261012" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/pdf-lib@1.17.1/dist/pdf-lib.min.js" defer></script>

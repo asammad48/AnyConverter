@@ -2,7 +2,15 @@
   "permissions": {
     "allow": [
       "mcp__Claude_Preview__preview_start",
-      "mcp__Claude_in_Chrome__tabs_context_mcp"
+      "mcp__Claude_in_Chrome__tabs_context_mcp",
+      "Bash(python *)",
+      "Bash(grep -vE \"^\\(calculators|developer-tools|pdf-tools|productivity-tools|numerology-astrology|fun-relationships|date-time|text-tools|browser-tools|blog|about|contact|cookies|faq|press|privacy|terms|security|privacy-policy-generator\\)$\")",
+      "Bash(node tests/run_all_tests.js.)",
+      "Bash(node tests/run_all_tests.js)",
+      "Bash(git check-ignore *)",
+      "Bash(git log *)",
+      "Bash(grep -E \"\\\\.\\(js|css|mjs\\)$\")",
+      "Bash(node -e ' *)"
     ]
   }
 }
