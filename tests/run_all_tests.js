@@ -18,7 +18,8 @@ const testSuites = [
   { name: 'Sitewide Parity & Inventory Counts Suite', cmd: 'node tests/test_sitewide_parity_and_counts.js' },
   { name: 'Privacy Statements & Disclosures Regression', cmd: 'node tests/test_privacy_claims_regression.js' },
   { name: 'Related Tools Semantic Integrity Suite', cmd: 'node tests/test_related_tools_regression.js' },
-  { name: 'Multilingual Localization Quality Suite', cmd: 'node tests/test_localization_regression.js' }
+  { name: 'Multilingual Localization Quality Suite', cmd: 'node tests/test_localization_regression.js' },
+  { name: 'Financial Calculations & Amortization Suite', cmd: 'node tests/test_financial_calculations_suite.js' }
 ];
 
 console.log('====================================================');

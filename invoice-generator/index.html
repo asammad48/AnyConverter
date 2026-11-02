@@ -119,14 +119,23 @@
             <div style="display:flex;justify-content:flex-end;gap:16px;font-size:14px">
               <span>Subtotal:</span><span id="inv-subtotal" style="min-width:80px;text-align:right;font-weight:500">0.00</span>
             </div>
+            <div id="inv-discount-row" style="display:none;justify-content:flex-end;gap:16px;font-size:14px;margin-top:4px;color:#059669">
+              <span>Discount:</span><span id="inv-discount-amt" style="min-width:80px;text-align:right;font-weight:500">-0.00</span>
+            </div>
             <div style="display:flex;justify-content:flex-end;gap:16px;font-size:14px;margin-top:4px">
               <span>Tax:</span><span id="inv-tax-amt" style="min-width:80px;text-align:right;font-weight:500">0.00</span>
+            </div>
+            <div id="inv-shipping-row" style="display:none;justify-content:flex-end;gap:16px;font-size:14px;margin-top:4px">
+              <span>Shipping:</span><span id="inv-shipping-amt" style="min-width:80px;text-align:right;font-weight:500">0.00</span>
             </div>
             <div style="display:flex;justify-content:flex-end;gap:16px;font-size:16px;font-weight:700;margin-top:8px">
               <span>Total:</span><span id="inv-total" style="min-width:80px;text-align:right">0.00</span>
             </div>
           </div>
-          <button class="btn btn-primary" id="btn-inv-pdf">Download PDF</button>
+          <div style="display:flex;gap:10px;flex-wrap:wrap">
+            <button class="btn btn-primary" id="btn-inv-pdf">Download PDF</button>
+            <button class="btn btn-secondary" id="btn-inv-print" type="button">Print Invoice</button>
+          </div>
         </div>
       </div>
       <aside class="tool-side" aria-label="Options">

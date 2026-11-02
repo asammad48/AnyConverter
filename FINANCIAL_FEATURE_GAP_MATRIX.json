@@ -1,0 +1,333 @@
+{
+  "auditMetadata": {
+    "project": "AnyConverter.io",
+    "scope": "Comprehensive Financial & Money-Related Utilities Audit & Enhancement",
+    "timestamp": "2026-11-01T16:30:00.000Z",
+    "verifiedToolInventoryCount": 17,
+    "auditVersion": "1.0.0"
+  },
+  "tools": {
+    "loan-calculator": {
+      "priority": "P1",
+      "slug": "loan-calculator",
+      "name": "Loan & EMI Calculator",
+      "locales": ["en", "es", "da"],
+      "currentFeatures": [
+        "Fixed rate monthly EMI calculation",
+        "Total interest and total payment",
+        "Raw month-by-month table"
+      ],
+      "criticalGaps": [
+        "Missing term in years vs months toggle",
+        "Hardcoded $ symbol, missing multi-currency support (USD, EUR, GBP, DKK, PKR, INR, etc.)",
+        "Missing repayment frequencies (Bi-weekly, Weekly, Monthly)",
+        "Missing first-month breakdown and Year 1 totals (paid, principal, interest, balance after year 1)",
+        "Missing estimated payoff date based on start date",
+        "Missing annual repayment summary (Year | Opening Balance | Total Payments | Principal | Interest | Fees | Closing Balance) with expandable months",
+        "Missing advanced interest methods (Flat-rate vs Reducing-balance, Nominal vs Effective APR)",
+        "Missing fee modeling (Upfront processing fees, recurring monthly fees)",
+        "Missing prepayments / extra monthly payments / lump sum payoffs",
+        "Missing Pakistan KIBOR floating-rate integration and scenario stress testing",
+        "Missing Loan A vs Loan B scenario comparison",
+        "Missing visual chart (Principal vs Interest breakdown)",
+        "Missing CSV and Print export"
+      ],
+      "beginnerModePlan": "Intuitive 3-4 input card (Loan Amount, Rate %, Term, Currency, Start Date) with clear plain-language labels, instant big stat cards, Year 1 summary, and interactive presets.",
+      "advancedModePlan": "Toggleable tabs: Fixed vs Floating (KIBOR / Benchmark), Flat vs Reducing, Fees, Extra Payments, Annual Amortization schedule with drill-down months, Loan Comparison (A vs B), and CSV Export."
+    },
+    "mortgage-calculator": {
+      "priority": "P1",
+      "slug": "mortgage-calculator",
+      "name": "Mortgage Calculator",
+      "locales": ["en", "es", "da"],
+      "currentFeatures": [
+        "Home price, down payment, rate, fixed term (10, 15, 20, 30 years)",
+        "Monthly payment, loan amount, total interest, total cost",
+        "Basic first-year schedule preview (12 months)"
+      ],
+      "criticalGaps": [
+        "Missing LTV (Loan-to-Value) ratio indicator and warning if down payment < 20%",
+        "Missing housing expense components: Property Tax, Homeowners Insurance, Private Mortgage Insurance (PMI), HOA/Maintenance fees",
+        "Missing first-year summary metrics (Year 1 principal, Year 1 interest, balance after 12 months)",
+        "Missing full lifetime amortization schedule with annual aggregation and monthly drill-down",
+        "Missing term comparisons (10 vs 15 vs 20 vs 30 years side-by-side)",
+        "Missing extra payment modeling (accelerated bi-weekly, monthly extra, annual lump sum)",
+        "Missing optional Affordability & DTI (Debt-to-Income) estimator with disclaimer",
+        "Missing currency selector (USD, EUR, DKK, GBP, etc.)",
+        "Missing responsive breakdown chart and CSV export"
+      ],
+      "beginnerModePlan": "Clear home purchase inputs with automatic down payment % and $ synchronization, monthly P&I display, LTV badge, and quick presets.",
+      "advancedModePlan": "PITI breakdown (Principal, Interest, Taxes, Insurance, PMI, HOA), Affordability Guidance with DTI benchmark (28/36 rule), Term Comparison Matrix, Amortization with Extra Payments, and CSV Export."
+    },
+    "compound-interest-calculator": {
+      "priority": "P1",
+      "slug": "compound-interest-calculator",
+      "name": "Compound Interest Calculator",
+      "locales": ["en", "es", "da"],
+      "currentFeatures": [
+        "Principal, annual rate, time in years, compounding frequency (annually, semi, quarterly, monthly, daily)",
+        "Final balance, total interest earned, growth percentage",
+        "Year-by-year balance table up to 50 years"
+      ],
+      "criticalGaps": [
+        "Missing recurring regular contributions (monthly, annual, quarterly)",
+        "Missing contribution timing (beginning of period vs end of period / annuity due vs ordinary annuity)",
+        "Missing annual contribution growth rate (annual step-up)",
+        "Missing inflation adjustment (real purchasing power vs nominal returns)",
+        "Missing breakdown of Total Contributions vs Total Interest Earned",
+        "Missing Target Savings Goal calculator (how much to save per month or how many years to reach a target)",
+        "Missing visual growth progression chart",
+        "Missing multi-currency support and CSV export"
+      ],
+      "beginnerModePlan": "Simple wealth growth simulator with initial deposit, monthly contribution, return rate, time horizon, and visual stacked breakdown of savings vs interest.",
+      "advancedModePlan": "Contribution timing (start vs end), annual contribution growth rate, inflation adjustment (real rate calculation), target savings solver, and complete annual projection table with export."
+    },
+    "gst-vat-calculator": {
+      "priority": "P2",
+      "slug": "gst-vat-calculator",
+      "name": "GST / VAT Calculator",
+      "locales": ["en", "es", "da"],
+      "currentFeatures": [
+        "Tax-inclusive vs tax-exclusive calculation",
+        "Base amount, tax amount, gross total",
+        "Country preset chips (India, AU, UK, EU, Nordic)"
+      ],
+      "criticalGaps": [
+        "Missing reverse calculation from tax amount alone",
+        "Missing itemized multi-rate invoice line items (multiple goods at different VAT rates)",
+        "Missing regional sales tax with dual component split (e.g. Canada GST+PST/HST, US State+Local)",
+        "Missing printable calculation slip / tax summary breakdown",
+        "Missing tax exemption toggle"
+      ],
+      "beginnerModePlan": "Instant 1-click tax addition/subtraction with presets for standard rates (5%, 12%, 18%, 20%, 21%, 25%) and explicit formula display.",
+      "advancedModePlan": "Multi-item tax table, combined dual-tax rates (State + Local / GST + PST), reverse tax solver, and printable summary."
+    },
+    "discount-calculator": {
+      "priority": "P2",
+      "slug": "discount-calculator",
+      "name": "Discount Calculator",
+      "locales": ["en", "es", "da"],
+      "currentFeatures": [
+        "Percentage off, fixed amount off, sale price to original price",
+        "Savings and final price",
+        "Preset chips (10%, 15%, 20%, 25%, 30%, 50%)"
+      ],
+      "criticalGaps": [
+        "Missing tax before vs after discount calculation",
+        "Missing quantity / bulk purchase discount calculations",
+        "Missing 'Buy X Get Y Free' / BOGO effective percentage conversion",
+        "Missing coupon combination (fixed coupon + percentage off)"
+      ],
+      "beginnerModePlan": "3 clean tabs for Percent Off, Fixed Discount, and Reverse Discount with live update and savings highlight.",
+      "advancedModePlan": "Tax calculation toggle (apply tax before or after discount), BOGO converter, and quantity multipliers."
+    },
+    "discount-stacking-calculator": {
+      "priority": "P2",
+      "slug": "discount-stacking-calculator",
+      "name": "Discount Stacking Calculator",
+      "locales": ["en", "es", "da"],
+      "currentFeatures": [
+        "Multiple sequential discounts with reordering",
+        "Effective percentage vs advertised sum",
+        "Stacking gap, minimum threshold, quantity rules, VAT/sales tax, cashback",
+        "Full multilingual copy (EN, ES, DA)"
+      ],
+      "criticalGaps": [
+        "Could benefit from maximum discount cap setting (e.g. up to 60% max)",
+        "Visual waterfall breakdown of price reductions"
+      ],
+      "beginnerModePlan": "Simple sequential coupons list with immediate comparison between real discount and advertised sum.",
+      "advancedModePlan": "Discount cap, optimal ordering analyzer, cashback, and detailed receipt breakdown."
+    },
+    "percentage-calculator": {
+      "priority": "P2",
+      "slug": "percentage-calculator",
+      "name": "Percentage Calculator",
+      "locales": ["en", "es", "da"],
+      "currentFeatures": [
+        "X% of Y",
+        "X is what % of Y",
+        "Percentage change from X to Y",
+        "Increase/decrease X by Y%"
+      ],
+      "criticalGaps": [
+        "Missing step-by-step arithmetic explanation for students and beginners",
+        "Missing compound percentage change (successive percentage changes)",
+        "Missing percentage point difference vs percentage change distinction"
+      ],
+      "beginnerModePlan": "Sentence-style natural language inputs with real-time solutions and visual bar illustration.",
+      "advancedModePlan": "Step-by-step mathematical breakdown, successive changes, and percentage point calculations."
+    },
+    "reverse-percentage-calculator": {
+      "priority": "P2",
+      "slug": "reverse-percentage-calculator",
+      "name": "Reverse Percentage Calculator",
+      "locales": ["en", "es", "da"],
+      "currentFeatures": [
+        "Find original after increase or decrease",
+        "Common mistake warning",
+        "Step-by-step division multiplier explanation",
+        "Full multilingual support (EN, ES, DA)"
+      ],
+      "criticalGaps": [
+        "Tax reverse presets (unvatting prices)",
+        "Multiple successive percentage reversals"
+      ],
+      "beginnerModePlan": "Simple before-and-after finder with highlighted 'common mistake' correction.",
+      "advancedModePlan": "Margin-markup equivalence, unvatting calculator, and reverse compounding."
+    },
+    "currency-converter": {
+      "priority": "P2",
+      "slug": "currency-converter",
+      "name": "Currency Converter",
+      "locales": ["en", "es", "da"],
+      "currentFeatures": [
+        "Real-time free exchange rates API (open.er-api.com)",
+        "Popular currency quick table",
+        "Rate update timestamp disclosure"
+      ],
+      "criticalGaps": [
+        "Missing bank spread / FX fee modeling (e.g. 1%, 2%, 3% markup or fixed transfer fee)",
+        "Missing effective received amount after real-world conversion costs",
+        "Missing buy vs sell rate spread indicator",
+        "Missing explicit disclaimer that indicative rate is not an executed bank wire rate"
+      ],
+      "beginnerModePlan": "Instant mid-market conversion with prominent currency swap button and popular exchange rates.",
+      "advancedModePlan": "Real-world transfer fee calculator (bank spread %, flat fee, effective exchange rate, total hidden cost)."
+    },
+    "invoice-generator": {
+      "priority": "P3",
+      "slug": "invoice-generator",
+      "name": "Invoice Generator",
+      "locales": ["en", "es", "da"],
+      "currentFeatures": [
+        "Dynamic line items (description, quantity, rate, amount)",
+        "Subtotal, tax %, total",
+        "Client and business details",
+        "Client-side jsPDF export"
+      ],
+      "criticalGaps": [
+        "Missing payment terms and due date fields",
+        "Missing line-item discount or overall invoice discount",
+        "Missing shipping / delivery fee field",
+        "Missing currency selector (USD, EUR, GBP, DKK, CAD, AUD, etc.)",
+        "Missing tax exemption / multiple tax components",
+        "Missing notes / bank wire transfer details section"
+      ],
+      "beginnerModePlan": "Clean invoice form with sample presets (freelancer, consulting, web design) and 1-click PDF download.",
+      "advancedModePlan": "Discounts, shipping, payment terms, bank wiring info, customizable currency, and professional invoice PDF styling."
+    },
+    "tip-calculator": {
+      "priority": "P3",
+      "slug": "tip-calculator",
+      "name": "Tip Calculator",
+      "locales": ["en", "es", "da"],
+      "currentFeatures": [
+        "Bill amount, tip percentage slider/presets (10%, 15%, 18%, 20%, 25%), number of people",
+        "Tip amount, total bill, per-person split"
+      ],
+      "criticalGaps": [
+        "Missing round-up to nearest dollar/euro/krone option",
+        "Missing tip on pre-tax vs post-tax option",
+        "Missing custom uneven split (e.g. person ordered extra)",
+        "Missing international tipping etiquette guide (US vs Europe vs Asia)"
+      ],
+      "beginnerModePlan": "Fast mobile-friendly slider with instant per-person split and rounding toggle.",
+      "advancedModePlan": "Pre-tax tip setting, rounding up total vs per-person, and uneven bill splitting."
+    },
+    "margin-vs-markup-calculator": {
+      "priority": "P3",
+      "slug": "margin-vs-markup-calculator",
+      "name": "Margin vs Markup Calculator",
+      "locales": ["en", "es", "da"],
+      "currentFeatures": [
+        "Cost and Price, Target Margin, Target Markup modes",
+        "Profit, margin %, markup %, multiplier, step-by-step arithmetic",
+        "Loss detection and copy summary"
+      ],
+      "criticalGaps": [
+        "Missing volume sales / gross profit projection",
+        "Missing discount impact on margin calculator"
+      ],
+      "beginnerModePlan": "Clear explanation of the crucial difference between margin (profit/revenue) and markup (profit/cost).",
+      "advancedModePlan": "Volume break-even analysis and price markdown impact on margin."
+    },
+    "pay-rise-calculator": {
+      "priority": "P3",
+      "slug": "pay-rise-calculator",
+      "name": "Pay Rise Calculator",
+      "locales": ["en", "es", "da"],
+      "currentFeatures": [
+        "Current pay, percentage or cash increase, hourly/weekly/monthly/annual conversion"
+      ],
+      "criticalGaps": [
+        "Missing inflation-adjusted real salary change",
+        "Missing estimated take-home tax impact"
+      ],
+      "beginnerModePlan": "Instant before-and-after salary and hourly rate calculator.",
+      "advancedModePlan": "Real pay rise after inflation and multi-period breakdown."
+    },
+    "percentage-difference-calculator": {
+      "priority": "P3",
+      "slug": "percentage-difference-calculator",
+      "name": "Percentage Difference Calculator",
+      "locales": ["en", "es", "da"],
+      "currentFeatures": [
+        "Calculates absolute difference divided by average of two numbers",
+        "Step-by-step arithmetic and comparison"
+      ],
+      "criticalGaps": [
+        "Missing clear distinction between difference vs change vs error"
+      ],
+      "beginnerModePlan": "Plain-language explanation of order-independent difference.",
+      "advancedModePlan": "Comparison matrix between % difference, % change, and % error."
+    },
+    "price-increase-calculator": {
+      "priority": "P3",
+      "slug": "price-increase-calculator",
+      "name": "Price Increase Calculator",
+      "locales": ["en", "es", "da"],
+      "currentFeatures": [
+        "Original price and new price or percentage increase, step-by-step breakdown"
+      ],
+      "criticalGaps": [
+        "Missing recurring inflation over time",
+        "Missing volume impact / customer price sensitivity note"
+      ],
+      "beginnerModePlan": "Quick price markup calculator with dollar increase and new price.",
+      "advancedModePlan": "Multi-year compounding price increase and basket impact."
+    },
+    "unit-price-calculator": {
+      "priority": "P3",
+      "slug": "unit-price-calculator",
+      "name": "Unit Price Calculator",
+      "locales": ["en", "es", "da"],
+      "currentFeatures": [
+        "Compare Package A vs Package B with price and quantity/weight",
+        "Shows cheaper option, price per unit, and percentage savings"
+      ],
+      "criticalGaps": [
+        "Missing multi-unit conversions (e.g. grams vs kilograms, ounces vs pounds, liters vs ml)",
+        "Missing 3-way or 4-way comparison"
+      ],
+      "beginnerModePlan": "Side-by-side deal checker showing which product is cheaper per unit.",
+      "advancedModePlan": "Automatic cross-unit conversions (g, kg, oz, lb, ml, l) and 3+ package comparison."
+    },
+    "camt053-to-csv": {
+      "priority": "P3",
+      "slug": "camt053-to-csv",
+      "name": "CAMT.053 to CSV Converter",
+      "locales": ["en", "es", "da"],
+      "currentFeatures": [
+        "Client-side XML parsing of ISO 20022 CAMT.053 bank statement",
+        "CSV export of bank transactions, booking date, amount, debtor/creditor"
+      ],
+      "criticalGaps": [
+        "Missing CAMT.052 (interim report) and CAMT.054 (notification) dialect detection",
+        "Missing customizable CSV delimiter (comma vs semicolon for European Excel)"
+      ],
+      "beginnerModePlan": "Drag-and-drop bank XML file with instant preview and download.",
+      "advancedModePlan": "Delimiter options, column filtering, and CAMT dialect verification."
+    }
+  }
+}

@@ -172,3 +172,96 @@
   5. **Footer Navigation Alignment:** Updated `assets/js/shared.js` category links to point to canonical hub URLs (`/pdf-tools/`, `/developer-tools/`, `/browser-tools/`, `/calculators/`, `/text-tools/`, `/productivity-tools/`).
   6. **CI Gate Widening:** Expanded `tests/test_privacy_claims_regression.js` to perform a sitewide AST/text scan across all 474 HTML files (asserting 0 absolute privacy claims) and expanded `tests/test_localization_regression.js` to scan all 147 ES and 147 DA files for diacritic stripping and English UI fragments. All 17/17 test suites PASS.
 - **Consequence:** Solves all blockers identified in the 5th independent audit report, bringing the repository to full deployment readiness.
+
+## ADR-016: Comprehensive Financial Calculators Enhancement, Dual-Mode UX, Pakistan KIBOR Floating Engine & Mathematical Reconciliation
+- **Date:** 2026-11-01
+- **Status:** Approved & Implemented
+- **Context:** The financial calculator inventory (17 tools) needed deep enhancement to transition from basic single-calculation forms to enterprise-grade educational and financial tools meeting standards of CFPB, SBP (State Bank of Pakistan), and international lending benchmarks. Prior tools lacked Beginner/Advanced mode separation, multi-currency support, Year 1 milestone summaries, full annual schedules with month drilldowns, floating rate repricing, and escrow PITI modeling.
+- **Decision:**
+  1. **Dual-Mode Progressive Disclosure:** Built clean Beginner Mode (prominent primary inputs, big milestone statistics, plain language) and Advanced Mode (deep inputs, schedules, scenarios) across `loan-calculator`, `mortgage-calculator`, and `compound-interest-calculator`.
+  2. **Pakistan KIBOR Floating Integration:** Researched SBP market conventions (KIBOR Offer side for lending), implemented 1M, 3M, 6M, 12M tenors with custom bank spread, reset frequency schedules, hypothetical rate path scenarios (Unchanged, Rises, Falls), and explicit non-forecast disclaimers.
+  3. **Strict Amortization Reconciliation & Contractual Absorption:** Enforced conservation laws on all payment cycles: $\text{Opening Balance} - \text{Principal} = \text{Closing Balance}$ and $\text{Payment} = \text{Principal} + \text{Interest} + \text{Fees}$. Contractual final month absorbs minor sub-penny residual fractions, eliminating artificial 61st/361st periods.
+  4. **PITI & Real Estate Escrow Modeling:** Added down payment % and $ synchronization, LTV indicator with PMI threshold at >80%, escrow breakdown (property taxes, insurance, HOA), and side-by-side Term Comparison Matrix (10, 15, 20, 30 years).
+  5. **Compound Growth & Real Purchasing Power:** Modeled regular deposits with Ordinary Annuity (end-of-period) vs Annuity Due (beginning-of-period) timing, annual deposit escalation %, Effective Annual Rate (EAR / APY), and CPI inflation adjustment.
+  6. **FX Spread & Hidden Cost Modeling:** Upgraded `currency-converter` with user-entered bank FX spread markup and wire fees to reveal effective received amount and hidden spread cost.
+  7. **Testing Expansion:** Added `tests/test_financial_calculations_suite.js` covering 10 rigorous financial math and edge case categories, expanding master test runner `tests/run_all_tests.js` to 18/18 PASS.
+- **Consequence:** Delivers institutional-grade financial precision, transparent user guidance, compliant disclaimers, and 100% automated test coverage with zero external runtime dependencies.
+
+## ADR-017: Third Independent Financial Validation Checkpoint & Release Verification
+- **Date:** 2026-11-02
+- **Status:** Approved & Certified (PASS WITH WARNINGS)
+- **Context:** Following the second independent revalidation (`SECOND_INDEPENDENT_FINANCIAL_REVALIDATION_REPORT.md` returning `FAIL — FIXES REQUIRED`), comprehensive remediations were completed across all seven identified release blockers. The third independent financial validation (`THIRD_INDEPENDENT_FINANCIAL_VALIDATION_REPORT.md`) independently verified the codebase, confirming all seven blockers repaired with a verdict of `PASS WITH WARNINGS`.
+- **Decision:**
+  1. **Blocker 1 (Compound Interest Goal Solver):** Preserved the closed-form analytical solver in `compound-interest-calculator.js` (`calculateSavingsGoal`), eliminating the `ReferenceError` and accurately solving for required deposits across 5 compounding frequencies (daily, monthly, quarterly, semiannual, annual) and both annuity timings (Ordinary Annuity end-of-period vs Annuity Due beginning-of-period).
+  2. **Blocker 2 (Mortgage DOM Controls & PMI Synchronization):** Preserved rendered DOM elements (`#mort-pmi`, `#mort-down-pct`, `#ac-mort-pmi-milestone-wrap`, `#ac-mort-pmi-date`), bidirectional $ ↔ % synchronization with active element guard, configurable PMI rates (including 0% disable), and localized statutory European disclaimers (Spain and Denmark).
+  3. **Blocker 3 (Currency Safe Cache & Zero Fallback Fabrication):** Preserved elimination of undated hardcoded `BASELINE_RATES`, safe `localStorage` cache `ac_fx_rates_cache_v2` with mandatory timestamp/source, explicit rate-unavailable error banners preventing fabricated outputs, and automatic live-fetch recovery on network reconnection.
+  4. **Blocker 4 (Dual-Rate APR / TAE / ÅOP Engine):** Preserved the dual-rate solver in `loan-calculator.js`, separating nominal annualized IRR ($r \times 12$) from effective annual rate ($EAR = (1+r)^{12}-1$), mapping primary titles to jurisdiction norms (US APR nominal, Spanish TAE effective, Danish ÅOP effective) with cross-metric subtitle badges.
+  5. **Blocker 5 (Pakistan KIBOR Benchmark & Repricing Architecture):** Preserved pure structural tenor keys (`1m`, `3m`, `6m`, `12m`, `custom`) without hardcoded stale percentages in `<option value>`, user-editable hypothetical benchmark baseline input (`#ac-benchmark-rate`), and direct official State Bank of Pakistan archive hyperlink.
+  6. **Blocker 6 (Invoice PDF Unicode & Financial Reconciliation):** Preserved Latin-1 / WinAnsi glyph encoding for Danish (`æ, ø, å`) and Spanish (`á, é, í, ó, ú, ñ`) diacritics and European currency symbols (`€, £, kr.`), clamped negative quantities/rates to 0, and maintained exact arithmetic reconciliation (`Subtotal - Discount + Tax + Shipping === Total Due`) across DOM screen, `@media print`, and jsPDF output.
+  7. **Blocker 7 (Dynamic Browser Automation):** Preserved Playwright real Chrome headless test suite `tests/browser_e2e_financial_suite.js`, confirming 32/32 passed journeys with 0 uncaught browser console errors across EN, ES, and DA locales.
+  8. **Recorded Warnings & Non-Blocking Findings:**
+     - *Finding 1 (Loan Term Unit Toggle Fixture):* Documented that 8.58% nominal APR / 8.93% EAR corresponds to a 36-year (432-month) loan input. When `#term-unit-mos` is selected, 36 months yields 10.55% nominal APR / 11.08% EAR. Both modes are verified mathematically accurate.
+     - *Finding 2 (Non-Latin-1 Characters in jsPDF):* Confirmed that `sanitizePdfText()` safely maps non-Latin-1 Unicode to `?` to avoid Helvetica Type 1 font crashes while 100% preserving all in-scope languages (EN, ES, DA).
+- **Consequence:** Certified, reproducible Git checkpoint for the complete financial tool suite. Zero push, merge, or deployment actions executed. Transitioning cleanly to the Bulk Barcode Generator workstream.
+
+
+---
+
+## 2026-11-02 — Phase 17: Financial Defect Remediation & Production Engine Verification
+
+### Context
+Following an independent audit of the financial enhancements, several critical and high defects were confirmed:
+1. Invoice Generator button ID mismatches and missing Discount/Shipping summary display.
+2. Compound Interest `compoundFreq` dropdown being inert in the future value loop.
+3. KIBOR tenor option labels containing stale hardcoded rate percentages.
+4. Loan calculator `totalPayment` omitting recurring monthly fees and labeling nominal rate as APR.
+5. Mortgage calculator hardcoding non-configurable US 0.75% PMI and lacking bidirectional % down payment.
+6. Spanish mortgage page missing accents in metadata and propagated snippets.
+7. Unit test suite using decoupled circular re-implementations rather than testing production files directly.
+
+### Key Decisions
+1. **Periodic Compounding Frequency Transformation ($r_c = (1 + r/n)^{n/12} - 1$):**
+   - Transformed nominal annual rate $r$ compounded $n$ times per year into the exact monthly periodic rate $r_c$. This applies compound frequency directly to starting principal and periodic contributions while preserving exact year-by-year and month-by-month accounting.
+2. **Borrower Total Repayment Outlay Reconciliation:**
+   - Defined `totalPayment = totalPaid + totalFees`, ensuring that all cash outflows (principal, interest, upfront fees, and all recurring monthly fees across the term) are included. Separated pure scheduled P&I (`totalScheduledPrincipalInterest`) from fee-inclusive borrower outlay.
+3. **Actuarial Cash-Flow APR Solver:**
+   - Integrated a Newton-Raphson internal rate of return solver over monthly net cash flows ($P - \text{upfrontFee}$ disbursed, $\text{payment}_t + \text{fee}_t$ repaid) to calculate true fee-inclusive actuarial APR for both reducing and flat-rate loans.
+4. **KIBOR Tenor Clean Labels & SBP Archive Linkage:**
+   - Stripped hardcoded rates from option labels. Established Offer-side convention explanations across all 3 locales and linked directly to the official State Bank of Pakistan archive.
+5. **Configurable PMI & Regional Mortgages:**
+   - Added `#mort-pmi` input to Advanced Escrow, allowing European and Danish borrowers to set PMI to 0%, while calculating the exact future PMI termination milestone date for US borrowers when loan balance crosses the 80% LTV threshold.
+6. **VM Production Sandboxing in Unit Tests:**
+   - Modernized `tests/test_financial_calculations_suite.js` to run production JS assets directly inside Node.js `vm` contexts with DOM simulation, asserting on real production calculations, event handlers, and edge cases.
+
+
+---
+
+## 2026-11-02 — Phase 18: Remediation of Second Independent Revalidation Blockers
+
+### Context
+The second independent audit report (`SECOND_INDEPENDENT_FINANCIAL_REVALIDATION_REPORT.md`) returned `FAIL — FIXES REQUIRED` due to 3 critical defects, 2 high-severity defects, 2 major PDF defects, and missing real browser execution.
+
+### Key Decisions
+1. **Target Savings Goal Analytical Solver:**
+   - Designed pure analytical function `calculateSavingsGoal(goal, P, years, rate, compoundFreq, contribTiming)` in `compound-interest-calculator.js`.
+   - Correctly handles monthly periodic rate derived from compound frequency $r_m = (1 + r/n)^{n/12} - 1$, future value of starting capital, remainder needed, and ordinary annuity vs. annuity due factors.
+2. **Mortgage DOM Controls & Statutory Disclaimers:**
+   - Rendered `#mort-pmi`, `#mort-down-pct`, and `#ac-mort-pmi-milestone-wrap` in the production DOM.
+   - Provided bidirectional synchronization between dollar down payment and percentage.
+   - Contextualized PMI cancellation as an illustrative metric modeled on the US Homeowners Protection Act (HPA), adding explicit disclaimers in Spanish and Danish that European and Danish mortgage guarantees/bidragssatser do not automatically terminate at 80% LTV.
+3. **Currency Safe Cache & Elimination of Fabricated Rates:**
+   - Completely deleted the hardcoded `BASELINE_RATES` table from `currency-converter.js`.
+   - Implemented `localStorage` caching (`ac_fx_rates_cache_v2`) requiring verified timestamp and source.
+   - If offline with no cache, conversions are prevented and an explicit rate-unavailable error is shown.
+4. **Dual-Metric APR / TAE / ÅOP Resolution:**
+   - Solved both nominal annualized IRR ($r \times 12 \times 100$) and effective compounded annual rate ($((1+r)^{12}-1) \times 100$).
+   - Mapped primary output to local statutory terminology (Nominal APR for US/EN; TAE for Spain; ÅOP for Denmark) while displaying the counterpart metric in the subtitle.
+5. **KIBOR Tenor Structural Option Keys:**
+   - Replaced hardcoded percentage option values with structural tenor keys (`1m`, `3m`, `6m`, `12m`, `custom`).
+   - Mapped tenor to repricing frequency without overwriting user interest rate inputs.
+   - Provided an explicit user-editable benchmark input labeled as a hypothetical educational default.
+6. **Invoice PDF Unicode Sanitization:**
+   - Implemented `sanitizePdfText()` using NFC normalization and Latin-1 preservation for Danish `æ, ø, å` and Spanish `á, é, í, ó, ú, ñ`.
+   - Clamped negative quantities and rates to 0. Reconciled invoice arithmetic across screen, print, and PDF.
+7. **Real Chrome Headless Playwright Verification:**
+   - Created `tests/browser_e2e_financial_suite.js` to execute 32 full interactive user journeys against actual rendered pages in English, Spanish, and Danish, capturing console and network logs.
