@@ -1,0 +1,97 @@
+{
+ "title": "Slet Sider i PDF – Fjern Sider og Blanke Sider Gratis",
+ "desc": "Slet sider fra en PDF i din browser. Klik på de sider, der skal væk, skriv intervaller, eller lad værktøjet finde blanke sider fra scanneren. Ingen upload.",
+ "ld": {
+  "@context": "https://schema.org",
+  "@graph": [
+   {
+    "@type": "WebApplication",
+    "name": "Slet sider i en PDF",
+    "url": "https://anyconverter.io/da/remove-pdf-pages/",
+    "description": "Slet sider fra en PDF i din browser. Klik på de sider, der skal væk, skriv intervaller, eller lad værktøjet finde blanke sider fra scanneren. Ingen upload.",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Any (web browser)",
+    "browserRequirements": "Requires JavaScript",
+    "inLanguage": "da",
+    "isAccessibleForFree": true,
+    "offers": {
+     "@type": "Offer",
+     "price": "0",
+     "priceCurrency": "USD"
+    },
+    "featureList": [
+     "Finder blanke sider for dig",
+     "Klik eller skriv",
+     "Fortryd valget",
+     "Din PDF bliver på din enhed",
+     "Intet vandmærke eller login"
+    ],
+    "publisher": {
+     "@type": "Organization",
+     "name": "AnyConverter",
+     "url": "https://anyconverter.io"
+    }
+   },
+   {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+     {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Forside",
+      "item": "https://anyconverter.io/da/"
+     },
+     {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "PDF-værktøjer",
+      "item": "https://anyconverter.io/da/pdf-vaerktoejer/"
+     },
+     {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Slet PDF-sider",
+      "item": "https://anyconverter.io/da/remove-pdf-pages/"
+     }
+    ]
+   },
+   {
+    "@type": "FAQPage",
+    "mainEntity": [
+     {
+      "@type": "Question",
+      "name": "Hvordan sletter jeg én side i en PDF?",
+      "acceptedAnswer": {
+       "@type": "Answer",
+       "text": "Klik på siden, så den viser et kryds, og tryk derefter Slet."
+      }
+     },
+     {
+      "@type": "Question",
+      "name": "Kan den fjerne blanke sider fra en scanning?",
+      "acceptedAnswer": {
+       "@type": "Answer",
+       "text": "Ja. Tryk Find blanke sider, så markeres de tomme. Tjek dem, og gem."
+      }
+     },
+     {
+      "@type": "Question",
+      "name": "Bliver min fil uploadet?",
+      "acceptedAnswer": {
+       "@type": "Answer",
+       "text": "Nej. PDF’en redigeres i din browser."
+      }
+     },
+     {
+      "@type": "Question",
+      "name": "Kan jeg slette alle sider?",
+      "acceptedAnswer": {
+       "@type": "Answer",
+       "text": "Nej. Mindst én side skal blive."
+      }
+     }
+    ]
+   }
+  ]
+ }
+}

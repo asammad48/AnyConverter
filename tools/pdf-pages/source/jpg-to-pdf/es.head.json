@@ -1,0 +1,97 @@
+{
+ "title": "JPG a PDF – Convierte Fotos en PDF con Calidad Original",
+ "desc": "Junta imágenes JPG, PNG y WebP en un PDF desde tu navegador. Las fotos mantienen su calidad y las del móvil salen del derecho. Gratis, sin subir.",
+ "ld": {
+  "@context": "https://schema.org",
+  "@graph": [
+   {
+    "@type": "WebApplication",
+    "name": "Convertir imágenes JPG en un PDF",
+    "url": "https://anyconverter.io/es/jpg-to-pdf/",
+    "description": "Junta imágenes JPG, PNG y WebP en un PDF desde tu navegador. Las fotos mantienen su calidad y las del móvil salen del derecho. Gratis, sin subir.",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Any (web browser)",
+    "browserRequirements": "Requires JavaScript",
+    "inLanguage": "es",
+    "isAccessibleForFree": true,
+    "offers": {
+     "@type": "Offer",
+     "price": "0",
+     "priceCurrency": "USD"
+    },
+    "featureList": [
+     "Calidad original para JPG",
+     "Fotos del móvil del derecho",
+     "Ajustar a la imagen o al papel",
+     "Sin límite de imágenes",
+     "Tus fotos no salen de tu dispositivo"
+    ],
+    "publisher": {
+     "@type": "Organization",
+     "name": "AnyConverter",
+     "url": "https://anyconverter.io"
+    }
+   },
+   {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+     {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Inicio",
+      "item": "https://anyconverter.io/es/"
+     },
+     {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Herramientas PDF",
+      "item": "https://anyconverter.io/es/herramientas-pdf/"
+     },
+     {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "JPG a PDF",
+      "item": "https://anyconverter.io/es/jpg-to-pdf/"
+     }
+    ]
+   },
+   {
+    "@type": "FAQPage",
+    "mainEntity": [
+     {
+      "@type": "Question",
+      "name": "¿Cómo convierto varias fotos en un solo PDF?",
+      "acceptedAnswer": {
+       "@type": "Answer",
+       "text": "Añade todas las fotos, ordénalas y pulsa Crear PDF. Cada foto será una página."
+      }
+     },
+     {
+      "@type": "Question",
+      "name": "¿Perderán calidad mis fotos?",
+      "acceptedAnswer": {
+       "@type": "Answer",
+       "text": "Las fotos JPG se colocan en el PDF sin recomprimir. Los demás formatos se convierten con alta calidad."
+      }
+     },
+     {
+      "@type": "Question",
+      "name": "¿Por qué mi foto del móvil salía de lado en otras herramientas?",
+      "acceptedAnswer": {
+       "@type": "Answer",
+       "text": "El móvil guarda el giro como una etiqueta en la foto. Esta herramienta lee esa etiqueta y coloca la página bien."
+      }
+     },
+     {
+      "@type": "Question",
+      "name": "¿Se suben mis imágenes?",
+      "acceptedAnswer": {
+       "@type": "Answer",
+       "text": "No. El PDF se crea en tu navegador."
+      }
+     }
+    ]
+   }
+  ]
+ }
+}

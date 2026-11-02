@@ -1,0 +1,5676 @@
+{
+  "generatedAt": "2026-10-25T17:48:56.677Z",
+  "totalToolsCount": 135,
+  "categoriesCount": {
+    "Diagnostics & Testers": 8,
+    "Calculators": 31,
+    "Productivity": 10,
+    "Utility": 34,
+    "Developer Tools": 13,
+    "Fun & Decision": 6,
+    "PDF Tools": 25,
+    "Text Tools": 6,
+    "Image Tools": 2
+  },
+  "architecturesCount": {
+    "handwritten-legacy": 109,
+    "redesigned-dc-runtime": 11,
+    "legacy-pdf": 15
+  },
+  "languagesBreakdown": {
+    "enEsDa": 130,
+    "enOnly": 5
+  },
+  "redesignedPdfCount": 11,
+  "legacyPdfCount": 15,
+  "tools": [
+    {
+      "slug": "ip-address-lookup",
+      "route": "/ip-address-lookup/",
+      "category": "Diagnostics & Testers",
+      "isRedesigned": false,
+      "architecture": "handwritten-legacy",
+      "availableLanguages": [
+        "en",
+        "es",
+        "da"
+      ],
+      "files": {
+        "enHtml": "ip-address-lookup/index.html",
+        "esHtml": "es/ip-address-lookup/index.html",
+        "daHtml": "da/ip-address-lookup/index.html",
+        "jsFile": "/assets/js/tools/ip-address-lookup.js"
+      },
+      "seo": {
+        "title": "IP Address Lookup - Find Location, ISP & IP Details | AnyConverter",
+        "titleLength": 66,
+        "metaDescription": "Check your public IP address, approximate location, ISP, timezone, and network details instantly in your browser with privacy-friendly guidance.",
+        "metaDescriptionLength": 144,
+        "h1": "IP Address Lookup",
+        "h2Count": 5,
+        "h2Headings": [
+          "How to Use IP Address Lookup",
+          "Features",
+          "IP Address Lookup: practical uses",
+          "Frequently Asked Questions",
+          "Related Tools"
+        ],
+        "canonical": "https://anyconverter.io/ip-address-lookup/",
+        "inSitemap": true
+      },
+      "internalLinksCount": 3,
+      "performance": {
+        "clicks": 31,
+        "impressions": 45567,
+        "ctr": "0.07%",
+        "position": 9.9
+      }
+    },
+    {
+      "slug": "discount-calculator",
+      "route": "/discount-calculator/",
+      "category": "Calculators",
+      "isRedesigned": false,
+      "architecture": "handwritten-legacy",
+      "availableLanguages": [
+        "en",
+        "es",
+        "da"
+      ],
+      "files": {
+        "enHtml": "discount-calculator/index.html",
+        "esHtml": "es/discount-calculator/index.html",
+        "daHtml": "da/discount-calculator/index.html",
+        "jsFile": "/assets/js/tools/discount-calculator.js"
+      },
+      "seo": {
+        "title": "Discount Calculator - Sale Price & Savings | AnyConverter",
+        "titleLength": 57,
+        "metaDescription": "Calculate sale price, savings, and final cost from any discount percentage. Compare deals quickly with a clean free online calculator.",
+        "metaDescriptionLength": 134,
+        "h1": "Discount Calculator",
+        "h2Count": 5,
+        "h2Headings": [
+          "How to Use Discount Calculator",
+          "Features",
+          "Discount Calculator: practical uses",
+          "Frequently Asked Questions",
+          "Related Tools"
+        ],
+        "canonical": "https://anyconverter.io/discount-calculator/",
+        "inSitemap": true
+      },
+      "internalLinksCount": 21,
+      "performance": {
+        "clicks": 0,
+        "impressions": 507,
+        "ctr": "0.00%",
+        "position": 30.3
+      }
+    },
+    {
+      "slug": "daily-planner",
+      "route": "/daily-planner/",
+      "category": "Productivity",
+      "isRedesigned": false,
+      "architecture": "handwritten-legacy",
+      "availableLanguages": [
+        "en",
+        "es",
+        "da"
+      ],
+      "files": {
+        "enHtml": "daily-planner/index.html",
+        "esHtml": "es/daily-planner/index.html",
+        "daHtml": "da/daily-planner/index.html",
+        "jsFile": "/assets/js/tools/daily-planner.js"
+      },
+      "seo": {
+        "title": "Daily Planner Online Free | AnyConverter",
+        "titleLength": 40,
+        "metaDescription": "Plan the day with a timeline, tasks, duration estimates, quick templates, and browser-local storage for a focused schedule.",
+        "metaDescriptionLength": 123,
+        "h1": "Daily Planner Online",
+        "h2Count": 5,
+        "h2Headings": [
+          "How to Use Daily Planner",
+          "Features",
+          "Daily Planner Online: practical uses",
+          "Frequently Asked Questions",
+          "Related Tools"
+        ],
+        "canonical": "https://anyconverter.io/daily-planner/",
+        "inSitemap": true
+      },
+      "internalLinksCount": 12,
+      "performance": {
+        "clicks": 1,
+        "impressions": 103,
+        "ctr": "0.97%",
+        "position": 27.1
+      }
+    },
+    {
+      "slug": "add-watermark",
+      "route": "/add-watermark/",
+      "category": "Utility",
+      "isRedesigned": false,
+      "architecture": "handwritten-legacy",
+      "availableLanguages": [
+        "en",
+        "es",
+        "da"
+      ],
+      "files": {
+        "enHtml": "add-watermark/index.html",
+        "esHtml": "es/add-watermark/index.html",
+        "daHtml": "da/add-watermark/index.html",
+        "jsFile": "/assets/js/tools/add-watermark.js"
+      },
+      "seo": {
+        "title": "Add Watermark to PDF Online Free | AnyConverter",
+        "titleLength": 47,
+        "metaDescription": "Add a text watermark to PDF pages online, adjust placement and opacity, and download the stamped PDF privately.",
+        "metaDescriptionLength": 111,
+        "h1": "Add Watermark to PDF",
+        "h2Count": 5,
+        "h2Headings": [
+          "How to Use Add Watermark",
+          "Features",
+          "Add Watermark to PDF: practical uses",
+          "Frequently Asked Questions",
+          "Related Tools"
+        ],
+        "canonical": "https://anyconverter.io/add-watermark/",
+        "inSitemap": true
+      },
+      "internalLinksCount": 5,
+      "performance": {
+        "clicks": 0,
+        "impressions": 70,
+        "ctr": "0.00%",
+        "position": 77.1
+      }
+    },
+    {
+      "slug": "add-page-numbers",
+      "route": "/add-page-numbers/",
+      "category": "Utility",
+      "isRedesigned": true,
+      "architecture": "redesigned-dc-runtime",
+      "availableLanguages": [
+        "en",
+        "es",
+        "da"
+      ],
+      "files": {
+        "enHtml": "add-page-numbers/index.html",
+        "esHtml": "es/add-page-numbers/index.html",
+        "daHtml": "da/add-page-numbers/index.html",
+        "jsFile": "/assets/js/tools/dc-runtime.js?v=20261012"
+      },
+      "seo": {
+        "title": "Add Page Numbers to PDF – Positions, Formats &amp; Bates",
+        "titleLength": 56,
+        "metaDescription": "Number the pages of a PDF in your browser. Choose the position and style, skip the cover, use Page 1 of 10 or legal Bates numbers, and see a live preview.",
+        "metaDescriptionLength": 154,
+        "h1": "Add page numbers to a PDF",
+        "h2Count": 11,
+        "h2Headings": [
+          "How to add page numbers to a PDF",
+          "Numbering that fits real documents",
+          "AnyConverter compared with typical page number tools",
+          "Page numbers, page X of Y and Bates numbers",
+          "Frequently asked questions"
+        ],
+        "canonical": "https://anyconverter.io/add-page-numbers/",
+        "inSitemap": true
+      },
+      "internalLinksCount": 2,
+      "performance": {
+        "clicks": 0,
+        "impressions": 65,
+        "ctr": "0.00%",
+        "position": 73.6
+      }
+    },
+    {
+      "slug": "csv-to-sql",
+      "route": "/csv-to-sql/",
+      "category": "Developer Tools",
+      "isRedesigned": false,
+      "architecture": "handwritten-legacy",
+      "availableLanguages": [
+        "en",
+        "es",
+        "da"
+      ],
+      "files": {
+        "enHtml": "csv-to-sql/index.html",
+        "esHtml": "es/csv-to-sql/index.html",
+        "daHtml": "da/csv-to-sql/index.html",
+        "jsFile": "/assets/js/tools/csv-to-sql.js"
+      },
+      "seo": {
+        "title": "CSV to SQL Converter — INSERT Generator | AnyConverter",
+        "titleLength": 54,
+        "metaDescription": "Convert CSV data to SQL CREATE TABLE and INSERT statements with dialect options, type detection, and editable output.",
+        "metaDescriptionLength": 117,
+        "h1": "CSV to SQL Converter",
+        "h2Count": 5,
+        "h2Headings": [
+          "How to Use CSV to SQL",
+          "Features",
+          "CSV to SQL: practical uses",
+          "Frequently Asked Questions",
+          "Related Tools"
+        ],
+        "canonical": "https://anyconverter.io/csv-to-sql/",
+        "inSitemap": true
+      },
+      "internalLinksCount": 16,
+      "performance": {
+        "clicks": 0,
+        "impressions": 55,
+        "ctr": "0.00%",
+        "position": 68.5
+      }
+    },
+    {
+      "slug": "csv-query",
+      "route": "/csv-query/",
+      "category": "Developer Tools",
+      "isRedesigned": false,
+      "architecture": "handwritten-legacy",
+      "availableLanguages": [
+        "en",
+        "es",
+        "da"
+      ],
+      "files": {
+        "enHtml": "csv-query/index.html",
+        "esHtml": "es/csv-query/index.html",
+        "daHtml": "da/csv-query/index.html",
+        "jsFile": "/assets/js/tools/csv-query.js?v=20260928-clear-all"
+      },
+      "seo": {
+        "title": "CSV Query Tool Online — Run SQL on CSV Files Free | AnyConverter",
+        "titleLength": 64,
+        "metaDescription": "Query CSV data with SQL-like filters in your browser, preview rows, run sample queries, and export useful results.",
+        "metaDescriptionLength": 114,
+        "h1": "CSV Query Tool — Run SQL on CSV Files",
+        "h2Count": 5,
+        "h2Headings": [
+          "How to Use CSV Query",
+          "Features",
+          "CSV Query: practical uses",
+          "Frequently Asked Questions",
+          "Related Tools"
+        ],
+        "canonical": "https://anyconverter.io/csv-query/",
+        "inSitemap": true
+      },
+      "internalLinksCount": 6,
+      "performance": {
+        "clicks": 0,
+        "impressions": 51,
+        "ctr": "0.00%",
+        "position": 42.8
+      }
+    },
+    {
+      "slug": "blood-type-compatibility",
+      "route": "/blood-type-compatibility/",
+      "category": "Utility",
+      "isRedesigned": false,
+      "architecture": "handwritten-legacy",
+      "availableLanguages": [
+        "en",
+        "es",
+        "da"
+      ],
+      "files": {
+        "enHtml": "blood-type-compatibility/index.html",
+        "esHtml": "es/blood-type-compatibility/index.html",
+        "daHtml": "da/blood-type-compatibility/index.html",
+        "jsFile": "/assets/js/tools/blood-type-compatibility.js"
+      },
+      "seo": {
+        "title": "Blood Type Compatibility Checker Online Free | AnyConverter",
+        "titleLength": 59,
+        "metaDescription": "Use blood type compatibility for free in your browser. Get instant results, practical examples, related tools, and no signup.",
+        "metaDescriptionLength": 125,
+        "h1": "Blood Type Compatibility Checker",
+        "h2Count": 5,
+        "h2Headings": [
+          "How to Use the Blood Type Compatibility Checker",
+          "Features",
+          "Blood type compatibility: practical uses",
+          "Frequently Asked Questions",
+          "Related Tools"
+        ],
+        "canonical": "https://anyconverter.io/blood-type-compatibility/",
+        "inSitemap": true
+      },
+      "internalLinksCount": 1,
+      "performance": {
+        "clicks": 0,
+        "impressions": 44,
+        "ctr": "0.00%",
+        "position": 48.1
+      }
+    },
+    {
+      "slug": "meeting-timer",
+      "route": "/meeting-timer/",
+      "category": "Productivity",
+      "isRedesigned": false,
+      "architecture": "handwritten-legacy",
+      "availableLanguages": [
+        "en",
+        "es",
+        "da"
+      ],
+      "files": {
+        "enHtml": "meeting-timer/index.html",
+        "esHtml": "es/meeting-timer/index.html",
+        "daHtml": "da/meeting-timer/index.html",
+        "jsFile": "/assets/js/tools/meeting-timer.js"
+      },
+      "seo": {
+        "title": "Meeting Timer Online Free — Agenda Timer | AnyConverter",
+        "titleLength": 55,
+        "metaDescription": "Run a meeting timer with agenda items, live progress, remaining time, and clear controls for focused sessions.",
+        "metaDescriptionLength": 110,
+        "h1": "Meeting Timer Online",
+        "h2Count": 5,
+        "h2Headings": [
+          "How to Use Meeting Timer",
+          "Features",
+          "Meeting Timer Online: practical uses",
+          "Frequently Asked Questions",
+          "Related Tools"
+        ],
+        "canonical": "https://anyconverter.io/meeting-timer/",
+        "inSitemap": true
+      },
+      "internalLinksCount": 5,
+      "performance": {
+        "clicks": 1,
+        "impressions": 43,
+        "ctr": "2.33%",
+        "position": 63.1
+      }
+    },
+    {
+      "slug": "dead-pixel-checker",
+      "route": "/dead-pixel-checker/",
+      "category": "Utility",
+      "isRedesigned": false,
+      "architecture": "handwritten-legacy",
+      "availableLanguages": [
+        "en",
+        "es",
+        "da"
+      ],
+      "files": {
+        "enHtml": "dead-pixel-checker/index.html",
+        "esHtml": "es/dead-pixel-checker/index.html",
+        "daHtml": "da/dead-pixel-checker/index.html",
+        "jsFile": "/assets/js/tools/dead-pixel-checker.js"
+      },
+      "seo": {
+        "title": "Dead Pixel Checker Online Free | AnyConverter",
+        "titleLength": 45,
+        "metaDescription": "Check a screen for dead pixels using full-screen solid colors and patterns with simple controls for display testing.",
+        "metaDescriptionLength": 116,
+        "h1": "Dead Pixel Checker",
+        "h2Count": 5,
+        "h2Headings": [
+          "How to Use",
+          "Features",
+          "Online dead pixel test: practical uses",
+          "Frequently Asked Questions",
+          "Related Tools"
+        ],
+        "canonical": "https://anyconverter.io/dead-pixel-checker/",
+        "inSitemap": true
+      },
+      "internalLinksCount": 3,
+      "performance": {
+        "clicks": 0,
+        "impressions": 40,
+        "ctr": "0.00%",
+        "position": 65.6
+      }
+    },
+    {
+      "slug": "decision-maker",
+      "route": "/decision-maker/",
+      "category": "Utility",
+      "isRedesigned": false,
+      "architecture": "handwritten-legacy",
+      "availableLanguages": [
+        "en",
+        "es",
+        "da"
+      ],
+      "files": {
+        "enHtml": "decision-maker/index.html",
+        "esHtml": "es/decision-maker/index.html",
+        "daHtml": "da/decision-maker/index.html",
+        "jsFile": "/assets/js/tools/decision-maker.js"
+      },
+      "seo": {
+        "title": "Decision Maker — Can't Decide? Let Us Pick | AnyConverter",
+        "titleLength": 57,
+        "metaDescription": "Use decision maker generator for free in your browser. Get instant results, practical examples, related tools, and no signup.",
+        "metaDescriptionLength": 125,
+        "h1": "Decision Maker Online",
+        "h2Count": 5,
+        "h2Headings": [
+          "How to Use the Decision Maker",
+          "Features",
+          "Decision maker generator: practical uses",
+          "Frequently Asked Questions",
+          "Related Tools"
+        ],
+        "canonical": "https://anyconverter.io/decision-maker/",
+        "inSitemap": true
+      },
+      "internalLinksCount": 7,
+      "performance": {
+        "clicks": 0,
+        "impressions": 21,
+        "ctr": "0.00%",
+        "position": 62.4
+      }
+    },
+    {
+      "slug": "habit-tracker",
+      "route": "/habit-tracker/",
+      "category": "Productivity",
+      "isRedesigned": false,
+      "architecture": "handwritten-legacy",
+      "availableLanguages": [
+        "en",
+        "es",
+        "da"
+      ],
+      "files": {
+        "enHtml": "habit-tracker/index.html",
+        "esHtml": "es/habit-tracker/index.html",
+        "daHtml": "da/habit-tracker/index.html",
+        "jsFile": "/assets/js/tools/habit-tracker.js"
+      },
+      "seo": {
+        "title": "Habit Tracker Online Free | AnyConverter",
+        "titleLength": 40,
+        "metaDescription": "Use habit tracker online for free in your browser. Get instant results, practical examples, related tools, and no signup.",
+        "metaDescriptionLength": 121,
+        "h1": "Habit Tracker Online",
+        "h2Count": 6,
+        "h2Headings": [
+          "How to Use the Habit Tracker",
+          "Features",
+          "Build a Simple Weekly Habit System",
+          "Habit tracker online: practical uses",
+          "Frequently Asked Questions"
+        ],
+        "canonical": "https://anyconverter.io/habit-tracker/",
+        "inSitemap": true
+      },
+      "internalLinksCount": 9,
+      "performance": {
+        "clicks": 1,
+        "impressions": 21,
+        "ctr": "4.76%",
+        "position": 40.6
+      }
+    },
+    {
+      "slug": "dice-roller",
+      "route": "/dice-roller/",
+      "category": "Fun & Decision",
+      "isRedesigned": false,
+      "architecture": "handwritten-legacy",
+      "availableLanguages": [
+        "en",
+        "es",
+        "da"
+      ],
+      "files": {
+        "enHtml": "dice-roller/index.html",
+        "esHtml": "es/dice-roller/index.html",
+        "daHtml": "da/dice-roller/index.html",
+        "jsFile": "/assets/js/tools/dice-roller.js"
+      },
+      "seo": {
+        "title": "Dice Roller Online Free — d4 d6 d8 d10 d12 d20 | AnyConverter",
+        "titleLength": 61,
+        "metaDescription": "Use d20 online roller for free in your browser. Get instant results, practical examples, related tools, and no signup.",
+        "metaDescriptionLength": 118,
+        "h1": "Dice Roller Online",
+        "h2Count": 5,
+        "h2Headings": [
+          "How to Roll Dice",
+          "Features",
+          "D20 online roller: practical uses",
+          "Frequently Asked Questions",
+          "Related Tools"
+        ],
+        "canonical": "https://anyconverter.io/dice-roller/",
+        "inSitemap": true
+      },
+      "internalLinksCount": 11,
+      "performance": {
+        "clicks": 0,
+        "impressions": 19,
+        "ctr": "0.00%",
+        "position": 73.5
+      }
+    },
+    {
+      "slug": "edit-pdf",
+      "route": "/edit-pdf/",
+      "category": "PDF Tools",
+      "isRedesigned": false,
+      "architecture": "legacy-pdf",
+      "availableLanguages": [
+        "en",
+        "es",
+        "da"
+      ],
+      "files": {
+        "enHtml": "edit-pdf/index.html",
+        "esHtml": "es/edit-pdf/index.html",
+        "daHtml": "da/edit-pdf/index.html",
+        "jsFile": "/assets/js/tools/edit-pdf.js"
+      },
+      "seo": {
+        "title": "Edit PDF — Add Text, Shapes &amp; Highlights | AnyConverter",
+        "titleLength": 59,
+        "metaDescription": "Use edit PDF online for free in your browser. Get instant results, practical examples, related tools, and no signup.",
+        "metaDescriptionLength": 116,
+        "h1": "Edit PDF — Add Text &amp; Shapes",
+        "h2Count": 5,
+        "h2Headings": [
+          "How to Edit a PDF",
+          "Features",
+          "Edit PDF online: practical uses",
+          "Frequently Asked Questions",
+          "Related Tools"
+        ],
+        "canonical": "https://anyconverter.io/edit-pdf/",
+        "inSitemap": true
+      },
+      "internalLinksCount": 19,
+      "performance": {
+        "clicks": 0,
+        "impressions": 12,
+        "ctr": "0.00%",
+        "position": 45.8
+      }
+    },
+    {
+      "slug": "ascii-art-generator",
+      "route": "/ascii-art-generator/",
+      "category": "Text Tools",
+      "isRedesigned": false,
+      "architecture": "handwritten-legacy",
+      "availableLanguages": [
+        "en",
+        "es",
+        "da"
+      ],
+      "files": {
+        "enHtml": "ascii-art-generator/index.html",
+        "esHtml": "es/ascii-art-generator/index.html",
+        "daHtml": "da/ascii-art-generator/index.html",
+        "jsFile": "/assets/js/tools/ascii-art-generator.js"
+      },
+      "seo": {
+        "title": "ASCII Art Generator Online Free | AnyConverter",
+        "titleLength": 46,
+        "metaDescription": "Use ASCII Art Generator for free in your browser. Get instant results, practical examples, related tools, and no signup.",
+        "metaDescriptionLength": 120,
+        "h1": "ASCII Art Generator",
+        "h2Count": 5,
+        "h2Headings": [
+          "How to Use ASCII Art Generator",
+          "Features",
+          "ASCII Art Generator: practical uses",
+          "Frequently Asked Questions",
+          "Related Tools"
+        ],
+        "canonical": "https://anyconverter.io/ascii-art-generator/",
+        "inSitemap": true
+      },
+      "internalLinksCount": 2,
+      "performance": {
+        "clicks": 0,
+        "impressions": 9,
+        "ctr": "0.00%",
+        "position": 75.8
+      }
+    },
+    {
+      "slug": "age-calculator",
+      "route": "/age-calculator/",
+      "category": "Calculators",
+      "isRedesigned": false,
+      "architecture": "handwritten-legacy",
+      "availableLanguages": [
+        "en",
+        "es",
+        "da"
+      ],
+      "files": {
+        "enHtml": "age-calculator/index.html",
+        "esHtml": "es/age-calculator/index.html",
+        "daHtml": "da/age-calculator/index.html",
+        "jsFile": "/assets/js/tools/age-calculator.js"
+      },
+      "seo": {
+        "title": "Age Calculator Online Free | AnyConverter",
+        "titleLength": 41,
+        "metaDescription": "Use Age Calculator for free in your browser. Get instant results, practical examples, related tools, and no signup.",
+        "metaDescriptionLength": 115,
+        "h1": "Age Calculator",
+        "h2Count": 5,
+        "h2Headings": [
+          "How to Use the Age Calculator",
+          "Features",
+          "Age Calculator: practical uses",
+          "Frequently Asked Questions",
+          "Related Tools"
+        ],
+        "canonical": "https://anyconverter.io/age-calculator/",
+        "inSitemap": true
+      },
+      "internalLinksCount": 12,
+      "performance": {
+        "clicks": 0,
+        "impressions": 5,
+        "ctr": "0.00%",
+        "position": 21
+      }
+    },
+    {
+      "slug": "json-formatter",
+      "route": "/json-formatter/",
+      "category": "Developer Tools",
+      "isRedesigned": false,
+      "architecture": "handwritten-legacy",
+      "availableLanguages": [
+        "en",
+        "es",
+        "da"
+      ],
+      "files": {
+        "enHtml": "json-formatter/index.html",
+        "esHtml": "es/json-formatter/index.html",
+        "daHtml": "da/json-formatter/index.html",
+        "jsFile": "/assets/js/tools/json-formatter.js"
+      },
+      "seo": {
+        "title": "JSON Formatter &amp; Validator Online — Free | AnyConverter",
+        "titleLength": 59,
+        "metaDescription": "Validate, format, minify, sort, and inspect JSON with indentation controls, a collapsible tree, YAML export, and shape-limited CSV output.",
+        "metaDescriptionLength": 138,
+        "h1": "JSON Formatter &amp; Validator",
+        "h2Count": 5,
+        "h2Headings": [
+          "How to Format JSON",
+          "Features",
+          "JSON Formatter: validate, sort, inspect, and convert",
+          "Frequently Asked Questions",
+          "Related Tools"
+        ],
+        "canonical": "https://anyconverter.io/json-formatter/",
+        "inSitemap": true
+      },
+      "internalLinksCount": 38,
+      "performance": {
+        "clicks": 2,
+        "impressions": 5,
+        "ctr": "40.00%",
+        "position": 1
+      }
+    },
+    {
+      "slug": "coin-flip",
+      "route": "/coin-flip/",
+      "category": "Fun & Decision",
+      "isRedesigned": false,
+      "architecture": "handwritten-legacy",
+      "availableLanguages": [
+        "en",
+        "es",
+        "da"
+      ],
+      "files": {
+        "enHtml": "coin-flip/index.html",
+        "esHtml": "es/coin-flip/index.html",
+        "daHtml": "da/coin-flip/index.html",
+        "jsFile": "/assets/js/tools/coin-flip.js"
+      },
+      "seo": {
+        "title": "Coin Flip Online Free — Heads or Tails | AnyConverter",
+        "titleLength": 53,
+        "metaDescription": "Use Coin Flip for free in your browser. Get instant results, practical examples, related tools, and no signup.",
+        "metaDescriptionLength": 110,
+        "h1": "Coin Flip Online",
+        "h2Count": 5,
+        "h2Headings": [
+          "How to Flip the Coin",
+          "Features",
+          "Coin Flip: practical uses",
+          "Frequently Asked Questions",
+          "Related Tools"
+        ],
+        "canonical": "https://anyconverter.io/coin-flip/",
+        "inSitemap": true
+      },
+      "internalLinksCount": 18,
+      "performance": {
+        "clicks": 0,
+        "impressions": 3,
+        "ctr": "0.00%",
+        "position": 115.3
+      }
+    },
+    {
+      "slug": "html-beautifier",
+      "route": "/html-beautifier/",
+      "category": "Developer Tools",
+      "isRedesigned": false,
+      "architecture": "handwritten-legacy",
+      "availableLanguages": [
+        "en",
+        "es",
+        "da"
+      ],
+      "files": {
+        "enHtml": "html-beautifier/index.html",
+        "esHtml": "es/html-beautifier/index.html",
+        "daHtml": "da/html-beautifier/index.html",
+        "jsFile": "/assets/js/tools/html-beautifier.js"
+      },
+      "seo": {
+        "title": "HTML Beautifier &amp; Minifier Online Free | AnyConverter",
+        "titleLength": 57,
+        "metaDescription": "Use beautifier html for free in your browser. Get instant results, practical examples, related tools, and no signup.",
+        "metaDescriptionLength": 116,
+        "h1": "HTML Beautifier &amp; Minifier",
+        "h2Count": 5,
+        "h2Headings": [
+          "How to Use HTML Beautifier &amp; Minifier",
+          "Features",
+          "Beautifier html: practical uses",
+          "Frequently Asked Questions",
+          "Related Tools"
+        ],
+        "canonical": "https://anyconverter.io/html-beautifier/",
+        "inSitemap": true
+      },
+      "internalLinksCount": 2,
+      "performance": {
+        "clicks": 0,
+        "impressions": 3,
+        "ctr": "0.00%",
+        "position": 39.3
+      }
+    },
+    {
+      "slug": "json-to-yaml",
+      "route": "/json-to-yaml/",
+      "category": "Utility",
+      "isRedesigned": false,
+      "architecture": "handwritten-legacy",
+      "availableLanguages": [
+        "en",
+        "es",
+        "da"
+      ],
+      "files": {
+        "enHtml": "json-to-yaml/index.html",
+        "esHtml": "es/json-to-yaml/index.html",
+        "daHtml": "da/json-to-yaml/index.html",
+        "jsFile": "/assets/js/tools/json-to-yaml.js"
+      },
+      "seo": {
+        "title": "JSON to YAML Converter Online Free | AnyConverter",
+        "titleLength": 49,
+        "metaDescription": "Use JSON ↔ YAML Converter for free in your browser. Get instant results, practical examples, related tools, and no signup.",
+        "metaDescriptionLength": 122,
+        "h1": "JSON ↔ YAML Converter",
+        "h2Count": 5,
+        "h2Headings": [
+          "How to Use JSON to YAML Converter",
+          "Features",
+          "JSON ↔ YAML Converter: practical uses",
+          "Frequently Asked Questions",
+          "Related Tools"
+        ],
+        "canonical": "https://anyconverter.io/json-to-yaml/",
+        "inSitemap": true
+      },
+      "internalLinksCount": 4,
+      "performance": {
+        "clicks": 1,
+        "impressions": 3,
+        "ctr": "33.33%",
+        "position": 6.7
+      }
+    },
+    {
+      "slug": "compound-interest-calculator",
+      "route": "/compound-interest-calculator/",
+      "category": "Calculators",
+      "isRedesigned": false,
+      "architecture": "handwritten-legacy",
+      "availableLanguages": [
+        "en",
+        "es",
+        "da"
+      ],
+      "files": {
+        "enHtml": "compound-interest-calculator/index.html",
+        "esHtml": "es/compound-interest-calculator/index.html",
+        "daHtml": "da/compound-interest-calculator/index.html",
+        "jsFile": "/assets/js/tools/compound-interest-calculator.js"
+      },
+      "seo": {
+        "title": "Compound Interest Calculator Online Free | AnyConverter",
+        "titleLength": 55,
+        "metaDescription": "Use Compound Interest Calculator for free in your browser. Get instant results, practical examples, related tools, and no signup.",
+        "metaDescriptionLength": 129,
+        "h1": "Compound Interest Calculator",
+        "h2Count": 5,
+        "h2Headings": [
+          "How to Use the Compound Interest Calculator",
+          "Features",
+          "Compound Interest Calculator: practical uses",
+          "Frequently Asked Questions",
+          "Related Tools"
+        ],
+        "canonical": "https://anyconverter.io/compound-interest-calculator/",
+        "inSitemap": true
+      },
+      "internalLinksCount": 4,
+      "performance": {
+        "clicks": 0,
+        "impressions": 2,
+        "ctr": "0.00%",
+        "position": 55
+      }
+    },
+    {
+      "slug": "image-compressor",
+      "route": "/image-compressor/",
+      "category": "Image Tools",
+      "isRedesigned": false,
+      "architecture": "handwritten-legacy",
+      "availableLanguages": [
+        "en",
+        "es",
+        "da"
+      ],
+      "files": {
+        "enHtml": "image-compressor/index.html",
+        "esHtml": "es/image-compressor/index.html",
+        "daHtml": "da/image-compressor/index.html",
+        "jsFile": "/assets/js/tools/image-compressor.js"
+      },
+      "seo": {
+        "title": "Image Compressor Online Free | AnyConverter",
+        "titleLength": 43,
+        "metaDescription": "Use Image Compressor for free in your browser. Get instant results, practical examples, related tools, and no signup.",
+        "metaDescriptionLength": 117,
+        "h1": "Image Compressor",
+        "h2Count": 5,
+        "h2Headings": [
+          "How to Use the Image Compressor",
+          "Features",
+          "Image Compressor: practical uses",
+          "Frequently Asked Questions",
+          "Related Tools"
+        ],
+        "canonical": "https://anyconverter.io/image-compressor/",
+        "inSitemap": true
+      },
+      "internalLinksCount": 5,
+      "performance": {
+        "clicks": 0,
+        "impressions": 2,
+        "ctr": "0.00%",
+        "position": 24.5
+      }
+    },
+    {
+      "slug": "character-counter",
+      "route": "/character-counter/",
+      "category": "Text Tools",
+      "isRedesigned": false,
+      "architecture": "handwritten-legacy",
+      "availableLanguages": [
+        "en",
+        "es",
+        "da"
+      ],
+      "files": {
+        "enHtml": "character-counter/index.html",
+        "esHtml": "es/character-counter/index.html",
+        "daHtml": "da/character-counter/index.html",
+        "jsFile": "/assets/js/tools/character-counter.js"
+      },
+      "seo": {
+        "title": "Character Counter Online Free | AnyConverter",
+        "titleLength": 44,
+        "metaDescription": "Use Character Counter for free in your browser. Get instant results, practical examples, related tools, and no signup.",
+        "metaDescriptionLength": 118,
+        "h1": "Character Counter",
+        "h2Count": 5,
+        "h2Headings": [
+          "How to Use Character Counter",
+          "Features",
+          "Character Counter: practical uses",
+          "Frequently Asked Questions",
+          "Related Tools"
+        ],
+        "canonical": "https://anyconverter.io/character-counter/",
+        "inSitemap": true
+      },
+      "internalLinksCount": 19,
+      "performance": {
+        "clicks": 0,
+        "impressions": 1,
+        "ctr": "0.00%",
+        "position": 1
+      }
+    },
+    {
+      "slug": "color-converter",
+      "route": "/color-converter/",
+      "category": "Utility",
+      "isRedesigned": false,
+      "architecture": "handwritten-legacy",
+      "availableLanguages": [
+        "en",
+        "es",
+        "da"
+      ],
+      "files": {
+        "enHtml": "color-converter/index.html",
+        "esHtml": "es/color-converter/index.html",
+        "daHtml": "da/color-converter/index.html",
+        "jsFile": "/assets/js/tools/color-converter.js?v=20260902"
+      },
+      "seo": {
+        "title": "Color Converter Online — HEX RGB HSL CMYK Free | AnyConverter",
+        "titleLength": 61,
+        "metaDescription": "Use Color Converter for free in your browser. Get instant results, practical examples, related tools, and no signup.",
+        "metaDescriptionLength": 116,
+        "h1": "Color Converter — HEX, RGB, HSL, CMYK",
+        "h2Count": 5,
+        "h2Headings": [
+          "How to Convert Colors",
+          "Features",
+          "Color Converter: practical uses",
+          "Frequently Asked Questions",
+          "Related Tools"
+        ],
+        "canonical": "https://anyconverter.io/color-converter/",
+        "inSitemap": true
+      },
+      "internalLinksCount": 7,
+      "performance": {
+        "clicks": 0,
+        "impressions": 1,
+        "ctr": "0.00%",
+        "position": 5
+      }
+    },
+    {
+      "slug": "countdown-timer",
+      "route": "/countdown-timer/",
+      "category": "Productivity",
+      "isRedesigned": false,
+      "architecture": "handwritten-legacy",
+      "availableLanguages": [
+        "en",
+        "es",
+        "da"
+      ],
+      "files": {
+        "enHtml": "countdown-timer/index.html",
+        "esHtml": "es/countdown-timer/index.html",
+        "daHtml": "da/countdown-timer/index.html",
+        "jsFile": "/assets/js/tools/countdown-timer.js"
+      },
+      "seo": {
+        "title": "Countdown Timer Online Free | AnyConverter",
+        "titleLength": 42,
+        "metaDescription": "Use Countdown Timer for free in your browser. Get instant results, practical examples, related tools, and no signup.",
+        "metaDescriptionLength": 116,
+        "h1": "Countdown Timer Online",
+        "h2Count": 5,
+        "h2Headings": [
+          "How to Use the Countdown Timer",
+          "Features",
+          "Countdown Timer: practical uses",
+          "Frequently Asked Questions",
+          "Related Tools"
+        ],
+        "canonical": "https://anyconverter.io/countdown-timer/",
+        "inSitemap": true
+      },
+      "internalLinksCount": 10,
+      "performance": {
+        "clicks": 0,
+        "impressions": 1,
+        "ctr": "0.00%",
+        "position": 1
+      }
+    },
+    {
+      "slug": "currency-converter",
+      "route": "/currency-converter/",
+      "category": "Utility",
+      "isRedesigned": false,
+      "architecture": "handwritten-legacy",
+      "availableLanguages": [
+        "en",
+        "es",
+        "da"
+      ],
+      "files": {
+        "enHtml": "currency-converter/index.html",
+        "esHtml": "es/currency-converter/index.html",
+        "daHtml": "da/currency-converter/index.html",
+        "jsFile": "/assets/js/tools/currency-converter.js"
+      },
+      "seo": {
+        "title": "Currency Converter Online Free | AnyConverter",
+        "titleLength": 45,
+        "metaDescription": "Use Currency Converter for free in your browser. Get instant results, practical examples, related tools, and no signup.",
+        "metaDescriptionLength": 119,
+        "h1": "Currency Converter",
+        "h2Count": 5,
+        "h2Headings": [
+          "How to Use Currency Converter",
+          "Features",
+          "Currency Converter: practical uses",
+          "Frequently Asked Questions",
+          "Related Tools"
+        ],
+        "canonical": "https://anyconverter.io/currency-converter/",
+        "inSitemap": true
+      },
+      "internalLinksCount": 7,
+      "performance": {
+        "clicks": 0,
+        "impressions": 1,
+        "ctr": "0.00%",
+        "position": 7
+      }
+    },
+    {
+      "slug": "aspect-ratio-calculator",
+      "route": "/aspect-ratio-calculator/",
+      "category": "Calculators",
+      "isRedesigned": false,
+      "architecture": "handwritten-legacy",
+      "availableLanguages": [
+        "en",
+        "es",
+        "da"
+      ],
+      "files": {
+        "enHtml": "aspect-ratio-calculator/index.html",
+        "esHtml": "es/aspect-ratio-calculator/index.html",
+        "daHtml": "da/aspect-ratio-calculator/index.html",
+        "jsFile": "/assets/js/tools/aspect-ratio-calculator.js"
+      },
+      "seo": {
+        "title": "Aspect Ratio Calculator Online Free | AnyConverter",
+        "titleLength": 50,
+        "metaDescription": "Use Aspect Ratio Calculator for free in your browser. Get instant results, practical examples, related tools, and no signup.",
+        "metaDescriptionLength": 124,
+        "h1": "Aspect Ratio Calculator",
+        "h2Count": 5,
+        "h2Headings": [
+          "How to Use the Aspect Ratio Calculator",
+          "Features",
+          "Aspect Ratio Calculator: practical uses",
+          "Frequently Asked Questions",
+          "Related Tools"
+        ],
+        "canonical": "https://anyconverter.io/aspect-ratio-calculator/",
+        "inSitemap": true
+      },
+      "internalLinksCount": 3,
+      "performance": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": "0.00%",
+        "position": null
+      }
+    },
+    {
+      "slug": "barcode-generator",
+      "route": "/barcode-generator/",
+      "category": "Utility",
+      "isRedesigned": false,
+      "architecture": "handwritten-legacy",
+      "availableLanguages": [
+        "en",
+        "es",
+        "da"
+      ],
+      "files": {
+        "enHtml": "barcode-generator/index.html",
+        "esHtml": "es/barcode-generator/index.html",
+        "daHtml": "da/barcode-generator/index.html",
+        "jsFile": "/assets/js/tools/barcode-generator.js"
+      },
+      "seo": {
+        "title": "Barcode Generator Online Free | AnyConverter",
+        "titleLength": 44,
+        "metaDescription": "Create Code 128, EAN-13, UPC-A and Code 39 barcodes for free. Generate one or paste a list for bulk barcodes, with automatic check-digit validation.",
+        "metaDescriptionLength": 148,
+        "h1": "Barcode Generator: Create One or Many Scannable Barcodes",
+        "h2Count": 5,
+        "h2Headings": [
+          "How to Generate Barcodes",
+          "Features",
+          "Which barcode type should I use?",
+          "Frequently Asked Questions",
+          "Related Tools"
+        ],
+        "canonical": "https://anyconverter.io/barcode-generator/",
+        "inSitemap": true
+      },
+      "internalLinksCount": 1,
+      "performance": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": "0.00%",
+        "position": null
+      }
+    },
+    {
+      "slug": "base64-encoder",
+      "route": "/base64-encoder/",
+      "category": "Developer Tools",
+      "isRedesigned": false,
+      "architecture": "handwritten-legacy",
+      "availableLanguages": [
+        "en",
+        "es",
+        "da"
+      ],
+      "files": {
+        "enHtml": "base64-encoder/index.html",
+        "esHtml": "es/base64-encoder/index.html",
+        "daHtml": "da/base64-encoder/index.html",
+        "jsFile": "/assets/js/tools/base64.js"
+      },
+      "seo": {
+        "title": "Base64 Encoder &amp; Decoder Online — Free | AnyConverter",
+        "titleLength": 57,
+        "metaDescription": "Encode or decode Base64 text and files. Use URL-safe output, wrap long lines, view image data URLs, and catch malformed decode input.",
+        "metaDescriptionLength": 133,
+        "h1": "Base64 Encoder &amp; Decoder",
+        "h2Count": 5,
+        "h2Headings": [
+          "How to Encode or Decode Base64",
+          "Features",
+          "Base64 encoder and decoder for text and files",
+          "Frequently Asked Questions",
+          "Related Tools"
+        ],
+        "canonical": "https://anyconverter.io/base64-encoder/",
+        "inSitemap": true
+      },
+      "internalLinksCount": 40,
+      "performance": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": "0.00%",
+        "position": null
+      }
+    },
+    {
+      "slug": "birthday-countdown-calculator",
+      "route": "/birthday-countdown-calculator/",
+      "category": "Calculators",
+      "isRedesigned": false,
+      "architecture": "handwritten-legacy",
+      "availableLanguages": [
+        "en",
+        "es",
+        "da"
+      ],
+      "files": {
+        "enHtml": "birthday-countdown-calculator/index.html",
+        "esHtml": "es/birthday-countdown-calculator/index.html",
+        "daHtml": "da/birthday-countdown-calculator/index.html",
+        "jsFile": "/assets/js/tools/calc-kit.js?v=20261008"
+      },
+      "seo": {
+        "title": "Birthday Countdown Calculator Online Free | AnyConverter",
+        "titleLength": 56,
+        "metaDescription": "Free birthday countdown calculator: see months, days and hours until your next birthday, the weekday it falls on and the age you turn. Leap-day aware.",
+        "metaDescriptionLength": 150,
+        "h1": "Birthday Countdown Calculator",
+        "h2Count": 5,
+        "h2Headings": [
+          "How to count down to a birthday",
+          "More than a number of days",
+          "How the countdown works",
+          "Frequently Asked Questions",
+          "Related Tools"
+        ],
+        "canonical": "https://anyconverter.io/birthday-countdown-calculator/",
+        "inSitemap": true
+      },
+      "internalLinksCount": 5,
+      "performance": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": "0.00%",
+        "position": null
+      }
+    },
+    {
+      "slug": "bmi-calculator",
+      "route": "/bmi-calculator/",
+      "category": "Calculators",
+      "isRedesigned": false,
+      "architecture": "handwritten-legacy",
+      "availableLanguages": [
+        "en",
+        "es",
+        "da"
+      ],
+      "files": {
+        "enHtml": "bmi-calculator/index.html",
+        "esHtml": "es/bmi-calculator/index.html",
+        "daHtml": "da/bmi-calculator/index.html",
+        "jsFile": "/assets/js/tools/bmi-calculator.js"
+      },
+      "seo": {
+        "title": "BMI Calculator Online Free | AnyConverter",
+        "titleLength": 41,
+        "metaDescription": "Calculate adult BMI, weight category, healthy weight range, and optional waist-to-height context in a private browser tool.",
+        "metaDescriptionLength": 123,
+        "h1": "BMI Calculator",
+        "h2Count": 5,
+        "h2Headings": [
+          "How to Use the BMI Calculator",
+          "Features",
+          "BMI Calculator: practical uses",
+          "Frequently Asked Questions",
+          "Related Tools"
+        ],
+        "canonical": "https://anyconverter.io/bmi-calculator/",
+        "inSitemap": true
+      },
+      "internalLinksCount": 22,
+      "performance": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": "0.00%",
+        "position": null
+      }
+    },
+    {
+      "slug": "browser-info",
+      "route": "/browser-info/",
+      "category": "Diagnostics & Testers",
+      "isRedesigned": false,
+      "architecture": "handwritten-legacy",
+      "availableLanguages": [
+        "en",
+        "es",
+        "da"
+      ],
+      "files": {
+        "enHtml": "browser-info/index.html",
+        "esHtml": "es/browser-info/index.html",
+        "daHtml": "da/browser-info/index.html",
+        "jsFile": "/assets/js/tools/browser-info.js"
+      },
+      "seo": {
+        "title": "Browser Info Viewer Online Free | AnyConverter",
+        "titleLength": 46,
+        "metaDescription": "Use Browser Info Viewer for free in your browser. Get instant results, practical examples, related tools, and no signup.",
+        "metaDescriptionLength": 120,
+        "h1": "Browser Info Viewer",
+        "h2Count": 5,
+        "h2Headings": [
+          "How to Use",
+          "Features",
+          "Browser Info Viewer: practical uses",
+          "Frequently Asked Questions",
+          "Related Tools"
+        ],
+        "canonical": "https://anyconverter.io/browser-info/",
+        "inSitemap": true
+      },
+      "internalLinksCount": 9,
+      "performance": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": "0.00%",
+        "position": null
+      }
+    },
+    {
+      "slug": "calculators",
+      "route": "/calculators/",
+      "category": "Calculators",
+      "isRedesigned": false,
+      "architecture": "handwritten-legacy",
+      "availableLanguages": [
+        "en",
+        "es",
+        "da"
+      ],
+      "files": {
+        "enHtml": "calculators/index.html",
+        "esHtml": "es/calculators/index.html",
+        "daHtml": "da/calculators/index.html",
+        "jsFile": null
+      },
+      "seo": {
+        "title": "Free Online Calculators — Percent, Price &amp; Slope | AnyConverter",
+        "titleLength": 67,
+        "metaDescription": "Free online calculators for percentages, discounts, price increases, pay rises, margins, unit prices, slope and grade, loans and everyday maths. No sign-up.",
+        "metaDescriptionLength": 156,
+        "h1": "Free Online Calculators",
+        "h2Count": 6,
+        "h2Headings": [
+          "Percentages, prices &amp; shopping",
+          "Pay, loans &amp; money",
+          "Slope, ratios &amp; geometry",
+          "Health &amp; daily life",
+          "Which percentage calculator do I need?"
+        ],
+        "canonical": "https://anyconverter.io/calculators/",
+        "inSitemap": true
+      },
+      "internalLinksCount": 18,
+      "performance": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": "0.00%",
+        "position": null
+      }
+    },
+    {
+      "slug": "calorie-calculator",
+      "route": "/calorie-calculator/",
+      "category": "Calculators",
+      "isRedesigned": false,
+      "architecture": "handwritten-legacy",
+      "availableLanguages": [
+        "en",
+        "es",
+        "da"
+      ],
+      "files": {
+        "enHtml": "calorie-calculator/index.html",
+        "esHtml": "es/calorie-calculator/index.html",
+        "daHtml": "da/calorie-calculator/index.html",
+        "jsFile": "/assets/js/tools/calorie-calculator.js"
+      },
+      "seo": {
+        "title": "Calorie Calculator Online Free | AnyConverter",
+        "titleLength": 45,
+        "metaDescription": "Use Calorie Calculator for free in your browser. Get instant results, practical examples, related tools, and no signup.",
+        "metaDescriptionLength": 119,
+        "h1": "Calorie Calculator",
+        "h2Count": 5,
+        "h2Headings": [
+          "How to Use the Calorie Calculator",
+          "Features",
+          "Calorie Calculator: practical uses",
+          "Frequently Asked Questions",
+          "Related Tools"
+        ],
+        "canonical": "https://anyconverter.io/calorie-calculator/",
+        "inSitemap": true
+      },
+      "internalLinksCount": 3,
+      "performance": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": "0.00%",
+        "position": null
+      }
+    },
+    {
+      "slug": "camt053-to-csv",
+      "route": "/camt053-to-csv/",
+      "category": "Utility",
+      "isRedesigned": false,
+      "architecture": "handwritten-legacy",
+      "availableLanguages": [
+        "en",
+        "es",
+        "da"
+      ],
+      "files": {
+        "enHtml": "camt053-to-csv/index.html",
+        "esHtml": "es/camt053-to-csv/index.html",
+        "daHtml": "da/camt053-to-csv/index.html",
+        "jsFile": "/assets/js/tools/camt053-to-csv.js"
+      },
+      "seo": {
+        "title": "CAMT.053 to CSV Converter – Free &amp; Private | AnyConverter",
+        "titleLength": 61,
+        "metaDescription": "Convert CAMT.053 XML bank statements to CSV for Excel. Signed amounts, direction-aware counterparties, and a balance check. No upload — runs in your browser.",
+        "metaDescriptionLength": 157,
+        "h1": "CAMT.053 to CSV Converter (ISO 20022 Bank Statements)",
+        "h2Count": 5,
+        "h2Headings": [
+          "How to Convert CAMT.053 to CSV",
+          "Features",
+          "What CAMT.053 is",
+          "Frequently Asked Questions",
+          "Related Tools"
+        ],
+        "canonical": "https://anyconverter.io/camt053-to-csv/",
+        "inSitemap": true
+      },
+      "internalLinksCount": 3,
+      "performance": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": "0.00%",
+        "position": null
+      }
+    },
+    {
+      "slug": "compare-pdf",
+      "route": "/compare-pdf/",
+      "category": "PDF Tools",
+      "isRedesigned": false,
+      "architecture": "legacy-pdf",
+      "availableLanguages": [
+        "en",
+        "es",
+        "da"
+      ],
+      "files": {
+        "enHtml": "compare-pdf/index.html",
+        "esHtml": "es/compare-pdf/index.html",
+        "daHtml": "da/compare-pdf/index.html",
+        "jsFile": "/assets/js/tools/compare-pdf.js"
+      },
+      "seo": {
+        "title": "Compare Two PDFs Side by Side Online Free | AnyConverter",
+        "titleLength": 56,
+        "metaDescription": "Use compare two pdfs for free in your browser. Get instant results, practical examples, related tools, and no signup.",
+        "metaDescriptionLength": 117,
+        "h1": "Compare Two PDFs Side by Side",
+        "h2Count": 5,
+        "h2Headings": [
+          "How to Compare Two PDFs",
+          "Features",
+          "Compare two pdfs: practical uses",
+          "Frequently Asked Questions",
+          "Related Tools"
+        ],
+        "canonical": "https://anyconverter.io/compare-pdf/",
+        "inSitemap": true
+      },
+      "internalLinksCount": 3,
+      "performance": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": "0.00%",
+        "position": null
+      }
+    },
+    {
+      "slug": "cron-expression-parser",
+      "route": "/cron-expression-parser/",
+      "category": "Developer Tools",
+      "isRedesigned": false,
+      "architecture": "handwritten-legacy",
+      "availableLanguages": [
+        "en",
+        "es",
+        "da"
+      ],
+      "files": {
+        "enHtml": "cron-expression-parser/index.html",
+        "esHtml": "es/cron-expression-parser/index.html",
+        "daHtml": "da/cron-expression-parser/index.html",
+        "jsFile": "/assets/js/tools/cron-expression-parser.js"
+      },
+      "seo": {
+        "title": "Cron Expression Parser Online Free | AnyConverter",
+        "titleLength": 49,
+        "metaDescription": "Parse five-field cron expressions into plain English. Check minute, hour, day, month, and weekday fields with common schedule presets.",
+        "metaDescriptionLength": 134,
+        "h1": "Cron Expression Parser",
+        "h2Count": 5,
+        "h2Headings": [
+          "How to Use Cron Expression Parser",
+          "Features",
+          "Cron expression parser for five fields",
+          "Frequently Asked Questions",
+          "Related Tools"
+        ],
+        "canonical": "https://anyconverter.io/cron-expression-parser/",
+        "inSitemap": true
+      },
+      "internalLinksCount": 3,
+      "performance": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": "0.00%",
+        "position": null
+      }
+    },
+    {
+      "slug": "crop-pdf",
+      "route": "/crop-pdf/",
+      "category": "PDF Tools",
+      "isRedesigned": false,
+      "architecture": "legacy-pdf",
+      "availableLanguages": [
+        "en",
+        "es",
+        "da"
+      ],
+      "files": {
+        "enHtml": "crop-pdf/index.html",
+        "esHtml": "es/crop-pdf/index.html",
+        "daHtml": "da/crop-pdf/index.html",
+        "jsFile": "/assets/js/tools/crop-pdf.js"
+      },
+      "seo": {
+        "title": "Crop PDF Pages Online Free | AnyConverter",
+        "titleLength": 41,
+        "metaDescription": "Use remove a page in pdf for free in your browser. Get instant results, practical examples, related tools, and no signup.",
+        "metaDescriptionLength": 121,
+        "h1": "Crop PDF Pages",
+        "h2Count": 5,
+        "h2Headings": [
+          "How to Crop a PDF",
+          "Features",
+          "Remove a page in pdf: practical uses",
+          "Frequently Asked Questions",
+          "Related Tools"
+        ],
+        "canonical": "https://anyconverter.io/crop-pdf/",
+        "inSitemap": true
+      },
+      "internalLinksCount": 2,
+      "performance": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": "0.00%",
+        "position": null
+      }
+    },
+    {
+      "slug": "css-gradient-generator",
+      "route": "/css-gradient-generator/",
+      "category": "Utility",
+      "isRedesigned": false,
+      "architecture": "handwritten-legacy",
+      "availableLanguages": [
+        "en",
+        "es",
+        "da"
+      ],
+      "files": {
+        "enHtml": "css-gradient-generator/index.html",
+        "esHtml": "es/css-gradient-generator/index.html",
+        "daHtml": "da/css-gradient-generator/index.html",
+        "jsFile": "/assets/js/tools/css-gradient-generator.js"
+      },
+      "seo": {
+        "title": "CSS Gradient Generator Online Free | AnyConverter",
+        "titleLength": 49,
+        "metaDescription": "Use CSS Gradient Generator for free in your browser. Get instant results, practical examples, related tools, and no signup.",
+        "metaDescriptionLength": 123,
+        "h1": "CSS Gradient Generator",
+        "h2Count": 5,
+        "h2Headings": [
+          "How to Use CSS Gradient Generator",
+          "Features",
+          "CSS Gradient Generator: practical uses",
+          "Frequently Asked Questions",
+          "Related Tools"
+        ],
+        "canonical": "https://anyconverter.io/css-gradient-generator/",
+        "inSitemap": true
+      },
+      "internalLinksCount": 6,
+      "performance": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": "0.00%",
+        "position": null
+      }
+    },
+    {
+      "slug": "css-shadow-generator",
+      "route": "/css-shadow-generator/",
+      "category": "Utility",
+      "isRedesigned": false,
+      "architecture": "handwritten-legacy",
+      "availableLanguages": [
+        "en",
+        "es",
+        "da"
+      ],
+      "files": {
+        "enHtml": "css-shadow-generator/index.html",
+        "esHtml": "es/css-shadow-generator/index.html",
+        "daHtml": "da/css-shadow-generator/index.html",
+        "jsFile": "/assets/js/tools/css-shadow-generator.js"
+      },
+      "seo": {
+        "title": "CSS Shadow Generator Online Free | AnyConverter",
+        "titleLength": 47,
+        "metaDescription": "Use css shadow generator for free in your browser. Get instant results, practical examples, related tools, and no signup.",
+        "metaDescriptionLength": 121,
+        "h1": "CSS Shadow Generator",
+        "h2Count": 5,
+        "h2Headings": [
+          "How to Use the CSS Shadow Generator",
+          "Features",
+          "Css shadow generator: practical uses",
+          "Frequently Asked Questions",
+          "Related Tools"
+        ],
+        "canonical": "https://anyconverter.io/css-shadow-generator/",
+        "inSitemap": true
+      },
+      "internalLinksCount": 4,
+      "performance": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": "0.00%",
+        "position": null
+      }
+    },
+    {
+      "slug": "date-time",
+      "route": "/date-time/",
+      "category": "Utility",
+      "isRedesigned": false,
+      "architecture": "handwritten-legacy",
+      "availableLanguages": [
+        "en",
+        "es",
+        "da"
+      ],
+      "files": {
+        "enHtml": "date-time/index.html",
+        "esHtml": "es/date-time/index.html",
+        "daHtml": "da/date-time/index.html",
+        "jsFile": null
+      },
+      "seo": {
+        "title": "Date &amp; Time Tools — Countdowns, Age &amp; Clocks | AnyConverter",
+        "titleLength": 67,
+        "metaDescription": "Free date and time tools: birthday countdown, age calculator, countdown timer, world clock, Unix timestamp converter, stopwatch and sleep calculator.",
+        "metaDescriptionLength": 149,
+        "h1": "Date &amp; Time Tools",
+        "h2Count": 4,
+        "h2Headings": [
+          "Dates, countdowns &amp; clocks",
+          "Calendar maths without surprises",
+          "Which date tool do you need?",
+          "Frequently Asked Questions"
+        ],
+        "canonical": "https://anyconverter.io/date-time/",
+        "inSitemap": true
+      },
+      "internalLinksCount": 4,
+      "performance": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": "0.00%",
+        "position": null
+      }
+    },
+    {
+      "slug": "developer-tools",
+      "route": "/developer-tools/",
+      "category": "Utility",
+      "isRedesigned": false,
+      "architecture": "handwritten-legacy",
+      "availableLanguages": [
+        "en"
+      ],
+      "files": {
+        "enHtml": "developer-tools/index.html",
+        "esHtml": null,
+        "daHtml": null,
+        "jsFile": null
+      },
+      "seo": {
+        "title": "Free Online Developer Tools | AnyConverter",
+        "titleLength": 42,
+        "metaDescription": "Free online developer tools for JSON, XML, Base64, URL encoding, JWT decoding, hashes, UUIDs, regex, timestamps, CSS and CSV workflows.",
+        "metaDescriptionLength": 135,
+        "h1": "Free Online Developer Tools",
+        "h2Count": 1,
+        "h2Headings": [
+          "Developer utilities for small daily jobs"
+        ],
+        "canonical": "https://anyconverter.io/developer-tools/",
+        "inSitemap": true
+      },
+      "internalLinksCount": 1,
+      "performance": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": "0.00%",
+        "position": null
+      }
+    },
+    {
+      "slug": "discount-stacking-calculator",
+      "route": "/discount-stacking-calculator/",
+      "category": "Calculators",
+      "isRedesigned": false,
+      "architecture": "handwritten-legacy",
+      "availableLanguages": [
+        "en",
+        "es",
+        "da"
+      ],
+      "files": {
+        "enHtml": "discount-stacking-calculator/index.html",
+        "esHtml": "es/discount-stacking-calculator/index.html",
+        "daHtml": "da/discount-stacking-calculator/index.html",
+        "jsFile": "/assets/js/tools/discount-stacking.js?v=20261008"
+      },
+      "seo": {
+        "title": "Discount Stacking Calculator Online Free | AnyConverter",
+        "titleLength": 55,
+        "metaDescription": "Free discount stacking calculator: see what 20% + 10% off really costs, combine coupons and successive discounts, and find the best order to apply them.",
+        "metaDescriptionLength": 152,
+        "h1": "Discount Stacking Calculator",
+        "h2Count": 7,
+        "h2Headings": [
+          "Successive discount calculator",
+          "How to Use the Discount Stacking Calculator",
+          "Features",
+          "Why 20% + 10% isn't 30% off",
+          "Successive discounts: the formula"
+        ],
+        "canonical": "https://anyconverter.io/discount-stacking-calculator/",
+        "inSitemap": true
+      },
+      "internalLinksCount": 7,
+      "performance": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": "0.00%",
+        "position": null
+      }
+    },
+    {
+      "slug": "extract-pdf-pages",
+      "route": "/extract-pdf-pages/",
+      "category": "PDF Tools",
+      "isRedesigned": true,
+      "architecture": "redesigned-dc-runtime",
+      "availableLanguages": [
+        "en",
+        "es",
+        "da"
+      ],
+      "files": {
+        "enHtml": "extract-pdf-pages/index.html",
+        "esHtml": "es/extract-pdf-pages/index.html",
+        "daHtml": "da/extract-pdf-pages/index.html",
+        "jsFile": "/assets/js/tools/dc-runtime.js?v=20261012"
+      },
+      "seo": {
+        "title": "Extract PDF Pages – Save Selected Pages as a New PDF",
+        "titleLength": 52,
+        "metaDescription": "Pick pages from a PDF and save them as a new file in your browser. Select odd or even pages in one click, keep your own order, or get one PDF per page.",
+        "metaDescriptionLength": 151,
+        "h1": "Extract pages from a PDF",
+        "h2Count": 11,
+        "h2Headings": [
+          "How to extract pages from a PDF",
+          "Take exactly the pages you need",
+          "AnyConverter compared with typical page extraction tools",
+          "Extract, split or remove?",
+          "Frequently asked questions"
+        ],
+        "canonical": "https://anyconverter.io/extract-pdf-pages/",
+        "inSitemap": true
+      },
+      "internalLinksCount": 4,
+      "performance": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": "0.00%",
+        "position": null
+      }
+    },
+    {
+      "slug": "fancy-text-generator",
+      "route": "/fancy-text-generator/",
+      "category": "Utility",
+      "isRedesigned": false,
+      "architecture": "handwritten-legacy",
+      "availableLanguages": [
+        "en",
+        "es",
+        "da"
+      ],
+      "files": {
+        "enHtml": "fancy-text-generator/index.html",
+        "esHtml": "es/fancy-text-generator/index.html",
+        "daHtml": "da/fancy-text-generator/index.html",
+        "jsFile": "/assets/js/tools/fancy-text-generator.js"
+      },
+      "seo": {
+        "title": "Fancy Text Generator Online Free | AnyConverter",
+        "titleLength": 47,
+        "metaDescription": "Use Fancy Text Generator for free in your browser. Get instant results, practical examples, related tools, and no signup.",
+        "metaDescriptionLength": 121,
+        "h1": "Fancy Text Generator",
+        "h2Count": 5,
+        "h2Headings": [
+          "How to Use Fancy Text Generator",
+          "Features",
+          "Fancy Text Generator: practical uses",
+          "Frequently Asked Questions",
+          "Related Tools"
+        ],
+        "canonical": "https://anyconverter.io/fancy-text-generator/",
+        "inSitemap": true
+      },
+      "internalLinksCount": 7,
+      "performance": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": "0.00%",
+        "position": null
+      }
+    },
+    {
+      "slug": "flames-calculator",
+      "route": "/flames-calculator/",
+      "category": "Calculators",
+      "isRedesigned": false,
+      "architecture": "handwritten-legacy",
+      "availableLanguages": [
+        "en",
+        "es",
+        "da"
+      ],
+      "files": {
+        "enHtml": "flames-calculator/index.html",
+        "esHtml": "es/flames-calculator/index.html",
+        "daHtml": "da/flames-calculator/index.html",
+        "jsFile": "/assets/js/tools/calc-kit.js?v=20261008"
+      },
+      "seo": {
+        "title": "FLAMES Calculator Online Free | AnyConverter",
+        "titleLength": 44,
+        "metaDescription": "Free FLAMES calculator: enter two names and play the classic Friends, Love, Affection, Marriage, Enemies, Siblings game, with every round of counting shown.",
+        "metaDescriptionLength": 156,
+        "h1": "FLAMES Calculator",
+        "h2Count": 5,
+        "h2Headings": [
+          "How to play FLAMES",
+          "FLAMES, shown properly",
+          "How FLAMES is calculated",
+          "Frequently Asked Questions",
+          "Related Tools"
+        ],
+        "canonical": "https://anyconverter.io/flames-calculator/",
+        "inSitemap": true
+      },
+      "internalLinksCount": 5,
+      "performance": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": "0.00%",
+        "position": null
+      }
+    },
+    {
+      "slug": "fun-relationships",
+      "route": "/fun-relationships/",
+      "category": "Utility",
+      "isRedesigned": false,
+      "architecture": "handwritten-legacy",
+      "availableLanguages": [
+        "en",
+        "es",
+        "da"
+      ],
+      "files": {
+        "enHtml": "fun-relationships/index.html",
+        "esHtml": "es/fun-relationships/index.html",
+        "daHtml": "da/fun-relationships/index.html",
+        "jsFile": null
+      },
+      "seo": {
+        "title": "Fun &amp; Relationship Games Online — Love, FLAMES | AnyConverter",
+        "titleLength": 65,
+        "metaDescription": "Fun relationship games and party tools: love calculator by names, the classic FLAMES game and a Magic 8 Ball, plus coin flips and dice. Free and private.",
+        "metaDescriptionLength": 153,
+        "h1": "Fun &amp; Relationship Games",
+        "h2Count": 5,
+        "h2Headings": [
+          "Name &amp; relationship games",
+          "More quick games",
+          "How the name games work",
+          "Made for sleepovers, classrooms and first dates",
+          "Frequently Asked Questions"
+        ],
+        "canonical": "https://anyconverter.io/fun-relationships/",
+        "inSitemap": true
+      },
+      "internalLinksCount": 8,
+      "performance": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": "0.00%",
+        "position": null
+      }
+    },
+    {
+      "slug": "gst-vat-calculator",
+      "route": "/gst-vat-calculator/",
+      "category": "Calculators",
+      "isRedesigned": false,
+      "architecture": "handwritten-legacy",
+      "availableLanguages": [
+        "en",
+        "es",
+        "da"
+      ],
+      "files": {
+        "enHtml": "gst-vat-calculator/index.html",
+        "esHtml": "es/gst-vat-calculator/index.html",
+        "daHtml": "da/gst-vat-calculator/index.html",
+        "jsFile": "/assets/js/tools/gst-vat-calculator.js"
+      },
+      "seo": {
+        "title": "GST Calculator Online Free | AnyConverter",
+        "titleLength": 41,
+        "metaDescription": "Add or remove GST and VAT from prices, compare tax rates, and see subtotal, tax, and total instantly Includes clear steps, practical results, and no signup.",
+        "metaDescriptionLength": 156,
+        "h1": "GST / VAT Calculator",
+        "h2Count": 5,
+        "h2Headings": [
+          "How to Use GST / VAT Calculator",
+          "Features",
+          "GST / VAT Calculator: practical uses",
+          "Frequently Asked Questions",
+          "Related Tools"
+        ],
+        "canonical": "https://anyconverter.io/gst-vat-calculator/",
+        "inSitemap": true
+      },
+      "internalLinksCount": 7,
+      "performance": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": "0.00%",
+        "position": null
+      }
+    },
+    {
+      "slug": "hash-generator",
+      "route": "/hash-generator/",
+      "category": "Developer Tools",
+      "isRedesigned": false,
+      "architecture": "handwritten-legacy",
+      "availableLanguages": [
+        "en",
+        "es",
+        "da"
+      ],
+      "files": {
+        "enHtml": "hash-generator/index.html",
+        "esHtml": "es/hash-generator/index.html",
+        "daHtml": "da/hash-generator/index.html",
+        "jsFile": "/assets/js/tools/hash-generator.js"
+      },
+      "seo": {
+        "title": "Hash Generator Online — MD5 SHA256 SHA512 Free | AnyConverter",
+        "titleLength": 61,
+        "metaDescription": "Generate MD5, SHA-1, SHA-256, and SHA-512 hashes for text or files. Switch casing, copy results, and use SHA-256 for checksum comparisons.",
+        "metaDescriptionLength": 138,
+        "h1": "Hash Generator — MD5, SHA-256, SHA-512",
+        "h2Count": 5,
+        "h2Headings": [
+          "How to Generate Hashes",
+          "Features",
+          "Hash generator for text and files",
+          "Frequently Asked Questions",
+          "Related Tools"
+        ],
+        "canonical": "https://anyconverter.io/hash-generator/",
+        "inSitemap": true
+      },
+      "internalLinksCount": 36,
+      "performance": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": "0.00%",
+        "position": null
+      }
+    },
+    {
+      "slug": "html-to-pdf",
+      "route": "/html-to-pdf/",
+      "category": "PDF Tools",
+      "isRedesigned": false,
+      "architecture": "legacy-pdf",
+      "availableLanguages": [
+        "en",
+        "es",
+        "da"
+      ],
+      "files": {
+        "enHtml": "html-to-pdf/index.html",
+        "esHtml": "es/html-to-pdf/index.html",
+        "daHtml": "da/html-to-pdf/index.html",
+        "jsFile": "/assets/js/tools/html-to-pdf.js"
+      },
+      "seo": {
+        "title": "HTML to PDF Converter Online Free | AnyConverter",
+        "titleLength": 48,
+        "metaDescription": "Use HTML to PDF Converter for free in your browser. Get instant results, practical examples, related tools, and no signup.",
+        "metaDescriptionLength": 122,
+        "h1": "HTML to PDF Converter",
+        "h2Count": 5,
+        "h2Headings": [
+          "How to Convert HTML to PDF",
+          "Features",
+          "HTML to PDF Converter: practical uses",
+          "Frequently Asked Questions",
+          "Related Tools"
+        ],
+        "canonical": "https://anyconverter.io/html-to-pdf/",
+        "inSitemap": true
+      },
+      "internalLinksCount": 1,
+      "performance": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": "0.00%",
+        "position": null
+      }
+    },
+    {
+      "slug": "image-converter",
+      "route": "/image-converter/",
+      "category": "Image Tools",
+      "isRedesigned": false,
+      "architecture": "handwritten-legacy",
+      "availableLanguages": [
+        "en",
+        "es",
+        "da"
+      ],
+      "files": {
+        "enHtml": "image-converter/index.html",
+        "esHtml": "es/image-converter/index.html",
+        "daHtml": "da/image-converter/index.html",
+        "jsFile": "/assets/js/tools/image-converter.js"
+      },
+      "seo": {
+        "title": "Image Converter Online — PNG JPG WebP AVIF Free | AnyConverter",
+        "titleLength": 62,
+        "metaDescription": "Convert PNG, JPG, WebP, AVIF, BMP, and GIF images in your browser. Resize images, adjust JPG/WebP quality, preview results, and download.",
+        "metaDescriptionLength": 137,
+        "h1": "Free Online Image Converter",
+        "h2Count": 5,
+        "h2Headings": [
+          "How to Convert Images",
+          "Features",
+          "Free Online Image Converter: practical uses",
+          "Frequently Asked Questions",
+          "Related Tools"
+        ],
+        "canonical": "https://anyconverter.io/image-converter/",
+        "inSitemap": true
+      },
+      "internalLinksCount": 13,
+      "performance": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": "0.00%",
+        "position": null
+      }
+    },
+    {
+      "slug": "internet-speed-test",
+      "route": "/internet-speed-test/",
+      "category": "Diagnostics & Testers",
+      "isRedesigned": false,
+      "architecture": "handwritten-legacy",
+      "availableLanguages": [
+        "en",
+        "es",
+        "da"
+      ],
+      "files": {
+        "enHtml": "internet-speed-test/index.html",
+        "esHtml": "es/internet-speed-test/index.html",
+        "daHtml": "da/internet-speed-test/index.html",
+        "jsFile": "/assets/js/tools/internet-speed-test.js"
+      },
+      "seo": {
+        "title": "Internet Speed Test - Check Download, Upload & Ping | AnyConverter",
+        "titleLength": 66,
+        "metaDescription": "Run a browser-based internet speed test for ping, download, and upload context, with clear notes to understand connection quality.",
+        "metaDescriptionLength": 130,
+        "h1": "Internet Speed Test",
+        "h2Count": 5,
+        "h2Headings": [
+          "How to Use Internet Speed Test",
+          "Features",
+          "Internet Speed Test: practical uses",
+          "Frequently Asked Questions",
+          "Related Tools"
+        ],
+        "canonical": "https://anyconverter.io/internet-speed-test/",
+        "inSitemap": true
+      },
+      "internalLinksCount": 11,
+      "performance": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": "0.00%",
+        "position": null
+      }
+    },
+    {
+      "slug": "invoice-generator",
+      "route": "/invoice-generator/",
+      "category": "Productivity",
+      "isRedesigned": false,
+      "architecture": "handwritten-legacy",
+      "availableLanguages": [
+        "en",
+        "es",
+        "da"
+      ],
+      "files": {
+        "enHtml": "invoice-generator/index.html",
+        "esHtml": "es/invoice-generator/index.html",
+        "daHtml": "da/invoice-generator/index.html",
+        "jsFile": "/assets/js/tools/invoice-generator.js"
+      },
+      "seo": {
+        "title": "Invoice Generator Online Free | AnyConverter",
+        "titleLength": 44,
+        "metaDescription": "Use invoice generator for free in your browser. Get instant results, practical examples, related tools, and no signup.",
+        "metaDescriptionLength": 118,
+        "h1": "Invoice Generator",
+        "h2Count": 5,
+        "h2Headings": [
+          "How to Use Invoice Generator",
+          "Features",
+          "Invoice generator: practical uses",
+          "Frequently Asked Questions",
+          "Related Tools"
+        ],
+        "canonical": "https://anyconverter.io/invoice-generator/",
+        "inSitemap": true
+      },
+      "internalLinksCount": 3,
+      "performance": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": "0.00%",
+        "position": null
+      }
+    },
+    {
+      "slug": "jpg-to-pdf",
+      "route": "/jpg-to-pdf/",
+      "category": "PDF Tools",
+      "isRedesigned": true,
+      "architecture": "redesigned-dc-runtime",
+      "availableLanguages": [
+        "en",
+        "es",
+        "da"
+      ],
+      "files": {
+        "enHtml": "jpg-to-pdf/index.html",
+        "esHtml": "es/jpg-to-pdf/index.html",
+        "daHtml": "da/jpg-to-pdf/index.html",
+        "jsFile": "/assets/js/tools/dc-runtime.js?v=20261012"
+      },
+      "seo": {
+        "title": "JPG to PDF – Turn Photos into a PDF in Original Quality",
+        "titleLength": 55,
+        "metaDescription": "Combine JPG, PNG and WebP images into one PDF in your browser. Photos keep their original quality and phone pictures come out the right way up.",
+        "metaDescriptionLength": 143,
+        "h1": "Convert JPG images to a PDF",
+        "h2Count": 11,
+        "h2Headings": [
+          "How to convert JPG to PDF",
+          "A PDF that looks like your photos",
+          "AnyConverter compared with typical JPG to PDF sites",
+          "Which page size to choose",
+          "Frequently asked questions"
+        ],
+        "canonical": "https://anyconverter.io/jpg-to-pdf/",
+        "inSitemap": true
+      },
+      "internalLinksCount": 6,
+      "performance": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": "0.00%",
+        "position": null
+      }
+    },
+    {
+      "slug": "json-compare",
+      "route": "/json-compare/",
+      "category": "Utility",
+      "isRedesigned": false,
+      "architecture": "handwritten-legacy",
+      "availableLanguages": [
+        "en",
+        "es",
+        "da"
+      ],
+      "files": {
+        "enHtml": "json-compare/index.html",
+        "esHtml": "es/json-compare/index.html",
+        "daHtml": "da/json-compare/index.html",
+        "jsFile": "/assets/js/tools/json-compare.js"
+      },
+      "seo": {
+        "title": "JSON Compare – Diff Two JSON Files Online Free | AnyConverter",
+        "titleLength": 61,
+        "metaDescription": "Compare two JSON files side by side. Ignore key order, match arrays by ID, skip timestamps, and export JSON Patch. Free, private, runs in your browser.",
+        "metaDescriptionLength": 151,
+        "h1": "JSON Compare: Find Differences Between Two JSON Files",
+        "h2Count": 5,
+        "h2Headings": [
+          "How to Compare Two JSON Files",
+          "Features",
+          "Why array order causes false differences",
+          "Frequently Asked Questions",
+          "Related Tools"
+        ],
+        "canonical": "https://anyconverter.io/json-compare/",
+        "inSitemap": true
+      },
+      "internalLinksCount": 3,
+      "performance": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": "0.00%",
+        "position": null
+      }
+    },
+    {
+      "slug": "jwt-decoder",
+      "route": "/jwt-decoder/",
+      "category": "Developer Tools",
+      "isRedesigned": false,
+      "architecture": "handwritten-legacy",
+      "availableLanguages": [
+        "en",
+        "es",
+        "da"
+      ],
+      "files": {
+        "enHtml": "jwt-decoder/index.html",
+        "esHtml": "es/jwt-decoder/index.html",
+        "daHtml": "da/jwt-decoder/index.html",
+        "jsFile": "/assets/js/tools/jwt-decoder.js"
+      },
+      "seo": {
+        "title": "JWT Decoder Online Free | AnyConverter",
+        "titleLength": 38,
+        "metaDescription": "Decode a three-part JWT header and payload, inspect exp status, and view the signature string. Decoder only; it does not verify signatures.",
+        "metaDescriptionLength": 139,
+        "h1": "JWT Decoder",
+        "h2Count": 5,
+        "h2Headings": [
+          "How to Use JWT Decoder",
+          "Features",
+          "JWT Decoder: inspect header, payload, and exp",
+          "Frequently Asked Questions",
+          "Related Tools"
+        ],
+        "canonical": "https://anyconverter.io/jwt-decoder/",
+        "inSitemap": true
+      },
+      "internalLinksCount": 6,
+      "performance": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": "0.00%",
+        "position": null
+      }
+    },
+    {
+      "slug": "keyboard-tester",
+      "route": "/keyboard-tester/",
+      "category": "Utility",
+      "isRedesigned": false,
+      "architecture": "handwritten-legacy",
+      "availableLanguages": [
+        "en",
+        "es",
+        "da"
+      ],
+      "files": {
+        "enHtml": "keyboard-tester/index.html",
+        "esHtml": "es/keyboard-tester/index.html",
+        "daHtml": "da/keyboard-tester/index.html",
+        "jsFile": "/assets/js/tools/keyboard-tester.js"
+      },
+      "seo": {
+        "title": "Keyboard Tester Online Free | AnyConverter",
+        "titleLength": 42,
+        "metaDescription": "Test every keyboard key in your browser, spot stuck keys or chatter, and review live key events without installing software.",
+        "metaDescriptionLength": 124,
+        "h1": "Keyboard Tester",
+        "h2Count": 5,
+        "h2Headings": [
+          "How to Use Keyboard Tester",
+          "Features",
+          "Keyboard Tester: practical uses",
+          "Frequently Asked Questions",
+          "Related Tools"
+        ],
+        "canonical": "https://anyconverter.io/keyboard-tester/",
+        "inSitemap": true
+      },
+      "internalLinksCount": 12,
+      "performance": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": "0.00%",
+        "position": null
+      }
+    },
+    {
+      "slug": "lo-shu-grid-calculator",
+      "route": "/lo-shu-grid-calculator/",
+      "category": "Calculators",
+      "isRedesigned": false,
+      "architecture": "handwritten-legacy",
+      "availableLanguages": [
+        "en",
+        "es",
+        "da"
+      ],
+      "files": {
+        "enHtml": "lo-shu-grid-calculator/index.html",
+        "esHtml": "es/lo-shu-grid-calculator/index.html",
+        "daHtml": "da/lo-shu-grid-calculator/index.html",
+        "jsFile": "/assets/js/tools/calc-kit.js?v=20261008"
+      },
+      "seo": {
+        "title": "Lo Shu Grid Calculator Online Free | AnyConverter",
+        "titleLength": 49,
+        "metaDescription": "Free Lo Shu Grid calculator: build your 3×3 grid from your birth date and see repeated and missing numbers, all eight planes and arrows, and the method used.",
+        "metaDescriptionLength": 157,
+        "h1": "Lo Shu Grid Calculator",
+        "h2Count": 5,
+        "h2Headings": [
+          "How to make your Lo Shu Grid",
+          "More than a basic grid",
+          "How the Lo Shu Grid works",
+          "Frequently Asked Questions",
+          "Related Tools"
+        ],
+        "canonical": "https://anyconverter.io/lo-shu-grid-calculator/",
+        "inSitemap": true
+      },
+      "internalLinksCount": 7,
+      "performance": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": "0.00%",
+        "position": null
+      }
+    },
+    {
+      "slug": "loan-calculator",
+      "route": "/loan-calculator/",
+      "category": "Calculators",
+      "isRedesigned": false,
+      "architecture": "handwritten-legacy",
+      "availableLanguages": [
+        "en",
+        "es",
+        "da"
+      ],
+      "files": {
+        "enHtml": "loan-calculator/index.html",
+        "esHtml": "es/loan-calculator/index.html",
+        "daHtml": "da/loan-calculator/index.html",
+        "jsFile": "/assets/js/tools/loan-calculator.js"
+      },
+      "seo": {
+        "title": "Loan &amp; EMI Calculator Online Free | AnyConverter",
+        "titleLength": 52,
+        "metaDescription": "Use Loan &amp; EMI Calculator for free in your browser. Get instant results, practical examples, related tools, and no signup.",
+        "metaDescriptionLength": 126,
+        "h1": "Loan &amp; EMI Calculator",
+        "h2Count": 5,
+        "h2Headings": [
+          "How to Use the Loan &amp; EMI Calculator",
+          "Features",
+          "Loan &amp; EMI Calculator: practical uses",
+          "Frequently Asked Questions",
+          "Related Tools"
+        ],
+        "canonical": "https://anyconverter.io/loan-calculator/",
+        "inSitemap": true
+      },
+      "internalLinksCount": 13,
+      "performance": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": "0.00%",
+        "position": null
+      }
+    },
+    {
+      "slug": "lorem-ipsum-generator",
+      "route": "/lorem-ipsum-generator/",
+      "category": "Text Tools",
+      "isRedesigned": false,
+      "architecture": "handwritten-legacy",
+      "availableLanguages": [
+        "en",
+        "es",
+        "da"
+      ],
+      "files": {
+        "enHtml": "lorem-ipsum-generator/index.html",
+        "esHtml": "es/lorem-ipsum-generator/index.html",
+        "daHtml": "da/lorem-ipsum-generator/index.html",
+        "jsFile": "/assets/js/tools/lorem-ipsum-generator.js"
+      },
+      "seo": {
+        "title": "Lorem Ipsum Generator Online Free | AnyConverter",
+        "titleLength": 48,
+        "metaDescription": "Use Lorem Ipsum Generator for free in your browser. Get instant results, practical examples, related tools, and no signup.",
+        "metaDescriptionLength": 122,
+        "h1": "Lorem Ipsum Generator",
+        "h2Count": 5,
+        "h2Headings": [
+          "How to Use Lorem Ipsum Generator",
+          "Features",
+          "Lorem Ipsum Generator: practical uses",
+          "Frequently Asked Questions",
+          "Related Tools"
+        ],
+        "canonical": "https://anyconverter.io/lorem-ipsum-generator/",
+        "inSitemap": true
+      },
+      "internalLinksCount": 4,
+      "performance": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": "0.00%",
+        "position": null
+      }
+    },
+    {
+      "slug": "love-calculator",
+      "route": "/love-calculator/",
+      "category": "Calculators",
+      "isRedesigned": false,
+      "architecture": "handwritten-legacy",
+      "availableLanguages": [
+        "en",
+        "es",
+        "da"
+      ],
+      "files": {
+        "enHtml": "love-calculator/index.html",
+        "esHtml": "es/love-calculator/index.html",
+        "daHtml": "da/love-calculator/index.html",
+        "jsFile": "/assets/js/tools/calc-kit.js?v=20261008"
+      },
+      "seo": {
+        "title": "Love Calculator by Names Online Free | AnyConverter",
+        "titleLength": 51,
+        "metaDescription": "Free love calculator by names: type two names for a fun love percentage worked out from the letters, with every step shown. For entertainment only.",
+        "metaDescriptionLength": 147,
+        "h1": "Love Calculator by Names",
+        "h2Count": 5,
+        "h2Headings": [
+          "How to use the Love Calculator",
+          "A love calculator you can check",
+          "How the score is calculated",
+          "Frequently Asked Questions",
+          "Related Tools"
+        ],
+        "canonical": "https://anyconverter.io/love-calculator/",
+        "inSitemap": true
+      },
+      "internalLinksCount": 7,
+      "performance": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": "0.00%",
+        "position": null
+      }
+    },
+    {
+      "slug": "magic-8-ball",
+      "route": "/magic-8-ball/",
+      "category": "Fun & Decision",
+      "isRedesigned": false,
+      "architecture": "handwritten-legacy",
+      "availableLanguages": [
+        "en",
+        "es",
+        "da"
+      ],
+      "files": {
+        "enHtml": "magic-8-ball/index.html",
+        "esHtml": "es/magic-8-ball/index.html",
+        "daHtml": "da/magic-8-ball/index.html",
+        "jsFile": "/assets/js/tools/calc-kit.js?v=20261008"
+      },
+      "seo": {
+        "title": "Magic 8 Ball Online Online Free | AnyConverter",
+        "titleLength": 46,
+        "metaDescription": "Free Magic 8 Ball online: ask a yes-or-no question, tap or shake the ball and get one of the 20 classic answers. Random, private and just for fun.",
+        "metaDescriptionLength": 146,
+        "h1": "Magic 8 Ball Online",
+        "h2Count": 5,
+        "h2Headings": [
+          "How to use the Magic 8 Ball",
+          "Small toy, done carefully",
+          "How the Magic 8 Ball works",
+          "Frequently Asked Questions",
+          "Related Tools"
+        ],
+        "canonical": "https://anyconverter.io/magic-8-ball/",
+        "inSitemap": true
+      },
+      "internalLinksCount": 4,
+      "performance": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": "0.00%",
+        "position": null
+      }
+    },
+    {
+      "slug": "margin-vs-markup-calculator",
+      "route": "/margin-vs-markup-calculator/",
+      "category": "Calculators",
+      "isRedesigned": false,
+      "architecture": "handwritten-legacy",
+      "availableLanguages": [
+        "en",
+        "es",
+        "da"
+      ],
+      "files": {
+        "enHtml": "margin-vs-markup-calculator/index.html",
+        "esHtml": "es/margin-vs-markup-calculator/index.html",
+        "daHtml": "da/margin-vs-markup-calculator/index.html",
+        "jsFile": "/assets/js/tools/calc-kit.js?v=20261008"
+      },
+      "seo": {
+        "title": "Margin vs Markup Calculator Online Free | AnyConverter",
+        "titleLength": 54,
+        "metaDescription": "Free margin vs markup calculator: get gross margin, markup and profit from cost and price, or the selling price needed for a target margin or markup.",
+        "metaDescriptionLength": 149,
+        "h1": "Margin vs Markup Calculator",
+        "h2Count": 6,
+        "h2Headings": [
+          "How to use the margin and markup calculator",
+          "Margin and markup without the mix-up",
+          "Margin vs markup: the difference",
+          "Formulas",
+          "Frequently Asked Questions"
+        ],
+        "canonical": "https://anyconverter.io/margin-vs-markup-calculator/",
+        "inSitemap": true
+      },
+      "internalLinksCount": 6,
+      "performance": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": "0.00%",
+        "position": null
+      }
+    },
+    {
+      "slug": "markdown-html",
+      "route": "/markdown-html/",
+      "category": "Utility",
+      "isRedesigned": false,
+      "architecture": "handwritten-legacy",
+      "availableLanguages": [
+        "en",
+        "es",
+        "da"
+      ],
+      "files": {
+        "enHtml": "markdown-html/index.html",
+        "esHtml": "es/markdown-html/index.html",
+        "daHtml": "da/markdown-html/index.html",
+        "jsFile": "/assets/js/tools/markdown.js"
+      },
+      "seo": {
+        "title": "Markdown to HTML Converter Online — Free | AnyConverter",
+        "titleLength": 55,
+        "metaDescription": "Use Markdown to HTML Converter for free in your browser. Get instant results, practical examples, related tools, and no signup.",
+        "metaDescriptionLength": 127,
+        "h1": "Markdown to HTML Converter",
+        "h2Count": 5,
+        "h2Headings": [
+          "How to Convert Markdown to HTML",
+          "Features",
+          "Markdown to HTML Converter: practical uses",
+          "Frequently Asked Questions",
+          "Related Tools"
+        ],
+        "canonical": "https://anyconverter.io/markdown-html/",
+        "inSitemap": true
+      },
+      "internalLinksCount": 3,
+      "performance": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": "0.00%",
+        "position": null
+      }
+    },
+    {
+      "slug": "microphone-tester",
+      "route": "/microphone-tester/",
+      "category": "Utility",
+      "isRedesigned": false,
+      "architecture": "handwritten-legacy",
+      "availableLanguages": [
+        "en",
+        "es",
+        "da"
+      ],
+      "files": {
+        "enHtml": "microphone-tester/index.html",
+        "esHtml": "es/microphone-tester/index.html",
+        "daHtml": "da/microphone-tester/index.html",
+        "jsFile": "/assets/js/tools/microphone-tester.js"
+      },
+      "seo": {
+        "title": "Microphone Tester Online Free | AnyConverter",
+        "titleLength": 44,
+        "metaDescription": "Use Microphone Tester for free in your browser. Get instant results, practical examples, related tools, and no signup.",
+        "metaDescriptionLength": 118,
+        "h1": "Microphone Tester",
+        "h2Count": 5,
+        "h2Headings": [
+          "How to Use",
+          "Features",
+          "Microphone Tester: practical uses",
+          "Frequently Asked Questions",
+          "Related Tools"
+        ],
+        "canonical": "https://anyconverter.io/microphone-tester/",
+        "inSitemap": true
+      },
+      "internalLinksCount": 11,
+      "performance": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": "0.00%",
+        "position": null
+      }
+    },
+    {
+      "slug": "monitor-color-test",
+      "route": "/monitor-color-test/",
+      "category": "Utility",
+      "isRedesigned": false,
+      "architecture": "handwritten-legacy",
+      "availableLanguages": [
+        "en",
+        "es",
+        "da"
+      ],
+      "files": {
+        "enHtml": "monitor-color-test/index.html",
+        "esHtml": "es/monitor-color-test/index.html",
+        "daHtml": "da/monitor-color-test/index.html",
+        "jsFile": "/assets/js/tools/monitor-color-test.js"
+      },
+      "seo": {
+        "title": "Monitor Color Test Online Free | AnyConverter",
+        "titleLength": 45,
+        "metaDescription": "Run monitor color, gradient, grayscale, and pattern tests in full screen to check display quality and calibration clues.",
+        "metaDescriptionLength": 120,
+        "h1": "Monitor Color Test",
+        "h2Count": 5,
+        "h2Headings": [
+          "How to Use",
+          "Features",
+          "Monitor color test: practical uses",
+          "Frequently Asked Questions",
+          "Related Tools"
+        ],
+        "canonical": "https://anyconverter.io/monitor-color-test/",
+        "inSitemap": true
+      },
+      "internalLinksCount": 3,
+      "performance": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": "0.00%",
+        "position": null
+      }
+    },
+    {
+      "slug": "moon-sign-calculator",
+      "route": "/moon-sign-calculator/",
+      "category": "Calculators",
+      "isRedesigned": false,
+      "architecture": "handwritten-legacy",
+      "availableLanguages": [
+        "en",
+        "es",
+        "da"
+      ],
+      "files": {
+        "enHtml": "moon-sign-calculator/index.html",
+        "esHtml": "es/moon-sign-calculator/index.html",
+        "daHtml": "da/moon-sign-calculator/index.html",
+        "jsFile": "/assets/js/tools/calc-kit.js?v=20261008"
+      },
+      "seo": {
+        "title": "Moon Sign Calculator Online Free | AnyConverter",
+        "titleLength": 47,
+        "metaDescription": "Free Moon sign calculator using a real astronomical ephemeris: enter birth date, time and place to get your Moon sign, exact degree and Moon phase.",
+        "metaDescriptionLength": 147,
+        "h1": "Moon Sign Calculator",
+        "h2Count": 5,
+        "h2Headings": [
+          "How to find your Moon sign",
+          "Honest about what the data can tell you",
+          "How your Moon sign is calculated",
+          "Frequently Asked Questions",
+          "Related Tools"
+        ],
+        "canonical": "https://anyconverter.io/moon-sign-calculator/",
+        "inSitemap": true
+      },
+      "internalLinksCount": 9,
+      "performance": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": "0.00%",
+        "position": null
+      }
+    },
+    {
+      "slug": "morse-code-converter",
+      "route": "/morse-code-converter/",
+      "category": "Text Tools",
+      "isRedesigned": false,
+      "architecture": "handwritten-legacy",
+      "availableLanguages": [
+        "en",
+        "es",
+        "da"
+      ],
+      "files": {
+        "enHtml": "morse-code-converter/index.html",
+        "esHtml": "es/morse-code-converter/index.html",
+        "daHtml": "da/morse-code-converter/index.html",
+        "jsFile": "/assets/js/tools/morse-code-converter.js"
+      },
+      "seo": {
+        "title": "Morse Code Converter Online Free | AnyConverter",
+        "titleLength": 47,
+        "metaDescription": "Use Morse Code Converter for free in your browser. Get instant results, practical examples, related tools, and no signup.",
+        "metaDescriptionLength": 121,
+        "h1": "Morse Code Converter",
+        "h2Count": 5,
+        "h2Headings": [
+          "How to Use Morse Code Converter",
+          "Features",
+          "Morse Code Converter: practical uses",
+          "Frequently Asked Questions",
+          "Related Tools"
+        ],
+        "canonical": "https://anyconverter.io/morse-code-converter/",
+        "inSitemap": true
+      },
+      "internalLinksCount": 2,
+      "performance": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": "0.00%",
+        "position": null
+      }
+    },
+    {
+      "slug": "mortgage-calculator",
+      "route": "/mortgage-calculator/",
+      "category": "Calculators",
+      "isRedesigned": false,
+      "architecture": "handwritten-legacy",
+      "availableLanguages": [
+        "en",
+        "es",
+        "da"
+      ],
+      "files": {
+        "enHtml": "mortgage-calculator/index.html",
+        "esHtml": "es/mortgage-calculator/index.html",
+        "daHtml": "da/mortgage-calculator/index.html",
+        "jsFile": "/assets/js/tools/mortgage-calculator.js"
+      },
+      "seo": {
+        "title": "Mortgage Calculator Online Free | AnyConverter",
+        "titleLength": 46,
+        "metaDescription": "Estimate mortgage payments, interest, total cost, and amortization details with a practical browser-based calculator.",
+        "metaDescriptionLength": 117,
+        "h1": "Mortgage Calculator",
+        "h2Count": 5,
+        "h2Headings": [
+          "How to Use the Mortgage Calculator",
+          "Features",
+          "Mortgage interest calculator: practical uses",
+          "Frequently Asked Questions",
+          "Related Tools"
+        ],
+        "canonical": "https://anyconverter.io/mortgage-calculator/",
+        "inSitemap": true
+      },
+      "internalLinksCount": 4,
+      "performance": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": "0.00%",
+        "position": null
+      }
+    },
+    {
+      "slug": "mouse-tester",
+      "route": "/mouse-tester/",
+      "category": "Diagnostics & Testers",
+      "isRedesigned": false,
+      "architecture": "handwritten-legacy",
+      "availableLanguages": [
+        "en",
+        "es",
+        "da"
+      ],
+      "files": {
+        "enHtml": "mouse-tester/index.html",
+        "esHtml": "es/mouse-tester/index.html",
+        "daHtml": "da/mouse-tester/index.html",
+        "jsFile": "/assets/js/tools/mouse-tester.js"
+      },
+      "seo": {
+        "title": "Mouse Tester Online Free | AnyConverter",
+        "titleLength": 39,
+        "metaDescription": "Use Mouse Tester for free in your browser. Get instant results, practical examples, related tools, and no signup.",
+        "metaDescriptionLength": 113,
+        "h1": "Mouse Tester",
+        "h2Count": 5,
+        "h2Headings": [
+          "How to Use",
+          "Features",
+          "Mouse Tester: practical uses",
+          "Frequently Asked Questions",
+          "Related Tools"
+        ],
+        "canonical": "https://anyconverter.io/mouse-tester/",
+        "inSitemap": true
+      },
+      "internalLinksCount": 3,
+      "performance": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": "0.00%",
+        "position": null
+      }
+    },
+    {
+      "slug": "name-numerology-calculator",
+      "route": "/name-numerology-calculator/",
+      "category": "Calculators",
+      "isRedesigned": false,
+      "architecture": "handwritten-legacy",
+      "availableLanguages": [
+        "en",
+        "es",
+        "da"
+      ],
+      "files": {
+        "enHtml": "name-numerology-calculator/index.html",
+        "esHtml": "es/name-numerology-calculator/index.html",
+        "daHtml": "da/name-numerology-calculator/index.html",
+        "jsFile": "/assets/js/tools/calc-kit.js?v=20261008"
+      },
+      "seo": {
+        "title": "Name Numerology Calculator Online Free | AnyConverter",
+        "titleLength": 53,
+        "metaDescription": "Free name numerology calculator: find your Destiny, Soul Urge and Personality numbers with Pythagorean or Chaldean values, every letter and step shown.",
+        "metaDescriptionLength": 151,
+        "h1": "Name Numerology Calculator",
+        "h2Count": 5,
+        "h2Headings": [
+          "How to calculate your name number",
+          "What this calculator does differently",
+          "How name numerology is calculated",
+          "Frequently Asked Questions",
+          "Related Tools"
+        ],
+        "canonical": "https://anyconverter.io/name-numerology-calculator/",
+        "inSitemap": true
+      },
+      "internalLinksCount": 8,
+      "performance": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": "0.00%",
+        "position": null
+      }
+    },
+    {
+      "slug": "number-to-words",
+      "route": "/number-to-words/",
+      "category": "Utility",
+      "isRedesigned": false,
+      "architecture": "handwritten-legacy",
+      "availableLanguages": [
+        "en",
+        "es",
+        "da"
+      ],
+      "files": {
+        "enHtml": "number-to-words/index.html",
+        "esHtml": "es/number-to-words/index.html",
+        "daHtml": "da/number-to-words/index.html",
+        "jsFile": "/assets/js/tools/number-to-words.js"
+      },
+      "seo": {
+        "title": "Number to Words Converter Online Free | AnyConverter",
+        "titleLength": 52,
+        "metaDescription": "Use Number to Words Converter for free in your browser. Get instant results, practical examples, related tools, and no signup.",
+        "metaDescriptionLength": 126,
+        "h1": "Number to Words Converter",
+        "h2Count": 5,
+        "h2Headings": [
+          "How to Use Number to Words Converter",
+          "Features",
+          "Number to Words Converter: practical uses",
+          "Frequently Asked Questions",
+          "Related Tools"
+        ],
+        "canonical": "https://anyconverter.io/number-to-words/",
+        "inSitemap": true
+      },
+      "internalLinksCount": 3,
+      "performance": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": "0.00%",
+        "position": null
+      }
+    },
+    {
+      "slug": "numerology-astrology",
+      "route": "/numerology-astrology/",
+      "category": "Utility",
+      "isRedesigned": false,
+      "architecture": "handwritten-legacy",
+      "availableLanguages": [
+        "en",
+        "es",
+        "da"
+      ],
+      "files": {
+        "enHtml": "numerology-astrology/index.html",
+        "esHtml": "es/numerology-astrology/index.html",
+        "daHtml": "da/numerology-astrology/index.html",
+        "jsFile": null
+      },
+      "seo": {
+        "title": "Numerology &amp; Astrology Calculators | AnyConverter",
+        "titleLength": 53,
+        "metaDescription": "Free numerology and astrology calculators: Life Path, name numbers, Lo Shu Grid, Tarot birth cards, plus Moon and rising signs from a real ephemeris.",
+        "metaDescriptionLength": 149,
+        "h1": "Numerology &amp; Astrology Calculators",
+        "h2Count": 6,
+        "h2Headings": [
+          "Numerology &amp; Tarot",
+          "Moon &amp; rising sign",
+          "Transparent methods, no guesswork",
+          "Where to start",
+          "Your data stays private"
+        ],
+        "canonical": "https://anyconverter.io/numerology-astrology/",
+        "inSitemap": true
+      },
+      "internalLinksCount": 14,
+      "performance": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": "0.00%",
+        "position": null
+      }
+    },
+    {
+      "slug": "numerology-calculator",
+      "route": "/numerology-calculator/",
+      "category": "Calculators",
+      "isRedesigned": false,
+      "architecture": "handwritten-legacy",
+      "availableLanguages": [
+        "en",
+        "es",
+        "da"
+      ],
+      "files": {
+        "enHtml": "numerology-calculator/index.html",
+        "esHtml": "es/numerology-calculator/index.html",
+        "daHtml": "da/numerology-calculator/index.html",
+        "jsFile": "/assets/js/tools/calc-kit.js?v=20261008"
+      },
+      "seo": {
+        "title": "Numerology Calculator Online Free | AnyConverter",
+        "titleLength": 48,
+        "metaDescription": "Free numerology calculator: get your Life Path, Birthday, Personal Year, Destiny, Soul Urge and Personality numbers from your birth date, with full working.",
+        "metaDescriptionLength": 156,
+        "h1": "Numerology Calculator",
+        "h2Count": 5,
+        "h2Headings": [
+          "How to use the numerology calculator",
+          "A full numerology chart in one place",
+          "How the numbers are calculated",
+          "Frequently Asked Questions",
+          "Related Tools"
+        ],
+        "canonical": "https://anyconverter.io/numerology-calculator/",
+        "inSitemap": true
+      },
+      "internalLinksCount": 8,
+      "performance": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": "0.00%",
+        "position": null
+      }
+    },
+    {
+      "slug": "ocr-pdf",
+      "route": "/ocr-pdf/",
+      "category": "PDF Tools",
+      "isRedesigned": false,
+      "architecture": "legacy-pdf",
+      "availableLanguages": [
+        "en",
+        "es",
+        "da"
+      ],
+      "files": {
+        "enHtml": "ocr-pdf/index.html",
+        "esHtml": "es/ocr-pdf/index.html",
+        "daHtml": "da/ocr-pdf/index.html",
+        "jsFile": "/assets/js/tools/ocr-pdf.js"
+      },
+      "seo": {
+        "title": "OCR PDF — Extract Text from Scanned PDF | AnyConverter",
+        "titleLength": 54,
+        "metaDescription": "Convert scanned PDF pages to selectable text with OCR options, language guidance, and a clear browser-first workflow.",
+        "metaDescriptionLength": 117,
+        "h1": "OCR PDF — Extract Text from Scans",
+        "h2Count": 5,
+        "h2Headings": [
+          "How to OCR a PDF",
+          "Features",
+          "OCR PDF: recognize text from scans and images",
+          "Frequently Asked Questions",
+          "Related Tools"
+        ],
+        "canonical": "https://anyconverter.io/ocr-pdf/",
+        "inSitemap": true
+      },
+      "internalLinksCount": 4,
+      "performance": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": "0.00%",
+        "position": null
+      }
+    },
+    {
+      "slug": "optimize-pdf",
+      "route": "/optimize-pdf/",
+      "category": "PDF Tools",
+      "isRedesigned": false,
+      "architecture": "legacy-pdf",
+      "availableLanguages": [
+        "en",
+        "es",
+        "da"
+      ],
+      "files": {
+        "enHtml": "optimize-pdf/index.html",
+        "esHtml": "es/optimize-pdf/index.html",
+        "daHtml": "da/optimize-pdf/index.html",
+        "jsFile": "/assets/js/tools/optimize-pdf.js"
+      },
+      "seo": {
+        "title": "Optimize &amp; Compress PDF Online Free | AnyConverter",
+        "titleLength": 54,
+        "metaDescription": "Rebuild a PDF with browser-side save settings, optionally clear document metadata, and compare original and optimized file sizes.",
+        "metaDescriptionLength": 129,
+        "h1": "Optimize &amp; Compress PDF",
+        "h2Count": 5,
+        "h2Headings": [
+          "How to Optimize a PDF",
+          "Features",
+          "Optimize PDF with measured results",
+          "Frequently Asked Questions",
+          "Related Tools"
+        ],
+        "canonical": "https://anyconverter.io/optimize-pdf/",
+        "inSitemap": true
+      },
+      "internalLinksCount": 5,
+      "performance": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": "0.00%",
+        "position": null
+      }
+    },
+    {
+      "slug": "organize-pdf",
+      "route": "/organize-pdf/",
+      "category": "PDF Tools",
+      "isRedesigned": true,
+      "architecture": "redesigned-dc-runtime",
+      "availableLanguages": [
+        "en",
+        "es",
+        "da"
+      ],
+      "files": {
+        "enHtml": "organize-pdf/index.html",
+        "esHtml": "es/organize-pdf/index.html",
+        "daHtml": "da/organize-pdf/index.html",
+        "jsFile": "/assets/js/tools/dc-runtime.js?v=20261012"
+      },
+      "seo": {
+        "title": "Organize PDF – Reorder, Rotate &amp; Delete Pages, No Upload",
+        "titleLength": 60,
+        "metaDescription": "Rearrange PDF pages in your browser. Drag pages into order, rotate or delete them, add blank pages and fix double-sided scans in one click. Free, no upload.",
+        "metaDescriptionLength": 156,
+        "h1": "Organize PDF pages: reorder, rotate and delete",
+        "h2Count": 11,
+        "h2Headings": [
+          "How to organize a PDF",
+          "Everything you need to tidy a PDF",
+          "AnyConverter compared with typical PDF organizers",
+          "What changes when you organize a PDF",
+          "Frequently asked questions"
+        ],
+        "canonical": "https://anyconverter.io/organize-pdf/",
+        "inSitemap": true
+      },
+      "internalLinksCount": 11,
+      "performance": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": "0.00%",
+        "position": null
+      }
+    },
+    {
+      "slug": "parquet-to-csv",
+      "route": "/parquet-to-csv/",
+      "category": "Utility",
+      "isRedesigned": false,
+      "architecture": "handwritten-legacy",
+      "availableLanguages": [
+        "en",
+        "es",
+        "da"
+      ],
+      "files": {
+        "enHtml": "parquet-to-csv/index.html",
+        "esHtml": "es/parquet-to-csv/index.html",
+        "daHtml": "da/parquet-to-csv/index.html",
+        "jsFile": "/assets/js/tools/parquet-to-csv.js"
+      },
+      "seo": {
+        "title": "Parquet to CSV Converter – Free, No Upload | AnyConverter",
+        "titleLength": 57,
+        "metaDescription": "Convert Parquet files to CSV in your browser. Snappy and Gzip compression, exact big-number decimals, Excel-ready output. No upload, no sign-up.",
+        "metaDescriptionLength": 144,
+        "h1": "Parquet to CSV Converter",
+        "h2Count": 5,
+        "h2Headings": [
+          "How to Convert Parquet to CSV",
+          "Features",
+          "What a Parquet file is",
+          "Frequently Asked Questions",
+          "Related Tools"
+        ],
+        "canonical": "https://anyconverter.io/parquet-to-csv/",
+        "inSitemap": true
+      },
+      "internalLinksCount": 1,
+      "performance": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": "0.00%",
+        "position": null
+      }
+    },
+    {
+      "slug": "password-generator",
+      "route": "/password-generator/",
+      "category": "Utility",
+      "isRedesigned": false,
+      "architecture": "handwritten-legacy",
+      "availableLanguages": [
+        "en",
+        "es",
+        "da"
+      ],
+      "files": {
+        "enHtml": "password-generator/index.html",
+        "esHtml": "es/password-generator/index.html",
+        "daHtml": "da/password-generator/index.html",
+        "jsFile": "/assets/js/tools/password-generator.js"
+      },
+      "seo": {
+        "title": "Password Generator Online Free | AnyConverter",
+        "titleLength": 45,
+        "metaDescription": "Use password generator for free in your browser. Get instant results, practical examples, related tools, and no signup.",
+        "metaDescriptionLength": 119,
+        "h1": "Password Generator",
+        "h2Count": 5,
+        "h2Headings": [
+          "How to Use the Password Generator",
+          "Features",
+          "Password generator: practical uses",
+          "Frequently Asked Questions",
+          "Related Tools"
+        ],
+        "canonical": "https://anyconverter.io/password-generator/",
+        "inSitemap": true
+      },
+      "internalLinksCount": 8,
+      "performance": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": "0.00%",
+        "position": null
+      }
+    },
+    {
+      "slug": "password-strength-checker",
+      "route": "/password-strength-checker/",
+      "category": "Utility",
+      "isRedesigned": false,
+      "architecture": "handwritten-legacy",
+      "availableLanguages": [
+        "en",
+        "es",
+        "da"
+      ],
+      "files": {
+        "enHtml": "password-strength-checker/index.html",
+        "esHtml": "es/password-strength-checker/index.html",
+        "daHtml": "da/password-strength-checker/index.html",
+        "jsFile": "/assets/js/tools/password-strength-checker.js"
+      },
+      "seo": {
+        "title": "Password Strength Checker Online Free | AnyConverter",
+        "titleLength": 52,
+        "metaDescription": "Check password strength locally with crack-time estimates, pattern feedback, checklist criteria, and privacy-first guidance.",
+        "metaDescriptionLength": 124,
+        "h1": "Password Strength Checker",
+        "h2Count": 5,
+        "h2Headings": [
+          "How to Use Password Strength Checker",
+          "Features",
+          "Password Strength Checker: practical uses",
+          "Frequently Asked Questions",
+          "Related Tools"
+        ],
+        "canonical": "https://anyconverter.io/password-strength-checker/",
+        "inSitemap": true
+      },
+      "internalLinksCount": 2,
+      "performance": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": "0.00%",
+        "position": null
+      }
+    },
+    {
+      "slug": "pay-rise-calculator",
+      "route": "/pay-rise-calculator/",
+      "category": "Calculators",
+      "isRedesigned": false,
+      "architecture": "handwritten-legacy",
+      "availableLanguages": [
+        "en",
+        "es",
+        "da"
+      ],
+      "files": {
+        "enHtml": "pay-rise-calculator/index.html",
+        "esHtml": "es/pay-rise-calculator/index.html",
+        "daHtml": "da/pay-rise-calculator/index.html",
+        "jsFile": "/assets/js/tools/calc-kit.js?v=20261008"
+      },
+      "seo": {
+        "title": "Pay Rise Calculator Online Free | AnyConverter",
+        "titleLength": 46,
+        "metaDescription": "Free pay rise calculator: see your new salary after a % or fixed raise, the raise in percent, monthly and hourly pay, and your real pay rise after inflation.",
+        "metaDescriptionLength": 157,
+        "h1": "Pay Rise Calculator",
+        "h2Count": 6,
+        "h2Headings": [
+          "How to work out a pay rise",
+          "More than a percentage",
+          "How a pay rise is calculated",
+          "Is your raise above inflation?",
+          "Frequently Asked Questions"
+        ],
+        "canonical": "https://anyconverter.io/pay-rise-calculator/",
+        "inSitemap": true
+      },
+      "internalLinksCount": 4,
+      "performance": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": "0.00%",
+        "position": null
+      }
+    },
+    {
+      "slug": "pdf-compress",
+      "route": "/pdf-compress/",
+      "category": "PDF Tools",
+      "isRedesigned": true,
+      "architecture": "redesigned-dc-runtime",
+      "availableLanguages": [
+        "en",
+        "es",
+        "da"
+      ],
+      "files": {
+        "enHtml": "pdf-compress/index.html",
+        "esHtml": "es/pdf-compress/index.html",
+        "daHtml": "da/pdf-compress/index.html",
+        "jsFile": "/assets/js/tools/dc-runtime.js?v=20261012"
+      },
+      "seo": {
+        "title": "Compress PDF – Shrink to a Target Size, No Upload",
+        "titleLength": 49,
+        "metaDescription": "Make a PDF smaller in your browser. Pick a strength or type the size you need, like 2 MB, and compare quality before you download. Free, no upload.",
+        "metaDescriptionLength": 147,
+        "h1": "Compress a PDF to the size you need",
+        "h2Count": 11,
+        "h2Headings": [
+          "How to compress a PDF",
+          "Smaller files without guessing",
+          "AnyConverter compared with typical PDF compressors",
+          "How PDF compression works",
+          "Frequently asked questions"
+        ],
+        "canonical": "https://anyconverter.io/pdf-compress/",
+        "inSitemap": true
+      },
+      "internalLinksCount": 29,
+      "performance": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": "0.00%",
+        "position": null
+      }
+    },
+    {
+      "slug": "pdf-forms",
+      "route": "/pdf-forms/",
+      "category": "PDF Tools",
+      "isRedesigned": false,
+      "architecture": "legacy-pdf",
+      "availableLanguages": [
+        "en",
+        "es",
+        "da"
+      ],
+      "files": {
+        "enHtml": "pdf-forms/index.html",
+        "esHtml": "es/pdf-forms/index.html",
+        "daHtml": "da/pdf-forms/index.html",
+        "jsFile": "/assets/js/tools/pdf-forms.js"
+      },
+      "seo": {
+        "title": "Fill PDF Forms Online - Complete & Flatten PDFs | AnyConverter",
+        "titleLength": 62,
+        "metaDescription": "Fill PDF forms online in your browser, preview fields, and download the completed PDF without sending documents to a server.",
+        "metaDescriptionLength": 124,
+        "h1": "Fill PDF Forms Online",
+        "h2Count": 5,
+        "h2Headings": [
+          "How to Use Fill PDF Forms",
+          "Features",
+          "Fill PDF Forms Online: practical uses",
+          "Frequently Asked Questions",
+          "Related Tools"
+        ],
+        "canonical": "https://anyconverter.io/pdf-forms/",
+        "inSitemap": true
+      },
+      "internalLinksCount": 4,
+      "performance": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": "0.00%",
+        "position": null
+      }
+    },
+    {
+      "slug": "pdf-merge",
+      "route": "/pdf-merge/",
+      "category": "PDF Tools",
+      "isRedesigned": true,
+      "architecture": "redesigned-dc-runtime",
+      "availableLanguages": [
+        "en",
+        "es",
+        "da"
+      ],
+      "files": {
+        "enHtml": "pdf-merge/index.html",
+        "esHtml": "es/pdf-merge/index.html",
+        "daHtml": "da/pdf-merge/index.html",
+        "jsFile": "/assets/js/tools/dc-runtime.js?v=20261012"
+      },
+      "seo": {
+        "title": "Merge PDF Files – Combine PDFs &amp; Pick Pages, No Upload",
+        "titleLength": 58,
+        "metaDescription": "Combine PDF files into one in your browser. Reorder files, leave out pages you don’t need and add blanks for double-sided printing. Free, no upload.",
+        "metaDescriptionLength": 148,
+        "h1": "Merge PDF files into one document",
+        "h2Count": 11,
+        "h2Headings": [
+          "How to merge PDF files",
+          "More control than a basic merge",
+          "AnyConverter compared with typical PDF merge sites",
+          "What happens when PDFs are merged",
+          "Frequently asked questions"
+        ],
+        "canonical": "https://anyconverter.io/pdf-merge/",
+        "inSitemap": true
+      },
+      "internalLinksCount": 43,
+      "performance": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": "0.00%",
+        "position": null
+      }
+    },
+    {
+      "slug": "pdf-metadata-remover",
+      "route": "/pdf-metadata-remover/",
+      "category": "PDF Tools",
+      "isRedesigned": false,
+      "architecture": "legacy-pdf",
+      "availableLanguages": [
+        "en"
+      ],
+      "files": {
+        "enHtml": "pdf-metadata-remover/index.html",
+        "esHtml": null,
+        "daHtml": null,
+        "jsFile": "/assets/js/tools/pdf-metadata-remover.js"
+      },
+      "seo": {
+        "title": "PDF Metadata Remover Online Free | AnyConverter",
+        "titleLength": 47,
+        "metaDescription": "Inspect common PDF document properties and download a rebuilt PDF with selected metadata fields cleared in your browser.",
+        "metaDescriptionLength": 120,
+        "h1": "PDF Metadata Remover",
+        "h2Count": 6,
+        "h2Headings": [
+          "Detected document properties",
+          "How to Remove PDF Metadata",
+          "Features",
+          "Clean PDF document properties before sharing",
+          "Frequently Asked Questions"
+        ],
+        "canonical": "https://anyconverter.io/pdf-metadata-remover/",
+        "inSitemap": true
+      },
+      "internalLinksCount": 5,
+      "performance": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": "0.00%",
+        "position": null
+      }
+    },
+    {
+      "slug": "pdf-security",
+      "route": "/pdf-security/",
+      "category": "PDF Tools",
+      "isRedesigned": false,
+      "architecture": "legacy-pdf",
+      "availableLanguages": [
+        "en",
+        "es",
+        "da"
+      ],
+      "files": {
+        "enHtml": "pdf-security/index.html",
+        "esHtml": "es/pdf-security/index.html",
+        "daHtml": "da/pdf-security/index.html",
+        "jsFile": "/assets/js/tools/pdf-security.js"
+      },
+      "seo": {
+        "title": "PDF Security — Set Permissions Online Free | AnyConverter",
+        "titleLength": 57,
+        "metaDescription": "Set a PDF owner password, optional user password, and viewer permissions for printing, copying, editing, annotations, and forms.",
+        "metaDescriptionLength": 128,
+        "h1": "PDF Security — Set Permissions",
+        "h2Count": 5,
+        "h2Headings": [
+          "How to Set PDF Permissions",
+          "Features",
+          "PDF Security: passwords and viewer permissions",
+          "Frequently Asked Questions",
+          "Related Tools"
+        ],
+        "canonical": "https://anyconverter.io/pdf-security/",
+        "inSitemap": true
+      },
+      "internalLinksCount": 6,
+      "performance": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": "0.00%",
+        "position": null
+      }
+    },
+    {
+      "slug": "pdf-split",
+      "route": "/pdf-split/",
+      "category": "PDF Tools",
+      "isRedesigned": true,
+      "architecture": "redesigned-dc-runtime",
+      "availableLanguages": [
+        "en",
+        "es",
+        "da"
+      ],
+      "files": {
+        "enHtml": "pdf-split/index.html",
+        "esHtml": "es/pdf-split/index.html",
+        "daHtml": "da/pdf-split/index.html",
+        "jsFile": "/assets/js/tools/dc-runtime.js?v=20261012"
+      },
+      "seo": {
+        "title": "Split PDF – By Pages, Ranges or File Size, No Upload",
+        "titleLength": 52,
+        "metaDescription": "Split a PDF into separate files in your browser. Click to cut between pages, type ranges, split every N pages or keep each part under a size limit.",
+        "metaDescriptionLength": 147,
+        "h1": "Split a PDF into separate files",
+        "h2Count": 11,
+        "h2Headings": [
+          "How to split a PDF",
+          "Split it the way you need",
+          "AnyConverter compared with typical PDF split sites",
+          "What to expect when you split a PDF",
+          "Frequently asked questions"
+        ],
+        "canonical": "https://anyconverter.io/pdf-split/",
+        "inSitemap": true
+      },
+      "internalLinksCount": 19,
+      "performance": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": "0.00%",
+        "position": null
+      }
+    },
+    {
+      "slug": "pdf-to-jpg",
+      "route": "/pdf-to-jpg/",
+      "category": "PDF Tools",
+      "isRedesigned": true,
+      "architecture": "redesigned-dc-runtime",
+      "availableLanguages": [
+        "en",
+        "es",
+        "da"
+      ],
+      "files": {
+        "enHtml": "pdf-to-jpg/index.html",
+        "esHtml": "es/pdf-to-jpg/index.html",
+        "daHtml": "da/pdf-to-jpg/index.html",
+        "jsFile": "/assets/js/tools/dc-runtime.js?v=20261012"
+      },
+      "seo": {
+        "title": "PDF to JPG – Convert Pages to Images up to 300 DPI",
+        "titleLength": 50,
+        "metaDescription": "Turn PDF pages into JPG, PNG or WebP images in your browser. Choose the resolution and pages, or join every page into one long image. Free, no upload.",
+        "metaDescriptionLength": 150,
+        "h1": "Convert PDF pages to JPG images",
+        "h2Count": 11,
+        "h2Headings": [
+          "How to convert PDF to JPG",
+          "Images the way you need them",
+          "AnyConverter compared with typical PDF to JPG sites",
+          "Which format and resolution to choose",
+          "Frequently asked questions"
+        ],
+        "canonical": "https://anyconverter.io/pdf-to-jpg/",
+        "inSitemap": true
+      },
+      "internalLinksCount": 13,
+      "performance": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": "0.00%",
+        "position": null
+      }
+    },
+    {
+      "slug": "pdf-to-word",
+      "route": "/pdf-to-word/",
+      "category": "PDF Tools",
+      "isRedesigned": true,
+      "architecture": "redesigned-dc-runtime",
+      "availableLanguages": [
+        "en",
+        "es",
+        "da"
+      ],
+      "files": {
+        "enHtml": "pdf-to-word/index.html",
+        "esHtml": "es/pdf-to-word/index.html",
+        "daHtml": "da/pdf-to-word/index.html",
+        "jsFile": "/assets/js/tools/dc-runtime.js?v=20261012"
+      },
+      "seo": {
+        "title": "PDF to Word Converter – Editable DOCX, OCR, No Upload",
+        "titleLength": 53,
+        "metaDescription": "Convert PDF to an editable Word document. Choose editable text or exact layout, convert only the pages you need, and recognise scanned pages with OCR. No upload.",
+        "metaDescriptionLength": 161,
+        "h1": "PDF to Word Converter",
+        "h2Count": 11,
+        "h2Headings": [
+          "How to convert PDF to Word",
+          "Control over what you get back",
+          "AnyConverter vs. typical PDF to Word sites",
+          "Why PDF to Word is never perfect",
+          "Frequently asked questions"
+        ],
+        "canonical": "https://anyconverter.io/pdf-to-word/",
+        "inSitemap": true
+      },
+      "internalLinksCount": 3,
+      "performance": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": "0.00%",
+        "position": null
+      }
+    },
+    {
+      "slug": "pdf-tools",
+      "route": "/pdf-tools/",
+      "category": "PDF Tools",
+      "isRedesigned": false,
+      "architecture": "legacy-pdf",
+      "availableLanguages": [
+        "en"
+      ],
+      "files": {
+        "enHtml": "pdf-tools/index.html",
+        "esHtml": null,
+        "daHtml": null,
+        "jsFile": null
+      },
+      "seo": {
+        "title": "Free Online PDF Tools | AnyConverter",
+        "titleLength": 36,
+        "metaDescription": "Free online PDF tools to merge, split, compress, rotate, organize, edit, sign, protect, unlock, compare and convert PDF files in your browser.",
+        "metaDescriptionLength": 142,
+        "h1": "Free Online PDF Tools",
+        "h2Count": 2,
+        "h2Headings": [
+          "Browser-based PDF tools for common document tasks",
+          "Frequently Asked Questions"
+        ],
+        "canonical": "https://anyconverter.io/pdf-tools/",
+        "inSitemap": true
+      },
+      "internalLinksCount": 25,
+      "performance": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": "0.00%",
+        "position": null
+      }
+    },
+    {
+      "slug": "percentage-calculator",
+      "route": "/percentage-calculator/",
+      "category": "Calculators",
+      "isRedesigned": false,
+      "architecture": "handwritten-legacy",
+      "availableLanguages": [
+        "en",
+        "es",
+        "da"
+      ],
+      "files": {
+        "enHtml": "percentage-calculator/index.html",
+        "esHtml": "es/percentage-calculator/index.html",
+        "daHtml": "da/percentage-calculator/index.html",
+        "jsFile": "/assets/js/tools/percentage-calculator.js"
+      },
+      "seo": {
+        "title": "Percentage Calculator Online Free | AnyConverter",
+        "titleLength": 48,
+        "metaDescription": "Use Percentage Calculator for free in your browser. Get instant results, practical examples, related tools, and no signup.",
+        "metaDescriptionLength": 122,
+        "h1": "Percentage Calculator",
+        "h2Count": 5,
+        "h2Headings": [
+          "How to Use the Percentage Calculator",
+          "Features",
+          "Percentage Calculator: practical uses",
+          "Frequently Asked Questions",
+          "Related Tools"
+        ],
+        "canonical": "https://anyconverter.io/percentage-calculator/",
+        "inSitemap": true
+      },
+      "internalLinksCount": 29,
+      "performance": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": "0.00%",
+        "position": null
+      }
+    },
+    {
+      "slug": "percentage-difference-calculator",
+      "route": "/percentage-difference-calculator/",
+      "category": "Calculators",
+      "isRedesigned": false,
+      "architecture": "handwritten-legacy",
+      "availableLanguages": [
+        "en",
+        "es",
+        "da"
+      ],
+      "files": {
+        "enHtml": "percentage-difference-calculator/index.html",
+        "esHtml": "es/percentage-difference-calculator/index.html",
+        "daHtml": "da/percentage-difference-calculator/index.html",
+        "jsFile": "/assets/js/tools/calc-kit.js?v=20261008"
+      },
+      "seo": {
+        "title": "Percentage Difference Calculator Online Free | AnyConverter",
+        "titleLength": 59,
+        "metaDescription": "Free percentage difference calculator: compare two values with the symmetric formula and see percent change and percentage points side by side, with steps.",
+        "metaDescriptionLength": 155,
+        "h1": "Percentage Difference Calculator",
+        "h2Count": 6,
+        "h2Headings": [
+          "How to use the percentage difference calculator",
+          "Three formulas, clearly separated",
+          "Percentage difference vs percent change vs percent increase",
+          "When to use which",
+          "Frequently Asked Questions"
+        ],
+        "canonical": "https://anyconverter.io/percentage-difference-calculator/",
+        "inSitemap": true
+      },
+      "internalLinksCount": 10,
+      "performance": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": "0.00%",
+        "position": null
+      }
+    },
+    {
+      "slug": "pomodoro-timer",
+      "route": "/pomodoro-timer/",
+      "category": "Productivity",
+      "isRedesigned": false,
+      "architecture": "handwritten-legacy",
+      "availableLanguages": [
+        "en",
+        "es",
+        "da"
+      ],
+      "files": {
+        "enHtml": "pomodoro-timer/index.html",
+        "esHtml": "es/pomodoro-timer/index.html",
+        "daHtml": "da/pomodoro-timer/index.html",
+        "jsFile": "/assets/js/tools/pomodoro-timer.js"
+      },
+      "seo": {
+        "title": "Pomodoro Timer Online Free | AnyConverter",
+        "titleLength": 41,
+        "metaDescription": "Use Pomodoro Timer for free in your browser. Get instant results, practical examples, related tools, and no signup.",
+        "metaDescriptionLength": 115,
+        "h1": "Pomodoro Timer",
+        "h2Count": 5,
+        "h2Headings": [
+          "How to Use Pomodoro Timer",
+          "Features",
+          "Pomodoro Timer: practical uses",
+          "Frequently Asked Questions",
+          "Related Tools"
+        ],
+        "canonical": "https://anyconverter.io/pomodoro-timer/",
+        "inSitemap": true
+      },
+      "internalLinksCount": 17,
+      "performance": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": "0.00%",
+        "position": null
+      }
+    },
+    {
+      "slug": "price-increase-calculator",
+      "route": "/price-increase-calculator/",
+      "category": "Calculators",
+      "isRedesigned": false,
+      "architecture": "handwritten-legacy",
+      "availableLanguages": [
+        "en",
+        "es",
+        "da"
+      ],
+      "files": {
+        "enHtml": "price-increase-calculator/index.html",
+        "esHtml": "es/price-increase-calculator/index.html",
+        "daHtml": "da/price-increase-calculator/index.html",
+        "jsFile": "/assets/js/tools/calc-kit.js?v=20261008"
+      },
+      "seo": {
+        "title": "Price Increase Calculator Online Free | AnyConverter",
+        "titleLength": 52,
+        "metaDescription": "Free price increase calculator: add a percentage to a price, find the % increase between an old and new price, or spot shrinkflation with the unit price change.",
+        "metaDescriptionLength": 160,
+        "h1": "Price Increase Calculator",
+        "h2Count": 7,
+        "h2Headings": [
+          "How to calculate a price increase",
+          "Built for real price changes",
+          "Price increase formulas",
+          "Shrinkflation: when the price stays but the pack shrinks",
+          "Going the other way"
+        ],
+        "canonical": "https://anyconverter.io/price-increase-calculator/",
+        "inSitemap": true
+      },
+      "internalLinksCount": 13,
+      "performance": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": "0.00%",
+        "position": null
+      }
+    },
+    {
+      "slug": "privacy-policy-generator",
+      "route": "/privacy-policy-generator/",
+      "category": "Utility",
+      "isRedesigned": false,
+      "architecture": "handwritten-legacy",
+      "availableLanguages": [
+        "en",
+        "es",
+        "da"
+      ],
+      "files": {
+        "enHtml": "privacy-policy-generator/index.html",
+        "esHtml": "es/privacy-policy-generator/index.html",
+        "daHtml": "da/privacy-policy-generator/index.html",
+        "jsFile": "/assets/js/tools/privacy-policy-generator.js"
+      },
+      "seo": {
+        "title": "Privacy Policy Generator Online Free | AnyConverter",
+        "titleLength": 51,
+        "metaDescription": "Use privacy policy generator for free in your browser. Get instant results, practical examples, related tools, and no signup.",
+        "metaDescriptionLength": 125,
+        "h1": "Privacy Policy Generator",
+        "h2Count": 5,
+        "h2Headings": [
+          "How to Use the Privacy Policy Generator",
+          "Features",
+          "Privacy policy generator: practical uses",
+          "Frequently Asked Questions",
+          "Related Tools"
+        ],
+        "canonical": "https://anyconverter.io/privacy-policy-generator/",
+        "inSitemap": true
+      },
+      "internalLinksCount": 3,
+      "performance": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": "0.00%",
+        "position": null
+      }
+    },
+    {
+      "slug": "productivity-tools",
+      "route": "/productivity-tools/",
+      "category": "Utility",
+      "isRedesigned": false,
+      "architecture": "handwritten-legacy",
+      "availableLanguages": [
+        "en"
+      ],
+      "files": {
+        "enHtml": "productivity-tools/index.html",
+        "esHtml": null,
+        "daHtml": null,
+        "jsFile": null
+      },
+      "seo": {
+        "title": "Free Online Productivity Tools | AnyConverter",
+        "titleLength": 45,
+        "metaDescription": "Free online productivity tools for to-do lists, notes, timers, invoices, privacy policies, random choices, QR codes and daily planning.",
+        "metaDescriptionLength": 135,
+        "h1": "Free Online Productivity Tools",
+        "h2Count": 1,
+        "h2Headings": [
+          "Simple tools for everyday productivity"
+        ],
+        "canonical": "https://anyconverter.io/productivity-tools/",
+        "inSitemap": true
+      },
+      "internalLinksCount": 1,
+      "performance": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": "0.00%",
+        "position": null
+      }
+    },
+    {
+      "slug": "protect-pdf",
+      "route": "/protect-pdf/",
+      "category": "PDF Tools",
+      "isRedesigned": false,
+      "architecture": "legacy-pdf",
+      "availableLanguages": [
+        "en",
+        "es",
+        "da"
+      ],
+      "files": {
+        "enHtml": "protect-pdf/index.html",
+        "esHtml": "es/protect-pdf/index.html",
+        "daHtml": "da/protect-pdf/index.html",
+        "jsFile": "/assets/js/tools/protect-pdf.js"
+      },
+      "seo": {
+        "title": "Protect PDF with Password Online Free | AnyConverter",
+        "titleLength": 52,
+        "metaDescription": "Use Protect PDF with Password for free in your browser. Get instant results, practical examples, related tools, and no signup.",
+        "metaDescriptionLength": 126,
+        "h1": "Protect PDF with Password",
+        "h2Count": 5,
+        "h2Headings": [
+          "How to Password Protect a PDF",
+          "Features",
+          "Protect PDF with Password: practical uses",
+          "Frequently Asked Questions",
+          "Related Tools"
+        ],
+        "canonical": "https://anyconverter.io/protect-pdf/",
+        "inSitemap": true
+      },
+      "internalLinksCount": 8,
+      "performance": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": "0.00%",
+        "position": null
+      }
+    },
+    {
+      "slug": "px-to-rem",
+      "route": "/px-to-rem/",
+      "category": "Utility",
+      "isRedesigned": false,
+      "architecture": "handwritten-legacy",
+      "availableLanguages": [
+        "en",
+        "es",
+        "da"
+      ],
+      "files": {
+        "enHtml": "px-to-rem/index.html",
+        "esHtml": "es/px-to-rem/index.html",
+        "daHtml": "da/px-to-rem/index.html",
+        "jsFile": "/assets/js/tools/px-to-rem.js"
+      },
+      "seo": {
+        "title": "PX to REM Converter Online Free | AnyConverter",
+        "titleLength": 46,
+        "metaDescription": "Use px to rem for free in your browser. Get instant results, practical examples, related tools, and no signup.",
+        "metaDescriptionLength": 110,
+        "h1": "PX to REM Converter",
+        "h2Count": 5,
+        "h2Headings": [
+          "How to Use the PX to REM Converter",
+          "Features",
+          "Px to rem: practical uses",
+          "Frequently Asked Questions",
+          "Related Tools"
+        ],
+        "canonical": "https://anyconverter.io/px-to-rem/",
+        "inSitemap": true
+      },
+      "internalLinksCount": 3,
+      "performance": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": "0.00%",
+        "position": null
+      }
+    },
+    {
+      "slug": "qr-code-generator",
+      "route": "/qr-code-generator/",
+      "category": "Utility",
+      "isRedesigned": false,
+      "architecture": "handwritten-legacy",
+      "availableLanguages": [
+        "en",
+        "es",
+        "da"
+      ],
+      "files": {
+        "enHtml": "qr-code-generator/index.html",
+        "esHtml": "es/qr-code-generator/index.html",
+        "daHtml": "da/qr-code-generator/index.html",
+        "jsFile": "/assets/js/tools/qr-code-generator.js"
+      },
+      "seo": {
+        "title": "QR Code Generator Online Free | AnyConverter",
+        "titleLength": 44,
+        "metaDescription": "Generate QR codes for URLs, text, Wi-Fi, and contact details with color controls, preview, and download options.",
+        "metaDescriptionLength": 112,
+        "h1": "QR Code Generator",
+        "h2Count": 5,
+        "h2Headings": [
+          "How to Use the QR Code Generator",
+          "Features",
+          "QR code generator: practical uses",
+          "Frequently Asked Questions",
+          "Related Tools"
+        ],
+        "canonical": "https://anyconverter.io/qr-code-generator/",
+        "inSitemap": true
+      },
+      "internalLinksCount": 10,
+      "performance": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": "0.00%",
+        "position": null
+      }
+    },
+    {
+      "slug": "random-number-generator",
+      "route": "/random-number-generator/",
+      "category": "Fun & Decision",
+      "isRedesigned": false,
+      "architecture": "handwritten-legacy",
+      "availableLanguages": [
+        "en",
+        "es",
+        "da"
+      ],
+      "files": {
+        "enHtml": "random-number-generator/index.html",
+        "esHtml": "es/random-number-generator/index.html",
+        "daHtml": "da/random-number-generator/index.html",
+        "jsFile": "/assets/js/tools/random-number-generator.js"
+      },
+      "seo": {
+        "title": "Random Number Generator Online Free | AnyConverter",
+        "titleLength": 50,
+        "metaDescription": "Use Random Number Generator for free in your browser. Get instant results, practical examples, related tools, and no signup.",
+        "metaDescriptionLength": 124,
+        "h1": "Random Number Generator",
+        "h2Count": 5,
+        "h2Headings": [
+          "How to Use the Random Number Generator",
+          "Features",
+          "Random Number Generator: practical uses",
+          "Frequently Asked Questions",
+          "Related Tools"
+        ],
+        "canonical": "https://anyconverter.io/random-number-generator/",
+        "inSitemap": true
+      },
+      "internalLinksCount": 10,
+      "performance": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": "0.00%",
+        "position": null
+      }
+    },
+    {
+      "slug": "random-picker",
+      "route": "/random-picker/",
+      "category": "Fun & Decision",
+      "isRedesigned": false,
+      "architecture": "handwritten-legacy",
+      "availableLanguages": [
+        "en",
+        "es",
+        "da"
+      ],
+      "files": {
+        "enHtml": "random-picker/index.html",
+        "esHtml": "es/random-picker/index.html",
+        "daHtml": "da/random-picker/index.html",
+        "jsFile": "/assets/js/tools/random-picker.js"
+      },
+      "seo": {
+        "title": "Random Picker Online Free — Pick Random Items | AnyConverter",
+        "titleLength": 60,
+        "metaDescription": "Use Random Picker for free in your browser. Get instant results, practical examples, related tools, and no signup.",
+        "metaDescriptionLength": 114,
+        "h1": "Random Picker Online",
+        "h2Count": 5,
+        "h2Headings": [
+          "How to Pick Random Items",
+          "Features",
+          "Random Picker: practical uses",
+          "Frequently Asked Questions",
+          "Related Tools"
+        ],
+        "canonical": "https://anyconverter.io/random-picker/",
+        "inSitemap": true
+      },
+      "internalLinksCount": 12,
+      "performance": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": "0.00%",
+        "position": null
+      }
+    },
+    {
+      "slug": "redact-pdf",
+      "route": "/redact-pdf/",
+      "category": "PDF Tools",
+      "isRedesigned": false,
+      "architecture": "legacy-pdf",
+      "availableLanguages": [
+        "en",
+        "es",
+        "da"
+      ],
+      "files": {
+        "enHtml": "redact-pdf/index.html",
+        "esHtml": "es/redact-pdf/index.html",
+        "daHtml": "da/redact-pdf/index.html",
+        "jsFile": "/assets/js/tools/redact-pdf.js"
+      },
+      "seo": {
+        "title": "Blackout PDF Online Free | AnyConverter",
+        "titleLength": 39,
+        "metaDescription": "Cover PDF content with black rectangles in your browser. This is visual blackout, not secure redaction or permanent text removal.",
+        "metaDescriptionLength": 129,
+        "h1": "Blackout PDF",
+        "h2Count": 5,
+        "h2Headings": [
+          "How to Black Out a PDF",
+          "Features",
+          "Blackout PDF: visual covers for non-sensitive drafts",
+          "Frequently Asked Questions",
+          "Related Tools"
+        ],
+        "canonical": "https://anyconverter.io/redact-pdf/",
+        "inSitemap": true
+      },
+      "internalLinksCount": 5,
+      "performance": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": "0.00%",
+        "position": null
+      }
+    },
+    {
+      "slug": "regex-tester",
+      "route": "/regex-tester/",
+      "category": "Developer Tools",
+      "isRedesigned": false,
+      "architecture": "handwritten-legacy",
+      "availableLanguages": [
+        "en",
+        "es",
+        "da"
+      ],
+      "files": {
+        "enHtml": "regex-tester/index.html",
+        "esHtml": "es/regex-tester/index.html",
+        "daHtml": "da/regex-tester/index.html",
+        "jsFile": "/assets/js/tools/regex-tester.js"
+      },
+      "seo": {
+        "title": "Regex Tester &amp; Log Extractor Online — Free | AnyConverter",
+        "titleLength": 61,
+        "metaDescription": "Test JavaScript regular expressions on pasted text or log files, inspect capture groups, and export matches as CSV or JSON.",
+        "metaDescriptionLength": 123,
+        "h1": "Regex Tester &amp; Log Extractor",
+        "h2Count": 5,
+        "h2Headings": [
+          "How to Use the Regex / Log Extractor",
+          "Features",
+          "Regex Tester: JavaScript matches, groups, and exports",
+          "Frequently Asked Questions",
+          "Related Tools"
+        ],
+        "canonical": "https://anyconverter.io/regex-tester/",
+        "inSitemap": true
+      },
+      "internalLinksCount": 24,
+      "performance": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": "0.00%",
+        "position": null
+      }
+    },
+    {
+      "slug": "remove-pdf-pages",
+      "route": "/remove-pdf-pages/",
+      "category": "PDF Tools",
+      "isRedesigned": true,
+      "architecture": "redesigned-dc-runtime",
+      "availableLanguages": [
+        "en",
+        "es",
+        "da"
+      ],
+      "files": {
+        "enHtml": "remove-pdf-pages/index.html",
+        "esHtml": "es/remove-pdf-pages/index.html",
+        "daHtml": "da/remove-pdf-pages/index.html",
+        "jsFile": "/assets/js/tools/dc-runtime.js?v=20261012"
+      },
+      "seo": {
+        "title": "Remove PDF Pages – Delete Pages &amp; Blank Pages, No Upload",
+        "titleLength": 60,
+        "metaDescription": "Delete pages from a PDF in your browser. Click the pages to remove, type ranges, or let the tool find blank pages from your scanner. Free, no upload.",
+        "metaDescriptionLength": 149,
+        "h1": "Remove pages from a PDF",
+        "h2Count": 11,
+        "h2Headings": [
+          "How to remove pages from a PDF",
+          "Remove pages without the guesswork",
+          "AnyConverter compared with typical page removal tools",
+          "How blank page detection works",
+          "Frequently asked questions"
+        ],
+        "canonical": "https://anyconverter.io/remove-pdf-pages/",
+        "inSitemap": true
+      },
+      "internalLinksCount": 3,
+      "performance": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": "0.00%",
+        "position": null
+      }
+    },
+    {
+      "slug": "reverse-percentage-calculator",
+      "route": "/reverse-percentage-calculator/",
+      "category": "Calculators",
+      "isRedesigned": false,
+      "architecture": "handwritten-legacy",
+      "availableLanguages": [
+        "en",
+        "es",
+        "da"
+      ],
+      "files": {
+        "enHtml": "reverse-percentage-calculator/index.html",
+        "esHtml": "es/reverse-percentage-calculator/index.html",
+        "daHtml": "da/reverse-percentage-calculator/index.html",
+        "jsFile": "/assets/js/tools/reverse-percentage.js"
+      },
+      "seo": {
+        "title": "Reverse Percentage Calculator Online Free | AnyConverter",
+        "titleLength": 56,
+        "metaDescription": "Use reverse percentage calculator for free in your browser. Find the original value before a % increase, discount, or VAT — with step-by-step working.",
+        "metaDescriptionLength": 150,
+        "h1": "Reverse Percentage Calculator",
+        "h2Count": 5,
+        "h2Headings": [
+          "How to Use the Reverse Percentage Calculator",
+          "Features",
+          "What a reverse percentage actually solves",
+          "Frequently Asked Questions",
+          "Related Tools"
+        ],
+        "canonical": "https://anyconverter.io/reverse-percentage-calculator/",
+        "inSitemap": true
+      },
+      "internalLinksCount": 10,
+      "performance": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": "0.00%",
+        "position": null
+      }
+    },
+    {
+      "slug": "rise-over-run-calculator",
+      "route": "/rise-over-run-calculator/",
+      "category": "Calculators",
+      "isRedesigned": false,
+      "architecture": "handwritten-legacy",
+      "availableLanguages": [
+        "en",
+        "es",
+        "da"
+      ],
+      "files": {
+        "enHtml": "rise-over-run-calculator/index.html",
+        "esHtml": "es/rise-over-run-calculator/index.html",
+        "daHtml": "da/rise-over-run-calculator/index.html",
+        "jsFile": "/assets/js/tools/calc-kit.js?v=20261008"
+      },
+      "seo": {
+        "title": "Rise Over Run Calculator Online Free | AnyConverter",
+        "titleLength": 51,
+        "metaDescription": "Free rise over run calculator: get the slope m = rise ÷ run as a fraction, decimal, percent grade and angle, from rise and run or two points, with a diagram.",
+        "metaDescriptionLength": 157,
+        "h1": "Rise Over Run Calculator",
+        "h2Count": 6,
+        "h2Headings": [
+          "How to calculate slope from rise over run",
+          "Slope, explained step by step",
+          "The rise over run formula",
+          "Rise over run vs grade and angle",
+          "Frequently Asked Questions"
+        ],
+        "canonical": "https://anyconverter.io/rise-over-run-calculator/",
+        "inSitemap": true
+      },
+      "internalLinksCount": 4,
+      "performance": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": "0.00%",
+        "position": null
+      }
+    },
+    {
+      "slug": "rising-sign-calculator",
+      "route": "/rising-sign-calculator/",
+      "category": "Calculators",
+      "isRedesigned": false,
+      "architecture": "handwritten-legacy",
+      "availableLanguages": [
+        "en",
+        "es",
+        "da"
+      ],
+      "files": {
+        "enHtml": "rising-sign-calculator/index.html",
+        "esHtml": "es/rising-sign-calculator/index.html",
+        "daHtml": "da/rising-sign-calculator/index.html",
+        "jsFile": "/assets/js/tools/calc-kit.js?v=20261008"
+      },
+      "seo": {
+        "title": "Rising Sign Calculator Online Free | AnyConverter",
+        "titleLength": 49,
+        "metaDescription": "Free rising sign calculator: find your ascendant sign and exact degree from birth date, time and place, with time-zone and DST handling and a birth-time check.",
+        "metaDescriptionLength": 159,
+        "h1": "Rising Sign Calculator — Ascendant",
+        "h2Count": 5,
+        "h2Headings": [
+          "How to find your rising sign",
+          "Built around the birth time",
+          "How the ascendant is calculated",
+          "Frequently Asked Questions",
+          "Related Tools"
+        ],
+        "canonical": "https://anyconverter.io/rising-sign-calculator/",
+        "inSitemap": true
+      },
+      "internalLinksCount": 5,
+      "performance": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": "0.00%",
+        "position": null
+      }
+    },
+    {
+      "slug": "roman-numeral-converter",
+      "route": "/roman-numeral-converter/",
+      "category": "Utility",
+      "isRedesigned": false,
+      "architecture": "handwritten-legacy",
+      "availableLanguages": [
+        "en",
+        "es",
+        "da"
+      ],
+      "files": {
+        "enHtml": "roman-numeral-converter/index.html",
+        "esHtml": "es/roman-numeral-converter/index.html",
+        "daHtml": "da/roman-numeral-converter/index.html",
+        "jsFile": "/assets/js/tools/roman-numeral-converter.js"
+      },
+      "seo": {
+        "title": "Roman Numeral Converter Online Free | AnyConverter",
+        "titleLength": 50,
+        "metaDescription": "Use roman numeral converter for free in your browser. Get instant results, practical examples, related tools, and no signup.",
+        "metaDescriptionLength": 124,
+        "h1": "Roman Numeral Converter",
+        "h2Count": 6,
+        "h2Headings": [
+          "How to Use the Roman Numeral Converter",
+          "Features",
+          "Roman Numeral Rules and Examples",
+          "Roman numeral converter: practical uses",
+          "Frequently Asked Questions"
+        ],
+        "canonical": "https://anyconverter.io/roman-numeral-converter/",
+        "inSitemap": true
+      },
+      "internalLinksCount": 5,
+      "performance": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": "0.00%",
+        "position": null
+      }
+    },
+    {
+      "slug": "rotate-pdf",
+      "route": "/rotate-pdf/",
+      "category": "PDF Tools",
+      "isRedesigned": true,
+      "architecture": "redesigned-dc-runtime",
+      "availableLanguages": [
+        "en",
+        "es",
+        "da"
+      ],
+      "files": {
+        "enHtml": "rotate-pdf/index.html",
+        "esHtml": "es/rotate-pdf/index.html",
+        "daHtml": "da/rotate-pdf/index.html",
+        "jsFile": "/assets/js/tools/dc-runtime.js?v=20261012"
+      },
+      "seo": {
+        "title": "Rotate PDF Pages – Turn One Page or All, Permanently",
+        "titleLength": 52,
+        "metaDescription": "Rotate PDF pages in your browser and save the change. Turn single pages or all of them, or make every page portrait in one click. No quality loss.",
+        "metaDescriptionLength": 146,
+        "h1": "Rotate PDF pages and save the change",
+        "h2Count": 11,
+        "h2Headings": [
+          "How to rotate a PDF",
+          "Get every page the right way up",
+          "AnyConverter compared with typical PDF rotate tools",
+          "Why a rotated PDF sometimes opens sideways again",
+          "Frequently asked questions"
+        ],
+        "canonical": "https://anyconverter.io/rotate-pdf/",
+        "inSitemap": true
+      },
+      "internalLinksCount": 4,
+      "performance": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": "0.00%",
+        "position": null
+      }
+    },
+    {
+      "slug": "scan-to-pdf",
+      "route": "/scan-to-pdf/",
+      "category": "PDF Tools",
+      "isRedesigned": false,
+      "architecture": "legacy-pdf",
+      "availableLanguages": [
+        "en",
+        "es",
+        "da"
+      ],
+      "files": {
+        "enHtml": "scan-to-pdf/index.html",
+        "esHtml": "es/scan-to-pdf/index.html",
+        "daHtml": "da/scan-to-pdf/index.html",
+        "jsFile": "/assets/js/tools/scan-to-pdf.js"
+      },
+      "seo": {
+        "title": "Scan to PDF — Images to PDF Online Free | AnyConverter",
+        "titleLength": 54,
+        "metaDescription": "Use pdf combine for free in your browser. Get instant results, practical examples, related tools, and no signup.",
+        "metaDescriptionLength": 112,
+        "h1": "Scan to PDF",
+        "h2Count": 5,
+        "h2Headings": [
+          "How to Combine Scans into a PDF",
+          "Features",
+          "Pdf combine: practical uses",
+          "Frequently Asked Questions",
+          "Related Tools"
+        ],
+        "canonical": "https://anyconverter.io/scan-to-pdf/",
+        "inSitemap": true
+      },
+      "internalLinksCount": 3,
+      "performance": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": "0.00%",
+        "position": null
+      }
+    },
+    {
+      "slug": "screen-resolution",
+      "route": "/screen-resolution/",
+      "category": "Diagnostics & Testers",
+      "isRedesigned": false,
+      "architecture": "handwritten-legacy",
+      "availableLanguages": [
+        "en",
+        "es",
+        "da"
+      ],
+      "files": {
+        "enHtml": "screen-resolution/index.html",
+        "esHtml": "es/screen-resolution/index.html",
+        "daHtml": "da/screen-resolution/index.html",
+        "jsFile": "/assets/js/tools/screen-resolution.js"
+      },
+      "seo": {
+        "title": "Screen Resolution Checker Online Free | AnyConverter",
+        "titleLength": 52,
+        "metaDescription": "Use Screen Resolution Checker for free in your browser. Get instant results, practical examples, related tools, and no signup.",
+        "metaDescriptionLength": 126,
+        "h1": "Screen Resolution Checker",
+        "h2Count": 5,
+        "h2Headings": [
+          "How to Use the Screen Resolution Checker",
+          "Features",
+          "Screen Resolution Checker: practical uses",
+          "Frequently Asked Questions",
+          "Related Tools"
+        ],
+        "canonical": "https://anyconverter.io/screen-resolution/",
+        "inSitemap": true
+      },
+      "internalLinksCount": 10,
+      "performance": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": "0.00%",
+        "position": null
+      }
+    },
+    {
+      "slug": "sign-pdf",
+      "route": "/sign-pdf/",
+      "category": "PDF Tools",
+      "isRedesigned": false,
+      "architecture": "legacy-pdf",
+      "availableLanguages": [
+        "en",
+        "es",
+        "da"
+      ],
+      "files": {
+        "enHtml": "sign-pdf/index.html",
+        "esHtml": "es/sign-pdf/index.html",
+        "daHtml": "da/sign-pdf/index.html",
+        "jsFile": "/assets/js/tools/sign-pdf.js"
+      },
+      "seo": {
+        "title": "Sign PDF Online Free | AnyConverter",
+        "titleLength": 35,
+        "metaDescription": "Use Sign PDF for free in your browser. Get instant results, practical examples, related tools, and no signup.",
+        "metaDescriptionLength": 109,
+        "h1": "Sign PDF Online",
+        "h2Count": 5,
+        "h2Headings": [
+          "How to Sign a PDF",
+          "Features",
+          "Sign PDF: practical uses",
+          "Frequently Asked Questions",
+          "Related Tools"
+        ],
+        "canonical": "https://anyconverter.io/sign-pdf/",
+        "inSitemap": true
+      },
+      "internalLinksCount": 6,
+      "performance": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": "0.00%",
+        "position": null
+      }
+    },
+    {
+      "slug": "sleep-calculator",
+      "route": "/sleep-calculator/",
+      "category": "Calculators",
+      "isRedesigned": false,
+      "architecture": "handwritten-legacy",
+      "availableLanguages": [
+        "en",
+        "es",
+        "da"
+      ],
+      "files": {
+        "enHtml": "sleep-calculator/index.html",
+        "esHtml": "es/sleep-calculator/index.html",
+        "daHtml": "da/sleep-calculator/index.html",
+        "jsFile": "/assets/js/tools/sleep-calculator.js"
+      },
+      "seo": {
+        "title": "Sleep Calculator Online Free | AnyConverter",
+        "titleLength": 43,
+        "metaDescription": "Use sleep calculator for free in your browser. Get instant results, practical examples, related tools, and no signup.",
+        "metaDescriptionLength": 117,
+        "h1": "Sleep Calculator",
+        "h2Count": 5,
+        "h2Headings": [
+          "How to Use the Sleep Calculator",
+          "Features",
+          "Sleep calculator: practical uses",
+          "Frequently Asked Questions",
+          "Related Tools"
+        ],
+        "canonical": "https://anyconverter.io/sleep-calculator/",
+        "inSitemap": true
+      },
+      "internalLinksCount": 5,
+      "performance": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": "0.00%",
+        "position": null
+      }
+    },
+    {
+      "slug": "slope-grade-angle-calculator",
+      "route": "/slope-grade-angle-calculator/",
+      "category": "Calculators",
+      "isRedesigned": false,
+      "architecture": "handwritten-legacy",
+      "availableLanguages": [
+        "en",
+        "es",
+        "da"
+      ],
+      "files": {
+        "enHtml": "slope-grade-angle-calculator/index.html",
+        "esHtml": "es/slope-grade-angle-calculator/index.html",
+        "daHtml": "da/slope-grade-angle-calculator/index.html",
+        "jsFile": "/assets/js/tools/calc-kit.js?v=20261008"
+      },
+      "seo": {
+        "title": "Slope, Grade &amp; Angle Calculator Online Free | AnyConverter",
+        "titleLength": 62,
+        "metaDescription": "Free slope, grade and angle calculator: convert between slope ratio 1:n, decimal slope, percent grade, per mille, roof pitch and angle in degrees.",
+        "metaDescriptionLength": 146,
+        "h1": "Slope, Grade &amp; Angle Calculator",
+        "h2Count": 6,
+        "h2Headings": [
+          "How to convert slope, grade and angle",
+          "Every slope format in one place",
+          "Grade, slope and angle are not the same number",
+          "From measurements instead?",
+          "Frequently Asked Questions"
+        ],
+        "canonical": "https://anyconverter.io/slope-grade-angle-calculator/",
+        "inSitemap": true
+      },
+      "internalLinksCount": 5,
+      "performance": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": "0.00%",
+        "position": null
+      }
+    },
+    {
+      "slug": "spin-the-wheel",
+      "route": "/spin-the-wheel/",
+      "category": "Fun & Decision",
+      "isRedesigned": false,
+      "architecture": "handwritten-legacy",
+      "availableLanguages": [
+        "en",
+        "es",
+        "da"
+      ],
+      "files": {
+        "enHtml": "spin-the-wheel/index.html",
+        "esHtml": "es/spin-the-wheel/index.html",
+        "daHtml": "da/spin-the-wheel/index.html",
+        "jsFile": "/assets/js/tools/spin-the-wheel.js"
+      },
+      "seo": {
+        "title": "Spin the Wheel — Random Decision Maker Online Free | AnyConverter",
+        "titleLength": 65,
+        "metaDescription": "Use Spin the Wheel for free in your browser. Get instant results, practical examples, related tools, and no signup.",
+        "metaDescriptionLength": 115,
+        "h1": "Spin the Wheel",
+        "h2Count": 5,
+        "h2Headings": [
+          "How to Spin the Wheel",
+          "Features",
+          "Spin the Wheel: practical uses",
+          "Frequently Asked Questions",
+          "Related Tools"
+        ],
+        "canonical": "https://anyconverter.io/spin-the-wheel/",
+        "inSitemap": true
+      },
+      "internalLinksCount": 9,
+      "performance": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": "0.00%",
+        "position": null
+      }
+    },
+    {
+      "slug": "sticky-notes",
+      "route": "/sticky-notes/",
+      "category": "Productivity",
+      "isRedesigned": false,
+      "architecture": "handwritten-legacy",
+      "availableLanguages": [
+        "en",
+        "es",
+        "da"
+      ],
+      "files": {
+        "enHtml": "sticky-notes/index.html",
+        "esHtml": "es/sticky-notes/index.html",
+        "daHtml": "da/sticky-notes/index.html",
+        "jsFile": "/assets/js/tools/sticky-notes.js"
+      },
+      "seo": {
+        "title": "Sticky Notes Online Free | AnyConverter",
+        "titleLength": 39,
+        "metaDescription": "Create private online sticky notes that auto-save in your browser. Pin notes, search, filter by color, export backups, and import notes without signup.",
+        "metaDescriptionLength": 151,
+        "h1": "Sticky Notes Online",
+        "h2Count": 5,
+        "h2Headings": [
+          "How to Use Sticky Notes",
+          "Features",
+          "Free online sticky notes for quick planning",
+          "Frequently Asked Questions",
+          "Related Tools"
+        ],
+        "canonical": "https://anyconverter.io/sticky-notes/",
+        "inSitemap": true
+      },
+      "internalLinksCount": 5,
+      "performance": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": "0.00%",
+        "position": null
+      }
+    },
+    {
+      "slug": "stopwatch",
+      "route": "/stopwatch/",
+      "category": "Productivity",
+      "isRedesigned": false,
+      "architecture": "handwritten-legacy",
+      "availableLanguages": [
+        "en",
+        "es",
+        "da"
+      ],
+      "files": {
+        "enHtml": "stopwatch/index.html",
+        "esHtml": "es/stopwatch/index.html",
+        "daHtml": "da/stopwatch/index.html",
+        "jsFile": "/assets/js/tools/stopwatch.js"
+      },
+      "seo": {
+        "title": "Stopwatch Online Free | AnyConverter",
+        "titleLength": 36,
+        "metaDescription": "Use Stopwatch for free in your browser. Get instant results, practical examples, related tools, and no signup.",
+        "metaDescriptionLength": 110,
+        "h1": "Stopwatch Online",
+        "h2Count": 5,
+        "h2Headings": [
+          "How to Use the Stopwatch",
+          "Features",
+          "Stopwatch: practical uses",
+          "Frequently Asked Questions",
+          "Related Tools"
+        ],
+        "canonical": "https://anyconverter.io/stopwatch/",
+        "inSitemap": true
+      },
+      "internalLinksCount": 9,
+      "performance": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": "0.00%",
+        "position": null
+      }
+    },
+    {
+      "slug": "tarot-birth-card-calculator",
+      "route": "/tarot-birth-card-calculator/",
+      "category": "Calculators",
+      "isRedesigned": false,
+      "architecture": "handwritten-legacy",
+      "availableLanguages": [
+        "en",
+        "es",
+        "da"
+      ],
+      "files": {
+        "enHtml": "tarot-birth-card-calculator/index.html",
+        "esHtml": "es/tarot-birth-card-calculator/index.html",
+        "daHtml": "da/tarot-birth-card-calculator/index.html",
+        "jsFile": "/assets/js/tools/calc-kit.js?v=20261008"
+      },
+      "seo": {
+        "title": "Tarot Birth Card Calculator Online Free | AnyConverter",
+        "titleLength": 54,
+        "metaDescription": "Free Tarot birth card calculator: find your Personality and Soul cards from your birth date using the Mary K. Greer method, with every step explained.",
+        "metaDescriptionLength": 150,
+        "h1": "Tarot Birth Card Calculator",
+        "h2Count": 5,
+        "h2Headings": [
+          "How to find your Tarot birth card",
+          "A clear, fixed method",
+          "How the birth card is calculated",
+          "Frequently Asked Questions",
+          "Related Tools"
+        ],
+        "canonical": "https://anyconverter.io/tarot-birth-card-calculator/",
+        "inSitemap": true
+      },
+      "internalLinksCount": 8,
+      "performance": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": "0.00%",
+        "position": null
+      }
+    },
+    {
+      "slug": "team-picker",
+      "route": "/team-picker/",
+      "category": "Utility",
+      "isRedesigned": false,
+      "architecture": "handwritten-legacy",
+      "availableLanguages": [
+        "en",
+        "es",
+        "da"
+      ],
+      "files": {
+        "enHtml": "team-picker/index.html",
+        "esHtml": "es/team-picker/index.html",
+        "daHtml": "da/team-picker/index.html",
+        "jsFile": "/assets/js/tools/team-picker.js"
+      },
+      "seo": {
+        "title": "Team Picker — Split People into Random Teams | AnyConverter",
+        "titleLength": 59,
+        "metaDescription": "Create fair random teams from a list of names, balance group sizes, shuffle results, and copy team assignments.",
+        "metaDescriptionLength": 111,
+        "h1": "Team Picker Online",
+        "h2Count": 5,
+        "h2Headings": [
+          "How to Use Team Picker",
+          "Features",
+          "Team Picker Online: practical uses",
+          "Frequently Asked Questions",
+          "Related Tools"
+        ],
+        "canonical": "https://anyconverter.io/team-picker/",
+        "inSitemap": true
+      },
+      "internalLinksCount": 5,
+      "performance": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": "0.00%",
+        "position": null
+      }
+    },
+    {
+      "slug": "text-case-converter",
+      "route": "/text-case-converter/",
+      "category": "Utility",
+      "isRedesigned": false,
+      "architecture": "handwritten-legacy",
+      "availableLanguages": [
+        "en",
+        "es",
+        "da"
+      ],
+      "files": {
+        "enHtml": "text-case-converter/index.html",
+        "esHtml": "es/text-case-converter/index.html",
+        "daHtml": "da/text-case-converter/index.html",
+        "jsFile": "/assets/js/tools/text-case-converter.js"
+      },
+      "seo": {
+        "title": "Text Case Converter Online Free | AnyConverter",
+        "titleLength": 46,
+        "metaDescription": "Use Text Case Converter for free in your browser. Get instant results, practical examples, related tools, and no signup.",
+        "metaDescriptionLength": 120,
+        "h1": "Text Case Converter",
+        "h2Count": 5,
+        "h2Headings": [
+          "How to Use the Text Case Converter",
+          "Features",
+          "Text Case Converter: practical uses",
+          "Frequently Asked Questions",
+          "Related Tools"
+        ],
+        "canonical": "https://anyconverter.io/text-case-converter/",
+        "inSitemap": true
+      },
+      "internalLinksCount": 13,
+      "performance": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": "0.00%",
+        "position": null
+      }
+    },
+    {
+      "slug": "text-diff-checker",
+      "route": "/text-diff-checker/",
+      "category": "Utility",
+      "isRedesigned": false,
+      "architecture": "handwritten-legacy",
+      "availableLanguages": [
+        "en",
+        "es",
+        "da"
+      ],
+      "files": {
+        "enHtml": "text-diff-checker/index.html",
+        "esHtml": "es/text-diff-checker/index.html",
+        "daHtml": "da/text-diff-checker/index.html",
+        "jsFile": "/assets/js/tools/text-diff-checker.js"
+      },
+      "seo": {
+        "title": "Text Diff Checker Online Free | AnyConverter",
+        "titleLength": 44,
+        "metaDescription": "Use text diff checker for free in your browser. Get instant results, practical examples, related tools, and no signup.",
+        "metaDescriptionLength": 118,
+        "h1": "Text Diff Checker",
+        "h2Count": 5,
+        "h2Headings": [
+          "How to Use the Text Diff Checker",
+          "Features",
+          "Text diff checker: practical uses",
+          "Frequently Asked Questions",
+          "Related Tools"
+        ],
+        "canonical": "https://anyconverter.io/text-diff-checker/",
+        "inSitemap": true
+      },
+      "internalLinksCount": 10,
+      "performance": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": "0.00%",
+        "position": null
+      }
+    },
+    {
+      "slug": "text-repeater",
+      "route": "/text-repeater/",
+      "category": "Text Tools",
+      "isRedesigned": false,
+      "architecture": "handwritten-legacy",
+      "availableLanguages": [
+        "en",
+        "es",
+        "da"
+      ],
+      "files": {
+        "enHtml": "text-repeater/index.html",
+        "esHtml": "es/text-repeater/index.html",
+        "daHtml": "da/text-repeater/index.html",
+        "jsFile": "/assets/js/tools/text-repeater.js"
+      },
+      "seo": {
+        "title": "Text Repeater Online Free | AnyConverter",
+        "titleLength": 40,
+        "metaDescription": "Use text repeater online for free in your browser. Get instant results, practical examples, related tools, and no signup.",
+        "metaDescriptionLength": 121,
+        "h1": "Text Repeater",
+        "h2Count": 5,
+        "h2Headings": [
+          "How to Use the Text Repeater",
+          "Features",
+          "Text repeater online: practical uses",
+          "Frequently Asked Questions",
+          "Related Tools"
+        ],
+        "canonical": "https://anyconverter.io/text-repeater/",
+        "inSitemap": true
+      },
+      "internalLinksCount": 1,
+      "performance": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": "0.00%",
+        "position": null
+      }
+    },
+    {
+      "slug": "timestamp-converter",
+      "route": "/timestamp-converter/",
+      "category": "Developer Tools",
+      "isRedesigned": false,
+      "architecture": "handwritten-legacy",
+      "availableLanguages": [
+        "en",
+        "es",
+        "da"
+      ],
+      "files": {
+        "enHtml": "timestamp-converter/index.html",
+        "esHtml": "es/timestamp-converter/index.html",
+        "daHtml": "da/timestamp-converter/index.html",
+        "jsFile": "/assets/js/tools/timestamp.js"
+      },
+      "seo": {
+        "title": "Unix Timestamp Converter Online — Free | AnyConverter",
+        "titleLength": 53,
+        "metaDescription": "Use Unix Timestamp Converter for free in your browser. Get instant results, practical examples, related tools, and no signup.",
+        "metaDescriptionLength": 125,
+        "h1": "Unix Timestamp Converter",
+        "h2Count": 5,
+        "h2Headings": [
+          "How to Convert Timestamps",
+          "Features",
+          "Unix Timestamp Converter: practical uses",
+          "Frequently Asked Questions",
+          "Related Tools"
+        ],
+        "canonical": "https://anyconverter.io/timestamp-converter/",
+        "inSitemap": true
+      },
+      "internalLinksCount": 14,
+      "performance": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": "0.00%",
+        "position": null
+      }
+    },
+    {
+      "slug": "tip-calculator",
+      "route": "/tip-calculator/",
+      "category": "Calculators",
+      "isRedesigned": false,
+      "architecture": "handwritten-legacy",
+      "availableLanguages": [
+        "en",
+        "es",
+        "da"
+      ],
+      "files": {
+        "enHtml": "tip-calculator/index.html",
+        "esHtml": "es/tip-calculator/index.html",
+        "daHtml": "da/tip-calculator/index.html",
+        "jsFile": "/assets/js/tools/tip-calculator.js"
+      },
+      "seo": {
+        "title": "Tip Calculator Online Free | AnyConverter",
+        "titleLength": 41,
+        "metaDescription": "Use tip calculator for free in your browser. Get instant results, practical examples, related tools, and no signup.",
+        "metaDescriptionLength": 115,
+        "h1": "Tip Calculator",
+        "h2Count": 6,
+        "h2Headings": [
+          "How to Use Tip Calculator",
+          "Features",
+          "Tip and Split Bill Examples",
+          "Tip calculator: practical uses",
+          "Frequently Asked Questions"
+        ],
+        "canonical": "https://anyconverter.io/tip-calculator/",
+        "inSitemap": true
+      },
+      "internalLinksCount": 17,
+      "performance": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": "0.00%",
+        "position": null
+      }
+    },
+    {
+      "slug": "todo-list",
+      "route": "/todo-list/",
+      "category": "Productivity",
+      "isRedesigned": false,
+      "architecture": "handwritten-legacy",
+      "availableLanguages": [
+        "en",
+        "es",
+        "da"
+      ],
+      "files": {
+        "enHtml": "todo-list/index.html",
+        "esHtml": "es/todo-list/index.html",
+        "daHtml": "da/todo-list/index.html",
+        "jsFile": "/assets/js/tools/todo-list.js"
+      },
+      "seo": {
+        "title": "To-do List Online Free | AnyConverter",
+        "titleLength": 37,
+        "metaDescription": "Use To-do List for free in your browser. Get instant results, practical examples, related tools, and no signup.",
+        "metaDescriptionLength": 111,
+        "h1": "To-do List Online",
+        "h2Count": 5,
+        "h2Headings": [
+          "How to Use the To-do List",
+          "Features",
+          "To-do List: practical uses",
+          "Frequently Asked Questions",
+          "Related Tools"
+        ],
+        "canonical": "https://anyconverter.io/todo-list/",
+        "inSitemap": true
+      },
+      "internalLinksCount": 15,
+      "performance": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": "0.00%",
+        "position": null
+      }
+    },
+    {
+      "slug": "typing-speed-test",
+      "route": "/typing-speed-test/",
+      "category": "Diagnostics & Testers",
+      "isRedesigned": false,
+      "architecture": "handwritten-legacy",
+      "availableLanguages": [
+        "en",
+        "es",
+        "da"
+      ],
+      "files": {
+        "enHtml": "typing-speed-test/index.html",
+        "esHtml": "es/typing-speed-test/index.html",
+        "daHtml": "da/typing-speed-test/index.html",
+        "jsFile": "/assets/js/tools/typing-speed-test.js"
+      },
+      "seo": {
+        "title": "Typing Speed Test Online Free | AnyConverter",
+        "titleLength": 44,
+        "metaDescription": "Test typing speed and accuracy with easy, medium, and hard passages. Track WPM, accuracy, correct words, errors, and a 60-second timer.",
+        "metaDescriptionLength": 135,
+        "h1": "Typing Speed Test",
+        "h2Count": 5,
+        "h2Headings": [
+          "How to Use the Typing Speed Test",
+          "Features",
+          "Typing Speed Test: practical uses",
+          "Frequently Asked Questions",
+          "Related Tools"
+        ],
+        "canonical": "https://anyconverter.io/typing-speed-test/",
+        "inSitemap": true
+      },
+      "internalLinksCount": 3,
+      "performance": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": "0.00%",
+        "position": null
+      }
+    },
+    {
+      "slug": "unit-price-calculator",
+      "route": "/unit-price-calculator/",
+      "category": "Calculators",
+      "isRedesigned": false,
+      "architecture": "handwritten-legacy",
+      "availableLanguages": [
+        "en",
+        "es",
+        "da"
+      ],
+      "files": {
+        "enHtml": "unit-price-calculator/index.html",
+        "esHtml": "es/unit-price-calculator/index.html",
+        "daHtml": "da/unit-price-calculator/index.html",
+        "jsFile": "/assets/js/tools/calc-kit.js?v=20261008"
+      },
+      "seo": {
+        "title": "Unit Price Calculator Online Free | AnyConverter",
+        "titleLength": 48,
+        "metaDescription": "Free unit price calculator: compare products and pack sizes by price per kg, per 100 g, per litre or per item, and see which is cheapest and by how much.",
+        "metaDescriptionLength": 153,
+        "h1": "Unit Price Calculator",
+        "h2Count": 6,
+        "h2Headings": [
+          "How to compare unit prices",
+          "Smarter than the shelf label",
+          "How unit price is calculated",
+          "Units the calculator understands",
+          "Frequently Asked Questions"
+        ],
+        "canonical": "https://anyconverter.io/unit-price-calculator/",
+        "inSitemap": true
+      },
+      "internalLinksCount": 7,
+      "performance": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": "0.00%",
+        "position": null
+      }
+    },
+    {
+      "slug": "unlock-pdf",
+      "route": "/unlock-pdf/",
+      "category": "PDF Tools",
+      "isRedesigned": false,
+      "architecture": "legacy-pdf",
+      "availableLanguages": [
+        "en",
+        "es",
+        "da"
+      ],
+      "files": {
+        "enHtml": "unlock-pdf/index.html",
+        "esHtml": "es/unlock-pdf/index.html",
+        "daHtml": "da/unlock-pdf/index.html",
+        "jsFile": "/assets/js/tools/unlock-pdf.js"
+      },
+      "seo": {
+        "title": "Unlock PDF — Remove Password Online Free | AnyConverter",
+        "titleLength": 55,
+        "metaDescription": "Use Unlock PDF for free in your browser. Get instant results, practical examples, related tools, and no signup.",
+        "metaDescriptionLength": 111,
+        "h1": "Unlock PDF — Remove Password",
+        "h2Count": 5,
+        "h2Headings": [
+          "How to Unlock a PDF",
+          "Features",
+          "Unlock PDF: practical uses",
+          "Frequently Asked Questions",
+          "Related Tools"
+        ],
+        "canonical": "https://anyconverter.io/unlock-pdf/",
+        "inSitemap": true
+      },
+      "internalLinksCount": 3,
+      "performance": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": "0.00%",
+        "position": null
+      }
+    },
+    {
+      "slug": "url-encoder",
+      "route": "/url-encoder/",
+      "category": "Developer Tools",
+      "isRedesigned": false,
+      "architecture": "handwritten-legacy",
+      "availableLanguages": [
+        "en",
+        "es",
+        "da"
+      ],
+      "files": {
+        "enHtml": "url-encoder/index.html",
+        "esHtml": "es/url-encoder/index.html",
+        "daHtml": "da/url-encoder/index.html",
+        "jsFile": "/assets/js/tools/url-encoder.js"
+      },
+      "seo": {
+        "title": "URL Encoder &amp; Decoder Online — Free | AnyConverter",
+        "titleLength": 54,
+        "metaDescription": "Encode URL components, encode full URLs, or decode percent-encoded text. Supports plus-space mode, live conversion, and decode errors.",
+        "metaDescriptionLength": 134,
+        "h1": "URL Encoder &amp; Decoder",
+        "h2Count": 5,
+        "h2Headings": [
+          "How to Encode or Decode a URL",
+          "Features",
+          "URL encoder for components and full URLs",
+          "Frequently Asked Questions",
+          "Related Tools"
+        ],
+        "canonical": "https://anyconverter.io/url-encoder/",
+        "inSitemap": true
+      },
+      "internalLinksCount": 9,
+      "performance": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": "0.00%",
+        "position": null
+      }
+    },
+    {
+      "slug": "uuid-generator",
+      "route": "/uuid-generator/",
+      "category": "Developer Tools",
+      "isRedesigned": false,
+      "architecture": "handwritten-legacy",
+      "availableLanguages": [
+        "en",
+        "es",
+        "da"
+      ],
+      "files": {
+        "enHtml": "uuid-generator/index.html",
+        "esHtml": "es/uuid-generator/index.html",
+        "daHtml": "da/uuid-generator/index.html",
+        "jsFile": "/assets/js/tools/uuid-generator.js"
+      },
+      "seo": {
+        "title": "UUID Generator Online Free | AnyConverter",
+        "titleLength": 41,
+        "metaDescription": "Generate UUID v4 and v7 values in bulk, copy or download results, and validate UUID format directly in your browser.",
+        "metaDescriptionLength": 116,
+        "h1": "UUID / GUID Generator",
+        "h2Count": 5,
+        "h2Headings": [
+          "How to Use UUID Generator",
+          "Features",
+          "UUID Generator: practical uses",
+          "Frequently Asked Questions",
+          "Related Tools"
+        ],
+        "canonical": "https://anyconverter.io/uuid-generator/",
+        "inSitemap": true
+      },
+      "internalLinksCount": 8,
+      "performance": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": "0.00%",
+        "position": null
+      }
+    },
+    {
+      "slug": "viewport-size",
+      "route": "/viewport-size/",
+      "category": "Diagnostics & Testers",
+      "isRedesigned": false,
+      "architecture": "handwritten-legacy",
+      "availableLanguages": [
+        "en",
+        "es",
+        "da"
+      ],
+      "files": {
+        "enHtml": "viewport-size/index.html",
+        "esHtml": "es/viewport-size/index.html",
+        "daHtml": "da/viewport-size/index.html",
+        "jsFile": "/assets/js/tools/viewport-size.js"
+      },
+      "seo": {
+        "title": "Viewport Size Checker Online Free | AnyConverter",
+        "titleLength": 48,
+        "metaDescription": "Measure live viewport size, screen dimensions, device pixel ratio, and responsive breakpoints directly in your browser.",
+        "metaDescriptionLength": 119,
+        "h1": "Viewport Size Checker",
+        "h2Count": 5,
+        "h2Headings": [
+          "How to Use Viewport Size",
+          "Features",
+          "Viewport Size Checker: practical uses",
+          "Frequently Asked Questions",
+          "Related Tools"
+        ],
+        "canonical": "https://anyconverter.io/viewport-size/",
+        "inSitemap": true
+      },
+      "internalLinksCount": 3,
+      "performance": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": "0.00%",
+        "position": null
+      }
+    },
+    {
+      "slug": "webcam-tester",
+      "route": "/webcam-tester/",
+      "category": "Diagnostics & Testers",
+      "isRedesigned": false,
+      "architecture": "handwritten-legacy",
+      "availableLanguages": [
+        "en",
+        "es",
+        "da"
+      ],
+      "files": {
+        "enHtml": "webcam-tester/index.html",
+        "esHtml": "es/webcam-tester/index.html",
+        "daHtml": "da/webcam-tester/index.html",
+        "jsFile": "/assets/js/tools/webcam-tester.js"
+      },
+      "seo": {
+        "title": "Webcam Tester Online Free | AnyConverter",
+        "titleLength": 40,
+        "metaDescription": "Use Webcam Tester for free in your browser. Get instant results, practical examples, related tools, and no signup.",
+        "metaDescriptionLength": 114,
+        "h1": "Webcam Tester",
+        "h2Count": 5,
+        "h2Headings": [
+          "How to Use",
+          "Features",
+          "Webcam Tester: practical uses",
+          "Frequently Asked Questions",
+          "Related Tools"
+        ],
+        "canonical": "https://anyconverter.io/webcam-tester/",
+        "inSitemap": true
+      },
+      "internalLinksCount": 13,
+      "performance": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": "0.00%",
+        "position": null
+      }
+    },
+    {
+      "slug": "word-counter",
+      "route": "/word-counter/",
+      "category": "Text Tools",
+      "isRedesigned": false,
+      "architecture": "handwritten-legacy",
+      "availableLanguages": [
+        "en",
+        "es",
+        "da"
+      ],
+      "files": {
+        "enHtml": "word-counter/index.html",
+        "esHtml": "es/word-counter/index.html",
+        "daHtml": "da/word-counter/index.html",
+        "jsFile": "/assets/js/tools/word-counter.js"
+      },
+      "seo": {
+        "title": "Word Counter Online Free | AnyConverter",
+        "titleLength": 39,
+        "metaDescription": "Count words, characters, characters without spaces, sentences, paragraphs, and estimated reading time live as you type or paste text.",
+        "metaDescriptionLength": 133,
+        "h1": "Word Counter",
+        "h2Count": 5,
+        "h2Headings": [
+          "How to Use the Word Counter",
+          "Features",
+          "Word counter: practical uses",
+          "Frequently Asked Questions",
+          "Related Tools"
+        ],
+        "canonical": "https://anyconverter.io/word-counter/",
+        "inSitemap": true
+      },
+      "internalLinksCount": 23,
+      "performance": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": "0.00%",
+        "position": null
+      }
+    },
+    {
+      "slug": "world-clock",
+      "route": "/world-clock/",
+      "category": "Productivity",
+      "isRedesigned": false,
+      "architecture": "handwritten-legacy",
+      "availableLanguages": [
+        "en"
+      ],
+      "files": {
+        "enHtml": "world-clock/index.html",
+        "esHtml": null,
+        "daHtml": null,
+        "jsFile": "/assets/js/tools/world-clock.js"
+      },
+      "seo": {
+        "title": "World Clock Online Free | AnyConverter",
+        "titleLength": 38,
+        "metaDescription": "Use World Clock for free in your browser. Get instant results, practical examples, related tools, and no signup.",
+        "metaDescriptionLength": 112,
+        "h1": "World Clock",
+        "h2Count": 5,
+        "h2Headings": [
+          "How to Use the World Clock",
+          "Features",
+          "World Clock: practical uses",
+          "Frequently Asked Questions",
+          "Related Tools"
+        ],
+        "canonical": "https://anyconverter.io/world-clock/",
+        "inSitemap": true
+      },
+      "internalLinksCount": 12,
+      "performance": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": "0.00%",
+        "position": null
+      }
+    },
+    {
+      "slug": "xml-formatter",
+      "route": "/xml-formatter/",
+      "category": "Developer Tools",
+      "isRedesigned": false,
+      "architecture": "handwritten-legacy",
+      "availableLanguages": [
+        "en",
+        "es",
+        "da"
+      ],
+      "files": {
+        "enHtml": "xml-formatter/index.html",
+        "esHtml": "es/xml-formatter/index.html",
+        "daHtml": "da/xml-formatter/index.html",
+        "jsFile": "/assets/js/tools/xml-formatter.js"
+      },
+      "seo": {
+        "title": "XML Formatter &amp; Validator Online — Free | AnyConverter",
+        "titleLength": 58,
+        "metaDescription": "Use XML Formatter &amp; Validator for free in your browser. Get instant results, practical examples, related tools, and no signup.",
+        "metaDescriptionLength": 130,
+        "h1": "XML Formatter &amp; Validator",
+        "h2Count": 5,
+        "h2Headings": [
+          "How to Format XML",
+          "Features",
+          "XML Formatter &amp; Validator: practical uses",
+          "Frequently Asked Questions",
+          "Related Tools"
+        ],
+        "canonical": "https://anyconverter.io/xml-formatter/",
+        "inSitemap": true
+      },
+      "internalLinksCount": 10,
+      "performance": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": "0.00%",
+        "position": null
+      }
+    }
+  ]
+}

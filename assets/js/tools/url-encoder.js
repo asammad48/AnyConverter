@@ -65,6 +65,49 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
+  function resilientDecode(str) {
+    if (!str) return '';
+    const prep = str.replace(/\+/g, ' ');
+    try {
+      return decodeURIComponent(prep);
+    } catch (_) {}
+
+    // Step 1: Escape lone '%' signs that are not followed by 2 hex digits
+    const sanitized = prep.replace(/%(?![0-9A-Fa-f]{2})/g, '%25');
+    try {
+      return decodeURIComponent(sanitized);
+    } catch (_) {}
+
+    // Step 2: Handle malformed or isolated invalid UTF-8 sequences without breaking multi-byte tokens
+    return sanitized.replace(/(%[0-9A-Fa-f]{2})+/g, function(match) {
+      try {
+        return decodeURIComponent(match);
+      } catch (_) {}
+
+      let res = '';
+      let rem = match;
+      while (rem.length >= 3) {
+        let dec = false;
+        for (const len of [12, 9, 6, 3]) {
+          if (rem.length >= len) {
+            const chunk = rem.slice(0, len);
+            try {
+              res += decodeURIComponent(chunk);
+              rem = rem.slice(len);
+              dec = true;
+              break;
+            } catch (_) {}
+          }
+        }
+        if (!dec) {
+          res += rem.slice(0, 3);
+          rem = rem.slice(3);
+        }
+      }
+      return res + rem;
+    });
+  }
+
   function convert() {
     const val = urlInput.value;
     if (!val) { urlOutput.value = ''; urlStatus.style.display = 'none'; return; }
@@ -75,7 +118,7 @@ document.addEventListener('DOMContentLoaded', function () {
       } else if (currentMode === 'full') {
         result = encodeURI(val);
       } else {
-        result = decodeURIComponent(val.replace(/\+/g, ' '));
+        result = resilientDecode(val);
       }
       if (currentMode !== 'decode' && isToggleOn(plusSpacesToggle)) {
         result = result.replace(/%20/g, '+');

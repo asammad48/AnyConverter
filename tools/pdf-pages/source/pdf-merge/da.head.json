@@ -1,0 +1,106 @@
+{
+ "title": "Saml PDF-filer – Flet PDF’er og Vælg Sider, Ingen Upload",
+ "desc": "Saml flere PDF-filer til én i din browser. Sæt filerne i rækkefølge, udelad sider, du ikke skal bruge, og tilføj blanke sider til dobbeltsidet print. Gratis.",
+ "ld": {
+  "@context": "https://schema.org",
+  "@graph": [
+   {
+    "@type": "WebApplication",
+    "name": "Saml PDF-filer til ét dokument",
+    "url": "https://anyconverter.io/da/pdf-merge/",
+    "description": "Saml flere PDF-filer til én i din browser. Sæt filerne i rækkefølge, udelad sider, du ikke skal bruge, og tilføj blanke sider til dobbeltsidet print. Gratis.",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Any (web browser)",
+    "browserRequirements": "Requires JavaScript",
+    "inLanguage": "da",
+    "isAccessibleForFree": true,
+    "offers": {
+     "@type": "Offer",
+     "price": "0",
+     "priceCurrency": "USD"
+    },
+    "featureList": [
+     "Vælg sider fra hver fil",
+     "Klar til dobbeltsidet print",
+     "Ingen grænse for filer eller størrelse",
+     "Filerne bliver på din enhed",
+     "Navngiv filen, før du gemmer",
+     "Intet vandmærke eller login"
+    ],
+    "publisher": {
+     "@type": "Organization",
+     "name": "AnyConverter",
+     "url": "https://anyconverter.io"
+    }
+   },
+   {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+     {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Forside",
+      "item": "https://anyconverter.io/da/"
+     },
+     {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "PDF-værktøjer",
+      "item": "https://anyconverter.io/da/pdf-vaerktoejer/"
+     },
+     {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Saml PDF",
+      "item": "https://anyconverter.io/da/pdf-merge/"
+     }
+    ]
+   },
+   {
+    "@type": "FAQPage",
+    "mainEntity": [
+     {
+      "@type": "Question",
+      "name": "Hvor mange PDF’er kan jeg samle på én gang?",
+      "acceptedAnswer": {
+       "@type": "Answer",
+       "text": "Der er ingen fast grænse. Meget store opgaver, som hundredvis af scannede sider, afhænger af din enheds hukommelse."
+      }
+     },
+     {
+      "@type": "Question",
+      "name": "Bliver mine filer uploadet?",
+      "acceptedAnswer": {
+       "@type": "Answer",
+       "text": "Nej. Filerne læses og samles i din browser, så intet sendes til vores servere."
+      }
+     },
+     {
+      "@type": "Question",
+      "name": "Kan jeg kun tage nogle af siderne med?",
+      "acceptedAnswer": {
+       "@type": "Answer",
+       "text": "Ja. Åbn filen i listen, og klik på de sider, der skal udelades. De springes over i den samlede fil."
+      }
+     },
+     {
+      "@type": "Question",
+      "name": "Ændrer kvaliteten sig?",
+      "acceptedAnswer": {
+       "@type": "Answer",
+       "text": "Nej. Siderne kopieres, som de er, uden at billeder komprimeres igen eller tekst laves om til billeder."
+      }
+     },
+     {
+      "@type": "Question",
+      "name": "Hvorfor er der kommet en blank side i min PDF?",
+      "acceptedAnswer": {
+       "@type": "Answer",
+       "text": "Du har slået dobbeltsidet print til. Der tilføjes en blank side efter hver fil med et ulige antal sider, så den næste fil starter på et nyt ark."
+      }
+     }
+    ]
+   }
+  ]
+ }
+}

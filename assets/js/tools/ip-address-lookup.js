@@ -47,22 +47,24 @@
     };
   }
 
-  function fromGeolocationDb(data) {
-    if (!data.IPv4) return null;
+  function fromFreeIpApi(data) {
+    if (!data || !data.ipAddress) return null;
+    var asnStr = data.asn ? ('AS' + String(data.asn).replace(/^AS/i, '')) : '—';
+    var orgName = data.asnOrganization || data.isp || '—';
     return {
-      ip:        data.IPv4,
-      city:      data.city         || '—',
-      region:    data.state        || '—',
-      country:   data.country_name || '—',
-      postal:    '—',
-      latitude:  data.latitude     || '—',
-      longitude: data.longitude    || '—',
-      timezone:  '—',
+      ip:        data.ipAddress,
+      city:      data.cityName     || '—',
+      region:    data.regionName   || '—',
+      country:   (data.countryName || '—') + (data.countryCode ? ' (' + data.countryCode + ')' : ''),
+      postal:    data.zipCode      || '—',
+      latitude:  data.latitude != null ? String(data.latitude) : '—',
+      longitude: data.longitude != null ? String(data.longitude) : '—',
+      timezone:  (data.timeZones && data.timeZones[0]) || data.timeZone || '—',
       utc:       '—',
-      org:       '—',
-      asn:       '—',
-      currency:  '—',
-      languages: '—'
+      org:       orgName,
+      asn:       asnStr,
+      currency:  (data.currencies && data.currencies[0]) || '—',
+      languages: (data.languages && data.languages.join(', ')) || '—'
     };
   }
 
@@ -75,12 +77,12 @@
         parse: fromIpinfo
       },
       {
-        url:   ip ? 'https://ipapi.co/' + enc + '/json/' : 'https://ipapi.co/json/',
-        parse: fromIpapi
+        url:   ip ? 'https://freeipapi.com/api/json/' + enc : 'https://freeipapi.com/api/json',
+        parse: fromFreeIpApi
       },
       {
-        url:   ip ? 'https://geolocation-db.com/json/' + enc : 'https://geolocation-db.com/json/',
-        parse: fromGeolocationDb
+        url:   ip ? 'https://ipapi.co/' + enc + '/json/' : 'https://ipapi.co/json/',
+        parse: fromIpapi
       }
     ];
   }
@@ -189,6 +191,84 @@
   }
 
   /* ── Main lookup function ──────────────────────────────────── */
+  
+  /* ── Hero Card Controller ──────────────────────────────────── */
+  var userPublicData = null;
+
+  function updateHeroCard(d, isError) {
+    var heroDisplay = document.getElementById('ip-hero-display');
+    var copyBtn     = document.getElementById('btn-copy-hero-ip');
+    var heroMeta    = document.getElementById('ip-hero-meta');
+    var metaLoc     = document.getElementById('ip-meta-location');
+    var metaIsp     = document.getElementById('ip-meta-isp');
+    var metaAsn     = document.getElementById('ip-meta-asn');
+
+    if (!heroDisplay) return;
+
+    if (isError) {
+      if (!userPublicData) {
+        heroDisplay.textContent = t({
+          en: 'Detection failed',
+          es: 'Error al detectar IP',
+          da: 'Kunne ikke finde IP'
+        });
+        if (copyBtn) copyBtn.style.display = 'none';
+        if (heroMeta) {
+          heroMeta.style.display = 'flex';
+          heroMeta.innerHTML = '<span class="ip-meta-item" style="color:var(--color-danger, #ef4444); cursor:pointer;" id="hero-retry-trigger">⚠️ ' +
+            t({
+              en: 'Lookup failed. Click to retry',
+              es: 'Error de búsqueda. Clic para reintentar',
+              da: 'Opslag mislykkedes. Klik for at prøve igen'
+            }) + '</span>';
+          var retry = document.getElementById('hero-retry-trigger');
+          if (retry) {
+            retry.addEventListener('click', function() {
+              heroDisplay.textContent = t({ en: 'Detecting IP…', es: 'Detectando IP…', da: 'Finder IP…' });
+              lookup('');
+            });
+          }
+        }
+      }
+      return;
+    }
+
+    if (!d || !d.ip) return;
+
+    heroDisplay.textContent = d.ip;
+    if (copyBtn) {
+      copyBtn.style.display = 'inline-flex';
+      copyBtn.onclick = function() {
+        if (window.copyToClipboard) {
+          window.copyToClipboard(d.ip, copyBtn);
+        } else if (navigator.clipboard) {
+          navigator.clipboard.writeText(d.ip).catch(function(){});
+        }
+      };
+    }
+
+    if (heroMeta) {
+      heroMeta.style.display = 'flex';
+      var locParts = [d.city, d.region, d.country].filter(function(p) {
+        return p && p !== '—' && p !== '-';
+      });
+      if (metaLoc) {
+        metaLoc.textContent = '📍 ' + (locParts.length ? locParts.join(', ') : '—');
+        metaLoc.style.display = locParts.length ? '' : 'none';
+      }
+      if (metaIsp) {
+        var ispVal = d.org && d.org !== '—' ? d.org : '';
+        metaIsp.textContent = '🏢 ' + (ispVal || '—');
+        metaIsp.style.display = ispVal ? '' : 'none';
+      }
+      if (metaAsn) {
+        var asnVal = d.asn && d.asn !== '—' ? d.asn : '';
+        metaAsn.textContent = '🌐 ' + (asnVal || '—');
+        metaAsn.style.display = asnVal ? '' : 'none';
+      }
+    }
+  }
+
   function lookup(ip) {
     var results = document.getElementById('ip-results');
     var error   = document.getElementById('ip-error');
@@ -200,9 +280,19 @@
     var q = document.getElementById('ip-quality');
     if (q) q.innerHTML = '<strong>Lookup quality</strong><p class="prototype-muted-note">Trying public IP lookup services…</p>';
 
-    lookupWithFallback(ip || '')
-      .then(function(data) { renderResult(data); })
+    var isCustomSearch = !!(ip && ip.trim());
+    lookupWithFallback(isCustomSearch ? ip.trim() : '')
+      .then(function(data) {
+        if (!isCustomSearch) {
+          userPublicData = data;
+          updateHeroCard(data, false);
+        }
+        renderResult(data, isCustomSearch);
+      })
       .catch(function(e) {
+        if (!isCustomSearch) {
+          updateHeroCard(null, true);
+        }
         error.textContent   = e.message;
         error.style.display = 'block';
       })

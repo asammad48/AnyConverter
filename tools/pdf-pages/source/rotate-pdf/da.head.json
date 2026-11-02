@@ -1,0 +1,97 @@
+{
+ "title": "Rotér PDF – Drej Én Side eller Alle og Gem Ændringen",
+ "desc": "Rotér PDF-sider i din browser, og gem ændringen. Drej enkelte sider eller alle, eller gør alle sider stående med ét klik. Uden kvalitetstab og uden upload.",
+ "ld": {
+  "@context": "https://schema.org",
+  "@graph": [
+   {
+    "@type": "WebApplication",
+    "name": "Rotér PDF-sider, og gem ændringen",
+    "url": "https://anyconverter.io/da/rotate-pdf/",
+    "description": "Rotér PDF-sider i din browser, og gem ændringen. Drej enkelte sider eller alle, eller gør alle sider stående med ét klik. Uden kvalitetstab og uden upload.",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Any (web browser)",
+    "browserRequirements": "Requires JavaScript",
+    "inLanguage": "da",
+    "isAccessibleForFree": true,
+    "offers": {
+     "@type": "Offer",
+     "price": "0",
+     "priceCurrency": "USD"
+    },
+    "featureList": [
+     "Gør alle sider stående",
+     "Klik på en side for at dreje den",
+     "Intet kvalitetstab",
+     "Din PDF bliver på din enhed",
+     "Gemt permanent"
+    ],
+    "publisher": {
+     "@type": "Organization",
+     "name": "AnyConverter",
+     "url": "https://anyconverter.io"
+    }
+   },
+   {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+     {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Forside",
+      "item": "https://anyconverter.io/da/"
+     },
+     {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "PDF-værktøjer",
+      "item": "https://anyconverter.io/da/pdf-vaerktoejer/"
+     },
+     {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Rotér PDF",
+      "item": "https://anyconverter.io/da/rotate-pdf/"
+     }
+    ]
+   },
+   {
+    "@type": "FAQPage",
+    "mainEntity": [
+     {
+      "@type": "Question",
+      "name": "Hvordan roterer jeg kun én side?",
+      "acceptedAnswer": {
+       "@type": "Answer",
+       "text": "Klik på siden. Hvert klik drejer den yderligere 90° med uret."
+      }
+     },
+     {
+      "@type": "Question",
+      "name": "Sænker rotation kvaliteten?",
+      "acceptedAnswer": {
+       "@type": "Answer",
+       "text": "Nej. Kun hver sides rotationsindstilling ændres."
+      }
+     },
+     {
+      "@type": "Question",
+      "name": "Bliver rotationen gemt?",
+      "acceptedAnswer": {
+       "@type": "Answer",
+       "text": "Ja. Den gemmes i den nye PDF, så den åbner rigtigt i alle programmer."
+      }
+     },
+     {
+      "@type": "Question",
+      "name": "Bliver min fil uploadet?",
+      "acceptedAnswer": {
+       "@type": "Answer",
+       "text": "Nej. Alt sker i din browser."
+      }
+     }
+    ]
+   }
+  ]
+ }
+}

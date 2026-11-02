@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Búsqueda de Dirección IP Online Gratis | AnyConverter</title>
-  <meta name="description" content="Consulta tu IP publica, ubicacion aproximada, proveedor, zona horaria y datos de red al instante con una guia clara de privacidad.">
+  <title>¿Cuál es mi dirección IP? — Consulta de IP y Geolocalización | AnyConverter</title>
+  <meta name="description" content="Consulta tu dirección IP pública al instante con geolocalización, proveedor ISP, ciudad, país y ASN. Rápido, privado y 100% gratuito.">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://anyconverter.io/es/ip-address-lookup/">
   <link rel="alternate" hreflang="en" href="https://anyconverter.io/ip-address-lookup/">
@@ -13,8 +13,8 @@
   <link rel="alternate" hreflang="x-default" href="https://anyconverter.io/ip-address-lookup/">
 
 <meta property="og:type" content="website">
-  <meta property="og:title" content="Búsqueda de Dirección IP Online Gratis | AnyConverter">
-  <meta property="og:description" content="Consulta tu IP publica, ubicacion aproximada, proveedor, zona horaria y datos de red al instante con una guia clara de privacidad.">
+  <meta property="og:title" content="¿Cuál es mi dirección IP? — Consulta de IP y Geolocalización | AnyConverter">
+  <meta property="og:description" content="Consulta tu dirección IP pública al instante con geolocalización, proveedor ISP, ciudad, país y ASN. Rápido, privado y 100% gratuito.">
   <meta property="og:url" content="https://anyconverter.io/es/ip-address-lookup/">
   <meta property="og:site_name" content="AnyConverter">
   <meta property="og:image" content="https://anyconverter.io/assets/img/og-image.png">
@@ -22,8 +22,8 @@
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="AnyConverter free online tools">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Búsqueda de Dirección IP Online Gratis | AnyConverter">
-  <meta name="twitter:description" content="Consulta tu IP publica, ubicacion aproximada, proveedor, zona horaria y datos de red al instante con una guia clara de privacidad.">
+  <meta name="twitter:title" content="¿Cuál es mi dirección IP? — Consulta de IP y Geolocalización | AnyConverter">
+  <meta name="twitter:description" content="Consulta tu dirección IP pública al instante con geolocalización, proveedor ISP, ciudad, país y ASN. Rápido, privado y 100% gratuito.">
   <meta name="twitter:image" content="https://anyconverter.io/assets/img/og-image.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -59,6 +59,20 @@
     <div class="tool-wrapper">
       <div class="tool-zone">
         <div style="padding:24px">
+          <!-- Immediate Public IP Hero Card -->
+          <div class="ip-hero-card" id="ip-hero-card">
+            <div class="ip-hero-badge" id="ip-hero-badge">Tu Dirección IP Pública</div>
+            <div class="ip-hero-main">
+              <span class="ip-hero-display" id="ip-hero-display">Detectando IP…</span>
+              <button class="ac-btn" type="button" id="btn-copy-hero-ip" title="Copy IP" aria-label="Copy IP address" style="display:none">Copy</button>
+            </div>
+            <div class="ip-hero-meta" id="ip-hero-meta" style="display:none">
+              <span class="ip-meta-item" id="ip-meta-location">📍 Location: —</span>
+              <span class="ip-meta-item" id="ip-meta-isp">🏢 ISP: —</span>
+              <span class="ip-meta-item" id="ip-meta-asn">🌐 ASN: —</span>
+            </div>
+          </div>
+
           <div style="margin-bottom:16px">
             <label style="display:block;font-size:13px;font-weight:500;margin-bottom:6px" for="ip-input">IP Address (leave blank for your IP)</label>
             <div style="display:flex;gap:8px">
@@ -69,6 +83,7 @@
           </div>
           <div id="ip-error" style="display:none;color:var(--color-pdf,#EF4444);font-size:13px;margin-bottom:12px"></div>
           <div id="ip-results" style="display:none;background:var(--color-bg,#F7F6F3);border:1px solid var(--color-border,#DDD8D0);border-radius:8px;padding:0 16px"></div>
+          <p class="ip-privacy-note" style="font-size:12px;color:var(--color-text-2,#6B7280);margin-top:12px">Nota: La geolocalización y el ASN consultan APIs públicas seguras (freeipapi.com / ipify.org). AnyConverter no almacena consultas ni identificadores personales.</p>
         </div>
       </div>
       <aside class="tool-side" aria-label="Opciones">
@@ -107,15 +122,15 @@
     </section>
     <!-- SEO keyword implementation: 2026-08-21 -->
     <section class="seo-content" data-seo-keyword-plan="2026-08-21">
-      <h2>Ip address lookup: usos practicos</h2>
-      <p>Usa ip address lookup cuando necesites una respuesta rapida, clara y privada sin crear una cuenta. La pagina tambien cubre variantes relacionadas como ip address lookup online, ip address lookup prueba, ip address lookup verificador para que puedas elegir el flujo correcto.</p>
+      <h2>Ip address lookup: usos prácticos</h2>
+      <p>Usa ip address lookup cuando necesites una respuesta rápida, clara y privada sin crear una cuenta. La página también cubre variantes relacionadas como ip address lookup online, ip address lookup prueba, ip address lookup verificador para que puedas elegir el flujo correcto.</p>
       <h3>Cuándo usarlo</h3>
       <ul>
-        <li><strong>Ideal para:</strong> Comprobar navegador, dispositivo, red, pantalla, microfono, camara, teclado o fortaleza de contrasenas rapidamente.</li>
-        <li><strong>Detalles utiles:</strong> Revisa los permisos del navegador con cuidado y usa el resultado para acotar el problema.</li>
-        <li><strong>Siguiente paso:</strong> Usa otro diagnostico si el problema afecta velocidad, pantalla, dispositivos de entrada, pixeles o datos del navegador.</li>
+        <li><strong>Ideal para:</strong> Comprobar navegador, dispositivo, red, pantalla, micrófono, cámara, teclado o fortaleza de contraseñas rápidamente.</li>
+        <li><strong>Detalles útiles:</strong> Revisa los permisos del navegador con cuidado y usa el resultado para acotar el problema.</li>
+        <li><strong>Siguiente paso:</strong> Usa otro diagnóstico si el problema afecta velocidad, pantalla, dispositivos de entrada, píxeles o datos del navegador.</li>
       </ul>
-      <p>Para continuar, prueba tambien <a href="/es/internet-speed-test/">Prueba de Velocidad de Internet</a>, <a href="/es/webcam-tester/">Probador de Webcam</a>, <a href="/es/microphone-tester/">Probador de Micrófono</a>, <a href="/es/keyboard-tester/">Probador de Teclado</a>.</p>
+      <p>Para continuar, prueba también <a href="/es/internet-speed-test/">Prueba de Velocidad de Internet</a>, <a href="/es/webcam-tester/">Probador de Webcam</a>, <a href="/es/microphone-tester/">Probador de Micrófono</a>, <a href="/es/keyboard-tester/">Probador de Teclado</a>.</p>
     </section>
 
     <div class="ad-slot ad-slot--rectangle" style="margin:0 auto 32px">
@@ -145,29 +160,15 @@
     <section class="related-tools">
       <h2>Herramientas Relacionadas</h2>
       <div class="tool-grid">
-        <a href="/es/uuid-generator/" class="tool-card">
-          <img src="/assets/img/icon-hash.svg" alt="Generador UUID icon" class="tool-card-icon" width="40" height="40" loading="lazy">
-          <h3>Generador UUID</h3>
-          <p>Genera UUIDs aleatorios (v4) al instante, uno o en masa.</p>
-          <span class="tool-card-link">Usar →</span>
-        </a>
-        <a href="/es/jwt-decoder/" class="tool-card">
-          <img src="/assets/img/icon-hash.svg" alt="Decodificador JWT icon" class="tool-card-icon" width="40" height="40" loading="lazy">
-          <h3>Decodificador JWT</h3>
-          <p>Decodifica e inspecciona JSON Web Tokens sin servidor.</p>
-          <span class="tool-card-link">Usar →</span>
-        </a>
-        <a href="/es/random-number-generator/" class="tool-card">
-          <img src="/assets/img/icon-calculator.svg" alt="Generador de Números Aleatorios icon" class="tool-card-icon" width="40" height="40" loading="lazy">
-          <h3>Generador de Números Aleatorios</h3>
-          <p>Genera números aleatorios dentro de cualquier rango al instante.</p>
-          <span class="tool-card-link">Usar →</span>
-        </a>
+        <a href="/es/internet-speed-test/" class="tool-card"><img src="/assets/img/icon-speed.svg" alt="Prueba de Velocidad de Internet Online Gratis icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Prueba de Velocidad de Internet Online Gratis</h3><p>Haz una prueba de velocidad de internet en el navegador con ping, descarga, subida y notas para entender la conexion.</p><span class="tool-card-link">Probar →</span></a>
+        <a href="/es/browser-info/" class="tool-card"><img src="/assets/img/icon-browser.svg" alt="Visor de Información del Navegador Online Gratis icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Visor de Información del Navegador Online Gratis</h3><p>Usa Visor de Información del Navegador gratis en el navegador.</p><span class="tool-card-link">Probar →</span></a>
+        <a href="/es/viewport-size/" class="tool-card"><img src="/assets/img/icon-viewport.svg" alt="Comprobador de Tamaño de Ventana Online Gratis icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Comprobador de Tamaño de Ventana Online Gratis</h3><p>Mide tamano de viewport, pantalla, relacion de pixeles y breakpoints responsive directamente en el navegador Incluye pasos claros, resultados practicos y sin registro.</p><span class="tool-card-link">Probar →</span></a>
+        <a href="/es/url-encoder/" class="tool-card"><img src="/assets/img/icon-url.svg" alt="Codificador URL Online Gratis icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Codificador URL Online Gratis</h3><p>Usa url encoder gratis en el navegador.</p><span class="tool-card-link">Probar →</span></a>
       </div>
     </section>
   </main>
   <footer id="site-footer" class="site-footer"></footer>
-  <script src="/assets/js/shared.js?v=20260928-ga4" defer></script>
+  <script src="/assets/js/shared.js?v=20261101" defer></script>
   <script src="/assets/js/tools/ip-address-lookup.js" defer></script>
 </body>
 </html>

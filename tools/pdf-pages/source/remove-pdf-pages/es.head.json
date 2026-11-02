@@ -1,0 +1,97 @@
+{
+ "title": "Eliminar Páginas de PDF – Borra Páginas en Blanco y Más",
+ "desc": "Borra páginas de un PDF en tu navegador. Pulsa las que sobran, escribe rangos o deja que la herramienta encuentre las páginas en blanco del escáner.",
+ "ld": {
+  "@context": "https://schema.org",
+  "@graph": [
+   {
+    "@type": "WebApplication",
+    "name": "Eliminar páginas de un PDF",
+    "url": "https://anyconverter.io/es/remove-pdf-pages/",
+    "description": "Borra páginas de un PDF en tu navegador. Pulsa las que sobran, escribe rangos o deja que la herramienta encuentre las páginas en blanco del escáner.",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Any (web browser)",
+    "browserRequirements": "Requires JavaScript",
+    "inLanguage": "es",
+    "isAccessibleForFree": true,
+    "offers": {
+     "@type": "Offer",
+     "price": "0",
+     "priceCurrency": "USD"
+    },
+    "featureList": [
+     "Encuentra las páginas en blanco",
+     "Pulsa o escribe",
+     "Cambia de opinión",
+     "Tu PDF no sale de tu dispositivo",
+     "Sin marca de agua ni registro"
+    ],
+    "publisher": {
+     "@type": "Organization",
+     "name": "AnyConverter",
+     "url": "https://anyconverter.io"
+    }
+   },
+   {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+     {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Inicio",
+      "item": "https://anyconverter.io/es/"
+     },
+     {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Herramientas PDF",
+      "item": "https://anyconverter.io/es/herramientas-pdf/"
+     },
+     {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Eliminar páginas PDF",
+      "item": "https://anyconverter.io/es/remove-pdf-pages/"
+     }
+    ]
+   },
+   {
+    "@type": "FAQPage",
+    "mainEntity": [
+     {
+      "@type": "Question",
+      "name": "¿Cómo borro una página de un PDF?",
+      "acceptedAnswer": {
+       "@type": "Answer",
+       "text": "Pulsa esa página para que muestre una cruz y luego pulsa Eliminar."
+      }
+     },
+     {
+      "@type": "Question",
+      "name": "¿Puede quitar las páginas en blanco de un escaneo?",
+      "acceptedAnswer": {
+       "@type": "Answer",
+       "text": "Sí. Pulsa Buscar páginas en blanco y se marcan las vacías. Revísalas y guarda."
+      }
+     },
+     {
+      "@type": "Question",
+      "name": "¿Se sube mi archivo?",
+      "acceptedAnswer": {
+       "@type": "Answer",
+       "text": "No. El PDF se edita en tu navegador."
+      }
+     },
+     {
+      "@type": "Question",
+      "name": "¿Puedo quitar todas las páginas?",
+      "acceptedAnswer": {
+       "@type": "Answer",
+       "text": "No. Tiene que quedar al menos una."
+      }
+     }
+    ]
+   }
+  ]
+ }
+}

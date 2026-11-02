@@ -162,7 +162,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Display with syntax colors
     const escaped = escXml(formatted);
-    outputEl.innerHTML = colorizeXml(escaped);
+    if (lines < 1500 && formatted.length < 150000) {
+      outputEl.innerHTML = colorizeXml(escaped);
+    } else {
+      outputEl.textContent = formatted;
+    }
     if (outputEl.parentElement && outputEl.parentElement.tagName === 'PRE') {
       outputEl.parentElement.style.whiteSpace = 'pre-wrap';
     }
@@ -221,8 +225,8 @@ document.addEventListener('DOMContentLoaded', function () {
   bind(byId('btn-minify', 'btn-minify-xml'), 'click', minifyXML);
   bind(byId('btn-validate', 'btn-validate-xml'), 'click', validateXML);
   bind(byId('btn-clear', 'btn-clear-xml'), 'click', function() { input.value = ''; formatXML(); });
-  bind(document.getElementById('btn-copy-input'), 'click', function() { window.copyToClipboard(input.value); });
-  bind(byId('btn-copy-output', 'btn-copy-xml'), 'click', function() { window.copyToClipboard(outputEl.textContent); });
+  bind(document.getElementById('btn-copy-input'), 'click', function() { window.copyToClipboard(input.value, this); });
+  bind(byId('btn-copy-output', 'btn-copy-xml'), 'click', function() { window.copyToClipboard(outputEl.textContent, this); });
   bind(byId('btn-download', 'btn-download-xml'), 'click', function() {
     const content = outputEl.textContent;
     if (!content || content.includes('Output will appear here')) return;

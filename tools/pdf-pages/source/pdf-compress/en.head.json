@@ -1,0 +1,106 @@
+{
+ "title": "Compress PDF – Shrink to a Target Size, No Upload",
+ "desc": "Make a PDF smaller in your browser. Pick a strength or type the size you need, like 2 MB, and compare quality before you download. Free, no upload.",
+ "ld": {
+  "@context": "https://schema.org",
+  "@graph": [
+   {
+    "@type": "WebApplication",
+    "name": "Compress a PDF to the size you need",
+    "url": "https://anyconverter.io/pdf-compress/",
+    "description": "Make a PDF smaller in your browser. Pick a strength or type the size you need, like 2 MB, and compare quality before you download. Free, no upload.",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Any (web browser)",
+    "browserRequirements": "Requires JavaScript",
+    "inLanguage": "en",
+    "isAccessibleForFree": true,
+    "offers": {
+     "@type": "Offer",
+     "price": "0",
+     "priceCurrency": "USD"
+    },
+    "featureList": [
+     "Compress to an exact size",
+     "Check quality before downloading",
+     "Option to keep text selectable",
+     "Grayscale for printing",
+     "Your PDF stays on your device",
+     "Never bigger than the original"
+    ],
+    "publisher": {
+     "@type": "Organization",
+     "name": "AnyConverter",
+     "url": "https://anyconverter.io"
+    }
+   },
+   {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+     {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://anyconverter.io/"
+     },
+     {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "PDF Tools",
+      "item": "https://anyconverter.io/pdf-tools/"
+     },
+     {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Compress PDF",
+      "item": "https://anyconverter.io/pdf-compress/"
+     }
+    ]
+   },
+   {
+    "@type": "FAQPage",
+    "mainEntity": [
+     {
+      "@type": "Question",
+      "name": "How do I compress a PDF to under 2 MB?",
+      "acceptedAnswer": {
+       "@type": "Answer",
+       "text": "Choose Target size and enter 2. The tool tries different quality levels and keeps the best one that fits."
+      }
+     },
+     {
+      "@type": "Question",
+      "name": "Will the text still be selectable?",
+      "acceptedAnswer": {
+       "@type": "Answer",
+       "text": "In Light mode, yes. In the stronger modes, pages become images, so text can be read but not selected or searched."
+      }
+     },
+     {
+      "@type": "Question",
+      "name": "Is my file uploaded?",
+      "acceptedAnswer": {
+       "@type": "Answer",
+       "text": "No. The PDF is compressed in your browser and never leaves your device."
+      }
+     },
+     {
+      "@type": "Question",
+      "name": "Why did my PDF hardly get smaller?",
+      "acceptedAnswer": {
+       "@type": "Answer",
+       "text": "PDFs made of text and vector graphics are already compact. Big savings come from scans and photos."
+      }
+     },
+     {
+      "@type": "Question",
+      "name": "Can I compress a password-protected PDF?",
+      "acceptedAnswer": {
+       "@type": "Answer",
+       "text": "Not yet. Unlock it first, then compress it."
+      }
+     }
+    ]
+   }
+  ]
+ }
+}

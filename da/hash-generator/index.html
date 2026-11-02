@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Hash Generator Online — MD5 SHA256 SHA512 Gratis | AnyConverter</title>
-  <meta name="description" content="Brug Hash Generator gratis i browseren. Fa eksempler, praktiske tips, relaterede vaerktojer og hurtige resultater.">
+  <meta name="description" content="Generer kryptografiske hashes MD5, SHA-1, SHA-256 og SHA-512 online gratis. Indtast tekst eller upload en fil for at beregne alle hashes samtidigt. Sikker…">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://anyconverter.io/da/hash-generator/">
   <link rel="alternate" hreflang="en" href="https://anyconverter.io/hash-generator/">
@@ -14,7 +14,7 @@
 
 <meta property="og:type" content="website">
   <meta property="og:title" content="Hash Generator Online — MD5 SHA256 SHA512 Gratis | AnyConverter">
-  <meta property="og:description" content="Brug Hash Generator gratis i browseren. Fa eksempler, praktiske tips, relaterede vaerktojer og hurtige resultater.">
+  <meta property="og:description" content="Generer kryptografiske hashes MD5, SHA-1, SHA-256 og SHA-512 online gratis. Indtast tekst eller upload en fil for at beregne alle hashes samtidigt. Sikker…">
   <meta property="og:url" content="https://anyconverter.io/da/hash-generator/">
   <meta property="og:site_name" content="AnyConverter">
   <meta property="og:image" content="https://anyconverter.io/assets/img/og-image.png">
@@ -23,7 +23,7 @@
   <meta property="og:image:alt" content="AnyConverter free online tools">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Hash Generator Online — MD5 SHA256 SHA512 Gratis | AnyConverter">
-  <meta name="twitter:description" content="Brug Hash Generator gratis i browseren. Fa eksempler, praktiske tips, relaterede vaerktojer og hurtige resultater.">
+  <meta name="twitter:description" content="Generer kryptografiske hashes MD5, SHA-1, SHA-256 og SHA-512 online gratis. Indtast tekst eller upload en fil for at beregne alle hashes samtidigt. Sikker…">
   <meta name="twitter:image" content="https://anyconverter.io/assets/img/og-image.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -92,6 +92,16 @@
             <div class="hash-result-item"><span class="hash-algo">SHA-512</span><code class="hash-value" id="hash-sha512"></code><button class="btn btn-sm" data-copy="hash-sha512">Kopier</button></div>
           </div>
         </div>
+      
+        <!-- Verificer kontrolsum (LOG-01) -->
+        <div class="hash-compare-section" id="hash-compare-section" style="margin-top:20px;padding:16px;background:var(--color-surface-2,#F9FAFB);border:1px solid var(--color-border,#DDD8D0);border-radius:10px">
+          <label for="hash-compare-input" style="display:block;font-size:13px;font-weight:600;margin-bottom:6px">Verificer kontrolsum (Sammenlign hash)</label>
+          <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+            <input type="text" id="hash-compare-input" placeholder="Indsæt forventet hash for at tjekke match (MD5, SHA-1, SHA-256, SHA-512)..." style="flex:1;min-width:240px;padding:10px 12px;border:1px solid var(--color-border,#DDD8D0);border-radius:8px;font-family:var(--font-mono);font-size:13px" spellcheck="false" autocomplete="off">
+            <button class="btn btn-secondary btn-sm" id="btn-hash-compare-clear" type="button">Ryd</button>
+          </div>
+          <div id="hash-compare-status" aria-live="polite" style="display:none;margin-top:10px;padding:10px 14px;border-radius:6px;font-size:13px;font-weight:500"></div>
+        </div>
       </div>
       <aside class="tool-side" aria-label="Indstillinger">
         <div class="ss-divider">Indstillinger</div>
@@ -143,12 +153,12 @@
     <!-- SEO keyword implementation: 2026-08-21 -->
     <section class="seo-content" data-seo-keyword-plan="2026-08-21">
       <h2>Hash Generator: praktisk brug</h2>
-      <p>Brug Hash Generator, nar du har brug for et hurtigt, klart og privat resultat uden at oprette en konto. Siden daekker ogsa relaterede behov som Hash Generator online, Hash Generator validator, Hash Generator formatter, sa du kan vaelge den rigtige arbejdsgang.</p>
-      <h3>Hvornar det er nyttigt</h3>
+      <p>Brug Hash Generator, når du har brug for et hurtigt, klart og privat resultat uden at oprette en konto. Siden dækker også relaterede behov som Hash Generator online, Hash Generator validator, Hash Generator formatter, så du kan vælge den rigtige arbejdsgang.</p>
+      <h3>Hvornår det er nyttigt</h3>
       <ul>
-        <li><strong>Bedst til:</strong> Indsaette kode, strukturerede data, tokens, hashes eller kodet tekst og fa et laesbart resultat hurtigt.</li>
+        <li><strong>Bedst til:</strong> Indsætte kode, strukturerede data, tokens, hashes eller kodet tekst og få et læsbart resultat hurtigt.</li>
         <li><strong>Nyttige detaljer:</strong> Brug eksempler, valideringsbeskeder, kopieringshandlinger og formatering til at fange fejl tidligt.</li>
-        <li><strong>Naeste trin:</strong> Aben en relateret formatter, validator, encoder, parser eller konverter, nar arbejdsgangen skifter format.</li>
+        <li><strong>Næste trin:</strong> Åbn en relateret formatter, validator, encoder, parser eller konverter, når arbejdsgangen skifter format.</li>
       </ul>
       <p>Fortsæt eventuelt med <a href="/da/json-formatter/">JSON Formatter og Validator</a>, <a href="/da/regex-tester/">Online Regex Tester</a>, <a href="/da/base64-encoder/">Base64 Encoder og Decoder</a>, <a href="/da/timestamp-converter/">Unix Timestamp Konverter</a>.</p>
     </section>
@@ -165,16 +175,17 @@
       </div>
     </section>
     <section class="related-tools">
-      <h2>Relaterede værktøjer</h2>
+      <h2>Relaterede Værktøjer</h2>
       <div class="tool-grid">
-        <a href="/da/base64-encoder/" class="tool-card"><img src="/assets/img/icon-base64.svg" alt="Base64 Encoder icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Base64 Encoder</h3><p>Kodér og dekodér Base64.</p><span class="tool-card-link">Brug →</span></a>
-        <a href="/da/url-encoder/" class="tool-card"><img src="/assets/img/icon-url.svg" alt="URL Encoder icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>URL Encoder</h3><p>Kodér og dekodér URL'er.</p><span class="tool-card-link">Brug →</span></a>
-        <a href="/da/regex-tester/" class="tool-card"><img src="/assets/img/icon-regex.svg" alt="Regex Tester icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Regex Tester</h3><p>Test regulære udtryk.</p><span class="tool-card-link">Brug →</span></a>
+        <a href="/da/jwt-decoder/" class="tool-card"><img src="/assets/img/icon-jwt.svg" alt="JWT Dekoder Online Gratis icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>JWT Dekoder Online Gratis</h3><p>Dekod og inspicér ethvert JWT-token øjeblikkeligt.</p><span class="tool-card-link">Prøv det →</span></a>
+        <a href="/da/base64-encoder/" class="tool-card"><img src="/assets/img/icon-base64.svg" alt="Base64 Encoder og Decoder Online Gratis icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Base64 Encoder og Decoder Online Gratis</h3><p>Kodér og dekodér Base64 online gratis.</p><span class="tool-card-link">Prøv det →</span></a>
+        <a href="/da/uuid-generator/" class="tool-card"><img src="/assets/img/icon-uuid.svg" alt="UUID Generator Online Gratis icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>UUID Generator Online Gratis</h3><p>Generer UUID v4 og v7 i store maengder, kopier eller download resultater og valider UUID-format i browseren. Med klare trin, praktiske resultater og ingen konto.</p><span class="tool-card-link">Prøv det →</span></a>
+        <a href="/da/password-generator/" class="tool-card"><img src="/assets/img/icon-lock.svg" alt="Adgangskodegenerator Online Gratis icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Adgangskodegenerator Online Gratis</h3><p>Opret stærke, tilfældige adgangskoder med store bogstaver, små bogstaver, tal og symboler.</p><span class="tool-card-link">Prøv det →</span></a>
       </div>
     </section>
   </main>
   <footer id="site-footer" class="site-footer"></footer>
-  <script src="/assets/js/shared.js?v=20260928-ga4" defer></script>
+  <script src="/assets/js/shared.js?v=20261101" defer></script>
   <script src="/assets/js/tools/hash-generator.js" defer></script>
 </body>
 </html>

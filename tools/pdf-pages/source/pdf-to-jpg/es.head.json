@@ -1,0 +1,106 @@
+{
+ "title": "PDF a JPG – Convierte Páginas en Imágenes hasta 300 ppp",
+ "desc": "Convierte páginas de un PDF en imágenes JPG, PNG o WebP desde tu navegador. Elige resolución y páginas, o une todas en una imagen larga. Gratis, sin subir.",
+ "ld": {
+  "@context": "https://schema.org",
+  "@graph": [
+   {
+    "@type": "WebApplication",
+    "name": "Convertir páginas PDF en imágenes JPG",
+    "url": "https://anyconverter.io/es/pdf-to-jpg/",
+    "description": "Convierte páginas de un PDF en imágenes JPG, PNG o WebP desde tu navegador. Elige resolución y páginas, o une todas en una imagen larga. Gratis, sin subir.",
+    "applicationCategory": "MultimediaApplication",
+    "operatingSystem": "Any (web browser)",
+    "browserRequirements": "Requires JavaScript",
+    "inLanguage": "es",
+    "isAccessibleForFree": true,
+    "offers": {
+     "@type": "Offer",
+     "price": "0",
+     "priceCurrency": "USD"
+    },
+    "featureList": [
+     "Una imagen larga",
+     "Elige la resolución",
+     "Solo las páginas que necesitas",
+     "JPG, PNG o WebP",
+     "Tu PDF es privado",
+     "Sin marca de agua ni registro"
+    ],
+    "publisher": {
+     "@type": "Organization",
+     "name": "AnyConverter",
+     "url": "https://anyconverter.io"
+    }
+   },
+   {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+     {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Inicio",
+      "item": "https://anyconverter.io/es/"
+     },
+     {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Herramientas PDF",
+      "item": "https://anyconverter.io/es/herramientas-pdf/"
+     },
+     {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "PDF a JPG",
+      "item": "https://anyconverter.io/es/pdf-to-jpg/"
+     }
+    ]
+   },
+   {
+    "@type": "FAQPage",
+    "mainEntity": [
+     {
+      "@type": "Question",
+      "name": "¿Cómo convierto solo una página?",
+      "acceptedAnswer": {
+       "@type": "Answer",
+       "text": "Pulsa esa página para que sea la única elegida, o escribe su número en el campo Páginas, y convierte."
+      }
+     },
+     {
+      "@type": "Question",
+      "name": "¿Qué resolución uso?",
+      "acceptedAnswer": {
+       "@type": "Answer",
+       "text": "150 ppp para pantalla y correo, 300 ppp si vas a imprimir las imágenes."
+      }
+     },
+     {
+      "@type": "Question",
+      "name": "¿Se sube mi PDF?",
+      "acceptedAnswer": {
+       "@type": "Answer",
+       "text": "No. Las páginas se dibujan y se guardan en tu navegador."
+      }
+     },
+     {
+      "@type": "Question",
+      "name": "¿Por qué el PNG pesa mucho más que el JPG?",
+      "acceptedAnswer": {
+       "@type": "Answer",
+       "text": "PNG conserva cada píxel exacto, ideal para texto, pero hace que las fotos pesen mucho. Usa JPG o WebP para fotos."
+      }
+     },
+     {
+      "@type": "Question",
+      "name": "¿Puedo obtener las páginas en una sola imagen?",
+      "acceptedAnswer": {
+       "@type": "Answer",
+       "text": "Sí. Elige Una imagen larga y las páginas elegidas se apilan de arriba abajo."
+      }
+     }
+    ]
+   }
+  ]
+ }
+}

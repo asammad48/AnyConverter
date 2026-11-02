@@ -1,10 +1,11 @@
-﻿################################################################################
+################################################################################
 # This .gitignore file was automatically created by Microsoft(R) Visual Studio.
 ################################################################################
 
 /.vs/AnyConverter
 /.vs/slnx.sqlite
 /.vs/slnx.sqlite-journal
+.vs/
 
 # Wrangler / Cloudflare local state
 .wrangler/
@@ -24,3 +25,52 @@ output/playwright/four-pages.pdf
 test-results/
 /output/attached-tool-page-system/design_handoff_anyconverter_tools/screens
 /output
+output_*.json
+
+# Temporary development scratchpad & validation experiments
+scratch/
+
+# Local environment & credentials (never commit secrets)
+.env
+.env.*
+*.local
+credentials.json
+client_secret*.json
+service-account*.json
+gsc-credentials*.json
+*.pem
+*.key
+
+# Agent MCP active credentials and machine-specific configuration
+.agents/mcp_config.json
+.agents/mcp_config.json.*
+.agents/*.bak
+*.bak
+*.backup*
+
+# Internal audit, validation & handoff reports (not for production deploy)
+BLOG_AND_ABOUT_DESIGN_AUDIT.md
+CATEGORY_HUB_COVERAGE_REPORT.md
+CONTENT_LOCALIZATION_REPORT.md
+FIFTH_INDEPENDENT_SITEWIDE_VALIDATION_REPORT.md
+FINAL_MULTILINGUAL_INDEPENDENT_VALIDATION_REPORT.md
+HOMEPAGE_MULTILINGUAL_PARITY_REPORT.md
+INTERNAL_LINKING_IMPROVEMENT_REPORT.md
+MULTILINGUAL_COPY_QA_REPORT.md
+NEXT_INDEPENDENT_AUDIT_HANDOFF.md
+PRIVACY_CLAIMS_VERIFICATION_REPORT.md
+SITEWIDE_AUDIT_DEFECT_FIX_LOG.md
+SITEWIDE_INDEPENDENT_VALIDATION_REPORT.md
+SITEWIDE_REGRESSION_REPORT.md
+SITEWIDE_REVALIDATION_HANDOFF.md
+SITEWIDE_SEO_RESEARCH_REPORT.md
+TECHNICAL_SEO_FINDINGS.md
+*_AUDIT_REPORT.md
+*_VALIDATION_REPORT.md
+*_HANDOFF.md
+
+# Internal audit JSON artifacts (not used at runtime or in deployment)
+# Note: RELATED_TOOLS_COMPLETE_MAPPING.json is kept tracked because
+# tests/test_related_tools_regression.js loads it.
+RELATED_TOOLS_AUDIT.json
+TOOL_INVENTORY_AND_COUNTS.json

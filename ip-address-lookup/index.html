@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>IP Address Lookup - Find Location, ISP & IP Details | AnyConverter</title>
-  <meta name="description" content="Check your public IP address, approximate location, ISP, timezone, and network details instantly in your browser with privacy-friendly guidance.">
+  <title>What Is My IP Address? — Free IP Lookup & Geolocation | AnyConverter</title>
+  <meta name="description" content="Find your public IP address instantly with free geolocation, ISP details, city, country, and ASN lookup. Fast, private, and zero logs.">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://anyconverter.io/ip-address-lookup/">
   <link rel="alternate" hreflang="en" href="https://anyconverter.io/ip-address-lookup/">
@@ -13,8 +13,8 @@
   <link rel="alternate" hreflang="x-default" href="https://anyconverter.io/ip-address-lookup/">
 
 <meta property="og:type" content="website">
-  <meta property="og:title" content="IP Address Lookup - Find Location, ISP &amp; IP Details | AnyConverter">
-  <meta property="og:description" content="Check your public IP address, approximate location, ISP, timezone, and network details instantly in your browser with privacy-friendly guidance.">
+  <meta property="og:title" content="What Is My IP Address? — Free IP Lookup & Geolocation | AnyConverter">
+  <meta property="og:description" content="Find your public IP address instantly with free geolocation, ISP details, city, country, and ASN lookup. Fast, private, and zero logs.">
   <meta property="og:url" content="https://anyconverter.io/ip-address-lookup/">
   <meta property="og:site_name" content="AnyConverter">
   <meta property="og:image" content="https://anyconverter.io/assets/img/og-image.png">
@@ -22,8 +22,8 @@
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="AnyConverter free online tools">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="IP Address Lookup - Find Location, ISP &amp; IP Details | AnyConverter">
-  <meta name="twitter:description" content="Check your public IP address, approximate location, ISP, timezone, and network details instantly in your browser with privacy-friendly guidance.">
+  <meta name="twitter:title" content="What Is My IP Address? — Free IP Lookup & Geolocation | AnyConverter">
+  <meta name="twitter:description" content="Find your public IP address instantly with free geolocation, ISP details, city, country, and ASN lookup. Fast, private, and zero logs.">
   <meta name="twitter:image" content="https://anyconverter.io/assets/img/og-image.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -59,6 +59,20 @@
     <div class="tool-wrapper">
       <div class="tool-zone">
         <div style="padding:24px">
+          <!-- Immediate Public IP Hero Card -->
+          <div class="ip-hero-card" id="ip-hero-card">
+            <div class="ip-hero-badge" id="ip-hero-badge">Your Public IP Address</div>
+            <div class="ip-hero-main">
+              <span class="ip-hero-display" id="ip-hero-display">Detecting IP…</span>
+              <button class="ac-btn" type="button" id="btn-copy-hero-ip" title="Copy IP" aria-label="Copy IP address" style="display:none">Copy</button>
+            </div>
+            <div class="ip-hero-meta" id="ip-hero-meta" style="display:none">
+              <span class="ip-meta-item" id="ip-meta-location">📍 Location: —</span>
+              <span class="ip-meta-item" id="ip-meta-isp">🏢 ISP: —</span>
+              <span class="ip-meta-item" id="ip-meta-asn">🌐 ASN: —</span>
+            </div>
+          </div>
+
           <div style="margin-bottom:16px">
             <label style="display:block;font-size:13px;font-weight:500;margin-bottom:6px" for="ip-input">IP Address (leave blank for your IP)</label>
             <div style="display:flex;gap:8px">
@@ -69,6 +83,7 @@
           </div>
           <div id="ip-error" style="display:none;color:var(--color-pdf,#EF4444);font-size:13px;margin-bottom:12px"></div>
           <div id="ip-results" style="display:none;background:var(--color-bg,#F7F6F3);border:1px solid var(--color-border,#DDD8D0);border-radius:8px;padding:0 16px"></div>
+          <p class="ip-privacy-note" style="font-size:12px;color:var(--color-text-2,#6B7280);margin-top:12px">Note: Geolocation and ASN lookups query secure public IP APIs (freeipapi.com / ipify.org). No search queries or personal identifiers are stored on AnyConverter servers.</p>
         </div>
       </div>
       <aside class="tool-side" aria-label="Options">
@@ -140,29 +155,15 @@
     <section class="related-tools">
       <h2>Related Tools</h2>
       <div class="tool-grid">
-        <a href="/uuid-generator/" class="tool-card">
-          <img src="/assets/img/icon-hash.svg" alt="UUID Generator icon" class="tool-card-icon" width="40" height="40" loading="lazy">
-          <h3>UUID Generator</h3>
-          <p>Generate random UUIDs (v4) instantly, one or in bulk.</p>
-          <span class="tool-card-link">Try it →</span>
-        </a>
-        <a href="/jwt-decoder/" class="tool-card">
-          <img src="/assets/img/icon-hash.svg" alt="JWT Decoder icon" class="tool-card-icon" width="40" height="40" loading="lazy">
-          <h3>JWT Decoder</h3>
-          <p>Decode and inspect JSON Web Tokens without a server.</p>
-          <span class="tool-card-link">Try it →</span>
-        </a>
-        <a href="/random-number-generator/" class="tool-card">
-          <img src="/assets/img/icon-calculator.svg" alt="Random Number Generator icon" class="tool-card-icon" width="40" height="40" loading="lazy">
-          <h3>Random Number Generator</h3>
-          <p>Generate random numbers within any range instantly.</p>
-          <span class="tool-card-link">Try it →</span>
-        </a>
+        <a href="/internet-speed-test/" class="tool-card"><img src="/assets/img/icon-speed.svg" alt="Internet Speed Test icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Internet Speed Test</h3><p>Test your download speed, upload speed, and ping latency in your browser.</p><span class="tool-card-link">Try it →</span></a>
+        <a href="/browser-info/" class="tool-card"><img src="/assets/img/icon-browser.svg" alt="Browser Info Viewer icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Browser Info Viewer</h3><p>See your browser, OS, screen resolution, CPU, timezone and 20+ other details.</p><span class="tool-card-link">Try it →</span></a>
+        <a href="/viewport-size/" class="tool-card"><img src="/assets/img/icon-viewport.svg" alt="Viewport Size Checker icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Viewport Size Checker</h3><p>Live viewport width, height, DPR, orientation and CSS breakpoint — updates on resize.</p><span class="tool-card-link">Try it →</span></a>
+        <a href="/url-encoder/" class="tool-card"><img src="/assets/img/icon-url.svg" alt="URL Encoder icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>URL Encoder</h3><p>Encode or decode URLs and query parameters online.</p><span class="tool-card-link">Try it →</span></a>
       </div>
     </section>
   </main>
   <footer id="site-footer" class="site-footer"></footer>
-  <script src="/assets/js/shared.js?v=20260928-ga4" defer></script>
+  <script src="/assets/js/shared.js?v=20261101" defer></script>
   <script src="/assets/js/tools/ip-address-lookup.js" defer></script>
 </body>
 </html>

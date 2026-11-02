@@ -1,0 +1,106 @@
+{
+ "title": "Convertir PDF a Word – DOCX Editable, OCR, Sin Subir",
+ "desc": "Convierte un PDF en un documento de Word editable. Elige texto editable o diseño exacto, convierte solo las páginas que necesitas y reconoce escaneos con OCR. Sin subir.",
+ "ld": {
+  "@context": "https://schema.org",
+  "@graph": [
+   {
+    "@type": "WebApplication",
+    "name": "Convertir PDF a Word",
+    "url": "https://anyconverter.io/es/pdf-a-word/",
+    "description": "Convierte un PDF en un documento de Word editable. Elige texto editable o diseño exacto, convierte solo las páginas que necesitas y reconoce escaneos con OCR. Sin subir.",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Any (web browser)",
+    "browserRequirements": "Requires JavaScript",
+    "inLanguage": "es",
+    "isAccessibleForFree": true,
+    "offers": {
+     "@type": "Offer",
+     "price": "0",
+     "priceCurrency": "USD"
+    },
+    "featureList": [
+     "Dos modos de conversión",
+     "Convierte solo algunas páginas",
+     "OCR en tu idioma",
+     "Tu PDF es privado",
+     "Las tablas siguen siendo tablas",
+     "Sin marca de agua ni registro"
+    ],
+    "publisher": {
+     "@type": "Organization",
+     "name": "AnyConverter",
+     "url": "https://anyconverter.io"
+    }
+   },
+   {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+     {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Inicio",
+      "item": "https://anyconverter.io/es/"
+     },
+     {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "PDF",
+      "item": "https://anyconverter.io/es/pdf/"
+     },
+     {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "PDF a Word",
+      "item": "https://anyconverter.io/es/pdf-a-word/"
+     }
+    ]
+   },
+   {
+    "@type": "FAQPage",
+    "mainEntity": [
+     {
+      "@type": "Question",
+      "name": "¿Es seguro convertir PDF confidenciales?",
+      "acceptedAnswer": {
+       "@type": "Answer",
+       "text": "Sí. El archivo se procesa en tu navegador y nunca se sube, así que contratos, nóminas e informes médicos se quedan en tu dispositivo."
+      }
+     },
+     {
+      "@type": "Question",
+      "name": "¿Puedo convertir un PDF escaneado a Word?",
+      "acceptedAnswer": {
+       "@type": "Answer",
+       "text": "Sí. Activa el reconocimiento de texto y elige el idioma del documento. Los escaneos tardan más que los PDF digitales."
+      }
+     },
+     {
+      "@type": "Question",
+      "name": "¿Se mantendrá el formato?",
+      "acceptedAnswer": {
+       "@type": "Answer",
+       "text": "Diseño exacto conserva el aspecto más parecido al PDF. Texto editable simplifica el diseño para que sea más fácil de editar."
+      }
+     },
+     {
+      "@type": "Question",
+      "name": "¿Puedo convertir solo algunas páginas?",
+      "acceptedAnswer": {
+       "@type": "Answer",
+       "text": "Sí. Escribe un rango, como 1–3, 7, antes de convertir."
+      }
+     },
+     {
+      "@type": "Question",
+      "name": "¿Y los PDF con contraseña?",
+      "acceptedAnswer": {
+       "@type": "Answer",
+       "text": "Se te pedirá la contraseña. Solo se usa en tu navegador para abrir el archivo."
+      }
+     }
+    ]
+   }
+  ]
+ }
+}

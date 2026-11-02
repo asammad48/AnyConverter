@@ -1,0 +1,97 @@
+{
+ "title": "Rotate PDF Pages – Turn One Page or All, Permanently",
+ "desc": "Rotate PDF pages in your browser and save the change. Turn single pages or all of them, or make every page portrait in one click. No quality loss.",
+ "ld": {
+  "@context": "https://schema.org",
+  "@graph": [
+   {
+    "@type": "WebApplication",
+    "name": "Rotate PDF pages and save the change",
+    "url": "https://anyconverter.io/rotate-pdf/",
+    "description": "Rotate PDF pages in your browser and save the change. Turn single pages or all of them, or make every page portrait in one click. No quality loss.",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Any (web browser)",
+    "browserRequirements": "Requires JavaScript",
+    "inLanguage": "en",
+    "isAccessibleForFree": true,
+    "offers": {
+     "@type": "Offer",
+     "price": "0",
+     "priceCurrency": "USD"
+    },
+    "featureList": [
+     "Make every page portrait",
+     "Click a page to turn it",
+     "No quality loss",
+     "Your PDF stays on your device",
+     "Saved permanently"
+    ],
+    "publisher": {
+     "@type": "Organization",
+     "name": "AnyConverter",
+     "url": "https://anyconverter.io"
+    }
+   },
+   {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+     {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://anyconverter.io/"
+     },
+     {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "PDF Tools",
+      "item": "https://anyconverter.io/pdf-tools/"
+     },
+     {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Rotate PDF",
+      "item": "https://anyconverter.io/rotate-pdf/"
+     }
+    ]
+   },
+   {
+    "@type": "FAQPage",
+    "mainEntity": [
+     {
+      "@type": "Question",
+      "name": "How do I rotate only one page?",
+      "acceptedAnswer": {
+       "@type": "Answer",
+       "text": "Click that page. Each click turns it another 90° clockwise."
+      }
+     },
+     {
+      "@type": "Question",
+      "name": "Will rotating reduce quality?",
+      "acceptedAnswer": {
+       "@type": "Answer",
+       "text": "No. Only the rotation setting of each page changes."
+      }
+     },
+     {
+      "@type": "Question",
+      "name": "Is the rotation saved?",
+      "acceptedAnswer": {
+       "@type": "Answer",
+       "text": "Yes. It is stored in the new PDF, so it opens the right way in any app."
+      }
+     },
+     {
+      "@type": "Question",
+      "name": "Is my file uploaded?",
+      "acceptedAnswer": {
+       "@type": "Answer",
+       "text": "No. Everything happens in your browser."
+      }
+     }
+    ]
+   }
+  ]
+ }
+}

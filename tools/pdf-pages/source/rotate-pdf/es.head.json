@@ -1,0 +1,97 @@
+{
+ "title": "Girar PDF – Rota una Página o Todas y Guarda el Cambio",
+ "desc": "Gira páginas de un PDF en tu navegador y guarda el cambio. Gira páginas sueltas o todas, o pon todas en vertical con un clic. Sin perder calidad.",
+ "ld": {
+  "@context": "https://schema.org",
+  "@graph": [
+   {
+    "@type": "WebApplication",
+    "name": "Girar páginas PDF y guardar el cambio",
+    "url": "https://anyconverter.io/es/rotate-pdf/",
+    "description": "Gira páginas de un PDF en tu navegador y guarda el cambio. Gira páginas sueltas o todas, o pon todas en vertical con un clic. Sin perder calidad.",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Any (web browser)",
+    "browserRequirements": "Requires JavaScript",
+    "inLanguage": "es",
+    "isAccessibleForFree": true,
+    "offers": {
+     "@type": "Offer",
+     "price": "0",
+     "priceCurrency": "USD"
+    },
+    "featureList": [
+     "Pon todas las páginas en vertical",
+     "Pulsa una página para girarla",
+     "Sin perder calidad",
+     "Tu PDF no sale de tu dispositivo",
+     "Se guarda para siempre"
+    ],
+    "publisher": {
+     "@type": "Organization",
+     "name": "AnyConverter",
+     "url": "https://anyconverter.io"
+    }
+   },
+   {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+     {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Inicio",
+      "item": "https://anyconverter.io/es/"
+     },
+     {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Herramientas PDF",
+      "item": "https://anyconverter.io/es/herramientas-pdf/"
+     },
+     {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Girar PDF",
+      "item": "https://anyconverter.io/es/rotate-pdf/"
+     }
+    ]
+   },
+   {
+    "@type": "FAQPage",
+    "mainEntity": [
+     {
+      "@type": "Question",
+      "name": "¿Cómo giro solo una página?",
+      "acceptedAnswer": {
+       "@type": "Answer",
+       "text": "Pulsa esa página. Cada pulsación la gira otros 90° a la derecha."
+      }
+     },
+     {
+      "@type": "Question",
+      "name": "¿Girar reduce la calidad?",
+      "acceptedAnswer": {
+       "@type": "Answer",
+       "text": "No. Solo cambia el ajuste de giro de cada página."
+      }
+     },
+     {
+      "@type": "Question",
+      "name": "¿Se guarda el giro?",
+      "acceptedAnswer": {
+       "@type": "Answer",
+       "text": "Sí. Queda guardado en el nuevo PDF, así se abre bien en cualquier aplicación."
+      }
+     },
+     {
+      "@type": "Question",
+      "name": "¿Se sube mi archivo?",
+      "acceptedAnswer": {
+       "@type": "Answer",
+       "text": "No. Todo ocurre en tu navegador."
+      }
+     }
+    ]
+   }
+  ]
+ }
+}

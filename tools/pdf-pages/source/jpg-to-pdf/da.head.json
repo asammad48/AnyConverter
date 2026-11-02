@@ -1,0 +1,97 @@
+{
+ "title": "JPG til PDF – Lav Billeder om til PDF i Original Kvalitet",
+ "desc": "Saml JPG-, PNG- og WebP-billeder i én PDF i din browser. Fotos beholder deres originale kvalitet, og mobilbilleder vendes rigtigt. Gratis, ingen upload.",
+ "ld": {
+  "@context": "https://schema.org",
+  "@graph": [
+   {
+    "@type": "WebApplication",
+    "name": "Lav JPG-billeder om til en PDF",
+    "url": "https://anyconverter.io/da/jpg-to-pdf/",
+    "description": "Saml JPG-, PNG- og WebP-billeder i én PDF i din browser. Fotos beholder deres originale kvalitet, og mobilbilleder vendes rigtigt. Gratis, ingen upload.",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Any (web browser)",
+    "browserRequirements": "Requires JavaScript",
+    "inLanguage": "da",
+    "isAccessibleForFree": true,
+    "offers": {
+     "@type": "Offer",
+     "price": "0",
+     "priceCurrency": "USD"
+    },
+    "featureList": [
+     "Original kvalitet for JPG",
+     "Mobilfotos vendt rigtigt",
+     "Tilpas til billede eller papir",
+     "Ingen grænse for billeder",
+     "Dine fotos bliver på din enhed"
+    ],
+    "publisher": {
+     "@type": "Organization",
+     "name": "AnyConverter",
+     "url": "https://anyconverter.io"
+    }
+   },
+   {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+     {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Forside",
+      "item": "https://anyconverter.io/da/"
+     },
+     {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "PDF-værktøjer",
+      "item": "https://anyconverter.io/da/pdf-vaerktoejer/"
+     },
+     {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "JPG til PDF",
+      "item": "https://anyconverter.io/da/jpg-to-pdf/"
+     }
+    ]
+   },
+   {
+    "@type": "FAQPage",
+    "mainEntity": [
+     {
+      "@type": "Question",
+      "name": "Hvordan laver jeg flere fotos til én PDF?",
+      "acceptedAnswer": {
+       "@type": "Answer",
+       "text": "Tilføj alle fotos, sæt dem i rækkefølge, og tryk Lav PDF. Hvert foto bliver én side."
+      }
+     },
+     {
+      "@type": "Question",
+      "name": "Mister mine fotos kvalitet?",
+      "acceptedAnswer": {
+       "@type": "Answer",
+       "text": "JPG-fotos lægges i PDF’en uden ny komprimering. Andre formater konverteres i høj kvalitet."
+      }
+     },
+     {
+      "@type": "Question",
+      "name": "Hvorfor lå mit mobilfoto ned i andre værktøjer?",
+      "acceptedAnswer": {
+       "@type": "Answer",
+       "text": "Mobilen gemmer retningen som et mærke i fotoet. Dette værktøj læser mærket og vender siden rigtigt."
+      }
+     },
+     {
+      "@type": "Question",
+      "name": "Bliver mine billeder uploadet?",
+      "acceptedAnswer": {
+       "@type": "Answer",
+       "text": "Nej. PDF’en laves i din browser."
+      }
+     }
+    ]
+   }
+  ]
+ }
+}

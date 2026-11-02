@@ -1,0 +1,765 @@
+{
+  "json-formatter": [
+    "json-compare",
+    "json-to-yaml",
+    "xml-formatter",
+    "base64-encoder"
+  ],
+  "json-compare": [
+    "json-formatter",
+    "json-to-yaml",
+    "text-diff-checker",
+    "xml-formatter"
+  ],
+  "json-to-yaml": [
+    "json-formatter",
+    "json-compare",
+    "xml-formatter",
+    "html-beautifier"
+  ],
+  "xml-formatter": [
+    "html-beautifier",
+    "json-formatter",
+    "json-to-yaml",
+    "regex-tester"
+  ],
+  "html-beautifier": [
+    "xml-formatter",
+    "json-formatter",
+    "markdown-html",
+    "css-gradient-generator"
+  ],
+  "regex-tester": [
+    "json-formatter",
+    "text-diff-checker",
+    "cron-expression-parser",
+    "base64-encoder"
+  ],
+  "hash-generator": [
+    "jwt-decoder",
+    "base64-encoder",
+    "uuid-generator",
+    "password-generator"
+  ],
+  "base64-encoder": [
+    "url-encoder",
+    "jwt-decoder",
+    "hash-generator",
+    "image-converter"
+  ],
+  "url-encoder": [
+    "base64-encoder",
+    "jwt-decoder",
+    "regex-tester",
+    "ip-address-lookup"
+  ],
+  "jwt-decoder": [
+    "base64-encoder",
+    "hash-generator",
+    "uuid-generator",
+    "cron-expression-parser"
+  ],
+  "uuid-generator": [
+    "hash-generator",
+    "password-generator",
+    "jwt-decoder",
+    "random-number-generator"
+  ],
+  "cron-expression-parser": [
+    "timestamp-converter",
+    "countdown-timer",
+    "regex-tester",
+    "world-clock"
+  ],
+  "csv-to-sql": [
+    "csv-query",
+    "parquet-to-csv",
+    "camt053-to-csv",
+    "json-formatter"
+  ],
+  "csv-query": [
+    "csv-to-sql",
+    "parquet-to-csv",
+    "camt053-to-csv",
+    "json-compare"
+  ],
+  "parquet-to-csv": [
+    "csv-to-sql",
+    "csv-query",
+    "camt053-to-csv",
+    "json-formatter"
+  ],
+  "camt053-to-csv": [
+    "csv-to-sql",
+    "csv-query",
+    "parquet-to-csv",
+    "invoice-generator"
+  ],
+  "markdown-html": [
+    "html-beautifier",
+    "word-counter",
+    "text-case-converter",
+    "json-formatter"
+  ],
+  "timestamp-converter": [
+    "cron-expression-parser",
+    "world-clock",
+    "birthday-countdown-calculator",
+    "countdown-timer"
+  ],
+  "roman-numeral-converter": [
+    "number-to-words",
+    "random-number-generator",
+    "age-calculator"
+  ],
+  "number-to-words": [
+    "roman-numeral-converter",
+    "invoice-generator",
+    "currency-converter",
+    "random-number-generator"
+  ],
+  "privacy-policy-generator": [
+    "invoice-generator",
+    "password-generator",
+    "word-counter"
+  ],
+  "color-converter": [
+    "css-gradient-generator",
+    "css-shadow-generator",
+    "px-to-rem",
+    "image-converter"
+  ],
+  "css-gradient-generator": [
+    "css-shadow-generator",
+    "color-converter",
+    "px-to-rem",
+    "aspect-ratio-calculator"
+  ],
+  "css-shadow-generator": [
+    "css-gradient-generator",
+    "color-converter",
+    "px-to-rem",
+    "aspect-ratio-calculator"
+  ],
+  "px-to-rem": [
+    "css-gradient-generator",
+    "css-shadow-generator",
+    "color-converter",
+    "aspect-ratio-calculator"
+  ],
+  "aspect-ratio-calculator": [
+    "screen-resolution",
+    "viewport-size",
+    "image-compressor",
+    "image-converter"
+  ],
+  "internet-speed-test": [
+    "ip-address-lookup",
+    "browser-info",
+    "viewport-size",
+    "screen-resolution"
+  ],
+  "ip-address-lookup": [
+    "internet-speed-test",
+    "browser-info",
+    "viewport-size",
+    "url-encoder"
+  ],
+  "browser-info": [
+    "viewport-size",
+    "screen-resolution",
+    "internet-speed-test",
+    "ip-address-lookup"
+  ],
+  "viewport-size": [
+    "screen-resolution",
+    "browser-info",
+    "aspect-ratio-calculator",
+    "dead-pixel-checker"
+  ],
+  "screen-resolution": [
+    "viewport-size",
+    "aspect-ratio-calculator",
+    "dead-pixel-checker",
+    "monitor-color-test"
+  ],
+  "dead-pixel-checker": [
+    "monitor-color-test",
+    "screen-resolution",
+    "viewport-size",
+    "aspect-ratio-calculator"
+  ],
+  "monitor-color-test": [
+    "dead-pixel-checker",
+    "screen-resolution",
+    "color-converter",
+    "viewport-size"
+  ],
+  "keyboard-tester": [
+    "mouse-tester",
+    "typing-speed-test",
+    "browser-info"
+  ],
+  "mouse-tester": [
+    "keyboard-tester",
+    "browser-info",
+    "typing-speed-test"
+  ],
+  "webcam-tester": [
+    "microphone-tester",
+    "browser-info",
+    "screen-resolution"
+  ],
+  "microphone-tester": [
+    "webcam-tester",
+    "browser-info",
+    "meeting-timer"
+  ],
+  "word-counter": [
+    "character-counter",
+    "text-case-converter",
+    "text-diff-checker",
+    "lorem-ipsum-generator"
+  ],
+  "character-counter": [
+    "word-counter",
+    "text-case-converter",
+    "text-diff-checker",
+    "text-repeater"
+  ],
+  "text-case-converter": [
+    "word-counter",
+    "character-counter",
+    "text-diff-checker",
+    "fancy-text-generator"
+  ],
+  "text-diff-checker": [
+    "word-counter",
+    "character-counter",
+    "text-case-converter",
+    "json-compare"
+  ],
+  "lorem-ipsum-generator": [
+    "word-counter",
+    "character-counter",
+    "markdown-html",
+    "fancy-text-generator"
+  ],
+  "fancy-text-generator": [
+    "ascii-art-generator",
+    "text-case-converter",
+    "text-repeater",
+    "morse-code-converter"
+  ],
+  "ascii-art-generator": [
+    "fancy-text-generator",
+    "text-repeater",
+    "morse-code-converter"
+  ],
+  "morse-code-converter": [
+    "ascii-art-generator",
+    "fancy-text-generator",
+    "text-case-converter",
+    "text-repeater"
+  ],
+  "text-repeater": [
+    "character-counter",
+    "word-counter",
+    "fancy-text-generator",
+    "lorem-ipsum-generator"
+  ],
+  "typing-speed-test": [
+    "word-counter",
+    "character-counter",
+    "keyboard-tester",
+    "stopwatch"
+  ],
+  "image-compressor": [
+    "image-converter",
+    "aspect-ratio-calculator",
+    "pdf-compress",
+    "qr-code-generator"
+  ],
+  "image-converter": [
+    "image-compressor",
+    "aspect-ratio-calculator",
+    "color-converter",
+    "pdf-to-jpg"
+  ],
+  "qr-code-generator": [
+    "barcode-generator",
+    "image-compressor",
+    "url-encoder",
+    "uuid-generator"
+  ],
+  "barcode-generator": [
+    "qr-code-generator",
+    "image-compressor",
+    "uuid-generator",
+    "invoice-generator"
+  ],
+  "mortgage-calculator": [
+    "loan-calculator",
+    "compound-interest-calculator",
+    "gst-vat-calculator",
+    "discount-calculator"
+  ],
+  "loan-calculator": [
+    "mortgage-calculator",
+    "compound-interest-calculator",
+    "currency-converter",
+    "discount-calculator"
+  ],
+  "compound-interest-calculator": [
+    "mortgage-calculator",
+    "loan-calculator",
+    "pay-rise-calculator",
+    "margin-vs-markup-calculator"
+  ],
+  "currency-converter": [
+    "loan-calculator",
+    "mortgage-calculator",
+    "gst-vat-calculator",
+    "invoice-generator"
+  ],
+  "gst-vat-calculator": [
+    "invoice-generator",
+    "discount-calculator",
+    "margin-vs-markup-calculator",
+    "unit-price-calculator"
+  ],
+  "tip-calculator": [
+    "discount-calculator",
+    "percentage-calculator",
+    "currency-converter"
+  ],
+  "invoice-generator": [
+    "gst-vat-calculator",
+    "discount-calculator",
+    "currency-converter",
+    "pdf-merge"
+  ],
+  "percentage-calculator": [
+    "percentage-difference-calculator",
+    "reverse-percentage-calculator",
+    "discount-calculator",
+    "tip-calculator"
+  ],
+  "percentage-difference-calculator": [
+    "percentage-calculator",
+    "reverse-percentage-calculator",
+    "price-increase-calculator",
+    "margin-vs-markup-calculator"
+  ],
+  "reverse-percentage-calculator": [
+    "percentage-calculator",
+    "percentage-difference-calculator",
+    "discount-calculator",
+    "margin-vs-markup-calculator"
+  ],
+  "discount-calculator": [
+    "discount-stacking-calculator",
+    "percentage-calculator",
+    "gst-vat-calculator",
+    "unit-price-calculator"
+  ],
+  "discount-stacking-calculator": [
+    "discount-calculator",
+    "percentage-calculator",
+    "unit-price-calculator",
+    "price-increase-calculator"
+  ],
+  "price-increase-calculator": [
+    "percentage-difference-calculator",
+    "margin-vs-markup-calculator",
+    "pay-rise-calculator",
+    "discount-calculator"
+  ],
+  "pay-rise-calculator": [
+    "price-increase-calculator",
+    "compound-interest-calculator",
+    "percentage-difference-calculator",
+    "loan-calculator"
+  ],
+  "margin-vs-markup-calculator": [
+    "unit-price-calculator",
+    "discount-calculator",
+    "price-increase-calculator",
+    "gst-vat-calculator"
+  ],
+  "unit-price-calculator": [
+    "discount-calculator",
+    "margin-vs-markup-calculator",
+    "price-increase-calculator",
+    "discount-stacking-calculator"
+  ],
+  "slope-grade-angle-calculator": [
+    "rise-over-run-calculator",
+    "aspect-ratio-calculator",
+    "percentage-calculator"
+  ],
+  "rise-over-run-calculator": [
+    "slope-grade-angle-calculator",
+    "aspect-ratio-calculator",
+    "percentage-calculator"
+  ],
+  "calorie-calculator": [
+    "bmi-calculator",
+    "sleep-calculator",
+    "age-calculator",
+    "blood-type-compatibility"
+  ],
+  "bmi-calculator": [
+    "calorie-calculator",
+    "sleep-calculator",
+    "age-calculator",
+    "blood-type-compatibility"
+  ],
+  "sleep-calculator": [
+    "calorie-calculator",
+    "bmi-calculator",
+    "pomodoro-timer",
+    "countdown-timer"
+  ],
+  "blood-type-compatibility": [
+    "calorie-calculator",
+    "bmi-calculator",
+    "love-calculator"
+  ],
+  "age-calculator": [
+    "birthday-countdown-calculator",
+    "bmi-calculator",
+    "calorie-calculator",
+    "sleep-calculator"
+  ],
+  "pomodoro-timer": [
+    "stopwatch",
+    "countdown-timer",
+    "meeting-timer",
+    "habit-tracker"
+  ],
+  "stopwatch": [
+    "countdown-timer",
+    "pomodoro-timer",
+    "meeting-timer",
+    "typing-speed-test"
+  ],
+  "countdown-timer": [
+    "stopwatch",
+    "pomodoro-timer",
+    "meeting-timer",
+    "birthday-countdown-calculator"
+  ],
+  "meeting-timer": [
+    "pomodoro-timer",
+    "countdown-timer",
+    "stopwatch",
+    "todo-list"
+  ],
+  "world-clock": [
+    "timestamp-converter",
+    "countdown-timer",
+    "birthday-countdown-calculator",
+    "meeting-timer"
+  ],
+  "birthday-countdown-calculator": [
+    "age-calculator",
+    "countdown-timer",
+    "world-clock",
+    "stopwatch"
+  ],
+  "todo-list": [
+    "daily-planner",
+    "sticky-notes",
+    "habit-tracker",
+    "pomodoro-timer"
+  ],
+  "sticky-notes": [
+    "todo-list",
+    "daily-planner",
+    "habit-tracker",
+    "word-counter"
+  ],
+  "daily-planner": [
+    "todo-list",
+    "habit-tracker",
+    "sticky-notes",
+    "pomodoro-timer"
+  ],
+  "habit-tracker": [
+    "daily-planner",
+    "todo-list",
+    "sticky-notes",
+    "pomodoro-timer"
+  ],
+  "decision-maker": [
+    "random-picker",
+    "spin-the-wheel",
+    "coin-flip",
+    "dice-roller"
+  ],
+  "random-picker": [
+    "decision-maker",
+    "spin-the-wheel",
+    "team-picker",
+    "coin-flip"
+  ],
+  "spin-the-wheel": [
+    "random-picker",
+    "decision-maker",
+    "team-picker",
+    "dice-roller"
+  ],
+  "team-picker": [
+    "random-picker",
+    "spin-the-wheel",
+    "decision-maker",
+    "dice-roller"
+  ],
+  "dice-roller": [
+    "coin-flip",
+    "random-number-generator",
+    "spin-the-wheel",
+    "random-picker"
+  ],
+  "coin-flip": [
+    "dice-roller",
+    "decision-maker",
+    "random-number-generator",
+    "spin-the-wheel"
+  ],
+  "random-number-generator": [
+    "dice-roller",
+    "coin-flip",
+    "password-generator",
+    "uuid-generator"
+  ],
+  "password-generator": [
+    "password-strength-checker",
+    "uuid-generator",
+    "hash-generator",
+    "random-number-generator"
+  ],
+  "password-strength-checker": [
+    "password-generator",
+    "hash-generator",
+    "uuid-generator",
+    "privacy-policy-generator"
+  ],
+  "numerology-calculator": [
+    "name-numerology-calculator",
+    "lo-shu-grid-calculator",
+    "tarot-birth-card-calculator",
+    "love-calculator"
+  ],
+  "name-numerology-calculator": [
+    "numerology-calculator",
+    "lo-shu-grid-calculator",
+    "tarot-birth-card-calculator",
+    "love-calculator"
+  ],
+  "lo-shu-grid-calculator": [
+    "numerology-calculator",
+    "name-numerology-calculator",
+    "tarot-birth-card-calculator",
+    "moon-sign-calculator"
+  ],
+  "tarot-birth-card-calculator": [
+    "numerology-calculator",
+    "moon-sign-calculator",
+    "rising-sign-calculator",
+    "lo-shu-grid-calculator"
+  ],
+  "moon-sign-calculator": [
+    "rising-sign-calculator",
+    "tarot-birth-card-calculator",
+    "numerology-calculator",
+    "love-calculator"
+  ],
+  "rising-sign-calculator": [
+    "moon-sign-calculator",
+    "tarot-birth-card-calculator",
+    "numerology-calculator",
+    "love-calculator"
+  ],
+  "love-calculator": [
+    "flames-calculator",
+    "magic-8-ball",
+    "numerology-calculator",
+    "blood-type-compatibility"
+  ],
+  "flames-calculator": [
+    "love-calculator",
+    "magic-8-ball",
+    "decision-maker",
+    "spin-the-wheel"
+  ],
+  "magic-8-ball": [
+    "decision-maker",
+    "love-calculator",
+    "flames-calculator",
+    "coin-flip"
+  ],
+  "pdf-merge": [
+    "pdf-split",
+    "organize-pdf",
+    "pdf-compress",
+    "add-page-numbers",
+    "protect-pdf"
+  ],
+  "pdf-split": [
+    "pdf-merge",
+    "extract-pdf-pages",
+    "remove-pdf-pages",
+    "organize-pdf",
+    "pdf-compress"
+  ],
+  "pdf-compress": [
+    "optimize-pdf",
+    "pdf-merge",
+    "pdf-split",
+    "image-compressor",
+    "protect-pdf"
+  ],
+  "organize-pdf": [
+    "pdf-merge",
+    "pdf-split",
+    "rotate-pdf",
+    "remove-pdf-pages",
+    "extract-pdf-pages"
+  ],
+  "remove-pdf-pages": [
+    "pdf-split",
+    "extract-pdf-pages",
+    "organize-pdf",
+    "pdf-merge",
+    "crop-pdf"
+  ],
+  "extract-pdf-pages": [
+    "pdf-split",
+    "remove-pdf-pages",
+    "organize-pdf",
+    "pdf-merge",
+    "rotate-pdf"
+  ],
+  "rotate-pdf": [
+    "organize-pdf",
+    "crop-pdf",
+    "pdf-merge",
+    "pdf-split"
+  ],
+  "crop-pdf": [
+    "rotate-pdf",
+    "organize-pdf",
+    "pdf-compress",
+    "remove-pdf-pages"
+  ],
+  "add-page-numbers": [
+    "add-watermark",
+    "pdf-merge",
+    "pdf-split",
+    "edit-pdf"
+  ],
+  "add-watermark": [
+    "add-page-numbers",
+    "protect-pdf",
+    "pdf-security",
+    "sign-pdf"
+  ],
+  "protect-pdf": [
+    "unlock-pdf",
+    "pdf-security",
+    "add-watermark",
+    "pdf-metadata-remover"
+  ],
+  "unlock-pdf": [
+    "protect-pdf",
+    "pdf-security",
+    "pdf-merge",
+    "pdf-split"
+  ],
+  "pdf-security": [
+    "protect-pdf",
+    "unlock-pdf",
+    "pdf-metadata-remover",
+    "redact-pdf"
+  ],
+  "optimize-pdf": [
+    "pdf-compress",
+    "pdf-metadata-remover",
+    "pdf-merge",
+    "pdf-split"
+  ],
+  "jpg-to-pdf": [
+    "pdf-to-jpg",
+    "scan-to-pdf",
+    "pdf-merge",
+    "image-converter"
+  ],
+  "pdf-to-jpg": [
+    "jpg-to-pdf",
+    "pdf-to-word",
+    "extract-pdf-pages",
+    "image-converter"
+  ],
+  "scan-to-pdf": [
+    "jpg-to-pdf",
+    "ocr-pdf",
+    "pdf-merge",
+    "pdf-compress"
+  ],
+  "ocr-pdf": [
+    "pdf-to-word",
+    "scan-to-pdf",
+    "edit-pdf",
+    "word-counter"
+  ],
+  "pdf-to-word": [
+    "ocr-pdf",
+    "pdf-to-jpg",
+    "html-to-pdf",
+    "word-counter"
+  ],
+  "html-to-pdf": [
+    "pdf-to-word",
+    "markdown-html",
+    "pdf-merge",
+    "invoice-generator"
+  ],
+  "pdf-forms": [
+    "edit-pdf",
+    "sign-pdf",
+    "pdf-security",
+    "protect-pdf"
+  ],
+  "sign-pdf": [
+    "pdf-forms",
+    "edit-pdf",
+    "add-watermark",
+    "protect-pdf"
+  ],
+  "edit-pdf": [
+    "pdf-forms",
+    "sign-pdf",
+    "add-page-numbers",
+    "add-watermark"
+  ],
+  "pdf-metadata-remover": [
+    "protect-pdf",
+    "pdf-security",
+    "optimize-pdf",
+    "redact-pdf"
+  ],
+  "redact-pdf": [
+    "pdf-metadata-remover",
+    "protect-pdf",
+    "pdf-security",
+    "sign-pdf"
+  ],
+  "compare-pdf": [
+    "pdf-merge",
+    "pdf-split",
+    "text-diff-checker",
+    "edit-pdf"
+  ]
+}
