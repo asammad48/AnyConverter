@@ -190,6 +190,7 @@
 ## ADR-017: Third Independent Financial Validation Checkpoint & Release Verification
 - **Date:** 2026-11-02
 - **Status:** Approved & Certified (PASS WITH WARNINGS)
+- **Commit:** `12bdbbb2de0f359767feb693cb6597cac986d47e`
 - **Context:** Following the second independent revalidation (`SECOND_INDEPENDENT_FINANCIAL_REVALIDATION_REPORT.md` returning `FAIL — FIXES REQUIRED`), comprehensive remediations were completed across all seven identified release blockers. The third independent financial validation (`THIRD_INDEPENDENT_FINANCIAL_VALIDATION_REPORT.md`) independently verified the codebase, confirming all seven blockers repaired with a verdict of `PASS WITH WARNINGS`.
 - **Decision:**
   1. **Blocker 1 (Compound Interest Goal Solver):** Preserved the closed-form analytical solver in `compound-interest-calculator.js` (`calculateSavingsGoal`), eliminating the `ReferenceError` and accurately solving for required deposits across 5 compounding frequencies (daily, monthly, quarterly, semiannual, annual) and both annuity timings (Ordinary Annuity end-of-period vs Annuity Due beginning-of-period).
