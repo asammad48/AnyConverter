@@ -110,7 +110,7 @@ document.addEventListener('DOMContentLoaded', function () {
   function initWorker() {
     if (typeof Worker !== 'undefined') {
       try {
-        jsonWorker = new Worker('/assets/js/workers/json-worker.js?v=20261108');
+        jsonWorker = new Worker('/assets/js/workers/json-worker.js?v=20261109');
         jsonWorker.onmessage = function (e) {
           var msg = e.data;
           var cb = workerCallbacks[msg.id];
@@ -1474,24 +1474,23 @@ document.addEventListener('DOMContentLoaded', function () {
   /* ===== FULLSCREEN TOOLBAR (search + font + close) ===== */
   function installFsToolbar(panel) {
     if (panel.querySelector('.ac-fs-toolbar')) return;
-    var isOutput = panel.querySelector('#json-output') != null;
     var bar = document.createElement('div');
     bar.className = 'ac-fs-toolbar';
+    // Search appears on BOTH input and output fullscreens — it always drives
+    // the sidebar search which operates on the formatted output.
     bar.innerHTML =
-      (isOutput
-        ? '<input type="search" class="ac-fs-search" placeholder="Search in JSON…" aria-label="Search in JSON">' +
-          '<select class="ac-fs-mode" aria-label="Search mode">' +
-            '<option value="both">Key + Value</option>' +
-            '<option value="key">Key only</option>' +
-            '<option value="value">Value only</option>' +
-            '<option value="regex">Regex</option>' +
-            '<option value="path">Path</option>' +
-          '</select>' +
-          '<button class="ac-btn ac-fs-btn" data-act="prev" title="Previous match">‹</button>' +
-          '<span class="ac-fs-count" aria-live="polite">—</span>' +
-          '<button class="ac-btn ac-fs-btn" data-act="next" title="Next match">›</button>' +
-          '<span class="ac-fs-sep"></span>'
-        : '') +
+      '<input type="search" class="ac-fs-search" placeholder="Search in JSON…" aria-label="Search in JSON">' +
+      '<select class="ac-fs-mode" aria-label="Search mode">' +
+        '<option value="both">Key + Value</option>' +
+        '<option value="key">Key only</option>' +
+        '<option value="value">Value only</option>' +
+        '<option value="regex">Regex</option>' +
+        '<option value="path">Path</option>' +
+      '</select>' +
+      '<button class="ac-btn ac-fs-btn" data-act="prev" title="Previous match">‹</button>' +
+      '<span class="ac-fs-count" aria-live="polite">—</span>' +
+      '<button class="ac-btn ac-fs-btn" data-act="next" title="Next match">›</button>' +
+      '<span class="ac-fs-sep"></span>' +
       '<button class="ac-btn ac-fs-btn" data-act="fs-" title="Smaller font">A−</button>' +
       '<button class="ac-btn ac-fs-btn" data-act="fs+" title="Larger font">A+</button>' +
       '<button class="ac-btn ac-fs-btn" data-act="close" title="Exit fullscreen">✕ Close</button>';
@@ -1505,7 +1504,7 @@ document.addEventListener('DOMContentLoaded', function () {
     var mFs = bar.querySelector('.ac-fs-mode');
     var cntFs = bar.querySelector('.ac-fs-count');
 
-    if (isOutput && qSide && qFs) {
+    if (qSide && qFs) {
       qFs.value = qSide.value;
       mFs.value = mSide ? mSide.value : 'both';
       qFs.addEventListener('input', function () {
@@ -1521,13 +1520,11 @@ document.addEventListener('DOMContentLoaded', function () {
       bar.querySelector('[data-act="next"]').addEventListener('click', function () {
         var b = document.getElementById('search-next'); if (b) b.click();
       });
-      // Mirror match count from sidebar
       if (cntSide) {
         cntFs.textContent = cntSide.textContent;
         panel._fsCountObserver = new MutationObserver(function () { cntFs.textContent = cntSide.textContent; });
         panel._fsCountObserver.observe(cntSide, { childList: true, characterData: true, subtree: true });
       }
-      // Focus search on open for quick typing
       setTimeout(function () { qFs.focus(); }, 30);
     }
 
