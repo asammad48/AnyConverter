@@ -325,4 +325,10 @@ document.addEventListener('DOMContentLoaded', function () {
   initToggle('tog-auto', true);
   initToggle('tog-decl', true);
   bind(document.getElementById('opt-indent'), 'change', function() { if (autoFormat && input.value.trim()) formatXML(); });
+
+  // Fullscreen on the output panel
+  if (window.installPanelFullscreen && outputEl) {
+    var xmlOutPanel = outputEl.closest('.ac-panel');
+    if (xmlOutPanel) window.installPanelFullscreen(xmlOutPanel, { content: outputEl });
+  }
 });

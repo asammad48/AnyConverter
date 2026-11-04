@@ -116,4 +116,10 @@ document.addEventListener('DOMContentLoaded', function () {
     else { setTimeout(tryRender, 100); }
   }
   tryRender();
+
+  // Fullscreen on the preview panel
+  if (window.installPanelFullscreen && mdPreview) {
+    var mdPanel = mdPreview.closest('.ac-panel') || mdPreview;
+    window.installPanelFullscreen(mdPanel, { content: mdPreview });
+  }
 });
