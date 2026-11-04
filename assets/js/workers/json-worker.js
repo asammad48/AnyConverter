@@ -82,9 +82,8 @@ self.onmessage = function (e) {
       }
 
       var formatted = JSON.stringify(parsed, null, indentVal);
-      var stats = getSafeStats(parsed, formatted, lineCount);
 
-      // Compute line start offsets (Uint32Array)
+      // Compute line start offsets (Uint32Array) FIRST so lineCount is correct.
       var lineCount = 1;
       var len = formatted.length;
       for (var i = 0; i < len; i++) {
@@ -98,6 +97,8 @@ self.onmessage = function (e) {
           lineOffsets[lineIdx++] = j + 1;
         }
       }
+
+      var stats = getSafeStats(parsed, formatted, lineCount);
 
       self.postMessage({
         id: id,

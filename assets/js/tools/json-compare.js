@@ -492,9 +492,35 @@
       if (!el) return;
       el.addEventListener('change', function () {
         var f = el.files[0]; if (!f) return;
-        var reader = new FileReader();
-        reader.onload = function () { document.getElementById(idx === 0 ? 'jc-a' : 'jc-b').value = reader.result; };
-        reader.readAsText(f);
+        var MAX_JC = 100 * 1024 * 1024;
+        var L = window.progStrings();
+        if (f.size > MAX_JC) {
+          window.showToast(L.exceeds((f.size / 1024 / 1024).toFixed(1), 100), 'error');
+          el.value = '';
+          return;
+        }
+        var ctrl = (typeof AbortController !== 'undefined') ? new AbortController() : null;
+        var prog = window.showProgress(L.loading + ' ' + f.name + ' (' + (idx === 0 ? 'A' : 'B') + ')', {
+          cancellable: !!ctrl,
+          onCancel: function () { if (ctrl) ctrl.abort(); }
+        });
+        prog.setPhase(L.uploading);
+        var total = window.formatBytesShort(f.size);
+        window.readFileChunkedText(f, {
+          maxBytes: MAX_JC,
+          signal: ctrl ? ctrl.signal : undefined,
+          onProgress: function (p) {
+            prog.update(Math.min(99, p.percent), window.formatBytesShort(p.loaded) + ' / ' + total);
+          }
+        }).then(function (content) {
+          document.getElementById(idx === 0 ? 'jc-a' : 'jc-b').value = content;
+          content = null;
+          prog.done();
+        }).catch(function (err) {
+          if (err && err.message === 'aborted') { prog.done(); window.showToast(L.cancelled, 'info'); }
+          else prog.fail(err && err.message ? err.message : L.failedRead);
+        });
+        el.value = '';
       });
     });
 

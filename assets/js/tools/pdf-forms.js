@@ -19,7 +19,7 @@
 
   async function loadFile(file) {
     currentFileName = file.name || currentFileName;
-    pdfBytes = await file.arrayBuffer();
+    pdfBytes = await window.loadFileWithProgress(file);
     try {
       var doc = await PDFLib.PDFDocument.load(pdfBytes, { ignoreEncryption: true });
       var form = doc.getForm();

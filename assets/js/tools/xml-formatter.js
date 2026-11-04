@@ -240,9 +240,41 @@ document.addEventListener('DOMContentLoaded', function () {
   bind(byId('file-upload', 'xml-file'), 'change', function() {
     const file = this.files[0];
     if (!file) return;
-    const reader = new FileReader();
-    reader.onload = function(e) { input.value = e.target.result; formatXML(); };
-    reader.readAsText(file);
+    const MAX_XML = 100 * 1024 * 1024;
+    const L = window.progStrings();
+    if (file.size > MAX_XML) {
+      window.showToast(L.exceeds((file.size / 1024 / 1024).toFixed(1), 100), 'error');
+      this.value = '';
+      return;
+    }
+    const ctrl = (typeof AbortController !== 'undefined') ? new AbortController() : null;
+    const prog = window.showProgress(L.loading + ' ' + file.name, {
+      cancellable: !!ctrl, onCancel: function () { if (ctrl) ctrl.abort(); }
+    });
+    prog.setPhase(L.uploading);
+    const total = window.formatBytesShort(file.size);
+    const startedAt = performance.now();
+    window.readFileChunkedText(file, {
+      maxBytes: MAX_XML,
+      signal: ctrl ? ctrl.signal : undefined,
+      onProgress: function (p) {
+        const pct = Math.min(99, p.percent);
+        const elapsed = (performance.now() - startedAt) / 1000;
+        const eta = (p.percent > 2 && p.percent < 99) ? Math.max(0, (elapsed / (p.percent / 100)) - elapsed) : 0;
+        prog.update(pct, window.formatBytesShort(p.loaded) + ' / ' + total, eta > 0 ? L.eta(Math.ceil(eta)) : '');
+      }
+    }).then(function (content) {
+      prog.setPhase(L.formatting, { indeterminate: true });
+      setTimeout(function () {
+        input.value = content;
+        content = null;
+        prog.done();
+        formatXML();
+      }, 30);
+    }).catch(function (err) {
+      if (err && err.message === 'aborted') { prog.done(); window.showToast(L.cancelled, 'info'); }
+      else prog.fail(err && err.message ? err.message : L.failedRead);
+    });
     this.value = '';
   });
 

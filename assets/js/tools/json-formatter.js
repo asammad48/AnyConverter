@@ -83,17 +83,25 @@ document.addEventListener('DOMContentLoaded', function () {
   initWorker();
 
   function sendWorker(action, payload, transferables) {
+    var id = ++workerMsgId;
+    payload.id = id;
+    payload.action = action;
+    if (jsonWorker && typeof window.runWorkerAction === 'function') {
+      // Safe path: proper error propagation + 2 min timeout so UI never hangs silently.
+      return window.runWorkerAction(jsonWorker, payload, {
+        timeoutMs: 180000,
+        transfer: transferables || []
+      }).then(function (m) {
+        return m;
+      }, function (err) {
+        return { id: id, success: false, action: action, error: err && err.message ? err.message : 'Worker failed' };
+      });
+    }
     return new Promise(function (resolve) {
-      var id = ++workerMsgId;
-      payload.id = id;
-      payload.action = action;
       if (jsonWorker) {
         workerCallbacks[id] = resolve;
-        if (transferables && transferables.length) {
-          jsonWorker.postMessage(payload, transferables);
-        } else {
-          jsonWorker.postMessage(payload);
-        }
+        if (transferables && transferables.length) jsonWorker.postMessage(payload, transferables);
+        else jsonWorker.postMessage(payload);
       } else {
         runFallbackWorker(action, payload, resolve);
       }
@@ -862,6 +870,9 @@ document.addEventListener('DOMContentLoaded', function () {
       updateStats(res.stats.keys, res.stats.depth, res.stats.bytes, 0);
       input.style.borderColor = '';
       refreshSearch();
+      // Release the staged raw input copy now that worker has returned the formatted result.
+      stagedLargeInput = null;
+      raw = null;
 
     } else {
       // Standard interactive tree path (< 150 KB)
@@ -1145,33 +1156,53 @@ document.addEventListener('DOMContentLoaded', function () {
     window.showToast('Downloaded formatted.json', 'success');
   });
 
-  /* ===== FILE UPLOAD (UP TO 100MB ZERO-LAG) ===== */
+  /* ===== FILE UPLOAD (UP TO 100MB WITH LIVE PROGRESS) ===== */
   bind(fileUpload, 'change', function() {
     var file = fileUpload.files[0];
     if (!file) return;
+    var L = window.progStrings();
     if (file.size > MAX_FILE_SIZE) {
-      window.showToast('File size (' + formatBytes(file.size) + ') exceeds 100MB limit', 'error');
+      window.showToast(L.exceeds((file.size / 1024 / 1024).toFixed(1), 100), 'error');
       fileUpload.value = '';
       return;
     }
 
-    window.showToast('Loading ' + file.name + ' (' + formatBytes(file.size) + ')…', 'info');
-    var reader = new FileReader();
-    reader.onload = function(e) {
-      var content = e.target.result;
-      if (file.size > 2 * 1024 * 1024) {
-        stagedLargeInput = content;
-        input.value = '/* [Loaded: ' + file.name + ' (' + formatBytes(file.size) + ') — Content staged off-thread for peak performance. Click Format or press Ctrl+Enter] */';
-      } else {
-        stagedLargeInput = null;
-        input.value = content;
+    var ctrl = (typeof AbortController !== 'undefined') ? new AbortController() : null;
+    var totalMb = formatBytes(file.size);
+    var prog = window.showProgress(L.loading + ' ' + file.name, {
+      cancellable: !!ctrl,
+      onCancel: function () { if (ctrl) ctrl.abort(); }
+    });
+    prog.setPhase(L.uploading);
+    var startedAt = performance.now();
+
+    window.readFileChunkedText(file, {
+      maxBytes: MAX_FILE_SIZE,
+      signal: ctrl ? ctrl.signal : undefined,
+      onProgress: function (p) {
+        var pct = Math.min(99, p.percent);
+        var elapsed = (performance.now() - startedAt) / 1000;
+        var eta = (p.percent > 2 && p.percent < 99) ? Math.max(0, (elapsed / (p.percent / 100)) - elapsed) : 0;
+        prog.update(pct, formatBytes(p.loaded) + ' / ' + totalMb, eta > 0 ? L.eta(Math.ceil(eta)) : '');
       }
-      runFormat();
-    };
-    reader.onerror = function() {
-      window.showToast('Failed to read file', 'error');
-    };
-    reader.readAsText(file);
+    }).then(function (content) {
+      prog.setPhase(L.preparing, { indeterminate: true });
+      setTimeout(function () {
+        if (file.size > 2 * 1024 * 1024) {
+          stagedLargeInput = content;
+          input.value = '/* [Loaded: ' + file.name + ' (' + totalMb + ')] */';
+        } else {
+          stagedLargeInput = null;
+          input.value = content;
+        }
+        content = null;
+        prog.done();
+        runFormat();
+      }, 30);
+    }).catch(function (err) {
+      if (err && err.message === 'aborted') { prog.done(); window.showToast(L.cancelled, 'info'); }
+      else prog.fail(err && err.message ? err.message : L.failedRead);
+    });
     fileUpload.value = '';
   });
 

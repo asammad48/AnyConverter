@@ -111,7 +111,7 @@
     setStatus('Reading PDF metadata...', '');
     try {
       var PDFLib = await loadPdfLib();
-      pdfBytes = await file.arrayBuffer();
+      pdfBytes = await window.loadFileWithProgress(file);
       fileName = file.name.replace(/\.pdf$/i, '') || 'document';
       var doc = await PDFLib.PDFDocument.load(pdfBytes, { ignoreEncryption: true, updateMetadata: false });
       pageCount = doc.getPageCount();

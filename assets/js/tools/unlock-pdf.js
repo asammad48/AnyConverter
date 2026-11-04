@@ -16,7 +16,7 @@
   }
 
   async function loadFile(file) {
-    pdfBytes = await file.arrayBuffer();
+    pdfBytes = await window.loadFileWithProgress(file);
     document.getElementById('ul-info').textContent = 'Loaded: ' + file.name;
     document.getElementById('ul-controls').style.display = 'block';
     setStatus('', '');
