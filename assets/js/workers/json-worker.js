@@ -1,6 +1,110 @@
 /* AnyConverter — High-Performance JSON Web Worker (Zero-Lag up to 100MB) */
 'use strict';
 
+/* Chunked stringify — writes JSON output into an array of ~2 MB string chunks
+ * so we never exceed V8's single-string limit ("Invalid string length"). Also
+ * emits line offsets inline while walking, so the main thread can virtual-scroll
+ * without materializing the full output. */
+function chunkedStringify(root, indent) {
+  var CHUNK_TARGET = 2 * 1024 * 1024; // flush ~every 2 MB at a line boundary
+  var chunks = [];
+  var buf = '';
+  var committed = 0; // total chars flushed to chunks[]
+  var chunkStarts = [0];
+  var lineOffsets = [0];
+  var lineCount = 1;
+  var indentStr = typeof indent === 'number' ? '          '.slice(0, indent) : (indent === '\t' ? '\t' : '  ');
+  if (typeof indent === 'number' && indent > 10) {
+    indentStr = '';
+    for (var _ii = 0; _ii < indent; _ii++) indentStr += ' ';
+  }
+  var padCache = { 0: '' };
+  function pad(d) {
+    if (padCache[d] !== undefined) return padCache[d];
+    padCache[d] = pad(d - 1) + indentStr;
+    return padCache[d];
+  }
+
+  function flush() {
+    if (buf.length === 0) return;
+    chunks.push(buf);
+    committed += buf.length;
+    chunkStarts.push(committed);
+    buf = '';
+  }
+  function write(s) {
+    // Track newlines against the GLOBAL offset (committed + buf.length)
+    var base = committed + buf.length;
+    var nl = s.indexOf('\n');
+    while (nl !== -1) {
+      lineOffsets.push(base + nl + 1);
+      lineCount++;
+      nl = s.indexOf('\n', nl + 1);
+    }
+    buf += s;
+    // Flush at newline boundaries once we've buffered enough
+    if (buf.length >= CHUNK_TARGET) {
+      var lastNl = buf.lastIndexOf('\n');
+      if (lastNl === buf.length - 1) flush();
+    }
+  }
+  function writeStr(s) { write(JSON.stringify(s)); }
+  function walk(val, depth) {
+    if (val === null) { write('null'); return; }
+    var t = typeof val;
+    if (t === 'number') { write(isFinite(val) ? String(val) : 'null'); return; }
+    if (t === 'boolean') { write(val ? 'true' : 'false'); return; }
+    if (t === 'string') { writeStr(val); return; }
+    if (t === 'object' && typeof val.toJSON === 'function') { walk(val.toJSON(), depth); return; }
+    if (Array.isArray(val)) {
+      if (val.length === 0) { write('[]'); return; }
+      write('[\n');
+      var padInner = pad(depth + 1);
+      var padClose = pad(depth);
+      for (var i = 0; i < val.length; i++) {
+        write(padInner);
+        var item = val[i];
+        if (item === undefined || typeof item === 'function' || typeof item === 'symbol') write('null');
+        else walk(item, depth + 1);
+        write(i < val.length - 1 ? ',\n' : '\n');
+      }
+      write(padClose + ']');
+      return;
+    }
+    if (t === 'object') {
+      var keys = Object.keys(val);
+      var valid = [];
+      for (var k = 0; k < keys.length; k++) {
+        var vv = val[keys[k]];
+        if (vv !== undefined && typeof vv !== 'function' && typeof vv !== 'symbol') valid.push(keys[k]);
+      }
+      if (valid.length === 0) { write('{}'); return; }
+      write('{\n');
+      var padInner2 = pad(depth + 1);
+      var padClose2 = pad(depth);
+      for (var j = 0; j < valid.length; j++) {
+        write(padInner2);
+        writeStr(valid[j]);
+        write(': ');
+        walk(val[valid[j]], depth + 1);
+        write(j < valid.length - 1 ? ',\n' : '\n');
+      }
+      write(padClose2 + '}');
+      return;
+    }
+    write('null');
+  }
+  walk(root, 0);
+  flush();
+  return {
+    chunks: chunks,
+    chunkStarts: new Uint32Array(chunkStarts),
+    lineOffsets: new Uint32Array(lineOffsets),
+    lineCount: lineCount,
+    totalLength: committed
+  };
+}
+
 function sortDeep(obj, asc) {
   if (obj === null || typeof obj !== 'object') return obj;
   if (Array.isArray(obj)) {
@@ -73,42 +177,31 @@ self.onmessage = function (e) {
   try {
     if (action === 'format') {
       var raw = data.text;
+      data.text = null; // drop our handle so the raw string can be GC'd after parse
       var indentVal = data.indent === 'tab' ? '\t' : (typeof data.indent === 'number' ? data.indent : 2);
       var sort = data.sort || 'none';
 
       var parsed = JSON.parse(raw);
-      if (sort !== 'none') {
-        parsed = sortDeep(parsed, sort === 'asc');
-      }
+      raw = null;
+      if (sort !== 'none') parsed = sortDeep(parsed, sort === 'asc');
 
-      var formatted = JSON.stringify(parsed, null, indentVal);
+      // Chunked stringify — never builds a single giant string.
+      var out = chunkedStringify(parsed, indentVal);
 
-      // Compute line start offsets (Uint32Array) FIRST so lineCount is correct.
-      var lineCount = 1;
-      var len = formatted.length;
-      for (var i = 0; i < len; i++) {
-        if (formatted.charCodeAt(i) === 10) lineCount++;
-      }
-      var lineOffsets = new Uint32Array(lineCount);
-      lineOffsets[0] = 0;
-      var lineIdx = 1;
-      for (var j = 0; j < len; j++) {
-        if (formatted.charCodeAt(j) === 10) {
-          lineOffsets[lineIdx++] = j + 1;
-        }
-      }
-
-      var stats = getSafeStats(parsed, formatted, lineCount);
+      var stats = getSafeStats(parsed, { length: out.totalLength }, out.lineCount);
+      stats.bytes = out.totalLength;
 
       self.postMessage({
         id: id,
         success: true,
         action: 'format',
-        formatted: formatted,
-        lineCount: lineCount,
-        lineOffsets: lineOffsets.buffer,
+        chunks: out.chunks,
+        chunkStarts: out.chunkStarts.buffer,
+        lineCount: out.lineCount,
+        lineOffsets: out.lineOffsets.buffer,
+        totalLength: out.totalLength,
         stats: stats
-      }, [lineOffsets.buffer]);
+      }, [out.chunkStarts.buffer, out.lineOffsets.buffer]);
 
     } else if (action === 'index_lines') {
       var text = data.text;
@@ -154,7 +247,14 @@ self.onmessage = function (e) {
       });
 
     } else if (action === 'search') {
-      var src = data.text;
+      // Accept either a single text string (legacy) or a chunks array (chunked path).
+      var src;
+      if (data.chunks) {
+        // Join only when needed; if total fits in V8's string limit we materialise once for regex.
+        src = data.chunks.length === 1 ? data.chunks[0] : data.chunks.join('');
+      } else {
+        src = data.text;
+      }
       var query = data.query;
       var isRegex = !!data.isRegex;
       var lineOffsetsArr = new Uint32Array(data.lineOffsets);
