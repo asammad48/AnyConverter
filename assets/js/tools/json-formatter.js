@@ -46,7 +46,53 @@ document.addEventListener('DOMContentLoaded', function () {
 
   var stagedLargeInput = null;
   var isVirtualized = false;
-  var virtualText = '';
+
+  /* ChunkedText — string-like wrapper backed by an array of chunk strings so we
+   * never need a single String longer than V8's limit. Exposes .length and
+   * .substring(a, b) so existing virtual-scroller code keeps working, plus
+   * .asBlobParts() for direct Blob construction. */
+  function ChunkedText(chunks, chunkStarts, totalLength) {
+    this.chunks = chunks || [''];
+    this.chunkStarts = chunkStarts || new Uint32Array([0, (chunks && chunks[0] ? chunks[0].length : 0)]);
+    this.length = totalLength != null ? totalLength : ((chunks && chunks[0]) ? chunks[0].length : 0);
+  }
+  ChunkedText.prototype.substring = function (start, end) {
+    if (end == null || end > this.length) end = this.length;
+    if (start < 0) start = 0;
+    if (start >= end) return '';
+    var lo = 0, hi = this.chunks.length - 1, idx = 0;
+    while (lo <= hi) {
+      var mid = (lo + hi) >> 1;
+      if (this.chunkStarts[mid] <= start) { idx = mid; lo = mid + 1; }
+      else hi = mid - 1;
+    }
+    var local = start - this.chunkStarts[idx];
+    var chunk = this.chunks[idx];
+    var want = end - start;
+    if (local + want <= chunk.length) return chunk.substr(local, want);
+    var parts = [chunk.substring(local)];
+    var remaining = want - parts[0].length;
+    idx++;
+    while (remaining > 0 && idx < this.chunks.length) {
+      var take = Math.min(this.chunks[idx].length, remaining);
+      parts.push(this.chunks[idx].substring(0, take));
+      remaining -= take;
+      idx++;
+    }
+    return parts.join('');
+  };
+  ChunkedText.prototype.asBlobParts = function () { return this.chunks; };
+  ChunkedText.prototype.toStringUnsafe = function () {
+    if (this.chunks.length === 1) return this.chunks[0];
+    return this.chunks.join('');
+  };
+  ChunkedText.empty = function () { return new ChunkedText([''], new Uint32Array([0, 0]), 0); };
+  ChunkedText.fromString = function (s) {
+    s = s || '';
+    return new ChunkedText([s], new Uint32Array([0, s.length]), s.length);
+  };
+
+  var virtualText = ChunkedText.empty();
   var virtualLineOffsets = null;
   var virtualTotalLines = 0;
   var virtualSpacer = null;
@@ -63,7 +109,7 @@ document.addEventListener('DOMContentLoaded', function () {
   function initWorker() {
     if (typeof Worker !== 'undefined') {
       try {
-        jsonWorker = new Worker('/assets/js/workers/json-worker.js');
+        jsonWorker = new Worker('/assets/js/workers/json-worker.js?v=20261105');
         jsonWorker.onmessage = function (e) {
           var msg = e.data;
           var cb = workerCallbacks[msg.id];
@@ -116,21 +162,27 @@ document.addEventListener('DOMContentLoaded', function () {
           var indentVal = data.indent === 'tab' ? '\t' : (typeof data.indent === 'number' ? data.indent : 2);
           var parsed = JSON.parse(raw);
           if (data.sort && data.sort !== 'none') parsed = sortObj(parsed);
-          var formatted = JSON.stringify(parsed, null, indentVal);
-          var s = countStats(parsed);
-          s.bytes = formatted.length;
-
-          var lCount = 1, len = formatted.length;
-          for (var i = 0; i < len; i++) {
-            if (formatted.charCodeAt(i) === 10) lCount++;
+          // No worker — try native stringify, but guard against RangeError on huge output.
+          try {
+            var formatted = JSON.stringify(parsed, null, indentVal);
+            var s = countStats(parsed);
+            s.bytes = formatted.length;
+            var lCount = 1, len = formatted.length;
+            for (var i = 0; i < len; i++) if (formatted.charCodeAt(i) === 10) lCount++;
+            var offsets = new Uint32Array(lCount);
+            var idx = 1;
+            for (var j = 0; j < len; j++) if (formatted.charCodeAt(j) === 10) offsets[idx++] = j + 1;
+            resolve({ id: data.id, success: true, action: 'format', formatted: formatted, lineCount: lCount, lineOffsets: offsets.buffer, stats: s });
+          } catch (rangeErr) {
+            resolve({
+              id: data.id,
+              success: false,
+              action: 'format',
+              error: (rangeErr && rangeErr.name === 'RangeError')
+                ? 'Formatted JSON exceeds this browser’s string length limit. Try a smaller file.'
+                : (rangeErr && rangeErr.message) || 'Format failed'
+            });
           }
-          var offsets = new Uint32Array(lCount);
-          offsets[0] = 0;
-          var idx = 1;
-          for (var j = 0; j < len; j++) {
-            if (formatted.charCodeAt(j) === 10) offsets[idx++] = j + 1;
-          }
-          resolve({ id: data.id, success: true, action: 'format', formatted: formatted, lineCount: lCount, lineOffsets: offsets.buffer, stats: s });
         } else if (action === 'minify') {
           var pMin = JSON.parse(data.text);
           var minified = JSON.stringify(pMin);
@@ -317,10 +369,10 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }
 
-  function setupVirtualScroller(formatted, offsetsBuffer, lineCount, stats) {
+  function setupVirtualScroller(text, lineOffsetsBuf, lineCount, stats) {
     isVirtualized = true;
-    virtualText = formatted;
-    virtualLineOffsets = new Uint32Array(offsetsBuffer);
+    virtualText = (text instanceof ChunkedText) ? text : ChunkedText.fromString(text || '');
+    virtualLineOffsets = new Uint32Array(lineOffsetsBuf);
     virtualTotalLines = lineCount;
     virtualCurrentMatchLine = -1;
 
@@ -663,10 +715,12 @@ document.addEventListener('DOMContentLoaded', function () {
     var mode  = searchModeEl ? searchModeEl.value : 'both';
 
     if (isVirtualized) {
-      // Off-thread or fast search in virtualized text
+      // Off-thread or fast search in virtualized text.
+      // virtualText is a ChunkedText — send its chunks directly; the worker
+      // stitches them into a search source. Safe up to ~1 GB total.
       var isReg = mode === 'regex';
       var res = await sendWorker('search', {
-        text: virtualText,
+        chunks: virtualText.chunks,
         lineOffsets: virtualLineOffsets.buffer,
         query: query,
         isRegex: isReg
@@ -819,7 +873,7 @@ document.addEventListener('DOMContentLoaded', function () {
     if (outputSection) outputSection.style.display = raw ? '' : 'none';
     if (!raw) {
       isVirtualized = false;
-      virtualText = '';
+      virtualText = ChunkedText.empty();
       hidePerfBadge();
       outputEl.innerHTML = '<span style="color:#4A5568;font-style:italic;font-size:11px">Output will appear here…</span>';
       setInputStatus(null, '', 'Paste or type JSON');
@@ -849,7 +903,7 @@ document.addEventListener('DOMContentLoaded', function () {
       if (!res.success) {
         lastParsed = null;
         isVirtualized = false;
-        virtualText = '';
+        virtualText = ChunkedText.empty();
         hidePerfBadge();
         var errShort = '✕ ' + res.error;
         setInputStatus('err', errShort, '');
@@ -863,7 +917,10 @@ document.addEventListener('DOMContentLoaded', function () {
       }
 
       var dur = (performance.now() - startTime).toFixed(0);
-      setupVirtualScroller(res.formatted, res.lineOffsets, res.lineCount, res.stats);
+      var chunked = res.chunks
+        ? new ChunkedText(res.chunks, new Uint32Array(res.chunkStarts), res.totalLength)
+        : ChunkedText.fromString(res.formatted || '');
+      setupVirtualScroller(chunked, res.lineOffsets, res.lineCount, res.stats);
 
       setInputStatus('ok', '✓ Valid JSON', formatBytes(raw.length));
       setOutputStatus('ok', '✓ Formatted in ' + dur + 'ms', res.lineCount.toLocaleString() + ' lines · ' + res.stats.keys.toLocaleString() + ' keys');
@@ -877,7 +934,7 @@ document.addEventListener('DOMContentLoaded', function () {
     } else {
       // Standard interactive tree path (< 150 KB)
       isVirtualized = false;
-      virtualText = '';
+      virtualText = ChunkedText.empty();
       hidePerfBadge();
       try {
         var parsed = JSON.parse(raw);
@@ -922,7 +979,7 @@ document.addEventListener('DOMContentLoaded', function () {
       var res = await sendWorker('minify', { text: raw });
       if (res.success) {
         isVirtualized = false;
-        virtualText = res.minified;
+        virtualText = ChunkedText.fromString(res.minified);
         hidePerfBadge();
         outputEl.textContent = res.minified;
         outputEl.style.whiteSpace = 'pre-wrap';
@@ -941,7 +998,7 @@ document.addEventListener('DOMContentLoaded', function () {
       var parsed = JSON.parse(raw);
       var minified = JSON.stringify(parsed);
       isVirtualized = false;
-      virtualText = minified;
+      virtualText = ChunkedText.fromString(minified);
       hidePerfBadge();
       outputEl.textContent = minified;
       outputEl.style.whiteSpace = 'pre-wrap';
@@ -1086,7 +1143,7 @@ document.addEventListener('DOMContentLoaded', function () {
   bind(document.getElementById('btn-clear'), 'click', function() {
     input.value = '';
     isVirtualized = false;
-    virtualText = '';
+    virtualText = ChunkedText.empty();
     runFormat();
     input.focus();
   });
@@ -1107,11 +1164,15 @@ document.addEventListener('DOMContentLoaded', function () {
 
   bind(document.getElementById('btn-copy-output'), 'click', function() {
     var btn = this;
-    if (isVirtualized && virtualText) {
+    if (isVirtualized && virtualText && virtualText.length > 0) {
+      if (virtualText.length > 100 * 1024 * 1024) {
+        window.showToast('Output too large to copy to clipboard — use Download instead.', 'info');
+        return;
+      }
       if (virtualText.length > 5 * 1024 * 1024) {
         window.showToast(T.copyLargeNotice, 'info');
       }
-      window.copyToClipboard(virtualText, btn);
+      window.copyToClipboard(virtualText.toStringUnsafe(), btn);
       return;
     }
 
@@ -1129,8 +1190,8 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
   bind(document.getElementById('btn-download'), 'click', function() {
-    if (isVirtualized && virtualText) {
-      var vBlob = new Blob([virtualText], { type: 'application/json' });
+    if (isVirtualized && virtualText && virtualText.length > 0) {
+      var vBlob = new Blob(virtualText.asBlobParts(), { type: 'application/json' });
       var vUrl  = URL.createObjectURL(vBlob);
       var vA    = document.createElement('a');
       vA.href = vUrl; vA.download = 'formatted.json'; vA.click();
