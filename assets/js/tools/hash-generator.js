@@ -263,16 +263,28 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   async function hashFile(file) {
+    const MAX_HASH = 100 * 1024 * 1024;
+    const L = window.progStrings();
+    if (file.size > MAX_HASH) {
+      window.showToast(L.exceeds((file.size / 1024 / 1024).toFixed(1), 100), 'error');
+      return;
+    }
     if (fileProgress) fileProgress.style.display = 'block';
     if (fileInfo) fileInfo.style.display = 'none';
     if (progressFill) progressFill.style.width = '0%';
-    if (progressText) progressText.textContent = 'Reading file...';
+    if (progressText) progressText.textContent = L.uploading + '…';
 
-    await new Promise(function(r){ setTimeout(r, 0); });
-
-    const buf = await file.arrayBuffer();
+    const total = window.formatBytesShort(file.size);
+    const buf = await window.readFileChunkedBuffer(file, {
+      maxBytes: MAX_HASH,
+      onProgress: function (p) {
+        const pct = Math.min(50, (p.percent / 2));
+        if (progressFill) progressFill.style.width = pct.toFixed(1) + '%';
+        if (progressText) progressText.textContent = L.uploading + ' ' + window.formatBytesShort(p.loaded) + ' / ' + total;
+      }
+    });
     if (progressFill) progressFill.style.width = '50%';
-    if (progressText) progressText.textContent = 'Hashing...';
+    if (progressText) progressText.textContent = L.running + '…';
 
     await new Promise(function(r){ setTimeout(r, 0); });
 

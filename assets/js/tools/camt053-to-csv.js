@@ -296,17 +296,43 @@
   function handleFiles(files) {
     if (!files || !files.length) return;
     var file = files[0];
-    var reader = new FileReader();
-    reader.onload = function () {
-      try {
-        var statements = parseCamt(reader.result);
-        showError(null);
-        render(statements);
-      } catch (e) {
-        showError(e.message || String(e));
+    var MAX_CAMT = 100 * 1024 * 1024;
+    var L = window.progStrings();
+    if (file.size > MAX_CAMT) {
+      showError(L.exceeds((file.size / 1024 / 1024).toFixed(1), 100));
+      return;
+    }
+    var ctrl = (typeof AbortController !== 'undefined') ? new AbortController() : null;
+    var prog = window.showProgress(L.loading + ' ' + file.name, {
+      cancellable: !!ctrl,
+      onCancel: function () { if (ctrl) ctrl.abort(); }
+    });
+    prog.setPhase(L.uploading);
+    var total = window.formatBytesShort(file.size);
+    window.readFileChunkedText(file, {
+      maxBytes: MAX_CAMT,
+      signal: ctrl ? ctrl.signal : undefined,
+      onProgress: function (p) {
+        prog.update(Math.min(99, p.percent), window.formatBytesShort(p.loaded) + ' / ' + total);
       }
-    };
-    reader.readAsText(file);
+    }).then(function (content) {
+      prog.setPhase(L.parsing + ' CAMT XML', { indeterminate: true });
+      setTimeout(function () {
+        try {
+          var statements = parseCamt(content);
+          content = null;
+          showError(null);
+          render(statements);
+          prog.done();
+        } catch (e) {
+          prog.fail(e.message || String(e));
+          showError(e.message || String(e));
+        }
+      }, 30);
+    }).catch(function (err) {
+      if (err && err.message === 'aborted') { prog.done(); showError(null); }
+      else prog.fail(err && err.message ? err.message : L.failedRead);
+    });
   }
 
   var SAMPLE_XML = '<?xml version="1.0" encoding="UTF-8"?><Document xmlns="urn:iso:std:iso:20022:tech:xsd:camt.053.001.02"><BkToCstmrStmt><GrpHdr><MsgId>MSG001</MsgId><CreDtTm>2026-09-01T08:00:00</CreDtTm></GrpHdr><Stmt><Id>STMT001</Id><Acct><Id><IBAN>DK5000400440116243</IBAN></Id><Ccy>DKK</Ccy><Nm>Example ApS</Nm></Acct><Bal><Tp><CdOrPrtry><Cd>OPBD</Cd></CdOrPrtry></Tp><Amt Ccy="DKK">124500.00</Amt><CdtDbtInd>CRDT</CdtDbtInd><Dt><Dt>2026-09-01</Dt></Dt></Bal><Bal><Tp><CdOrPrtry><Cd>CLBD</Cd></CdOrPrtry></Tp><Amt Ccy="DKK">103550.00</Amt><CdtDbtInd>CRDT</CdtDbtInd><Dt><Dt>2026-09-30</Dt></Dt></Bal><Ntry><NtryRef>1</NtryRef><Amt Ccy="DKK">1250.00</Amt><CdtDbtInd>CRDT</CdtDbtInd><Sts>BOOK</Sts><BookgDt><Dt>2026-09-03</Dt></BookgDt><ValDt><Dt>2026-09-03</Dt></ValDt><AcctSvcrRef>REF1001</AcctSvcrRef><NtryDtls><TxDtls><RltdPties><Dbtr><Nm>Customer A/S</Nm></Dbtr><DbtrAcct><Id><IBAN>DK1020000123456789</IBAN></Id></DbtrAcct></RltdPties><RmtInf><Ustrd>Invoice 1042</Ustrd></RmtInf></TxDtls></NtryDtls></Ntry><Ntry><NtryRef>2</NtryRef><Amt Ccy="DKK">3800.00</Amt><CdtDbtInd>DBIT</CdtDbtInd><Sts>BOOK</Sts><BookgDt><Dt>2026-09-05</Dt></BookgDt><ValDt><Dt>2026-09-05</Dt></ValDt><AcctSvcrRef>REF1002</AcctSvcrRef><NtryDtls><TxDtls><RltdPties><Cdtr><Nm>Office Supplies Ltd</Nm></Cdtr><CdtrAcct><Id><IBAN>DK3030003344556677</IBAN></Id></CdtrAcct></RltdPties><RmtInf><Ustrd>Office chairs</Ustrd></RmtInf></TxDtls></NtryDtls></Ntry><Ntry><NtryRef>3</NtryRef><Amt Ccy="DKK">18400.00</Amt><CdtDbtInd>DBIT</CdtDbtInd><Sts>BOOK</Sts><BookgDt><Dt>2026-09-10</Dt></BookgDt><ValDt><Dt>2026-09-10</Dt></ValDt><AcctSvcrRef>REF1003</AcctSvcrRef><NtryDtls><TxDtls><RltdPties><Cdtr><Nm>Payroll batch</Nm></Cdtr></RltdPties></TxDtls><TxDtls><RltdPties><Cdtr><Nm>Payroll batch</Nm></Cdtr></RltdPties></TxDtls><TxDtls><RltdPties><Cdtr><Nm>Payroll batch</Nm></Cdtr></RltdPties></TxDtls></NtryDtls></Ntry><Ntry><NtryRef>4</NtryRef><Amt Ccy="DKK">243.75</Amt><CdtDbtInd>DBIT</CdtDbtInd><Sts>PDNG</Sts><BookgDt><Dt>2026-09-29</Dt></BookgDt><ValDt><Dt>2026-09-30</Dt></ValDt><AcctSvcrRef>REF1004</AcctSvcrRef></Ntry></Stmt></BkToCstmrStmt></Document>';

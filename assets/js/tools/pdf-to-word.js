@@ -317,7 +317,7 @@ window.DCTool = function (lang, DCLogic) {
     if (!/\.pdf$/i.test(file.name) && file.type !== 'application/pdf') { var ext = (file.name.split('.').pop() || '').toLowerCase(); this.setState({ err: L.bad(ext) }); return; }
     if (file.size > MAX_BYTES) { this.setState({ err: X.tooBig }); return; }
     this.setState({ err: '', stage: 'reading', result: null });
-    waitLibs().then(function () { return file.arrayBuffer(); }).then(function (buf) { return self.openBytes(new Uint8Array(buf), file.name, file.size); });
+    waitLibs().then(function () { return window.loadFileWithProgress(file, 50); }).then(function (buf) { return self.openBytes(new Uint8Array(buf), file.name, file.size); });
   };
   P.openBytes = async function (bytes, name, size) {
     var pdf;

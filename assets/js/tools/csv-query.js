@@ -85,15 +85,46 @@ document.addEventListener('DOMContentLoaded', function () {
 
   function loadFile(file) {
     if (!window.Papa) { window.showToast('CSV parser loading, please wait', 'info'); return; }
-    const reader = new FileReader();
-    reader.onload = function (e) {
-      const result = window.Papa.parse(e.target.result.trim(), { header: true, skipEmptyLines: true });
-      if (result.data.length === 0) { window.showToast('No data found in CSV', 'error'); return; }
-      loadedCsvText = e.target.result.trim();
-      loadedName = file.name;
-      buildDatabase(result, file.name);
-    };
-    reader.readAsText(file);
+    const MAX_CSV = 100 * 1024 * 1024;
+    const L = window.progStrings();
+    if (file.size > MAX_CSV) {
+      window.showToast(L.exceeds((file.size / 1024 / 1024).toFixed(1), 100), 'error');
+      return;
+    }
+    const ctrl = (typeof AbortController !== 'undefined') ? new AbortController() : null;
+    const prog = window.showProgress(L.loading + ' ' + file.name, {
+      cancellable: !!ctrl, onCancel: function () { if (ctrl) ctrl.abort(); }
+    });
+    prog.setPhase(L.uploading);
+    const total = window.formatBytesShort(file.size);
+    window.readFileChunkedText(file, {
+      maxBytes: MAX_CSV,
+      signal: ctrl ? ctrl.signal : undefined,
+      onProgress: function (p) {
+        prog.update(Math.min(99, p.percent), window.formatBytesShort(p.loaded) + ' / ' + total);
+      }
+    }).then(function (content) {
+      prog.setPhase(L.parsing + ' CSV', { indeterminate: true });
+      setTimeout(function () {
+        const trimmed = content.trim();
+        content = null;
+        const result = window.Papa.parse(trimmed, { header: true, skipEmptyLines: true });
+        if (result.data.length === 0) {
+          prog.fail('No data found in CSV');
+          return;
+        }
+        loadedCsvText = trimmed;
+        loadedName = file.name;
+        prog.setPhase(L.building, { indeterminate: true });
+        setTimeout(function () {
+          buildDatabase(result, file.name);
+          prog.done();
+        }, 20);
+      }, 20);
+    }).catch(function (err) {
+      if (err && err.message === 'aborted') { prog.done(); window.showToast(L.cancelled, 'info'); }
+      else prog.fail(err && err.message ? err.message : L.failedRead);
+    });
   }
 
   async function buildDatabase(result, name, afterSql) {

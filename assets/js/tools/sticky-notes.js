@@ -337,10 +337,24 @@
     var file = e.target.files && e.target.files[0];
     e.target.value = '';
     if (!file) return;
-    var reader = new FileReader();
-    reader.onload = function () {
+    var MAX_IMPORT = 10 * 1024 * 1024;
+    var P = window.progStrings();
+    if (file.size > MAX_IMPORT) {
+      toast(P.exceeds((file.size / 1024 / 1024).toFixed(1), 10));
+      return;
+    }
+    var prog = file.size > 256 * 1024 ? window.showProgress(P.loading + ' ' + file.name) : null;
+    if (prog) prog.setPhase(P.uploading);
+    var total = window.formatBytesShort(file.size);
+    window.readFileChunkedText(file, {
+      maxBytes: MAX_IMPORT,
+      onProgress: function (p) {
+        if (prog) prog.update(Math.min(99, p.percent), window.formatBytesShort(p.loaded) + ' / ' + total);
+      }
+    }).then(function (text) {
       try {
-        var data = JSON.parse(reader.result);
+        var data = JSON.parse(text);
+        text = null;
         if (!Array.isArray(data)) throw new Error('bad');
         var t = Date.now();
         var imported = data.filter(function (n) { return n && typeof n.text === 'string'; }).map(function (n, i) {
@@ -348,12 +362,16 @@
         });
         if (!imported.length) throw new Error('bad');
         save(imported.concat(notes));
+        if (prog) prog.done();
         toast(L.imported(imported.length));
       } catch (err) {
-        toast(L.badFile);
+        if (prog) prog.fail(L.badFile);
+        else toast(L.badFile);
       }
-    };
-    reader.readAsText(file);
+    }).catch(function () {
+      if (prog) prog.fail(L.badFile);
+      else toast(L.badFile);
+    });
   });
   el.checklist.addEventListener('click', function () {
     copyText(noteTexts().map(function (text) { return '- [ ] ' + text.replace(/\n+/g, ' '); }).join('\n'), L.checklistCopied);

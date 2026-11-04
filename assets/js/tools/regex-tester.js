@@ -226,16 +226,42 @@ document.addEventListener('DOMContentLoaded', function () {
     logFileInput.addEventListener('change', function() {
       const file = this.files[0];
       if (!file) return;
-      if (file.size > 10 * 1024 * 1024) {
-        window.showToast('Large file detected (' + (file.size/1024/1024).toFixed(1) + ' MB) — processing…', 'info');
+      const MAX_LOG = 100 * 1024 * 1024;
+      const L = window.progStrings();
+      if (file.size > MAX_LOG) {
+        window.showToast(L.exceeds((file.size / 1024 / 1024).toFixed(1), 100), 'error');
+        logFileInput.value = '';
+        return;
       }
-      const reader = new FileReader();
-      reader.onload = function(e) {
-        logTextarea.value = e.target.result;
-        runTest();
-        window.showToast('Loaded ' + file.name, 'success');
-      };
-      reader.readAsText(file);
+      const ctrl = (typeof AbortController !== 'undefined') ? new AbortController() : null;
+      const prog = window.showProgress(L.loading + ' ' + file.name, {
+        cancellable: !!ctrl, onCancel: function () { if (ctrl) ctrl.abort(); }
+      });
+      prog.setPhase(L.uploading);
+      const total = window.formatBytesShort(file.size);
+      const startedAt = performance.now();
+      window.readFileChunkedText(file, {
+        maxBytes: MAX_LOG,
+        signal: ctrl ? ctrl.signal : undefined,
+        onProgress: function (p) {
+          const pct = Math.min(99, p.percent);
+          const elapsed = (performance.now() - startedAt) / 1000;
+          const eta = (p.percent > 2 && p.percent < 99) ? Math.max(0, (elapsed / (p.percent / 100)) - elapsed) : 0;
+          prog.update(pct, window.formatBytesShort(p.loaded) + ' / ' + total, eta > 0 ? L.eta(Math.ceil(eta)) : '');
+        }
+      }).then(function (content) {
+        prog.setPhase(L.running + ' regex', { indeterminate: true });
+        setTimeout(function () {
+          logTextarea.value = content;
+          content = null;
+          prog.done();
+          runTest();
+          window.showToast(L.loaded(file.name), 'success');
+        }, 30);
+      }).catch(function (err) {
+        if (err && err.message === 'aborted') { prog.done(); window.showToast(L.cancelled, 'info'); }
+        else prog.fail(err && err.message ? err.message : L.failedRead);
+      });
       logFileInput.value = '';
     });
   }

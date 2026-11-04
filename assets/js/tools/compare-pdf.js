@@ -40,13 +40,13 @@
   }
 
   async function loadFileA(file) {
-    pdfA = await file.arrayBuffer();
+    pdfA = await window.loadFileWithProgress(file);
     docA = await loadPDF(pdfA);
     document.getElementById('cmp-info-a').textContent = file.name + ' (' + docA.numPages + ' pages)';
     tryRender();
   }
   async function loadFileB(file) {
-    pdfB = await file.arrayBuffer();
+    pdfB = await window.loadFileWithProgress(file);
     docB = await loadPDF(pdfB);
     document.getElementById('cmp-info-b').textContent = file.name + ' (' + docB.numPages + ' pages)';
     tryRender();

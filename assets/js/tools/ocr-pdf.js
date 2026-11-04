@@ -73,7 +73,7 @@
       } else {
         // PDF — render each page via PDF.js
         pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
-        var ab = await file.arrayBuffer();
+        var ab = await window.loadFileWithProgress(file);
         var pdf = await pdfjsLib.getDocument({ data: new Uint8Array(ab) }).promise;
         var numPages = pdf.numPages;
         setStatus('Rendering ' + numPages + ' page(s) for OCR…', '');

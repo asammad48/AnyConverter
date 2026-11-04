@@ -260,23 +260,42 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   function encodeFile(file) {
+    const MAX_B64 = 100 * 1024 * 1024;
+    const L = window.progStrings();
+    if (file.size > MAX_B64) {
+      window.showToast(L.exceeds((file.size / 1024 / 1024).toFixed(1), 100), 'error');
+      return;
+    }
+    const prog = window.showProgress(L.loading + ' ' + file.name);
+    prog.setPhase(L.uploading);
+    const total = window.formatBytesShort(file.size);
     const reader = new FileReader();
-    reader.onload = function (e) {
-      const dataUrl = e.target.result;
-      const b64 = dataUrl.split(',')[1];
-      fileInfo.textContent = file.name + ' — ' + formatBytes(file.size) + ' — ' + file.type;
-      setOutputValue(fileOutput, b64);
-      if (dataUrlOutput) dataUrlOutput.value = dataUrl;
-      fileResult.style.display = 'block';
-
-      if (file.type.startsWith('image/')) {
-        b64PreviewImg.src = dataUrl;
-        b64PreviewImg.width = 300;
-        b64PreviewImg.height = 200;
-        imagePreviewB64.style.display = 'block';
-      } else {
-        imagePreviewB64.style.display = 'none';
+    reader.onprogress = function (ev) {
+      if (ev.lengthComputable) {
+        prog.update(Math.min(99, (ev.loaded / ev.total) * 100), window.formatBytesShort(ev.loaded) + ' / ' + total);
       }
+    };
+    reader.onerror = function () { prog.fail(L.failedRead); };
+    reader.onload = function (e) {
+      prog.setPhase('Encoding', { indeterminate: true });
+      setTimeout(function () {
+        const dataUrl = e.target.result;
+        const b64 = dataUrl.split(',')[1];
+        fileInfo.textContent = file.name + ' — ' + formatBytes(file.size) + ' — ' + file.type;
+        setOutputValue(fileOutput, b64);
+        if (dataUrlOutput) dataUrlOutput.value = dataUrl;
+        fileResult.style.display = 'block';
+
+        if (file.type.startsWith('image/')) {
+          b64PreviewImg.src = dataUrl;
+          b64PreviewImg.width = 300;
+          b64PreviewImg.height = 200;
+          imagePreviewB64.style.display = 'block';
+        } else {
+          imagePreviewB64.style.display = 'none';
+        }
+        prog.done();
+      }, 20);
     };
     reader.readAsDataURL(file);
   }

@@ -50,7 +50,7 @@
 
       for (var i = 0; i < fileList.length; i++) {
         var file = fileList[i];
-        var bytes = await file.arrayBuffer();
+        var bytes = await window.loadFileWithProgress(file);
         var img = file.type === 'image/png' ? await doc.embedPng(bytes) : await doc.embedJpg(bytes);
         var pw = dims ? dims[0] : img.width;
         var ph = dims ? dims[1] : img.height;

@@ -17,10 +17,24 @@
 
   function compress() {
     if (!originalFile) return;
+    var MAX_IMG = 100 * 1024 * 1024;
+    var L = window.progStrings();
+    if (originalFile.size > MAX_IMG) {
+      window.showToast(L.exceeds((originalFile.size / 1024 / 1024).toFixed(1), 100), 'error');
+      return;
+    }
     var quality = parseInt(document.getElementById('quality-slider').value, 10) / 100;
     var format = document.getElementById('output-format').value;
+    var prog = window.showProgress(L.loading + ' ' + originalFile.name);
+    prog.setPhase(L.uploading);
+    var total = window.formatBytesShort(originalFile.size);
     var reader = new FileReader();
+    reader.onprogress = function (ev) {
+      if (ev.lengthComputable) prog.update(Math.min(99, (ev.loaded / ev.total) * 100), window.formatBytesShort(ev.loaded) + ' / ' + total);
+    };
+    reader.onerror = function () { prog.fail(L.failedRead); };
     reader.onload = function(e) {
+      prog.setPhase('Compressing', { indeterminate: true });
       var img = new Image();
       img.onload = function() {
         var canvas = document.createElement('canvas');
@@ -37,8 +51,10 @@
           var url = URL.createObjectURL(blob);
           document.getElementById('preview-img').src = url;
           document.getElementById('img-result').style.display = 'block';
+          prog.done();
         }, format, quality);
       };
+      img.onerror = function () { prog.fail(L.failedRead); };
       img.src = e.target.result;
     };
     reader.readAsDataURL(originalFile);

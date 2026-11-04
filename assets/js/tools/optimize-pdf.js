@@ -21,7 +21,7 @@
   }
 
   async function loadFile(file) {
-    pdfBytes = await file.arrayBuffer();
+    pdfBytes = await window.loadFileWithProgress(file);
     var doc = await PDFLib.PDFDocument.load(pdfBytes, { ignoreEncryption: true });
     document.getElementById('opt-info').textContent = 'Loaded: ' + file.name + ' (' + doc.getPageCount() + ' pages, ' + fmtSize(pdfBytes.byteLength) + ')';
     document.getElementById('opt-controls').style.display = 'block';

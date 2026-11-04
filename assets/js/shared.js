@@ -1563,4 +1563,360 @@
     const main = document.querySelector('main');
     if (main && !main.id) main.id = 'main-content';
   });
+
+  /* ============================================================
+   * LARGE FILE LOADER + PROGRESS UI + WORKER SAFETY
+   * Shared infrastructure for 100 MB-capable tools.
+   * ============================================================ */
+
+  function formatBytesShort(n) {
+    if (n < 1024) return n + ' B';
+    if (n < 1024 * 1024) return (n / 1024).toFixed(1) + ' KB';
+    if (n < 1024 * 1024 * 1024) return (n / 1024 / 1024).toFixed(1) + ' MB';
+    return (n / 1024 / 1024 / 1024).toFixed(2) + ' GB';
+  }
+
+  /* ===== PROGRESS i18n (en / es / da) ===== */
+  var PROG_STRINGS = {
+    en: {
+      loading: 'Loading', uploading: 'Uploading',
+      preparing: 'Preparing editor', formatting: 'Formatting',
+      parsing: 'Parsing', building: 'Building database',
+      running: 'Running', cancel: 'Cancel',
+      cancelled: 'Upload cancelled', failedRead: 'Failed to read file',
+      eta: function (s) { return '~' + s + 's left'; },
+      exceeds: function (mb, limit) { return 'File size (' + mb + ' MB) exceeds ' + limit + ' MB limit'; },
+      loaded: function (n) { return 'Loaded ' + n; }
+    },
+    es: {
+      loading: 'Cargando', uploading: 'Subiendo',
+      preparing: 'Preparando editor', formatting: 'Formateando',
+      parsing: 'Analizando', building: 'Construyendo base de datos',
+      running: 'Ejecutando', cancel: 'Cancelar',
+      cancelled: 'Carga cancelada', failedRead: 'No se pudo leer el archivo',
+      eta: function (s) { return '~' + s + 's restantes'; },
+      exceeds: function (mb, limit) { return 'El tamaño del archivo (' + mb + ' MB) excede el límite de ' + limit + ' MB'; },
+      loaded: function (n) { return 'Cargado ' + n; }
+    },
+    da: {
+      loading: 'Indlæser', uploading: 'Uploader',
+      preparing: 'Forbereder editor', formatting: 'Formaterer',
+      parsing: 'Analyserer', building: 'Opbygger database',
+      running: 'Kører', cancel: 'Annuller',
+      cancelled: 'Upload annulleret', failedRead: 'Kunne ikke læse filen',
+      eta: function (s) { return '~' + s + 's tilbage'; },
+      exceeds: function (mb, limit) { return 'Filstørrelse (' + mb + ' MB) overskrider grænsen på ' + limit + ' MB'; },
+      loaded: function (n) { return 'Indlæste ' + n; }
+    }
+  };
+  window.progStrings = function () {
+    var lang = (document.documentElement.lang || 'en').toLowerCase();
+    return PROG_STRINGS[lang] || PROG_STRINGS.en;
+  };
+
+  function ensureProgressStyles() {
+    if (document.getElementById('ac-progress-styles')) return;
+    var s = document.createElement('style');
+    s.id = 'ac-progress-styles';
+    s.textContent =
+      '.ac-progress{position:fixed;left:50%;top:50%;transform:translate(-50%,-50%);z-index:9999;' +
+      'background:#fff;border:1px solid #E5E7EB;border-radius:10px;box-shadow:0 10px 32px rgba(0,0,0,.18);' +
+      'padding:18px 22px;min-width:340px;max-width:92vw;font-family:inherit;color:#1F2937}' +
+      '.ac-progress__title{font-size:13px;font-weight:600;color:#1F2937;margin-bottom:10px;display:flex;' +
+      'justify-content:space-between;align-items:center;gap:12px}' +
+      '.ac-progress__phase{font-size:11px;font-weight:500;color:#4A5568;margin:6px 0 4px}' +
+      '.ac-progress__bar{height:8px;background:#F3F4F6;border-radius:4px;overflow:hidden;position:relative}' +
+      '.ac-progress__fill{height:100%;background:linear-gradient(90deg,#3B82F6,#60A5FA);' +
+      'width:0%;transition:width .18s ease;border-radius:4px}' +
+      '.ac-progress__fill--indeterminate{width:35%;animation:acProgIndet 1.1s linear infinite}' +
+      '.ac-progress__fill--err{background:#DC2626}' +
+      '.ac-progress__meta{display:flex;justify-content:space-between;font-size:11px;color:#6B7280;margin-top:6px}' +
+      '.ac-progress__cancel{background:none;border:1px solid #E5E7EB;border-radius:6px;padding:4px 10px;' +
+      'font-size:11px;color:#4A5568;cursor:pointer}' +
+      '.ac-progress__cancel:hover{background:#F9FAFB;color:#1F2937}' +
+      '.ac-progress__backdrop{position:fixed;inset:0;background:rgba(15,23,42,.35);z-index:9998}' +
+      '@keyframes acProgIndet{0%{margin-left:-35%}100%{margin-left:100%}}';
+    document.head.appendChild(s);
+  }
+
+  /**
+   * Create a progress UI. Returns an API: setPhase, update, done, fail.
+   * Example:
+   *   var p = window.showProgress('Loading data.json', { cancellable: true, onCancel: fn });
+   *   p.setPhase('Uploading'); p.update(42, '42 MB / 100 MB');
+   *   p.setPhase('Parsing', { indeterminate: true });
+   *   p.done(); // or p.fail('msg')
+   */
+  window.showProgress = function (title, opts) {
+    opts = opts || {};
+    ensureProgressStyles();
+    var backdrop = document.createElement('div');
+    backdrop.className = 'ac-progress__backdrop';
+    var box = document.createElement('div');
+    box.className = 'ac-progress';
+    box.setAttribute('role', 'dialog');
+    box.setAttribute('aria-live', 'polite');
+    box.innerHTML =
+      '<div class="ac-progress__title">' +
+      '<span class="ac-progress__ttl"></span>' +
+      (opts.cancellable ? '<button type="button" class="ac-progress__cancel">' + (window.progStrings ? window.progStrings().cancel : 'Cancel') + '</button>' : '') +
+      '</div>' +
+      '<div class="ac-progress__phase"></div>' +
+      '<div class="ac-progress__bar"><div class="ac-progress__fill"></div></div>' +
+      '<div class="ac-progress__meta"><span class="ac-progress__left"></span><span class="ac-progress__right"></span></div>';
+    box.querySelector('.ac-progress__ttl').textContent = title || 'Working…';
+    document.body.appendChild(backdrop);
+    document.body.appendChild(box);
+
+    var phaseEl = box.querySelector('.ac-progress__phase');
+    var fill    = box.querySelector('.ac-progress__fill');
+    var leftEl  = box.querySelector('.ac-progress__left');
+    var rightEl = box.querySelector('.ac-progress__right');
+    var cancelBtn = box.querySelector('.ac-progress__cancel');
+    var destroyed = false;
+
+    function destroy() {
+      if (destroyed) return;
+      destroyed = true;
+      box.remove();
+      backdrop.remove();
+    }
+
+    if (cancelBtn) {
+      cancelBtn.addEventListener('click', function () {
+        if (typeof opts.onCancel === 'function') opts.onCancel();
+        destroy();
+      });
+    }
+
+    return {
+      setPhase: function (label, o) {
+        o = o || {};
+        phaseEl.textContent = label || '';
+        fill.classList.toggle('ac-progress__fill--indeterminate', !!o.indeterminate);
+        if (o.indeterminate) fill.style.width = '';
+        else fill.style.width = '0%';
+        leftEl.textContent = '';
+        rightEl.textContent = '';
+      },
+      update: function (percent, leftText, rightText) {
+        if (fill.classList.contains('ac-progress__fill--indeterminate')) {
+          fill.classList.remove('ac-progress__fill--indeterminate');
+        }
+        if (typeof percent === 'number') {
+          var p = Math.max(0, Math.min(100, percent));
+          fill.style.width = p.toFixed(1) + '%';
+        }
+        if (typeof leftText === 'string')  leftEl.textContent  = leftText;
+        if (typeof rightText === 'string') rightEl.textContent = rightText;
+      },
+      done: function () { destroy(); },
+      fail: function (msg) {
+        fill.classList.add('ac-progress__fill--err');
+        fill.classList.remove('ac-progress__fill--indeterminate');
+        fill.style.width = '100%';
+        phaseEl.textContent = msg || 'Failed';
+        setTimeout(destroy, 2200);
+      }
+    };
+  };
+
+  /**
+   * Read a File as text with streaming chunks + progress callback.
+   * Uses modern file.stream() where available, falls back to FileReader.
+   * Returns a Promise<string>. Options: { maxBytes, onProgress({loaded,total,percent}), signal }.
+   */
+  window.readFileChunkedText = function (file, opts) {
+    opts = opts || {};
+    var maxBytes = opts.maxBytes || Infinity;
+    var onProgress = opts.onProgress || function () {};
+    var signal = opts.signal;
+
+    if (file.size > maxBytes) {
+      return Promise.reject(new Error(
+        'File is ' + formatBytesShort(file.size) + '. Max is ' + formatBytesShort(maxBytes) + '.'
+      ));
+    }
+
+    if (typeof file.stream === 'function' && typeof TextDecoder !== 'undefined') {
+      return new Promise(function (resolve, reject) {
+        var reader = file.stream().getReader();
+        var decoder = new TextDecoder('utf-8');
+        var chunks = [];
+        var loaded = 0;
+        var total = file.size;
+        var aborted = false;
+
+        function onAbort() { aborted = true; try { reader.cancel(); } catch (e) {} reject(new Error('aborted')); }
+        if (signal) {
+          if (signal.aborted) { onAbort(); return; }
+          signal.addEventListener('abort', onAbort, { once: true });
+        }
+
+        function pump() {
+          reader.read().then(function (r) {
+            if (aborted) return;
+            if (r.done) {
+              chunks.push(decoder.decode());
+              resolve(chunks.join(''));
+              return;
+            }
+            loaded += r.value.byteLength;
+            chunks.push(decoder.decode(r.value, { stream: true }));
+            onProgress({ loaded: loaded, total: total, percent: total ? (loaded / total) * 100 : 0 });
+            pump();
+          }, reject);
+        }
+        pump();
+      });
+    }
+
+    // Fallback: FileReader with progress event
+    return new Promise(function (resolve, reject) {
+      var fr = new FileReader();
+      fr.onprogress = function (ev) {
+        if (ev.lengthComputable) {
+          onProgress({ loaded: ev.loaded, total: ev.total, percent: (ev.loaded / ev.total) * 100 });
+        }
+      };
+      fr.onload  = function () { resolve(fr.result); };
+      fr.onerror = function () { reject(new Error('Failed to read file')); };
+      fr.onabort = function () { reject(new Error('aborted')); };
+      if (signal) {
+        if (signal.aborted) { fr.abort(); return; }
+        signal.addEventListener('abort', function () { try { fr.abort(); } catch (e) {} }, { once: true });
+      }
+      fr.readAsText(file);
+    });
+  };
+
+  /**
+   * Read a File as ArrayBuffer with chunked progress.
+   */
+  window.readFileChunkedBuffer = function (file, opts) {
+    opts = opts || {};
+    var maxBytes = opts.maxBytes || Infinity;
+    var onProgress = opts.onProgress || function () {};
+    var signal = opts.signal;
+    if (file.size > maxBytes) {
+      return Promise.reject(new Error(
+        'File is ' + formatBytesShort(file.size) + '. Max is ' + formatBytesShort(maxBytes) + '.'
+      ));
+    }
+    return new Promise(function (resolve, reject) {
+      var fr = new FileReader();
+      fr.onprogress = function (ev) {
+        if (ev.lengthComputable) onProgress({ loaded: ev.loaded, total: ev.total, percent: (ev.loaded / ev.total) * 100 });
+      };
+      fr.onload  = function () { resolve(fr.result); };
+      fr.onerror = function () { reject(new Error('Failed to read file')); };
+      fr.onabort = function () { reject(new Error('aborted')); };
+      if (signal) {
+        if (signal.aborted) { fr.abort(); return; }
+        signal.addEventListener('abort', function () { try { fr.abort(); } catch (e) {} }, { once: true });
+      }
+      fr.readAsArrayBuffer(file);
+    });
+  };
+
+  /**
+   * Safe worker request/response with timeout + proper error propagation.
+   * worker.onerror and worker termination both reject the promise (no silent hangs).
+   * If payload has `{type:'progress', percent}` messages (not matching the id), they are forwarded to onProgress.
+   */
+  window.runWorkerAction = function (worker, payload, opts) {
+    opts = opts || {};
+    var timeoutMs = opts.timeoutMs || 120000;
+    var onProgress = opts.onProgress;
+    return new Promise(function (resolve, reject) {
+      if (!worker) { reject(new Error('Worker unavailable')); return; }
+      var id = payload.id;
+      var settled = false;
+      function clean() {
+        worker.removeEventListener('message', onMsg);
+        worker.removeEventListener('error', onErr);
+        clearTimeout(t);
+      }
+      function onMsg(e) {
+        var m = e.data;
+        if (!m) return;
+        if (m.type === 'progress' && onProgress) { onProgress(m); return; }
+        if (m.id !== id) return;
+        if (settled) return;
+        settled = true;
+        clean();
+        if (m.success === false) reject(new Error(m.error || 'Worker error'));
+        else resolve(m);
+      }
+      function onErr(ev) {
+        if (settled) return;
+        settled = true;
+        clean();
+        reject(new Error((ev && ev.message) || 'Worker crashed'));
+      }
+      var t = setTimeout(function () {
+        if (settled) return;
+        settled = true;
+        clean();
+        reject(new Error('Operation timed out'));
+      }, timeoutMs);
+      worker.addEventListener('message', onMsg);
+      worker.addEventListener('error', onErr);
+      try {
+        if (opts.transfer && opts.transfer.length) worker.postMessage(payload, opts.transfer);
+        else worker.postMessage(payload);
+      } catch (e) {
+        if (settled) return;
+        settled = true;
+        clean();
+        reject(e);
+      }
+    });
+  };
+
+  window.formatBytesShort = formatBytesShort;
+
+  /**
+   * One-shot helper for binary file uploads (PDFs, images, etc.).
+   * Drop-in replacement for `await file.arrayBuffer()` that shows a progress bar
+   * and enforces a size cap. Returns the ArrayBuffer.
+   *
+   *   const buf = await window.loadFileWithProgress(file);        // 100 MB default
+   *   const buf = await window.loadFileWithProgress(file, 50);    // 50 MB cap
+   */
+  window.loadFileWithProgress = function (file, maxMB) {
+    maxMB = typeof maxMB === 'number' ? maxMB : 100;
+    var L = window.progStrings();
+    var maxBytes = maxMB * 1024 * 1024;
+    if (file.size > maxBytes) {
+      var err = new Error(L.exceeds((file.size / 1024 / 1024).toFixed(1), maxMB));
+      window.showToast(err.message, 'error');
+      return Promise.reject(err);
+    }
+    var ctrl = (typeof AbortController !== 'undefined') ? new AbortController() : null;
+    var prog = window.showProgress(L.loading + ' ' + file.name, {
+      cancellable: !!ctrl,
+      onCancel: function () { if (ctrl) ctrl.abort(); }
+    });
+    prog.setPhase(L.uploading);
+    var total = formatBytesShort(file.size);
+    var startedAt = performance.now();
+    return window.readFileChunkedBuffer(file, {
+      maxBytes: maxBytes,
+      signal: ctrl ? ctrl.signal : undefined,
+      onProgress: function (p) {
+        var pct = Math.min(99, p.percent);
+        var elapsed = (performance.now() - startedAt) / 1000;
+        var eta = (p.percent > 2 && p.percent < 99) ? Math.max(0, (elapsed / (p.percent / 100)) - elapsed) : 0;
+        prog.update(pct, formatBytesShort(p.loaded) + ' / ' + total, eta > 0 ? L.eta(Math.ceil(eta)) : '');
+      }
+    }).then(function (buf) {
+      prog.done();
+      return buf;
+    }, function (err) {
+      if (err && err.message === 'aborted') { prog.done(); window.showToast(L.cancelled, 'info'); }
+      else prog.fail(err && err.message ? err.message : L.failedRead);
+      throw err;
+    });
+  };
 })();
