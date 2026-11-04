@@ -577,5 +577,14 @@
         if (s) { s.textContent = t('copied'); setTimeout(function () { s.textContent = ''; }, 2000); }
       });
     });
+
+    // Fullscreen on the diff result panel
+    if (window.installPanelFullscreen) {
+      var jcResult = document.getElementById('jc-result');
+      if (jcResult) {
+        var jcPanel = jcResult.closest('.ac-panel') || jcResult;
+        window.installPanelFullscreen(jcPanel, { content: jcResult });
+      }
+    }
   });
 })();

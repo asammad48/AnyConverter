@@ -19,7 +19,22 @@
       "Bash(git *)",
       "Bash(more +100)",
       "Bash(echo \"EXIT_CODE=$?\")",
-      "Bash(Get-ChildItem *)"
+      "Bash(Get-ChildItem *)",
+      "Bash(ls node_modules/playwright)",
+      "Bash(ls node_modules/puppeteer)",
+      "Bash(which chromium *)",
+      "Bash(npm install *)",
+      "Bash(npx playwright *)",
+      "Bash(tee /tmp/browser-test.log)",
+      "Bash(tasklist)",
+      "Bash(grep -q \"PASSED:\" /tmp/browser-test.log)",
+      "Bash(grep -q node \"/proc/$$/cmdline\")",
+      "Bash(grep -q \"PASSED:\\\\|FATAL:\" /tmp/browser-test.log)",
+      "Bash(break)",
+      "Bash(wc -l)",
+      "Read(//tmp/**)",
+      "Bash(node test-browser.js)",
+      "Bash(echo \"exit=$?\")"
     ]
   }
 }

@@ -40,7 +40,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
   /* ===== ZERO-LAG & VIRTUALIZATION ENGINE STATE ===== */
   var LARGE_THRESHOLD = 150 * 1024; // 150 KB: switch to virtual scroller
-  var AUTO_FORMAT_MAX = 100 * 1024; // 100 KB: disable auto-format debounce
+  var AUTO_FORMAT_MAX = 5 * 1024 * 1024; // 5 MB: debounce auto-format; above this only on explicit action
+  var CONVERT_MAX     = 5 * 1024 * 1024; // 5 MB: YAML/CSV conversion ceiling
   var MAX_FILE_SIZE = 105 * 1024 * 1024; // 105 MB
   var LINE_HEIGHT = 22; // 22px per row
 
@@ -109,7 +110,7 @@ document.addEventListener('DOMContentLoaded', function () {
   function initWorker() {
     if (typeof Worker !== 'undefined') {
       try {
-        jsonWorker = new Worker('/assets/js/workers/json-worker.js?v=20261105');
+        jsonWorker = new Worker('/assets/js/workers/json-worker.js?v=20261108');
         jsonWorker.onmessage = function (e) {
           var msg = e.data;
           var cb = workerCallbacks[msg.id];
@@ -392,7 +393,30 @@ document.addEventListener('DOMContentLoaded', function () {
     }
     badge.style.display = 'flex';
     badge.innerHTML = '<span>' + T.perfModeTitle + ' · <strong>' + virtualTotalLines.toLocaleString() + ' lines</strong> (' + formatBytes(virtualText.length) + ')</span>' +
-      '<span class="v-perf-tag">Zero Lag</span>';
+      '<span class="v-perf-tag">Zero Lag</span>' +
+      '<span class="v-fontsize-ctl" role="group" aria-label="Font size">' +
+        '<button type="button" class="v-fs-btn" data-dir="-1" aria-label="Decrease font size">A−</button>' +
+        '<span class="v-fs-val" id="jf-fs-val">13</span>' +
+        '<button type="button" class="v-fs-btn" data-dir="1" aria-label="Increase font size">A+</button>' +
+      '</span>';
+    // Font-size +/- control (persists in localStorage)
+    var FS_KEY = 'jf:fontsize';
+    var fs = parseInt(localStorage.getItem(FS_KEY), 10);
+    if (!fs || fs < 10 || fs > 24) fs = 13;
+    applyFontSize(fs);
+    badge.querySelectorAll('.v-fs-btn').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var cur = parseInt(localStorage.getItem(FS_KEY), 10) || 13;
+        var next = Math.max(10, Math.min(24, cur + parseInt(btn.dataset.dir, 10)));
+        localStorage.setItem(FS_KEY, String(next));
+        applyFontSize(next);
+      });
+    });
+    function applyFontSize(px) {
+      outputEl.style.setProperty('--panel-font-size', px + 'px');
+      var lbl = document.getElementById('jf-fs-val');
+      if (lbl) lbl.textContent = px;
+    }
 
     // Phantom spacer
     virtualSpacer = document.createElement('div');
@@ -927,8 +951,11 @@ document.addEventListener('DOMContentLoaded', function () {
       updateStats(res.stats.keys, res.stats.depth, res.stats.bytes, 0);
       input.style.borderColor = '';
       refreshSearch();
-      // Release the staged raw input copy now that worker has returned the formatted result.
-      stagedLargeInput = null;
+      // Keep the staged raw if it's small enough that the user may still want
+      // to convert to YAML/CSV. For huge inputs, drop it to reclaim memory.
+      if (raw && raw.length > CONVERT_MAX) {
+        stagedLargeInput = null;
+      }
       raw = null;
 
     } else {
@@ -1055,33 +1082,62 @@ document.addEventListener('DOMContentLoaded', function () {
   bind(document.getElementById('btn-minify'), 'click', function() { currentMode = 'minify'; runMinify(); });
   bind(document.getElementById('btn-validate'), 'click', function() { currentMode = 'validate'; runValidate(); });
 
+  // Return a raw-text representation of the current input suitable for conversion.
+  // Prefers the staged raw string when the textarea holds the placeholder.
+  function getConvertSource() {
+    if (stagedLargeInput) return stagedLargeInput;
+    var v = input.value;
+    if (v && v.indexOf('/* [Loaded:') === 0) return null; // placeholder but staged was dropped
+    return v && v.trim() ? v.trim() : '';
+  }
+
+  function parseForConvert() {
+    // Fast path: we already have a parsed tree from the small-input path.
+    if (lastParsed && !isVirtualized) return lastParsed;
+    var src = getConvertSource();
+    if (!src) return null;
+    if (src.length > CONVERT_MAX) {
+      window.showToast('Conversion supported up to ' + (CONVERT_MAX / 1024 / 1024) + ' MB. Current input is ' + formatBytes(src.length) + '.', 'info');
+      return null;
+    }
+    try { return JSON.parse(src); }
+    catch (e) { window.showToast('Invalid JSON: ' + e.message, 'error'); return null; }
+  }
+
   bind(document.getElementById('btn-to-yaml'), 'click', function() {
-    if (isVirtualized) {
-      window.showToast('Exporting large files to YAML requires under 1MB payload', 'info');
+    var tree = parseForConvert();
+    if (!tree) {
+      if (!lastParsed && !stagedLargeInput && !input.value.trim()) window.showToast('Format JSON first', 'info');
       return;
     }
-    if (!lastParsed) { window.showToast('Format JSON first', 'info'); return; }
     try {
-      var yaml = jsonToYaml(lastParsed, 0);
+      var yaml = jsonToYaml(tree, 0);
       outputEl.textContent = yaml;
       outputEl.style.whiteSpace = 'pre-wrap';
-      setOutputStatus('ok', '✓ Converted to YAML', '');
+      // Reset virtualized state since we're now showing plain text
+      isVirtualized = false;
+      virtualText = ChunkedText.fromString(yaml);
+      hidePerfBadge();
+      setOutputStatus('ok', '✓ Converted to YAML', formatBytes(yaml.length));
       currentMode = 'convert';
       refreshSearch();
     } catch(e) { window.showToast('Conversion failed: ' + e.message, 'error'); }
   });
 
   bind(document.getElementById('btn-to-csv'), 'click', function() {
-    if (isVirtualized) {
-      window.showToast('CSV export is supported for table datasets under 1MB', 'info');
+    var tree = parseForConvert();
+    if (!tree) {
+      if (!lastParsed && !stagedLargeInput && !input.value.trim()) window.showToast('Format JSON first', 'info');
       return;
     }
-    if (!lastParsed) { window.showToast('Format JSON first', 'info'); return; }
     try {
-      var csv = jsonToCsv(lastParsed);
+      var csv = jsonToCsv(tree);
       outputEl.textContent = csv;
       outputEl.style.whiteSpace = 'pre-wrap';
-      setOutputStatus('ok', '✓ Converted to CSV', '');
+      isVirtualized = false;
+      virtualText = ChunkedText.fromString(csv);
+      hidePerfBadge();
+      setOutputStatus('ok', '✓ Converted to CSV', formatBytes(csv.length));
       currentMode = 'convert';
       refreshSearch();
     } catch(e) { window.showToast(e.message, 'error'); }
@@ -1293,6 +1349,18 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 
+  /* ===== PASTE: format immediately regardless of autoFormat toggle ===== */
+  bind(input, 'paste', function() {
+    clearTimeout(debounceTimer);
+    // After the paste lands, run format once on the next tick.
+    setTimeout(function () {
+      var raw = input.value.trim();
+      if (!raw) return;
+      // Even a huge paste gets formatted on paste — user explicitly asked for it.
+      runFormat();
+    }, 0);
+  });
+
   /* ===== SUB-TABS ===== */
   document.querySelectorAll('.sub-tab').forEach(function(tab) {
     tab.addEventListener('click', function() {
@@ -1387,6 +1455,7 @@ document.addEventListener('DOMContentLoaded', function () {
     btn.title = T.exitFullscreen;
     if (fsOverlay) fsOverlay.classList.add('active');
     document.body.style.overflow = 'hidden';
+    installFsToolbar(panel);
   }
 
   function exitFs() {
@@ -1398,8 +1467,101 @@ document.addEventListener('DOMContentLoaded', function () {
       var b = document.getElementById(id);
       if (b) { b.classList.remove('fs-active'); b.textContent = '⛶'; b.title = T.enterFullscreen; }
     });
+    removeFsToolbar(fsPanel);
     fsPanel = null;
   }
+
+  /* ===== FULLSCREEN TOOLBAR (search + font + close) ===== */
+  function installFsToolbar(panel) {
+    if (panel.querySelector('.ac-fs-toolbar')) return;
+    var isOutput = panel.querySelector('#json-output') != null;
+    var bar = document.createElement('div');
+    bar.className = 'ac-fs-toolbar';
+    bar.innerHTML =
+      (isOutput
+        ? '<input type="search" class="ac-fs-search" placeholder="Search in JSON…" aria-label="Search in JSON">' +
+          '<select class="ac-fs-mode" aria-label="Search mode">' +
+            '<option value="both">Key + Value</option>' +
+            '<option value="key">Key only</option>' +
+            '<option value="value">Value only</option>' +
+            '<option value="regex">Regex</option>' +
+            '<option value="path">Path</option>' +
+          '</select>' +
+          '<button class="ac-btn ac-fs-btn" data-act="prev" title="Previous match">‹</button>' +
+          '<span class="ac-fs-count" aria-live="polite">—</span>' +
+          '<button class="ac-btn ac-fs-btn" data-act="next" title="Next match">›</button>' +
+          '<span class="ac-fs-sep"></span>'
+        : '') +
+      '<button class="ac-btn ac-fs-btn" data-act="fs-" title="Smaller font">A−</button>' +
+      '<button class="ac-btn ac-fs-btn" data-act="fs+" title="Larger font">A+</button>' +
+      '<button class="ac-btn ac-fs-btn" data-act="close" title="Exit fullscreen">✕ Close</button>';
+    panel.appendChild(bar);
+
+    // Wire controls
+    var qSide = document.getElementById('search-query');
+    var mSide = document.getElementById('search-mode');
+    var cntSide = document.getElementById('search-count');
+    var qFs = bar.querySelector('.ac-fs-search');
+    var mFs = bar.querySelector('.ac-fs-mode');
+    var cntFs = bar.querySelector('.ac-fs-count');
+
+    if (isOutput && qSide && qFs) {
+      qFs.value = qSide.value;
+      mFs.value = mSide ? mSide.value : 'both';
+      qFs.addEventListener('input', function () {
+        qSide.value = qFs.value;
+        qSide.dispatchEvent(new Event('input'));
+      });
+      mFs.addEventListener('change', function () {
+        if (mSide) { mSide.value = mFs.value; mSide.dispatchEvent(new Event('change')); }
+      });
+      bar.querySelector('[data-act="prev"]').addEventListener('click', function () {
+        var b = document.getElementById('search-prev'); if (b) b.click();
+      });
+      bar.querySelector('[data-act="next"]').addEventListener('click', function () {
+        var b = document.getElementById('search-next'); if (b) b.click();
+      });
+      // Mirror match count from sidebar
+      if (cntSide) {
+        cntFs.textContent = cntSide.textContent;
+        panel._fsCountObserver = new MutationObserver(function () { cntFs.textContent = cntSide.textContent; });
+        panel._fsCountObserver.observe(cntSide, { childList: true, characterData: true, subtree: true });
+      }
+      // Focus search on open for quick typing
+      setTimeout(function () { qFs.focus(); }, 30);
+    }
+
+    bar.querySelector('[data-act="close"]').addEventListener('click', exitFs);
+    bar.querySelector('[data-act="fs-"]').addEventListener('click', function () {
+      bumpPanelFont(-1);
+    });
+    bar.querySelector('[data-act="fs+"]').addEventListener('click', function () {
+      bumpPanelFont(1);
+    });
+  }
+
+  function removeFsToolbar(panel) {
+    if (!panel) return;
+    var bar = panel.querySelector('.ac-fs-toolbar');
+    if (bar) bar.remove();
+    if (panel._fsCountObserver) { panel._fsCountObserver.disconnect(); panel._fsCountObserver = null; }
+  }
+
+  function bumpPanelFont(delta) {
+    var FS_KEY = 'jf:fontsize';
+    var cur = parseInt(localStorage.getItem(FS_KEY), 10) || 13;
+    var next = Math.max(10, Math.min(24, cur + delta));
+    localStorage.setItem(FS_KEY, String(next));
+    // Apply to active output
+    if (outputEl) outputEl.style.setProperty('--panel-font-size', next + 'px');
+    var lbl = document.getElementById('jf-fs-val');
+    if (lbl) lbl.textContent = next;
+  }
+
+  // ESC exits fullscreen
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && fsPanel) { e.preventDefault(); exitFs(); }
+  });
 
   var btnFsInput  = document.getElementById('btn-fs-input');
   var btnFsOutput = document.getElementById('btn-fs-output');

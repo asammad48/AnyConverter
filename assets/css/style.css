@@ -1337,8 +1337,8 @@ mark.regex-match { background: rgba(255,200,0,0.4); color: transparent; border-r
   position: absolute;
   top: 0;
   left: 0;
-  right: 0;
-  width: 100%;
+  width: max-content;
+  min-width: 100%;
   contain: content;
 }
 .j-vrow {
@@ -1350,6 +1350,8 @@ mark.regex-match { background: rgba(255,200,0,0.4); color: transparent; border-r
   font-family: var(--font-mono);
   font-size: var(--panel-font-size, 13px);
   padding: 0 4px;
+  width: max-content;
+  min-width: 100%;
 }
 .j-vrow:hover {
   background: rgba(0, 0, 0, 0.03);
@@ -1374,13 +1376,35 @@ mark.regex-match { background: rgba(255,200,0,0.4); color: transparent; border-r
   border-right: 1px solid var(--color-border, #E5E7EB);
 }
 .j-code {
-  flex: 1;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  flex: 0 0 auto;
+  overflow: visible;
+  text-overflow: clip;
   white-space: pre;
+  padding-right: 20px;
+}
+#json-output.json-view,
+#xml-output.json-view {
+  overflow: auto;
 }
 #json-output:not(.show-linenums) .j-ln {
   display: none;
+}
+.v-fontsize-ctl {
+  display: inline-flex; align-items: center; gap: 4px;
+  margin-left: auto; padding-left: 10px;
+}
+.v-fs-btn {
+  width: 26px; height: 22px;
+  border: 1px solid var(--color-border, #E5E7EB);
+  background: var(--color-surface, #fff);
+  color: var(--color-text-2, #4A5568);
+  border-radius: 4px; font-size: 11px; font-weight: 600;
+  cursor: pointer; line-height: 1; padding: 0;
+}
+.v-fs-btn:hover { background: var(--color-surface-2, #F9FAFB); color: var(--color-text, #1F2937); }
+.v-fs-val {
+  min-width: 22px; text-align: center; font-size: 11px;
+  color: var(--color-text-2, #4A5568); font-variant-numeric: tabular-nums;
 }
 :root.dark .json-view { background: var(--color-code-bg); color: var(--color-code-text); }
 
@@ -1893,6 +1917,46 @@ label.ac-btn { align-self: center; margin-top: 4px; position: relative; top: 1px
   height:     calc(100dvh - 90px);
 }
 .ac-btn.fs-active { background: var(--color-primary-light); color: var(--color-primary); border-color: var(--color-primary); }
+
+/* Fullscreen floating toolbar (search + font + close) */
+.ac-fs-toolbar {
+  position: fixed;
+  top: 10px; right: 14px;
+  z-index: 1002;
+  display: flex; align-items: center; gap: 6px;
+  padding: 6px 8px;
+  background: var(--color-surface, #fff);
+  border: 1px solid var(--color-border, #E5E7EB);
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(0,0,0,.08);
+  max-width: calc(100vw - 28px);
+  flex-wrap: wrap;
+}
+:root.dark .ac-fs-toolbar { background: var(--color-surface, #1F2937); }
+.ac-fs-toolbar .ac-fs-search {
+  min-width: 200px; max-width: 320px;
+  padding: 5px 8px;
+  border: 1px solid var(--color-border, #E5E7EB);
+  border-radius: 5px; font-size: 12px;
+}
+.ac-fs-toolbar .ac-fs-mode {
+  padding: 5px 6px;
+  border: 1px solid var(--color-border, #E5E7EB);
+  border-radius: 5px; font-size: 12px;
+  background: var(--color-surface, #fff);
+  color: var(--color-text, #1F2937);
+}
+.ac-fs-toolbar .ac-fs-btn { padding: 4px 10px; font-size: 12px; }
+.ac-fs-toolbar .ac-fs-count {
+  font-size: 11px; color: var(--color-text-2, #4A5568);
+  padding: 0 4px; font-variant-numeric: tabular-nums;
+  min-width: 48px; text-align: center;
+}
+.ac-fs-toolbar .ac-fs-sep {
+  width: 1px; height: 20px; background: var(--color-border, #E5E7EB); margin: 0 2px;
+}
+/* Give the fullscreened panel headroom so the fixed toolbar doesn't overlap the title. */
+.ac-panel.is-fullscreen .ac-panel-header { padding-right: 160px; }
 
 /* ===== DASHBOARD LAYOUT (homepage) ===== */
 .dash-layout {

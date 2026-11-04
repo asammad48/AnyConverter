@@ -1877,6 +1877,99 @@
   window.formatBytesShort = formatBytesShort;
 
   /**
+   * Add a fullscreen button to a tool panel. When active, the panel fills the
+   * viewport and a floating toolbar shows a Close button + font-size +/− that
+   * drives a CSS variable `--panel-font-size` on the content element.
+   *
+   * Opts:
+   *   content   : HTMLElement — the element whose font-size we scale (defaults to panel)
+   *   extra     : HTML string — extra toolbar items to inject before Close (e.g. search)
+   *   onEnter   : function(panel, toolbarEl) — called after FS opens
+   *   onExit    : function(panel) — called before FS closes
+   *   storageKey: string — localStorage key for persisted font size (default: 'ac:fontsize:<id>')
+   */
+  window.installPanelFullscreen = function (panel, opts) {
+    if (!panel || panel._fsInstalled) return;
+    opts = opts || {};
+    panel._fsInstalled = true;
+    var content = opts.content || panel;
+    var storageKey = opts.storageKey || ('ac:fontsize:' + (panel.id || 'panel'));
+
+    // Apply persisted font size on load
+    var stored = parseInt(localStorage.getItem(storageKey), 10);
+    if (stored && stored >= 10 && stored <= 24) {
+      content.style.setProperty('--panel-font-size', stored + 'px');
+    }
+
+    // Inject FS button into the panel header
+    var header = panel.querySelector('.ac-panel-header, .ac-panel-head, header');
+    var fsBtn = document.createElement('button');
+    fsBtn.type = 'button';
+    fsBtn.className = 'ac-btn ac-fs-toggle';
+    fsBtn.title = 'Fullscreen';
+    fsBtn.setAttribute('aria-label', 'Fullscreen');
+    fsBtn.textContent = '⛶';
+    if (header) {
+      var actions = header.querySelector('.ac-panel-actions') || header;
+      actions.appendChild(fsBtn);
+    } else {
+      panel.insertBefore(fsBtn, panel.firstChild);
+    }
+
+    function enter() {
+      panel.classList.add('is-fullscreen');
+      fsBtn.classList.add('fs-active');
+      document.body.style.overflow = 'hidden';
+      var ov = document.getElementById('fs-overlay');
+      if (!ov) {
+        ov = document.createElement('div');
+        ov.id = 'fs-overlay'; ov.className = 'fs-overlay';
+        document.body.appendChild(ov);
+      }
+      ov.classList.add('active');
+
+      // Build the floating toolbar
+      var bar = document.createElement('div');
+      bar.className = 'ac-fs-toolbar';
+      bar.innerHTML =
+        (opts.extra || '') +
+        '<button type="button" class="ac-btn ac-fs-btn" data-act="fs-" title="Smaller font">A−</button>' +
+        '<button type="button" class="ac-btn ac-fs-btn" data-act="fs+" title="Larger font">A+</button>' +
+        '<button type="button" class="ac-btn ac-fs-btn" data-act="close" title="Exit fullscreen (Esc)">✕ Close</button>';
+      panel.appendChild(bar);
+      panel._fsBar = bar;
+
+      function bump(delta) {
+        var cur = parseInt(localStorage.getItem(storageKey), 10) || 13;
+        var next = Math.max(10, Math.min(24, cur + delta));
+        localStorage.setItem(storageKey, String(next));
+        content.style.setProperty('--panel-font-size', next + 'px');
+      }
+      bar.querySelector('[data-act="fs-"]').addEventListener('click', function () { bump(-1); });
+      bar.querySelector('[data-act="fs+"]').addEventListener('click', function () { bump(1); });
+      bar.querySelector('[data-act="close"]').addEventListener('click', exit);
+
+      if (typeof opts.onEnter === 'function') opts.onEnter(panel, bar);
+    }
+    function exit() {
+      if (typeof opts.onExit === 'function') opts.onExit(panel);
+      panel.classList.remove('is-fullscreen');
+      fsBtn.classList.remove('fs-active');
+      document.body.style.overflow = '';
+      var ov = document.getElementById('fs-overlay');
+      if (ov) ov.classList.remove('active');
+      if (panel._fsBar) { panel._fsBar.remove(); panel._fsBar = null; }
+    }
+    fsBtn.addEventListener('click', function () {
+      if (panel.classList.contains('is-fullscreen')) exit();
+      else enter();
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && panel.classList.contains('is-fullscreen')) { e.preventDefault(); exit(); }
+    });
+  };
+
+  /**
    * One-shot helper for binary file uploads (PDFs, images, etc.).
    * Drop-in replacement for `await file.arrayBuffer()` that shows a progress bar
    * and enforces a size cap. Returns the ArrayBuffer.
