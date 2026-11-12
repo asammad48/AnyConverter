@@ -46,7 +46,7 @@
     @font-face{font-family:'Inter';font-display:swap}
   </style>
 
-  <link rel="stylesheet" href="/assets/css/style.css?v=20260928-json-fix">
+  <link rel="stylesheet" href="/assets/css/style.css?v=20261109">
 </head>
 <body>
 
@@ -86,14 +86,20 @@
               <span style="font-size:14px;color:var(--color-text-3)">{ }</span>
               <span class="ac-panel-label">Input</span>
               <div class="ac-panel-actions">
-                <label class="ac-btn" style="cursor:pointer" title="Upload JSON-fil">
-                  Upload
-                  <input type="file" id="file-upload" accept=".json,application/json" style="display:none">
-                </label>
-                <button class="ac-btn" id="btn-paste" title="Indsæt fra udklipsholder">Indsæt</button>
-                <button class="ac-btn" id="btn-clear" title="Ryd input">Ryd</button>
-                <div class="font-sz-wrap"><button class="font-sz-btn" id="btn-font-down" title="Formindsk skriftstørrelse">A−</button><button class="font-sz-btn" id="btn-font-up" title="Forøg skriftstørrelse">A+</button></div>
-                <button class="ac-btn" id="btn-fs-input" title="Fuldskærm input">⛶</button>
+                <div class="ac-action-group ac-group-primary">
+                  <label class="ac-btn" style="cursor:pointer" title="Upload JSON-fil">
+                    Upload
+                    <input type="file" id="file-upload" accept=".json,application/json" style="display:none">
+                  </label>
+                  <button class="ac-btn" id="btn-paste" title="Indsæt fra udklipsholder">Indsæt</button>
+                  <button class="ac-btn" id="btn-clear" title="Ryd input">Ryd</button>
+                </div>
+                <div class="ac-action-group ac-group-editor">
+                  <div class="font-sz-wrap" title="Skriftstørrelse"><button class="font-sz-btn" id="btn-font-down" title="Formindsk skriftstørrelse">A−</button><button class="font-sz-btn" id="btn-font-up" title="Forøg skriftstørrelse">A+</button></div>
+                </div>
+                <div class="ac-action-group ac-group-window">
+                  <button class="ac-btn ac-btn-fs" id="btn-fs-input" title="Fuldskærm" aria-label="Fuldskærm">⛶</button>
+                </div>
               </div>
             </div>
             <textarea
@@ -118,20 +124,120 @@
               <span style="font-size:14px;color:var(--color-text-3)">✦</span>
               <span class="ac-panel-label">Udskrift</span>
               <div class="ac-panel-actions">
-                <button class="ac-btn" id="btn-copy-output" title="Kopiér til udklipsholder">Kopiér</button>
-                <button class="ac-btn" id="btn-download" title="Download som .json">Download</button>
-                <button class="ac-btn" id="btn-collapse-all" title="Fold alle noder sammen">Fold alt sammen</button>
-                <button class="ac-btn" id="btn-expand-all" title="Fold alle noder ud">Fold alt ud</button>
-                <button class="ac-btn" id="btn-fs-output" title="Fuldskærm output">⛶</button>
+                <div class="ac-action-group ac-group-primary">
+                  <div class="jf-copy-dropdown-wrap" id="jf-copy-dropdown-wrap">
+                    <button class="ac-btn primary-soft" id="btn-copy-output" type="button" aria-haspopup="true" aria-expanded="false" title="Kopiérindstillinger">
+                      <span>Kopiér</span> <span style="font-size:9px;margin-left:3px;opacity:0.8">▼</span>
+                    </button>
+                    <div class="jf-copy-menu" id="jf-copy-menu" role="menu" aria-label="Kopiérindstillinger">
+                      <button type="button" class="jf-copy-item" id="btn-copy-all" role="menuitem">
+                        <span class="jf-ci-icon">📋</span> <span class="jf-ci-label">Kopiér alt</span>
+                      </button>
+                      <button type="button" class="jf-copy-item" id="btn-copy-selected" role="menuitem" disabled>
+                        <span class="jf-ci-icon">✂️</span> <span class="jf-ci-label" id="lbl-copy-selected">Kopiér markerede linjer (0)</span>
+                      </button>
+                      <button type="button" class="jf-copy-item" id="btn-copy-bookmarked" role="menuitem" disabled>
+                        <span class="jf-ci-icon">⭐</span> <span class="jf-ci-label" id="lbl-copy-bookmarked">Kopiér bogmærkede linjer (0)</span>
+                      </button>
+                      <button type="button" class="jf-copy-item" id="btn-copy-current" role="menuitem" disabled>
+                        <span class="jf-ci-icon">📍</span> <span class="jf-ci-label">Kopiér nuværende linje</span>
+                      </button>
+                      <button type="button" class="jf-copy-item" id="btn-copy-range" role="menuitem">
+                        <span class="jf-ci-icon">🔢</span> <span class="jf-ci-label">Kopiér linjeinterval…</span>
+                      </button>
+                      <div class="jf-copy-divider"></div>
+                      <button type="button" class="jf-copy-item" id="btn-select-all" role="menuitem">
+                        <span class="jf-ci-icon">☑️</span> <span class="jf-ci-label">Vælg alle linjer</span>
+                      </button>
+                      <button type="button" class="jf-copy-item" id="btn-clear-selection" role="menuitem">
+                        <span class="jf-ci-icon">✕</span> <span class="jf-ci-label">Ryd markering</span>
+                      </button>
+                      <button type="button" class="jf-copy-item" id="btn-clear-bookmarks" role="menuitem">
+                        <span class="jf-ci-icon">🗑️</span> <span class="jf-ci-label">Ryd bogmærker</span>
+                      </button>
+                    </div>
+                  </div>
+                  <button class="ac-btn primary-soft" id="btn-download" title="Download som .json">Download</button>
+                </div>
+                <div class="ac-action-group ac-group-editor">
+                  <button class="ac-btn" id="btn-collapse-all" title="Fold alle noder sammen"><span class="btn-lbl-full">Fold alt sammen</span><span class="btn-lbl-short">Fold sammen</span></button>
+                  <button class="ac-btn" id="btn-expand-all" title="Fold alle noder ud"><span class="btn-lbl-full">Fold alt ud</span><span class="btn-lbl-short">Fold ud</span></button>
+                  <div class="font-sz-wrap" title="Skriftstørrelse"><button class="font-sz-btn" id="btn-font-down-out" title="Formindsk skriftstørrelse">A−</button><button class="font-sz-btn" id="btn-font-up-out" title="Forøg skriftstørrelse">A+</button></div>
+                </div>
+                <div class="ac-action-group ac-group-window">
+                  <button class="ac-btn ac-btn-fs" id="btn-fs-output" title="Fuldskærm" aria-label="Fuldskærm">⛶</button>
+                </div>
               </div>
             </div>
-            <div class="json-view" id="json-output" aria-label="Formateret JSON-output" aria-live="polite">
+
+            <!-- Compact Search Toolbar (Issue 1 & 2: One horizontal row, visible ONLY in fullscreen mode) -->
+            <div class="ac-search-toolbar" id="jf-search-bar" role="search" aria-label="JSON-søgeværktøjslinje">
+              <div class="ac-search-input-wrap">
+                <svg class="ac-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <circle cx="11" cy="11" r="8"></circle>
+                  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+                <input type="text" class="ac-search-input" id="fs-search-query" placeholder="Søg i JSON…" aria-label="Søg i JSON" autocomplete="off" spellcheck="false">
+              </div>
+              <select class="ac-search-scope" id="fs-search-scope" aria-label="Søgeområde">
+                <option value="both" selected>Nøgler + Værdier</option>
+                <option value="key">Kun nøgler</option>
+                <option value="value">Kun værdier</option>
+                <option value="regex">Regex</option>
+                <option value="path">Sti</option>
+              </select>
+              <span class="ac-search-count" id="fs-search-count" aria-live="polite">0 / 0</span>
+              <div class="ac-search-nav">
+                <button type="button" class="ac-btn ac-search-btn" id="fs-search-prev" title="Forrige resultat (Skift+Enter)" aria-label="Forrige resultat">‹</button>
+                <button type="button" class="ac-btn ac-search-btn" id="fs-search-next" title="Næste resultat (Enter)" aria-label="Næste resultat">›</button>
+                <button type="button" class="ac-btn ac-search-btn" id="fs-search-clear" title="Ryd søgning" aria-label="Ryd søgning">✕</button>
+              </div>
+            </div>
+
+            <!-- Contextual Selection Bar -->
+            <div class="jf-selection-bar" id="jf-selection-bar" style="display:none">
+              <span class="jf-sb-count" id="jf-sb-count">0 linjer markeret</span>
+              <div class="jf-sb-actions">
+                <button type="button" class="ac-btn jf-sb-btn" id="jf-sb-copy" title="Kopiér markerede linjer">Kopiér</button>
+                <button type="button" class="ac-btn jf-sb-btn" id="jf-sb-download" title="Download markerede linjer">Download</button>
+                <button type="button" class="ac-btn jf-sb-btn" id="jf-sb-clear" title="Ryd markering">Ryd</button>
+              </div>
+            </div>
+
+            <div class="json-view show-linenums" id="json-output" aria-label="Formateret JSON-output" aria-live="polite">
               <span style="color:var(--color-text-2,#6B7280);font-style:italic;font-size:11px">Output vises her…</span>
             </div>
             <div class="ac-status" id="output-status">
               <span class="ac-status-ok" id="output-status-ok" style="display:none">✓ Formateret</span>
               <span class="ac-status-err" id="output-status-err" style="display:none"></span>
               <span class="ac-status-info" id="output-status-info"></span>
+            </div>
+
+            <!-- Line Range Modal -->
+            <div class="jf-modal-backdrop" id="jf-range-backdrop" style="display:none">
+              <div class="jf-modal" id="jf-range-modal" role="dialog" aria-labelledby="jf-rm-title" aria-modal="true">
+                <div class="jf-modal-header">
+                  <h3 id="jf-rm-title" class="jf-modal-title">Kopiér linjeinterval</h3>
+                  <button type="button" class="jf-modal-close" id="jf-rm-close" aria-label="Luk dialogboks">✕</button>
+                </div>
+                <div class="jf-modal-body">
+                  <p class="jf-modal-desc" id="jf-rm-desc">Angiv start- og slutlinjenumre, der skal kopieres (1-baseret).</p>
+                  <div class="jf-rm-row">
+                    <label for="jf-rm-start" id="lbl-rm-start">Startlinje</label>
+                    <input type="number" id="jf-rm-start" min="1" step="1" value="1" class="jf-rm-input">
+                  </div>
+                  <div class="jf-rm-row">
+                    <label for="jf-rm-end" id="lbl-rm-end">Slutlinje</label>
+                    <input type="number" id="jf-rm-end" min="1" step="1" value="10" class="jf-rm-input">
+                  </div>
+                  <div class="jf-rm-meta" id="jf-rm-meta">Samlet antal linjer: 0</div>
+                </div>
+                <div class="jf-modal-footer">
+                  <button type="button" class="ac-btn" id="jf-rm-cancel">Annuller</button>
+                  <button type="button" class="ac-btn" id="jf-rm-download">Download interval</button>
+                  <button type="button" class="ac-btn primary-soft" id="jf-rm-submit">Kopiér interval</button>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -151,9 +257,40 @@
 
       </div><!-- /tool-zone -->
 
-      <!-- Sidebar -->
+      <!-- Sidebar (Issue 3: Reordered to 1. Annonce, 2. Søgning, 3. Indstillinger, 4. Bogmærker, 5. Statistik) -->
       <aside class="tool-side" aria-label="Indstillinger">
 
+        <!-- 1. Advertisement -->
+        <div style="margin-bottom:12px">
+          <p class="ad-label">Annonce</p>
+          <div class="ad-slot" style="min-height:250px">
+            <div class="adsbygoogle" style="display:block" aria-hidden="true"></div>
+          </div>
+        </div>
+
+        <!-- 2. Search -->
+        <div class="ss-divider">Søgning</div>
+        <div class="ss-option-row">
+          <span class="ss-opt-label">Søg</span>
+          <input class="ss-opt-input" id="search-query" placeholder="Søg i nøgler eller værdier…" autocomplete="off" style="flex:1;padding:6px 8px;border:1px solid var(--color-border,#DDD8D0);border-radius:6px;font-size:12px" aria-label="Søg i JSON">
+        </div>
+        <div class="ss-option-row">
+          <span class="ss-opt-label">Tilstand</span>
+          <select class="ss-opt-select" id="search-mode" style="flex:1">
+            <option value="both" selected>Nøgle + værdi</option>
+            <option value="key">Kun nøgle</option>
+            <option value="value">Kun værdi</option>
+            <option value="regex">Regex</option>
+            <option value="path">Sti (a.b[0].c)</option>
+          </select>
+        </div>
+        <div class="ss-option-row" style="justify-content:space-between">
+          <button class="ac-btn" id="search-prev" title="Forrige resultat">‹ Forrige</button>
+          <span style="font-size:11px;color:var(--color-text-2,#6B7280)" id="search-count" aria-live="polite">Ingen søgning endnu</span>
+          <button class="ac-btn" id="search-next" title="Næste resultat">Næste ›</button>
+        </div>
+
+        <!-- 3. Options -->
         <div class="ss-divider">Indstillinger</div>
         <div class="ss-option-row">
           <span class="ss-opt-label">Indent</span>
@@ -191,32 +328,11 @@
         </div>
         <div class="tog-row">
           <span class="tog-label" id="lbl-linenums">Vis linjenumre</span>
-          <div class="tog off" id="tog-linenums" role="switch" aria-checked="false" tabindex="0" aria-labelledby="lbl-linenums"></div>
+          <div class="tog on" id="tog-linenums" role="switch" aria-checked="true" tabindex="0" aria-labelledby="lbl-linenums"></div>
         </div>
         <div class="tog-row">
           <span class="tog-label" id="lbl-wrap">Ombryd lange linjer</span>
           <div class="tog off" id="tog-wrap" role="switch" aria-checked="false" tabindex="0" aria-labelledby="lbl-wrap"></div>
-        </div>
-
-        <div class="ss-divider">Søgning</div>
-        <div class="ss-option-row">
-          <span class="ss-opt-label">Søg</span>
-          <input class="ss-opt-input" id="search-query" placeholder="Søg i nøgler eller værdier…" autocomplete="off" style="flex:1;padding:6px 8px;border:1px solid var(--color-border,#DDD8D0);border-radius:6px;font-size:12px" aria-label="Søg i JSON">
-        </div>
-        <div class="ss-option-row">
-          <span class="ss-opt-label">Tilstand</span>
-          <select class="ss-opt-select" id="search-mode" style="flex:1">
-            <option value="both" selected>Nøgle + værdi</option>
-            <option value="key">Kun nøgle</option>
-            <option value="value">Kun værdi</option>
-            <option value="regex">Regex</option>
-            <option value="path">Sti (a.b[0].c)</option>
-          </select>
-        </div>
-        <div class="ss-option-row" style="justify-content:space-between">
-          <button class="ac-btn" id="search-prev" title="Forrige resultat">‹ Forrige</button>
-          <span style="font-size:11px;color:var(--color-text-2,#6B7280)" id="search-count" aria-live="polite">Ingen søgning endnu</span>
-          <button class="ac-btn" id="search-next" title="Næste resultat">Næste ›</button>
         </div>
 
         <div class="ss-divider">Bogmærker <span style="font-weight:400;text-transform:none;font-size:10px;color:var(--color-text-3,#9CA3AF)">(gemt i denne browser)</span></div>
@@ -235,14 +351,6 @@
           <div class="stat-card"><div class="stat-val" id="stat-depth">0</div><div class="stat-lbl">Depth</div></div>
           <div class="stat-card"><div class="stat-val" id="stat-bytes">0</div><div class="stat-lbl">Bytes</div></div>
           <div class="stat-card"><div class="stat-val" id="stat-errors">0</div><div class="stat-lbl">Errors</div></div>
-        </div>
-
-        <!-- AdSense sidebar slot -->
-        <div style="margin-top:8px">
-          <p class="ad-label">Annonce</p>
-          <div class="ad-slot" style="min-height:250px">
-            <div class="adsbygoogle" style="display:block" aria-hidden="true"></div>
-</div>
         </div>
 
       </aside>

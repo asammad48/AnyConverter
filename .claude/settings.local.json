@@ -34,7 +34,8 @@
       "Bash(wc -l)",
       "Read(//tmp/**)",
       "Bash(node test-browser.js)",
-      "Bash(echo \"exit=$?\")"
+      "Bash(echo \"exit=$?\")",
+      "Bash(gh pr *)"
     ]
   }
 }

@@ -1,0 +1,25 @@
+{
+  "totalInspected": 441,
+  "totalPassing": 441,
+  "totalFailing": 0,
+  "languageBreakdown": {
+    "en": 147,
+    "es": 147,
+    "da": 147
+  },
+  "missingCanonicals": [],
+  "brokenCanonicals": [],
+  "missingTitles": [],
+  "missingDescriptions": [],
+  "hreflangDefects": [],
+  "reciprocalHreflangFails": [],
+  "sitemap": {
+    "exists": true,
+    "totalUrls": 441,
+    "missingFromDisk": []
+  },
+  "robots": {
+    "exists": true,
+    "referencesSitemap": true
+  }
+}

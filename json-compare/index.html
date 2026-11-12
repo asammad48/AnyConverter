@@ -44,7 +44,7 @@
     .hero-desc{font-size:1rem;color:var(--color-text-2,#6B7280);max-width:680px;line-height:1.6}
     @font-face{font-family:'Inter';font-display:swap}
   </style>
-  <link rel="stylesheet" href="/assets/css/style.css?v=20260902">
+  <link rel="stylesheet" href="/assets/css/style.css?v=20261109">
 </head>
 <body>
   <header id="site-header" class="site-header"></header>
@@ -88,46 +88,52 @@
 
         <div class="status-bar error" id="jc-error" style="display:none;margin-top:8px" role="alert" aria-live="polite"></div>
 
-        <div id="jc-result" style="display:none;margin-top:16px" aria-live="polite">
-          <div class="status-bar success" id="jc-identical" style="display:none"></div>
-          <div id="jc-summary-row" style="display:none">
-            <p id="jc-diff-count" style="font-weight:600;margin-bottom:8px"></p>
-            <div class="stats-grid">
-              <div class="stat-card"><div class="stat-val" id="jc-count-added">0</div><div class="stat-lbl">Added</div></div>
-              <div class="stat-card"><div class="stat-val" id="jc-count-removed">0</div><div class="stat-lbl">Removed</div></div>
-              <div class="stat-card"><div class="stat-val" id="jc-count-changed">0</div><div class="stat-lbl">Changed</div></div>
-              <div class="stat-card"><div class="stat-val" id="jc-count-type-changed">0</div><div class="stat-lbl">Type changed</div></div>
-              <div class="stat-card"><div class="stat-val" id="jc-count-moved">0</div><div class="stat-lbl">Moved</div></div>
-            </div>
+        <div id="jc-result" class="ac-panel jc-result-panel" style="display:none;margin-top:16px" aria-live="polite">
+          <div class="ac-panel-header">
+            <span class="ac-panel-label">Comparison Result</span>
+            <div class="ac-panel-actions"></div>
           </div>
-          <div id="jc-warnings" style="margin-top:8px"></div>
-
-          <div id="jc-full-result" style="margin-top:12px">
-            <div style="overflow-x:auto">
-              <table style="width:100%;border-collapse:collapse;font-size:13px">
-                <thead><tr style="text-align:left;color:var(--color-text-2)"><th style="padding:6px 8px">Kind</th><th style="padding:6px 8px">Path</th><th style="padding:6px 8px">A</th><th style="padding:6px 8px">B</th></tr></thead>
-                <tbody id="jc-changes-body"></tbody>
-              </table>
+          <div class="jc-result-body" style="padding:16px;overflow:auto;flex:1 1 auto">
+            <div class="status-bar success" id="jc-identical" style="display:none"></div>
+            <div id="jc-summary-row" style="display:none">
+              <p id="jc-diff-count" style="font-weight:600;margin-bottom:8px"></p>
+              <div class="stats-grid">
+                <div class="stat-card"><div class="stat-val" id="jc-count-added">0</div><div class="stat-lbl">Added</div></div>
+                <div class="stat-card"><div class="stat-val" id="jc-count-removed">0</div><div class="stat-lbl">Removed</div></div>
+                <div class="stat-card"><div class="stat-val" id="jc-count-changed">0</div><div class="stat-lbl">Changed</div></div>
+                <div class="stat-card"><div class="stat-val" id="jc-count-type-changed">0</div><div class="stat-lbl">Type changed</div></div>
+                <div class="stat-card"><div class="stat-val" id="jc-count-moved">0</div><div class="stat-lbl">Moved</div></div>
+              </div>
             </div>
-          </div>
+            <div id="jc-warnings" style="margin-top:8px"></div>
 
-          <div id="jc-keys-only-result" style="display:none;margin-top:12px" class="two-col-grid">
-            <div>
-              <h2 style="font-size:14px;margin-bottom:6px">Missing in A (<span id="jc-missing-a-count">0</span>)</h2>
-              <ul id="jc-missing-a-list" style="padding-left:18px;font-size:13px"></ul>
+            <div id="jc-full-result" style="margin-top:12px">
+              <div style="overflow-x:auto">
+                <table style="width:100%;border-collapse:collapse;font-size:13px">
+                  <thead><tr style="text-align:left;color:var(--color-text-2)"><th style="padding:6px 8px">Kind</th><th style="padding:6px 8px">Path</th><th style="padding:6px 8px">A</th><th style="padding:6px 8px">B</th></tr></thead>
+                  <tbody id="jc-changes-body"></tbody>
+                </table>
+              </div>
             </div>
-            <div>
-              <h2 style="font-size:14px;margin-bottom:6px">Missing in B (<span id="jc-missing-b-count">0</span>)</h2>
-              <ul id="jc-missing-b-list" style="padding-left:18px;font-size:13px"></ul>
-            </div>
-          </div>
 
-          <div class="ac-action-bar" style="margin-top:16px">
-            <button class="ac-btn" id="jc-btn-export-patch">Export JSON Patch</button>
-            <button class="ac-btn" id="jc-btn-export-md">Report .md</button>
-            <button class="ac-btn" id="jc-btn-export-csv">Report .csv</button>
-            <button class="ac-btn" id="jc-btn-copy-summary">Copy summary</button>
-            <span id="jc-copy-status" style="font-size:12px;color:var(--color-success)"></span>
+            <div id="jc-keys-only-result" style="display:none;margin-top:12px" class="two-col-grid">
+              <div>
+                <h2 style="font-size:14px;margin-bottom:6px">Missing in A (<span id="jc-missing-a-count">0</span>)</h2>
+                <ul id="jc-missing-a-list" style="padding-left:18px;font-size:13px"></ul>
+              </div>
+              <div>
+                <h2 style="font-size:14px;margin-bottom:6px">Missing in B (<span id="jc-missing-b-count">0</span>)</h2>
+                <ul id="jc-missing-b-list" style="padding-left:18px;font-size:13px"></ul>
+              </div>
+            </div>
+
+            <div class="ac-action-bar" style="margin-top:16px">
+              <button class="ac-btn" id="jc-btn-export-patch">Export JSON Patch</button>
+              <button class="ac-btn" id="jc-btn-export-md">Report .md</button>
+              <button class="ac-btn" id="jc-btn-export-csv">Report .csv</button>
+              <button class="ac-btn" id="jc-btn-copy-summary">Copy summary</button>
+              <span id="jc-copy-status" style="font-size:12px;color:var(--color-success)"></span>
+            </div>
           </div>
         </div>
       </div>

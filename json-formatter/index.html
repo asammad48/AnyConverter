@@ -61,7 +61,7 @@
     @font-face{font-family:'Inter';font-display:swap}
   </style>
 
-  <link rel="stylesheet" href="/assets/css/style.css?v=20260928-json-fix">
+  <link rel="stylesheet" href="/assets/css/style.css?v=20261109">
 </head>
 <body>
 
@@ -101,14 +101,20 @@
               <span style="font-size:14px;color:var(--color-text-3)">{ }</span>
               <span class="ac-panel-label">Input</span>
               <div class="ac-panel-actions">
-                <label class="ac-btn" style="cursor:pointer" title="Upload JSON file">
-                  Upload
-                  <input type="file" id="file-upload" accept=".json,application/json" style="display:none">
-                </label>
-                <button class="ac-btn" id="btn-paste" title="Paste from clipboard">Paste</button>
-                <button class="ac-btn" id="btn-clear" title="Clear input">Clear</button>
-                <div class="font-sz-wrap"><button class="font-sz-btn" id="btn-font-down" title="Decrease font size">A−</button><button class="font-sz-btn" id="btn-font-up" title="Increase font size">A+</button></div>
-                <button class="ac-btn" id="btn-fs-input" title="Fullscreen input">⛶</button>
+                <div class="ac-action-group ac-group-primary">
+                  <label class="ac-btn" style="cursor:pointer" title="Upload JSON file">
+                    Upload
+                    <input type="file" id="file-upload" accept=".json,application/json" style="display:none">
+                  </label>
+                  <button class="ac-btn" id="btn-paste" title="Paste from clipboard">Paste</button>
+                  <button class="ac-btn" id="btn-clear" title="Clear input">Clear</button>
+                </div>
+                <div class="ac-action-group ac-group-editor">
+                  <div class="font-sz-wrap" title="Font size"><button class="font-sz-btn" id="btn-font-down" title="Decrease font size">A−</button><button class="font-sz-btn" id="btn-font-up" title="Increase font size">A+</button></div>
+                </div>
+                <div class="ac-action-group ac-group-window">
+                  <button class="ac-btn ac-btn-fs" id="btn-fs-input" title="Fullscreen" aria-label="Fullscreen">⛶</button>
+                </div>
               </div>
             </div>
             <textarea
@@ -133,20 +139,120 @@
               <span style="font-size:14px;color:var(--color-text-3)">✦</span>
               <span class="ac-panel-label">Output</span>
               <div class="ac-panel-actions">
-                <button class="ac-btn" id="btn-copy-output" title="Copy to clipboard">Copy</button>
-                <button class="ac-btn" id="btn-download" title="Download as .json">Download</button>
-                <button class="ac-btn" id="btn-collapse-all" title="Collapse all nodes">Collapse all</button>
-                <button class="ac-btn" id="btn-expand-all" title="Expand all nodes">Expand all</button>
-                <button class="ac-btn" id="btn-fs-output" title="Fullscreen output">⛶</button>
+                <div class="ac-action-group ac-group-primary">
+                  <div class="jf-copy-dropdown-wrap" id="jf-copy-dropdown-wrap">
+                    <button class="ac-btn primary-soft" id="btn-copy-output" type="button" aria-haspopup="true" aria-expanded="false" title="Copy options">
+                      <span>Copy</span> <span style="font-size:9px;margin-left:3px;opacity:0.8">▼</span>
+                    </button>
+                    <div class="jf-copy-menu" id="jf-copy-menu" role="menu" aria-label="Copy options">
+                      <button type="button" class="jf-copy-item" id="btn-copy-all" role="menuitem">
+                        <span class="jf-ci-icon">📋</span> <span class="jf-ci-label">Copy All</span>
+                      </button>
+                      <button type="button" class="jf-copy-item" id="btn-copy-selected" role="menuitem" disabled>
+                        <span class="jf-ci-icon">✂️</span> <span class="jf-ci-label" id="lbl-copy-selected">Copy Selected Lines (0)</span>
+                      </button>
+                      <button type="button" class="jf-copy-item" id="btn-copy-bookmarked" role="menuitem" disabled>
+                        <span class="jf-ci-icon">⭐</span> <span class="jf-ci-label" id="lbl-copy-bookmarked">Copy Bookmarked Lines (0)</span>
+                      </button>
+                      <button type="button" class="jf-copy-item" id="btn-copy-current" role="menuitem" disabled>
+                        <span class="jf-ci-icon">📍</span> <span class="jf-ci-label">Copy Current Line</span>
+                      </button>
+                      <button type="button" class="jf-copy-item" id="btn-copy-range" role="menuitem">
+                        <span class="jf-ci-icon">🔢</span> <span class="jf-ci-label">Copy Line Range…</span>
+                      </button>
+                      <div class="jf-copy-divider"></div>
+                      <button type="button" class="jf-copy-item" id="btn-select-all" role="menuitem">
+                        <span class="jf-ci-icon">☑️</span> <span class="jf-ci-label">Select All Lines</span>
+                      </button>
+                      <button type="button" class="jf-copy-item" id="btn-clear-selection" role="menuitem">
+                        <span class="jf-ci-icon">✕</span> <span class="jf-ci-label">Clear Selection</span>
+                      </button>
+                      <button type="button" class="jf-copy-item" id="btn-clear-bookmarks" role="menuitem">
+                        <span class="jf-ci-icon">🗑️</span> <span class="jf-ci-label">Clear Bookmarks</span>
+                      </button>
+                    </div>
+                  </div>
+                  <button class="ac-btn primary-soft" id="btn-download" title="Download as .json">Download</button>
+                </div>
+                <div class="ac-action-group ac-group-editor">
+                  <button class="ac-btn" id="btn-collapse-all" title="Collapse all nodes"><span class="btn-lbl-full">Collapse all</span><span class="btn-lbl-short">Collapse</span></button>
+                  <button class="ac-btn" id="btn-expand-all" title="Expand all nodes"><span class="btn-lbl-full">Expand all</span><span class="btn-lbl-short">Expand</span></button>
+                  <div class="font-sz-wrap" title="Font size"><button class="font-sz-btn" id="btn-font-down-out" title="Decrease font size">A−</button><button class="font-sz-btn" id="btn-font-up-out" title="Increase font size">A+</button></div>
+                </div>
+                <div class="ac-action-group ac-group-window">
+                  <button class="ac-btn ac-btn-fs" id="btn-fs-output" title="Fullscreen" aria-label="Fullscreen">⛶</button>
+                </div>
               </div>
             </div>
-            <div class="json-view" id="json-output" aria-label="Formatted JSON output" aria-live="polite">
+
+            <!-- Compact Search Toolbar (Issue 1 & 2: One horizontal row, visible ONLY in fullscreen mode) -->
+            <div class="ac-search-toolbar" id="jf-search-bar" role="search" aria-label="JSON Search Toolbar">
+              <div class="ac-search-input-wrap">
+                <svg class="ac-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <circle cx="11" cy="11" r="8"></circle>
+                  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+                <input type="text" class="ac-search-input" id="fs-search-query" placeholder="Search in JSON…" aria-label="Search JSON" autocomplete="off" spellcheck="false">
+              </div>
+              <select class="ac-search-scope" id="fs-search-scope" aria-label="Search scope">
+                <option value="both" selected>Keys + Values</option>
+                <option value="key">Keys</option>
+                <option value="value">Values</option>
+                <option value="regex">Regex</option>
+                <option value="path">Path</option>
+              </select>
+              <span class="ac-search-count" id="fs-search-count" aria-live="polite">0 / 0</span>
+              <div class="ac-search-nav">
+                <button type="button" class="ac-btn ac-search-btn" id="fs-search-prev" title="Previous match (Shift+Enter)" aria-label="Previous match">‹</button>
+                <button type="button" class="ac-btn ac-search-btn" id="fs-search-next" title="Next match (Enter)" aria-label="Next match">›</button>
+                <button type="button" class="ac-btn ac-search-btn" id="fs-search-clear" title="Clear search" aria-label="Clear search">✕</button>
+              </div>
+            </div>
+
+            <!-- Contextual Selection Bar -->
+            <div class="jf-selection-bar" id="jf-selection-bar" style="display:none">
+              <span class="jf-sb-count" id="jf-sb-count">0 lines selected</span>
+              <div class="jf-sb-actions">
+                <button type="button" class="ac-btn jf-sb-btn" id="jf-sb-copy" title="Copy selected lines">Copy</button>
+                <button type="button" class="ac-btn jf-sb-btn" id="jf-sb-download" title="Download selected lines">Download</button>
+                <button type="button" class="ac-btn jf-sb-btn" id="jf-sb-clear" title="Clear line selection">Clear</button>
+              </div>
+            </div>
+
+            <div class="json-view show-linenums" id="json-output" aria-label="Formatted JSON output" aria-live="polite">
               <span style="color:var(--color-text-2,#6B7280);font-style:italic;font-size:11px">Output will appear here…</span>
             </div>
             <div class="ac-status" id="output-status">
               <span class="ac-status-ok" id="output-status-ok" style="display:none">✓ Formatted</span>
               <span class="ac-status-err" id="output-status-err" style="display:none"></span>
               <span class="ac-status-info" id="output-status-info"></span>
+            </div>
+
+            <!-- Line Range Modal -->
+            <div class="jf-modal-backdrop" id="jf-range-backdrop" style="display:none">
+              <div class="jf-modal" id="jf-range-modal" role="dialog" aria-labelledby="jf-rm-title" aria-modal="true">
+                <div class="jf-modal-header">
+                  <h3 id="jf-rm-title" class="jf-modal-title">Copy Line Range</h3>
+                  <button type="button" class="jf-modal-close" id="jf-rm-close" aria-label="Close dialog">✕</button>
+                </div>
+                <div class="jf-modal-body">
+                  <p class="jf-modal-desc" id="jf-rm-desc">Specify the start and end line numbers to copy (1-based).</p>
+                  <div class="jf-rm-row">
+                    <label for="jf-rm-start" id="lbl-rm-start">Start Line</label>
+                    <input type="number" id="jf-rm-start" min="1" step="1" value="1" class="jf-rm-input">
+                  </div>
+                  <div class="jf-rm-row">
+                    <label for="jf-rm-end" id="lbl-rm-end">End Line</label>
+                    <input type="number" id="jf-rm-end" min="1" step="1" value="10" class="jf-rm-input">
+                  </div>
+                  <div class="jf-rm-meta" id="jf-rm-meta">Total lines: 0</div>
+                </div>
+                <div class="jf-modal-footer">
+                  <button type="button" class="ac-btn" id="jf-rm-cancel">Cancel</button>
+                  <button type="button" class="ac-btn" id="jf-rm-download">Download Range</button>
+                  <button type="button" class="ac-btn primary-soft" id="jf-rm-submit">Copy Range</button>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -166,9 +272,40 @@
 
       </div><!-- /tool-zone -->
 
-      <!-- Sidebar -->
+      <!-- Sidebar (Issue 3: Reordered to 1. Advertisement, 2. Search, 3. Options, 4. Bookmarks, 5. Stats) -->
       <aside class="tool-side" aria-label="Options">
 
+        <!-- 1. Advertisement -->
+        <div style="margin-bottom:12px">
+          <p class="ad-label">Advertisement</p>
+          <div class="ad-slot" style="min-height:250px">
+            <div class="adsbygoogle" style="display:block" aria-hidden="true"></div>
+          </div>
+        </div>
+
+        <!-- 2. Search -->
+        <div class="ss-divider">Search</div>
+        <div class="ss-option-row">
+          <span class="ss-opt-label">Find</span>
+          <input class="ss-opt-input" id="search-query" placeholder="Search keys or values…" autocomplete="off" style="flex:1;padding:6px 8px;border:1px solid var(--color-border,#DDD8D0);border-radius:6px;font-size:12px" aria-label="Search JSON">
+        </div>
+        <div class="ss-option-row">
+          <span class="ss-opt-label">Mode</span>
+          <select class="ss-opt-select" id="search-mode" style="flex:1">
+            <option value="both" selected>Key + Value</option>
+            <option value="key">Key only</option>
+            <option value="value">Value only</option>
+            <option value="regex">Regex</option>
+            <option value="path">Path (a.b[0].c)</option>
+          </select>
+        </div>
+        <div class="ss-option-row" style="justify-content:space-between">
+          <button class="ac-btn" id="search-prev" title="Previous match">‹ Prev</button>
+          <span style="font-size:11px;color:var(--color-text-2,#6B7280)" id="search-count" aria-live="polite">No search yet</span>
+          <button class="ac-btn" id="search-next" title="Next match">Next ›</button>
+        </div>
+
+        <!-- 3. Options -->
         <div class="ss-divider">Options</div>
         <div class="ss-option-row">
           <span class="ss-opt-label">Indent</span>
@@ -206,32 +343,11 @@
         </div>
         <div class="tog-row">
           <span class="tog-label" id="lbl-linenums">Show line numbers</span>
-          <div class="tog off" id="tog-linenums" role="switch" aria-checked="false" tabindex="0" aria-labelledby="lbl-linenums"></div>
+          <div class="tog on" id="tog-linenums" role="switch" aria-checked="true" tabindex="0" aria-labelledby="lbl-linenums"></div>
         </div>
         <div class="tog-row">
           <span class="tog-label" id="lbl-wrap">Wrap long lines</span>
           <div class="tog off" id="tog-wrap" role="switch" aria-checked="false" tabindex="0" aria-labelledby="lbl-wrap"></div>
-        </div>
-
-        <div class="ss-divider">Search</div>
-        <div class="ss-option-row">
-          <span class="ss-opt-label">Find</span>
-          <input class="ss-opt-input" id="search-query" placeholder="Search keys or values…" autocomplete="off" style="flex:1;padding:6px 8px;border:1px solid var(--color-border,#DDD8D0);border-radius:6px;font-size:12px" aria-label="Search JSON">
-        </div>
-        <div class="ss-option-row">
-          <span class="ss-opt-label">Mode</span>
-          <select class="ss-opt-select" id="search-mode" style="flex:1">
-            <option value="both" selected>Key + Value</option>
-            <option value="key">Key only</option>
-            <option value="value">Value only</option>
-            <option value="regex">Regex</option>
-            <option value="path">Path (a.b[0].c)</option>
-          </select>
-        </div>
-        <div class="ss-option-row" style="justify-content:space-between">
-          <button class="ac-btn" id="search-prev" title="Previous match">‹ Prev</button>
-          <span style="font-size:11px;color:var(--color-text-2,#6B7280)" id="search-count" aria-live="polite">No search yet</span>
-          <button class="ac-btn" id="search-next" title="Next match">Next ›</button>
         </div>
 
         <div class="ss-divider">Bookmarks <span style="font-weight:400;text-transform:none;font-size:10px;color:var(--color-text-3,#9CA3AF)">(saved in this browser)</span></div>
@@ -250,14 +366,6 @@
           <div class="stat-card"><div class="stat-val" id="stat-depth">0</div><div class="stat-lbl">Depth</div></div>
           <div class="stat-card"><div class="stat-val" id="stat-bytes">0</div><div class="stat-lbl">Bytes</div></div>
           <div class="stat-card"><div class="stat-val" id="stat-errors">0</div><div class="stat-lbl">Errors</div></div>
-        </div>
-
-        <!-- AdSense sidebar slot -->
-        <div style="margin-top:8px">
-          <p class="ad-label">Advertisement</p>
-          <div class="ad-slot" style="min-height:250px">
-            <div class="adsbygoogle" style="display:block" aria-hidden="true"></div>
-</div>
         </div>
 
       </aside>

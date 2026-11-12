@@ -1,0 +1,316 @@
+[
+  {
+    "pagePath": "/json-formatter/",
+    "auditData": {
+      "duplicateIds": [],
+      "missingAccessibleName": [
+        {
+          "tag": "INPUT",
+          "id": "file-upload",
+          "className": "",
+          "html": "<input type=\"file\" id=\"file-upload\" accept=\".json,application/json\" style=\"display:none\">"
+        }
+      ],
+      "smallTouchTargets": [
+        {
+          "id": "mobile-menu-btn",
+          "className": "hamburger",
+          "text": "",
+          "width": 0,
+          "height": 0
+        }
+      ],
+      "totalInteractiveCount": 343,
+      "focusableCount": 357
+    },
+    "consoleErrors": [],
+    "failedRequests": []
+  },
+  {
+    "pagePath": "/es/json-formatter/",
+    "auditData": {
+      "duplicateIds": [],
+      "missingAccessibleName": [
+        {
+          "tag": "INPUT",
+          "id": "file-upload",
+          "className": "",
+          "html": "<input type=\"file\" id=\"file-upload\" accept=\".json,application/json\" style=\"display:none\">"
+        }
+      ],
+      "smallTouchTargets": [
+        {
+          "id": "mobile-menu-btn",
+          "className": "hamburger",
+          "text": "",
+          "width": 0,
+          "height": 0
+        }
+      ],
+      "totalInteractiveCount": 343,
+      "focusableCount": 357
+    },
+    "consoleErrors": [],
+    "failedRequests": []
+  },
+  {
+    "pagePath": "/da/json-formatter/",
+    "auditData": {
+      "duplicateIds": [],
+      "missingAccessibleName": [
+        {
+          "tag": "INPUT",
+          "id": "file-upload",
+          "className": "",
+          "html": "<input type=\"file\" id=\"file-upload\" accept=\".json,application/json\" style=\"display:none\">"
+        }
+      ],
+      "smallTouchTargets": [
+        {
+          "id": "mobile-menu-btn",
+          "className": "hamburger",
+          "text": "",
+          "width": 0,
+          "height": 0
+        }
+      ],
+      "totalInteractiveCount": 343,
+      "focusableCount": 357
+    },
+    "consoleErrors": [],
+    "failedRequests": []
+  },
+  {
+    "pagePath": "/xml-formatter/",
+    "auditData": {
+      "duplicateIds": [],
+      "missingAccessibleName": [
+        {
+          "tag": "INPUT",
+          "id": "file-upload",
+          "className": "",
+          "html": "<input type=\"file\" id=\"file-upload\" accept=\".xml,text/xml\" style=\"display:none\">"
+        }
+      ],
+      "smallTouchTargets": [
+        {
+          "id": "mobile-menu-btn",
+          "className": "hamburger",
+          "text": "",
+          "width": 0,
+          "height": 0
+        }
+      ],
+      "totalInteractiveCount": 325,
+      "focusableCount": 338
+    },
+    "consoleErrors": [],
+    "failedRequests": []
+  },
+  {
+    "pagePath": "/json-compare/",
+    "auditData": {
+      "duplicateIds": [],
+      "missingAccessibleName": [
+        {
+          "tag": "INPUT",
+          "id": "jc-a-file",
+          "className": "",
+          "html": "<input type=\"file\" id=\"jc-a-file\" accept=\".json,application/json\" style=\"display:none\">"
+        },
+        {
+          "tag": "INPUT",
+          "id": "jc-b-file",
+          "className": "",
+          "html": "<input type=\"file\" id=\"jc-b-file\" accept=\".json,application/json\" style=\"display:none\">"
+        },
+        {
+          "tag": "INPUT",
+          "id": "jc-opt-tolerance",
+          "className": "ss-opt-input",
+          "html": "<input class=\"ss-opt-input\" id=\"jc-opt-tolerance\" value=\"0\" style=\"width:70px;padding:6px 8px;border"
+        }
+      ],
+      "smallTouchTargets": [
+        {
+          "id": "mobile-menu-btn",
+          "className": "hamburger",
+          "text": "",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "id": "",
+          "className": "ac-btn ac-fs-toggle",
+          "text": "⛶",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "id": "jc-btn-export-patch",
+          "className": "ac-btn",
+          "text": "Export JSON Pat",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "id": "jc-btn-export-md",
+          "className": "ac-btn",
+          "text": "Report .md",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "id": "jc-btn-export-csv",
+          "className": "ac-btn",
+          "text": "Report .csv",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "id": "jc-btn-copy-summary",
+          "className": "ac-btn",
+          "text": "Copy summary",
+          "width": 0,
+          "height": 0
+        }
+      ],
+      "totalInteractiveCount": 326,
+      "focusableCount": 341
+    },
+    "consoleErrors": [],
+    "failedRequests": []
+  },
+  {
+    "pagePath": "/loan-calculator/",
+    "auditData": {
+      "duplicateIds": [],
+      "missingAccessibleName": [
+        {
+          "tag": "INPUT",
+          "id": "loan-start-date",
+          "className": "",
+          "html": "<input type=\"month\" id=\"loan-start-date\" value=\"2026-11\" style=\"width:100%;padding:9px 12px;border:1"
+        },
+        {
+          "tag": "INPUT",
+          "id": "ac-benchmark-rate",
+          "className": "",
+          "html": "<input type=\"number\" id=\"ac-benchmark-rate\" value=\"12.50\" step=\"0.05\" min=\"0\" style=\"width:100%;padd"
+        },
+        {
+          "tag": "INPUT",
+          "id": "ac-spread-rate",
+          "className": "",
+          "html": "<input type=\"number\" id=\"ac-spread-rate\" value=\"2.0\" step=\"0.25\" min=\"0\" style=\"width:100%;padding:8"
+        },
+        {
+          "tag": "INPUT",
+          "id": "ac-upfront-fee",
+          "className": "",
+          "html": "<input type=\"number\" id=\"ac-upfront-fee\" value=\"0\" min=\"0\" step=\"50\" style=\"width:100%;padding:8px;b"
+        },
+        {
+          "tag": "INPUT",
+          "id": "ac-recurring-fee",
+          "className": "",
+          "html": "<input type=\"number\" id=\"ac-recurring-fee\" value=\"0\" min=\"0\" step=\"5\" style=\"width:100%;padding:8px;"
+        },
+        {
+          "tag": "INPUT",
+          "id": "ac-extra-monthly",
+          "className": "",
+          "html": "<input type=\"number\" id=\"ac-extra-monthly\" value=\"0\" min=\"0\" step=\"25\" style=\"width:100%;padding:8px"
+        },
+        {
+          "tag": "INPUT",
+          "id": "ac-lump-sum",
+          "className": "",
+          "html": "<input type=\"number\" id=\"ac-lump-sum\" value=\"0\" min=\"0\" step=\"500\" style=\"width:100%;padding:8px;bor"
+        },
+        {
+          "tag": "INPUT",
+          "id": "ac-lump-month",
+          "className": "",
+          "html": "<input type=\"number\" id=\"ac-lump-month\" value=\"12\" min=\"1\" step=\"1\" style=\"width:100%;padding:8px;bo"
+        }
+      ],
+      "smallTouchTargets": [
+        {
+          "id": "mobile-menu-btn",
+          "className": "hamburger",
+          "text": "",
+          "width": 0,
+          "height": 0
+        }
+      ],
+      "totalInteractiveCount": 341,
+      "focusableCount": 351
+    },
+    "consoleErrors": [],
+    "failedRequests": []
+  },
+  {
+    "pagePath": "/mortgage-calculator/",
+    "auditData": {
+      "duplicateIds": [],
+      "missingAccessibleName": [
+        {
+          "tag": "INPUT",
+          "id": "mort-tax",
+          "className": "",
+          "html": "<input type=\"number\" id=\"mort-tax\" value=\"4800\" min=\"0\" step=\"100\" style=\"width:100%;padding:8px;bor"
+        },
+        {
+          "tag": "INPUT",
+          "id": "mort-ins",
+          "className": "",
+          "html": "<input type=\"number\" id=\"mort-ins\" value=\"1200\" min=\"0\" step=\"50\" style=\"width:100%;padding:8px;bord"
+        },
+        {
+          "tag": "INPUT",
+          "id": "mort-hoa",
+          "className": "",
+          "html": "<input type=\"number\" id=\"mort-hoa\" value=\"0\" min=\"0\" step=\"25\" style=\"width:100%;padding:8px;border:"
+        },
+        {
+          "tag": "INPUT",
+          "id": "mort-pmi",
+          "className": "",
+          "html": "<input type=\"number\" id=\"mort-pmi\" value=\"0.75\" min=\"0\" max=\"10\" step=\"0.05\" style=\"width:100%;paddi"
+        },
+        {
+          "tag": "INPUT",
+          "id": "mort-extra",
+          "className": "",
+          "html": "<input type=\"number\" id=\"mort-extra\" value=\"0\" min=\"0\" step=\"50\" style=\"width:100%;padding:8px;borde"
+        },
+        {
+          "tag": "INPUT",
+          "id": "mort-income",
+          "className": "",
+          "html": "<input type=\"number\" id=\"mort-income\" value=\"9000\" min=\"0\" step=\"250\" style=\"width:100%;padding:8px;"
+        },
+        {
+          "tag": "INPUT",
+          "id": "mort-debts",
+          "className": "",
+          "html": "<input type=\"number\" id=\"mort-debts\" value=\"600\" min=\"0\" step=\"50\" style=\"width:100%;padding:8px;bor"
+        }
+      ],
+      "smallTouchTargets": [
+        {
+          "id": "mobile-menu-btn",
+          "className": "hamburger",
+          "text": "",
+          "width": 0,
+          "height": 0
+        }
+      ],
+      "totalInteractiveCount": 360,
+      "focusableCount": 370
+    },
+    "consoleErrors": [],
+    "failedRequests": []
+  }
+]

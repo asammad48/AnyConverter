@@ -1916,10 +1916,16 @@
       panel.insertBefore(fsBtn, panel.firstChild);
     }
 
+    var savedScrollY = 0;
+
     function enter() {
+      savedScrollY = window.scrollY || window.pageYOffset || document.documentElement.scrollTop || 0;
       panel.classList.add('is-fullscreen');
       fsBtn.classList.add('fs-active');
+      fsBtn.textContent = '✕';
+      fsBtn.title = 'Exit fullscreen (Esc)';
       document.body.style.overflow = 'hidden';
+      document.documentElement.style.overflow = 'hidden';
       var ov = document.getElementById('fs-overlay');
       if (!ov) {
         ov = document.createElement('div');
@@ -1927,16 +1933,20 @@
         document.body.appendChild(ov);
       }
       ov.classList.add('active');
+      ov.onclick = function () {
+        if (panel.classList.contains('is-fullscreen')) exit();
+      };
 
       // Build the floating toolbar
       var bar = document.createElement('div');
       bar.className = 'ac-fs-toolbar';
+      bar.style.cssText = 'position:fixed!important;top:8px!important;right:12px!important;z-index:10002!important;display:flex!important;flex-direction:row!important;align-items:center!important;flex-wrap:nowrap!important;gap:6px!important;';
       bar.innerHTML =
         (opts.extra || '') +
-        '<button type="button" class="ac-btn ac-fs-btn" data-act="fs-" title="Smaller font">A−</button>' +
-        '<button type="button" class="ac-btn ac-fs-btn" data-act="fs+" title="Larger font">A+</button>' +
-        '<button type="button" class="ac-btn ac-fs-btn" data-act="close" title="Exit fullscreen (Esc)">✕ Close</button>';
-      panel.appendChild(bar);
+        '<button type="button" class="ac-btn ac-fs-btn" data-act="fs-" title="Smaller font" style="height:28px;min-height:28px;padding:0 8px;font-size:12px;flex:0 0 auto">A−</button>' +
+        '<button type="button" class="ac-btn ac-fs-btn" data-act="fs+" title="Larger font" style="height:28px;min-height:28px;padding:0 8px;font-size:12px;flex:0 0 auto">A+</button>' +
+        '<button type="button" class="ac-btn ac-fs-btn" data-act="close" title="Exit fullscreen (Esc)" style="height:28px;min-height:28px;padding:0 8px;font-size:12px;flex:0 0 auto">✕ Close</button>';
+      panel.insertBefore(bar, panel.firstChild);
       panel._fsBar = bar;
 
       function bump(delta) {
@@ -1955,10 +1965,20 @@
       if (typeof opts.onExit === 'function') opts.onExit(panel);
       panel.classList.remove('is-fullscreen');
       fsBtn.classList.remove('fs-active');
+      fsBtn.textContent = '⛶';
+      fsBtn.title = 'Fullscreen';
       document.body.style.overflow = '';
+      document.documentElement.style.overflow = '';
       var ov = document.getElementById('fs-overlay');
-      if (ov) ov.classList.remove('active');
+      if (ov) {
+        ov.classList.remove('active');
+        ov.onclick = null;
+      }
       if (panel._fsBar) { panel._fsBar.remove(); panel._fsBar = null; }
+      window.scrollTo({ top: savedScrollY, behavior: 'instant' });
+      if (window.scrollY !== savedScrollY) {
+        window.scrollTo(0, savedScrollY);
+      }
     }
     fsBtn.addEventListener('click', function () {
       if (panel.classList.contains('is-fullscreen')) exit();

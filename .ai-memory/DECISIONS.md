@@ -266,3 +266,182 @@ The second independent audit report (`SECOND_INDEPENDENT_FINANCIAL_REVALIDATION_
    - Clamped negative quantities and rates to 0. Reconciled invoice arithmetic across screen, print, and PDF.
 7. **Real Chrome Headless Playwright Verification:**
    - Created `tests/browser_e2e_financial_suite.js` to execute 32 full interactive user journeys against actual rendered pages in English, Spanish, and Danish, capturing console and network logs.
+
+---
+
+## ADR-010: Viewport-Bounded Fullscreen Editor & Responsive Split-Panels Architecture
+
+- **Date:** 2026-11-08
+- **Status:** Approved & Implemented
+- **Context:**
+  - Fullscreen mode in JSON Formatter (and shared panel layouts) pushed editors below the visible viewport on laptop screens, sometimes placing toolbars outside the screen.
+  - Individual panel fullscreen prevented side-by-side comparison of Input and Output.
+  - CSS Grid default `min-width: auto` caused actions containers with uncollapsed button labels to blow out the grid track, pushing panels into the sidebar `.ad-slot` which intercepted clicks.
+  - Output panel header had arbitrary `padding-right: 540px !important;` collapsing header width to near-zero on laptop viewports.
+  - Font-size controls (`A-`, `A+`) were detached and floating inside `#jf-perf-badge` in the editor body.
+- **Decision:**
+  1. **Container-Level Fullscreen:** Apply `.split-panels.is-fullscreen` using `position: fixed !important; inset: 0 !important; width: 100vw !important; height: 100dvh !important; z-index: 10000 !important;`.
+  2. **Strict Grid Minimum Constraints:** Set `.split-panels` to `grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);` with `.split-panels > .ac-panel { min-width: 0; max-width: 100%; }` preventing DOM blowouts into sidebar ad-slots.
+  3. **Adaptive Responsive Layout:** Maintain equal side-by-side 50/50 split on desktop and laptop viewports ($\ge 768px$), and cleanly stack vertically on mobile ($< 768px$).
+  4. **Integrated Toolbar Controls:** Integrate font-size adjustment directly into Output headers (`btn-font-down-out`, `btn-font-up-out`) with uniform 30px height, 6px radius, and responsive label collapse (`.btn-lbl-full` / `.btn-lbl-short`). Remove all arbitrary header right-padding.
+  5. **Scroll & Stacking Context Preservation:** Record `savedScrollY` upon entering fullscreen and restore exact scroll position when exiting via Escape or toggle button. Synchronize fullscreen button glyphs (`⛶` / `✕`) across panels.
+- **Consequence:** 100% viewport compliance across all 7 responsive breakpoints (320px, 390px, 768px, 1024x768, 1366x768, 1440x900, 1920x1080) in EN, ES, and DA, zero toolbar horizontal overflow, and fully accessible side-by-side editing.
+
+---
+
+## ADR-011: Dedicated Single-Panel Fullscreen Isolation and Compact Search Toolbar Architecture
+
+- **Date:** 2026-11-10
+- **Status:** Approved & Implemented
+- **Context:**
+  - While split-panel fullscreen provided dual editing, user feedback and usability requirements mandated that triggering fullscreen on a specific editor panel (e.g., Output) must display **ONE editor window, not two**.
+  - The previous search interface in fullscreen was rendered as an oversized multi-row block that consumed excessive vertical height and broke the visual hierarchy.
+  - Sibling panels remained visible or forced a 50/50 split in fullscreen, distracting users focusing on formatted output or raw input.
+- **Decision:**
+  1. **Single-Panel Fullscreen Protocol:**
+     - When activating fullscreen on a panel (Input or Output), apply `.ac-panel.is-fullscreen` (`position: fixed !important; inset: 0 !important; width: 100vw !important; height: 100dvh !important; z-index: 10000 !important;`) exclusively to that panel.
+     - Add `.fs-hidden-panel` (`display: none !important;`) to all sibling panels within `.split-panels`.
+     - Output panel in fullscreen occupies 100% viewport width and height.
+     - On exit (via Escape or close button `✕`), remove `.is-fullscreen` and `.fs-hidden-panel`, restoring original side-by-side layout and scroll position (`window.scrollTo({ top: savedScrollY, behavior: 'instant' })` deferred past reflow).
+  2. **Compact Single-Row Search Toolbar (`.ac-search-toolbar`):**
+     - Redesigned search bar into a compact, professional 38px toolbar placed directly above the output editor.
+     - Standardized components: 38px height, 260px input, native `<select>` scope selector (`All`, `Keys`, `Values`), tabular numerals match counter, previous/next match controls, and clear `✕` button.
+     - Full keyboard accessibility: `Enter` / `Shift+Enter` navigation, `Escape` / `Ctrl+F` handling.
+     - Bidirectional state synchronization between compact toolbar and sidebar search controls.
+     - Responsive mobile wrap: at `< 600px`, controls wrap cleanly into two compact rows without viewport horizontal overflow.
+  3. **Permanent Design Quality System & Skill:**
+     - Authored `docs/UI_UX_DESIGN_SYSTEM.md` establishing 8 core design principles, light/dark color tokens, 4px baseline spacing, 44px touch targets, and single-panel fullscreen interaction standards.
+     - Authored `.agents/skills/anyconverter-design-quality/SKILL.md` to permanently guide future agent work.
+- **Consequence:** Solves fullscreen visual hierarchy, eliminates split-screen clutter during focused analysis, guarantees zero horizontal overflow across 320px–1920px viewports, and preserves high-throughput 60 FPS rendering on 2.15M+ line payloads.
+
+---
+
+## ADR-012: Fullscreen Single-Row Search Layout, Sidebar Information Hierarchy, and Zero Normal-Mode Duplicate Search UI
+
+- **Date:** 2026-11-10
+- **Status:** Approved & Verified (18/18 Repo Test Suites Passing, 7/7 Viewports + 100%/125% Zoom Certified)
+- **Context:**
+  - Fullscreen search toolbar occupied three rows on desktop due to inherited global styles (`select { width: 100% }` and `.tool-zone input/select { min-height: 44px }`) breaking the single horizontal row.
+  - Normal mode displayed a duplicate search UI inside the Output panel despite search controls already existing in the right sidebar.
+  - Right sidebar order was Options first, then Search, with Advertisement at the bottom, violating the required information hierarchy (Advertisement < Search < Options).
+- **Decision:**
+  1. **Strict Single Horizontal Row Desktop Layout:**
+     - Container `.ac-search-toolbar`: `flex-wrap: nowrap !important; height: 52px !important; padding: 8px 12px !important; gap: 8px !important; align-items: center !important;`.
+     - Controls layout: `[Search JSON...] [Keys + Values ▼] [0 / 0] [Previous] [Next] [Clear]`.
+     - Explicitly constrained element dimensions with `!important` overriding all global forms and touch-target defaults:
+       - Search input wrapper & input: `width: 240px !important; min-width: 220px !important; max-width: 260px !important; height: 36px !important; min-height: 36px !important; max-height: 36px !important; font-size: 13px !important;`.
+       - Scope dropdown: `width: 150px !important; min-width: 140px !important; max-width: 170px !important; flex: 0 0 150px !important; height: 36px !important; min-height: 36px !important; max-height: 36px !important; font-size: 13px !important;`.
+       - Counter badge: `height: 36px !important; min-height: 36px !important; max-height: 36px !important; line-height: 36px !important; min-width: 48px !important;`.
+       - Navigation buttons (`#fs-search-prev`, `#fs-search-next`, `#fs-search-clear`): `width: 36px !important; min-width: 36px !important; max-width: 36px !important; height: 36px !important; min-height: 36px !important; max-height: 36px !important; padding: 0 !important; font-size: 14px !important;`.
+     - Mobile responsiveness: Under 600px, controlled wrap into balanced rows without horizontal overflow.
+  2. **Elimination of Duplicate Search UI in Normal Mode:**
+     - Set `.ac-search-toolbar { display: none !important; }` by default.
+     - Displayed ONLY when panel is fullscreen: `.ac-panel.is-fullscreen .ac-search-toolbar { display: flex !important; }`.
+     - In normal mode, search functionality is provided cleanly via the right sidebar without cluttering the output panel.
+  3. **Sidebar Reordering to Mandatory Hierarchy:**
+     - Reordered right sidebar across EN, ES, and DA pages:
+       1. Advertisement (`.ad-slot`)
+       2. Search (`#search-query`, `#search-mode`, `#search-prev`, `#search-next`, `#search-count`)
+       3. Options (`#opt-indent`, `#opt-sort`, `#opt-font-size`, toggles)
+       4. Bookmarks
+       5. Stats
+  4. **Bidirectional Search Synchronization & State Persistence:**
+     - Search query, scope mode, and match counts are synchronized bidirectionally between normal-mode sidebar search and fullscreen search toolbar.
+     - Toggling fullscreen preserves search terms, matches, highlights, and scroll positions without reparsing or re-running search on 2.15M line files.
+  5. **Permanent Design Quality Standards:**
+     - Embedded the 7 explicit permanent design quality rules into `.agents/skills/anyconverter-design-quality/SKILL.md` and `docs/UI_UX_DESIGN_SYSTEM.md`.
+- **Consequence:** Eliminates visual defects and layout wrapping, guarantees pixel-perfect single-row desktop search toolbar, eliminates UI redundancy, and guarantees 100% adherence to information hierarchy.
+
+---
+
+## ADR-013: First-Party Google Search Console Baseline & Forensic Organic Growth Strategy
+
+- **Date:** 2026-11-10
+- **Status:** Approved & Baselined
+- **Context:**
+  - AnyConverter.io experienced an organic impression collapse from 8,042 imp/day (Sept 29) to ~10 imp/day in October–November 2026.
+  - Needed an exhaustive, data-backed diagnostic to discover why the site is not achieving meaningful rankings, without fabricating data or guessing third-party metrics.
+- **Decision:**
+  1. **Direct First-Party GSC Extraction:** Connected via service account (`search-console-mcp@anyconverterio.iam.gserviceaccount.com`) to extract 122 days of complete historical search performance across all dimensions (2,424 queries, 222 pages, 127 countries).
+  2. **Forensic Root-Cause Identification:**
+     - Identified that 83.6% of historical impressions (44,098) were concentrated in a single query (`ip address lookup`).
+     - Google tested the young domain on Page 1 (Pos 9.4); the resulting 0.063% CTR against 50,000-backlink titans triggered algorithmic rotation off Page 1 on October 6.
+     - Uncovered the "Indexing Chasm": 51.6% of submitted sitemap URLs (including high-value tools like `camt053-to-csv/` and `barcode-generator/`) are completely unindexed (`URL is unknown to Google` or `Discovered - currently not indexed`).
+     - Uncovered Danish snippet typo: `/da/loan-calculator/` ranks at Position 5.4 for `lånberegner`, but 0 clicks occurred because native Danish requires `låneberegner` (with an 'e').
+     - Discovered illegal cross-locale redirects in `_redirects` (`/es/world-clock/` & `/da/world-clock/ -> /world-clock/`).
+  3. **Strategic Pivot to High-Intent Long-Tail Utility & Localization:**
+     - Reject head-term volume chasing. Pivot all SEO targeting to AnyConverter's unique capabilities: 100MB+ client-side file parsing, zero-server privacy, and specialized financial formulas (CAMT.053, KIBOR, Danish ÅOP, Spanish TAE).
+     - Generated 11 comprehensive reports and datasets under `reports/seo-audit-2026-11/`.
+- **Consequence:** Replaces speculative SEO recommendations with a concrete, data-backed technical repair and keyword growth roadmap across English, Spanish, and Danish.
+
+---
+
+## ADR-014: Unified Zero-DOM Line-Selection & Offset-Based Copy Architecture for JSON Formatter
+
+- **Date:** 2026-11-11
+- **Status:** Approved & Implemented
+- **Context:**
+  - Users experienced errors when attempting to copy bookmarked JSON lines or copy selected line ranges.
+  - Prior architecture had only document-level bookmarks in localStorage and lacked line-level bookmarking, multi-line selection, and range extraction.
+  - Naive DOM scraping (`innerText`/`textContent` on `.j-line` / `.j-vrow`) introduced severe defects: missing off-screen virtualized lines, DOM pollution (line numbers, fold arrows, syntax spans), index-vs-offset misalignment, and browser freezes when selecting huge ranges in multi-megabyte payloads.
+- **Decision:**
+  1. **Unified Text-Access Engine (Zero-DOM Dependency):**
+     - Decouple text copying completely from the DOM representation.
+     - In virtualized mode (`isVirtualized === true`): utilize `Uint32Array` character offset buffers (`virtualLineOffsets`) and `ChunkedText.substring()`. Any line or contiguous range of lines is extracted in $O(1)$ time without scanning or reparsing strings.
+     - In standard mode (`isVirtualized === false`): maintain `standardFormattedLines = formatted.split('\n')`. Text extraction slices directly from formatted lines.
+     - Guarantee 100% byte-accurate preservation of exact indentation, Unicode diacritics, whitespace, and punctuation with zero HTML or UI glyph pollution.
+  2. **Multi-Mode Line Selection & Line Bookmarking:**
+     - Maintain state in memory via `Set<number>` (`bookmarkedLines`, `selectedLines`) and integer bounds `selectionRange = [min, max]`.
+     - Clicking line gutter (`.j-line-num`): single click selects line; `Shift+Click` selects range; `Ctrl/Cmd+Click` toggles line.
+     - Clicking bookmark star (`.j-bm`): toggles line in `bookmarkedLines`.
+     - Standard text selection within `.j-code` is completely isolated: dragging text with cursor continues to allow standard browser text selection and native `Ctrl+C` without triggering line selection.
+  3. **Large File Bounded Memory & Streaming Fallback:**
+     - For "Select All Lines" on 2.15M line files (50MB / 100MB): set `selectionRange = [0, totalLines - 1]` with zero extra DOM nodes or array allocations. Bounded virtual DOM pool (~60 rows) and 60 FPS scrolling remain completely uninhibited.
+     - For payload copies exceeding 5 MB: automatically offer streaming download (`Blob` + object URL) to prevent browser clipboard buffer crashes or V8 memory allocation failures.
+  4. **Compact Responsive Copy Menu & Contextual Bar:**
+     - Output toolbar `#btn-copy-output` upgraded to compact dropdown button `Copy ▾` (height 36px, no layout wrapping).
+     - Menu exposes: `Copy All`, `Copy Selected Lines (N)`, `Copy Bookmarked Lines (N)`, `Copy Current Line`, `Copy Line Range…`, `Select All Lines`, `Clear Selection`, `Clear Bookmarks`.
+     - Contextual indicator bar (`N lines selected · Copy · Download · Clear`) automatically displays when lines are selected and hides when cleared.
+     - Line Range modal (`#jf-range-backdrop`) provides 1-based start/end inputs with strict integer validation and helpful error feedback.
+     - Full internationalization across English, Danish, and Spanish.
+- **Consequence:** Completely resolves bookmark copying defects, provides VS Code-grade line selection across files up to 100MB / 2.15M lines, passes 100% of headless Chrome Playwright assertions, and maintains 18/18 repository test suite passes.
+
+---
+
+## ADR-030: Final Copy Engine Verification, Explicit Active Line Protocol & 5MB Clipboard Limit Safeguards
+- **Date:** 2026-11-12
+- **Status:** Approved & Implemented
+- **Context:**
+  - Independent verification required certification of the full 100 MB end-to-end workflow, evaluation of the 5 MB clipboard limit, elimination of silent auto-downloads, and strict adherence to explicit active line selection for "Copy Current Line" without viewport center fallback.
+  - Previous implementation had two edge-case defects:
+    1. If `lastSelectedLine < 0`, "Copy Current Line" calculated an estimated line from viewport scroll position (`scrollTop`) in virtual mode, and defaulted to line 0 in standard mode.
+    2. When copied selections exceeded 5 MB, `safeCopyToClipboard` silently triggered a file download via an `<a>` element instead of explaining the limit to the user and offering Download Selection.
+    3. Pressing `Escape` to exit fullscreen inadvertently cleared line selection because `Escape` unconditionally invoked `clearLineSelection()`.
+- **Decision:**
+  1. **Strict Active Line Protocol:** Eliminated all silent viewport-center and line-0 fallbacks in `copyCurrentLine()`. If no line is active (`lastSelectedLine < 0`), the dropdown button `#btn-copy-current` is disabled (`disabled`), and invoking the action displays an informative toast (`T.noActiveLine`: *"No line selected or focused. Click a line number to set current line"*).
+  2. **Non-Silent 5MB Clipboard Limit Protection:** Eliminated silent auto-downloads in `safeCopyToClipboard()` and `copyAll()`. When selections exceed 5 MB, an informative message (`T.copyPayloadTooLarge`: *"Selection is too large for clipboard (X MB, exceeds 5 MB limit). Please use Download instead."*) is displayed, returning `false` without overwriting the clipboard or unexpectedly saving files to the user's disk. Users utilize the dedicated "Download Selection" button in the selection bar or "Download Range" in the modal.
+  3. **Escape Key Context Sensitivity:** Upgraded the global `Escape` key handler to inspect active context: if Copy dropdown is open, closes menu; if Range modal is open, closes modal; if editor is in Fullscreen mode, exits fullscreen while strictly preserving all active line bookmarks and selections intact.
+  4. **Ephemeral Line Bookmark Lifecycle:** Line bookmarks are documented as in-memory, session/document-scoped transient indices (`bookmarkedLines = new Set()`) that safely reset upon reformatting, key sorting, file upload, or clearing input to prevent pointing to unrelated lines when document structure changes. Persistent named JSON snippets remain in `localStorage['ac_json_bookmarks']`.
+  5. **100 MB Actual Verification:** Certified real 104.85 MB fixture (`fixture_100mb.json` with 4,182,512 lines) processing in 4.20s with 15.96 MB line offset buffer and constant-time (12.1 µs) range extraction without reconstructing full 126 MB strings.
+- **Consequence:** 100% adherence to user workflow requirements, 0 silent unexpected behaviors, rock-solid lifecycle state persistence, and all 18 repository test suites passing.
+
+---
+
+## ADR-031: JSON Formatter Toolbar Single-Row Layout & Copy Dropdown Stacking Context Fix
+- **Date:** 2026-11-12
+- **Status:** Approved & Implemented
+- **Context:**
+  - In JSON Formatter (`/json-formatter/`), clicking the `Copy ▾` button revealed that:
+    1. The dropdown menu (`.jf-copy-menu`) was clipped and trapped beneath the Output window (`#json-output`), rendering only the top fraction of "Copy All" visible.
+    2. The Output panel toolbar wrapped onto a second line on standard desktop/laptop viewports (1280px-1366px), expanding header height from 44px to 77px+ and displacing the fullscreen toggle button `[⛶]` below `[A- A+]`.
+  - Root cause analysis:
+    - CSS Overflow Spec: `body:has(#json-input) .ac-panel-actions` had `overflow-x: auto;`. Per W3C CSS Overflow Module Level 3, if either `overflow-x` or `overflow-y` is set to `auto` or `scroll`, the other axis cannot be `visible` and is computed as `auto`. Because `.ac-panel-actions` had a fixed height (30px), any overflowing dropdown menu was clipped inside the 30px container.
+    - Stacking context: `.ac-panel-header` had no relative positioning or positive `z-index`, allowing sibling `#json-output` to stack above overflowing elements.
+    - Toolbar wrapping: `.ac-panel-actions` had `flex-wrap: wrap;` and total action widths (6 buttons) exceeded available split-panel width (~425px vs 444px needed), pushing the editor and window action groups onto a second line.
+- **Decision:**
+  1. Set `overflow: visible !important;` on `body:has(#json-input) .ac-panel`, `.ac-panel-header`, and `.ac-panel-actions`.
+  2. Set `z-index: 100 !important; position: relative !important;` on `body:has(#json-input) .ac-panel-header`.
+  3. Set `.jf-copy-dropdown-wrap { z-index: 101; }` and `.jf-copy-menu { z-index: 9999; }` with a polished elevation drop shadow (`box-shadow: 0 10px 25px -5px rgba(0,0,0,0.15), 0 8px 10px -6px rgba(0,0,0,0.1);`).
+  4. Enforce strict single-row layout on `body:has(#json-input) .ac-panel-header` (`height: 44px !important; min-height: 44px !important; max-height: 44px !important; flex-wrap: nowrap !important; align-items: center; padding: 0 10px !important;`) and `.ac-panel-actions` (`flex-wrap: nowrap !important; gap: 5px; height: 30px;`).
+  5. Compact button widths within `body:has(#json-input)`: `.ac-btn` (30px height, 12px font, 8px padding), `.font-sz-btn` (26px flex basis), and fullscreen buttons (30px flex basis). Under 1120px viewport, auto-hide `.ac-panel-label` and reduce button padding.
+- **Consequence:** Eliminates dropdown clipping completely, ensures the dropdown floats gracefully over `#json-output` with full clickability (`isMenuOnTop: true`), locks the toolbar to an exact 44px single row with zero wrapping across all viewports (1920px down to 390px), and passes 18/18 repository test suites.

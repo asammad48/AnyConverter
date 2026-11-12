@@ -44,7 +44,7 @@
     .hero-desc{font-size:1.0625rem;color:var(--color-text-2,#6B7280);max-width:680px;line-height:1.6}
     @font-face{font-family:'Inter';font-display:swap}
   </style>
-  <link rel="stylesheet" href="/assets/css/style.css?v=20260902">
+  <link rel="stylesheet" href="/assets/css/style.css?v=20261109">
 </head>
 <body>
   <header id="site-header" class="site-header"></header>
@@ -63,15 +63,17 @@
             <p class="panel-label">Entrada Markdown</p>
             <textarea id="md-input" placeholder="# Hola Mundo&#10;&#10;Escribe tu **Markdown** aquí..." spellcheck="false" style="min-height:400px"></textarea>
           </div>
-          <div>
-            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
-              <p class="panel-label" style="margin:0">Salida</p>
-              <div class="sub-tabs" role="tablist" aria-label="Vista de salida Markdown" style="gap:4px">
-                <button class="sub-tab active" id="view-rendered" type="button" role="tab" aria-selected="true">Vista previa</button>
-                <button class="sub-tab" id="view-source" type="button" role="tab" aria-selected="false">Código HTML</button>
+          <div class="ac-panel">
+            <div class="ac-panel-header">
+              <span class="ac-panel-label">Salida</span>
+              <div class="ac-panel-actions">
+                <div class="sub-tabs" role="tablist" aria-label="Vista de salida Markdown" style="gap:4px">
+                  <button class="sub-tab active" id="view-rendered" type="button" role="tab" aria-selected="true">Vista previa</button>
+                  <button class="sub-tab" id="view-source" type="button" role="tab" aria-selected="false">Código HTML</button>
+                </div>
               </div>
             </div>
-            <div id="md-preview" class="markdown-preview"></div>
+            <div id="md-preview" class="markdown-preview" style="min-height:350px"></div>
             <div id="md-source" style="display:none">
               <div class="code-output-wrapper">
                 <pre class="code-output" id="md-source-code"></pre>

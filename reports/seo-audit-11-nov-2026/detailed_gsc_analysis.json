@@ -1,0 +1,807 @@
+{
+  "periods": {
+    "last7Days": {
+      "start": "2026-11-02",
+      "end": "2026-11-08",
+      "days": 0,
+      "clicks": 0,
+      "impressions": 0,
+      "ctr": "0.00%",
+      "avgPos": "0.0"
+    },
+    "last28Days": {
+      "start": "2026-10-12",
+      "end": "2026-11-08",
+      "days": 0,
+      "clicks": 0,
+      "impressions": 0,
+      "ctr": "0.00%",
+      "avgPos": "0.0"
+    },
+    "prev28Days": {
+      "start": "2026-09-14",
+      "end": "2026-10-11",
+      "days": 0,
+      "clicks": 0,
+      "impressions": 0,
+      "ctr": "0.00%",
+      "avgPos": "0.0"
+    },
+    "last3Months": {
+      "start": "2026-08-11",
+      "end": "2026-11-08",
+      "days": 0,
+      "clicks": 0,
+      "impressions": 0,
+      "ctr": "0.00%",
+      "avgPos": "0.0"
+    },
+    "prev3Months": {
+      "start": "2026-07-10",
+      "end": "2026-08-10",
+      "days": 0,
+      "clicks": 0,
+      "impressions": 0,
+      "ctr": "0.00%",
+      "avgPos": "0.0"
+    },
+    "fullHistory": {
+      "start": "2026-07-10",
+      "end": "2026-11-08",
+      "days": 0,
+      "clicks": 0,
+      "impressions": 0,
+      "ctr": "0.00%",
+      "avgPos": "0.0"
+    }
+  },
+  "languagePerformance": [
+    {
+      "language": "English (Root)",
+      "totalRows": 1234,
+      "clicks": 33,
+      "impressions": 47910,
+      "ctr": "0.07%",
+      "uniquePages": 64
+    },
+    {
+      "language": "Spanish (/es/)",
+      "totalRows": 968,
+      "clicks": 3,
+      "impressions": 2208,
+      "ctr": "0.14%",
+      "uniquePages": 62
+    },
+    {
+      "language": "Danish (/da/)",
+      "totalRows": 285,
+      "clicks": 0,
+      "impressions": 986,
+      "ctr": "0.00%",
+      "uniquePages": 39
+    }
+  ],
+  "groupA": [
+    {
+      "query": "ip address search",
+      "page": "https://anyconverter.io/ip-address-lookup/",
+      "clicks": 0,
+      "impressions": 51,
+      "ctr": 0,
+      "position": 15.9
+    },
+    {
+      "query": "notas adhesivas online",
+      "page": "https://anyconverter.io/es/sticky-notes/",
+      "clicks": 0,
+      "impressions": 50,
+      "ctr": 0,
+      "position": 11.3
+    },
+    {
+      "query": "look up ip address",
+      "page": "https://anyconverter.io/ip-address-lookup/",
+      "clicks": 0,
+      "impressions": 48,
+      "ctr": 0,
+      "position": 12.6
+    },
+    {
+      "query": "online sticky notes",
+      "page": "https://anyconverter.io/sticky-notes/",
+      "clicks": 0,
+      "impressions": 37,
+      "ctr": 0,
+      "position": 16.9
+    },
+    {
+      "query": "ip lookup",
+      "page": "https://anyconverter.io/ip-address-lookup/",
+      "clicks": 1,
+      "impressions": 36,
+      "ctr": 2.78,
+      "position": 14.2
+    },
+    {
+      "query": "opgaveliste",
+      "page": "https://anyconverter.io/da/todo-list/",
+      "clicks": 0,
+      "impressions": 33,
+      "ctr": 0,
+      "position": 19.2
+    },
+    {
+      "query": "search ip address location",
+      "page": "https://anyconverter.io/ip-address-lookup/",
+      "clicks": 0,
+      "impressions": 19,
+      "ctr": 0,
+      "position": 11.5
+    },
+    {
+      "query": "how to look up ip address",
+      "page": "https://anyconverter.io/ip-address-lookup/",
+      "clicks": 0,
+      "impressions": 17,
+      "ctr": 0,
+      "position": 11.6
+    },
+    {
+      "query": "who is ip address lookup",
+      "page": "https://anyconverter.io/ip-address-lookup/",
+      "clicks": 0,
+      "impressions": 16,
+      "ctr": 0,
+      "position": 17.4
+    },
+    {
+      "query": "ip address search free",
+      "page": "https://anyconverter.io/ip-address-lookup/",
+      "clicks": 0,
+      "impressions": 15,
+      "ctr": 0,
+      "position": 12.6
+    },
+    {
+      "query": "where is this ip address from",
+      "page": "https://anyconverter.io/ip-address-lookup/",
+      "clicks": 0,
+      "impressions": 15,
+      "ctr": 0,
+      "position": 11.1
+    },
+    {
+      "query": "sticky notes online",
+      "page": "https://anyconverter.io/sticky-notes/",
+      "clicks": 0,
+      "impressions": 14,
+      "ctr": 0,
+      "position": 14.8
+    },
+    {
+      "query": "ip info lookup",
+      "page": "https://anyconverter.io/ip-address-lookup/",
+      "clicks": 0,
+      "impressions": 13,
+      "ctr": 0,
+      "position": 15.1
+    },
+    {
+      "query": "search ip address",
+      "page": "https://anyconverter.io/ip-address-lookup/",
+      "clicks": 0,
+      "impressions": 12,
+      "ctr": 0,
+      "position": 16.9
+    },
+    {
+      "query": "monitor color test",
+      "page": "https://anyconverter.io/es/monitor-color-test/",
+      "clicks": 0,
+      "impressions": 10,
+      "ctr": 0,
+      "position": 15.9
+    },
+    {
+      "query": "online planners",
+      "page": "https://anyconverter.io/daily-planner/",
+      "clicks": 0,
+      "impressions": 10,
+      "ctr": 0,
+      "position": 15.7
+    }
+  ],
+  "groupB": [
+    {
+      "query": "ip address lookup",
+      "page": "https://anyconverter.io/ip-address-lookup/",
+      "clicks": 28,
+      "impressions": 44104,
+      "ctr": 0.06,
+      "position": 9.8
+    },
+    {
+      "query": "lookup ip address",
+      "page": "https://anyconverter.io/ip-address-lookup/",
+      "clicks": 0,
+      "impressions": 109,
+      "ctr": 0,
+      "position": 9.2
+    },
+    {
+      "query": "realkreditberegner",
+      "page": "https://anyconverter.io/da/mortgage-calculator/",
+      "clicks": 0,
+      "impressions": 86,
+      "ctr": 0,
+      "position": 9.9
+    },
+    {
+      "query": "ip address checker",
+      "page": "https://anyconverter.io/ip-address-lookup/",
+      "clicks": 0,
+      "impressions": 66,
+      "ctr": 0,
+      "position": 10
+    },
+    {
+      "query": "lookup ip",
+      "page": "https://anyconverter.io/ip-address-lookup/",
+      "clicks": 0,
+      "impressions": 63,
+      "ctr": 0,
+      "position": 7.7
+    },
+    {
+      "query": "lånberegner",
+      "page": "https://anyconverter.io/da/loan-calculator/",
+      "clicks": 0,
+      "impressions": 59,
+      "ctr": 0,
+      "position": 5.4
+    },
+    {
+      "query": "ip address finder",
+      "page": "https://anyconverter.io/ip-address-lookup/",
+      "clicks": 0,
+      "impressions": 43,
+      "ctr": 0,
+      "position": 7.9
+    },
+    {
+      "query": "lookup an ip address",
+      "page": "https://anyconverter.io/ip-address-lookup/",
+      "clicks": 0,
+      "impressions": 32,
+      "ctr": 0,
+      "position": 10.8
+    },
+    {
+      "query": "ip number lookup",
+      "page": "https://anyconverter.io/ip-address-lookup/",
+      "clicks": 0,
+      "impressions": 29,
+      "ctr": 0,
+      "position": 7.9
+    },
+    {
+      "query": "address lookup ip",
+      "page": "https://anyconverter.io/ip-address-lookup/",
+      "clicks": 0,
+      "impressions": 23,
+      "ctr": 0,
+      "position": 8.8
+    },
+    {
+      "query": "free ip address lookup",
+      "page": "https://anyconverter.io/ip-address-lookup/",
+      "clicks": 0,
+      "impressions": 23,
+      "ctr": 0,
+      "position": 6.9
+    },
+    {
+      "query": "i p address lookup",
+      "page": "https://anyconverter.io/ip-address-lookup/",
+      "clicks": 0,
+      "impressions": 23,
+      "ctr": 0,
+      "position": 7.4
+    },
+    {
+      "query": "ip address look up",
+      "page": "https://anyconverter.io/ip-address-lookup/",
+      "clicks": 0,
+      "impressions": 19,
+      "ctr": 0,
+      "position": 9.3
+    },
+    {
+      "query": "look up address",
+      "page": "https://anyconverter.io/ip-address-lookup/",
+      "clicks": 0,
+      "impressions": 18,
+      "ctr": 0,
+      "position": 9.7
+    },
+    {
+      "query": "ip addresses lookup",
+      "page": "https://anyconverter.io/ip-address-lookup/",
+      "clicks": 0,
+      "impressions": 17,
+      "ctr": 0,
+      "position": 10.1
+    },
+    {
+      "query": "address lookup by ip",
+      "page": "https://anyconverter.io/ip-address-lookup/",
+      "clicks": 0,
+      "impressions": 15,
+      "ctr": 0,
+      "position": 8.5
+    },
+    {
+      "query": "ip address lookup with address",
+      "page": "https://anyconverter.io/ip-address-lookup/",
+      "clicks": 0,
+      "impressions": 14,
+      "ctr": 0,
+      "position": 9.4
+    },
+    {
+      "query": "ip adress lookup",
+      "page": "https://anyconverter.io/ip-address-lookup/",
+      "clicks": 0,
+      "impressions": 13,
+      "ctr": 0,
+      "position": 8.6
+    },
+    {
+      "query": "ip to address lookup",
+      "page": "https://anyconverter.io/ip-address-lookup/",
+      "clicks": 0,
+      "impressions": 13,
+      "ctr": 0,
+      "position": 7.2
+    },
+    {
+      "query": "address finder ip",
+      "page": "https://anyconverter.io/ip-address-lookup/",
+      "clicks": 0,
+      "impressions": 12,
+      "ctr": 0,
+      "position": 6.8
+    },
+    {
+      "query": "look up ip",
+      "page": "https://anyconverter.io/ip-address-lookup/",
+      "clicks": 0,
+      "impressions": 12,
+      "ctr": 0,
+      "position": 6.3
+    },
+    {
+      "query": "loop up ip address",
+      "page": "https://anyconverter.io/ip-address-lookup/",
+      "clicks": 0,
+      "impressions": 12,
+      "ctr": 0,
+      "position": 9.7
+    },
+    {
+      "query": "ip lookup tool",
+      "page": "https://anyconverter.io/ip-address-lookup/",
+      "clicks": 0,
+      "impressions": 10,
+      "ctr": 0,
+      "position": 10.5
+    },
+    {
+      "query": "lookup from address",
+      "page": "https://anyconverter.io/ip-address-lookup/",
+      "clicks": 0,
+      "impressions": 9,
+      "ctr": 0,
+      "position": 10.4
+    },
+    {
+      "query": "address lookup by address",
+      "page": "https://anyconverter.io/ip-address-lookup/",
+      "clicks": 0,
+      "impressions": 8,
+      "ctr": 0,
+      "position": 10.5
+    },
+    {
+      "query": "free ip search",
+      "page": "https://anyconverter.io/ip-address-lookup/",
+      "clicks": 0,
+      "impressions": 8,
+      "ctr": 0,
+      "position": 6.8
+    },
+    {
+      "query": "ip address address lookup",
+      "page": "https://anyconverter.io/ip-address-lookup/",
+      "clicks": 0,
+      "impressions": 8,
+      "ctr": 0,
+      "position": 7.9
+    },
+    {
+      "query": "what is my ip address lookup",
+      "page": "https://anyconverter.io/ip-address-lookup/",
+      "clicks": 0,
+      "impressions": 8,
+      "ctr": 0,
+      "position": 10
+    },
+    {
+      "query": "geo look up",
+      "page": "https://anyconverter.io/ip-address-lookup/",
+      "clicks": 0,
+      "impressions": 7,
+      "ctr": 0,
+      "position": 9
+    },
+    {
+      "query": "ipaddress look up",
+      "page": "https://anyconverter.io/ip-address-lookup/",
+      "clicks": 0,
+      "impressions": 7,
+      "ctr": 0,
+      "position": 9.4
+    }
+  ],
+  "groupC": [
+    {
+      "query": "ip address lookup",
+      "page": "https://anyconverter.io/ip-address-lookup/",
+      "clicks": 28,
+      "impressions": 44104,
+      "ctr": 0.06,
+      "position": 9.8
+    },
+    {
+      "query": "anyconv",
+      "page": "https://anyconverter.io/",
+      "clicks": 0,
+      "impressions": 137,
+      "ctr": 0,
+      "position": 48.9
+    },
+    {
+      "query": "lookup ip address",
+      "page": "https://anyconverter.io/ip-address-lookup/",
+      "clicks": 0,
+      "impressions": 109,
+      "ctr": 0,
+      "position": 9.2
+    }
+  ],
+  "groupD": [
+    {
+      "query": "anyconv",
+      "page": "https://anyconverter.io/",
+      "clicks": 0,
+      "impressions": 137,
+      "ctr": 0,
+      "position": 48.9
+    }
+  ],
+  "groupE": [
+    {
+      "query": "anyconv",
+      "page": "https://anyconverter.io/",
+      "clicks": 0,
+      "impressions": 137,
+      "ctr": 0,
+      "position": 48.9
+    },
+    {
+      "query": "lookup ip address",
+      "page": "https://anyconverter.io/ip-address-lookup/",
+      "clicks": 0,
+      "impressions": 109,
+      "ctr": 0,
+      "position": 9.2
+    },
+    {
+      "query": "realkreditberegner",
+      "page": "https://anyconverter.io/da/mortgage-calculator/",
+      "clicks": 0,
+      "impressions": 86,
+      "ctr": 0,
+      "position": 9.9
+    },
+    {
+      "query": "ip address checker",
+      "page": "https://anyconverter.io/ip-address-lookup/",
+      "clicks": 0,
+      "impressions": 66,
+      "ctr": 0,
+      "position": 10
+    },
+    {
+      "query": "lookup ip",
+      "page": "https://anyconverter.io/ip-address-lookup/",
+      "clicks": 0,
+      "impressions": 63,
+      "ctr": 0,
+      "position": 7.7
+    },
+    {
+      "query": "planner online",
+      "page": "https://anyconverter.io/daily-planner/",
+      "clicks": 0,
+      "impressions": 61,
+      "ctr": 0,
+      "position": 20.6
+    },
+    {
+      "query": "lånberegner",
+      "page": "https://anyconverter.io/da/loan-calculator/",
+      "clicks": 0,
+      "impressions": 59,
+      "ctr": 0,
+      "position": 5.4
+    },
+    {
+      "query": "ip address search",
+      "page": "https://anyconverter.io/ip-address-lookup/",
+      "clicks": 0,
+      "impressions": 51,
+      "ctr": 0,
+      "position": 15.9
+    },
+    {
+      "query": "notas adhesivas online",
+      "page": "https://anyconverter.io/es/sticky-notes/",
+      "clicks": 0,
+      "impressions": 50,
+      "ctr": 0,
+      "position": 11.3
+    }
+  ],
+  "inspectionResults": [
+    {
+      "url": "https://anyconverter.io/",
+      "verdict": "PASS",
+      "coverageState": "Submitted and indexed",
+      "robotsTxtState": "ALLOWED",
+      "indexingState": "INDEXING_ALLOWED",
+      "pageFetchState": "SUCCESSFUL",
+      "googleCanonical": "https://anyconverter.io/",
+      "userCanonical": "https://anyconverter.io/",
+      "lastCrawlTime": "2026-11-05T17:12:59Z",
+      "crawledAs": "MOBILE",
+      "referringUrls": [
+        "https://anyconverter.io/unlock-pdf/",
+        "http://anyconverter.io/es/",
+        "http://anyconverter.io/"
+      ]
+    },
+    {
+      "url": "https://anyconverter.io/es/",
+      "verdict": "PASS",
+      "coverageState": "Submitted and indexed",
+      "robotsTxtState": "ALLOWED",
+      "indexingState": "INDEXING_ALLOWED",
+      "pageFetchState": "SUCCESSFUL",
+      "googleCanonical": "https://anyconverter.io/es/",
+      "userCanonical": "https://anyconverter.io/es/",
+      "lastCrawlTime": "2026-11-06T10:03:39Z",
+      "crawledAs": "MOBILE",
+      "referringUrls": [
+        "https://anyconverter.io/unlock-pdf/",
+        "https://anyconverter.io/",
+        "http://anyconverter.io/"
+      ]
+    },
+    {
+      "url": "https://anyconverter.io/da/",
+      "verdict": "PASS",
+      "coverageState": "Submitted and indexed",
+      "robotsTxtState": "ALLOWED",
+      "indexingState": "INDEXING_ALLOWED",
+      "pageFetchState": "SUCCESSFUL",
+      "googleCanonical": "https://anyconverter.io/da/",
+      "userCanonical": "https://anyconverter.io/da/",
+      "lastCrawlTime": "2026-10-25T06:20:34Z",
+      "crawledAs": "MOBILE",
+      "referringUrls": [
+        "https://anyconverter.io/unlock-pdf/",
+        "https://anyconverter.io/",
+        "http://anyconverter.io/"
+      ]
+    },
+    {
+      "url": "https://anyconverter.io/json-formatter/",
+      "verdict": "PASS",
+      "coverageState": "Submitted and indexed",
+      "robotsTxtState": "ALLOWED",
+      "indexingState": "INDEXING_ALLOWED",
+      "pageFetchState": "SUCCESSFUL",
+      "googleCanonical": "https://anyconverter.io/json-formatter/",
+      "userCanonical": "https://anyconverter.io/json-formatter/",
+      "lastCrawlTime": "2026-11-06T08:47:13Z",
+      "crawledAs": "MOBILE",
+      "referringUrls": [
+        "https://anyconverter.io/unlock-pdf/",
+        "https://anyconverter.io/es/json-formatter/",
+        "https://anyconverter.io/cron-expression-parser/",
+        "https://anyconverter.io/sitemap.xml"
+      ]
+    },
+    {
+      "url": "https://anyconverter.io/es/json-formatter/",
+      "verdict": "PASS",
+      "coverageState": "Submitted and indexed",
+      "robotsTxtState": "ALLOWED",
+      "indexingState": "INDEXING_ALLOWED",
+      "pageFetchState": "SUCCESSFUL",
+      "googleCanonical": "https://anyconverter.io/es/json-formatter/",
+      "userCanonical": "https://anyconverter.io/es/json-formatter/",
+      "lastCrawlTime": "2026-11-01T09:11:23Z",
+      "crawledAs": "MOBILE",
+      "referringUrls": [
+        "https://anyconverter.io/sitemap.xml"
+      ]
+    },
+    {
+      "url": "https://anyconverter.io/da/json-formatter/",
+      "verdict": "PASS",
+      "coverageState": "Submitted and indexed",
+      "robotsTxtState": "ALLOWED",
+      "indexingState": "INDEXING_ALLOWED",
+      "pageFetchState": "SUCCESSFUL",
+      "googleCanonical": "https://anyconverter.io/da/json-formatter/",
+      "userCanonical": "https://anyconverter.io/da/json-formatter/",
+      "lastCrawlTime": "2026-11-03T08:37:30Z",
+      "crawledAs": "MOBILE",
+      "referringUrls": [
+        "https://anyconverter.io/json-formatter/",
+        "https://anyconverter.io/es/json-formatter/"
+      ]
+    },
+    {
+      "url": "https://anyconverter.io/camt053-to-csv/",
+      "verdict": "NEUTRAL",
+      "coverageState": "URL is unknown to Google",
+      "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
+      "indexingState": "INDEXING_STATE_UNSPECIFIED",
+      "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
+      "googleCanonical": "",
+      "userCanonical": "",
+      "lastCrawlTime": "",
+      "crawledAs": "",
+      "referringUrls": []
+    },
+    {
+      "url": "https://anyconverter.io/barcode-generator/",
+      "verdict": "NEUTRAL",
+      "coverageState": "URL is unknown to Google",
+      "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
+      "indexingState": "INDEXING_STATE_UNSPECIFIED",
+      "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
+      "googleCanonical": "",
+      "userCanonical": "",
+      "lastCrawlTime": "",
+      "crawledAs": "",
+      "referringUrls": []
+    },
+    {
+      "url": "https://anyconverter.io/mortgage-calculator/",
+      "verdict": "PASS",
+      "coverageState": "Submitted and indexed",
+      "robotsTxtState": "ALLOWED",
+      "indexingState": "INDEXING_ALLOWED",
+      "pageFetchState": "SUCCESSFUL",
+      "googleCanonical": "https://anyconverter.io/mortgage-calculator/",
+      "userCanonical": "https://anyconverter.io/mortgage-calculator/",
+      "lastCrawlTime": "2026-11-09T16:07:02Z",
+      "crawledAs": "MOBILE",
+      "referringUrls": [
+        "https://anyconverter.io/unlock-pdf/",
+        "https://anyconverter.io/sitemap.xml"
+      ]
+    },
+    {
+      "url": "https://anyconverter.io/unlock-pdf/",
+      "verdict": "PASS",
+      "coverageState": "Submitted and indexed",
+      "robotsTxtState": "ALLOWED",
+      "indexingState": "INDEXING_ALLOWED",
+      "pageFetchState": "SUCCESSFUL",
+      "googleCanonical": "https://anyconverter.io/unlock-pdf/",
+      "userCanonical": "https://anyconverter.io/unlock-pdf/",
+      "lastCrawlTime": "2026-11-03T05:13:11Z",
+      "crawledAs": "MOBILE",
+      "referringUrls": [
+        "https://anyconverter.io/sitemap.xml"
+      ]
+    },
+    {
+      "url": "https://anyconverter.io/ip-address-lookup/",
+      "verdict": "PASS",
+      "coverageState": "Submitted and indexed",
+      "robotsTxtState": "ALLOWED",
+      "indexingState": "INDEXING_ALLOWED",
+      "pageFetchState": "SUCCESSFUL",
+      "googleCanonical": "https://anyconverter.io/ip-address-lookup/",
+      "userCanonical": "https://anyconverter.io/ip-address-lookup/",
+      "lastCrawlTime": "2026-11-03T03:58:57Z",
+      "crawledAs": "MOBILE",
+      "referringUrls": [
+        "https://anyconverter.io/unlock-pdf/",
+        "https://anyconverter.io/mortgage-calculator/",
+        "https://anyconverter.io/sitemap.xml"
+      ]
+    },
+    {
+      "url": "https://anyconverter.io/pdf-merge/",
+      "verdict": "PASS",
+      "coverageState": "Submitted and indexed",
+      "robotsTxtState": "ALLOWED",
+      "indexingState": "INDEXING_ALLOWED",
+      "pageFetchState": "SUCCESSFUL",
+      "googleCanonical": "https://anyconverter.io/pdf-merge/",
+      "userCanonical": "https://anyconverter.io/pdf-merge/",
+      "lastCrawlTime": "2026-11-01T11:40:21Z",
+      "crawledAs": "MOBILE",
+      "referringUrls": [
+        "https://anyconverter.io/unlock-pdf/",
+        "https://anyconverter.io/da/pdf-merge/",
+        "https://anyconverter.io/es/pdf-merge/",
+        "https://anyconverter.io/sitemap.xml"
+      ]
+    },
+    {
+      "url": "https://anyconverter.io/csv-to-sql/",
+      "verdict": "PASS",
+      "coverageState": "Submitted and indexed",
+      "robotsTxtState": "ALLOWED",
+      "indexingState": "INDEXING_ALLOWED",
+      "pageFetchState": "SUCCESSFUL",
+      "googleCanonical": "https://anyconverter.io/csv-to-sql/",
+      "userCanonical": "https://anyconverter.io/csv-to-sql/",
+      "lastCrawlTime": "2026-11-06T09:53:43Z",
+      "crawledAs": "MOBILE",
+      "referringUrls": [
+        "https://anyconverter.io/unlock-pdf/",
+        "https://anyconverter.io/da/csv-to-sql/",
+        "https://anyconverter.io/sitemap.xml"
+      ]
+    },
+    {
+      "url": "https://anyconverter.io/parquet-to-csv/",
+      "verdict": "NEUTRAL",
+      "coverageState": "URL is unknown to Google",
+      "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
+      "indexingState": "INDEXING_STATE_UNSPECIFIED",
+      "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
+      "googleCanonical": "",
+      "userCanonical": "",
+      "lastCrawlTime": "",
+      "crawledAs": "",
+      "referringUrls": []
+    },
+    {
+      "url": "https://anyconverter.io/jwt-decoder/",
+      "verdict": "PASS",
+      "coverageState": "Submitted and indexed",
+      "robotsTxtState": "ALLOWED",
+      "indexingState": "INDEXING_ALLOWED",
+      "pageFetchState": "SUCCESSFUL",
+      "googleCanonical": "https://anyconverter.io/jwt-decoder/",
+      "userCanonical": "https://anyconverter.io/jwt-decoder/",
+      "lastCrawlTime": "2026-11-03T08:18:37Z",
+      "crawledAs": "MOBILE",
+      "referringUrls": [
+        "https://anyconverter.io/unlock-pdf/",
+        "https://anyconverter.io/da/jwt-decoder/",
+        "https://anyconverter.io/sitemap.xml"
+      ]
+    }
+  ]
+}
