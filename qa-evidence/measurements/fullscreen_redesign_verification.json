@@ -1,0 +1,396 @@
+{
+  "timestamp": "2026-11-10T09:30:57.469Z",
+  "viewports": {
+    "vp_320_mobile": {
+      "status": "PASS",
+      "normalMetrics": {
+        "hasOverflow": false,
+        "docWidth": 320,
+        "winWidth": 320,
+        "inputVisible": true,
+        "outputVisible": true,
+        "isOutSearchHidden": true,
+        "outSearchComputedDisplay": "none",
+        "sidebarOrderValid": true,
+        "adTop": 841,
+        "searchTop": 1201,
+        "optionsTop": 1482
+      },
+      "fsMetrics": {
+        "visiblePanelCount": 1,
+        "isInputHidden": true,
+        "outputBounds": {
+          "x": 0,
+          "y": 0,
+          "width": 320,
+          "height": 568
+        },
+        "outputIsFullscreen": true,
+        "btnFsText": "✕",
+        "searchBarVisible": true,
+        "sBarHeight": 81,
+        "searchInputWidth": 300,
+        "searchInputHeight": 36,
+        "scopeWidth": 150,
+        "scopeHeight": 36,
+        "countWidth": 127,
+        "prevBtnWidth": 36,
+        "prevBtnHeight": 36,
+        "nextBtnWidth": 36,
+        "nextBtnHeight": 36,
+        "clearBtnWidth": 36,
+        "clearBtnHeight": 36,
+        "uniqueYRows": 3,
+        "isOneRow": false,
+        "hasControlOverlap": false,
+        "hasToolbarOverflow": false,
+        "syncedSearchQuery": "AnyConverter",
+        "syncedSearchScope": "key",
+        "countText": "No matches found"
+      }
+    },
+    "vp_390_mobile": {
+      "status": "PASS",
+      "normalMetrics": {
+        "hasOverflow": false,
+        "docWidth": 390,
+        "winWidth": 390,
+        "inputVisible": true,
+        "outputVisible": true,
+        "isOutSearchHidden": true,
+        "outSearchComputedDisplay": "none",
+        "sidebarOrderValid": true,
+        "adTop": 647,
+        "searchTop": 1007,
+        "optionsTop": 1288
+      },
+      "fsMetrics": {
+        "visiblePanelCount": 1,
+        "isInputHidden": true,
+        "outputBounds": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 844
+        },
+        "outputIsFullscreen": true,
+        "btnFsText": "✕",
+        "searchBarVisible": true,
+        "sBarHeight": 101,
+        "searchInputWidth": 370,
+        "searchInputHeight": 36,
+        "scopeWidth": 150,
+        "scopeHeight": 36,
+        "countWidth": 127,
+        "prevBtnWidth": 36,
+        "prevBtnHeight": 36,
+        "nextBtnWidth": 36,
+        "nextBtnHeight": 36,
+        "clearBtnWidth": 36,
+        "clearBtnHeight": 36,
+        "uniqueYRows": 3,
+        "isOneRow": false,
+        "hasControlOverlap": false,
+        "hasToolbarOverflow": false,
+        "syncedSearchQuery": "AnyConverter",
+        "syncedSearchScope": "key",
+        "countText": "No matches found"
+      }
+    },
+    "vp_768_tablet": {
+      "status": "PASS",
+      "normalMetrics": {
+        "hasOverflow": false,
+        "docWidth": 768,
+        "winWidth": 768,
+        "inputVisible": true,
+        "outputVisible": true,
+        "isOutSearchHidden": true,
+        "outSearchComputedDisplay": "none",
+        "sidebarOrderValid": true,
+        "adTop": 644,
+        "searchTop": 1004,
+        "optionsTop": 1285
+      },
+      "fsMetrics": {
+        "visiblePanelCount": 1,
+        "isInputHidden": true,
+        "outputBounds": {
+          "x": 0,
+          "y": 0,
+          "width": 768,
+          "height": 1024
+        },
+        "outputIsFullscreen": true,
+        "btnFsText": "✕",
+        "searchBarVisible": true,
+        "sBarHeight": 48,
+        "searchInputWidth": 240,
+        "searchInputHeight": 36,
+        "scopeWidth": 150,
+        "scopeHeight": 36,
+        "countWidth": 127,
+        "prevBtnWidth": 36,
+        "prevBtnHeight": 36,
+        "nextBtnWidth": 36,
+        "nextBtnHeight": 36,
+        "clearBtnWidth": 36,
+        "clearBtnHeight": 36,
+        "uniqueYRows": 1,
+        "isOneRow": true,
+        "hasControlOverlap": false,
+        "hasToolbarOverflow": false,
+        "syncedSearchQuery": "AnyConverter",
+        "syncedSearchScope": "key",
+        "countText": "No matches found"
+      }
+    },
+    "vp_1024_small_laptop": {
+      "status": "PASS",
+      "normalMetrics": {
+        "hasOverflow": false,
+        "docWidth": 1024,
+        "winWidth": 1024,
+        "inputVisible": true,
+        "outputVisible": true,
+        "isOutSearchHidden": true,
+        "outSearchComputedDisplay": "none",
+        "sidebarOrderValid": true,
+        "adTop": -599,
+        "searchTop": -239,
+        "optionsTop": 42
+      },
+      "fsMetrics": {
+        "visiblePanelCount": 1,
+        "isInputHidden": true,
+        "outputBounds": {
+          "x": 0,
+          "y": 0,
+          "width": 1024,
+          "height": 768
+        },
+        "outputIsFullscreen": true,
+        "btnFsText": "✕",
+        "searchBarVisible": true,
+        "sBarHeight": 46,
+        "searchInputWidth": 240,
+        "searchInputHeight": 36,
+        "scopeWidth": 150,
+        "scopeHeight": 36,
+        "countWidth": 127,
+        "prevBtnWidth": 36,
+        "prevBtnHeight": 36,
+        "nextBtnWidth": 36,
+        "nextBtnHeight": 36,
+        "clearBtnWidth": 36,
+        "clearBtnHeight": 36,
+        "uniqueYRows": 1,
+        "isOneRow": true,
+        "hasControlOverlap": false,
+        "hasToolbarOverflow": false,
+        "syncedSearchQuery": "AnyConverter",
+        "syncedSearchScope": "key",
+        "countText": "No matches found"
+      }
+    },
+    "vp_1366_standard_laptop": {
+      "status": "PASS",
+      "normalMetrics": {
+        "hasOverflow": false,
+        "docWidth": 1366,
+        "winWidth": 1366,
+        "inputVisible": true,
+        "outputVisible": true,
+        "isOutSearchHidden": true,
+        "outSearchComputedDisplay": "none",
+        "sidebarOrderValid": true,
+        "adTop": -533,
+        "searchTop": -173,
+        "optionsTop": 108
+      },
+      "fsMetrics": {
+        "visiblePanelCount": 1,
+        "isInputHidden": true,
+        "outputBounds": {
+          "x": 0,
+          "y": 0,
+          "width": 1366,
+          "height": 768
+        },
+        "outputIsFullscreen": true,
+        "btnFsText": "✕",
+        "searchBarVisible": true,
+        "sBarHeight": 46,
+        "searchInputWidth": 240,
+        "searchInputHeight": 36,
+        "scopeWidth": 150,
+        "scopeHeight": 36,
+        "countWidth": 127,
+        "prevBtnWidth": 36,
+        "prevBtnHeight": 36,
+        "nextBtnWidth": 36,
+        "nextBtnHeight": 36,
+        "clearBtnWidth": 36,
+        "clearBtnHeight": 36,
+        "uniqueYRows": 1,
+        "isOneRow": true,
+        "hasControlOverlap": false,
+        "hasToolbarOverflow": false,
+        "syncedSearchQuery": "AnyConverter",
+        "syncedSearchScope": "key",
+        "countText": "No matches found"
+      }
+    },
+    "vp_1440_laptop": {
+      "status": "PASS",
+      "normalMetrics": {
+        "hasOverflow": false,
+        "docWidth": 1440,
+        "winWidth": 1440,
+        "inputVisible": true,
+        "outputVisible": true,
+        "isOutSearchHidden": true,
+        "outSearchComputedDisplay": "none",
+        "sidebarOrderValid": true,
+        "adTop": -895,
+        "searchTop": -535,
+        "optionsTop": -254
+      },
+      "fsMetrics": {
+        "visiblePanelCount": 1,
+        "isInputHidden": true,
+        "outputBounds": {
+          "x": 0,
+          "y": 0,
+          "width": 1440,
+          "height": 900
+        },
+        "outputIsFullscreen": true,
+        "btnFsText": "✕",
+        "searchBarVisible": true,
+        "sBarHeight": 47,
+        "searchInputWidth": 240,
+        "searchInputHeight": 36,
+        "scopeWidth": 150,
+        "scopeHeight": 36,
+        "countWidth": 127,
+        "prevBtnWidth": 36,
+        "prevBtnHeight": 36,
+        "nextBtnWidth": 36,
+        "nextBtnHeight": 36,
+        "clearBtnWidth": 36,
+        "clearBtnHeight": 36,
+        "uniqueYRows": 1,
+        "isOneRow": true,
+        "hasControlOverlap": false,
+        "hasToolbarOverflow": false,
+        "syncedSearchQuery": "AnyConverter",
+        "syncedSearchScope": "key",
+        "countText": "No matches found"
+      }
+    },
+    "vp_1920_desktop": {
+      "status": "PASS",
+      "normalMetrics": {
+        "hasOverflow": false,
+        "docWidth": 1920,
+        "winWidth": 1920,
+        "inputVisible": true,
+        "outputVisible": true,
+        "isOutSearchHidden": true,
+        "outSearchComputedDisplay": "none",
+        "sidebarOrderValid": true,
+        "adTop": -377,
+        "searchTop": -17,
+        "optionsTop": 264
+      },
+      "fsMetrics": {
+        "visiblePanelCount": 1,
+        "isInputHidden": true,
+        "outputBounds": {
+          "x": 0,
+          "y": 0,
+          "width": 1920,
+          "height": 1080
+        },
+        "outputIsFullscreen": true,
+        "btnFsText": "✕",
+        "searchBarVisible": true,
+        "sBarHeight": 48,
+        "searchInputWidth": 240,
+        "searchInputHeight": 36,
+        "scopeWidth": 150,
+        "scopeHeight": 36,
+        "countWidth": 127,
+        "prevBtnWidth": 36,
+        "prevBtnHeight": 36,
+        "nextBtnWidth": 36,
+        "nextBtnHeight": 36,
+        "clearBtnWidth": 36,
+        "clearBtnHeight": 36,
+        "uniqueYRows": 1,
+        "isOneRow": true,
+        "hasControlOverlap": false,
+        "hasToolbarOverflow": false,
+        "syncedSearchQuery": "AnyConverter",
+        "syncedSearchScope": "key",
+        "countText": "No matches found"
+      }
+    }
+  },
+  "zoomTests": {
+    "zoom_100": {
+      "status": "PASS",
+      "zoomMetrics": {
+        "uniqueYRows": 1,
+        "isOneRow": true,
+        "inputWrapWidth": 240,
+        "scopeWidth": 150,
+        "hasToolbarOverflow": false
+      }
+    },
+    "zoom_125": {
+      "status": "PASS",
+      "zoomMetrics": {
+        "uniqueYRows": 1,
+        "isOneRow": true,
+        "inputWrapWidth": 240,
+        "scopeWidth": 150,
+        "hasToolbarOverflow": false
+      }
+    }
+  },
+  "largeFileTest": {
+    "status": "PASS",
+    "badgeText": "⚡ High-Performance Mode (Zero-Lag) · 2,097,275 lines (60.29 MB)Zero Lag",
+    "domLinesInDOM": 73,
+    "countText": "1 of 2000"
+  },
+  "multilingual": {
+    "es": {
+      "status": "PASS",
+      "metrics": {
+        "isInputHidden": true,
+        "copyBtnText": "Copiar",
+        "scopeText": "Claves + Valores",
+        "btnFsText": "✕",
+        "isOneRow": true,
+        "inputWrapWidth": 240,
+        "scopeWidth": 150
+      }
+    },
+    "da": {
+      "status": "PASS",
+      "metrics": {
+        "isInputHidden": true,
+        "copyBtnText": "Kopiér",
+        "scopeText": "Nøgler + Værdier",
+        "btnFsText": "✕",
+        "isOneRow": true,
+        "inputWrapWidth": 240,
+        "scopeWidth": 150
+      }
+    }
+  },
+  "otherTools": {}
+}

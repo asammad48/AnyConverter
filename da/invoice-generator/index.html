@@ -44,7 +44,7 @@
     .hero-desc{font-size:1.0625rem;color:var(--color-text-2,#6B7280);max-width:680px;line-height:1.6}
     @font-face{font-family:'Inter';font-display:swap}
   </style>
-  <link rel="stylesheet" href="/assets/css/style.css?v=20260902">
+  <link rel="stylesheet" href="/assets/css/style.css?v=20261109">
 </head>
 <body>
   <header id="site-header" class="site-header"></header>
@@ -82,37 +82,43 @@
               <label style="font-size:13px;font-weight:500">Linjeartikler</label>
               <button class="btn btn-secondary btn-sm" id="btn-inv-add-row">+ Tilføj linje</button>
             </div>
-            <table style="width:100%;border-collapse:collapse;font-size:13px">
+            <table class="inv-table" style="width:100%;border-collapse:collapse;font-size:13px">
               <thead>
                 <tr style="border-bottom:2px solid var(--color-border,#DDD8D0)">
                   <th style="text-align:left;padding:8px 8px;color:var(--color-text-2,#6B7280);font-weight:500">Beskrivelse</th>
-                  <th style="text-align:left;padding:8px 4px;color:var(--color-text-2,#6B7280);font-weight:500;width:60px">Antal</th>
-                  <th style="text-align:left;padding:8px 4px;color:var(--color-text-2,#6B7280);font-weight:500;width:80px">Pris</th>
-                  <th style="text-align:right;padding:8px 8px;color:var(--color-text-2,#6B7280);font-weight:500;width:80px">Beløb</th>
+                  <th style="text-align:left;padding:8px 4px;color:var(--color-text-2,#6B7280);font-weight:500;width:80px">Antal</th>
+                  <th style="text-align:left;padding:8px 4px;color:var(--color-text-2,#6B7280);font-weight:500;width:90px">Pris</th>
+                  <th style="text-align:right;padding:8px 8px;color:var(--color-text-2,#6B7280);font-weight:500;width:90px">Beløb</th>
                   <th style="width:36px"></th>
                 </tr>
               </thead>
               <tbody id="inv-items">
                 <tr>
                   <td><input type="text" class="inv-desc" placeholder="Beskrivelse af vare" style="width:100%;padding:6px 8px;border:1px solid var(--color-border,#DDD8D0);border-radius:4px;font-size:13px"></td>
-                  <td><input type="number" class="inv-qty" value="1" min="0" style="width:60px;padding:6px 8px;border:1px solid var(--color-border,#DDD8D0);border-radius:4px;font-size:13px"></td>
-                  <td><input type="number" class="inv-rate" value="0" min="0" step="0.01" style="width:80px;padding:6px 8px;border:1px solid var(--color-border,#DDD8D0);border-radius:4px;font-size:13px"></td>
+                  <td><input type="number" class="inv-qty" value="1" min="0" style="width:80px;padding:6px 8px;border:1px solid var(--color-border,#DDD8D0);border-radius:4px;font-size:13px"></td>
+                  <td><input type="number" class="inv-rate" value="0" min="0" step="0.01" style="width:90px;padding:6px 8px;border:1px solid var(--color-border,#DDD8D0);border-radius:4px;font-size:13px"></td>
                   <td class="inv-amount" style="padding:6px 8px;font-size:13px;text-align:right">0.00</td>
-                  <td><button type="button" class="btn btn-secondary btn-sm inv-remove" style="padding:4px 8px">&#215;</button></td>
+                  <td><button type="button" class="btn btn-secondary btn-sm inv-remove" style="padding:4px 8px" aria-label="Fjern vare">&#215;</button></td>
                 </tr>
               </tbody>
             </table>
           </div>
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px">
+          <div class="two-col-grid" style="margin-bottom:16px">
             <div>
               <label style="display:block;font-size:13px;font-weight:500;margin-bottom:6px" for="inv-notes">Noter (valgfrit)</label>
-              <textarea id="inv-notes" placeholder="Betalingsbetingelser, takkebesked..." style="width:100%;height:80px;padding:10px 12px;border:1px solid var(--color-border,#DDD8D0);border-radius:8px;font-size:13px;resize:vertical"></textarea>
+              <textarea id="inv-notes" placeholder="Betalingsbetingelser, takkebesked..." style="width:100%;height:100px;padding:10px 12px;border:1px solid var(--color-border,#DDD8D0);border-radius:8px;font-size:13px;resize:vertical"></textarea>
             </div>
             <div>
-              <label style="display:block;font-size:13px;font-weight:500;margin-bottom:6px" for="inv-tax">Moms (%)</label>
-              <input type="number" id="inv-tax" value="0" min="0" max="100" step="0.1" style="width:100%;padding:10px 12px;border:1px solid var(--color-border,#DDD8D0);border-radius:8px;font-size:15px;margin-bottom:12px">
-              <label style="display:block;font-size:13px;font-weight:500;margin-bottom:6px" for="inv-currency">Valutasymbol</label>
-              <input type="text" id="inv-currency" value="$" maxlength="3" style="width:80px;padding:10px 12px;border:1px solid var(--color-border,#DDD8D0);border-radius:8px;font-size:15px">
+              <div style="display:flex;gap:12px;margin-bottom:12px">
+                <div style="flex:1">
+                  <label style="display:block;font-size:13px;font-weight:500;margin-bottom:6px" for="inv-tax">Moms (%)</label>
+                  <input type="number" id="inv-tax" value="0" min="0" max="100" step="0.1" style="width:100%;padding:10px 12px;border:1px solid var(--color-border,#DDD8D0);border-radius:8px;font-size:15px">
+                </div>
+                <div style="width:110px">
+                  <label style="display:block;font-size:13px;font-weight:500;margin-bottom:6px" for="inv-currency">Valuta</label>
+                  <input type="text" id="inv-currency" value="$" maxlength="3" style="width:100%;padding:10px 12px;border:1px solid var(--color-border,#DDD8D0);border-radius:8px;font-size:15px">
+                </div>
+              </div>
             </div>
           </div>
           <div style="border-top:1px solid var(--color-border,#DDD8D0);padding-top:12px;margin-bottom:16px">

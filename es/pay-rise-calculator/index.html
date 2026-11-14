@@ -41,7 +41,7 @@
     .hero-desc{font-size:1.0625rem;color:var(--color-text-2,#6B7280);max-width:680px;line-height:1.6}
     @font-face{font-family:'Inter';font-display:swap}
   </style>
-  <link rel="stylesheet" href="/assets/css/style.css?v=20261008">
+  <link rel="stylesheet" href="/assets/css/style.css?v=20261109">
 </head>
 <body>
   <header id="site-header" class="site-header"></header>
@@ -58,9 +58,9 @@
       <div class="tool-zone">
         <div class="calc" id="calc-root" data-tool="pay-rise-calculator">
           <div class="calc-grid">
-            <div class="calc-field"><label for="pr-cur">Sueldo actual</label><input class="calc-input calc-input--lg" type="text" inputmode="decimal" autocomplete="off" id="pr-cur" value="24000"></div>
-            <div class="calc-field"><label for="pr-per">Periodo</label><select class="calc-input calc-input--lg" id="pr-per"><option value="year" selected>al año</option><option value="month">al mes</option><option value="week">a la semana</option><option value="hour">por hora</option></select></div>
-            <div class="calc-field"><label for="pr-hours">Horas por semana</label><input class="calc-input calc-input--lg" type="text" inputmode="decimal" autocomplete="off" id="pr-hours" value="37"></div>
+            <div class="calc-field"><label for="pr-cur">Sueldo actual</label><input class="calc-input" type="text" inputmode="decimal" autocomplete="off" id="pr-cur" value="24000"></div>
+            <div class="calc-field"><label for="pr-per">Periodo</label><select class="calc-input ac-select" id="pr-per"><option value="year" selected>al año</option><option value="month">al mes</option><option value="week">a la semana</option><option value="hour">por hora</option></select></div>
+            <div class="calc-field"><label for="pr-hours">Horas por semana</label><input class="calc-input" type="text" inputmode="decimal" autocomplete="off" id="pr-hours" value="37"></div>
           </div>
           <div class="calc-field"><span class="calc-label" id="pr-how-l">Indicar el aumento como</span><div class="calc-seg" id="pr-how" role="group" aria-labelledby="pr-how-l"><button type="button" data-value="pct" aria-pressed="true">Porcentaje</button><button type="button" data-value="amt" aria-pressed="false">Importe</button><button type="button" data-value="new" aria-pressed="false">Sueldo nuevo</button></div></div>
           <div class="calc-grid">

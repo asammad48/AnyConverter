@@ -1,0 +1,352 @@
+{
+  "viewportsTested": [
+    {
+      "viewport": "vp_320_mobile",
+      "name": "Small Mobile (320x568)",
+      "dimensions": "320x568",
+      "normalMode": {
+        "hasHorizontalPageScroll": false,
+        "inActionsOverflow": false,
+        "outActionsOverflow": false
+      },
+      "fullscreenMode": {
+        "isInsideViewport": true,
+        "layoutCorrect": true,
+        "layoutType": "stacked-vertical",
+        "editorDimensions": {
+          "top": 0,
+          "left": 0,
+          "width": 320,
+          "height": 568,
+          "right": 320,
+          "bottom": 568
+        },
+        "bodyOverflowHidden": true,
+        "buttonsSyncedGlyphs": true
+      },
+      "functionality": {
+        "fontSizeAdjustable": false,
+        "initialFs": "",
+        "bumpedFs": "15px",
+        "restoredFs": "13px",
+        "exitViaEscape": true,
+        "scrollRestoredAfterEscape": false,
+        "scrollYBefore": 350,
+        "scrollYAfterEsc": 1153,
+        "exitViaButton": true,
+        "scrollRestoredAfterButton": false,
+        "rapidToggleStressPass": true
+      }
+    },
+    {
+      "viewport": "vp_390_mobile",
+      "name": "Standard Mobile (390x844)",
+      "dimensions": "390x844",
+      "normalMode": {
+        "hasHorizontalPageScroll": false,
+        "inActionsOverflow": false,
+        "outActionsOverflow": false
+      },
+      "fullscreenMode": {
+        "isInsideViewport": true,
+        "layoutCorrect": true,
+        "layoutType": "stacked-vertical",
+        "editorDimensions": {
+          "top": 0,
+          "left": 0,
+          "width": 390,
+          "height": 844,
+          "right": 390,
+          "bottom": 844
+        },
+        "bodyOverflowHidden": true,
+        "buttonsSyncedGlyphs": true
+      },
+      "functionality": {
+        "fontSizeAdjustable": false,
+        "initialFs": "",
+        "bumpedFs": "15px",
+        "restoredFs": "13px",
+        "exitViaEscape": true,
+        "scrollRestoredAfterEscape": false,
+        "scrollYBefore": 350,
+        "scrollYAfterEsc": 902,
+        "exitViaButton": true,
+        "scrollRestoredAfterButton": false,
+        "rapidToggleStressPass": true
+      }
+    },
+    {
+      "viewport": "vp_768_tablet",
+      "name": "Tablet (768x1024)",
+      "dimensions": "768x1024",
+      "normalMode": {
+        "hasHorizontalPageScroll": false,
+        "inActionsOverflow": false,
+        "outActionsOverflow": false
+      },
+      "fullscreenMode": {
+        "isInsideViewport": true,
+        "layoutCorrect": true,
+        "layoutType": "side-by-side",
+        "editorDimensions": {
+          "top": 0,
+          "left": 0,
+          "width": 768,
+          "height": 1024,
+          "right": 768,
+          "bottom": 1024
+        },
+        "bodyOverflowHidden": true,
+        "buttonsSyncedGlyphs": true
+      },
+      "functionality": {
+        "fontSizeAdjustable": false,
+        "initialFs": "",
+        "bumpedFs": "15px",
+        "restoredFs": "13px",
+        "exitViaEscape": true,
+        "scrollRestoredAfterEscape": false,
+        "scrollYBefore": 350,
+        "scrollYAfterEsc": 346,
+        "exitViaButton": true,
+        "scrollRestoredAfterButton": false,
+        "rapidToggleStressPass": true
+      }
+    },
+    {
+      "viewport": "vp_1024_small_laptop",
+      "name": "Small Laptop (1024x768)",
+      "dimensions": "1024x768",
+      "normalMode": {
+        "hasHorizontalPageScroll": false,
+        "inActionsOverflow": false,
+        "outActionsOverflow": false
+      },
+      "fullscreenMode": {
+        "isInsideViewport": true,
+        "layoutCorrect": true,
+        "layoutType": "side-by-side",
+        "editorDimensions": {
+          "top": 0,
+          "left": 0,
+          "width": 1024,
+          "height": 768,
+          "right": 1024,
+          "bottom": 768
+        },
+        "bodyOverflowHidden": true,
+        "buttonsSyncedGlyphs": true
+      },
+      "functionality": {
+        "fontSizeAdjustable": false,
+        "initialFs": "",
+        "bumpedFs": "15px",
+        "restoredFs": "13px",
+        "exitViaEscape": true,
+        "scrollRestoredAfterEscape": true,
+        "scrollYBefore": 350,
+        "scrollYAfterEsc": 350,
+        "exitViaButton": true,
+        "scrollRestoredAfterButton": true,
+        "rapidToggleStressPass": true
+      }
+    },
+    {
+      "viewport": "vp_1366_standard_laptop",
+      "name": "Standard Laptop (1366x768)",
+      "dimensions": "1366x768",
+      "normalMode": {
+        "hasHorizontalPageScroll": false,
+        "inActionsOverflow": false,
+        "outActionsOverflow": false
+      },
+      "fullscreenMode": {
+        "isInsideViewport": true,
+        "layoutCorrect": true,
+        "layoutType": "side-by-side",
+        "editorDimensions": {
+          "top": 0,
+          "left": 0,
+          "width": 1366,
+          "height": 768,
+          "right": 1366,
+          "bottom": 768
+        },
+        "bodyOverflowHidden": true,
+        "buttonsSyncedGlyphs": true
+      },
+      "functionality": {
+        "fontSizeAdjustable": false,
+        "initialFs": "",
+        "bumpedFs": "15px",
+        "restoredFs": "13px",
+        "exitViaEscape": true,
+        "scrollRestoredAfterEscape": true,
+        "scrollYBefore": 350,
+        "scrollYAfterEsc": 350,
+        "exitViaButton": true,
+        "scrollRestoredAfterButton": true,
+        "rapidToggleStressPass": true
+      }
+    },
+    {
+      "viewport": "vp_1440_laptop",
+      "name": "Laptop (1440x900)",
+      "dimensions": "1440x900",
+      "normalMode": {
+        "hasHorizontalPageScroll": false,
+        "inActionsOverflow": false,
+        "outActionsOverflow": false
+      },
+      "fullscreenMode": {
+        "isInsideViewport": true,
+        "layoutCorrect": true,
+        "layoutType": "side-by-side",
+        "editorDimensions": {
+          "top": 0,
+          "left": 0,
+          "width": 1440,
+          "height": 900,
+          "right": 1440,
+          "bottom": 900
+        },
+        "bodyOverflowHidden": true,
+        "buttonsSyncedGlyphs": true
+      },
+      "functionality": {
+        "fontSizeAdjustable": false,
+        "initialFs": "",
+        "bumpedFs": "15px",
+        "restoredFs": "13px",
+        "exitViaEscape": true,
+        "scrollRestoredAfterEscape": true,
+        "scrollYBefore": 350,
+        "scrollYAfterEsc": 350,
+        "exitViaButton": true,
+        "scrollRestoredAfterButton": true,
+        "rapidToggleStressPass": true
+      }
+    },
+    {
+      "viewport": "vp_1920_desktop",
+      "name": "Desktop (1920x1080)",
+      "dimensions": "1920x1080",
+      "normalMode": {
+        "hasHorizontalPageScroll": false,
+        "inActionsOverflow": false,
+        "outActionsOverflow": false
+      },
+      "fullscreenMode": {
+        "isInsideViewport": true,
+        "layoutCorrect": true,
+        "layoutType": "side-by-side",
+        "editorDimensions": {
+          "top": 0,
+          "left": 0,
+          "width": 1920,
+          "height": 1080,
+          "right": 1920,
+          "bottom": 1080
+        },
+        "bodyOverflowHidden": true,
+        "buttonsSyncedGlyphs": true
+      },
+      "functionality": {
+        "fontSizeAdjustable": false,
+        "initialFs": "",
+        "bumpedFs": "15px",
+        "restoredFs": "13px",
+        "exitViaEscape": true,
+        "scrollRestoredAfterEscape": true,
+        "scrollYBefore": 350,
+        "scrollYAfterEsc": 350,
+        "exitViaButton": true,
+        "scrollRestoredAfterButton": true,
+        "rapidToggleStressPass": true
+      }
+    }
+  ],
+  "edgeCases": {
+    "emptyInputFullscreen": {
+      "active": true,
+      "val": ""
+    },
+    "syntaxErrorInFullscreen": {
+      "active": true,
+      "errorBannerVisible": false
+    },
+    "longJsonScrolling": {
+      "scrollH": 165820,
+      "clientH": 519,
+      "canScroll": true,
+      "scrolledTop": 500
+    },
+    "collapseAllNodes": 0,
+    "expandAllNodes": 0,
+    "dynamicResizeDuringFs": {
+      "tabletWidth": 768,
+      "mobileWidth": 390,
+      "stackedOnMobileAfterResize": true
+    }
+  },
+  "zoomsTested": [
+    {
+      "zoomPercent": 80,
+      "editorRect": {
+        "x": 0,
+        "y": 0,
+        "width": 1708,
+        "height": 960,
+        "top": 0,
+        "right": 1708,
+        "bottom": 960,
+        "left": 0
+      },
+      "actionsOverflow": false
+    },
+    {
+      "zoomPercent": 100,
+      "editorRect": {
+        "x": 0,
+        "y": 0,
+        "width": 1366,
+        "height": 768,
+        "top": 0,
+        "right": 1366,
+        "bottom": 768,
+        "left": 0
+      },
+      "actionsOverflow": false
+    },
+    {
+      "zoomPercent": 125,
+      "editorRect": {
+        "x": 0,
+        "y": 0,
+        "width": 1093,
+        "height": 614,
+        "top": 0,
+        "right": 1093,
+        "bottom": 614,
+        "left": 0
+      },
+      "actionsOverflow": false
+    },
+    {
+      "zoomPercent": 150,
+      "editorRect": {
+        "x": 0,
+        "y": 0,
+        "width": 911,
+        "height": 512,
+        "top": 0,
+        "right": 911,
+        "bottom": 512,
+        "left": 0
+      },
+      "actionsOverflow": false
+    }
+  ],
+  "consoleErrors": []
+}

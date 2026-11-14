@@ -1,0 +1,286 @@
+{
+  "jsonFormatterVariants": [
+    {
+      "lang": "en",
+      "name": "English",
+      "path": "/json-formatter/",
+      "inOverflow1366": false,
+      "outOverflow1366": false,
+      "outOverflow1024": false,
+      "fullscreenWorks": true,
+      "fullscreenRect": {
+        "isFs": true,
+        "top": 0,
+        "left": 0,
+        "width": 1366,
+        "height": 768
+      },
+      "buttons": {
+        "inBtns": [
+          "Upload",
+          "Paste",
+          "Clear",
+          "A−",
+          "A+",
+          "⛶"
+        ],
+        "outBtns": [
+          "Copy",
+          "Download",
+          "Collapse allCollapse",
+          "Expand allExpand",
+          "A−",
+          "A+",
+          "⛶"
+        ],
+        "outBtnsDetails": [
+          {
+            "id": "btn-copy-output",
+            "text": "Copy",
+            "width": 48.96875,
+            "scrollWidth": 47
+          },
+          {
+            "id": "btn-download",
+            "text": "Download",
+            "width": 77.109375,
+            "scrollWidth": 75
+          },
+          {
+            "id": "btn-collapse-all",
+            "text": "Collapse allCollapse",
+            "width": 69.46875,
+            "scrollWidth": 67
+          },
+          {
+            "id": "btn-expand-all",
+            "text": "Expand allExpand",
+            "width": 62.140625,
+            "scrollWidth": 60
+          },
+          {
+            "id": "btn-font-down-out",
+            "text": "A−",
+            "width": 28,
+            "scrollWidth": 26
+          },
+          {
+            "id": "btn-font-up-out",
+            "text": "A+",
+            "width": 28,
+            "scrollWidth": 26
+          },
+          {
+            "id": "btn-fs-output",
+            "text": "⛶",
+            "width": 30,
+            "scrollWidth": 28
+          }
+        ],
+        "inOverflow": false,
+        "outOverflow": false
+      }
+    },
+    {
+      "lang": "es",
+      "name": "Spanish",
+      "path": "/es/json-formatter/",
+      "inOverflow1366": false,
+      "outOverflow1366": false,
+      "outOverflow1024": false,
+      "fullscreenWorks": true,
+      "fullscreenRect": {
+        "isFs": true,
+        "top": 0,
+        "left": 0,
+        "width": 1366,
+        "height": 768
+      },
+      "buttons": {
+        "inBtns": [
+          "Subir",
+          "Pegar",
+          "Limpiar",
+          "A−",
+          "A+",
+          "⛶"
+        ],
+        "outBtns": [
+          "Copiar",
+          "Descargar",
+          "Contraer todoContraer",
+          "Expandir todoExpandir",
+          "A−",
+          "A+",
+          "⛶"
+        ],
+        "outBtnsDetails": [
+          {
+            "id": "btn-copy-output",
+            "text": "Copiar",
+            "width": 57.15625,
+            "scrollWidth": 55
+          },
+          {
+            "id": "btn-download",
+            "text": "Descargar",
+            "width": 79.09375,
+            "scrollWidth": 77
+          },
+          {
+            "id": "btn-collapse-all",
+            "text": "Contraer todoContraer",
+            "width": 70.09375,
+            "scrollWidth": 68
+          },
+          {
+            "id": "btn-expand-all",
+            "text": "Expandir todoExpandir",
+            "width": 70.296875,
+            "scrollWidth": 68
+          },
+          {
+            "id": "btn-font-down-out",
+            "text": "A−",
+            "width": 28,
+            "scrollWidth": 26
+          },
+          {
+            "id": "btn-font-up-out",
+            "text": "A+",
+            "width": 28,
+            "scrollWidth": 26
+          },
+          {
+            "id": "btn-fs-output",
+            "text": "⛶",
+            "width": 30,
+            "scrollWidth": 28
+          }
+        ],
+        "inOverflow": false,
+        "outOverflow": false
+      }
+    },
+    {
+      "lang": "da",
+      "name": "Danish",
+      "path": "/da/json-formatter/",
+      "inOverflow1366": false,
+      "outOverflow1366": false,
+      "outOverflow1024": false,
+      "fullscreenWorks": true,
+      "fullscreenRect": {
+        "isFs": true,
+        "top": 0,
+        "left": 0,
+        "width": 1366,
+        "height": 768
+      },
+      "buttons": {
+        "inBtns": [
+          "Upload",
+          "Indsæt",
+          "Ryd",
+          "A−",
+          "A+",
+          "⛶"
+        ],
+        "outBtns": [
+          "Kopiér",
+          "Download",
+          "Fold alt sammenFold sammen",
+          "Fold alt udFold ud",
+          "A−",
+          "A+",
+          "⛶"
+        ],
+        "outBtnsDetails": [
+          {
+            "id": "btn-copy-output",
+            "text": "Kopiér",
+            "width": 56.484375,
+            "scrollWidth": 54
+          },
+          {
+            "id": "btn-download",
+            "text": "Download",
+            "width": 77.109375,
+            "scrollWidth": 75
+          },
+          {
+            "id": "btn-collapse-all",
+            "text": "Fold alt sammenFold sammen",
+            "width": 96.484375,
+            "scrollWidth": 94
+          },
+          {
+            "id": "btn-expand-all",
+            "text": "Fold alt udFold ud",
+            "width": 61.3125,
+            "scrollWidth": 59
+          },
+          {
+            "id": "btn-font-down-out",
+            "text": "A−",
+            "width": 28,
+            "scrollWidth": 26
+          },
+          {
+            "id": "btn-font-up-out",
+            "text": "A+",
+            "width": 28,
+            "scrollWidth": 26
+          },
+          {
+            "id": "btn-fs-output",
+            "text": "⛶",
+            "width": 30,
+            "scrollWidth": 28
+          }
+        ],
+        "inOverflow": false,
+        "outOverflow": false
+      }
+    }
+  ],
+  "representativeTools": [
+    {
+      "path": "/es/loan-calculator/",
+      "title": "Calculadora de Préstamos y EMI Online Gratis | AnyConverter",
+      "hasCanonical": true,
+      "hreflangCount": 4
+    },
+    {
+      "path": "/da/loan-calculator/",
+      "title": "Lånberegner Online Gratis | AnyConverter",
+      "hasCanonical": true,
+      "hreflangCount": 4
+    },
+    {
+      "path": "/es/mortgage-calculator/",
+      "title": "Calculadora de Hipoteca Online Gratis | AnyConverter",
+      "hasCanonical": true,
+      "hreflangCount": 4
+    },
+    {
+      "path": "/da/mortgage-calculator/",
+      "title": "Realkreditberegner Online Gratis | AnyConverter",
+      "hasCanonical": true,
+      "hreflangCount": 4
+    },
+    {
+      "path": "/es/xml-formatter/",
+      "title": "Formateador XML Online Gratis | AnyConverter",
+      "hasCanonical": true,
+      "hreflangCount": 4
+    },
+    {
+      "path": "/da/xml-formatter/",
+      "title": "XML Formatter Online Gratis | AnyConverter",
+      "hasCanonical": true,
+      "hreflangCount": 4
+    }
+  ],
+  "consoleErrors": []
+}

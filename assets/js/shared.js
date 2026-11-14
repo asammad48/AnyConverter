@@ -388,7 +388,7 @@
         <circle cx="11" cy="11" r="7"/>
         <line x1="17.5" y1="17.5" x2="22" y2="22"/>
       </svg>
-      <input type="search" id="search-input" class="search-modal-input" placeholder="Search 80+ tools…" autocomplete="off" spellcheck="false" aria-label="Search tools" aria-controls="search-results" aria-autocomplete="list">
+      <input type="search" id="search-input" class="search-modal-input" placeholder="Search 128 tools…" autocomplete="off" spellcheck="false" aria-label="Search tools" aria-controls="search-results" aria-autocomplete="list">
       <kbd class="search-modal-esc-hint">ESC</kbd>
     </div>
     <ul class="search-results" id="search-results" role="listbox" aria-label="Search results"></ul>
@@ -592,9 +592,601 @@
     {n:'Viewport Size Checker',   u:'/viewport-size/',               d:'Check your browser viewport dimensions',            i:'/assets/img/icon-screen.svg',            c:'Browser',      k:'viewport size dimensions browser window'}
   ];
 
+  /* ===== MULTILINGUAL SEARCH & DASHBOARD DATA ===== */
+  var CATEGORY_I18N = {
+  "es": {
+    "Developer": "Desarrollador",
+    "PDF": "PDF",
+    "Text": "Texto",
+    "Data": "Datos",
+    "Media": "Medios",
+    "Tools": "Herramientas",
+    "Browser": "Navegador",
+    "Productivity": "Productividad",
+    "Fun": "Entretenimiento",
+    "Calculator": "Calculadora",
+    "Finance": "Finanzas",
+    "Numerology": "Numerología",
+    "Astrology": "Astrología",
+    "Date & Time": "Fecha y Hora"
+  },
+  "da": {
+    "Developer": "Udvikler",
+    "PDF": "PDF",
+    "Text": "Tekst",
+    "Data": "Data",
+    "Media": "Medier",
+    "Tools": "Værktøjer",
+    "Browser": "Browser",
+    "Productivity": "Produktivitet",
+    "Fun": "Underholdning",
+    "Calculator": "Beregner",
+    "Finance": "Finans",
+    "Numerology": "Numerologi",
+    "Astrology": "Astrologi",
+    "Date & Time": "Dato og Tid"
+  }
+};
+
+  var TOOL_I18N = {
+  "es": {
+    "names": {
+      "/json-formatter/": "Formateador JSON",
+      "/json-compare/": "Comparar JSON",
+      "/xml-formatter/": "Formateador XML",
+      "/regex-tester/": "Probador de Expresiones Regulares",
+      "/base64-encoder/": "Codificador Base64",
+      "/url-encoder/": "Codificador URL",
+      "/hash-generator/": "Generador de Hash",
+      "/jwt-decoder/": "Decodificador JWT",
+      "/uuid-generator/": "Generador de UUID",
+      "/password-generator/": "Generador de Contraseñas",
+      "/password-strength-checker/": "Comprobador de Fortaleza de Contraseña",
+      "/ip-address-lookup/": "Búsqueda de Dirección IP",
+      "/html-beautifier/": "Embellecedor y Minificador HTML",
+      "/json-to-yaml/": "Convertidor JSON a YAML",
+      "/cron-expression-parser/": "Analizador de Expresiones Cron",
+      "/css-gradient-generator/": "Generador de Gradientes CSS",
+      "/css-shadow-generator/": "Generador de Sombras CSS",
+      "/px-to-rem/": "Convertidor de PX a REM",
+      "/aspect-ratio-calculator/": "Calculadora de Relación de Aspecto",
+      "/pdf-merge/": "Unir PDFs",
+      "/pdf-split/": "Dividir PDF",
+      "/pdf-compress/": "Comprimir PDF",
+      "/rotate-pdf/": "Girar PDF",
+      "/organize-pdf/": "Organizar PDF",
+      "/remove-pdf-pages/": "Eliminar Páginas de PDF",
+      "/extract-pdf-pages/": "Extraer Páginas de PDF",
+      "/crop-pdf/": "Recortar Páginas PDF",
+      "/add-page-numbers/": "Numerar Páginas PDF",
+      "/add-watermark/": "Añadir Marca de Agua a PDF",
+      "/protect-pdf/": "Proteger PDF con Contraseña",
+      "/unlock-pdf/": "Desbloquear PDF",
+      "/jpg-to-pdf/": "JPG a PDF",
+      "/pdf-to-jpg/": "PDF a JPG",
+      "/ocr-pdf/": "OCR PDF",
+      "/pdf-to-word/": "Convertir PDF a Word",
+      "/html-to-pdf/": "Convertir HTML a PDF",
+      "/scan-to-pdf/": "Escanear a PDF",
+      "/sign-pdf/": "Firmar PDF",
+      "/edit-pdf/": "Editar PDF",
+      "/redact-pdf/": "Blackout PDF",
+      "/pdf-metadata-remover/": "Eliminar Metadatos PDF",
+      "/compare-pdf/": "Comparar PDF",
+      "/pdf-forms/": "Rellenar Formularios PDF",
+      "/pdf-security/": "Seguridad PDF",
+      "/optimize-pdf/": "Optimizar y Comprimir PDF",
+      "/word-counter/": "Contador de Palabras",
+      "/character-counter/": "Contador de Caracteres",
+      "/text-case-converter/": "Conversor de Mayúsculas y Minúsculas",
+      "/text-diff-checker/": "Comparador de Texto",
+      "/lorem-ipsum-generator/": "Generador de Lorem Ipsum",
+      "/fancy-text-generator/": "Generador de Texto Elegante",
+      "/ascii-art-generator/": "Generador de Arte ASCII",
+      "/morse-code-converter/": "Convertidor de Código Morse",
+      "/text-repeater/": "Repetidor de Texto",
+      "/number-to-words/": "Convertidor de Números a Palabras",
+      "/roman-numeral-converter/": "Convertidor de Números Romanos",
+      "/markdown-html/": "Conversor de Markdown a HTML",
+      "/csv-to-sql/": "Conversor CSV a SQL",
+      "/camt053-to-csv/": "Convertir CAMT.053 a CSV",
+      "/parquet-to-csv/": "Convertir Parquet a CSV",
+      "/csv-query/": "Herramienta de Consulta CSV",
+      "/image-converter/": "Convertidor de Imágenes",
+      "/image-compressor/": "Compresor de Imágenes",
+      "/qr-code-generator/": "Generador de Código QR",
+      "/barcode-generator/": "Generador de Códigos de Barras",
+      "/timestamp-converter/": "Convertidor de Timestamp Unix",
+      "/color-converter/": "Conversor de Colores",
+      "/screen-resolution/": "Comprobador de Resolución de Pantalla",
+      "/stopwatch/": "Cronómetro",
+      "/countdown-timer/": "Temporizador de Cuenta Regresiva",
+      "/todo-list/": "Lista de Tareas",
+      "/sticky-notes/": "Notas Adhesivas",
+      "/habit-tracker/": "Seguimiento de Hábitos",
+      "/daily-planner/": "Planificador Diario",
+      "/meeting-timer/": "Temporizador de Reuniones",
+      "/pomodoro-timer/": "Temporizador Pomodoro",
+      "/world-clock/": "Reloj Mundial",
+      "/spin-the-wheel/": "Girar la Ruleta",
+      "/coin-flip/": "Lanzar Moneda",
+      "/dice-roller/": "Lanzador de Dados",
+      "/random-picker/": "Selector Aleatorio",
+      "/decision-maker/": "Tomador de Decisiones",
+      "/team-picker/": "Selector de Equipos",
+      "/age-calculator/": "Calculadora de Edad",
+      "/bmi-calculator/": "Calculadora de IMC",
+      "/calorie-calculator/": "Calculadora de Calorías",
+      "/sleep-calculator/": "Calculadora de Sueño",
+      "/typing-speed-test/": "Prueba de Velocidad de Escritura",
+      "/currency-converter/": "Conversor de Moneda",
+      "/compound-interest-calculator/": "Calculadora de Interés Compuesto",
+      "/loan-calculator/": "Calculadora de Préstamos y EMI",
+      "/mortgage-calculator/": "Calculadora de Hipoteca",
+      "/invoice-generator/": "Generador de Facturas",
+      "/discount-calculator/": "Calculadora de Descuentos",
+      "/percentage-calculator/": "Calculadora de Porcentajes",
+      "/gst-vat-calculator/": "Calculadora de IVA / GST",
+      "/reverse-percentage-calculator/": "Calculadora de Porcentaje Inverso",
+      "/discount-stacking-calculator/": "Calculadora de Descuentos Acumulados",
+      "/percentage-difference-calculator/": "Calculadora de Diferencia Porcentual",
+      "/price-increase-calculator/": "Calculadora de Aumento de Precio",
+      "/pay-rise-calculator/": "Calculadora de Aumento Salarial",
+      "/margin-vs-markup-calculator/": "Calculadora de Margen y Recargo",
+      "/unit-price-calculator/": "Calculadora de Precio Unitario",
+      "/rise-over-run-calculator/": "Calculadora de Pendiente",
+      "/slope-grade-angle-calculator/": "Calculadora de Pendiente, Porcentaje y Ángulo",
+      "/name-numerology-calculator/": "Calculadora de Numerología del Nombre",
+      "/numerology-calculator/": "Calculadora de Numerología",
+      "/lo-shu-grid-calculator/": "Calculadora de Cuadrícula Lo Shu",
+      "/moon-sign-calculator/": "Calculadora de Signo Lunar",
+      "/rising-sign-calculator/": "Calculadora de Ascendente",
+      "/tarot-birth-card-calculator/": "Calculadora de Cartas de Nacimiento del Tarot",
+      "/love-calculator/": "Calculadora del Amor por Nombres",
+      "/flames-calculator/": "Calculadora FLAMES",
+      "/magic-8-ball/": "Bola 8 Mágica",
+      "/birthday-countdown-calculator/": "Cuenta Regresiva para tu Cumpleaños",
+      "/tip-calculator/": "Calculadora de Propinas",
+      "/random-number-generator/": "Generador de Números Aleatorios",
+      "/blood-type-compatibility/": "Comprobador de Compatibilidad de Grupos Sanguíneos",
+      "/privacy-policy-generator/": "Generador de Política de Privacidad",
+      "/internet-speed-test/": "Prueba de Velocidad de Internet",
+      "/keyboard-tester/": "Probador de Teclado",
+      "/mouse-tester/": "Probador de Ratón",
+      "/webcam-tester/": "Probador de Webcam",
+      "/microphone-tester/": "Probador de Micrófono",
+      "/dead-pixel-checker/": "Comprobador de Píxeles Muertos",
+      "/monitor-color-test/": "Prueba de Color del Monitor",
+      "/browser-info/": "Visor de Información del Navegador",
+      "/viewport-size/": "Comprobador de Tamaño de Ventana"
+    },
+    "descs": {
+      "/json-formatter/": "Valida, formatea, minifica e inspecciona JSON con control de sangría y una vista de árb…",
+      "/json-compare/": "Pega el original en A y la nueva versión en B",
+      "/xml-formatter/": "Formatea y valida XML online gratis",
+      "/regex-tester/": "Prueba y depura expresiones regulares online en tiempo real",
+      "/base64-encoder/": "Codifica y decodifica Base64 online de forma gratuita",
+      "/url-encoder/": "Codifica o decodifica URLs y parámetros de consulta online de forma gratuita",
+      "/hash-generator/": "Genera hashes criptográficos MD5, SHA-1, SHA-256 y SHA-512 online de forma gratuita",
+      "/jwt-decoder/": "Decodifica e inspecciona cualquier token JWT al instante",
+      "/uuid-generator/": "Genera identificadores UUID v4 criptográficamente seguros al instante",
+      "/password-generator/": "Crea contraseñas aleatorias y seguras usando mayúsculas, minúsculas, números y símbolos",
+      "/password-strength-checker/": "Comprueba la fortaleza de tu contraseña en tiempo real",
+      "/ip-address-lookup/": "Busca la geolocalización, ISP, zona horaria y detalles de red de cualquier dirección IP…",
+      "/html-beautifier/": "Formatea HTML desordenado en código limpio y sangrado, o comprímelo en una sola línea",
+      "/json-to-yaml/": "Convierte entre JSON y YAML al instante",
+      "/cron-expression-parser/": "Decodifica cualquier expresión cron en texto legible al instante",
+      "/css-gradient-generator/": "Diseña gradientes CSS lineales y radiales visualmente",
+      "/css-shadow-generator/": "Diseña efectos de box-shadow y text-shadow visualmente con controles deslizantes y una …",
+      "/px-to-rem/": "Convierte valores de píxeles a unidades REM y REM de vuelta a píxeles",
+      "/aspect-ratio-calculator/": "Calcula al instante la relación de aspecto a partir de cualquier ancho y alto",
+      "/pdf-merge/": "Une varios PDF en uno desde tu navegador",
+      "/pdf-split/": "Divide un PDF en varios archivos desde tu navegador",
+      "/pdf-compress/": "Reduce el tamaño de un PDF desde tu navegador",
+      "/rotate-pdf/": "Gira páginas de un PDF en tu navegador y guarda el cambio",
+      "/organize-pdf/": "Reordena las páginas de un PDF en tu navegador",
+      "/remove-pdf-pages/": "Borra páginas de un PDF en tu navegador",
+      "/extract-pdf-pages/": "Elige páginas de un PDF y guárdalas como archivo nuevo en tu navegador",
+      "/crop-pdf/": "Recorta los márgenes o bordes de cada página PDF introduciendo valores de recorte en pu…",
+      "/add-page-numbers/": "Numera las páginas de un PDF en tu navegador",
+      "/add-watermark/": "Estampa una marca de agua de texto personalizada en cada página de tu PDF",
+      "/protect-pdf/": "Protege tu PDF con una contraseña para que solo los usuarios autorizados puedan abrirlo",
+      "/unlock-pdf/": "Elimina la contraseña de un PDF protegido que sea tuyo",
+      "/jpg-to-pdf/": "Junta imágenes JPG, PNG y WebP en un PDF desde tu navegador",
+      "/pdf-to-jpg/": "Convierte páginas de un PDF en imágenes JPG, PNG o WebP desde tu navegador",
+      "/ocr-pdf/": "Convierte PDF escaneados en texto editable desde el navegador",
+      "/pdf-to-word/": "Convierte un PDF en un documento de Word editable",
+      "/html-to-pdf/": "Pega código HTML en el editor, previsualízalo en vivo",
+      "/scan-to-pdf/": "Combina múltiples fotos o imágenes escaneadas en un solo documento PDF",
+      "/sign-pdf/": "Dibuja tu firma manuscrita en un lienzo e incrústala en tu PDF",
+      "/edit-pdf/": "Superpone texto, rectángulos con borde o resaltados amarillos en cualquier página de un PDF",
+      "/redact-pdf/": "Cubre texto o imagenes en tu PDF con rectangulos negros solidos",
+      "/pdf-metadata-remover/": "Inspecciona las propiedades de tus documentos PDF, elige qué campos limpiar y descarga …",
+      "/compare-pdf/": "Carga dos documentos PDF y visualiza sus páginas lado a lado",
+      "/pdf-forms/": "Sube un PDF rellenable, completa los campos del formulario directamente en tu navegador…",
+      "/pdf-security/": "Aplica restricciones de permisos detalladas a un PDF: controla la impresión, copia, edi…",
+      "/optimize-pdf/": "Reduce el tamaño de tu PDF eliminando objetos sin referencias y, opcionalmente, borrand…",
+      "/word-counter/": "Pega o escribe tu texto y al instante ve el recuento de palabras, caracteres, frases, p…",
+      "/character-counter/": "Cuenta caracteres, palabras, líneas y bytes en tu texto al instante",
+      "/text-case-converter/": "Convierte tu texto entre 10 formatos distintos al instante",
+      "/text-diff-checker/": "Pega dos versiones de tu texto y ve al instante qué cambió",
+      "/lorem-ipsum-generator/": "Genera texto de relleno Lorem Ipsum en segundos",
+      "/fancy-text-generator/": "Transforma tu texto en 11 estilos Unicode elegantes — negrita, cursiva, script, doble t…",
+      "/ascii-art-generator/": "Convierte cualquier texto en arte ASCII de letras de bloque grandes al instante",
+      "/morse-code-converter/": "Convierte texto a código Morse y viceversa al instante",
+      "/text-repeater/": "Repite cualquier palabra, frase u oración cualquier número de veces con un separador pe…",
+      "/number-to-words/": "Convierte cualquier número en su equivalente en palabras inglesas al instante",
+      "/roman-numeral-converter/": "Convierte cualquier entero (1–3",
+      "/markdown-html/": "Convierte Markdown a HTML con vista previa en vivo",
+      "/csv-to-sql/": "Convierte datos CSV a sentencias SQL INSERT al instante",
+      "/camt053-to-csv/": "🔒 Los datos bancarios se procesan localmente en tu navegador",
+      "/parquet-to-csv/": "🔒 Funciona en tu navegador — no se sube nada",
+      "/csv-query/": "Sube un archivo CSV y consúltalo con SQL directamente en tu navegador",
+      "/image-converter/": "Convierte imágenes entre PNG, JPG, WebP, BMP y más formatos online",
+      "/image-compressor/": "Reduce el tamaño de archivos de imágenes PNG, JPG y WebP directamente en tu navegador",
+      "/qr-code-generator/": "Genera códigos QR para URL, texto, WiFi, email y teléfono con vista previa en vivo",
+      "/barcode-generator/": "Genera códigos Code 128, EAN-13, UPC-A o Code 39 gratis",
+      "/timestamp-converter/": "Convierte timestamps Unix a fechas y horas legibles, o convierte fechas de vuelta a tim…",
+      "/color-converter/": "Convierte colores entre los formatos HEX, RGB, HSL, CMYK y HSB al instante",
+      "/screen-resolution/": "Detecta al instante tu resolución de pantalla actual, dimensiones del viewport, ratio d…",
+      "/stopwatch/": "Cronómetro de precisión con temporizador de vueltas",
+      "/countdown-timer/": "Configura cualquier cuenta regresiva desde segundos hasta horas",
+      "/todo-list/": "Una lista de tareas sencilla y persistente que se guarda automáticamente en tu navegador",
+      "/sticky-notes/": "Crea notas adhesivas digitales en tu navegador",
+      "/habit-tracker/": "Crea y mantén hábitos diarios con una cuadrícula semanal visual",
+      "/daily-planner/": "Organiza tu día con entradas de tareas basadas en el tiempo",
+      "/meeting-timer/": "Crea una agenda cronometrada para tu reunión",
+      "/pomodoro-timer/": "Mejora tu concentración con la técnica Pomodoro",
+      "/world-clock/": "See the live current time in major cities across every time zone",
+      "/spin-the-wheel/": "Introduce tus opciones (una por línea), gira la ruleta y deja que el azar decida",
+      "/coin-flip/": "Lanza una moneda virtual para decidir entre cara o cruz",
+      "/dice-roller/": "Lanza cualquier combinación de dados poliédricos — d4, d6, d8, d10, d12 o d20",
+      "/random-picker/": "Pega una lista de elementos y selecciona aleatoriamente el número que quieras",
+      "/decision-maker/": "¿No puedes elegir? Ingresa tus opciones y pulsa Decidir",
+      "/team-picker/": "Divide cualquier grupo de personas en equipos aleatorios equilibrados",
+      "/age-calculator/": "Encuentra tu edad exacta en años, meses y días a partir de tu fecha de nacimiento",
+      "/bmi-calculator/": "Calcula tu Índice de Masa Corporal al instante con soporte para unidades métricas (kg/c…",
+      "/calorie-calculator/": "Descubre exactamente cuántas calorías necesitas cada día",
+      "/sleep-calculator/": "Despiértate descansado",
+      "/typing-speed-test/": "Mide qué tan rápido puedes escribir con nuestra prueba de velocidad de escritura gratuita",
+      "/currency-converter/": "Convierte entre más de 150 divisas con tipos de cambio actualizados al instante desde l…",
+      "/compound-interest-calculator/": "Calcula cómo crece tu dinero con el interés compuesto",
+      "/loan-calculator/": "Calcula tu cuota mensual EMI (Cuota Mensual Equivalente), el interés total pagado y el …",
+      "/mortgage-calculator/": "Calcula tu cuota mensual de hipoteca con el desglose completo de capital e intereses",
+      "/invoice-generator/": "Crea facturas PDF profesionales en segundos",
+      "/discount-calculator/": "Calcula rápidamente el precio después de un descuento o trabaja hacia atrás para encont…",
+      "/percentage-calculator/": "Resuelve cualquier problema de porcentaje al instante con cuatro modos de cálculo",
+      "/gst-vat-calculator/": "Calcula el IVA/GST añadiendo o extrayendo impuestos de cualquier importe",
+      "/reverse-percentage-calculator/": "Calcula el valor original antes de una subida, un descuento o el IVA",
+      "/discount-stacking-calculator/": "Un 20 % de descuento más un 10 % no es un 30 % — es un 28 %, porque el segundo descuent…",
+      "/percentage-difference-calculator/": "Compara dos números con la fórmula de diferencia porcentual, que trata ambos valores por igual",
+      "/price-increase-calculator/": "Calcula el precio nuevo tras una subida porcentual, cuánto ha subido un precio en porce…",
+      "/pay-rise-calculator/": "Introduce tu sueldo actual y el aumento como porcentaje, como importe o como nuevo salario",
+      "/margin-vs-markup-calculator/": "Introduce un coste y un precio de venta para ver el beneficio, el margen bruto y el rec…",
+      "/unit-price-calculator/": "Compara productos y formatos por lo que cuestan de verdad por kilo, litro o unidad",
+      "/rise-over-run-calculator/": "Introduce la elevación y el recorrido, o dos puntos de una recta, para obtener la pendi…",
+      "/slope-grade-angle-calculator/": "Convierte cualquier forma de expresar una pendiente en todas las demás: proporción 1:n,…",
+      "/name-numerology-calculator/": "Descubre los números de destino, alma y personalidad de tu nombre",
+      "/numerology-calculator/": "Introduce tu fecha de nacimiento y, si quieres, tu nombre para obtener tu camino de vid…",
+      "/lo-shu-grid-calculator/": "Introduce tu fecha de nacimiento para crear tu cuadrícula Lo Shu",
+      "/moon-sign-calculator/": "Descubre tu signo lunar con tu fecha, hora y lugar de nacimiento",
+      "/rising-sign-calculator/": "Calcula tu ascendente y su grado exacto con tu fecha, hora exacta y lugar de nacimiento",
+      "/tarot-birth-card-calculator/": "Introduce tu fecha de nacimiento para descubrir tus arcanos",
+      "/love-calculator/": "Escribe dos nombres para ver vuestro porcentaje de amor",
+      "/flames-calculator/": "Introduce dos nombres y juega al clásico FLAMES",
+      "/magic-8-ball/": "Piensa una pregunta de sí o no y toca o agita la bola",
+      "/birthday-countdown-calculator/": "Mira exactamente cuánto falta para el próximo cumpleaños, en vivo al segundo",
+      "/tip-calculator/": "Calcula la propina exacta para cualquier importe y divídela entre varias personas",
+      "/random-number-generator/": "Genera números verdaderamente aleatorios al instante usando valores criptográficamente …",
+      "/blood-type-compatibility/": "Selecciona tu grupo sanguíneo para ver al instante a qué tipos puedes donar y de cuáles…",
+      "/privacy-policy-generator/": "Genera al instante una política de privacidad personalizada para tu sitio web o aplicación",
+      "/internet-speed-test/": "Mide la velocidad de descarga, subida y latencia de ping de tu conexión a internet dire…",
+      "/keyboard-tester/": "Presiona cualquier tecla para verla iluminarse en el teclado visual",
+      "/mouse-tester/": "Prueba cada botón y movimiento de tu ratón",
+      "/webcam-tester/": "Prueba tu webcam con una vista previa en vivo directamente en tu navegador",
+      "/microphone-tester/": "Prueba tu micrófono con un medidor de nivel de audio en tiempo real",
+      "/dead-pixel-checker/": "Detecta píxeles muertos o atascados en tu monitor pasando por 8 pruebas de pantalla com…",
+      "/monitor-color-test/": "Evalúa la precisión de color, suavidad de degradados, nitidez y uniformidad de tu monit…",
+      "/browser-info/": "Ve todo sobre tu navegador, sistema operativo, pantalla y hardware en un solo lugar — n…",
+      "/viewport-size/": "Ve las dimensiones actuales de tu ventana del navegador, resolución de pantalla, relaci…"
+    }
+  },
+  "da": {
+    "names": {
+      "/json-formatter/": "JSON Formatter",
+      "/json-compare/": "Sammenlign JSON",
+      "/xml-formatter/": "XML Formatter",
+      "/regex-tester/": "Regex Tester",
+      "/base64-encoder/": "Base64 Encoder og Decoder",
+      "/url-encoder/": "URL Encoder og Decoder",
+      "/hash-generator/": "Hash Generator",
+      "/jwt-decoder/": "JWT Dekoder",
+      "/uuid-generator/": "UUID Generator",
+      "/password-generator/": "Adgangskode Generator",
+      "/password-strength-checker/": "Adgangskode Styrke Tjekker",
+      "/ip-address-lookup/": "IP-adresse Opslag",
+      "/html-beautifier/": "HTML Formaterer & Minifier",
+      "/json-to-yaml/": "JSON til YAML Konverter",
+      "/cron-expression-parser/": "Cron Udtryks Parser",
+      "/css-gradient-generator/": "CSS Gradient Generator",
+      "/css-shadow-generator/": "CSS Skygge Generator",
+      "/px-to-rem/": "PX til REM Konverter",
+      "/aspect-ratio-calculator/": "Billedforholdsberegner",
+      "/pdf-merge/": "PDF Sammenføjning",
+      "/pdf-split/": "Opdel PDF",
+      "/pdf-compress/": "Komprimér PDF",
+      "/rotate-pdf/": "Rotér PDF",
+      "/organize-pdf/": "Organiser PDF",
+      "/remove-pdf-pages/": "Slet Sider i PDF",
+      "/extract-pdf-pages/": "Udtræk Sider fra PDF",
+      "/crop-pdf/": "Beskær PDF-sider",
+      "/add-page-numbers/": "Sidetal i PDF",
+      "/add-watermark/": "Tilføj Vandmærke til PDF",
+      "/protect-pdf/": "Beskyt PDF med Adgangskode",
+      "/unlock-pdf/": "Lås PDF Op",
+      "/jpg-to-pdf/": "JPG til PDF",
+      "/pdf-to-jpg/": "PDF til JPG",
+      "/ocr-pdf/": "OCR PDF",
+      "/pdf-to-word/": "PDF til Word",
+      "/html-to-pdf/": "Konverter HTML til PDF",
+      "/scan-to-pdf/": "Scan til PDF",
+      "/sign-pdf/": "Underskriv PDF",
+      "/edit-pdf/": "Tildæk PDF",
+      "/redact-pdf/": "Tildæk PDF",
+      "/pdf-metadata-remover/": "Fjern PDF-metadata",
+      "/compare-pdf/": "Sammenlign to PDF'er Side om Side",
+      "/pdf-forms/": "Udfyld PDF-formularer",
+      "/pdf-security/": "PDF-sikkerhed",
+      "/optimize-pdf/": "Optimer og Komprimer PDF",
+      "/word-counter/": "Ordtæller",
+      "/character-counter/": "Tegntæller",
+      "/text-case-converter/": "Tekst Store/Små Bogstaver Konverter",
+      "/text-diff-checker/": "Tekst Forskels Checker",
+      "/lorem-ipsum-generator/": "Lorem Ipsum Generator",
+      "/fancy-text-generator/": "Fancy Tekst Generator",
+      "/ascii-art-generator/": "ASCII Kunst Generator",
+      "/morse-code-converter/": "Morsekode Konverter",
+      "/text-repeater/": "Tekstgentagelse",
+      "/number-to-words/": "Tal til Ord Konverter",
+      "/roman-numeral-converter/": "Romertal Konverter",
+      "/markdown-html/": "Markdown til HTML Konverter",
+      "/csv-to-sql/": "CSV til SQL Konverter",
+      "/camt053-to-csv/": "CAMT.053 til CSV",
+      "/parquet-to-csv/": "Parquet til CSV",
+      "/csv-query/": "CSV-forespørgselsværktøj",
+      "/image-converter/": "Billedkonverter",
+      "/image-compressor/": "Billedkomprimering",
+      "/qr-code-generator/": "QR-kode Generator",
+      "/barcode-generator/": "Stregkode Generator",
+      "/timestamp-converter/": "Unix Timestamp Konverter",
+      "/color-converter/": "Farvekonverter",
+      "/screen-resolution/": "Skærmopløsning Checker",
+      "/stopwatch/": "Stopur",
+      "/countdown-timer/": "Nedtæller",
+      "/todo-list/": "Opgaveliste",
+      "/sticky-notes/": "Sticky Notes",
+      "/habit-tracker/": "Vanetracker",
+      "/daily-planner/": "Daglig Planlægger",
+      "/meeting-timer/": "Mødetimer",
+      "/pomodoro-timer/": "Pomodoro Timer",
+      "/world-clock/": "Verdensur",
+      "/spin-the-wheel/": "Drej Hjulet",
+      "/coin-flip/": "Møntskast",
+      "/dice-roller/": "Terningkaster",
+      "/random-picker/": "Tilfældig Vælger",
+      "/decision-maker/": "Beslutningstageren",
+      "/team-picker/": "Holdvælger",
+      "/age-calculator/": "Aldersberegner",
+      "/bmi-calculator/": "BMI Beregner",
+      "/calorie-calculator/": "Kaloriebehov Beregner",
+      "/sleep-calculator/": "Søvnberegner",
+      "/typing-speed-test/": "Skrivetestigheds Test",
+      "/currency-converter/": "Valutaomregner",
+      "/compound-interest-calculator/": "Renters Rente Beregner",
+      "/loan-calculator/": "Lånberegner",
+      "/mortgage-calculator/": "Realkreditberegner",
+      "/invoice-generator/": "Faktura Generator",
+      "/discount-calculator/": "Rabatberegner",
+      "/percentage-calculator/": "Procentberegner",
+      "/gst-vat-calculator/": "Moms / GST Beregner",
+      "/reverse-percentage-calculator/": "Omvendt Procentberegner",
+      "/discount-stacking-calculator/": "Rabatberegner",
+      "/percentage-difference-calculator/": "Procentforskelberegner",
+      "/price-increase-calculator/": "Prisforhøjelsesberegner",
+      "/pay-rise-calculator/": "Lønstigningsberegner",
+      "/margin-vs-markup-calculator/": "Margin",
+      "/unit-price-calculator/": "Enhedsprisberegner",
+      "/rise-over-run-calculator/": "Hældningsberegner",
+      "/slope-grade-angle-calculator/": "Hældning, Stigningsprocent og Vinkel Beregner",
+      "/name-numerology-calculator/": "Navnenumerologi",
+      "/numerology-calculator/": "Numerologi-beregner",
+      "/lo-shu-grid-calculator/": "Lo Shu-gitterberegner",
+      "/moon-sign-calculator/": "Månetegnsberegner",
+      "/rising-sign-calculator/": "Ascendantberegner",
+      "/tarot-birth-card-calculator/": "Tarot",
+      "/love-calculator/": "Kærlighedsberegner med navne",
+      "/flames-calculator/": "FLAMES-beregner",
+      "/magic-8-ball/": "Magic 8 Ball",
+      "/birthday-countdown-calculator/": "Fødselsdagsnedtælling",
+      "/tip-calculator/": "Drikkepenge Beregner",
+      "/random-number-generator/": "Tilfældig Tal Generator",
+      "/blood-type-compatibility/": "Blodtypekompatibilitetstjekker",
+      "/privacy-policy-generator/": "Generator til Privatlivspolitik",
+      "/internet-speed-test/": "Internethastighed Test",
+      "/keyboard-tester/": "Tastaturtest",
+      "/mouse-tester/": "Musetest",
+      "/webcam-tester/": "Webkameratest",
+      "/microphone-tester/": "Mikrofon Test",
+      "/dead-pixel-checker/": "Dødpixel Tjekker",
+      "/monitor-color-test/": "Skærm Farvetest",
+      "/browser-info/": "Browser Info Fremviser",
+      "/viewport-size/": "Viewport Størrelse Tjekker"
+    },
+    "descs": {
+      "/json-formatter/": "Validér, formatér, minificér og undersøg JSON med indrykningskontrol og en sammenklappe…",
+      "/json-compare/": "Indsæt den oprindelige i A og den nye version i B",
+      "/xml-formatter/": "Formater og valider XML online gratis",
+      "/regex-tester/": "Test og fejlret regulære udtryk online i realtid",
+      "/base64-encoder/": "Kodér og dekodér Base64 online gratis",
+      "/url-encoder/": "Kodér eller dekodér URL'er og forespørgselsparametre online gratis",
+      "/hash-generator/": "Generer kryptografiske hashes MD5, SHA-1, SHA-256 og SHA-512 online gratis",
+      "/jwt-decoder/": "Dekod og inspicér ethvert JWT-token øjeblikkeligt",
+      "/uuid-generator/": "Generer kryptografisk sikre UUID v4 identifikatorer øjeblikkeligt",
+      "/password-generator/": "Opret stærke, tilfældige adgangskoder med store bogstaver, små bogstaver, tal og symboler",
+      "/password-strength-checker/": "Tjek din adgangskodes styrke i realtid",
+      "/ip-address-lookup/": "Slå geolokalisering, ISP, tidszone og netværksdetaljer for enhver IP-adresse op øjeblikkeligt",
+      "/html-beautifier/": "Formater rodet HTML til ren, indenteret kode eller komprimer den til én linje",
+      "/json-to-yaml/": "Konverter mellem JSON og YAML øjeblikkeligt",
+      "/cron-expression-parser/": "Afkod ethvert cron-udtryk til læsbar tekst øjeblikkeligt",
+      "/css-gradient-generator/": "Design lineære og radiale CSS-gradienter visuelt",
+      "/css-shadow-generator/": "Design box-shadow og text-shadow effekter visuelt med skydelister og live forhåndsvisning",
+      "/px-to-rem/": "Konverter pixelværdier til REM-enheder og REM tilbage til pixels",
+      "/aspect-ratio-calculator/": "Beregn øjeblikkeligt billedforholdet ud fra enhver bredde og højde",
+      "/pdf-merge/": "Saml flere PDF-filer til én i din browser",
+      "/pdf-split/": "Opdel en PDF i flere filer i din browser",
+      "/pdf-compress/": "Gør en PDF mindre i din browser",
+      "/rotate-pdf/": "Rotér PDF-sider i din browser, og gem ændringen",
+      "/organize-pdf/": "Omarrangér siderne i en PDF i din browser",
+      "/remove-pdf-pages/": "Slet sider fra en PDF i din browser",
+      "/extract-pdf-pages/": "Vælg sider fra en PDF, og gem dem som en ny fil i din browser",
+      "/crop-pdf/": "Trim margener eller rammer fra alle PDF-sider ved at indtaste beskæringsværdier i PDF-p…",
+      "/add-page-numbers/": "Sæt sidetal på en PDF i din browser",
+      "/add-watermark/": "Stempel et brugerdefineret tekstvandmærke på hver side af din PDF",
+      "/protect-pdf/": "Sikr din PDF med en adgangskode så kun autoriserede brugere kan åbne den",
+      "/unlock-pdf/": "Fjern adgangskoden fra en beskyttet PDF du ejer",
+      "/jpg-to-pdf/": "Saml JPG-, PNG- og WebP-billeder i én PDF i din browser",
+      "/pdf-to-jpg/": "Lav PDF-sider om til JPG-, PNG- eller WebP-billeder i din browser",
+      "/ocr-pdf/": "Brug Optisk Tegngenkendelse (OCR) til at udtrække tekst fra scannede PDF-filer eller billeder",
+      "/pdf-to-word/": "Konvertér PDF til et redigerbart Word-dokument",
+      "/html-to-pdf/": "Indsæt HTML-kode i editoren, se live forhåndsvisning",
+      "/scan-to-pdf/": "Kombiner flere scannede fotos eller billeder til ét PDF-dokument",
+      "/sign-pdf/": "Tegn din håndskrevne underskrift på et lærred og integrer den i din PDF",
+      "/edit-pdf/": "Læg tekst, kantede rektangler eller gule fremhævninger oven på enhver PDF-side",
+      "/redact-pdf/": "Dæk tekst eller billeder i din PDF med solide sorte rektangler",
+      "/pdf-metadata-remover/": "Inspicér almindelige PDF-dokumentegenskaber, vælg hvilke felter der skal ryddes, og dow…",
+      "/compare-pdf/": "Indlæs to PDF-dokumenter og se siderne side om side",
+      "/pdf-forms/": "Upload en udfyldbar PDF, udfyld formularfelterne direkte i din browser — tekstfelter, a…",
+      "/pdf-security/": "Anvend detaljerede tilladelsesrestriktioner på en PDF: kontrollér udskrivning, kopierin…",
+      "/optimize-pdf/": "Reducer din PDF ved at fjerne objekter uden referencer og eventuelt slette metadata",
+      "/word-counter/": "Tæl ord, tegn, sætninger, afsnit og unikke ord i din tekst øjeblikkeligt",
+      "/character-counter/": "Tæl tegn, ord, linjer og bytes i din tekst øjeblikkeligt",
+      "/text-case-converter/": "Konverter din tekst til ethvert format øjeblikkeligt — store bogstaver, små bogstaver, …",
+      "/text-diff-checker/": "Sammenlign to blokke af tekst og se forskelle fremhævet øjeblikkeligt",
+      "/lorem-ipsum-generator/": "Generer Lorem Ipsum pladsholdertekst på sekunder",
+      "/fancy-text-generator/": "Transformer din tekst til 11 smarte Unicode-stilarter — fed, kursiv, script, dobbelt st…",
+      "/ascii-art-generator/": "Konverter enhver tekst til store blokbogstav ASCII-kunst øjeblikkeligt",
+      "/morse-code-converter/": "Konverter tekst til morsekode og tilbage øjeblikkeligt",
+      "/text-repeater/": "Gentag et vilkårligt ord, sætning eller tekststykke et valgfrit antal gange med en brug…",
+      "/number-to-words/": "Konverter ethvert tal til dets engelske ordækvivalent øjeblikkeligt",
+      "/roman-numeral-converter/": "Konverter et vilkårligt heltal (1–3",
+      "/markdown-html/": "Konverter Markdown til HTML med live forhåndsvisning",
+      "/csv-to-sql/": "Konverter CSV-data til SQL INSERT-sætninger øjeblikkeligt",
+      "/camt053-to-csv/": "🔒 Bankdata behandles lokalt i din browser",
+      "/parquet-to-csv/": "🔒 Kører i din browser — intet uploades",
+      "/csv-query/": "Upload en CSV-fil og forespørg den med SQL direkte i din browser",
+      "/image-converter/": "Konverter billeder mellem PNG, JPG, WebP, BMP og andre formater online",
+      "/image-compressor/": "Reducer billedfilstørrelser direkte i din browser",
+      "/qr-code-generator/": "Opret QR-koder øjeblikkeligt til enhver tekst, URL, e-mailadresse eller telefonnummer",
+      "/barcode-generator/": "Lav Code 128-, EAN-13-, UPC-A- eller Code 39-stregkoder gratis",
+      "/timestamp-converter/": "Konvertér Unix-tidsstempler til læsbare datoer og tidspunkter, eller konvertér datoer t…",
+      "/color-converter/": "Konverter farver mellem HEX, RGB, HSL, CMYK og HSB-formater øjeblikkeligt",
+      "/screen-resolution/": "Registrer øjeblikkeligt din nuværende skærmopløsning, viewport-dimensioner, enhedspixel…",
+      "/stopwatch/": "Præcisionsstopur med rundetimer",
+      "/countdown-timer/": "Indstil en nedtælling fra sekunder til timer",
+      "/todo-list/": "En enkel, vedvarende opgaveliste der gemmes automatisk i din browser",
+      "/sticky-notes/": "Opret digitale sticky notes i din browser",
+      "/habit-tracker/": "Opbyg og vedligehold daglige vaner med et visuelt ugentligt gitter",
+      "/daily-planner/": "Planlæg din dag med tidsbaserede opgaveindtastninger",
+      "/meeting-timer/": "Opret en tidsstyret dagsorden til dit møde",
+      "/pomodoro-timer/": "Boost dit fokus med Pomodoro-teknikken",
+      "/world-clock/": "See the live current time in major cities across every time zone",
+      "/spin-the-wheel/": "Indtast dine muligheder (én pr",
+      "/coin-flip/": "Kast en virtuel mønt for at afgøre mellem plat eller krone",
+      "/dice-roller/": "Kast enhver kombination af polyedriske terninger — d4, d6, d8, d10, d12 eller d20",
+      "/random-picker/": "Indsæt en liste med elementer og vælg tilfældigt det antal du ønsker",
+      "/decision-maker/": "Kan du ikke vælge? Indtast dine muligheder og tryk på Beslut",
+      "/team-picker/": "Del en hvilken som helst gruppe op i balancerede tilfældige hold",
+      "/age-calculator/": "Find din nøjagtige alder i år, måneder og dage fra din fødselsdato",
+      "/bmi-calculator/": "Beregn BMI med det samme og se kategori, sundt vægtinterval og en tydelig forklaring på…",
+      "/calorie-calculator/": "Beregn dit daglige kaloriebehov baseret på din alder, vægt, højde og aktivitetsniveau",
+      "/sleep-calculator/": "Vågn op udhvilet. Søvnberegneren bruger 90-minutters søvncyklusser til at foreslå ideel…",
+      "/typing-speed-test/": "Mål din skrivetestighed i ord per minut (WPM) og nøjagtighed",
+      "/currency-converter/": "Omregn mellem over 150 valutaer med øjeblikkeligt opdaterede valutakurser fra open",
+      "/compound-interest-calculator/": "Beregn hvordan dine penge vokser med renters rente",
+      "/loan-calculator/": "Beregn din månedlige lånebetaling med komplet opdeling af afdrag og renter",
+      "/mortgage-calculator/": "Beregn boliglån med live-resultater for månedlig ydelse, renter og samlet betaling",
+      "/invoice-generator/": "Opret professionelle PDF-fakturaer på sekunder",
+      "/discount-calculator/": "Beregn hurtigt prisen efter en rabat, eller arbejd baglæns for at finde rabatprocenten",
+      "/percentage-calculator/": "Beregn hvad procent et tal er af et andet, find procentvise stigninger og fald, og løs …",
+      "/gst-vat-calculator/": "Beregn moms/GST ved at tilføje eller fratrække skat fra ethvert beløb",
+      "/reverse-percentage-calculator/": "Find den oprindelige værdi før en procentstigning, en rabat eller moms blev lagt på",
+      "/discount-stacking-calculator/": "20 % rabat plus 10 % er ikke 30 % — det er 28 %, fordi den anden rabat beregnes af den …",
+      "/percentage-difference-calculator/": "Sammenlign to tal med formlen for procentforskel, som behandler begge værdier ens",
+      "/price-increase-calculator/": "Beregn den nye pris efter en procentvis stigning, hvor mange procent en pris er steget,…",
+      "/pay-rise-calculator/": "Indtast din nuværende løn og lønstigningen som procent, som beløb eller som ny løn",
+      "/margin-vs-markup-calculator/": "Indtast kostpris og salgspris for at få fortjeneste, margin (dækningsgrad) og avance på…",
+      "/unit-price-calculator/": "Sammenlign varer og pakkestørrelser på det, de reelt koster pr",
+      "/rise-over-run-calculator/": "Indtast stigningen og den vandrette afstand, eller to punkter på en linje, og få hældni…",
+      "/slope-grade-angle-calculator/": "Omregn en hældning fra én skrivemåde til alle de andre: forhold 1:n, decimaltal, procen…",
+      "/name-numerology-calculator/": "Find skæbnetal, sjælstal og personlighedstal i dit navn",
+      "/numerology-calculator/": "Indtast din fødselsdato og eventuelt dit navn, og få livstal, fødselsdagstal, personlig…",
+      "/lo-shu-grid-calculator/": "Indtast din fødselsdato for at lave dit Lo Shu-gitter",
+      "/moon-sign-calculator/": "Find dit månetegn ud fra fødselsdato, tidspunkt og sted",
+      "/rising-sign-calculator/": "Beregn din ascendant og præcise grad ud fra fødselsdato, nøjagtigt tidspunkt og fødested",
+      "/tarot-birth-card-calculator/": "Indtast din fødselsdato for at finde dine tarot-fødselskort",
+      "/love-calculator/": "Skriv to navne for at få jeres kærlighedsprocent",
+      "/flames-calculator/": "Indtast to navne og spil den klassiske FLAMES-leg",
+      "/magic-8-ball/": "Tænk på et ja/nej-spørgsmål, og tryk på eller ryst kuglen",
+      "/birthday-countdown-calculator/": "Se præcis hvor længe der er til næste fødselsdag, live på sekundet",
+      "/tip-calculator/": "Beregn det nøjagtige drikkepenge beløb for enhver regning og del det mellem flere personer",
+      "/random-number-generator/": "Generer kryptografisk sikre tilfældige tal inden for ethvert interval",
+      "/blood-type-compatibility/": "Vælg din blodtype for øjeblikkeligt at se, hvilke blodtyper du kan donere til og modtage fra",
+      "/privacy-policy-generator/": "Generér øjeblikkeligt en tilpasset privatlivspolitik til dit websted eller din app",
+      "/internet-speed-test/": "Test din internetforbindelse med tydelige faser for ping, download og upload",
+      "/keyboard-tester/": "Tryk på en tast for at se den lyse op på det visuelle tastatur nedenfor",
+      "/mouse-tester/": "Test alle knapper og bevægelser på din mus",
+      "/webcam-tester/": "Test dit webkamera med en live-visning direkte i din browser",
+      "/microphone-tester/": "Test din mikrofon med en realtids lydnivåmåler",
+      "/dead-pixel-checker/": "Registrer døde eller fastsiddende pixels på din skærm ved at gennemgå 8 fuld-skærms tes…",
+      "/monitor-color-test/": "Evaluer din skærms farvenøjagtighed, gradientglathed, skarphed og ensartethed med 8 pro…",
+      "/browser-info/": "Se alt om din browser, operativsystem, skærm og hardware ét sted — browsernavn, version…",
+      "/viewport-size/": "Se dine aktuelle browser-viewport-dimensioner, skærmopløsning, enhedspixelforhold, orie…"
+    }
+  }
+};
+
+  function getToolName(tool, lang) {
+    if (!tool) return '';
+    var l = lang || currentPageLang();
+    if (TOOL_I18N[l] && TOOL_I18N[l].names && TOOL_I18N[l].names[tool.u]) {
+      return TOOL_I18N[l].names[tool.u];
+    }
+    return tool.n || '';
+  }
+
+  function getToolDesc(tool, lang) {
+    if (!tool) return '';
+    var l = lang || currentPageLang();
+    if (TOOL_I18N[l] && TOOL_I18N[l].descs && TOOL_I18N[l].descs[tool.u]) {
+      return TOOL_I18N[l].descs[tool.u];
+    }
+    return tool.d || '';
+  }
+
+  function getToolCategory(cat, lang) {
+    if (!cat) return '';
+    var l = lang || currentPageLang();
+    if (CATEGORY_I18N[l] && CATEGORY_I18N[l][cat]) {
+      return CATEGORY_I18N[l][cat];
+    }
+    return cat;
+  }
+
+
   var POPULAR = [
-    '/json-formatter/', '/pdf-merge/', '/word-counter/',
-    '/base64-encoder/', '/hash-generator/', '/age-calculator/'
+    '/json-formatter/', '/pdf-merge/', '/image-compressor/',
+    '/qr-code-generator/', '/word-counter/', '/password-generator/',
+    '/currency-converter/', '/age-calculator/'
   ];
 
   var NON_LOCALIZED_PATHS = {};
@@ -675,6 +1267,131 @@
     });
   }
 
+  /* ===== FAVORITE TOOLS DATA MANAGEMENT ===== */
+  function getFavoritesRaw() {
+    try {
+      var raw = JSON.parse(localStorage.getItem('ac:fav') || '[]');
+      return Array.isArray(raw) ? raw : [];
+    } catch (_e) {
+      return [];
+    }
+  }
+
+  function getCanonicalToolPath(rawUrlOrPath) {
+    if (!rawUrlOrPath) return '';
+    try {
+      var pathname = rawUrlOrPath;
+      if (rawUrlOrPath.indexOf('://') !== -1 || rawUrlOrPath.startsWith('//')) {
+        pathname = new URL(rawUrlOrPath, window.location.origin).pathname;
+      }
+      return englishPathFor(pathname);
+    } catch (_e) {
+      return removeLocalePrefix(rawUrlOrPath);
+    }
+  }
+
+  function getFavoritesList() {
+    var rawList = getFavoritesRaw();
+    var lang = currentPageLang();
+    var list = [];
+    var seen = {};
+
+    rawList.forEach(function (item) {
+      if (!item) return;
+      var canon = getCanonicalToolPath(item.u || item.url || item.path);
+      if (!canon || seen[canon]) return;
+      seen[canon] = true;
+
+      var toolMeta = TOOLS.find(function (t) { return t.u === canon; });
+      var toolName = toolMeta ? toolMeta.n : (item.name || canon.replace(/\//g, ' ').trim());
+      var toolDesc = toolMeta ? toolMeta.d : '';
+      var toolIcon = toolMeta ? toolMeta.i : (item.icon || '/assets/img/icon-json.svg');
+      var toolCat  = toolMeta ? toolMeta.c : (item.cat || 'Tool');
+      var localizedUrl = localizedPathForLang(canon, lang, false);
+
+      list.push({
+        n: toolName,
+        u: canon,
+        d: toolDesc,
+        i: toolIcon,
+        c: toolCat,
+        localizedUrl: localizedUrl
+      });
+    });
+
+    return list;
+  }
+
+  function isFavoriteTool(canonPath) {
+    if (!canonPath) return false;
+    var rawList = getFavoritesRaw();
+    return rawList.some(function (item) {
+      if (!item) return false;
+      var c = getCanonicalToolPath(item.u || item.url || item.path);
+      return c === canonPath;
+    });
+  }
+
+  function toggleFavoriteTool(canonPath, toolName) {
+    if (!canonPath) return false;
+    var rawList = getFavoritesRaw();
+    var existingIdx = -1;
+    for (var i = 0; i < rawList.length; i++) {
+      var c = getCanonicalToolPath(rawList[i].u || rawList[i].url || rawList[i].path);
+      if (c === canonPath) {
+        existingIdx = i;
+        break;
+      }
+    }
+
+    var isNowFav = false;
+    if (existingIdx !== -1) {
+      rawList.splice(existingIdx, 1);
+      isNowFav = false;
+    } else {
+      var meta = TOOLS.find(function (t) { return t.u === canonPath; });
+      rawList.unshift({
+        u: canonPath,
+        name: toolName || (meta ? meta.n : canonPath),
+        icon: meta ? meta.i : '/assets/img/icon-json.svg',
+        cat: meta ? meta.c : 'Tool',
+        ts: Date.now()
+      });
+      isNowFav = true;
+    }
+
+    try {
+      localStorage.setItem('ac:fav', JSON.stringify(rawList));
+    } catch (_e) {}
+
+    try {
+      window.dispatchEvent(new CustomEvent('ac:favorites-updated', {
+        detail: { canonPath: canonPath, isFavorite: isNowFav }
+      }));
+    } catch (_e) {}
+
+    return isNowFav;
+  }
+
+  function updateFavoriteBtnState(btn, isFav, t) {
+    if (!btn) return;
+    var iconSpan = btn.querySelector('span[aria-hidden="true"]');
+    var textSpan = btn.querySelector('span:not([aria-hidden="true"])');
+    if (isFav) {
+      btn.classList.add('is-favorited');
+      btn.setAttribute('aria-label', t.removeFavoriteLabel || 'Remove tool from favorites');
+      btn.setAttribute('title', t.removeFavorite || 'Remove from favorites');
+      if (iconSpan) iconSpan.textContent = '★';
+      if (textSpan) textSpan.textContent = t.favorited || 'Favorited';
+    } else {
+      btn.classList.remove('is-favorited');
+      btn.setAttribute('aria-label', t.favoriteLabel || 'Add tool to favorites');
+      btn.setAttribute('title', t.favorite || 'Add to Favorites');
+      if (iconSpan) iconSpan.textContent = '☆';
+      if (textSpan) textSpan.textContent = t.favorite || 'Add to Favorites';
+    }
+  }
+
   function initToolPageActions() {
     const hasToolLayout = document.querySelector('.tool-wrapper, .tool-card, .tool-container, .tool-zone');
     if (!hasToolLayout) return;
@@ -693,6 +1410,9 @@
         share: 'Share',
         copy: 'Copy Link',
         favorite: 'Add to Favorites',
+        favorited: 'Favorited',
+        removeFavorite: 'Remove from favorites',
+        removeFavoriteLabel: 'Remove tool from favorites',
         relatedLabel: 'Go to related tools section',
         shareLabel: 'Share this tool',
         copyLabel: 'Copy tool link',
@@ -704,6 +1424,7 @@
         shareIncomplete: 'Share was not completed.',
         copied: 'Tool link copied to clipboard.',
         added: 'Added to favorites.',
+        removed: 'Removed from favorites.',
         exists: 'Already in favorites.'
       },
       es: {
@@ -711,6 +1432,9 @@
         share: 'Compartir',
         copy: 'Copiar enlace',
         favorite: 'Agregar a favoritos',
+        favorited: 'En favoritos',
+        removeFavorite: 'Eliminar de favoritos',
+        removeFavoriteLabel: 'Eliminar herramienta de favoritos',
         relatedLabel: 'Ir a la seccion de herramientas relacionadas',
         shareLabel: 'Compartir esta herramienta',
         copyLabel: 'Copiar enlace de la herramienta',
@@ -722,6 +1446,7 @@
         shareIncomplete: 'No se completo la accion de compartir.',
         copied: 'Enlace de la herramienta copiado.',
         added: 'Agregado a favoritos.',
+        removed: 'Eliminado de favoritos.',
         exists: 'Ya esta en favoritos.'
       },
       da: {
@@ -729,6 +1454,9 @@
         share: 'Del',
         copy: 'Kopiér link',
         favorite: 'Føj til favoritter',
+        favorited: 'Favorit',
+        removeFavorite: 'Fjern fra favoritter',
+        removeFavoriteLabel: 'Fjern værktøj fra favoritter',
         relatedLabel: 'Gå til relaterede værktøjer',
         shareLabel: 'Del dette værktøj',
         copyLabel: 'Kopiér værktøjslink',
@@ -740,6 +1468,7 @@
         shareIncomplete: 'Deling blev ikke gennemført.',
         copied: 'Værktøjslink kopieret.',
         added: 'Føjet til favoritter.',
+        removed: 'Fjernet fra favoritter.',
         exists: 'Findes allerede i favoritter.'
       }
     };
@@ -765,6 +1494,14 @@
 
     const title = hero.querySelector('h1');
     const toolName = title ? title.textContent.trim() : document.title;
+    const canonPath = getCanonicalToolPath(window.location.pathname);
+    const favButton = actions.querySelector('[data-action="favorite"]');
+
+    updateFavoriteBtnState(favButton, isFavoriteTool(canonPath), t);
+
+    window.addEventListener('ac:favorites-updated', function () {
+      updateFavoriteBtnState(favButton, isFavoriteTool(canonPath), t);
+    });
 
     actions.addEventListener('click', async (event) => {
       const button = event.target.closest('[data-action]');
@@ -801,17 +1538,9 @@
       }
 
       if (action === 'favorite') {
-        const key = 'ac:fav';
-        const current = JSON.parse(localStorage.getItem(key) || '[]');
-        const item = { name: toolName, url };
-        const exists = current.some((fav) => fav.url === url);
-        if (!exists) {
-          current.push(item);
-          localStorage.setItem(key, JSON.stringify(current));
-          showToast(t.added);
-        } else {
-          showToast(t.exists);
-        }
+        const isNowFav = toggleFavoriteTool(canonPath, toolName);
+        updateFavoriteBtnState(button, isNowFav, t);
+        showToast(isNowFav ? t.added : t.removed, isNowFav ? 'success' : 'info');
       }
     });
 
@@ -914,6 +1643,7 @@
     initLangSwitcher();
     updateMobileLangLinks();
     initSearch();
+    initDashboardQuickAccess();
     initFileUploadTriggers();
     initPromptCards();
     initStaticFaqAccordion();
@@ -999,6 +1729,17 @@
     if (el) {
       el.innerHTML = headerHTML;
       localizeSharedNavigation(el);
+      const searchModal = document.getElementById('search-modal');
+      if (searchModal && searchModal.parentElement !== document.body) {
+        document.body.appendChild(searchModal);
+      }
+      var lang = currentPageLang();
+      if (lang !== 'en') {
+        var searchBtnLabel = el.querySelector('.search-btn-label');
+        if (searchBtnLabel) {
+          searchBtnLabel.textContent = lang === 'es' ? 'Buscar herramientas…' : (lang === 'da' ? 'Søg værktøjer…' : 'Search tools…');
+        }
+      }
     }
   }
 
@@ -1098,15 +1839,31 @@
 
     // Category dropdowns — handle all .nav-more buttons
     const navDropBtns = document.querySelectorAll('.nav-more');
+    const navDropdowns = document.querySelectorAll('.nav-dropdown');
+
     function closeAllNavDropdowns() {
       navDropBtns.forEach(function (b) { b.setAttribute('aria-expanded', 'false'); });
     }
+
     navDropBtns.forEach(function (btn) {
       btn.addEventListener('click', function (e) {
         e.stopPropagation();
         const isOpen = btn.getAttribute('aria-expanded') === 'true';
         closeAllNavDropdowns();
+        closeLangDropdown();
         if (!isOpen) btn.setAttribute('aria-expanded', 'true');
+      });
+    });
+
+    // Mutual hover exclusion: entering any dropdown resets other open dropdowns and lang dropdown
+    navDropdowns.forEach(function (dd) {
+      dd.addEventListener('mouseenter', function () {
+        navDropBtns.forEach(function (b) {
+          if (b !== dd.querySelector('.nav-more')) {
+            b.setAttribute('aria-expanded', 'false');
+          }
+        });
+        closeLangDropdown();
       });
     });
 
@@ -1342,19 +2099,44 @@
     if (!btn || !modal || !input) return;
 
     var activeIdx = -1;
+    var lang = currentPageLang();
+    if (lang === 'es') {
+      input.placeholder = 'Buscar entre 128 herramientas…';
+      input.setAttribute('aria-label', 'Buscar herramientas');
+    } else if (lang === 'da') {
+      input.placeholder = 'Søg i 128 værktøjer…';
+      input.setAttribute('aria-label', 'Søg værktøjer');
+    } else {
+      input.placeholder = 'Search 128 tools…';
+      input.setAttribute('aria-label', 'Search tools');
+    }
+
+    var footerEl = modal.querySelector('.search-footer');
+    if (footerEl) {
+      if (lang === 'es') {
+        footerEl.innerHTML = '<span><kbd>↑↓</kbd> Navegar</span><span><kbd>↵</kbd> Abrir</span><span><kbd>Esc</kbd> Cerrar</span>';
+      } else if (lang === 'da') {
+        footerEl.innerHTML = '<span><kbd>↑↓</kbd> Naviger</span><span><kbd>↵</kbd> Åbn</span><span><kbd>Esc</kbd> Luk</span>';
+      }
+    }
 
     function openSearch() {
       closeMobileMenu();
+      if (modal.parentElement !== document.body) {
+        document.body.appendChild(modal);
+      }
+      document.body.classList.add('search-open');
       modal.classList.add('open');
       modal.setAttribute('aria-hidden', 'false');
       document.body.style.overflow = 'hidden';
       input.value = '';
       activeIdx = -1;
-      showPopular();
+      showDefaultList();
       requestAnimationFrame(function () { input.focus(); });
     }
 
     function closeSearch() {
+      document.body.classList.remove('search-open');
       modal.classList.remove('open');
       modal.setAttribute('aria-hidden', 'true');
       document.body.style.overflow = '';
@@ -1392,7 +2174,7 @@
     input.addEventListener('input', function () {
       activeIdx = -1;
       var q = input.value.trim();
-      if (!q) { showPopular(); return; }
+      if (!q) { showDefaultList(); return; }
       renderResults(q);
     });
 
@@ -1407,12 +2189,26 @@
       }
     }
 
-    function showPopular() {
-      var pop = TOOLS.filter(function (t) { return POPULAR.indexOf(t.u) !== -1; });
-      renderList(pop, '⚡ Popular tools', null);
+    function showDefaultList() {
+      var favs = getFavoritesList();
+      var lang = currentPageLang();
+      if (favs && favs.length > 0) {
+        var favTitle = lang === 'es' ? '★ Herramientas favoritas' : (lang === 'da' ? '★ Favoritværktøjer' : '★ Favorite tools');
+        renderList(favs, favTitle, null);
+      } else {
+        var pop = TOOLS.filter(function (t) { return POPULAR.indexOf(t.u) !== -1; });
+        var quickTitle = lang === 'es' ? '⚡ Acceso Rápido' : (lang === 'da' ? '⚡ Hurtig Adgang' : '⚡ Quick Access');
+        renderList(pop, quickTitle, null);
+      }
       emptyEl.textContent = '';
       emptyEl.classList.remove('visible');
     }
+
+    window.addEventListener('ac:favorites-updated', function () {
+      if (modal.classList.contains('open') && !input.value.trim()) {
+        showDefaultList();
+      }
+    });
 
         var SYNONYMS = {
       // English / Developer intents (SEO-02)
@@ -1482,6 +2278,7 @@
       var ql = q.toLowerCase().trim();
       var seen = {};
       var synonymHits = [];
+      var lang = currentPageLang();
 
       // Exact or prefix synonym match
       if (SYNONYMS[ql]) {
@@ -1496,7 +2293,8 @@
 
       var nameHits = TOOLS.filter(function(t) {
         if (seen[t.u]) return false;
-        if (t.n.toLowerCase().indexOf(ql) !== -1) {
+        var localizedName = getToolName(t, lang);
+        if (t.n.toLowerCase().indexOf(ql) !== -1 || localizedName.toLowerCase().indexOf(ql) !== -1) {
           seen[t.u] = true;
           return true;
         }
@@ -1505,15 +2303,18 @@
 
       var otherHits = TOOLS.filter(function(t) {
         if (seen[t.u]) return false;
+        var localizedDesc = getToolDesc(t, lang);
+        var localizedCat = getToolCategory(t.c, lang);
         var match = (t.d.toLowerCase().indexOf(ql) !== -1 ||
+                     localizedDesc.toLowerCase().indexOf(ql) !== -1 ||
                      t.k.toLowerCase().indexOf(ql) !== -1 ||
-                     t.c.toLowerCase().indexOf(ql) !== -1);
+                     t.c.toLowerCase().indexOf(ql) !== -1 ||
+                     localizedCat.toLowerCase().indexOf(ql) !== -1);
         if (match) seen[t.u] = true;
         return match;
       });
 
       var matched = synonymHits.concat(nameHits, otherHits).slice(0, 8);
-      var lang = currentPageLang();
       if (!matched.length) {
         list.innerHTML = '';
         emptyEl.textContent = lang === 'es'
@@ -1530,18 +2331,23 @@
     }
 
     function renderList(tools, label, q) {
+      var lang = currentPageLang();
       var html = label ? '<li class="search-section-label">' + escapeHtml(label) + '</li>' : '';
       html += tools.map(function (t) {
-        var name = q ? hlMatch(t.n, q) : escapeHtml(t.n);
-        var href = localizedPathForLang(t.u, currentPageLang(), false);
+        var toolName = getToolName(t, lang);
+        var toolDesc = getToolDesc(t, lang);
+        var toolCat = getToolCategory(t.c, lang);
+        var name = q ? hlMatch(toolName, q) : escapeHtml(toolName);
+        var desc = q ? hlMatch(toolDesc, q) : escapeHtml(toolDesc);
+        var href = localizedPathForLang(t.u, lang, false);
         return '<li>' +
           '<a href="' + href + '" class="search-result-item">' +
             '<img src="' + t.i + '" alt="" class="search-result-icon" width="36" height="36" loading="lazy">' +
             '<div class="search-result-info">' +
               '<div class="search-result-name">' + name + '</div>' +
-              '<div class="search-result-desc">' + escapeHtml(t.d) + '</div>' +
+              '<div class="search-result-desc">' + desc + '</div>' +
             '</div>' +
-            '<span class="search-result-badge">' + escapeHtml(t.c) + '</span>' +
+            '<span class="search-result-badge">' + escapeHtml(toolCat) + '</span>' +
           '</a>' +
         '</li>';
       }).join('');
@@ -1556,6 +2362,42 @@
         '<mark class="search-hl">' + escapeHtml(text.slice(idx, idx + query.length)) + '</mark>' +
         escapeHtml(text.slice(idx + query.length));
     }
+  }
+
+  /* ===== HOMEPAGE DASHBOARD QUICK ACCESS / FAVORITES ===== */
+  function initDashboardQuickAccess() {
+    var quickGrid = document.querySelector('.dash-quick-grid');
+    if (!quickGrid || typeof quickGrid.closest !== 'function') return;
+    var section = quickGrid.closest('.dash-section');
+    var titleEl = section && typeof section.querySelector === 'function' ? section.querySelector('.dash-section-title') : null;
+    var defaultTitle = titleEl ? titleEl.textContent : 'Quick Access';
+    var defaultGridHTML = quickGrid.innerHTML;
+
+    function renderDashboardQuick() {
+      var favs = getFavoritesList();
+      var lang = currentPageLang();
+
+      if (favs && favs.length > 0) {
+        if (titleEl) {
+          titleEl.textContent = lang === 'es' ? 'Herramientas Favoritas' : (lang === 'da' ? 'Favoritværktøjer' : 'Favorite Tools');
+        }
+        var html = favs.map(function (tool) {
+          var toolName = getToolName(tool, lang);
+          var href = localizedPathForLang(tool.u, lang, false);
+          return '<a href="' + href + '" class="dash-quick-card">' +
+            '<img src="' + tool.i + '" alt="' + escapeHtml(toolName) + ' icon" width="26" height="26" loading="lazy">' +
+            '<span class="dash-quick-card-name">' + escapeHtml(toolName) + '</span>' +
+          '</a>';
+        }).join('');
+        quickGrid.innerHTML = html;
+      } else {
+        if (titleEl) titleEl.textContent = defaultTitle;
+        quickGrid.innerHTML = defaultGridHTML;
+      }
+    }
+
+    renderDashboardQuick();
+    window.addEventListener('ac:favorites-updated', renderDashboardQuick);
   }
 
   /* ===== MAIN CONTENT ID ===== */
@@ -1916,10 +2758,16 @@
       panel.insertBefore(fsBtn, panel.firstChild);
     }
 
+    var savedScrollY = 0;
+
     function enter() {
+      savedScrollY = window.scrollY || window.pageYOffset || document.documentElement.scrollTop || 0;
       panel.classList.add('is-fullscreen');
       fsBtn.classList.add('fs-active');
+      fsBtn.textContent = '✕';
+      fsBtn.title = 'Exit fullscreen (Esc)';
       document.body.style.overflow = 'hidden';
+      document.documentElement.style.overflow = 'hidden';
       var ov = document.getElementById('fs-overlay');
       if (!ov) {
         ov = document.createElement('div');
@@ -1927,16 +2775,20 @@
         document.body.appendChild(ov);
       }
       ov.classList.add('active');
+      ov.onclick = function () {
+        if (panel.classList.contains('is-fullscreen')) exit();
+      };
 
       // Build the floating toolbar
       var bar = document.createElement('div');
       bar.className = 'ac-fs-toolbar';
+      bar.style.cssText = 'position:fixed!important;top:8px!important;right:12px!important;z-index:10002!important;display:flex!important;flex-direction:row!important;align-items:center!important;flex-wrap:nowrap!important;gap:6px!important;';
       bar.innerHTML =
         (opts.extra || '') +
-        '<button type="button" class="ac-btn ac-fs-btn" data-act="fs-" title="Smaller font">A−</button>' +
-        '<button type="button" class="ac-btn ac-fs-btn" data-act="fs+" title="Larger font">A+</button>' +
-        '<button type="button" class="ac-btn ac-fs-btn" data-act="close" title="Exit fullscreen (Esc)">✕ Close</button>';
-      panel.appendChild(bar);
+        '<button type="button" class="ac-btn ac-fs-btn" data-act="fs-" title="Smaller font" style="height:28px;min-height:28px;padding:0 8px;font-size:12px;flex:0 0 auto">A−</button>' +
+        '<button type="button" class="ac-btn ac-fs-btn" data-act="fs+" title="Larger font" style="height:28px;min-height:28px;padding:0 8px;font-size:12px;flex:0 0 auto">A+</button>' +
+        '<button type="button" class="ac-btn ac-fs-btn" data-act="close" title="Exit fullscreen (Esc)" style="height:28px;min-height:28px;padding:0 8px;font-size:12px;flex:0 0 auto">✕ Close</button>';
+      panel.insertBefore(bar, panel.firstChild);
       panel._fsBar = bar;
 
       function bump(delta) {
@@ -1955,10 +2807,20 @@
       if (typeof opts.onExit === 'function') opts.onExit(panel);
       panel.classList.remove('is-fullscreen');
       fsBtn.classList.remove('fs-active');
+      fsBtn.textContent = '⛶';
+      fsBtn.title = 'Fullscreen';
       document.body.style.overflow = '';
+      document.documentElement.style.overflow = '';
       var ov = document.getElementById('fs-overlay');
-      if (ov) ov.classList.remove('active');
+      if (ov) {
+        ov.classList.remove('active');
+        ov.onclick = null;
+      }
       if (panel._fsBar) { panel._fsBar.remove(); panel._fsBar = null; }
+      window.scrollTo({ top: savedScrollY, behavior: 'instant' });
+      if (window.scrollY !== savedScrollY) {
+        window.scrollTo(0, savedScrollY);
+      }
     }
     fsBtn.addEventListener('click', function () {
       if (panel.classList.contains('is-fullscreen')) exit();
@@ -1977,6 +2839,12 @@
    *   const buf = await window.loadFileWithProgress(file);        // 100 MB default
    *   const buf = await window.loadFileWithProgress(file, 50);    // 50 MB cap
    */
+  window.getToolName = getToolName;
+  window.getToolDesc = getToolDesc;
+  window.getToolCategory = getToolCategory;
+  window.TOOL_I18N = TOOL_I18N;
+  window.CATEGORY_I18N = CATEGORY_I18N;
+
   window.loadFileWithProgress = function (file, maxMB) {
     maxMB = typeof maxMB === 'number' ? maxMB : 100;
     var L = window.progStrings();

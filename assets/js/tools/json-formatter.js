@@ -102,6 +102,14 @@ document.addEventListener('DOMContentLoaded', function () {
   var virtualCurrentMatchLine = -1;
   var virtualScrollRaf = null;
 
+  /* ===== ADVANCED SELECTION & BOOKMARK STATE ===== */
+  var bookmarkedLines = new Set();
+  var selectedLines = new Set();
+  var selectionRange = null;
+  var lastSelectedLine = -1;
+  var standardFormattedText = null;
+  var standardFormattedLines = null;
+
   /* ===== WEB WORKER CLIENT ===== */
   var jsonWorker = null;
   var workerCallbacks = {};
@@ -219,7 +227,25 @@ document.addEventListener('DOMContentLoaded', function () {
       loadedToast: function(n){ return 'Loaded "' + n + '"'; },
       largePayloadHint: function(size){ return '⚡ Large payload (' + size + ') — click Format or Ctrl+Enter'; },
       perfModeTitle: '⚡ High-Performance Mode (Zero-Lag)',
-      copyLargeNotice: 'Copying large JSON to clipboard…'
+      copyLargeNotice: 'Copying large JSON to clipboard…',
+      noBookmarkedLines: 'No bookmarked lines to copy',
+      copiedBookmarked: function(n){ return 'Copied ' + n + ' bookmarked line' + (n === 1 ? '' : 's'); },
+      noSelectedLines: 'No lines selected to copy',
+      copiedSelected: function(n){ return 'Copied ' + n + ' selected line' + (n === 1 ? '' : 's'); },
+      copiedAll: 'Copied formatted JSON to clipboard',
+      copiedCurrent: function(n){ return 'Copied line ' + n; },
+      copiedRange: function(n, s, e){ return 'Copied ' + n + ' lines (lines ' + s + '–' + e + ')'; },
+      linesSelected: function(n){ return (typeof n === 'number' ? n.toLocaleString() : n) + ' line' + (n === 1 ? '' : 's') + ' selected'; },
+      copySelectedMenu: function(n){ return 'Copy Selected Lines (' + (typeof n === 'number' ? n.toLocaleString() : n) + ')'; },
+      copyBookmarkedMenu: function(n){ return 'Copy Bookmarked Lines (' + (typeof n === 'number' ? n.toLocaleString() : n) + ')'; },
+      lineRangeInvalid: 'Please enter valid positive line numbers',
+      lineRangeOrder: 'Start line cannot be greater than End line',
+      lineRangeExceed: function(max){ return 'End line cannot exceed total lines (' + (typeof max === 'number' ? max.toLocaleString() : max) + ')'; },
+      clipboardDenied: 'Clipboard access denied — use Download instead',
+      noActiveLine: 'No active line selected. Click a line number to set current line.',
+      copyPayloadTooLarge: function(size){ return 'Selection is too large for clipboard (' + size + ', exceeds 5 MB limit). Please use Download instead.'; },
+      copyLargeDownloadHint: function(size){ return 'Selection is large (' + size + ') — downloading file instead'; },
+      downloadedLines: function(n){ return 'Downloaded ' + (typeof n === 'number' ? n.toLocaleString() : n) + ' lines'; }
     },
     da: {
       noSearch: 'Ingen søgning endnu', noMatches: 'Ingen resultater fundet',
@@ -236,7 +262,25 @@ document.addEventListener('DOMContentLoaded', function () {
       loadedToast: function(n){ return 'Indlæste "' + n + '"'; },
       largePayloadHint: function(size){ return '⚡ Stor fil (' + size + ') — klik Formatér eller Ctrl+Enter'; },
       perfModeTitle: '⚡ Højtydende visning (Uden forsinkelse)',
-      copyLargeNotice: 'Kopierer stor JSON til udklipsholder…'
+      copyLargeNotice: 'Kopierer stor JSON til udklipsholder…',
+      noBookmarkedLines: 'Ingen bogmærkede linjer at kopiere',
+      copiedBookmarked: function(n){ return 'Kopierede ' + (typeof n === 'number' ? n.toLocaleString() : n) + ' bogmærket linje' + (n === 1 ? '' : 'r'); },
+      noSelectedLines: 'Ingen markerede linjer at kopiere',
+      copiedSelected: function(n){ return 'Kopierede ' + (typeof n === 'number' ? n.toLocaleString() : n) + ' markeret linje' + (n === 1 ? '' : 'r'); },
+      copiedAll: 'Kopierede formateret JSON til udklipsholder',
+      copiedCurrent: function(n){ return 'Kopierede linje ' + (typeof n === 'number' ? n.toLocaleString() : n); },
+      copiedRange: function(n, s, e){ return 'Kopierede ' + (typeof n === 'number' ? n.toLocaleString() : n) + ' linjer (linje ' + s + '–' + e + ')'; },
+      linesSelected: function(n){ return (typeof n === 'number' ? n.toLocaleString() : n) + ' linje' + (n === 1 ? '' : 'r') + ' markeret'; },
+      copySelectedMenu: function(n){ return 'Kopiér markerede linjer (' + (typeof n === 'number' ? n.toLocaleString() : n) + ')'; },
+      copyBookmarkedMenu: function(n){ return 'Kopiér bogmærkede linjer (' + (typeof n === 'number' ? n.toLocaleString() : n) + ')'; },
+      lineRangeInvalid: 'Indtast gyldige positive linjenumre',
+      lineRangeOrder: 'Startlinje kan ikke være større end slutlinje',
+      lineRangeExceed: function(max){ return 'Slutlinje kan ikke overstige det samlede antal linjer (' + (typeof max === 'number' ? max.toLocaleString() : max) + ')'; },
+      clipboardDenied: 'Adgang til udklipsholder nægtet — brug Download i stedet',
+      noActiveLine: 'Ingen aktiv linje valgt. Klik på et linjenummer for at vælge en linje.',
+      copyPayloadTooLarge: function(size){ return 'Markeringen er for stor til udklipsholderen (' + size + ', overstiger 5 MB grænsen). Brug venligst Download i stedet.'; },
+      copyLargeDownloadHint: function(size){ return 'Udvælgelsen er stor (' + size + ') — downloader fil i stedet'; },
+      downloadedLines: function(n){ return 'Downloadede ' + (typeof n === 'number' ? n.toLocaleString() : n) + ' linjer'; }
     },
     es: {
       noSearch: 'Sin búsqueda todavía', noMatches: 'No se encontraron coincidencias',
@@ -253,7 +297,25 @@ document.addEventListener('DOMContentLoaded', function () {
       loadedToast: function(n){ return 'Cargado "' + n + '"'; },
       largePayloadHint: function(size){ return '⚡ Archivo grande (' + size + ') — haz clic en Formatear o Ctrl+Enter'; },
       perfModeTitle: '⚡ Modo de alto rendimiento (Sin demoras)',
-      copyLargeNotice: 'Copiando JSON grande al portapapeles…'
+      copyLargeNotice: 'Copiando JSON grande al portapapeles…',
+      noBookmarkedLines: 'No hay líneas marcadas para copiar',
+      copiedBookmarked: function(n){ return 'Se ' + (n === 1 ? 'copió 1 línea marcada' : 'copiaron ' + (typeof n === 'number' ? n.toLocaleString() : n) + ' líneas marcadas'); },
+      noSelectedLines: 'No hay líneas seleccionadas para copiar',
+      copiedSelected: function(n){ return 'Se ' + (n === 1 ? 'copió 1 línea seleccionada' : 'copiaron ' + (typeof n === 'number' ? n.toLocaleString() : n) + ' líneas seleccionadas'); },
+      copiedAll: 'JSON formateado copiado al portapapeles',
+      copiedCurrent: function(n){ return 'Se copió la línea ' + (typeof n === 'number' ? n.toLocaleString() : n); },
+      copiedRange: function(n, s, e){ return 'Se copiaron ' + (typeof n === 'number' ? n.toLocaleString() : n) + ' líneas (líneas ' + s + '–' + e + ')'; },
+      linesSelected: function(n){ return (typeof n === 'number' ? n.toLocaleString() : n) + ' línea' + (n === 1 ? '' : 's') + ' seleccionada' + (n === 1 ? '' : 's'); },
+      copySelectedMenu: function(n){ return 'Copiar líneas seleccionadas (' + (typeof n === 'number' ? n.toLocaleString() : n) + ')'; },
+      copyBookmarkedMenu: function(n){ return 'Copiar líneas marcadas (' + (typeof n === 'number' ? n.toLocaleString() : n) + ')'; },
+      lineRangeInvalid: 'Introduce números de línea válidos',
+      lineRangeOrder: 'La línea inicial no puede ser mayor que la línea final',
+      lineRangeExceed: function(max){ return 'La línea final no puede superar el total de líneas (' + (typeof max === 'number' ? max.toLocaleString() : max) + ')'; },
+      clipboardDenied: 'Acceso denegado al portapapeles: usa Descargar en su lugar',
+      noActiveLine: 'Ninguna línea activa seleccionada. Haga clic en un número de línea para seleccionarla.',
+      copyPayloadTooLarge: function(size){ return 'La selección es demasiado grande para el portapapeles (' + size + ', supera el límite de 5 MB). Utilice Descargar en su lugar.'; },
+      copyLargeDownloadHint: function(size){ return 'La selección es grande (' + size + ') — descargando archivo en su lugar'; },
+      downloadedLines: function(n){ return 'Se descargaron ' + (typeof n === 'number' ? n.toLocaleString() : n) + ' líneas'; }
     }
   };
   var T = STR[LANG] || STR.en;
@@ -333,7 +395,7 @@ document.addEventListener('DOMContentLoaded', function () {
   function ensureRowPool(containerHeight) {
     var neededRows = Math.ceil(containerHeight / LINE_HEIGHT) + 30;
     var digits = String(virtualTotalLines).length;
-    var lnWidth = Math.max(50, digits * 8 + 14);
+    var lnWidth = Math.max(58, digits * 8 + 26);
     while (virtualRowPool.length < neededRows) {
       var row = document.createElement('div');
       row.className = 'j-vrow';
@@ -341,6 +403,16 @@ document.addEventListener('DOMContentLoaded', function () {
       ln.className = 'j-ln';
       ln.style.width = lnWidth + 'px';
       ln.style.minWidth = lnWidth + 'px';
+      var bm = document.createElement('span');
+      bm.className = 'j-bm';
+      bm.textContent = '☆';
+      bm.title = 'Bookmark line';
+      bm.setAttribute('role', 'button');
+      bm.setAttribute('aria-label', 'Bookmark line');
+      var num = document.createElement('span');
+      num.className = 'j-line-num';
+      ln.appendChild(bm);
+      ln.appendChild(num);
       var code = document.createElement('span');
       code.className = 'j-code';
       row.appendChild(ln);
@@ -393,30 +465,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
     badge.style.display = 'flex';
     badge.innerHTML = '<span>' + T.perfModeTitle + ' · <strong>' + virtualTotalLines.toLocaleString() + ' lines</strong> (' + formatBytes(virtualText.length) + ')</span>' +
-      '<span class="v-perf-tag">Zero Lag</span>' +
-      '<span class="v-fontsize-ctl" role="group" aria-label="Font size">' +
-        '<button type="button" class="v-fs-btn" data-dir="-1" aria-label="Decrease font size">A−</button>' +
-        '<span class="v-fs-val" id="jf-fs-val">13</span>' +
-        '<button type="button" class="v-fs-btn" data-dir="1" aria-label="Increase font size">A+</button>' +
-      '</span>';
-    // Font-size +/- control (persists in localStorage)
-    var FS_KEY = 'jf:fontsize';
-    var fs = parseInt(localStorage.getItem(FS_KEY), 10);
-    if (!fs || fs < 10 || fs > 24) fs = 13;
-    applyFontSize(fs);
-    badge.querySelectorAll('.v-fs-btn').forEach(function (btn) {
-      btn.addEventListener('click', function () {
-        var cur = parseInt(localStorage.getItem(FS_KEY), 10) || 13;
-        var next = Math.max(10, Math.min(24, cur + parseInt(btn.dataset.dir, 10)));
-        localStorage.setItem(FS_KEY, String(next));
-        applyFontSize(next);
-      });
-    });
-    function applyFontSize(px) {
-      outputEl.style.setProperty('--panel-font-size', px + 'px');
-      var lbl = document.getElementById('jf-fs-val');
-      if (lbl) lbl.textContent = px;
-    }
+      '<span class="v-perf-tag">Zero Lag</span>';
 
     // Phantom spacer
     virtualSpacer = document.createElement('div');
@@ -482,10 +531,28 @@ document.addEventListener('DOMContentLoaded', function () {
         var lineText = virtualText.substring(startOffset, endOffset);
 
         var lnEl = row.firstChild;
+        var bmEl = lnEl.firstChild;
+        var numEl = lnEl.lastChild;
         var codeEl = row.lastChild;
 
-        lnEl.textContent = currentLineIdx + 1;
+        numEl.textContent = currentLineIdx + 1;
         codeEl.innerHTML = colorizeJsonLine(lineText);
+
+        if (bookmarkedLines.has(currentLineIdx)) {
+          row.classList.add('is-bookmarked');
+          bmEl.textContent = '★';
+          bmEl.classList.add('active');
+        } else {
+          row.classList.remove('is-bookmarked');
+          bmEl.textContent = '☆';
+          bmEl.classList.remove('active');
+        }
+
+        if (isLineSelected(currentLineIdx)) {
+          row.classList.add('j-selected');
+        } else {
+          row.classList.remove('j-selected');
+        }
 
         if (currentLineIdx === virtualCurrentMatchLine) {
           row.classList.add('j-search-current');
@@ -545,6 +612,14 @@ document.addEventListener('DOMContentLoaded', function () {
   /* ===== COLLAPSIBLE JSON RENDERER (FOR STANDARD SIZED PAYLOADS) ===== */
   function buildTree(data) {
     var nid = 0;
+    var lineCounter = 0;
+
+    function makeLn(idx) {
+      var isBm = bookmarkedLines.has(idx);
+      var bmChar = isBm ? '★' : '☆';
+      var bmCls = isBm ? 'j-bm active' : 'j-bm';
+      return '<span class="j-ln"><span class="' + bmCls + '" data-line-idx="' + idx + '" role="button" title="Bookmark line" aria-label="Bookmark line">' + bmChar + '</span><span class="j-line-num">' + (idx + 1) + '</span></span>';
+    }
 
     function render(val, key, depth, isLast, path) {
       var ind    = ' '.repeat(depth * 2);
@@ -555,16 +630,20 @@ document.addEventListener('DOMContentLoaded', function () {
       var pathAttr = ' data-path="' + escHtml(path) + '"';
 
       if (val === null) {
-        return '<div class="j-line"' + pathAttr + '><span class="j-toggle invis" aria-hidden="true">▾</span>' + ind + keyHtml + '<span class="j-null">null</span>' + comma + '</div>';
+        var lIdx0 = lineCounter++;
+        return '<div class="j-line' + (bookmarkedLines.has(lIdx0) ? ' is-bookmarked' : '') + (isLineSelected(lIdx0) ? ' j-selected' : '') + '" data-line-idx="' + lIdx0 + '"' + pathAttr + '>' + makeLn(lIdx0) + '<span class="j-toggle invis" aria-hidden="true">▾</span>' + ind + keyHtml + '<span class="j-null">null</span>' + comma + '</div>';
       }
       if (typeof val === 'string') {
-        return '<div class="j-line"' + pathAttr + '><span class="j-toggle invis" aria-hidden="true">▾</span>' + ind + keyHtml + '<span class="j-str">"' + escHtml(val) + '"</span>' + comma + '</div>';
+        var lIdx1 = lineCounter++;
+        return '<div class="j-line' + (bookmarkedLines.has(lIdx1) ? ' is-bookmarked' : '') + (isLineSelected(lIdx1) ? ' j-selected' : '') + '" data-line-idx="' + lIdx1 + '"' + pathAttr + '>' + makeLn(lIdx1) + '<span class="j-toggle invis" aria-hidden="true">▾</span>' + ind + keyHtml + '<span class="j-str">"' + escHtml(val) + '"</span>' + comma + '</div>';
       }
       if (typeof val === 'number') {
-        return '<div class="j-line"' + pathAttr + '><span class="j-toggle invis" aria-hidden="true">▾</span>' + ind + keyHtml + '<span class="j-num">' + val + '</span>' + comma + '</div>';
+        var lIdx2 = lineCounter++;
+        return '<div class="j-line' + (bookmarkedLines.has(lIdx2) ? ' is-bookmarked' : '') + (isLineSelected(lIdx2) ? ' j-selected' : '') + '" data-line-idx="' + lIdx2 + '"' + pathAttr + '>' + makeLn(lIdx2) + '<span class="j-toggle invis" aria-hidden="true">▾</span>' + ind + keyHtml + '<span class="j-num">' + val + '</span>' + comma + '</div>';
       }
       if (typeof val === 'boolean') {
-        return '<div class="j-line"' + pathAttr + '><span class="j-toggle invis" aria-hidden="true">▾</span>' + ind + keyHtml + '<span class="j-bool">' + val + '</span>' + comma + '</div>';
+        var lIdx3 = lineCounter++;
+        return '<div class="j-line' + (bookmarkedLines.has(lIdx3) ? ' is-bookmarked' : '') + (isLineSelected(lIdx3) ? ' j-selected' : '') + '" data-line-idx="' + lIdx3 + '"' + pathAttr + '>' + makeLn(lIdx3) + '<span class="j-toggle invis" aria-hidden="true">▾</span>' + ind + keyHtml + '<span class="j-bool">' + val + '</span>' + comma + '</div>';
       }
 
       var isArr   = Array.isArray(val);
@@ -574,7 +653,8 @@ document.addEventListener('DOMContentLoaded', function () {
       var close   = isArr ? ']' : '}';
 
       if (count === 0) {
-        return '<div class="j-line"' + pathAttr + '><span class="j-toggle invis" aria-hidden="true">▾</span>' + ind + keyHtml + '<span class="j-bracket">' + open + close + '</span>' + comma + '</div>';
+        var lIdx4 = lineCounter++;
+        return '<div class="j-line' + (bookmarkedLines.has(lIdx4) ? ' is-bookmarked' : '') + (isLineSelected(lIdx4) ? ' j-selected' : '') + '" data-line-idx="' + lIdx4 + '"' + pathAttr + '>' + makeLn(lIdx4) + '<span class="j-toggle invis" aria-hidden="true">▾</span>' + ind + keyHtml + '<span class="j-bracket">' + open + close + '</span>' + comma + '</div>';
       }
 
       var id   = ++nid;
@@ -592,16 +672,21 @@ document.addEventListener('DOMContentLoaded', function () {
         return render(e[1], isArr ? null : e[0], depth + 1, i === sortedEntries.length - 1, childPath);
       }).join('');
 
+      var openIdx = lineCounter++;
+      var closeIdx = lineCounter++;
+
       return (
-        '<div class="j-line j-node-open" data-nid="' + id + '"' + pathAttr + '>' +
+        '<div class="j-line j-node-open' + (bookmarkedLines.has(openIdx) ? ' is-bookmarked' : '') + (isLineSelected(openIdx) ? ' j-selected' : '') + '" data-nid="' + id + '" data-line-idx="' + openIdx + '"' + pathAttr + '>' +
+          makeLn(openIdx) +
           '<span class="j-toggle" data-nid="' + id + '" role="button" aria-expanded="true" aria-label="Collapse node" tabindex="0">▾</span>' +
           ind + keyHtml + '<span class="j-bracket">' + open + '</span>' +
         '</div>' +
         '<div class="j-node-body" data-nid="' + id + '">' +
           childHtml +
-          '<div class="j-line"><span class="j-toggle invis" aria-hidden="true">▾</span>' + ind + '<span class="j-bracket">' + close + '</span>' + comma + '</div>' +
+          '<div class="j-line' + (bookmarkedLines.has(closeIdx) ? ' is-bookmarked' : '') + (isLineSelected(closeIdx) ? ' j-selected' : '') + '" data-line-idx="' + closeIdx + '">' + makeLn(closeIdx) + '<span class="j-toggle invis" aria-hidden="true">▾</span>' + ind + '<span class="j-bracket">' + close + '</span>' + comma + '</div>' +
         '</div>' +
-        '<div class="j-line j-node-collapsed" data-nid="' + id + '" style="display:none"' + pathAttr + '>' +
+        '<div class="j-line j-node-collapsed" data-nid="' + id + '" data-line-idx="' + openIdx + '" style="display:none"' + pathAttr + '>' +
+          makeLn(openIdx) +
           '<span class="j-toggle" data-nid="' + id + '" role="button" aria-expanded="false" aria-label="Expand node" tabindex="0">▶</span>' +
           ind + keyHtml +
           '<span class="j-bracket">{ </span><span class="j-collapsed-hint">' + hint + '</span><span class="j-bracket"> }</span>' + comma +
@@ -681,12 +766,37 @@ document.addEventListener('DOMContentLoaded', function () {
   var searchNextBtn = document.getElementById('search-next');
   var searchCountEl = document.getElementById('search-count');
 
+  // Compact toolbar search controls (Output panel / Fullscreen)
+  var fsSearchQueryEl = document.getElementById('fs-search-query');
+  var fsSearchClearBtn = document.getElementById('fs-search-clear');
+  var fsSearchScopeEl = document.getElementById('fs-search-scope');
+  var fsSearchCountEl = document.getElementById('fs-search-count');
+  var fsSearchPrevBtn = document.getElementById('fs-search-prev');
+  var fsSearchNextBtn = document.getElementById('fs-search-next');
+
   var searchMatches = [];
   var searchIndex = -1;
   var searchDebounce;
 
   function setSearchCount(msg) {
     if (searchCountEl) searchCountEl.textContent = msg;
+    var fsCount = document.getElementById('fs-search-count') || fsSearchCountEl;
+    if (fsCount) {
+      if (msg === T.noSearch) {
+        fsCount.textContent = '0 / 0';
+      } else {
+        fsCount.textContent = msg;
+      }
+    }
+  }
+
+  function updateClearBtnVisibility() {
+    var q = (fsSearchQueryEl && fsSearchQueryEl.value) || (searchQueryEl && searchQueryEl.value) || '';
+    var clearBtn = document.getElementById('fs-search-clear') || fsSearchClearBtn;
+    if (clearBtn) {
+      clearBtn.disabled = q.length === 0;
+      clearBtn.style.opacity = q.length > 0 ? '1' : '0.6';
+    }
   }
 
   function clearSearchHighlights() {
@@ -734,9 +844,10 @@ document.addEventListener('DOMContentLoaded', function () {
     clearSearchHighlights();
     searchMatches = [];
     searchIndex = -1;
-    var query = searchQueryEl ? searchQueryEl.value.trim() : '';
+    var query = (fsSearchQueryEl && fsSearchQueryEl.value.trim()) || (searchQueryEl ? searchQueryEl.value.trim() : '');
+    updateClearBtnVisibility();
     if (!query) { setSearchCount(T.noSearch); return; }
-    var mode  = searchModeEl ? searchModeEl.value : 'both';
+    var mode  = (fsSearchScopeEl && fsSearchScopeEl.value) || (searchModeEl ? searchModeEl.value : 'both');
 
     if (isVirtualized) {
       // Off-thread or fast search in virtualized text.
@@ -753,67 +864,78 @@ document.addEventListener('DOMContentLoaded', function () {
         searchMatches = res.matches;
         searchIndex = 0;
         highlightCurrentMatch();
+        setSearchCount(T.matchCount(0, searchMatches.length));
       } else {
         setSearchCount(T.noMatches);
       }
       return;
     }
 
-    expandAllNodes();
+    // Direct DOM-based search
+    if (!lastParsed && input && input.value.trim()) {
+      try { lastParsed = JSON.parse(input.value.trim()); } catch(e){}
+    }
+    if (!lastParsed) return;
 
     if (mode === 'path') {
-      var norm = normalizePath(query);
-      var all = outputEl.querySelectorAll('[data-path]');
-      var found = null;
-      for (var i = 0; i < all.length; i++) {
-        if (all[i].style.display === 'none') continue;
-        if (all[i].dataset.path === norm) { found = all[i]; break; }
-      }
-      if (found) {
-        found.classList.add('j-search-hit', 'j-search-current');
-        searchMatches = [found];
-        searchIndex = 0;
-        scrollOutputLineIntoView(found);
-        setSearchCount(T.pathFound);
-      } else {
+      try {
+        var val = resolvePath(lastParsed, query);
+        if (val !== undefined) {
+          setSearchCount(T.pathFound);
+          var line = findLineForPath(query);
+          if (line) {
+            line.classList.add('j-search-current');
+            scrollOutputLineIntoView(line);
+          }
+        } else {
+          setSearchCount(T.pathNotFound);
+        }
+      } catch (err) {
         setSearchCount(T.pathNotFound);
       }
       return;
     }
 
-    var re = null;
-    if (mode === 'regex') {
-      try { re = new RegExp(query, 'i'); }
-      catch (e) { setSearchCount(T.invalidRegex); return; }
+    var reg;
+    try {
+      reg = mode === 'regex' ? new RegExp(query, 'gi') : null;
+    } catch (e) {
+      setSearchCount(T.invalidRegex);
+      return;
     }
-    var q = query.toLowerCase();
-    function testText(t) { return re ? re.test(t) : t.toLowerCase().indexOf(q) !== -1; }
 
-    outputEl.querySelectorAll('[data-path]').forEach(function(line) {
-      if (line.style.display === 'none') return;
-      var keySpan = line.querySelector('.j-key');
-      var valSpan = line.querySelector('.j-str, .j-num, .j-bool, .j-null');
+    outputEl.querySelectorAll('.j-line').forEach(function(line) {
       var hit = false;
-      if (keySpan && (mode === 'key' || mode === 'both' || mode === 'regex')) {
-        var kt = keySpan.textContent.replace(/^"|"$/g, '');
-        if (testText(kt)) { keySpan.classList.add('j-search-hit'); hit = true; }
+      if (mode === 'key' || mode === 'both') {
+        line.querySelectorAll('.j-key, .j-k').forEach(function(k) {
+          if (textMatches(k.textContent, query, reg)) { k.classList.add('j-search-hit'); hit = true; }
+        });
       }
-      if (valSpan && (mode === 'value' || mode === 'both' || mode === 'regex')) {
-        var vt = valSpan.textContent;
-        if (valSpan.classList.contains('j-str')) vt = vt.replace(/^"|"$/g, '');
-        if (testText(vt)) { valSpan.classList.add('j-search-hit'); hit = true; }
+      if (mode === 'value' || mode === 'both') {
+        line.querySelectorAll('.j-str, .j-num, .j-bool, .j-null, .j-v-str, .j-v-num, .j-v-bool, .j-v-null').forEach(function(v) {
+          if (textMatches(v.textContent, query, reg)) { v.classList.add('j-search-hit'); hit = true; }
+        });
       }
       if (hit) searchMatches.push(line);
     });
 
-    if (searchMatches.length === 0) { setSearchCount(T.noMatches); return; }
-    searchIndex = 0;
-    highlightCurrentMatch();
+    if (searchMatches.length > 0) {
+      searchIndex = 0;
+      highlightCurrentMatch();
+      setSearchCount(T.matchCount(0, searchMatches.length));
+    } else {
+      setSearchCount(T.noMatches);
+    }
+  }
+
+  function textMatches(haystack, needle, reg) {
+    if (reg) { reg.lastIndex = 0; return reg.test(haystack); }
+    return haystack.toLowerCase().indexOf(needle.toLowerCase()) !== -1;
   }
 
   function refreshSearch() {
-    if (!searchQueryEl) return;
-    var query = searchQueryEl.value.trim();
+    var query = (fsSearchQueryEl && fsSearchQueryEl.value.trim()) || (searchQueryEl ? searchQueryEl.value.trim() : '');
+    updateClearBtnVisibility();
     if (!query) {
       clearSearchHighlights();
       searchMatches = []; searchIndex = -1;
@@ -836,15 +958,60 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   bind(searchQueryEl, 'input', function() {
+    if (fsSearchQueryEl && fsSearchQueryEl.value !== searchQueryEl.value) {
+      fsSearchQueryEl.value = searchQueryEl.value;
+    }
+    updateClearBtnVisibility();
     clearTimeout(searchDebounce);
     searchDebounce = setTimeout(refreshSearch, 200);
   });
-  bind(searchModeEl, 'change', refreshSearch);
+  bind(searchModeEl, 'change', function() {
+    if (fsSearchScopeEl && fsSearchScopeEl.value !== searchModeEl.value) {
+      fsSearchScopeEl.value = searchModeEl.value;
+    }
+    refreshSearch();
+  });
   bind(searchPrevBtn, 'click', function(){ navSearch(-1); });
   bind(searchNextBtn, 'click', function(){ navSearch(1); });
   bind(searchQueryEl, 'keydown', function(e) {
     if (e.key === 'Enter') { e.preventDefault(); navSearch(e.shiftKey ? -1 : 1); }
   });
+
+  if (fsSearchQueryEl) {
+    bind(fsSearchQueryEl, 'input', function() {
+      if (searchQueryEl && searchQueryEl.value !== fsSearchQueryEl.value) {
+        searchQueryEl.value = fsSearchQueryEl.value;
+      }
+      updateClearBtnVisibility();
+      clearTimeout(searchDebounce);
+      searchDebounce = setTimeout(refreshSearch, 200);
+    });
+    bind(fsSearchQueryEl, 'keydown', function(e) {
+      if (e.key === 'Enter') { e.preventDefault(); navSearch(e.shiftKey ? -1 : 1); }
+    });
+  }
+  if (fsSearchClearBtn) {
+    bind(fsSearchClearBtn, 'click', function() {
+      if (fsSearchQueryEl) fsSearchQueryEl.value = '';
+      if (searchQueryEl) searchQueryEl.value = '';
+      updateClearBtnVisibility();
+      clearSearchHighlights();
+      searchMatches = [];
+      searchIndex = -1;
+      setSearchCount(T.noSearch);
+      if (fsSearchQueryEl) fsSearchQueryEl.focus();
+    });
+  }
+  if (fsSearchScopeEl) {
+    bind(fsSearchScopeEl, 'change', function() {
+      if (searchModeEl && searchModeEl.value !== fsSearchScopeEl.value) {
+        searchModeEl.value = fsSearchScopeEl.value;
+      }
+      refreshSearch();
+    });
+  }
+  if (fsSearchPrevBtn) bind(fsSearchPrevBtn, 'click', function(){ navSearch(-1); });
+  if (fsSearchNextBtn) bind(fsSearchNextBtn, 'click', function(){ navSearch(1); });
 
   /* ===== STATUS HELPERS ===== */
   function setInputStatus(state, msg, info) {
@@ -904,6 +1071,13 @@ document.addEventListener('DOMContentLoaded', function () {
       setOutputStatus(null, '', '');
       clearStats();
       lastParsed = null;
+      bookmarkedLines.clear();
+      clearLineSelection();
+      lastSelectedLine = -1;
+      standardFormattedText = null;
+      standardFormattedLines = null;
+      updateBookmarkUI();
+      updateSelectionUI();
       refreshSearch();
       return;
     }
@@ -928,6 +1102,13 @@ document.addEventListener('DOMContentLoaded', function () {
         lastParsed = null;
         isVirtualized = false;
         virtualText = ChunkedText.empty();
+        bookmarkedLines.clear();
+        clearLineSelection();
+        lastSelectedLine = -1;
+        standardFormattedText = null;
+        standardFormattedLines = null;
+        updateBookmarkUI();
+        updateSelectionUI();
         hidePerfBadge();
         var errShort = '✕ ' + res.error;
         setInputStatus('err', errShort, '');
@@ -944,6 +1125,11 @@ document.addEventListener('DOMContentLoaded', function () {
       var chunked = res.chunks
         ? new ChunkedText(res.chunks, new Uint32Array(res.chunkStarts), res.totalLength)
         : ChunkedText.fromString(res.formatted || '');
+      bookmarkedLines.clear();
+      clearLineSelection();
+      standardFormattedText = null;
+      standardFormattedLines = null;
+      updateBookmarkUI();
       setupVirtualScroller(chunked, res.lineOffsets, res.lineCount, res.stats);
 
       setInputStatus('ok', '✓ Valid JSON', formatBytes(raw.length));
@@ -966,12 +1152,17 @@ document.addEventListener('DOMContentLoaded', function () {
       try {
         var parsed = JSON.parse(raw);
         lastParsed = parsed;
+        bookmarkedLines.clear();
+        clearLineSelection();
         var indentChar = getIndent();
         var optIndent = document.getElementById('opt-indent');
         var formatted = JSON.stringify(parsed, null, indentChar === '\t' ? '\t' : parseInt(optIndent ? optIndent.value : '2', 10));
-        var lines = formatted.split('\n').length;
+        standardFormattedText = formatted;
+        standardFormattedLines = formatted.split('\n');
+        var lines = standardFormattedLines.length;
         var html = buildTree(parsed);
         outputEl.innerHTML = html;
+        updateBookmarkUI();
         if (collapseOnLoad) {
           var collapseBtn = document.getElementById('btn-collapse-all');
           if (collapseBtn) collapseBtn.click();
@@ -984,6 +1175,13 @@ document.addEventListener('DOMContentLoaded', function () {
         refreshSearch();
       } catch (e) {
         lastParsed = null;
+        bookmarkedLines.clear();
+        clearLineSelection();
+        lastSelectedLine = -1;
+        standardFormattedText = null;
+        standardFormattedLines = null;
+        updateBookmarkUI();
+        updateSelectionUI();
         var msg = '✕ ' + e.message;
         setInputStatus('err', msg, '');
         setOutputStatus('err', msg, '');
@@ -1005,6 +1203,13 @@ document.addEventListener('DOMContentLoaded', function () {
       setOutputStatus('ok', 'Minifying ' + formatBytes(raw.length) + '…', '');
       var res = await sendWorker('minify', { text: raw });
       if (res.success) {
+        bookmarkedLines.clear();
+        clearLineSelection();
+        lastSelectedLine = -1;
+        standardFormattedText = null;
+        standardFormattedLines = null;
+        updateBookmarkUI();
+        updateSelectionUI();
         isVirtualized = false;
         virtualText = ChunkedText.fromString(res.minified);
         hidePerfBadge();
@@ -1024,6 +1229,13 @@ document.addEventListener('DOMContentLoaded', function () {
     try {
       var parsed = JSON.parse(raw);
       var minified = JSON.stringify(parsed);
+      bookmarkedLines.clear();
+      clearLineSelection();
+      lastSelectedLine = -1;
+      standardFormattedText = null;
+      standardFormattedLines = null;
+      updateBookmarkUI();
+      updateSelectionUI();
       isVirtualized = false;
       virtualText = ChunkedText.fromString(minified);
       hidePerfBadge();
@@ -1079,6 +1291,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   /* ===== ACTIONS ===== */
   bind(document.getElementById('btn-format'), 'click', function() { currentMode = 'format'; runFormat(); });
+  bind(document.getElementById('btn-format-top'), 'click', function() { currentMode = 'format'; runFormat(); });
   bind(document.getElementById('btn-minify'), 'click', function() { currentMode = 'minify'; runMinify(); });
   bind(document.getElementById('btn-validate'), 'click', function() { currentMode = 'validate'; runValidate(); });
 
@@ -1218,20 +1431,165 @@ document.addEventListener('DOMContentLoaded', function () {
     window.copyToClipboard(input.value, this);
   });
 
-  bind(document.getElementById('btn-copy-output'), 'click', function() {
-    var btn = this;
-    if (isVirtualized && virtualText && virtualText.length > 0) {
-      if (virtualText.length > 100 * 1024 * 1024) {
-        window.showToast('Output too large to copy to clipboard — use Download instead.', 'info');
-        return;
+  /* ===== UNIFIED COPY & SELECTION ENGINE ===== */
+  function isLineSelected(lineIdx) {
+    if (selectionRange && lineIdx >= selectionRange[0] && lineIdx <= selectionRange[1]) return true;
+    return selectedLines.has(lineIdx);
+  }
+
+  function getSelectedCount() {
+    if (selectionRange) {
+      return (selectionRange[1] - selectionRange[0] + 1) + selectedLines.size;
+    }
+    return selectedLines.size;
+  }
+
+  function getSelectedLineIndices() {
+    if (selectionRange) {
+      var min = selectionRange[0], max = selectionRange[1];
+      var set = new Set();
+      for (var i = min; i <= max; i++) set.add(i);
+      selectedLines.forEach(function(idx){ set.add(idx); });
+      return Array.from(set).sort(function(a, b){ return a - b; });
+    }
+    return Array.from(selectedLines).sort(function(a, b){ return a - b; });
+  }
+
+  function extractLineRangeText(startIdx, endIdx) {
+    if (isVirtualized) {
+      if (!virtualLineOffsets || virtualTotalLines === 0) return '';
+      var sIdx = Math.max(0, Math.min(startIdx, virtualTotalLines - 1));
+      var eIdx = Math.max(0, Math.min(endIdx, virtualTotalLines - 1));
+      if (sIdx > eIdx) return '';
+      var startOffset = virtualLineOffsets[sIdx];
+      var endOffset = (eIdx + 1 < virtualTotalLines) ? virtualLineOffsets[eIdx + 1] - 1 : virtualText.length;
+      return virtualText.substring(startOffset, endOffset);
+    }
+    if (standardFormattedLines) {
+      var s = Math.max(0, Math.min(startIdx, standardFormattedLines.length - 1));
+      var e = Math.max(0, Math.min(endIdx, standardFormattedLines.length - 1));
+      if (s > e) return '';
+      return standardFormattedLines.slice(s, e + 1).join('\n');
+    }
+    return '';
+  }
+
+  function extractSpecificLinesText(sortedLineIndices) {
+    if (!sortedLineIndices || sortedLineIndices.length === 0) return '';
+    var isContiguous = true;
+    for (var c = 1; c < sortedLineIndices.length; c++) {
+      if (sortedLineIndices[c] !== sortedLineIndices[c - 1] + 1) {
+        isContiguous = false;
+        break;
       }
-      if (virtualText.length > 5 * 1024 * 1024) {
-        window.showToast(T.copyLargeNotice, 'info');
-      }
-      window.copyToClipboard(virtualText.toStringUnsafe(), btn);
-      return;
+    }
+    if (isContiguous) {
+      return extractLineRangeText(sortedLineIndices[0], sortedLineIndices[sortedLineIndices.length - 1]);
     }
 
+    if (isVirtualized) {
+      var parts = [];
+      for (var i = 0; i < sortedLineIndices.length; i++) {
+        var idx = sortedLineIndices[i];
+        if (idx >= 0 && idx < virtualTotalLines) {
+          var s = virtualLineOffsets[idx];
+          var e = (idx + 1 < virtualTotalLines) ? virtualLineOffsets[idx + 1] - 1 : virtualText.length;
+          parts.push(virtualText.substring(s, e));
+        }
+      }
+      return parts.join('\n');
+    }
+
+    if (standardFormattedLines) {
+      var stdParts = [];
+      for (var j = 0; j < sortedLineIndices.length; j++) {
+        var sIdx = sortedLineIndices[j];
+        if (sIdx >= 0 && sIdx < standardFormattedLines.length) {
+          stdParts.push(standardFormattedLines[sIdx]);
+        }
+      }
+      return stdParts.join('\n');
+    }
+    return '';
+  }
+
+  async function safeCopyToClipboard(text, options) {
+    options = options || {};
+    if (typeof text !== 'string' || (!text && text !== '')) {
+      window.showToast('Nothing to copy', 'info');
+      return false;
+    }
+    var byteLen = text.length;
+    if (byteLen > 5 * 1024 * 1024) {
+      window.showToast(T.copyPayloadTooLarge(formatBytes(byteLen)), 'info');
+      return false;
+    }
+
+    var success = false;
+    try {
+      if (navigator.clipboard && window.isSecureContext) {
+        await navigator.clipboard.writeText(text);
+        success = true;
+      }
+    } catch (_) {
+      success = false;
+    }
+
+    if (!success) {
+      try {
+        var ta = document.createElement('textarea');
+        ta.value = text;
+        ta.style.position = 'fixed';
+        ta.style.opacity = '0';
+        ta.style.pointerEvents = 'none';
+        document.body.appendChild(ta);
+        ta.select();
+        success = document.execCommand('copy');
+        ta.remove();
+      } catch (_) {
+        success = false;
+      }
+    }
+
+    if (success) {
+      if (options.type === 'bookmarked') {
+        window.showToast(T.copiedBookmarked(options.count), 'success');
+      } else if (options.type === 'selected') {
+        window.showToast(T.copiedSelected(options.count), 'success');
+      } else if (options.type === 'range') {
+        window.showToast(T.copiedRange(options.count, options.start, options.end), 'success');
+      } else if (options.type === 'current') {
+        window.showToast(T.copiedCurrent(options.line), 'success');
+      } else {
+        window.showToast(T.copiedAll, 'success');
+      }
+    } else {
+      window.showToast(T.clipboardDenied, 'error');
+    }
+    return success;
+  }
+
+  function getTotalOutputLines() {
+    return isVirtualized ? virtualTotalLines : (standardFormattedLines ? standardFormattedLines.length : 0);
+  }
+
+  function copyAll() {
+    if (isVirtualized && virtualText && virtualText.length > 0) {
+      if (virtualText.length > 5 * 1024 * 1024) {
+        window.showToast(T.copyPayloadTooLarge(formatBytes(virtualText.length)), 'info');
+        return;
+      }
+      safeCopyToClipboard(virtualText.toStringUnsafe(), { type: 'all' });
+      return;
+    }
+    if (standardFormattedText) {
+      if (standardFormattedText.length > 5 * 1024 * 1024) {
+        window.showToast(T.copyPayloadTooLarge(formatBytes(standardFormattedText.length)), 'info');
+        return;
+      }
+      safeCopyToClipboard(standardFormattedText, { type: 'all' });
+      return;
+    }
     var raw = input.value.trim();
     if (!raw) return;
     try {
@@ -1239,11 +1597,448 @@ document.addEventListener('DOMContentLoaded', function () {
       var optIndent = document.getElementById('opt-indent');
       var indentV = optIndent ? optIndent.value : '2';
       var indent = indentV === 'tab' ? '\t' : parseInt(indentV, 10);
-      window.copyToClipboard(JSON.stringify(parsed, null, indent), btn);
+      var formatted = JSON.stringify(parsed, null, indent);
+      if (formatted.length > 5 * 1024 * 1024) {
+        window.showToast(T.copyPayloadTooLarge(formatBytes(formatted.length)), 'info');
+        return;
+      }
+      safeCopyToClipboard(formatted, { type: 'all' });
     } catch(_) {
-      window.copyToClipboard(raw, btn);
+      if (raw.length > 5 * 1024 * 1024) {
+        window.showToast(T.copyPayloadTooLarge(formatBytes(raw.length)), 'info');
+        return;
+      }
+      safeCopyToClipboard(raw, { type: 'all' });
+    }
+  }
+
+  function copySelectedLines() {
+    var count = getSelectedCount();
+    if (count === 0) {
+      window.showToast(T.noSelectedLines, 'info');
+      return;
+    }
+    var text;
+    if (selectionRange && selectedLines.size === 0) {
+      text = extractLineRangeText(selectionRange[0], selectionRange[1]);
+    } else {
+      var sorted = getSelectedLineIndices();
+      text = extractSpecificLinesText(sorted);
+    }
+    safeCopyToClipboard(text, { count: count, type: 'selected' });
+  }
+
+  function copyBookmarkedLines() {
+    if (bookmarkedLines.size === 0) {
+      window.showToast(T.noBookmarkedLines, 'info');
+      return;
+    }
+    var sorted = Array.from(bookmarkedLines).sort(function(a, b){ return a - b; });
+    var text = extractSpecificLinesText(sorted);
+    safeCopyToClipboard(text, { count: sorted.length, type: 'bookmarked' });
+  }
+
+  function copyCurrentLine() {
+    var total = getTotalOutputLines();
+    if (total === 0 || lastSelectedLine < 0 || lastSelectedLine >= total) {
+      window.showToast(T.noActiveLine, 'info');
+      return;
+    }
+    var lineIdx = lastSelectedLine;
+    var text = extractLineRangeText(lineIdx, lineIdx);
+    safeCopyToClipboard(text, { line: lineIdx + 1, type: 'current' });
+  }
+
+  async function copyLineRange(start, end) {
+    var total = getTotalOutputLines();
+    if (isNaN(start) || isNaN(end) || start < 1 || end < 1) {
+      window.showToast(T.lineRangeInvalid, 'error');
+      return false;
+    }
+    if (start > end) {
+      window.showToast(T.lineRangeOrder, 'error');
+      return false;
+    }
+    if (end > total) {
+      window.showToast(T.lineRangeExceed(total), 'error');
+      return false;
+    }
+    var count = end - start + 1;
+    var text = extractLineRangeText(start - 1, end - 1);
+    return await safeCopyToClipboard(text, { count: count, start: start, end: end, type: 'range' });
+  }
+
+  function downloadSelectedLines() {
+    var count = getSelectedCount();
+    if (count === 0) {
+      window.showToast(T.noSelectedLines, 'info');
+      return;
+    }
+    var text = selectionRange && selectedLines.size === 0
+      ? extractLineRangeText(selectionRange[0], selectionRange[1])
+      : extractSpecificLinesText(getSelectedLineIndices());
+    var blob = new Blob([text], { type: 'text/plain;charset=utf-8' });
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement('a');
+    a.href = url;
+    a.download = 'selected_lines.txt';
+    a.click();
+    URL.revokeObjectURL(url);
+    window.showToast(T.downloadedLines(count), 'success');
+  }
+
+  function downloadRangeLines(start, end) {
+    var total = getTotalOutputLines();
+    if (isNaN(start) || isNaN(end) || start < 1 || end < 1 || start > end || end > total) {
+      window.showToast(T.lineRangeInvalid, 'error');
+      return false;
+    }
+    var count = end - start + 1;
+    var text = extractLineRangeText(start - 1, end - 1);
+    var blob = new Blob([text], { type: 'text/plain;charset=utf-8' });
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement('a');
+    a.href = url;
+    a.download = 'lines_' + start + '-' + end + '.txt';
+    a.click();
+    URL.revokeObjectURL(url);
+    window.showToast(T.downloadedLines(count), 'success');
+    return true;
+  }
+
+  function updateSelectionUI() {
+    var count = getSelectedCount();
+    var selBar = document.getElementById('jf-selection-bar');
+    var sbCount = document.getElementById('jf-sb-count');
+    var lblCopySel = document.getElementById('lbl-copy-selected');
+    var btnCopySel = document.getElementById('btn-copy-selected');
+    var btnCopyCurrent = document.getElementById('btn-copy-current');
+
+    if (selBar) selBar.style.display = count > 0 ? 'flex' : 'none';
+    if (sbCount) sbCount.textContent = T.linesSelected(count);
+    if (lblCopySel) lblCopySel.textContent = T.copySelectedMenu(count);
+    if (btnCopySel) btnCopySel.disabled = count === 0;
+    if (btnCopyCurrent) {
+      var hasActive = lastSelectedLine >= 0 && lastSelectedLine < getTotalOutputLines();
+      btnCopyCurrent.disabled = !hasActive;
+      btnCopyCurrent.title = hasActive ? ('Copy line ' + (lastSelectedLine + 1)) : T.noActiveLine;
+    }
+  }
+
+  function updateBookmarkUI() {
+    var bmCount = bookmarkedLines.size;
+    var lblCopyBm = document.getElementById('lbl-copy-bookmarked');
+    var btnCopyBm = document.getElementById('btn-copy-bookmarked');
+    if (lblCopyBm) lblCopyBm.textContent = T.copyBookmarkedMenu(bmCount);
+    if (btnCopyBm) btnCopyBm.disabled = bmCount === 0;
+  }
+
+  function renderStandardSelection() {
+    if (isVirtualized || !outputEl) return;
+    outputEl.querySelectorAll('.j-line').forEach(function(el) {
+      var idx = parseInt(el.getAttribute('data-line-idx'), 10);
+      if (!isNaN(idx)) {
+        if (isLineSelected(idx)) el.classList.add('j-selected');
+        else el.classList.remove('j-selected');
+      }
+    });
+  }
+
+  function renderStandardBookmarks() {
+    if (isVirtualized || !outputEl) return;
+    outputEl.querySelectorAll('.j-line').forEach(function(el) {
+      var idx = parseInt(el.getAttribute('data-line-idx'), 10);
+      if (!isNaN(idx)) {
+        var isBm = bookmarkedLines.has(idx);
+        var bmEl = el.querySelector('.j-bm');
+        if (isBm) {
+          el.classList.add('is-bookmarked');
+          if (bmEl) { bmEl.textContent = '★'; bmEl.classList.add('active'); }
+        } else {
+          el.classList.remove('is-bookmarked');
+          if (bmEl) { bmEl.textContent = '☆'; bmEl.classList.remove('active'); }
+        }
+      }
+    });
+  }
+
+  function handleLineClick(lineIdx, e) {
+    if (e.shiftKey && lastSelectedLine >= 0) {
+      var min = Math.min(lastSelectedLine, lineIdx);
+      var max = Math.max(lastSelectedLine, lineIdx);
+      if (max - min > 5000) {
+        selectionRange = [min, max];
+        selectedLines.clear();
+      } else {
+        selectionRange = null;
+        for (var k = min; k <= max; k++) {
+          selectedLines.add(k);
+        }
+      }
+    } else if (e.ctrlKey || e.metaKey) {
+      if (selectionRange) {
+        var rMin = selectionRange[0], rMax = selectionRange[1];
+        selectionRange = null;
+        if (rMax - rMin < 50000) {
+          for (var m = rMin; m <= rMax; m++) selectedLines.add(m);
+        }
+      }
+      if (selectedLines.has(lineIdx)) {
+        selectedLines.delete(lineIdx);
+      } else {
+        selectedLines.add(lineIdx);
+      }
+      lastSelectedLine = lineIdx;
+    } else {
+      selectionRange = null;
+      selectedLines.clear();
+      selectedLines.add(lineIdx);
+      lastSelectedLine = lineIdx;
+    }
+    updateSelectionUI();
+    if (isVirtualized) renderVirtualWindow();
+    else renderStandardSelection();
+  }
+
+  function toggleBookmarkLine(lineIdx) {
+    if (bookmarkedLines.has(lineIdx)) {
+      bookmarkedLines.delete(lineIdx);
+    } else {
+      bookmarkedLines.add(lineIdx);
+    }
+    updateBookmarkUI();
+    if (isVirtualized) renderVirtualWindow();
+    else renderStandardBookmarks();
+  }
+
+  function selectAllLines() {
+    var total = getTotalOutputLines();
+    if (total <= 0) return;
+    selectionRange = [0, total - 1];
+    selectedLines.clear();
+    lastSelectedLine = 0;
+    updateSelectionUI();
+    if (isVirtualized) renderVirtualWindow();
+    else renderStandardSelection();
+    window.showToast(T.linesSelected(total), 'info');
+  }
+
+  function clearLineSelection() {
+    selectionRange = null;
+    selectedLines.clear();
+    lastSelectedLine = -1;
+    updateSelectionUI();
+    if (isVirtualized) renderVirtualWindow();
+    else renderStandardSelection();
+  }
+
+  function clearBookmarks() {
+    bookmarkedLines.clear();
+    updateBookmarkUI();
+    if (isVirtualized) renderVirtualWindow();
+    else renderStandardBookmarks();
+    window.showToast('Cleared line bookmarks', 'info');
+  }
+
+  function openCopyMenu() {
+    var menu = document.getElementById('jf-copy-menu');
+    var btn = document.getElementById('btn-copy-output');
+    if (!menu) return;
+    updateSelectionUI();
+    updateBookmarkUI();
+    menu.classList.add('open');
+    if (btn) btn.setAttribute('aria-expanded', 'true');
+  }
+
+  function closeCopyMenu() {
+    var menu = document.getElementById('jf-copy-menu');
+    var btn = document.getElementById('btn-copy-output');
+    if (!menu) return;
+    menu.classList.remove('open');
+    if (btn) btn.setAttribute('aria-expanded', 'false');
+  }
+
+  function openRangeModal() {
+    var backdrop = document.getElementById('jf-range-backdrop');
+    var startInput = document.getElementById('jf-rm-start');
+    var endInput = document.getElementById('jf-rm-end');
+    var meta = document.getElementById('jf-rm-meta');
+    var total = getTotalOutputLines();
+
+    if (!backdrop) return;
+    if (meta) meta.textContent = 'Total lines in document: ' + total.toLocaleString();
+    if (startInput) {
+      startInput.max = total;
+      startInput.value = lastSelectedLine >= 0 ? lastSelectedLine + 1 : 1;
+    }
+    if (endInput) {
+      endInput.max = total;
+      endInput.value = Math.min(total, (lastSelectedLine >= 0 ? lastSelectedLine + 50 : 50));
+    }
+    backdrop.style.display = 'flex';
+    if (startInput) setTimeout(function(){ startInput.focus(); }, 50);
+  }
+
+  function closeRangeModal() {
+    var backdrop = document.getElementById('jf-range-backdrop');
+    if (backdrop) backdrop.style.display = 'none';
+  }
+
+  // Copy output dropdown toggle
+  bind(document.getElementById('btn-copy-output'), 'click', function(e) {
+    e.stopPropagation();
+    var menu = document.getElementById('jf-copy-menu');
+    if (!menu) {
+      copyAll();
+      return;
+    }
+    if (menu.classList.contains('open')) closeCopyMenu();
+    else openCopyMenu();
+  });
+
+  bind(document, 'click', function(e) {
+    if (!e.target.closest('#jf-copy-dropdown-wrap')) closeCopyMenu();
+  });
+
+  // Copy Menu Items
+  bind(document.getElementById('btn-copy-all'), 'click', function() { closeCopyMenu(); copyAll(); });
+  bind(document.getElementById('btn-copy-selected'), 'click', function() { closeCopyMenu(); copySelectedLines(); });
+  bind(document.getElementById('btn-copy-bookmarked'), 'click', function() { closeCopyMenu(); copyBookmarkedLines(); });
+  bind(document.getElementById('btn-copy-current'), 'click', function() { closeCopyMenu(); copyCurrentLine(); });
+  bind(document.getElementById('btn-copy-range'), 'click', function() { closeCopyMenu(); openRangeModal(); });
+  bind(document.getElementById('btn-select-all'), 'click', function() { closeCopyMenu(); selectAllLines(); });
+  bind(document.getElementById('btn-clear-selection'), 'click', function() { closeCopyMenu(); clearLineSelection(); });
+  bind(document.getElementById('btn-clear-bookmarks'), 'click', function() { closeCopyMenu(); clearBookmarks(); });
+
+  // Selection Bar Actions
+  bind(document.getElementById('jf-sb-copy'), 'click', function() { copySelectedLines(); });
+  bind(document.getElementById('jf-sb-download'), 'click', function() { downloadSelectedLines(); });
+  bind(document.getElementById('jf-sb-clear'), 'click', function() { clearLineSelection(); });
+
+  // Range Modal Actions
+  bind(document.getElementById('jf-rm-close'), 'click', closeRangeModal);
+  bind(document.getElementById('jf-rm-cancel'), 'click', closeRangeModal);
+  bind(document.getElementById('jf-range-backdrop'), 'click', function(e) {
+    if (e.target === this) closeRangeModal();
+  });
+  bind(document.getElementById('jf-rm-submit'), 'click', async function() {
+    var startInput = document.getElementById('jf-rm-start');
+    var endInput = document.getElementById('jf-rm-end');
+    var s = parseInt(startInput ? startInput.value : '1', 10);
+    var e = parseInt(endInput ? endInput.value : '1', 10);
+    var success = await copyLineRange(s, e);
+    if (success) closeRangeModal();
+  });
+  bind(document.getElementById('jf-rm-download'), 'click', function() {
+    var startInput = document.getElementById('jf-rm-start');
+    var endInput = document.getElementById('jf-rm-end');
+    var s = parseInt(startInput ? startInput.value : '1', 10);
+    var e = parseInt(endInput ? endInput.value : '1', 10);
+    if (downloadRangeLines(s, e)) closeRangeModal();
+  });
+
+  // Delegated line click & bookmark toggle on output
+  bind(outputEl, 'click', function(e) {
+    var textSel = window.getSelection();
+    if (textSel && textSel.toString().length > 0) return; // Don't interrupt native text selection
+
+    var bmTarget = e.target.closest('.j-bm');
+    if (bmTarget) {
+      e.stopPropagation();
+      var lineIdx = -1;
+      if (isVirtualized) {
+        var row = bmTarget.closest('.j-vrow');
+        if (row) {
+          var numEl = row.querySelector('.j-line-num');
+          if (numEl) lineIdx = parseInt(numEl.textContent, 10) - 1;
+        }
+      } else {
+        var line = bmTarget.closest('.j-line');
+        if (line) lineIdx = parseInt(line.getAttribute('data-line-idx'), 10);
+      }
+      if (lineIdx >= 0) toggleBookmarkLine(lineIdx);
+      return;
+    }
+
+    var lnTarget = e.target.closest('.j-ln');
+    if (lnTarget) {
+      e.stopPropagation();
+      var lineIdx2 = -1;
+      if (isVirtualized) {
+        var row2 = lnTarget.closest('.j-vrow');
+        if (row2) {
+          var numEl2 = row2.querySelector('.j-line-num');
+          if (numEl2) lineIdx2 = parseInt(numEl2.textContent, 10) - 1;
+        }
+      } else {
+        var line2 = lnTarget.closest('.j-line');
+        if (line2) lineIdx2 = parseInt(line2.getAttribute('data-line-idx'), 10);
+      }
+      if (lineIdx2 >= 0) handleLineClick(lineIdx2, e);
+      return;
+    }
+
+    var lineRow = e.target.closest('.j-line, .j-vrow');
+    if (lineRow && !e.target.closest('.j-toggle')) {
+      var lineIdx3 = -1;
+      if (isVirtualized) {
+        var numEl3 = lineRow.querySelector('.j-line-num');
+        if (numEl3) lineIdx3 = parseInt(numEl3.textContent, 10) - 1;
+      } else {
+        lineIdx3 = parseInt(lineRow.getAttribute('data-line-idx'), 10);
+      }
+      if (lineIdx3 >= 0) handleLineClick(lineIdx3, e);
+      return;
     }
   });
+
+  // Keyboard accessibility
+  bind(document, 'keydown', function(e) {
+    if (e.key === 'Escape') {
+      var copyMenu = document.getElementById('jf-copy-menu');
+      var rangeModal = document.getElementById('jf-range-backdrop');
+      if (copyMenu && copyMenu.classList.contains('open')) {
+        closeCopyMenu();
+        return;
+      }
+      if (rangeModal && rangeModal.style.display !== 'none') {
+        closeRangeModal();
+        return;
+      }
+      // When in fullscreen mode, let fullscreen exit without clearing selection
+      var activeFs = document.querySelector('.ac-panel.is-fullscreen');
+      if (activeFs) {
+        return;
+      }
+      clearLineSelection();
+    } else if (e.key === 'F2') {
+      if (lastSelectedLine >= 0 && lastSelectedLine < getTotalOutputLines()) {
+        toggleBookmarkLine(lastSelectedLine);
+      } else if (getTotalOutputLines() > 0) {
+        window.showToast(T.noActiveLine, 'info');
+      }
+    }
+  });
+
+  // Expose public API for automated testing & verification
+  window.jsonFormatter = {
+    copyAll: copyAll,
+    copySelectedLines: copySelectedLines,
+    copyBookmarkedLines: copyBookmarkedLines,
+    copyCurrentLine: copyCurrentLine,
+    copyLineRange: copyLineRange,
+    selectAllLines: selectAllLines,
+    clearLineSelection: clearLineSelection,
+    clearBookmarks: clearBookmarks,
+    toggleBookmarkLine: toggleBookmarkLine,
+    getBookmarkedLines: function() { return Array.from(bookmarkedLines).sort(function(a,b){return a-b;}); },
+    getSelectedLines: function() { return getSelectedLineIndices(); },
+    extractLineRangeText: extractLineRangeText,
+    extractSpecificLinesText: extractSpecificLinesText,
+    getTotalLines: getTotalOutputLines,
+    getLastSelectedLine: function() { return lastSelectedLine; },
+    setLastSelectedLine: function(idx) { lastSelectedLine = idx; updateSelectionUI(); }
+  };
 
   bind(document.getElementById('btn-download'), 'click', function() {
     if (isVirtualized && virtualText && virtualText.length > 0) {
@@ -1443,143 +2238,209 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  /* ===== FULLSCREEN ===== */
-  var fsOverlay = document.getElementById('fs-overlay');
-  var fsPanel = null;
-
-  function enterFs(panel, btn) {
-    fsPanel = panel;
-    panel.classList.add('is-fullscreen');
-    btn.classList.add('fs-active');
-    btn.textContent = '✕';
-    btn.title = T.exitFullscreen;
-    if (fsOverlay) fsOverlay.classList.add('active');
-    document.body.style.overflow = 'hidden';
-    installFsToolbar(panel);
-  }
-
-  function exitFs() {
-    if (!fsPanel) return;
-    fsPanel.classList.remove('is-fullscreen');
-    document.body.style.overflow = '';
-    if (fsOverlay) fsOverlay.classList.remove('active');
-    ['btn-fs-input', 'btn-fs-output'].forEach(function(id) {
-      var b = document.getElementById(id);
-      if (b) { b.classList.remove('fs-active'); b.textContent = '⛶'; b.title = T.enterFullscreen; }
+  var btnFontDownOut = document.getElementById('btn-font-down-out');
+  var btnFontUpOut   = document.getElementById('btn-font-up-out');
+  if (btnFontDownOut) {
+    btnFontDownOut.addEventListener('click', function() {
+      if (fontSizeIdx > 0) { fontSizeIdx--; applyFontSize(fontSizes[fontSizeIdx]); }
     });
-    removeFsToolbar(fsPanel);
-    fsPanel = null;
+  }
+  if (btnFontUpOut) {
+    btnFontUpOut.addEventListener('click', function() {
+      if (fontSizeIdx < fontSizes.length - 1) { fontSizeIdx++; applyFontSize(fontSizes[fontSizeIdx]); }
+    });
   }
 
-  /* ===== FULLSCREEN TOOLBAR (search + font + close) ===== */
-  function installFsToolbar(panel) {
-    if (panel.querySelector('.ac-fs-toolbar')) return;
-    var bar = document.createElement('div');
-    bar.className = 'ac-fs-toolbar';
-    // Search appears on BOTH input and output fullscreens — it always drives
-    // the sidebar search which operates on the formatted output.
+  /* ===== PANEL-SPECIFIC FULLSCREEN (ONE EDITOR PANEL AT A TIME) ===== */
+  var fsOverlay = document.getElementById('fs-overlay');
+  var splitPanels = document.querySelector('.split-panels');
+  var inputPanel = input ? input.closest('.ac-panel') : null;
+  var outputPanel = outputEl ? outputEl.closest('.ac-panel') : null;
+  var activeFsPanel = null;
+  var isFsActive = false;
+  var savedScrollY = 0;
+
+  function ensureFsSearchBar() {
+    var bar = document.getElementById('jf-search-bar');
+    if (bar) return bar;
+    if (!outputPanel) return null;
+    bar = document.createElement('div');
+    bar.className = 'ac-search-toolbar';
+    bar.id = 'jf-search-bar';
+    bar.setAttribute('role', 'search');
+    bar.setAttribute('aria-label', 'JSON Search Toolbar');
     bar.innerHTML =
-      '<input type="search" class="ac-fs-search" placeholder="Search in JSON…" aria-label="Search in JSON">' +
-      '<select class="ac-fs-mode" aria-label="Search mode">' +
-        '<option value="both">Key + Value</option>' +
-        '<option value="key">Key only</option>' +
-        '<option value="value">Value only</option>' +
+      '<div class="ac-search-input-wrap">' +
+        '<svg class="ac-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' +
+          '<circle cx="11" cy="11" r="8"></circle>' +
+          '<line x1="21" y1="21" x2="16.65" y2="16.65"></line>' +
+        '</svg>' +
+        '<input type="text" class="ac-search-input" id="fs-search-query" placeholder="Search in JSON…" aria-label="Search JSON" autocomplete="off" spellcheck="false">' +
+      '</div>' +
+      '<select class="ac-search-scope" id="fs-search-scope" aria-label="Search scope">' +
+        '<option value="both" selected>Keys + Values</option>' +
+        '<option value="key">Keys</option>' +
+        '<option value="value">Values</option>' +
         '<option value="regex">Regex</option>' +
         '<option value="path">Path</option>' +
       '</select>' +
-      '<button class="ac-btn ac-fs-btn" data-act="prev" title="Previous match">‹</button>' +
-      '<span class="ac-fs-count" aria-live="polite">—</span>' +
-      '<button class="ac-btn ac-fs-btn" data-act="next" title="Next match">›</button>' +
-      '<span class="ac-fs-sep"></span>' +
-      '<button class="ac-btn ac-fs-btn" data-act="fs-" title="Smaller font">A−</button>' +
-      '<button class="ac-btn ac-fs-btn" data-act="fs+" title="Larger font">A+</button>' +
-      '<button class="ac-btn ac-fs-btn" data-act="close" title="Exit fullscreen">✕ Close</button>';
-    panel.appendChild(bar);
+      '<span class="ac-search-count" id="fs-search-count" aria-live="polite">0 / 0</span>' +
+      '<div class="ac-search-nav">' +
+        '<button type="button" class="ac-btn ac-search-btn" id="fs-search-prev" title="Previous match (Shift+Enter)" aria-label="Previous match">‹</button>' +
+        '<button type="button" class="ac-btn ac-search-btn" id="fs-search-next" title="Next match (Enter)" aria-label="Next match">›</button>' +
+        '<button type="button" class="ac-btn ac-search-btn" id="fs-search-clear" title="Clear search" aria-label="Clear search">✕</button>' +
+      '</div>';
+    if (outputEl && outputEl.parentNode) {
+      outputEl.parentNode.insertBefore(bar, outputEl);
+    }
+    return bar;
+  }
 
-    // Wire controls
-    var qSide = document.getElementById('search-query');
-    var mSide = document.getElementById('search-mode');
-    var cntSide = document.getElementById('search-count');
-    var qFs = bar.querySelector('.ac-fs-search');
-    var mFs = bar.querySelector('.ac-fs-mode');
-    var cntFs = bar.querySelector('.ac-fs-count');
+  function enterPanelFs(targetPanel) {
+    if (!targetPanel) return;
+    if (activeFsPanel) exitPanelFs();
 
-    if (qSide && qFs) {
-      qFs.value = qSide.value;
-      mFs.value = mSide ? mSide.value : 'both';
-      qFs.addEventListener('input', function () {
-        qSide.value = qFs.value;
-        qSide.dispatchEvent(new Event('input'));
-      });
-      mFs.addEventListener('change', function () {
-        if (mSide) { mSide.value = mFs.value; mSide.dispatchEvent(new Event('change')); }
-      });
-      bar.querySelector('[data-act="prev"]').addEventListener('click', function () {
-        var b = document.getElementById('search-prev'); if (b) b.click();
-      });
-      bar.querySelector('[data-act="next"]').addEventListener('click', function () {
-        var b = document.getElementById('search-next'); if (b) b.click();
-      });
-      if (cntSide) {
-        cntFs.textContent = cntSide.textContent;
-        panel._fsCountObserver = new MutationObserver(function () { cntFs.textContent = cntSide.textContent; });
-        panel._fsCountObserver.observe(cntSide, { childList: true, characterData: true, subtree: true });
-      }
-      setTimeout(function () { qFs.focus(); }, 30);
+    isFsActive = true;
+    activeFsPanel = targetPanel;
+    savedScrollY = window.scrollY || window.pageYOffset || document.documentElement.scrollTop || 0;
+    window._jfSavedScrollY = savedScrollY;
+
+    // Sibling panel must be completely hidden: exactly ONE panel in fullscreen
+    var sibling = (targetPanel === outputPanel) ? inputPanel : outputPanel;
+    if (sibling) {
+      sibling.classList.add('fs-hidden-panel');
     }
 
-    bar.querySelector('[data-act="close"]').addEventListener('click', exitFs);
-    bar.querySelector('[data-act="fs-"]').addEventListener('click', function () {
-      bumpPanelFont(-1);
+    if (splitPanels) {
+      splitPanels.classList.add('has-active-fullscreen');
+    }
+
+    targetPanel.classList.add('is-fullscreen');
+    document.body.classList.add('is-fullscreen-editor');
+    document.body.style.overflow = 'hidden';
+    document.documentElement.style.overflow = 'hidden';
+
+    if (fsOverlay) fsOverlay.classList.add('active');
+
+    var fsBtn = targetPanel.querySelector('#btn-fs-input, #btn-fs-output');
+    if (fsBtn) {
+      fsBtn.classList.add('fs-active');
+      fsBtn.textContent = '✕';
+      fsBtn.title = T.exitFullscreen + ' (Esc)';
+      fsBtn.setAttribute('aria-label', T.exitFullscreen);
+    }
+
+    // Bidirectional search synchronization when entering fullscreen
+    if (fsSearchQueryEl && searchQueryEl && fsSearchQueryEl.value !== searchQueryEl.value) {
+      fsSearchQueryEl.value = searchQueryEl.value;
+    }
+    if (fsSearchScopeEl && searchModeEl && fsSearchScopeEl.value !== searchModeEl.value) {
+      fsSearchScopeEl.value = searchModeEl.value;
+    }
+    updateClearBtnVisibility();
+
+    // Ensure search bar in Output panel is present (CSS .ac-panel.is-fullscreen .ac-search-toolbar controls visibility)
+    var sBar = document.getElementById('jf-search-bar') || ensureFsSearchBar();
+    if (sBar) {
+      sBar.style.display = '';
+    }
+
+    if (isVirtualized && targetPanel === outputPanel) {
+      setTimeout(renderVirtualWindow, 30);
+    }
+  }
+
+  function exitPanelFs() {
+    if (!activeFsPanel) return;
+    var targetPanel = activeFsPanel;
+    activeFsPanel = null;
+    isFsActive = false;
+
+    targetPanel.classList.remove('is-fullscreen');
+    if (splitPanels) {
+      splitPanels.classList.remove('has-active-fullscreen');
+      splitPanels.classList.remove('is-fullscreen');
+    }
+
+    if (inputPanel) inputPanel.classList.remove('fs-hidden-panel');
+    if (outputPanel) outputPanel.classList.remove('fs-hidden-panel');
+
+    document.body.classList.remove('is-fullscreen-editor');
+    document.body.style.overflow = '';
+    document.documentElement.style.overflow = '';
+
+    if (fsOverlay) fsOverlay.classList.remove('active');
+
+    // Clear inline style on sBar so CSS keeps it hidden in normal mode
+    var sBar = document.getElementById('jf-search-bar');
+    if (sBar) {
+      sBar.style.display = '';
+    }
+
+    // Bidirectional search synchronization when exiting fullscreen
+    if (fsSearchQueryEl && searchQueryEl && searchQueryEl.value !== fsSearchQueryEl.value) {
+      searchQueryEl.value = fsSearchQueryEl.value;
+    }
+    if (fsSearchScopeEl && searchModeEl && searchModeEl.value !== fsSearchScopeEl.value) {
+      searchModeEl.value = fsSearchScopeEl.value;
+    }
+    updateClearBtnVisibility();
+
+    ['btn-fs-input', 'btn-fs-output'].forEach(function(id) {
+      var b = document.getElementById(id);
+      if (b) {
+        b.classList.remove('fs-active');
+        b.textContent = '⛶';
+        b.title = T.enterFullscreen;
+        b.setAttribute('aria-label', T.enterFullscreen);
+      }
     });
-    bar.querySelector('[data-act="fs+"]').addEventListener('click', function () {
-      bumpPanelFont(1);
-    });
+
+    // Restore exact scroll position after layout reflow
+    window.scrollTo({ top: savedScrollY, behavior: 'instant' });
+    setTimeout(function() {
+      window.scrollTo(0, savedScrollY);
+    }, 20);
+
+    if (isVirtualized) {
+      setTimeout(renderVirtualWindow, 30);
+    }
   }
 
-  function removeFsToolbar(panel) {
-    if (!panel) return;
-    var bar = panel.querySelector('.ac-fs-toolbar');
-    if (bar) bar.remove();
-    if (panel._fsCountObserver) { panel._fsCountObserver.disconnect(); panel._fsCountObserver = null; }
+  function toggleInputFs() {
+    if (activeFsPanel === inputPanel) exitPanelFs();
+    else enterPanelFs(inputPanel);
   }
 
-  function bumpPanelFont(delta) {
-    var FS_KEY = 'jf:fontsize';
-    var cur = parseInt(localStorage.getItem(FS_KEY), 10) || 13;
-    var next = Math.max(10, Math.min(24, cur + delta));
-    localStorage.setItem(FS_KEY, String(next));
-    // Apply to active output
-    if (outputEl) outputEl.style.setProperty('--panel-font-size', next + 'px');
-    var lbl = document.getElementById('jf-fs-val');
-    if (lbl) lbl.textContent = next;
+  function toggleOutputFs() {
+    if (activeFsPanel === outputPanel) exitPanelFs();
+    else enterPanelFs(outputPanel);
   }
-
-  // ESC exits fullscreen
-  document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape' && fsPanel) { e.preventDefault(); exitFs(); }
-  });
 
   var btnFsInput  = document.getElementById('btn-fs-input');
   var btnFsOutput = document.getElementById('btn-fs-output');
-  var inputPanel  = btnFsInput  ? btnFsInput.closest('.ac-panel')  : null;
-  var outputPanel = btnFsOutput ? btnFsOutput.closest('.ac-panel') : null;
+  if (btnFsInput) btnFsInput.addEventListener('click', toggleInputFs);
+  if (btnFsOutput) btnFsOutput.addEventListener('click', toggleOutputFs);
+  if (fsOverlay) fsOverlay.addEventListener('click', exitPanelFs);
 
-  if (btnFsInput && inputPanel) {
-    btnFsInput.addEventListener('click', function() {
-      if (inputPanel.classList.contains('is-fullscreen')) exitFs();
-      else enterFs(inputPanel, btnFsInput);
-    });
-  }
-  if (btnFsOutput && outputPanel) {
-    btnFsOutput.addEventListener('click', function() {
-      if (outputPanel.classList.contains('is-fullscreen')) exitFs();
-      else enterFs(outputPanel, btnFsOutput);
-    });
-  }
-  if (fsOverlay) fsOverlay.addEventListener('click', exitFs);
-  document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape' && fsPanel) exitFs();
+  // ESC exits fullscreen
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && isFsActive) {
+      e.preventDefault();
+      exitPanelFs();
+    }
+    // Ctrl+F / Cmd+F opens/focuses search toolbar
+    if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'f') {
+      var activeEditor = document.activeElement && (document.activeElement === input || document.activeElement.closest('.split-panels'));
+      if (activeEditor || isFsActive) {
+        e.preventDefault();
+        var qEl = document.getElementById('fs-search-query') || document.getElementById('search-query');
+        if (qEl) {
+          qEl.focus();
+          qEl.select();
+        }
+      }
+    }
   });
 
   /* ===== TAB KEY IN TEXTAREA ===== */

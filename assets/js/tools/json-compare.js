@@ -582,8 +582,8 @@
     if (window.installPanelFullscreen) {
       var jcResult = document.getElementById('jc-result');
       if (jcResult) {
-        var jcPanel = jcResult.closest('.ac-panel') || jcResult;
-        window.installPanelFullscreen(jcPanel, { content: jcResult });
+        var jcBody = jcResult.querySelector('.jc-result-body') || jcResult;
+        window.installPanelFullscreen(jcResult, { content: jcBody });
       }
     }
   });

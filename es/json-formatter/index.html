@@ -46,7 +46,7 @@
     @font-face{font-family:'Inter';font-display:swap}
   </style>
 
-  <link rel="stylesheet" href="/assets/css/style.css?v=20260928-json-fix">
+  <link rel="stylesheet" href="/assets/css/style.css?v=20261109">
 </head>
 <body>
 
@@ -86,14 +86,21 @@
               <span style="font-size:14px;color:var(--color-text-3)">{ }</span>
               <span class="ac-panel-label">Entrada</span>
               <div class="ac-panel-actions">
-                <label class="ac-btn" style="cursor:pointer" title="Subir archivo JSON">
-                  Subir
-                  <input type="file" id="file-upload" accept=".json,application/json" style="display:none">
-                </label>
-                <button class="ac-btn" id="btn-paste" title="Pegar desde el portapapeles">Pegar</button>
-                <button class="ac-btn" id="btn-clear" title="Limpiar entrada">Limpiar</button>
-                <div class="font-sz-wrap"><button class="font-sz-btn" id="btn-font-down" title="Reducir tamaño de fuente">A−</button><button class="font-sz-btn" id="btn-font-up" title="Aumentar tamaño de fuente">A+</button></div>
-                <button class="ac-btn" id="btn-fs-input" title="Pantalla completa de entrada">⛶</button>
+                <div class="ac-action-group ac-group-primary">
+                  <button class="ac-btn primary" id="btn-format-top" title="Formatear JSON">Formatear</button>
+                  <label class="ac-btn" style="cursor:pointer" title="Subir archivo JSON">
+                    Subir
+                    <input type="file" id="file-upload" accept=".json,application/json" style="display:none">
+                  </label>
+                  <button class="ac-btn" id="btn-paste" title="Pegar desde el portapapeles">Pegar</button>
+                  <button class="ac-btn" id="btn-clear" title="Limpiar entrada">Limpiar</button>
+                </div>
+                <div class="ac-action-group ac-group-editor">
+                  <div class="font-sz-wrap" title="Tamaño de fuente"><button class="font-sz-btn" id="btn-font-down" title="Reducir tamaño de fuente">A−</button><button class="font-sz-btn" id="btn-font-up" title="Aumentar tamaño de fuente">A+</button></div>
+                </div>
+                <div class="ac-action-group ac-group-window">
+                  <button class="ac-btn ac-btn-fs" id="btn-fs-input" title="Pantalla completa" aria-label="Pantalla completa">⛶</button>
+                </div>
               </div>
             </div>
             <textarea
@@ -118,20 +125,120 @@
               <span style="font-size:14px;color:var(--color-text-3)">✦</span>
               <span class="ac-panel-label">Salida</span>
               <div class="ac-panel-actions">
-                <button class="ac-btn" id="btn-copy-output" title="Copiar al portapapeles">Copiar</button>
-                <button class="ac-btn" id="btn-download" title="Descargar como .json">Descargar</button>
-                <button class="ac-btn" id="btn-collapse-all" title="Contraer todos los nodos">Contraer todo</button>
-                <button class="ac-btn" id="btn-expand-all" title="Expandir todos los nodos">Expandir todo</button>
-                <button class="ac-btn" id="btn-fs-output" title="Pantalla completa de salida">⛶</button>
+                <div class="ac-action-group ac-group-primary">
+                  <div class="jf-copy-dropdown-wrap" id="jf-copy-dropdown-wrap">
+                    <button class="ac-btn primary-soft" id="btn-copy-output" type="button" aria-haspopup="true" aria-expanded="false" title="Opciones de copia">
+                      <span>Copiar</span> <span style="font-size:9px;margin-left:3px;opacity:0.8">▼</span>
+                    </button>
+                    <div class="jf-copy-menu" id="jf-copy-menu" role="menu" aria-label="Opciones de copia">
+                      <button type="button" class="jf-copy-item" id="btn-copy-all" role="menuitem">
+                        <span class="jf-ci-icon">📋</span> <span class="jf-ci-label">Copiar todo</span>
+                      </button>
+                      <button type="button" class="jf-copy-item" id="btn-copy-selected" role="menuitem" disabled>
+                        <span class="jf-ci-icon">✂️</span> <span class="jf-ci-label" id="lbl-copy-selected">Copiar líneas seleccionadas (0)</span>
+                      </button>
+                      <button type="button" class="jf-copy-item" id="btn-copy-bookmarked" role="menuitem" disabled>
+                        <span class="jf-ci-icon">⭐</span> <span class="jf-ci-label" id="lbl-copy-bookmarked">Copiar líneas marcadas (0)</span>
+                      </button>
+                      <button type="button" class="jf-copy-item" id="btn-copy-current" role="menuitem" disabled>
+                        <span class="jf-ci-icon">📍</span> <span class="jf-ci-label">Copiar línea actual</span>
+                      </button>
+                      <button type="button" class="jf-copy-item" id="btn-copy-range" role="menuitem">
+                        <span class="jf-ci-icon">🔢</span> <span class="jf-ci-label">Copiar rango de líneas…</span>
+                      </button>
+                      <div class="jf-copy-divider"></div>
+                      <button type="button" class="jf-copy-item" id="btn-select-all" role="menuitem">
+                        <span class="jf-ci-icon">☑️</span> <span class="jf-ci-label">Seleccionar todas las líneas</span>
+                      </button>
+                      <button type="button" class="jf-copy-item" id="btn-clear-selection" role="menuitem">
+                        <span class="jf-ci-icon">✕</span> <span class="jf-ci-label">Limpiar selección</span>
+                      </button>
+                      <button type="button" class="jf-copy-item" id="btn-clear-bookmarks" role="menuitem">
+                        <span class="jf-ci-icon">🗑️</span> <span class="jf-ci-label">Limpiar marcadores</span>
+                      </button>
+                    </div>
+                  </div>
+                  <button class="ac-btn primary-soft" id="btn-download" title="Descargar como .json">Descargar</button>
+                </div>
+                <div class="ac-action-group ac-group-editor">
+                  <button class="ac-btn" id="btn-collapse-all" title="Contraer todos los nodos"><span class="btn-lbl-full">Contraer todo</span><span class="btn-lbl-short">Contraer</span></button>
+                  <button class="ac-btn" id="btn-expand-all" title="Expandir todos los nodos"><span class="btn-lbl-full">Expandir todo</span><span class="btn-lbl-short">Expandir</span></button>
+                  <div class="font-sz-wrap" title="Tamaño de fuente"><button class="font-sz-btn" id="btn-font-down-out" title="Reducir tamaño de fuente">A−</button><button class="font-sz-btn" id="btn-font-up-out" title="Aumentar tamaño de fuente">A+</button></div>
+                </div>
+                <div class="ac-action-group ac-group-window">
+                  <button class="ac-btn ac-btn-fs" id="btn-fs-output" title="Pantalla completa" aria-label="Pantalla completa">⛶</button>
+                </div>
               </div>
             </div>
-            <div class="json-view" id="json-output" aria-label="Salida JSON formateada" aria-live="polite">
+
+            <!-- Compact Search Toolbar (Issue 1 & 2: One horizontal row, visible ONLY in fullscreen mode) -->
+            <div class="ac-search-toolbar" id="jf-search-bar" role="search" aria-label="Barra de búsqueda JSON">
+              <div class="ac-search-input-wrap">
+                <svg class="ac-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <circle cx="11" cy="11" r="8"></circle>
+                  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+                <input type="text" class="ac-search-input" id="fs-search-query" placeholder="Buscar en JSON…" aria-label="Buscar en JSON" autocomplete="off" spellcheck="false">
+              </div>
+              <select class="ac-search-scope" id="fs-search-scope" aria-label="Alcance de búsqueda">
+                <option value="both" selected>Claves + Valores</option>
+                <option value="key">Solo claves</option>
+                <option value="value">Solo valores</option>
+                <option value="regex">Regex</option>
+                <option value="path">Ruta</option>
+              </select>
+              <span class="ac-search-count" id="fs-search-count" aria-live="polite">0 / 0</span>
+              <div class="ac-search-nav">
+                <button type="button" class="ac-btn ac-search-btn" id="fs-search-prev" title="Coincidencia anterior (Mayús+Enter)" aria-label="Coincidencia anterior">‹</button>
+                <button type="button" class="ac-btn ac-search-btn" id="fs-search-next" title="Siguiente coincidencia (Enter)" aria-label="Siguiente coincidencia">›</button>
+                <button type="button" class="ac-btn ac-search-btn" id="fs-search-clear" title="Limpiar búsqueda" aria-label="Limpiar búsqueda">✕</button>
+              </div>
+            </div>
+
+            <!-- Contextual Selection Bar -->
+            <div class="jf-selection-bar" id="jf-selection-bar" style="display:none">
+              <span class="jf-sb-count" id="jf-sb-count">0 líneas seleccionadas</span>
+              <div class="jf-sb-actions">
+                <button type="button" class="ac-btn jf-sb-btn" id="jf-sb-copy" title="Copiar líneas seleccionadas">Copiar</button>
+                <button type="button" class="ac-btn jf-sb-btn" id="jf-sb-download" title="Descargar líneas seleccionadas">Descargar</button>
+                <button type="button" class="ac-btn jf-sb-btn" id="jf-sb-clear" title="Limpiar selección">Limpiar</button>
+              </div>
+            </div>
+
+            <div class="json-view show-linenums" id="json-output" aria-label="Salida JSON formateada" aria-live="polite">
               <span style="color:var(--color-text-2,#6B7280);font-style:italic;font-size:11px">La salida aparecerá aquí…</span>
             </div>
             <div class="ac-status" id="output-status">
               <span class="ac-status-ok" id="output-status-ok" style="display:none">✓ Formateado</span>
               <span class="ac-status-err" id="output-status-err" style="display:none"></span>
               <span class="ac-status-info" id="output-status-info"></span>
+            </div>
+
+            <!-- Line Range Modal -->
+            <div class="jf-modal-backdrop" id="jf-range-backdrop" style="display:none">
+              <div class="jf-modal" id="jf-range-modal" role="dialog" aria-labelledby="jf-rm-title" aria-modal="true">
+                <div class="jf-modal-header">
+                  <h3 id="jf-rm-title" class="jf-modal-title">Copiar rango de líneas</h3>
+                  <button type="button" class="jf-modal-close" id="jf-rm-close" aria-label="Cerrar cuadro de diálogo">✕</button>
+                </div>
+                <div class="jf-modal-body">
+                  <p class="jf-modal-desc" id="jf-rm-desc">Especifica los números de línea inicial y final para copiar (base 1).</p>
+                  <div class="jf-rm-row">
+                    <label for="jf-rm-start" id="lbl-rm-start">Línea inicial</label>
+                    <input type="number" id="jf-rm-start" min="1" step="1" value="1" class="jf-rm-input">
+                  </div>
+                  <div class="jf-rm-row">
+                    <label for="jf-rm-end" id="lbl-rm-end">Línea final</label>
+                    <input type="number" id="jf-rm-end" min="1" step="1" value="10" class="jf-rm-input">
+                  </div>
+                  <div class="jf-rm-meta" id="jf-rm-meta">Total de líneas: 0</div>
+                </div>
+                <div class="jf-modal-footer">
+                  <button type="button" class="ac-btn" id="jf-rm-cancel">Cancelar</button>
+                  <button type="button" class="ac-btn" id="jf-rm-download">Descargar rango</button>
+                  <button type="button" class="ac-btn primary-soft" id="jf-rm-submit">Copiar rango</button>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -151,9 +258,40 @@
 
       </div><!-- /tool-zone -->
 
-      <!-- Sidebar -->
+      <!-- Sidebar (Issue 3: Reordered to 1. Anuncio, 2. Búsqueda, 3. Opciones, 4. Marcadores, 5. Estadísticas) -->
       <aside class="tool-side" aria-label="Opciones">
 
+        <!-- 1. Advertisement -->
+        <div style="margin-bottom:12px">
+          <p class="ad-label">Anuncio</p>
+          <div class="ad-slot" style="min-height:250px">
+            <div class="adsbygoogle" style="display:block" aria-hidden="true"></div>
+          </div>
+        </div>
+
+        <!-- 2. Search -->
+        <div class="ss-divider">Búsqueda</div>
+        <div class="ss-option-row">
+          <span class="ss-opt-label">Buscar</span>
+          <input class="ss-opt-input" id="search-query" placeholder="Buscar claves o valores…" autocomplete="off" style="flex:1;padding:6px 8px;border:1px solid var(--color-border,#DDD8D0);border-radius:6px;font-size:12px" aria-label="Buscar en JSON">
+        </div>
+        <div class="ss-option-row">
+          <span class="ss-opt-label">Modo</span>
+          <select class="ss-opt-select" id="search-mode" style="flex:1">
+            <option value="both" selected>Clave + valor</option>
+            <option value="key">Solo clave</option>
+            <option value="value">Solo valor</option>
+            <option value="regex">Regex</option>
+            <option value="path">Ruta (a.b[0].c)</option>
+          </select>
+        </div>
+        <div class="ss-option-row" style="justify-content:space-between">
+          <button class="ac-btn" id="search-prev" title="Coincidencia anterior">‹ Anterior</button>
+          <span style="font-size:11px;color:var(--color-text-2,#6B7280)" id="search-count" aria-live="polite">Sin búsqueda todavía</span>
+          <button class="ac-btn" id="search-next" title="Siguiente coincidencia">Siguiente ›</button>
+        </div>
+
+        <!-- 3. Options -->
         <div class="ss-divider">Opciones</div>
         <div class="ss-option-row">
           <span class="ss-opt-label">Indent</span>
@@ -191,32 +329,11 @@
         </div>
         <div class="tog-row">
           <span class="tog-label" id="lbl-linenums">Mostrar números de línea</span>
-          <div class="tog off" id="tog-linenums" role="switch" aria-checked="false" tabindex="0" aria-labelledby="lbl-linenums"></div>
+          <div class="tog on" id="tog-linenums" role="switch" aria-checked="true" tabindex="0" aria-labelledby="lbl-linenums"></div>
         </div>
         <div class="tog-row">
           <span class="tog-label" id="lbl-wrap">Ajustar líneas largas</span>
           <div class="tog off" id="tog-wrap" role="switch" aria-checked="false" tabindex="0" aria-labelledby="lbl-wrap"></div>
-        </div>
-
-        <div class="ss-divider">Búsqueda</div>
-        <div class="ss-option-row">
-          <span class="ss-opt-label">Buscar</span>
-          <input class="ss-opt-input" id="search-query" placeholder="Buscar claves o valores…" autocomplete="off" style="flex:1;padding:6px 8px;border:1px solid var(--color-border,#DDD8D0);border-radius:6px;font-size:12px" aria-label="Buscar en JSON">
-        </div>
-        <div class="ss-option-row">
-          <span class="ss-opt-label">Modo</span>
-          <select class="ss-opt-select" id="search-mode" style="flex:1">
-            <option value="both" selected>Clave + valor</option>
-            <option value="key">Solo clave</option>
-            <option value="value">Solo valor</option>
-            <option value="regex">Regex</option>
-            <option value="path">Ruta (a.b[0].c)</option>
-          </select>
-        </div>
-        <div class="ss-option-row" style="justify-content:space-between">
-          <button class="ac-btn" id="search-prev" title="Coincidencia anterior">‹ Anterior</button>
-          <span style="font-size:11px;color:var(--color-text-2,#6B7280)" id="search-count" aria-live="polite">Sin búsqueda todavía</span>
-          <button class="ac-btn" id="search-next" title="Siguiente coincidencia">Siguiente ›</button>
         </div>
 
         <div class="ss-divider">Marcadores <span style="font-weight:400;text-transform:none;font-size:10px;color:var(--color-text-3,#9CA3AF)">(guardados en este navegador)</span></div>
@@ -235,14 +352,6 @@
           <div class="stat-card"><div class="stat-val" id="stat-depth">0</div><div class="stat-lbl">Depth</div></div>
           <div class="stat-card"><div class="stat-val" id="stat-bytes">0</div><div class="stat-lbl">Bytes</div></div>
           <div class="stat-card"><div class="stat-val" id="stat-errors">0</div><div class="stat-lbl">Errors</div></div>
-        </div>
-
-        <!-- AdSense sidebar slot -->
-        <div style="margin-top:8px">
-          <p class="ad-label">Anuncio</p>
-          <div class="ad-slot" style="min-height:250px">
-            <div class="adsbygoogle" style="display:block" aria-hidden="true"></div>
-</div>
         </div>
 
       </aside>

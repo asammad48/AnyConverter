@@ -44,7 +44,7 @@
     .hero-desc{font-size:1.0625rem;color:var(--color-text-2,#6B7280);max-width:680px;line-height:1.6}
     @font-face{font-family:'Inter';font-display:swap}
   </style>
-  <link rel="stylesheet" href="/assets/css/style.css?v=20260902">
+  <link rel="stylesheet" href="/assets/css/style.css?v=20261109">
 </head>
 <body>
   <header id="site-header" class="site-header"></header>
@@ -58,31 +58,88 @@
     </section>
     <div class="tool-wrapper">
       <div class="tool-zone">
-        <div class="regex-input-wrapper">
-          <span class="regex-slash">/</span>
-          <input type="text" id="regex-pattern" placeholder="patrón" spellcheck="false" aria-label="Patrón de expresión regular">
-          <span class="regex-slash">/</span>
-          <div class="regex-flags" id="regex-flags">
-            <button class="flag-btn active" data-flag="g" title="Global">g</button>
-            <button class="flag-btn" data-flag="i" title="Ignorar mayúsculas">i</button>
-            <button class="flag-btn" data-flag="m" title="Multilínea">m</button>
-            <button class="flag-btn" data-flag="s" title="Dotall">s</button>
+
+        <!-- Pattern bar -->
+        <div class="ac-panel">
+          <div class="ac-panel-header">
+            <span style="font-size:13px;color:var(--color-text-3);font-family:var(--font-mono)">/…/</span>
+            <span class="ac-panel-label">Patrón</span>
+            <div class="ac-panel-actions">
+              <button class="ac-btn flag-btn active" data-flag="g" title="Global — encontrar todas las coincidencias">g</button>
+              <button class="ac-btn flag-btn" data-flag="i" title="Ignorar mayúsculas y minúsculas">i</button>
+              <button class="ac-btn flag-btn" data-flag="m" title="Multilínea — ^ y $ coinciden con límites de línea">m</button>
+              <button class="ac-btn flag-btn" data-flag="s" title="Dotall — . coincide con saltos de línea">s</button>
+            </div>
+          </div>
+          <div style="padding:10px 12px;display:flex;align-items:center;gap:8px">
+            <span style="font-size:14px;color:var(--color-text-3);font-family:var(--font-mono);flex-shrink:0">/</span>
+            <input
+              type="text"
+              id="regex-pattern"
+              placeholder="Introduce el patrón…"
+              spellcheck="false"
+              autocomplete="off"
+              style="flex:1;font-family:var(--font-mono);font-size:13px;border:none;outline:none;background:transparent;color:var(--color-text)"
+              aria-label="Patrón de expresión regular"
+            >
+            <span style="font-size:14px;color:var(--color-text-3);font-family:var(--font-mono);flex-shrink:0" id="flags-display">/gm</span>
+            <span class="regex-valid-badge" id="regex-valid-badge" style="display:none"></span>
           </div>
         </div>
-        <div id="regex-error" class="status-bar error" style="display:none;margin-top:8px"></div>
-        <div class="mt-4">
-          <label for="regex-test-input" class="panel-label">Texto de prueba</label>
-          <div class="regex-overlay-wrapper mt-2" style="position:relative">
-            <div id="regex-highlight-overlay" class="regex-highlight-overlay" aria-hidden="true"></div>
-            <textarea id="regex-test-input" placeholder="Introduce el texto de prueba aquí..." spellcheck="false" style="min-height:180px;font-family:var(--font-mono);font-size:13px;position:relative;z-index:1;background:transparent"></textarea>
+
+        <!-- Split panels: log input | matches output -->
+        <div class="split-panels">
+
+          <!-- Log input panel -->
+          <div class="ac-panel">
+            <div class="ac-panel-header">
+              <span style="font-size:13px;color:var(--color-text-3)">≡</span>
+              <span class="ac-panel-label">Entrada de texto / log</span>
+              <div class="ac-panel-actions">
+                <label class="ac-btn" style="cursor:pointer" title="Subir archivo de log">
+                  Subir .log
+                  <input type="file" id="log-file-input" accept=".log,.txt,.csv,text/plain" style="display:none">
+                </label>
+                <button class="ac-btn" id="btn-clear-log">Limpiar</button>
+              </div>
+            </div>
+            <textarea
+              id="log-textarea"
+              class="ac-input"
+              placeholder="Pega el contenido aquí — las coincidencias se actualizan en vivo…"
+              spellcheck="false"
+              aria-label="Entrada de texto de log"
+            ></textarea>
+            <div class="ac-status" id="log-status">
+              <span class="ac-status-info" id="log-lines-info">0 líneas</span>
+              <span class="ac-status-info" id="log-matches-info" style="margin-left:0"></span>
+            </div>
           </div>
-        </div>
-        <div id="regex-stats" class="status-bar info" style="display:none;margin-top:8px"></div>
-        <div id="regex-matches" style="display:none;margin-top:16px">
-          <p class="panel-label" style="margin-bottom:10px">Coincidencias</p>
-          <div id="regex-match-list"></div>
-        </div>
-      </div>
+
+          <!-- Matches output panel -->
+          <div class="ac-panel">
+            <div class="ac-panel-header">
+              <span style="font-size:13px;color:var(--color-text-3)">◈</span>
+              <span class="ac-panel-label">Coincidencias extraídas</span>
+              <div class="ac-panel-actions">
+                <button class="ac-btn" id="btn-copy-matches" title="Copiar todas las coincidencias">Copiar</button>
+                <button class="ac-btn" id="btn-export-csv" title="Exportar coincidencias como CSV">→ CSV</button>
+                <button class="ac-btn" id="btn-export-json" title="Exportar coincidencias como JSON">→ JSON</button>
+              </div>
+            </div>
+            <div class="match-view" id="match-view" aria-label="Resultados de coincidencias" aria-live="polite">
+              <span style="color:var(--color-text-2,#6B7280);font-style:italic;font-size:11px">Las coincidencias aparecerán aquí…</span>
+            </div>
+            <div class="ac-status" id="match-status">
+              <span class="ac-status-ok" id="match-count-ok" style="display:none"></span>
+              <span class="ac-status-err" id="match-count-err" style="display:none"></span>
+              <span class="ac-status-info" id="match-groups-info"></span>
+            </div>
+          </div>
+
+        </div><!-- /split-panels -->
+
+      </div><!-- /tool-zone -->
       <aside class="tool-side" aria-label="Quick patterns and export options">
 
         <div class="ss-divider">Quick Patterns</div>

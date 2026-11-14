@@ -41,7 +41,7 @@
     .hero-desc{font-size:1.0625rem;color:var(--color-text-2,#6B7280);max-width:680px;line-height:1.6}
     @font-face{font-family:'Inter';font-display:swap}
   </style>
-  <link rel="stylesheet" href="/assets/css/style.css?v=20261008">
+  <link rel="stylesheet" href="/assets/css/style.css?v=20261109">
 </head>
 <body>
   <header id="site-header" class="site-header"></header>
@@ -58,10 +58,13 @@
       <div class="tool-zone">
         <div class="calc" id="calc-root" data-tool="percentage-difference-calculator">
           <div class="calc-grid">
-            <div class="calc-field"><label for="pd-a">Value A</label><input class="calc-input calc-input--lg" type="text" inputmode="decimal" autocomplete="off" id="pd-a" value="80"></div>
-            <div class="calc-field"><label for="pd-b">Value B</label><input class="calc-input calc-input--lg" type="text" inputmode="decimal" autocomplete="off" id="pd-b" value="100"></div>
+            <div class="calc-field"><label for="pd-a">First value (A)</label><input class="calc-input" type="text" inputmode="decimal" autocomplete="off" id="pd-a" value="80"></div>
+            <div class="calc-field"><label for="pd-b">Second value (B)</label><input class="calc-input" type="text" inputmode="decimal" autocomplete="off" id="pd-b" value="100"></div>
           </div>
-          <label class="calc-check"><input type="checkbox" id="pd-pct"> Both values are percentages</label>
+          <div class="calc-guide-note">
+            <strong>Symmetric Difference vs. Percent Change:</strong> Percentage difference compares two values without a baseline (|A − B| ÷ avg × 100). If you have an initial and final number, use the directional percent change shown below.
+          </div>
+          <label class="calc-check" style="margin-top:6px;"><input type="checkbox" id="pd-pct"> Both values are percentages</label>
           <p class="calc-hint" id="pd-empty" hidden>Enter two numbers.</p>
           <div class="calc-warn" id="pd-warn" hidden></div>
           <div class="calc-out" id="pd-out" aria-live="polite">
