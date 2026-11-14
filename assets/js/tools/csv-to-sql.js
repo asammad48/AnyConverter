@@ -32,8 +32,8 @@ document.addEventListener('DOMContentLoaded', function () {
   const progMsg     = document.getElementById('prog-msg');
   const logSection  = document.getElementById('csv-log-section');
   const logEl       = document.getElementById('csv-log');
-  const genBtns     = Array.from(document.querySelectorAll('#btn-generate-sql'));
-  const genBtn      = genBtns[genBtns.length - 1] || document.getElementById('btn-generate-sql');
+  const genBtns     = Array.from(document.querySelectorAll('#btn-generate-sql, #btn-generate-sql-side, .js-btn-generate-sql'));
+  const genBtn      = document.getElementById('btn-generate-sql') || document.getElementById('btn-generate-sql-side') || genBtns[0];
   const statRows    = document.getElementById('stat-rows');
   const statCols    = document.getElementById('stat-cols');
   const statSize    = document.getElementById('stat-size');
@@ -69,7 +69,7 @@ document.addEventListener('DOMContentLoaded', function () {
     if (queryCsvBtn) queryCsvBtn.disabled = disabled;
     if (!disabled && pendingAutoGenerate) {
       pendingAutoGenerate = false;
-      var gen = document.getElementById('btn-generate-sql');
+      var gen = document.getElementById('btn-generate-sql') || document.getElementById('btn-generate-sql-side');
       if (gen) setTimeout(function() { gen.click(); }, 0);
     }
   }
@@ -292,6 +292,15 @@ document.addEventListener('DOMContentLoaded', function () {
   document.getElementById('csv-input').addEventListener('input', function() {
     clearTimeout(autoParseDeferTimer);
     const raw = this.value.trim();
+    if (!raw) {
+      parsedData = null; headers = []; columnTypes = []; totalRows = 0;
+      const prev = document.getElementById('csv-preview-section');
+      if (prev) prev.style.display = 'none';
+      const sqlOut = document.getElementById('sql-output-section');
+      if (sqlOut) sqlOut.style.display = 'none';
+      setGenerateDisabled(true);
+      return;
+    }
     // Only auto-parse if there's meaningful content (>50 chars) and at least one newline
     if (raw.length > 50 && raw.indexOf('\n') !== -1) {
       autoParseDeferTimer = setTimeout(function() {

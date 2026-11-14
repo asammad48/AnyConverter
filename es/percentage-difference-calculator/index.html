@@ -58,10 +58,13 @@
       <div class="tool-zone">
         <div class="calc" id="calc-root" data-tool="percentage-difference-calculator">
           <div class="calc-grid">
-            <div class="calc-field"><label for="pd-a">Valor A</label><input class="calc-input calc-input--lg" type="text" inputmode="decimal" autocomplete="off" id="pd-a" value="80"></div>
-            <div class="calc-field"><label for="pd-b">Valor B</label><input class="calc-input calc-input--lg" type="text" inputmode="decimal" autocomplete="off" id="pd-b" value="100"></div>
+            <div class="calc-field"><label for="pd-a">Primer valor (A)</label><input class="calc-input" type="text" inputmode="decimal" autocomplete="off" id="pd-a" value="80"></div>
+            <div class="calc-field"><label for="pd-b">Segundo valor (B)</label><input class="calc-input" type="text" inputmode="decimal" autocomplete="off" id="pd-b" value="100"></div>
           </div>
-          <label class="calc-check"><input type="checkbox" id="pd-pct"> Ambos valores son porcentajes</label>
+          <div class="calc-guide-note">
+            <strong>Diferencia simétrica frente a variación porcentual:</strong> La diferencia porcentual compara dos valores sin una línea de base (|A − B| ÷ promedio × 100). Si dispones de un valor inicial y uno final, utiliza la variación direccional que se muestra a continuación.
+          </div>
+          <label class="calc-check" style="margin-top:6px;"><input type="checkbox" id="pd-pct"> Ambos valores son porcentajes</label>
           <p class="calc-hint" id="pd-empty" hidden>Introduce dos números.</p>
           <div class="calc-warn" id="pd-warn" hidden></div>
           <div class="calc-out" id="pd-out" aria-live="polite">

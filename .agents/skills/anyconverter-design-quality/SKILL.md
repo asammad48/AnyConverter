@@ -117,36 +117,64 @@ When verifying UI changes:
 
 ## 5. Permanent Design Quality Rules (Mandatory Quality Gates)
 
-Every agent and developer working on AnyConverter must strictly enforce these 7 core rules:
+Every agent and developer working on AnyConverter must strictly enforce these 12 Mandatory Design Engineering Standards:
 
-1. **Never duplicate functionally identical search interfaces in the same visible workspace without a justified reason.**
-   - If search controls already exist in the active sidebar or toolbar, do not render a second search bar inside normal mode editor panels.
-   - Fullscreen mode may display a dedicated search toolbar because sidebars are hidden in fullscreen.
+1. **Shared Form Controls Must Have Consistent Dimensions:**
+   - Standard inputs (`.calc-input`, `input[type="number"]`, `input[type="text"]`, `input[type="month"]`) and `<select class="ac-select">` must have uniform `height: 44px; min-height: 44px; box-sizing: border-box;`.
+   - Small toggle chips (`.ac-subchip`) must have fixed `height: 22px; font-size: 11px; padding: 2px 8px;`.
+   - Blanket rules like `.tool-zone button { min-height: 44px; }` must explicitly exempt `.ac-subchip`, `.font-sz-btn`, and `.ac-btn-fs`.
 
-2. **Fullscreen utility toolbars must use compact horizontal layouts on desktop.**
-   - All fullscreen search and control components must occupy exactly ONE horizontal row on desktop/laptop screens (`[Search...] [Scope ▼] [0 / 0] [Prev] [Next] [Clear]`).
-   - Never allow controls to wrap into 2 or 3 rows on desktop screens.
+2. **Related Controls Must Be Visually Grouped & Baseline-Aligned:**
+   - Multi-column calculator inputs must have uniform label heights (`min-height: 24px; display: flex; align-items: flex-end; margin-bottom: 6px;`).
+   - Group paired fields logically (e.g. Down Payment amount $ and percentage %).
 
-3. **Inputs and dropdowns should not expand to full width without functional justification.**
-   - Desktop search inputs must be constrained (220px–260px wide).
-   - Scope select dropdowns must be constrained (140px–170px wide) and must override global `select { width: 100% }` defaults.
-   - Navigation and action buttons must maintain ergonomic fixed dimensions (36 × 36px).
+3. **Primary Actions Must Be Discoverable Immediately:**
+   - Format JSON, Generate SQL, Compare, and Calculate buttons must be positioned in the main workspace above or adjacent to the primary input canvas.
+   - Users must NEVER be forced to scroll past a multi-hundred-pixel editor to find the action button.
 
-4. **The editor must receive priority over controls and decoration.**
-   - Toolbars and headers must remain compact (height 36px–52px) to maximize available viewport canvas for code, data, and document viewing.
+4. **Tool Workspaces Take Priority Over Prose & Decoration:**
+   - Decouple workspace max-width (`--ac-tool-max: 1800px;`) from article/prose max-width (`--ac-content-max: 860px;`).
+   - Editors must have sensible minimum heights: clamp(340px, 44vh, 480px) for dual-pane diff/format editors. Never let `min-height: 0` collapse code editors into 80px slots.
 
-5. **Sidebar sections must follow the specified information hierarchy.**
-   - Required standard sidebar hierarchy:
-     1. Advertisement
-     2. Search
-     3. Options
-     4. Bookmarks / Secondary features
-     5. Stats / Diagnostics
+5. **Dropdowns Must Be Recognizable and Accessible:**
+   - Custom styled selects must always feature a visible SVG chevron icon with `padding-right: 36px`.
+   - High-contrast chevrons must adapt automatically to Light and Dark modes.
+   - NEVER overwrite `background:` shorthand in JavaScript or CSS because it destroys the SVG chevron image. Use `background-color:` instead.
 
-6. **Verify final rendered appearance, not merely CSS class presence.**
-   - Do not claim PASS based solely on HTML presence or class attributes.
-   - Visually inspect rendered screenshots to verify layout, alignment, and lack of visual collisions.
+6. **Responsive Layouts Must Use Available Space Appropriately:**
+   - Desktop and laptop screens: `grid-template-columns: minmax(0, 1fr) minmax(260px, 320px);` ensuring workspace expansion while capping ad sidebar width.
+   - Screen utilization must achieve $\ge 70\%$ on desktop monitors (1440px–1920px).
 
-7. **Test actual component bounding rectangles, computed styles, and visual spacing.**
-   - Verify that bounding boxes (`getBoundingClientRect()`) match layout specifications.
-   - Assert single-row baseline alignment (`Math.round(rect.y)`) and verify that controls never overlap or horizontally overflow.
+7. **Shared CSS Changes Must Be Tested on All Affected Tools:**
+   - Any modification to `style.css` must be tested against JSON Compare, Mortgage Calculator, Loan Calculator, JSON Formatter, and CSV to SQL.
+
+8. **Multilingual Parity (EN, ES, DA) Must Be Verified:**
+   - German, Danish, and Spanish compound terms must not wrap awkwardly, overflow buttons, or displace sister controls.
+
+9. **No Arbitrary Negative-Margin Fixes:**
+   - Never use `margin-top: -15px` or similar hacks to correct layout misalignments. Fix the container flex/grid alignment or header box-model at the root.
+
+10. **No Excessive `!important` Patches Without Documented Justification:**
+    - Specificity bugs must be solved structurally by correcting class hierarchy, not by peppering global styles with `!important`.
+
+11. **No Direct Manipulation of Unrelated Components to Fix a Local Defect:**
+    - Fixing a calculator label must not alter global `.hero` or `.tool-wrapper` styling without assessing global blast radius.
+
+12. **No Claiming Success Based Solely on Zero-Overflow Measurements:**
+    - A page that centers in a narrow 600px column on a 1920px screen has zero overflow but is a severe layout failure. Always inspect workspace utilization, editor height, and element bounding boxes.
+
+---
+
+## 6. Mandatory Failure Conditions (Visual QA Gate)
+
+Mark a layout test **FAIL** when any of the following occur:
+- Interactive elements overlap, clip, or become inaccessible.
+- Primary actions (`Format`, `Calculate`, `Generate SQL`) are unexpectedly hidden below the fold.
+- Form fields in the same row have visibly mismatched heights ($>2\text{px}$ difference) or misaligned tops.
+- Select dropdowns display without a recognizable chevron arrow.
+- Editor workspace collapses below 300px or becomes cramped while surrounding viewport space is wasted.
+- Horizontal screen utilization on 1920px screens drops below 60%.
+- Content jumps unexpectedly between rows or produces orphaned single fields on desktop.
+- Mobile touch targets measure $< 40\text{px}$ in height.
+- Shared CSS creates visual regressions on other tool pages.
+- Browser zoom at 125% or 150% clips text or causes inaccessible controls.

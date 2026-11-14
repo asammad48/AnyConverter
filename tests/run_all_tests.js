@@ -19,7 +19,10 @@ const testSuites = [
   { name: 'Privacy Statements & Disclosures Regression', cmd: 'node tests/test_privacy_claims_regression.js' },
   { name: 'Related Tools Semantic Integrity Suite', cmd: 'node tests/test_related_tools_regression.js' },
   { name: 'Multilingual Localization Quality Suite', cmd: 'node tests/test_localization_regression.js' },
-  { name: 'Financial Calculations & Amortization Suite', cmd: 'node tests/test_financial_calculations_suite.js' }
+  { name: 'Navbar Dropdowns & Favorites Suite', cmd: 'node tests/test_dropdown_and_favorites.js' },
+  { name: 'Multilingual Tool Names & Search Suite', cmd: 'node tests/test_multilingual_tool_names.js' },
+  { name: 'Financial Calculations & Amortization Suite', cmd: 'node tests/test_financial_calculations_suite.js' },
+  { name: 'Playwright Visual Regression Suite (21/21 Baselines)', cmd: 'node tests/run_visual_regression.js' }
 ];
 
 console.log('====================================================');

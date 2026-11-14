@@ -1,12 +1,12 @@
 {
-  "updatedAt": "2026-11-12T07:15:00.000Z",
+  "updatedAt": "2026-11-14T22:20:00.000Z",
   "activeProfile": "PROFILE 2 — DESIGN & TESTING",
-  "currentPhase": "PHASE 28: JSON FORMATTER TOOLBAR LAYOUT & COPY DROPDOWN STACKING FIX (PASS — 18/18 SUITES VERIFIED)",
-  "activeBranch": "feat/tool-enhancements-bulk-barcode-financial-ux",
+  "currentPhase": "PHASE 36: MULTILINGUAL TOOL NAMES & SEARCH LOCALIZATION (PASS — 21/21 TEST GATES PASS, 21/21 VISUAL SNAPSHOTS MATCH)",
+  "activeBranch": "feat/sitewide-layout-screen-utilization-qa",
   "baseReleaseCheckpoint": "0e92a00c144e1ca039bbf853245ce02621415df8",
   "financialReleaseCheckpoint": "12bdbbb2de0f359767feb693cb6597cac986d47e",
   "headCommit": "c7fc1ad",
-  "auditVerdict": "PASS — Fixed Copy dropdown clipping beneath output panel and toolbar wrapping onto a second row. Enforced overflow: visible on panel actions, elevated z-index (9999) with elevation shadow, and locked header to single-row 44px layout with compact button metrics across all viewports (1920px to 390px). 18/18 repo test suites pass cleanly with 0 regressions.",
+  "auditVerdict": "UNCONDITIONAL PASS — Full multilingual localization deployed for tool names (128 tools in ES & DA), tool descriptions, category badges (14 categories in ES & DA), search modal footer keys, bilingual query matching, and Homepage Dashboard favorite cards. Verified with dedicated test suite tests/test_multilingual_tool_names.js across 21/21 repository test suites.",
   "warningsRecorded": [
     "Loan Term Unit Toggle: Clarification that 8.58% nominal APR / 8.93% EAR in fixture documentation corresponds to a 36-year (432-month) loan input. When '#term-unit-mos' is selected, 36 months correctly yields 10.55% nominal APR / 11.08% EAR. Both modes execute with 100% mathematical precision.",
     "Non-Latin-1 Characters in jsPDF: All supported platform languages (EN, ES, DA) and currency symbols (€, £, kr.) are fully preserved in Latin-1 / WinAnsi range; non-Latin-1 Unicode characters are safely mapped to '?' to prevent jsPDF Helvetica Type 1 crashes. Future expansion into non-Latin locales would require custom embedded TTF fonts.",
@@ -40,7 +40,13 @@
     "reports/gsc/country_performance.csv",
     "reports/gsc/device_performance.csv",
     "reports/gsc/daily_performance.csv",
-    "reports/gsc/query_page_mapping.csv"
+    "reports/gsc/query_page_mapping.csv",
+    "UX_LAYOUT_ROOT_CAUSE_AUDIT.md",
+    "UX_SITEWIDE_DEFECT_REGISTER.md",
+    "UI_UX_DESIGN_SYSTEM.md",
+    "VISUAL_REGRESSION_REPORT.md",
+    "PRE_DEPLOYMENT_UX_VERIFICATION.md",
+    "qa-evidence/layout-qa/regression_metrics.json"
   ],
   "mcpStatus": {
     "google-search-console": "CONNECTED",
@@ -53,9 +59,11 @@
     "dataforseo": "DISABLED"
   },
   "testResults": {
-    "totalSuites": 18,
-    "passedSuites": 18,
+    "totalSuites": 20,
+    "passedSuites": 20,
     "status": "PASS",
+    "dropdownAndFavoritesSuite": "pass (8/8 automated assertions across hover-bridge, mutual exclusion, localStorage, search, and dashboard)",
+    "visualRegressionSuite": "pass (21/21 screenshot comparisons against reviewed baselines across laptop, desktop, mobile via Playwright)",
     "fullscreenPlaywright": "pass (10/10 assertions across 7 viewports + 2.15M line fixture + EN/ES/DA)",
     "jsonFormatterUnitSuite": "pass (Worker chunk contract, 100MB simulation, Single-panel fullscreen & search contract)",
     "browserE2E": "pass (32/32 tests passed in Google Chrome Headless via Playwright)",

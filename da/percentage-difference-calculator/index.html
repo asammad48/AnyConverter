@@ -58,10 +58,13 @@
       <div class="tool-zone">
         <div class="calc" id="calc-root" data-tool="percentage-difference-calculator">
           <div class="calc-grid">
-            <div class="calc-field"><label for="pd-a">Værdi A</label><input class="calc-input calc-input--lg" type="text" inputmode="decimal" autocomplete="off" id="pd-a" value="80"></div>
-            <div class="calc-field"><label for="pd-b">Værdi B</label><input class="calc-input calc-input--lg" type="text" inputmode="decimal" autocomplete="off" id="pd-b" value="100"></div>
+            <div class="calc-field"><label for="pd-a">Første værdi (A)</label><input class="calc-input" type="text" inputmode="decimal" autocomplete="off" id="pd-a" value="80"></div>
+            <div class="calc-field"><label for="pd-b">Anden værdi (B)</label><input class="calc-input" type="text" inputmode="decimal" autocomplete="off" id="pd-b" value="100"></div>
           </div>
-          <label class="calc-check"><input type="checkbox" id="pd-pct"> Begge værdier er procenter</label>
+          <div class="calc-guide-note">
+            <strong>Symmetrisk forskel vs. procentvis ændring:</strong> Procentvis forskel sammenligner to værdier uden et udgangspunkt (|A − B| ÷ gennemsnit × 100). Hvis du har en start- og slutværdi, skal du bruge den retningsbestemte procentvise ændring nedenfor.
+          </div>
+          <label class="calc-check" style="margin-top:6px;"><input type="checkbox" id="pd-pct"> Begge værdier er procenter</label>
           <p class="calc-hint" id="pd-empty" hidden>Indtast to tal.</p>
           <div class="calc-warn" id="pd-warn" hidden></div>
           <div class="calc-out" id="pd-out" aria-live="polite">

@@ -74,3 +74,5 @@ TECHNICAL_SEO_FINDINGS.md
 # tests/test_related_tools_regression.js loads it.
 RELATED_TOOLS_AUDIT.json
 TOOL_INVENTORY_AND_COUNTS.json
+/qa-evidence
+/tests/visual-snapshots

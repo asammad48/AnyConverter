@@ -58,31 +58,88 @@
     </section>
     <div class="tool-wrapper">
       <div class="tool-zone">
-        <div class="regex-input-wrapper">
-          <span class="regex-slash">/</span>
-          <input type="text" id="regex-pattern" placeholder="mønster" spellcheck="false" aria-label="Regulært udtryk mønster">
-          <span class="regex-slash">/</span>
-          <div class="regex-flags" id="regex-flags">
-            <button class="flag-btn active" data-flag="g" title="Global">g</button>
-            <button class="flag-btn" data-flag="i" title="Ignorer store/små bogstaver">i</button>
-            <button class="flag-btn" data-flag="m" title="Multiline">m</button>
-            <button class="flag-btn" data-flag="s" title="Dotall">s</button>
+
+        <!-- Pattern bar -->
+        <div class="ac-panel">
+          <div class="ac-panel-header">
+            <span style="font-size:13px;color:var(--color-text-3);font-family:var(--font-mono)">/…/</span>
+            <span class="ac-panel-label">Mønster</span>
+            <div class="ac-panel-actions">
+              <button class="ac-btn flag-btn active" data-flag="g" title="Global — find alle matches">g</button>
+              <button class="ac-btn flag-btn" data-flag="i" title="Ignorer store/små bogstaver">i</button>
+              <button class="ac-btn flag-btn" data-flag="m" title="Multiline — ^ og $ matcher linjegrænser">m</button>
+              <button class="ac-btn flag-btn" data-flag="s" title="Dotall — . matcher linjeskift">s</button>
+            </div>
+          </div>
+          <div style="padding:10px 12px;display:flex;align-items:center;gap:8px">
+            <span style="font-size:14px;color:var(--color-text-3);font-family:var(--font-mono);flex-shrink:0">/</span>
+            <input
+              type="text"
+              id="regex-pattern"
+              placeholder="Indtast mønster…"
+              spellcheck="false"
+              autocomplete="off"
+              style="flex:1;font-family:var(--font-mono);font-size:13px;border:none;outline:none;background:transparent;color:var(--color-text)"
+              aria-label="Regulært udtryk mønster"
+            >
+            <span style="font-size:14px;color:var(--color-text-3);font-family:var(--font-mono);flex-shrink:0" id="flags-display">/gm</span>
+            <span class="regex-valid-badge" id="regex-valid-badge" style="display:none"></span>
           </div>
         </div>
-        <div id="regex-error" class="status-bar error" style="display:none;margin-top:8px"></div>
-        <div class="mt-4">
-          <label for="regex-test-input" class="panel-label">Testtekst</label>
-          <div class="regex-overlay-wrapper mt-2" style="position:relative">
-            <div id="regex-highlight-overlay" class="regex-highlight-overlay" aria-hidden="true"></div>
-            <textarea id="regex-test-input" placeholder="Indtast testtekst her..." spellcheck="false" style="min-height:180px;font-family:var(--font-mono);font-size:13px;position:relative;z-index:1;background:transparent"></textarea>
+
+        <!-- Split panels: log input | matches output -->
+        <div class="split-panels">
+
+          <!-- Log input panel -->
+          <div class="ac-panel">
+            <div class="ac-panel-header">
+              <span style="font-size:13px;color:var(--color-text-3)">≡</span>
+              <span class="ac-panel-label">Log input</span>
+              <div class="ac-panel-actions">
+                <label class="ac-btn" style="cursor:pointer" title="Upload logfil">
+                  Upload .log
+                  <input type="file" id="log-file-input" accept=".log,.txt,.csv,text/plain" style="display:none">
+                </label>
+                <button class="ac-btn" id="btn-clear-log">Ryd</button>
+              </div>
+            </div>
+            <textarea
+              id="log-textarea"
+              class="ac-input"
+              placeholder="Indsæt logindhold her — matches opdateres live, mens du skriver…"
+              spellcheck="false"
+              aria-label="Log tekstinput"
+            ></textarea>
+            <div class="ac-status" id="log-status">
+              <span class="ac-status-info" id="log-lines-info">0 linjer</span>
+              <span class="ac-status-info" id="log-matches-info" style="margin-left:0"></span>
+            </div>
           </div>
-        </div>
-        <div id="regex-stats" class="status-bar info" style="display:none;margin-top:8px"></div>
-        <div id="regex-matches" style="display:none;margin-top:16px">
-          <p class="panel-label" style="margin-bottom:10px">Matches</p>
-          <div id="regex-match-list"></div>
-        </div>
-      </div>
+
+          <!-- Matches output panel -->
+          <div class="ac-panel">
+            <div class="ac-panel-header">
+              <span style="font-size:13px;color:var(--color-text-3)">◈</span>
+              <span class="ac-panel-label">Udtræk af matches</span>
+              <div class="ac-panel-actions">
+                <button class="ac-btn" id="btn-copy-matches" title="Kopiér alle matches">Kopiér</button>
+                <button class="ac-btn" id="btn-export-csv" title="Eksportér matches som CSV">→ CSV</button>
+                <button class="ac-btn" id="btn-export-json" title="Eksportér matches som JSON">→ JSON</button>
+              </div>
+            </div>
+            <div class="match-view" id="match-view" aria-label="Matchresultater" aria-live="polite">
+              <span style="color:var(--color-text-2,#6B7280);font-style:italic;font-size:11px">Matches vises her…</span>
+            </div>
+            <div class="ac-status" id="match-status">
+              <span class="ac-status-ok" id="match-count-ok" style="display:none"></span>
+              <span class="ac-status-err" id="match-count-err" style="display:none"></span>
+              <span class="ac-status-info" id="match-groups-info"></span>
+            </div>
+          </div>
+
+        </div><!-- /split-panels -->
+
+      </div><!-- /tool-zone -->
       <aside class="tool-side" aria-label="Quick patterns and export options">
 
         <div class="ss-divider">Quick Patterns</div>

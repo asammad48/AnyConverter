@@ -22,6 +22,10 @@ The design philosophy is centered on **speed, utility, clarity, and zero-frictio
 ### Principle 3: Function First & Data Density
 - Prioritize content visibility: maximized editor canvases, minimized header heights, and compact toolbars.
 - Avoid oversized banners, excessive vertical padding, or decorative illustrations that push core tools below the fold.
+- **Screen Utilization Architecture:** Differentiate between interactive tool workspaces and editorial prose.
+  - Interactive tools expand dynamically up to `--ac-tool-max: 1800px;` so laptop and desktop monitors have spacious, side-by-side editing canvases.
+  - Editorial and explanatory prose is capped at `--ac-content-max: 860px;` to preserve optimal typographic line lengths (65–85 characters per line).
+- **Two-Column Grid Protocol:** Desktop workspaces use `grid-template-columns: minmax(0, 1fr) minmax(260px, 320px);` ensuring the primary tool claims all remaining space while ads and options occupy a bounded, non-intrusive sidebar.
 
 ### Principle 4: Responsive by Design
 - Every layout must gracefully adapt across all standard responsive breakpoints:
@@ -30,24 +34,32 @@ The design philosophy is centered on **speed, utility, clarity, and zero-frictio
   - **Tablet:** `768px – 1023px` (e.g., iPad Mini, iPad 10th Gen)
   - **Small Laptop:** `1024px – 1365px`
   - **Standard Laptop / Desktop:** `1366px – 1920px+`
+  - **Ultra-wide External Monitor:** `2560px+` (Editor panels scale gracefully without awkward letterboxing)
 - Content must never overflow horizontally (`overflow-x: hidden` safety with strict `max-width: 100%`).
 - Toolbars must wrap logically into compact, balanced secondary rows rather than clipping or spilling offscreen.
 
-### Principle 5: Accessibility (WCAG 2.2 AA Compliance)
+### Principle 5: Form Control Sizing & Alignment Consistency
+- **Uniform Height:** All shared form inputs (`input[type="number"]`, `input[type="text"]`, `input[type="month"]`, `select.ac-select`, `.calc-input`) must have a standard interactive height of `44px` (`min-height: 44px; box-sizing: border-box;`).
+- **Dropdown Chevrons:** Native `<select>` elements must have customized closed-state styling with a prominent SVG chevron (`background-image`), `padding-right: 36px`, and `appearance: none`.
+- **CSS Shorthand Safeguard:** NEVER use inline `background: var(--color-surface);` shorthand on `<select>` elements or in JavaScript enhancements, because it obliterates the `background-image` chevron. Always use `background-color:` instead.
+- **Segmented Subchips:** Small toggles inside label rows (`.ac-subchip`) must have an exact height of `22px` (`font-size: 11px`, `padding: 2px 8px`). Generic `.tool-zone button { min-height: 44px }` rules must explicitly exempt `.ac-subchip`, `.font-sz-btn`, and `.ac-btn-fs`.
+- **Baseline Alignment:** Label headers in multi-column calculator grids must have `min-height: 24px; display: flex; align-items: flex-end;` so that presence of toggle chips on one column does not vertically displace adjacent input fields.
+
+### Principle 6: Accessibility (WCAG 2.2 AA Compliance)
 - **Contrast:** Minimum 4.5:1 contrast ratio for all normal text and interactive controls; 3:1 for large text and non-text UI elements.
 - **Touch Targets:** Minimum 38px to 44px interactive tap target size on mobile and touch devices.
 - **Keyboard Navigation:** Full tab-order operability, visible 2px–3px focus rings (`--shadow-focus`), and standard escape routes (`Escape` closes modals and fullscreens).
 - **Semantics:** Explicit ARIA roles (`role="search"`, `role="toolbar"`, `aria-live="polite"`), descriptive labels, and screen-reader announcements.
 
-### Principle 6: Zero-Lag Performance & Virtualization
+### Principle 7: Zero-Lag Performance & Virtualization
 - Interfaces operating on large payloads (up to 100 MB or millions of lines of text) must utilize off-thread Web Workers and windowed DOM virtualization.
 - CSS layout changes (such as toggling fullscreen) must never force layout thrashing, DOM re-creation, or re-tokenization.
 
-### Principle 7: Progressive Disclosure
-- Display frequently used primary actions directly in the main view.
-- Secondary options, formatting switches, and configuration parameters belong in compact dropdowns or dedicated sidebars.
+### Principle 8: Discoverable Primary Actions
+- The primary action button (e.g. `Format JSON`, `Generate SQL`, `Calculate EMI`) must be discoverable immediately upon viewing the tool without requiring users to scroll past large input areas.
+- Place primary actions in the top panel toolbar or immediately adjacent to the input canvas.
 
-### Principle 8: Multilingual Parity & Internationalization
+### Principle 9: Multilingual Parity & Internationalization
 - UI components must accommodate variable text lengths across English (`en`), Spanish (`es`), and Danish (`da`) without text truncation, layout collisions, or awkward word wraps.
 
 ---

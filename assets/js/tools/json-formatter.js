@@ -1291,6 +1291,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   /* ===== ACTIONS ===== */
   bind(document.getElementById('btn-format'), 'click', function() { currentMode = 'format'; runFormat(); });
+  bind(document.getElementById('btn-format-top'), 'click', function() { currentMode = 'format'; runFormat(); });
   bind(document.getElementById('btn-minify'), 'click', function() { currentMode = 'minify'; runMinify(); });
   bind(document.getElementById('btn-validate'), 'click', function() { currentMode = 'validate'; runValidate(); });
 

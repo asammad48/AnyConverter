@@ -59,28 +59,60 @@
     </section>
     <div class="tool-wrapper">
       <div class="tool-zone">
-        <div class="input-wrapper">
-          <textarea id="xml-input" placeholder="Indsæt dit XML her..." spellcheck="false" style="min-height:300px;font-family:var(--font-mono);font-size:13px"></textarea>
+
+        <div class="sub-tabs">
+          <button class="sub-tab active" data-mode="format">Formatér</button>
+          <button class="sub-tab" data-mode="minify">Minificér</button>
+          <button class="sub-tab" data-mode="validate">Validér</button>
         </div>
-        <div class="action-bar">
-          <div class="action-bar-left">
-            <button class="btn btn-primary" id="btn-format-xml">Formater ↵</button>
-            <button class="btn btn-secondary" id="btn-minify-xml">Minificer</button>
-            <button class="btn btn-secondary" id="btn-validate-xml">Valider</button>
-          </div>
-          <div class="action-bar-right">
-            <button class="btn btn-secondary btn-sm" id="btn-clear-xml">Ryd</button>
-            <label class="btn btn-secondary btn-sm" style="cursor:pointer">Upload .xml<input type="file" id="xml-file" accept=".xml,text/xml" style="display:none"></label>
-          </div>
-        </div>
-        <div id="xml-status" class="status-bar" style="display:none"></div>
-        <div id="xml-output-section" style="display:none">
-          <div class="code-output-wrapper mt-4">
-            <pre class="code-output" id="xml-output"><code id="xml-output-code" class="language-xml"></code></pre>
-            <div class="code-output-actions">
-              <button class="btn btn-sm" id="btn-copy-xml">Kopier</button>
-              <button class="btn btn-sm" id="btn-download-xml">Download</button>
+
+        <div class="split-panels">
+          <!-- Input panel -->
+          <div class="ac-panel">
+            <div class="ac-panel-header">
+              <span style="font-size:13px;color:var(--color-text-3)">&lt;/&gt;</span>
+              <span class="ac-panel-label">Input</span>
+              <div class="ac-panel-actions">
+                <label class="ac-btn" style="cursor:pointer">Upload<input type="file" id="file-upload" accept=".xml,text/xml" style="display:none"></label>
+                <button class="ac-btn" id="btn-clear">Ryd</button>
+              </div>
             </div>
+            <textarea id="xml-input" class="ac-input" placeholder="Indsæt XML her — formaterer automatisk, mens du skriver…" spellcheck="false" autocomplete="off" aria-label="XML input"></textarea>
+            <div class="ac-status">
+              <span class="ac-status-ok" id="input-ok" style="display:none">✓ Gyldig XML</span>
+              <span class="ac-status-err" id="input-err" style="display:none"></span>
+              <span class="ac-status-info" id="input-info">Indsæt eller skriv XML</span>
+            </div>
+          </div>
+
+          <!-- Output panel -->
+          <div class="ac-panel">
+            <div class="ac-panel-header">
+              <span style="font-size:13px;color:var(--color-text-3)">✦</span>
+              <span class="ac-panel-label">Output — live formateret</span>
+              <div class="ac-panel-actions">
+                <button class="ac-btn" id="btn-copy-output">Kopiér</button>
+                <button class="ac-btn" id="btn-download">Download</button>
+              </div>
+            </div>
+            <div class="json-view" id="xml-output" style="white-space:pre-wrap" aria-label="Formateret XML-output" aria-live="polite">
+              <span style="color:var(--color-text-2,#6B7280);font-style:italic;font-size:11px">Output vises her…</span>
+            </div>
+            <div class="ac-status">
+              <span class="ac-status-ok" id="output-ok" style="display:none">✓ Formateret</span>
+              <span class="ac-status-err" id="output-err" style="display:none"></span>
+              <span class="ac-status-info" id="output-info"></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="ac-action-bar">
+          <button class="ac-btn primary" id="btn-format">Formatér</button>
+          <button class="ac-btn" id="btn-minify">Minificér</button>
+          <button class="ac-btn" id="btn-validate">Validér</button>
+          <button class="ac-btn" id="btn-copy-input">Kopiér input</button>
+          <div class="ac-action-bar-right">
+            <span style="font-size:11px;color:var(--color-text-3)" id="auto-label">Auto-format: TIL</span>
           </div>
         </div>
       </div>

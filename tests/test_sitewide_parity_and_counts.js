@@ -109,10 +109,15 @@ const pagesToGuard = [
 for (const rel of pagesToGuard) {
   const content = fs.readFileSync(path.join(ROOT, rel), 'utf8');
   assert.ok(!/\b78\+\s*(tools|herramientas|værktøjer|free online tools)/i.test(content), `Found stale "78+ tools" in ${rel}`);
+  assert.ok(!/\b80\+\s*(tools|herramientas|værktøjer|free online tools)/i.test(content), `Found stale "80+ tools" in ${rel}`);
   assert.ok(!/\b35\+?\s*(herramientas|værktøjer)/i.test(content), `Found stale "35 herramientas/værktøjer" in ${rel}`);
   assert.ok(!/\b95\+\s*tools/i.test(content), `Found stale "95+ tools" in ${rel}`);
 }
-console.log('  ✓ 0 stale counters detected across all key informational, blog, and home pages.');
+
+const sharedJsContent = fs.readFileSync(path.join(ROOT, 'assets/js/shared.js'), 'utf8');
+assert.ok(!/\b80\+\s*tools/i.test(sharedJsContent), 'Found stale "80+ tools" in assets/js/shared.js');
+assert.ok(sharedJsContent.includes('Search 128 tools…'), 'Search input in assets/js/shared.js must state canonical 128 tools');
+console.log('  ✓ 0 stale counters detected across all key informational, blog, and home pages, and shared.js.');
 
 // 5. Related Tools Section & Relevance Guard
 for (const slug of uniqueTools) {

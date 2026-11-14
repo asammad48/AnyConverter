@@ -163,6 +163,11 @@
           </div>
         </div>
 
+        <!-- Primary Action Bar inside main workspace -->
+        <div class="ac-action-bar" style="margin-top:16px;display:flex;gap:10px;align-items:center;">
+          <button class="btn btn-primary js-btn-generate-sql" id="btn-generate-sql" disabled>Generar SQL</button>
+        </div>
+
         <!-- Step 4: SQL output -->
         <div id="sql-output-section" style="display:none">
           <div class="ac-panel" style="margin-top:12px">
@@ -208,7 +213,7 @@
         <div class="tog-row"><span class="tog-label" id="lbl-drop">DROP TABLE IF EXISTS</span><div class="tog off" id="tog-drop" role="switch" aria-checked="false" tabindex="0" aria-labelledby="lbl-drop"></div></div>
         <div class="tog-row"><span class="tog-label" id="lbl-batch">INSERT por lotes (500)</span><div class="tog off" id="tog-batch" role="switch" aria-checked="false" tabindex="0" aria-labelledby="lbl-batch"></div></div>
 
-        <button class="btn btn-primary btn-full mt-4" id="btn-generate-sql" style="margin-top:12px" disabled>Generar SQL</button>
+        <button class="btn btn-primary btn-full mt-4 js-btn-generate-sql" id="btn-generate-sql-side" style="margin-top:12px" disabled>Generar SQL</button>
 
         <div class="ss-divider">Estadísticas</div>
         <div class="stats-grid">
