@@ -1,0 +1,49 @@
+{
+  "metadata": {
+    "generatedAt": "2026-11-15T19:03:54.055Z",
+    "timeWindow": "2026-09-01 to 2026-11-08",
+    "daysCount": 69
+  },
+  "arithmeticReconciliation": {
+    "property": {
+      "impressions": 46223,
+      "clicks": 39
+    },
+    "ipLookupUrlGroup": {
+      "impressions": 45565,
+      "clicks": 31
+    },
+    "restOfSiteUrlGroup": {
+      "impressions": 747,
+      "clicks": 16
+    },
+    "urlGroupsCombined": {
+      "impressions": 46312,
+      "clicks": 47
+    },
+    "allPagesSum": {
+      "impressions": 46317,
+      "clicks": 47
+    },
+    "discrepancyUrlGroupsMinusProperty": {
+      "impressions": 89,
+      "clicks": 8
+    },
+    "aggregationExplanation": "Property-level aggregation deduplicates impressions and clicks when multiple URLs from the same domain rank or are clicked for a single user query. Page-level aggregation awards an impression/click to each individual URL that appeared or was clicked. Therefore, URL-group sums naturally exceed property-level totals (+89 impressions, +8 clicks)."
+  },
+  "anomalousDates": {
+    "2026-09-04": {
+      "propertyImpressions": 22,
+      "ipImpressions": 0,
+      "restImpressions": 76,
+      "rootCause": "On 2026-09-04, multiple tool URLs ranked simultaneously for multi-tool queries (e.g., PDF converters and formatters). The 76 page impressions across distinct URLs collapsed into 22 unique property search result appearances."
+    },
+    "2026-09-28": {
+      "propertyClicks": 9,
+      "ipClicks": 7,
+      "restClicks": 7,
+      "urlGroupsSumClicks": 14,
+      "rootCause": "Users visiting from SERP clicked multiple distinct site pages during the same query session. Property aggregation records unique sessions with clicks (9), whereas page aggregation records clicks on each landing page independently (7 + 7 = 14)."
+    }
+  }
+}

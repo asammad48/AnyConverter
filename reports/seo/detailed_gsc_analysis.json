@@ -1,0 +1,99 @@
+{
+  "metadata": {
+    "generatedAt": "2026-11-15T19:03:51.743Z",
+    "siteUrl": "sc-domain:anyconverter.io",
+    "source": "Google Search Console Search Analytics API",
+    "aggregationScope": "PROPERTY-LEVEL DAILY AGGREGATION",
+    "dataIntegrityStatus": "VERIFIED_NONZERO_CONFIRMED"
+  },
+  "summaryPeriods": {
+    "last7Days": {
+      "startDate": "2026-11-02",
+      "endDate": "2026-11-08",
+      "days": 7,
+      "clicks": 2,
+      "impressions": 41,
+      "ctr": "4.88%",
+      "ctrRaw": 0.04878048780487805,
+      "weightedAvgPosition": "45.0",
+      "simpleAvgPosition": "38.4"
+    },
+    "prev7Days": {
+      "startDate": "2026-10-26",
+      "endDate": "2026-11-01",
+      "days": 7,
+      "clicks": 0,
+      "impressions": 46,
+      "ctr": "0.00%",
+      "ctrRaw": 0,
+      "weightedAvgPosition": "35.9",
+      "simpleAvgPosition": "38.4"
+    },
+    "last28Days": {
+      "startDate": "2026-10-12",
+      "endDate": "2026-11-08",
+      "days": 28,
+      "clicks": 2,
+      "impressions": 201,
+      "ctr": "1.00%",
+      "ctrRaw": 0.009950248756218905,
+      "weightedAvgPosition": "38.0",
+      "simpleAvgPosition": "37.1"
+    },
+    "prev28Days": {
+      "startDate": "2026-09-14",
+      "endDate": "2026-10-11",
+      "days": 28,
+      "clicks": 37,
+      "impressions": 45908,
+      "ctr": "0.08%",
+      "ctrRaw": 0.0008059597455781128,
+      "weightedAvgPosition": "10.0",
+      "simpleAvgPosition": "23.8"
+    },
+    "last3Months": {
+      "startDate": "2026-08-11",
+      "endDate": "2026-11-08",
+      "days": 90,
+      "clicks": 42,
+      "impressions": 48924,
+      "ctr": "0.09%",
+      "ctrRaw": 0.0008584743684081432,
+      "weightedAvgPosition": "13.5",
+      "simpleAvgPosition": "37.5"
+    },
+    "prev3Months": {
+      "startDate": "2026-07-10",
+      "endDate": "2026-08-10",
+      "days": 32,
+      "clicks": 4,
+      "impressions": 3813,
+      "ctr": "0.10%",
+      "ctrRaw": 0.001049042748492001,
+      "weightedAvgPosition": "64.3",
+      "simpleAvgPosition": "56.8"
+    },
+    "reconstructionWindow": {
+      "startDate": "2026-09-01",
+      "endDate": "2026-11-08",
+      "days": 69,
+      "clicks": 39,
+      "impressions": 46223,
+      "ctr": "0.08%",
+      "ctrRaw": 0.0008437358025225537,
+      "weightedAvgPosition": "10.2",
+      "simpleAvgPosition": "30.8"
+    },
+    "fullHistory": {
+      "startDate": "2026-07-10",
+      "endDate": "2026-11-08",
+      "days": 122,
+      "clicks": 46,
+      "impressions": 52737,
+      "ctr": "0.09%",
+      "ctrRaw": 0.0008722528774863948,
+      "weightedAvgPosition": "17.2",
+      "simpleAvgPosition": "42.5"
+    }
+  }
+}

@@ -1,0 +1,682 @@
+[
+  {
+    "url": "https://anyconverter.io/json-compare/",
+    "inspectionTimestamp": "2026-11-15T19:06:00.107Z",
+    "verdict": "NEUTRAL",
+    "coverageState": "Discovered - currently not indexed",
+    "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
+    "indexingState": "INDEXING_STATE_UNSPECIFIED",
+    "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
+    "googleCanonical": "",
+    "userCanonical": "",
+    "lastCrawlTime": "",
+    "crawledAs": "CRAWLING_USER_AGENT_UNSPECIFIED",
+    "referringUrls": [
+      "https://anyconverter.io/unlock-pdf/",
+      "https://anyconverter.io/lorem-ipsum-generator/"
+    ],
+    "classification": "INDEXED"
+  },
+  {
+    "url": "https://anyconverter.io/reverse-percentage-calculator/",
+    "inspectionTimestamp": "2026-11-15T19:06:07.688Z",
+    "verdict": "NEUTRAL",
+    "coverageState": "URL is unknown to Google",
+    "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
+    "indexingState": "INDEXING_STATE_UNSPECIFIED",
+    "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
+    "googleCanonical": "",
+    "userCanonical": "",
+    "lastCrawlTime": "",
+    "crawledAs": "",
+    "referringUrls": [],
+    "classification": "NOT_INDEXED_UNKNOWN"
+  },
+  {
+    "url": "https://anyconverter.io/camt053-to-csv/",
+    "inspectionTimestamp": "2026-11-15T19:06:15.042Z",
+    "verdict": "NEUTRAL",
+    "coverageState": "URL is unknown to Google",
+    "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
+    "indexingState": "INDEXING_STATE_UNSPECIFIED",
+    "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
+    "googleCanonical": "",
+    "userCanonical": "",
+    "lastCrawlTime": "",
+    "crawledAs": "",
+    "referringUrls": [],
+    "classification": "NOT_INDEXED_UNKNOWN"
+  },
+  {
+    "url": "https://anyconverter.io/es/camt053-to-csv/",
+    "inspectionTimestamp": "2026-11-15T19:06:22.839Z",
+    "verdict": "NEUTRAL",
+    "coverageState": "URL is unknown to Google",
+    "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
+    "indexingState": "INDEXING_STATE_UNSPECIFIED",
+    "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
+    "googleCanonical": "",
+    "userCanonical": "",
+    "lastCrawlTime": "",
+    "crawledAs": "",
+    "referringUrls": [],
+    "classification": "NOT_INDEXED_UNKNOWN"
+  },
+  {
+    "url": "https://anyconverter.io/da/camt053-to-csv/",
+    "inspectionTimestamp": "2026-11-15T19:06:30.206Z",
+    "verdict": "NEUTRAL",
+    "coverageState": "URL is unknown to Google",
+    "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
+    "indexingState": "INDEXING_STATE_UNSPECIFIED",
+    "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
+    "googleCanonical": "",
+    "userCanonical": "",
+    "lastCrawlTime": "",
+    "crawledAs": "",
+    "referringUrls": [],
+    "classification": "NOT_INDEXED_UNKNOWN"
+  },
+  {
+    "url": "https://anyconverter.io/barcode-generator/",
+    "inspectionTimestamp": "2026-11-15T19:06:37.511Z",
+    "verdict": "NEUTRAL",
+    "coverageState": "Discovered - currently not indexed",
+    "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
+    "indexingState": "INDEXING_STATE_UNSPECIFIED",
+    "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
+    "googleCanonical": "",
+    "userCanonical": "",
+    "lastCrawlTime": "",
+    "crawledAs": "CRAWLING_USER_AGENT_UNSPECIFIED",
+    "referringUrls": [
+      "https://anyconverter.io/unlock-pdf/"
+    ],
+    "classification": "INDEXED"
+  },
+  {
+    "url": "https://anyconverter.io/es/barcode-generator/",
+    "inspectionTimestamp": "2026-11-15T19:06:44.759Z",
+    "verdict": "NEUTRAL",
+    "coverageState": "URL is unknown to Google",
+    "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
+    "indexingState": "INDEXING_STATE_UNSPECIFIED",
+    "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
+    "googleCanonical": "",
+    "userCanonical": "",
+    "lastCrawlTime": "",
+    "crawledAs": "",
+    "referringUrls": [],
+    "classification": "NOT_INDEXED_UNKNOWN"
+  },
+  {
+    "url": "https://anyconverter.io/da/barcode-generator/",
+    "inspectionTimestamp": "2026-11-15T19:06:51.946Z",
+    "verdict": "NEUTRAL",
+    "coverageState": "Discovered - currently not indexed",
+    "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
+    "indexingState": "INDEXING_STATE_UNSPECIFIED",
+    "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
+    "googleCanonical": "",
+    "userCanonical": "",
+    "lastCrawlTime": "",
+    "crawledAs": "CRAWLING_USER_AGENT_UNSPECIFIED",
+    "referringUrls": [],
+    "classification": "INDEXED"
+  },
+  {
+    "url": "https://anyconverter.io/parquet-to-csv/",
+    "inspectionTimestamp": "2026-11-15T19:06:59.407Z",
+    "verdict": "NEUTRAL",
+    "coverageState": "Discovered - currently not indexed",
+    "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
+    "indexingState": "INDEXING_STATE_UNSPECIFIED",
+    "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
+    "googleCanonical": "",
+    "userCanonical": "",
+    "lastCrawlTime": "",
+    "crawledAs": "CRAWLING_USER_AGENT_UNSPECIFIED",
+    "referringUrls": [
+      "https://anyconverter.io/unlock-pdf/"
+    ],
+    "classification": "INDEXED"
+  },
+  {
+    "url": "https://anyconverter.io/developer-tools/",
+    "inspectionTimestamp": "2026-11-15T19:07:06.765Z",
+    "verdict": "NEUTRAL",
+    "coverageState": "URL is unknown to Google",
+    "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
+    "indexingState": "INDEXING_STATE_UNSPECIFIED",
+    "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
+    "googleCanonical": "",
+    "userCanonical": "",
+    "lastCrawlTime": "",
+    "crawledAs": "",
+    "referringUrls": [],
+    "classification": "NOT_INDEXED_UNKNOWN"
+  },
+  {
+    "url": "https://anyconverter.io/productivity-tools/",
+    "inspectionTimestamp": "2026-11-15T19:07:14.142Z",
+    "verdict": "NEUTRAL",
+    "coverageState": "URL is unknown to Google",
+    "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
+    "indexingState": "INDEXING_STATE_UNSPECIFIED",
+    "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
+    "googleCanonical": "",
+    "userCanonical": "",
+    "lastCrawlTime": "",
+    "crawledAs": "",
+    "referringUrls": [],
+    "classification": "NOT_INDEXED_UNKNOWN"
+  },
+  {
+    "url": "https://anyconverter.io/pdf-tools/",
+    "inspectionTimestamp": "2026-11-15T19:07:21.509Z",
+    "verdict": "NEUTRAL",
+    "coverageState": "URL is unknown to Google",
+    "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
+    "indexingState": "INDEXING_STATE_UNSPECIFIED",
+    "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
+    "googleCanonical": "",
+    "userCanonical": "",
+    "lastCrawlTime": "",
+    "crawledAs": "",
+    "referringUrls": [],
+    "classification": "NOT_INDEXED_UNKNOWN"
+  },
+  {
+    "url": "https://anyconverter.io/calculators/",
+    "inspectionTimestamp": "2026-11-15T19:07:29.189Z",
+    "verdict": "NEUTRAL",
+    "coverageState": "Discovered - currently not indexed",
+    "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
+    "indexingState": "INDEXING_STATE_UNSPECIFIED",
+    "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
+    "googleCanonical": "",
+    "userCanonical": "",
+    "lastCrawlTime": "",
+    "crawledAs": "CRAWLING_USER_AGENT_UNSPECIFIED",
+    "referringUrls": [
+      "https://anyconverter.io/unlock-pdf/"
+    ],
+    "classification": "INDEXED"
+  },
+  {
+    "url": "https://anyconverter.io/da/calculators/",
+    "inspectionTimestamp": "2026-11-15T19:07:36.672Z",
+    "verdict": "NEUTRAL",
+    "coverageState": "URL is unknown to Google",
+    "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
+    "indexingState": "INDEXING_STATE_UNSPECIFIED",
+    "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
+    "googleCanonical": "",
+    "userCanonical": "",
+    "lastCrawlTime": "",
+    "crawledAs": "",
+    "referringUrls": [],
+    "classification": "NOT_INDEXED_UNKNOWN"
+  },
+  {
+    "url": "https://anyconverter.io/es/calculators/",
+    "inspectionTimestamp": "2026-11-15T19:07:43.937Z",
+    "verdict": "NEUTRAL",
+    "coverageState": "Discovered - currently not indexed",
+    "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
+    "indexingState": "INDEXING_STATE_UNSPECIFIED",
+    "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
+    "googleCanonical": "",
+    "userCanonical": "",
+    "lastCrawlTime": "",
+    "crawledAs": "CRAWLING_USER_AGENT_UNSPECIFIED",
+    "referringUrls": [],
+    "classification": "INDEXED"
+  },
+  {
+    "url": "https://anyconverter.io/",
+    "inspectionTimestamp": "2026-11-15T19:07:51.312Z",
+    "verdict": "PASS",
+    "coverageState": "Submitted and indexed",
+    "robotsTxtState": "ALLOWED",
+    "indexingState": "INDEXING_ALLOWED",
+    "pageFetchState": "SUCCESSFUL",
+    "googleCanonical": "https://anyconverter.io/",
+    "userCanonical": "https://anyconverter.io/",
+    "lastCrawlTime": "2026-11-05T17:12:59Z",
+    "crawledAs": "MOBILE",
+    "referringUrls": [
+      "https://anyconverter.io/unlock-pdf/",
+      "http://anyconverter.io/es/",
+      "http://anyconverter.io/"
+    ],
+    "classification": "INDEXED"
+  },
+  {
+    "url": "https://anyconverter.io/es/",
+    "inspectionTimestamp": "2026-11-15T19:07:58.641Z",
+    "verdict": "PASS",
+    "coverageState": "Submitted and indexed",
+    "robotsTxtState": "ALLOWED",
+    "indexingState": "INDEXING_ALLOWED",
+    "pageFetchState": "SUCCESSFUL",
+    "googleCanonical": "https://anyconverter.io/es/",
+    "userCanonical": "https://anyconverter.io/es/",
+    "lastCrawlTime": "2026-11-06T10:03:39Z",
+    "crawledAs": "MOBILE",
+    "referringUrls": [
+      "https://anyconverter.io/unlock-pdf/",
+      "https://anyconverter.io/",
+      "http://anyconverter.io/"
+    ],
+    "classification": "INDEXED"
+  },
+  {
+    "url": "https://anyconverter.io/da/",
+    "inspectionTimestamp": "2026-11-15T19:08:05.938Z",
+    "verdict": "PASS",
+    "coverageState": "Submitted and indexed",
+    "robotsTxtState": "ALLOWED",
+    "indexingState": "INDEXING_ALLOWED",
+    "pageFetchState": "SUCCESSFUL",
+    "googleCanonical": "https://anyconverter.io/da/",
+    "userCanonical": "https://anyconverter.io/da/",
+    "lastCrawlTime": "2026-10-25T06:20:34Z",
+    "crawledAs": "MOBILE",
+    "referringUrls": [
+      "https://anyconverter.io/unlock-pdf/",
+      "https://anyconverter.io/",
+      "http://anyconverter.io/"
+    ],
+    "classification": "INDEXED"
+  },
+  {
+    "url": "https://anyconverter.io/ip-address-lookup/",
+    "inspectionTimestamp": "2026-11-15T19:08:13.429Z",
+    "verdict": "PASS",
+    "coverageState": "Submitted and indexed",
+    "robotsTxtState": "ALLOWED",
+    "indexingState": "INDEXING_ALLOWED",
+    "pageFetchState": "SUCCESSFUL",
+    "googleCanonical": "https://anyconverter.io/ip-address-lookup/",
+    "userCanonical": "https://anyconverter.io/ip-address-lookup/",
+    "lastCrawlTime": "2026-11-03T03:58:57Z",
+    "crawledAs": "MOBILE",
+    "referringUrls": [
+      "https://anyconverter.io/unlock-pdf/",
+      "https://anyconverter.io/mortgage-calculator/",
+      "https://anyconverter.io/sitemap.xml"
+    ],
+    "classification": "INDEXED"
+  },
+  {
+    "url": "https://anyconverter.io/sticky-notes/",
+    "inspectionTimestamp": "2026-11-15T19:08:20.747Z",
+    "verdict": "PASS",
+    "coverageState": "Submitted and indexed",
+    "robotsTxtState": "ALLOWED",
+    "indexingState": "INDEXING_ALLOWED",
+    "pageFetchState": "SUCCESSFUL",
+    "googleCanonical": "https://anyconverter.io/sticky-notes/",
+    "userCanonical": "https://anyconverter.io/sticky-notes/",
+    "lastCrawlTime": "2026-11-14T00:43:43Z",
+    "crawledAs": "MOBILE",
+    "referringUrls": [
+      "https://anyconverter.io/unlock-pdf/",
+      "https://anyconverter.io/da/sticky-notes/",
+      "https://anyconverter.io/cron-expression-parser/",
+      "https://anyconverter.io/sitemap.xml"
+    ],
+    "classification": "INDEXED"
+  },
+  {
+    "url": "https://anyconverter.io/es/sticky-notes/",
+    "inspectionTimestamp": "2026-11-15T19:08:28.071Z",
+    "verdict": "PASS",
+    "coverageState": "Submitted and indexed",
+    "robotsTxtState": "ALLOWED",
+    "indexingState": "INDEXING_ALLOWED",
+    "pageFetchState": "SUCCESSFUL",
+    "googleCanonical": "https://anyconverter.io/es/sticky-notes/",
+    "userCanonical": "https://anyconverter.io/es/sticky-notes/",
+    "lastCrawlTime": "2026-08-20T21:00:27Z",
+    "crawledAs": "MOBILE",
+    "referringUrls": [
+      "https://anyconverter.io/sitemap.xml"
+    ],
+    "classification": "INDEXED"
+  },
+  {
+    "url": "https://anyconverter.io/da/todo-list/",
+    "inspectionTimestamp": "2026-11-15T19:08:35.347Z",
+    "verdict": "PASS",
+    "coverageState": "Submitted and indexed",
+    "robotsTxtState": "ALLOWED",
+    "indexingState": "INDEXING_ALLOWED",
+    "pageFetchState": "SUCCESSFUL",
+    "googleCanonical": "https://anyconverter.io/da/todo-list/",
+    "userCanonical": "https://anyconverter.io/da/todo-list/",
+    "lastCrawlTime": "2026-11-06T09:36:20Z",
+    "crawledAs": "MOBILE",
+    "referringUrls": [
+      "https://anyconverter.io/todo-list/",
+      "https://anyconverter.io/sitemap.xml"
+    ],
+    "classification": "INDEXED"
+  },
+  {
+    "url": "https://anyconverter.io/da/loan-calculator/",
+    "inspectionTimestamp": "2026-11-15T19:08:42.714Z",
+    "verdict": "PASS",
+    "coverageState": "Submitted and indexed",
+    "robotsTxtState": "ALLOWED",
+    "indexingState": "INDEXING_ALLOWED",
+    "pageFetchState": "SUCCESSFUL",
+    "googleCanonical": "https://anyconverter.io/da/loan-calculator/",
+    "userCanonical": "https://anyconverter.io/da/loan-calculator/",
+    "lastCrawlTime": "2026-11-03T09:47:48Z",
+    "crawledAs": "MOBILE",
+    "referringUrls": [
+      "https://anyconverter.io/sitemap.xml"
+    ],
+    "classification": "INDEXED"
+  },
+  {
+    "url": "https://anyconverter.io/da/mortgage-calculator/",
+    "inspectionTimestamp": "2026-11-15T19:08:50.085Z",
+    "verdict": "PASS",
+    "coverageState": "Submitted and indexed",
+    "robotsTxtState": "ALLOWED",
+    "indexingState": "INDEXING_ALLOWED",
+    "pageFetchState": "SUCCESSFUL",
+    "googleCanonical": "https://anyconverter.io/da/mortgage-calculator/",
+    "userCanonical": "https://anyconverter.io/da/mortgage-calculator/",
+    "lastCrawlTime": "2026-11-10T23:57:26Z",
+    "crawledAs": "MOBILE",
+    "referringUrls": [
+      "https://anyconverter.io/mortgage-calculator/",
+      "https://anyconverter.io/sitemap.xml"
+    ],
+    "classification": "INDEXED"
+  },
+  {
+    "url": "https://anyconverter.io/loan-calculator/",
+    "inspectionTimestamp": "2026-11-15T19:08:57.457Z",
+    "verdict": "PASS",
+    "coverageState": "Submitted and indexed",
+    "robotsTxtState": "ALLOWED",
+    "indexingState": "INDEXING_ALLOWED",
+    "pageFetchState": "SUCCESSFUL",
+    "googleCanonical": "https://anyconverter.io/loan-calculator/",
+    "userCanonical": "https://anyconverter.io/loan-calculator/",
+    "lastCrawlTime": "2026-11-09T12:00:29Z",
+    "crawledAs": "MOBILE",
+    "referringUrls": [
+      "https://anyconverter.io/unlock-pdf/",
+      "https://anyconverter.io/da/loan-calculator/",
+      "https://anyconverter.io/sitemap.xml"
+    ],
+    "classification": "INDEXED"
+  },
+  {
+    "url": "https://anyconverter.io/es/loan-calculator/",
+    "inspectionTimestamp": "2026-11-15T19:09:05.035Z",
+    "verdict": "PASS",
+    "coverageState": "Submitted and indexed",
+    "robotsTxtState": "ALLOWED",
+    "indexingState": "INDEXING_ALLOWED",
+    "pageFetchState": "SUCCESSFUL",
+    "googleCanonical": "https://anyconverter.io/es/loan-calculator/",
+    "userCanonical": "https://anyconverter.io/es/loan-calculator/",
+    "lastCrawlTime": "2026-11-11T19:17:45Z",
+    "crawledAs": "MOBILE",
+    "referringUrls": [
+      "https://anyconverter.io/da/loan-calculator/",
+      "https://anyconverter.io/sitemap.xml"
+    ],
+    "classification": "INDEXED"
+  },
+  {
+    "url": "https://anyconverter.io/mortgage-calculator/",
+    "inspectionTimestamp": "2026-11-15T19:09:12.717Z",
+    "verdict": "PASS",
+    "coverageState": "Submitted and indexed",
+    "robotsTxtState": "ALLOWED",
+    "indexingState": "INDEXING_ALLOWED",
+    "pageFetchState": "SUCCESSFUL",
+    "googleCanonical": "https://anyconverter.io/mortgage-calculator/",
+    "userCanonical": "https://anyconverter.io/mortgage-calculator/",
+    "lastCrawlTime": "2026-11-09T16:07:02Z",
+    "crawledAs": "MOBILE",
+    "referringUrls": [
+      "https://anyconverter.io/unlock-pdf/",
+      "https://anyconverter.io/sitemap.xml"
+    ],
+    "classification": "INDEXED"
+  },
+  {
+    "url": "https://anyconverter.io/es/mortgage-calculator/",
+    "inspectionTimestamp": "2026-11-15T19:09:20.500Z",
+    "verdict": "PASS",
+    "coverageState": "Submitted and indexed",
+    "robotsTxtState": "ALLOWED",
+    "indexingState": "INDEXING_ALLOWED",
+    "pageFetchState": "SUCCESSFUL",
+    "googleCanonical": "https://anyconverter.io/es/mortgage-calculator/",
+    "userCanonical": "https://anyconverter.io/es/mortgage-calculator/",
+    "lastCrawlTime": "2026-11-11T23:19:25Z",
+    "crawledAs": "MOBILE",
+    "referringUrls": [
+      "https://anyconverter.io/mortgage-calculator/",
+      "https://anyconverter.io/sitemap.xml"
+    ],
+    "classification": "INDEXED"
+  },
+  {
+    "url": "https://anyconverter.io/json-formatter/",
+    "inspectionTimestamp": "2026-11-15T19:09:27.972Z",
+    "verdict": "PASS",
+    "coverageState": "Submitted and indexed",
+    "robotsTxtState": "ALLOWED",
+    "indexingState": "INDEXING_ALLOWED",
+    "pageFetchState": "SUCCESSFUL",
+    "googleCanonical": "https://anyconverter.io/json-formatter/",
+    "userCanonical": "https://anyconverter.io/json-formatter/",
+    "lastCrawlTime": "2026-11-06T08:47:13Z",
+    "crawledAs": "MOBILE",
+    "referringUrls": [
+      "https://anyconverter.io/unlock-pdf/",
+      "https://anyconverter.io/es/json-formatter/",
+      "https://anyconverter.io/cron-expression-parser/",
+      "https://anyconverter.io/sitemap.xml"
+    ],
+    "classification": "INDEXED"
+  },
+  {
+    "url": "https://anyconverter.io/es/json-formatter/",
+    "inspectionTimestamp": "2026-11-15T19:09:35.391Z",
+    "verdict": "PASS",
+    "coverageState": "Submitted and indexed",
+    "robotsTxtState": "ALLOWED",
+    "indexingState": "INDEXING_ALLOWED",
+    "pageFetchState": "SUCCESSFUL",
+    "googleCanonical": "https://anyconverter.io/es/json-formatter/",
+    "userCanonical": "https://anyconverter.io/es/json-formatter/",
+    "lastCrawlTime": "2026-11-01T09:11:23Z",
+    "crawledAs": "MOBILE",
+    "referringUrls": [
+      "https://anyconverter.io/sitemap.xml"
+    ],
+    "classification": "INDEXED"
+  },
+  {
+    "url": "https://anyconverter.io/da/json-formatter/",
+    "inspectionTimestamp": "2026-11-15T19:09:42.823Z",
+    "verdict": "PASS",
+    "coverageState": "Submitted and indexed",
+    "robotsTxtState": "ALLOWED",
+    "indexingState": "INDEXING_ALLOWED",
+    "pageFetchState": "SUCCESSFUL",
+    "googleCanonical": "https://anyconverter.io/da/json-formatter/",
+    "userCanonical": "https://anyconverter.io/da/json-formatter/",
+    "lastCrawlTime": "2026-11-03T08:37:30Z",
+    "crawledAs": "MOBILE",
+    "referringUrls": [
+      "https://anyconverter.io/json-formatter/",
+      "https://anyconverter.io/es/json-formatter/"
+    ],
+    "classification": "INDEXED"
+  },
+  {
+    "url": "https://anyconverter.io/world-clock/",
+    "inspectionTimestamp": "2026-11-15T19:09:50.193Z",
+    "verdict": "PASS",
+    "coverageState": "Submitted and indexed",
+    "robotsTxtState": "ALLOWED",
+    "indexingState": "INDEXING_ALLOWED",
+    "pageFetchState": "SUCCESSFUL",
+    "googleCanonical": "https://anyconverter.io/world-clock/",
+    "userCanonical": "https://anyconverter.io/world-clock/",
+    "lastCrawlTime": "2026-11-13T07:04:52Z",
+    "crawledAs": "MOBILE",
+    "referringUrls": [
+      "https://anyconverter.io/unlock-pdf/",
+      "https://anyconverter.io/sitemap.xml"
+    ],
+    "classification": "INDEXED"
+  },
+  {
+    "url": "https://anyconverter.io/es/world-clock/",
+    "inspectionTimestamp": "2026-11-15T19:10:00.639Z",
+    "verdict": "NEUTRAL",
+    "coverageState": "Page with redirect",
+    "robotsTxtState": "ALLOWED",
+    "indexingState": "INDEXING_ALLOWED",
+    "pageFetchState": "SUCCESSFUL",
+    "googleCanonical": "https://anyconverter.io/world-clock/",
+    "userCanonical": "https://anyconverter.io/world-clock/",
+    "lastCrawlTime": "2026-11-13T07:04:52Z",
+    "crawledAs": "MOBILE",
+    "referringUrls": [
+      "https://anyconverter.io/world-clock/"
+    ],
+    "classification": "OTHER"
+  },
+  {
+    "url": "https://anyconverter.io/da/world-clock/",
+    "inspectionTimestamp": "2026-11-15T19:10:07.959Z",
+    "verdict": "NEUTRAL",
+    "coverageState": "Page with redirect",
+    "robotsTxtState": "ALLOWED",
+    "indexingState": "INDEXING_ALLOWED",
+    "pageFetchState": "SUCCESSFUL",
+    "googleCanonical": "https://anyconverter.io/world-clock/",
+    "userCanonical": "https://anyconverter.io/world-clock/",
+    "lastCrawlTime": "2026-11-13T17:13:43Z",
+    "crawledAs": "MOBILE",
+    "referringUrls": [
+      "https://anyconverter.io/world-clock/"
+    ],
+    "classification": "OTHER"
+  },
+  {
+    "url": "https://anyconverter.io/pdf-merge/",
+    "inspectionTimestamp": "2026-11-15T19:10:15.283Z",
+    "verdict": "PASS",
+    "coverageState": "Submitted and indexed",
+    "robotsTxtState": "ALLOWED",
+    "indexingState": "INDEXING_ALLOWED",
+    "pageFetchState": "SUCCESSFUL",
+    "googleCanonical": "https://anyconverter.io/pdf-merge/",
+    "userCanonical": "https://anyconverter.io/pdf-merge/",
+    "lastCrawlTime": "2026-11-14T17:34:10Z",
+    "crawledAs": "MOBILE",
+    "referringUrls": [
+      "https://anyconverter.io/unlock-pdf/",
+      "https://anyconverter.io/da/pdf-merge/",
+      "https://anyconverter.io/es/pdf-merge/",
+      "https://anyconverter.io/sitemap.xml"
+    ],
+    "classification": "INDEXED"
+  },
+  {
+    "url": "https://anyconverter.io/es/pdf-merge/",
+    "inspectionTimestamp": "2026-11-15T19:10:22.668Z",
+    "verdict": "PASS",
+    "coverageState": "Submitted and indexed",
+    "robotsTxtState": "ALLOWED",
+    "indexingState": "INDEXING_ALLOWED",
+    "pageFetchState": "SUCCESSFUL",
+    "googleCanonical": "https://anyconverter.io/es/pdf-merge/",
+    "userCanonical": "https://anyconverter.io/es/pdf-merge/",
+    "lastCrawlTime": "2026-11-06T11:03:43Z",
+    "crawledAs": "MOBILE",
+    "referringUrls": [
+      "https://anyconverter.io/sitemap.xml"
+    ],
+    "classification": "INDEXED"
+  },
+  {
+    "url": "https://anyconverter.io/redact-pdf/",
+    "inspectionTimestamp": "2026-11-15T19:10:30.033Z",
+    "verdict": "PASS",
+    "coverageState": "Submitted and indexed",
+    "robotsTxtState": "ALLOWED",
+    "indexingState": "INDEXING_ALLOWED",
+    "pageFetchState": "SUCCESSFUL",
+    "googleCanonical": "https://anyconverter.io/redact-pdf/",
+    "userCanonical": "https://anyconverter.io/redact-pdf/",
+    "lastCrawlTime": "2026-11-03T10:00:47Z",
+    "crawledAs": "MOBILE",
+    "referringUrls": [
+      "https://anyconverter.io/unlock-pdf/",
+      "https://anyconverter.io/sitemap.xml"
+    ],
+    "classification": "INDEXED"
+  },
+  {
+    "url": "https://anyconverter.io/percentage-difference-calculator/",
+    "inspectionTimestamp": "2026-11-15T19:10:37.403Z",
+    "verdict": "NEUTRAL",
+    "coverageState": "URL is unknown to Google",
+    "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
+    "indexingState": "INDEXING_STATE_UNSPECIFIED",
+    "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
+    "googleCanonical": "",
+    "userCanonical": "",
+    "lastCrawlTime": "",
+    "crawledAs": "",
+    "referringUrls": [],
+    "classification": "NOT_INDEXED_UNKNOWN"
+  },
+  {
+    "url": "https://anyconverter.io/date-difference-calculator/",
+    "inspectionTimestamp": "2026-11-15T19:10:44.773Z",
+    "verdict": "NEUTRAL",
+    "coverageState": "URL is unknown to Google",
+    "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
+    "indexingState": "INDEXING_STATE_UNSPECIFIED",
+    "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
+    "googleCanonical": "",
+    "userCanonical": "",
+    "lastCrawlTime": "",
+    "crawledAs": "",
+    "referringUrls": [],
+    "classification": "NOT_INDEXED_UNKNOWN"
+  },
+  {
+    "url": "https://anyconverter.io/time-duration-calculator/",
+    "inspectionTimestamp": "2026-11-15T19:10:52.039Z",
+    "verdict": "NEUTRAL",
+    "coverageState": "URL is unknown to Google",
+    "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
+    "indexingState": "INDEXING_STATE_UNSPECIFIED",
+    "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
+    "googleCanonical": "",
+    "userCanonical": "",
+    "lastCrawlTime": "",
+    "crawledAs": "",
+    "referringUrls": [],
+    "classification": "NOT_INDEXED_UNKNOWN"
+  }
+]

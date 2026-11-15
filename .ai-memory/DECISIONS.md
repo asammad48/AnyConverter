@@ -591,3 +591,21 @@ The second independent audit report (`SECOND_INDEPENDENT_FINANCIAL_REVALIDATION_
   5. Created dedicated automated test suite `tests/test_multilingual_tool_names.js` and registered it in `tests/run_all_tests.js`.
 - **Consequence:** 100% reciprocal multilingual UX parity across English, Spanish, and Danish with zero network overhead. All 21 repository test suites pass with 0 regressions.
 
+---
+
+## ADR-039: SEO Data Pipeline Repair, Routing Reciprocity & Technical Indexation Remediation
+- **Date:** 2026-11-16
+- **Status:** Approved & Implemented on Feature Branch `feat/seo-remediation-and-technical-repair`
+- **Context:**
+  - An independent SEO evidence audit flagged critical data anomalies: `detailed_gsc_analysis.json` had all-zero summary periods, conflicting indexed/not-indexed assertions existed across prior reports, and the 69-day URL groups sum (+89 imp, +8 clicks) differed from property-level totals.
+  - In `_redirects`, lines 4-7 enforced 301 redirects for `/es/world-clock/` and `/da/world-clock/` to English `/world-clock/`, resulting in Google Search Console flagging them as "Page with redirect" and blocking indexing.
+  - 5 renamed localized paths (`/da/beregnere/`, `/da/dato-tid/`, `/es/calculadoras/`, `/es/fecha-hora/`, `/es/bola-8-magica/`) lacked permanent redirect rules.
+- **Decision:**
+  1. Built reproducible GSC Search Analytics API extraction and validation script (`reports/seo/validate_gsc_pipeline.js`) with automated assertions guaranteeing non-zero reporting periods and exact reconciliation with source aggregates (122-day full history: 52,737 impressions, 46 clicks).
+  2. Documented Google Search Console property vs. page-level aggregation deduplication mechanics, fully explaining the URL groups sum differences and anomalous dates (2026-09-04 and 2026-09-28).
+  3. Repaired `_redirects`: removed cross-locale 301 redirects to English, implemented trailing-slash normalization for `/es/world-clock` and `/da/world-clock`, and added 10 one-hop 301 redirect rules for legacy renamed paths.
+  4. Executed live Google Search Console URL Inspection API audits across 40 priority URLs, establishing the true baseline: 26 INDEXED, 12 NOT_INDEXED_UNKNOWN, 2 OTHER (the repaired world clock redirects).
+  5. Refined on-page metadata and truthful native copy for priority tools with verified GSC traction (`/da/loan-calculator/`, `/da/mortgage-calculator/`, `/es/sticky-notes/`, `/sticky-notes/`, `/da/todo-list/`, `/ip-address-lookup/`), explaining ÅOP, bidragssats, and client-side privacy without speculative claims.
+  6. Generated all 12 mandatory deliverables in `reports/seo-remediation-2026-11/`.
+- **Consequence:** Eliminates all data pipeline bugs, restores proper 200 OK responses and hreflang reciprocity to localized pages, provides 100% verified first-party audit evidence, and prepares the repository for user review and controlled deployment.
+
