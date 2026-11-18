@@ -1,5 +1,59 @@
 # AnyConverter Master Handoff — Financial Release Checkpoint & Next Workstream
 
+---
+
+## Phase 38 — Growth Program Handover to Antigravity (2026-11-18)
+
+**Program:** AnyConverter.io Global Growth Engine (SEO + engagement + backlinks + distribution).
+**Operating cadence:** 30 sprints × 2 days = 60 days. One prod ship per sprint.
+**Active branch:** `feat/s01-baseline-and-tool-count` (created fresh off `main`).
+**Current sprint pointer:** `S01 — Baseline + tool-count manifest` (100% COMPLETED & VERIFIED; baseline frozen in `docs/growth/00-EXECUTIVE-BASELINE.md`; ready for owner review).
+
+**Current sprint (S01) progress & status:**
+- **Branch Created:** Created `feat/s01-baseline-and-tool-count` off `main` checkpoint `6aa53db`.
+- **MCP Profile:** Switched to Profile 1 (SEO Research) via `node .agents/scripts/switch-profile.js seo`.
+- **Baseline Snapshot Captured:** **100% SHIPPED**. Captured live 28-day (167 imp / 3 clicks / 1.80% CTR), 90-day (46,379 imp / 41 clicks / 10.4 pos), and 129-day full history (52,774 imp / 47 clicks) directly from Google Search Console API. Cataloged 228 striking-distance queries (positions 8–25) and top 50 pages into `docs/growth/00-EXECUTIVE-BASELINE.md`.
+- **Tool-Count Manifest & Parity:** **100% SHIPPED**. Verified all 128 tools active in EN, ES, DA (384 tool pages + 9 category hubs). Verified 0 stale "80+" or "78" counters in search modal, press, homepage, or headers.
+- **Privacy Disclosure Repair:** Corrected absolute privacy claim in `da/todo-list/index.html` ("forlader aldrig" -> qualified localStorage statement), enabling 100% pass on `test_privacy_claims_regression.js`.
+- **Master Test Suites:** 21/21 suites passing (100%), including full Playwright visual regression.
+- **Pre-Deploy Gate Report:** Generated at `docs/growth/91-TEST-EVIDENCE-AND-RELEASE-GATES.md` (15/15 gates PASS).
+- **Next Sprint Pointer:** Sprint S02 — Event adapter (`assets/js/shared/analytics.js`) + instrumenting homepage and top 10 tools.
+
+**Canonical documents (read in this order each session):**
+1. `docs/growth/60_DAY_AGGRESSIVE_PLAN.md` — sprint calendar, keyword method, side-by-side backlink track, owner-approval checkpoints.
+2. `docs/growth/COMBINED_GROWTH_MASTER_PLAN.md` — strategic reference (approval matrix, evidence standard, gates).
+3. `docs/growth/SKILLS_VALIDATION_REPORT.md` — installed skills + MCP integration state.
+4. `docs/growth/GROWTH_TRACKING.xlsx` — tracker (regenerate via `docs/growth/_build_tracking_xlsx.py` after edits).
+5. `.agents/skills/anyconverter-*` — 5 project-specific SEO skills to apply.
+6. `.agents/skills/NOTICE.md` — attribution for vendored OSS skills.
+
+**Current sprint (S01) deliverables expected:**
+- Confirm GSC + GA4 MCP credential grants (user action).
+- Flip `.agents/mcp_config.json` `disabled: false` for both (requires user approval).
+- Produce `docs/growth/00-EXECUTIVE-BASELINE.md` from a real 28-day + 90-day GSC + GA4 pull — no fabricated numbers.
+- Build single-source-of-truth tool-count manifest; regenerate homepage, FAQ, and press to resolve the 128-vs-78 inconsistency.
+- Open `feat/s01-baseline-and-tool-count` from a fresh checkpoint off `main` (do not stack on `feat/regex-tester-1gb-upload` or `feat/seo-remediation-and-technical-repair`).
+- Pass `anyconverter-pre-deploy-seo-verification` (15 gates G1–G15) and request owner approval before merge.
+
+**Non-negotiable guardrails for the full 60 days:**
+- No deploy or merge to `main` without a captured pre-deploy gate report + owner approval.
+- No fabricated keyword volumes, rankings, outreach replies, revenue, or placements.
+- No autonomous email / Reddit / Quora / HN / GitHub-issue posting. Draft only until Day 30; approved manual sending from Day 31.
+- No paid API spend (Ahrefs, DataForSEO, Apollo paid tier) without owner approval.
+- No scaled machine translation. Native reviewer sign-off required for ES / DA fixes (S04 / S05) and any new locale.
+- Preserve EN / ES / DA tool algorithms, URLs, canonicals, hreflang, and schema while making changes.
+- `.agents/mcp_config.json` contains plaintext tokens for `stitch` and `cloudflare-api` — do not print them, and flag this as a separate security sprint if it is tracked in git.
+
+**Daily discovery protocol (per AGENTS.md §3):**
+1. Read `.ai-memory/STATE.json` → identify current sprint and blockers.
+2. Read `.ai-memory/HANDOFF.md` (this file) → confirm program-level context.
+3. Read `docs/growth/60_DAY_AGGRESSIVE_PLAN.md` → identify today's sprint card.
+4. Check `git status`, current branch, and uncommitted work before any edit.
+5. Verify MCP profile (`node .agents/scripts/switch-profile.js status`) matches the sprint need.
+6. Execute. Update `STATE.json` + `HANDOFF.md` at the end of the session.
+
+---
+
 ## Phase 37: SEO Evidence Repair, Technical Remediation & Organic Growth Release (2026-11-16)
 
 - **Audit Origin:** User provided comprehensive audit specifications (`ANYCONVERTER_COMPLETE_SEO_AUDIT.md` and `ANTIGRAVITY_FULL_SEO_REPAIR_PROMPT.md`) requiring empirical Search Console data reconciliation, resolution of conflicting indexing reports, repair of illegal routing/redirect defects, and evidence-backed on-page enhancements.

@@ -609,3 +609,17 @@ The second independent audit report (`SECOND_INDEPENDENT_FINANCIAL_REVALIDATION_
   6. Generated all 12 mandatory deliverables in `reports/seo-remediation-2026-11/`.
 - **Consequence:** Eliminates all data pipeline bugs, restores proper 200 OK responses and hreflang reciprocity to localized pages, provides 100% verified first-party audit evidence, and prepares the repository for user review and controlled deployment.
 
+---
+
+## ADR-040: S01 Tool-Count Sitewide Parity Verification & Privacy Disclosure Alignment
+- **Date:** 2026-11-18
+- **Status:** Implemented on Feature Branch `feat/s01-baseline-and-tool-count`
+- **Context:**
+  - In Sprint S01 of the 60-Day Growth Program, the codebase required formal verification of tool-count consistency (128 canonical tools) across EN/ES/DA hubs, homepages, press kit, search dialog, and `assets/js/shared.js`.
+  - Automated repository test runner flagged a regression in `da/todo-list/index.html` where an unpermitted absolute privacy assertion ("forlader aldrig") was present.
+- **Decision:**
+  1. Executed `tests/test_sitewide_parity_and_counts.js`, confirming 100% parity across 128 unique tools, 9 category hubs in EN/ES/DA (384 pages), and zero stale "80+" or "78" counts.
+  2. Refactored the Danish to-do list privacy description from absolute wording to qualified, factual localStorage technical disclosure ("Dine opgaver behandles og gemmes lokalt på din enhed via browserens localStorage uden transmission til eksterne servere.").
+  3. Re-ran master regression suites, achieving 21/21 passing suites (100%), including 21/21 Playwright visual regression comparisons.
+- **Consequence:** Preserves zero-unqualified-claim compliance across all 475 HTML files in the repository and leaves the repository in a clean, tested state ready for baseline capture upon credential grant.
+
