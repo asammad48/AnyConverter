@@ -6,24 +6,25 @@
 
 **Program:** AnyConverter.io Global Growth Engine (SEO + engagement + backlinks + distribution).
 **Operating cadence:** 30 sprints × 2 days = 60 days. One prod ship per sprint.
-**Active branch:** `feat/s03-github-metadata-and-readme` (created fresh off S02 checkpoint `8c0eb68`).
-**Current sprint pointer:** `S03 — GitHub metadata + README overhaul` (100% COMPLETED & VERIFIED; ready for owner review).
+**Active branch:** `feat/s04-es-translation-drift-sweep` (created fresh off S03 checkpoint `7ab54be`).
+**Current sprint pointer:** `S04 — ES translation drift sweep (batch 1 of 2)` (100% COMPLETED & VERIFIED; ready for owner review).
 
-**Current sprint (S03) progress & status:**
-- **Branch Created:** Created `feat/s03-github-metadata-and-readme` off `feat/s02-event-adapter-and-instrumentation` (`8c0eb68`).
-- **Live GitHub Repository Metadata:** **100% SHIPPED**. Executed `gh repo edit` updating:
-  - Repo description: `"128+ free, private, client-side online tools: developer utilities, PDF editor, financial calculators, and converters in EN, ES, and DA."`
-  - Homepage: `https://anyconverter.io`
-  - 8 Topics: `developer-tools`, `pdf-tools`, `calculators`, `javascript`, `browser-tools`, `privacy`, `static-site`, `online-tools`. Verified via `gh repo view`.
-- **README Overhaul:** **100% SHIPPED**. Completely rewrote `README.md` to document the true 128-tool platform across 9 category hubs, 100% client-side zero-upload privacy architecture, 100MB virtual scroller, 16-event telemetry dictionary, and test verification suite.
-- **Master Test Suites:** 22/22 suites passing (100%), including 21 visual regression screenshot tests.
+**Current sprint (S04) progress & status:**
+- **Branch Created:** Created `feat/s04-es-translation-drift-sweep` off `feat/s03-github-metadata-and-readme` (`7ab54be`).
+- **ES Translation Drift Sweep:** **100% SHIPPED**. Executed comprehensive sweep of top 30 Spanish tool pages by GSC impressions and related hubs (76 files updated, 301 replacements):
+  - Repaired missing accents on esdrújulas, hiatos, and monosyllables: `prácticos`, `útiles`, `después`, `día`, `línea`, `códigos`, `guía`, `posición`, `sólidos`, `píxeles`, `tamaño`, `fórmula`, `páginas`, `límites`, `números`, `decisión`, `categoría`, `automático`.
+  - Fixed sentence boundary punctuation before `Incluye pasos claros, resultados prácticos y sin registro.`
+  - Replaced leaked English phrases in Spanish cards (`text diff checker`, `habit tracker`, `screen resolution checker`, `edit PDF`, `css shadow generator`) with idiomatic Spanish.
+- **Automated Regression Guard:** **100% SHIPPED**. Enhanced `tests/test_localization_regression.js` with permanent automated assertions against 24 specific Spanish drift and untranslated phrase patterns.
+- **Master Test Suites:** 22/22 suites passing (100%), including 21 visual regression screenshot tests and 147 DA / 147 ES localization tests.
 - **Pre-Deploy Gate Report:** Generated at `docs/growth/91-TEST-EVIDENCE-AND-RELEASE-GATES.md` (15/15 gates PASS).
-- **Next Sprint Pointer:** Sprint S04 — ES translation drift sweep (top 30 ES tool pages by impressions).
+- **Next Sprint Pointer:** Sprint S05 — DA translation drift sweep + hreflang repair.
 
 **Completed Sprints Summary:**
 - **Sprint S01 (Days 1–2):** Baseline snapshot & 128-tool parity audit (`feat/s01-baseline-and-tool-count`, commit `acf0785`). 28-day, 90-day, full-history GSC search analytics pulled and verified (52,774 imp, 47 clicks), 128 tools parity verified in EN/ES/DA, privacy disclaimer aligned in `da/todo-list`.
 - **Sprint S02 (Days 3–4):** Event adapter + first instrumented tools (`feat/s02-event-adapter-and-instrumentation`, commit `8c0eb68`). Built `assets/js/shared/analytics.js` (16-event canonical dictionary), strict zero-PII/zero-file sanitization, top 10 tools + homepage instrumentation, `tests/test_analytics_adapter.js` (7/7 pass).
-- **Sprint S03 (Days 5–6):** GitHub metadata + README overhaul (`feat/s03-github-metadata-and-readme`). GitHub repo description, homepage, and 8 topics live. Comprehensive technical README with 128-tool directory and architecture documentation. All 22 test suites pass. Pre-deploy release gate report generated.
+- **Sprint S03 (Days 5–6):** GitHub metadata + README overhaul (`feat/s03-github-metadata-and-readme`, commit `7ab54be`). GitHub repo description, homepage, and 8 topics live. Comprehensive technical README with 128-tool directory and architecture documentation. All 22 test suites pass. Pre-deploy release gate report generated.
+- **Sprint S04 (Days 7–8):** ES translation drift sweep (`feat/s04-es-translation-drift-sweep`, commit `68ad865`). 76 Spanish HTML files updated, 301 orthography and phrasing repairs, automated regression guard in `test_localization_regression.js`, all 22 master suites pass, 15/15 pre-deploy gates pass.
 
 **Canonical documents (read in this order each session):**
 1. `docs/growth/60_DAY_AGGRESSIVE_PLAN.md` — sprint calendar, keyword method, side-by-side backlink track, owner-approval checkpoints.
