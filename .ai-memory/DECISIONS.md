@@ -639,3 +639,27 @@ The second independent audit report (`SECOND_INDEPENDENT_FINANCIAL_REVALIDATION_
   5. Built automated test suite `tests/test_analytics_adapter.js` (7/7 assertions passing) and registered into `tests/run_all_tests.js`.
 - **Consequence:** 100% compliant event tracking flowing to Google Analytics with zero user data exposure and zero disruption to formula logic or zero-dependency static architecture. Verified with 22/22 master repository test suites passing.
 
+---
+
+## ADR-042: GitHub Repository Metadata & Technical README Architecture Overhaul
+- **Date:** 2026-11-18
+- **Status:** Implemented on Feature Branch `feat/s03-github-metadata-and-readme`
+- **Context:**
+  - Sprint S03 of the 60-Day Growth Program required aligning the public GitHub repository presence (`asammad48/AnyConverter`) with the actual scale, privacy architecture, and multilingual scope of the platform.
+  - Previous repository description and README were minimal, out-of-date scaffolds that omitted the 128 canonical tools, client-side privacy architecture, 100MB virtual scroller, and 16-event telemetry dictionary.
+- **Decision:**
+  1. Updated live GitHub repository metadata via `gh repo edit`:
+     - **Description:** `"128+ free, private, client-side online tools: developer utilities, PDF editor, financial calculators, and converters in EN, ES, and DA."`
+     - **Homepage URL:** `https://anyconverter.io`
+     - **Topics Added:** `developer-tools`, `pdf-tools`, `calculators`, `javascript`, `browser-tools`, `privacy`, `static-site`, `online-tools`.
+  2. Overhauled `README.md` to serve as a comprehensive technical and product document:
+     - Prominent status and verification badges (License: MIT, 22/22 Tests Passing, 128 Canonical Tools, Multilingual EN|ES|DA, 100% Client-Side Privacy).
+     - Full specification of Core Architectural Pillars: zero document uploads, zero-framework sub-second performance, 100MB VirtualScroller, and complete EN/ES/DA multilingual reciprocity.
+     - Complete directory of the 128 tools across all 9 category hubs (`/developer-tools/`, `/pdf-tools/`, `/calculators/`, `/productivity-tools/`, `/text-tools/`, `/date-time/`, `/numerology-astrology/`, `/fun-relationships/`, `/browser-tools/`).
+     - Architectural documentation of the zero-PII telemetry layer (`assets/js/shared/analytics.js`).
+     - Local development, E2E browser testing, and visual regression commands.
+  3. Ran master verification suite `node tests/run_all_tests.js`: 22/22 test suites passed (100%), including 21 Playwright visual regression comparisons.
+  4. Generated comprehensive pre-deploy verification gate report in `docs/growth/91-TEST-EVIDENCE-AND-RELEASE-GATES.md` with all 15 release gates verified PASS.
+- **Consequence:** Enhances developer discovery, GitHub search discoverability, and public brand authority while preserving all existing codebase invariants.
+
+
