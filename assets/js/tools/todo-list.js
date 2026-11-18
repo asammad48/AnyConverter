@@ -52,9 +52,11 @@
   function add() {
     const text = inputEl.value.trim();
     if (!text) return;
+    if (window.ACAnalytics) window.ACAnalytics.trackToolStarted('todo-list', 'manual_input');
     todos.push({ id: Date.now(), text, done: false });
     save();
     render();
+    if (window.ACAnalytics) window.ACAnalytics.trackToolCompleted('todo-list', 'manual_input', 'task_created', { count: todos.length });
     inputEl.value = '';
     inputEl.focus();
   }
@@ -76,6 +78,7 @@
     todos = todos.filter(t => !t.done);
     save();
     render();
+    if (window.ACAnalytics) window.ACAnalytics.trackToolReset('todo-list');
   });
 
   document.querySelectorAll('[data-filter]').forEach(btn => {

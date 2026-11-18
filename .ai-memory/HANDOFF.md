@@ -6,18 +6,18 @@
 
 **Program:** AnyConverter.io Global Growth Engine (SEO + engagement + backlinks + distribution).
 **Operating cadence:** 30 sprints × 2 days = 60 days. One prod ship per sprint.
-**Active branch:** `feat/s01-baseline-and-tool-count` (created fresh off `main`).
-**Current sprint pointer:** `S01 — Baseline + tool-count manifest` (100% COMPLETED & VERIFIED; baseline frozen in `docs/growth/00-EXECUTIVE-BASELINE.md`; ready for owner review).
+**Active branch:** `feat/s02-event-adapter-and-instrumentation` (created fresh off S01 checkpoint `acf0785`).
+**Current sprint pointer:** `S02 — Event adapter + first instrumented tools` (100% COMPLETED & VERIFIED; ready for owner review).
 
-**Current sprint (S01) progress & status:**
-- **Branch Created:** Created `feat/s01-baseline-and-tool-count` off `main` checkpoint `6aa53db`.
-- **MCP Profile:** Switched to Profile 1 (SEO Research) via `node .agents/scripts/switch-profile.js seo`.
-- **Baseline Snapshot Captured:** **100% SHIPPED**. Captured live 28-day (167 imp / 3 clicks / 1.80% CTR), 90-day (46,379 imp / 41 clicks / 10.4 pos), and 129-day full history (52,774 imp / 47 clicks) directly from Google Search Console API. Cataloged 228 striking-distance queries (positions 8–25) and top 50 pages into `docs/growth/00-EXECUTIVE-BASELINE.md`.
-- **Tool-Count Manifest & Parity:** **100% SHIPPED**. Verified all 128 tools active in EN, ES, DA (384 tool pages + 9 category hubs). Verified 0 stale "80+" or "78" counters in search modal, press, homepage, or headers.
-- **Privacy Disclosure Repair:** Corrected absolute privacy claim in `da/todo-list/index.html` ("forlader aldrig" -> qualified localStorage statement), enabling 100% pass on `test_privacy_claims_regression.js`.
-- **Master Test Suites:** 21/21 suites passing (100%), including full Playwright visual regression.
+**Current sprint (S02) progress & status:**
+- **Branch Created:** Created `feat/s02-event-adapter-and-instrumentation` off `feat/s01-baseline-and-tool-count` (`acf0785`).
+- **Shared Analytics Adapter:** **100% SHIPPED**. Implemented `assets/js/shared/analytics.js` supporting the 16-event canonical dictionary (`page_view`, `tool_viewed`, `tool_started`, `tool_completed`, `tool_failed`, `tool_reset`, `result_copied`, `result_downloaded`, `search_opened`, `search_performed`, `search_result_clicked`, `favorite_added`, `favorite_removed`, `language_switched`, `related_tool_clicked`, `category_hub_clicked`).
+- **Privacy Sanitization Gate:** Strict filtering of sensitive keys (`filename`, `query`, `email`, `content`, `text`, `ip`, etc.) and PII regex redaction. Zero user file or document content leaks.
+- **Top 10 Tools & Homepage Instrumentation:** **100% SHIPPED**. Wired telemetry into `assets/js/shared.js` (search, favorites, language switch, clipboard copy, related tools, category navigation) and top 10 tools (`json-formatter`, `ip-address-lookup`, `daily-planner`, `todo-list`, `sticky-notes`, `ascii-art-generator`, `pdf-merge`, `calc-kit`, `word-counter`).
+- **Automated Test Suite:** Built `tests/test_analytics_adapter.js` (7/7 assertions passing) and registered into `tests/run_all_tests.js`.
+- **Master Test Suites:** 22/22 suites passing (100%), including visual regression.
 - **Pre-Deploy Gate Report:** Generated at `docs/growth/91-TEST-EVIDENCE-AND-RELEASE-GATES.md` (15/15 gates PASS).
-- **Next Sprint Pointer:** Sprint S02 — Event adapter (`assets/js/shared/analytics.js`) + instrumenting homepage and top 10 tools.
+- **Next Sprint Pointer:** Sprint S03 — GitHub repo metadata + README overhaul.
 
 **Canonical documents (read in this order each session):**
 1. `docs/growth/60_DAY_AGGRESSIVE_PLAN.md` — sprint calendar, keyword method, side-by-side backlink track, owner-approval checkpoints.

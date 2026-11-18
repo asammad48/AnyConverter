@@ -198,10 +198,12 @@
     const date = dateInput.value;
     const name = taskInput.value.trim();
     if (!date || !name) return;
+    if (window.ACAnalytics) window.ACAnalytics.trackToolStarted('daily-planner', 'manual_input');
     const start = timeToMinutes(timeInput.value);
     const dur = Math.max(1, parseInt(durInput.value, 10) || 30);
     tasks.push({ id: Date.now(), task: name, start, dur, done: false });
     save(date);
+    if (window.ACAnalytics) window.ACAnalytics.trackToolCompleted('daily-planner', 'manual_input', 'task_scheduled', { count: tasks.length });
     taskInput.value = '';
     timeInput.value = minutesToTime(Math.min(start + dur, DAY_END - 15));
     taskInput.focus();
@@ -224,6 +226,7 @@
     link.click();
     link.remove();
     setTimeout(() => URL.revokeObjectURL(link.href), 1000);
+    if (window.ACAnalytics) window.ACAnalytics.trackResultDownloaded('daily-planner', 'ics', '<100KB');
   }
 
   document.addEventListener('DOMContentLoaded', function () {

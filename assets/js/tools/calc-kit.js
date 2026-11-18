@@ -68,7 +68,12 @@
   /* Re-run fn on input/change of every element inside root (or the listed ids). */
   function bind(root, fn) {
     var el = typeof root === 'string' ? $(root) : root;
-    el.addEventListener('input', fn);
+    if (!el) return;
+    el.addEventListener('input', function (e) {
+      if (window.ACAnalytics) window.ACAnalytics.trackToolStarted(null, 'manual_input');
+      fn(e);
+      if (window.ACAnalytics) window.ACAnalytics.trackToolCompleted(null, 'manual_input', 'calculation_result');
+    });
     el.addEventListener('change', fn);
   }
 
@@ -81,7 +86,10 @@
 
   function toast(msg) { if (window.showToast) window.showToast(msg, 'success'); }
   function copy(s) {
-    var done = function () { toast(KIT.copied); };
+    var done = function () {
+      toast(KIT.copied);
+      if (window.ACAnalytics) window.ACAnalytics.trackResultCopied(null, 'text');
+    };
     if (navigator.clipboard && navigator.clipboard.writeText) {
       navigator.clipboard.writeText(s).then(done, function () { fallbackCopy(s); done(); });
     } else { fallbackCopy(s); done(); }
@@ -100,6 +108,10 @@
     document.body.appendChild(a); a.click(); a.remove();
     setTimeout(function () { URL.revokeObjectURL(a.href); }, 2000);
     toast(KIT.downloaded + ': ' + name);
+    if (window.ACAnalytics) {
+      var ext = (name && name.indexOf('.') !== -1 ? name.split('.').pop() : 'txt');
+      window.ACAnalytics.trackResultDownloaded(null, ext, '<1MB');
+    }
   }
 
   /* Shareable result image (1080×1350 PNG), drawn locally. o = { kicker, big, title, lines[] } */

@@ -13,11 +13,19 @@
     document.getElementById('wc-sentences').textContent = sentences.toLocaleString();
     document.getElementById('wc-paragraphs').textContent = paras.toLocaleString();
     document.getElementById('wc-read-time').textContent = readTime + ' min';
+    if (window.ACAnalytics) {
+      if (words > 0) {
+        window.ACAnalytics.trackToolCompleted('word-counter', 'manual_input', 'counted', { word_count: words, char_count: chars });
+      } else {
+        window.ACAnalytics.trackToolReset('word-counter');
+      }
+    }
   }
 
   document.addEventListener('DOMContentLoaded', function() {
     var wcTimer;
     document.getElementById('wc-input').addEventListener('input', function() {
+      if (window.ACAnalytics) window.ACAnalytics.trackToolStarted('word-counter', 'manual_input');
       clearTimeout(wcTimer);
       wcTimer = setTimeout(update, 300);
     });

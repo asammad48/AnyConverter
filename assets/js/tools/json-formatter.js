@@ -1083,6 +1083,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     var isLarge = raw.length >= LARGE_THRESHOLD;
+    if (window.ACAnalytics) window.ACAnalytics.trackToolStarted('json-formatter', isLarge ? 'file_upload' : 'manual_input');
 
     if (isLarge) {
       // High-performance virtual scroller path
@@ -1099,6 +1100,7 @@ document.addEventListener('DOMContentLoaded', function () {
       });
 
       if (!res.success) {
+        if (window.ACAnalytics) window.ACAnalytics.trackToolFailed('json-formatter', 'invalid_json');
         lastParsed = null;
         isVirtualized = false;
         virtualText = ChunkedText.empty();
@@ -1132,6 +1134,7 @@ document.addEventListener('DOMContentLoaded', function () {
       updateBookmarkUI();
       setupVirtualScroller(chunked, res.lineOffsets, res.lineCount, res.stats);
 
+      if (window.ACAnalytics) window.ACAnalytics.trackToolCompleted('json-formatter', isLarge ? 'file_upload' : 'manual_input', 'json_formatted', { duration_ms: parseInt(dur, 10) || 0 });
       setInputStatus('ok', '✓ Valid JSON', formatBytes(raw.length));
       setOutputStatus('ok', '✓ Formatted in ' + dur + 'ms', res.lineCount.toLocaleString() + ' lines · ' + res.stats.keys.toLocaleString() + ' keys');
       updateStats(res.stats.keys, res.stats.depth, res.stats.bytes, 0);
@@ -1169,11 +1172,13 @@ document.addEventListener('DOMContentLoaded', function () {
         }
         var s = countStats(parsed);
         setInputStatus('ok', '✓ Valid JSON', raw.length + ' chars');
+        if (window.ACAnalytics) window.ACAnalytics.trackToolCompleted('json-formatter', 'manual_input', 'json_formatted');
         setOutputStatus('ok', '✓ Formatted', lines + ' lines · ' + s.keys + ' keys');
         updateStats(s.keys, s.depth, new TextEncoder().encode(raw).length, 0);
         input.style.borderColor = '';
         refreshSearch();
       } catch (e) {
+        if (window.ACAnalytics) window.ACAnalytics.trackToolFailed('json-formatter', 'invalid_json');
         lastParsed = null;
         bookmarkedLines.clear();
         clearLineSelection();

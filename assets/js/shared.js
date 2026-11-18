@@ -1541,6 +1541,7 @@
         const isNowFav = toggleFavoriteTool(canonPath, toolName);
         updateFavoriteBtnState(button, isNowFav, t);
         showToast(isNowFav ? t.added : t.removed, isNowFav ? 'success' : 'info');
+        if (window.ACAnalytics) window.ACAnalytics.trackFavorite(canonPath, isNowFav);
       }
     });
 
@@ -1614,6 +1615,15 @@
     if (!/^G-[A-Z0-9]+$/i.test(measurementId)) return;
     if (document.querySelector('script[data-ac-google-analytics]')) return;
 
+    // Load shared analytics adapter if not already present
+    if (!window.ACAnalytics && !document.querySelector('script[data-ac-analytics-adapter]')) {
+      const adapterScript = document.createElement('script');
+      adapterScript.src = '/assets/js/shared/analytics.js';
+      adapterScript.async = false;
+      adapterScript.setAttribute('data-ac-analytics-adapter', 'true');
+      document.head.appendChild(adapterScript);
+    }
+
     window.dataLayer = window.dataLayer || [];
     window.gtag = window.gtag || function () { window.dataLayer.push(arguments); };
     window.gtag('js', new Date());
@@ -1648,6 +1658,27 @@
     initPromptCards();
     initStaticFaqAccordion();
     initContactForm();
+
+    // Universal navigation & related-tool telemetry
+    document.addEventListener('click', function (e) {
+      var relLink = e.target.closest('.related-tools a, .tool-card');
+      if (relLink && window.ACAnalytics) {
+        var targetHref = relLink.getAttribute('href');
+        if (targetHref && targetHref.startsWith('/')) {
+          var pos = 0;
+          var parentCard = relLink.closest('.tool-card');
+          if (parentCard && parentCard.parentElement) {
+            var cards = Array.prototype.slice.call(parentCard.parentElement.querySelectorAll('.tool-card'));
+            pos = cards.indexOf(parentCard);
+          }
+          window.ACAnalytics.trackRelatedToolClick(null, targetHref, pos);
+        }
+      }
+      var catLink = e.target.closest('.main-nav a[href*="-tools/"], .main-nav a[href*="/calculators/"]');
+      if (catLink && window.ACAnalytics) {
+        window.ACAnalytics.trackCategoryHubClicked(catLink.getAttribute('href'), 'main_nav');
+      }
+    });
   });
 
   function initPromptCards() {
@@ -1981,6 +2012,7 @@
       opt.addEventListener('click', function () {
         const targetLang = opt.dataset.lang;
         const url = buildLangUrl(targetLang);
+        if (window.ACAnalytics) window.ACAnalytics.trackLanguageSwitched(currentLang, targetLang);
         localStorage.setItem('ac_lang', targetLang);
         window.location.href = url;
       });
@@ -2058,6 +2090,7 @@
       }
     }
     if (success) {
+      if (window.ACAnalytics) window.ACAnalytics.trackResultCopied(null, 'clipboard_text');
       window.showToast('Copied to clipboard!', 'success');
       const btn = triggerEl || (document.activeElement && (document.activeElement.tagName === 'BUTTON' || document.activeElement.classList.contains('ac-btn')) ? document.activeElement : null);
       if (btn && !btn.dataset.copying) {
@@ -2120,7 +2153,8 @@
       }
     }
 
-    function openSearch() {
+    function openSearch(source) {
+      if (window.ACAnalytics) window.ACAnalytics.trackSearchOpened(source || 'header_button');
       closeMobileMenu();
       if (modal.parentElement !== document.body) {
         document.body.appendChild(modal);
@@ -2143,8 +2177,18 @@
       activeIdx = -1;
     }
 
-    btn.addEventListener('click', openSearch);
+    btn.addEventListener('click', function () { openSearch('header_button'); });
     if (backdrop) backdrop.addEventListener('click', closeSearch);
+
+    list.addEventListener('click', function (e) {
+      var item = e.target.closest('.search-result-item');
+      if (item && window.ACAnalytics) {
+        var href = item.getAttribute('href');
+        var allItems = Array.prototype.slice.call(list.querySelectorAll('.search-result-item'));
+        var rank = allItems.indexOf(item);
+        window.ACAnalytics.trackSearchResultClicked(href, rank);
+      }
+    });
 
     document.addEventListener('keydown', function (e) {
       if (modal.classList.contains('open')) {
@@ -2154,8 +2198,10 @@
         if (e.key === 'Enter') {
           var links = list.querySelectorAll('.search-result-item');
           if (activeIdx >= 0 && links[activeIdx]) {
+            if (window.ACAnalytics) window.ACAnalytics.trackSearchResultClicked(links[activeIdx].getAttribute('href'), activeIdx);
             window.location.href = links[activeIdx].getAttribute('href');
           } else if (links.length === 1) {
+            if (window.ACAnalytics) window.ACAnalytics.trackSearchResultClicked(links[0].getAttribute('href'), 0);
             window.location.href = links[0].getAttribute('href');
           }
           return;
@@ -2165,9 +2211,9 @@
       // Open shortcuts when modal is closed
       var tag = document.activeElement ? document.activeElement.tagName : '';
       if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
-        e.preventDefault(); openSearch();
+        e.preventDefault(); openSearch('keyboard_shortcut');
       } else if (e.key === '/' && tag !== 'INPUT' && tag !== 'TEXTAREA') {
-        e.preventDefault(); openSearch();
+        e.preventDefault(); openSearch('slash_key');
       }
     });
 
@@ -2176,6 +2222,10 @@
       var q = input.value.trim();
       if (!q) { showDefaultList(); return; }
       renderResults(q);
+      if (window.ACAnalytics) {
+        var itemsCount = list.querySelectorAll('.search-result-item').length;
+        window.ACAnalytics.trackSearchPerformed(q.length, itemsCount);
+      }
     });
 
     function moveActive(dir) {

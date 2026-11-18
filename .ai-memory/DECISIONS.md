@@ -623,3 +623,19 @@ The second independent audit report (`SECOND_INDEPENDENT_FINANCIAL_REVALIDATION_
   3. Re-ran master regression suites, achieving 21/21 passing suites (100%), including 21/21 Playwright visual regression comparisons.
 - **Consequence:** Preserves zero-unqualified-claim compliance across all 475 HTML files in the repository and leaves the repository in a clean, tested state ready for baseline capture upon credential grant.
 
+---
+
+## ADR-041: Universal Client-Side Analytics Event Adapter (16-Event Dictionary) & Zero-PII Instrumentation
+- **Date:** 2026-11-18
+- **Status:** Implemented on Feature Branch `feat/s02-event-adapter-and-instrumentation`
+- **Context:**
+  - Sprint S02 of the 60-Day Growth Program required a unified event telemetry layer delivering the 16-event canonical dictionary across tool funnels, search, navigation, and engagement.
+  - Strict privacy constraints mandate zero transmission of PII, filenames, or user document content.
+- **Decision:**
+  1. Built `assets/js/shared/analytics.js` (`window.ACAnalytics`) supporting all 16 canonical events (`page_view`, `tool_viewed`, `tool_started`, `tool_completed`, `tool_failed`, `tool_reset`, `result_copied`, `result_downloaded`, `search_opened`, `search_performed`, `search_result_clicked`, `favorite_added`, `favorite_removed`, `language_switched`, `related_tool_clicked`, `category_hub_clicked`).
+  2. Implemented strict parameter filtering blocking forbidden keys (`filename`, `query`, `email`, `content`, `text`, `ip`, etc.) and clamping strings to 64 chars with regex PII redaction.
+  3. Integrated automatic queueing and dual-dispatch to `gtag('event', ...)` and DOM `ac:analytics-event` CustomEvent for test assertion.
+  4. Instrumented `assets/js/shared.js` and top 10 tools (`json-formatter`, `ip-address-lookup`, `daily-planner`, `todo-list`, `ascii-art-generator`, `pdf-merge`, `calc-kit`, `word-counter`).
+  5. Built automated test suite `tests/test_analytics_adapter.js` (7/7 assertions passing) and registered into `tests/run_all_tests.js`.
+- **Consequence:** 100% compliant event tracking flowing to Google Analytics with zero user data exposure and zero disruption to formula logic or zero-dependency static architecture. Verified with 22/22 master repository test suites passing.
+

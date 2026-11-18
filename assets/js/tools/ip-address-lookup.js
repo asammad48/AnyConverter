@@ -281,6 +281,7 @@
     if (q) q.innerHTML = '<strong>Lookup quality</strong><p class="prototype-muted-note">Trying public IP lookup services…</p>';
 
     var isCustomSearch = !!(ip && ip.trim());
+    if (window.ACAnalytics) window.ACAnalytics.trackToolStarted('ip-address-lookup', isCustomSearch ? 'custom_ip' : 'my_ip');
     lookupWithFallback(isCustomSearch ? ip.trim() : '')
       .then(function(data) {
         if (!isCustomSearch) {
@@ -288,6 +289,7 @@
           updateHeroCard(data, false);
         }
         renderResult(data, isCustomSearch);
+        if (window.ACAnalytics) window.ACAnalytics.trackToolCompleted('ip-address-lookup', isCustomSearch ? 'custom_ip' : 'my_ip', 'geolocation_resolved');
       })
       .catch(function(e) {
         if (!isCustomSearch) {
@@ -295,6 +297,7 @@
         }
         error.textContent   = e.message;
         error.style.display = 'block';
+        if (window.ACAnalytics) window.ACAnalytics.trackToolFailed('ip-address-lookup', 'api_lookup_failed');
       })
       .finally(function() {
         btn.disabled    = false;
