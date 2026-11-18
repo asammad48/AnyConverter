@@ -90,17 +90,17 @@ console.log(`✓ Danish localization verified across all ${daFiles.length} pages
 // 6. Sitewide Spanish scans (diacritics, accent marks, ASCII fallback detection)
 const esFiles = walk('es');
 let esDiacriticErrors = 0;
-const esStrippedRegex = /(resultados rapidos|usos practicos|detalles utiles|la pagina tambien|detras del resultado|formula, supuestos|misma decision)/i;
+const esStrippedRegex = /(resultados rapidos|usos practicos|pasos practicos|limites practicos|controles practicos|sin limites en el navegador|detalles utiles|la pagina tambien|detras del resultado|formula, supuestos|misma decision|despues de|el dia con linea|linea de tiempo|codigos QR|guia de idioma|ajusta posicion|colores solidos|pixeles muertos|tamano de viewport|guardado automatico|categoria de peso|text diff checker gratis|habit tracker online gratis|screen resolution checker gratis)/i;
 
 for (const file of esFiles) {
   const content = fs.readFileSync(file, 'utf8');
   const strippedMatch = content.match(esStrippedRegex);
   if (strippedMatch) {
-    console.error(`Found unaccented Spanish word in ${file}: "${strippedMatch[0]}"`);
+    console.error(`Found unaccented Spanish word or untranslated fragment in ${file}: "${strippedMatch[0]}"`);
     esDiacriticErrors++;
   }
 }
-assert.strictEqual(esDiacriticErrors, 0, `Zero unaccented Spanish diacritics allowed across ${esFiles.length} Spanish pages`);
+assert.strictEqual(esDiacriticErrors, 0, `Zero unaccented Spanish diacritics or leaked fragments allowed across ${esFiles.length} Spanish pages`);
 console.log(`✓ Spanish localization verified across all ${esFiles.length} pages: proper diacritics and accent marks`);
 
 console.log('\nALL MULTILINGUAL LOCALIZATION TESTS PASSED!');
