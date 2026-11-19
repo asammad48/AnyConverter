@@ -7054,8 +7054,9 @@ body:has(#sticky-container) .sticky-toast {
   }
 }
 
-/* Sprint S13: Shareable Percentage Calculator State & WCAG 2.2 AA Focus-Visible */
+/* Sprint S13 & S14: Shareable Calculator State & WCAG 2.2 AA Focus-Visible */
 #btn-share-pct,
+#btn-share-age,
 #btn-share-result {
   display: inline-flex;
   align-items: center;
@@ -7066,6 +7067,7 @@ body:has(#sticky-container) .sticky-toast {
 }
 
 #btn-share-pct:focus-visible,
+#btn-share-age:focus-visible,
 #btn-share-result:focus-visible {
   outline: 2px solid #B04A45;
   outline-offset: 2px;

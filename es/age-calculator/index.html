@@ -69,9 +69,14 @@
               <input type="date" id="target-date" style="width:100%;padding:10px 12px;border:1px solid var(--color-border,#DDD8D0);border-radius:8px;font-size:15px">
             </div>
           </div>
-          <div class="action-bar" style="margin-bottom:20px">
+          <div class="action-bar ac-action-bar" style="margin-bottom:20px;display:flex;gap:8px;align-items:center;flex-wrap:wrap">
             <button class="btn btn-primary" id="btn-calc-age">Calcular edad</button>
             <button class="btn btn-secondary" id="btn-reset-age">Restablecer</button>
+            <button class="btn btn-secondary" id="btn-share-age" type="button" aria-label="Compartir enlace de cálculo">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="margin-right:6px;vertical-align:-2px"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg>
+              <span>Compartir cálculo</span>
+            </button>
+            <span id="age-share-feedback" class="pct-share-feedback" role="status" aria-live="polite" style="display:none">¡Enlace copiado al portapapeles!</span>
           </div>
           <div id="age-result" style="display:none">
             <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:12px">
@@ -82,6 +87,12 @@
             <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
               <div class="stat-card"><div class="stat-val" id="age-total-days" style="font-size:18px">—</div><div class="stat-lbl">Total de días vividos</div></div>
               <div class="stat-card"><div class="stat-val" id="age-next-bday" style="font-size:15px">—</div><div class="stat-lbl">Próximo cumpleaños</div></div>
+            </div>
+            <div style="margin-top:14px;text-align:center">
+              <button class="btn btn-secondary btn-sm" id="btn-share-result" type="button" aria-label="Copiar enlace de cálculo">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="margin-right:4px;vertical-align:-1px"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg>
+                <span>Copiar enlace de cálculo</span>
+              </button>
             </div>
           </div>
         </div>

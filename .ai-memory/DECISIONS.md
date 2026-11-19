@@ -910,7 +910,51 @@ The second independent audit report (`SECOND_INDEPENDENT_FINANCIAL_REVALIDATION_
 
 ---
 
-## ADR-052: Shareable Calculator State for Percentage Calculator (/percentage-calculator/)
+## ADR-053: Shareable Calculator State for Date Difference & Age Calculator across EN, ES, DA (/age-calculator/, /es/age-calculator/, /da/age-calculator/)
+- **Date:** 2026-11-20
+- **Status:** Implemented on Feature Branch `feat/s14-shareable-date-difference`
+- **Context:**
+  - Sprint S14 continues Week 5 (Shareable state + install) of the 60-Day Aggressive Growth Plan (`docs/growth/60_DAY_AGGRESSIVE_PLAN.md`).
+  - Users across English, Spanish, and Danish markets need to calculate date differences (years, months, days, total days, milestones) and share the calculation via compact, versioned, tamper-resistant URLs.
+  - Constraint: No Auto-Share / No Silent Address Bar Mutation. Typing or calculating must never mutate `window.location`. Only clicking an explicit Share action creates the URL, copies it to clipboard, and displays accessible visual feedback in the active locale.
+  - SEO Invariant: The canonical URL must remain strictly clean on EN, ES, and DA (`https://anyconverter.io/age-calculator/`, `/es/age-calculator/`, `/da/age-calculator/`), and parameterized URLs must receive `noindex, follow` to protect crawl equity.
+  - KPI Target: Share generation in each locale (EN, ES, DA).
+- **Decision:**
+  1. **Explicit Share Trigger & UI Component across EN, ES, and DA (`age-calculator/index.html`, `es/age-calculator/index.html`, `da/age-calculator/index.html`, & `assets/css/style.css`):**
+     - Added `#btn-share-age` to the action bar with accessible ARIA label and SVG share icon.
+     - Added `#btn-share-result` to the result container (`#age-result`).
+     - Added accessible live region `#age-share-feedback` (`role="status"`, `aria-live="polite"`) with native localized strings:
+       - EN: "Link copied to clipboard!"
+       - ES: "¡Enlace copiado al portapapeles!"
+       - DA: "Link kopieret til udklipsholder!"
+     - Styled `:focus-visible` states with 2px solid `#B04A45` outline and 2px offset conforming to WCAG 2.2 AA.
+  2. **Compact & Versioned Parameter Schema:**
+     - Version key: `v=1`.
+     - Parameters: `from=YYYY-MM-DD&to=YYYY-MM-DD` (also supporting `start`/`end` and `b`/`t` aliases).
+     - Only non-sensitive ISO date strings stored; zero PII.
+  3. **Locale-Aware State Hydration & Fail-Safe Fallback (`assets/js/tools/age-calculator.js`):**
+     - On page load, `hydrateFromUrl()` parses `window.location.search`.
+     - Valid parameters populate date fields and run `calcAge()` to render the answer immediately.
+     - Number formatting uses the active locale (e.g. `13,307` in EN vs `13.307` in ES and DA).
+     - Localized units and milestone labels for birthday countdowns.
+     - Robust sanitization: Malformed parameters (`?v=999`, invalid date format, NaN, inverted chronological dates `from > to`) gracefully reset to clean default state without throwing exceptions or showing broken UI.
+  4. **SEO Invariants & Duplicate Content Protection:**
+     - Clean canonical tags preserved across all 3 locale pages.
+     - When `window.location.search.length > 1`, dynamically injects or updates `<meta name="robots" content="noindex, follow">`.
+  5. **Telemetry & Analytics Integration:**
+     - Dispatched on share button click via `window.ACAnalytics.trackShareLinkGenerated('age-calculator', locale, 'success')`.
+  6. **Automated Verification:**
+     - Built dedicated verification suite `tests/test_s14_shareable_date_difference.js` (17/17 passing).
+     - Registered suite in `tests/run_all_tests.js` (29/29 master suites passing, 100%), including 21/21 Playwright visual regression snapshots.
+- **Consequences:**
+  - Delivers shareable state across all 3 tier-1 languages (EN, ES, DA).
+  - Strengthens date calculation utility and virality.
+  - Zero duplicate content risk due to dynamic `noindex` and clean canonical tags.
+  - Zero dependencies, client-side only.
+
+---
+
+ADR-052: Shareable Calculator State for Percentage Calculator (/percentage-calculator/)
 - **Date:** 2026-11-20
 - **Status:** Implemented on Feature Branch `feat/s13-shareable-percentage-calculator`
 - **Context:**

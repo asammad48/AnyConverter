@@ -29,6 +29,7 @@ const testSuites = [
   { name: 'Sprint S11 Recents Carousel Suite', cmd: 'node tests/test_s11_recents_carousel.js' },
   { name: 'Sprint S12 Workflow Chain Suite', cmd: 'node tests/test_s12_workflow_chain_json.js' },
   { name: 'Sprint S13 Shareable Percentage Suite', cmd: 'node tests/test_s13_shareable_percentage.js' },
+  { name: 'Sprint S14 Shareable Date Difference Suite', cmd: 'node tests/test_s14_shareable_date_difference.js' },
   { name: 'Playwright Visual Regression Suite (21/21 Baselines)', cmd: 'node tests/run_visual_regression.js' }
 ];
 
