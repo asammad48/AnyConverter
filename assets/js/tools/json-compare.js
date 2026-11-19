@@ -468,6 +468,17 @@
   }
 
   document.addEventListener('DOMContentLoaded', function () {
+    try {
+      var chained = sessionStorage.getItem('ac:chain-json-a');
+      if (chained) {
+        sessionStorage.removeItem('ac:chain-json-a');
+        var aInput = document.getElementById('jc-a');
+        if (aInput && !aInput.value.trim()) {
+          aInput.value = chained;
+        }
+      }
+    } catch (_e) {}
+
     ['jc-opt-ignore-case', 'jc-opt-trim', 'jc-opt-null-missing', 'jc-opt-coercion', 'jc-opt-keys-only'].forEach(function (id) {
       initToggle(id, false);
     });

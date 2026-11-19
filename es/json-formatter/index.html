@@ -356,6 +356,53 @@
       </aside>
     </div><!-- /tool-wrapper -->
 
+    <!-- Contextual Workflow Chain: Next Step (Sprint S12) -->
+    <section class="workflow-chain-section" id="workflow-chain-json" aria-labelledby="workflow-chain-heading" style="display:none;">
+      <div class="workflow-chain-header">
+        <div class="workflow-chain-badge">
+          <span aria-hidden="true">⚡</span>
+          <span>Siguiente paso</span>
+        </div>
+        <h2 class="workflow-chain-title" id="workflow-chain-heading">Continúa tu flujo de trabajo</h2>
+        <p class="workflow-chain-sub">Envía este JSON formateado directamente a la siguiente herramienta:</p>
+        <button type="button" class="workflow-chain-dismiss" id="btn-chain-dismiss" aria-label="Descartar sugerencias de flujo">✕</button>
+      </div>
+      <div class="workflow-chain-grid">
+        <a href="/es/json-compare/" class="workflow-chain-card" id="chain-step-compare" data-target="/es/json-compare/">
+          <div class="workflow-chain-card-icon">
+            <img src="/assets/img/icon-json.svg" alt="Icono de Comparar JSON" width="28" height="28" loading="lazy">
+          </div>
+          <div class="workflow-chain-card-content">
+            <span class="workflow-chain-card-title">Comparar JSON</span>
+            <span class="workflow-chain-card-desc">Compara con otra carga JSON lado a lado</span>
+          </div>
+          <span class="workflow-chain-card-action">Comparar JSON →</span>
+        </a>
+
+        <button type="button" class="workflow-chain-card workflow-chain-btn" id="chain-step-csv">
+          <div class="workflow-chain-card-icon">
+            <img src="/assets/img/icon-csv.svg" alt="Icono de JSON a CSV" width="28" height="28" loading="lazy">
+          </div>
+          <div class="workflow-chain-card-content">
+            <span class="workflow-chain-card-title">JSON → CSV</span>
+            <span class="workflow-chain-card-desc">Convierte objetos estructurados en una hoja CSV</span>
+          </div>
+          <span class="workflow-chain-card-action">Exportar CSV →</span>
+        </button>
+
+        <a href="/es/json-to-yaml/" class="workflow-chain-card" id="chain-step-yaml" data-target="/es/json-to-yaml/">
+          <div class="workflow-chain-card-icon">
+            <img src="/assets/img/icon-json-yaml.svg" alt="Icono de JSON a YAML" width="28" height="28" loading="lazy">
+          </div>
+          <div class="workflow-chain-card-content">
+            <span class="workflow-chain-card-title">JSON → YAML</span>
+            <span class="workflow-chain-card-desc">Transforma a formato de configuración YAML limpio</span>
+          </div>
+          <span class="workflow-chain-card-action">Convertir a YAML →</span>
+        </a>
+      </div>
+    </section>
+
     <!-- AdSense leaderboard -->
     <div class="ad-slot ad-slot--leaderboard">
       <p class="ad-label">Anuncio</p>

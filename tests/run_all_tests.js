@@ -27,6 +27,7 @@ const testSuites = [
   { name: 'Sprint S09 Striking-Distance ES/DA Suite', cmd: 'node tests/test_s09_striking_distance_es_da.js' },
   { name: 'Sprint S10 Favorites UX & Persistence Suite', cmd: 'node tests/test_s10_favorites_ux.js' },
   { name: 'Sprint S11 Recents Carousel Suite', cmd: 'node tests/test_s11_recents_carousel.js' },
+  { name: 'Sprint S12 Workflow Chain Suite', cmd: 'node tests/test_s12_workflow_chain_json.js' },
   { name: 'Playwright Visual Regression Suite (21/21 Baselines)', cmd: 'node tests/run_visual_regression.js' }
 ];
 

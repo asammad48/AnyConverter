@@ -908,6 +908,52 @@ The second independent audit report (`SECOND_INDEPENDENT_FINANCIAL_REVALIDATION_
   - Zero performance impact or layout shifting for first-time visitors (empty state hidden).
   - Telemetry enables tracking the 60-day KPI of $\ge 25\%$ return session engagement.
 
+---
+
+## ADR-051: Tool-to-Tool Workflow Chaining for JSON Group (JSON Formatter → Compare, CSV, YAML)
+- **Date:** 2026-11-20
+- **Status:** Implemented on Feature Branch `feat/s12-workflow-chain-json`
+- **Context:**
+  - Sprint S12 continues Week 4 (Engagement: favorites, recents, workflow chains) of the 60-Day Aggressive Growth Plan (`docs/growth/60_DAY_AGGRESSIVE_PLAN.md`).
+  - Developers and data engineers formatting or minifying JSON often have a subsequent task: comparing two versions, converting to CSV for spreadsheet analysis, or converting to YAML for Kubernetes/CI configuration.
+  - Objective: Implement a contextual, non-interruptive "Next step" workflow chain at the end of JSON Formatter (`/json-formatter/`, `/es/json-formatter/`, `/da/json-formatter/`) connecting to:
+    1. `→ JSON Compare` (`/json-compare/` with formatted JSON pre-populated in Panel A via `sessionStorage['ac:chain-json-a']`).
+    2. `→ JSON→CSV` (triggers built-in CSV export/conversion with telemetry).
+    3. `→ JSON→YAML` (`/json-to-yaml/` with formatted JSON pre-populated and converted via `sessionStorage['ac:chain-json']`).
+  - Constraint: Must be non-interruptive (hidden on initial load, empty inputs, or validation errors; only appears upon successful format/minify).
+  - Target KPI: $\ge 8\%$ of successful JSON Formatter sessions chain into a second tool.
+- **Decision:**
+  1. **Non-Interruptive Lifecycle & Mounting (`assets/js/tools/json-formatter.js`):**
+     - Injected `#workflow-chain-json` into `json-formatter/index.html`, `es/json-formatter/index.html`, and `da/json-formatter/index.html` directly after the main editor wrapper (`</div><!-- /tool-wrapper -->`).
+     - Kept hidden by default (`style="display:none;"`).
+     - Called `showWorkflowChain()` strictly on successful formatting or minification across both standard tree mode and virtual scroller mode.
+     - Called `hideWorkflowChain()` on empty raw input, validation parse errors, or when the user clicks the dismiss button (`#btn-chain-dismiss`).
+  2. **Inter-Tool Data Handoff via `sessionStorage`:**
+     - `sessionStorage['ac:chain-json-a']`: Stores active formatted JSON for JSON Compare. `assets/js/tools/json-compare.js` consumes and clears this key on DOMContentLoaded, populating `#jc-a`.
+     - `sessionStorage['ac:chain-json']`: Stores active formatted JSON for JSON to YAML. `assets/js/tools/json-to-yaml.js` consumes and clears this key on DOMContentLoaded, setting mode to `j2y`, populating `#jy-input`, and executing `convert()`.
+     - Direct in-tool CSV execution: Clicking `JSON → CSV` executes `#btn-to-csv.click()` directly, triggering conversion and offering the CSV export without page navigation.
+  3. **Multilingual Parity & Localization:**
+     - Complete native translations for EN, ES, and DA:
+       - EN: "Next step" badge, "Compare with another JSON", "Export as CSV spreadsheet", "Convert to YAML structure".
+       - ES: "Siguiente paso", "Comparar con otro JSON", "Exportar como hoja de cálculo CSV", "Convertir a estructura YAML".
+       - DA: "Næste trin", "Sammenlign med en anden JSON", "Eksportér som CSV-regneark", "Konvertér til YAML-struktur".
+     - Links resolve to respective locale paths (`/es/json-compare/`, `/da/json-to-yaml/`).
+  4. **Accessibility (WCAG 2.2 AA) & Design Tokens:**
+     - Semantic `<section class="workflow-chain-section" id="workflow-chain-json" aria-labelledby="workflow-chain-heading">`.
+     - Dismiss button `#btn-chain-dismiss` with explicit localized `aria-label` and `aria-expanded` attributes.
+     - Focus-visible outlines: 2px solid `#B04A45` with 2px offset on all cards and dismiss button.
+     - Mobile responsive cards wrapping cleanly on small viewports with 0px horizontal overflow.
+  5. **Telemetry & Analytics:**
+     - Instrumented clicks with `window.ACAnalytics.trackRelatedToolClicked('json-formatter', targetSlug, position)`.
+  6. **Automated Verification:**
+     - Created `tests/test_s12_workflow_chain_json.js` (14/14 passing).
+     - Master repository suite: 27/27 suites passing (100%), including 21/21 Playwright visual regression snapshots.
+- **Consequences:**
+  - Establishes a zero-friction workflow bridge within the JSON tool ecosystem.
+  - Strengthens internal link equity between JSON Formatter, JSON Compare, and JSON to YAML across EN, ES, and DA.
+  - Zero external dependencies added, client-side only, non-interruptive.
+
+
 
 
 

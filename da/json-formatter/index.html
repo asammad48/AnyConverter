@@ -357,6 +357,53 @@
       </aside>
     </div><!-- /tool-wrapper -->
 
+    <!-- Contextual Workflow Chain: Next Step (Sprint S12) -->
+    <section class="workflow-chain-section" id="workflow-chain-json" aria-labelledby="workflow-chain-heading" style="display:none;">
+      <div class="workflow-chain-header">
+        <div class="workflow-chain-badge">
+          <span aria-hidden="true">⚡</span>
+          <span>Næste trin</span>
+        </div>
+        <h2 class="workflow-chain-title" id="workflow-chain-heading">Fortsæt dit workflow</h2>
+        <p class="workflow-chain-sub">Send denne formaterede JSON direkte videre til næste værktøj:</p>
+        <button type="button" class="workflow-chain-dismiss" id="btn-chain-dismiss" aria-label="Afvis workflow-forslag">✕</button>
+      </div>
+      <div class="workflow-chain-grid">
+        <a href="/da/json-compare/" class="workflow-chain-card" id="chain-step-compare" data-target="/da/json-compare/">
+          <div class="workflow-chain-card-icon">
+            <img src="/assets/img/icon-json.svg" alt="JSON Compare ikon" width="28" height="28" loading="lazy">
+          </div>
+          <div class="workflow-chain-card-content">
+            <span class="workflow-chain-card-title">JSON Compare</span>
+            <span class="workflow-chain-card-desc">Sammenlign med en anden JSON side om side</span>
+          </div>
+          <span class="workflow-chain-card-action">Sammenlign JSON →</span>
+        </a>
+
+        <button type="button" class="workflow-chain-card workflow-chain-btn" id="chain-step-csv">
+          <div class="workflow-chain-card-icon">
+            <img src="/assets/img/icon-csv.svg" alt="JSON til CSV ikon" width="28" height="28" loading="lazy">
+          </div>
+          <div class="workflow-chain-card-content">
+            <span class="workflow-chain-card-title">JSON → CSV</span>
+            <span class="workflow-chain-card-desc">Konverter strukturerede objekter til et CSV-regneark</span>
+          </div>
+          <span class="workflow-chain-card-action">Eksporter CSV →</span>
+        </button>
+
+        <a href="/da/json-to-yaml/" class="workflow-chain-card" id="chain-step-yaml" data-target="/da/json-to-yaml/">
+          <div class="workflow-chain-card-icon">
+            <img src="/assets/img/icon-json-yaml.svg" alt="JSON til YAML ikon" width="28" height="28" loading="lazy">
+          </div>
+          <div class="workflow-chain-card-content">
+            <span class="workflow-chain-card-title">JSON → YAML</span>
+            <span class="workflow-chain-card-desc">Omdan til ren YAML-konfigurationsformat</span>
+          </div>
+          <span class="workflow-chain-card-action">Konverter til YAML →</span>
+        </a>
+      </div>
+    </section>
+
     <!-- AdSense leaderboard -->
     <div class="ad-slot ad-slot--leaderboard">
       <p class="ad-label">Annonce</p>
