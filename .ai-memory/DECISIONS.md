@@ -756,6 +756,32 @@ The second independent audit report (`SECOND_INDEPENDENT_FINANCIAL_REVALIDATION_
   6. Verified sitemap sync via `node scripts/generate_sitemap.js --check` and confirmed all 23 master test suites pass 100% via `node tests/run_all_tests.js`.
 - **Consequence:** Resolves SERP truncation, restores brand consistency across all 10 priority English tools, improves search snippet attractiveness to elevate organic CTR from below-median baselines, and protects metadata invariants via automated testing.
 
+---
+
+## ADR-047: High-Intent FAQ Expansion & Verbatim Structured Data Parity for Top 10 English Tools
+- **Date:** 2026-11-19
+- **Status:** Implemented on Feature Branch `feat/s08-faq-expansion-en`
+- **Context:**
+  - Sprint S08 of the 60-Day Aggressive Plan focuses on user engagement, bounce reduction, and search snippet richness through comprehensive FAQ expansion on the top 10 English tools optimized in S07.
+  - Previous FAQs on these pages were sparse (several tools only had 2 or 3 questions), failed to address high-volume People Also Ask (PAA) and Search Console queries, suffered from duplicate details elements in document converter tools (`pdf-merge` and `extract-pdf-pages`), and lacked strict verbatim synchronization between DOM elements and `FAQPage` schema markup.
+- **Decision:**
+  1. Expanded FAQs to 5–6 comprehensive, authoritative Q&As across all 10 priority English tools:
+     - `ip-address-lookup` (6 FAQs: public vs private IP, geolocation precision, zero logs, ASN purpose, VPN behavior)
+     - `discount-calculator` (5 FAQs: discount formula, sale price calculation, stacked/double discounts, finding original price, percentage vs fixed discounts)
+     - `daily-planner` (5 FAQs: localStorage autosave, calendar date navigation, time blocking methodology, PDF export/printing, task capacity)
+     - `internet-speed-test` (5 FAQs: bandwidth guidelines, download/upload/ping definitions, ISP advertised speed variance, speed improvement tips, zero personal data transfer)
+     - `pdf-merge` (5 FAQs: file count capacity, browser-only client-side execution, custom page selection/reordering, lossless quality, double-sided printing blank pages)
+     - `pdf-forms` (5 FAQs: interactive AcroForms vs static text, form flattening, editable re-saving, client-side data privacy, checkboxes/radio buttons)
+     - `extract-pdf-pages` (5 FAQs: specific page ranges, custom extracted order, local processing privacy, vector sharpness preservation, single vs multiple PDF export)
+     - `keyboard-tester` (5 FAQs: key latency detection, ghosting and N-key rollover, hardware/Fn key behavior, switch chatter/double-typing, multi-OS support)
+     - `sticky-notes` (5 FAQs: localStorage privacy, browser restart persistence, JSON/TXT backup export/import, color tags and pinning, board capacity)
+     - `gst-vat-calculator` (5 FAQs: GST vs VAT distinction, gross to net removal formula, net to gross addition formula, UK/Australia/Canada tax rates, invoice accounting)
+  2. Enforced 100% verbatim parity between visible HTML `<details class="faq-item">` text and JSON-LD `FAQPage` `mainEntity` schema, ensuring Google's structured data guidelines are rigorously satisfied without unhelpful content penalties.
+  3. Eliminated duplicate SSR details blocks in `pdf-merge/index.html` and `extract-pdf-pages/index.html`, synchronizing both static pre-rendered SSR HTML and `<script type="text/x-dc-template" id="dc-template">`.
+  4. Built automated regression test `tests/test_s08_faq_expansion.js` asserting 234 discrete checks (4–6 questions per tool, valid schema types, non-empty content, 100% verbatim parity, and visible item counts).
+  5. Verified `node scripts/generate_sitemap.js --check` and confirmed all 23 master test suites pass 100% via `node tests/run_all_tests.js`.
+- **Consequence:** Dramatically improves user time-on-page and engagement, addresses high-intent search queries, satisfies rich result structured data requirements, and ensures long-term regression safety.
+
 
 
 

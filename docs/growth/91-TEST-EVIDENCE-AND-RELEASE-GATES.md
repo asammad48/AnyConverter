@@ -1,4 +1,48 @@
-# Pre-deploy SEO Verification — feat/s07-striking-distance-metadata-en @ HEAD
+# Pre-deploy SEO Verification — feat/s08-faq-expansion-en @ HEAD
+
+Date: 2026-11-19T13:30:00Z
+Branch: feat/s08-faq-expansion-en
+Changed files: ip-address-lookup/index.html, discount-calculator/index.html, daily-planner/index.html, internet-speed-test/index.html, pdf-merge/index.html, pdf-forms/index.html, extract-pdf-pages/index.html, keyboard-tester/index.html, sticky-notes/index.html, gst-vat-calculator/index.html, sitemap.xml, scripts/apply_s08_faqs.js, tests/test_s08_faq_expansion.js
+Affected URLs: 10 English tool URLs (/ip-address-lookup/, /discount-calculator/, /daily-planner/, /internet-speed-test/, /pdf-merge/, /pdf-forms/, /extract-pdf-pages/, /keyboard-tester/, /sticky-notes/, /gst-vat-calculator/)
+Locales touched: [en] (verified reciprocal hreflang across en, es, da, x-default)
+
+| Gate | Status | Evidence |
+|---|---|---|
+| G1 Repo safety | PASS | Branch `feat/s08-faq-expansion-en` created directly off clean S07 checkpoint (`feat/s07-striking-distance-metadata-en`). Pure FAQ enrichment and schema alignment. |
+| G2 Existing tests | PASS | `node tests/run_all_tests.js` executed: 23/23 suites passed (100%), including visual regression, sitemap integrity, and privacy statements regression. |
+| G3 HTML validation | PASS | Clean semantic HTML preserved across all 10 modified English tool pages; zero syntax or tag mismatch errors. |
+| G4 Link integrity | PASS | 100% reciprocal hreflang links verified in `sitemap.xml` and HTML headers across all 147 clusters (441 pages). Zero broken links. |
+| G5 Functional E2E | PASS | 21/21 Playwright visual regression comparisons passed cleanly via `tests/run_visual_regression.js`. |
+| G6 Multilingual regression | PASS | `node tests/test_localization_regression.js` passed (100% across all 147 Danish and 147 Spanish pages). Zero drift. |
+| G7 Responsive UI | PASS | Zero layout or CSS mutations. 0px horizontal overflow across all responsive viewports. |
+| G8 Accessibility | PASS | No accessibility regression. Accessible `<details>` and `<summary>` elements with clear focus outlines and expandable items. |
+| G9 Privacy / security | PASS | Verified by `tests/test_privacy_claims_regression.js` (475/475 HTML files sweep pass) and `phase05-international-seo-audit.js`: Zero secrets, zero PII, zero absolute privacy overclaims. |
+| G10 Performance | PASS | Zero external library dependencies added; native details/summary semantic disclosure elements load instantly. |
+| G11 SEO route invariants | PASS | Canonical URLs, reciprocal hreflang sets across EN/ES/DA + x-default verified 100% intact. Zero dangling or orphan URLs. |
+| G12 Structured data | PASS | Schema.org `FAQPage` JSON-LD validated with 100% verbatim parity against visible HTML text across all 10 pages. 0 errors. |
+| G13 Internal linking | PASS | All 10 tools discoverable via category hubs, global header navigation, and canonical sitemap. |
+| G14 AdSense placement | PASS | Ad slots remain unaltered in initial rail positions. |
+| G15 Rollback plan | PASS | Reversible git commit; prior release checkpoint (`feat/s07-striking-distance-metadata-en`). |
+
+---
+
+## Sprint S08 Delivery Status Verdict
+
+**STATUS: 100% DELIVERED FOR SPRINT S08 (FAQ EXPANSION ON TOP 10 ENGLISH TOOLS)**
+
+1. **PAA & High-Intent FAQ Expansion:** **PASS / SHIPPED**. Expanded FAQs across all 10 English striking-distance tools to 5–6 comprehensive, authoritative Q&As (51 total Q&As across the cohort): `ip-address-lookup` (6), `discount-calculator` (5), `daily-planner` (5), `internet-speed-test` (5), `pdf-merge` (5), `pdf-forms` (5), `extract-pdf-pages` (5), `keyboard-tester` (5), `sticky-notes` (5), and `gst-vat-calculator` (5).
+2. **100% Verbatim Schema/DOM Parity:** **PASS / SHIPPED**. Every single question and answer in visible HTML `<details class="faq-item">` matches the corresponding `FAQPage` JSON-LD structured data word-for-word, fully adhering to Google's Search Central structured data policies.
+3. **Template & SSR Synchronization:** **PASS / SHIPPED**. Synchronized both static SSR HTML and `<script type="text/x-dc-template" id="dc-template">` in `pdf-merge` and `extract-pdf-pages`, eliminating duplicate details blocks.
+4. **Automated Verification:** **PASS / SHIPPED**.
+   - `node scripts/generate_sitemap.js --check`: 100% synchronized with canonical manifest (441 URLs, 147 clusters).
+   - `node tests/test_s08_faq_expansion.js`: 234/234 assertions passed (10/10 pages verified).
+   - `node tests/test_s07_striking_distance_metadata.js`: 60/60 assertions passed (S07 title and description invariants preserved).
+   - `node tests/run_all_tests.js`: 23/23 master test suites passed (100%).
+5. **Memory & Documentation:** **PASS / RECORDED**. ADR-047 recorded in `.ai-memory/DECISIONS.md`, `.ai-memory/STATE.json` and `.ai-memory/HANDOFF.md` updated.
+
+---
+
+# Previous Sprint: Pre-deploy SEO Verification — feat/s07-striking-distance-metadata-en @ HEAD
 
 Date: 2026-11-19T11:50:00Z
 Branch: feat/s07-striking-distance-metadata-en

@@ -2,36 +2,37 @@
 
 ---
 
-## Phase 39 — Growth Program Sprint S07: Striking-Distance SEO Wins (EN) (2026-11-19)
+## Phase 40 — Growth Program Sprint S08: High-Intent FAQ Expansion & Schema Parity (EN) (2026-11-19)
 
 **Program:** AnyConverter.io Global Growth Engine (SEO + engagement + backlinks + distribution).  
 **Operating cadence:** 30 sprints × 2 days = 60 days. One prod ship per sprint.  
-**Active branch:** `feat/s07-striking-distance-metadata-en` (branched from S06 checkpoint `feat/s06-sitemap-rebuild-and-gsc-resubmit`).  
-**Current sprint pointer:** `S07 — KW: Top 10 striking-distance title+description rewrites (EN)` (100% COMPLETED & VERIFIED; ready for owner review).  
+**Active branch:** `feat/s08-faq-expansion-en` (branched from S07 checkpoint `feat/s07-striking-distance-metadata-en`).  
+**Current sprint pointer:** `S08 — KW: FAQ expansion on the same 10 pages` (100% COMPLETED & VERIFIED; ready for owner review).  
 
-**Current sprint (S07) progress & status:**
-- **Branch Created:** Created `feat/s07-striking-distance-metadata-en` off `feat/s06-sitemap-rebuild-and-gsc-resubmit`.
-- **Top 10 English Tools Selected from Real GSC Data:**
-  1. `ip-address-lookup` (45,570 page imp, pos 9.9, query `ip address lookup` pos 9.8)
-  2. `discount-calculator` (507 page imp, pos 30.3, query `discount calculator` pos 63, query `14.99+7.99` pos 10.0)
-  3. `internet-speed-test` (420 page imp, pos 76.5, query `check speed of internet` pos 23.0)
-  4. `pdf-forms` (396 page imp, pos 81.8, query `convert pdf to fillable form` pos 91.1)
-  5. `extract-pdf-pages` (176 page imp, pos 83.2, query `extract pdf pages free` pos 81.6)
-  6. `pdf-merge` (151 page imp, pos 68.4, query `combine pdf` pos 69.0)
-  7. `daily-planner` (112 page imp, pos 29.1, query `planner online` pos 20.6)
-  8. `keyboard-tester` (103 page imp, pos 81.3, query `keyboard test online` pos 86.1)
-  9. `sticky-notes` (93 page imp, pos 39.4, query `online sticky notes` pos 16.9)
-  10. `gst-vat-calculator` (81 page imp, pos 47.2, query `goods and services tax calculator` pos 45.4)
-- **Metadata Standards Enforced:**
-  - Standardized `<title>` format: `[Tool Name / Modifier] Online Free | AnyConverter` (all $\le$ 60 visible characters, front-loading primary intent keywords).
-  - Strict `<meta name="description">` length: 140–160 characters (152–158 chars across all 10 pages) with active CTAs, truthful client-side privacy claims, zero fluff, and zero misleading statements.
-  - Open Graph and Twitter tags accurately mirrored (`og:title`, `og:description`, `twitter:title`, `twitter:description`, `twitter:image`), backfilling missing Twitter metadata in `pdf-merge` and `extract-pdf-pages`.
-  - Intact canonical URLs, reciprocal 4-way hreflang sets, and schema JSON-LD across all 10 pages.
+**Current sprint (S08) progress & status:**
+- **Branch Created:** Created `feat/s08-faq-expansion-en` off `feat/s07-striking-distance-metadata-en`.
+- **Top 10 English Tools FAQ Expansion:**
+  - Expanded FAQs across all 10 priority tools to 5–6 comprehensive, authoritative Q&As (51 total Q&As across the cohort):
+    1. `ip-address-lookup` (6 FAQs: public detection, public vs private, ISP physical address limits, zero logging, ASN definition, VPN routing)
+    2. `discount-calculator` (5 FAQs: discount percentage formula, sale price calculation, stacked discounts, finding pre-sale price, percentage vs fixed discounts)
+    3. `daily-planner` (5 FAQs: localStorage autosave, calendar date navigation, time blocking methodology, print/PDF export, task capacity)
+    4. `internet-speed-test` (5 FAQs: bandwidth speed tiers, download/upload/ping definitions, advertised speed factors, speed improvement tips, zero personal data transfer)
+    5. `pdf-merge` (5 FAQs: unlimited file count, browser-only client-side execution, custom page selection/reordering, lossless quality, double-sided printing blank pages)
+    6. `pdf-forms` (5 FAQs: interactive AcroForms vs static text, form flattening, editable re-saving, client-side data privacy, checkboxes/radio buttons)
+    7. `extract-pdf-pages` (5 FAQs: specific page ranges, custom extracted order, local processing privacy, vector sharpness preservation, single vs multiple PDF export)
+    8. `keyboard-tester` (5 FAQs: key latency detection, ghosting and N-key rollover, hardware/Fn key behavior, switch chatter/double-typing, multi-OS support)
+    9. `sticky-notes` (5 FAQs: localStorage privacy, browser restart persistence, JSON/TXT backup export/import, color tags and pinning, board capacity)
+    10. `gst-vat-calculator` (5 FAQs: GST vs VAT distinction, gross to net removal formula, net to gross addition formula, UK/Australia/Canada tax rates, invoice accounting)
+- **100% Verbatim Schema/DOM Parity:**
+  - Every single question and answer in visible HTML `<details class="faq-item">` matches the corresponding `FAQPage` JSON-LD structured data word-for-word, fully adhering to Google's Search Central structured data policies.
+- **Template & SSR Synchronization:**
+  - Synchronized both static SSR HTML and `<script type="text/x-dc-template" id="dc-template">` in `pdf-merge` and `extract-pdf-pages`, eliminating duplicate details blocks.
 - **Automated Verification:**
-  - `node scripts/generate_sitemap.js --check`: 100% PASS (441 URLs, 147 clusters).
-  - `node tests/test_s07_striking_distance_metadata.js`: 60/60 checks PASS (10/10 pages verified).
-  - `node tests/run_all_tests.js`: 23/23 master test suites PASS (100%).
-- **Next Sprint Pointer:** Sprint S08 — KW: FAQ expansion on the same 10 pages (4–6 real FAQ Q&A per page using actual PAA queries + visible text + FAQPage JSON-LD).
+  - `node scripts/generate_sitemap.js --check`: 100% synchronized with canonical manifest (441 URLs, 147 clusters).
+  - `node tests/test_s08_faq_expansion.js`: 234/234 assertions passed (10/10 pages verified).
+  - `node tests/test_s07_striking_distance_metadata.js`: 60/60 assertions passed (S07 title and description invariants preserved).
+  - `node tests/run_all_tests.js`: 23/23 master test suites passed (100%).
+- **Next Sprint Pointer:** Sprint S09 — KW: Striking-distance for ES + DA (title + description + FAQ pattern applied to the top-10 striking-distance pages in each of ES and DA).
 
 **Completed Sprints Summary:**
 - **Sprint S01 (Days 1–2):** Baseline snapshot & 128-tool parity audit (`feat/s01-baseline-and-tool-count`, commit `acf0785`). 28-day, 90-day, full-history GSC search analytics pulled and verified (52,774 imp, 47 clicks), 128 tools parity verified in EN/ES/DA, privacy disclaimer aligned in `da/todo-list`.
@@ -41,7 +42,8 @@
 - **Sprint S05 (Days 9–10):** DA translation drift sweep + hreflang repair (`feat/s05-da-translation-drift-and-hreflang`, commit `d0eb86c`). 19 Danish HTML files updated, ASCII digraphs resolved, untranslated English sections translated, native `Låneberegner` query promoted, reciprocal hreflang verified across EN/ES/DA for all 60 touched pages, automated Danish drift guard in `test_localization_regression.js`, all 22 master suites pass, 15/15 pre-deploy gates pass.
 - **Sprint S05.1 (Remediation Pass):** S01–S05 audit remediation (`feat/s05.1-audit-remediation`, commit `1242395`). Wired analytics into 45 core pages, eliminated 5 ES English leaks and icon alts, locked `daStrippedRegex` & `esStrippedRegex` regression guards, backfilled ADR-042. 22/22 master suites pass.
 - **Sprint S06 (Days 11–12):** Sitemap rebuild from manifest + GSC verification (`feat/s06-sitemap-rebuild-and-gsc-resubmit`, commit `9e45591`). Production generator `scripts/generate_sitemap.js`, automated suite `tests/test_sitemap_integrity.js`, live GSC audit verified (441 submitted, 0 errors, 0 warnings), 23/23 master test suites pass.
-- **Sprint S07 (Days 13–14):** Striking-distance title & description rewrites (EN) (`feat/s07-striking-distance-metadata-en`). Top 10 English tools optimized (<title> <=60c, meta desc 140-160c, OG/Twitter tags mirrored), 60/60 assertions pass in `tests/test_s07_striking_distance_metadata.js`, 23/23 master test suites pass, ADR-046 recorded.
+- **Sprint S07 (Days 13–14):** Striking-distance title & description rewrites (EN) (`feat/s07-striking-distance-metadata-en`, commit `d4cd7da`). Top 10 English tools optimized (<title> <=60c, meta desc 140-160c, OG/Twitter tags mirrored), 60/60 assertions pass in `tests/test_s07_striking_distance_metadata.js`, 23/23 master test suites pass, ADR-046 recorded.
+- **Sprint S08 (Days 15–16):** FAQ expansion on top 10 English tools (`feat/s08-faq-expansion-en`). 51 PAA-aligned FAQs across 10 tools, 100% verbatim schema/DOM parity, 234/234 assertions pass in `tests/test_s08_faq_expansion.js`, sitemap sync verified, 23/23 master test suites pass, ADR-047 recorded.
 
 **Canonical documents (read in this order each session):**
 1. `docs/growth/60_DAY_AGGRESSIVE_PLAN.md` — sprint calendar, keyword method, side-by-side backlink track, owner-approval checkpoints.

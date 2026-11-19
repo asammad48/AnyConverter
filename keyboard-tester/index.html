@@ -28,8 +28,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Keyboard Tester","url":"https://anyconverter.io/keyboard-tester/","description":"Test every key on your keyboard. Press any key and see it light up instantly.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Why doesn't a key show up when I press it?","acceptedAnswer":{"@type":"Answer","text":"The key may be physically damaged or the connection is broken. Some special keys (like Fn on laptops) are handled by hardware and never send a keycode to the browser."}},{"@type":"Question","name":"How do I test for ghost keys?","acceptedAnswer":{"@type":"Answer","text":"Hold down multiple keys simultaneously. If a key registers without you pressing it, that is a ghost key — a limitation of the keyboard's hardware matrix. Higher quality keyboards (with N-Key Rollover) prevent this."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do I test if a keyboard key is working or stuck?","acceptedAnswer":{"@type":"Answer","text":"Press any key on your physical keyboard. The corresponding key on the visual layout lights up in real time, increments its press count, and displays its JavaScript event code, scan code, and latency."}},{"@type":"Question","name":"How do I test for keyboard ghosting or key rollover?","acceptedAnswer":{"@type":"Answer","text":"Keyboard ghosting occurs when multiple simultaneous keystrokes fail to register. Press and hold combinations of keys (such as W, A, S, D, and Shift or multiple arrow keys) simultaneously to verify that all inputs register without dropping."}},{"@type":"Question","name":"Why do special keys like Print Screen or Fn not respond?","acceptedAnswer":{"@type":"Answer","text":"Certain hardware keys (such as Fn on laptops) are handled directly by hardware firmware and do not emit standard OS keyboard events. Additionally, browser shortcuts (like F11 or Ctrl+W) may be intercepted by your browser before reaching the page."}},{"@type":"Question","name":"Can I test keyboard chatter or double-typing issues?","acceptedAnswer":{"@type":"Answer","text":"Yes. If a mechanical switch is chattering or bouncing, a single physical keystroke will register multiple times in rapid succession. The press counter and event log will highlight abnormally high key counts."}},{"@type":"Question","name":"Does this keyboard tester support Mac, Windows, and numeric keypads?","acceptedAnswer":{"@type":"Answer","text":"Yes. The tester detects key event codes across Windows, macOS, Linux, and ChromeOS, supporting full ANSI layouts, function rows, navigation clusters, and numpads."}}]}</script>
 
 
 <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
@@ -130,8 +129,26 @@
     <section class="faq">
       <h2>Frequently Asked Questions</h2>
       <div class="faq-list">
-        <details class="faq-item"><summary class="faq-question">Why doesn't a key show up when I press it? <span class="faq-icon">+</span></summary><div class="faq-answer">The key may be physically damaged or the connection is broken. Some special keys (like Fn on laptops) are handled by hardware and never send a keycode to the browser.</div></details>
-        <details class="faq-item"><summary class="faq-question">How do I test for ghost keys? <span class="faq-icon">+</span></summary><div class="faq-answer">Hold down multiple keys simultaneously. If a key registers without you pressing it, that is a ghost key — a limitation of the keyboard's hardware matrix. Higher quality keyboards (with N-Key Rollover) prevent this.</div></details>
+        <details class="faq-item">
+          <summary class="faq-question">How do I test if a keyboard key is working or stuck? <span class="faq-icon">+</span></summary>
+          <div class="faq-answer">Press any key on your physical keyboard. The corresponding key on the visual layout lights up in real time, increments its press count, and displays its JavaScript event code, scan code, and latency.</div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-question">How do I test for keyboard ghosting or key rollover? <span class="faq-icon">+</span></summary>
+          <div class="faq-answer">Keyboard ghosting occurs when multiple simultaneous keystrokes fail to register. Press and hold combinations of keys (such as W, A, S, D, and Shift or multiple arrow keys) simultaneously to verify that all inputs register without dropping.</div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-question">Why do special keys like Print Screen or Fn not respond? <span class="faq-icon">+</span></summary>
+          <div class="faq-answer">Certain hardware keys (such as Fn on laptops) are handled directly by hardware firmware and do not emit standard OS keyboard events. Additionally, browser shortcuts (like F11 or Ctrl+W) may be intercepted by your browser before reaching the page.</div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-question">Can I test keyboard chatter or double-typing issues? <span class="faq-icon">+</span></summary>
+          <div class="faq-answer">Yes. If a mechanical switch is chattering or bouncing, a single physical keystroke will register multiple times in rapid succession. The press counter and event log will highlight abnormally high key counts.</div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-question">Does this keyboard tester support Mac, Windows, and numeric keypads? <span class="faq-icon">+</span></summary>
+          <div class="faq-answer">Yes. The tester detects key event codes across Windows, macOS, Linux, and ChromeOS, supporting full ANSI layouts, function rows, navigation clusters, and numpads.</div>
+        </details>
       </div>
     </section>
 

@@ -28,8 +28,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Discount Calculator","url":"https://anyconverter.io/discount-calculator/","description":"Calculate sale price, savings, and discount percentage online for free.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do I calculate a discount percentage?","acceptedAnswer":{"@type":"Answer","text":"Use the \"Discount %\" mode. Enter the original price and the discount percentage. The calculator multiplies the price by the percentage and subtracts it to give you the sale price and your total savings."}},{"@type":"Question","name":"What is the \"Find Discount %\" mode?","acceptedAnswer":{"@type":"Answer","text":"This mode lets you discover what percentage discount was applied when you know both the original price and the sale price. For example, if an item was $100 and is now $75, the tool will calculate that as a 25% discount."}},{"@type":"Question","name":"Can I calculate multiple discounts stacked together?","acceptedAnswer":{"@type":"Answer","text":"For stacked discounts, apply the first discount to get an intermediate price, then use that result as the original price for the second discount. Stacked discounts are not simply additive — a 20% and 10% discount is not 30% off."}},{"@type":"Question","name":"How does the fixed discount mode work?","acceptedAnswer":{"@type":"Answer","text":"Enter the original price and a fixed dollar discount amount (like a $15-off coupon). The calculator subtracts the fixed amount and also shows you the equivalent percentage discount you received."}},{"@type":"Question","name":"Is this calculator free to use?","acceptedAnswer":{"@type":"Answer","text":"Yes, the discount calculator is completely free to use with no signup, no login, and no limits. All calculations happen instantly in your browser with no data sent to any server."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do I calculate a discount percentage formula?","acceptedAnswer":{"@type":"Answer","text":"To calculate a discount percentage, divide the discount amount by the original price and multiply by 100. For example, if an item drops from $100 to $80, the $20 savings divided by $100 equals 0.20, which is a 20% discount."}},{"@type":"Question","name":"How do I calculate the final sale price after a discount?","acceptedAnswer":{"@type":"Answer","text":"Multiply the original price by the discount percentage divided by 100 to find your savings, then subtract that savings from the original price. For a $50 item with a 15% discount: 50 × 0.15 = $7.50 savings, making the sale price $42.50."}},{"@type":"Question","name":"Can I calculate stacked or double discounts (e.g., 20% off plus an extra 10%)?","acceptedAnswer":{"@type":"Answer","text":"Yes. Stacked discounts apply sequentially rather than additively. For example, a $100 item with 20% off becomes $80, and an additional 10% off $80 reduces it by $8 to a final price of $72 (an effective 28% total discount, not 30%)."}},{"@type":"Question","name":"How do I find the original price before a discount was applied?","acceptedAnswer":{"@type":"Answer","text":"Divide the discounted sale price by (1 minus the discount rate). For example, if you paid $60 after a 25% discount, divide $60 by 0.75 to find the original pre-sale price of $80."}},{"@type":"Question","name":"What is the difference between a percentage discount and a fixed-amount discount?","acceptedAnswer":{"@type":"Answer","text":"A percentage discount reduces the cost relative to the item price (e.g., 20% off), whereas a fixed discount subtracts an exact dollar amount (e.g., $15 off coupon) regardless of total price."}}]}</script>
 
 
 <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
@@ -144,24 +143,24 @@
       <h2>Frequently Asked Questions</h2>
       <div class="faq-list">
         <details class="faq-item">
-          <summary class="faq-question">How do I calculate a discount percentage? <span class="faq-icon">+</span></summary>
-          <div class="faq-answer">Use the "Discount %" mode. Enter the original price and the discount percentage. The calculator multiplies the price by the percentage and subtracts it to give you the sale price and your total savings.</div>
+          <summary class="faq-question">How do I calculate a discount percentage formula? <span class="faq-icon">+</span></summary>
+          <div class="faq-answer">To calculate a discount percentage, divide the discount amount by the original price and multiply by 100. For example, if an item drops from $100 to $80, the $20 savings divided by $100 equals 0.20, which is a 20% discount.</div>
         </details>
         <details class="faq-item">
-          <summary class="faq-question">What is the "Find Discount %" mode? <span class="faq-icon">+</span></summary>
-          <div class="faq-answer">This mode lets you discover what percentage discount was applied when you know both the original price and the sale price. For example, if an item was $100 and is now $75, the tool will calculate that as a 25% discount.</div>
+          <summary class="faq-question">How do I calculate the final sale price after a discount? <span class="faq-icon">+</span></summary>
+          <div class="faq-answer">Multiply the original price by the discount percentage divided by 100 to find your savings, then subtract that savings from the original price. For a $50 item with a 15% discount: 50 × 0.15 = $7.50 savings, making the sale price $42.50.</div>
         </details>
         <details class="faq-item">
-          <summary class="faq-question">Can I calculate multiple discounts stacked together? <span class="faq-icon">+</span></summary>
-          <div class="faq-answer">For stacked discounts, apply the first discount to get an intermediate price, then use that result as the original price for the second discount. Stacked discounts are not simply additive — a 20% and 10% discount is not 30% off.</div>
+          <summary class="faq-question">Can I calculate stacked or double discounts (e.g., 20% off plus an extra 10%)? <span class="faq-icon">+</span></summary>
+          <div class="faq-answer">Yes. Stacked discounts apply sequentially rather than additively. For example, a $100 item with 20% off becomes $80, and an additional 10% off $80 reduces it by $8 to a final price of $72 (an effective 28% total discount, not 30%).</div>
         </details>
         <details class="faq-item">
-          <summary class="faq-question">How does the fixed discount mode work? <span class="faq-icon">+</span></summary>
-          <div class="faq-answer">Enter the original price and a fixed dollar discount amount (like a $15-off coupon). The calculator subtracts the fixed amount and also shows you the equivalent percentage discount you received.</div>
+          <summary class="faq-question">How do I find the original price before a discount was applied? <span class="faq-icon">+</span></summary>
+          <div class="faq-answer">Divide the discounted sale price by (1 minus the discount rate). For example, if you paid $60 after a 25% discount, divide $60 by 0.75 to find the original pre-sale price of $80.</div>
         </details>
         <details class="faq-item">
-          <summary class="faq-question">Is this calculator free to use? <span class="faq-icon">+</span></summary>
-          <div class="faq-answer">Yes, the discount calculator is completely free to use with no signup, no login, and no limits. All calculations happen instantly in your browser with no data sent to any server.</div>
+          <summary class="faq-question">What is the difference between a percentage discount and a fixed-amount discount? <span class="faq-icon">+</span></summary>
+          <div class="faq-answer">A percentage discount reduces the cost relative to the item price (e.g., 20% off), whereas a fixed discount subtracts an exact dollar amount (e.g., $15 off coupon) regardless of total price.</div>
         </details>
       </div>
     </section>
