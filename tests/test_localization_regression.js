@@ -65,13 +65,13 @@ console.log('✓ Blood Type Compatibility pages (ES, DA) verified with localized
 const daFiles = walk('da');
 let daSentenceBoundaryErrors = 0;
 let daDiacriticErrors = 0;
-const daStrippedRegex = /(\bnar\b du har brug|vaerktoj|faerdige|\blaeg\b gst|\bplanlaeg\b dagen|skaermoplosninger|viewport-storrelse|\bnaeste trin\b|Hold siden aben|boliglansbetalinger)/i;
+const daStrippedRegex = /(\bnar\b|\bdaekker\b|\bvaelge\b|\bvaelg\b|\bmaneder\b|\bnaeste\b|\btraeffe\b|\bvaerktoj\b|\bfaerdige\b|\blaeg\b gst|\bplanlaeg\b dagen|\bskaermoplosninger\b|\bviewport-storrelse\b|\bHold siden aben\b|\bboliglansbetalinger\b|\bmodetimer\b|\btilfoj\b|\bpamindelser\b|Text repeater online: praktisk|World Clock: practical uses)/i;
 
 for (const file of daFiles) {
   const content = fs.readFileSync(file, 'utf8');
   const strippedMatch = content.match(daStrippedRegex);
   if (strippedMatch) {
-    console.error(`Found stripped Danish diacritic in ${file}: "${strippedMatch[0]}"`);
+    console.error(`Found stripped Danish diacritic or leaked string in ${file}: "${strippedMatch[0]}"`);
     daDiacriticErrors++;
   }
   // Check unpunctuated "Med klare trin"
@@ -83,7 +83,7 @@ for (const file of daFiles) {
     }
   }
 }
-assert.strictEqual(daDiacriticErrors, 0, `Zero stripped Danish diacritics allowed across ${daFiles.length} Danish pages`);
+assert.strictEqual(daDiacriticErrors, 0, `Zero stripped Danish diacritics or leaked strings allowed across ${daFiles.length} Danish pages`);
 assert.strictEqual(daSentenceBoundaryErrors, 0, 'Zero missing sentence boundaries before "Med klare trin" allowed across Danish pages');
 console.log(`✓ Danish localization verified across all ${daFiles.length} pages: correct diacritics and sentence boundaries`);
 
