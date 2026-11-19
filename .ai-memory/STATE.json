@@ -1,11 +1,11 @@
 {
-  "updatedAt": "2026-11-19T14:55:00.000Z",
+  "updatedAt": "2026-11-19T18:55:00.000Z",
   "activeProfile": "PROFILE 1 — SEO RESEARCH",
-  "currentPhase": "PHASE 42: GROWTH PROGRAM SPRINT S10 (FAVORITES UX UPGRADE & CROSS-LOCALE PERSISTENCE)",
-  "activeBranch": "feat/s10-favorites-ux-and-persistence",
-  "baseReleaseCheckpoint": "7d1a9da",
+  "currentPhase": "PHASE 43: GROWTH PROGRAM SPRINT S11 (RECENTS CAROUSEL ON HOMEPAGE & CROSS-LOCALE PERSISTENCE)",
+  "activeBranch": "feat/s11-recents-carousel-homepage",
+  "baseReleaseCheckpoint": "7e6d950",
   "headCommit": "HEAD",
-  "auditVerdict": "PASS FOR USER REVIEW — Sprint S10 Favorites UX upgrade & cross-locale persistence completed. Features implemented: 1) Canonical slug keying across EN/ES/DA ensuring favorites survive language switches; 2) Cross-locale localized tool names/descriptions in getFavoritesList, search modal, and dashboard quick access; 3) Tool page actions mounting on document converter pages (.dc-root & nav[aria-label='Breadcrumb']); 4) Accessible ARIA toggle states (aria-pressed='true|false', aria-keyshortcuts='Alt+F'); 5) CSS :focus-visible outlines for .tool-page-action-btn and .dash-quick-card; 6) Keyboard support (Alt+F hotkey); 7) Canonical favorite_added and favorite_removed analytics event emission via window.ACAnalytics. All 25 master test suites passed (100%), dedicated test tests/test_s10_favorites_ux.js passed (12/12), sitemap synchronized, ADR-049 recorded in .ai-memory/DECISIONS.md, and G1-G15 release gate evidence appended to docs/growth/91-TEST-EVIDENCE-AND-RELEASE-GATES.md.",
+  "auditVerdict": "PASS FOR USER REVIEW — Sprint S11 Recents Carousel & Cross-Locale Persistence completed. Features implemented: 1) Client-side localStorage['ac:recents'] ring buffer storing up to 8 uniquely visited tools keyed by canonical slug (/slug/); 2) Deduplication and promotion to index 0 on repeat visits with timestamp update; 3) Tool layout detection (.tool-wrapper, .tool-card, .tool-container, .tool-zone, .dc-root) recording tool visits; 4) Dynamic hydration on homepages (/, /es/, /da/) rendering #dash-recents-section directly above Quick Access, completely hidden when empty (0 CLS, 0 placeholders); 5) Localized titles and clear buttons across EN ('Recently Used' / 'Clear recents'), ES ('Usado recientemente' / 'Borrar recientes'), and DA ('Senest brugte' / 'Ryd seneste'); 6) Accessible WCAG 2.2 AA ARIA semantics and high-contrast :focus-visible rules for .dash-recent-card and .dash-recents-clear-btn; 7) window.ACAnalytics telemetry (recent_clicked, recents_cleared) and ac:recents-updated event dispatch; 8) Full automated verification in tests/test_s11_recents_carousel.js (15/15 passing) and 26/26 master repository test suites passing (100%). Sitemap synchronized, ADR-050 recorded in .ai-memory/DECISIONS.md, and G1-G15 release gate evidence appended to docs/growth/91-TEST-EVIDENCE-AND-RELEASE-GATES.md.",
   "warningsRecorded": [
     "Loan Term Unit Toggle: Clarification that 8.58% nominal APR / 8.93% EAR in fixture documentation corresponds to a 36-year (432-month) loan input. When '#term-unit-mos' is selected, 36 months correctly yields 10.55% nominal APR / 11.08% EAR. Both modes execute with 100% mathematical precision.",
     "Non-Latin-1 Characters in jsPDF: All supported platform languages (EN, ES, DA) and currency symbols (€, £, kr.) are fully preserved in Latin-1 / WinAnsi range; non-Latin-1 Unicode characters are safely mapped to '?' to prevent jsPDF Helvetica Type 1 crashes. Future expansion into non-Latin locales would require custom embedded TTF fonts."
@@ -58,9 +58,10 @@
     "dataforseo": "DISABLED"
   },
   "testResults": {
-    "totalSuites": 25,
-    "passedSuites": 25,
+    "totalSuites": 26,
+    "passedSuites": 26,
     "status": "PASS",
+    "s11RecentsCarouselSuite": "pass (15/15 checks passed: ring buffer capacity of 8, promotion on repeat visit, eviction of 9th oldest, canonical slug normalization across EN/ES/DA, cross-locale persistence, localized titles and card links, ARIA labelledby/nav semantics, CSS focus-visible, analytics event emission recent_clicked and recents_cleared)",
     "s10FavoritesUxSuite": "pass (12/12 checks passed: canonical slug normalization, cross-locale persistence EN/ES/DA, localized tool names/links, ARIA pressed/keyshortcuts, CSS focus-visible, dc-root action mounting, Alt+F hotkey, analytics dispatch)",
     "s09StrikingDistanceSuite": "pass (970/970 checks passed across top 10 ES and top 10 DA tools: title <=60c, meta desc 140-160c, OG/Twitter mirrored, 5 FAQs each with 100% verbatim schema parity, SSR/template sync, canonical/hreflang intact)",
     "s08FaqExpansionSuite": "pass (234/234 checks passed across top 10 EN tools: 4-6 FAQs each, 100% verbatim parity between visible HTML and FAQPage JSON-LD schema)",
@@ -78,10 +79,10 @@
   },
   "nextWorkstream": {
     "target": "User Authorization for Commit and Deployment",
-    "branch": "feat/s10-favorites-ux-and-persistence",
+    "branch": "feat/s11-recents-carousel-homepage",
     "requirements": [
-      "Review sprint deliverables on feat/s10-favorites-ux-and-persistence",
-      "Authorize git commit on feat/s10-favorites-ux-and-persistence",
+      "Review sprint deliverables on feat/s11-recents-carousel-homepage",
+      "Authorize git commit on feat/s11-recents-carousel-homepage",
       "Authorize pull request creation and merge to main"
     ]
   },
@@ -96,22 +97,24 @@
     ],
     "cadence": "30 sprints x 2 days = 60 days; one prod ship per sprint",
     "currentSprint": {
-      "id": "S10",
-      "name": "Favorites UX upgrade + cross-locale persistence",
-      "day": 19,
+      "id": "S11",
+      "name": "Recents carousel on homepage",
+      "day": 21,
       "status": "completed_ready_for_review",
-      "branch": "feat/s10-favorites-ux-and-persistence",
-      "progress": "Sprint S10 100% completed: Upgraded favorites architecture for seamless cross-locale persistence across EN, ES, and DA. 1) Canonical slug normalization in getCanonicalToolPath strips domains, protocol, query parameters, hash fragments, index.html, and locale prefixes (/es/, /da/), ensuring consistent storage and retrieval keys. 2) getFavoritesList resolves native localized tool names and descriptions via getToolName/getToolDesc, and computes localized target links via localizedPathForLang, ensuring the search modal and homepage quick access cards display localized titles and links for Spanish and Danish users. 3) Extended initToolPageActions layout detection to .dc-root and breadcrumb selector to nav[aria-label='Breadcrumb'], mounting tool actions universally on document converter pages. 4) Added accessible ARIA semantics: aria-pressed='true|false' on toggle button, aria-keyshortcuts='Alt+F', and updated tooltip titles. 5) Added high-contrast :focus-visible CSS rules for .tool-page-action-btn:focus-visible and .dash-quick-card:focus-visible (2px solid #B04A45 with 2px offset). 6) Added document-level Alt+F hotkey listener for instant favorite toggling. 7) Verified canonical favorite_added and favorite_removed analytics event emission via window.ACAnalytics. Built tests/test_s10_favorites_ux.js (12/12 passing). All 25 master test suites passed (25/25 PASS, 100%). Pre-deploy release gate report G1-G15 recorded in docs/growth/91-TEST-EVIDENCE-AND-RELEASE-GATES.md and ADR-049 recorded in .ai-memory/DECISIONS.md.",
+      "branch": "feat/s11-recents-carousel-homepage",
+      "progress": "Sprint S11 100% completed: Implemented client-side recently used tools row/carousel on homepages (EN, ES, DA). 1) Canonical ring buffer in localStorage['ac:recents'] storing up to 8 uniquely visited tools keyed strictly by canonical slug (/slug/), with automatic promotion of repeated tools to index 0 and eviction of the 9th oldest tool. 2) Tool layout detection (.tool-wrapper, .tool-card, .tool-container, .tool-zone, .dc-root) records tool visits automatically upon user arrival. 3) Dynamic hydration on /, /es/, and /da/ renders #dash-recents-section directly above Quick Access, staying completely hidden when empty (0 CLS, 0 placeholders). 4) Localized titles and clear buttons across EN ('Recently Used' / 'Clear recents'), ES ('Usado recientemente' / 'Borrar recientes'), and DA ('Senest brugte' / 'Ryd seneste'). 5) Accessible WCAG 2.2 AA ARIA semantics (section aria-labelledby, nav aria-label, clear button aria-label) and high-contrast :focus-visible rules for .dash-recent-card and .dash-recents-clear-btn (2px solid #B04A45, 2px offset). 6) Keyboard support on clear action (Enter / Space). 7) window.ACAnalytics telemetry for recent_clicked and recents_cleared, plus ac:recents-updated CustomEvent dispatch. Built tests/test_s11_recents_carousel.js (15/15 passing). All 26 master test suites passed (26/26 PASS, 100%). Pre-deploy release gate report G1-G15 recorded in docs/growth/91-TEST-EVIDENCE-AND-RELEASE-GATES.md and ADR-050 recorded in .ai-memory/DECISIONS.md.",
       "blockers": [],
-      "nextSprintId": "S11",
+      "nextSprintId": "S12",
       "deliverables": [
-        "assets/js/shared.js (canonical slug normalization, cross-locale persistence, localized search/dashboard favorites, .dc-root mounting, ARIA pressed/keyshortcuts, Alt+F hotkey)",
-        "assets/css/style.css (accessible :focus-visible rules for .tool-page-action-btn and .dash-quick-card)",
+        "assets/js/shared.js (canonical ring buffer, tool visit recording, localized dashboard recents row, clear button, window exports)",
+        "assets/js/shared/analytics.js (recent_clicked, recents_cleared event telemetry and helper methods)",
+        "assets/css/style.css (accessible :focus-visible rules for .dash-recent-card and .dash-recents-clear-btn, h2.dash-section-title)",
+        "index.html, es/index.html, da/index.html (#dash-recents-section anchor element directly above Quick Access)",
         "sitemap.xml (100% verified against canonical manifest, 441 URLs)",
-        "tests/test_s10_favorites_ux.js (12/12 automated verification assertions PASS)",
-        "tests/run_all_tests.js (registered S09 and S10 suites, 25/25 suites PASS, 100%)",
-        "docs/growth/91-TEST-EVIDENCE-AND-RELEASE-GATES.md (S10 pre-deploy gate report 15/15 PASS)",
-        ".ai-memory/DECISIONS.md (ADR-049 recorded)",
+        "tests/test_s11_recents_carousel.js (15/15 automated verification assertions PASS)",
+        "tests/run_all_tests.js (registered S11 suite, 26/26 suites PASS, 100%)",
+        "docs/growth/91-TEST-EVIDENCE-AND-RELEASE-GATES.md (S11 pre-deploy gate report 15/15 PASS)",
+        ".ai-memory/DECISIONS.md (ADR-050 recorded)",
         ".ai-memory/STATE.json (updated)",
         ".ai-memory/HANDOFF.md (updated)"
       ]

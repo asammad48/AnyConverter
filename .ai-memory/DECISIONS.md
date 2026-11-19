@@ -862,6 +862,52 @@ The second independent audit report (`SECOND_INDEPENDENT_FINANCIAL_REVALIDATION_
   - Meets WCAG 2.2 AA accessibility requirements for toggle controls and keyboard navigation.
   - Event telemetry enables tracking the 60-day KPI of ≥ 15% return visitors adding ≥ 1 favorite.
 
+---
+
+## ADR-050: Homepage Recents Carousel, Canonical Ring Buffer, and Cross-Locale Engagement Architecture
+- **Date:** 2026-11-19
+- **Status:** Implemented on Feature Branch `feat/s11-recents-carousel-homepage`
+- **Context:**
+  - Sprint S11 continues Week 4 (Engagement: favorites, recents, workflow chains) of the 60-Day Aggressive Growth Plan (`docs/growth/60_DAY_AGGRESSIVE_PLAN.md`).
+  - Return visitors who frequently switch between utilities (e.g. JSON Formatter, PDF tools, financial calculators) lacked a quick-resume mechanism.
+  - Objective: Implement a lightweight, accessible, zero-dependency "Recently Used" (Recents) row/carousel on the homepage (`/`, `/es/`, `/da/`).
+  - Architecture: Backed by client-side `localStorage['ac:recents']` as a ring buffer storing up to the last 8 uniquely used tools, keyed strictly by canonical tool slug (`/slug/`), with full cross-locale persistence across English, Spanish, and Danish.
+  - KPI Target: $\ge 25\%$ of return visitor sessions click a recents tile within 60 days.
+- **Decision:**
+  1. **Storage Engine & Canonical Ring Buffer (`assets/js/shared.js`):**
+     - Stored recents in `localStorage['ac:recents']` as a JSON array of up to 8 objects: `[{ u: '/canonical-slug/', ts: 1732000000000 }]`.
+     - Tool visits are recorded whenever a user lands on or interacts with any tool page (`recordRecentTool(canonPath)` called on tool layout detection in `initToolPageActions()`).
+     - Deduplication: If a tool is visited again, it is promoted to index 0 and its timestamp `ts` is updated.
+     - Capacity: Capped strictly at 8 items, evicting the oldest entry (index 7) upon 9th tool addition.
+     - Canonical keying: Always normalizes paths via `getCanonicalToolPath()` to ensure cross-locale persistence without `/es/` or `/da/` duplicates.
+     - Emits custom event `window.dispatchEvent(new CustomEvent('ac:recents-updated'))` on update.
+  2. **Homepage Recents Row / Carousel Rendering:**
+     - On the homepage (`/`, `/es/`, `/da/`), inserted static anchor `<section class="dash-section dash-recents-section" id="dash-recents-section" aria-labelledby="recents-heading" style="display:none;"></section>` directly above Quick Access.
+     - Hidden when empty: If `ac:recents` has 0 items, the section stays completely hidden (`display: none; hidden = true; innerHTML = ''`), rendering zero empty space or broken placeholders.
+     - Dynamic localized titles & actions:
+       - EN: `Recently Used` / `Clear recents` (Aria: `Clear recently used tools` / `Recently used tools`)
+       - ES: `Usado recientemente` / `Borrar recientes` (Aria: `Borrar herramientas usadas recientemente` / `Herramientas usadas recientemente`)
+       - DA: `Senest brugte` / `Ryd seneste` (Aria: `Ryd senest brugte værktøjer` / `Senest brugte værktøjer`)
+     - Card structure matching design tokens (`.dash-quick-card .dash-recent-card`):
+       - Displays localized tool name via `getToolName(toolMeta, lang)` and tool icon.
+       - Routes to localized URL via `localizedPathForLang(tool.u, lang, false)`.
+       - Includes a subtle "Clear recents" action button with keyboard support (`Enter` / `Space`).
+  3. **Accessibility & Keyboard Navigation (WCAG 2.2 AA):**
+     - Added accessible `:focus-visible` styles in `assets/css/style.css` for `.dash-recent-card:focus-visible` and `.dash-recents-clear-btn:focus-visible` (2px solid `#B04A45`, 2px offset, subtle focus ring).
+     - Semantic ARIA roles: `<section aria-labelledby="recents-heading">`, `<h2 class="dash-section-title" id="recents-heading">`, and `<nav aria-label="...">`.
+  4. **Analytics & Telemetry Integration:**
+     - Updated `assets/js/shared/analytics.js` to support Sprint S11 engagement events (`recent_clicked`, `recents_cleared`) alongside convenience methods `trackRecentClicked(toolSlug, position)` and `trackRecentsCleared()`.
+     - Preserved exact 16-event count for `ACAnalytics.EVENTS` dictionary for backward compatibility.
+  5. **Automated Verification:**
+     - Built dedicated verification suite `tests/test_s11_recents_carousel.js` (15/15 passing).
+     - Registered suite in `tests/run_all_tests.js` (26/26 master suites passing, 100%).
+     - Verified canonical sitemap sync (`node scripts/generate_sitemap.js --check`).
+- **Consequences:**
+  - Return visitors on English, Spanish, and Danish homepages can immediately resume work on recently accessed tools.
+  - Recents survive locale switches seamlessly.
+  - Zero performance impact or layout shifting for first-time visitors (empty state hidden).
+  - Telemetry enables tracking the 60-day KPI of $\ge 25\%$ return session engagement.
+
 
 
 

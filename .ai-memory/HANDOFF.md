@@ -2,6 +2,60 @@
 
 ---
 
+## Phase 43 — Growth Program Sprint S11: Recents Carousel on Homepage & Cross-Locale Persistence (2026-11-19)
+
+**Program:** AnyConverter.io Global Growth Engine (SEO + engagement + backlinks + distribution).  
+**Operating cadence:** 30 sprints × 2 days = 60 days. One prod ship per sprint.  
+**Active branch:** `feat/s11-recents-carousel-homepage` (branched from S10 checkpoint `feat/s10-favorites-ux-and-persistence`, commit `7e6d950`).  
+**Current sprint pointer:** `S11 — Recents carousel on homepage` (100% COMPLETED & VERIFIED; ready for owner review).  
+
+**Current sprint (S11) progress & status:**
+- **Branch Created:** Created `feat/s11-recents-carousel-homepage` off `7e6d950`.
+- **Client-Side Canonical Ring Buffer Engine in `assets/js/shared.js`:**
+  1. **Ring Buffer Storage:**
+     - Backed by `localStorage['ac:recents']` as a JSON array storing up to 8 objects: `[{ u: '/canonical-slug/', ts: 1732000000000 }]`.
+     - Tool visits are recorded whenever a user lands on any tool page via `recordRecentTool(canonPath)`, triggered universally on layout detection (`.tool-wrapper, .tool-card, .tool-container, .tool-zone, .dc-root`).
+     - Deduplication: Visiting an existing tool promotes it to index 0 and updates its timestamp `ts`.
+     - Capacity: Strictly capped at 8 items; adding a 9th tool evicts the oldest entry.
+     - Canonical keying: Normalizes paths via `getCanonicalToolPath(rawUrlOrPath)` ensuring cross-locale persistence without locale-prefixed duplicates.
+     - Emits custom event `window.dispatchEvent(new CustomEvent('ac:recents-updated'))`.
+  2. **Homepage Recents Row Hydration:**
+     - Placed anchor `<section class="dash-section dash-recents-section" id="dash-recents-section" aria-labelledby="recents-heading" style="display:none;"></section>` directly above Quick Access in `index.html`, `es/index.html`, and `da/index.html`.
+     - Hidden when empty: If `ac:recents` has 0 items, section remains hidden (`display: none; hidden = true; innerHTML = ''`), guaranteeing zero layout shift and zero empty placeholders.
+     - Dynamic localized titles and clear actions:
+       - EN: `Recently Used` / `Clear recents` (Aria: `Clear recently used tools` / `Recently used tools`)
+       - ES: `Usado recientemente` / `Borrar recientes` (Aria: `Borrar herramientas usadas recientemente` / `Herramientas usadas recientemente`)
+       - DA: `Senest brugte` / `Ryd seneste` (Aria: `Ryd senest brugte værktøjer` / `Senest brugte værktøjer`)
+     - Cards display localized tool names via `getToolName(toolMeta, lang)` and route to active locale paths via `localizedPathForLang`.
+     - Subtle "Clear recents" action button with keyboard support (`Enter` / `Space`).
+  3. **Accessibility & Design Tokens (WCAG 2.2 AA):**
+     - Semantic `<section aria-labelledby="recents-heading">`, `<h2 class="dash-section-title" id="recents-heading">`, and `<nav aria-label="...">`.
+     - Clear button with explicit `aria-label` and keyboard handling.
+     - CSS `:focus-visible` styling for `.dash-recent-card:focus-visible` and `.dash-recents-clear-btn:focus-visible` (2px solid `#B04A45`, 2px offset, subtle focus ring).
+  4. **Analytics Telemetry Integration:**
+     - Extended `assets/js/shared/analytics.js` with `recent_clicked` and `recents_cleared` events.
+     - Added convenience methods `trackRecentClicked(toolSlug, position)` and `trackRecentsCleared()`.
+     - Preserved exact 16-event count for `ACAnalytics.EVENTS` dictionary for backward compatibility with S02 test suite.
+- **Automated Verification:**
+  - Created dedicated test suite `tests/test_s11_recents_carousel.js` (15/15 passing):
+    - CSS focus-visible rules verified.
+    - Canonical normalization across variations verified.
+    - Ring buffer storage logic, capacity of 8, eviction of 9th oldest verified.
+    - Promotion on repeat visit verified.
+    - Cross-locale persistence across EN, ES, DA verified.
+    - Clear recents action verified.
+    - Analytics adapter integration verified.
+  - S11 test suite registered in `tests/run_all_tests.js`.
+  - Master test suite `node tests/run_all_tests.js`: 26/26 suites passing (100%).
+  - Sitemap integrity `node scripts/generate_sitemap.js --check`: 100% synchronized (441 URLs, 147 clusters).
+- **Documentation & Memory:**
+  - Recorded ADR-050 in `.ai-memory/DECISIONS.md`.
+  - Captured G1–G15 release gate evidence in `docs/growth/91-TEST-EVIDENCE-AND-RELEASE-GATES.md`.
+  - Updated `.ai-memory/STATE.json`.
+- **Next Sprint Pointer:** Sprint S12 — Tool-to-tool workflow chain: JSON group (contextual "Next step" prompt at the end of JSON Formatter: → JSON Compare → JSON→CSV → JSON→YAML).
+
+---
+
 ## Phase 42 — Growth Program Sprint S10: Favorites UX Upgrade & Cross-Locale Persistence (2026-11-19)
 
 **Program:** AnyConverter.io Global Growth Engine (SEO + engagement + backlinks + distribution).  

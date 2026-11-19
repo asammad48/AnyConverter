@@ -26,6 +26,7 @@ const testSuites = [
   { name: 'Sitemap Integrity & Reciprocal Alternates Suite', cmd: 'node tests/test_sitemap_integrity.js' },
   { name: 'Sprint S09 Striking-Distance ES/DA Suite', cmd: 'node tests/test_s09_striking_distance_es_da.js' },
   { name: 'Sprint S10 Favorites UX & Persistence Suite', cmd: 'node tests/test_s10_favorites_ux.js' },
+  { name: 'Sprint S11 Recents Carousel Suite', cmd: 'node tests/test_s11_recents_carousel.js' },
   { name: 'Playwright Visual Regression Suite (21/21 Baselines)', cmd: 'node tests/run_visual_regression.js' }
 ];
 

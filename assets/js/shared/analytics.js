@@ -33,6 +33,15 @@
     ALLOWED_EVENTS_SET[CANONICAL_EVENTS[k]] = true;
   });
 
+  // Sprint S11 engagement events (Recents row interactions)
+  var S11_ENGAGEMENT_EVENTS = {
+    RECENT_CLICKED: 'recent_clicked',
+    RECENTS_CLEARED: 'recents_cleared'
+  };
+  Object.keys(S11_ENGAGEMENT_EVENTS).forEach(function (k) {
+    ALLOWED_EVENTS_SET[S11_ENGAGEMENT_EVENTS[k]] = true;
+  });
+
   // Sensitive parameter keys that must NEVER be transmitted (zero PII, zero file content)
   var FORBIDDEN_KEY_REGEX = /^(file|filename|content|text|data|input|query|email|user|pass|password|token|secret|doc|prompt|val|body|ip|address|ssn|card|credit)$/i;
   // Patterns matching emails, IP addresses, credit cards, or external URLs
@@ -286,6 +295,18 @@
         category: category,
         source: source || 'nav'
       });
+    },
+
+    // 5. Sprint S11 Recents Telemetry
+    trackRecentClicked: function (toolSlug, position) {
+      track('recent_clicked', {
+        tool_slug: toolSlug || getCurrentToolSlug(),
+        position: typeof position === 'number' ? position : 0
+      });
+    },
+
+    trackRecentsCleared: function () {
+      track('recents_cleared', {});
     }
   };
 

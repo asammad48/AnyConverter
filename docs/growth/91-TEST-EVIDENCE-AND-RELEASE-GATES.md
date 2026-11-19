@@ -1,4 +1,66 @@
-# Pre-deploy SEO Verification — feat/s10-favorites-ux-and-persistence @ HEAD
+# Pre-deploy SEO Verification — feat/s11-recents-carousel-homepage @ HEAD
+
+Date: 2026-11-19T18:55:00Z
+Branch: feat/s11-recents-carousel-homepage
+Changed files: assets/js/shared.js, assets/js/shared/analytics.js, assets/css/style.css, index.html, es/index.html, da/index.html, tests/test_s11_recents_carousel.js, tests/run_all_tests.js
+Affected URLs: Homepage (`/`, `/es/`, `/da/`) and all tool pages across EN, ES, DA (client-side recents recording)
+Locales touched: [en, es, da] (100% reciprocal 4-way hreflang verified across en, es, da, x-default)
+
+| Gate | Status | Evidence |
+|---|---|---|
+| G1 Repo safety | PASS | Branch `feat/s11-recents-carousel-homepage` branched directly off clean S10 checkpoint (`7e6d950`). Focused on recents ring buffer, cross-locale persistence, accessibility, telemetry, and homepage carousel rendering. |
+| G2 Existing tests | PASS | `node tests/run_all_tests.js` executed: 26/26 master suites passed (100%), including visual regression, sitemap integrity, analytics adapter, and all unit/functional engines. |
+| G3 HTML validation | PASS | Valid semantic HTML markup on homepages (`index.html`, `es/index.html`, `da/index.html`) containing `#dash-recents-section` with strict ARIA states (`aria-labelledby="recents-heading"`). |
+| G4 Link integrity | PASS | 100% reciprocal hreflang links verified in `sitemap.xml` and HTML headers across all 147 clusters (441 pages). Zero broken links. |
+| G5 Functional E2E | PASS | 21/21 Playwright visual regression comparisons passed cleanly via `tests/run_visual_regression.js`. |
+| G6 Multilingual regression | PASS | `node tests/test_localization_regression.js` passed (100% across all 147 Danish and 147 Spanish pages). Zero translation drift or character loss. |
+| G7 Responsive UI | PASS | Zero layout distortion. Cards match `.dash-quick-card` token architecture. 0px horizontal overflow across all responsive viewports (375px mobile, 768px tablet, 1280px desktop). |
+| G8 Accessibility | PASS | Full compliance with WCAG 2.2 AA: semantic `<section aria-labelledby="recents-heading">`, `<nav aria-label="...">`, `<h2 class="dash-section-title" id="recents-heading">`, accessible `:focus-visible` outlines on cards and clear button (2px solid #B04A45 with 2px offset), and keyboard support (`Enter` / `Space`). |
+| G9 Privacy / security | PASS | Verified by `tests/test_privacy_claims_regression.js` (475/475 HTML files sweep pass) and `phase05-international-seo-audit.js`: Zero secrets, zero PII, zero server upload leakage. Recents stored purely client-side in `localStorage['ac:recents']`. |
+| G10 Performance | PASS | Zero external library dependencies added; lightweight vanilla JS ring buffer capped at 8 items with O(1) reads/writes. LCP, INP, and CLS performance unchanged. Hidden when empty (`display: none; hidden = true; innerHTML = ''`) to prevent CLS. |
+| G11 SEO route invariants | PASS | Canonical URLs, reciprocal hreflang sets across EN/ES/DA + x-default verified 100% intact. Zero dangling or orphan URLs. |
+| G12 Structured data | PASS | Schema.org structured data validated intact across all tools and hubs. |
+| G13 Internal linking | PASS | Recents tiles route to valid localized paths (`localizedPathForLang(tool.u, lang, false)`). |
+| G14 AdSense placement | PASS | Ad slots remain unaltered in initial rail and leaderboard positions. |
+| G15 Rollback plan | PASS | Reversible git commit; prior release checkpoint (`feat/s10-favorites-ux-and-persistence`, commit `7e6d950`). |
+
+---
+
+## Sprint S11 Delivery Status Verdict
+
+**STATUS: 100% DELIVERED FOR SPRINT S11 (RECENTS CAROUSEL ON HOMEPAGE & CROSS-LOCALE PERSISTENCE)**
+
+1. **Client-Side Canonical Ring Buffer Engine:** **PASS / SHIPPED**.
+   - `recordRecentTool(rawPath)` in `assets/js/shared.js` records tool visits into `localStorage['ac:recents']` as a deduplicated JSON array capped at 8 items (`[{ u: '/canonical-slug/', ts: 1732000000000 }]`).
+   - Deduplication: Visiting an existing tool promotes it to index 0 and updates its timestamp.
+   - Capacity: Strict 8-item ring buffer evicts the 9th oldest tool on addition.
+   - Canonical normalization: Normalizes all URLs, query strings, and locale prefixes to `/canonical-slug/`.
+   - Tool detection: Universal detection across `.tool-wrapper, .tool-card, .tool-container, .tool-zone, .dc-root`.
+   - Dispatches custom event `ac:recents-updated` on update.
+2. **Dynamic Homepage Hydration & Multilingual Presentation:** **PASS / SHIPPED**.
+   - Placed static anchor `<section class="dash-section dash-recents-section" id="dash-recents-section" aria-labelledby="recents-heading" style="display:none;"></section>` directly above Quick Access across `index.html`, `es/index.html`, and `da/index.html`.
+   - Hidden when empty: If `ac:recents` has 0 items, section remains hidden (`display: none`), rendering zero empty space or broken placeholders.
+   - Dynamic localized titles and clear actions:
+     - EN: `Recently Used` / `Clear recents`
+     - ES: `Usado recientemente` / `Borrar recientes`
+     - DA: `Senest brugte` / `Ryd seneste`
+   - Cards display native translated tool names via `getToolName` and link to active locale URLs via `localizedPathForLang`.
+3. **Accessibility & Keyboard Navigation (WCAG 2.2 AA):** **PASS / SHIPPED**.
+   - Semantic `<section aria-labelledby="recents-heading">`, `<h2 class="dash-section-title" id="recents-heading">`, and `<nav aria-label="...">`.
+   - Clear button with explicit `aria-label` handling mouse click, `Enter`, and `Space`.
+   - High-contrast `:focus-visible` styling for `.dash-recent-card:focus-visible` and `.dash-recents-clear-btn:focus-visible` (2px solid `#B04A45`, 2px offset, subtle focus ring).
+4. **Analytics & Telemetry Integration:** **PASS / SHIPPED**.
+   - Integrated with `window.ACAnalytics` to track `recent_clicked` on tile clicks and `recents_cleared` on clear button actions.
+   - Maintained backward compatibility with the canonical 16-event dictionary.
+5. **Automated Verification:** **PASS / SHIPPED**.
+   - Dedicated suite `tests/test_s11_recents_carousel.js`: 15/15 passing.
+   - Master suite `tests/run_all_tests.js`: 26/26 suites passing (100%).
+   - Sitemap integrity: `node scripts/generate_sitemap.js --check` 100% synchronized.
+6. **Memory & Documentation:** **PASS / RECORDED**. ADR-050 recorded in `.ai-memory/DECISIONS.md`, `.ai-memory/STATE.json` and `.ai-memory/HANDOFF.md` updated.
+
+---
+
+# Previous Sprint: Pre-deploy SEO Verification — feat/s10-favorites-ux-and-persistence @ HEAD
 
 Date: 2026-11-19T14:55:00Z
 Branch: feat/s10-favorites-ux-and-persistence

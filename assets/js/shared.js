@@ -1405,9 +1405,133 @@
     }
   }
 
+  /* ===== RECENTLY USED TOOLS DATA MANAGEMENT (RING BUFFER) ===== */
+  var MAX_RECENTS = 8;
+
+  function getRecentsRaw() {
+    try {
+      var raw = JSON.parse(localStorage.getItem('ac:recents') || '[]');
+      return Array.isArray(raw) ? raw : [];
+    } catch (_e) {
+      return [];
+    }
+  }
+
+  function getRecentsList() {
+    var rawList = getRecentsRaw();
+    var lang = currentPageLang();
+    var list = [];
+    var seen = {};
+
+    rawList.forEach(function (item) {
+      if (!item) return;
+      var canon = getCanonicalToolPath(item.u || item.url || item.path);
+      if (!canon || seen[canon]) return;
+      seen[canon] = true;
+
+      var toolMeta = TOOLS.find(function (t) { return t.u === canon; });
+      var toolName = toolMeta ? getToolName(toolMeta, lang) : (item.name || canon.replace(/\//g, ' ').trim());
+      var toolDesc = toolMeta ? getToolDesc(toolMeta, lang) : '';
+      var toolIcon = toolMeta ? toolMeta.i : (item.icon || '/assets/img/icon-json.svg');
+      var toolCat  = toolMeta ? toolMeta.c : (item.cat || 'Tool');
+      var localizedUrl = localizedPathForLang(canon, lang, false);
+
+      list.push({
+        n: toolName,
+        u: canon,
+        d: toolDesc,
+        i: toolIcon,
+        c: toolCat,
+        ts: item.ts || 0,
+        localizedUrl: localizedUrl
+      });
+    });
+
+    return list.slice(0, MAX_RECENTS);
+  }
+
+  function recordRecentTool(rawPath) {
+    if (!rawPath) return;
+    var canon = getCanonicalToolPath(rawPath);
+    if (!canon || canon === '/' || canon === '') return;
+
+    var isKnownTool = TOOLS.some(function (t) { return t.u === canon; });
+    if (!isKnownTool) return;
+
+    var rawList = getRecentsRaw();
+    var existingIdx = -1;
+    for (var i = 0; i < rawList.length; i++) {
+      if (rawList[i]) {
+        var c = getCanonicalToolPath(rawList[i].u || rawList[i].url || rawList[i].path);
+        if (c === canon) {
+          existingIdx = i;
+          break;
+        }
+      }
+    }
+
+    if (existingIdx !== -1) {
+      rawList.splice(existingIdx, 1);
+    }
+    rawList.unshift({
+      u: canon,
+      ts: Date.now()
+    });
+
+    if (rawList.length > MAX_RECENTS) {
+      rawList = rawList.slice(0, MAX_RECENTS);
+    }
+
+    try {
+      localStorage.setItem('ac:recents', JSON.stringify(rawList));
+    } catch (_e) {}
+
+    try {
+      window.dispatchEvent(new CustomEvent('ac:recents-updated', {
+        detail: { canonPath: canon, recents: rawList }
+      }));
+    } catch (_e) {}
+  }
+
+  function clearRecents() {
+    try {
+      localStorage.removeItem('ac:recents');
+    } catch (_e) {}
+
+    try {
+      window.dispatchEvent(new CustomEvent('ac:recents-updated', {
+        detail: { canonPath: null, recents: [] }
+      }));
+    } catch (_e) {}
+  }
+
+  function removeRecentTool(rawPath) {
+    if (!rawPath) return;
+    var canon = getCanonicalToolPath(rawPath);
+    var rawList = getRecentsRaw();
+    var filtered = rawList.filter(function (item) {
+      if (!item) return false;
+      return getCanonicalToolPath(item.u || item.url || item.path) !== canon;
+    });
+
+    try {
+      localStorage.setItem('ac:recents', JSON.stringify(filtered));
+    } catch (_e) {}
+
+    try {
+      window.dispatchEvent(new CustomEvent('ac:recents-updated', {
+        detail: { canonPath: canon, recents: filtered }
+      }));
+    } catch (_e) {}
+  }
+
   function initToolPageActions() {
     const hasToolLayout = document.querySelector('.tool-wrapper, .tool-card, .tool-container, .tool-zone, .dc-root');
     if (!hasToolLayout) return;
+
+    if (typeof window !== 'undefined' && window.location) {
+      recordRecentTool(window.location.pathname);
+    }
 
     const hero = document.querySelector('.hero');
     const breadcrumb = document.querySelector('.breadcrumb, nav[aria-label="Breadcrumb"], nav[aria-label="breadcrumbs"]');
@@ -1691,6 +1815,7 @@
     updateMobileLangLinks();
     initSearch();
     initDashboardQuickAccess();
+    initDashboardRecents();
     initFileUploadTriggers();
     initPromptCards();
     initStaticFaqAccordion();
@@ -2497,6 +2622,131 @@
     window.addEventListener('ac:favorites-updated', renderDashboardQuick);
   }
 
+  /* ===== HOMEPAGE DASHBOARD RECENTLY USED CAROUSEL / ROW ===== */
+  var RECENTS_I18N = {
+    en: {
+      title: 'Recently Used',
+      clear: 'Clear recents',
+      clearAria: 'Clear recently used tools',
+      navAria: 'Recently used tools'
+    },
+    es: {
+      title: 'Usado recientemente',
+      clear: 'Borrar recientes',
+      clearAria: 'Borrar herramientas usadas recientemente',
+      navAria: 'Herramientas usadas recientemente'
+    },
+    da: {
+      title: 'Senest brugte',
+      clear: 'Ryd seneste',
+      clearAria: 'Ryd senest brugte værktøjer',
+      navAria: 'Senest brugte værktøjer'
+    }
+  };
+
+  function initDashboardRecents() {
+    var quickGrid = document.querySelector('.dash-quick-grid');
+    var dashMain = document.querySelector('.dash-main');
+    if (!quickGrid && !dashMain) return;
+
+    var quickSection = (quickGrid && typeof quickGrid.closest === 'function') ? quickGrid.closest('.dash-section') : null;
+
+    // Locate or create recents container
+    var section = document.getElementById('dash-recents-section') || (typeof document.querySelector === 'function' ? document.querySelector('.dash-recents-section') : null);
+    if (!section && typeof document.createElement === 'function') {
+      section = document.createElement('section');
+      section.className = 'dash-section dash-recents-section';
+      section.id = 'dash-recents-section';
+      section.setAttribute('aria-labelledby', 'recents-heading');
+      section.style.display = 'none';
+
+      if (quickSection && quickSection.parentNode) {
+        quickSection.parentNode.insertBefore(section, quickSection);
+      } else if (dashMain) {
+        dashMain.insertBefore(section, dashMain.firstChild);
+      }
+    }
+
+    function renderDashboardRecents() {
+      var recents = getRecentsList();
+      if (!recents || recents.length === 0) {
+        section.style.display = 'none';
+        section.hidden = true;
+        section.innerHTML = '';
+        return;
+      }
+
+      var lang = currentPageLang();
+      var i18n = RECENTS_I18N[lang] || RECENTS_I18N.en;
+
+      section.style.display = '';
+      section.hidden = false;
+
+      var cardsHtml = recents.map(function (tool) {
+        var toolName = getToolName(tool, lang);
+        var href = localizedPathForLang(tool.u, lang, false);
+        return '<a href="' + href + '" class="dash-quick-card dash-recent-card" data-canon="' + escapeHtml(tool.u) + '">' +
+          '<img src="' + tool.i + '" alt="' + escapeHtml(toolName) + ' icon" width="26" height="26" loading="lazy">' +
+          '<span class="dash-quick-card-name">' + escapeHtml(toolName) + '</span>' +
+        '</a>';
+      }).join('');
+
+      section.innerHTML =
+        '<div class="dash-section-header">' +
+          '<h2 class="dash-section-title" id="recents-heading">' + escapeHtml(i18n.title) + '</h2>' +
+          '<button type="button" class="dash-recents-clear-btn" aria-label="' + escapeHtml(i18n.clearAria) + '">' +
+            escapeHtml(i18n.clear) +
+          '</button>' +
+        '</div>' +
+        '<nav aria-label="' + escapeHtml(i18n.navAria) + '">' +
+          '<div class="dash-quick-grid dash-recents-grid">' +
+            cardsHtml +
+          '</div>' +
+        '</nav>';
+
+      var clearBtn = section.querySelector('.dash-recents-clear-btn');
+      if (clearBtn) {
+        clearBtn.addEventListener('click', function (e) {
+          e.preventDefault();
+          clearRecents();
+          if (window.ACAnalytics) {
+            if (typeof window.ACAnalytics.trackRecentsCleared === 'function') {
+              window.ACAnalytics.trackRecentsCleared();
+            } else if (typeof window.ACAnalytics.track === 'function') {
+              window.ACAnalytics.track('recents_cleared', {});
+            }
+          }
+        });
+        clearBtn.addEventListener('keydown', function (e) {
+          if (e.key === 'Enter' || e.key === ' ' || e.key === 'Spacebar') {
+            e.preventDefault();
+            clearBtn.click();
+          }
+        });
+      }
+
+      var grid = section.querySelector('.dash-recents-grid');
+      if (grid) {
+        grid.addEventListener('click', function (e) {
+          var card = e.target.closest('.dash-recent-card, .dash-quick-card');
+          if (card) {
+            var canon = card.getAttribute('data-canon') || getCanonicalToolPath(card.getAttribute('href'));
+            if (window.ACAnalytics) {
+              if (typeof window.ACAnalytics.trackRecentClicked === 'function') {
+                window.ACAnalytics.trackRecentClicked(canon);
+              } else if (typeof window.ACAnalytics.track === 'function') {
+                window.ACAnalytics.track('recent_clicked', { tool_slug: canon });
+              }
+            }
+          }
+        });
+      }
+    }
+
+    renderDashboardRecents();
+    window.addEventListener('ac:recents-updated', renderDashboardRecents);
+  }
+
   /* ===== MAIN CONTENT ID ===== */
   document.addEventListener('DOMContentLoaded', function () {
     const main = document.querySelector('main');
@@ -2941,6 +3191,18 @@
   window.getToolCategory = getToolCategory;
   window.TOOL_I18N = TOOL_I18N;
   window.CATEGORY_I18N = CATEGORY_I18N;
+
+  /* Sprint S10/S11 Window APIs */
+  window.getCanonicalToolPath = getCanonicalToolPath;
+  window.getFavoritesList = getFavoritesList;
+  window.isFavoriteTool = isFavoriteTool;
+  window.toggleFavoriteTool = toggleFavoriteTool;
+  window.getRecentsList = getRecentsList;
+  window.getRecentsRaw = getRecentsRaw;
+  window.recordRecentTool = recordRecentTool;
+  window.clearRecents = clearRecents;
+  window.removeRecentTool = removeRecentTool;
+  window.initDashboardRecents = initDashboardRecents;
 
   window.loadFileWithProgress = function (file, maxMB) {
     maxMB = typeof maxMB === 'number' ? maxMB : 100;
