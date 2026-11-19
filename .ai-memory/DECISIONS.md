@@ -718,6 +718,44 @@ The second independent audit report (`SECOND_INDEPENDENT_FINANCIAL_REVALIDATION_
   6. Repaired edge privacy phrasing in `da/loan-calculator/index.html` to eliminate remaining international SEO audit content warnings.
 - **Consequence:** Guarantees 100% automated, drift-free sitemap generation and regression protection for all future sprints. 23/23 master repository test suites passing.
 
+---
+
+## ADR-046: Striking-Distance SEO Metadata Optimization for Top 10 English Tools
+- **Date:** 2026-11-19
+- **Status:** Implemented on Feature Branch `feat/s07-striking-distance-metadata-en`
+- **Context:**
+  - Sprint S07 of the 60-Day Aggressive Plan marks the start of Week 3: **Striking-Distance SEO Wins (EN)**.
+  - The objective is to ship optimized `<title>` and `<meta name="description">` rewrites for the 10 highest-impression English tool pages currently in striking distance (Search Console positions 8–20 with below-median CTR or suppressed impressions) to capture rapid ranking and CTR lifts.
+  - Previous metadata across these top tools suffered from inconsistent formatting, missing brand suffixes (`pdf-merge`, `extract-pdf-pages`), excessive title lengths exceeding 60 visible characters (`ip-address-lookup` at 81 chars, `sticky-notes` at 70 chars, `internet-speed-test` at 66 chars), non-standard hyphen delimiters (`discount-calculator`, `pdf-forms`), and meta descriptions that were either too short (< 140 chars) or excessively long (> 160 chars), alongside missing Twitter card metadata on PDF tools.
+- **Decision:**
+  1. Selected the exact top 10 English candidate tools ranked deterministically by Search Console impression volume and striking-distance query concentration:
+     - `ip-address-lookup` (45,570 page imp, pos 9.9, query `ip address lookup` pos 9.8)
+     - `discount-calculator` (507 page imp, pos 30.3, query `discount calculator` pos 63, query `14.99+7.99` pos 10.0)
+     - `internet-speed-test` (420 page imp, pos 76.5, query `check speed of internet` pos 23.0)
+     - `pdf-forms` (396 page imp, pos 81.8, query `convert pdf to fillable form` pos 91.1)
+     - `extract-pdf-pages` (176 page imp, pos 83.2, query `extract pdf pages free` pos 81.6)
+     - `pdf-merge` (151 page imp, pos 68.4, query `combine pdf` pos 69.0)
+     - `daily-planner` (112 page imp, pos 29.1, query `planner online` pos 20.6)
+     - `keyboard-tester` (103 page imp, pos 81.3, query `keyboard test online` pos 86.1)
+     - `sticky-notes` (93 page imp, pos 39.4, query `online sticky notes` pos 16.9)
+     - `gst-vat-calculator` (81 page imp, pos 47.2, query `goods and services tax calculator` pos 45.4)
+  2. Applied standardized, high-intent `<title>` formulas: `[Tool Name / Modifier] Online Free | AnyConverter` ensuring visible length $\le$ 60 characters with primary intent keywords front-loaded on the left:
+     - `ip-address-lookup`: `IP Address Lookup Online Free | AnyConverter` (44 chars)
+     - `discount-calculator`: `Discount Calculator Online Free | AnyConverter` (46 chars)
+     - `daily-planner`: `Daily Planner Online Free | AnyConverter` (40 chars)
+     - `internet-speed-test`: `Internet Speed Test Online Free | AnyConverter` (46 chars)
+     - `pdf-merge`: `Merge PDF Files Online Free | AnyConverter` (42 chars)
+     - `pdf-forms`: `Fill PDF Forms Online Free | AnyConverter` (41 chars)
+     - `extract-pdf-pages`: `Extract PDF Pages Online Free | AnyConverter` (44 chars)
+     - `keyboard-tester`: `Keyboard Tester Online Free | AnyConverter` (42 chars)
+     - `sticky-notes`: `Sticky Notes Online Free | AnyConverter` (39 chars)
+     - `gst-vat-calculator`: `GST &amp; VAT Calculator Online Free | AnyConverter` (47 visible chars)
+  3. Rewrote `<meta name="description">` tags to strict 140–160 character boundaries (152 to 158 chars) with front-loaded intent keywords, active action-oriented CTAs, truthful client-side privacy claims, zero fluff, and zero misleading statements.
+  4. Mirrored `<title>` and `<meta name="description">` verbatim to Open Graph (`og:title`, `og:description`) and Twitter cards (`twitter:title`, `twitter:description`, adding missing Twitter metadata on `pdf-merge` and `extract-pdf-pages`).
+  5. Built dedicated automated regression test suite `tests/test_s07_striking_distance_metadata.js` asserting 60 discrete checks (title pattern, visible title length $\le$ 60, description length 140–160, OG mirroring, Twitter mirroring, canonical URLs, and 4-way reciprocal hreflang).
+  6. Verified sitemap sync via `node scripts/generate_sitemap.js --check` and confirmed all 23 master test suites pass 100% via `node tests/run_all_tests.js`.
+- **Consequence:** Resolves SERP truncation, restores brand consistency across all 10 priority English tools, improves search snippet attractiveness to elevate organic CTR from below-median baselines, and protects metadata invariants via automated testing.
+
 
 
 
