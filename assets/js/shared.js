@@ -1610,19 +1610,33 @@
   }
 
   function initAnalytics() {
-    const meta = document.querySelector('meta[name="google-analytics-id"]');
-    const measurementId = (window.AC_GA_MEASUREMENT_ID || (meta && meta.content) || '').trim();
-    if (!/^G-[A-Z0-9]+$/i.test(measurementId)) return;
-    if (document.querySelector('script[data-ac-google-analytics]')) return;
+    // Ensure shared analytics adapter is available
+    function triggerInitialTelemetry() {
+      if (!window.ACAnalytics || window._acInitialTelemetryDispatched) return;
+      window._acInitialTelemetryDispatched = true;
+      window.ACAnalytics.track('page_view', {});
+      if (document.querySelector('.tool-wrapper, .tool-zone, .tool-container')) {
+        window.ACAnalytics.trackToolViewed();
+      }
+    }
 
-    // Load shared analytics adapter if not already present
     if (!window.ACAnalytics && !document.querySelector('script[data-ac-analytics-adapter]')) {
       const adapterScript = document.createElement('script');
       adapterScript.src = '/assets/js/shared/analytics.js';
       adapterScript.async = false;
       adapterScript.setAttribute('data-ac-analytics-adapter', 'true');
+      adapterScript.onload = function () {
+        triggerInitialTelemetry();
+      };
       document.head.appendChild(adapterScript);
+    } else if (window.ACAnalytics) {
+      triggerInitialTelemetry();
     }
+
+    const meta = document.querySelector('meta[name="google-analytics-id"]');
+    const measurementId = (window.AC_GA_MEASUREMENT_ID || (meta && meta.content) || '').trim();
+    if (!/^G-[A-Z0-9]+$/i.test(measurementId)) return;
+    if (document.querySelector('script[data-ac-google-analytics]')) return;
 
     window.dataLayer = window.dataLayer || [];
     window.gtag = window.gtag || function () { window.dataLayer.push(arguments); };
@@ -1659,6 +1673,14 @@
     initStaticFaqAccordion();
     initContactForm();
 
+    if (window.ACAnalytics && !window._acInitialTelemetryDispatched) {
+      window._acInitialTelemetryDispatched = true;
+      window.ACAnalytics.track('page_view', {});
+      if (document.querySelector('.tool-wrapper, .tool-zone, .tool-container')) {
+        window.ACAnalytics.trackToolViewed();
+      }
+    }
+
     // Universal navigation & related-tool telemetry
     document.addEventListener('click', function (e) {
       var relLink = e.target.closest('.related-tools a, .tool-card');
@@ -1671,7 +1693,9 @@
             var cards = Array.prototype.slice.call(parentCard.parentElement.querySelectorAll('.tool-card'));
             pos = cards.indexOf(parentCard);
           }
-          window.ACAnalytics.trackRelatedToolClick(null, targetHref, pos);
+          if (typeof window.ACAnalytics.trackRelatedToolClicked === 'function') {
+            window.ACAnalytics.trackRelatedToolClicked(null, targetHref, pos);
+          }
         }
       }
       var catLink = e.target.closest('.main-nav a[href*="-tools/"], .main-nav a[href*="/calculators/"]');

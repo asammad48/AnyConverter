@@ -641,23 +641,7 @@ The second independent audit report (`SECOND_INDEPENDENT_FINANCIAL_REVALIDATION_
 
 ---
 
-## ADR-043: Systematic Spanish Translation Drift Remediation & Automated Regression Guard
-- **Date:** 2026-11-18
-- **Status:** Implemented on Feature Branch `feat/s04-es-translation-drift-sweep`
-- **Context:**
-  - Sprint S04 of the 60-Day Aggressive Plan required a systematic sweep of the top 30 Spanish tool pages by Search Console impressions to fix translation drift, unaccented terms (`practicos`, `utiles`, `despues`), and machine-like phrasing that degraded SERP snippet quality and user trust.
-  - Deep research audits identified recurring unaccented words (esdrújulas and hiatos) and leaked English phrases (`text diff checker`, `habit tracker`, `screen resolution checker`) in tool cards and meta descriptions.
-- **Decision:**
-  1. Audited the top 30 Spanish tool pages by impressions (led by `remove-pdf-pages`, `pdf-merge`, `edit-pdf`, `ocr-pdf`, `qr-code-generator`, `extract-pdf-pages`, `rotate-pdf`, `pdf-compress`, `pdf-split`, `tip-calculator`, `blood-type-compatibility`, `sticky-notes`, etc.).
-  2. Applied 301 systematic orthography and phrasing repairs across 76 Spanish HTML files:
-     - Restored required accents on esdrújulas, hiatos, and monosyllables: `prácticos`, `útiles`, `después`, `día`, `línea`, `códigos`, `guía`, `posición`, `sólidos`, `píxeles`, `tamaño`, `fórmula`, `páginas`, `límites`, `números`, `decisión`, `categoría`, `automático`.
-     - Repaired run-on sentences by inserting terminating periods before card boilerplate: `...en el navegador. Incluye pasos claros, resultados prácticos y sin registro.`
-     - Replaced leaked English card blurbs with natural, idiomatic Spanish (`Usa el comparador de texto gratis...`, `Seguimiento de hábitos online gratis...`, `Comprueba la resolución de pantalla...`).
-  3. Upgraded `tests/test_localization_regression.js` with permanent automated regex assertions scanning all 147 Spanish pages for 24 specific drift patterns, preventing regression on future edits.
-  4. Preserved 100% of underlying calculator algorithms, URL structures, canonical URLs, reciprocal hreflang sets, and schema metadata.
-  5. Verified all 22/22 master repository test suites passing (`node tests/run_all_tests.js`).
-- **Consequence:** Eliminates translation drift and Anglicized snippets across the Spanish section of the site, establishing native language quality to improve CTR and search ranking while locking in automated regression guards.
-
+## ADR-042: Public GitHub Repository Metadata Overhaul, Topic Alignment & Comprehensive README Architecture
 - **Date:** 2026-11-18
 - **Status:** Implemented on Feature Branch `feat/s03-github-metadata-and-readme`
 - **Context:**
@@ -677,6 +661,25 @@ The second independent audit report (`SECOND_INDEPENDENT_FINANCIAL_REVALIDATION_
   3. Ran master verification suite `node tests/run_all_tests.js`: 22/22 test suites passed (100%), including 21 Playwright visual regression comparisons.
   4. Generated comprehensive pre-deploy verification gate report in `docs/growth/91-TEST-EVIDENCE-AND-RELEASE-GATES.md` with all 15 release gates verified PASS.
 - **Consequence:** Enhances developer discovery, GitHub search discoverability, and public brand authority while preserving all existing codebase invariants.
+
+---
+
+## ADR-043: Systematic Spanish Translation Drift Remediation & Automated Regression Guard
+- **Date:** 2026-11-18
+- **Status:** Implemented on Feature Branch `feat/s04-es-translation-drift-sweep`
+- **Context:**
+  - Sprint S04 of the 60-Day Aggressive Plan required a systematic sweep of the top 30 Spanish tool pages by Search Console impressions to fix translation drift, unaccented terms (`practicos`, `utiles`, `despues`), and machine-like phrasing that degraded SERP snippet quality and user trust.
+  - Deep research audits identified recurring unaccented words (esdrújulas and hiatos) and leaked English phrases (`text diff checker`, `habit tracker`, `screen resolution checker`) in tool cards and meta descriptions.
+- **Decision:**
+  1. Audited the top 30 Spanish tool pages by impressions (led by `remove-pdf-pages`, `pdf-merge`, `edit-pdf`, `ocr-pdf`, `qr-code-generator`, `extract-pdf-pages`, `rotate-pdf`, `pdf-compress`, `pdf-split`, `tip-calculator`, `blood-type-compatibility`, `sticky-notes`, etc.).
+  2. Applied 301 systematic orthography and phrasing repairs across 76 Spanish HTML files:
+     - Restored required accents on esdrújulas, hiatos, and monosyllables: `prácticos`, `útiles`, `después`, `día`, `línea`, `códigos`, `guía`, `posición`, `sólidos`, `píxeles`, `tamaño`, `fórmula`, `páginas`, `límites`, `números`, `decisión`, `categoría`, `automático`.
+     - Repaired run-on sentences by inserting terminating periods before card boilerplate: `...en el navegador. Incluye pasos claros, resultados prácticos y sin registro.`
+     - Replaced leaked English card blurbs with natural, idiomatic Spanish (`Usa el comparador de texto gratis...`, `Seguimiento de hábitos online gratis...`, `Comprueba la resolución de pantalla...`).
+  3. Upgraded `tests/test_localization_regression.js` with permanent automated regex assertions scanning all 147 Spanish pages for 24 specific drift patterns, preventing regression on future edits.
+  4. Preserved 100% of underlying calculator algorithms, URL structures, canonical URLs, reciprocal hreflang sets, and schema metadata.
+  5. Verified all 22/22 master repository test suites passing (`node tests/run_all_tests.js`).
+- **Consequence:** Eliminates translation drift and Anglicized snippets across the Spanish section of the site, establishing native language quality to improve CTR and search ranking while locking in automated regression guards.
 
 ---
 

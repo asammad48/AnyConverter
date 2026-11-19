@@ -147,4 +147,33 @@ assert.strictEqual(gtagCalls.length, 1);
 assert.strictEqual(gtagCalls[0].payload.locale, 'es', 'Locale "es" must be detected from path');
 console.log('✓ Dynamic locale extraction (en, es, da) verified');
 
-console.log('\nALL 7 ANALYTICS ADAPTER TESTS PASSED!');
+// Test 8: Live Product Wiring — Verify analytics.js inclusion on homepages and top 10 tools
+const rootDir = path.resolve(__dirname, '..');
+const verifiedPages = [
+  'index.html',
+  'es/index.html',
+  'da/index.html',
+  'ip-address-lookup/index.html',
+  'json-formatter/index.html',
+  'pdf-merge/index.html',
+  'daily-planner/index.html',
+  'todo-list/index.html',
+  'ascii-art-generator/index.html',
+  'word-counter/index.html',
+  'discount-calculator/index.html',
+  'internet-speed-test/index.html',
+  'edit-pdf/index.html'
+];
+
+for (const p of verifiedPages) {
+  const fullPath = path.join(rootDir, p);
+  assert.ok(fs.existsSync(fullPath), `Page ${p} must exist`);
+  const html = fs.readFileSync(fullPath, 'utf8');
+  assert.ok(
+    html.includes('/assets/js/shared/analytics.js'),
+    `Page ${p} must explicitly include /assets/js/shared/analytics.js`
+  );
+}
+console.log(`✓ Product wiring verified: ${verifiedPages.length} core pages explicitly include analytics.js`);
+
+console.log('\nALL 8 ANALYTICS ADAPTER TESTS PASSED!');
