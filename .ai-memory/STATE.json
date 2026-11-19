@@ -1,11 +1,11 @@
 {
-  "updatedAt": "2026-11-19T14:30:00.000Z",
+  "updatedAt": "2026-11-19T14:55:00.000Z",
   "activeProfile": "PROFILE 1 — SEO RESEARCH",
-  "currentPhase": "PHASE 41: GROWTH PROGRAM SPRINT S09 (STRIKING-DISTANCE METADATA & FAQ EXPANSION - ES + DA)",
-  "activeBranch": "feat/s09-striking-distance-metadata-es-da",
-  "baseReleaseCheckpoint": "982b3f8",
+  "currentPhase": "PHASE 42: GROWTH PROGRAM SPRINT S10 (FAVORITES UX UPGRADE & CROSS-LOCALE PERSISTENCE)",
+  "activeBranch": "feat/s10-favorites-ux-and-persistence",
+  "baseReleaseCheckpoint": "7d1a9da",
   "headCommit": "HEAD",
-  "auditVerdict": "PASS FOR USER REVIEW — Sprint S09 striking-distance metadata rewrites and high-intent FAQ expansion completed across top 10 Spanish and top 10 Danish tools (20 tools total). All titles <= 60 chars, meta descriptions 140-160 chars, 5 FAQs per page (100 total Q&As) with 100% verbatim schema/HTML parity. Synchronized SSR and dc-template on all 5 dynamic document tools. Built tests/test_s09_striking_distance_es_da.js (970/970 assertions pass). Verified sitemap sync, multilingual quality, privacy claims, and all 23 master test suites passing (23/23 PASS, 100%). G1-G15 release gates verified in docs/growth/91-TEST-EVIDENCE-AND-RELEASE-GATES.md and ADR-048 recorded in .ai-memory/DECISIONS.md.",
+  "auditVerdict": "PASS FOR USER REVIEW — Sprint S10 Favorites UX upgrade & cross-locale persistence completed. Features implemented: 1) Canonical slug keying across EN/ES/DA ensuring favorites survive language switches; 2) Cross-locale localized tool names/descriptions in getFavoritesList, search modal, and dashboard quick access; 3) Tool page actions mounting on document converter pages (.dc-root & nav[aria-label='Breadcrumb']); 4) Accessible ARIA toggle states (aria-pressed='true|false', aria-keyshortcuts='Alt+F'); 5) CSS :focus-visible outlines for .tool-page-action-btn and .dash-quick-card; 6) Keyboard support (Alt+F hotkey); 7) Canonical favorite_added and favorite_removed analytics event emission via window.ACAnalytics. All 25 master test suites passed (100%), dedicated test tests/test_s10_favorites_ux.js passed (12/12), sitemap synchronized, ADR-049 recorded in .ai-memory/DECISIONS.md, and G1-G15 release gate evidence appended to docs/growth/91-TEST-EVIDENCE-AND-RELEASE-GATES.md.",
   "warningsRecorded": [
     "Loan Term Unit Toggle: Clarification that 8.58% nominal APR / 8.93% EAR in fixture documentation corresponds to a 36-year (432-month) loan input. When '#term-unit-mos' is selected, 36 months correctly yields 10.55% nominal APR / 11.08% EAR. Both modes execute with 100% mathematical precision.",
     "Non-Latin-1 Characters in jsPDF: All supported platform languages (EN, ES, DA) and currency symbols (€, £, kr.) are fully preserved in Latin-1 / WinAnsi range; non-Latin-1 Unicode characters are safely mapped to '?' to prevent jsPDF Helvetica Type 1 crashes. Future expansion into non-Latin locales would require custom embedded TTF fonts."
@@ -58,9 +58,10 @@
     "dataforseo": "DISABLED"
   },
   "testResults": {
-    "totalSuites": 23,
-    "passedSuites": 23,
+    "totalSuites": 25,
+    "passedSuites": 25,
     "status": "PASS",
+    "s10FavoritesUxSuite": "pass (12/12 checks passed: canonical slug normalization, cross-locale persistence EN/ES/DA, localized tool names/links, ARIA pressed/keyshortcuts, CSS focus-visible, dc-root action mounting, Alt+F hotkey, analytics dispatch)",
     "s09StrikingDistanceSuite": "pass (970/970 checks passed across top 10 ES and top 10 DA tools: title <=60c, meta desc 140-160c, OG/Twitter mirrored, 5 FAQs each with 100% verbatim schema parity, SSR/template sync, canonical/hreflang intact)",
     "s08FaqExpansionSuite": "pass (234/234 checks passed across top 10 EN tools: 4-6 FAQs each, 100% verbatim parity between visible HTML and FAQPage JSON-LD schema)",
     "s07StrikingDistanceSuite": "pass (60/60 checks passed across top 10 EN striking-distance tools: title <=60c, meta desc 140-160c, OG/Twitter mirrored, canonical/hreflang intact)",
@@ -77,10 +78,10 @@
   },
   "nextWorkstream": {
     "target": "User Authorization for Commit and Deployment",
-    "branch": "feat/s09-striking-distance-metadata-es-da",
+    "branch": "feat/s10-favorites-ux-and-persistence",
     "requirements": [
-      "Review sprint deliverables on feat/s09-striking-distance-metadata-es-da",
-      "Authorize git commit on feat/s09-striking-distance-metadata-es-da",
+      "Review sprint deliverables on feat/s10-favorites-ux-and-persistence",
+      "Authorize git commit on feat/s10-favorites-ux-and-persistence",
       "Authorize pull request creation and merge to main"
     ]
   },
@@ -95,39 +96,24 @@
     ],
     "cadence": "30 sprints x 2 days = 60 days; one prod ship per sprint",
     "currentSprint": {
-      "id": "S09",
-      "name": "KW: Striking-distance for ES + DA",
-      "day": 17,
+      "id": "S10",
+      "name": "Favorites UX upgrade + cross-locale persistence",
+      "day": 19,
       "status": "completed_ready_for_review",
-      "branch": "feat/s09-striking-distance-metadata-es-da",
-      "progress": "Sprint S09 100% completed: Applied high-intent title + meta description rewrites and 5 authoritative, search-aligned Q&As across top 10 Spanish tools and top 10 Danish tools (20 tools total). All titles <= 60 chars, meta descriptions strictly 140-160 chars, Open Graph and Twitter metadata identically mirrored. Enforced 100% verbatim parity between visible HTML and FAQPage JSON-LD schema (100 total Q&As). Synchronized static SSR HTML and client-side dc-template across all 5 dynamic document tools (pdf-merge, rotate-pdf, pdf-compress, pdf-to-jpg, jpg-to-pdf). Built tests/test_s09_striking_distance_es_da.js (970/970 assertions pass). Verified sitemap sync, preserved all S07/S08 invariants, and confirmed all 23 master test suites pass (23/23 PASS, 100%). Generated G1-G15 pre-deploy report in docs/growth/91-TEST-EVIDENCE-AND-RELEASE-GATES.md and recorded ADR-048 in .ai-memory/DECISIONS.md.",
+      "branch": "feat/s10-favorites-ux-and-persistence",
+      "progress": "Sprint S10 100% completed: Upgraded favorites architecture for seamless cross-locale persistence across EN, ES, and DA. 1) Canonical slug normalization in getCanonicalToolPath strips domains, protocol, query parameters, hash fragments, index.html, and locale prefixes (/es/, /da/), ensuring consistent storage and retrieval keys. 2) getFavoritesList resolves native localized tool names and descriptions via getToolName/getToolDesc, and computes localized target links via localizedPathForLang, ensuring the search modal and homepage quick access cards display localized titles and links for Spanish and Danish users. 3) Extended initToolPageActions layout detection to .dc-root and breadcrumb selector to nav[aria-label='Breadcrumb'], mounting tool actions universally on document converter pages. 4) Added accessible ARIA semantics: aria-pressed='true|false' on toggle button, aria-keyshortcuts='Alt+F', and updated tooltip titles. 5) Added high-contrast :focus-visible CSS rules for .tool-page-action-btn:focus-visible and .dash-quick-card:focus-visible (2px solid #B04A45 with 2px offset). 6) Added document-level Alt+F hotkey listener for instant favorite toggling. 7) Verified canonical favorite_added and favorite_removed analytics event emission via window.ACAnalytics. Built tests/test_s10_favorites_ux.js (12/12 passing). All 25 master test suites passed (25/25 PASS, 100%). Pre-deploy release gate report G1-G15 recorded in docs/growth/91-TEST-EVIDENCE-AND-RELEASE-GATES.md and ADR-049 recorded in .ai-memory/DECISIONS.md.",
       "blockers": [],
-      "nextSprintId": "S10",
+      "nextSprintId": "S11",
       "deliverables": [
-        "es/sticky-notes/index.html (Title <=60c, desc 140-160c, 5 FAQs with verbatim schema parity)",
-        "es/monitor-color-test/index.html (Title <=60c, desc 140-160c, 5 FAQs with verbatim schema parity)",
-        "es/base64-encoder/index.html (Title <=60c, desc 140-160c, 5 FAQs with verbatim schema parity)",
-        "es/ocr-pdf/index.html (Title <=60c, desc 140-160c, 5 FAQs with verbatim schema parity)",
-        "es/pdf-merge/index.html (Title <=60c, desc 140-160c, 5 FAQs across SSR, dc-template, and schema)",
-        "es/rotate-pdf/index.html (Title <=60c, desc 140-160c, 5 FAQs across SSR, dc-template, and schema)",
-        "es/text-diff-checker/index.html (Title <=60c, desc 140-160c, 5 FAQs with verbatim schema parity)",
-        "es/compare-pdf/index.html (Title <=60c, desc 140-160c, 5 FAQs with verbatim schema parity)",
-        "es/edit-pdf/index.html (Title <=60c, desc 140-160c, 5 FAQs with verbatim schema parity)",
-        "es/json-formatter/index.html (Title <=60c, desc 140-160c, 5 FAQs with verbatim schema parity)",
-        "da/mortgage-calculator/index.html (Title <=60c, desc 140-160c, 5 FAQs with verbatim schema parity)",
-        "da/loan-calculator/index.html (Title <=60c, desc 140-160c, 5 FAQs with verbatim schema parity)",
-        "da/todo-list/index.html (Title <=60c, desc 140-160c, 5 FAQs with verbatim schema parity)",
-        "da/bmi-calculator/index.html (Title <=60c, desc 140-160c, 5 FAQs with verbatim schema parity)",
-        "da/invoice-generator/index.html (Title <=60c, desc 140-160c, 5 FAQs with verbatim schema parity)",
-        "da/pdf-compress/index.html (Title <=60c, desc 140-160c, 5 FAQs across SSR, dc-template, and schema)",
-        "da/pdf-to-jpg/index.html (Title <=60c, desc 140-160c, 5 FAQs across SSR, dc-template, and schema)",
-        "da/jpg-to-pdf/index.html (Title <=60c, desc 140-160c, 5 FAQs across SSR, dc-template, and schema)",
-        "da/ocr-pdf/index.html (Title <=60c, desc 140-160c, 5 FAQs with verbatim schema parity)",
-        "da/word-counter/index.html (Title <=60c, desc 140-160c, 5 FAQs with verbatim schema parity)",
-        "scripts/apply_s09_metadata_and_faqs.js (deterministic international metadata and FAQ generator)",
-        "tests/test_s09_striking_distance_es_da.js (970/970 automated assertions PASS)",
-        "docs/growth/91-TEST-EVIDENCE-AND-RELEASE-GATES.md (S09 pre-deploy gate report 15/15 PASS)",
-        ".ai-memory/DECISIONS.md (ADR-048 recorded)"
+        "assets/js/shared.js (canonical slug normalization, cross-locale persistence, localized search/dashboard favorites, .dc-root mounting, ARIA pressed/keyshortcuts, Alt+F hotkey)",
+        "assets/css/style.css (accessible :focus-visible rules for .tool-page-action-btn and .dash-quick-card)",
+        "sitemap.xml (100% verified against canonical manifest, 441 URLs)",
+        "tests/test_s10_favorites_ux.js (12/12 automated verification assertions PASS)",
+        "tests/run_all_tests.js (registered S09 and S10 suites, 25/25 suites PASS, 100%)",
+        "docs/growth/91-TEST-EVIDENCE-AND-RELEASE-GATES.md (S10 pre-deploy gate report 15/15 PASS)",
+        ".ai-memory/DECISIONS.md (ADR-049 recorded)",
+        ".ai-memory/STATE.json (updated)",
+        ".ai-memory/HANDOFF.md (updated)"
       ]
     },
     "projectSkills": [

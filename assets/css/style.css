@@ -359,6 +359,11 @@ main { flex: 1; }
   font-size: 14px;
   line-height: 1;
 }
+.tool-page-action-btn:focus-visible {
+  outline: 2px solid var(--color-primary, #B04A45);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 4px rgba(176, 74, 69, 0.15);
+}
 .tool-page-action-btn[data-action="favorite"].is-favorited {
   background: var(--color-primary-light, #FDF2F1);
   border-color: var(--color-primary, #B04A45);
@@ -2829,6 +2834,12 @@ body:has(.tool-wrapper) .ac-search-toolbar select {
   border-color: color-mix(in srgb, var(--color-primary) 35%, var(--color-border));
   box-shadow: 0 4px 16px rgba(21,21,21,0.08);
   transform: translateY(-2px);
+}
+.dash-quick-card:focus-visible {
+  outline: 2px solid var(--color-primary, #B04A45);
+  outline-offset: 2px;
+  border-color: var(--color-primary, #B04A45);
+  box-shadow: 0 0 0 4px rgba(176, 74, 69, 0.15);
 }
 .dash-quick-card img {
   width: 28px;

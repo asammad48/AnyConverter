@@ -2,6 +2,56 @@
 
 ---
 
+## Phase 42 — Growth Program Sprint S10: Favorites UX Upgrade & Cross-Locale Persistence (2026-11-19)
+
+**Program:** AnyConverter.io Global Growth Engine (SEO + engagement + backlinks + distribution).  
+**Operating cadence:** 30 sprints × 2 days = 60 days. One prod ship per sprint.  
+**Active branch:** `feat/s10-favorites-ux-and-persistence` (branched from S09 checkpoint `feat/s09-striking-distance-metadata-es-da`, commit `7d1a9da`).  
+**Current sprint pointer:** `S10 — Favorites UX upgrade + cross-locale persistence` (100% COMPLETED & VERIFIED; ready for owner review).  
+
+**Current sprint (S10) progress & status:**
+- **Branch Created:** Created `feat/s10-favorites-ux-and-persistence` off `7d1a9da`.
+- **Architectural Enhancements Implemented in `assets/js/shared.js`:**
+  1. **Canonical Slug Keying & Normalization:**
+     - Enhanced `getCanonicalToolPath(rawUrlOrPath)` to strip protocol, origin/host, query parameters, hash fragments, `index.html` endings, and language prefixes (`/es/`, `/da/`).
+     - Normalizes all paths to uniform canonical keys (`/tool-name/`).
+     - Reads and writes to `localStorage['ac:fav']` strictly use canonical slugs, guaranteeing that favorites added on an English, Spanish, or Danish page persist seamlessly across language switches without duplicated or fragmented entries.
+  2. **Cross-Locale Localized Name & Description Resolution:**
+     - In `getFavoritesList()`, resolved tool names via `getToolName(toolMeta, lang)` and descriptions via `getToolDesc(toolMeta, lang)` from `TOOL_I18N`.
+     - Dynamically generated localized URLs via `localizedPathForLang(canon, lang, false)`.
+     - In the search modal (`showDefaultList()`) and homepage dashboard quick access grid (`initDashboardQuickAccess()`), favorite tools now render native translated names and link to the correct localized tool page when browsing on `/es/` or `/da/`.
+  3. **Universal Document Converter Tool Mounting:**
+     - Extended `initToolPageActions()` layout selector to `.tool-wrapper, .tool-card, .tool-container, .tool-zone, .dc-root`.
+     - Extended breadcrumb action host detector to include `nav[aria-label="Breadcrumb"], nav[aria-label="breadcrumbs"]`.
+     - Action toolbar (Related Tools, Share, Copy Link, Add to Favorites) now mounts universally across all document tools (`pdf-merge`, `pdf-compress`, `rotate-pdf`, etc.).
+  4. **Accessibility & ARIA Semantics:**
+     - Added dynamic `aria-pressed="true"` (favorited) and `aria-pressed="false"` (not favorited) to `updateFavoriteBtnState()`.
+     - Added `aria-keyshortcuts="Alt+F"` to the favorite button template and updated button titles with hotkey hints.
+  5. **Keyboard Hotkey & Focus Navigation:**
+     - Implemented document-level `Alt+F` keyboard shortcut listener that triggers favorite toggle and focuses the button when user is not typing in an input, textarea, select, or contenteditable element.
+  6. **Analytics Telemetry Integration:**
+     - Verified canonical `favorite_added` and `favorite_removed` event emission via `window.ACAnalytics.trackFavorite(canonPath, isNowFav)`.
+- **CSS Enhancements in `assets/css/style.css`:**
+  - Added accessible high-contrast `:focus-visible` styling for `.tool-page-action-btn:focus-visible` (2px solid #B04A45, 2px offset, subtle focus ring).
+  - Added accessible `:focus-visible` styling for `.dash-quick-card:focus-visible` (2px solid #B04A45, 2px offset, border color match, subtle focus ring).
+- **Automated Verification:**
+  - Created dedicated test suite `tests/test_s10_favorites_ux.js` (12/12 passing):
+    - CSS focus-visible rules verified.
+    - Canonical slug normalization across 11 path variations verified.
+    - Cross-locale persistence verified (ES -> EN & DA, DA -> EN & ES).
+    - Localized names and links verified in EN, ES, and DA.
+    - ARIA pressed states and Alt+F keyboard handler verified.
+  - S09 and S10 test suites registered in `tests/run_all_tests.js`.
+  - Master test suite `node tests/run_all_tests.js`: 25/25 suites passing (100%).
+  - Sitemap integrity `node scripts/generate_sitemap.js --check`: 100% synchronized (441 URLs, 147 clusters).
+- **Documentation & Memory:**
+  - Recorded ADR-049 in `.ai-memory/DECISIONS.md`.
+  - Captured G1–G15 release gate evidence in `docs/growth/91-TEST-EVIDENCE-AND-RELEASE-GATES.md`.
+  - Updated `.ai-memory/STATE.json`.
+- **Next Sprint Pointer:** Sprint S11 — Recents carousel on homepage (localStorage-backed ring buffer of last 8 used tools; accessible, keyboard-navigable, cross-locale persistent).
+
+---
+
 ## Phase 41 — Growth Program Sprint S09: Striking-Distance SEO Metadata & High-Intent FAQ Expansion (ES + DA) (2026-11-19)
 
 **Program:** AnyConverter.io Global Growth Engine (SEO + engagement + backlinks + distribution).  

@@ -1278,15 +1278,24 @@
   }
 
   function getCanonicalToolPath(rawUrlOrPath) {
-    if (!rawUrlOrPath) return '';
+    if (!rawUrlOrPath || typeof rawUrlOrPath !== 'string') return '';
     try {
-      var pathname = rawUrlOrPath;
-      if (rawUrlOrPath.indexOf('://') !== -1 || rawUrlOrPath.startsWith('//')) {
-        pathname = new URL(rawUrlOrPath, window.location.origin).pathname;
+      var pathname = rawUrlOrPath.trim();
+      if (pathname.indexOf('://') !== -1 || pathname.startsWith('//')) {
+        pathname = new URL(pathname, (typeof window !== 'undefined' && window.location && window.location.origin) ? window.location.origin : 'https://anyconverter.io').pathname;
       }
-      return englishPathFor(pathname);
+      pathname = splitLocalPath(pathname).path;
+      pathname = pathname.replace(/index\.html?$/i, '');
+      var enPath = englishPathFor(pathname);
+      if (enPath.length > 1 && !enPath.endsWith('/')) {
+        enPath += '/';
+      }
+      return enPath;
     } catch (_e) {
-      return removeLocalePrefix(rawUrlOrPath);
+      var clean = removeLocalePrefix(rawUrlOrPath);
+      clean = splitLocalPath(clean).path.replace(/index\.html?$/i, '');
+      if (clean.length > 1 && !clean.endsWith('/')) clean += '/';
+      return clean;
     }
   }
 
@@ -1303,8 +1312,8 @@
       seen[canon] = true;
 
       var toolMeta = TOOLS.find(function (t) { return t.u === canon; });
-      var toolName = toolMeta ? toolMeta.n : (item.name || canon.replace(/\//g, ' ').trim());
-      var toolDesc = toolMeta ? toolMeta.d : '';
+      var toolName = toolMeta ? getToolName(toolMeta, lang) : (item.name || canon.replace(/\//g, ' ').trim());
+      var toolDesc = toolMeta ? getToolDesc(toolMeta, lang) : '';
       var toolIcon = toolMeta ? toolMeta.i : (item.icon || '/assets/img/icon-json.svg');
       var toolCat  = toolMeta ? toolMeta.c : (item.cat || 'Tool');
       var localizedUrl = localizedPathForLang(canon, lang, false);
@@ -1324,21 +1333,24 @@
 
   function isFavoriteTool(canonPath) {
     if (!canonPath) return false;
+    var normTarget = getCanonicalToolPath(canonPath);
     var rawList = getFavoritesRaw();
     return rawList.some(function (item) {
       if (!item) return false;
       var c = getCanonicalToolPath(item.u || item.url || item.path);
-      return c === canonPath;
+      return c === normTarget;
     });
   }
 
   function toggleFavoriteTool(canonPath, toolName) {
     if (!canonPath) return false;
+    var normCanon = getCanonicalToolPath(canonPath);
+    if (!normCanon) return false;
     var rawList = getFavoritesRaw();
     var existingIdx = -1;
     for (var i = 0; i < rawList.length; i++) {
       var c = getCanonicalToolPath(rawList[i].u || rawList[i].url || rawList[i].path);
-      if (c === canonPath) {
+      if (c === normCanon) {
         existingIdx = i;
         break;
       }
@@ -1349,10 +1361,10 @@
       rawList.splice(existingIdx, 1);
       isNowFav = false;
     } else {
-      var meta = TOOLS.find(function (t) { return t.u === canonPath; });
+      var meta = TOOLS.find(function (t) { return t.u === normCanon; });
       rawList.unshift({
-        u: canonPath,
-        name: toolName || (meta ? meta.n : canonPath),
+        u: normCanon,
+        name: toolName || (meta ? getToolName(meta, currentPageLang()) : normCanon),
         icon: meta ? meta.i : '/assets/img/icon-json.svg',
         cat: meta ? meta.c : 'Tool',
         ts: Date.now()
@@ -1366,7 +1378,7 @@
 
     try {
       window.dispatchEvent(new CustomEvent('ac:favorites-updated', {
-        detail: { canonPath: canonPath, isFavorite: isNowFav }
+        detail: { canonPath: normCanon, isFavorite: isNowFav }
       }));
     } catch (_e) {}
 
@@ -1377,27 +1389,28 @@
     if (!btn) return;
     var iconSpan = btn.querySelector('span[aria-hidden="true"]');
     var textSpan = btn.querySelector('span:not([aria-hidden="true"])');
+    btn.setAttribute('aria-pressed', isFav ? 'true' : 'false');
     if (isFav) {
       btn.classList.add('is-favorited');
       btn.setAttribute('aria-label', t.removeFavoriteLabel || 'Remove tool from favorites');
-      btn.setAttribute('title', t.removeFavorite || 'Remove from favorites');
+      btn.setAttribute('title', (t.removeFavorite || 'Remove from favorites') + ' (Alt+F)');
       if (iconSpan) iconSpan.textContent = '★';
       if (textSpan) textSpan.textContent = t.favorited || 'Favorited';
     } else {
       btn.classList.remove('is-favorited');
       btn.setAttribute('aria-label', t.favoriteLabel || 'Add tool to favorites');
-      btn.setAttribute('title', t.favorite || 'Add to Favorites');
+      btn.setAttribute('title', (t.favorite || 'Add to Favorites') + ' (Alt+F)');
       if (iconSpan) iconSpan.textContent = '☆';
       if (textSpan) textSpan.textContent = t.favorite || 'Add to Favorites';
     }
   }
 
   function initToolPageActions() {
-    const hasToolLayout = document.querySelector('.tool-wrapper, .tool-card, .tool-container, .tool-zone');
+    const hasToolLayout = document.querySelector('.tool-wrapper, .tool-card, .tool-container, .tool-zone, .dc-root');
     if (!hasToolLayout) return;
 
     const hero = document.querySelector('.hero');
-    const breadcrumb = document.querySelector('.breadcrumb');
+    const breadcrumb = document.querySelector('.breadcrumb, nav[aria-label="Breadcrumb"], nav[aria-label="breadcrumbs"]');
     const actionHost = breadcrumb || hero;
     if (!actionHost || actionHost.querySelector('.tool-page-actions')) return;
 
@@ -1486,13 +1499,13 @@
         <span aria-hidden="true">⌁</span>
         <span>${t.copy}</span>
       </button>
-      <button type="button" class="ac-btn tool-page-action-btn" data-action="favorite" aria-label="${t.favoriteLabel}">
+      <button type="button" class="ac-btn tool-page-action-btn" data-action="favorite" aria-pressed="false" aria-keyshortcuts="Alt+F" aria-label="${t.favoriteLabel}">
         <span aria-hidden="true">☆</span>
         <span>${t.favorite}</span>
       </button>
     `;
 
-    const title = hero.querySelector('h1');
+    const title = (hero && hero.querySelector('h1')) || document.querySelector('main h1, h1');
     const toolName = title ? title.textContent.trim() : document.title;
     const canonPath = getCanonicalToolPath(window.location.pathname);
     const favButton = actions.querySelector('[data-action="favorite"]');
@@ -1501,6 +1514,16 @@
 
     window.addEventListener('ac:favorites-updated', function () {
       updateFavoriteBtnState(favButton, isFavoriteTool(canonPath), t);
+    });
+
+    document.addEventListener('keydown', function (e) {
+      var tag = (e.target && e.target.tagName) ? e.target.tagName.toLowerCase() : '';
+      if (tag === 'input' || tag === 'textarea' || tag === 'select' || (e.target && e.target.isContentEditable)) return;
+      if (e.altKey && !e.ctrlKey && !e.metaKey && (e.key === 'f' || e.key === 'F')) {
+        e.preventDefault();
+        favButton.click();
+        favButton.focus();
+      }
     });
 
     actions.addEventListener('click', async (event) => {

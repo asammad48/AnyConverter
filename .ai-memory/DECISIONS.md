@@ -823,6 +823,45 @@ The second independent audit report (`SECOND_INDEPENDENT_FINANCIAL_REVALIDATION_
   9. Verified canonical sitemap sync (`node scripts/generate_sitemap.js --check`) and confirmed all 23 master test suites pass 100% via `node tests/run_all_tests.js`.
 - **Consequence:** Restores metadata compliance and eliminates SERP truncation across key international search surfaces, establishes FAQ rich result structured data parity, drives organic CTR growth in Spanish and Danish target markets, and ensures full automated regression defense.
 
+---
+
+## ADR-049: Favorites UX Upgrade, Cross-Locale Persistence, and Keyboard Navigation Architecture
+- **Date:** 2026-11-19
+- **Status:** Implemented on Feature Branch `feat/s10-favorites-ux-and-persistence`
+- **Context:**
+  - Sprint S10 initiates Week 4 (Engagement: favorites, recents, workflow chains) of the 60-Day Aggressive Growth Plan (`docs/growth/60_DAY_AGGRESSIVE_PLAN.md`).
+  - Previously, tool favorites stored in `localStorage['ac:fav']` had several UX and architectural limitations:
+    1. Slugs could contain localized prefixes or query parameters, preventing seamless persistence across language switches.
+    2. Favorite buttons lacked accessible ARIA toggle state (`aria-pressed="true|false"`), violating WCAG standards for toggle controls.
+    3. Action buttons and quick access dashboard cards lacked explicit `:focus-visible` styling.
+    4. Document converter tools (`.dc-root`) failed to mount the action toolbar (`.tool-page-actions`), leaving PDF and conversion tools without in-page favorite actions.
+    5. In the search modal and dashboard quick access cards, favorite tools were rendered with English names regardless of active locale.
+    6. Keyboard shortcuts were missing for quick toggling.
+- **Decision:**
+  1. **Canonical Slug Keying & Normalization:**
+     - Enhanced `getCanonicalToolPath(rawUrlOrPath)` in `assets/js/shared.js` to strip protocol, host, query parameters, hash fragments, `index.html` endings, and locale prefixes (`/es/`, `/da/`), producing guaranteed uniform canonical paths (e.g., `/json-formatter/`).
+     - Both storage reads and writes normalize against this canonical path, ensuring favorites added on any locale persist when users navigate across EN, ES, and DA.
+  2. **Cross-Locale Localized Name & Description Resolution:**
+     - In `getFavoritesList()`, resolved tool names via `getToolName(toolMeta, lang)` and descriptions via `getToolDesc(toolMeta, lang)`, with localized links computed via `localizedPathForLang`.
+     - In both the search modal and homepage dashboard quick access grid, favorite tools dynamically display localized titles and navigate to appropriate locale URLs.
+  3. **Universal Document Tool Action Toolbar Mounting:**
+     - Extended `initToolPageActions()` layout selector to include `.dc-root` alongside `.tool-wrapper, .tool-card, .tool-container, .tool-zone`, and expanded breadcrumb detection to `nav[aria-label="Breadcrumb"]`.
+     - Document converter pages (e.g. `pdf-merge`, `pdf-compress`, `rotate-pdf`) now mount the action toolbar.
+  4. **Accessibility & ARIA Semantics:**
+     - Added dynamic `aria-pressed="true"` (favorited) and `aria-pressed="false"` (not favorited) to `updateFavoriteBtnState()`.
+     - Added `aria-keyshortcuts="Alt+F"` and updated tooltip titles with hotkey hints.
+     - Added accessible `:focus-visible` rules in `assets/css/style.css` for `.tool-page-action-btn:focus-visible` and `.dash-quick-card:focus-visible` (2px solid primary color outline, 2px offset, subtle focus ring).
+  5. **Keyboard Support & Analytics Dispatch:**
+     - Added document-level `Alt+F` keyboard shortcut listener that triggers favorite toggle and focuses the button when user is not typing in an input, textarea, or contenteditable element.
+     - Verified canonical `favorite_added` and `favorite_removed` event dispatching via `window.ACAnalytics.trackFavorite(canonPath, isNowFav)`.
+  6. **Automated Verification:**
+     - Created dedicated test suite `tests/test_s10_favorites_ux.js` (12/12 passing).
+     - Integrated S09 and S10 suites into `tests/run_all_tests.js` (25/25 suites passing, 100%).
+- **Consequences:**
+  - Favorites reliably survive cross-locale navigation without data loss or duplicate entries.
+  - Meets WCAG 2.2 AA accessibility requirements for toggle controls and keyboard navigation.
+  - Event telemetry enables tracking the 60-day KPI of ≥ 15% return visitors adding ≥ 1 favorite.
+
 
 
 
