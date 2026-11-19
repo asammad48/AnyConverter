@@ -910,7 +910,50 @@ The second independent audit report (`SECOND_INDEPENDENT_FINANCIAL_REVALIDATION_
 
 ---
 
-## ADR-051: Tool-to-Tool Workflow Chaining for JSON Group (JSON Formatter → Compare, CSV, YAML)
+## ADR-052: Shareable Calculator State for Percentage Calculator (/percentage-calculator/)
+- **Date:** 2026-11-20
+- **Status:** Implemented on Feature Branch `feat/s13-shareable-percentage-calculator`
+- **Context:**
+  - Sprint S13 kicks off Week 5 (Shareable state + install) of the 60-Day Aggressive Growth Plan (`docs/growth/60_DAY_AGGRESSIVE_PLAN.md`).
+  - Users (students, teachers, pricing analysts, shoppers) need to calculate percentage problems and share the exact state (inputs, calculation mode, and computed answer) via a compact, versioned, tamper-resistant URL.
+  - Constraint: No Auto-Share / No Silent Address Bar Mutation. Typing or calculating must never mutate `window.location`. Only clicking an explicit Share action creates the URL, copies it to clipboard, and displays accessible visual feedback.
+  - SEO Invariant: The canonical URL must remain strictly clean (`https://anyconverter.io/percentage-calculator/`), and parameterized URLs must receive `noindex, follow` to protect crawl equity.
+  - KPI Target: $\ge 300$ share links generated / week by end of Month 1.
+- **Decision:**
+  1. **Explicit Share Trigger & UI Component (`percentage-calculator/index.html` & `assets/css/style.css`):**
+     - Added `#btn-share-pct` to the action bar with accessible ARIA label and SVG share icon.
+     - Added `#btn-share-result` to the result container (`#pct-result`).
+     - Added accessible live region `#pct-share-feedback` (`role="status"`, `aria-live="polite"`).
+     - Styled `:focus-visible` states with 2px solid `#B04A45` outline and 2px offset conforming to WCAG 2.2 AA.
+  2. **Compact & Versioned Parameter Schema:**
+     - Version key: `v=1`.
+     - Mode parameter: `m=1|2|3|4`:
+       - Mode 1 ($X\%$ of $Y$): `m=1&x={number}&y={number}`
+       - Mode 2 ($X$ is what $\%$ of $Y$): `m=2&x={number}&y={number}`
+       - Mode 3 ($\%$ Change): `m=3&o={number}&n={number}`
+       - Mode 4 ($\%$ Increase/Decrease): `m=4&v={number}&p={number}&d=inc|dec`
+     - Only non-sensitive numeric parameters stored; zero PII.
+  3. **State Hydration & Fail-Safe Fallback (`assets/js/tools/percentage-calculator.js`):**
+     - On page load, `hydrateFromUrl()` parses `window.location.search`.
+     - Valid parameters activate the mode tab, populate inputs, and run `calc()` to render the answer immediately.
+     - Robust sanitization: Malformed parameters (`?v=999`, `?m=NaN`, `?x=invalid`, divide by zero) gracefully reset to clean default Mode 1 without throwing exceptions or showing broken UI.
+  4. **SEO Invariants & Duplicate Content Protection:**
+     - Clean canonical tag preserved in HTML: `<link rel="canonical" href="https://anyconverter.io/percentage-calculator/">`.
+     - When `window.location.search.length > 1`, dynamically injects or updates `<meta name="robots" content="noindex, follow">`.
+  5. **Telemetry & Analytics Integration:**
+     - Registered `share_link_generated` in `ACAnalytics` allowlist (`assets/js/shared/analytics.js`).
+     - Dispatched on share button click recording `tool: 'percentage-calculator'`, `mode`, and `status`.
+  6. **Automated Verification:**
+     - Built dedicated verification suite `tests/test_s13_shareable_percentage.js` (24/24 passing).
+     - Registered suite in `tests/run_all_tests.js` (28/28 master suites passing, 100%), including 21/21 Playwright visual regression snapshots.
+- **Consequences:**
+  - Enables frictionless virality and peer sharing for AnyConverter's high-traffic Percentage Calculator.
+  - Zero duplicate content risk due to dynamic `noindex` and clean canonical tag.
+  - Zero dependencies, client-side only.
+
+---
+
+ADR-051: Tool-to-Tool Workflow Chaining for JSON Group (JSON Formatter → Compare, CSV, YAML)
 - **Date:** 2026-11-20
 - **Status:** Implemented on Feature Branch `feat/s12-workflow-chain-json`
 - **Context:**

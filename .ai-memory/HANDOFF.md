@@ -2,6 +2,54 @@
 
 ---
 
+## Phase 45 — Growth Program Sprint S13: Shareable Calculator State: Percentage Calculator (2026-11-20)
+
+**Program:** AnyConverter.io Global Growth Engine (SEO + engagement + backlinks + distribution).  
+**Operating cadence:** 30 sprints × 2 days = 60 days. One prod ship per sprint.  
+**Active branch:** `feat/s13-shareable-percentage-calculator` (branched from S12 checkpoint `feat/s12-workflow-chain-json`, commit `3386f84`).  
+**Current sprint pointer:** `S13 — Shareable calculator state: Percentage Calculator (EN only)` (100% COMPLETED & VERIFIED; ready for owner review).  
+
+**Current sprint (S13) progress & status:**
+- **Branch Created:** Created `feat/s13-shareable-percentage-calculator` off `3386f84`.
+- **Shareable State Architecture & Implementation:**
+  1. **Explicit Share Trigger & UI Component:**
+     - Added `#btn-share-pct` to the action bar in `percentage-calculator/index.html` with accessible text ("Share calculation"), SVG icon, and `aria-label="Share calculation link"`.
+     - Added secondary trigger `#btn-share-result` in `#pct-result` with "Copy calculation link".
+     - Added live region `#pct-share-feedback` with `role="status"` and `aria-live="polite"` announcing "Link copied to clipboard!".
+     - No Auto-Share / No Silent Address Bar Mutation: Typing or calculating never mutates `window.location`. Only an explicit user click on the Share button creates the URL, copies it to the clipboard, and displays accessible visual feedback.
+  2. **Compact & Versioned Parameter Schema:**
+     - Version key: `v=1`.
+     - Mode parameter `m=1|2|3|4`:
+       - Mode 1 ($X\%$ of $Y$): `m=1&x={number}&y={number}`
+       - Mode 2 ($X$ is what $\%$ of $Y$): `m=2&x={number}&y={number}`
+       - Mode 3 ($\%$ Change): `m=3&o={number}&n={number}`
+       - Mode 4 ($\%$ Increase/Decrease): `m=4&v={number}&p={number}&d=inc|dec`
+     - Only non-sensitive numeric parameters stored; zero PII.
+  3. **State Hydration & Fail-Safe Fallback:**
+     - On page load, `hydrateFromUrl()` parses `window.location.search`.
+     - Valid parameters activate the corresponding mode tab, populate inputs, and run `calc()` to display the answer immediately.
+     - Robust sanitization: Malformed parameters (`?v=999`, `?m=NaN`, `?x=invalid`, divide-by-zero) gracefully reset to clean default Mode 1 without throwing exceptions or showing broken UI.
+  4. **SEO Invariants & Duplicate Content Protection:**
+     - Clean canonical tag preserved: `<link rel="canonical" href="https://anyconverter.io/percentage-calculator/">`.
+     - Parameterized URLs (`window.location.search.length > 1`) dynamically inject or update `<meta name="robots" content="noindex, follow">` to protect search engine crawl equity.
+  5. **WCAG 2.2 AA Focus & Accessibility:**
+     - High-contrast `:focus-visible` styling (2px solid `#B04A45`, 2px offset, subtle focus ring).
+  6. **Telemetry & Analytics Integration:**
+     - Registered `share_link_generated` in `ACAnalytics` allowlist (`assets/js/shared/analytics.js`).
+     - Dispatched on share button click recording `tool: 'percentage-calculator'`, `mode`, and `status`.
+- **Automated Verification:**
+  - Dedicated verification suite `tests/test_s13_shareable_percentage.js`: 24/24 checks passing (100%).
+  - Registered in master runner `tests/run_all_tests.js`.
+  - Repository master suite `node tests/run_all_tests.js`: 28/28 suites passing (100%), including 21/21 Playwright visual regression screenshot comparisons.
+  - Canonical sitemap check `node scripts/generate_sitemap.js --check`: 100% synchronized (441 URLs, 147 clusters).
+- **Documentation & Memory:**
+  - Recorded ADR-052 in `.ai-memory/DECISIONS.md`.
+  - Captured G1–G15 release gate evidence in `docs/growth/91-TEST-EVIDENCE-AND-RELEASE-GATES.md`.
+  - Updated `.ai-memory/STATE.json`.
+- **Next Sprint Pointer:** Sprint S14 — Shareable state — Date Difference Calculator (`/date-difference-calculator/`, `/es/date-difference-calculator/`, `/da/date-difference-calculator/`) with locale-aware formatting.
+
+---
+
 ## Phase 44 — Growth Program Sprint S12: Tool-to-Tool Workflow Chain: JSON Group (2026-11-20)
 
 **Program:** AnyConverter.io Global Growth Engine (SEO + engagement + backlinks + distribution).  

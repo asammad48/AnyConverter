@@ -93,14 +93,25 @@
               <button class="btn btn-secondary btn-sm" id="p4-dec-btn">Decrease by %</button>
             </div>
           </div>
-          <div class="ac-action-bar" style="margin-bottom:20px">
+          <div class="ac-action-bar" style="margin-bottom:20px;display:flex;gap:8px;align-items:center;flex-wrap:wrap">
             <button class="btn btn-primary" id="btn-calc-pct">Calculate</button>
             <button class="btn btn-secondary" id="btn-reset-pct">Reset</button>
+            <button class="btn btn-secondary" id="btn-share-pct" type="button" aria-label="Share calculation link">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="margin-right:6px;vertical-align:-2px"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg>
+              <span>Share calculation</span>
+            </button>
+            <span id="pct-share-feedback" class="pct-share-feedback" role="status" aria-live="polite" style="display:none">Link copied to clipboard!</span>
           </div>
           <div id="pct-result" style="display:none">
             <div class="stat-card" style="text-align:center">
               <div class="stat-val" id="pct-answer" style="font-size:36px">—</div>
               <div class="stat-lbl" id="pct-label">Result</div>
+              <div style="margin-top:14px">
+                <button class="btn btn-secondary btn-sm" id="btn-share-result" type="button" aria-label="Copy calculation link">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="margin-right:4px;vertical-align:-1px"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg>
+                  <span>Copy calculation link</span>
+                </button>
+              </div>
             </div>
           </div>
         </div>

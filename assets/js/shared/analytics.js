@@ -42,6 +42,14 @@
     ALLOWED_EVENTS_SET[S11_ENGAGEMENT_EVENTS[k]] = true;
   });
 
+  // Sprint S13 shareable state events
+  var S13_ENGAGEMENT_EVENTS = {
+    SHARE_LINK_GENERATED: 'share_link_generated'
+  };
+  Object.keys(S13_ENGAGEMENT_EVENTS).forEach(function (k) {
+    ALLOWED_EVENTS_SET[S13_ENGAGEMENT_EVENTS[k]] = true;
+  });
+
   // Sensitive parameter keys that must NEVER be transmitted (zero PII, zero file content)
   var FORBIDDEN_KEY_REGEX = /^(file|filename|content|text|data|input|query|email|user|pass|password|token|secret|doc|prompt|val|body|ip|address|ssn|card|credit)$/i;
   // Patterns matching emails, IP addresses, credit cards, or external URLs
@@ -307,6 +315,16 @@
 
     trackRecentsCleared: function () {
       track('recents_cleared', {});
+    },
+
+    // 6. Sprint S13 Shareable State Telemetry
+    trackShareLinkGenerated: function (toolSlug, mode, status) {
+      track('share_link_generated', {
+        tool: toolSlug || getCurrentToolSlug(),
+        tool_slug: toolSlug || getCurrentToolSlug(),
+        mode: mode != null ? String(mode) : '1',
+        status: status || 'success'
+      });
     }
   };
 
