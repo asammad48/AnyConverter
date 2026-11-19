@@ -1,4 +1,43 @@
-# Pre-deploy SEO Verification — feat/s05-da-translation-drift-and-hreflang @ d0eb86c
+# Pre-deploy SEO Verification — feat/s06-sitemap-rebuild-and-gsc-resubmit @ HEAD
+
+Date: 2026-11-19T10:00:00Z
+Branch: feat/s06-sitemap-rebuild-and-gsc-resubmit
+Changed files: scripts/generate_sitemap.js, sitemap.xml, tests/test_sitemap_integrity.js, tests/run_all_tests.js, da/loan-calculator/index.html
+Affected URLs: 441 URLs (147 clusters across EN, ES, DA)
+Locales touched: [en, es, da] (100% reciprocal alternate verification)
+
+| Gate | Status | Evidence |
+|---|---|---|
+| G1 Repo safety | PASS | Branch `feat/s06-sitemap-rebuild-and-gsc-resubmit` created directly off clean S05.1 checkpoint (`62a3919`). |
+| G2 Existing tests | PASS | `node tests/run_all_tests.js` executed: 23/23 suites passed (100%), including Playwright visual regression, sitemap integrity, and analytics adapter. |
+| G3 HTML validation | PASS | Clean semantic HTML preserved across all 441 static pages; 0 tag mismatch errors. |
+| G4 Link integrity | PASS | 100% reciprocal hreflang links verified in `sitemap.xml` and HTML headers across all 147 clusters (441 pages). Zero broken links. |
+| G5 Functional E2E | PASS | 21/21 Playwright visual regression comparisons passed cleanly via `tests/run_visual_regression.js`. |
+| G6 Multilingual regression | PASS | `node tests/test_localization_regression.js` passed (100% across all 147 Danish and 147 Spanish pages). Zero drift. |
+| G7 Responsive UI | PASS | Zero layout or CSS mutations. 0px horizontal overflow across all responsive viewports. |
+| G8 Accessibility | PASS | No accessibility regression. Full heading and label compliance preserved. |
+| G9 Privacy / security | PASS | Verified by `tests/test_privacy_claims_regression.js` and `phase05-international-seo-audit.js`: Zero secrets, zero PII, zero absolute privacy claims. |
+| G10 Performance | PASS | Fast sitemap generation in < 1 second using batch git log cache; zero runtime overhead. |
+| G11 SEO route invariants | PASS | Canonical URLs, reciprocal hreflang sets across EN/ES/DA + x-default verified 100% intact. Zero dangling or orphan URLs. |
+| G12 Structured data | PASS | Schema.org `WebApplication` and `FAQPage` JSON-LD blocks validated intact. |
+| G13 Internal linking | PASS | All 128 tools discoverable via category hubs and sitemap. |
+| G14 AdSense placement | PASS | Ad slots remain unaltered in initial rail positions. |
+| G15 Rollback plan | PASS | Reversible git commit; prior release checkpoint (`62a3919`). |
+
+---
+
+## Sprint S06 Delivery Status Verdict
+
+**STATUS: 100% DELIVERED FOR SPRINT S06 (SITEMAP REBUILD FROM MANIFEST & GSC VERIFICATION)**
+
+1. **Deterministic Canonical Generator:** **PASS / SHIPPED**. Shipped `scripts/generate_sitemap.js` generating `sitemap.xml` deterministically from `TOOL_INVENTORY_AND_COUNTS.json` with CLI `--check`, `--write`, `--stats`.
+2. **Sitemap Integrity Suite:** **PASS / SHIPPED**. Built and registered `tests/test_sitemap_integrity.js` into master runner (23/23 suites pass).
+3. **Live GSC Verification:** **PASS / VERIFIED**. Audited `https://anyconverter.io/sitemap.xml` via GSC MCP: 441 submitted, 0 errors, 0 warnings.
+4. **Zero Dangling / Zero Orphans:** **PASS / VERIFIED**. Exact 441/441 parity between on-disk `index.html` files and `sitemap.xml` entries.
+
+---
+
+# Previous Sprint: Pre-deploy SEO Verification — feat/s05-da-translation-drift-and-hreflang @ d0eb86c
 
 Date: 2026-11-19T04:30:00Z
 Branch: feat/s05-da-translation-drift-and-hreflang

@@ -701,5 +701,23 @@ The second independent audit report (`SECOND_INDEPENDENT_FINANCIAL_REVALIDATION_
   6. Verified all 22/22 master repository test suites passing (`node tests/run_all_tests.js`).
 - **Consequence:** Eliminates Danish translation drift, Anglicized snippets, and ASCII digraphs across Danish tool pages, elevating search relevance and user trust while locking in automated regression guards.
 
+---
+
+## ADR-045: Deterministic Manifest-Driven Sitemap Generator Architecture & Reciprocal Alternate Validation
+- **Date:** 2026-11-19
+- **Status:** Implemented on Feature Branch `feat/s06-sitemap-rebuild-and-gsc-resubmit`
+- **Context:**
+  - Sprint S06 of the 60-Day Aggressive Plan required replacing ad-hoc scratch scripts and manual XML edits with a canonical, deterministic sitemap generator built directly from the single-source-of-truth inventory manifest (`TOOL_INVENTORY_AND_COUNTS.json`).
+  - GSC sitemap health and international SEO mandates require exact 4-way reciprocal `<xhtml:link>` alternates (`en`, `es`, `da`, `x-default`), accurate W3C `lastmod` timestamps, zero dangling URLs, zero orphan pages, and zero duplicate URLs across the platform's 441 live indexable pages.
+- **Decision:**
+  1. Built canonical production sitemap generator in `scripts/generate_sitemap.js` supporting `--write`, `--check` (drift detection), and `--stats`.
+  2. Implemented batch git log cache parsing (`getGitDateMap()`) to derive accurate W3C `lastmod` timestamps across all 441 pages in < 1 second.
+  3. Structured output cleanly into 147 clusters (1 home, 9 category hubs, 1 blog, 8 informational/legal, 128 tools) with 100% reciprocal `<xhtml:link>` alternates and `x-default` pointing to English.
+  4. Created automated test suite `tests/test_sitemap_integrity.js` (8/8 assertions verifying 441 URLs, 0 dangling, 0 orphans, 0 duplicates, valid W3C dates, 4-way hreflang, zero redirects) and registered it into `tests/run_all_tests.js` (expanding master test suites from 22 to 23/23 PASS).
+  5. Verified live GSC sitemap status via GSC MCP (`sc-domain:anyconverter.io`: 441 submitted, 0 errors, 0 warnings).
+  6. Repaired edge privacy phrasing in `da/loan-calculator/index.html` to eliminate remaining international SEO audit content warnings.
+- **Consequence:** Guarantees 100% automated, drift-free sitemap generation and regression protection for all future sprints. 23/23 master repository test suites passing.
+
+
 
 

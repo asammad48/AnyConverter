@@ -23,6 +23,7 @@ const testSuites = [
   { name: 'Multilingual Tool Names & Search Suite', cmd: 'node tests/test_multilingual_tool_names.js' },
   { name: 'Financial Calculations & Amortization Suite', cmd: 'node tests/test_financial_calculations_suite.js' },
   { name: 'Analytics Adapter & 16-Event Dictionary Suite', cmd: 'node tests/test_analytics_adapter.js' },
+  { name: 'Sitemap Integrity & Reciprocal Alternates Suite', cmd: 'node tests/test_sitemap_integrity.js' },
   { name: 'Playwright Visual Regression Suite (21/21 Baselines)', cmd: 'node tests/run_visual_regression.js' }
 ];
 
