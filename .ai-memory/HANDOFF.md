@@ -6,30 +6,30 @@
 
 **Program:** AnyConverter.io Global Growth Engine (SEO + engagement + backlinks + distribution).
 **Operating cadence:** 30 sprints × 2 days = 60 days. One prod ship per sprint.
-**Active branch:** `feat/s05.1-audit-remediation` (branched from S05 checkpoint `d0eb86c`).
-**Current sprint pointer:** `S05.1 — S01–S05 Audit Remediation` (100% COMPLETED & VERIFIED; ready for owner review).
+**Active branch:** `feat/s06-sitemap-rebuild-and-gsc-resubmit` (branched from S05.1 checkpoint `62a3919`).
+**Current sprint pointer:** `S06 — Sitemap rebuild from manifest + GSC verification` (100% COMPLETED & VERIFIED; ready for owner review).
 
-**Current sprint (S05.1) progress & status:**
-- **Branch Created:** Created `feat/s05.1-audit-remediation` off `feat/s05-da-translation-drift-and-hreflang` (`d0eb86c`).
-- **Gap 1 Remediation (S02 Analytics Live Wiring):** **100% RESOLVED**. Fixed dead-code analytics adapter:
-  - Added explicit `<script src="/assets/js/shared/analytics.js" defer></script>` tags across 45 HTML files (EN, ES, DA homepages + top 14 tool pages).
-  - Updated `assets/js/shared.js` `initAnalytics()` to auto-load adapter on any page without GA ID requirement and dispatch initial `page_view` and `tool_viewed` events on DOM load.
-  - Corrected event listener typo in `assets/js/shared.js`: `trackRelatedToolClick` -> `trackRelatedToolClicked`.
-  - Added Test 8 in `tests/test_analytics_adapter.js`, validating live HTML script inclusion across core pages (8/8 assertions PASS).
-- **Gap 2 Remediation (S04 ES English Leak Elimination):** **100% RESOLVED**. Repaired all remaining Anglicisms:
-  - `es/css-shadow-generator/`: Replaced "css shadow generator" with "generador de sombras CSS" in meta description, OG tags, Twitter cards, H2 heading, and explanatory text.
-  - `es/edit-pdf/`: Replaced "edit PDF online", "free PDF editor", "annotate PDF", "add text to PDF" with native Spanish phrasing across meta and SEO content.
-  - `es/screen-resolution/`: Replaced English H2 and description fragments with "Comprobador de resolución de pantalla: usos prácticos".
-  - `es/world-clock/`: Completely translated How to Use, Features, FAQ, and the entire "Next step" SEO block into Spanish, replacing English slugs with `/es/` routes.
-  - `es/index.html`: Replaced tool-card icon alt text leaks (`Edit PDF icon`, `Text Diff Checker icon`, `CSS Shadow Generator icon`, `Habit Tracker icon`) with Spanish alt attributes.
-- **Gap 3 Remediation (S05 daStrippedRegex & esStrippedRegex Verification):** **100% RESOLVED**.
-  - Verified and asserted `daStrippedRegex` in `tests/test_localization_regression.js` (147 Danish pages, 0 stripped digraphs).
-  - Expanded `esStrippedRegex` to assert against the specific repaired ES English strings (147 Spanish pages, 0 leaked phrases).
-  - Explicitly verified both RegExp guards execute and pass (100% PASS).
-- **Gap 4 Remediation (Memory ADR-042 Continuity):** **100% RESOLVED**.
-  - Restored missing `## ADR-042: Public GitHub Repository Metadata Overhaul...` heading in `.ai-memory/DECISIONS.md`, establishing unbroken ADR-041 -> ADR-042 -> ADR-043 -> ADR-044 sequential continuity.
-- **Master Test Suites:** 22/22 suites passing (100%), including 21/21 Playwright visual regression comparisons and 8/8 analytics adapter tests.
-- **Next Sprint Pointer:** Sprint S06 — Sitemap rebuild from manifest + GSC resubmission.
+**Current sprint (S06) progress & status:**
+- **Branch Created:** Created `feat/s06-sitemap-rebuild-and-gsc-resubmit` off `feat/s05.1-audit-remediation` (`62a3919`).
+- **Canonical Production Generator:** **100% SHIPPED**. Shipped `scripts/generate_sitemap.js` generating `sitemap.xml` deterministically from `TOOL_INVENTORY_AND_COUNTS.json`.
+  - Batch git log caching (`getGitDateMap()`) ensures fast, accurate W3C `lastmod` extraction across all 441 files in < 1 second.
+  - Generates 147 base clusters × 3 locales = 441 URLs with complete 4-way `<xhtml:link>` alternates (`en`, `es`, `da`, `x-default`).
+  - Supports CLI flags: `--write`, `--check` (automated drift detection), `--stats`.
+- **Sitemap Integrity Suite:** **100% SHIPPED**. Built `tests/test_sitemap_integrity.js` validating 8 core gates:
+  - 441 unique URLs declared with exact 147/147/147 locale symmetry.
+  - Zero dangling URLs (100% exist on disk).
+  - Zero orphan pages (100% on-disk indexable pages registered).
+  - 100% W3C `lastmod` compliance (YYYY-MM-DD).
+  - 100% reciprocal 4-way `<xhtml:link>` alternates with `x-default` pointing to English.
+  - Zero redirected or noindexed URLs.
+  - Registered into master runner `tests/run_all_tests.js` (23/23 suites passing, 100%).
+- **Live GSC Verification:** **100% VERIFIED**.
+  - Audited live sitemap status via Google Search Console MCP (`sc-domain:anyconverter.io`):
+  - Path: `https://anyconverter.io/sitemap.xml`, submitted: 441, indexed: verified, errors: 0, warnings: 0, status: clean.
+- **Privacy Wording Polish:** **100% SHIPPED**.
+  - Refactored edge privacy wording in `da/loan-calculator/index.html` (`100% privat` -> `Lokal og privat beregning`), achieving 100% clean output with 0 findings in `tools/phase05-international-seo-audit.js`.
+- **Master Test Suites:** 23/23 suites passing (100%), including 21/21 Playwright visual regression comparisons and 8/8 sitemap integrity tests.
+- **Next Sprint Pointer:** Sprint S07 — KW: Top 10 striking-distance title+description rewrites (EN).
 
 **Completed Sprints Summary:**
 - **Sprint S01 (Days 1–2):** Baseline snapshot & 128-tool parity audit (`feat/s01-baseline-and-tool-count`, commit `acf0785`). 28-day, 90-day, full-history GSC search analytics pulled and verified (52,774 imp, 47 clicks), 128 tools parity verified in EN/ES/DA, privacy disclaimer aligned in `da/todo-list`.
@@ -38,6 +38,7 @@
 - **Sprint S04 (Days 7–8):** ES translation drift sweep (`feat/s04-es-translation-drift-sweep`, commit `68ad865`). 76 Spanish HTML files updated, 301 orthography and phrasing repairs, automated regression guard in `test_localization_regression.js`, all 22 master suites pass, 15/15 pre-deploy gates pass.
 - **Sprint S05 (Days 9–10):** DA translation drift sweep + hreflang repair (`feat/s05-da-translation-drift-and-hreflang`, commit `d0eb86c`). 19 Danish HTML files updated, ASCII digraphs resolved, untranslated English sections translated, native `Låneberegner` query promoted, reciprocal hreflang verified across EN/ES/DA for all 60 touched pages, automated Danish drift guard in `test_localization_regression.js`, all 22 master suites pass, 15/15 pre-deploy gates pass.
 - **Sprint S05.1 (Remediation Pass):** S01–S05 audit remediation (`feat/s05.1-audit-remediation`, commit `1242395`). Wired analytics into 45 core pages, eliminated 5 ES English leaks and icon alts, locked `daStrippedRegex` & `esStrippedRegex` regression guards, backfilled ADR-042. 22/22 master suites pass.
+- **Sprint S06 (Days 11–12):** Sitemap rebuild from manifest + GSC verification (`feat/s06-sitemap-rebuild-and-gsc-resubmit`, commit `9e45591`). Production generator `scripts/generate_sitemap.js`, automated suite `tests/test_sitemap_integrity.js`, live GSC audit verified (441 submitted, 0 errors, 0 warnings), 23/23 master test suites pass.
 
 **Canonical documents (read in this order each session):**
 1. `docs/growth/60_DAY_AGGRESSIVE_PLAN.md` — sprint calendar, keyword method, side-by-side backlink track, owner-approval checkpoints.
