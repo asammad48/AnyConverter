@@ -2,9 +2,9 @@
   "updatedAt": "2026-11-19T04:35:00.000Z",
   "activeProfile": "PROFILE 1 — SEO RESEARCH",
   "currentPhase": "PHASE 38: GROWTH PROGRAM SPRINT S05 (DA TRANSLATION DRIFT & HREFLANG REPAIR)",
-  "activeBranch": "feat/s05-da-translation-drift-and-hreflang",
+  "activeBranch": "feat/s05.1-audit-remediation",
   "baseReleaseCheckpoint": "448717f",
-  "headCommit": "d0eb86c",
+  "headCommit": "1242395",
   "auditVerdict": "PASS FOR USER REVIEW — Fully reconciled GSC Search Analytics API data pipeline (122-day full history 52,737 imp / 46 clicks, zero-data bug eliminated). Repaired _redirects removing illegal cross-locale redirects for /es/world-clock/ and /da/world-clock/. Added 10 permanent 301 rules for legacy renamed paths. Reinspected 40 URLs with live GSC URL Inspection API resolving contradictory claims. Updated metadata and truthful on-page content on priority tools (/da/loan-calculator/, /da/mortgage-calculator/, /es/sticky-notes/, /sticky-notes/, /da/todo-list/, /ip-address-lookup/). All 12 mandatory deliverables generated under reports/seo-remediation-2026-11/.",
   "warningsRecorded": [
     "Loan Term Unit Toggle: Clarification that 8.58% nominal APR / 8.93% EAR in fixture documentation corresponds to a 36-year (432-month) loan input. When '#term-unit-mos' is selected, 36 months correctly yields 10.55% nominal APR / 11.08% EAR. Both modes execute with 100% mathematical precision.",
@@ -91,20 +91,22 @@
     ],
     "cadence": "30 sprints x 2 days = 60 days; one prod ship per sprint",
     "currentSprint": {
-      "id": "S05",
-      "name": "DA translation drift sweep + hreflang repair",
+      "id": "S05.1",
+      "name": "S01–S05 Audit Remediation (Telemetry Wiring, ES English Leak Cleanup, daStrippedRegex & ADR-042 Continuity)",
       "day": 9,
       "status": "completed_ready_for_review",
-      "branch": "feat/s05-da-translation-drift-and-hreflang",
-      "progress": "Sprint S05 100% completed: Executed Danish translation drift sweep across top DA tool pages and related components (19 Danish HTML files updated). Repaired ASCII digraphs (år, måneder, næste, når, dækker, så, mønt, tilfældigt, vælge, hjælper, på, påmindelser, Tilføj, før), translated untranslated English sections in da/world-clock/, promoted native query Låneberegner in da/loan-calculator/, and batch-repaired Tilføj tekstvandmærke and mødetimer across 12 Danish tool files. Enhanced tests/test_localization_regression.js with permanent daStrippedRegex safeguards (100% pass across 147 DA and 147 ES pages). Verified 100% reciprocal hreflang and canonical links across 86 clusters (258 pages) with 0 errors. Verified all 22 master repository test suites passing. Generated 15/15 PASS pre-deploy gate report in docs/growth/91-TEST-EVIDENCE-AND-RELEASE-GATES.md.",
+      "branch": "feat/s05.1-audit-remediation",
+      "progress": "Sprint S05.1 100% completed: Successfully remediated all 4 gaps identified in independent S01-S05 audit. 1) Wired analytics.js into 45 core pages (EN/ES/DA homepages + top 14 tool pages), fixed related tool click telemetry typo in shared.js, and added Test 8 in tests/test_analytics_adapter.js (8/8 pass). 2) Eliminated English leaks across es/css-shadow-generator/, es/edit-pdf/, es/screen-resolution/, es/world-clock/, and es/index.html icon alts. 3) Re-verified daStrippedRegex guard and expanded esStrippedRegex in tests/test_localization_regression.js (100% pass across 147 DA and 147 ES pages). 4) Backfilled missing ADR-042 heading in DECISIONS.md, restoring continuous 041-044 decision sequence. 22/22 master test suites pass.",
       "blockers": [],
       "nextSprintId": "S06",
       "deliverables": [
-        "19 Danish HTML files updated with orthography, native query, and translation drift repairs (SHIPPED / VERIFIED)",
-        "tests/test_localization_regression.js enhanced with permanent Danish digraph drift safeguards (SHIPPED / PASS)",
-        "scratch/verify_60_pages_hreflang.js verifying 100% reciprocal hreflang across 86 clusters / 258 pages (SHIPPED / PASS)",
-        "tests/run_all_tests.js (SHIPPED / PASS 22/22 suites)",
-        "docs/growth/91-TEST-EVIDENCE-AND-RELEASE-GATES.md pre-deploy gate report (SHIPPED / PASS 15/15 gates)"
+        "assets/js/shared.js (wired auto-telemetry, fixed trackRelatedToolClicked)",
+        "45 HTML files updated with explicit /assets/js/shared/analytics.js inclusion",
+        "es/css-shadow-generator/, es/edit-pdf/, es/screen-resolution/, es/world-clock/, es/index.html English leaks repaired",
+        "tests/test_analytics_adapter.js Test 8 added (8/8 pass)",
+        "tests/test_localization_regression.js daStrippedRegex & expanded esStrippedRegex verified (100% pass)",
+        ".ai-memory/DECISIONS.md ADR-042 backfilled (continuous ADR 041-044 sequence)",
+        "tests/run_all_tests.js (22/22 master suites pass)"
       ]
     },
     "projectSkills": [

@@ -6,20 +6,29 @@
 
 **Program:** AnyConverter.io Global Growth Engine (SEO + engagement + backlinks + distribution).
 **Operating cadence:** 30 sprints × 2 days = 60 days. One prod ship per sprint.
-**Active branch:** `feat/s05-da-translation-drift-and-hreflang` (created fresh off S04 checkpoint `448717f`).
-**Current sprint pointer:** `S05 — DA translation drift sweep + hreflang repair` (100% COMPLETED & VERIFIED; ready for owner review).
+**Active branch:** `feat/s05.1-audit-remediation` (branched from S05 checkpoint `d0eb86c`).
+**Current sprint pointer:** `S05.1 — S01–S05 Audit Remediation` (100% COMPLETED & VERIFIED; ready for owner review).
 
-**Current sprint (S05) progress & status:**
-- **Branch Created:** Created `feat/s05-da-translation-drift-and-hreflang` off `feat/s04-es-translation-drift-sweep` (`448717f`).
-- **DA Translation Drift Sweep:** **100% SHIPPED**. Executed comprehensive sweep of top 30 Danish tool pages by GSC impressions and related shared components (19 Danish HTML files updated):
-  - Repaired ASCII digraphs to standard Danish vowels: `år`, `måneder`, `næste`, `når`, `dækker`, `så`, `mønt`, `tilfældigt`, `vælge`, `hjælper`, `på`, `påmindelser`, `Tilføj`, `før`.
-  - Translated untranslated English sections in `da/world-clock/index.html` (SEO guide, FAQ, internal navigation).
-  - Promoted native Danish keyword query `Låneberegner` ahead of typo variant across meta title, description, schema, and open graph tags.
-  - Batch-repaired Danish shared card components (`Tilføj tekstvandmærke`, `mødetimer`) across 12 additional Danish tool files.
-- **Reciprocal Hreflang & Canonical Verification:** **100% SHIPPED**. Verified 100% reciprocal 3-way hreflang mapping across all touched EN/ES/DA pages with valid self-referential canonicals and x-default declarations via automated script `scratch/verify_60_pages_hreflang.js` (86 clusters / 258 pages, 0 errors).
-- **Automated Regression Guard:** **100% SHIPPED**. Enhanced `tests/test_localization_regression.js` with permanent automated assertions against Danish ASCII digraph drift (`daStrippedRegex`, scanning all 147 DA and 147 ES pages).
-- **Master Test Suites:** 22/22 suites passing (100%), including 21 visual regression screenshot tests and 147 DA / 147 ES localization tests.
-- **Pre-Deploy Gate Report:** Generated at `docs/growth/91-TEST-EVIDENCE-AND-RELEASE-GATES.md` (15/15 gates PASS).
+**Current sprint (S05.1) progress & status:**
+- **Branch Created:** Created `feat/s05.1-audit-remediation` off `feat/s05-da-translation-drift-and-hreflang` (`d0eb86c`).
+- **Gap 1 Remediation (S02 Analytics Live Wiring):** **100% RESOLVED**. Fixed dead-code analytics adapter:
+  - Added explicit `<script src="/assets/js/shared/analytics.js" defer></script>` tags across 45 HTML files (EN, ES, DA homepages + top 14 tool pages).
+  - Updated `assets/js/shared.js` `initAnalytics()` to auto-load adapter on any page without GA ID requirement and dispatch initial `page_view` and `tool_viewed` events on DOM load.
+  - Corrected event listener typo in `assets/js/shared.js`: `trackRelatedToolClick` -> `trackRelatedToolClicked`.
+  - Added Test 8 in `tests/test_analytics_adapter.js`, validating live HTML script inclusion across core pages (8/8 assertions PASS).
+- **Gap 2 Remediation (S04 ES English Leak Elimination):** **100% RESOLVED**. Repaired all remaining Anglicisms:
+  - `es/css-shadow-generator/`: Replaced "css shadow generator" with "generador de sombras CSS" in meta description, OG tags, Twitter cards, H2 heading, and explanatory text.
+  - `es/edit-pdf/`: Replaced "edit PDF online", "free PDF editor", "annotate PDF", "add text to PDF" with native Spanish phrasing across meta and SEO content.
+  - `es/screen-resolution/`: Replaced English H2 and description fragments with "Comprobador de resolución de pantalla: usos prácticos".
+  - `es/world-clock/`: Completely translated How to Use, Features, FAQ, and the entire "Next step" SEO block into Spanish, replacing English slugs with `/es/` routes.
+  - `es/index.html`: Replaced tool-card icon alt text leaks (`Edit PDF icon`, `Text Diff Checker icon`, `CSS Shadow Generator icon`, `Habit Tracker icon`) with Spanish alt attributes.
+- **Gap 3 Remediation (S05 daStrippedRegex & esStrippedRegex Verification):** **100% RESOLVED**.
+  - Verified and asserted `daStrippedRegex` in `tests/test_localization_regression.js` (147 Danish pages, 0 stripped digraphs).
+  - Expanded `esStrippedRegex` to assert against the specific repaired ES English strings (147 Spanish pages, 0 leaked phrases).
+  - Explicitly verified both RegExp guards execute and pass (100% PASS).
+- **Gap 4 Remediation (Memory ADR-042 Continuity):** **100% RESOLVED**.
+  - Restored missing `## ADR-042: Public GitHub Repository Metadata Overhaul...` heading in `.ai-memory/DECISIONS.md`, establishing unbroken ADR-041 -> ADR-042 -> ADR-043 -> ADR-044 sequential continuity.
+- **Master Test Suites:** 22/22 suites passing (100%), including 21/21 Playwright visual regression comparisons and 8/8 analytics adapter tests.
 - **Next Sprint Pointer:** Sprint S06 — Sitemap rebuild from manifest + GSC resubmission.
 
 **Completed Sprints Summary:**
@@ -28,6 +37,7 @@
 - **Sprint S03 (Days 5–6):** GitHub metadata + README overhaul (`feat/s03-github-metadata-and-readme`, commit `7ab54be`). GitHub repo description, homepage, and 8 topics live. Comprehensive technical README with 128-tool directory and architecture documentation. All 22 test suites pass. Pre-deploy release gate report generated.
 - **Sprint S04 (Days 7–8):** ES translation drift sweep (`feat/s04-es-translation-drift-sweep`, commit `68ad865`). 76 Spanish HTML files updated, 301 orthography and phrasing repairs, automated regression guard in `test_localization_regression.js`, all 22 master suites pass, 15/15 pre-deploy gates pass.
 - **Sprint S05 (Days 9–10):** DA translation drift sweep + hreflang repair (`feat/s05-da-translation-drift-and-hreflang`, commit `d0eb86c`). 19 Danish HTML files updated, ASCII digraphs resolved, untranslated English sections translated, native `Låneberegner` query promoted, reciprocal hreflang verified across EN/ES/DA for all 60 touched pages, automated Danish drift guard in `test_localization_regression.js`, all 22 master suites pass, 15/15 pre-deploy gates pass.
+- **Sprint S05.1 (Remediation Pass):** S01–S05 audit remediation (`feat/s05.1-audit-remediation`, commit `1242395`). Wired analytics into 45 core pages, eliminated 5 ES English leaks and icon alts, locked `daStrippedRegex` & `esStrippedRegex` regression guards, backfilled ADR-042. 22/22 master suites pass.
 
 **Canonical documents (read in this order each session):**
 1. `docs/growth/60_DAY_AGGRESSIVE_PLAN.md` — sprint calendar, keyword method, side-by-side backlink track, owner-approval checkpoints.
