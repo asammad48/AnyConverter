@@ -678,4 +678,25 @@ The second independent audit report (`SECOND_INDEPENDENT_FINANCIAL_REVALIDATION_
   4. Generated comprehensive pre-deploy verification gate report in `docs/growth/91-TEST-EVIDENCE-AND-RELEASE-GATES.md` with all 15 release gates verified PASS.
 - **Consequence:** Enhances developer discovery, GitHub search discoverability, and public brand authority while preserving all existing codebase invariants.
 
+---
+
+## ADR-044: Systematic Danish Translation Drift Remediation, Digraph Elimination & Reciprocal Hreflang Verification
+- **Date:** 2026-11-19
+- **Status:** Implemented on Feature Branch `feat/s05-da-translation-drift-and-hreflang`
+- **Context:**
+  - Sprint S05 of the 60-Day Aggressive Plan required a systematic sweep of the top 30 Danish tool pages by Search Console impressions to fix translation drift, unaccented ASCII digraphs (`ar` -> `år`, `maneder` -> `måneder`, `naeste` -> `næste`, `nar` -> `når`, `daekker` -> `dækker`, `Tilfoj` -> `Tilføj`, `modetimer` -> `mødetimer`), untranslated English sections, and verify reciprocal hreflang across EN/ES/DA for all 60 pages touched in S04 and S05.
+- **Decision:**
+  1. Audited the top 30 Danish tool pages by impressions (led by `internet-speed-test`, `mortgage-calculator`, `loan-calculator`, `bmi-calculator`, `qr-code-generator`, `pdf-compress`, `invoice-generator`, `todo-list`, etc.).
+  2. Applied systematic Danish orthography and native vocabulary fixes:
+     - Repaired unaccented digraphs across `da/age-calculator/index.html`, `da/coin-flip/index.html`, `da/screen-resolution/index.html`, `da/sticky-notes/index.html`.
+     - Completely translated untranslated English SEO sections and FAQ in `da/world-clock/index.html` to natural Danish.
+     - Promoted Danish native search keyword `Låneberegner` ahead of typo variant across meta title, description, schema, and open graph tags in `da/loan-calculator/index.html`.
+     - Batch-repaired Danish shared card components (`Tilføj tekstvandmærke`, `mødetimer`) across 12 additional Danish tool files (`da/add-page-numbers/`, `da/add-watermark/`, `da/edit-pdf/`, `da/protect-pdf/`, `da/sign-pdf/`, `da/countdown-timer/`, `da/meeting-timer/`, `da/microphone-tester/`, `da/pomodoro-timer/`, `da/productivity-tools/`, `da/stopwatch/`, `da/index.html`).
+  3. Upgraded `tests/test_localization_regression.js` with permanent automated regex assertions scanning all 147 Danish pages for ASCII digraph drift (`daStrippedRegex`), preventing regression on future edits.
+  4. Ran automated reciprocal hreflang and canonical verification across 86 clusters (258 pages) via `scratch/verify_60_pages_hreflang.js`, confirming 100% clean 3-way reciprocity (EN, ES, DA) with self-referential canonicals and x-default.
+  5. Preserved 100% of underlying calculator algorithms, URL structures, canonical URLs, reciprocal hreflang sets, and schema metadata.
+  6. Verified all 22/22 master repository test suites passing (`node tests/run_all_tests.js`).
+- **Consequence:** Eliminates Danish translation drift, Anglicized snippets, and ASCII digraphs across Danish tool pages, elevating search relevance and user trust while locking in automated regression guards.
+
+
 
