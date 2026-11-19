@@ -782,6 +782,47 @@ The second independent audit report (`SECOND_INDEPENDENT_FINANCIAL_REVALIDATION_
   5. Verified `node scripts/generate_sitemap.js --check` and confirmed all 23 master test suites pass 100% via `node tests/run_all_tests.js`.
 - **Consequence:** Dramatically improves user time-on-page and engagement, addresses high-intent search queries, satisfies rich result structured data requirements, and ensures long-term regression safety.
 
+---
+
+## ADR-048: Striking-Distance SEO Metadata & High-Intent FAQ Expansion for International Locales (Spanish & Danish)
+- **Date:** 2026-11-19
+- **Status:** Implemented on Feature Branch `feat/s09-striking-distance-metadata-es-da`
+- **Context:**
+  - Sprint S09 concludes Week 3 of the AnyConverter 60-Day Growth Program, applying striking-distance metadata rewrites and high-intent FAQ expansion to the top 10 Spanish (`/es/`) and top 10 Danish (`/da/`) tool pages (20 pages total).
+  - GSC query and performance data from `reports/seo-remediation-2026-11/ES_KEYWORD_PRIORITY.csv` and `DA_KEYWORD_PRIORITY.csv` identified high-impression, striking-distance queries (positions 5–19, such as "realkreditberegner" pos 9.9, "lånberegner" pos 5.4, "opgaveliste" pos 19.2, "notas adhesivas online" pos 10.9, "monitor color test" pos 15.9, etc.).
+  - Baseline audits revealed metadata defects across these international pages: truncated titles (> 60 visible characters), missing brand suffixes (` | AnyConverter`), meta descriptions outside the 140–160 character boundary, sparse FAQs (< 4 Q&As), and lack of client-side template synchronization on document converter tools.
+- **Decision:**
+  1. Selected the top 10 Spanish tools:
+     - `/es/sticky-notes/index.html` (Query: "notas adhesivas online")
+     - `/es/monitor-color-test/index.html` (Query: "monitor color test")
+     - `/es/base64-encoder/index.html` (Queries: "convertir texto plano a base64 online gratis", "codificar base64")
+     - `/es/ocr-pdf/index.html` (Queries: "escanear ocr", "ocr pdf", "pdf ocr")
+     - `/es/pdf-merge/index.html` (Queries: "unir pdf free", "juntar pdf en un solo archivo gratis", "unir pdf pesados")
+     - `/es/rotate-pdf/index.html` (Query: "rotar pdf")
+     - `/es/text-diff-checker/index.html` (Queries: "comparador de textos", "comparar texto")
+     - `/es/compare-pdf/index.html` (Query: "comparar pdf online")
+     - `/es/edit-pdf/index.html` (Query: "editar pdf online gratis")
+     - `/es/json-formatter/index.html` (Query: "formateador json")
+  2. Selected the top 10 Danish tools:
+     - `/da/mortgage-calculator/index.html` (Query: "realkreditberegner")
+     - `/da/loan-calculator/index.html` (Query: "lånberegner")
+     - `/da/todo-list/index.html` (Query: "opgaveliste")
+     - `/da/bmi-calculator/index.html` (Queries: "bmi beregner", "bmi udregner")
+     - `/da/invoice-generator/index.html` (Queries: "online faktura", "gratis faktura")
+     - `/da/pdf-compress/index.html` (Queries: "komprimer pdf", "pdf komprimering", "reducer pdf størrelse")
+     - `/da/pdf-to-jpg/index.html` (Queries: "konverter pdf til billede", "pdf til jpg")
+     - `/da/jpg-to-pdf/index.html` (Query: "jpg til pdf")
+     - `/da/ocr-pdf/index.html` (Queries: "pdf ocr", "udtræk tekst pdf", "scannet pdf søgbar")
+     - `/da/word-counter/index.html` (Query: "ordtæller")
+  3. Rewrote `<title>` on all 20 pages: strictly $\le 60$ visible characters, front-loading primary intent keywords, brand suffix ` | AnyConverter`.
+  4. Rewrote `<meta name="description">` on all 20 pages: strictly 140–160 characters with clear active CTAs, authentic search idioms, proper native diacritics/accents (`á`, `é`, `í`, `ó`, `ú`, `ñ`, `æ`, `ø`, `å`), and truthful client-side privacy claims adhering to `test_privacy_claims_regression.js`.
+  5. Mirrored metadata identically into Open Graph (`og:title`, `og:description`, `og:url`) and Twitter tags (`twitter:title`, `twitter:description`).
+  6. Expanded FAQs to 5 high-intent, authoritative Q&As per page (100 total Q&As across the cohort) with 100% verbatim equality between visible HTML and `FAQPage` JSON-LD schema markup.
+  7. Synchronized both static SSR HTML and `<script type="text/x-dc-template" id="dc-template">` across all 5 dynamic document converter tools (`es/pdf-merge`, `es/rotate-pdf`, `da/pdf-compress`, `da/pdf-to-jpg`, `da/jpg-to-pdf`).
+  8. Created dedicated verification suite `tests/test_s09_striking_distance_es_da.js` (970/970 assertions pass).
+  9. Verified canonical sitemap sync (`node scripts/generate_sitemap.js --check`) and confirmed all 23 master test suites pass 100% via `node tests/run_all_tests.js`.
+- **Consequence:** Restores metadata compliance and eliminates SERP truncation across key international search surfaces, establishes FAQ rich result structured data parity, drives organic CTR growth in Spanish and Danish target markets, and ensures full automated regression defense.
+
 
 
 

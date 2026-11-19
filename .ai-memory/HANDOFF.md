@@ -2,6 +2,63 @@
 
 ---
 
+## Phase 41 — Growth Program Sprint S09: Striking-Distance SEO Metadata & High-Intent FAQ Expansion (ES + DA) (2026-11-19)
+
+**Program:** AnyConverter.io Global Growth Engine (SEO + engagement + backlinks + distribution).  
+**Operating cadence:** 30 sprints × 2 days = 60 days. One prod ship per sprint.  
+**Active branch:** `feat/s09-striking-distance-metadata-es-da` (branched from S08 checkpoint `feat/s08-faq-expansion-en`, commit `982b3f8`).  
+**Current sprint pointer:** `S09 — KW: Striking-distance for ES + DA` (100% COMPLETED & VERIFIED; ready for owner review).  
+
+**Current sprint (S09) progress & status:**
+- **Branch Created:** Created `feat/s09-striking-distance-metadata-es-da` off `982b3f8`.
+- **Top 10 Spanish Tools Optimized:**
+  1. `/es/sticky-notes/index.html` (Title: 44c, Desc: 152c, 5 FAQs with verbatim schema parity)
+  2. `/es/monitor-color-test/index.html` (Title: 47c, Desc: 151c, 5 FAQs with verbatim schema parity)
+  3. `/es/base64-encoder/index.html` (Title: 45c, Desc: 148c, 5 FAQs with verbatim schema parity)
+  4. `/es/ocr-pdf/index.html` (Title: 59c, Desc: 149c, 5 FAQs with verbatim schema parity)
+  5. `/es/pdf-merge/index.html` (Title: 59c, Desc: 150c, 5 FAQs synchronized across SSR, dc-template, and JSON-LD)
+  6. `/es/rotate-pdf/index.html` (Title: 58c, Desc: 151c, 5 FAQs synchronized across SSR, dc-template, and JSON-LD)
+  7. `/es/text-diff-checker/index.html` (Title: 49c, Desc: 149c, 5 FAQs with verbatim schema parity)
+  8. `/es/compare-pdf/index.html` (Title: 59c, Desc: 146c, 5 FAQs with verbatim schema parity)
+  9. `/es/edit-pdf/index.html` (Title: 57c, Desc: 146c, 5 FAQs with verbatim schema parity)
+  10. `/es/json-formatter/index.html` (Title: 57c, Desc: 147c, 5 FAQs with verbatim schema parity)
+- **Top 10 Danish Tools Optimized:**
+  1. `/da/mortgage-calculator/index.html` (Title: 47c, Desc: 156c, 5 FAQs with verbatim schema parity)
+  2. `/da/loan-calculator/index.html` (Title: 57c, Desc: 148c, 5 FAQs with verbatim schema parity)
+  3. `/da/todo-list/index.html` (Title: 58c, Desc: 157c, 5 FAQs with verbatim schema parity)
+  4. `/da/bmi-calculator/index.html` (Title: 58c, Desc: 149c, 5 FAQs with verbatim schema parity)
+  5. `/da/invoice-generator/index.html` (Title: 60c, Desc: 148c, 5 FAQs with verbatim schema parity)
+  6. `/da/pdf-compress/index.html` (Title: 59c, Desc: 149c, 5 FAQs synchronized across SSR, dc-template, and JSON-LD)
+  7. `/da/pdf-to-jpg/index.html` (Title: 58c, Desc: 151c, 5 FAQs synchronized across SSR, dc-template, and JSON-LD)
+  8. `/da/jpg-to-pdf/index.html` (Title: 59c, Desc: 147c, 5 FAQs synchronized across SSR, dc-template, and JSON-LD)
+  9. `/da/ocr-pdf/index.html` (Title: 59c, Desc: 149c, 5 FAQs with verbatim schema parity)
+  10. `/da/word-counter/index.html` (Title: 56c, Desc: 146c, 5 FAQs with verbatim schema parity)
+- **Metadata Standards & Bounds:**
+  - `<title>`: All 20 tools strictly $\le 60$ visible characters, brand suffix ` | AnyConverter`, primary keyword front-loaded.
+  - `<meta name="description">`: All 20 tools strictly 140–160 characters, front-loading primary queries with active CTAs and truthful client-side privacy descriptions.
+  - Open Graph & Twitter: Mirrored identically into `og:title`, `og:description`, `og:url`, `twitter:title`, and `twitter:description`.
+- **100% Verbatim Parity & Schema Alignment:**
+  - 100 high-intent Q&As (5 per tool across 20 tools) addressing user search intent, formats, and device capabilities.
+  - 100% verbatim equality enforced between visible HTML and `FAQPage` schema.
+- **SSR & Client Template Synchronization:**
+  - Fully synchronized both static SSR pre-rendered HTML and client-side `<script type="text/x-dc-template" id="dc-template">` in all 5 document converter tools.
+- **Automated Verification:**
+  - `node tests/test_s09_striking_distance_es_da.js`: 970/970 assertions passed.
+  - `node scripts/generate_sitemap.js --check`: 100% synchronized with canonical manifest (441 URLs, 147 clusters).
+  - `node tests/test_sitemap_integrity.js`: 100% PASS (441/441 URLs declared, 0 dangling, 0 orphans).
+  - `node tests/test_localization_regression.js`: 100% PASS (147 ES + 147 DA pages verified clean).
+  - `node tests/test_privacy_claims_regression.js`: 100% PASS (475/475 HTML files verified).
+  - `node tests/test_s08_faq_expansion.js`: 234/234 assertions passed.
+  - `node tests/test_s07_striking_distance_metadata.js`: 60/60 assertions passed.
+  - `node tests/run_all_tests.js`: 23/23 master test suites passed (100%).
+- **Documentation & Memory:**
+  - Recorded ADR-048 in `.ai-memory/DECISIONS.md`.
+  - Captured G1–G15 release gate evidence in `docs/growth/91-TEST-EVIDENCE-AND-RELEASE-GATES.md`.
+  - Updated `.ai-memory/STATE.json` and `.ai-memory/HANDOFF.md`.
+- **Next Sprint Pointer:** Sprint S10 — Favorites UX upgrade + cross-locale persistence (Week 4 kickoff).
+
+---
+
 ## Phase 40 — Growth Program Sprint S08: High-Intent FAQ Expansion & Schema Parity (EN) (2026-11-19)
 
 **Program:** AnyConverter.io Global Growth Engine (SEO + engagement + backlinks + distribution).  
