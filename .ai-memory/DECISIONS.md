@@ -910,6 +910,45 @@ The second independent audit report (`SECOND_INDEPENDENT_FINANCIAL_REVALIDATION_
 
 ---
 
+## ADR-055: Reciprocal Related-Tool Internal Linking Graph & Complete Orphan Tool Eradication (128 Tools across EN, ES, DA)
+- **Date:** 2026-11-20
+- **Status:** Implemented on Feature Branch `feat/s16-orphan-fix-related-reciprocity`
+- **Context:**
+  - Sprint S16 marks Days 31–32 (Week 5: Orphan fix pass + related-tools reciprocity) of the 60-Day Aggressive Growth Plan (`docs/growth/60_DAY_AGGRESSIVE_PLAN.md`).
+  - Pre-sprint internal linking audit of `RELATED_TOOLS_COMPLETE_MAPPING.json` against all 128 canonical tools across English, Spanish, and Danish identified:
+    1. Orphan tool risk: `compare-pdf` had in-degree 0 (no other tool linked to it in the related tools section).
+    2. Low in-degree tools: 12 tools (`barcode-generator`, `blood-type-compatibility`, `character-counter`, `dice-roller`, `fancy-text-generator`, `gst-vat-calculator`, `lo-shu-grid-calculator`, `margin-vs-markup-calculator`, `mouse-tester`, `pay-rise-calculator`, `team-picker`, `unit-price-calculator`) had in-degree 1.
+    3. Asymmetry: 155 directed links were asymmetric ($u \to v$ existed without reciprocal $v \to u$).
+  - Search engine crawlers (Googlebot) and human visitors rely on dense, reciprocal internal link equity within semantic topic clusters.
+  - Target KPI: 0 orphan tools, 100% reciprocal related-tool graph, all tools reachable via $\ge 3$ distinct paths, and exact physical HTML card synchronization across all 384 pages (EN, ES, DA).
+- **Decision:**
+  1. **Canonical Graph Transformation (`RELATED_TOOLS_COMPLETE_MAPPING.json`):**
+     - Symmetrized and optimized the undirected graph $G = (V, E)$ over all $|V| = 128$ tools.
+     - Enforced strict reciprocity: $u \in \text{mapping}[v] \iff v \in \text{mapping}[u]$. Asymmetric links reduced from 155 to exactly 0.
+     - Degree bounded strictly between 4 and 5 (average degree 4.58, total directed edges: 586), perfectly satisfying the workflow adjacency rule ($3 \le \text{degree} \le 6$).
+  2. **Orphan Eradication & Low In-Degree Elimination:**
+     - Connected `compare-pdf` reciprocally to 4 core PDF workflow tools: `edit-pdf`, `pdf-merge`, `pdf-split`, and `text-diff-checker`.
+     - Elevated all 12 low in-degree tools to $\ge 4$ incoming reciprocal connections within their respective semantic clusters.
+     - Zero tools have in-degree < 4 across the entire catalog.
+  3. **Multi-Path Reachability & Semantic Integrity:**
+     - Verified every tool is reachable via at least 3 distinct canonical paths from related-tool networks and category hubs.
+     - Preserved all cross-category anti-pattern constraints (e.g. no developer tools linked from `color-converter`, no calculators linked from unrelated tools).
+  4. **Physical HTML Card Synchronization (384 Files across EN, ES, DA):**
+     - Extracted authoritative tool card markup, localized titles, and descriptions directly from reviewed homepages (`index.html`, `es/index.html`, `da/index.html`) to prevent diacritic degradation (preserving Danish `Tilføj`, `vandmærke`, Spanish `compatibilidad`, `contraseña`).
+     - Synchronized the `#related-tools-grid` in all 384 physical HTML files (128 EN, 128 ES, 128 DA) rendering 1,758 validated cards.
+  5. **Automated Verification & Release Gates:**
+     - Created dedicated test suite `tests/test_s16_orphan_fix_reciprocity.js` (10/10 assertions passing).
+     - Verified `tests/test_related_tools_regression.js` (PASS, 0 broken targets, 0 self-links).
+     - Verified `tests/test_localization_regression.js` (PASS, 0 diacritic regressions).
+     - Registered in `tests/run_all_tests.js` (31/31 master test suites passing, 100%), including 21/21 Playwright visual regression snapshots.
+     - Verified canonical sitemap sync (`node scripts/generate_sitemap.js --check`, 441 URLs).
+- **Consequences:**
+  - Eradicates orphan pages and low link equity pockets sitewide.
+  - Distributes PageRank and crawl budget evenly across all 128 tools in all 3 locales.
+  - Preserves 100% localization fidelity and valid canonical/hreflang structures.
+
+---
+
 ## ADR-054: Progressive Web App (PWA) Manifest, Scoped Service Worker, and Deferred Install Prompt (Homepage + Top 5 Tools)
 - **Date:** 2026-11-20
 - **Status:** Implemented on Feature Branch `feat/s15-pwa-manifest-install-prompt`
