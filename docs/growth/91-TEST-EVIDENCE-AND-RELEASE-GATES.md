@@ -1,3 +1,65 @@
+# Pre-deploy SEO Verification — feat/s15-pwa-manifest-install-prompt @ HEAD
+
+Date: 2026-11-20T05:35:00Z
+Branch: feat/s15-pwa-manifest-install-prompt
+Changed files: manifest.webmanifest, sw.js, assets/js/shared/pwa.js, assets/js/shared/analytics.js, assets/js/shared.js, assets/css/style.css, assets/img/icon-192.png, assets/img/icon-512.png, index.html, es/index.html, da/index.html, json-formatter/index.html, es/json-formatter/index.html, da/json-formatter/index.html, percentage-calculator/index.html, es/percentage-calculator/index.html, da/percentage-calculator/index.html, age-calculator/index.html, es/age-calculator/index.html, da/age-calculator/index.html, loan-calculator/index.html, es/loan-calculator/index.html, da/loan-calculator/index.html, ip-address-lookup/index.html, es/ip-address-lookup/index.html, da/ip-address-lookup/index.html, tests/test_s15_pwa_install.js, tests/run_all_tests.js
+Affected URLs: Homepage (`/`, `/es/`, `/da/`) + Top 5 Tools (`/json-formatter/`, `/percentage-calculator/`, `/age-calculator/`, `/loan-calculator/`, `/ip-address-lookup/` across EN, ES, DA)
+Locales touched: [en, es, da] (100% reciprocal 4-way hreflang verified across en, es, da, x-default)
+
+| Gate | Status | Evidence |
+|---|---|---|
+| G1 Repo safety | PASS | Branch `feat/s15-pwa-manifest-install-prompt` branched directly off clean S14 checkpoint (`4fe472a`). Focused on W3C Web App Manifest, scoped Service Worker (`sw.js`), non-intrusive deferred install prompt (`assets/js/shared/pwa.js`), and analytics telemetry. |
+| G2 Existing tests | PASS | `node tests/run_all_tests.js` executed: 30/30 master suites passed (100%), including visual regression, sitemap integrity, analytics adapter, and all unit/functional engines. |
+| G3 HTML validation | PASS | Valid semantic HTML markup on `index.html` and top 5 tools across EN, ES, DA (18 pages) containing `<link rel="manifest" href="/manifest.webmanifest">`, `<meta name="theme-color" content="#B04A45">`, and deferred script loading. |
+| G4 Link integrity | PASS | 100% reciprocal hreflang links verified in `sitemap.xml` and HTML headers across all 147 clusters (441 pages). Zero broken links. |
+| G5 Functional E2E | PASS | 21/21 Playwright visual regression comparisons passed cleanly via `tests/run_visual_regression.js`. PWA prompt flow, deferred logic, and dismissal rate-limiting validated. |
+| G6 Multilingual regression | PASS | `node tests/test_localization_regression.js` passed (100% across all 147 Danish and 147 Spanish pages). Native translations across EN, ES, DA for PWA banner and button strings. |
+| G7 Responsive UI | PASS | Zero layout distortion. PWA install banner displays cleanly as a responsive floating card on mobile (≤ 640px) and desktop with 0px horizontal overflow. |
+| G8 Accessibility | PASS | Full compliance with WCAG 2.2 AA: accessible `:focus-visible` outlines on PWA banner controls and buttons (2px solid #B04A45 with 2px offset), explicit localized `aria-label` attributes on `#pwa-install-btn` and `#pwa-dismiss-btn`. |
+| G9 Privacy / security | PASS | Verified by `tests/test_privacy_claims_regression.js` (475/475 HTML files sweep pass) and `phase05-international-seo-audit.js`: Zero secrets, zero PII, zero server upload leakage. Strict third-party domain exclusion in service worker. |
+| G10 Performance | PASS | Zero heavy external library dependencies added; lightweight vanilla JS implementation. Scoped caching accelerates subsequent loads while Network-First strategy eliminates stale HTML risks. |
+| G11 SEO route invariants | PASS | Canonical URLs remain strictly clean on EN, ES, DA (`https://anyconverter.io/` and tool paths). Parameterized URLs continue to receive dynamic `noindex, follow`. |
+| G12 Structured data | PASS | WebSite, WebApplication, and FAQPage JSON-LD schema validated intact across all 18 pages. |
+| G13 Internal linking | PASS | Breadcrumbs, related tools, footer links, and in-content links remain 100% intact. |
+| G14 AdSense placement | PASS | Ad slots remain unaltered in rail and leaderboard positions; service worker strictly excludes ad domains and scripts. |
+| G15 Rollback plan | PASS | Reversible git commit; prior release checkpoint (`feat/s14-shareable-date-difference`, commit `4fe472a`). |
+
+---
+
+## Sprint S15 Delivery Status Verdict
+
+**STATUS: 100% DELIVERED FOR SPRINT S15 (PWA MANIFEST + SCOPED SERVICE WORKER + DEFERRED INSTALL PROMPT)**
+
+1. **W3C Web App Manifest (`manifest.webmanifest`) & Metadata:** **PASS / SHIPPED**.
+   - Created valid standards-compliant W3C Web App Manifest at root (`manifest.webmanifest`) with `name: "AnyConverter — Free Online Tools & Calculators"`, `short_name: "AnyConverter"`, `start_url: "/?source=pwa"`, `display: "standalone"`, `background_color: "#F7F6F3"`, `theme_color: "#B04A45"`, and description.
+   - Generated valid 192x192 and 512x512 icons (`assets/img/icon-192.png`, `assets/img/icon-512.png`) and referenced `assets/img/favicon.svg`.
+   - Injected `<meta name="theme-color" content="#B04A45">` and `<link rel="manifest" href="/manifest.webmanifest">` across `index.html` and the top 5 tools across all locales (18 pages total).
+2. **Scoped & Safe Service Worker (`sw.js`):** **PASS / SHIPPED**.
+   - Versioned cache name: `ac-pwa-v1`.
+   - Scoped pre-cache covering homepage, top 5 tools (`/json-formatter/`, `/percentage-calculator/`, `/age-calculator/`, `/loan-calculator/`, `/ip-address-lookup/`), and core static assets.
+   - Strict Network-First strategy for HTML navigation requests (zero stale HTML risk; falls back to cache only when offline).
+   - Stale-While-Revalidate strategy for same-origin static assets (CSS, JS, icons).
+   - Strict third-party domain exclusion: Never caches Google AdSense, Google Analytics, or external APIs.
+   - Graceful offline fallback: Cached tools continue to run 100% client-side; site remains 100% operational if SW registration fails or is unsupported.
+3. **Non-Intrusive, Deferred Install Prompt Manager (`assets/js/shared/pwa.js`):** **PASS / SHIPPED**.
+   - Intercepts and calls `preventDefault()` on `beforeinstallprompt`.
+   - Never prompts first-time visitors immediately on landing.
+   - Contextual trigger: displays install banner (`#pwa-install-banner`) only after at least one successful tool interaction or calculation.
+   - Rate-limited & dismissible: Dismiss action suppresses re-prompting for 14 days via `localStorage['ac:pwa-dismissed-ts']`.
+   - Suppresses prompt if app is already installed or in standalone display mode.
+   - Added subtle footer install button `#btn-footer-pwa-install` revealing when browser install prompt is ready.
+   - WCAG 2.2 AA compliant focus-visible styling (`2px solid #B04A45`, `2px offset`) and explicit localized `aria-label` attributes on all prompt controls across EN, ES, DA.
+4. **Telemetry & Analytics Integration:** **PASS / SHIPPED**.
+   - Registered `pwa_prompt_shown`, `pwa_installed`, and `pwa_dismissed` in `assets/js/shared/analytics.js` allowlist.
+   - Added helper methods `trackPwaPromptShown`, `trackPwaInstalled`, and `trackPwaDismissed` on `window.ACAnalytics`.
+5. **Automated Verification:** **PASS / SHIPPED**.
+   - Dedicated verification suite `tests/test_s15_pwa_install.js`: 23/23 assertions PASS.
+   - Master repository suite `tests/run_all_tests.js`: 30/30 suites PASS (100%), including 21/21 Playwright visual regression snapshots.
+   - Sitemap integrity: `node scripts/generate_sitemap.js --check` 100% synchronized (441 URLs).
+6. **Memory & Documentation:** **PASS / RECORDED**. ADR-054 recorded in `.ai-memory/DECISIONS.md`, `.ai-memory/STATE.json` and `.ai-memory/HANDOFF.md` updated.
+
+---
+
 # Pre-deploy SEO Verification — feat/s14-shareable-date-difference @ HEAD
 
 Date: 2026-11-20T01:20:00Z

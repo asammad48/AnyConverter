@@ -50,6 +50,16 @@
     ALLOWED_EVENTS_SET[S13_ENGAGEMENT_EVENTS[k]] = true;
   });
 
+  // Sprint S15 PWA lifecycle events
+  var S15_PWA_EVENTS = {
+    PWA_PROMPT_SHOWN: 'pwa_prompt_shown',
+    PWA_INSTALLED: 'pwa_installed',
+    PWA_DISMISSED: 'pwa_dismissed'
+  };
+  Object.keys(S15_PWA_EVENTS).forEach(function (k) {
+    ALLOWED_EVENTS_SET[S15_PWA_EVENTS[k]] = true;
+  });
+
   // Sensitive parameter keys that must NEVER be transmitted (zero PII, zero file content)
   var FORBIDDEN_KEY_REGEX = /^(file|filename|content|text|data|input|query|email|user|pass|password|token|secret|doc|prompt|val|body|ip|address|ssn|card|credit)$/i;
   // Patterns matching emails, IP addresses, credit cards, or external URLs
@@ -324,6 +334,25 @@
         tool_slug: toolSlug || getCurrentToolSlug(),
         mode: mode != null ? String(mode) : '1',
         status: status || 'success'
+      });
+    },
+
+    // 7. Sprint S15 PWA Lifecycle Telemetry
+    trackPwaPromptShown: function (triggerSource) {
+      track('pwa_prompt_shown', {
+        trigger_source: triggerSource || 'tool_interaction'
+      });
+    },
+
+    trackPwaInstalled: function (outcome) {
+      track('pwa_installed', {
+        outcome: outcome || 'accepted'
+      });
+    },
+
+    trackPwaDismissed: function (action) {
+      track('pwa_dismissed', {
+        action: action || 'dismiss_button'
       });
     }
   };

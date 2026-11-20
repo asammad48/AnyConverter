@@ -96,6 +96,9 @@
     if (answerEl) answerEl.textContent = typeof ans === 'number' ? ans.toFixed(4).replace(/\.?0+$/, '') : ans;
     if (labelEl) labelEl.textContent = label;
     if (resultEl) resultEl.style.display = 'block';
+    if (typeof window !== 'undefined' && window.ACAnalytics && typeof window.ACAnalytics.trackToolCompleted === 'function') {
+      window.ACAnalytics.trackToolCompleted('percentage-calculator', 'manual_input', 'percentage_calculated');
+    }
     return true;
   }
 

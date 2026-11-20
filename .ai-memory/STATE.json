@@ -1,11 +1,11 @@
 {
-  "updatedAt": "2026-11-20T01:20:00.000Z",
+  "updatedAt": "2026-11-20T05:35:00.000Z",
   "activeProfile": "PROFILE 1 — SEO RESEARCH",
-  "currentPhase": "PHASE 46: GROWTH PROGRAM SPRINT S14 (SHAREABLE STATE: DATE DIFFERENCE CALCULATOR EN+ES+DA)",
-  "activeBranch": "feat/s14-shareable-date-difference",
-  "baseReleaseCheckpoint": "f9de295",
+  "currentPhase": "PHASE 47: GROWTH PROGRAM SPRINT S15 (PWA MANIFEST + SCOPED SERVICE WORKER + INSTALL PROMPT)",
+  "activeBranch": "feat/s15-pwa-manifest-install-prompt",
+  "baseReleaseCheckpoint": "4fe472a",
   "headCommit": "HEAD",
-  "auditVerdict": "PASS FOR USER REVIEW — Sprint S14 Shareable calculator state for Date Difference & Age Calculator across EN, ES, DA (/age-calculator/, /es/age-calculator/, /da/age-calculator/) completed. Features implemented: 1) Explicit share action (#btn-share-age in action bar and #btn-share-result in result container) and live region (#age-share-feedback) across English, Spanish, and Danish with WCAG 2.2 AA focus-visible outline (2px solid #B04A45, 2px offset); 2) Compact versioned query schema (?v=1&from=YYYY-MM-DD&to=YYYY-MM-DD) storing strictly non-sensitive numeric ISO date strings; 3) Locale-aware state hydration on page load with date population, immediate calculation, and localized number separators / milestone labels; 4) Robust fail-safe fallback and error recovery for malformed/unsupported query strings (?v=999, invalid dates, inverted dates from > to) gracefully resetting without throwing exceptions or showing broken UI; 5) SEO invariant protection: clean canonical URLs preserved across EN, ES, and DA and dynamic insertion/update of <meta name=\"robots\" content=\"noindex, follow\"> on parameterized URLs; 6) No auto-share / no silent address bar mutation; 7) Telemetry integration via window.ACAnalytics for share_link_generated; 8) Full automated verification in tests/test_s14_shareable_date_difference.js (17/17 passing) and 29/29 master repository test suites passing (100%), including 21/21 Playwright visual regression snapshots. Sitemap synchronized (441 URLs), ADR-053 recorded in .ai-memory/DECISIONS.md, and G1-G15 release gate evidence prepended to docs/growth/91-TEST-EVIDENCE-AND-RELEASE-GATES.md.",
+  "auditVerdict": "PASS FOR USER REVIEW — Sprint S15 PWA Manifest, Scoped Service Worker, and Deferred Install Prompt (Homepage + Top 5 Tools across EN, ES, DA) completed. Features implemented: 1) Standards-compliant W3C Web App Manifest (manifest.webmanifest) with theme_color #B04A45, background_color #F7F6F3, start_url /?source=pwa, and 192x192 & 512x512 icons; 2) Injected <meta name=\"theme-color\" content=\"#B04A45\"> and <link rel=\"manifest\" href=\"/manifest.webmanifest\"> across index.html and top 5 tools across all locales (18 pages total); 3) Scoped Service Worker (sw.js) with versioned cache ac-pwa-v1, pre-caching homepage, top 5 tools, and essential static assets; 4) Strict Network-First strategy for HTML navigation eliminating stale HTML risks and graceful offline fallback; 5) Strict third-party domain exclusion bypassing Google AdSense, Google Analytics, and external APIs; 6) Non-intrusive deferred install prompt (assets/js/shared/pwa.js) never interrupting on first landing, triggered contextually after successful tool interaction or calculation; 7) 14-day dismissal suppression via localStorage['ac:pwa-dismissed-ts']; 8) WCAG 2.2 AA compliant focus-visible outlines (2px solid #B04A45, 2px offset) and explicit localized aria-labels across EN, ES, DA; 9) Telemetry integration with window.ACAnalytics for pwa_prompt_shown, pwa_installed, pwa_dismissed; 10) Full automated verification in tests/test_s15_pwa_install.js (23/23 passing) and 30/30 master repository test suites passing (100%), including 21/21 Playwright visual regression snapshots. Sitemap synchronized (441 URLs), ADR-054 recorded in .ai-memory/DECISIONS.md, and G1-G15 release gate evidence prepended to docs/growth/91-TEST-EVIDENCE-AND-RELEASE-GATES.md.",
   "warningsRecorded": [
     "Loan Term Unit Toggle: Clarification that 8.58% nominal APR / 8.93% EAR in fixture documentation corresponds to a 36-year (432-month) loan input. When '#term-unit-mos' is selected, 36 months correctly yields 10.55% nominal APR / 11.08% EAR. Both modes execute with 100% mathematical precision.",
     "Non-Latin-1 Characters in jsPDF: All supported platform languages (EN, ES, DA) and currency symbols (€, £, kr.) are fully preserved in Latin-1 / WinAnsi range; non-Latin-1 Unicode characters are safely mapped to '?' to prevent jsPDF Helvetica Type 1 crashes. Future expansion into non-Latin locales would require custom embedded TTF fonts."
@@ -58,9 +58,10 @@
     "dataforseo": "DISABLED"
   },
   "testResults": {
-    "totalSuites": 29,
-    "passedSuites": 29,
+    "totalSuites": 30,
+    "passedSuites": 30,
     "status": "PASS",
+    "s15PwaInstallSuite": "pass (23/23 checks passed: manifest validity, schema, icons, start_url, head tags on 18 pages, scoped service worker ac-pwa-v1, network-first HTML, third-party exclusion, deferred prompt logic, 14-day dismissal rate-limiting, WCAG 2.2 AA focus-visible outlines, analytics integration)",
     "s14ShareableDateDifferenceSuite": "pass (17/17 checks passed: multilingual share buttons, accessible feedback live region, WCAG 2.2 AA focus-visible, compact versioned schema v=1&from=...&to=..., locale-aware formatting across EN/ES/DA, auto-population and calculation, robust fail-safe on malformed/inverted dates, clean canonical preservation, dynamic noindex insertion on parameterized URLs, telemetry dispatch share_link_generated)",
     "s13ShareablePercentageSuite": "pass (24/24 checks passed: share button existence, accessible feedback live region, WCAG 2.2 AA focus-visible, compact versioned schema v=1&m=1|2|3|4, auto-population and calculation across all 4 modes, robust fail-safe on malformed inputs/divide-by-zero, clean canonical preservation, dynamic noindex insertion on parameterized URLs, telemetry dispatch share_link_generated)",
     "s12WorkflowChainSuite": "pass (14/14 checks passed: workflow chain markup in EN/ES/DA, non-interruptive hidden default state, trigger on format, trigger on minify, hide on empty/error, dismiss button, sessionStorage chain to JSON Compare, direct in-tool chain to CSV, sessionStorage chain to JSON to YAML, cross-locale URLs, CSS focus-visible, analytics tracking)",
@@ -82,10 +83,10 @@
   },
   "nextWorkstream": {
     "target": "User Authorization for Commit and Deployment",
-    "branch": "feat/s14-shareable-date-difference",
+    "branch": "feat/s15-pwa-manifest-install-prompt",
     "requirements": [
-      "Review sprint deliverables on feat/s14-shareable-date-difference",
-      "Authorize git commit on feat/s14-shareable-date-difference",
+      "Review sprint deliverables on feat/s15-pwa-manifest-install-prompt",
+      "Authorize git commit on feat/s15-pwa-manifest-install-prompt",
       "Authorize pull request creation and merge to main"
     ]
   },
@@ -100,22 +101,27 @@
     ],
     "cadence": "30 sprints x 2 days = 60 days; one prod ship per sprint",
     "currentSprint": {
-      "id": "S14",
-      "name": "Shareable state — Date Difference Calculator (EN + ES + DA)",
-      "day": 27,
+      "id": "S15",
+      "name": "PWA manifest + install prompt (homepage + top 5 tools)",
+      "day": 29,
       "status": "completed_ready_for_review",
-      "branch": "feat/s14-shareable-date-difference",
-      "progress": "Sprint S14 100% completed: Implemented shareable calculator state for Date Difference & Age Calculator across EN, ES, DA (/age-calculator/, /es/age-calculator/, /da/age-calculator/). 1) Explicit share action (#btn-share-age in action bar and #btn-share-result in result container) with SVG share icons and accessible text in EN, ES, and DA. 2) No auto-share / no silent address bar mutation (URL only created and copied to clipboard on explicit click). 3) Live region #age-share-feedback with role='status' and aria-live='polite' announcing localized copy message. 4) Accessible WCAG 2.2 AA focus-visible styles (2px solid #B04A45, 2px offset). 5) Compact, versioned parameter schema (?v=1&from=YYYY-MM-DD&to=YYYY-MM-DD) storing strictly non-sensitive ISO date strings. 6) State hydration on DOMContentLoaded with date field population, immediate calculation, and localized number separators and milestone labels. 7) Robust fail-safe fallback and error recovery gracefully resetting on malformed parameters or inverted chronological range (from > to). 8) SEO invariant protection: clean canonical tags preserved on EN, ES, DA and dynamic insertion/update of <meta name=\"robots\" content=\"noindex, follow\"> on parameterized URLs. 9) Telemetry integration with window.ACAnalytics for share_link_generated. Built tests/test_s14_shareable_date_difference.js (17/17 passing). All 29 master repository test suites passed (29/29 PASS, 100%), including 21/21 Playwright visual regression snapshots. Sitemap synchronized (441 URLs), ADR-053 recorded in .ai-memory/DECISIONS.md, and G1-G15 release gate evidence prepended to docs/growth/91-TEST-EVIDENCE-AND-RELEASE-GATES.md.",
+      "branch": "feat/s15-pwa-manifest-install-prompt",
+      "progress": "Sprint S15 100% completed: Implemented Progressive Web App (PWA) manifest, scoped service worker (ac-pwa-v1), and non-intrusive deferred install prompt across homepage and top 5 tools in EN, ES, DA (18 pages total). 1) Created standards-compliant W3C Web App Manifest (manifest.webmanifest) with theme_color #B04A45, background_color #F7F6F3, start_url /?source=pwa, and 192x192 & 512x512 icons (assets/img/icon-192.png, assets/img/icon-512.png). 2) Injected <meta name=\"theme-color\" content=\"#B04A45\"> and <link rel=\"manifest\" href=\"/manifest.webmanifest\"> across index.html and top 5 tools (JSON Formatter, Percentage Calculator, Age Calculator, Loan Calculator, IP Address Lookup) across all locales. 3) Built scoped Service Worker (sw.js) with versioned cache ac-pwa-v1 pre-caching homepage, top 5 tools, and essential static assets. Enforced Network-First strategy for HTML navigation (zero stale HTML risk) and Stale-While-Revalidate for same-origin static assets. Strictly excluded Google AdSense, Google Analytics, and external APIs from caching. 4) Built deferred install prompt manager (assets/js/shared/pwa.js) that intercepts beforeinstallprompt with preventDefault(), avoids any first-load interruption, contextually triggers after tool interaction or calculation, enforces 14-day dismissal suppression via localStorage['ac:pwa-dismissed-ts'], and provides WCAG 2.2 AA compliant focus-visible states (2px solid #B04A45, 2px offset). 5) Integrated telemetry in assets/js/shared/analytics.js for pwa_prompt_shown, pwa_installed, pwa_dismissed. Built tests/test_s15_pwa_install.js (23/23 passing). All 30 master repository test suites passed (30/30 PASS, 100%), including 21/21 Playwright visual regression snapshots. Sitemap synchronized (441 URLs), ADR-054 recorded in .ai-memory/DECISIONS.md, and G1-G15 release gate evidence prepended to docs/growth/91-TEST-EVIDENCE-AND-RELEASE-GATES.md.",
       "blockers": [],
-      "nextSprintId": "S15",
+      "nextSprintId": "S16",
       "deliverables": [
-        "age-calculator/index.html, es/age-calculator/index.html, da/age-calculator/index.html (#btn-share-age, #btn-share-result, #age-share-feedback)",
-        "assets/css/style.css (#btn-share-age:focus-visible)",
-        "assets/js/tools/age-calculator.js (generateShareUrl, hydrateFromUrl, applyNoindex, triggerShare, locale-aware formatting, fail-safe)",
-        "tests/test_s14_shareable_date_difference.js (17/17 automated verification assertions PASS)",
-        "tests/run_all_tests.js (registered S14 suite, 29/29 master suites PASS, 100%)",
-        "docs/growth/91-TEST-EVIDENCE-AND-RELEASE-GATES.md (S14 pre-deploy gate report 15/15 PASS)",
-        ".ai-memory/DECISIONS.md (ADR-053 recorded)",
+        "manifest.webmanifest (W3C Web App Manifest with icons, theme_color, start_url)",
+        "assets/img/icon-192.png, assets/img/icon-512.png (192x192 and 512x512 crisp PWA icons)",
+        "sw.js (Scoped Service Worker, version ac-pwa-v1, Network-First for HTML, third-party exclusions, offline fallback)",
+        "assets/js/shared/pwa.js (Deferred install prompt manager, contextual trigger, 14-day dismissal rate-limiting, multilingual strings)",
+        "assets/css/style.css (#pwa-install-banner, WCAG 2.2 AA focus-visible outlines, responsive card styling)",
+        "assets/js/shared.js (Subtle footer install button and click listener)",
+        "assets/js/shared/analytics.js (Telemetry events: pwa_prompt_shown, pwa_installed, pwa_dismissed)",
+        "18 target pages (index.html + top 5 tools across EN, ES, DA with manifest link, theme-color meta, and pwa.js)",
+        "tests/test_s15_pwa_install.js (23/23 automated verification assertions PASS)",
+        "tests/run_all_tests.js (registered S15 suite, 30/30 master suites PASS, 100%)",
+        "docs/growth/91-TEST-EVIDENCE-AND-RELEASE-GATES.md (S15 pre-deploy gate report 15/15 PASS)",
+        ".ai-memory/DECISIONS.md (ADR-054 recorded)",
         ".ai-memory/STATE.json (updated)",
         ".ai-memory/HANDOFF.md (updated)"
       ]

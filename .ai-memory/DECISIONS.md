@@ -910,6 +910,55 @@ The second independent audit report (`SECOND_INDEPENDENT_FINANCIAL_REVALIDATION_
 
 ---
 
+## ADR-054: Progressive Web App (PWA) Manifest, Scoped Service Worker, and Deferred Install Prompt (Homepage + Top 5 Tools)
+- **Date:** 2026-11-20
+- **Status:** Implemented on Feature Branch `feat/s15-pwa-manifest-install-prompt`
+- **Context:**
+  - Sprint S15 concludes Week 5 (Shareable state + install) of the 60-Day Aggressive Growth Plan (`docs/growth/60_DAY_AGGRESSIVE_PLAN.md`).
+  - Users returning to AnyConverter for high-utility daily tasks (formatting JSON, calculating percentages, calculating date differences/ages, estimating loan amortizations, and checking IP addresses) benefit significantly from standalone installability and offline resilience without app store friction.
+  - Core Constraints & Policies:
+    1. Scoped Pre-Cache & Safe Service Worker: Only pre-cache the homepage, top 5 tools (`/json-formatter/`, `/percentage-calculator/`, `/age-calculator/`, `/loan-calculator/`, `/ip-address-lookup/`), and essential static assets (`/assets/css/style.css`, `/assets/js/shared.js`, favicons/icons). No blanket caching.
+    2. No Stale HTML: Employ a strict Network-First strategy for HTML navigation, falling back to cache only when offline.
+    3. Strict Third-Party Exclusion: Never cache Google AdSense (`adsbygoogle.js`, `googleads.g.doubleclick.net`), Google Analytics (`googletagmanager.com`), or external API endpoints.
+    4. Non-Intrusive, Deferred Install Prompt: Never display an aggressive popup or prompt on first-load landing. Display the install action banner (`#pwa-install-banner`) only after the user has performed at least one successful tool interaction or calculation.
+    5. Rate-Limited & Dismissible: Clicking Dismiss suppresses re-prompting for 14 days via `localStorage['ac:pwa-dismissed-ts']`.
+    6. Accessibility (WCAG 2.2 AA): High-contrast `:focus-visible` states (`2px solid #B04A45`, `2px offset`) and explicit `aria-label` attributes on controls.
+    7. Telemetry: Instrument lifecycle events (`pwa_prompt_shown`, `pwa_installed`, `pwa_dismissed`) via `window.ACAnalytics`.
+  - Target KPI: $\ge 2.5\%$ install-prompt accept rate on eligible sessions.
+- **Decision:**
+  1. **W3C Web App Manifest (`manifest.webmanifest`):**
+     - Declared standards-compliant manifest at repository root with `name: "AnyConverter — Free Online Tools & Calculators"`, `short_name: "AnyConverter"`, `start_url: "/?source=pwa"`, `display: "standalone"`, `background_color: "#F7F6F3"`, `theme_color: "#B04A45"`, `description`, and 192x192 / 512x512 icons (`assets/img/icon-192.png`, `assets/img/icon-512.png`, `assets/img/favicon.svg`).
+  2. **Metadata & Head Integration across 18 Target Pages:**
+     - Injected `<meta name="theme-color" content="#B04A45">` and `<link rel="manifest" href="/manifest.webmanifest">` across `index.html` (EN, ES, DA) and the top 5 flagship tools across all locales (18 pages total).
+     - Preserved clean canonical URLs, reciprocal 4-way hreflang tags, and structured data JSON-LD.
+  3. **Scoped Service Worker (`sw.js`):**
+     - Declared versioned cache name `ac-pwa-v1`.
+     - Pre-caches scoped routes on `install` with `self.skipWaiting()`.
+     - Cleans previous cache keys on `activate` with `self.clients.claim()`.
+     - Strictly intercepts same-origin GET requests; bypasses third-party advertising, analytics, and external APIs.
+     - Uses Network-First for HTML navigations to eliminate stale HTML risks.
+     - Uses Stale-While-Revalidate for same-origin static assets.
+     - Provides offline fallback responses for cached client-side tools and graceful 503 fallback for uncached routes.
+  4. **Deferred Install Prompt Manager (`assets/js/shared/pwa.js` & `assets/css/style.css`):**
+     - Intercepts `beforeinstallprompt` and calls `preventDefault()`.
+     - Tracks interaction state via `sessionStorage['ac:tool-interaction-completed']`.
+     - Listens to `ac:analytics-event` (`tool_completed`, `result_copied`, `result_downloaded`, `share_link_generated`).
+     - Renders `#pwa-install-banner` with localized text (EN, ES, DA) only after tool interaction, suppressing display if dismissed within 14 days or already installed/standalone.
+     - Styled with WCAG 2.2 AA compliant focus-visible outlines (`2px solid #B04A45`, `2px offset`).
+     - Added subtle footer install button `#btn-footer-pwa-install` that activates when browser install prompt is available.
+  5. **Telemetry & Analytics:**
+     - Registered `pwa_prompt_shown`, `pwa_installed`, and `pwa_dismissed` in `assets/js/shared/analytics.js` with convenience methods `trackPwaPromptShown`, `trackPwaInstalled`, and `trackPwaDismissed`.
+  6. **Automated Verification:**
+     - Created dedicated test suite `tests/test_s15_pwa_install.js` (23/23 assertions passing).
+     - Registered in `tests/run_all_tests.js` with 30/30 master test suites passing (100%), including 21/21 Playwright visual regression snapshots.
+     - Verified sitemap synchronization (`node scripts/generate_sitemap.js --check`).
+- **Consequences:**
+  - Delivers modern Progressive Web App capabilities to AnyConverter without disrupting SEO, caching stale HTML, or frustrating first-time users.
+  - Top tools continue to work offline with zero external network dependencies.
+  - Full website remains 100% operational if Service Worker fails to register or is unsupported.
+
+---
+
 ## ADR-053: Shareable Calculator State for Date Difference & Age Calculator across EN, ES, DA (/age-calculator/, /es/age-calculator/, /da/age-calculator/)
 - **Date:** 2026-11-20
 - **Status:** Implemented on Feature Branch `feat/s14-shareable-date-difference`

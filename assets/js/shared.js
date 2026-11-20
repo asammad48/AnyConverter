@@ -1967,6 +1967,7 @@
       <a href="/es/" class="footer-lang-badge" aria-label="Español">🇪🇸 ES</a>
       <a href="/da/" class="footer-lang-badge" aria-label="Dansk">🇩🇰 DA</a>
     </div>
+    <button id="btn-footer-pwa-install" class="footer-pwa-btn" style="display:none;" aria-label="Install AnyConverter App">📲 <span class="pwa-install-text">${lang === 'es' ? 'Instalar app' : (lang === 'da' ? 'Installer app' : 'Install App')}</span></button>
   </div>
   <div class="footer-links">
     <div class="footer-col">
@@ -2020,6 +2021,15 @@
   <p>${t.rights}</p>
   <p>${t.noData}</p>
 </div>`;
+
+    var footerPwaBtn = el.querySelector('#btn-footer-pwa-install');
+    if (footerPwaBtn) {
+      footerPwaBtn.addEventListener('click', function () {
+        if (window.ACPwa && typeof window.ACPwa.handleInstallClick === 'function') {
+          window.ACPwa.handleInstallClick();
+        }
+      });
+    }
   }
 
   /* ===== HEADER BEHAVIOR ===== */

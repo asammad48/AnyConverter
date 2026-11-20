@@ -101,6 +101,9 @@
     }
 
     if (resultEl) resultEl.style.display = 'block';
+    if (typeof window !== 'undefined' && window.ACAnalytics && typeof window.ACAnalytics.trackToolCompleted === 'function') {
+      window.ACAnalytics.trackToolCompleted('age-calculator', 'manual_input', 'age_calculated');
+    }
     return true;
   }
 

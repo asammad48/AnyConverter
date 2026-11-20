@@ -2,6 +2,53 @@
 
 ---
 
+## Phase 47 — Growth Program Sprint S15: PWA Manifest, Scoped Service Worker & Install Prompt (2026-11-20)
+
+**Program:** AnyConverter.io Global Growth Engine (SEO + engagement + backlinks + distribution).  
+**Operating cadence:** 30 sprints × 2 days = 60 days. One prod ship per sprint.  
+**Active branch:** `feat/s15-pwa-manifest-install-prompt` (branched from S14 checkpoint `feat/s14-shareable-date-difference`, commit `4fe472a`).  
+**Current sprint pointer:** `S15 — PWA manifest + install prompt (homepage + top 5 tools)` (100% COMPLETED & VERIFIED; ready for owner review).  
+
+**Current sprint (S15) progress & status:**
+- **Branch Created:** Created `feat/s15-pwa-manifest-install-prompt` off `4fe472a`.
+- **Progressive Web App Architecture & Implementation:**
+  1. **Standards-Compliant W3C Web App Manifest (`manifest.webmanifest`):**
+     - Root manifest with `name: "AnyConverter — Free Online Tools & Calculators"`, `short_name: "AnyConverter"`, `start_url: "/?source=pwa"`, `display: "standalone"`, `background_color: "#F7F6F3"`, `theme_color: "#B04A45"`, and description.
+     - Generated and linked crisp 192x192 and 512x512 icons (`assets/img/icon-192.png`, `assets/img/icon-512.png`) and SVG (`assets/img/favicon.svg`).
+  2. **Metadata & Head Integration across 18 Target Pages:**
+     - Injected `<meta name="theme-color" content="#B04A45">` and `<link rel="manifest" href="/manifest.webmanifest">` across `index.html` and top 5 tools (`/json-formatter/`, `/percentage-calculator/`, `/age-calculator/`, `/loan-calculator/`, `/ip-address-lookup/`) across EN, ES, DA.
+     - Clean canonical tags and reciprocal hreflang links preserved intact.
+  3. **Scoped & Safe Service Worker (`sw.js`):**
+     - Cache name: `ac-pwa-v1`.
+     - Scoped pre-cache for homepage, top 5 tools, and essential static assets.
+     - Strict Network-First strategy for HTML navigation (zero stale HTML risk; falls back to cache when offline).
+     - Stale-While-Revalidate for same-origin static assets.
+     - Strict third-party domain exclusion: Never caches Google AdSense, Google Analytics, or external APIs.
+     - Graceful offline fallback: Cached tools continue functioning purely client-side; site remains 100% operational if SW registration fails or is unsupported.
+  4. **Non-Intrusive, Deferred Install Prompt (`assets/js/shared/pwa.js` & `assets/css/style.css`):**
+     - Intercepts and calls `preventDefault()` on `beforeinstallprompt`.
+     - Never interrupts first-time visitors immediately on page load.
+     - Contextual trigger: displays install action banner (`#pwa-install-banner`) only after the user has performed at least one successful tool interaction or calculation.
+     - Rate-limited & dismissible: Dismiss action suppresses re-prompting for 14 days via `localStorage['ac:pwa-dismissed-ts']`.
+     - Suppresses prompt if app is already installed or in standalone display mode.
+     - Added subtle footer install button `#btn-footer-pwa-install` that activates when browser install prompt is available.
+     - WCAG 2.2 AA compliant focus-visible outlines (`2px solid #B04A45`, `2px offset`) and explicit localized `aria-label` attributes on all prompt controls across EN, ES, and DA.
+  5. **Telemetry & Analytics Integration:**
+     - Registered `pwa_prompt_shown`, `pwa_installed`, and `pwa_dismissed` in `assets/js/shared/analytics.js`.
+     - Added helper methods `trackPwaPromptShown`, `trackPwaInstalled`, and `trackPwaDismissed` on `window.ACAnalytics`.
+- **Automated Verification:**
+  - Dedicated verification suite `tests/test_s15_pwa_install.js`: 23/23 assertions passing (100%).
+  - Registered in master runner `tests/run_all_tests.js`.
+  - Repository master suite `node tests/run_all_tests.js`: 30/30 suites passing (100%), including 21/21 Playwright visual regression screenshot comparisons.
+  - Canonical sitemap check `node scripts/generate_sitemap.js --check`: 100% synchronized (441 URLs, 147 clusters).
+- **Documentation & Memory:**
+  - Recorded ADR-054 in `.ai-memory/DECISIONS.md`.
+  - Captured G1–G15 release gate evidence in `docs/growth/91-TEST-EVIDENCE-AND-RELEASE-GATES.md`.
+  - Updated `.ai-memory/STATE.json`.
+- **Next Sprint Pointer:** Sprint S16 — Orphan fix pass + related-tools reciprocity (Days 31–32).
+
+---
+
 ## Phase 46 — Growth Program Sprint S14: Shareable Calculator State: Date Difference Calculator (2026-11-20)
 
 **Program:** AnyConverter.io Global Growth Engine (SEO + engagement + backlinks + distribution).  
