@@ -2228,15 +2228,19 @@
     if (!container) {
       container = document.createElement('div');
       container.id = 'toast-container';
+      container.setAttribute('role', 'region');
+      container.setAttribute('aria-label', acLang() === 'es' ? 'Notificaciones' : (acLang() === 'da' ? 'Notifikationer' : 'Notifications'));
       document.body.appendChild(container);
     }
     const toast = document.createElement('div');
     const icons = { success: '✓', error: '✕', info: 'ℹ' };
     toast.className = 'toast toast--' + type;
+    toast.setAttribute('role', type === 'error' ? 'alert' : 'status');
+    toast.setAttribute('aria-live', type === 'error' ? 'assertive' : 'polite');
     toast.innerHTML =
-      '<span class="toast-icon">' + (icons[type] || '✓') + '</span>' +
+      '<span class="toast-icon" aria-hidden="true">' + (icons[type] || '✓') + '</span>' +
       '<span class="toast-message">' + escapeHtml(message) + '</span>' +
-      '<button class="toast-close" aria-label="Close">×</button>';
+      '<button class="toast-close" aria-label="' + (acLang() === 'es' ? 'Cerrar notificación' : (acLang() === 'da' ? 'Luk notifikation' : 'Close notification')) + '">×</button>';
     container.appendChild(toast);
     requestAnimationFrame(function () { toast.classList.add('toast--visible'); });
     const timer = setTimeout(function () { removeToast(toast); }, duration);
@@ -2761,6 +2765,24 @@
   document.addEventListener('DOMContentLoaded', function () {
     const main = document.querySelector('main');
     if (main && !main.id) main.id = 'main-content';
+  });
+
+  /* ===== ACCESSIBLE SWITCH & DROPZONE KEYBOARD ACTIVATION ===== */
+  document.addEventListener('keydown', function (e) {
+    if (e.key === ' ' || e.key === 'Enter') {
+      var target = e.target;
+      if (!target) return;
+      // Handle custom switch activation via Space or Enter
+      if (target.getAttribute && target.getAttribute('role') === 'switch') {
+        e.preventDefault();
+        target.click();
+      }
+      // Handle custom button activation on div/label dropzones with role="button"
+      else if (target.getAttribute && target.getAttribute('role') === 'button' && target.tagName !== 'BUTTON') {
+        e.preventDefault();
+        target.click();
+      }
+    }
   });
 
   /* ============================================================

@@ -35,6 +35,7 @@ const testSuites = [
   { name: 'Sprint S17 PDF Hub Depth Suite', cmd: 'node tests/test_s17_pdf_hub_depth.js' },
   { name: 'Sprint S18 Dev & Calc Hub Depth Suite', cmd: 'node tests/test_s18_dev_calc_hub_depth.js' },
   { name: 'Sprint S19 CWV Top 20 Suite', cmd: 'node tests/test_s19_cwv_top_20.js' },
+  { name: 'Sprint S20 A11y Suite', cmd: 'node tests/test_s20_a11y_keyboard_aria.js' },
   { name: 'Playwright Visual Regression Suite (21/21 Baselines)', cmd: 'node tests/run_visual_regression.js' }
 ];
 

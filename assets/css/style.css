@@ -7323,3 +7323,52 @@ details.faq-item > summary:focus-visible {
   outline-offset: 2px;
 }
 
+/* ===== SPRINT S20: SITEWIDE WCAG 2.2 AA ACCESSIBILITY & KEYBOARD FOCUS ===== */
+:focus-visible {
+  outline: 2px solid var(--color-primary, #B04A45) !important;
+  outline-offset: 2px !important;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+summary:focus-visible,
+[role="button"]:focus-visible,
+[role="switch"]:focus-visible,
+[tabindex="0"]:focus-visible {
+  outline: 2px solid var(--color-primary, #B04A45) !important;
+  outline-offset: 2px !important;
+  box-shadow: 0 0 0 4px rgba(176, 74, 69, 0.15) !important;
+}
+
+:root.dark :focus-visible,
+:root.dark button:focus-visible,
+:root.dark a:focus-visible,
+:root.dark input:focus-visible,
+:root.dark select:focus-visible,
+:root.dark textarea:focus-visible,
+:root.dark summary:focus-visible,
+:root.dark [role="button"]:focus-visible,
+:root.dark [role="switch"]:focus-visible,
+:root.dark [tabindex="0"]:focus-visible {
+  outline: 2px solid var(--color-primary, #C85A54) !important;
+  outline-offset: 2px !important;
+  box-shadow: 0 0 0 4px rgba(200, 90, 84, 0.25) !important;
+}
+
+/* Screen-reader utility */
+.sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+

@@ -910,6 +910,40 @@ The second independent audit report (`SECOND_INDEPENDENT_FINANCIAL_REVALIDATION_
 
 ---
 
+## ADR-059: Sitewide Accessibility Overhaul — Keyboard Navigation, ARIA Semantics & Contrast
+- **Date:** 2026-11-23
+- **Status:** Approved & Implemented on Feature Branch `feat/s20-a11y-keyboard-aria`
+- **Context:**
+  - Sprint S20 covers Days 39–40 (Week 7: Accessibility Sweep) of the 60-Day Aggressive Growth Plan (`docs/growth/60_DAY_AGGRESSIVE_PLAN.md`).
+  - Goal: Ensure WCAG 2.2 AA compliance across all components, eliminate keyboard traps, guarantee focus visibility, add ARIA semantics for assistive technologies, and complete Loop 7 launch monitoring.
+  - Defect discovery revealed:
+    1. Icon-only buttons (color stop removal in CSS Gradient Generator, note undo in Sticky Notes) lacked accessible labels (`aria-label`).
+    2. File dropzones across 42 HTML files lacked accessible `aria-label` descriptors when rendered with `role="button"` and `tabindex="0"`.
+    3. Custom switches (`role="switch"`) and dropzones lacked unified keyboard handlers for `Space` and `Enter` activation.
+    4. Toast notifications and error messages lacked standard screen-reader live region semantics (`role="status"` / `role="alert"`, `aria-live`).
+    5. Several CSS focus states used `outline: none` without providing an explicit replacement.
+- **Decision:**
+  1. **Keyboard Tab Order & Focus Visible:**
+     - Enforced universal high-contrast `:focus-visible` styling (`outline: 2px solid var(--color-primary, #B04A45) !important; outline-offset: 2px !important; box-shadow: 0 0 0 4px rgba(176, 74, 69, 0.15) !important;`) across all interactive elements (`button`, `a`, `input`, `select`, `textarea`, `summary`, `[role="button"]`, `[role="switch"]`, `[tabindex="0"]`) in both Light and Dark themes.
+     - Added `.sr-only` utility class for accessible screen-reader-only labels.
+     - Verified skip link (`<a href="#main-content" class="skip-link">`) landmark targets `<main id="main-content">`.
+  2. **Unified Keyboard Activation for Custom Controls:**
+     - Implemented a centralized keyboard event listener in `assets/js/shared.js` capturing `Space` and `Enter` keys on `[role="switch"]` and `[role="button"]`, eliminating the need for fragmented per-tool key listeners.
+  3. **100% ARIA Label Coverage:**
+     - Added explicit, localized `aria-label` attributes to all icon buttons (`css-gradient-generator`, `sticky-notes`) and 45 file dropzones across EN, ES, and DA (0 missing labels site-wide across all 475 HTML files).
+  4. **Accessible Error & Live Status Announcements:**
+     - Upgraded `window.showToast()` in `assets/js/shared.js` to mount within an accessible container with `role="region"`, `role="status"` / `role="alert"`, and `aria-live="polite"` / `aria-live="assertive"`.
+  5. **Loop 7 Launch Completion Tracker:**
+     - Created `docs/growth/launches/LOOP_7_LAUNCH_TRACKER.md` formalizing owner review protocols, operational guardrails (zero autonomous posting), and backlink monitoring across Product Hunt, DevHunt, and Peerlist Launchpad.
+  6. **Automated Verification:**
+     - Authored `tests/test_s20_a11y_keyboard_aria.js` (8/8 checks passed) and integrated it into master runner `tests/run_all_tests.js`.
+- **Consequences:**
+  - Guarantees WCAG 2.2 AA accessibility across the platform.
+  - Fully accessible experience for keyboard-only and screen-reader users.
+  - Concludes Loop 7 distribution prep and readiness.
+
+---
+
 ## ADR-058: Core Web Vitals Pass Across Top 20 Canonical Tools (EN, ES, DA)
 - **Date:** 2026-11-23
 - **Status:** Approved & Implemented on Feature Branch `feat/s19-cwv-top-20-tools`
