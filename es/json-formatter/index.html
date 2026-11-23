@@ -421,6 +421,25 @@
       </ol>
     </section>
 
+    <section class="how-it-works" id="how-it-works">
+      <h2>Cómo funciona: Formateo de JSON y serialización de árboles</h2>
+
+      <h3>¿Qué es un formateador de JSON?</h3>
+      <p>Un formateador de JSON es una utilidad de software que valida la notación de objetos JavaScript según las especificaciones gramaticales de la norma RFC 8259 y serializa los tokens analizados en jerarquías de texto legibles e indentadas. Transforma estructuras de datos comprimidas, sin formato o en una sola línea en árboles estructurados con sangrías y colores de sintaxis consistentes.</p>
+
+      <h3>Cómo funciona en el navegador</h3>
+      <p>AnyConverter formatea y valida JSON al 100% en el lado del cliente dentro de tu navegador web mediante trabajadores de JavaScript de alto rendimiento sin transmitir datos a través de la red:</p>
+      <ol class="how-it-works-steps">
+        <li><strong>Análisis léxico y streaming parser</strong>: La cadena de entrada se analiza mediante <code>JSON.parse()</code> nativo o un streaming parser con tokenizador para comprobar tokens válidos según la gramática RFC 8259 (cadenas, números, booleanos, null, matrices y objetos).</li>
+        <li><strong>Serialización de árbol sintáctico</strong>: Las estructuras válidas ejecutan una serialización de árbol (tree serialization), recorriendo nodos para calcular la profundidad de indentación, aplicar el espaciado seleccionado (2 espacios, 4 espacios o tabulaciones) y ordenar claves alfabéticamente.</li>
+        <li><strong>Renderizado virtual DOM</strong>: Las cargas grandes superiores a 150 KB se asignan a un índice de líneas en memoria y se representan mediante un desplazador virtual de 50 nodos para mantener una tasa fluida de 60 FPS sin bloquear la interfaz.</li>
+        <li><strong>Privacidad sin servidor</strong>: Todo el análisis, formateo, búsqueda y descarga ocurre exclusivamente en la memoria local de tu dispositivo con total confidencialidad.</li>
+      </ol>
+
+      <h3>Especificaciones técnicas y estándares RFC</h3>
+      <p>El formateador cumple rigurosamente con la gramática de la norma <strong>RFC 8259</strong> y los estándares de intercambio de datos ECMA-404. El formato JSON estándar exige que las claves de las propiedades utilicen comillas dobles, rechaza comas finales sobrantes y prohíbe comillas simples o números con ceros a la izquierda. Nuestro motor localiza errores de sintaxis indicando la posición exacta de línea y columna, realiza serialización de árbol (tree serialization) y permite transformaciones directas con streaming parser a YAML y CSV para estructuras compatibles.</p>
+    </section>
+
     <section class="features">
       <h2>Características</h2>
       <ul class="features-list">

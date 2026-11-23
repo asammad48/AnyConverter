@@ -143,6 +143,25 @@
         <li><strong>Convierte y copia</strong> — Haz clic en "Convertir" y copia el resultado al portapapeles.</li>
       </ol>
     </section>
+
+    <section class="how-it-works" id="how-it-works">
+      <h2>Cómo funciona: Codificación Base64 y traducción binaria RFC 4648</h2>
+
+      <h3>¿Qué es la codificación Base64?</h3>
+      <p>La codificación Base64 es un esquema de traducción de binario a texto definido por la norma RFC 4648 (RFC 4648 standard) que representa secuencias arbitrarias de octetos de 8 bits mediante un conjunto restringido de 64 caracteres ASCII imprimibles. Permite transmitir archivos binarios, imágenes y claves criptográficas de forma segura a través de canales basados en texto como correo electrónico, API JSON y URL sin riesgo de corrupción.</p>
+
+      <h3>Cómo funciona en el navegador</h3>
+      <p>Nuestro conversor realiza transformaciones bit a bit de alta velocidad directamente en el navegador mediante ArrayBuffers y TextEncoder nativos:</p>
+      <ol class="how-it-works-steps">
+        <li><strong>Traducción de bytes a ASCII de 6 bits (byte-to-ASCII 6-bit translation)</strong>: Los datos de entrada se convierten en una secuencia de bytes de 8 bits. Mediante byte-to-ASCII 6-bit translation, cada grupo de tres bytes (24 bits) se divide en cuatro fragmentos de 6 bits (valores de 0 a 63).</li>
+        <li><strong>Mapeo al alfabeto Base64</strong>: Cada entero de 6 bits se asigna a un carácter del alfabeto estándar: mayúsculas <code>A-Z</code>, minúsculas <code>a-z</code>, dígitos <code>0-9</code>, más <code>+</code> y <code>/</code>.</li>
+        <li><strong>Reglas de relleno (padding rules)</strong>: Siguiendo las padding rules estándar, si la longitud de entrada no es múltiplo de 3, se añaden uno o dos caracteres de relleno <code>=</code> para completar el bloque final de 4 caracteres.</li>
+        <li><strong>Variante segura para URL</strong>: En modo URL-safe, el signo <code>+</code> se sustituye por <code>-</code> y la barra <code>/</code> por <code>_</code> para evitar conflictos con caracteres reservados en direcciones web.</li>
+      </ol>
+
+      <h3>Especificaciones técnicas y rendimiento</h3>
+      <p>El algoritmo se rige rigurosamente por el <strong>RFC 4648 standard</strong> para Base64 y Base64URL. Aplicando byte-to-ASCII 6-bit translation y estrictas padding rules, Base64 convierte 3 bytes de datos binarios en 4 caracteres ASCII, introduciendo un incremento de tamaño constante del <strong>33,3%</strong>. Las operaciones de decodificación comprueban la validez de los caracteres y reconstruyen los datos originales en la memoria local.</p>
+    </section>
     <section class="features">
       <h2>Características</h2>
       <ul class="features-list">

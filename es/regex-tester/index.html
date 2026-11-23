@@ -198,6 +198,25 @@
         <li><strong>Analiza los resultados</strong> — Ve el número de coincidencias, sus posiciones y los grupos de captura.</li>
       </ol>
     </section>
+
+    <section class="how-it-works" id="how-it-works">
+      <h2>Cómo funciona: Motor RegExp de ECMAScript y evaluación de patrones</h2>
+
+      <h3>¿Qué es un verificador de expresiones regulares?</h3>
+      <p>Un verificador de expresiones regulares es una herramienta interactiva de depuración que compila patrones de búsqueda en texto de prueba mediante el motor nativo ECMAScript RegExp del navegador, capturando grupos y calculando desplazamientos de coincidencia en tiempo real. Permite inspeccionar coincidencias, comprobar límites y validar reglas de extracción complejas.</p>
+
+      <h3>Cómo funciona en el navegador</h3>
+      <p>Nuestro banco de pruebas compila patrones en el entorno local del navegador utilizando los motores estándar V8 o SpiderMonkey para garantizar paridad exacta con JavaScript:</p>
+      <ol class="how-it-works-steps">
+        <li><strong>Compilación con motor ECMAScript RegExp y flag handling</strong>: El patrón se instancia mediante <code>new RegExp(pattern, flags)</code> bajo el motor ECMAScript RegExp engine, admitiendo flag handling para las banderas global (<code>g</code>), insensible a mayúsculas (<code>i</code>), multilínea (<code>m</code>), dotAll (<code>s</code>) y unicode (<code>u</code>).</li>
+        <li><strong>Captura de grupos (match group capturing)</strong>: El motor recorre el texto ejecutando match group capturing para grupos de captura numerados y con nombre, calculando índices de inicio y fin.</li>
+        <li><strong>Resaltado visual no destructivo</strong>: Los fragmentos coincidentes se delimitan mediante etiquetas de marcado con colores contrastados para distinguir coincidencias consecutivas.</li>
+        <li><strong>Protección de ejecución</strong>: La evaluación se ejecuta con límites de seguridad para proteger el navegador frente a bloqueos por retroceso catastrófico (catastrophic backtracking).</li>
+      </ol>
+
+      <h3>Especificaciones técnicas y estándares del motor</h3>
+      <p>El verificador opera bajo la especificación oficial <strong>ECMAScript RegExp (ECMA-262)</strong> engine. Es compatible con aserciones anticipadas (lookahead) y retrospectivas (lookbehind), match group capturing avanzado (<code>(?&lt;nombre&gt;...)</code>), riguroso flag handling, escapes de propiedades Unicode (<code>\p{...}</code>) y retro-referencias, ejecutándose enteramente en tu equipo con privacidad absoluta.</p>
+    </section>
     <section class="features">
       <h2>Características</h2>
       <ul class="features-list">

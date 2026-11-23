@@ -198,6 +198,25 @@
         <li><strong>Analyser resultaterne</strong> — Se antallet af matches, deres positioner og capture-grupper.</li>
       </ol>
     </section>
+
+    <section class="how-it-works" id="how-it-works">
+      <h2>Hvordan det virker: ECMAScript RegExp-motor og mønsterevaluering</h2>
+
+      <h3>Hvad er en regulær udtrykstester?</h3>
+      <p>En regulær udtrykstester er et interaktivt fejlfindingsværktøj, der kompilerer søgemønstre mod tekststrenge ved hjælp af browserens indbyggede ECMAScript RegExp engine, fanger tokengrupper og evaluerer match-positioner i realtid. Værktøjet gør det nemt at inspicere resultater, teste syntaksgrænser og validere avancerede tekstmønstre med høj præcision.</p>
+
+      <h3>Hvordan det virker i browseren</h3>
+      <p>Vores regex-arbejdsbænk kompilerer mønstre i browserens lokale runtime ved hjælp af standard V8/SpiderMonkey-motorer for autentisk JavaScript-funktionalitet:</p>
+      <ol class="how-it-works-steps">
+        <li><strong>Mønsterkompilering og flag handling</strong>: Inputmønsteret instantieres i browserens ECMAScript RegExp engine via <code>new RegExp(pattern, flags)</code> med fuld flag handling af globalt (<code>g</code>), case-insensitivt (<code>i</code>), multiline (<code>m</code>), dotAll (<code>s</code>) og unicode (<code>u</code>) flag.</li>
+        <li><strong>Match group capturing</strong>: Motoren gennemgår tekstmatcher og udfører præcis match group capturing for nummererede og navngivne fangstgrupper samt start- og slutindekser.</li>
+        <li><strong>Ikke-destruktiv fremhævning</strong>: Tekststykker omsluttes af fremhævningselementer med kontrasterende baggrundsfarver, så på hinanden følgende matcher let skelnes visuelt.</li>
+        <li><strong>Udførelsesbeskyttelse</strong>: Evalueringen kører med sikkerhedsgrænser for at forhindre browserfrysning forårsaget af katastrofal backtracking i NFA-motorer.</li>
+      </ol>
+
+      <h3>Tekniske specifikationer og motorstandarder</h3>
+      <p>Testeren følger den officielle <strong>ECMAScript RegExp (ECMA-262)</strong> engine-standard. Den understøtter fuldt ud lookahead- og lookbehind-betingelser, avanceret match group capturing (<code>(?&lt;navn&gt;...)</code>), komplet flag handling (<code>gimsuy</code>), Unicode-egenskabs-escapes (<code>\p{...}</code>) og backreferences. Hele evalueringen foregår lokalt uden datatransmission over internettet, hvilket beskytter følsomme logfiler og tekstdata.</p>
+    </section>
     <section class="features">
       <h2>Funktioner</h2>
       <ul class="features-list">

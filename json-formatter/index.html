@@ -437,6 +437,25 @@
       </ol>
     </section>
 
+    <section class="how-it-works" id="how-it-works">
+      <h2>How It Works: JSON Formatting & Tree Serialization</h2>
+
+      <h3>What is a JSON Formatter?</h3>
+      <p>A JSON formatter is a software utility that validates raw JavaScript Object Notation against RFC 8259 grammar specifications and serializes parsed tokens into human-readable, indented text hierarchies. It transforms minified, unformatted, or single-line data structures into clean trees with consistent indentation and syntax coloring.</p>
+
+      <h3>How It Works in the Browser</h3>
+      <p>AnyConverter formats and validates JSON 100% client-side inside your browser engine using high-performance JavaScript workers without transmitting data over the network:</p>
+      <ol class="how-it-works-steps">
+        <li><strong>Lexical Analysis & Streaming Parser</strong>: The input string is parsed using native <code>JSON.parse()</code> or a streaming parser tokenizer to verify valid RFC 8259 grammar tokens (strings, numbers, booleans, null, arrays, objects).</li>
+        <li><strong>Syntax Tree Serialization</strong>: Valid structures undergo tree serialization, recursively traversing nodes to calculate indentation depth, apply chosen whitespace (2 spaces, 4 spaces, or tabs), and sort object keys alphabetically if requested.</li>
+        <li><strong>Virtual DOM Rendering</strong>: Large payloads exceeding 150 KB are mapped to an in-memory newline offset index and rendered through a 50-node virtual scroller to maintain 60 FPS performance without browser freezing.</li>
+        <li><strong>Zero-Server Privacy</strong>: All parsing, formatting, searching, and downloads happen entirely in local browser memory with zero server telemetry or payload retention.</li>
+      </ol>
+
+      <h3>Key Specifications & Technical Standards</h3>
+      <p>The formatter strictly adheres to <strong>RFC 8259</strong> grammar and ECMA-404 JSON data interchange standards. Valid JSON requires double-quoted property keys, prohibits trailing commas, rejects single-quoted strings, and restricts numeric values to standard decimal notation without leading zeros. Our engine validates syntax down to line and column coordinates, performs recursive tree serialization, and supports streaming parser transformations directly to YAML or CSV for supported tabular shapes.</p>
+    </section>
+
     <section class="features">
       <h2>Features</h2>
       <ul class="features-list">

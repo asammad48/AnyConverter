@@ -105,6 +105,25 @@
         <li>Use the preset buttons to load common schedules, or click the fields to explore specific values.</li>
       </ol>
     </section>
+
+    <section class="how-it-works" id="how-it-works">
+      <h2>How It Works: Cron Expression Parsing & Schedule Calculation</h2>
+
+      <h3>What is a Cron Expression Parser?</h3>
+      <p>A cron expression parser is a job scheduling utility that parses recurring time schedules across POSIX 5-field vs. Quartz 6-field cron syntax specifications, validating token expressions and projecting upcoming execution timestamps. It decodes complex intervals into clear, human-readable descriptions of automated task cadences.</p>
+
+      <h3>How It Works in the Browser</h3>
+      <p>Our scheduling engine parses and calculates recurring time triggers entirely within the browser using deterministic date algorithms:</p>
+      <ol class="how-it-works-steps">
+        <li><strong>Tokenization by Field Position</strong>: The expression string is split into positional components: minute (0–59), hour (0–23), day of month (1–31), month (1–12), and day of week (0–7), with optional seconds (0–59) in Quartz mode, covering POSIX 5-field vs. Quartz 6-field cron syntax.</li>
+        <li><strong>Step Values & Operator Expansion</strong>: Range operators (<code>-</code>), list separators (<code>,</code>), and step values (<code>/</code>) are expanded into discrete candidate integer sets for each time dimension.</li>
+        <li><strong>Special Wildcards Evaluation</strong>: In Quartz mode, special wildcards such as <code>*</code>, <code>?</code>, <code>L</code> (last day of month/week), <code>W</code> (nearest weekday), and <code>#</code> (nth weekday of month) are resolved against dynamic calendar days.</li>
+        <li><strong>Chronological Projection</strong>: The calculation engine advances from the current timestamp minute-by-minute to locate and display the next 5 matching execution dates.</li>
+      </ol>
+
+      <h3>Key Specifications & Syntax Standards</h3>
+      <p>The parser complies with <strong>POSIX IEEE Std 1003.1</strong> standard 5-field cron syntax and supports 6-field and 7-field <strong>Quartz Enterprise Job Scheduler</strong> dialects, addressing differences in POSIX 5-field vs. Quartz 6-field cron syntax. It supports standard wildcards including asterisk (<code>*</code> for every unit) and question mark (<code>?</code> for no specific value), alongside step values. All schedule calculations run purely on the client side in local system time or UTC with zero server dependencies.</p>
+    </section>
     <section class="features">
       <h2>Features</h2>
       <ul class="features-list">

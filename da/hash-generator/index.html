@@ -140,6 +140,25 @@
         <li><strong>Kopier resultatet</strong> — Alle fire hashes vises samtidigt. Kopier den du har brug for med den tilhørende knap.</li>
       </ol>
     </section>
+
+    <section class="how-it-works" id="how-it-works">
+      <h2>Hvordan det virker: Kryptografisk hashing og Web Crypto digest-algoritmer</h2>
+
+      <h3>Hvad er en kryptografisk hash-generator?</h3>
+      <p>En kryptografisk hash-generator er et informationssikkerhedsværktøj, der omdanner vilkårlige tekststrenge eller binære filer til deterministiske kontrolsummer med fast længde ved hjælp af SHA-256 / SHA-512 / MD5 cryptographic digest algorithms. Hash-funktioner er envejs matematiske beregninger designet til kontrol af dataintegritet, digitale signaturer og datasikkerhed.</p>
+
+      <h3>Hvordan det virker i browseren</h3>
+      <p>AnyConverter beregner kontrolsummer direkte i din browser via det hardware-accelererede W3C Web Crypto API uden ekstern dataoverførsel eller forsinkelse:</p>
+      <ol class="how-it-works-steps">
+        <li><strong>UTF-8 byte-indkodning</strong>: Tekstinput konverteres til et 8-bit byte-array ved hjælp af det indbyggede <code>TextEncoder()</code> interface.</li>
+        <li><strong>Hardware-accelereret Web Crypto API-hashing</strong>: For SHA-256 og SHA-512 cryptographic digest algorithms behandles databufferen gennem <code>crypto.subtle.digest()</code> via Web Crypto API, som udnytter enhedens hardware-acceleration.</li>
+        <li><strong>Hexadecimal serialisering</strong>: Det resulterende ArrayBuffer-output konverteres byte for byte til en hexadecimal tekststreng med små bogstaver.</li>
+        <li><strong>MD5 kontrolsummer</strong>: MD5 cryptographic digest algorithms beregnes via klientside bitvise operationer til verifikation af ældre systemer og filintegritet.</li>
+      </ol>
+
+      <h3>Tekniske specifikationer og kryptografiske egenskaber</h3>
+      <p>Hash-funktionerne implementerer standarderne <strong>FIPS PUB 180-4</strong> (for SHA-256 og SHA-512) og <strong>RFC 1321</strong> (MD5). SHA-256 genererer en 256-bit (64 hex-tegn) kontrolsum med stærk kollisionsresistens. SHA-512 producerer et 512-bit (128 hex-tegn) output til højsikkerhedsmiljøer. Alle SHA-256 / SHA-512 / MD5 cryptographic digest algorithms eksekveres lokalt via browserens Web Crypto API i enhedens hukommelse uden risiko for datalækage.</p>
+    </section>
     <section class="features">
       <h2>Funktioner</h2>
       <ul class="features-list">

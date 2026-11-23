@@ -205,6 +205,25 @@
       </ol>
     </section>
 
+    <section class="how-it-works" id="how-it-works">
+      <h2>Hvordan det virker: JSON-sammenligning og Myers-strukturjustering</h2>
+
+      <h3>Hvad er et JSON-sammenligningsværktøj?</h3>
+      <p>Et JSON-sammenligningsværktøj er et analytisk værktøj, der deserialiserer to JSON-nyttelaster, justerer deres strukturelle objektnøgler og matrixelementer rekursivt og beregner den nøjagtige forskel ved hjælp af avancerede graf-diff-algoritmer. Værktøjet fremhæver tilføjelser, sletninger, værdiændringer og datatyper på tværs af komplekse indlejrede objekter med millimeterpræcision.</p>
+
+      <h3>Hvordan det virker i browseren</h3>
+      <p>Vores klientside-diff-motor beregner dybdegående sammenligninger direkte i browseren ved hjælp af nøglenormalisering, grafanalyse og sikre algoritmer:</p>
+      <ol class="how-it-works-steps">
+        <li><strong>Normalisering og strukturel nøglejustering</strong>: Begge datasæt parses under RFC 8259-standarden til hukommelsesobjekter, hvor strukturel nøglejustering (structural key alignment) anvendes for at undgå falske forskelle forårsaget af vilkårlig egenskabsrækkefølge.</li>
+        <li><strong>Myers diff algorithm grafevaluering</strong>: Strukturelle linjer og værdier behandles via Myers diff algorithm, som finder den korteste redigeringsvej med O(ND) tidseffektivitet og minimalt hukommelsesforbrug.</li>
+        <li><strong>Semantiske matrixrækkefølge-heuristikker</strong>: Lister sammenlignes via avancerede matrixrækkefølge-heuristikker (array order heuristics) for præcist at skelne mellem flyttede elementer, ændrede værdier og sletninger.</li>
+        <li><strong>Synkroniseret to-kolonne visning</strong>: Forskelle farvekodes i realtid med synkroniserede rullebjælker og detaljerede tællere uden ekstern serveroverførsel.</li>
+      </ol>
+
+      <h3>Tekniske specifikationer og algoritmiske principper</h3>
+      <p>Sammenligningsmotoren anvender <strong>Myers diff algorithm</strong> (Eugene Myers, 1986), den klassiske standard til beregning af minimale ændringsskripter. I modsætning til simple linje-differ, der skaber støj ved ændret nøglerækkefølge, bevarer strukturel nøglejustering (structural key alignment) og array order heuristics den fulde syntaktiske sammenhæng under <strong>RFC 8259</strong>-specifikationen med komplet understøttelse af Unicode, store datamængder og dybe datastrukturer i lokal hukommelse.</p>
+    </section>
+
     <section class="features">
       <h2>Funktioner</h2>
       <ul class="features-list">

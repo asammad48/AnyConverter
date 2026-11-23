@@ -142,6 +142,25 @@
         <li>View the decoded header, payload, and signature. If an expiration claim is present, the tool shows whether the token is still valid.</li>
       </ol>
     </section>
+
+    <section class="how-it-works" id="how-it-works">
+      <h2>How It Works: JSON Web Token Architecture & RFC 7519 Decoding</h2>
+
+      <h3>What is a JSON Web Token (JWT)?</h3>
+      <p>A JSON Web Token (JWT) is a compact, URL-safe container format defined by RFC 7519 specification that securely transmits cryptographic claims between parties as a JSON object. It consists of three base64url-encoded segments separated by dots: a JOSE header, a payload of claims, and a cryptographic signature claims verification segment.</p>
+
+      <h3>How It Works in the Browser</h3>
+      <p>AnyConverter unpacks and inspects tokens entirely on the client side using standard cryptographic string decoding without secret exposure:</p>
+      <ol class="how-it-works-steps">
+        <li><strong>Segment Splitting</strong>: The compact string is validated and split into its three constituent segments: <code>header.payload.signature</code>.</li>
+        <li><strong>Base64URL Decoding & Normalization</strong>: Each segment undergoes Base64URL decoding, converting from URL-safe Base64URL to standard Base64 by substituting <code>-</code> with <code>+</code>, <code>_</code> with <code>/</code>, and calculating required <code>=</code> padding.</li>
+        <li><strong>Binary UTF-8 Deserialization</strong>: Decoded bytes are converted through a UTF-8 decoder and parsed into typed JSON objects via <code>JSON.parse()</code>.</li>
+        <li><strong>Cryptographic Signature Claims & Timestamps</strong>: Standard cryptographic signature claims (<code>iss</code>, <code>sub</code>, <code>aud</code>, <code>exp</code>, <code>nbf</code>, <code>iat</code>, <code>jti</code>) are parsed from Unix epoch seconds into human-readable ISO 8601 timestamps with active expiration status flags.</li>
+      </ol>
+
+      <h3>Key Specifications & Claim Definitions</h3>
+      <p>The decoder implements specifications from <strong>RFC 7519 specification</strong> (JWT), <strong>RFC 7515</strong> (JSON Web Signature / JWS), and <strong>RFC 7516</strong> (JSON Web Encryption / JWE). It performs Base64URL decoding on standard cryptographic signature claims including <code>iss</code> (issuer), <code>sub</code> (subject), <code>aud</code> (audience), <code>exp</code> (expiration time), <code>nbf</code> (not before), <code>iat</code> (issued at), and <code>jti</code> (JWT ID). All decoding executes locally in browser memory, ensuring sensitive auth tokens and private credentials are never leaked.</p>
+    </section>
     <section class="features">
       <h2>Features</h2>
       <ul class="features-list">

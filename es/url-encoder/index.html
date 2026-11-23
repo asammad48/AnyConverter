@@ -123,6 +123,25 @@
         <li><strong>Copia el resultado</strong> — Usa el botón "Copiar resultado" para copiar al portapapeles.</li>
       </ol>
     </section>
+
+    <section class="how-it-works" id="how-it-works">
+      <h2>Cómo funciona: Codificación porcentual RFC 3986 y escape de octetos URI</h2>
+
+      <h3>¿Qué es la codificación porcentual de URL?</h3>
+      <p>La codificación porcentual de URL es un mecanismo de sustitución de caracteres definido por la norma RFC 3986 percent-encoding que convierte caracteres no ASCII, espacios y delimitadores reservados en identificadores uniformes de recursos (URI) en tripletes hexadecimales con el formato %XX. Garantiza que los parámetros de consulta, rutas y cabeceras cumplan los estándares globales de direccionamiento en internet.</p>
+
+      <h3>Cómo funciona en el navegador</h3>
+      <p>AnyConverter procesa la normalización de URI de forma local mediante funciones nativas de JavaScript y serialización de octetos en UTF-8:</p>
+      <ol class="how-it-works-steps">
+        <li><strong>Conversión de puntos de código a UTF-8</strong>: Los caracteres de entrada se transforman en sus secuencias de bytes correspondientes en UTF-8 (de 1 a 4 bytes por carácter).</li>
+        <li><strong>Evaluación de caracteres reservados vs. no reservados (reserved vs. unreserved characters)</strong>: Los caracteres se clasifican según RFC 3986. El conjunto de unreserved characters—letras (<code>A-Z</code>, <code>a-z</code>), dígitos (<code>0-9</code>), guion (<code>-</code>), guion bajo (<code>_</code>), punto (<code>.</code>) y tilde (<code>~</code>)—se mantiene intacto.</li>
+        <li><strong>Sustitución por tripletes hexadecimales</strong>: Todos los reserved characters y bytes no ASCII se reemplazan por el símbolo de porcentaje (<code>%</code>) seguido de dos dígitos hexadecimales en mayúscula.</li>
+        <li><strong>Diferenciación entre componentes y URI completa</strong>: Permite conservar o escapar delimitadores como barras o signos de interrogación según se requiera codificar un parámetro o una URL completa.</li>
+      </ol>
+
+      <h3>Especificaciones técnicas y reglas de caracteres reservados</h3>
+      <p>La herramienta respeta rigurosamente las normas <strong>RFC 3986 percent-encoding</strong> y las directrices WHATWG URL. Distingue con precisión entre reserved vs. unreserved characters, diferenciando entre <code>encodeURIComponent()</code> (que escapa delimitadores como <code>/</code>, <code>?</code>, <code>&amp;</code>, <code>=</code> para valores de consulta) y <code>encodeURI()</code> (que conserva la estructura de rutas completas). Todo el proceso de codificación y decodificación ocurre en tu equipo.</p>
+    </section>
     <section class="features">
       <h2>Características</h2>
       <ul class="features-list">

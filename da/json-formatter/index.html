@@ -422,6 +422,25 @@
       </ol>
     </section>
 
+    <section class="how-it-works" id="how-it-works">
+      <h2>Hvordan det virker: JSON-formatering og træ-serialisering</h2>
+
+      <h3>Hvad er en JSON-formaterer?</h3>
+      <p>En JSON-formaterer er et softwareværktøj, der validerer JavaScript Object Notation mod RFC 8259-grammatikspecifikationen og serialiserer de analyserede tokens til et letlæseligt, indrykket teksthierarki. Værktøjet forvandler minificerede data eller rå tekstlinjer til overskuelige strukturer med ensartede indrykninger og syntaksfremhævning.</p>
+
+      <h3>Hvordan det virker i browseren</h3>
+      <p>AnyConverter formaterer og validerer JSON 100% klientside i din browser ved hjælp af optimerede JavaScript-baggrundsprocesser uden at sende data over netværket:</p>
+      <ol class="how-it-works-steps">
+        <li><strong>Leksikalsk analyse og streaming parser</strong>: Inputstrengen parses med indbygget <code>JSON.parse()</code> eller en streaming parser-tokenizer for at bekræfte gyldige RFC 8259 grammar-tokens (strenge, tal, boolske værdier, null, lister og objekter).</li>
+        <li><strong>Træ-serialisering (tree serialization)</strong>: Gyldige datastrukturer gennemgår træ-serialisering, hvor knuder gennemgås rekursivt for at beregne indrykningsdybde, anvende valgt afstand (2 mellemrum, 4 mellemrum eller tabulator) og sortere nøgler alfabetisk efter behov.</li>
+        <li><strong>Virtuel DOM-visning</strong>: Store datamængder over 150 KB indekseres i hukommelsen og gengives via en 50-linjers virtuel scroller, hvilket fastholder 60 FPS uden at belaste browseren.</li>
+        <li><strong>Fuldstændigt privatliv</strong>: Al parsing, formatering, søgning og eksport udføres udelukkende i lokal enhedshukommelse uden ekstern datatransmission.</li>
+      </ol>
+
+      <h3>Tekniske specifikationer og RFC-standarder</h3>
+      <p>Formateringsmotoren overholder nøje <strong>RFC 8259</strong>-grammatikken og ECMA-404-standarden for dataudveksling. Gyldig JSON kræver dobbelte anførselstegn omkring alle nøglenavne, afviser efterfølgende kommaer og forbyder uindkapslede enkeltanførselstegn. Vores motor udfører robust træ-serialisering (tree serialization), identificerer syntaksfejl med nøjagtig linje- og kolonneangivelse og muliggør direkte streaming parser-konvertering til YAML eller CSV for kompatible tabelstrukturer.</p>
+    </section>
+
     <section class="features">
       <h2>Funktioner</h2>
       <ul class="features-list">

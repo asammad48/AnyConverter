@@ -161,6 +161,26 @@
         <li><strong>Kopier eller download</strong> — Kopier resultatet eller download det som .xml-fil.</li>
       </ol>
     </section>
+
+    <section class="how-it-works" id="how-it-works">
+      <h2>Hvordan det virker: XML-parsing, DOM-serialisering og træ-formatering</h2>
+
+      <h3>Hvad er en XML-formaterer?</h3>
+      <p>En XML-formaterer er et markup-værktøj, der analyserer extensible markup-dokumenter ved hjælp af browserens indbyggede DOMParser, validerer XML-velformethed i henhold til W3C-specifikationerne og serialiserer elementer i ensartede indrykningshierarkier (indentation hierarchies). Værktøjet genskaber komprimerede eller ustrukturerede XML-filer til overskuelige strukturer med bevarelse af attributter og tekstnoder.</p>
+
+      <h3>Hvordan det virker i browseren</h3>
+      <p>Vores formateringsmotor analyserer og strukturerer XML-dokumenter lokalt i browseren ved hjælp af standard XML-dokumentparsere uden eksterne biblioteker:</p>
+      <ol class="how-it-works-steps">
+        <li><strong>W3C DOMParser-instantiering</strong>: XML-strengen parses via browserens indbyggede DOMParser med <code>new DOMParser().parseFromString(xml, "application/xml")</code> til en fuldstændig XML Document Object Model.</li>
+        <li><strong>Fejlfinding og velformethed</strong>: DOMParser opdager <code>parsererror</code>-noder ved uoverensstemmende tags eller ulovlige tegn og rapporterer præcise fejlmeddelelser.</li>
+        <li><strong>Rekursive indrykningshierarkier (indentation hierarchies)</strong>: DOM-træet gennemgås rekursivt for at opbygge indentation hierarchies, beregne indlejringsniveauer og indsætte ensartede indrykninger (2 mellemrum, 4 mellemrum eller tabulator).</li>
+        <li><strong>CDATA & XML entity escaping</strong>: Tekstafsnit og CDATA-blokke bevares uden ændringer, og korrekt CDATA & XML entity escaping (<code>&amp;amp;</code>, <code>&amp;lt;</code>, <code>&amp;gt;</code>, <code>&amp;quot;</code>, <code>&amp;apos;</code>) sikrer fuldkommen dataintegritet.</li>
+        <li><strong>Klientbaseret eksekvering</strong>: Behandlingen sker lokalt i browserens hukommelse uden overførsel til eksterne servere.</li>
+      </ol>
+
+      <h3>Tekniske specifikationer og W3C-standarder</h3>
+      <p>Værktøjet overholder <strong>W3C XML 1.0 (Fifth Edition)</strong>-standarden og <strong>DOM Level 3 Core</strong>-specifikationerne. Gyldig XML kræver ét enkelt rodelement, strengt lukkede tags, case-sensitive elementnavne, velstrukturerede indentation hierarchies og præcis CDATA & XML entity escaping. Al formatering, komprimering og eksport udføres lokalt via DOMParser i din browsers hukommelse med 100% databeskyttelse.</p>
+    </section>
     <section class="features">
       <h2>Funktioner</h2>
       <ul class="features-list">

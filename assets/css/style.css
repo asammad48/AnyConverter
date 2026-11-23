@@ -923,9 +923,9 @@ details[open] > summary:not(.faq-question)::after { transform: rotate(45deg); }
 .ad-slot--rectangle { min-height: 280px; max-width: 336px; margin: 32px auto; }
 .ad-label { font-size: 11px; color: var(--color-text-2); text-align: center; margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.5px; }
 
-/* ===== HOW TO USE ===== */
-.how-to-use, .features, .seo-content { width: 100%; max-width: none; margin: 0; padding: 32px 24px; }
-@media (min-width: 1024px) { .how-to-use, .features, .seo-content { padding: 40px 40px; } }
+/* ===== HOW TO USE & HOW IT WORKS ===== */
+.how-to-use, .features, .seo-content, .how-it-works { width: 100%; max-width: none; margin: 0; padding: 32px 24px; }
+@media (min-width: 1024px) { .how-to-use, .features, .seo-content, .how-it-works { padding: 40px 40px; } }
 .steps { list-style: none; display: flex; flex-direction: column; gap: 16px; counter-reset: steps; }
 .steps li {
   display: flex; gap: 16px; align-items: stretch;
@@ -954,6 +954,14 @@ details[open] > summary:not(.faq-question)::after { transform: rotate(45deg); }
 .seo-content ul { max-width: 900px; margin: 8px 0 0 20px; color: var(--color-text-2); line-height: var(--leading-relaxed); }
 .seo-content li + li { margin-top: 6px; }
 .seo-content a { font-weight: 600; }
+
+/* ===== HOW IT WORKS (AEO / GEO S22) ===== */
+.how-it-works h2 { margin-bottom: 16px; }
+.how-it-works h3 { margin: 20px 0 8px; font-size: var(--text-lg); color: var(--color-text-1, #1e293b); }
+.how-it-works p { max-width: 860px; margin-bottom: 12px; color: var(--color-text-2, #475569); line-height: var(--leading-relaxed, 1.6); }
+.how-it-works ol.how-it-works-steps { max-width: 900px; margin: 12px 0 16px 20px; padding-left: 8px; color: var(--color-text-2, #475569); line-height: var(--leading-relaxed, 1.6); }
+.how-it-works ol.how-it-works-steps li { margin-bottom: 8px; }
+.how-it-works code { font-family: var(--font-mono, monospace); font-size: 0.9em; padding: 2px 5px; background: var(--color-bg-subtle, #f1f5f9); border-radius: 4px; }
 
 /* ===== FEATURES GRID (homepage) ===== */
 .features-section { background: var(--color-surface); border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border); }
@@ -4815,6 +4823,7 @@ body:has(.tool-wrapper) .kb-key--active {
 body:has(.tool-wrapper) .how-to-use,
 body:has(.tool-wrapper) .features,
 body:has(.tool-wrapper) .seo-content,
+body:has(.tool-wrapper) .how-it-works,
 body:has(.tool-wrapper) .faq,
 body:has(.tool-wrapper) .related-tools {
   width: 100%;
@@ -4828,6 +4837,7 @@ body:has(.tool-wrapper) .related-tools {
 body:has(.tool-wrapper) .how-to-use h2,
 body:has(.tool-wrapper) .features h2,
 body:has(.tool-wrapper) .seo-content h2,
+body:has(.tool-wrapper) .how-it-works h2,
 body:has(.tool-wrapper) .faq h2,
 body:has(.tool-wrapper) .related-tools h2 {
   margin: 0 0 14px;
@@ -5269,6 +5279,7 @@ body:has(.tool-wrapper) .ad-slot {
 }
 
 body:has(.tool-wrapper) .how-to-use,
+body:has(.tool-wrapper) .how-it-works,
 body:has(.tool-wrapper) .seo-article,
 body:has(.tool-wrapper) .faq-section {
   margin-top: 32px;

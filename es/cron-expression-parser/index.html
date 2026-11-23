@@ -109,6 +109,25 @@
         <li>Usa los botones de preset para cargar horarios comunes o explora valores específicos.</li>
       </ol>
     </section>
+
+    <section class="how-it-works" id="how-it-works">
+      <h2>Cómo funciona: Análisis de expresiones cron y cálculo de programaciones</h2>
+
+      <h3>¿Qué es un analizador de expresiones cron?</h3>
+      <p>Un analizador de expresiones cron es una utilidad de planificación de tareas que interpreta programaciones temporales recurrentes en especificaciones POSIX 5-field vs. Quartz 6-field cron syntax, validando expresiones y proyectando próximas ejecuciones. Traduce intervalos de tiempo técnicos en descripciones claras y comprensibles para humanos.</p>
+
+      <h3>Cómo funciona en el navegador</h3>
+      <p>Nuestro motor de planificación interpreta y proyecta programaciones temporales de forma interactiva en tu navegador mediante algoritmos de calendario:</p>
+      <ol class="how-it-works-steps">
+        <li><strong>Tokenización posicional de campos</strong>: La expresión se descompone en sus componentes: minuto (0–59), hora (0–23), día del mes (1–31), mes (1–12) y día de la semana (0–7), con segundos opcionales, abarcando POSIX 5-field vs. Quartz 6-field cron syntax.</li>
+        <li><strong>Valores de paso (step values) y operadores</strong>: Los operadores de rango (<code>-</code>), listas separadas por comas (<code>,</code>) y step values (<code>/</code>) se expanden en conjuntos numéricos para cada unidad.</li>
+        <li><strong>Evaluación de comodines (wildcards)</strong>: En modo Quartz, comodines especiales (wildcards) como <code>*</code>, <code>?</code>, <code>L</code> (último día), <code>W</code> (día laborable más cercano) y <code>#</code> (enésimo día de la semana) se resuelven contra el calendario.</li>
+        <li><strong>Proyección cronológica</strong>: El motor avanza temporalmente desde el momento actual para identificar y proyectar con precisión las próximas 5 fechas de ejecución.</li>
+      </ol>
+
+      <h3>Especificaciones técnicas y estándares de sintaxis</h3>
+      <p>El analizador es plenamente compatible con la norma <strong>POSIX IEEE Std 1003.1</strong> de 5 campos y con el formato de 6 campos de <strong>Quartz Enterprise Job Scheduler</strong>, resolviendo diferencias entre POSIX 5-field vs. Quartz 6-field cron syntax. Admite comodines (wildcards) fundamentales como el asterisco (<code>*</code> para todos los valores) y el signo de interrogación (<code>?</code> para valor indefinido), además de step values. Todos los cálculos se efectúan en la memoria del navegador sin transmitir datos a servidores externos.</p>
+    </section>
     <section class="features">
       <h2>Características</h2>
       <ul class="features-list">

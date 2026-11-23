@@ -154,6 +154,25 @@
         <li><strong>Click Encode or Decode</strong> — Copy the result or download it as a text file.</li>
       </ol>
     </section>
+
+    <section class="how-it-works" id="how-it-works">
+      <h2>How It Works: Base64 Encoding & RFC 4648 Binary Translation</h2>
+
+      <h3>What is Base64 Encoding?</h3>
+      <p>Base64 encoding is a binary-to-text translation scheme defined by the RFC 4648 standard that represents arbitrary sequences of 8-bit octets using a restricted set of 64 printable ASCII characters. It enables raw binary files, images, and cryptographic keys to be transmitted safely over text-based channels such as email, JSON APIs, and URLs without data corruption.</p>
+
+      <h3>How It Works in the Browser</h3>
+      <p>Our converter performs high-speed bitwise transformations in the browser using native JavaScript ArrayBuffers and TextEncoder APIs:</p>
+      <ol class="how-it-works-steps">
+        <li><strong>Byte-to-ASCII 6-Bit Translation</strong>: Input text or binary data is converted into an 8-bit byte array. Through byte-to-ASCII 6-bit translation, every three 8-bit bytes (24 bits total) are split into four 6-bit chunks (values from 0 to 63).</li>
+        <li><strong>Alphabet Mapping</strong>: Each 6-bit integer indexes into the standard Base64 alphabet: uppercase letters <code>A-Z</code> (0–25), lowercase <code>a-z</code> (26–51), digits <code>0-9</code> (52–61), plus <code>+</code> (62) and <code>/</code> (63).</li>
+        <li><strong>Padding Rules</strong>: In accordance with standard padding rules, if the input byte length is not divisible by 3, one or two <code>=</code> characters are appended as padding to complete the final 4-character block.</li>
+        <li><strong>URL-Safe Variation Handling</strong>: In URL-safe mode, <code>+</code> is replaced with <code>-</code> and <code>/</code> with <code>_</code> to prevent conflict with URL reserved characters.</li>
+      </ol>
+
+      <h3>Key Specifications & Performance Characteristics</h3>
+      <p>The algorithm strictly adheres to the <strong>RFC 4648 standard</strong> for Base64 and Base64URL. Applying byte-to-ASCII 6-bit translation and rigorous padding rules, Base64 maps 3 bytes of binary data into 4 ASCII characters, introducing a deterministic <strong>33.3% size overhead</strong>. Decoding operations validate character boundaries, reject illegal characters, and reconstruct raw binary octets with zero server involvement.</p>
+    </section>
     <section class="features">
       <h2>Features</h2>
       <ul class="features-list">

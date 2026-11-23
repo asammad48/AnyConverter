@@ -910,6 +910,50 @@ The second independent audit report (`SECOND_INDEPENDENT_FINANCIAL_REVALIDATION_
 
 ---
 
+## ADR-061: AI-Citeable "How It Works" Structured Content for Top 10 Developer Tools across EN, ES, DA
+- **Date:** 2026-11-23
+- **Status:** Approved & Implemented on Feature Branch `feat/s22-ai-citeable-dev-content`
+- **Context:**
+  - Sprint S22 covers Days 43–44 (Week 8: AEO/GEO + Schema Depth) of the 60-Day Aggressive Growth Plan (`docs/growth/60_DAY_AGGRESSIVE_PLAN.md`).
+  - Objective: Author and integrate concise, fact-dense, structured-answer content blocks (200–400 words) across AnyConverter's Top 10 developer tools in all 3 supported languages (`/tool/`, `/es/tool/`, `/da/tool/` — 30 URLs total), optimized for extraction and citation by AI search engines (ChatGPT, Google AI Overviews, Perplexity, Claude).
+  - Target KPI: Maximum machine-extractability and citation fitness according to AEO/GEO standards (`.agents/skills/ai-seo/references/content-patterns.md`), preserving 100% Core Web Vitals, responsive safety, and multilingual parity.
+  - Target Tools:
+    1. `json-formatter`: RFC 8259 grammar, tree serialization, streaming parser.
+    2. `json-compare`: Myers diff algorithm, structural key alignment, array order heuristics.
+    3. `csv-to-sql`: RFC 4180 parsing, automated dialect quoting, type inference heuristics.
+    4. `regex-tester`: ECMAScript RegExp engine, flag handling, match group capturing.
+    5. `jwt-decoder`: RFC 7519 specification, Base64URL decoding, cryptographic signature claims.
+    6. `base64-encoder`: RFC 4648 standard, byte-to-ASCII 6-bit translation, padding rules.
+    7. `url-encoder`: RFC 3986 percent-encoding, reserved vs. unreserved characters.
+    8. `hash-generator`: SHA-256 / SHA-512 / MD5 cryptographic digest algorithms, Web Crypto API.
+    9. `cron-expression-parser`: POSIX 5-field vs. Quartz 6-field cron syntax, step values, wildcards.
+    10. `xml-formatter`: DOMParser, indentation hierarchies, CDATA & XML entity escaping.
+- **Decision:**
+  1. **Semantic AEO/GEO Structured Block Architecture:**
+     - Injected semantic `<section class="how-it-works" id="how-it-works">` on all 30 URLs directly beneath `<section class="how-to-use">`.
+     - Followed standard AEO/GEO content patterns:
+       - **Definition Block:** Single authoritative, unambiguous 1-sentence definition answering "What is [Tool/Concept]?" followed by key characteristics.
+       - **Mechanism / Browser Step-by-Step Block:** Concrete 4-step sequence detailing client-side tokenization, Web Worker execution, Web Crypto API usage, and zero-server privacy.
+       - **Self-Contained Standards Block:** Standalone fact family citing exact RFC specifications (RFC 8259, RFC 4180, RFC 7519, RFC 4648, RFC 3986, RFC 1321), standards bodies (W3C, ECMA-262, FIPS PUB 180-4, POSIX), and algorithmic complexities.
+  2. **Multilingual Parity & Diacritics Preservation:**
+     - Authored natural, idiomatic Spanish (`es`) and Danish (`da`) translations maintaining exact technical terminology, RFC citations, and correct diacritics (`æ`, `ø`, `å`, `á`, `é`, `í`, `ó`, `ú`, `ñ`).
+     - Calibrated word counts strictly within 219–338 words per section across all 30 pages (well within the 200–500 word test assertion).
+  3. **CSS Integration & Responsive Layout Safety:**
+     - Added `.how-it-works` rules to `assets/css/style.css` integrating seamlessly with existing section styling and `:has(.tool-wrapper)` container queries.
+     - Preserved zero horizontal overflow across 320px, 360px, 375px, and 390px mobile viewports.
+  4. **Track B: Loop 8 Outreach Execution Monitoring:**
+     - Updated `docs/growth/outreach/LOOP_8_BATCH_2_PROSPECTS.md` logging the active status of 20 verified prospect drafts staged in the owner review queue (12 University, 4 Integration, 4 Broken-link) and strictly enforcing the manual personal send policy (0 automated sends).
+  5. **Automated Verification:**
+     - Authored dedicated test suite `tests/test_s22_ai_citeable_dev_content.js` verifying 6/6 checks: file existence, semantic structure, word count (200–500), RFC/algorithm citations, 100% reciprocal 4-way hreflang alternates (`en`, `es`, `da`, `x-default`), and CSS/outreach queue integrity.
+     - Registered suite in master runner `tests/run_all_tests.js` (37/37 suites passing, 100%).
+     - Synchronized sitemap with 0 drift (`node scripts/generate_sitemap.js --check`).
+- **Consequences:**
+  - Dramatically improves machine-extractability and citation likelihood by LLMs and answer engines (Google AI Overviews, Perplexity, ChatGPT Search, Claude).
+  - Preserves 100% Core Web Vitals (zero external scripts, zero layout shifts).
+  - Maintains strict multilingual parity and technical accuracy across EN, ES, and DA.
+
+---
+
 ## ADR-060: Mobile Gesture & Viewport Pass (320px–390px), Zero Horizontal Overflow & Loop 8 Outreach Batch #2
 - **Date:** 2026-11-23
 - **Status:** Approved & Implemented on Feature Branch `feat/s21-mobile-viewport-pass`

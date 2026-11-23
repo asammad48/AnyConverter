@@ -144,6 +144,25 @@
         <li><strong>Konverter og kopier</strong> — Klik "Konverter" og kopier resultatet til udklipsholderen.</li>
       </ol>
     </section>
+
+    <section class="how-it-works" id="how-it-works">
+      <h2>Hvordan det virker: Base64-kodning og RFC 4648-binær oversættelse</h2>
+
+      <h3>Hvad er Base64-kodning?</h3>
+      <p>Base64-kodning er en binær-til-tekst oversættelsesstandard defineret af RFC 4648 standard, der repræsenterer vilkårlige sekvenser af 8-bit bytes ved hjælp af et sæt på 64 udskrivelige ASCII-tegn. Det gør det muligt at transmittere rå binære filer, billeder og kryptografiske nøgler sikkert over tekstbaserede protokoller som e-mail, JSON API'er og URL'er uden tab af dataintegritet.</p>
+
+      <h3>Hvordan det virker i browseren</h3>
+      <p>Vores konverter udfører lynhurtige bitvise beregninger direkte i browseren via indbyggede JavaScript ArrayBuffers og TextEncoder:</p>
+      <ol class="how-it-works-steps">
+        <li><strong>Byte-to-ASCII 6-bit translation</strong>: Inputtekst eller binære data konverteres til et byte-array. Gennem byte-to-ASCII 6-bit translation opdeles hver gruppe af tre 8-bit bytes (24 bits) i fire 6-bit værdier (fra 0 til 63).</li>
+        <li><strong>Kortlægning til alfabetet</strong>: Hver 6-bit værdi omsættes til et tegn i Base64-alfabetet: store bogstaver <code>A-Z</code>, små bogstaver <code>a-z</code>, tal <code>0-9</code> samt <code>+</code> og <code>/</code>.</li>
+        <li><strong>Padding rules (udfyldningsregler)</strong>: I henhold til standardiserede padding rules tilføjes ét eller to <code>=</code> tegn, hvis inputmængden ikke går op med 3, for at fuldføre den sidste 4-tegns blok.</li>
+        <li><strong>URL-sikker tilstand</strong>: I URL-sikker tilstand erstattes <code>+</code> med <code>-</code> og <code>/</code> med <code>_</code> for at forhindre konflikter i webadresser.</li>
+      </ol>
+
+      <h3>Tekniske specifikationer og egenskaber</h3>
+      <p>Algoritmen følger den officielle <strong>RFC 4648 standard</strong> for Base64 og Base64URL. Ved hjælp af byte-to-ASCII 6-bit translation og konsistente padding rules kodes 3 binære bytes til 4 ASCII-tegn, hvilket medfører en fast <strong>størrelsesforøgelse på 33,3%</strong>. Afkodning validerer tegnsekvensen og genskaber de oprindelige binære data udelukkende på klienten uden serverkald.</p>
+    </section>
     <section class="features">
       <h2>Funktioner</h2>
       <ul class="features-list">

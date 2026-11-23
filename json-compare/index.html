@@ -205,6 +205,25 @@
       </ol>
     </section>
 
+    <section class="how-it-works" id="how-it-works">
+      <h2>How It Works: JSON Diffing & Myers Structural Alignment</h2>
+
+      <h3>What is a JSON Comparison Tool?</h3>
+      <p>A JSON comparison tool is an analytical utility that deserializes two JSON payloads, recursively aligns their structural object keys and array elements, and calculates the exact delta using graph diffing algorithms. It highlights additions, deletions, value modifications, and type shifts across complex nested objects.</p>
+
+      <h3>How It Works in the Browser</h3>
+      <p>Our client-side diff engine computes deep comparisons directly in your browser using deterministic key normalization and difference graph traversal:</p>
+      <ol class="how-it-works-steps">
+        <li><strong>Syntax Tree Normalization</strong>: Both inputs are parsed under RFC 8259 standards into in-memory object graphs, with structural key alignment applied to eliminate false diffs caused purely by dictionary property ordering.</li>
+        <li><strong>Myers Diff Algorithm Graph Traversal</strong>: Structural lines and values are processed through Myers diff algorithm, establishing shortest edit scripts with O(ND) time and memory efficiency.</li>
+        <li><strong>Semantic Array Order Heuristics</strong>: Arrays are aligned using index-matching and array order heuristics to distinguish shifted items from genuine value updates and deletions.</li>
+        <li><strong>Side-by-Side Unified Output</strong>: Differences are color-coded in real time with synchronized scroll bars and granular diff counters without sending your payloads to a server.</li>
+      </ol>
+
+      <h3>Key Specifications & Algorithmic Mechanics</h3>
+      <p>The comparator relies on the <strong>Myers diff algorithm</strong> (Eugene Myers, 1986), an industry-standard shortest edit path graph solver. Unlike plain text line diffs that produce noisy outputs when JSON properties are shuffled, structural key alignment preserves syntactic integrity. Combined with array order heuristics, the algorithm evaluates nested lists accurately. Payload parsing conforms to <strong>RFC 8259</strong>, ensuring full compatibility with nested arrays, Unicode characters, and deeply nested microservice schemas.</p>
+    </section>
+
     <section class="features">
       <h2>Features</h2>
       <ul class="features-list">

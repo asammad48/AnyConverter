@@ -248,6 +248,25 @@
         <li><strong>Generer SQL</strong> — Indstil tabelnavn, vælg dialekt og klik "Generer SQL". Kopier eller download resultatet.</li>
       </ol>
     </section>
+
+    <section class="how-it-works" id="how-it-works">
+      <h2>Hvordan det virker: CSV-parsing og generering af SQL-dialekter</h2>
+
+      <h3>Hvad er en CSV til SQL-konverter?</h3>
+      <p>En CSV til SQL-konverter er et alsidigt datamigreringsværktøj, der opdeler afgrænsede tabeldata i henhold til de officielle RFC 4180 parsing-specifikationer, udleder kolonnedatatyper og genererer strukturerede SQL INSERT-sætninger tilpasset specifikke databasemotorer. Værktøjet automatiserer tabelskemaoprettelse, datatypedetektion og batch-transformation af rækker på få millisekunder.</p>
+
+      <h3>Hvordan det virker i browseren</h3>
+      <p>AnyConverter behandler dine regneark og afgrænsede datafiler direkte i browserens hukommelse via en streaming-tilstandsmaskine med høj hastighed:</p>
+      <ol class="how-it-works-steps">
+        <li><strong>RFC 4180 parsing og leksikalsk analyse</strong>: Parseren scanner rækker efter RFC 4180 parsing-standarden og håndterer undvegne anførselstegn, indlejrede kommaer og linjeskift inden for anførselstegn korrekt.</li>
+        <li><strong>Type inference heuristics (typeudledning)</strong>: Kolonner evalueres på tværs af rækker via automatiserede type inference heuristics for at fastlægge optimale SQL-typer (INTEGER, DECIMAL, BOOLEAN, TIMESTAMP eller VARCHAR).</li>
+        <li><strong>Automated dialect quoting (dialekt-indkapsling)</strong>: Kolonnenavne og værdier indkapsles med automated dialect quoting tilpasset specifikke motorer (MySQL backticks, PostgreSQL dobbelte anførselstegn, SQL Server klammer eller SQLite anførselstegn).</li>
+        <li><strong>Batch-sætninger</strong>: Rækker grupperes i multi-værdi INSERT-blokke for at maksimere indlæsningshastigheden i destinationsdatabasen.</li>
+      </ol>
+
+      <h3>Tekniske specifikationer og dialektunderstøttelse</h3>
+      <p>Værktøjet overholder <strong>RFC 4180</strong> (RFC 4180 parsing) for kommaseparerede værdier og understøtter også tabulatorer, semikoloner og pipes som separatorer. Motoren integrerer automated dialect quoting og type inference heuristics til <strong>MySQL</strong>, <strong>PostgreSQL</strong>, <strong>SQLite</strong> og <strong>Microsoft SQL Server (T-SQL)</strong> med korrekt håndtering af NULL-værdier, sandt/falsk-literaler og tidsstempler uden ekstern dataoverførsel.</p>
+    </section>
     <section class="features">
       <h2>Funktioner</h2>
       <ul class="features-list">

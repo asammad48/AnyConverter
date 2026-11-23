@@ -37,6 +37,7 @@ const testSuites = [
   { name: 'Sprint S19 CWV Top 20 Suite', cmd: 'node tests/test_s19_cwv_top_20.js' },
   { name: 'Sprint S20 A11y Suite', cmd: 'node tests/test_s20_a11y_keyboard_aria.js' },
   { name: 'Sprint S21 Mobile Viewport Suite', cmd: 'node tests/test_s21_mobile_viewport.js' },
+  { name: 'Sprint S22 AI Citeable Content Suite', cmd: 'node tests/test_s22_ai_citeable_dev_content.js' },
   { name: 'Playwright Visual Regression Suite (21/21 Baselines)', cmd: 'node tests/run_visual_regression.js' }
 ];
 

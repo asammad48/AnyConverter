@@ -158,6 +158,25 @@
         <li><strong>Copy or Download</strong> — Copy the formatted XML or download it as an .xml file.</li>
       </ol>
     </section>
+
+    <section class="how-it-works" id="how-it-works">
+      <h2>How It Works: XML Parsing, DOM Serialization & Tree Formatting</h2>
+
+      <h3>What is an XML Formatter?</h3>
+      <p>An XML formatter is a markup utility that parses extensible markup documents using the browser's native DOMParser, validates XML well-formedness according to W3C specifications, and serializes elements into uniform indentation hierarchies. It reformats unindented or compressed XML structures into readable trees while preserving tag attributes and text nodes.</p>
+
+      <h3>How It Works in the Browser</h3>
+      <p>Our formatting engine parses and cleans XML documents locally using native browser XML document parsers without external dependencies:</p>
+      <ol class="how-it-works-steps">
+        <li><strong>W3C DOMParser Instantiation</strong>: The raw XML string is parsed using the native <code>new DOMParser().parseFromString(xml, "application/xml")</code> into a structured XML Document Object Model.</li>
+        <li><strong>Well-Formedness Error Detection</strong>: The DOMParser checks for <code>parsererror</code> nodes generated on mismatched tags, unclosed elements, or invalid characters, reporting exact line error messages.</li>
+        <li><strong>Recursive Indentation Hierarchies</strong>: The DOM tree is traversed recursively to establish clean indentation hierarchies, calculating nesting levels and injecting consistent whitespace (2 spaces, 4 spaces, or tabs) between parent and child elements.</li>
+        <li><strong>CDATA & XML Entity Escaping</strong>: Text nodes and CDATA sections are safely preserved, performing CDATA & XML entity escaping (<code>&amp;amp;</code>, <code>&amp;lt;</code>, <code>&amp;gt;</code>, <code>&amp;quot;</code>, <code>&amp;apos;</code>) without unintended corruption.</li>
+      </ol>
+
+      <h3>Key Specifications & W3C Standards</h3>
+      <p>The tool adheres to the <strong>W3C XML 1.0 (Fifth Edition)</strong> specification and <strong>DOM Level 3 Core</strong> standards. Valid XML requires a single root element, strictly matched closing tags, case-sensitive element names, consistent indentation hierarchies, and rigorous CDATA & XML entity escaping. All formatting, minification, and downloads execute locally via DOMParser in your browser memory with 100% privacy and zero data transfer.</p>
+    </section>
     <section class="features">
       <h2>Features</h2>
       <ul class="features-list">

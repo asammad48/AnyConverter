@@ -112,6 +112,25 @@
         <li><strong>Click Convert</strong> — Copy the output or use Swap to move the output back to input for chaining.</li>
       </ol>
     </section>
+
+    <section class="how-it-works" id="how-it-works">
+      <h2>How It Works: RFC 3986 Percent-Encoding & URI Octet Escaping</h2>
+
+      <h3>What is URL Percent-Encoding?</h3>
+      <p>URL percent-encoding is a character substitution mechanism defined by RFC 3986 percent-encoding standards that converts non-ASCII characters, whitespace, and reserved delimiters in Uniform Resource Identifiers (URIs) into hexadecimal triplets of the form %XX. It guarantees that query parameters, path components, and headers conform to universal internet addressing standards.</p>
+
+      <h3>How It Works in the Browser</h3>
+      <p>AnyConverter handles URI normalization locally using standards-compliant JavaScript encoding functions and UTF-8 octet serialization:</p>
+      <ol class="how-it-works-steps">
+        <li><strong>Codepoint to UTF-8 Conversion</strong>: Input characters are converted into their variable-length UTF-8 byte sequences (1 to 4 bytes per character).</li>
+        <li><strong>Reserved vs. Unreserved Characters Evaluation</strong>: Characters are classified into reserved vs. unreserved characters according to RFC 3986. The unreserved set—letters (<code>A-Z</code>, <code>a-z</code>), digits (<code>0-9</code>), hyphen (<code>-</code>), underscore (<code>_</code>), period (<code>.</code>), and tilde (<code>~</code>)—remains unescaped.</li>
+        <li><strong>Hex Triplet Substitution</strong>: All reserved characters and non-ASCII bytes are replaced with a percent sign (<code>%</code>) followed by two uppercase hexadecimal digits representing the byte value.</li>
+        <li><strong>Component vs Full URI Differentiation</strong>: Path delimiters like slashes and query delimiters like ampersands can be preserved or escaped based on whether full URI or query parameter encoding is selected.</li>
+      </ol>
+
+      <h3>Key Specifications & Reserved Character Rules</h3>
+      <p>The tool strictly observes <strong>RFC 3986 percent-encoding</strong> specifications and the WHATWG URL standard. It rigorously distinguishes reserved vs. unreserved characters, differentiating between <code>encodeURIComponent()</code> (which escapes reserved delimiters like <code>/</code>, <code>?</code>, <code>&amp;</code>, <code>=</code> for query parameters) and <code>encodeURI()</code> (which preserves protocol and path delimiters for full web addresses). All decoding reconstructs original UTF-8 strings entirely within your browser.</p>
+    </section>
     <section class="features">
       <h2>Features</h2>
       <ul class="features-list">

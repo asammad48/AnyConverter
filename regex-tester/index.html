@@ -193,6 +193,25 @@
       </ol>
     </section>
 
+    <section class="how-it-works" id="how-it-works">
+      <h2>How It Works: ECMAScript Regex Engine & Pattern Evaluation</h2>
+
+      <h3>What is a Regular Expression Tester?</h3>
+      <p>A regular expression tester is an interactive debugging tool that compiles search patterns against sample text using the browser's native ECMAScript RegExp engine, capturing token groups and evaluating match offsets in real time. It enables developers to inspect matches, test boundaries, and validate complex parsing rules.</p>
+
+      <h3>How It Works in the Browser</h3>
+      <p>Our regex workbench compiles patterns in the client runtime using standard V8/SpiderMonkey regex engines for authentic JavaScript runtime parity:</p>
+      <ol class="how-it-works-steps">
+        <li><strong>Pattern Compilation & Flag Handling</strong>: The input pattern is instantiated via <code>new RegExp(pattern, flags)</code> using the ECMAScript RegExp engine, evaluating global (<code>g</code>), case-insensitive (<code>i</code>), multiline (<code>m</code>), dotAll (<code>s</code>), and unicode (<code>u</code>) flag handling.</li>
+        <li><strong>Match Group Capturing</strong>: The engine iterates through text matches, performing match group capturing for numbered indices and named capture groups along with exact start and end offsets.</li>
+        <li><strong>Non-Destructive Highlighting</strong>: Text slices are wrapped in semantic highlight tags with alternating contrast backgrounds to differentiate consecutive adjacent matches.</li>
+        <li><strong>Safety Evaluation</strong>: Evaluation occurs with execution limits to prevent browser lockup from catastrophic backtracking in non-deterministic finite automata (NFA).</li>
+      </ol>
+
+      <h3>Key Specifications & Engine Standards</h3>
+      <p>The tester operates under the official <strong>ECMAScript RegExp (ECMA-262)</strong> engine specification. It fully supports lookahead (<code>(?=...)</code>, <code>(?!...)</code>) and lookbehind (<code>(?<=...)</code>, <code>(?<!...)</code>) assertions, robust match group capturing (<code>(?&lt;name&gt;...)</code>), comprehensive flag handling (<code>gimsuy</code>), Unicode property escapes (<code>\p{...}</code>), and backreferences. All execution runs locally with zero network latency or text transmission.</p>
+    </section>
+
     <section class="features">
       <h2>Features</h2>
       <ul class="features-list">

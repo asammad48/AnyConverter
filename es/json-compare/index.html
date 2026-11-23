@@ -205,6 +205,25 @@
       </ol>
     </section>
 
+    <section class="how-it-works" id="how-it-works">
+      <h2>Cómo funciona: Comparación de JSON y alineación estructural de Myers</h2>
+
+      <h3>¿Qué es una herramienta de comparación de JSON?</h3>
+      <p>Una herramienta de comparación de JSON es una utilidad analítica que deserializa dos cargas útiles de JSON, alinea recursivamente sus claves de objetos y elementos de matrices, y calcula la diferencia exacta utilizando algoritmos de diferencias gráficas. Resalta adiciones, eliminaciones, modificaciones de valores y cambios de tipo en objetos anidados complejos.</p>
+
+      <h3>Cómo funciona en el navegador</h3>
+      <p>Nuestro motor de diferencias en el cliente calcula comparaciones profundas directamente en tu navegador mediante la normalización de claves y el recorrido de grafos de edición:</p>
+      <ol class="how-it-works-steps">
+        <li><strong>Normalización y alineación estructural de claves</strong>: Ambas entradas se analizan bajo el estándar RFC 8259 en grafos de objetos en memoria, aplicando alineación estructural de claves (structural key alignment) para eliminar falsas discrepancias derivadas del orden de propiedades.</li>
+        <li><strong>Recorrido del grafo con el algoritmo de diff de Myers</strong>: Las líneas y valores estructurales se evalúan mediante el algoritmo de diff de Myers (Myers diff algorithm), generando el camino de edición más corto con eficiencia O(ND).</li>
+        <li><strong>Heurísticas de orden de matrices</strong>: Las listas se comparan mediante heurísticas de orden de matrices (array order heuristics) e identidad de elementos para diferenciar elementos desplazados de actualizaciones reales de valores.</li>
+        <li><strong>Visualización paralela sincronizada</strong>: Las diferencias se resaltan mediante colores en tiempo real con barras de desplazamiento coordinadas y contadores detallados, sin enviar información a ningún servidor.</li>
+      </ol>
+
+      <h3>Especificaciones técnicas y mecánica algorítmica</h3>
+      <p>El comparador se basa en el <strong>algoritmo de diff de Myers</strong> (Myers diff algorithm, 1986), la referencia técnica para calcular rutas de edición mínimas. A diferencia de los comparadores de texto plano que fallan cuando las claves cambian de posición, la alineación estructural de claves (structural key alignment) junto con heurísticas de orden de matrices (array order heuristics) garantiza coherencia sintáctica bajo la norma <strong>RFC 8259</strong>, admitiendo árboles jerárquicos profundos y caracteres internacionales en UTF-8.</p>
+    </section>
+
     <section class="features">
       <h2>Características</h2>
       <ul class="features-list">

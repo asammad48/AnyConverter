@@ -248,6 +248,25 @@
         <li><strong>Genera el SQL</strong> — Define el nombre de tabla, elige el dialecto y haz clic en "Generar SQL". Copia o descarga el resultado.</li>
       </ol>
     </section>
+
+    <section class="how-it-works" id="how-it-works">
+      <h2>Cómo funciona: Análisis de CSV y generación de dialectos SQL</h2>
+
+      <h3>¿Qué es un conversor de CSV a SQL?</h3>
+      <p>Un conversor de CSV a SQL es una utilidad de migración de datos que tokeniza registros tabulares separados por delimitadores según las especificaciones de RFC 4180, deduce los tipos de datos de las columnas y genera sentencias SQL INSERT adaptadas al motor de base de datos de destino. Automatiza la creación del esquema y la conversión de filas por lotes.</p>
+
+      <h3>Cómo funciona en el navegador</h3>
+      <p>AnyConverter procesa tus hojas de cálculo y archivos delimitados directamente en la memoria del navegador mediante una máquina de estados optimizada:</p>
+      <ol class="how-it-works-steps">
+        <li><strong>Análisis léxico según RFC 4180 parsing</strong>: El analizador examina las filas reconociendo comillas de escape, comas incrustadas y saltos de línea dentro de campos entrecomillados siguiendo el estándar RFC 4180.</li>
+        <li><strong>Heurísticas de inferencia de tipos (type inference heuristics)</strong>: Las columnas se analizan mediante heurísticas de inferencia de tipos para deducir tipos SQL óptimos (INTEGER, DECIMAL, BOOLEAN, TIMESTAMP o VARCHAR).</li>
+        <li><strong>Entrecomillado automático de dialectos (automated dialect quoting)</strong>: Los identificadores y literales aplican entrecomillado automático según dialecto (comillas invertidas en MySQL, comillas dobles en PostgreSQL, corchetes en SQL Server o comillas estándar en SQLite).</li>
+        <li><strong>Construcción de sentencias por lotes</strong>: Las filas se agrupan en sentencias INSERT multivalor para acelerar la importación en la base de datos de destino.</li>
+      </ol>
+
+      <h3>Especificaciones técnicas y compatibilidad de dialectos</h3>
+      <p>El analizador cumple rigurosamente con la norma <strong>RFC 4180</strong> (RFC 4180 parsing) para valores separados por comas y admite delimitadores alternativos como tabuladores, puntos y comas o barras verticales. Incorpora automated dialect quoting y type inference heuristics para <strong>MySQL</strong>, <strong>PostgreSQL</strong>, <strong>SQLite</strong> y <strong>Microsoft SQL Server (T-SQL)</strong>, gestionando valores nulos, literales booleanos y formatos temporales sin enviar tus datos fuera de tu equipo.</p>
+    </section>
     <section class="features">
       <h2>Características</h2>
       <ul class="features-list">

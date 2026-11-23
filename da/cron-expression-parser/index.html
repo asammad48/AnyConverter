@@ -109,6 +109,25 @@
         <li>Brug forudindstillingsknapperne til at indlæse almindelige tidsplaner.</li>
       </ol>
     </section>
+
+    <section class="how-it-works" id="how-it-works">
+      <h2>Hvordan det virker: Parsing af cron-udtryk og tidsplanberegning</h2>
+
+      <h3>Hvad er en cron-udtryk-parser?</h3>
+      <p>En cron-udtryk-parser er et planlægningsværktøj, der analyserer tilbagevendende tidsplaner på tværs af POSIX 5-field vs. Quartz 6-field cron syntax-specifikationer, validerer token-udtryk og beregner kommende kørselstidspunkter. Værktøjet omsætter tekniske tidsmønstre til letforståelige tekstbeskrivelser af automatiserede opgaver.</p>
+
+      <h3>Hvordan det virker i browseren</h3>
+      <p>Vores planlægningsmotor fortolker og beregner gentagne tidsintervaller direkte i browseren via deterministiske kalenderaloritmer:</p>
+      <ol class="how-it-works-steps">
+        <li><strong>Positionsbestemt felt-tokenisering</strong>: Udtrykket opdeles i dets felter: minut (0–59), time (0–23), dag i måned (1–31), måned (1–12) og ugedag (0–7) samt valgfri sekunder i Quartz-tilstand under POSIX 5-field vs. Quartz 6-field cron syntax.</li>
+        <li><strong>Trinværdier (step values) og operator-udvidelse</strong>: Rækkevidde-operatorer (<code>-</code>), lister (<code>,</code>) og step values (<code>/</code>) udvides til konkrete heltalsmængder for hver tidsenhed.</li>
+        <li><strong>Evaluering af jokertegn (wildcards)</strong>: I Quartz-tilstand evalueres wildcards som <code>*</code>, <code>?</code>, <code>L</code> (sidste dag), <code>W</code> (nærmeste hverdag) og <code>#</code> (n'te ugedag) i forhold til den reelle kalender.</li>
+        <li><strong>Fremskrivning af kørsler</strong>: Beregningsmotoren simulerer tidsforløbet fra det aktuelle tidspunkt for at finde og vise de næste 5 kørselstidspunkter.</li>
+      </ol>
+
+      <h3>Tekniske specifikationer og syntaksstandarder</h3>
+      <p>Parseren overholder <strong>POSIX IEEE Std 1003.1</strong> standarden for 5-felters cron samt dialekten fra <strong>Quartz Enterprise Job Scheduler</strong> med 6 felter, hvilket muliggør fuld forståelse af POSIX 5-field vs. Quartz 6-field cron syntax. Den understøtter klassiske wildcards som stjerne (<code>*</code> for enhver værdi) og spørgsmålstegn (<code>?</code> for uspecificeret værdi) samt step values. Al tidsberegning sker udelukkende på klienten uden serverkald.</p>
+    </section>
     <section class="features">
       <h2>Funktioner</h2>
       <ul class="features-list">

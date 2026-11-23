@@ -140,6 +140,25 @@
         <li><strong>Copia el resultado</strong> — Se muestran los cuatro hashes simultáneamente. Copia el que necesites con el botón correspondiente.</li>
       </ol>
     </section>
+
+    <section class="how-it-works" id="how-it-works">
+      <h2>Cómo funciona: Hashing criptográfico y algoritmos digest de Web Crypto</h2>
+
+      <h3>¿Qué es un generador de hashes criptográficos?</h3>
+      <p>Un generador de hashes criptográficos es una utilidad de seguridad de la información que transforma cadenas de texto arbitrarias o archivos binarios en resúmenes deterministas de longitud fija mediante SHA-256 / SHA-512 / MD5 cryptographic digest algorithms. Las funciones hash son operaciones matemáticas unidireccionales e irreversibles diseñadas para la comprobación de integridad y seguridad.</p>
+
+      <h3>Cómo funciona en el navegador</h3>
+      <p>AnyConverter calcula resúmenes de mensajes directamente en tu navegador mediante la API W3C Web Crypto API acelerada por hardware sin subir ningún archivo:</p>
+      <ol class="how-it-works-steps">
+        <li><strong>Codificación de bytes en UTF-8</strong>: La entrada de texto se transforma en una secuencia de bytes de 8 bits mediante la interfaz nativa <code>TextEncoder()</code>.</li>
+        <li><strong>Digest acelerado mediante Web Crypto API</strong>: Para los algoritmos digest SHA-256 y SHA-512, el búfer de bytes se procesa mediante <code>crypto.subtle.digest()</code> a través de la Web Crypto API, aprovechando la aceleración criptográfica del procesador.</li>
+        <li><strong>Serialización hexadecimal</strong>: El ArrayBuffer resultante se convierte byte a byte en una cadena hexadecimal en minúsculas (2 caracteres por cada byte).</li>
+        <li><strong>Cálculo compatible de MD5</strong>: Las sumas de comprobación MD5 se calculan mediante un algoritmo bit a bit en el cliente para verificar archivos y registros históricos.</li>
+      </ol>
+
+      <h3>Especificaciones técnicas y propiedades criptográficas</h3>
+      <p>Los algoritmos aplican los estándares <strong>FIPS PUB 180-4</strong> (Secure Hash Standard para SHA-256 y SHA-512) y <strong>RFC 1321</strong> (MD5). SHA-256 genera un resumen de 256 bits (64 caracteres hexadecimales) con resistencia comprobada frente a colisiones. SHA-512 genera un resumen de 512 bits (128 caracteres hexadecimales) para entornos de alta seguridad. Todos los SHA-256 / SHA-512 / MD5 cryptographic digest algorithms se procesan localmente mediante la Web Crypto API en la memoria de tu dispositivo.</p>
+    </section>
     <section class="features">
       <h2>Características</h2>
       <ul class="features-list">

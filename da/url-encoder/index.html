@@ -123,6 +123,25 @@
         <li><strong>Kopier resultatet</strong> — Brug "Kopier resultat" for at kopiere til udklipsholderen.</li>
       </ol>
     </section>
+
+    <section class="how-it-works" id="how-it-works">
+      <h2>Hvordan det virker: RFC 3986 procent-kodning og URI-oktet-escaping</h2>
+
+      <h3>Hvad er URL-procentkodning?</h3>
+      <p>URL-procentkodning er en tegnerstatningsmekanisme defineret af RFC 3986 percent-encoding, der konverterer ikke-ASCII-tegn, mellemrum og reserverede skilletegn i webadresser (URI'er) til hexadecimale tripletter på formen %XX. Det sikrer, at forespørgselsparametre, stikomponenter og overskrifter overholder internationale internetstandarder.</p>
+
+      <h3>Hvordan det virker i browseren</h3>
+      <p>AnyConverter håndterer URI-normalisering lokalt i browseren ved hjælp af standardiserede JavaScript-funktioner og UTF-8 oktet-serialisering:</p>
+      <ol class="how-it-works-steps">
+        <li><strong>Konvertering til UTF-8</strong>: Inputtegn konverteres til deres tilsvarende sekvenser af UTF-8 bytes (1 til 4 bytes pr. tegn).</li>
+        <li><strong>Sondring mellem reserved vs. unreserved characters</strong>: Tegn klassificeres i henhold til RFC 3986. Mængden af unreserved characters—bogstaver (<code>A-Z</code>, <code>a-z</code>), tal (<code>0-9</code>), bindestreg (<code>-</code>), understreg (<code>_</code>), punktum (<code>.</code>) og tilde (<code>~</code>)—bevares uændret.</li>
+        <li><strong>Erstatning med hex-tripletter</strong>: Alle reserved characters og ikke-ASCII bytes erstattes med et procenttegn (<code>%</code>) efterfulgt af to store hexadecimale cifre.</li>
+        <li><strong>Valg mellem parameter og fuld URI</strong>: Gør det muligt at skelne mellem indkodning af en hel adresse eller isolerede parameterværdier, hvor skråstreger og parametre skal afskærmes.</li>
+      </ol>
+
+      <h3>Tekniske specifikationer og reserverede tegn</h3>
+      <p>Værktøjet følger <strong>RFC 3986 percent-encoding</strong>-specifikationen for URI-syntaks og WHATWG URL-standarden. Det skelner nøje mellem reserved vs. unreserved characters, differentierer mellem <code>encodeURIComponent()</code> (der koder afgrænsere som <code>/</code>, <code>?</code>, <code>&amp;</code>, <code>=</code> til parameterværdier) og <code>encodeURI()</code> (der bevarer protokollen og stien for hele webadresser). Al behandling udføres i din browser uden upload.</p>
+    </section>
     <section class="features">
       <h2>Funktioner</h2>
       <ul class="features-list">

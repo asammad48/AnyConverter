@@ -140,6 +140,25 @@
         <li><strong>Copy your hash</strong> — Click the Copy button next to any hash algorithm to copy it to clipboard.</li>
       </ol>
     </section>
+
+    <section class="how-it-works" id="how-it-works">
+      <h2>How It Works: Cryptographic Hashing & Web Crypto Digest Algorithms</h2>
+
+      <h3>What is a Cryptographic Hash Generator?</h3>
+      <p>A cryptographic hash generator is an information security utility that transforms arbitrary input strings or binary files into fixed-length, deterministic checksum digests using cryptographic algorithms including SHA-256, SHA-512, and MD5 cryptographic digest algorithms. Hash functions are irreversible, one-way mathematical operations designed for integrity verification and password security.</p>
+
+      <h3>How It Works in the Browser</h3>
+      <p>AnyConverter computes message digests directly in your browser using the hardware-accelerated W3C Web Crypto API without uploading data:</p>
+      <ol class="how-it-works-steps">
+        <li><strong>UTF-8 Byte Encoding</strong>: Text input is transformed into an 8-bit unsigned byte array via the native <code>TextEncoder()</code> interface.</li>
+        <li><strong>Hardware-Accelerated Web Crypto API Digesting</strong>: For SHA-256 and SHA-512 cryptographic digest algorithms, the byte buffer is processed through <code>crypto.subtle.digest()</code> via the native Web Crypto API, utilizing local hardware acceleration for maximum throughput.</li>
+        <li><strong>Hexadecimal Serialization</strong>: The resulting ArrayBuffer digest is mapped byte-by-byte into lowercase hexadecimal strings (2 hex characters per byte).</li>
+        <li><strong>Legacy MD5 Computation</strong>: MD5 cryptographic digest algorithms checksums are calculated using a pure client-side bitwise transformation pipeline for legacy checksum comparisons.</li>
+      </ol>
+
+      <h3>Key Specifications & Cryptographic Properties</h3>
+      <p>The hash functions implement <strong>FIPS PUB 180-4</strong> (Secure Hash Standard for SHA-256 and SHA-512) and <strong>RFC 1321</strong> (MD5). SHA-256 produces a 256-bit (32-byte / 64-hex-character) digest with pre-image and strong collision resistance. SHA-512 outputs a 512-bit (64-byte / 128-hex-character) digest suitable for high-security environments. All SHA-256 / SHA-512 / MD5 cryptographic digest algorithms execute locally through the Web Crypto API in browser memory with zero network latency or external exposure.</p>
+    </section>
     <section class="features">
       <h2>Features</h2>
       <ul class="features-list">

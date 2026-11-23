@@ -250,6 +250,25 @@
         <li>Generate SQL, copy it, download a .sql file, or query the same data.</li>
       </ol>
     </section>
+
+    <section class="how-it-works" id="how-it-works">
+      <h2>How It Works: CSV Parsing & SQL Dialect Generation</h2>
+
+      <h3>What is a CSV to SQL Converter?</h3>
+      <p>A CSV to SQL converter is a data migration utility that tokenizes delimiter-separated tabular records according to RFC 4180 specifications, infers column datatypes, and generates structured SQL INSERT statements tailored to target database engines. It automates table schema definition and batch row transformation.</p>
+
+      <h3>How It Works in the Browser</h3>
+      <p>AnyConverter processes your spreadsheets and delimiter-separated files directly in browser memory using a streaming state-machine parser:</p>
+      <ol class="how-it-works-steps">
+        <li><strong>RFC 4180 Lexical Parsing</strong>: The parser scans input rows adhering to RFC 4180 parsing specifications, properly handling escaped quotes, embedded commas, and multiline values within quoted strings.</li>
+        <li><strong>Type Inference Heuristics</strong>: Column cells are evaluated across sample rows using automated type inference heuristics to deduce optimal SQL types (INTEGER, DECIMAL, BOOLEAN, TIMESTAMP, or VARCHAR).</li>
+        <li><strong>Automated Dialect Quoting</strong>: Identifier names and literal values receive automated dialect quoting using engine-specific delimiters (MySQL backticks, PostgreSQL double quotes, MS SQL Server square brackets, or SQLite standard quotes).</li>
+        <li><strong>Batch Statement Construction</strong>: Rows are grouped into multi-value INSERT batches to maximize database import speed while avoiding transaction size limits.</li>
+      </ol>
+
+      <h3>Key Specifications & Dialect Support</h3>
+      <p>The parser complies fully with <strong>RFC 4180</strong> parsing standards for comma-separated values, supporting custom delimiters including tabs, semicolons, and pipes. The engine features automated dialect quoting and type inference heuristics across <strong>MySQL</strong>, <strong>PostgreSQL</strong>, <strong>SQLite</strong>, and <strong>Microsoft SQL Server (T-SQL)</strong>, handling NULL literals, boolean values (TRUE/FALSE vs 1/0), and date-time formats (ISO 8601 vs DATETIME2) with zero data upload to third-party servers.</p>
+    </section>
     <section class="features">
       <h2>Features</h2>
       <ul class="features-list">
