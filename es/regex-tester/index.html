@@ -29,7 +29,54 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Probador de Regex","url":"https://anyconverter.io/es/regex-tester/","description":"Prueba expresiones regulares online con resaltado de coincidencias en tiempo real.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"¿Qué sabor de regex se usa?","acceptedAnswer":{"@type":"Answer","text":"La herramienta usa el motor de regex de JavaScript, que es compatible con ECMA-262. Es el mismo motor que usan Node.js y los navegadores modernos."}},{"@type":"Question","name":"¿Qué significan los flags?","acceptedAnswer":{"@type":"Answer","text":"g (global) encuentra todas las coincidencias en lugar de solo la primera. i ignora mayúsculas y minúsculas. m trata cada línea como una cadena separada para ^ y $. s hace que el punto (.) coincida también con saltos de línea."}}]}</script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "¿Qué sabor de regex se usa?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "La herramienta usa el motor de regex de JavaScript, que es compatible con ECMA-262. Es el mismo motor que usan Node.js y los navegadores modernos."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Qué significan los flags?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "g (global) encuentra todas las coincidencias en lugar de solo la primera. i ignora mayúsculas y minúsculas. m trata cada línea como una cadena separada para ^ y $. s hace que el punto (.) coincida también con saltos de línea."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cómo funcionan los grupos de captura en expresiones regulares?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Encierra partes del patrón entre paréntesis () para definir grupos de captura. Cada coincidencia desglosará los valores capturados de forma independiente para su extracción o reemplazo."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cómo puedo exportar los resultados y coincidencias?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Puedes copiar la lista de coincidencias directamente al portapapeles o exportar los datos extraídos en formato JSON o texto delimitado con un solo clic."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Puedo probar expresiones regulares contra archivos de registro extensos?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sí. El motor de evaluación se ejecuta en el navegador con un limitador de tiempo de ejecución para prevenir bucles de retroceso catastrófico (catastrophic backtracking) en textos extensos."
+      }
+    }
+  ]
+}
+</script>
 
 
 <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
@@ -248,6 +295,9 @@
       <div class="faq-list">
         <details class="faq-item"><summary class="faq-question">¿Qué sabor de regex se usa? <span class="faq-icon">+</span></summary><div class="faq-answer">La herramienta usa el motor de regex de JavaScript, que es compatible con ECMA-262. Es el mismo motor que usan Node.js y los navegadores modernos.</div></details>
         <details class="faq-item"><summary class="faq-question">¿Qué significan los flags? <span class="faq-icon">+</span></summary><div class="faq-answer">g (global) encuentra todas las coincidencias en lugar de solo la primera. i ignora mayúsculas y minúsculas. m trata cada línea como una cadena separada para ^ y $. s hace que el punto (.) coincida también con saltos de línea.</div></details>
+    <details class="faq-item"><summary class="faq-question">¿Cómo funcionan los grupos de captura en expresiones regulares? <span class="faq-icon">+</span></summary><div class="faq-answer">Encierra partes del patrón entre paréntesis () para definir grupos de captura. Cada coincidencia desglosará los valores capturados de forma independiente para su extracción o reemplazo.</div></details>
+    <details class="faq-item"><summary class="faq-question">¿Cómo puedo exportar los resultados y coincidencias? <span class="faq-icon">+</span></summary><div class="faq-answer">Puedes copiar la lista de coincidencias directamente al portapapeles o exportar los datos extraídos en formato JSON o texto delimitado con un solo clic.</div></details>
+    <details class="faq-item"><summary class="faq-question">¿Puedo probar expresiones regulares contra archivos de registro extensos? <span class="faq-icon">+</span></summary><div class="faq-answer">Sí. El motor de evaluación se ejecuta en el navegador con un limitador de tiempo de ejecución para prevenir bucles de retroceso catastrófico (catastrophic backtracking) en textos extensos.</div></details>
       </div>
     </section>
     <section class="related-tools">

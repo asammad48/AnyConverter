@@ -29,7 +29,54 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Codificador URL","url":"https://anyconverter.io/es/url-encoder/","description":"Codifica o decodifica URLs y parámetros de consulta online gratis.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"¿Cuál es la diferencia entre codificar componente y codificar URL?","acceptedAnswer":{"@type":"Answer","text":"encodeURIComponent codifica todos los caracteres especiales incluyendo /, ?, &, =, lo que lo hace adecuado para parámetros. encodeURI preserva los caracteres estructurales de la URL como /, ?, # para codificar URLs completas."}},{"@type":"Question","name":"¿Qué es la codificación porcentual?","acceptedAnswer":{"@type":"Answer","text":"La codificación porcentual reemplaza caracteres no seguros en URLs con un % seguido de dos dígitos hexadecimales. Por ejemplo, un espacio se convierte en %20."}}]}</script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "¿Cuál es la diferencia entre codificar componente y codificar URL?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "encodeURIComponent codifica todos los caracteres especiales incluyendo /, ?, &, =, lo que lo hace adecuado para parámetros. encodeURI preserva los caracteres estructurales de la URL como /, ?, # para codificar URLs completas."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Qué es la codificación porcentual?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "La codificación porcentual reemplaza caracteres no seguros en URLs con un % seguido de dos dígitos hexadecimales. Por ejemplo, un espacio se convierte en %20."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Qué hace el modo de espacio con signo más (+)?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "El estándar application/x-www-form-urlencoded traduce los espacios como signos más (+) en lugar de %20. Este modo es útil al preparar datos de formularios HTML o parámetros de consulta tradicionales."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Puede fallar la decodificación de una URL?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sí, si la cadena contiene secuencias porcentuales mal formadas (como un signo % no seguido de dos caracteres hexadecimales válidos), la función de decodificación arrojará un error de URI mal formada."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿El modo URL completa codifica todos los caracteres?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. El modo URL completa preserva los delimitadores de protocolo, dominio y ruta como :, /, ? y & para no romper la estructura de la dirección, codificando solo los caracteres no válidos o inseguros."
+      }
+    }
+  ]
+}
+</script>
 
 
 <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
@@ -173,6 +220,9 @@
       <div class="faq-list">
         <details class="faq-item"><summary class="faq-question">¿Cuál es la diferencia entre codificar componente y codificar URL? <span class="faq-icon">+</span></summary><div class="faq-answer">encodeURIComponent codifica todos los caracteres especiales incluyendo /, ?, &amp;, =, lo que lo hace adecuado para parámetros. encodeURI preserva los caracteres estructurales de la URL como /, ?, # para codificar URLs completas.</div></details>
         <details class="faq-item"><summary class="faq-question">¿Qué es la codificación porcentual? <span class="faq-icon">+</span></summary><div class="faq-answer">La codificación porcentual reemplaza caracteres no seguros en URLs con un % seguido de dos dígitos hexadecimales. Por ejemplo, un espacio se convierte en %20.</div></details>
+    <details class="faq-item"><summary class="faq-question">¿Qué hace el modo de espacio con signo más (+)? <span class="faq-icon">+</span></summary><div class="faq-answer">El estándar application/x-www-form-urlencoded traduce los espacios como signos más (+) en lugar de %20. Este modo es útil al preparar datos de formularios HTML o parámetros de consulta tradicionales.</div></details>
+    <details class="faq-item"><summary class="faq-question">¿Puede fallar la decodificación de una URL? <span class="faq-icon">+</span></summary><div class="faq-answer">Sí, si la cadena contiene secuencias porcentuales mal formadas (como un signo % no seguido de dos caracteres hexadecimales válidos), la función de decodificación arrojará un error de URI mal formada.</div></details>
+    <details class="faq-item"><summary class="faq-question">¿El modo URL completa codifica todos los caracteres? <span class="faq-icon">+</span></summary><div class="faq-answer">No. El modo URL completa preserva los delimitadores de protocolo, dominio y ruta como :, /, ? y & para no romper la estructura de la dirección, codificando solo los caracteres no válidos o inseguros.</div></details>
       </div>
     </section>
     <section class="related-tools">

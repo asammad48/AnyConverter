@@ -29,7 +29,54 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"URL Encoder","url":"https://anyconverter.io/da/url-encoder/","description":"Kodér eller dekodér URL'er og forespørgselsparametre online gratis.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Hvad er forskellen på komponentkodning og URL-kodning?","acceptedAnswer":{"@type":"Answer","text":"encodeURIComponent kodér alle specialtegn inkl. /, ?, &, =, hvilket gør det velegnet til parametre. encodeURI bevarer URL'ens strukturelle tegn som /, ?, # til kodning af hele URL'er."}},{"@type":"Question","name":"Hvad er procentkodning?","acceptedAnswer":{"@type":"Answer","text":"Procentkodning erstatter usikre tegn i URL'er med et % efterfulgt af to hexadecimale cifre. F.eks. konverteres et mellemrum til %20."}}]}</script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Hvad er forskellen på komponentkodning og URL-kodning?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "encodeURIComponent kodér alle specialtegn inkl. /, ?, &, =, hvilket gør det velegnet til parametre. encodeURI bevarer URL'ens strukturelle tegn som /, ?, # til kodning af hele URL'er."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Hvad er procentkodning?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Procentkodning erstatter usikre tegn i URL'er med et % efterfulgt af to hexadecimale cifre. F.eks. konverteres et mellemrum til %20."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Hvad gør plus-mellemrum-tilstand (+)?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "I standarden application/x-www-form-urlencoded kodes mellemrum som et plustegn (+) i stedet for %20. Dette bruges typisk i traditionelle formularparametre og forespørgselsstrenge."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Kan afkodning mislykkes?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ja, hvis URL-strengen indeholder ugyldige procentkoder (som et % uden to gyldige hexadecimale tegn), vil afkodningsfunktionen returnere en fejl om misdannet URI."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Koder fuld URL-tilstand alle tegn?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Nej. Fuld URL-tilstand bevarer protokol-, host- og stiseparatorer såsom :, /, ? og & for at undgå at ødelægge URL'ens struktur, og koder kun ugyldige eller usikre tegn."
+      }
+    }
+  ]
+}
+</script>
 
 
 <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
@@ -173,6 +220,9 @@
       <div class="faq-list">
         <details class="faq-item"><summary class="faq-question">Hvad er forskellen på komponentkodning og URL-kodning? <span class="faq-icon">+</span></summary><div class="faq-answer">encodeURIComponent kodér alle specialtegn inkl. /, ?, &amp;, =, hvilket gør det velegnet til parametre. encodeURI bevarer URL'ens strukturelle tegn som /, ?, # til kodning af hele URL'er.</div></details>
         <details class="faq-item"><summary class="faq-question">Hvad er procentkodning? <span class="faq-icon">+</span></summary><div class="faq-answer">Procentkodning erstatter usikre tegn i URL'er med et % efterfulgt af to hexadecimale cifre. F.eks. konverteres et mellemrum til %20.</div></details>
+    <details class="faq-item"><summary class="faq-question">Hvad gør plus-mellemrum-tilstand (+)? <span class="faq-icon">+</span></summary><div class="faq-answer">I standarden application/x-www-form-urlencoded kodes mellemrum som et plustegn (+) i stedet for %20. Dette bruges typisk i traditionelle formularparametre og forespørgselsstrenge.</div></details>
+    <details class="faq-item"><summary class="faq-question">Kan afkodning mislykkes? <span class="faq-icon">+</span></summary><div class="faq-answer">Ja, hvis URL-strengen indeholder ugyldige procentkoder (som et % uden to gyldige hexadecimale tegn), vil afkodningsfunktionen returnere en fejl om misdannet URI.</div></details>
+    <details class="faq-item"><summary class="faq-question">Koder fuld URL-tilstand alle tegn? <span class="faq-icon">+</span></summary><div class="faq-answer">Nej. Fuld URL-tilstand bevarer protokol-, host- og stiseparatorer såsom :, /, ? og & for at undgå at ødelægge URL'ens struktur, og koder kun ugyldige eller usikre tegn.</div></details>
       </div>
     </section>
     <section class="related-tools">

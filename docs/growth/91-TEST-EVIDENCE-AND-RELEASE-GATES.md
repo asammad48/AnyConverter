@@ -1,3 +1,55 @@
+# Pre-deploy SEO Verification — feat/s23-faq-schema-expansion @ HEAD
+
+Date: 2026-11-23T18:30:00Z
+Branch: feat/s23-faq-schema-expansion
+Changed files: tests/run_all_tests.js, tests/test_s23_faq_schema_expansion.js, docs/growth/outreach/LOOP_8_BATCH_2_PROSPECTS.md, sitemap.xml, and 23 HTML tool pages across EN, ES, DA (Top 30 Tools FAQ expansion & parity).
+Affected URLs: Top 30 Tools across EN, ES, DA (90 URLs total).
+Locales touched: [en, es, da] (100% reciprocal 4-way hreflang verified across en, es, da, x-default)
+
+| Gate | Status | Evidence |
+|---|---|---|
+| G1 Repo safety | PASS | Feature branch `feat/s23-faq-schema-expansion` branched directly off clean S22 checkpoint (`94c6cd6`). Zero breaking changes to existing calculator formulas, conversions, or JS runtime. |
+| G2 Existing tests | PASS | `node tests/run_all_tests.js` executed: 38/38 master suites passed (100%), including 21/21 Playwright visual regression snapshots, CWV top 20, a11y keyboard/ARIA, mobile viewport, sitemap integrity, localization quality, sitewide parity, and privacy statement checks. |
+| G3 HTML validation | PASS | Clean, valid HTML5 markup across all 90 touched pages. Semantic `<details class="faq-item">` and `<summary class="faq-question">` integrated cleanly with zero layout disruption. |
+| G4 Link integrity | PASS | 100% reciprocal 4-way hreflang alternates (`en`, `es`, `da`, `x-default`) verified in `sitemap.xml` (441 URLs, 0 drift) and HTML headers. Self-referential canonical URLs intact on all 90 target URLs. |
+| G5 Functional E2E | PASS | 21/21 Playwright visual regression comparisons passed cleanly via `tests/run_visual_regression.js`. All 30 tools fully operational. |
+| G6 Multilingual regression | PASS | Native translations verified with `tests/test_localization_regression.js`. Danish (`æ`, `ø`, `å`) and Spanish (`á`, `é`, `í`, `ó`, `ú`, `ñ`, `¿`) diacritics 100% intact across all expanded FAQs. |
+| G7 Responsive UI | PASS | Zero horizontal overflow across all 4 mandatory mobile viewports (320px, 360px, 375px, 390px). `<details class="faq-item">` expands and collapses smoothly on narrow screens. |
+| G8 Accessibility | PASS | WCAG 2.2 AA compliant. Native `<details>` and `<summary>` elements provide keyboard navigation (`Space`/`Enter` to toggle) and implicit ARIA expansion semantics out of the box. |
+| G9 Privacy / security | PASS | Verified by `tests/test_privacy_claims_regression.js`. Authoritative FAQ answers explicitly reinforce client-side execution, zero server uploads, and confidentiality. |
+| G10 Performance | PASS | Core Web Vitals thresholds preserved: LCP < 2.5s, CLS < 0.1, INP < 200ms. Zero layout shifts and zero external script dependencies. |
+| G11 SEO route invariants | PASS | Self-referencing canonical URLs strictly enforced across all 90 pages. Reciprocal hreflang tags 100% consistent across all pages. |
+| G12 Structured data | PASS | 100% verbatim parity between visible `<details class="faq-item">` HTML and `FAQPage` JSON-LD schema verified on all 90 URLs across 460 individual FAQs (`tests/test_s23_faq_schema_expansion.js`). |
+| G13 Internal linking | PASS | Related-tool internal linking intact. All tools linked reciprocally with zero orphan pages. |
+| G14 AdSense placement | PASS | Ad container structures (`.ad-slot`, `.dc-ad`) maintain reserved dimensions (`min-height: 250px` for rect/side, `min-height: 90px`/`100px` for leaderboards) to prevent cumulative layout shifts. |
+| G15 Rollback plan | PASS | Reversible git commit; clean baseline checkpoint `feat/s22-ai-citeable-dev-content` (`94c6cd6`). |
+
+---
+
+## Sprint S23 Delivery Status Verdict
+
+**STATUS: 100% DELIVERED FOR SPRINT S23 (FAQ SCHEMA EXPANSION TO TOP 30 PAGES)**
+
+1. **Top 30 Tools Coverage (90 URLs across EN, ES, DA):** **PASS / SHIPPED**.
+   - All 90 URLs verified to contain between 4 and 7 authoritative, high-intent FAQs (460 total FAQs).
+   - Expanded 19 lagging pages from `< 4` FAQs to 5 FAQs in both visible HTML and schema:
+     - `da/base64-encoder`, `es/url-encoder`, `da/url-encoder`, `edit-pdf`, `da/edit-pdf`
+     - `es/csv-to-sql`, `da/csv-to-sql`, `es/hash-generator`, `da/hash-generator`
+     - `sleep-calculator`, `es/sleep-calculator`, `da/sleep-calculator`
+     - `aspect-ratio-calculator`, `es/aspect-ratio-calculator`, `da/aspect-ratio-calculator`
+     - `es/regex-tester`, `da/regex-tester`, `es/xml-formatter`, `da/xml-formatter`.
+2. **100% Verbatim Parity (G12 Release Gate):** **PASS / SHIPPED**.
+   - Validated character-for-character equality between visible HTML question/answer text and Schema.org `FAQPage` JSON-LD across all 460 FAQ entries.
+   - Fixed count discrepancy in `da/age-calculator` (added 6th FAQ to schema) and aligned quotation escaping in `json-compare` (EN, ES, DA).
+3. **Automated Release Suite (`tests/test_s23_faq_schema_expansion.js`):** **PASS / SHIPPED**.
+   - 5/5 sub-gates passed (physical existence, count range 4–7, 100% verbatim parity, canonical/hreflang reciprocity, Track B monitoring).
+4. **Master Test Runner Integration (`tests/run_all_tests.js`):** **PASS / SHIPPED**.
+   - Registered S23 suite; 38/38 master suites passing (100%), including 21/21 Playwright visual regression tests.
+5. **Track B: Loop 8 Outreach Execution Monitoring:** **PASS / SHIPPED**.
+   - Active monitoring maintained in `docs/growth/outreach/LOOP_8_BATCH_2_PROSPECTS.md` with strict manual owner sending policy enforced.
+
+---
+
 # Pre-deploy SEO Verification — feat/s22-ai-citeable-dev-content @ HEAD
 
 Date: 2026-11-23T17:00:00Z

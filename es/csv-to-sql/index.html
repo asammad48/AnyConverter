@@ -29,7 +29,54 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Conversor CSV a SQL","url":"https://anyconverter.io/es/csv-to-sql/","description":"Convierte archivos CSV a sentencias SQL INSERT online gratis.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"¿Qué dialectos SQL están disponibles?","acceptedAnswer":{"@type":"Answer","text":"MySQL (comillas invertidas y AUTO_INCREMENT), PostgreSQL (identificadores entre comillas dobles, SERIAL) y SQLite (INTEGER PRIMARY KEY AUTOINCREMENT)."}},{"@type":"Question","name":"¿Cómo se gestionan las celdas vacías?","acceptedAnswer":{"@type":"Answer","text":"Las celdas vacías en el CSV se convierten en NULL en las sentencias INSERT SQL, que es la representación estándar de un valor ausente en SQL."}},{"@type":"Question","name":"¿Se escapan las comillas simples en los datos?","acceptedAnswer":{"@type":"Answer","text":"Sí. Las comillas simples en los valores de texto se escapan duplicándolas (por ejemplo, O'Brien se convierte en O''Brien), que es el escapado estándar de cadenas en SQL."}}]}</script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "¿Qué dialectos SQL están disponibles?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "MySQL (comillas invertidas y AUTO_INCREMENT), PostgreSQL (identificadores entre comillas dobles, SERIAL) y SQLite (INTEGER PRIMARY KEY AUTOINCREMENT)."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cómo se gestionan las celdas vacías?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Las celdas vacías en el CSV se convierten en NULL en las sentencias INSERT SQL, que es la representación estándar de un valor ausente en SQL."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Se escapan las comillas simples en los datos?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sí. Las comillas simples en los valores de texto se escapan duplicándolas (por ejemplo, O'Brien se convierte en O''Brien), que es el escapado estándar de cadenas en SQL."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cómo funciona la detección automática de tipos de datos?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "El conversor analiza los valores de cada columna examinando números enteros, flotantes, booleanos y fechas ISO. Si todos los valores de una columna son numéricos, se declara como INT o DECIMAL en lugar de VARCHAR."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Qué es un INSERT por lotes (batch INSERT)?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Un INSERT por lotes combina múltiples filas en una sola instrucción SQL con múltiples tuplas de valores (VALUES (...), (...)), lo que acelera enormemente la velocidad de importación en comparación con sentencias INSERT individuales."
+      }
+    }
+  ]
+}
+</script>
 
 
 <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
@@ -300,6 +347,8 @@
         <details class="faq-item"><summary class="faq-question">¿Qué dialectos SQL están disponibles? <span class="faq-icon">+</span></summary><div class="faq-answer">MySQL (comillas invertidas y AUTO_INCREMENT), PostgreSQL (identificadores entre comillas dobles, SERIAL) y SQLite (INTEGER PRIMARY KEY AUTOINCREMENT).</div></details>
         <details class="faq-item"><summary class="faq-question">¿Cómo se gestionan las celdas vacías? <span class="faq-icon">+</span></summary><div class="faq-answer">Las celdas vacías en el CSV se convierten en NULL en las sentencias INSERT SQL, que es la representación estándar de un valor ausente en SQL.</div></details>
         <details class="faq-item"><summary class="faq-question">¿Se escapan las comillas simples en los datos? <span class="faq-icon">+</span></summary><div class="faq-answer">Sí. Las comillas simples en los valores de texto se escapan duplicándolas (por ejemplo, O'Brien se convierte en O''Brien), que es el escapado estándar de cadenas en SQL.</div></details>
+    <details class="faq-item"><summary class="faq-question">¿Cómo funciona la detección automática de tipos de datos? <span class="faq-icon">+</span></summary><div class="faq-answer">El conversor analiza los valores de cada columna examinando números enteros, flotantes, booleanos y fechas ISO. Si todos los valores de una columna son numéricos, se declara como INT o DECIMAL en lugar de VARCHAR.</div></details>
+    <details class="faq-item"><summary class="faq-question">¿Qué es un INSERT por lotes (batch INSERT)? <span class="faq-icon">+</span></summary><div class="faq-answer">Un INSERT por lotes combina múltiples filas en una sola instrucción SQL con múltiples tuplas de valores (VALUES (...), (...)), lo que acelera enormemente la velocidad de importación en comparación con sentencias INSERT individuales.</div></details>
       </div>
     </section>
     <section class="related-tools">

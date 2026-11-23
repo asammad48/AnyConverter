@@ -29,7 +29,62 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Aldersberegner","url":"https://anyconverter.io/da/age-calculator/","description":"Beregn din nøjagtige alder i år, måneder og dage. Find det samlede antal levede dage og dage til næste fødselsdag.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Hvordan beregnes den nøjagtige alder?","acceptedAnswer":{"@type":"Answer","text":"Beregneren trækker fødselsdatoen fra måldatoen (som standard i dag) og tager hensyn til det nøjagtige antal dage i hver måned og skudår. Den returnerer de fulde år, resterende måneder og resterende dage."}},{"@type":"Question","name":"Kan jeg beregne alder på en bestemt tidligere dato?","acceptedAnswer":{"@type":"Answer","text":"Ja. Feltet \"Målsdato\" lader dig angive enhver tidligere dato for at beregne, hvad en persons alder var på det tidspunkt. Dette er nyttigt til juridiske eller historiske aldersberegninger."}},{"@type":"Question","name":"Hvordan håndteres skudår?","acceptedAnswer":{"@type":"Answer","text":"Skudår håndteres automatisk. Beregneren bruger JavaScripts indbyggede Date-objekt, som korrekt tager højde for februar med 28 eller 29 dage afhængigt af året."}},{"@type":"Question","name":"Hvad inkluderer \"Samlede levede dage\"?","acceptedAnswer":{"@type":"Answer","text":"Samlede levede dage er det komplette antal dage fra din fødselsdato til måldatoen, inklusive selve fødselsdagen. Det tager højde for alle skudår imellem."}},{"@type":"Question","name":"Hvordan beregnes \"Næste fødselsdag\"?","acceptedAnswer":{"@type":"Answer","text":"Beregneren finder den næste forekomst af din fødselsmåned og -dag efter måldatoen. Hvis din fødselsdag allerede er passeret i år, vises dage til næste års fødselsdag. Hvis det er din fødselsdag i dag, vises \"I dag!\""}}]}</script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Hvordan beregnes den nøjagtige alder?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Beregneren trækker fødselsdatoen fra måldatoen (som standard i dag) og tager hensyn til det nøjagtige antal dage i hver måned og skudår. Den returnerer de fulde år, resterende måneder og resterende dage."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Kan jeg beregne alder på en bestemt tidligere dato?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ja. Feltet \"Målsdato\" lader dig angive enhver tidligere dato for at beregne, hvad en persons alder var på det tidspunkt. Dette er nyttigt til juridiske eller historiske aldersberegninger."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Hvordan håndteres skudår?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Skudår håndteres automatisk. Beregneren bruger JavaScripts indbyggede Date-objekt, som korrekt tager højde for februar med 28 eller 29 dage afhængigt af året."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Hvad inkluderer \"Samlede levede dage\"?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Samlede levede dage er det komplette antal dage fra din fødselsdato til måldatoen, inklusive selve fødselsdagen. Det tager højde for alle skudår imellem."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Hvordan beregnes \"Næste fødselsdag\"?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Beregneren finder den næste forekomst af din fødselsmåned og -dag efter måldatoen. Hvis din fødselsdag allerede er passeret i år, vises dage til næste års fødselsdag. Hvis det er din fødselsdag i dag, vises \"I dag!\""
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Kan jeg beregne alder online gratis?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ja. Værktøjet er gratis og beregner alder direkte i browseren ud fra fødselsdato og en valgfri målsdato."
+      }
+    }
+  ]
+}
+</script>
 
 
 <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
@@ -169,7 +224,7 @@
         <details class="faq-item"><summary class="faq-question">Hvordan håndteres skudår? <span class="faq-icon">+</span></summary><div class="faq-answer">Skudår håndteres automatisk. Beregneren bruger JavaScripts indbyggede Date-objekt, som korrekt tager højde for februar med 28 eller 29 dage afhængigt af året.</div></details>
         <details class="faq-item"><summary class="faq-question">Hvad inkluderer "Samlede levede dage"? <span class="faq-icon">+</span></summary><div class="faq-answer">Samlede levede dage er det komplette antal dage fra din fødselsdato til måldatoen, inklusive selve fødselsdagen. Det tager højde for alle skudår imellem.</div></details>
         <details class="faq-item"><summary class="faq-question">Hvordan beregnes "Næste fødselsdag"? <span class="faq-icon">+</span></summary><div class="faq-answer">Beregneren finder den næste forekomst af din fødselsmåned og -dag efter måldatoen. Hvis din fødselsdag allerede er passeret i år, vises dage til næste års fødselsdag. Hvis det er din fødselsdag i dag, vises "I dag!"</div></details>
-        <details class="faq-item"><summary class="faq-question">Kan jeg beregne alder online gratis? <span class="faq-icon">+</span></summary><div class="faq-answer">Ja. Værktøjet er gratis og beregner alder direkte i browseren ud fra fødselsdato og en valgfri malsdato.</div></details>
+        <details class="faq-item"><summary class="faq-question">Kan jeg beregne alder online gratis? <span class="faq-icon">+</span></summary><div class="faq-answer">Ja. Værktøjet er gratis og beregner alder direkte i browseren ud fra fødselsdato og en valgfri målsdato.</div></details>
       </div>
     </section>
         <section class="related-tools">

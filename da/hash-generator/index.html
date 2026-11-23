@@ -29,7 +29,54 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Hash Generator","url":"https://anyconverter.io/da/hash-generator/","description":"Generer MD5, SHA-1, SHA-256 og SHA-512 hashes online gratis.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Hvad bruges en hash til?","acceptedAnswer":{"@type":"Answer","text":"Hashes bruges til at verificere filintegritet, gemme adgangskoder sikkert, generere unikke identifikatorer og opdage dubletter eller ændringer i data."}},{"@type":"Question","name":"Er MD5 sikker til adgangskoder?","acceptedAnswer":{"@type":"Answer","text":"Nej. MD5 er forældet til kryptografisk brug. Til adgangskoder brug bcrypt, scrypt eller Argon2. MD5 er stadig nyttig til filintegritetsverificering for ikke-kritiske filer."}},{"@type":"Question","name":"Kan jeg hashe store filer?","acceptedAnswer":{"@type":"Answer","text":"Ja. Værktøjet læser filen i blokke for ikke at overbelaste hukommelsen. Filer på flere GB kan behandles, selvom det kan tage et øjeblik."}}]}</script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Hvad bruges en hash til?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Hashes bruges til at verificere filintegritet, gemme adgangskoder sikkert, generere unikke identifikatorer og opdage dubletter eller ændringer i data."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Er MD5 sikker til adgangskoder?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Nej. MD5 er forældet til kryptografisk brug. Til adgangskoder brug bcrypt, scrypt eller Argon2. MD5 er stadig nyttig til filintegritetsverificering for ikke-kritiske filer."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Kan jeg hashe store filer?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ja. Værktøjet læser filen i blokke for ikke at overbelaste hukommelsen. Filer på flere GB kan behandles, selvom det kan tage et øjeblik."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Hvad bruges SHA-256 til i praksis?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "SHA-256 er branchestandarden for digitale signaturer, verifikation af filintegritet ved downloads, TLS/SSL-certifikater og konsensusmekanismer i blockchains såsom Bitcoin."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Kan en hash bevise, at en fil er sikker mod malware?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Nej. En hash bekræfter udelukkende, at filen er identisk byte-for-byte med en kendt original. Hvis den oprindelige kildefil indeholdt malware, vil dens hash stadig matche."
+      }
+    }
+  ]
+}
+</script>
 
 
 <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
@@ -191,6 +238,8 @@
         <details class="faq-item"><summary class="faq-question">Hvad bruges en hash til? <span class="faq-icon">+</span></summary><div class="faq-answer">Hashes bruges til at verificere filintegritet, gemme adgangskoder sikkert, generere unikke identifikatorer og opdage dubletter eller ændringer i data.</div></details>
         <details class="faq-item"><summary class="faq-question">Er MD5 sikker til adgangskoder? <span class="faq-icon">+</span></summary><div class="faq-answer">Nej. MD5 er forældet til kryptografisk brug. Til adgangskoder brug bcrypt, scrypt eller Argon2. MD5 er stadig nyttig til filintegritetsverificering for ikke-kritiske filer.</div></details>
         <details class="faq-item"><summary class="faq-question">Kan jeg hashe store filer? <span class="faq-icon">+</span></summary><div class="faq-answer">Ja. Værktøjet læser filen i blokke for ikke at overbelaste hukommelsen. Filer på flere GB kan behandles, selvom det kan tage et øjeblik.</div></details>
+    <details class="faq-item"><summary class="faq-question">Hvad bruges SHA-256 til i praksis? <span class="faq-icon">+</span></summary><div class="faq-answer">SHA-256 er branchestandarden for digitale signaturer, verifikation af filintegritet ved downloads, TLS/SSL-certifikater og konsensusmekanismer i blockchains såsom Bitcoin.</div></details>
+    <details class="faq-item"><summary class="faq-question">Kan en hash bevise, at en fil er sikker mod malware? <span class="faq-icon">+</span></summary><div class="faq-answer">Nej. En hash bekræfter udelukkende, at filen er identisk byte-for-byte med en kendt original. Hvis den oprindelige kildefil indeholdt malware, vil dens hash stadig matche.</div></details>
       </div>
     </section>
     <section class="related-tools">

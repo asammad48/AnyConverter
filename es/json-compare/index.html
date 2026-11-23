@@ -29,7 +29,54 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Comparar JSON","url":"https://anyconverter.io/es/json-compare/","description":"Compara dos documentos JSON de forma semántica: ignora el orden de claves, empareja arrays por ID o posición, ignora rutas ruidosas, y exporta un JSON Patch. Funciona totalmente en tu navegador.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"¿Importa el orden de las claves?","acceptedAnswer":{"@type":"Answer","text":"No. Los objetos se comparan por clave, así que {\"a\":1,\"b\":2} y {\"b\":2,\"a\":1} son iguales."}},{"@type":"Question","name":"¿Cómo comparo arrays con distinto orden?","acceptedAnswer":{"@type":"Answer","text":"Usa el modo Inteligente o Por clave. Los elementos se emparejan por un ID como id, y solo verás los cambios reales."}},{"@type":"Question","name":"¿Puedo ignorar campos como marcas de tiempo?","acceptedAnswer":{"@type":"Answer","text":"Sí. Añade rutas como $..updatedAt en Ignorar rutas."}},{"@type":"Question","name":"¿Se sube mi JSON?","acceptedAnswer":{"@type":"Answer","text":"No. La comparación se hace en tu navegador; no se envía nada a ningún servidor."}},{"@type":"Question","name":"¿Qué es JSON Patch?","acceptedAnswer":{"@type":"Answer","text":"Un estándar (RFC 6902) con la lista de operaciones que convierten el primer documento en el segundo. Puedes exportarlo y aplicarlo en tu código."}}]}</script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "¿Importa el orden de las claves?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Los objetos se comparan por clave, así que {\"a\":1,\"b\":2} y {\"b\":2,\"a\":1} son iguales."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cómo comparo arrays con distinto orden?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Usa el modo \"Inteligente\" o \"Por clave\". Los elementos se emparejan por un ID como id, y solo verás los cambios reales."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Puedo ignorar campos como marcas de tiempo?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sí. Añade rutas como $..updatedAt en \"Ignorar rutas\"."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Se sube mi JSON?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. La comparación se hace en tu navegador; no se envía nada a ningún servidor."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Qué es JSON Patch?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Un estándar (RFC 6902) con la lista de operaciones que convierten el primer documento en el segundo. Puedes exportarlo y aplicarlo en tu código."
+      }
+    }
+  ]
+}
+</script>
 
 
 <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">

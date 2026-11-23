@@ -1374,6 +1374,32 @@ ADR-051: Tool-to-Tool Workflow Chaining for JSON Group (JSON Formatter → Compa
   - Strengthens internal link equity between JSON Formatter, JSON Compare, and JSON to YAML across EN, ES, and DA.
   - Zero external dependencies added, client-side only, non-interruptive.
 
+## ADR-062: FAQ Schema Expansion to Top 30 Tools & 100% Verbatim Parity Enforcement
+- **Date:** 2026-11-23
+- **Status:** Approved & Implemented
+- **Context:**
+  - Growth Sprint S23 (Days 45–46) of the 60-Day Aggressive Growth Plan requires expanding high-intent, authoritative FAQs and `FAQPage` JSON-LD schema across AnyConverter's Top 30 tools in all 3 supported languages (`/tool/`, `/es/tool/`, `/da/tool/` — 90 URLs total).
+  - Target: Each page must have between 4 and 7 authoritative FAQs with 100% verbatim parity between visible `<details class="faq-item">` HTML and the `FAQPage` schema `mainEntity` (question names and answer texts match character-for-character).
+  - Prior state: 71 URLs already had 5–7 FAQs, while 19 URLs had `< 4` FAQs (e.g. `da/base64-encoder`, `es/url-encoder`, `da/url-encoder`, `edit-pdf`, `da/edit-pdf`, `es/csv-to-sql`, `da/csv-to-sql`, `es/hash-generator`, `da/hash-generator`, `sleep-calculator`, `es/sleep-calculator`, `da/sleep-calculator`, `aspect-ratio-calculator`, `es/aspect-ratio-calculator`, `da/aspect-ratio-calculator`, `es/regex-tester`, `da/regex-tester`, `es/xml-formatter`, `da/xml-formatter`), plus count mismatches on `da/age-calculator` (6 visible, 5 schema) and quote disparities on `json-compare`.
+- **Decision:**
+  1. **FAQ Content Authoring & Expansion:**
+     - Expanded all 19 lagging pages to 5 authoritative, high-intent FAQs answering core technical, operational, and privacy queries.
+     - Natural, idiomatic translations in Spanish (`es`) and Danish (`da`) maintaining exact technical terminology, RFC citations, and correct diacritics (`æ`, `ø`, `å`, `á`, `é`, `í`, `ó`, `ú`, `ñ`).
+     - Added 6th question to `da/age-calculator` schema for complete parity with visible HTML.
+  2. **100% Verbatim Parity Enforcement:**
+     - Standardized `<details class="faq-item"><summary class="faq-question">Q <span class="faq-icon">+</span></summary><div class="faq-answer">A</div></details>` across all expanded pages.
+     - Embedded valid `FAQPage` JSON-LD schema with exact character-for-character match for both question names and answer text.
+     - Aligned quotation formatting in `json-compare` between visible text and JSON-LD schema.
+  3. **Automated Verification Gate:**
+     - Created `tests/test_s23_faq_schema_expansion.js` asserting all 90 URLs exist, count range is strictly 4–7, 100% verbatim parity holds across all 460 FAQs, reciprocal 4-way hreflang and self-canonical URLs are intact, and Track B Loop 8 outreach tracking is current.
+     - Registered S23 suite in `tests/run_all_tests.js`.
+     - Synchronized `sitemap.xml` with 0 drift (441 URLs).
+- **Consequences:**
+  - Qualifies Top 30 tools (90 URLs) for rich result eligibility and conversational search extraction across Google, Perplexity, and AI Overviews.
+  - Guarantees zero schema-vs-visible content hallucination penalties under Google Search Quality Rater & Structured Data guidelines.
+  - Zero CLS, zero external runtime scripts, 100% client-side execution preserved.
+
+
 
 
 

@@ -29,7 +29,54 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Regex Tester","url":"https://anyconverter.io/da/regex-tester/","description":"Test regulære udtryk online med live match-fremhævning.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Hvilken regex-syntaks bruges?","acceptedAnswer":{"@type":"Answer","text":"Værktøjet bruger JavaScript's regex-motor, som er kompatibel med ECMA-262. Det er den samme motor, som bruges af Node.js og moderne browsere."}},{"@type":"Question","name":"Hvad betyder de forskellige flag?","acceptedAnswer":{"@type":"Answer","text":"g (global) finder alle matches i stedet for kun det første. i ignorerer forskellen på store og små bogstaver. m behandler hver linje som en separat streng for ^ og $. s får punktum (.) til også at matche linjeskift."}}]}</script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Hvilken regex-syntaks bruges?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Værktøjet bruger JavaScript's regex-motor, som er kompatibel med ECMA-262. Det er den samme motor, som bruges af Node.js og moderne browsere."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Hvad betyder de forskellige flag?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "g (global) finder alle matches i stedet for kun det første. i ignorerer forskellen på store og små bogstaver. m behandler hver linje som en separat streng for ^ og $. s får punktum (.) til også at matche linjeskift."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Hvordan fungerer fangstgrupper (capture groups)?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Pak dele af dit mønster ind i parenteser () for at oprette fangstgrupper. Hvert matchende segment viser de udtrukne undergrupper separat til analyse eller erstatning."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Hvordan eksporterer jeg regex-matches?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Du kan kopiere listen over fundne matches direkte til udklipsholderen eller eksportere de udtrukne data som ren tekst eller struktureret JSON med et enkelt klik."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Kan jeg teste mod store logfiler?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ja. Evalueringsmotoren kører i browseren med indbyggede sikkerhedsgrænser for at forhindre katastrofal backtracking (catastrophic backtracking) ved store datamængder."
+      }
+    }
+  ]
+}
+</script>
 
 
 <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
@@ -248,6 +295,9 @@
       <div class="faq-list">
         <details class="faq-item"><summary class="faq-question">Hvilken regex-syntaks bruges? <span class="faq-icon">+</span></summary><div class="faq-answer">Værktøjet bruger JavaScript's regex-motor, som er kompatibel med ECMA-262. Det er den samme motor, som bruges af Node.js og moderne browsere.</div></details>
         <details class="faq-item"><summary class="faq-question">Hvad betyder de forskellige flag? <span class="faq-icon">+</span></summary><div class="faq-answer">g (global) finder alle matches i stedet for kun det første. i ignorerer forskellen på store og små bogstaver. m behandler hver linje som en separat streng for ^ og $. s får punktum (.) til også at matche linjeskift.</div></details>
+    <details class="faq-item"><summary class="faq-question">Hvordan fungerer fangstgrupper (capture groups)? <span class="faq-icon">+</span></summary><div class="faq-answer">Pak dele af dit mønster ind i parenteser () for at oprette fangstgrupper. Hvert matchende segment viser de udtrukne undergrupper separat til analyse eller erstatning.</div></details>
+    <details class="faq-item"><summary class="faq-question">Hvordan eksporterer jeg regex-matches? <span class="faq-icon">+</span></summary><div class="faq-answer">Du kan kopiere listen over fundne matches direkte til udklipsholderen eller eksportere de udtrukne data som ren tekst eller struktureret JSON med et enkelt klik.</div></details>
+    <details class="faq-item"><summary class="faq-question">Kan jeg teste mod store logfiler? <span class="faq-icon">+</span></summary><div class="faq-answer">Ja. Evalueringsmotoren kører i browseren med indbyggede sikkerhedsgrænser for at forhindre katastrofal backtracking (catastrophic backtracking) ved store datamængder.</div></details>
       </div>
     </section>
     <section class="related-tools">

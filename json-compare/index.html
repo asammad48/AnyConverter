@@ -29,7 +29,54 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"JSON Compare","url":"https://anyconverter.io/json-compare/","description":"Compare two JSON documents semantically: ignore key order, match arrays by ID or position, ignore noisy paths, and export a JSON Patch. Runs entirely in your browser.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Does key order matter when comparing JSON?","acceptedAnswer":{"@type":"Answer","text":"No. Objects are compared by key, so {\"a\":1,\"b\":2} and {\"b\":2,\"a\":1} are identical."}},{"@type":"Question","name":"How do I compare arrays whose order changed?","acceptedAnswer":{"@type":"Answer","text":"Use Smart or By key array matching. Elements are matched by an ID such as id, so a reordered list only shows real changes."}},{"@type":"Question","name":"Can I ignore fields like timestamps?","acceptedAnswer":{"@type":"Answer","text":"Yes. Add paths such as $..updatedAt under Ignore paths."}},{"@type":"Question","name":"Is my JSON uploaded?","acceptedAnswer":{"@type":"Answer","text":"No. Both files are compared inside your browser; nothing is sent to a server."}},{"@type":"Question","name":"What is JSON Patch?","acceptedAnswer":{"@type":"Answer","text":"A standard (RFC 6902) list of operations that turns the first document into the second. You can export it and apply it in code."}}]}</script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Does key order matter when comparing JSON?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Objects are compared by key, so {\"a\":1,\"b\":2} and {\"b\":2,\"a\":1} are identical."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I compare arrays whose order changed?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Use \"Smart\" or \"By key\" array matching. Elements are matched by an ID such as id, so a reordered list only shows real changes."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I ignore fields like timestamps?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Add paths such as $..updatedAt under \"Ignore paths\"."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is my JSON uploaded?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Both files are compared inside your browser; nothing is sent to a server."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is JSON Patch?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A standard (RFC 6902) list of operations that turns the first document into the second. You can export it and apply it in code."
+      }
+    }
+  ]
+}
+</script>
 
 
 <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
