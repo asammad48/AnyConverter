@@ -90,6 +90,9 @@
       }
       var saved = await doc.save();
       dl(saved, 'edited.pdf');
+      if (typeof window !== 'undefined' && window.ACWorkflowChainPDF) {
+        window.ACWorkflowChainPDF.showWorkflowChain(new Blob([saved], { type: 'application/pdf' }), 'edited.pdf');
+      }
       setStatus('Done! ' + annotations.length + ' annotation(s) applied.', 'success');
     } catch (e) { setStatus('Error: ' + e.message, 'error'); }
   }
@@ -105,5 +108,6 @@
       document.getElementById('ed-dim-row').style.display = isText ? 'none' : '';
     });
     updateAnnotList();
+    window._acLoadPdfFile = loadFile;
   });
 })();

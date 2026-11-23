@@ -93,7 +93,52 @@
 
 
 
-        <section class="related-tools">
+            <!-- Contextual Workflow Chain: Next Step (Sprint S25) -->
+    <section class="workflow-chain-section" id="workflow-chain-pdf" aria-labelledby="workflow-chain-heading" style="display:none;">
+      <div class="workflow-chain-header">
+        <div class="workflow-chain-badge">
+          <span aria-hidden="true">⚡</span>
+          <span>Next Step</span>
+        </div>
+        <h2 class="workflow-chain-title" id="workflow-chain-heading">Next Step: Continue Your PDF Workflow</h2>
+        <p class="workflow-chain-sub">Your document is ready. Continue with the next step in your workflow:</p>
+        <button type="button" class="workflow-chain-dismiss" id="btn-chain-dismiss" aria-label="Dismiss workflow suggestions">✕</button>
+      </div>
+      <div class="workflow-chain-grid">
+        <a href="/pdf-compress/" class="workflow-chain-card" id="chain-step-compress" data-target="/pdf-compress/">
+          <div class="workflow-chain-card-icon">
+            <img src="/assets/img/icon-pdf-compress.svg" alt="Compress PDF icon" width="28" height="28" loading="lazy">
+          </div>
+          <div class="workflow-chain-card-content">
+            <span class="workflow-chain-card-title">Compress PDF</span>
+            <span class="workflow-chain-card-desc">Reduce file size for easier sharing and email attachments</span>
+          </div>
+          <span class="workflow-chain-card-action">Compress PDF →</span>
+        </a>
+        <a href="/pdf-merge/" class="workflow-chain-card" id="chain-step-merge" data-target="/pdf-merge/">
+          <div class="workflow-chain-card-icon">
+            <img src="/assets/img/icon-pdf-merge.svg" alt="Merge PDF icon" width="28" height="28" loading="lazy">
+          </div>
+          <div class="workflow-chain-card-content">
+            <span class="workflow-chain-card-title">Merge PDF</span>
+            <span class="workflow-chain-card-desc">Combine multiple documents into one single file</span>
+          </div>
+          <span class="workflow-chain-card-action">Merge PDF →</span>
+        </a>
+        <a href="/pdf-to-jpg/" class="workflow-chain-card" id="chain-step-to-jpg" data-target="/pdf-to-jpg/">
+          <div class="workflow-chain-card-icon">
+            <img src="/assets/img/icon-pdf-to-jpg.svg" alt="Convert to JPG icon" width="28" height="28" loading="lazy">
+          </div>
+          <div class="workflow-chain-card-content">
+            <span class="workflow-chain-card-title">Convert to JPG</span>
+            <span class="workflow-chain-card-desc">Extract pages as high-resolution JPG images</span>
+          </div>
+          <span class="workflow-chain-card-action">Convert to JPG →</span>
+        </a>
+      </div>
+    </section>
+
+    <section class="related-tools">
       <h2>Related Tools</h2>
       <div class="tool-grid">
         <a href="/compare-pdf/" class="tool-card"><img src="/assets/img/icon-pdf-compare.svg" alt="Compare PDF icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Compare PDF</h3><p>View two PDFs side by side and navigate pages together to spot differences.</p><span class="tool-card-link">Try it →</span></a>
@@ -177,5 +222,6 @@
   <script src="https://cdn.jsdelivr.net/npm/pdf-lib@1.17.1/dist/pdf-lib.min.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/build/pdf.min.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js" defer></script>
+  <script src="/assets/js/tools/pdf-workflow-chain.js?v=20261124" defer></script>
 </body>
 </html>

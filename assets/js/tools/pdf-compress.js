@@ -93,7 +93,10 @@ window.DCTool = function (lang, DCLogic) {
     async job(fn){ this._cx=0; this.setState({ stage:'working', prog:0, plabel:'', err:'' }); this.track('tool_calculate'); await this.tick();
       try{ const res=await fn((p,label)=>{ if(this._cx) throw new Error('cx'); this.setState({ prog:Math.max(0,Math.min(1,p)), plabel:label||this.state.plabel }); });
         res.items.forEach(it=>{ it.size=it.blob.size; if(/^image\//.test(it.blob.type)) it.url=URL.createObjectURL(it.blob); });
-        this.setState({ stage:'done', res, prog:1 }); this.track('file_ready'); }
+        this.setState({ stage:'done', res, prog:1 }); this.track('file_ready');
+        if (typeof window !== 'undefined' && window.ACWorkflowChainPDF && res && res.items && res.items[0]) {
+          window.ACWorkflowChainPDF.showWorkflowChain(res.items[0].blob, res.items[0].name);
+        } }
       catch(e){ console.warn(e); this.setState({ stage:'ready', prog:0, err:e&&e.message==='cx'?PX.cancelled:PX.fail }); } }
     saveAll(){ const r=this.state.res; if(!r) return; const it=r.items; if(it.length===1) return this.download(it[0].name,it[0].blob); const z=new window.JSZip(); it.forEach(i=>z.file(i.name,i.blob)); z.generateAsync({ type:'blob' }).then(b=>this.download(r.zip||'anyconverter.zip',b)); }
     resetAll(){ this._cx=1; this._drop(); this.setState(Object.assign({ files:[], th:{}, stage:'empty', res:null, err:'', prog:0, loading:false }, this.resetExtra?this.resetExtra():{})); }

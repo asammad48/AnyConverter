@@ -60,6 +60,15 @@
     ALLOWED_EVENTS_SET[S15_PWA_EVENTS[k]] = true;
   });
 
+  // Sprint S25 Workflow Chain events
+  var S25_WORKFLOW_EVENTS = {
+    WORKFLOW_CHAIN_SHOWN: 'workflow_chain_shown',
+    WORKFLOW_CHAIN_DISMISSED: 'workflow_chain_dismissed'
+  };
+  Object.keys(S25_WORKFLOW_EVENTS).forEach(function (k) {
+    ALLOWED_EVENTS_SET[S25_WORKFLOW_EVENTS[k]] = true;
+  });
+
   // Sensitive parameter keys that must NEVER be transmitted (zero PII, zero file content)
   var FORBIDDEN_KEY_REGEX = /^(file|filename|content|text|data|input|query|email|user|pass|password|token|secret|doc|prompt|val|body|ip|address|ssn|card|credit)$/i;
   // Patterns matching emails, IP addresses, credit cards, or external URLs
@@ -304,7 +313,7 @@
       track(CANONICAL_EVENTS.RELATED_TOOL_CLICKED, {
         from_tool: fromTool || getCurrentToolSlug(),
         to_tool: toTool,
-        position: typeof position === 'number' ? position : 0
+        position: position !== undefined ? position : 0
       });
     },
 
@@ -353,6 +362,21 @@
     trackPwaDismissed: function (action) {
       track('pwa_dismissed', {
         action: action || 'dismiss_button'
+      });
+    },
+
+    // 8. Sprint S25 Workflow Chain Telemetry
+    trackWorkflowChainShown: function (toolSlug, group) {
+      track('workflow_chain_shown', {
+        tool_slug: toolSlug || getCurrentToolSlug(),
+        group: group || 'pdf'
+      });
+    },
+
+    trackWorkflowChainDismissed: function (toolSlug, group) {
+      track('workflow_chain_dismissed', {
+        tool_slug: toolSlug || getCurrentToolSlug(),
+        group: group || 'pdf'
       });
     }
   };

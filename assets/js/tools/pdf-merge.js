@@ -94,6 +94,9 @@ window.DCTool = function (lang, DCLogic) {
       try{ const res=await fn((p,label)=>{ if(this._cx) throw new Error('cx'); this.setState({ prog:Math.max(0,Math.min(1,p)), plabel:label||this.state.plabel }); });
         res.items.forEach(it=>{ it.size=it.blob.size; if(/^image\//.test(it.blob.type)) it.url=URL.createObjectURL(it.blob); });
         this.setState({ stage:'done', res, prog:1 }); this.track('file_ready');
+        if (typeof window !== 'undefined' && window.ACWorkflowChainPDF && res && res.items && res.items[0]) {
+          window.ACWorkflowChainPDF.showWorkflowChain(res.items[0].blob, res.items[0].name);
+        }
         if(window.ACAnalytics) window.ACAnalytics.trackToolCompleted('pdf-merge', 'file_upload', 'pdf_merged', { file_count: this.state.files ? this.state.files.length : 1 }); }
       catch(e){ console.warn(e); this.setState({ stage:'ready', prog:0, err:e&&e.message==='cx'?PX.cancelled:PX.fail });
         if(window.ACAnalytics) window.ACAnalytics.trackToolFailed('pdf-merge', 'processing_error'); } }

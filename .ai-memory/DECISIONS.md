@@ -1430,6 +1430,44 @@ ADR-051: Tool-to-Tool Workflow Chaining for JSON Group (JSON Formatter → Compa
   - Future-proofs AdSense monetization and external partner embed capabilities without compromising baseline HSTS/CSP security.
   - Provides a high-authority original research asset for earned media distribution and organic backlink acquisition.
 
+## ADR-064: Tool-to-Tool Workflow Chain for PDF Group & Ephemeral Client-Side Document Handoff
+- **Date:** 2026-11-24
+- **Status:** Approved & Implemented
+- **Context:**
+  - Growth Sprint S25 (Days 49–50) requires implementing an intelligent, non-interruptive "Next Step" contextual workflow chain across AnyConverter's primary PDF utilities (`/pdf-merge/`, `/pdf-split/`, `/pdf-compress/`, `/pdf-to-jpg/`, `/jpg-to-pdf/`, `/edit-pdf/`) in all 3 supported languages (`/tool/`, `/es/tool/`, `/da/tool/` — 18 URLs total).
+  - Target KPI: $\ge 8\%$ of successful PDF Merge sessions chain into a second PDF utility.
+  - Core requirements mandate:
+    1. Semantic `#workflow-chain-pdf` component with `.workflow-chain-section` hidden by default (`style="display:none;"`), revealing only upon successful file generation / download readiness.
+    2. Ephemeral client-side file handoff preserving document context without server persistence (`sessionStorage` data URL / ObjectURL handoff with immediate zero-persistence clearing on downstream receipt).
+    3. Multilingual parity across EN, ES, and DA preserving all native technical diacritics (`æ`, `ø`, `å`, `á`, `é`, `í`, `ó`, `ú`, `ñ`).
+    4. WCAG 2.2 AA accessibility (:focus-visible states, keyboard tabbing, Enter/Space, Esc dismissal) and responsive styling across 320px–390px viewports.
+    5. Telemetry integration with `window.ACAnalytics.trackRelatedToolClicked(sourceSlug, targetSlug, 'workflow_chain')`, `workflow_chain_shown`, and `workflow_chain_dismissed`.
+    6. Track B Loop 9 active PR outreach monitoring for the 10 benchmark prospects with strict manual owner mailbox send mandate.
+- **Decision:**
+  1. **Semantic Workflow Chain Component (`#workflow-chain-pdf`):**
+     - Injected semantic `<section class="workflow-chain-section" id="workflow-chain-pdf" aria-labelledby="workflow-chain-heading" style="display:none;">` across all 18 target PDF URLs positioned beneath the main tool interface.
+     - Provided accessible dismiss button (`#btn-chain-dismiss`) that collapses the section, persists session dismissal in `ac:chain-pdf-dismissed`, and dispatches `workflow_chain_dismissed` telemetry.
+  2. **Ephemeral Client-Side File Handoff Protocol (`pdf-workflow-chain.js`):**
+     - Developed `assets/js/tools/pdf-workflow-chain.js` implementing temporary staging of generated Blob buffers via Base64 in `sessionStorage` (`ac:chain-pdf-blob`, `ac:chain-pdf-name`, `ac:chain-pdf-source`).
+     - Downstream tools (`/pdf-compress/`, `/pdf-split/`, `/pdf-to-jpg/`, `/edit-pdf/`) check for incoming handoffs on DOMContentLoaded, convert Base64 back to `File`/`Blob`, inject into the active tool component (`component.addPdfs([file])`), and display an accessible, dismissable toast banner (`.workflow-chain-toast`).
+     - Enforced strict zero-persistence guarantee: `sessionStorage.removeItem` is called immediately on receipt, ensuring zero server ingress and zero residual data.
+  3. **Multilingual Parity (EN, ES, DA):**
+     - Implemented natural, idiomatic localized strings and preserved exact technical diacritics:
+       - EN: "Next Step: Continue Your PDF Workflow" · "Compress PDF" · "Split Pages" · "Convert to JPG"
+       - ES: "Siguiente paso: Continúa tu flujo de trabajo con PDF" · "Comprimir PDF" · "Dividir páginas" · "Convertir a JPG"
+       - DA: "Næste trin: Fortsæt dit PDF-workflow" · "Komprimér PDF" · "Opdel sider" · "Konvertér til JPG"
+     - Enforced exact cross-locale link routing (`/` for EN, `/es/` for ES, `/da/` for DA).
+  4. **Telemetry & Analytics Integration:**
+     - Registered `workflow_chain_shown` and `workflow_chain_dismissed` in `assets/js/shared/analytics.js` with helper methods `trackWorkflowChainShown` and `trackWorkflowChainDismissed`.
+     - Configured card click tracking to dispatch `window.ACAnalytics.trackRelatedToolClicked(sourceSlug, targetSlug, 'workflow_chain')`.
+  5. **Verification & Gates:**
+     - Created dedicated test suite `tests/test_s25_workflow_chain_pdf.js` validating all 7 core assertions.
+     - Registered S25 suite in `tests/run_all_tests.js` bringing master suite count to 40 passing suites (100%).
+     - Verified sitemap synchronization with 0 drift (441 URLs).
+- **Consequences:**
+  - Dramatically improves user journey completion across PDF operations by eliminating repetitive file uploads and downloads.
+  - Boosts tool-to-tool cross-navigation and dwell time while strictly preserving privacy, zero-server architecture, and Core Web Vitals.
+
 
 
 

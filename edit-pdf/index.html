@@ -199,6 +199,51 @@
         </div>
       </aside>
     </div>
+        <!-- Contextual Workflow Chain: Next Step (Sprint S25) -->
+    <section class="workflow-chain-section" id="workflow-chain-pdf" aria-labelledby="workflow-chain-heading" style="display:none;">
+      <div class="workflow-chain-header">
+        <div class="workflow-chain-badge">
+          <span aria-hidden="true">⚡</span>
+          <span>Next Step</span>
+        </div>
+        <h2 class="workflow-chain-title" id="workflow-chain-heading">Next Step: Continue Your PDF Workflow</h2>
+        <p class="workflow-chain-sub">Your document is ready. Continue with the next step in your workflow:</p>
+        <button type="button" class="workflow-chain-dismiss" id="btn-chain-dismiss" aria-label="Dismiss workflow suggestions">✕</button>
+      </div>
+      <div class="workflow-chain-grid">
+        <a href="/pdf-compress/" class="workflow-chain-card" id="chain-step-compress" data-target="/pdf-compress/">
+          <div class="workflow-chain-card-icon">
+            <img src="/assets/img/icon-pdf-compress.svg" alt="Compress PDF icon" width="28" height="28" loading="lazy">
+          </div>
+          <div class="workflow-chain-card-content">
+            <span class="workflow-chain-card-title">Compress PDF</span>
+            <span class="workflow-chain-card-desc">Reduce file size for easier sharing and email attachments</span>
+          </div>
+          <span class="workflow-chain-card-action">Compress PDF →</span>
+        </a>
+        <a href="/pdf-split/" class="workflow-chain-card" id="chain-step-split" data-target="/pdf-split/">
+          <div class="workflow-chain-card-icon">
+            <img src="/assets/img/icon-pdf-split.svg" alt="Split PDF icon" width="28" height="28" loading="lazy">
+          </div>
+          <div class="workflow-chain-card-content">
+            <span class="workflow-chain-card-title">Split Pages</span>
+            <span class="workflow-chain-card-desc">Extract specific pages or break into separate documents</span>
+          </div>
+          <span class="workflow-chain-card-action">Split PDF →</span>
+        </a>
+        <a href="/pdf-to-jpg/" class="workflow-chain-card" id="chain-step-to-jpg" data-target="/pdf-to-jpg/">
+          <div class="workflow-chain-card-icon">
+            <img src="/assets/img/icon-pdf-to-jpg.svg" alt="Convert to JPG icon" width="28" height="28" loading="lazy">
+          </div>
+          <div class="workflow-chain-card-content">
+            <span class="workflow-chain-card-title">Convert to JPG</span>
+            <span class="workflow-chain-card-desc">Extract pages as high-resolution JPG images</span>
+          </div>
+          <span class="workflow-chain-card-action">Convert to JPG →</span>
+        </a>
+      </div>
+    </section>
+
     <section class="how-to-use"><h2>How to Edit a PDF</h2><ol class="steps"><li>Upload your PDF (first page dimensions shown).</li><li>Choose the annotation type, page, X/Y position and properties.</li><li>Click "+ Add Annotation" to queue it. Repeat as needed.</li><li>Click "Apply &amp; Download".</li></ol></section>
     <section class="features"><h2>Features</h2><ul class="features-list"><li>Three annotation types: text overlay, border rectangle, yellow highlight</li><li>Custom font size and colour for text</li><li>Custom width and height for rectangles and highlights</li><li>Queue multiple annotations before applying</li><li>100% browser-based — no server upload</li></ul></section>
     <!-- SEO keyword implementation: 2026-08-21 -->
@@ -239,5 +284,6 @@
   <script src="/assets/js/shared/analytics.js" defer></script>
   <script src="/assets/js/shared.js?v=20261109" defer></script>
   <script src="/assets/js/tools/edit-pdf.js?v=20261108" defer></script>
+  <script src="/assets/js/tools/pdf-workflow-chain.js?v=20261124" defer></script>
 </body>
 </html>
