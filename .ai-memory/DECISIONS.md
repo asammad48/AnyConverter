@@ -910,6 +910,48 @@ The second independent audit report (`SECOND_INDEPENDENT_FINANCIAL_REVALIDATION_
 
 ---
 
+## ADR-056: Category Hub Depth Upgrade for PDF Tools across EN, ES, DA (/pdf-tools/, /es/pdf-tools/, /da/pdf-tools/)
+- **Date:** 2026-11-23
+- **Status:** Implemented on Feature Branch `feat/s17-category-hub-pdf`
+- **Context:**
+  - Sprint S17 marks Days 33–34 (Week 6: Category Hub Depth Upgrades) of the 60-Day Aggressive Growth Plan (`docs/growth/60_DAY_AGGRESSIVE_PLAN.md`).
+  - Pre-sprint audit revealed that `/pdf-tools/`, `/es/pdf-tools/`, and `/da/pdf-tools/` were thin card directories with minimal textual context, a single generic grid, and thin JSON-LD (`CollectionPage` without enumerated items or breadcrumb lists).
+  - High-volume head and mid-tail search queries (`pdf tools online`, `free pdf tools`, `herramientas pdf online`, `gratis pdf værktøjer`) require comprehensive, authoritative topic hubs that demonstrate topical authority, user utility, and deep internal linking to high-intent tools.
+  - Objective: Upgrade `/pdf-tools/`, `/es/pdf-tools/`, and `/da/pdf-tools/` into authoritative, high-ranking topic hubs with thematic subsections (150–250 words each), complete 26-tool categorization, native multilingual parity, rich Schema.org structured data, and WCAG 2.2 AA accessibility.
+- **Decision:**
+  1. **5 Substantive Thematic Subsections (150–250 Words of Original Guidance per Subsection):**
+     - Structured the 26 PDF tools into 5 logical workflow sections:
+       1. *Organize & Manage Pages:* Merge PDF, Split PDF, Rotate PDF, Organize PDF, Extract Pages, Remove Pages (6 tools).
+       2. *Compression & Optimization:* Compress PDF, Optimize PDF (2 tools).
+       3. *Conversion & Formatting:* PDF to JPG, PDF to Word, JPG to PDF, HTML to PDF, Scan to PDF (5 tools).
+       4. *Security & Privacy:* Protect PDF, Unlock PDF, Blackout & Redact PDF, PDF Metadata Remover, PDF Security (5 tools).
+       5. *Editing, Signing & Utilities:* Edit PDF, Sign PDF, Fill PDF Forms, Add Page Numbers, Add Watermark, Compare PDF, OCR PDF, Crop PDF (8 tools).
+     - Each subsection features 150–250 words of practical workflow advice highlighting privacy advantages, local processing benefits, and explicit tool selection criteria.
+  2. **Native Multilingual Parity (EN, ES, DA):**
+     - Produced authentic Danish and Spanish translations for all headings, descriptions, and FAQs, preserving required diacritics (`æ`, `ø`, `å`, `á`, `é`, `í`, `ó`, `ú`, `ñ`) and adhering to `anyconverter-multilingual-seo`.
+     - Avoided absolute privacy overclaims per `tests/test_privacy_claims_regression.js`, using qualified factual statements regarding local browser processing.
+  3. **Advanced Schema.org JSON-LD Structured Data:**
+     - `CollectionPage` + `ItemList`: Enumerates all 26 PDF tools with 1-based sequential positions, localized names, and canonical URLs.
+     - `BreadcrumbList`: Standardized schema hierarchy matching visible breadcrumbs (`Home` > `PDF Tools` / `Inicio` > `Herramientas PDF` / `Hjem` > `PDF-værktøjer`).
+     - `FAQPage`: 5 comprehensive FAQs with 100% verbatim text parity between rendered HTML `<details>` and JSON-LD markup.
+  4. **SEO & Metadata Optimization:**
+     - Title tags optimized and bounded <= 60 characters across EN (57), ES (55), and DA (58) with AnyConverter branding.
+     - Meta descriptions strictly bounded between 140 and 160 characters (EN 155, ES 155, DA 148).
+     - Canonical self-referencing and 4-way reciprocal hreflang tags (`en`, `es`, `da`, `x-default`).
+  5. **Accessibility & Design Standards (WCAG 2.2 AA):**
+     - Added high-contrast `:focus-visible` outlines (`2px solid #B04A45`, `2px offset`) for tool cards and interactive FAQ accordion summaries in `assets/css/style.css`.
+     - Verified zero horizontal overflow across responsive viewports (320px–1280px).
+  6. **Automated Verification:**
+     - Created dedicated test suite `tests/test_s17_pdf_hub_depth.js` (10/10 assertions passing).
+     - Registered in `tests/run_all_tests.js` (32/32 master suites passing 100%, including Playwright visual regression).
+     - Sitemap verified in sync (441 URLs).
+- **Consequences:**
+  - Elevates organic rankings for head and mid-tail PDF queries across English, Spanish, and Danish markets.
+  - Improves click-through rate from category hub to individual high-converting PDF tools.
+  - Establishes the reusable design and structured data template for upcoming category hub upgrades (Sprint S18: Developer Tools + Calculators).
+
+---
+
 ## ADR-055: Reciprocal Related-Tool Internal Linking Graph & Complete Orphan Tool Eradication (128 Tools across EN, ES, DA)
 - **Date:** 2026-11-20
 - **Status:** Implemented on Feature Branch `feat/s16-orphan-fix-related-reciprocity`

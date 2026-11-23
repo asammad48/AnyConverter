@@ -32,6 +32,7 @@ const testSuites = [
   { name: 'Sprint S14 Shareable Date Difference Suite', cmd: 'node tests/test_s14_shareable_date_difference.js' },
   { name: 'Sprint S15 PWA Manifest & Install Prompt Suite', cmd: 'node tests/test_s15_pwa_install.js' },
   { name: 'Sprint S16 Orphan Fix & Reciprocity Suite', cmd: 'node tests/test_s16_orphan_fix_reciprocity.js' },
+  { name: 'Sprint S17 PDF Hub Depth Suite', cmd: 'node tests/test_s17_pdf_hub_depth.js' },
   { name: 'Playwright Visual Regression Suite (21/21 Baselines)', cmd: 'node tests/run_visual_regression.js' }
 ];
 

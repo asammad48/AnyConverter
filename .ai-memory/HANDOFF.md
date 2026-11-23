@@ -2,6 +2,60 @@
 
 ---
 
+## Phase 49 — Growth Program Sprint S17: Category Hub Depth Upgrade: PDF Tools (2026-11-23)
+
+**Program:** AnyConverter.io Global Growth Engine (SEO + engagement + backlinks + distribution).  
+**Operating cadence:** 30 sprints × 2 days = 60 days. One prod ship per sprint.  
+**Active branch:** `feat/s17-category-hub-pdf` (branched from S16 checkpoint `feat/s16-orphan-fix-related-reciprocity`, commit `34bc702`).  
+**Current sprint pointer:** `S17 — Category hub depth upgrade: PDF tools (EN + ES + DA)` (100% COMPLETED & VERIFIED; ready for owner review).  
+
+**Current sprint (S17) progress & status:**
+- **Branch Created:** Created `feat/s17-category-hub-pdf` off `34bc702`.
+- **Category Hub Architecture & Content Implementation:**
+  1. **5 Substantive Thematic Subsections (150–250 Words per Category):**
+     - Structured all 26 PDF tools logically into 5 workflow sections across `/pdf-tools/`, `/es/pdf-tools/`, and `/da/pdf-tools/`:
+       - *Organize & Manage Pages (6 tools):* Merge PDF, Split PDF, Rotate PDF, Organize PDF, Extract Pages, Remove Pages.
+       - *Compression & Optimization (2 tools):* Compress PDF, Optimize PDF.
+       - *Conversion & Formatting (5 tools):* PDF to JPG, PDF to Word, JPG to PDF, HTML to PDF, Scan to PDF.
+       - *Security & Privacy (5 tools):* Protect PDF, Unlock PDF, Blackout & Redact PDF, PDF Metadata Remover, PDF Security.
+       - *Editing, Signing & Utilities (8 tools):* Edit PDF, Sign PDF, Fill PDF Forms, Add Page Numbers, Add Watermark, Compare PDF, OCR PDF, Crop PDF.
+     - Crafted 150–250 words of practical, original workflow guidance for each subsection explaining use cases, browser privacy advantages, and when to use specific tools.
+  2. **Native Multilingual Parity (EN, ES, DA):**
+     - Authored natural Spanish and Danish content adhering to `anyconverter-multilingual-seo`.
+     - Preserved all required diacritics (`æ`, `ø`, `å`, `á`, `é`, `í`, `ó`, `ú`, `ñ`, `¿`).
+     - Strictly avoided absolute privacy overclaims per `tests/test_privacy_claims_regression.js`, utilizing factual statements regarding client-side JavaScript execution without server uploads.
+  3. **Advanced Structured Data (Schema.org JSON-LD):**
+     - `CollectionPage` + `ItemList`: Enumerates all 26 PDF tools with 1-based sequential positions, localized names, and canonical URLs.
+     - `BreadcrumbList`: Standardized breadcrumb schema matching visible breadcrumbs (`Home` > `PDF Tools` / `Inicio` > `Herramientas PDF` / `Hjem` > `PDF-værktøjer`).
+     - `FAQPage`: 5 comprehensive, intent-aligned FAQs with 100% verbatim parity between the rendered HTML `<details>` and JSON-LD markup.
+  4. **SEO & Metadata Optimization:**
+     - Title tags <= 60 characters:
+       - EN: `Free Online PDF Tools | Merge, Split & Edit | AnyConverter` (57 chars)
+       - ES: `Herramientas PDF Online | Unir y Editar | AnyConverter` (55 chars)
+       - DA: `Gratis PDF-værktøjer | Flet, Opdel & Rediger | AnyConverter` (58 chars)
+     - Meta descriptions strictly 140–160 characters highlighting speed, zero-install convenience, and 100% client-side privacy:
+       - EN: 155 chars
+       - ES: 155 chars
+       - DA: 148 chars
+     - Self-referencing canonical tags and reciprocal 4-way hreflang alternates (`en`, `es`, `da`, `x-default`).
+     - Synchronized OpenGraph and Twitter card metadata.
+  5. **Accessibility & Design Standards (WCAG 2.2 AA):**
+     - Semantic hierarchy (`<h1>`, `<h2>`, `<h3>`).
+     - High-contrast `:focus-visible` states (`2px solid #B04A45`, `2px offset`) on all tool cards and interactive FAQ accordions in `assets/css/style.css`.
+     - Zero horizontal overflow across mobile (320px–375px), tablet (768px), and desktop (1280px) viewports.
+- **Automated Verification:**
+  - Dedicated verification suite `tests/test_s17_pdf_hub_depth.js`: 10/10 assertions passing (100%).
+  - Registered in master runner `tests/run_all_tests.js`.
+  - Repository master suite `node tests/run_all_tests.js`: 32/32 suites passing (100%), including 21/21 Playwright visual regression screenshot comparisons.
+  - Canonical sitemap check `node scripts/generate_sitemap.js --check`: 100% synchronized (441 URLs, 147 clusters).
+- **Documentation & Memory:**
+  - Recorded ADR-056 in `.ai-memory/DECISIONS.md`.
+  - Captured G1–G15 release gate evidence in `docs/growth/91-TEST-EVIDENCE-AND-RELEASE-GATES.md`.
+  - Updated `.ai-memory/STATE.json`.
+- **Next Sprint Pointer:** Sprint S18 — Category hub depth upgrade: Developer tools + Calculators (Days 35–36).
+
+---
+
 ## Phase 48 — Growth Program Sprint S16: Orphan Fix Pass & Related-Tools Reciprocity (2026-11-20)
 
 **Program:** AnyConverter.io Global Growth Engine (SEO + engagement + backlinks + distribution).  
