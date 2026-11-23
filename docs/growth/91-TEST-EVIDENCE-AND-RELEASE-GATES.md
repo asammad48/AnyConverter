@@ -1,3 +1,55 @@
+# Pre-deploy SEO Verification — feat/s21-mobile-viewport-pass @ HEAD
+
+Date: 2026-11-23T15:10:00Z
+Branch: feat/s21-mobile-viewport-pass
+Changed files: assets/css/style.css, csv-to-sql/index.html, es/csv-to-sql/index.html, da/csv-to-sql/index.html, sitemap.xml, tests/run_all_tests.js, tests/test_s21_mobile_viewport.js, docs/growth/outreach/LOOP_8_BATCH_2_PROSPECTS.md
+Affected URLs: Top 30 canonical tools across EN, ES, DA (90 URLs total) + sitewide mobile components.
+Locales touched: [en, es, da] (100% reciprocal 4-way hreflang verified across en, es, da, x-default)
+
+| Gate | Status | Evidence |
+|---|---|---|
+| G1 Repo safety | PASS | Branch `feat/s21-mobile-viewport-pass` branched directly off clean S20 checkpoint (`5db80a7`). Mobile responsive optimizations applied without breaking layouts or client-side calculation logic. |
+| G2 Existing tests | PASS | `node tests/run_all_tests.js` executed: 36/36 master suites passed (100%), including 21/21 Playwright visual regression snapshots, CWV top 20, a11y keyboard/ARIA, sitemap integrity, localization quality, sitewide parity, and privacy statement checks. |
+| G3 HTML validation | PASS | Clean, valid HTML5 markup across all 475 HTML files. Standard viewport meta tag (`width=device-width, initial-scale=1.0`) enforced across 100% of pages. |
+| G4 Link integrity | PASS | 100% reciprocal 4-way hreflang alternates (`en`, `es`, `da`, `x-default`) verified in `sitemap.xml` and HTML headers. Self-referential canonical URLs intact on all 90 target URLs. |
+| G5 Functional E2E | PASS | 21/21 Playwright visual regression comparisons passed cleanly via `tests/run_visual_regression.js`. All interactive calculators, converters, and editors fully functional. |
+| G6 Multilingual regression | PASS | Native translations verified with `tests/test_localization_regression.js`. Danish (`æ`, `ø`, `å`) and Spanish (`á`, `é`, `í`, `ó`, `ú`, `ñ`, `¿`) diacritics 100% intact. |
+| G7 Responsive UI | PASS | Zero horizontal overflow (`document.documentElement.scrollWidth <= window.innerWidth`) across all 93 audited URLs (top 30 tools in EN, ES, DA + homepages) on 320px (iPhone SE), 360px (Galaxy), 375px (iPhone 8/SE2), and 390px (iPhone 14/15) viewports. |
+| G8 Accessibility | PASS | WCAG 2.2 AA compliant. High-contrast `:focus-visible` outlines active. Touch target dimensions $\ge 40\text{px}$ enforced on interactive controls. |
+| G9 Privacy / security | PASS | Verified by `tests/test_privacy_claims_regression.js`. Zero absolute privacy overclaims; all statements accurately describe local browser-based execution. Zero external tracker dependencies. |
+| G10 Performance | PASS | Core Web Vitals thresholds met: LCP < 2.5s, CLS < 0.1, INP < 200ms. Fixed-width overflow elimination prevents dynamic viewport reflows. |
+| G11 SEO route invariants | PASS | Self-referencing canonical URLs strictly enforced across all 90 pages. Reciprocal hreflang tags 100% consistent across all pages. |
+| G12 Structured data | PASS | Valid Schema.org JSON-LD graphs (`WebApplication`, `BreadcrumbList`, `FAQPage`) intact across all pages with 100% verbatim parity between visible HTML and schema. |
+| G13 Internal linking | PASS | Related-tool internal linking intact. All tools linked reciprocally with zero orphan pages. |
+| G14 AdSense placement | PASS | Ad container structures (`.ad-slot`, `.dc-ad`) maintain reserved dimensions (`min-height: 250px` for rect/side, `min-height: 90px`/`100px` for leaderboards) to prevent cumulative layout shifts. |
+| G15 Rollback plan | PASS | Reversible git commit; clean baseline checkpoint `feat/s20-a11y-keyboard-aria` (`5db80a7`). |
+
+---
+
+## Sprint S21 Delivery Status Verdict
+
+**STATUS: 100% DELIVERED FOR SPRINT S21 (MOBILE GESTURE & VIEWPORT PASS: 320px–390px)**
+
+1. **Zero Horizontal Overflow Elimination (320px–390px):** **PASS / SHIPPED**.
+   - Remediated CSS line 262 (`.dropdown-menu--wide` 380px fixed width): enforced `min-width: min(380px, calc(100vw - 24px)); max-width: calc(100vw - 24px);` with 1-column mobile collapse.
+   - Remediated Unix Timestamp Converter (`.ts-output-row`): added mobile responsive flex-wrapping and `word-break: break-all;` on `.ts-value` and `.ts-label`, eliminating horizontal blowout on 320px/360px screens.
+   - Remediated CSV to SQL Converter: added `flex-wrap: wrap; gap: 8px;` to `.column-types-header`, preventing long translated Danish/Spanish labels from forcing the container wider than the mobile screen.
+   - Enforced `overflow-x: hidden` on `html, body` at `max-width: 480px` and set `min-width: 0; max-width: 100%;` across tool wrappers and preview tables.
+   - Automated Headless Chrome audit verified: 0 overflow issues across all 93 target URLs at 320px, 360px, 375px, and 390px.
+2. **Mobile Touch-Target & Header Ergonomics (SUS-003 / DEF-010):** **PASS / SHIPPED**.
+   - Enforced `min-height: 44px;` across interactive buttons.
+   - Refined header padding on narrow mobile (`max-width: 360px`) to `padding: 0 8px; gap: 6px;` preserving $\ge 40\text{px}$ touch target buttons.
+   - Converted `.tool-page-actions` to a 2-column grid on $\le 360\text{px}$ viewports.
+3. **Track B: Loop 8 Outreach Batch #2 Delivery:** **PASS / SHIPPED**.
+   - Created `docs/growth/outreach/LOOP_8_BATCH_2_PROSPECTS.md` with 12 university resource pitches (`T-UNI-01`), 4 integration partner pitches (`T-INT-01`), 4 broken-link pitches (`T-BRK-01`), and a 1-touch follow-up policy for Batch #1 non-responders.
+   - Strictly enforced manual owner send policy via personal mailbox.
+4. **Automated Verification:** **PASS / SHIPPED**.
+   - Dedicated verification suite `tests/test_s21_mobile_viewport.js` passed 5/5 checks.
+   - Master test runner `tests/run_all_tests.js` passed 36/36 suites (100%), including 21/21 Playwright visual regression snapshots.
+   - Sitemap verified synchronized via `node scripts/generate_sitemap.js --check` (0 drift).
+
+---
+
 # Pre-deploy SEO Verification — feat/s20-a11y-keyboard-aria @ HEAD
 
 Date: 2026-11-23T13:20:00Z

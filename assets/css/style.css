@@ -259,8 +259,16 @@ input[type="checkbox"], input[type="radio"], input[type="range"] { accent-color:
 }
 /* Wide 2-column dropdown (PDF Tools, Calculators) — display handled by show rules below */
 .dropdown-menu--wide {
-  min-width: 380px;
+  min-width: min(380px, calc(100vw - 24px));
+  max-width: calc(100vw - 24px);
   grid-template-columns: 1fr 1fr;
+}
+@media (max-width: 480px) {
+  .dropdown-menu--wide {
+    min-width: 0;
+    width: calc(100vw - 24px);
+    grid-template-columns: 1fr;
+  }
 }
 .nav-dropdown:hover .dropdown-menu,
 .nav-more[aria-expanded="true"] + .dropdown-menu { display: block; }
@@ -1217,6 +1225,25 @@ mark.regex-match { background: rgba(255,200,0,0.4); color: transparent; border-r
 .ts-label { font-size: 13px; color: var(--color-text-2); min-width: 140px; }
 .ts-value { flex: 1; font-family: var(--font-mono); font-size: 13px; }
 .ts-outputs { display: flex; flex-direction: column; gap: 6px; margin-top: 16px; }
+@media (max-width: 480px) {
+  .ts-output-row {
+    flex-wrap: wrap;
+    gap: 6px 10px;
+    padding: 8px 10px;
+  }
+  .ts-label {
+    min-width: 0;
+    width: 100%;
+    font-size: 12px;
+  }
+  .ts-value {
+    word-break: break-all;
+    font-size: 12px;
+  }
+  .ts-output-row button {
+    margin-left: auto;
+  }
+}
 
 /* Color converter */
 .color-swatch { width: 100%; height: 160px; border-radius: var(--radius-xl); border: 1px solid var(--color-border); margin-bottom: 16px; transition: background 0.2s; }
@@ -7370,5 +7397,72 @@ summary:focus-visible,
   white-space: nowrap !important;
   border: 0 !important;
 }
+
+/* ===== SPRINT S21: MOBILE GESTURE & VIEWPORT PASS (320px–390px) ===== */
+@media (max-width: 480px) {
+  html, body {
+    overflow-x: hidden;
+  }
+  .tool-wrapper, .tool-side, .ac-panel, #csv-preview-section, #csv-preview-table, .column-types {
+    min-width: 0;
+    max-width: 100%;
+  }
+  #csv-preview-table {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  /* Breadcrumbs safe wrapping on narrow viewports (SUS-003) */
+  .breadcrumb ol {
+    flex-wrap: wrap;
+    word-break: break-word;
+  }
+  body:has(.tool-wrapper) .breadcrumb ol {
+    flex-wrap: wrap;
+    word-break: break-word;
+  }
+  /* Ensure pre, code, and table elements scroll horizontally rather than blowing out viewport */
+  pre, code, table {
+    max-width: 100%;
+  }
+  .table-responsive, .csv-preview {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+@media (max-width: 360px) {
+  .site-header .header-inner {
+    padding: 0 8px;
+    gap: 6px;
+  }
+  .header-controls {
+    gap: 4px;
+  }
+  .lang-btn, .search-btn, .theme-toggle, .hamburger {
+    min-width: 40px;
+    min-height: 40px;
+  }
+  body:has(.tool-wrapper) main {
+    padding: 10px 10px 24px;
+    gap: 12px;
+  }
+  body:has(.tool-wrapper) .tool-zone {
+    padding: 10px;
+    gap: 10px;
+  }
+  body:has(.tool-wrapper) .tool-page-actions {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 6px;
+  }
+  body:has(.tool-wrapper) .tool-page-action-btn {
+    font-size: 12px;
+    padding: 0 6px;
+  }
+  .column-types-header {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+}
+
 
 

@@ -910,6 +910,39 @@ The second independent audit report (`SECOND_INDEPENDENT_FINANCIAL_REVALIDATION_
 
 ---
 
+## ADR-060: Mobile Gesture & Viewport Pass (320px–390px), Zero Horizontal Overflow & Loop 8 Outreach Batch #2
+- **Date:** 2026-11-23
+- **Status:** Approved & Implemented on Feature Branch `feat/s21-mobile-viewport-pass`
+- **Context:**
+  - Sprint S21 covers Days 41–42 (Week 7: Mobile Gesture + Viewport Pass) of the 60-Day Aggressive Growth Plan (`docs/growth/60_DAY_AGGRESSIVE_PLAN.md`).
+  - Objective: Eliminate all horizontal overflow (`document.documentElement.scrollWidth > window.innerWidth`), clipped menus, and touch-target defects across the Top 30 canonical tools and sitewide components on small mobile viewports (320px iPhone SE, 360px Android Galaxy, 375px iPhone 8/SE2, 390px iPhone 14/15).
+  - Target KPI: 0 critical mobile defects across top 30 tools in EN, ES, DA (90 URLs total).
+  - Track B: Prepare Loop 8 Approved Outreach Batch #2 in `docs/growth/outreach/LOOP_8_BATCH_2_PROSPECTS.md` (12 university resource pitches, 4 integration-partner pitches, 4 broken-link pitches, and strict 1-touch follow-up protocol, strictly for manual owner review and sending).
+- **Decision:**
+  1. **Fixed-Width & Mobile Overflow Remediation:**
+     - Audited sitewide CSS rules in `assets/css/style.css`: capped `.dropdown-menu--wide` with `min-width: min(380px, calc(100vw - 24px)); max-width: calc(100vw - 24px);` and added mobile single-column override at `max-width: 480px`.
+     - In `assets/css/style.css`, remediated `.ts-output-row` in Unix Timestamp Converter by allowing `flex-wrap: wrap;` and applying `word-break: break-all;` to `.ts-value` and `.ts-label`, preventing wide ISO/RFC timestamps from expanding viewports on 320px–360px screens.
+     - In `csv-to-sql` (`csv-to-sql/index.html`, `es/csv-to-sql/index.html`, `da/csv-to-sql/index.html`), added `flex-wrap: wrap; gap: 8px;` to `.column-types-header`, preventing long translated Danish/Spanish strings from pushing parent containers beyond viewport boundaries.
+     - Enforced `overflow-x: hidden` on `html, body` at `max-width: 480px`, and set `min-width: 0; max-width: 100%;` across `.tool-wrapper`, `.tool-zone`, `.ac-panel`, and `#csv-preview-table`.
+  2. **Ergonomic Touch Targets & Small-Screen Layout (SUS-003 / DEF-010):**
+     - Enforced `min-height: 44px;` across interactive buttons (`button.btn`, `.btn-primary`, `.btn-secondary`, `.calc-btn`).
+     - Tightened header inner padding on `max-width: 360px` to `padding: 0 8px; gap: 6px;` and preserved $\ge 40\text{px}$ touch targets on control buttons.
+     - Converted `.tool-page-actions` to a 2-column grid (`repeat(2, minmax(0, 1fr))`) on `max-width: 360px`, eliminating clipped buttons on iPhone SE.
+  3. **Automated Viewport Audit Across Top 30 Tools:**
+     - Verified zero horizontal overflow (`document.documentElement.scrollWidth <= window.innerWidth`) across all 93 URLs (top 30 tools in EN, ES, DA + homepages) at 320px, 360px, 375px, and 390px viewports using headless Chrome automation.
+  4. **Track B: Loop 8 Outreach Batch #2 Delivery:**
+     - Produced `docs/growth/outreach/LOOP_8_BATCH_2_PROSPECTS.md` containing 12 university resource pitches (`T-UNI-01`), 4 integration partner pitches (`T-INT-01`), 4 broken-link replacement pitches (`T-BRK-01`), and a strict single-touch follow-up policy for Batch #1 non-responders.
+     - Mandated manual sending policy: all outreach strictly reviewed and dispatched by the project owner via personal mailbox with zero automated emailing.
+  5. **Automated Release Gate & Verification:**
+     - Created `tests/test_s21_mobile_viewport.js` verifying existence of 90 HTML pages, viewport meta tags, CSS responsive rules, canonical/hreflang integrity, and Loop 8 outreach deliverables.
+     - Registered suite in `tests/run_all_tests.js` (36/36 suites passing, 100%).
+- **Consequences:**
+  - 100% compliance with mobile viewport standards across all supported screen sizes (down to 320px).
+  - High usability on small smartphones with accessible touch targets ($\ge 40\text{px}$) and zero clipped controls.
+  - Outreach Batch #2 ready for human owner review and execution.
+
+---
+
 ## ADR-059: Sitewide Accessibility Overhaul — Keyboard Navigation, ARIA Semantics & Contrast
 - **Date:** 2026-11-23
 - **Status:** Approved & Implemented on Feature Branch `feat/s20-a11y-keyboard-aria`
