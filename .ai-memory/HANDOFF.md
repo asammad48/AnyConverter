@@ -2,6 +2,65 @@
 
 ---
 
+## Phase 50 — Growth Program Sprint S18: Category Hub Depth Upgrade: Developer Tools & Calculators (2026-11-23)
+
+**Program:** AnyConverter.io Global Growth Engine (SEO + engagement + backlinks + distribution).  
+**Operating cadence:** 30 sprints × 2 days = 60 days. One prod ship per sprint.  
+**Active branch:** `feat/s18-category-hub-dev-calc` (branched from S17 release checkpoint `750e5a4`).  
+**Current sprint pointer:** `S18 — Category hub depth upgrade: Developer tools + Calculators (EN + ES + DA)` (100% COMPLETED & VERIFIED; ready for owner review).  
+
+**Current sprint (S18) progress & status:**
+- **Branch Created:** Created `feat/s18-category-hub-dev-calc` off `750e5a4`.
+- **Category Hub Architecture & Content Implementation:**
+  1. **5 Substantive Thematic Subsections per Hub (150–250 Words per Subsection):**
+     - Structured 26 Developer Tools into 5 thematic subsections across `/developer-tools/`, `/es/developer-tools/`, and `/da/developer-tools/`:
+       - *Data Formatting & Validation (6 tools):* `json-formatter`, `json-compare`, `json-to-yaml`, `xml-formatter`, `html-beautifier`, `markdown-html`.
+       - *Encoding, Cryptography & Security (5 tools):* `base64-encoder`, `url-encoder`, `jwt-decoder`, `hash-generator`, `uuid-generator`.
+       - *Data Conversion & Querying (4 tools):* `csv-to-sql`, `csv-query`, `parquet-to-csv`, `camt053-to-csv`.
+       - *CSS, Web Design & Display (5 tools):* `css-gradient-generator`, `css-shadow-generator`, `px-to-rem`, `color-converter`, `screen-resolution`.
+       - *System, Auth & Parsing Utilities (6 tools):* `regex-tester`, `cron-expression-parser`, `timestamp-converter`, `password-generator`, `password-strength-checker`, `ip-address-lookup`.
+     - Structured 32 Calculators into 5 thematic subsections across `/calculators/`, `/es/calculators/`, and `/da/calculators/`:
+       - *Percentages, Discounts & Pricing (10 tools):* `discount-calculator`, `discount-stacking-calculator`, `percentage-calculator`, `reverse-percentage-calculator`, `percentage-difference-calculator`, `price-increase-calculator`, `unit-price-calculator`, `margin-vs-markup-calculator`, `gst-vat-calculator`, `tip-calculator`.
+       - *Loans, Pay & Financial Planning (5 tools):* `pay-rise-calculator`, `loan-calculator`, `mortgage-calculator`, `compound-interest-calculator`, `currency-converter`.
+       - *Slope, Geometry & Ratios (3 tools):* `rise-over-run-calculator`, `slope-grade-angle-calculator`, `aspect-ratio-calculator`.
+       - *Health, Fitness & Daily Planning (6 tools):* `age-calculator`, `bmi-calculator`, `calorie-calculator`, `sleep-calculator`, `blood-type-compatibility`, `birthday-countdown-calculator`.
+       - *Compatibility, Numerology & Astrology (8 tools):* `love-calculator`, `flames-calculator`, `numerology-calculator`, `name-numerology-calculator`, `lo-shu-grid-calculator`, `tarot-birth-card-calculator`, `moon-sign-calculator`, `rising-sign-calculator`.
+     - Authored and verified 30 distinct paragraphs (each strictly 150–250 words) providing concrete, practical workflow guidance, client-side privacy benefits, and explicit tool selection criteria.
+  2. **Native Multilingual Parity (EN, ES, DA):**
+     - Full authentic Danish and Spanish translations for all 10 subsection headings, descriptions, 58 tool cards, and 30 FAQs.
+     - Preserved all required diacritics (`æ`, `ø`, `å`, `á`, `é`, `í`, `ó`, `ú`, `ñ`, `¿`).
+     - Avoided absolute privacy claims per `tests/test_privacy_claims_regression.js`, utilizing factual statements regarding client-side JavaScript execution without server uploads.
+  3. **Advanced Structured Data (Schema.org JSON-LD):**
+     - `CollectionPage` + `ItemList`: Enumerates all 26 dev tools and 32 calculators per page with 1-based sequential positions, localized names, and canonical URLs.
+     - `BreadcrumbList`: Standardized schema hierarchy matching visible breadcrumbs (`Home` > `Developer Tools` / `Inicio` > `Herramientas para Desarrolladores` / `Hjem` > `Udviklerværktøjer`, and corresponding for Calculators).
+     - `FAQPage`: 5 comprehensive, intent-aligned FAQs per page (30 FAQs total) with 100% verbatim text parity between rendered HTML `<details>` and JSON-LD markup.
+  4. **SEO & Metadata Optimization:**
+     - Title tags <= 60 characters across all 6 pages with AnyConverter branding:
+       - Dev EN: `Free Online Developer Tools | JSON & Code | AnyConverter` (56 chars)
+       - Dev ES: `Herramientas para Desarrolladores Online | AnyConverter` (55 chars)
+       - Dev DA: `Gratis Online Udviklerværktøjer | Web & Kode | AnyConverter` (59 chars)
+       - Calc EN: `Free Online Calculators | Math & Finance | AnyConverter` (55 chars)
+       - Calc ES: `Calculadoras Online Gratis | Finanzas y Salud | AnyConverter` (60 chars)
+       - Calc DA: `Gratis Online Beregnere | Finans & Sundhed | AnyConverter` (57 chars)
+     - Meta descriptions strictly 140–160 characters highlighting speed, zero installation, and client-side privacy.
+     - Canonical self-referencing and 4-way reciprocal hreflang tags (`en`, `es`, `da`, `x-default`).
+     - Synchronized OpenGraph and Twitter card metadata.
+  5. **Accessibility & Design Standards (WCAG 2.2 AA):**
+     - Semantic hierarchy (`<h1>`, `<h2>`, `<h3>`).
+     - High-contrast `:focus-visible` states (`2px solid #B04A45`, `2px offset`) on all tool cards and interactive FAQ accordions in `assets/css/style.css`.
+     - Zero horizontal overflow across mobile (320px–375px), tablet (768px), and desktop (1280px) viewports.
+- **Automated Verification:**
+  - Dedicated verification suite `tests/test_s18_dev_calc_hub_depth.js`: 10/10 assertions passing (100%).
+  - Registered in master runner `tests/run_all_tests.js`.
+  - Repository master suite `node tests/run_all_tests.js`: 33/33 suites passing (100%), including 21/21 Playwright visual regression screenshot comparisons.
+- **Documentation & Memory:**
+  - Recorded ADR-057 in `.ai-memory/DECISIONS.md`.
+  - Captured G1–G15 release gate evidence in `docs/growth/91-TEST-EVIDENCE-AND-RELEASE-GATES.md`.
+  - Updated `.ai-memory/STATE.json`.
+- **Next Sprint Pointer:** Sprint S19 — Programmatic SEO Architecture: Base Template & Data Pipeline (Days 37–38).
+
+---
+
 ## Phase 49 — Growth Program Sprint S17: Category Hub Depth Upgrade: PDF Tools (2026-11-23)
 
 **Program:** AnyConverter.io Global Growth Engine (SEO + engagement + backlinks + distribution).  

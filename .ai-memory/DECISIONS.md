@@ -910,6 +910,60 @@ The second independent audit report (`SECOND_INDEPENDENT_FINANCIAL_REVALIDATION_
 
 ---
 
+## ADR-057: Category Hub Depth Upgrade for Developer Tools & Calculators across EN, ES, DA
+- **Date:** 2026-11-23
+- **Status:** Implemented on Feature Branch `feat/s18-category-hub-dev-calc`
+- **Context:**
+  - Sprint S18 covers Days 35–36 (Week 6: Category Hub Depth Upgrades) of the 60-Day Aggressive Growth Plan (`docs/growth/60_DAY_AGGRESSIVE_PLAN.md`).
+  - Following the successful rollout of the PDF Tools hub depth architecture in Sprint S17, the Developer Tools hubs (`/developer-tools/`, `/es/developer-tools/`, `/da/developer-tools/`) and Calculators hubs (`/calculators/`, `/es/calculators/`, `/da/calculators/`) required the same depth upgrade from basic card collections to authoritative, comprehensive, high-ranking topic hubs.
+  - High-volume head and mid-tail search queries (`developer tools online`, `free online developer tools`, `herramientas para desarrolladores`, `gratis udviklerværktøjer`, `free online calculators`, `calculadoras online gratis`, `gratis online beregnere`) require structured topic clusters that demonstrate topical depth, practical workflow guidance, and frictionless navigation to 58 tools (26 developer tools, 32 calculators).
+  - Objective: Upgrade all 6 hub pages with 5 thematic subsections per hub (150–250 words per subsection), 100% card coverage, native multilingual parity, rich Schema.org JSON-LD (`CollectionPage`, `ItemList`, `BreadcrumbList`, `FAQPage`), and WCAG 2.2 AA accessibility.
+- **Decision:**
+  1. **5 Substantive Thematic Subsections per Category Hub (150–250 Words per Subsection):**
+     - Structured Developer Tools (26 tools) into:
+       1. *Data Formatting & Validation:* `json-formatter`, `json-compare`, `json-to-yaml`, `xml-formatter`, `html-beautifier`, `markdown-html` (6 tools).
+       2. *Encoding, Cryptography & Security:* `base64-encoder`, `url-encoder`, `jwt-decoder`, `hash-generator`, `uuid-generator` (5 tools).
+       3. *Data Conversion & Querying:* `csv-to-sql`, `csv-query`, `parquet-to-csv`, `camt053-to-csv` (4 tools).
+       4. *CSS, Web Design & Display:* `css-gradient-generator`, `css-shadow-generator`, `px-to-rem`, `color-converter`, `screen-resolution` (5 tools).
+       5. *System, Auth & Parsing Utilities:* `regex-tester`, `cron-expression-parser`, `timestamp-converter`, `password-generator`, `password-strength-checker`, `ip-address-lookup` (6 tools).
+     - Structured Calculators (32 tools) into:
+       1. *Percentages, Discounts & Pricing:* `discount-calculator`, `discount-stacking-calculator`, `percentage-calculator`, `reverse-percentage-calculator`, `percentage-difference-calculator`, `price-increase-calculator`, `unit-price-calculator`, `margin-vs-markup-calculator`, `gst-vat-calculator`, `tip-calculator` (10 tools).
+       2. *Loans, Pay & Financial Planning:* `pay-rise-calculator`, `loan-calculator`, `mortgage-calculator`, `compound-interest-calculator`, `currency-converter` (5 tools).
+       3. *Slope, Geometry & Ratios:* `rise-over-run-calculator`, `slope-grade-angle-calculator`, `aspect-ratio-calculator` (3 tools).
+       4. *Health, Fitness & Daily Planning:* `age-calculator`, `bmi-calculator`, `calorie-calculator`, `sleep-calculator`, `blood-type-compatibility`, `birthday-countdown-calculator` (6 tools).
+       5. *Compatibility, Numerology & Astrology:* `love-calculator`, `flames-calculator`, `numerology-calculator`, `name-numerology-calculator`, `lo-shu-grid-calculator`, `tarot-birth-card-calculator`, `moon-sign-calculator`, `rising-sign-calculator` (8 tools).
+     - Generated and verified 30 distinct subsection paragraphs (5 subsections × 3 locales × 2 hubs), each strictly bounded between 150 and 250 words of practical guidance on client-side privacy, workflow utility, and specific tool selection.
+  2. **Native Multilingual Parity (EN, ES, DA):**
+     - Full native Danish and Spanish translations for all 10 subsection headings, descriptions, 58 tool cards, and 30 FAQs.
+     - Preserved all required diacritics (`æ`, `ø`, `å`, `á`, `é`, `í`, `ó`, `ú`, `ñ`, `¿`).
+     - Avoided absolute privacy claims per `tests/test_privacy_claims_regression.js`, utilizing precise, factual phrasing regarding local client-side execution.
+  3. **Advanced Schema.org JSON-LD Structured Data:**
+     - `CollectionPage` + `ItemList`: Enumerates all 26 dev tools and 32 calculators per page with 1-based sequential positions, localized names, and canonical URLs.
+     - `BreadcrumbList`: Standardized schema hierarchy matching visible breadcrumbs (`Home` > `Developer Tools` / `Inicio` > `Herramientas para Desarrolladores` / `Hjem` > `Udviklerværktøjer`, and corresponding for Calculators).
+     - `FAQPage`: 5 comprehensive FAQs per page (30 FAQs total) with 100% verbatim text parity between rendered HTML `<details>` and JSON-LD schema.
+  4. **SEO & Metadata Optimization:**
+     - Title tags bounded <= 60 characters across all 6 pages with AnyConverter branding:
+       - Dev EN: `Free Online Developer Tools | JSON & Code | AnyConverter` (56 chars)
+       - Dev ES: `Herramientas para Desarrolladores Online | AnyConverter` (55 chars)
+       - Dev DA: `Gratis Online Udviklerværktøjer | Web & Kode | AnyConverter` (59 chars)
+       - Calc EN: `Free Online Calculators | Math & Finance | AnyConverter` (55 chars)
+       - Calc ES: `Calculadoras Online Gratis | Finanzas y Salud | AnyConverter` (60 chars)
+       - Calc DA: `Gratis Online Beregnere | Finans & Sundhed | AnyConverter` (57 chars)
+     - Meta descriptions strictly 140–160 characters across all 6 pages highlighting client-side privacy, speed, and zero installation.
+     - Canonical self-referencing and 4-way reciprocal hreflang tags (`en`, `es`, `da`, `x-default`).
+  5. **Accessibility & Design Standards (WCAG 2.2 AA):**
+     - High-contrast `:focus-visible` outlines (`2px solid #B04A45`, `2px offset`) for tool cards and interactive FAQ accordion summaries.
+     - Zero horizontal overflow across responsive viewports (320px–1280px).
+  6. **Automated Verification:**
+     - Created dedicated test suite `tests/test_s18_dev_calc_hub_depth.js` (10/10 assertions passing).
+     - Registered in `tests/run_all_tests.js` (33/33 master suites passing 100%, including Playwright visual regression).
+- **Consequences:**
+  - Dramatically improves search visibility and user engagement for head and mid-tail queries across Developer Tools and Calculators.
+  - Elevates click-through rate from category hubs into individual high-intent utilities.
+  - Successfully completes Week 6 category hub depth upgrades alongside Sprint S17.
+
+---
+
 ## ADR-056: Category Hub Depth Upgrade for PDF Tools across EN, ES, DA (/pdf-tools/, /es/pdf-tools/, /da/pdf-tools/)
 - **Date:** 2026-11-23
 - **Status:** Implemented on Feature Branch `feat/s17-category-hub-pdf`
