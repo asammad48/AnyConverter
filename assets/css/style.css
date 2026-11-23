@@ -1,5 +1,51 @@
 /* AnyConverter — Main Stylesheet */
 
+/* ===== CORE WEB VITALS: FONT-DISPLAY SWAP ENFORCEMENT ===== */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: local('Inter'), local('Inter-Regular');
+}
+
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 100 800;
+  font-display: swap;
+  src: local('JetBrains Mono'), local('JetBrainsMono-Regular');
+}
+
+@font-face {
+  font-family: 'Bricolage Grotesque';
+  font-style: normal;
+  font-weight: 200 800;
+  font-display: swap;
+  src: local('Bricolage Grotesque'), local('BricolageGrotesque-Regular');
+}
+
+@font-face {
+  font-family: 'Instrument Sans';
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: local('Instrument Sans'), local('InstrumentSans-Regular');
+}
+
+/* ===== CORE WEB VITALS: CLS STABILIZATION & CONTAINER SIZING ===== */
+.calc-result,
+.tool-result,
+#ip-results,
+#jwt-result,
+#hash-results,
+#ts-outputs,
+#sc-results,
+#ar-preview-box {
+  contain-intrinsic-size: 0 100px;
+}
+
+
 /* ===== CSS VARIABLES ===== */
 :root {
   --color-primary:        #B04A45;

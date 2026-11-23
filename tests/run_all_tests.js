@@ -34,6 +34,7 @@ const testSuites = [
   { name: 'Sprint S16 Orphan Fix & Reciprocity Suite', cmd: 'node tests/test_s16_orphan_fix_reciprocity.js' },
   { name: 'Sprint S17 PDF Hub Depth Suite', cmd: 'node tests/test_s17_pdf_hub_depth.js' },
   { name: 'Sprint S18 Dev & Calc Hub Depth Suite', cmd: 'node tests/test_s18_dev_calc_hub_depth.js' },
+  { name: 'Sprint S19 CWV Top 20 Suite', cmd: 'node tests/test_s19_cwv_top_20.js' },
   { name: 'Playwright Visual Regression Suite (21/21 Baselines)', cmd: 'node tests/run_visual_regression.js' }
 ];
 

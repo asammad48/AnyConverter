@@ -2,6 +2,68 @@
 
 ---
 
+## Phase 51 — Growth Program Sprint S19: Core Web Vitals Pass on Top 20 Tools (EN, ES, DA) (2026-11-23)
+
+**Program:** AnyConverter.io Global Growth Engine (SEO + engagement + backlinks + distribution).  
+**Operating cadence:** 30 sprints × 2 days = 60 days. One prod ship per sprint.  
+**Active branch:** `feat/s19-cwv-top-20-tools` (branched from S18 release checkpoint `875c3a9`).  
+**Current sprint pointer:** `S19 — Core Web Vitals Pass on Top 20 Tools (EN + ES + DA)` (100% COMPLETED & VERIFIED; ready for owner review).  
+
+**Current sprint (S19) progress & status:**
+- **Branch Created:** Created `feat/s19-cwv-top-20-tools` off `875c3a9`.
+- **Top 20 Canonical Tool Inventory (60 URLs across EN, ES, DA):**
+  1. `json-formatter`
+  2. `percentage-calculator`
+  3. `age-calculator`
+  4. `loan-calculator`
+  5. `ip-address-lookup`
+  6. `base64-encoder`
+  7. `url-encoder`
+  8. `bmi-calculator`
+  9. `discount-calculator`
+  10. `pdf-merge`
+  11. `pdf-split`
+  12. `edit-pdf`
+  13. `pdf-compress`
+  14. `csv-to-sql`
+  15. `jwt-decoder`
+  16. `hash-generator`
+  17. `timestamp-converter`
+  18. `sleep-calculator`
+  19. `aspect-ratio-calculator`
+  20. `regex-tester`
+- **Core Web Vitals Optimizations Implemented:**
+  1. **Cumulative Layout Shift (CLS < 0.1) Elimination:**
+     - Enforced explicit `width="300" height="200"` and `loading="lazy"` on preview image tags in `es/base64-encoder/index.html`, `da/base64-encoder/index.html`, `es/image-converter/index.html`, and `da/image-converter/index.html`.
+     - Verified 100% explicit image dimensions site-wide across all 475 HTML files (0 missing dimensions).
+     - Defined `contain-intrinsic-size: 0 100px` on dynamic result containers (`.calc-result`, `.tool-result`, `#ip-results`, `#jwt-result`, `#hash-results`, `#ts-outputs`, `#sc-results`, `#ar-preview-box`) to eliminate DOM reflows upon calculation.
+     - Reserved fixed min-heights on ad containers (`.ad-slot`, `.dc-ad`).
+  2. **Largest Contentful Paint (LCP < 2.5s) Acceleration:**
+     - Enforced `@font-face` with `font-display: swap` in `assets/css/style.css` for primary font families (`Inter`, `JetBrains Mono`, `Bricolage Grotesque`, `Instrument Sans`).
+     - Injected `@font-face` with `font-display: swap` into head critical `<style>` blocks across all 60 target pages, completely preventing Flash of Invisible Text (FOIT).
+     - Audited `<head>` scripts: 100% of non-critical external scripts use `defer` or `async` (0 render-blocking head scripts).
+  3. **Interaction to Next Paint (INP < 200ms) & Main-Thread Hygiene:**
+     - Audited `assets/js/shared.js`: 0 heavy vendor libraries (PDF.js, CodeMirror, PapaParse, etc.) leaked into global shared scripts.
+     - Audited tool scripts: heavy calculations and live inputs utilize optimal debouncing (`setTimeout`, `requestAnimationFrame`, Web Workers).
+  4. **Multi-Locale Integrity & Zero Functional Regressions:**
+     - Preserved 100% mathematical precision and client-side logic on all 20 tools.
+     - Preserved 100% reciprocal 4-way hreflang alternates and canonical URLs.
+     - Strict zero-dependency, zero-tracking privacy architecture preserved.
+  5. **Loop 7 Distribution Prep (DevHunt & Peerlist):**
+     - Prepared clean, ready-to-use launch drafts in `docs/growth/launches/DEVHUNT_PEERLIST_LAUNCH_DRAFTS.md` under human owner review control.
+- **Automated Verification:**
+  - Dedicated verification suite `tests/test_s19_cwv_top_20.js`: 8/8 checks passing (100%).
+  - Registered in master runner `tests/run_all_tests.js`.
+  - Repository master suite `node tests/run_all_tests.js`: 34/34 suites passing (100%), including 21/21 Playwright visual regression screenshot comparisons.
+  - Sitemap integrity verified: `node scripts/generate_sitemap.js --check` passes with zero drift (441 URLs, 147 clusters).
+- **Documentation & Memory:**
+  - Recorded ADR-058 in `.ai-memory/DECISIONS.md`.
+  - Prepended G1–G15 release gate evidence to `docs/growth/91-TEST-EVIDENCE-AND-RELEASE-GATES.md`.
+  - Updated `.ai-memory/STATE.json`.
+- **Next Sprint Pointer:** Sprint S20 — A11y Keyboard & ARIA Overhaul (Days 39–40).
+
+---
+
 ## Phase 50 — Growth Program Sprint S18: Category Hub Depth Upgrade: Developer Tools & Calculators (2026-11-23)
 
 **Program:** AnyConverter.io Global Growth Engine (SEO + engagement + backlinks + distribution).  

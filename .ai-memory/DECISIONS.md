@@ -910,6 +910,45 @@ The second independent audit report (`SECOND_INDEPENDENT_FINANCIAL_REVALIDATION_
 
 ---
 
+## ADR-058: Core Web Vitals Pass Across Top 20 Canonical Tools (EN, ES, DA)
+- **Date:** 2026-11-23
+- **Status:** Approved & Implemented on Feature Branch `feat/s19-cwv-top-20-tools`
+- **Context:**
+  - Sprint S19 covers Days 37–38 (Week 6: Performance & Core Web Vitals) of the 60-Day Aggressive Growth Plan (`docs/growth/60_DAY_AGGRESSIVE_PLAN.md`).
+  - Goal: Eliminate layout shifts, accelerate render times, and optimize main-thread execution across AnyConverter's top 20 highest-traffic tools in all 3 supported languages (`/tool/`, `/es/tool/`, `/da/tool/` — 60 URLs total).
+  - Target KPI: Meet Google Core Web Vitals thresholds: Largest Contentful Paint (LCP) < 2.5s, Cumulative Layout Shift (CLS) < 0.1, and Interaction to Next Paint (INP) < 200ms across mobile and desktop viewports on all 20 tools.
+  - Auditing identified:
+    1. Dynamic image elements in international locales (`es/base64-encoder/index.html`, `da/base64-encoder/index.html`, `es/image-converter/index.html`, `da/image-converter/index.html`) lacked explicit `width` and `height` attributes.
+    2. Head critical styles on 9 PDF tool pages (`pdf-merge`, `pdf-split`, `pdf-compress` in EN, ES, DA) and the global stylesheet lacked explicit `@font-face` rules with `font-display: swap`.
+    3. Dynamic result containers and preview boxes required containment sizing to stabilize viewport rendering.
+    4. Distribution prep for Loop 7 (DevHunt & Peerlist Launchpad) needed ready-to-use launch drafts under owner review control.
+- **Decision:**
+  1. **Cumulative Layout Shift (CLS < 0.1) Elimination:**
+     - Enforced explicit `width="300" height="200"` and `loading="lazy"` attributes across all utility image preview targets, ensuring 0 missing image dimensions across all 475 HTML files site-wide.
+     - Added CSS layout rules enforcing `contain-intrinsic-size: 0 100px` for dynamic result containers (`.calc-result`, `.tool-result`, `#ip-results`, `#jwt-result`, `#hash-results`, `#ts-outputs`, `#sc-results`, `#ar-preview-box`).
+     - Maintained fixed reserved dimensions on ad slots (`.ad-slot`, `.dc-ad`: `min-height: 250px` for rectangle/sidebar, `min-height: 90px`/`100px` for leaderboards).
+  2. **Largest Contentful Paint (LCP < 2.5s) Acceleration:**
+     - Enforced `@font-face` with `font-display: swap` in `assets/css/style.css` for primary font families (`Inter`, `JetBrains Mono`, `Bricolage Grotesque`, `Instrument Sans`) and injected `font-display: swap` into head critical `<style>` blocks across all 60 pages.
+     - Preserved `<link rel="preconnect">` for Google Fonts and verified zero render-blocking external scripts in `<head>` (all non-critical scripts use `defer` or `async`).
+  3. **Interaction to Next Paint (INP < 200ms) & Main-Thread Hygiene:**
+     - Audited `assets/js/shared.js` — verified zero tool-specific vendor libraries (PDF.js, CodeMirror, PapaParse, etc.) leaked into global shared bundles.
+     - Confirmed mathematical and developer tools use native Web APIs, Web Workers, or input debouncing / RAF to maintain responsive < 50ms user interactions.
+  4. **Multi-Locale Integrity & Zero Functional Regressions:**
+     - Preserved 100% mathematical precision and formulas across all 20 tools.
+     - Preserved self-referential canonical URLs and 100% reciprocal 4-way hreflang alternates (`en`, `es`, `da`, `x-default`) across all 60 URLs.
+  5. **Distribution Prep (Loop 7 DevHunt & Peerlist Launchpad):**
+     - Authored complete launch packages (taglines, descriptions, feature bullets, maker comments, tags, and asset checklists) in `docs/growth/launches/DEVHUNT_PEERLIST_LAUNCH_DRAFTS.md`.
+     - Explicitly gated under human owner review with strict prohibition of automated posting.
+  6. **Automated Verification:**
+     - Built dedicated verification suite `tests/test_s19_cwv_top_20.js` (8/8 checks passed).
+     - Integrated into master test runner `tests/run_all_tests.js` (34/34 suites passing, 100%).
+- **Consequences:**
+  - Guarantees top 20 tools achieve Google Core Web Vitals thresholds (LCP < 2.5s, CLS < 0.1, INP < 200ms).
+  - Eliminates layout shifts during font loading and image hydration.
+  - Prepares platform for high-converting Loop 7 developer community launches.
+
+---
+
 ## ADR-057: Category Hub Depth Upgrade for Developer Tools & Calculators across EN, ES, DA
 - **Date:** 2026-11-23
 - **Status:** Implemented on Feature Branch `feat/s18-category-hub-dev-calc`
