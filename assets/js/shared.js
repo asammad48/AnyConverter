@@ -1829,6 +1829,18 @@
     document.head.appendChild(script);
   }
 
+  /* ===== PRODUCTION FEATURE FLAGS & EXPERIMENT GATING (SPRINT S30) =====
+     Allows the platform owner to toggle, iterate, or gate individual levers
+     at runtime without breaking backward compatibility or user preferences. */
+  window.AC_FEATURES = Object.assign({
+    shortcuts: true,       // Sprint S27: Global keyboard shortcuts & help modal
+    favorites: true,       // Sprint S10: Local tool favoriting system
+    recents: true,         // Sprint S11: Local recents carousel & ring buffer
+    themeToggle: true,     // Sprint S27: Dark / Light theme persistence & sync
+    workflowChains: true,  // Sprints S12, S25, S26: Cross-tool workflow chaining
+    shareableState: true   // Sprints S13, S14: Compact shareable query parameter state
+  }, window.AC_FEATURES || {});
+
   /* ===== INIT ===== */
   applyStoredTheme();
   initAnalytics();
@@ -1839,14 +1851,16 @@
     initToolPageActions();
     initToolTrustBadge();
     initHeader();
-    initThemeToggle();
+    if (window.AC_FEATURES.themeToggle !== false) initThemeToggle();
     initLangSwitcher();
     updateMobileLangLinks();
     initSearch();
-    initShortcutsModal();
-    initGlobalShortcuts();
-    initDashboardQuickAccess();
-    initDashboardRecents();
+    if (window.AC_FEATURES.shortcuts !== false) {
+      initShortcutsModal();
+      initGlobalShortcuts();
+    }
+    if (window.AC_FEATURES.favorites !== false) initDashboardQuickAccess();
+    if (window.AC_FEATURES.recents !== false) initDashboardRecents();
     initFileUploadTriggers();
     initPromptCards();
     initStaticFaqAccordion();
