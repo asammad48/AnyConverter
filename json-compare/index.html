@@ -29,7 +29,54 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"JSON Compare","url":"https://anyconverter.io/json-compare/","description":"Compare two JSON documents semantically: ignore key order, match arrays by ID or position, ignore noisy paths, and export a JSON Patch. Runs entirely in your browser.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Does key order matter when comparing JSON?","acceptedAnswer":{"@type":"Answer","text":"No. Objects are compared by key, so {\"a\":1,\"b\":2} and {\"b\":2,\"a\":1} are identical."}},{"@type":"Question","name":"How do I compare arrays whose order changed?","acceptedAnswer":{"@type":"Answer","text":"Use Smart or By key array matching. Elements are matched by an ID such as id, so a reordered list only shows real changes."}},{"@type":"Question","name":"Can I ignore fields like timestamps?","acceptedAnswer":{"@type":"Answer","text":"Yes. Add paths such as $..updatedAt under Ignore paths."}},{"@type":"Question","name":"Is my JSON uploaded?","acceptedAnswer":{"@type":"Answer","text":"No. Both files are compared inside your browser; nothing is sent to a server."}},{"@type":"Question","name":"What is JSON Patch?","acceptedAnswer":{"@type":"Answer","text":"A standard (RFC 6902) list of operations that turns the first document into the second. You can export it and apply it in code."}}]}</script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Does key order matter when comparing JSON?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Objects are compared by key, so {\"a\":1,\"b\":2} and {\"b\":2,\"a\":1} are identical."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I compare arrays whose order changed?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Use \"Smart\" or \"By key\" array matching. Elements are matched by an ID such as id, so a reordered list only shows real changes."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I ignore fields like timestamps?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Add paths such as $..updatedAt under \"Ignore paths\"."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is my JSON uploaded?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Both files are compared inside your browser; nothing is sent to a server."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is JSON Patch?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A standard (RFC 6902) list of operations that turns the first document into the second. You can export it and apply it in code."
+      }
+    }
+  ]
+}
+</script>
 
 
 <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
@@ -45,6 +92,26 @@
     @font-face{font-family:'Inter';font-display:swap}
   </style>
   <link rel="stylesheet" href="/assets/css/style.css?v=20261109">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://anyconverter.io/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "JSON Compare",
+      "item": "https://anyconverter.io/json-compare/"
+    }
+  ]
+}
+  </script>
 </head>
 <body>
   <header id="site-header" class="site-header"></header>
@@ -205,6 +272,25 @@
       </ol>
     </section>
 
+    <section class="how-it-works" id="how-it-works">
+      <h2>How It Works: JSON Diffing & Myers Structural Alignment</h2>
+
+      <h3>What is a JSON Comparison Tool?</h3>
+      <p>A JSON comparison tool is an analytical utility that deserializes two JSON payloads, recursively aligns their structural object keys and array elements, and calculates the exact delta using graph diffing algorithms. It highlights additions, deletions, value modifications, and type shifts across complex nested objects.</p>
+
+      <h3>How It Works in the Browser</h3>
+      <p>Our client-side diff engine computes deep comparisons directly in your browser using deterministic key normalization and difference graph traversal:</p>
+      <ol class="how-it-works-steps">
+        <li><strong>Syntax Tree Normalization</strong>: Both inputs are parsed under RFC 8259 standards into in-memory object graphs, with structural key alignment applied to eliminate false diffs caused purely by dictionary property ordering.</li>
+        <li><strong>Myers Diff Algorithm Graph Traversal</strong>: Structural lines and values are processed through Myers diff algorithm, establishing shortest edit scripts with O(ND) time and memory efficiency.</li>
+        <li><strong>Semantic Array Order Heuristics</strong>: Arrays are aligned using index-matching and array order heuristics to distinguish shifted items from genuine value updates and deletions.</li>
+        <li><strong>Side-by-Side Unified Output</strong>: Differences are color-coded in real time with synchronized scroll bars and granular diff counters without sending your payloads to a server.</li>
+      </ol>
+
+      <h3>Key Specifications & Algorithmic Mechanics</h3>
+      <p>The comparator relies on the <strong>Myers diff algorithm</strong> (Eugene Myers, 1986), an industry-standard shortest edit path graph solver. Unlike plain text line diffs that produce noisy outputs when JSON properties are shuffled, structural key alignment preserves syntactic integrity. Combined with array order heuristics, the algorithm evaluates nested lists accurately. Payload parsing conforms to <strong>RFC 8259</strong>, ensuring full compatibility with nested arrays, Unicode characters, and deeply nested microservice schemas.</p>
+    </section>
+
     <section class="features">
       <h2>Features</h2>
       <ul class="features-list">
@@ -266,6 +352,7 @@
         <a href="/json-to-yaml/" class="tool-card"><img src="/assets/img/icon-json-yaml.svg" alt="JSON ↔ YAML Converter icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>JSON ↔ YAML Converter</h3><p>Convert between JSON and YAML instantly in your browser.</p><span class="tool-card-link">Try it →</span></a>
         <a href="/text-diff-checker/" class="tool-card"><img src="/assets/img/icon-diff.svg" alt="Text Diff Checker icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Text Diff Checker</h3><p>Compare two texts and highlight added and removed lines.</p><span class="tool-card-link">Try it →</span></a>
         <a href="/xml-formatter/" class="tool-card"><img src="/assets/img/icon-xml.svg" alt="XML Formatter icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>XML Formatter</h3><p>Format and validate XML online with error detection.</p><span class="tool-card-link">Try it →</span></a>
+        <a href="/csv-query/" class="tool-card"><img src="/assets/img/icon-csv-query.svg" alt="CSV Query icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>CSV Query</h3><p>Run SQL queries on CSV files directly in your browser.</p><span class="tool-card-link">Try it →</span></a>
       </div>
     </section>
   </main>

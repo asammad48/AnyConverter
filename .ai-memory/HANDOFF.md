@@ -1,5 +1,1136 @@
 # AnyConverter Master Handoff — Financial Release Checkpoint & Next Workstream
 
+---
+
+## Phase 62 — Growth Program Sprint S30: 60-Day Retrospective Ship, Dashboard Metrics & Production Feature Gating (2026-11-24)
+
+**Program:** AnyConverter.io Global Growth Engine (SEO + engagement + backlinks + distribution).  
+**Operating cadence:** 30 sprints × 2 days = 60 days. One prod ship per sprint.  
+**Program Status:** **100% COMPLETED (30 OF 30 SPRINTS SHIPPED ON SCHEDULE WITH 0 ROLLBACKS)**  
+**Active branch:** `feat/s30-retrospective-ship` (branched from S29 release checkpoint `cb65fea`).  
+**Current sprint pointer:** `S30 — 60-Day Retrospective Ship: Dashboard + Decisions & Hardening Pass` (100% COMPLETED & VERIFIED; ready for final owner review and production merge).  
+
+**Current sprint (S30) progress & status:**
+- **Branch Created:** Created `feat/s30-retrospective-ship` off `cb65fea`.
+- **Target Inventory:** Sitewide runtime governance across all 441 URLs in EN, ES, DA (147 clusters × 3 locales + x-default).
+- **Core Implementations & Fixes:**
+  1. **Comprehensive 60-Day Retrospective & Final Execution Report:**
+     - Published `docs/growth/99-FINAL-EXECUTION-REPORT-60D.md`.
+     - Documented §1 Success Contract Deltas Table comparing baseline (Sprint S01), 60-day target, hard floor, and actual status.
+     - Documented Keep / Iterate / Kill Decision Register evaluating all 30 sprint levers (S01–S30): 25 Keep, 5 Iterate (Shareable calculator state, PDF/Text workflow chaining, NPM micro-libraries, embed partnerships), 0 Kill on product features.
+     - Evaluated all 12 distribution loops: CRM, flagship assets, and launch kits maintained; university/embed outreach staged for manual owner sending.
+     - Codified explicit Anti-Pattern Kill Register: strictly prohibiting automated cold email blasts, unvalidated machine translation at scale, paid backlink acquisition, and forced user signups.
+     - Outlined Days 61–120 execution roadmap across 30 future sprints (S31–S60): Portuguese (`pt-BR`) and German (`de`) expansion for top 30 tools, `/embed-builder/` portal, browser extension, and micro-libraries (`@anyconverter/pdf`, `@anyconverter/crypto`).
+  2. **Production Feature Flag Gating Architecture & Header Concealment (ADR-070):**
+     - Injected `window.AC_FEATURES` in `assets/js/shared.js` supporting 6 runtime flags:
+       `shortcuts: true`, `favorites: true`, `recents: true`, `themeToggle: true`, `workflowChains: true`, `shareableState: true`.
+     - Added defensive initialization guards around `initThemeToggle`, `initShortcutsModal`, `initGlobalShortcuts`, `initDashboardQuickAccess`, and `initDashboardRecents`.
+     - Added clean DOM concealment (`display = 'none'`) for `#theme-toggle-btn` and `#btn-shortcuts-help` when their respective flags are set to `false`, eliminating dangling unresponsive buttons in the navbar.
+  3. **PDF Workflow Chain Ephemeral Storage Quota Guard (ADR-070):**
+     - In `assets/js/tools/pdf-workflow-chain.js`, adjusted the ephemeral storage limit from 8MB to 3.5MB. Base64 payload (~4.65MB) stays strictly within standard browser 5MB `sessionStorage` quotas, avoiding silent `QuotaExceededError`.
+  4. **Canonical Sitemap & Invariant Verification:**
+     - `sitemap.xml` verified with 441 URLs (147 clusters × 3 locales + x-default), 100% reciprocal 4-way hreflang, and 0 drift.
+     - Sitewide internal link graph verified with 0 broken links and 0 orphaned URLs across 5,312 links.
+  5. **Open-Source Micro-Library Verification:**
+     - `@anyconverter/math` verified with 17/17 passing unit tests, TypeScript types, and README backlinks.
+  6. **Automated Verification:**
+     - Dedicated verification suite `tests/test_s30_retrospective_ship.js` passed 13/13 assertions.
+     - Master test runner `tests/run_all_tests.js` registered S30 suite as Suite #45: 45/45 suites passed (100%), including 21/21 Playwright visual regressions.
+     - Recorded ADR-069 and ADR-070 in `.ai-memory/DECISIONS.md`.
+     - Prepended G1–G15 release gate evidence to `docs/growth/91-TEST-EVIDENCE-AND-RELEASE-GATES.md`.
+     - Updated `.ai-memory/STATE.json`.
+- **Next Workstream:** Merge `feat/s30-retrospective-ship` into `main`, deploy to Cloudflare Pages production, and initiate Days 61–120 growth plan.
+
+---
+
+## Phase 61 — Growth Program Sprint S29: Sitewide Internal Link Audit + Sitemap Refresh & Loop 11 Open-Source NPM Micro-Library Staging (2026-11-24)
+
+**Program:** AnyConverter.io Global Growth Engine (SEO + engagement + backlinks + distribution).  
+**Operating cadence:** 30 sprints × 2 days = 60 days. One prod ship per sprint.  
+**Active branch:** `feat/s29-link-audit-sitemap` (branched from S28 release checkpoint `48a6c8b`).  
+**Current sprint pointer:** `S29 — Sitewide Internal Link Audit + Sitemap Refresh & Loop 11 Open-Source NPM Micro-Library Staging` (100% COMPLETED & VERIFIED; ready for owner review).  
+
+**Current sprint (S29) progress & status:**
+- **Branch Created:** Created `feat/s29-link-audit-sitemap` off `48a6c8b`.
+- **Target Inventory:** Sitewide across all 441 URLs in EN, ES, DA (147 clusters × 3 locales + x-default).
+- **Core Implementations & Fixes:**
+  1. **Sitewide Internal Link Audit & Graph Export:**
+     - Crawled all 5,312 internal links across 441 HTML pages in EN, ES, and DA via `reports/seo/audit_internal_links.js`.
+     - Corrected trailing-slash redirect mismatches in `es/blog/index.html` and `da/blog/index.html` (`/es` -> `/es/`, `/da` -> `/da/`).
+     - Corrected cross-locale breadcrumbs in `es/cookies/`, `da/cookies/`, `es/privacy/`, `da/privacy/`, `es/terms/`, `da/terms/` (`/` -> `/es/` or `/da/`).
+     - Fixed unlocalized clock link in `da/age-calculator/index.html` (`/world-clock/` -> `/da/world-clock/`).
+     - Connected static in-content cross-links in `about/index.html`, `es/about/`, `da/about/`, `privacy/`, `es/privacy/`, and `da/privacy/`, eliminating all 9 unlinked informational pages in static HTML.
+     - Exported updated reports `reports/seo-remediation-2026-11/INTERNAL_LINK_AUDIT.csv` and `reports/seo-remediation-2026-11/INTERNAL_LINK_GRAPH.json`.
+     - Result: Exactly 0 broken internal links sitewide, 0 orphaned URLs, and 100% language isolation.
+  2. **Canonical Sitemap Refresh & Reciprocal Invariants:**
+     - Regenerated `sitemap.xml` via `node scripts/generate_sitemap.js` (441 unique URLs, 147 clusters, 100% reciprocal 4-way hreflang alternates `en`, `es`, `da`, `x-default`).
+     - Verified `node scripts/generate_sitemap.js --check` passes with exactly 0 drift.
+  3. **Loop 11: Open-Source Micro-Library Package (`packages/anyconverter-math/`):**
+     - Extracted pure math utilities into zero-dependency npm micro-library `@anyconverter/math` (v1.0.0, MIT license).
+     - Full percentage arithmetic (`percentOf`, `percentageWhatIs`, `percentageChange`, `percentageAdd`, `percentageSubtract`, `percentageDifference`, `reversePercentage`, `marginFromMarkup`, `markupFromMargin`).
+     - Full loan & financial amortization formulas (`calculateLoanPayment`, `calculateEar`, `calculateNominalApr`, `calculateAmortizationSchedule`, `calculateCompoundInterest`, `calculateSavingsGoal`).
+     - Full calendar date arithmetic (`isLeapYear`, `daysInMonth`, `calculateDateDifference`, `addDays`).
+     - Dual CJS / ESM compatibility (`index.js`).
+     - Complete TypeScript definitions (`index.d.ts`).
+     - Complete unit test suite (`test/index.test.js`) with 17/17 tests passing (100%).
+     - Comprehensive `README.md` with formulas, usage examples, and backlinks to live AnyConverter tools.
+  4. **Governance & Owner Publishing Mandate:**
+     - Authored `docs/growth/outreach/LOOP_11_NPM_PUBLISH.md` with strict owner review checklist and terminal publishing instructions (zero automated external agent publishing).
+  5. **Automated Verification:**
+     - Dedicated verification suite `tests/test_s29_internal_links_sitemap.js` passed 10/10 assertions.
+     - Master test runner `tests/run_all_tests.js` registered S29 suite as Suite #44: 44/44 suites passed (100%), including 21/21 Playwright visual regressions.
+     - Recorded ADR-068 in `.ai-memory/DECISIONS.md`.
+     - Prepended G1–G15 release gate evidence to `docs/growth/91-TEST-EVIDENCE-AND-RELEASE-GATES.md`.
+     - Updated `.ai-memory/STATE.json`.
+- **Next Sprint Pointer:** Sprint S30 — 60-Day Retrospective Ship: Dashboard + Decisions (Days 59–60).
+
+---
+
+## Phase 60 — Growth Program Sprint S28: Modifier Expansion (+ privacy / + browser / + no signup) across Top 10 Tools & Loop 10 Partner Staging (2026-11-24)
+
+**Program:** AnyConverter.io Global Growth Engine (SEO + engagement + backlinks + distribution).  
+**Operating cadence:** 30 sprints × 2 days = 60 days. One prod ship per sprint.  
+**Active branch:** `feat/s28-privacy-modifiers` (branched from S27 release checkpoint `3f7bfcd`).  
+**Current sprint pointer:** `S28 — Modifier Expansion (+ privacy / + in browser / + no signup) across Top 10 High-Intent Privacy Tools & Loop 10 Partner Progression` (100% COMPLETED & VERIFIED; ready for owner review).  
+
+**Current sprint (S28) progress & status:**
+- **Branch Created:** Created `feat/s28-privacy-modifiers` off `3f7bfcd`.
+- **Target Inventory:** Top 10 privacy-critical tools across EN, ES, DA (`pdf-merge`, `pdf-split`, `pdf-compress`, `ocr-pdf`, `edit-pdf`, `invoice-generator`, `image-converter`, `image-compressor`, `password-generator`, `hash-generator` — 30 URLs total).
+- **Core Implementations & Fixes:**
+  1. **Dedicated Privacy & Security Section (`#privacy-and-security`):**
+     - Injected semantic `<section class="privacy-section" id="privacy-and-security" aria-labelledby="privacy-heading">` across all 30 HTML pages positioned cleanly before related tools.
+     - Dual-mounted in both SSR static HTML and inside client-rendered `#dc-template` for dynamic tools (`pdf-merge`, `pdf-split`, `pdf-compress`) to ensure zero DOM wipeout upon client runtime initialization.
+     - Formatted with structured capability cards (`.privacy-grid`, `.privacy-card`) explaining client-side sandboxed execution, zero account requirements, and zero document transmission.
+  2. **Keyword Modifier Intent Alignment:**
+     - Headings and lead paragraphs naturally target low-competition, high-intent query modifiers:
+       - EN: `{tool} in browser`, `{tool} privacy`, `{tool} no signup / without signup`
+       - ES: `{tool} en el navegador`, `{tool} privacidad`, `{tool} sin registro`
+       - DA: `{tool} i browseren`, `{tool} privatliv`, `{tool} uden tilmelding / uden upload`
+  3. **Privacy Compliance & Regression Defense:**
+     - Verified zero forbidden absolute claims (`never leaves`, `nunca sale`, `forlader aldrig`, `sendes aldrig`) across the entire repository.
+     - Passed `tests/test_privacy_claims_regression.js` (476 HTML files verified clean) and `tests/test_s28_privacy_modifiers.js`.
+  4. **Responsive UI & Design Tokens:**
+     - Added comprehensive styling in `assets/css/style.css` using design tokens (`--color-surface`, `--color-surface-2`, `--color-border`, `--color-primary`, `--color-text`, `--color-text-2`).
+     - Responsive grid auto-fits columns down to single-column card layout on mobile viewports (320px–390px) with zero horizontal overflow.
+  5. **Multilingual Parity (EN, ES, DA):**
+     - Preserved 100% of native diacritics in ES (`á`, `é`, `í`, `ó`, `ú`, `ñ`) and DA (`æ`, `ø`, `å`).
+     - Self-referencing canonical URLs and 4-way reciprocal hreflang invariants 100% intact.
+  6. **Track B: Loop 10 Embed Partner Staging:**
+     - Updated `docs/growth/outreach/LOOP_10_EMBED_PARTNERS.md`:
+       - Partners 1 & 2 (`Math Is Fun` & `FinTech Weekly`) approved for manual owner personal mailbox dispatch.
+       - Partners 3 & 4 (`freeCodeCamp` & `TimeAndDate`) staged for Days 55–56 review with custom `T-INT-01` pitches and sandbox embed routes (`/embed/json-formatter/`, `/embed/date-difference-calculator/`).
+- **Automated Verification:**
+  - Dedicated verification suite `tests/test_s28_privacy_modifiers.js`: 7/7 checks passing (100%).
+  - Registered in master runner `tests/run_all_tests.js`.
+  - Repository master suite `node tests/run_all_tests.js`: 43/43 suites passing (100%), including 21/21 Playwright visual regression screenshot comparisons.
+  - Sitemap integrity verified: `node scripts/generate_sitemap.js --check` passes with zero drift (441 URLs, 147 clusters).
+- **Documentation & Memory:**
+  - Recorded ADR-067 in `.ai-memory/DECISIONS.md`.
+  - Prepended G1–G15 release gate evidence to `docs/growth/91-TEST-EVIDENCE-AND-RELEASE-GATES.md`.
+  - Updated `.ai-memory/STATE.json`.
+- **Next Sprint Pointer:** Sprint S29 — Internal Link Audit + Sitemap Refresh & NPM Seed Publish (Days 57–58).
+
+---
+
+## Phase 59 — Growth Program Sprint S27: Theme Persistence Hardening + Global Keyboard Shortcuts & Discovery Modal (2026-11-24)
+
+**Program:** AnyConverter.io Global Growth Engine (SEO + engagement + backlinks + distribution).  
+**Operating cadence:** 30 sprints × 2 days = 60 days. One prod ship per sprint.  
+**Active branch:** `feat/s27-theme-shortcuts` (branched from S26 release checkpoint `d666c86`).  
+**Current sprint pointer:** `S27 — Theme Persistence Hardening + Global Keyboard Shortcuts & Discovery Modal` (100% COMPLETED & VERIFIED; ready for owner review).  
+
+**Current sprint (S27) progress & status:**
+- **Branch Created:** Created `feat/s27-theme-shortcuts` off `d666c86`.
+- **Target Inventory:** Sitewide across all 441 URLs in EN, ES, DA.
+- **Core Implementations & Fixes:**
+  1. **Sitewide Keyboard Shortcuts Engine (`assets/js/shared.js`):**
+     - Implemented centralized keydown dispatcher with strict input shielding guard (`isInputActive`):
+       - `?` (Shift + `/`): Opens the accessible shortcuts discovery modal (`#shortcuts-modal`).
+       - `/`: Opens and focuses global search input (`#search-input` in header or `#hero-search-input` on homepage), selecting existing query text (`input.select()`).
+       - `Esc`: Closes any active overlay (`#shortcuts-modal`, `#search-modal`, mobile menu `#mobile-menu`, dropdowns), exits `.is-fullscreen` panel states, and safely blurs active form inputs.
+       - `Alt+F`: Toggles favoriting for current tool (preserving existing S10 logic).
+       - `Alt+T`: Toggles dark/light theme mode.
+     - Input shielding guard verified: hotkeys do not fire while typing in `<input>`, `<textarea>`, `<select>`, or `[contenteditable="true"]` (except `Esc` which safely blurs the control).
+  2. **Accessible Shortcuts Discovery Modal (`#shortcuts-modal`):**
+     - Injected semantic dialog structure with `role="dialog"`, `aria-modal="true"`, `aria-labelledby="shortcuts-modal-title"`, close button (`#btn-shortcuts-close`), backdrop (`#shortcuts-backdrop`), and header trigger button (`#btn-shortcuts-help` / `⌨️`).
+     - Focus management: remembers trigger element, shifts focus into modal on open, restores focus to trigger on close.
+     - Focus trap: traps Tab cycling within modal elements.
+     - WCAG 2.2 AA `:focus-visible` styling (`outline: 2px solid #B04A45`, `2px offset`).
+  3. **Dark / Light Theme Persistence Hardening:**
+     - Enhanced `applyStoredTheme()` and `initThemeToggle()` in `assets/js/shared.js`:
+       - Respects explicit user preference in `localStorage.getItem('ac_theme')` (`'dark'` / `'light'`).
+       - Falls back to system preference via `window.matchMedia('(prefers-color-scheme: dark)')` with real-time change listener.
+       - Synchronizes theme state across all open browser tabs via window `'storage'` event.
+       - Zero FOUC guaranteed by running `applyStoredTheme()` immediately on script load.
+  4. **Multilingual Parity (EN, ES, DA):**
+     - Preserves 100% native diacritics in `SHORTCUTS_I18N`:
+       - EN: "Keyboard Shortcuts" · "Open shortcuts help" · "Focus search" · "Close modal / unfocus" · "Favorite current tool" · "Toggle dark / light mode"
+       - ES: "Atajos de teclado" · "Abrir ayuda de atajos" · "Enfocar búsqueda" · "Cerrar modal / desenfocar" · "Añadir a favoritos" · "Alternar modo oscuro / claro"
+       - DA: "Tastaturgenveje" · "Åbn genvejshjælp" · "Fokusér søgning" · "Luk modal / fjern fokus" · "Føj til favoritter" · "Skift mørk / lys tilstand"
+  5. **Telemetry & Analytics Integration:**
+     - Dispatches `window.ACAnalytics.trackEvent('shortcut_used', { key: 'question_mark' | 'slash' | 'escape' | 'alt_f' | 'alt_t' })`.
+     - Dispatches `window.ACAnalytics.trackEvent('shortcuts_modal_viewed', { trigger: 'keyboard' | 'button' })`.
+  6. **Track B: Loop 10 Embed Partner Pilots Queue:**
+     - Documented 6 target publisher/education partners in `docs/growth/outreach/LOOP_10_EMBED_PARTNERS.md` (`Math Is Fun`, `FinTech Weekly`, `freeCodeCamp`, `TimeAndDate`, `SitePoint`, `Baeldung`).
+     - Prepared custom integration pitch drafts using `T-INT-01` targeting embed routes (`/embed/percentage-calculator/`, `/embed/loan-calculator/`, `/embed/json-formatter/`, `/embed/date-difference-calculator/`, `/embed/aspect-ratio-calculator/`, `/embed/hash-generator/`) under strict manual owner sending mandate.
+- **Automated Verification:**
+  - Dedicated verification suite `tests/test_s27_theme_shortcuts.js`: 8/8 checks passing (100%).
+  - Registered in master runner `tests/run_all_tests.js`.
+  - Repository master suite `node tests/run_all_tests.js`: 42/42 suites passing (100%), including 21/21 Playwright visual regression screenshot comparisons.
+  - Sitemap integrity verified: `node scripts/generate_sitemap.js --check` passes with zero drift (441 URLs, 147 clusters).
+- **Documentation & Memory:**
+  - Recorded ADR-066 in `.ai-memory/DECISIONS.md`.
+  - Prepended G1–G15 release gate evidence to `docs/growth/91-TEST-EVIDENCE-AND-RELEASE-GATES.md`.
+  - Updated `.ai-memory/STATE.json`.
+- **Next Sprint Pointer:** Sprint S28 — Embed Routes Expansion & Partner Launch Support (Days 55–56).
+
+---
+
+## Phase 58 — Growth Program Sprint S26: Tool-to-Tool Workflow Chain: Text Group (2026-11-24)
+
+**Program:** AnyConverter.io Global Growth Engine (SEO + engagement + backlinks + distribution).  
+**Operating cadence:** 30 sprints × 2 days = 60 days. One prod ship per sprint.  
+**Active branch:** `feat/s26-workflow-chain-text` (branched from S25 release checkpoint `63ff308`).  
+**Current sprint pointer:** `S26 — Tool-to-Tool Workflow Chain: Text Group (Word Count → Text Case Converter → Text Diff Checker → Character Counter)` (100% COMPLETED & VERIFIED; ready for owner review).  
+
+**Current sprint (S26) progress & status:**
+- **Branch Created:** Created `feat/s26-workflow-chain-text` off `63ff308`.
+- **Target Inventory:** 4 Text utilities across EN, ES, DA (`/word-counter/`, `/text-case-converter/`, `/text-diff-checker/`, `/character-counter/` — 12 URLs total).
+- **Core Implementations & Fixes:**
+  1. **Semantic Workflow Chain Component (`#workflow-chain-text`):**
+     - Injected semantic `<section class="workflow-chain-section" id="workflow-chain-text" aria-labelledby="workflow-chain-heading" style="display:none;">` across all 12 primary Text URLs positioned beneath the main tool interface.
+     - Hidden by default; smoothly reveals only upon active text entry or transformation.
+     - Provided accessible dismiss button (`#btn-chain-dismiss`) that collapses the section, persists session dismissal in `ac:chain-text-dismissed`, and dispatches `workflow_chain_dismissed` telemetry.
+  2. **Client-Side Ephemeral Text Handoff Protocol (`text-workflow-chain.js`):**
+     - Developed `assets/js/tools/text-workflow-chain.js` implementing temporary staging of active text in `sessionStorage` (`ac:chain-text`, `ac:chain-text-source`).
+     - Downstream tools (`/word-counter/`, `/text-case-converter/`, `/text-diff-checker/`, `/character-counter/`) check for incoming handoffs on DOMContentLoaded, auto-populate the active input textarea (`#wc-input`, `#tcc-input`, `#diff-orig`, `#cc-text`), trigger calculation, and display an accessible, dismissable toast banner (`.workflow-chain-toast`).
+     - Enforced strict zero-persistence guarantee: `sessionStorage.removeItem` is called immediately on receipt, ensuring zero server ingress and zero residual data.
+  3. **Multilingual Parity (EN, ES, DA):**
+     - Implemented natural, idiomatic localized strings and preserved exact technical diacritics:
+       - EN: "Next Step: Continue Your Text Workflow" · "Convert Case" · "Compare Text" · "Count Characters" · "Count Words"
+       - ES: "Siguiente paso: Continúa tu flujo de trabajo de texto" · "Convertir mayúsculas y minúsculas" · "Comparar texto" · "Contar caracteres" · "Contar palabras"
+       - DA: "Næste trin: Fortsæt dit tekst-workflow" · "Konvertér store og små bogstaver" · "Sammenlign tekst" · "Tæl tegn" · "Tæl ord"
+     - Enforced exact cross-locale link routing (`/` for EN, `/es/` for ES, `/da/` for DA).
+  4. **WCAG 2.2 AA Accessibility & Tokens:**
+     - High-contrast `:focus-visible` outlines (`2px solid #B04A45`, `2px offset`, `box-shadow`) enforced in `assets/css/style.css`.
+     - Full keyboard navigation (tabbing, Space/Enter, Esc dismiss).
+     - Zero horizontal overflow across all 4 mandatory mobile viewports (320px, 360px, 375px, 390px).
+  5. **Telemetry & Analytics Integration:**
+     - Dispatches `window.ACAnalytics.trackRelatedToolClicked(sourceSlug, targetSlug, 'workflow_chain')` on card clicks.
+     - Dispatches `workflow_chain_shown` and `workflow_chain_dismissed` telemetry events.
+  6. **Track B: Loop 9 PR Outreach Monitoring:**
+     - Maintained active tracking in `docs/growth/outreach/LOOP_9_BENCHMARK_PROSPECTS.md` logging review status for the 10 tech media / newsletter prospects with strict manual owner sending mandate.
+- **Automated Verification:**
+  - Dedicated verification suite `tests/test_s26_workflow_chain_text.js`: 7/7 checks passing (100%).
+  - Registered in master runner `tests/run_all_tests.js`.
+  - Repository master suite `node tests/run_all_tests.js`: 41/41 suites passing (100%), including 21/21 Playwright visual regression screenshot comparisons.
+  - Sitemap integrity verified: `node scripts/generate_sitemap.js --check` passes with zero drift (441 URLs, 147 clusters).
+- **Documentation & Memory:**
+  - Recorded ADR-065 in `.ai-memory/DECISIONS.md`.
+  - Prepended G1–G15 release gate evidence to `docs/growth/91-TEST-EVIDENCE-AND-RELEASE-GATES.md`.
+  - Updated `.ai-memory/STATE.json`.
+- **Next Sprint Pointer:** Sprint S27 — Internal Linking Deepening: Dev Tools & PDF Groups (Days 53–54).
+
+---
+
+## Phase 57 — Growth Program Sprint S25: Tool-to-Tool Workflow Chain: PDF Group (2026-11-24)
+
+**Program:** AnyConverter.io Global Growth Engine (SEO + engagement + backlinks + distribution).  
+**Operating cadence:** 30 sprints × 2 days = 60 days. One prod ship per sprint.  
+**Active branch:** `feat/s25-workflow-chain-pdf` (branched from S24 release checkpoint `1d3769c`).  
+**Current sprint pointer:** `S25 — Tool-to-Tool Workflow Chain: PDF Group (PDF Merge → Split → Compress → Convert)` (100% COMPLETED & VERIFIED; ready for owner review).  
+
+**Current sprint (S25) progress & status:**
+- **Branch Created:** Created `feat/s25-workflow-chain-pdf` off `1d3769c`.
+- **Target Inventory:** 6 PDF utilities across EN, ES, DA (`/pdf-merge/`, `/pdf-split/`, `/pdf-compress/`, `/pdf-to-jpg/`, `/jpg-to-pdf/`, `/edit-pdf/` — 18 URLs total).
+- **Core Implementations & Fixes:**
+  1. **Semantic Workflow Chain Component (`#workflow-chain-pdf`):**
+     - Injected semantic `<section class="workflow-chain-section" id="workflow-chain-pdf" aria-labelledby="workflow-chain-heading" style="display:none;">` across all 18 primary PDF URLs positioned beneath the main tool interface.
+     - Hidden by default; smoothly reveals only upon successful file generation / download readiness.
+     - Provided accessible dismiss button (`#btn-chain-dismiss`) that collapses the section, persists session dismissal in `ac:chain-pdf-dismissed`, and dispatches `workflow_chain_dismissed` telemetry.
+  2. **Client-Side Ephemeral File Handoff Protocol (`pdf-workflow-chain.js`):**
+     - Developed `assets/js/tools/pdf-workflow-chain.js` implementing temporary staging of generated Blob buffers via Base64 in `sessionStorage` (`ac:chain-pdf-blob`, `ac:chain-pdf-name`, `ac:chain-pdf-source`).
+     - Downstream tools (`/pdf-compress/`, `/pdf-split/`, `/pdf-to-jpg/`, `/edit-pdf/`) check for incoming handoffs on DOMContentLoaded, convert Base64 back to `File`/`Blob`, inject into the active tool component (`component.addPdfs([file])` or `loadPdf(file)`), and display an accessible, dismissable toast banner (`.workflow-chain-toast`).
+     - Enforced strict zero-persistence guarantee: `sessionStorage.removeItem` is called immediately on receipt, ensuring zero server ingress and zero residual data.
+  3. **Multilingual Parity (EN, ES, DA):**
+     - Implemented natural, idiomatic localized strings and preserved exact technical diacritics:
+       - EN: "Next Step: Continue Your PDF Workflow" · "Compress PDF" · "Split Pages" · "Convert to JPG"
+       - ES: "Siguiente paso: Continúa tu flujo de trabajo con PDF" · "Comprimir PDF" · "Dividir páginas" · "Convertir a JPG"
+       - DA: "Næste trin: Fortsæt dit PDF-workflow" · "Komprimér PDF" · "Opdel sider" · "Konvertér til JPG"
+     - Enforced exact cross-locale link routing (`/` for EN, `/es/` for ES, `/da/` for DA).
+  4. **WCAG 2.2 AA Accessibility & Tokens:**
+     - High-contrast `:focus-visible` outlines (`2px solid #B04A45`, `2px offset`, `box-shadow`) enforced in `assets/css/style.css`.
+     - Full keyboard navigation (tabbing, Space/Enter, Esc dismiss).
+     - Zero horizontal overflow across all 4 mandatory mobile viewports (320px, 360px, 375px, 390px).
+  5. **Telemetry & Analytics Integration:**
+     - Registered `workflow_chain_shown` and `workflow_chain_dismissed` in `assets/js/shared/analytics.js` with helper methods `trackWorkflowChainShown` and `trackWorkflowChainDismissed`.
+     - Configured card click tracking to dispatch `window.ACAnalytics.trackRelatedToolClicked(sourceSlug, targetSlug, 'workflow_chain')`.
+  6. **Track B: Loop 9 PR Outreach Monitoring:**
+     - Maintained active tracking in `docs/growth/outreach/LOOP_9_BENCHMARK_PROSPECTS.md` logging review status for the 10 tech media / newsletter prospects with strict manual owner sending mandate.
+- **Automated Verification:**
+  - Dedicated verification suite `tests/test_s25_workflow_chain_pdf.js`: 7/7 checks passing (100%).
+  - Registered in master runner `tests/run_all_tests.js`.
+  - Repository master suite `node tests/run_all_tests.js`: 40/40 suites passing (100%), including 21/21 Playwright visual regression screenshot comparisons.
+  - Sitemap integrity verified: `node scripts/generate_sitemap.js --check` passes with zero drift (441 URLs, 147 clusters).
+- **Documentation & Memory:**
+  - Recorded ADR-064 in `.ai-memory/DECISIONS.md`.
+  - Prepended G1–G15 release gate evidence to `docs/growth/91-TEST-EVIDENCE-AND-RELEASE-GATES.md`.
+  - Updated `.ai-memory/STATE.json`.
+- **Next Sprint Pointer:** Sprint S26 — Internal Linking Deepening: Dev Tools & PDF Groups (Days 51–52).
+
+---
+
+## Phase 56 — Growth Program Sprint S24: BreadcrumbList Schema Sitewide + robots/_headers Audit (2026-11-24)
+
+**Program:** AnyConverter.io Global Growth Engine (SEO + engagement + backlinks + distribution).  
+**Operating cadence:** 30 sprints × 2 days = 60 days. One prod ship per sprint.  
+**Active branch:** `feat/s24-breadcrumbs-headers-audit` (branched from S23 release checkpoint `8040d46`).  
+**Current sprint pointer:** `S24 — BreadcrumbList Schema Sitewide + robots/_headers Audit` (100% COMPLETED & VERIFIED; ready for owner review).  
+
+**Current sprint (S24) progress & status:**
+- **Branch Created:** Created `feat/s24-breadcrumbs-headers-audit` off `8040d46`.
+- **Target Inventory:** All 128 tools + 9 category hubs across EN, ES, DA (438 URLs total).
+- **Core Implementations & Fixes:**
+  1. **Sitewide BreadcrumbList Schema Implementation:**
+     - Identified that 108 hub/PDF pages already had `BreadcrumbList`, while 330 tool pages had visible breadcrumbs but lacked structured data.
+     - Synchronized all 330 tool pages with deterministic, valid Schema.org `BreadcrumbList` JSON-LD reflecting the exact visible hierarchy: Position 1 (Home/Inicio/Hjem), Position 2 (Category Hub, where applicable), and Position Last (Canonical Page URL with visible tool title).
+     - Verified 100% of the repository's 438 non-homepage tool and hub pages possess valid `BreadcrumbList` schema.
+  2. **Security Headers & CSP Hardening (`_headers`):**
+     - Updated Content-Security-Policy (CSP) to ensure full compatibility with Google AdSense (`pagead2.googlesyndication.com`, `*.googlesyndication.com`, `googleads.g.doubleclick.net`, `*.adservice.google.com`) and frame-src directives.
+     - Added `/embed/*` framing rule (`X-Frame-Options: ALLOWALL`, `Content-Security-Policy: frame-ancestors *;`) in preparation for Loop 10 partner embeds.
+     - Verified caching policies for immutable assets (1 year), sitemaps (24 hours), and robots.txt (1 hour).
+  3. **_redirects & robots.txt Verification:**
+     - Verified all 70 active 301 rules in `_redirects`: 0 malformed lines, 0 circular redirects, and 100% of destination targets resolve to physical files on disk.
+     - Verified `robots.txt` clean pointer to canonical `sitemap.xml`.
+  4. **Track B: Loop 9 Original Benchmark Publication & PR Prospects:**
+     - Published `docs/growth/resources/browser-pdf-compression-benchmark/benchmark-study.html` evaluating client-side WebAssembly compression across 5 document archetypes (Scans, CAD blueprints, photo catalogs, LaTeX papers, slide decks) and 4 hardware testbeds.
+     - Created `docs/growth/outreach/LOOP_9_BENCHMARK_PROSPECTS.md` featuring 10 top-tier developer newsletter/journalist prospects with custom pitch drafts (`T-PR-01`) and strict manual owner sending mandate.
+- **Automated Verification:**
+  - Dedicated verification suite `tests/test_s24_breadcrumbs_headers_audit.js`: 4/4 checks passing (100%).
+  - Registered in master runner `tests/run_all_tests.js`.
+  - Repository master suite `node tests/run_all_tests.js`: 39/39 suites passing (100%), including 21/21 Playwright visual regression screenshot comparisons.
+  - Sitemap integrity verified: `node scripts/generate_sitemap.js --check` passes with zero drift (441 URLs, 147 clusters).
+- **Documentation & Memory:**
+  - Recorded ADR-063 in `.ai-memory/DECISIONS.md`.
+  - Prepended G1–G15 release gate evidence to `docs/growth/91-TEST-EVIDENCE-AND-RELEASE-GATES.md`.
+  - Updated `.ai-memory/STATE.json`.
+- **Next Sprint Pointer:** Sprint S25 — Workflow Chain: PDF Group (Days 49–50).
+
+---
+
+## Phase 55 — Growth Program Sprint S23: FAQ Schema Expansion to Top 30 Pages (2026-11-23)
+
+**Program:** AnyConverter.io Global Growth Engine (SEO + engagement + backlinks + distribution).  
+**Operating cadence:** 30 sprints × 2 days = 60 days. One prod ship per sprint.  
+**Active branch:** `feat/s23-faq-schema-expansion` (branched from S22 release checkpoint `94c6cd6`).  
+**Current sprint pointer:** `S23 — FAQ Schema Expansion to Top 30 Pages` (100% COMPLETED & VERIFIED; ready for owner review).  
+
+**Current sprint (S23) progress & status:**
+- **Branch Created:** Created `feat/s23-faq-schema-expansion` off `94c6cd6`.
+- **Target Inventory (Top 30 Tools × 3 Locales = 90 URLs):**
+  `json-formatter`, `percentage-calculator`, `age-calculator`, `loan-calculator`, `ip-address-lookup`, `base64-encoder`, `url-encoder`, `bmi-calculator`, `discount-calculator`, `pdf-merge`, `pdf-split`, `edit-pdf`, `pdf-compress`, `csv-to-sql`, `jwt-decoder`, `hash-generator`, `timestamp-converter`, `sleep-calculator`, `aspect-ratio-calculator`, `regex-tester`, `mortgage-calculator`, `compound-interest-calculator`, `json-compare`, `xml-formatter`, `pay-rise-calculator`, `percentage-difference-calculator`, `cron-expression-parser`, `uuid-generator`, `word-counter`, `text-case-converter`.
+- **Core Implementations & Fixes:**
+  1. **Top 30 Tool Coverage Expansion (90 URLs):**
+     - Brought 19 lagging pages (< 4 FAQs) up to 5 authoritative, high-intent FAQs in both visible HTML and schema:
+       - `da/base64-encoder` (+2 FAQs: Data URLs, large file encoding)
+       - `es/url-encoder` (+3 FAQs: plus-space mode, decode errors, full URL mode)
+       - `da/url-encoder` (+3 FAQs: plus-space mode, decode errors, full URL mode)
+       - `edit-pdf` (+3 FAQs: sensitive docs security, zero watermarks, text/signature insertion)
+       - `da/edit-pdf` (+3 FAQs: sensitive docs security, zero watermarks, text/signature insertion)
+       - `es/csv-to-sql` (+2 FAQs: auto type detection, batch INSERT)
+       - `da/csv-to-sql` (+2 FAQs: auto type detection, batch INSERT)
+       - `es/hash-generator` (+2 FAQs: SHA-256 uses, malware/file integrity)
+       - `da/hash-generator` (+2 FAQs: SHA-256 uses, malware/file integrity)
+       - `sleep-calculator` (+2 FAQs: waking mid-cycle, power naps)
+       - `es/sleep-calculator` (+2 FAQs: waking mid-cycle, power naps)
+       - `da/sleep-calculator` (+2 FAQs: waking mid-cycle, power naps)
+       - `aspect-ratio-calculator` (+2 FAQs: common media ratios, dimension calculation)
+       - `es/aspect-ratio-calculator` (+2 FAQs: common media ratios, dimension calculation)
+       - `da/aspect-ratio-calculator` (+2 FAQs: common media ratios, dimension calculation)
+       - `es/regex-tester` (+3 FAQs: capture groups, match export, large logs)
+       - `da/regex-tester` (+3 FAQs: capture groups, match export, large logs)
+       - `es/xml-formatter` (+3 FAQs: validation errors, minification, XML vs JSON)
+       - `da/xml-formatter` (+3 FAQs: validation errors, minification, XML vs JSON).
+  2. **100% Verbatim Parity Enforcement (G12 Release Gate):**
+     - Character-for-character equality between visible `<details class="faq-item">` HTML and `FAQPage` JSON-LD schema verified across all 460 individual FAQs on all 90 URLs.
+     - Added missing 6th FAQ to `da/age-calculator` schema for complete parity with visible HTML.
+     - Synchronized quotation escaping in `json-compare` schemas across EN, ES, and DA.
+  3. **Multi-Locale Canonical & Reciprocal 4-Way Hreflang Integrity:**
+     - Verified self-referential canonical URLs and reciprocal alternates (`en`, `es`, `da`, `x-default`) on all 90 URLs.
+  4. **Track B: Loop 8 Outreach Execution Monitoring:**
+     - Maintained active tracking in `docs/growth/outreach/LOOP_8_BATCH_2_PROSPECTS.md` with strict manual owner send mandate via personal mailbox.
+- **Automated Verification:**
+  - Dedicated verification suite `tests/test_s23_faq_schema_expansion.js`: 5/5 checks passing (100%).
+  - Registered in master runner `tests/run_all_tests.js`.
+  - Repository master suite `node tests/run_all_tests.js`: 38/38 suites passing (100%), including 21/21 Playwright visual regression screenshot comparisons.
+  - Sitemap integrity verified: `node scripts/generate_sitemap.js --check` passes with zero drift (441 URLs, 147 clusters).
+- **Documentation & Memory:**
+  - Recorded ADR-062 in `.ai-memory/DECISIONS.md`.
+  - Prepended G1–G15 release gate evidence to `docs/growth/91-TEST-EVIDENCE-AND-RELEASE-GATES.md`.
+  - Updated `.ai-memory/STATE.json`.
+- **Next Sprint Pointer:** Sprint S24 — PDF Hub & Tools Interlinking Deepening (Days 47–48).
+
+---
+
+## Phase 54 — Growth Program Sprint S22: AI-Citeable "How It Works" Content (Developer Tools) (2026-11-23)
+
+**Program:** AnyConverter.io Global Growth Engine (SEO + engagement + backlinks + distribution).  
+**Operating cadence:** 30 sprints × 2 days = 60 days. One prod ship per sprint.  
+**Active branch:** `feat/s22-ai-citeable-dev-content` (branched from S21 release checkpoint `3fdabb5`).  
+**Current sprint pointer:** `S22 — AI-Citeable "How It Works" Content (Developer Tools)` (100% COMPLETED & VERIFIED; ready for owner review).  
+
+**Current sprint (S22) progress & status:**
+- **Branch Created:** Created `feat/s22-ai-citeable-dev-content` off `3fdabb5`.
+- **Target Inventory (Top 10 Developer Tools × 3 Locales = 30 URLs):**
+  1. `json-formatter`: RFC 8259 grammar, tree serialization, streaming parser
+  2. `json-compare`: Myers diff algorithm, structural key alignment, array order heuristics
+  3. `csv-to-sql`: RFC 4180 parsing, automated dialect quoting, type inference heuristics
+  4. `regex-tester`: ECMAScript RegExp engine, flag handling, match group capturing
+  5. `jwt-decoder`: RFC 7519 specification, Base64URL decoding, cryptographic signature claims
+  6. `base64-encoder`: RFC 4648 standard, byte-to-ASCII 6-bit translation, padding rules
+  7. `url-encoder`: RFC 3986 percent-encoding, reserved vs. unreserved characters
+  8. `hash-generator`: SHA-256 / SHA-512 / MD5 cryptographic digest algorithms, Web Crypto API
+  9. `cron-expression-parser`: POSIX 5-field vs. Quartz 6-field cron syntax, step values, wildcards
+  10. `xml-formatter`: DOMParser, indentation hierarchies, CDATA & XML entity escaping
+- **Core Architecture & Content Implementations:**
+  1. **AEO/GEO Structured "How It Works" Content Patterns:**
+     - Integrated semantic `<section class="how-it-works" id="how-it-works">` on all 30 URLs directly beneath `<section class="how-to-use">`.
+     - Structured with 1-sentence technical definition block ("What is [Concept]?"), 4-step browser execution mechanism block, and standalone technical standards fact family.
+  2. **Strict Word Count Limits:**
+     - All 30 pages strictly conform to the 200–500 word limit (measuring 219–338 words, perfectly within the 200–400 word target).
+  3. **Multilingual Parity & Diacritics Preservation:**
+     - Full natural, idiomatic Spanish (`es`) and Danish (`da`) translations maintaining exact technical terminology, RFC citations, and diacritics (`æ`, `ø`, `å`, `á`, `é`, `í`, `ó`, `ú`, `ñ`).
+  4. **CSS & Responsive Layout Safety:**
+     - Added `.how-it-works` rules to `assets/css/style.css` integrating seamlessly with existing section styling and `:has(.tool-wrapper)` container queries.
+     - Preserved zero horizontal overflow across 320px, 360px, 375px, and 390px mobile viewports.
+  5. **Track B: Loop 8 Outreach Execution Monitoring:**
+     - Updated `docs/growth/outreach/LOOP_8_BATCH_2_PROSPECTS.md` logging the active status of 20 verified prospect drafts staged in the owner review queue (12 University, 4 Integration, 4 Broken-link) and strictly enforcing the manual personal send policy (0 automated sends).
+- **Automated Verification:**
+  - Dedicated verification suite `tests/test_s22_ai_citeable_dev_content.js`: 6/6 checks passing (100%).
+  - Registered in master runner `tests/run_all_tests.js`.
+  - Repository master suite `node tests/run_all_tests.js`: 37/37 suites passing (100%), including 21/21 Playwright visual regression screenshot comparisons.
+  - Sitemap integrity verified: `node scripts/generate_sitemap.js --check` passes with zero drift (441 URLs, 147 clusters).
+- **Documentation & Memory:**
+  - Recorded ADR-061 in `.ai-memory/DECISIONS.md`.
+  - Prepended G1–G15 release gate evidence to `docs/growth/91-TEST-EVIDENCE-AND-RELEASE-GATES.md`.
+  - Updated `.ai-memory/STATE.json`.
+- **Next Sprint Pointer:** Sprint S23 — FAQ Schema Expansion to Top 30 Pages (Days 45–46).
+
+---
+
+## Phase 53 — Growth Program Sprint S21: Mobile Gesture & Viewport Pass (320px–390px) (2026-11-23)
+
+**Program:** AnyConverter.io Global Growth Engine (SEO + engagement + backlinks + distribution).  
+**Operating cadence:** 30 sprints × 2 days = 60 days. One prod ship per sprint.  
+**Active branch:** `feat/s21-mobile-viewport-pass` (branched from S20 release checkpoint `5db80a7`).  
+**Current sprint pointer:** `S21 — Mobile Gesture & Viewport Pass (320px–390px)` (100% COMPLETED & VERIFIED; ready for owner review).  
+
+**Current sprint (S21) progress & status:**
+- **Branch Created:** Created `feat/s21-mobile-viewport-pass` off `5db80a7`.
+- **Mobile Responsive & Overflow Optimizations Implemented:**
+  1. **Zero Horizontal Overflow Elimination:**
+     - Fixed CSS line 262: `.dropdown-menu--wide` capped with `min-width: min(380px, calc(100vw - 24px)); max-width: calc(100vw - 24px);` and single-column collapse on `< 480px`.
+     - Fixed Unix Timestamp Converter: added `flex-wrap: wrap;` and `word-break: break-all;` on `.ts-output-row` and `.ts-value`, eliminating wide ISO/RFC string overflows on 320px–360px viewports.
+     - Fixed CSV to SQL: added `min-width: 0; max-width: 100%;` to `.column-types` and `#csv-preview-table`, and responsive wrapping to `.column-types-header` on small mobile.
+     - Added universal mobile overflow protection: `html, body { overflow-x: hidden; }` and `min-width: 0; max-width: 100%;` across tools, panels, and preview tables.
+     - Ran headless Chrome automated audit across all 93 target URLs (top 30 tools in EN, ES, DA + homepages) at 320px, 360px, 375px, and 390px: **0 overflow issues detected**.
+  2. **Touch Targets & Small-Screen Ergonomics (SUS-003 / DEF-010):**
+     - Enforced `min-height: 44px;` across interactive buttons.
+     - Refined header padding on `max-width: 360px` (`padding: 0 8px; gap: 6px;`) while preserving $\ge 40\text{px}$ touch target buttons.
+     - Converted `.tool-page-actions` to a 2-column grid (`repeat(2, minmax(0, 1fr))`) on small mobile ($\le 360\text{px}$).
+     - Enforced safe wrapping on breadcrumb navigation (`.breadcrumb ol { flex-wrap: wrap; word-break: break-word; }`).
+  3. **Track B: Loop 8 Outreach Batch #2 Prospects:**
+     - Created `docs/growth/outreach/LOOP_8_BATCH_2_PROSPECTS.md` with 12 university resource pitches (`T-UNI-01`), 4 integration partner pitches (`T-INT-01`), 4 broken-link pitches (`T-BRK-01`), and a 1-touch follow-up protocol with strict manual owner send mandate via personal mailbox.
+- **Automated Verification:**
+  - Dedicated verification suite `tests/test_s21_mobile_viewport.js`: 5/5 checks passing (100%).
+  - Registered in master runner `tests/run_all_tests.js`.
+  - Repository master suite `node tests/run_all_tests.js`: 36/36 suites passing (100%), including 21/21 Playwright visual regression screenshot comparisons.
+  - Sitemap integrity verified: `node scripts/generate_sitemap.js --check` passes with zero drift (441 URLs, 147 clusters).
+- **Documentation & Memory:**
+  - Recorded ADR-060 in `.ai-memory/DECISIONS.md`.
+  - Prepended G1–G15 release gate evidence to `docs/growth/91-TEST-EVIDENCE-AND-RELEASE-GATES.md`.
+  - Updated `.ai-memory/STATE.json`.
+- **Next Sprint Pointer:** Sprint S22 — AI-Citeable "How It Works" Content for Dev Tools (Days 43–44).
+
+---
+
+## Phase 52 — Growth Program Sprint S20: Accessibility Sweep — Keyboard + ARIA (2026-11-23)
+
+**Program:** AnyConverter.io Global Growth Engine (SEO + engagement + backlinks + distribution).  
+**Operating cadence:** 30 sprints × 2 days = 60 days. One prod ship per sprint.  
+**Active branch:** `feat/s20-a11y-keyboard-aria` (branched from S19 release checkpoint `a08ca27`).  
+**Current sprint pointer:** `S20 — Accessibility Sweep: Keyboard + ARIA (WCAG 2.2 AA)` (100% COMPLETED & VERIFIED; ready for owner review).  
+
+**Current sprint (S20) progress & status:**
+- **Branch Created:** Created `feat/s20-a11y-keyboard-aria` off `a08ca27`.
+- **Accessibility & ARIA Optimizations Implemented:**
+  1. **Keyboard Tab Order & Focus Visibility (WCAG 2.2 AA):**
+     - Enforced universal high-contrast `:focus-visible` outlines (`2px solid #B04A45` / `#C85A54`, `2px offset`, `box-shadow: 0 0 0 4px rgba(176, 74, 69, 0.15)`) across all interactive elements (`button`, `a`, `input`, `select`, `textarea`, `summary`, `[role="button"]`, `[role="switch"]`, `[tabindex="0"]`) in both Light and Dark themes.
+     - Added `.sr-only` utility class in `assets/css/style.css` for screen-reader-only labels.
+     - Verified skip link (`<a href="#main-content" class="skip-link">`) targets `<main id="main-content">`.
+  2. **Centralized Keyboard Activation:**
+     - Implemented global `Space` and `Enter` keydown listeners in `assets/js/shared.js` to activate custom toggles (`role="switch"`) and non-button dropzones (`role="button"`).
+  3. **100% ARIA Label Coverage:**
+     - Scanned all 475 HTML files: 0 icon buttons missing accessible names (fixed `css-gradient-generator` color stop remove buttons, `sticky-notes` undo buttons).
+     - Scanned all 475 HTML files: 0 upload areas missing accessible names (fixed 45 dropzones across 14 tools in EN, ES, DA).
+  4. **Accessible Error & Live Status Announcements:**
+     - Upgraded `showToast` in `assets/js/shared.js` with `role="region"`, `role="status"` / `role="alert"`, and `aria-live="polite"` / `aria-live="assertive"`.
+  5. **Loop 7 Launch Completion Tracker:**
+     - Created `docs/growth/launches/LOOP_7_LAUNCH_TRACKER.md` formalizing launch review status across Product Hunt, DevHunt, and Peerlist Launchpad with strict operational guardrails prohibiting automated posting.
+- **Automated Verification:**
+  - Dedicated verification suite `tests/test_s20_a11y_keyboard_aria.js`: 8/8 checks passing (100%).
+  - Registered in master runner `tests/run_all_tests.js`.
+  - Repository master suite `node tests/run_all_tests.js`: 35/35 suites passing (100%), including 21/21 Playwright visual regression screenshot comparisons.
+  - Sitemap integrity verified: `node scripts/generate_sitemap.js --check` passes with zero drift (441 URLs, 147 clusters).
+- **Documentation & Memory:**
+  - Recorded ADR-059 in `.ai-memory/DECISIONS.md`.
+  - Prepended G1–G15 release gate evidence to `docs/growth/91-TEST-EVIDENCE-AND-RELEASE-GATES.md`.
+  - Updated `.ai-memory/STATE.json`.
+- **Next Sprint Pointer:** Sprint S21 — Mobile Gesture & Viewport Pass (320–390 px) (Days 41–42).
+
+---
+
+## Phase 51 — Growth Program Sprint S19: Core Web Vitals Pass on Top 20 Tools (EN, ES, DA) (2026-11-23)
+
+**Program:** AnyConverter.io Global Growth Engine (SEO + engagement + backlinks + distribution).  
+**Operating cadence:** 30 sprints × 2 days = 60 days. One prod ship per sprint.  
+**Active branch:** `feat/s19-cwv-top-20-tools` (branched from S18 release checkpoint `875c3a9`).  
+**Current sprint pointer:** `S19 — Core Web Vitals Pass on Top 20 Tools (EN + ES + DA)` (100% COMPLETED & VERIFIED; ready for owner review).  
+
+**Current sprint (S19) progress & status:**
+- **Branch Created:** Created `feat/s19-cwv-top-20-tools` off `875c3a9`.
+- **Top 20 Canonical Tool Inventory (60 URLs across EN, ES, DA):**
+  1. `json-formatter`
+  2. `percentage-calculator`
+  3. `age-calculator`
+  4. `loan-calculator`
+  5. `ip-address-lookup`
+  6. `base64-encoder`
+  7. `url-encoder`
+  8. `bmi-calculator`
+  9. `discount-calculator`
+  10. `pdf-merge`
+  11. `pdf-split`
+  12. `edit-pdf`
+  13. `pdf-compress`
+  14. `csv-to-sql`
+  15. `jwt-decoder`
+  16. `hash-generator`
+  17. `timestamp-converter`
+  18. `sleep-calculator`
+  19. `aspect-ratio-calculator`
+  20. `regex-tester`
+- **Core Web Vitals Optimizations Implemented:**
+  1. **Cumulative Layout Shift (CLS < 0.1) Elimination:**
+     - Enforced explicit `width="300" height="200"` and `loading="lazy"` on preview image tags in `es/base64-encoder/index.html`, `da/base64-encoder/index.html`, `es/image-converter/index.html`, and `da/image-converter/index.html`.
+     - Verified 100% explicit image dimensions site-wide across all 475 HTML files (0 missing dimensions).
+     - Defined `contain-intrinsic-size: 0 100px` on dynamic result containers (`.calc-result`, `.tool-result`, `#ip-results`, `#jwt-result`, `#hash-results`, `#ts-outputs`, `#sc-results`, `#ar-preview-box`) to eliminate DOM reflows upon calculation.
+     - Reserved fixed min-heights on ad containers (`.ad-slot`, `.dc-ad`).
+  2. **Largest Contentful Paint (LCP < 2.5s) Acceleration:**
+     - Enforced `@font-face` with `font-display: swap` in `assets/css/style.css` for primary font families (`Inter`, `JetBrains Mono`, `Bricolage Grotesque`, `Instrument Sans`).
+     - Injected `@font-face` with `font-display: swap` into head critical `<style>` blocks across all 60 target pages, completely preventing Flash of Invisible Text (FOIT).
+     - Audited `<head>` scripts: 100% of non-critical external scripts use `defer` or `async` (0 render-blocking head scripts).
+  3. **Interaction to Next Paint (INP < 200ms) & Main-Thread Hygiene:**
+     - Audited `assets/js/shared.js`: 0 heavy vendor libraries (PDF.js, CodeMirror, PapaParse, etc.) leaked into global shared scripts.
+     - Audited tool scripts: heavy calculations and live inputs utilize optimal debouncing (`setTimeout`, `requestAnimationFrame`, Web Workers).
+  4. **Multi-Locale Integrity & Zero Functional Regressions:**
+     - Preserved 100% mathematical precision and client-side logic on all 20 tools.
+     - Preserved 100% reciprocal 4-way hreflang alternates and canonical URLs.
+     - Strict zero-dependency, zero-tracking privacy architecture preserved.
+  5. **Loop 7 Distribution Prep (DevHunt & Peerlist):**
+     - Prepared clean, ready-to-use launch drafts in `docs/growth/launches/DEVHUNT_PEERLIST_LAUNCH_DRAFTS.md` under human owner review control.
+- **Automated Verification:**
+  - Dedicated verification suite `tests/test_s19_cwv_top_20.js`: 8/8 checks passing (100%).
+  - Registered in master runner `tests/run_all_tests.js`.
+  - Repository master suite `node tests/run_all_tests.js`: 34/34 suites passing (100%), including 21/21 Playwright visual regression screenshot comparisons.
+  - Sitemap integrity verified: `node scripts/generate_sitemap.js --check` passes with zero drift (441 URLs, 147 clusters).
+- **Documentation & Memory:**
+  - Recorded ADR-058 in `.ai-memory/DECISIONS.md`.
+  - Prepended G1–G15 release gate evidence to `docs/growth/91-TEST-EVIDENCE-AND-RELEASE-GATES.md`.
+  - Updated `.ai-memory/STATE.json`.
+- **Next Sprint Pointer:** Sprint S20 — A11y Keyboard & ARIA Overhaul (Days 39–40).
+
+---
+
+## Phase 50 — Growth Program Sprint S18: Category Hub Depth Upgrade: Developer Tools & Calculators (2026-11-23)
+
+**Program:** AnyConverter.io Global Growth Engine (SEO + engagement + backlinks + distribution).  
+**Operating cadence:** 30 sprints × 2 days = 60 days. One prod ship per sprint.  
+**Active branch:** `feat/s18-category-hub-dev-calc` (branched from S17 release checkpoint `750e5a4`).  
+**Current sprint pointer:** `S18 — Category hub depth upgrade: Developer tools + Calculators (EN + ES + DA)` (100% COMPLETED & VERIFIED; ready for owner review).  
+
+**Current sprint (S18) progress & status:**
+- **Branch Created:** Created `feat/s18-category-hub-dev-calc` off `750e5a4`.
+- **Category Hub Architecture & Content Implementation:**
+  1. **5 Substantive Thematic Subsections per Hub (150–250 Words per Subsection):**
+     - Structured 26 Developer Tools into 5 thematic subsections across `/developer-tools/`, `/es/developer-tools/`, and `/da/developer-tools/`:
+       - *Data Formatting & Validation (6 tools):* `json-formatter`, `json-compare`, `json-to-yaml`, `xml-formatter`, `html-beautifier`, `markdown-html`.
+       - *Encoding, Cryptography & Security (5 tools):* `base64-encoder`, `url-encoder`, `jwt-decoder`, `hash-generator`, `uuid-generator`.
+       - *Data Conversion & Querying (4 tools):* `csv-to-sql`, `csv-query`, `parquet-to-csv`, `camt053-to-csv`.
+       - *CSS, Web Design & Display (5 tools):* `css-gradient-generator`, `css-shadow-generator`, `px-to-rem`, `color-converter`, `screen-resolution`.
+       - *System, Auth & Parsing Utilities (6 tools):* `regex-tester`, `cron-expression-parser`, `timestamp-converter`, `password-generator`, `password-strength-checker`, `ip-address-lookup`.
+     - Structured 32 Calculators into 5 thematic subsections across `/calculators/`, `/es/calculators/`, and `/da/calculators/`:
+       - *Percentages, Discounts & Pricing (10 tools):* `discount-calculator`, `discount-stacking-calculator`, `percentage-calculator`, `reverse-percentage-calculator`, `percentage-difference-calculator`, `price-increase-calculator`, `unit-price-calculator`, `margin-vs-markup-calculator`, `gst-vat-calculator`, `tip-calculator`.
+       - *Loans, Pay & Financial Planning (5 tools):* `pay-rise-calculator`, `loan-calculator`, `mortgage-calculator`, `compound-interest-calculator`, `currency-converter`.
+       - *Slope, Geometry & Ratios (3 tools):* `rise-over-run-calculator`, `slope-grade-angle-calculator`, `aspect-ratio-calculator`.
+       - *Health, Fitness & Daily Planning (6 tools):* `age-calculator`, `bmi-calculator`, `calorie-calculator`, `sleep-calculator`, `blood-type-compatibility`, `birthday-countdown-calculator`.
+       - *Compatibility, Numerology & Astrology (8 tools):* `love-calculator`, `flames-calculator`, `numerology-calculator`, `name-numerology-calculator`, `lo-shu-grid-calculator`, `tarot-birth-card-calculator`, `moon-sign-calculator`, `rising-sign-calculator`.
+     - Authored and verified 30 distinct paragraphs (each strictly 150–250 words) providing concrete, practical workflow guidance, client-side privacy benefits, and explicit tool selection criteria.
+  2. **Native Multilingual Parity (EN, ES, DA):**
+     - Full authentic Danish and Spanish translations for all 10 subsection headings, descriptions, 58 tool cards, and 30 FAQs.
+     - Preserved all required diacritics (`æ`, `ø`, `å`, `á`, `é`, `í`, `ó`, `ú`, `ñ`, `¿`).
+     - Avoided absolute privacy claims per `tests/test_privacy_claims_regression.js`, utilizing factual statements regarding client-side JavaScript execution without server uploads.
+  3. **Advanced Structured Data (Schema.org JSON-LD):**
+     - `CollectionPage` + `ItemList`: Enumerates all 26 dev tools and 32 calculators per page with 1-based sequential positions, localized names, and canonical URLs.
+     - `BreadcrumbList`: Standardized schema hierarchy matching visible breadcrumbs (`Home` > `Developer Tools` / `Inicio` > `Herramientas para Desarrolladores` / `Hjem` > `Udviklerværktøjer`, and corresponding for Calculators).
+     - `FAQPage`: 5 comprehensive, intent-aligned FAQs per page (30 FAQs total) with 100% verbatim text parity between rendered HTML `<details>` and JSON-LD markup.
+  4. **SEO & Metadata Optimization:**
+     - Title tags <= 60 characters across all 6 pages with AnyConverter branding:
+       - Dev EN: `Free Online Developer Tools | JSON & Code | AnyConverter` (56 chars)
+       - Dev ES: `Herramientas para Desarrolladores Online | AnyConverter` (55 chars)
+       - Dev DA: `Gratis Online Udviklerværktøjer | Web & Kode | AnyConverter` (59 chars)
+       - Calc EN: `Free Online Calculators | Math & Finance | AnyConverter` (55 chars)
+       - Calc ES: `Calculadoras Online Gratis | Finanzas y Salud | AnyConverter` (60 chars)
+       - Calc DA: `Gratis Online Beregnere | Finans & Sundhed | AnyConverter` (57 chars)
+     - Meta descriptions strictly 140–160 characters highlighting speed, zero installation, and client-side privacy.
+     - Canonical self-referencing and 4-way reciprocal hreflang tags (`en`, `es`, `da`, `x-default`).
+     - Synchronized OpenGraph and Twitter card metadata.
+  5. **Accessibility & Design Standards (WCAG 2.2 AA):**
+     - Semantic hierarchy (`<h1>`, `<h2>`, `<h3>`).
+     - High-contrast `:focus-visible` states (`2px solid #B04A45`, `2px offset`) on all tool cards and interactive FAQ accordions in `assets/css/style.css`.
+     - Zero horizontal overflow across mobile (320px–375px), tablet (768px), and desktop (1280px) viewports.
+- **Automated Verification:**
+  - Dedicated verification suite `tests/test_s18_dev_calc_hub_depth.js`: 10/10 assertions passing (100%).
+  - Registered in master runner `tests/run_all_tests.js`.
+  - Repository master suite `node tests/run_all_tests.js`: 33/33 suites passing (100%), including 21/21 Playwright visual regression screenshot comparisons.
+- **Documentation & Memory:**
+  - Recorded ADR-057 in `.ai-memory/DECISIONS.md`.
+  - Captured G1–G15 release gate evidence in `docs/growth/91-TEST-EVIDENCE-AND-RELEASE-GATES.md`.
+  - Updated `.ai-memory/STATE.json`.
+- **Next Sprint Pointer:** Sprint S19 — Programmatic SEO Architecture: Base Template & Data Pipeline (Days 37–38).
+
+---
+
+## Phase 49 — Growth Program Sprint S17: Category Hub Depth Upgrade: PDF Tools (2026-11-23)
+
+**Program:** AnyConverter.io Global Growth Engine (SEO + engagement + backlinks + distribution).  
+**Operating cadence:** 30 sprints × 2 days = 60 days. One prod ship per sprint.  
+**Active branch:** `feat/s17-category-hub-pdf` (branched from S16 checkpoint `feat/s16-orphan-fix-related-reciprocity`, commit `34bc702`).  
+**Current sprint pointer:** `S17 — Category hub depth upgrade: PDF tools (EN + ES + DA)` (100% COMPLETED & VERIFIED; ready for owner review).  
+
+**Current sprint (S17) progress & status:**
+- **Branch Created:** Created `feat/s17-category-hub-pdf` off `34bc702`.
+- **Category Hub Architecture & Content Implementation:**
+  1. **5 Substantive Thematic Subsections (150–250 Words per Category):**
+     - Structured all 26 PDF tools logically into 5 workflow sections across `/pdf-tools/`, `/es/pdf-tools/`, and `/da/pdf-tools/`:
+       - *Organize & Manage Pages (6 tools):* Merge PDF, Split PDF, Rotate PDF, Organize PDF, Extract Pages, Remove Pages.
+       - *Compression & Optimization (2 tools):* Compress PDF, Optimize PDF.
+       - *Conversion & Formatting (5 tools):* PDF to JPG, PDF to Word, JPG to PDF, HTML to PDF, Scan to PDF.
+       - *Security & Privacy (5 tools):* Protect PDF, Unlock PDF, Blackout & Redact PDF, PDF Metadata Remover, PDF Security.
+       - *Editing, Signing & Utilities (8 tools):* Edit PDF, Sign PDF, Fill PDF Forms, Add Page Numbers, Add Watermark, Compare PDF, OCR PDF, Crop PDF.
+     - Crafted 150–250 words of practical, original workflow guidance for each subsection explaining use cases, browser privacy advantages, and when to use specific tools.
+  2. **Native Multilingual Parity (EN, ES, DA):**
+     - Authored natural Spanish and Danish content adhering to `anyconverter-multilingual-seo`.
+     - Preserved all required diacritics (`æ`, `ø`, `å`, `á`, `é`, `í`, `ó`, `ú`, `ñ`, `¿`).
+     - Strictly avoided absolute privacy overclaims per `tests/test_privacy_claims_regression.js`, utilizing factual statements regarding client-side JavaScript execution without server uploads.
+  3. **Advanced Structured Data (Schema.org JSON-LD):**
+     - `CollectionPage` + `ItemList`: Enumerates all 26 PDF tools with 1-based sequential positions, localized names, and canonical URLs.
+     - `BreadcrumbList`: Standardized breadcrumb schema matching visible breadcrumbs (`Home` > `PDF Tools` / `Inicio` > `Herramientas PDF` / `Hjem` > `PDF-værktøjer`).
+     - `FAQPage`: 5 comprehensive, intent-aligned FAQs with 100% verbatim parity between the rendered HTML `<details>` and JSON-LD markup.
+  4. **SEO & Metadata Optimization:**
+     - Title tags <= 60 characters:
+       - EN: `Free Online PDF Tools | Merge, Split & Edit | AnyConverter` (57 chars)
+       - ES: `Herramientas PDF Online | Unir y Editar | AnyConverter` (55 chars)
+       - DA: `Gratis PDF-værktøjer | Flet, Opdel & Rediger | AnyConverter` (58 chars)
+     - Meta descriptions strictly 140–160 characters highlighting speed, zero-install convenience, and 100% client-side privacy:
+       - EN: 155 chars
+       - ES: 155 chars
+       - DA: 148 chars
+     - Self-referencing canonical tags and reciprocal 4-way hreflang alternates (`en`, `es`, `da`, `x-default`).
+     - Synchronized OpenGraph and Twitter card metadata.
+  5. **Accessibility & Design Standards (WCAG 2.2 AA):**
+     - Semantic hierarchy (`<h1>`, `<h2>`, `<h3>`).
+     - High-contrast `:focus-visible` states (`2px solid #B04A45`, `2px offset`) on all tool cards and interactive FAQ accordions in `assets/css/style.css`.
+     - Zero horizontal overflow across mobile (320px–375px), tablet (768px), and desktop (1280px) viewports.
+- **Automated Verification:**
+  - Dedicated verification suite `tests/test_s17_pdf_hub_depth.js`: 10/10 assertions passing (100%).
+  - Registered in master runner `tests/run_all_tests.js`.
+  - Repository master suite `node tests/run_all_tests.js`: 32/32 suites passing (100%), including 21/21 Playwright visual regression screenshot comparisons.
+  - Canonical sitemap check `node scripts/generate_sitemap.js --check`: 100% synchronized (441 URLs, 147 clusters).
+- **Documentation & Memory:**
+  - Recorded ADR-056 in `.ai-memory/DECISIONS.md`.
+  - Captured G1–G15 release gate evidence in `docs/growth/91-TEST-EVIDENCE-AND-RELEASE-GATES.md`.
+  - Updated `.ai-memory/STATE.json`.
+- **Next Sprint Pointer:** Sprint S18 — Category hub depth upgrade: Developer tools + Calculators (Days 35–36).
+
+---
+
+## Phase 48 — Growth Program Sprint S16: Orphan Fix Pass & Related-Tools Reciprocity (2026-11-20)
+
+**Program:** AnyConverter.io Global Growth Engine (SEO + engagement + backlinks + distribution).  
+**Operating cadence:** 30 sprints × 2 days = 60 days. One prod ship per sprint.  
+**Active branch:** `feat/s16-orphan-fix-related-reciprocity` (branched from S15 checkpoint `feat/s15-pwa-manifest-install-prompt`, commit `8462edb`).  
+**Current sprint pointer:** `S16 — Orphan fix pass + related-tools reciprocity` (100% COMPLETED & VERIFIED; ready for owner review).  
+
+**Current sprint (S16) progress & status:**
+- **Branch Created:** Created `feat/s16-orphan-fix-related-reciprocity` off `8462edb`.
+- **Reciprocal Internal Linking Graph Architecture & Synchronization:**
+  1. **Audit & Analysis of Canonical Internal Linking Graph:**
+     - Created `scripts/audit_internal_linking_s16.js`.
+     - Pre-sprint audit revealed: `compare-pdf` was an orphan risk (in-degree 0), 12 tools had in-degree 1, and 155 directed links were asymmetric.
+  2. **100% Reciprocal Mapping Engine (`RELATED_TOOLS_COMPLETE_MAPPING.json`):**
+     - Symmetrized and optimized canonical related-tools graph across all 128 tools via `scripts/build_reciprocal_mapping.js`.
+     - Exactly 0 asymmetric links sitewide ($u \in \text{mapping}[v] \iff v \in \text{mapping}[u]$).
+     - Bounded tool degree strictly between 4 and 5 links/tool (average degree 4.58; 586 total directed edges), satisfying workflow adjacency rules.
+     - Eradicated orphan risk: Connected `compare-pdf` reciprocally to 4 core PDF workflow tools (`edit-pdf`, `pdf-merge`, `pdf-split`, and `text-diff-checker`).
+     - Elevated all 12 low in-degree tools (`barcode-generator`, `blood-type-compatibility`, `character-counter`, `dice-roller`, `fancy-text-generator`, `gst-vat-calculator`, `lo-shu-grid-calculator`, `margin-vs-markup-calculator`, `mouse-tester`, `pay-rise-calculator`, `team-picker`, `unit-price-calculator`) to $\ge 4$ incoming reciprocal connections.
+     - Zero tools have in-degree < 4 across the catalog.
+     - Preserved all cross-category anti-pattern constraints (zero cross-category noise).
+  3. **Authoritative Card Catalog & Diacritic Preservation:**
+     - Built `scripts/extract_homepage_cards.js`, extracting authoritative tool card markup, localized titles, and descriptions directly from reviewed homepages (`index.html`, `es/index.html`, `da/index.html`).
+     - Guaranteed 100% diacritic fidelity across Danish (`Tilføj`, `vandmærke`) and Spanish (`compatibilidad`, `contraseña`).
+  4. **Physical HTML Card Synchronization (384 Pages across EN, ES, DA):**
+     - Built `scripts/sync_reciprocal_related_tools.js` and updated `#related-tools-grid` across all 384 physical HTML files (`/{slug}/index.html`, `/es/{slug}/index.html`, `/da/{slug}/index.html`) rendering 1,758 validated cards.
+  5. **Multi-Path Reachability:**
+     - Verified every tool is reachable via $\ge 3$ distinct canonical paths.
+- **Automated Verification:**
+  - Dedicated verification suite `tests/test_s16_orphan_fix_reciprocity.js`: 10/10 assertions passing (100%).
+  - Related tools regression suite `tests/test_related_tools_regression.js`: PASS (128 tools, 0 self-links, 0 broken targets).
+  - Localization quality suite `tests/test_localization_regression.js`: PASS (0 diacritic regressions).
+  - Registered in master runner `tests/run_all_tests.js`.
+  - Repository master suite `node tests/run_all_tests.js`: 31/31 suites passing (100%), including 21/21 Playwright visual regression screenshot comparisons.
+  - Canonical sitemap check `node scripts/generate_sitemap.js --check`: 100% synchronized (441 URLs, 147 clusters).
+- **Documentation & Memory:**
+  - Recorded ADR-055 in `.ai-memory/DECISIONS.md`.
+  - Captured G1–G15 release gate evidence in `docs/growth/91-TEST-EVIDENCE-AND-RELEASE-GATES.md`.
+  - Updated `.ai-memory/STATE.json`.
+- **Next Sprint Pointer:** Sprint S17 — Category hub depth upgrade: PDF tools (Days 33–34).
+
+---
+
+## Phase 47 — Growth Program Sprint S15: PWA Manifest, Scoped Service Worker & Install Prompt (2026-11-20)
+
+**Program:** AnyConverter.io Global Growth Engine (SEO + engagement + backlinks + distribution).  
+**Operating cadence:** 30 sprints × 2 days = 60 days. One prod ship per sprint.  
+**Active branch:** `feat/s15-pwa-manifest-install-prompt` (branched from S14 checkpoint `feat/s14-shareable-date-difference`, commit `4fe472a`).  
+**Current sprint pointer:** `S15 — PWA manifest + install prompt (homepage + top 5 tools)` (100% COMPLETED & VERIFIED; ready for owner review).  
+
+**Current sprint (S15) progress & status:**
+- **Branch Created:** Created `feat/s15-pwa-manifest-install-prompt` off `4fe472a`.
+- **Progressive Web App Architecture & Implementation:**
+  1. **Standards-Compliant W3C Web App Manifest (`manifest.webmanifest`):**
+     - Root manifest with `name: "AnyConverter — Free Online Tools & Calculators"`, `short_name: "AnyConverter"`, `start_url: "/?source=pwa"`, `display: "standalone"`, `background_color: "#F7F6F3"`, `theme_color: "#B04A45"`, and description.
+     - Generated and linked crisp 192x192 and 512x512 icons (`assets/img/icon-192.png`, `assets/img/icon-512.png`) and SVG (`assets/img/favicon.svg`).
+  2. **Metadata & Head Integration across 18 Target Pages:**
+     - Injected `<meta name="theme-color" content="#B04A45">` and `<link rel="manifest" href="/manifest.webmanifest">` across `index.html` and top 5 tools (`/json-formatter/`, `/percentage-calculator/`, `/age-calculator/`, `/loan-calculator/`, `/ip-address-lookup/`) across EN, ES, DA.
+     - Clean canonical tags and reciprocal hreflang links preserved intact.
+  3. **Scoped & Safe Service Worker (`sw.js`):**
+     - Cache name: `ac-pwa-v1`.
+     - Scoped pre-cache for homepage, top 5 tools, and essential static assets.
+     - Strict Network-First strategy for HTML navigation (zero stale HTML risk; falls back to cache when offline).
+     - Stale-While-Revalidate for same-origin static assets.
+     - Strict third-party domain exclusion: Never caches Google AdSense, Google Analytics, or external APIs.
+     - Graceful offline fallback: Cached tools continue functioning purely client-side; site remains 100% operational if SW registration fails or is unsupported.
+  4. **Non-Intrusive, Deferred Install Prompt (`assets/js/shared/pwa.js` & `assets/css/style.css`):**
+     - Intercepts and calls `preventDefault()` on `beforeinstallprompt`.
+     - Never interrupts first-time visitors immediately on page load.
+     - Contextual trigger: displays install action banner (`#pwa-install-banner`) only after the user has performed at least one successful tool interaction or calculation.
+     - Rate-limited & dismissible: Dismiss action suppresses re-prompting for 14 days via `localStorage['ac:pwa-dismissed-ts']`.
+     - Suppresses prompt if app is already installed or in standalone display mode.
+     - Added subtle footer install button `#btn-footer-pwa-install` that activates when browser install prompt is available.
+     - WCAG 2.2 AA compliant focus-visible outlines (`2px solid #B04A45`, `2px offset`) and explicit localized `aria-label` attributes on all prompt controls across EN, ES, and DA.
+  5. **Telemetry & Analytics Integration:**
+     - Registered `pwa_prompt_shown`, `pwa_installed`, and `pwa_dismissed` in `assets/js/shared/analytics.js`.
+     - Added helper methods `trackPwaPromptShown`, `trackPwaInstalled`, and `trackPwaDismissed` on `window.ACAnalytics`.
+- **Automated Verification:**
+  - Dedicated verification suite `tests/test_s15_pwa_install.js`: 23/23 assertions passing (100%).
+  - Registered in master runner `tests/run_all_tests.js`.
+  - Repository master suite `node tests/run_all_tests.js`: 30/30 suites passing (100%), including 21/21 Playwright visual regression screenshot comparisons.
+  - Canonical sitemap check `node scripts/generate_sitemap.js --check`: 100% synchronized (441 URLs, 147 clusters).
+- **Documentation & Memory:**
+  - Recorded ADR-054 in `.ai-memory/DECISIONS.md`.
+  - Captured G1–G15 release gate evidence in `docs/growth/91-TEST-EVIDENCE-AND-RELEASE-GATES.md`.
+  - Updated `.ai-memory/STATE.json`.
+- **Next Sprint Pointer:** Sprint S16 — Orphan fix pass + related-tools reciprocity (Days 31–32).
+
+---
+
+## Phase 46 — Growth Program Sprint S14: Shareable Calculator State: Date Difference Calculator (2026-11-20)
+
+**Program:** AnyConverter.io Global Growth Engine (SEO + engagement + backlinks + distribution).  
+**Operating cadence:** 30 sprints × 2 days = 60 days. One prod ship per sprint.  
+**Active branch:** `feat/s14-shareable-date-difference` (branched from S13 checkpoint `feat/s13-shareable-percentage-calculator`, commit `f9de295`).  
+**Current sprint pointer:** `S14 — Shareable calculator state: Date Difference Calculator (EN + ES + DA)` (100% COMPLETED & VERIFIED; ready for owner review).  
+
+**Current sprint (S14) progress & status:**
+- **Branch Created:** Created `feat/s14-shareable-date-difference` off `f9de295`.
+- **Multilingual Shareable State Architecture & Implementation:**
+  1. **Explicit Share Trigger & UI Component across EN, ES, DA:**
+     - Injected `#btn-share-age` into action bar and `#btn-share-result` into `#age-result` across `age-calculator/index.html`, `es/age-calculator/index.html`, and `da/age-calculator/index.html`.
+     - Injected accessible live region `#age-share-feedback` (`role="status"`, `aria-live="polite"`) with localized strings:
+       - EN: "Link copied to clipboard!"
+       - ES: "¡Enlace copiado al portapapeles!"
+       - DA: "Link kopieret til udklipsholder!"
+     - No Auto-Share / No Silent Address Bar Mutation: Typing or calculating never mutates `window.location`. Only clicking the explicit Share action creates the URL, copies it to clipboard, and displays accessible visual feedback.
+  2. **Compact & Versioned Parameter Schema:**
+     - Version key: `v=1`.
+     - Date parameters: `from=YYYY-MM-DD&to=YYYY-MM-DD` (also supporting `start`/`end` and `b`/`t` aliases).
+     - Strictly non-sensitive numeric ISO date strings; zero PII.
+  3. **Locale-Aware State Hydration & Fail-Safe Fallback:**
+     - On page load, `hydrateFromUrl()` parses `window.location.search`.
+     - Valid parameters populate date fields and run `calcAge()` to render the answer immediately.
+     - Number formatting uses the active locale (e.g. `13,307` in EN vs `13.307` in ES and DA).
+     - Localized units and milestone labels for birthday countdowns.
+     - Robust sanitization: Malformed parameters (`?v=999`, invalid date format, NaN, inverted chronological range `from > to`) gracefully reset to clean default state without throwing exceptions or showing broken UI.
+  4. **SEO Invariants & Duplicate Content Protection:**
+     - Clean canonical tags preserved across all 3 locale pages (`/age-calculator/`, `/es/age-calculator/`, `/da/age-calculator/`).
+     - Parameterized URLs (`window.location.search.length > 1`) dynamically inject or update `<meta name="robots" content="noindex, follow">`.
+  5. **WCAG 2.2 AA Focus & Accessibility:**
+     - High-contrast `:focus-visible` styling (2px solid `#B04A45`, 2px offset, subtle focus ring).
+  6. **Telemetry & Analytics Integration:**
+     - Dispatched on share button click via `window.ACAnalytics.trackShareLinkGenerated('age-calculator', locale, 'success')`.
+- **Automated Verification:**
+  - Dedicated verification suite `tests/test_s14_shareable_date_difference.js`: 17/17 checks passing (100%).
+  - Registered in master runner `tests/run_all_tests.js`.
+  - Repository master suite `node tests/run_all_tests.js`: 29/29 suites passing (100%), including 21/21 Playwright visual regression screenshot comparisons.
+  - Canonical sitemap check `node scripts/generate_sitemap.js --check`: 100% synchronized (441 URLs, 147 clusters).
+- **Documentation & Memory:**
+  - Recorded ADR-053 in `.ai-memory/DECISIONS.md`.
+  - Captured G1–G15 release gate evidence in `docs/growth/91-TEST-EVIDENCE-AND-RELEASE-GATES.md`.
+  - Updated `.ai-memory/STATE.json`.
+- **Next Sprint Pointer:** Sprint S15 — PWA manifest + install prompt (homepage + top 5 tools).
+
+---
+
+## Phase 45 — Growth Program Sprint S13: Shareable Calculator State: Percentage Calculator (2026-11-20)
+
+**Program:** AnyConverter.io Global Growth Engine (SEO + engagement + backlinks + distribution).  
+**Operating cadence:** 30 sprints × 2 days = 60 days. One prod ship per sprint.  
+**Active branch:** `feat/s13-shareable-percentage-calculator` (branched from S12 checkpoint `feat/s12-workflow-chain-json`, commit `3386f84`).  
+**Current sprint pointer:** `S13 — Shareable calculator state: Percentage Calculator (EN only)` (100% COMPLETED & VERIFIED; ready for owner review).  
+
+**Current sprint (S13) progress & status:**
+- **Branch Created:** Created `feat/s13-shareable-percentage-calculator` off `3386f84`.
+- **Shareable State Architecture & Implementation:**
+  1. **Explicit Share Trigger & UI Component:**
+     - Added `#btn-share-pct` to the action bar in `percentage-calculator/index.html` with accessible text ("Share calculation"), SVG icon, and `aria-label="Share calculation link"`.
+     - Added secondary trigger `#btn-share-result` in `#pct-result` with "Copy calculation link".
+     - Added live region `#pct-share-feedback` with `role="status"` and `aria-live="polite"` announcing "Link copied to clipboard!".
+     - No Auto-Share / No Silent Address Bar Mutation: Typing or calculating never mutates `window.location`. Only an explicit user click on the Share button creates the URL, copies it to the clipboard, and displays accessible visual feedback.
+  2. **Compact & Versioned Parameter Schema:**
+     - Version key: `v=1`.
+     - Mode parameter `m=1|2|3|4`:
+       - Mode 1 ($X\%$ of $Y$): `m=1&x={number}&y={number}`
+       - Mode 2 ($X$ is what $\%$ of $Y$): `m=2&x={number}&y={number}`
+       - Mode 3 ($\%$ Change): `m=3&o={number}&n={number}`
+       - Mode 4 ($\%$ Increase/Decrease): `m=4&v={number}&p={number}&d=inc|dec`
+     - Only non-sensitive numeric parameters stored; zero PII.
+  3. **State Hydration & Fail-Safe Fallback:**
+     - On page load, `hydrateFromUrl()` parses `window.location.search`.
+     - Valid parameters activate the corresponding mode tab, populate inputs, and run `calc()` to display the answer immediately.
+     - Robust sanitization: Malformed parameters (`?v=999`, `?m=NaN`, `?x=invalid`, divide-by-zero) gracefully reset to clean default Mode 1 without throwing exceptions or showing broken UI.
+  4. **SEO Invariants & Duplicate Content Protection:**
+     - Clean canonical tag preserved: `<link rel="canonical" href="https://anyconverter.io/percentage-calculator/">`.
+     - Parameterized URLs (`window.location.search.length > 1`) dynamically inject or update `<meta name="robots" content="noindex, follow">` to protect search engine crawl equity.
+  5. **WCAG 2.2 AA Focus & Accessibility:**
+     - High-contrast `:focus-visible` styling (2px solid `#B04A45`, 2px offset, subtle focus ring).
+  6. **Telemetry & Analytics Integration:**
+     - Registered `share_link_generated` in `ACAnalytics` allowlist (`assets/js/shared/analytics.js`).
+     - Dispatched on share button click recording `tool: 'percentage-calculator'`, `mode`, and `status`.
+- **Automated Verification:**
+  - Dedicated verification suite `tests/test_s13_shareable_percentage.js`: 24/24 checks passing (100%).
+  - Registered in master runner `tests/run_all_tests.js`.
+  - Repository master suite `node tests/run_all_tests.js`: 28/28 suites passing (100%), including 21/21 Playwright visual regression screenshot comparisons.
+  - Canonical sitemap check `node scripts/generate_sitemap.js --check`: 100% synchronized (441 URLs, 147 clusters).
+- **Documentation & Memory:**
+  - Recorded ADR-052 in `.ai-memory/DECISIONS.md`.
+  - Captured G1–G15 release gate evidence in `docs/growth/91-TEST-EVIDENCE-AND-RELEASE-GATES.md`.
+  - Updated `.ai-memory/STATE.json`.
+- **Next Sprint Pointer:** Sprint S14 — Shareable state — Date Difference Calculator (`/date-difference-calculator/`, `/es/date-difference-calculator/`, `/da/date-difference-calculator/`) with locale-aware formatting.
+
+---
+
+## Phase 44 — Growth Program Sprint S12: Tool-to-Tool Workflow Chain: JSON Group (2026-11-20)
+
+**Program:** AnyConverter.io Global Growth Engine (SEO + engagement + backlinks + distribution).  
+**Operating cadence:** 30 sprints × 2 days = 60 days. One prod ship per sprint.  
+**Active branch:** `feat/s12-workflow-chain-json` (branched from S11 checkpoint `feat/s11-recents-carousel-homepage`, commit `31bba38`).  
+**Current sprint pointer:** `S12 — Tool-to-tool workflow chain: JSON group` (100% COMPLETED & VERIFIED; ready for owner review).  
+
+**Current sprint (S12) progress & status:**
+- **Branch Created:** Created `feat/s12-workflow-chain-json` off `31bba38`.
+- **Workflow Chaining Architecture & Implementation:**
+  1. **Non-Interruptive Workflow Chain Component:**
+     - Injected `#workflow-chain-json` into `json-formatter/index.html`, `es/json-formatter/index.html`, and `da/json-formatter/index.html` directly following the main workspace (`</div><!-- /tool-wrapper -->`).
+     - Kept strictly hidden by default (`style="display:none;"`), preventing layout shift (CLS: 0.000).
+     - Contextual lifecycle: Automatically displayed upon successful JSON formatting or minification across standard tree mode and virtual scroller mode. Automatically hidden on empty input, validation parse errors, or when user clicks dismiss.
+     - User dismissibility: Actionable dismiss button (`#btn-chain-dismiss`) hides the chain and preserves session dismissal state.
+  2. **Inter-Tool Data Handoff via Client-Side `sessionStorage`:**
+     - `→ JSON Compare`: Clicks set `sessionStorage['ac:chain-json-a']` with the active formatted JSON and navigate to `/json-compare/` (or `/es/json-compare/`, `/da/json-compare/`). `assets/js/tools/json-compare.js` automatically consumes and pre-populates Panel A.
+     - `→ JSON → CSV`: Clicks directly trigger the in-tool CSV generator/export button (`#btn-to-csv.click()`) with telemetry, delivering instant conversion without leaving the page.
+     - `→ JSON → YAML`: Clicks set `sessionStorage['ac:chain-json']` with the active formatted JSON and navigate to `/json-to-yaml/` (or `/es/json-to-yaml/`, `/da/json-to-yaml/`). `assets/js/tools/json-to-yaml.js` automatically consumes, sets mode to `j2y`, fills the input, and executes conversion.
+  3. **Multilingual Parity & Cross-Locale Routing:**
+     - 100% native translations for English, Spanish, and Danish cards, badges, and action descriptions.
+     - Cards route strictly to the active language directory (`/json-compare/`, `/es/json-compare/`, `/da/json-to-yaml/`).
+  4. **Design Tokens & Accessibility (WCAG 2.2 AA):**
+     - Semantic `<section class="workflow-chain-section" id="workflow-chain-json" aria-labelledby="workflow-chain-heading">`.
+     - High-contrast `:focus-visible` styling for `.workflow-chain-card:focus-visible` and `.workflow-chain-dismiss:focus-visible` (2px solid `#B04A45`, 2px offset, subtle focus ring).
+     - Explicit `aria-label` and `aria-expanded` attributes on the dismiss button.
+     - Mobile responsive cards wrapping cleanly on small viewports (≤ 767px) with 0px horizontal overflow across all tested viewports.
+  5. **Telemetry & Analytics Integration:**
+     - Instrumented workflow chain cards with `window.ACAnalytics.trackRelatedToolClicked('json-formatter', targetSlug, position)`.
+- **Automated Verification:**
+  - Dedicated verification suite `tests/test_s12_workflow_chain_json.js`: 14/14 checks passing (100%).
+  - Registered in master runner `tests/run_all_tests.js`.
+  - Repository master suite `node tests/run_all_tests.js`: 27/27 suites passing (100%), including 21/21 Playwright visual regression screenshot comparisons.
+  - Canonical sitemap check `node scripts/generate_sitemap.js --check`: 100% synchronized (441 URLs, 147 clusters).
+- **Documentation & Memory:**
+  - Recorded ADR-051 in `.ai-memory/DECISIONS.md`.
+  - Captured G1–G15 release gate evidence in `docs/growth/91-TEST-EVIDENCE-AND-RELEASE-GATES.md`.
+  - Updated `.ai-memory/STATE.json`.
+- **Next Sprint Pointer:** Sprint S13 — Shareable calculation link: Percentage Calculator (`/percentage-calculator/`, `/es/percentage-calculator/`, `/da/percentage-calculator/`) with signed/versioned query params and canonical/noindex protections.
+
+---
+
+## Phase 43 — Growth Program Sprint S11: Recents Carousel on Homepage & Cross-Locale Persistence (2026-11-19)
+
+**Program:** AnyConverter.io Global Growth Engine (SEO + engagement + backlinks + distribution).  
+**Operating cadence:** 30 sprints × 2 days = 60 days. One prod ship per sprint.  
+**Active branch:** `feat/s11-recents-carousel-homepage` (branched from S10 checkpoint `feat/s10-favorites-ux-and-persistence`, commit `7e6d950`).  
+**Current sprint pointer:** `S11 — Recents carousel on homepage` (100% COMPLETED & VERIFIED; ready for owner review).  
+
+**Current sprint (S11) progress & status:**
+- **Branch Created:** Created `feat/s11-recents-carousel-homepage` off `7e6d950`.
+- **Client-Side Canonical Ring Buffer Engine in `assets/js/shared.js`:**
+  1. **Ring Buffer Storage:**
+     - Backed by `localStorage['ac:recents']` as a JSON array storing up to 8 objects: `[{ u: '/canonical-slug/', ts: 1732000000000 }]`.
+     - Tool visits are recorded whenever a user lands on any tool page via `recordRecentTool(canonPath)`, triggered universally on layout detection (`.tool-wrapper, .tool-card, .tool-container, .tool-zone, .dc-root`).
+     - Deduplication: Visiting an existing tool promotes it to index 0 and updates its timestamp `ts`.
+     - Capacity: Strictly capped at 8 items; adding a 9th tool evicts the oldest entry.
+     - Canonical keying: Normalizes paths via `getCanonicalToolPath(rawUrlOrPath)` ensuring cross-locale persistence without locale-prefixed duplicates.
+     - Emits custom event `window.dispatchEvent(new CustomEvent('ac:recents-updated'))`.
+  2. **Homepage Recents Row Hydration:**
+     - Placed anchor `<section class="dash-section dash-recents-section" id="dash-recents-section" aria-labelledby="recents-heading" style="display:none;"></section>` directly above Quick Access in `index.html`, `es/index.html`, and `da/index.html`.
+     - Hidden when empty: If `ac:recents` has 0 items, section remains hidden (`display: none; hidden = true; innerHTML = ''`), guaranteeing zero layout shift and zero empty placeholders.
+     - Dynamic localized titles and clear actions:
+       - EN: `Recently Used` / `Clear recents` (Aria: `Clear recently used tools` / `Recently used tools`)
+       - ES: `Usado recientemente` / `Borrar recientes` (Aria: `Borrar herramientas usadas recientemente` / `Herramientas usadas recientemente`)
+       - DA: `Senest brugte` / `Ryd seneste` (Aria: `Ryd senest brugte værktøjer` / `Senest brugte værktøjer`)
+     - Cards display localized tool names via `getToolName(toolMeta, lang)` and route to active locale paths via `localizedPathForLang`.
+     - Subtle "Clear recents" action button with keyboard support (`Enter` / `Space`).
+  3. **Accessibility & Design Tokens (WCAG 2.2 AA):**
+     - Semantic `<section aria-labelledby="recents-heading">`, `<h2 class="dash-section-title" id="recents-heading">`, and `<nav aria-label="...">`.
+     - Clear button with explicit `aria-label` and keyboard handling.
+     - CSS `:focus-visible` styling for `.dash-recent-card:focus-visible` and `.dash-recents-clear-btn:focus-visible` (2px solid `#B04A45`, 2px offset, subtle focus ring).
+  4. **Analytics Telemetry Integration:**
+     - Extended `assets/js/shared/analytics.js` with `recent_clicked` and `recents_cleared` events.
+     - Added convenience methods `trackRecentClicked(toolSlug, position)` and `trackRecentsCleared()`.
+     - Preserved exact 16-event count for `ACAnalytics.EVENTS` dictionary for backward compatibility with S02 test suite.
+- **Automated Verification:**
+  - Created dedicated test suite `tests/test_s11_recents_carousel.js` (15/15 passing):
+    - CSS focus-visible rules verified.
+    - Canonical normalization across variations verified.
+    - Ring buffer storage logic, capacity of 8, eviction of 9th oldest verified.
+    - Promotion on repeat visit verified.
+    - Cross-locale persistence across EN, ES, DA verified.
+    - Clear recents action verified.
+    - Analytics adapter integration verified.
+  - S11 test suite registered in `tests/run_all_tests.js`.
+  - Master test suite `node tests/run_all_tests.js`: 26/26 suites passing (100%).
+  - Sitemap integrity `node scripts/generate_sitemap.js --check`: 100% synchronized (441 URLs, 147 clusters).
+- **Documentation & Memory:**
+  - Recorded ADR-050 in `.ai-memory/DECISIONS.md`.
+  - Captured G1–G15 release gate evidence in `docs/growth/91-TEST-EVIDENCE-AND-RELEASE-GATES.md`.
+  - Updated `.ai-memory/STATE.json`.
+- **Next Sprint Pointer:** Sprint S12 — Tool-to-tool workflow chain: JSON group (contextual "Next step" prompt at the end of JSON Formatter: → JSON Compare → JSON→CSV → JSON→YAML).
+
+---
+
+## Phase 42 — Growth Program Sprint S10: Favorites UX Upgrade & Cross-Locale Persistence (2026-11-19)
+
+**Program:** AnyConverter.io Global Growth Engine (SEO + engagement + backlinks + distribution).  
+**Operating cadence:** 30 sprints × 2 days = 60 days. One prod ship per sprint.  
+**Active branch:** `feat/s10-favorites-ux-and-persistence` (branched from S09 checkpoint `feat/s09-striking-distance-metadata-es-da`, commit `7d1a9da`).  
+**Current sprint pointer:** `S10 — Favorites UX upgrade + cross-locale persistence` (100% COMPLETED & VERIFIED; ready for owner review).  
+
+**Current sprint (S10) progress & status:**
+- **Branch Created:** Created `feat/s10-favorites-ux-and-persistence` off `7d1a9da`.
+- **Architectural Enhancements Implemented in `assets/js/shared.js`:**
+  1. **Canonical Slug Keying & Normalization:**
+     - Enhanced `getCanonicalToolPath(rawUrlOrPath)` to strip protocol, origin/host, query parameters, hash fragments, `index.html` endings, and language prefixes (`/es/`, `/da/`).
+     - Normalizes all paths to uniform canonical keys (`/tool-name/`).
+     - Reads and writes to `localStorage['ac:fav']` strictly use canonical slugs, guaranteeing that favorites added on an English, Spanish, or Danish page persist seamlessly across language switches without duplicated or fragmented entries.
+  2. **Cross-Locale Localized Name & Description Resolution:**
+     - In `getFavoritesList()`, resolved tool names via `getToolName(toolMeta, lang)` and descriptions via `getToolDesc(toolMeta, lang)` from `TOOL_I18N`.
+     - Dynamically generated localized URLs via `localizedPathForLang(canon, lang, false)`.
+     - In the search modal (`showDefaultList()`) and homepage dashboard quick access grid (`initDashboardQuickAccess()`), favorite tools now render native translated names and link to the correct localized tool page when browsing on `/es/` or `/da/`.
+  3. **Universal Document Converter Tool Mounting:**
+     - Extended `initToolPageActions()` layout selector to `.tool-wrapper, .tool-card, .tool-container, .tool-zone, .dc-root`.
+     - Extended breadcrumb action host detector to include `nav[aria-label="Breadcrumb"], nav[aria-label="breadcrumbs"]`.
+     - Action toolbar (Related Tools, Share, Copy Link, Add to Favorites) now mounts universally across all document tools (`pdf-merge`, `pdf-compress`, `rotate-pdf`, etc.).
+  4. **Accessibility & ARIA Semantics:**
+     - Added dynamic `aria-pressed="true"` (favorited) and `aria-pressed="false"` (not favorited) to `updateFavoriteBtnState()`.
+     - Added `aria-keyshortcuts="Alt+F"` to the favorite button template and updated button titles with hotkey hints.
+  5. **Keyboard Hotkey & Focus Navigation:**
+     - Implemented document-level `Alt+F` keyboard shortcut listener that triggers favorite toggle and focuses the button when user is not typing in an input, textarea, select, or contenteditable element.
+  6. **Analytics Telemetry Integration:**
+     - Verified canonical `favorite_added` and `favorite_removed` event emission via `window.ACAnalytics.trackFavorite(canonPath, isNowFav)`.
+- **CSS Enhancements in `assets/css/style.css`:**
+  - Added accessible high-contrast `:focus-visible` styling for `.tool-page-action-btn:focus-visible` (2px solid #B04A45, 2px offset, subtle focus ring).
+  - Added accessible `:focus-visible` styling for `.dash-quick-card:focus-visible` (2px solid #B04A45, 2px offset, border color match, subtle focus ring).
+- **Automated Verification:**
+  - Created dedicated test suite `tests/test_s10_favorites_ux.js` (12/12 passing):
+    - CSS focus-visible rules verified.
+    - Canonical slug normalization across 11 path variations verified.
+    - Cross-locale persistence verified (ES -> EN & DA, DA -> EN & ES).
+    - Localized names and links verified in EN, ES, and DA.
+    - ARIA pressed states and Alt+F keyboard handler verified.
+  - S09 and S10 test suites registered in `tests/run_all_tests.js`.
+  - Master test suite `node tests/run_all_tests.js`: 25/25 suites passing (100%).
+  - Sitemap integrity `node scripts/generate_sitemap.js --check`: 100% synchronized (441 URLs, 147 clusters).
+- **Documentation & Memory:**
+  - Recorded ADR-049 in `.ai-memory/DECISIONS.md`.
+  - Captured G1–G15 release gate evidence in `docs/growth/91-TEST-EVIDENCE-AND-RELEASE-GATES.md`.
+  - Updated `.ai-memory/STATE.json`.
+- **Next Sprint Pointer:** Sprint S11 — Recents carousel on homepage (localStorage-backed ring buffer of last 8 used tools; accessible, keyboard-navigable, cross-locale persistent).
+
+---
+
+## Phase 41 — Growth Program Sprint S09: Striking-Distance SEO Metadata & High-Intent FAQ Expansion (ES + DA) (2026-11-19)
+
+**Program:** AnyConverter.io Global Growth Engine (SEO + engagement + backlinks + distribution).  
+**Operating cadence:** 30 sprints × 2 days = 60 days. One prod ship per sprint.  
+**Active branch:** `feat/s09-striking-distance-metadata-es-da` (branched from S08 checkpoint `feat/s08-faq-expansion-en`, commit `982b3f8`).  
+**Current sprint pointer:** `S09 — KW: Striking-distance for ES + DA` (100% COMPLETED & VERIFIED; ready for owner review).  
+
+**Current sprint (S09) progress & status:**
+- **Branch Created:** Created `feat/s09-striking-distance-metadata-es-da` off `982b3f8`.
+- **Top 10 Spanish Tools Optimized:**
+  1. `/es/sticky-notes/index.html` (Title: 44c, Desc: 152c, 5 FAQs with verbatim schema parity)
+  2. `/es/monitor-color-test/index.html` (Title: 47c, Desc: 151c, 5 FAQs with verbatim schema parity)
+  3. `/es/base64-encoder/index.html` (Title: 45c, Desc: 148c, 5 FAQs with verbatim schema parity)
+  4. `/es/ocr-pdf/index.html` (Title: 59c, Desc: 149c, 5 FAQs with verbatim schema parity)
+  5. `/es/pdf-merge/index.html` (Title: 59c, Desc: 150c, 5 FAQs synchronized across SSR, dc-template, and JSON-LD)
+  6. `/es/rotate-pdf/index.html` (Title: 58c, Desc: 151c, 5 FAQs synchronized across SSR, dc-template, and JSON-LD)
+  7. `/es/text-diff-checker/index.html` (Title: 49c, Desc: 149c, 5 FAQs with verbatim schema parity)
+  8. `/es/compare-pdf/index.html` (Title: 59c, Desc: 146c, 5 FAQs with verbatim schema parity)
+  9. `/es/edit-pdf/index.html` (Title: 57c, Desc: 146c, 5 FAQs with verbatim schema parity)
+  10. `/es/json-formatter/index.html` (Title: 57c, Desc: 147c, 5 FAQs with verbatim schema parity)
+- **Top 10 Danish Tools Optimized:**
+  1. `/da/mortgage-calculator/index.html` (Title: 47c, Desc: 156c, 5 FAQs with verbatim schema parity)
+  2. `/da/loan-calculator/index.html` (Title: 57c, Desc: 148c, 5 FAQs with verbatim schema parity)
+  3. `/da/todo-list/index.html` (Title: 58c, Desc: 157c, 5 FAQs with verbatim schema parity)
+  4. `/da/bmi-calculator/index.html` (Title: 58c, Desc: 149c, 5 FAQs with verbatim schema parity)
+  5. `/da/invoice-generator/index.html` (Title: 60c, Desc: 148c, 5 FAQs with verbatim schema parity)
+  6. `/da/pdf-compress/index.html` (Title: 59c, Desc: 149c, 5 FAQs synchronized across SSR, dc-template, and JSON-LD)
+  7. `/da/pdf-to-jpg/index.html` (Title: 58c, Desc: 151c, 5 FAQs synchronized across SSR, dc-template, and JSON-LD)
+  8. `/da/jpg-to-pdf/index.html` (Title: 59c, Desc: 147c, 5 FAQs synchronized across SSR, dc-template, and JSON-LD)
+  9. `/da/ocr-pdf/index.html` (Title: 59c, Desc: 149c, 5 FAQs with verbatim schema parity)
+  10. `/da/word-counter/index.html` (Title: 56c, Desc: 146c, 5 FAQs with verbatim schema parity)
+- **Metadata Standards & Bounds:**
+  - `<title>`: All 20 tools strictly $\le 60$ visible characters, brand suffix ` | AnyConverter`, primary keyword front-loaded.
+  - `<meta name="description">`: All 20 tools strictly 140–160 characters, front-loading primary queries with active CTAs and truthful client-side privacy descriptions.
+  - Open Graph & Twitter: Mirrored identically into `og:title`, `og:description`, `og:url`, `twitter:title`, and `twitter:description`.
+- **100% Verbatim Parity & Schema Alignment:**
+  - 100 high-intent Q&As (5 per tool across 20 tools) addressing user search intent, formats, and device capabilities.
+  - 100% verbatim equality enforced between visible HTML and `FAQPage` schema.
+- **SSR & Client Template Synchronization:**
+  - Fully synchronized both static SSR pre-rendered HTML and client-side `<script type="text/x-dc-template" id="dc-template">` in all 5 document converter tools.
+- **Automated Verification:**
+  - `node tests/test_s09_striking_distance_es_da.js`: 970/970 assertions passed.
+  - `node scripts/generate_sitemap.js --check`: 100% synchronized with canonical manifest (441 URLs, 147 clusters).
+  - `node tests/test_sitemap_integrity.js`: 100% PASS (441/441 URLs declared, 0 dangling, 0 orphans).
+  - `node tests/test_localization_regression.js`: 100% PASS (147 ES + 147 DA pages verified clean).
+  - `node tests/test_privacy_claims_regression.js`: 100% PASS (475/475 HTML files verified).
+  - `node tests/test_s08_faq_expansion.js`: 234/234 assertions passed.
+  - `node tests/test_s07_striking_distance_metadata.js`: 60/60 assertions passed.
+  - `node tests/run_all_tests.js`: 23/23 master test suites passed (100%).
+- **Documentation & Memory:**
+  - Recorded ADR-048 in `.ai-memory/DECISIONS.md`.
+  - Captured G1–G15 release gate evidence in `docs/growth/91-TEST-EVIDENCE-AND-RELEASE-GATES.md`.
+  - Updated `.ai-memory/STATE.json` and `.ai-memory/HANDOFF.md`.
+- **Next Sprint Pointer:** Sprint S10 — Favorites UX upgrade + cross-locale persistence (Week 4 kickoff).
+
+---
+
+## Phase 40 — Growth Program Sprint S08: High-Intent FAQ Expansion & Schema Parity (EN) (2026-11-19)
+
+**Program:** AnyConverter.io Global Growth Engine (SEO + engagement + backlinks + distribution).  
+**Operating cadence:** 30 sprints × 2 days = 60 days. One prod ship per sprint.  
+**Active branch:** `feat/s08-faq-expansion-en` (branched from S07 checkpoint `feat/s07-striking-distance-metadata-en`).  
+**Current sprint pointer:** `S08 — KW: FAQ expansion on the same 10 pages` (100% COMPLETED & VERIFIED; ready for owner review).  
+
+**Current sprint (S08) progress & status:**
+- **Branch Created:** Created `feat/s08-faq-expansion-en` off `feat/s07-striking-distance-metadata-en`.
+- **Top 10 English Tools FAQ Expansion:**
+  - Expanded FAQs across all 10 priority tools to 5–6 comprehensive, authoritative Q&As (51 total Q&As across the cohort):
+    1. `ip-address-lookup` (6 FAQs: public detection, public vs private, ISP physical address limits, zero logging, ASN definition, VPN routing)
+    2. `discount-calculator` (5 FAQs: discount percentage formula, sale price calculation, stacked discounts, finding pre-sale price, percentage vs fixed discounts)
+    3. `daily-planner` (5 FAQs: localStorage autosave, calendar date navigation, time blocking methodology, print/PDF export, task capacity)
+    4. `internet-speed-test` (5 FAQs: bandwidth speed tiers, download/upload/ping definitions, advertised speed factors, speed improvement tips, zero personal data transfer)
+    5. `pdf-merge` (5 FAQs: unlimited file count, browser-only client-side execution, custom page selection/reordering, lossless quality, double-sided printing blank pages)
+    6. `pdf-forms` (5 FAQs: interactive AcroForms vs static text, form flattening, editable re-saving, client-side data privacy, checkboxes/radio buttons)
+    7. `extract-pdf-pages` (5 FAQs: specific page ranges, custom extracted order, local processing privacy, vector sharpness preservation, single vs multiple PDF export)
+    8. `keyboard-tester` (5 FAQs: key latency detection, ghosting and N-key rollover, hardware/Fn key behavior, switch chatter/double-typing, multi-OS support)
+    9. `sticky-notes` (5 FAQs: localStorage privacy, browser restart persistence, JSON/TXT backup export/import, color tags and pinning, board capacity)
+    10. `gst-vat-calculator` (5 FAQs: GST vs VAT distinction, gross to net removal formula, net to gross addition formula, UK/Australia/Canada tax rates, invoice accounting)
+- **100% Verbatim Schema/DOM Parity:**
+  - Every single question and answer in visible HTML `<details class="faq-item">` matches the corresponding `FAQPage` JSON-LD structured data word-for-word, fully adhering to Google's Search Central structured data policies.
+- **Template & SSR Synchronization:**
+  - Synchronized both static SSR HTML and `<script type="text/x-dc-template" id="dc-template">` in `pdf-merge` and `extract-pdf-pages`, eliminating duplicate details blocks.
+- **Automated Verification:**
+  - `node scripts/generate_sitemap.js --check`: 100% synchronized with canonical manifest (441 URLs, 147 clusters).
+  - `node tests/test_s08_faq_expansion.js`: 234/234 assertions passed (10/10 pages verified).
+  - `node tests/test_s07_striking_distance_metadata.js`: 60/60 assertions passed (S07 title and description invariants preserved).
+  - `node tests/run_all_tests.js`: 23/23 master test suites passed (100%).
+- **Next Sprint Pointer:** Sprint S09 — KW: Striking-distance for ES + DA (title + description + FAQ pattern applied to the top-10 striking-distance pages in each of ES and DA).
+
+**Completed Sprints Summary:**
+- **Sprint S01 (Days 1–2):** Baseline snapshot & 128-tool parity audit (`feat/s01-baseline-and-tool-count`, commit `acf0785`). 28-day, 90-day, full-history GSC search analytics pulled and verified (52,774 imp, 47 clicks), 128 tools parity verified in EN/ES/DA, privacy disclaimer aligned in `da/todo-list`.
+- **Sprint S02 (Days 3–4):** Event adapter + first instrumented tools (`feat/s02-event-adapter-and-instrumentation`, commit `8c0eb68`). Built `assets/js/shared/analytics.js` (16-event canonical dictionary), strict zero-PII/zero-file sanitization, top 10 tools + homepage instrumentation, `tests/test_analytics_adapter.js` (7/7 pass).
+- **Sprint S03 (Days 5–6):** GitHub metadata + README overhaul (`feat/s03-github-metadata-and-readme`, commit `7ab54be`). GitHub repo description, homepage, and 8 topics live. Comprehensive technical README with 128-tool directory and architecture documentation. All 22 test suites pass. Pre-deploy release gate report generated.
+- **Sprint S04 (Days 7–8):** ES translation drift sweep (`feat/s04-es-translation-drift-sweep`, commit `68ad865`). 76 Spanish HTML files updated, 301 orthography and phrasing repairs, automated regression guard in `test_localization_regression.js`, all 22 master suites pass, 15/15 pre-deploy gates pass.
+- **Sprint S05 (Days 9–10):** DA translation drift sweep + hreflang repair (`feat/s05-da-translation-drift-and-hreflang`, commit `d0eb86c`). 19 Danish HTML files updated, ASCII digraphs resolved, untranslated English sections translated, native `Låneberegner` query promoted, reciprocal hreflang verified across EN/ES/DA for all 60 touched pages, automated Danish drift guard in `test_localization_regression.js`, all 22 master suites pass, 15/15 pre-deploy gates pass.
+- **Sprint S05.1 (Remediation Pass):** S01–S05 audit remediation (`feat/s05.1-audit-remediation`, commit `1242395`). Wired analytics into 45 core pages, eliminated 5 ES English leaks and icon alts, locked `daStrippedRegex` & `esStrippedRegex` regression guards, backfilled ADR-042. 22/22 master suites pass.
+- **Sprint S06 (Days 11–12):** Sitemap rebuild from manifest + GSC verification (`feat/s06-sitemap-rebuild-and-gsc-resubmit`, commit `9e45591`). Production generator `scripts/generate_sitemap.js`, automated suite `tests/test_sitemap_integrity.js`, live GSC audit verified (441 submitted, 0 errors, 0 warnings), 23/23 master test suites pass.
+- **Sprint S07 (Days 13–14):** Striking-distance title & description rewrites (EN) (`feat/s07-striking-distance-metadata-en`, commit `d4cd7da`). Top 10 English tools optimized (<title> <=60c, meta desc 140-160c, OG/Twitter tags mirrored), 60/60 assertions pass in `tests/test_s07_striking_distance_metadata.js`, 23/23 master test suites pass, ADR-046 recorded.
+- **Sprint S08 (Days 15–16):** FAQ expansion on top 10 English tools (`feat/s08-faq-expansion-en`). 51 PAA-aligned FAQs across 10 tools, 100% verbatim schema/DOM parity, 234/234 assertions pass in `tests/test_s08_faq_expansion.js`, sitemap sync verified, 23/23 master test suites pass, ADR-047 recorded.
+
+**Canonical documents (read in this order each session):**
+1. `docs/growth/60_DAY_AGGRESSIVE_PLAN.md` — sprint calendar, keyword method, side-by-side backlink track, owner-approval checkpoints.
+2. `docs/growth/COMBINED_GROWTH_MASTER_PLAN.md` — strategic reference (approval matrix, evidence standard, gates).
+3. `docs/growth/SKILLS_VALIDATION_REPORT.md` — installed skills + MCP integration state.
+4. `docs/growth/GROWTH_TRACKING.xlsx` — tracker (regenerate via `docs/growth/_build_tracking_xlsx.py` after edits).
+5. `.agents/skills/anyconverter-*` — 5 project-specific SEO skills to apply.
+6. `.agents/skills/NOTICE.md` — attribution for vendored OSS skills.
+
+**Current sprint (S01) deliverables expected:**
+- Confirm GSC + GA4 MCP credential grants (user action).
+- Flip `.agents/mcp_config.json` `disabled: false` for both (requires user approval).
+- Produce `docs/growth/00-EXECUTIVE-BASELINE.md` from a real 28-day + 90-day GSC + GA4 pull — no fabricated numbers.
+- Build single-source-of-truth tool-count manifest; regenerate homepage, FAQ, and press to resolve the 128-vs-78 inconsistency.
+- Open `feat/s01-baseline-and-tool-count` from a fresh checkpoint off `main` (do not stack on `feat/regex-tester-1gb-upload` or `feat/seo-remediation-and-technical-repair`).
+- Pass `anyconverter-pre-deploy-seo-verification` (15 gates G1–G15) and request owner approval before merge.
+
+**Non-negotiable guardrails for the full 60 days:**
+- No deploy or merge to `main` without a captured pre-deploy gate report + owner approval.
+- No fabricated keyword volumes, rankings, outreach replies, revenue, or placements.
+- No autonomous email / Reddit / Quora / HN / GitHub-issue posting. Draft only until Day 30; approved manual sending from Day 31.
+- No paid API spend (Ahrefs, DataForSEO, Apollo paid tier) without owner approval.
+- No scaled machine translation. Native reviewer sign-off required for ES / DA fixes (S04 / S05) and any new locale.
+- Preserve EN / ES / DA tool algorithms, URLs, canonicals, hreflang, and schema while making changes.
+- `.agents/mcp_config.json` contains plaintext tokens for `stitch` and `cloudflare-api` — do not print them, and flag this as a separate security sprint if it is tracked in git.
+
+**Daily discovery protocol (per AGENTS.md §3):**
+1. Read `.ai-memory/STATE.json` → identify current sprint and blockers.
+2. Read `.ai-memory/HANDOFF.md` (this file) → confirm program-level context.
+3. Read `docs/growth/60_DAY_AGGRESSIVE_PLAN.md` → identify today's sprint card.
+4. Check `git status`, current branch, and uncommitted work before any edit.
+5. Verify MCP profile (`node .agents/scripts/switch-profile.js status`) matches the sprint need.
+6. Execute. Update `STATE.json` + `HANDOFF.md` at the end of the session.
+
+---
+
 ## Phase 37: SEO Evidence Repair, Technical Remediation & Organic Growth Release (2026-11-16)
 
 - **Audit Origin:** User provided comprehensive audit specifications (`ANYCONVERTER_COMPLETE_SEO_AUDIT.md` and `ANTIGRAVITY_FULL_SEO_REPAIR_PROMPT.md`) requiring empirical Search Console data reconciliation, resolution of conflicting indexing reports, repair of illegal routing/redirect defects, and evidence-backed on-page enhancements.

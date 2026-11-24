@@ -29,7 +29,54 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Formateador XML","url":"https://anyconverter.io/es/xml-formatter/","description":"Formatea y valida XML online gratis.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"¿Se envían mis datos a un servidor?","acceptedAnswer":{"@type":"Answer","text":"No. El formateador XML usa el DOMParser del navegador. Todo el procesamiento es local y tus datos se procesan en tu navegador."}},{"@type":"Question","name":"¿Qué tipos de archivos XML acepta?","acceptedAnswer":{"@type":"Answer","text":"Acepta cualquier archivo XML válido, incluyendo XHTML, SVG, RSS, Atom, SOAP y otros formatos basados en XML."}}]}</script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "¿Se envían mis datos a un servidor?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. El formateador XML usa el DOMParser del navegador. Todo el procesamiento es local y tus datos se procesan en tu navegador."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Qué tipos de archivos XML acepta?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Acepta cualquier archivo XML válido, incluyendo XHTML, SVG, RSS, Atom, SOAP y otros formatos basados en XML."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Qué tipo de errores detecta el validador XML?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "El validador integrado analiza etiquetas de apertura y cierre no coincidentes, atributos mal formateados, caracteres especiales no escapados (&, <, >) y violaciones de la sintaxis estándar de documentos bien formados."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Puedo minificar código XML para producción?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sí. Puedes seleccionar la opción de minificación para eliminar espacios en blanco redundantes, saltos de línea e indentaciones, reduciendo el tamaño del archivo para su transmisión en red."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cuál es la diferencia principal entre XML y JSON?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "XML utiliza etiquetas de marcado jerárquicas con soporte para atributos, espacios de nombres y validación mediante esquemas XSD, mientras que JSON es una notación ligera de pares clave-valor centrada en objetos y arreglos."
+      }
+    }
+  ]
+}
+</script>
 
 
 <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
@@ -46,6 +93,26 @@
   </style>
   <link rel="stylesheet" href="/assets/css/style.css?v=20261109">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Inicio",
+      "item": "https://anyconverter.io/es/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Formateador XML",
+      "item": "https://anyconverter.io/es/xml-formatter/"
+    }
+  ]
+}
+  </script>
 </head>
 <body>
   <header id="site-header" class="site-header"></header>
@@ -161,6 +228,25 @@
         <li><strong>Copia o descarga</strong> — Copia el resultado o descárgalo como archivo .xml.</li>
       </ol>
     </section>
+
+    <section class="how-it-works" id="how-it-works">
+      <h2>Cómo funciona: Análisis XML, serialización DOM y formateo de árboles</h2>
+
+      <h3>¿Qué es un formateador de XML?</h3>
+      <p>Un formateador de XML es una utilidad de marcado que analiza documentos de marcado extensible utilizando el DOMParser nativo del navegador, valida que el XML esté bien formado según las especificaciones del W3C y serializa los elementos en jerarquías de indentación uniformes (indentation hierarchies). Reorganiza estructuras XML comprimidas o desordenadas en árboles legibles manteniendo atributos y nodos de texto.</p>
+
+      <h3>Cómo funciona en el navegador</h3>
+      <p>Nuestro motor de formateo analiza y limpia documentos XML localmente utilizando el analizador nativo del navegador sin dependencias externas:</p>
+      <ol class="how-it-works-steps">
+        <li><strong>Instanciación de DOMParser del W3C</strong>: La cadena XML se analiza con el DOMParser nativo mediante <code>new DOMParser().parseFromString(xml, "application/xml")</code> en un modelo de objetos del documento XML.</li>
+        <li><strong>Detección de errores de sintaxis</strong>: El motor DOMParser busca nodos de tipo <code>parsererror</code> generados por etiquetas mal cerradas o caracteres ilegales, señalando el error con precisión.</li>
+        <li><strong>Jerarquías de indentación recursivas (indentation hierarchies)</strong>: El árbol DOM se recorre recursivamente construyendo indentation hierarchies, calculando los niveles de anidamiento e insertando espacios uniformes (2 espacios, 4 espacios o tabulaciones).</li>
+        <li><strong>Escapado de entidades y CDATA (CDATA & XML entity escaping)</strong>: Los bloques CDATA y nodos de texto se conservan intactos, aplicando CDATA & XML entity escaping (<code>&amp;amp;</code>, <code>&amp;lt;</code>, <code>&amp;gt;</code>, <code>&amp;quot;</code>, <code>&amp;apos;</code>) sin alteraciones no deseadas.</li>
+      </ol>
+
+      <h3>Especificaciones técnicas y estándares del W3C</h3>
+      <p>La herramienta cumple rigurosamente con la recomendación <strong>W3C XML 1.0 (Quinta Edición)</strong> y los estándares <strong>DOM Level 3 Core</strong>. Un documento XML válido exige un único elemento raíz, etiquetas de cierre coincidentes, indentation hierarchies uniformes y CDATA & XML entity escaping correcto. Todo el formateo, minificación y descarga de archivos se ejecuta mediante DOMParser en la memoria local con absoluta privacidad.</p>
+    </section>
     <section class="features">
       <h2>Características</h2>
       <ul class="features-list">
@@ -192,14 +278,18 @@
       <div class="faq-list">
         <details class="faq-item"><summary class="faq-question">¿Se envían mis datos a un servidor? <span class="faq-icon">+</span></summary><div class="faq-answer">No. El formateador XML usa el DOMParser del navegador. Todo el procesamiento es local y tus datos se procesan en tu navegador.</div></details>
         <details class="faq-item"><summary class="faq-question">¿Qué tipos de archivos XML acepta? <span class="faq-icon">+</span></summary><div class="faq-answer">Acepta cualquier archivo XML válido, incluyendo XHTML, SVG, RSS, Atom, SOAP y otros formatos basados en XML.</div></details>
+    <details class="faq-item"><summary class="faq-question">¿Qué tipo de errores detecta el validador XML? <span class="faq-icon">+</span></summary><div class="faq-answer">El validador integrado analiza etiquetas de apertura y cierre no coincidentes, atributos mal formateados, caracteres especiales no escapados (&, <, >) y violaciones de la sintaxis estándar de documentos bien formados.</div></details>
+    <details class="faq-item"><summary class="faq-question">¿Puedo minificar código XML para producción? <span class="faq-icon">+</span></summary><div class="faq-answer">Sí. Puedes seleccionar la opción de minificación para eliminar espacios en blanco redundantes, saltos de línea e indentaciones, reduciendo el tamaño del archivo para su transmisión en red.</div></details>
+    <details class="faq-item"><summary class="faq-question">¿Cuál es la diferencia principal entre XML y JSON? <span class="faq-icon">+</span></summary><div class="faq-answer">XML utiliza etiquetas de marcado jerárquicas con soporte para atributos, espacios de nombres y validación mediante esquemas XSD, mientras que JSON es una notación ligera de pares clave-valor centrada en objetos y arreglos.</div></details>
       </div>
     </section>
     <section class="related-tools">
       <h2>Herramientas Relacionadas</h2>
       <div class="tool-grid">
-        <a href="/es/html-beautifier/" class="tool-card"><img src="/assets/img/icon-html-beautifier.svg" alt="Embellecedor y Minificador HTML Online Gratis icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Embellecedor y Minificador HTML Online Gratis</h3><p>Usa beautifier html gratis en el navegador.</p><span class="tool-card-link">Probar →</span></a>
         <a href="/es/json-formatter/" class="tool-card"><img src="/assets/img/icon-json.svg" alt="Formateador JSON Online Gratis icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Formateador JSON Online Gratis</h3><p>Formatea, valida y minifica JSON gratis.</p><span class="tool-card-link">Probar →</span></a>
+        <a href="/es/html-beautifier/" class="tool-card"><img src="/assets/img/icon-html-beautifier.svg" alt="Embellecedor y Minificador HTML Online Gratis icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Embellecedor y Minificador HTML Online Gratis</h3><p>Usa beautifier html gratis en el navegador.</p><span class="tool-card-link">Probar →</span></a>
         <a href="/es/json-to-yaml/" class="tool-card"><img src="/assets/img/icon-json-yaml.svg" alt="Convertidor JSON a YAML Online Gratis icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Convertidor JSON a YAML Online Gratis</h3><p>Usa Convertidor JSON a YAML gratis en el navegador.</p><span class="tool-card-link">Probar →</span></a>
+        <a href="/es/json-compare/" class="tool-card"><img src="/assets/img/icon-json.svg" alt="Comparar JSON Online icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Comparar JSON Online</h3><p>Compara dos archivos JSON lado a lado gratis.</p><span class="tool-card-link">Probar →</span></a>
         <a href="/es/regex-tester/" class="tool-card"><img src="/assets/img/icon-regex.svg" alt="Probador de Expresiones Regulares Online Gratis icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Probador de Expresiones Regulares Online Gratis</h3><p>Usa regex tester gratis en el navegador.</p><span class="tool-card-link">Probar →</span></a>
       </div>
     </section>

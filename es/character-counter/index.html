@@ -45,6 +45,26 @@
     @font-face{font-family:'Inter';font-display:swap}
   </style>
   <link rel="stylesheet" href="/assets/css/style.css?v=20261109">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Inicio",
+      "item": "https://anyconverter.io/es/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Contador de Caracteres",
+      "item": "https://anyconverter.io/es/character-counter/"
+    }
+  ]
+}
+  </script>
 </head>
 <body>
   <header id="site-header" class="site-header"></header>
@@ -88,6 +108,51 @@
         </div>
       </aside>
     </div>
+        <!-- Contextual Workflow Chain: Next Step (Sprint S26) -->
+    <section class="workflow-chain-section" id="workflow-chain-text" aria-labelledby="workflow-chain-heading" style="display:none;">
+      <div class="workflow-chain-header">
+        <div class="workflow-chain-badge">
+          <span aria-hidden="true">⚡</span>
+          <span>Siguiente paso</span>
+        </div>
+        <h2 class="workflow-chain-title" id="workflow-chain-heading">Siguiente paso: Continúa tu flujo de trabajo de texto</h2>
+        <p class="workflow-chain-sub">Tu texto está listo. Continúa directamente con la siguiente herramienta del flujo:</p>
+        <button type="button" class="workflow-chain-dismiss" id="btn-chain-dismiss" aria-label="Descartar sugerencias de flujo de trabajo">✕</button>
+      </div>
+      <div class="workflow-chain-grid">
+        <a href="/es/word-counter/" class="workflow-chain-card" id="chain-step-counter" data-target="/es/word-counter/">
+          <div class="workflow-chain-card-icon">
+            <img src="/assets/img/icon-wordcount.svg" alt="Icono de Contador de palabras" width="28" height="28" loading="lazy">
+          </div>
+          <div class="workflow-chain-card-content">
+            <span class="workflow-chain-card-title">Contador de palabras</span>
+            <span class="workflow-chain-card-desc">Cuenta palabras, oraciones, párrafos y tiempo de lectura</span>
+          </div>
+          <span class="workflow-chain-card-action">Contar palabras →</span>
+        </a>
+        <a href="/es/text-case-converter/" class="workflow-chain-card" id="chain-step-case-converter" data-target="/es/text-case-converter/">
+          <div class="workflow-chain-card-icon">
+            <img src="/assets/img/icon-textcase.svg" alt="Icono de Convertidor de mayúsculas y minúsculas" width="28" height="28" loading="lazy">
+          </div>
+          <div class="workflow-chain-card-content">
+            <span class="workflow-chain-card-title">Convertidor de mayúsculas y minúsculas</span>
+            <span class="workflow-chain-card-desc">Convierte a mayúsculas, minúsculas, título, camelCase y más</span>
+          </div>
+          <span class="workflow-chain-card-action">Convertir texto →</span>
+        </a>
+        <a href="/es/text-diff-checker/" class="workflow-chain-card" id="chain-step-diff-checker" data-target="/es/text-diff-checker/">
+          <div class="workflow-chain-card-icon">
+            <img src="/assets/img/icon-diff.svg" alt="Icono de Comparador de texto" width="28" height="28" loading="lazy">
+          </div>
+          <div class="workflow-chain-card-content">
+            <span class="workflow-chain-card-title">Comparador de texto</span>
+            <span class="workflow-chain-card-desc">Compara dos versiones de texto línea por línea</span>
+          </div>
+          <span class="workflow-chain-card-action">Comparar texto →</span>
+        </a>
+      </div>
+    </section>
+
     <div class="ad-slot ad-slot--leaderboard">
       <div class="adsbygoogle" style="display:block" aria-hidden="true"></div>
 </div>
@@ -138,15 +203,17 @@
         <section class="related-tools">
       <h2>Herramientas Relacionadas</h2>
       <div class="tool-grid">
+        <a href="/es/number-to-words/" class="tool-card"><img src="/assets/img/icon-number-words.svg" alt="Convertidor de Números a Palabras Online Gratis icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Convertidor de Números a Palabras Online Gratis</h3><p>Usa Convertidor de Números a Palabras gratis en el navegador.</p><span class="tool-card-link">Probar →</span></a>
+        <a href="/es/markdown-html/" class="tool-card"><img src="/assets/img/icon-markdown.svg" alt="Conversor de Markdown a HTML Online Gratis icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Conversor de Markdown a HTML Online Gratis</h3><p>Usa Conversor de Markdown a HTML gratis en el navegador.</p><span class="tool-card-link">Probar →</span></a>
         <a href="/es/word-counter/" class="tool-card"><img src="/assets/img/icon-wordcount.svg" alt="Contador de Palabras Online Gratis icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Contador de Palabras Online Gratis</h3><p>Usa contador de palabras gratis en el navegador.</p><span class="tool-card-link">Probar →</span></a>
         <a href="/es/text-case-converter/" class="tool-card"><img src="/assets/img/icon-textcase.svg" alt="Conversor de Mayúsculas y Minúsculas Online Gratis icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Conversor de Mayúsculas y Minúsculas Online Gratis</h3><p>Usa Conversor de Mayúsculas y Minúsculas gratis en el navegador.</p><span class="tool-card-link">Probar →</span></a>
-        <a href="/es/text-diff-checker/" class="tool-card"><img src="/assets/img/icon-diff.svg" alt="Comparador de Texto Online Gratis icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Comparador de Texto Online Gratis</h3><p>Usa text diff checker gratis en el navegador.</p><span class="tool-card-link">Probar →</span></a>
-        <a href="/es/text-repeater/" class="tool-card"><img src="/assets/img/icon-repeat.svg" alt="Repetidor de Texto Online Gratis icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Repetidor de Texto Online Gratis</h3><p>Usa text repeater online gratis en el navegador.</p><span class="tool-card-link">Probar →</span></a>
+        <a href="/es/text-diff-checker/" class="tool-card"><img src="/assets/img/icon-diff.svg" alt="Comparador de Texto Online Gratis icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Comparador de Texto Online Gratis</h3><p>Usa el comparador de texto gratis en el navegador.</p><span class="tool-card-link">Probar →</span></a>
       </div>
     </section>
   </main>
   <footer id="site-footer" class="site-footer"></footer>
   <script src="/assets/js/shared.js?v=20261109" defer></script>
   <script src="/assets/js/tools/character-counter.js" defer></script>
+  <script src="/assets/js/tools/text-workflow-chain.js?v=20261124" defer></script>
 </body>
 </html>

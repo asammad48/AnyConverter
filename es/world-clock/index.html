@@ -54,6 +54,26 @@
     @font-face{font-family:'Inter';font-display:swap}
   </style>
   <link rel="stylesheet" href="/assets/css/style.css?v=20261109">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Inicio",
+      "item": "https://anyconverter.io/es/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Reloj Mundial",
+      "item": "https://anyconverter.io/es/world-clock/"
+    }
+  ]
+}
+  </script>
 </head>
 <body>
   <header id="site-header" class="site-header"></header>
@@ -88,55 +108,55 @@
       <div class="adsbygoogle" style="display:block" aria-hidden="true"></div>
 </div>
     <section class="how-to-use">
-      <h2>How to Use the World Clock</h2>
+      <h2>Cómo Usar el Reloj Mundial</h2>
       <ol class="steps">
-        <li>The clock starts with 10 default cities, all ticking live.</li>
-        <li>Select a city from the dropdown and click "+ Add City" to add it.</li>
-        <li>Click the ✕ on any card to remove a city.</li>
-        <li><strong>Night mode:</strong> Cards with a dark background indicate it is currently night in that city (between 20:00 and 06:00).</li>
+        <li>El reloj comienza con 10 ciudades predeterminadas, todas actualizándose en tiempo real.</li>
+        <li>Selecciona una ciudad en el menú desplegable y haz clic en "+ Añadir Ciudad" para agregarla.</li>
+        <li>Haz clic en la ✕ de cualquier tarjeta para quitar una ciudad.</li>
+        <li><strong>Modo nocturno:</strong> Las tarjetas con fondo oscuro indican que actualmente es de noche en esa ciudad (entre las 20:00 y las 06:00).</li>
       </ol>
     </section>
     <section class="features">
-      <h2>Features</h2>
+      <h2>Características</h2>
       <ul class="features-list">
-        <li>Live time updates every second</li>
-        <li>40+ cities and time zones available</li>
-        <li>Day/night indicator on each clock card</li>
-        <li>UTC offset displayed for each city</li>
-        <li>Add and remove cities on the fly</li>
-        <li>Handles DST automatically via browser timezone API</li>
+        <li>Actualización de la hora en directo cada segundo</li>
+        <li>Más de 40 ciudades y husos horarios disponibles</li>
+        <li>Indicador de día/noche en cada tarjeta de reloj</li>
+        <li>Diferencia horaria UTC mostrada para cada ciudad</li>
+        <li>Añade y elimina ciudades al instante</li>
+        <li>Gestiona el horario de verano automáticamente mediante la API del navegador</li>
       </ul>
     </section>
     <!-- SEO keyword implementation: 2026-08-21 -->
     <section class="seo-content" data-seo-keyword-plan="2026-08-21">
-      <h2>World Clock: practical uses</h2>
-      <p>Use World Clock when you need a fast, clear, private result without creating an account. This page also supports related needs like World Clock online, World Clock free, World Clock planner so you can choose the right workflow.</p>
-      <h3>When it helps</h3>
+      <h2>Reloj mundial: usos prácticos</h2>
+      <p>Usa el reloj mundial cuando necesites consultar la hora exacta en distintas ciudades del mundo de forma rápida, clara y privada sin crear una cuenta. Esta página también cubre variantes relacionadas como reloj mundial online, hora internacional en vivo y convertidor de zonas horarias para que puedas elegir el flujo correcto.</p>
+      <h3>Cuándo resulta útil</h3>
       <ul>
-        <li><strong>Best for:</strong> Running a focused task, timer, plan, note, checklist, or habit flow directly in the browser.</li>
-        <li><strong>Helpful details:</strong> Keep the page open while you work, use the saved or live state where available, and reset when the session changes.</li>
-        <li><strong>Next step:</strong> Move to another planning or timing tool when you need a timer, list, notes, daily plan, or habit tracker.</li>
+        <li><strong>Ideal para:</strong> Coordinar reuniones internacionales, planificar viajes, consultar horarios de mercado o contactar a colaboradores en el extranjero.</li>
+        <li><strong>Detalles útiles:</strong> Mantén la pestaña abierta mientras trabajas; la hora se actualiza cada segundo y refleja automáticamente los cambios de horario de verano.</li>
+        <li><strong>Siguiente paso:</strong> Continúa con otra herramienta de gestión del tiempo cuando necesites temporizadores, listas de tareas, notas o planificadores de hábitos.</li>
       </ul>
-      <p>For the next step, try <a href="/pomodoro-timer/">Pomodoro Timer</a>, <a href="/todo-list/">To-do List Online</a>, <a href="/daily-planner/">Daily Planner Online</a>, <a href="/habit-tracker/">Habit Tracker Online</a>.</p>
+      <p>Como siguiente paso, prueba el <a href="/es/pomodoro-timer/">Temporizador Pomodoro</a>, la <a href="/es/todo-list/">Lista de Tareas Online</a>, el <a href="/es/daily-planner/">Planificador Diario Online</a> o el <a href="/es/habit-tracker/">Seguidor de Hábitos Online</a>.</p>
     </section>
 
     <div class="ad-slot ad-slot--rectangle" style="margin:0 auto 32px">
       <div class="adsbygoogle" style="display:block" aria-hidden="true"></div>
 </div>
     <section class="faq">
-      <h2>Frequently Asked Questions</h2>
+      <h2>Preguntas Frecuentes</h2>
       <div class="faq-list">
-        <details class="faq-item"><summary class="faq-question">Does the clock update automatically? <span class="faq-icon">+</span></summary><div class="faq-answer">Yes. The time on each card refreshes every second using JavaScript's setInterval. There is no need to reload the page.</div></details>
-        <details class="faq-item"><summary class="faq-question">Does it handle Daylight Saving Time? <span class="faq-icon">+</span></summary><div class="faq-answer">Yes. The tool uses the browser's built-in Intl.DateTimeFormat API with IANA timezone identifiers (e.g. America/New_York), which automatically accounts for DST transitions.</div></details>
-        <details class="faq-item"><summary class="faq-question">Why does a card appear dark? <span class="faq-icon">+</span></summary><div class="faq-answer">Cards with a dark background indicate the local time in that city is between 20:00 (8 PM) and 06:00 (6 AM) — considered night-time hours.</div></details>
+        <details class="faq-item"><summary class="faq-question">¿El reloj se actualiza automáticamente? <span class="faq-icon">+</span></summary><div class="faq-answer">Sí. La hora en cada tarjeta se actualiza cada segundo usando JavaScript. No es necesario recargar la página.</div></details>
+        <details class="faq-item"><summary class="faq-question">¿Tiene en cuenta el horario de verano? <span class="faq-icon">+</span></summary><div class="faq-answer">Sí. La herramienta utiliza la API Intl.DateTimeFormat del navegador con identificadores de zona horaria IANA, ajustándose automáticamente al horario de verano.</div></details>
+        <details class="faq-item"><summary class="faq-question">¿Por qué una tarjeta aparece oscura? <span class="faq-icon">+</span></summary><div class="faq-answer">Las tarjetas con fondo oscuro indican que la hora local en esa ciudad está entre las 20:00 (8 PM) y las 06:00 (6 AM), considerándose horario nocturno.</div></details>
       </div>
     </section>
         <section class="related-tools">
       <h2>Herramientas Relacionadas</h2>
       <div class="tool-grid">
         <a href="/es/timestamp-converter/" class="tool-card"><img src="/assets/img/icon-clock.svg" alt="Convertidor de Timestamp Unix Online icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Convertidor de Timestamp Unix Online</h3><p>Usa Convertidor de Timestamp Unix gratis en el navegador.</p><span class="tool-card-link">Probar →</span></a>
-        <a href="/es/countdown-timer/" class="tool-card"><img src="/assets/img/icon-countdown.svg" alt="Temporizador de Cuenta Regresiva Online Gratis icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Temporizador de Cuenta Regresiva Online Gratis</h3><p>Usa Temporizador de Cuenta Regresiva gratis en el navegador.</p><span class="tool-card-link">Probar →</span></a>
         <a href="/es/birthday-countdown-calculator/" class="tool-card"><img src="/assets/img/icon-calculator.svg" alt="Cuenta Regresiva para tu Cumpleaños Online Gratis icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Cuenta Regresiva para tu Cumpleaños Online Gratis</h3><p>Cuenta regresiva para tu cumpleaños gratis: mira los meses, días y horas que faltan, qué día de la semana cae y cuántos cumples.</p><span class="tool-card-link">Probar →</span></a>
+        <a href="/es/cron-expression-parser/" class="tool-card"><img src="/assets/img/icon-timer.svg" alt="Analizador de Expresiones Cron Online Gratis icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Analizador de Expresiones Cron Online Gratis</h3><p>Usa Analizador de Expresiones Cron gratis en el navegador.</p><span class="tool-card-link">Probar →</span></a>
         <a href="/es/meeting-timer/" class="tool-card"><img src="/assets/img/icon-meeting.svg" alt="Temporizador de Reuniones icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Temporizador de Reuniones</h3><p>Usa un temporizador de reuniones con agenda, progreso en vivo, tiempo restante y controles claros para sesiones enfocadas.</p><span class="tool-card-link">Probar →</span></a>
       </div>
     </section>

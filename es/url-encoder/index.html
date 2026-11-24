@@ -29,7 +29,54 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Codificador URL","url":"https://anyconverter.io/es/url-encoder/","description":"Codifica o decodifica URLs y parámetros de consulta online gratis.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"¿Cuál es la diferencia entre codificar componente y codificar URL?","acceptedAnswer":{"@type":"Answer","text":"encodeURIComponent codifica todos los caracteres especiales incluyendo /, ?, &, =, lo que lo hace adecuado para parámetros. encodeURI preserva los caracteres estructurales de la URL como /, ?, # para codificar URLs completas."}},{"@type":"Question","name":"¿Qué es la codificación porcentual?","acceptedAnswer":{"@type":"Answer","text":"La codificación porcentual reemplaza caracteres no seguros en URLs con un % seguido de dos dígitos hexadecimales. Por ejemplo, un espacio se convierte en %20."}}]}</script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "¿Cuál es la diferencia entre codificar componente y codificar URL?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "encodeURIComponent codifica todos los caracteres especiales incluyendo /, ?, &, =, lo que lo hace adecuado para parámetros. encodeURI preserva los caracteres estructurales de la URL como /, ?, # para codificar URLs completas."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Qué es la codificación porcentual?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "La codificación porcentual reemplaza caracteres no seguros en URLs con un % seguido de dos dígitos hexadecimales. Por ejemplo, un espacio se convierte en %20."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Qué hace el modo de espacio con signo más (+)?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "El estándar application/x-www-form-urlencoded traduce los espacios como signos más (+) en lugar de %20. Este modo es útil al preparar datos de formularios HTML o parámetros de consulta tradicionales."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Puede fallar la decodificación de una URL?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sí, si la cadena contiene secuencias porcentuales mal formadas (como un signo % no seguido de dos caracteres hexadecimales válidos), la función de decodificación arrojará un error de URI mal formada."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿El modo URL completa codifica todos los caracteres?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. El modo URL completa preserva los delimitadores de protocolo, dominio y ruta como :, /, ? y & para no romper la estructura de la dirección, codificando solo los caracteres no válidos o inseguros."
+      }
+    }
+  ]
+}
+</script>
 
 
 <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
@@ -45,6 +92,26 @@
     @font-face{font-family:'Inter';font-display:swap}
   </style>
   <link rel="stylesheet" href="/assets/css/style.css?v=20261109">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Inicio",
+      "item": "https://anyconverter.io/es/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Codificador URL",
+      "item": "https://anyconverter.io/es/url-encoder/"
+    }
+  ]
+}
+  </script>
 </head>
 <body>
   <header id="site-header" class="site-header"></header>
@@ -123,6 +190,25 @@
         <li><strong>Copia el resultado</strong> — Usa el botón "Copiar resultado" para copiar al portapapeles.</li>
       </ol>
     </section>
+
+    <section class="how-it-works" id="how-it-works">
+      <h2>Cómo funciona: Codificación porcentual RFC 3986 y escape de octetos URI</h2>
+
+      <h3>¿Qué es la codificación porcentual de URL?</h3>
+      <p>La codificación porcentual de URL es un mecanismo de sustitución de caracteres definido por la norma RFC 3986 percent-encoding que convierte caracteres no ASCII, espacios y delimitadores reservados en identificadores uniformes de recursos (URI) en tripletes hexadecimales con el formato %XX. Garantiza que los parámetros de consulta, rutas y cabeceras cumplan los estándares globales de direccionamiento en internet.</p>
+
+      <h3>Cómo funciona en el navegador</h3>
+      <p>AnyConverter procesa la normalización de URI de forma local mediante funciones nativas de JavaScript y serialización de octetos en UTF-8:</p>
+      <ol class="how-it-works-steps">
+        <li><strong>Conversión de puntos de código a UTF-8</strong>: Los caracteres de entrada se transforman en sus secuencias de bytes correspondientes en UTF-8 (de 1 a 4 bytes por carácter).</li>
+        <li><strong>Evaluación de caracteres reservados vs. no reservados (reserved vs. unreserved characters)</strong>: Los caracteres se clasifican según RFC 3986. El conjunto de unreserved characters—letras (<code>A-Z</code>, <code>a-z</code>), dígitos (<code>0-9</code>), guion (<code>-</code>), guion bajo (<code>_</code>), punto (<code>.</code>) y tilde (<code>~</code>)—se mantiene intacto.</li>
+        <li><strong>Sustitución por tripletes hexadecimales</strong>: Todos los reserved characters y bytes no ASCII se reemplazan por el símbolo de porcentaje (<code>%</code>) seguido de dos dígitos hexadecimales en mayúscula.</li>
+        <li><strong>Diferenciación entre componentes y URI completa</strong>: Permite conservar o escapar delimitadores como barras o signos de interrogación según se requiera codificar un parámetro o una URL completa.</li>
+      </ol>
+
+      <h3>Especificaciones técnicas y reglas de caracteres reservados</h3>
+      <p>La herramienta respeta rigurosamente las normas <strong>RFC 3986 percent-encoding</strong> y las directrices WHATWG URL. Distingue con precisión entre reserved vs. unreserved characters, diferenciando entre <code>encodeURIComponent()</code> (que escapa delimitadores como <code>/</code>, <code>?</code>, <code>&amp;</code>, <code>=</code> para valores de consulta) y <code>encodeURI()</code> (que conserva la estructura de rutas completas). Todo el proceso de codificación y decodificación ocurre en tu equipo.</p>
+    </section>
     <section class="features">
       <h2>Características</h2>
       <ul class="features-list">
@@ -154,15 +240,19 @@
       <div class="faq-list">
         <details class="faq-item"><summary class="faq-question">¿Cuál es la diferencia entre codificar componente y codificar URL? <span class="faq-icon">+</span></summary><div class="faq-answer">encodeURIComponent codifica todos los caracteres especiales incluyendo /, ?, &amp;, =, lo que lo hace adecuado para parámetros. encodeURI preserva los caracteres estructurales de la URL como /, ?, # para codificar URLs completas.</div></details>
         <details class="faq-item"><summary class="faq-question">¿Qué es la codificación porcentual? <span class="faq-icon">+</span></summary><div class="faq-answer">La codificación porcentual reemplaza caracteres no seguros en URLs con un % seguido de dos dígitos hexadecimales. Por ejemplo, un espacio se convierte en %20.</div></details>
+    <details class="faq-item"><summary class="faq-question">¿Qué hace el modo de espacio con signo más (+)? <span class="faq-icon">+</span></summary><div class="faq-answer">El estándar application/x-www-form-urlencoded traduce los espacios como signos más (+) en lugar de %20. Este modo es útil al preparar datos de formularios HTML o parámetros de consulta tradicionales.</div></details>
+    <details class="faq-item"><summary class="faq-question">¿Puede fallar la decodificación de una URL? <span class="faq-icon">+</span></summary><div class="faq-answer">Sí, si la cadena contiene secuencias porcentuales mal formadas (como un signo % no seguido de dos caracteres hexadecimales válidos), la función de decodificación arrojará un error de URI mal formada.</div></details>
+    <details class="faq-item"><summary class="faq-question">¿El modo URL completa codifica todos los caracteres? <span class="faq-icon">+</span></summary><div class="faq-answer">No. El modo URL completa preserva los delimitadores de protocolo, dominio y ruta como :, /, ? y & para no romper la estructura de la dirección, codificando solo los caracteres no válidos o inseguros.</div></details>
       </div>
     </section>
     <section class="related-tools">
       <h2>Herramientas Relacionadas</h2>
       <div class="tool-grid">
         <a href="/es/base64-encoder/" class="tool-card"><img src="/assets/img/icon-base64.svg" alt="Codificador Base64 Online Gratis icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Codificador Base64 Online Gratis</h3><p>Convierte texto plano a Base64 online gratis y decodifica Base64 a texto.</p><span class="tool-card-link">Probar →</span></a>
+        <a href="/es/ip-address-lookup/" class="tool-card"><img src="/assets/img/icon-ip-lookup.svg" alt="¿Cuál es mi dirección IP? icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>¿Cuál es mi dirección IP?</h3><p>Consulta tu dirección IP pública al instante con geolocalización, proveedor ISP, ciudad, país y ASN.</p><span class="tool-card-link">Probar →</span></a>
         <a href="/es/jwt-decoder/" class="tool-card"><img src="/assets/img/icon-jwt.svg" alt="Decodificador JWT Online Gratis icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Decodificador JWT Online Gratis</h3><p>Usa el decodificador de tokens JWT gratis en el navegador.</p><span class="tool-card-link">Probar →</span></a>
         <a href="/es/regex-tester/" class="tool-card"><img src="/assets/img/icon-regex.svg" alt="Probador de Expresiones Regulares Online Gratis icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Probador de Expresiones Regulares Online Gratis</h3><p>Usa regex tester gratis en el navegador.</p><span class="tool-card-link">Probar →</span></a>
-        <a href="/es/ip-address-lookup/" class="tool-card"><img src="/assets/img/icon-ip-lookup.svg" alt="¿Cuál es mi dirección IP? icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>¿Cuál es mi dirección IP?</h3><p>Consulta tu dirección IP pública al instante con geolocalización, proveedor ISP, ciudad, país y ASN.</p><span class="tool-card-link">Probar →</span></a>
+        <a href="/es/qr-code-generator/" class="tool-card"><img src="/assets/img/icon-qr.svg" alt="Generador de Códigos QR Online Gratis icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Generador de Códigos QR Online Gratis</h3><p>Genera códigos QR para URLs, texto, Wi-Fi y contactos con controles de color, vista previa y descarga. Incluye pasos claros, resultados prácticos y sin registro.</p><span class="tool-card-link">Probar →</span></a>
       </div>
     </section>
   </main>

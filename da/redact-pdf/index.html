@@ -43,6 +43,32 @@
     @font-face{font-family:'Inter';font-display:swap}
   </style>
   <link rel="stylesheet" href="/assets/css/style.css?v=20261109">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Hjem",
+      "item": "https://anyconverter.io/da/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "PDF-værktøjer",
+      "item": "https://anyconverter.io/da/pdf-merge/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Dæk PDF",
+      "item": "https://anyconverter.io/da/redact-pdf/"
+    }
+  ]
+}
+  </script>
 </head>
 <body>
   <header id="site-header" class="site-header"></header>
@@ -55,7 +81,7 @@
     <div class="tool-wrapper">
       <div class="tool-zone">
         <div style="padding:24px">
-          <div class="upload-area" data-file-target="rd-file" role="button" tabindex="0">
+          <div class="upload-area" data-file-target="rd-file" role="button" tabindex="0" aria-label="Træk en fil hertil eller klik for at vælge">
             <img src="/assets/img/icon-pdf.svg" alt="Dæk PDF med sorte rektangler icon" width="36" height="36" style="margin-bottom:10px">
             <p style="font-size:14px;color:var(--color-text-2,#6B7280);margin-bottom:10px">Træk din PDF hertil eller klik for at gennemse</p>
             <input type="file" id="rd-file" accept=".pdf" style="display:none">
@@ -125,10 +151,10 @@
     <section class="related-tools">
       <h2>Relaterede Værktøjer</h2>
       <div class="tool-grid">
-        <a href="/da/pdf-metadata-remover/" class="tool-card"><img src="/assets/img/icon-pdf.svg" alt="Fjern PDF-metadata icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Fjern PDF-metadata</h3><p>Gennemse og ryd produceregenskaber som forfatter, titel og opretter.</p><span class="tool-card-link">Prøv det →</span></a>
-        <a href="/da/protect-pdf/" class="tool-card"><img src="/assets/img/icon-pdf-protect.svg" alt="Beskyt PDF med Adgangskode Online Gratis icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Beskyt PDF med Adgangskode Online Gratis</h3><p>Sikr din PDF med en adgangskode så kun autoriserede brugere kan åbne den.</p><span class="tool-card-link">Prøv det →</span></a>
         <a href="/da/pdf-security/" class="tool-card"><img src="/assets/img/icon-pdf-security.svg" alt="PDF-sikkerhed icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>PDF-sikkerhed</h3><p>Anvend detaljerede tilladelsesrestriktioner på en PDF: kontrollér udskrivning, kopiering, visuel tildækning, annoteringer og udfyldning af formularer.….</p><span class="tool-card-link">Prøv det →</span></a>
+        <a href="/da/pdf-metadata-remover/" class="tool-card"><img src="/assets/img/icon-pdf.svg" alt="Fjern PDF-metadata icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Fjern PDF-metadata</h3><p>Gennemse og ryd produceregenskaber som forfatter, titel og opretter.</p><span class="tool-card-link">Prøv det →</span></a>
         <a href="/da/sign-pdf/" class="tool-card"><img src="/assets/img/icon-pdf-sign.svg" alt="Underskriv PDF Online Gratis icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Underskriv PDF Online Gratis</h3><p>Tegn din håndskrevne underskrift på et lærred og integrer den i din PDF.</p><span class="tool-card-link">Prøv det →</span></a>
+        <a href="/da/ocr-pdf/" class="tool-card"><img src="/assets/img/icon-ocr-pdf.svg" alt="OCR PDF icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>OCR PDF</h3><p>Konverter scannede PDF-sider til markerbar tekst med OCR-indstillinger, sprogvejledning og browserbaseret arbejdsgang.</p><span class="tool-card-link">Prøv det →</span></a>
       </div>
     </section>
 

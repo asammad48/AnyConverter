@@ -29,7 +29,54 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Generador de Hash","url":"https://anyconverter.io/es/hash-generator/","description":"Genera hashes MD5, SHA-1, SHA-256 y SHA-512 online gratis.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"¿Para qué sirve un hash?","acceptedAnswer":{"@type":"Answer","text":"Los hashes se usan para verificar la integridad de archivos, almacenar contraseñas de forma segura, generar identificadores únicos y detectar duplicados o cambios en datos."}},{"@type":"Question","name":"¿Es MD5 seguro para contraseñas?","acceptedAnswer":{"@type":"Answer","text":"No. MD5 está obsoleto para uso criptográfico. Para contraseñas, usa bcrypt, scrypt o Argon2. MD5 sigue siendo útil para verificar integridad de archivos no críticos."}},{"@type":"Question","name":"¿Puedo hashear archivos grandes?","acceptedAnswer":{"@type":"Answer","text":"Sí. La herramienta lee el archivo en fragmentos para que no se sature la memoria. Archivos de varios GB pueden procesarse aunque puede tardar unos segundos."}}]}</script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "¿Para qué sirve un hash?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Los hashes se usan para verificar la integridad de archivos, almacenar contraseñas de forma segura, generar identificadores únicos y detectar duplicados o cambios en datos."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Es MD5 seguro para contraseñas?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. MD5 está obsoleto para uso criptográfico. Para contraseñas, usa bcrypt, scrypt o Argon2. MD5 sigue siendo útil para verificar integridad de archivos no críticos."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Puedo hashear archivos grandes?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sí. La herramienta lee el archivo en fragmentos para que no se sature la memoria. Archivos de varios GB pueden procesarse aunque puede tardar unos segundos."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Para qué se utiliza SHA-256 en la práctica?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "SHA-256 es el estándar de la industria para firmas digitales, verificación de integridad de archivos descargados, certificados TLS/SSL y mecanismos de consenso en cadenas de bloques como Bitcoin."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Puede un hash demostrar que un archivo no contiene malware?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Un hash solo verifica que un archivo es idéntico byte por byte a una versión conocida. Si el archivo original distribuido por la fuente contenía código malicioso, su hash seguirá coincidiendo."
+      }
+    }
+  ]
+}
+</script>
 
 
 <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
@@ -45,6 +92,26 @@
     @font-face{font-family:'Inter';font-display:swap}
   </style>
   <link rel="stylesheet" href="/assets/css/style.css?v=20261109">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Inicio",
+      "item": "https://anyconverter.io/es/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Generador de Hash",
+      "item": "https://anyconverter.io/es/hash-generator/"
+    }
+  ]
+}
+  </script>
 </head>
 <body>
   <header id="site-header" class="site-header"></header>
@@ -140,6 +207,25 @@
         <li><strong>Copia el resultado</strong> — Se muestran los cuatro hashes simultáneamente. Copia el que necesites con el botón correspondiente.</li>
       </ol>
     </section>
+
+    <section class="how-it-works" id="how-it-works">
+      <h2>Cómo funciona: Hashing criptográfico y algoritmos digest de Web Crypto</h2>
+
+      <h3>¿Qué es un generador de hashes criptográficos?</h3>
+      <p>Un generador de hashes criptográficos es una utilidad de seguridad de la información que transforma cadenas de texto arbitrarias o archivos binarios en resúmenes deterministas de longitud fija mediante SHA-256 / SHA-512 / MD5 cryptographic digest algorithms. Las funciones hash son operaciones matemáticas unidireccionales e irreversibles diseñadas para la comprobación de integridad y seguridad.</p>
+
+      <h3>Cómo funciona en el navegador</h3>
+      <p>AnyConverter calcula resúmenes de mensajes directamente en tu navegador mediante la API W3C Web Crypto API acelerada por hardware sin subir ningún archivo:</p>
+      <ol class="how-it-works-steps">
+        <li><strong>Codificación de bytes en UTF-8</strong>: La entrada de texto se transforma en una secuencia de bytes de 8 bits mediante la interfaz nativa <code>TextEncoder()</code>.</li>
+        <li><strong>Digest acelerado mediante Web Crypto API</strong>: Para los algoritmos digest SHA-256 y SHA-512, el búfer de bytes se procesa mediante <code>crypto.subtle.digest()</code> a través de la Web Crypto API, aprovechando la aceleración criptográfica del procesador.</li>
+        <li><strong>Serialización hexadecimal</strong>: El ArrayBuffer resultante se convierte byte a byte en una cadena hexadecimal en minúsculas (2 caracteres por cada byte).</li>
+        <li><strong>Cálculo compatible de MD5</strong>: Las sumas de comprobación MD5 se calculan mediante un algoritmo bit a bit en el cliente para verificar archivos y registros históricos.</li>
+      </ol>
+
+      <h3>Especificaciones técnicas y propiedades criptográficas</h3>
+      <p>Los algoritmos aplican los estándares <strong>FIPS PUB 180-4</strong> (Secure Hash Standard para SHA-256 y SHA-512) y <strong>RFC 1321</strong> (MD5). SHA-256 genera un resumen de 256 bits (64 caracteres hexadecimales) con resistencia comprobada frente a colisiones. SHA-512 genera un resumen de 512 bits (128 caracteres hexadecimales) para entornos de alta seguridad. Todos los SHA-256 / SHA-512 / MD5 cryptographic digest algorithms se procesan localmente mediante la Web Crypto API en la memoria de tu dispositivo.</p>
+    </section>
     <section class="features">
       <h2>Características</h2>
       <ul class="features-list">
@@ -166,17 +252,55 @@
     <div class="ad-slot ad-slot--rectangle" style="margin:0 auto 32px">
       <div class="adsbygoogle" style="display:block" aria-hidden="true"></div>
 </div>
+    
+    <section class="privacy-section" id="privacy-and-security" aria-labelledby="privacy-heading">
+      <h2 id="privacy-heading">Generador de hashes privado y verificador de checksums: en el navegador, sin subir archivos y sin registro</h2>
+      <p class="privacy-lead">Calcula hashes criptográficos (MD5, SHA-1, SHA-256, SHA-512) y verifica la integridad de archivos localmente sin transferir datos.</p>
+      <div class="privacy-grid">
+        <div class="privacy-card">
+          <span class="privacy-card-icon" aria-hidden="true">🔒</span>
+          <div class="privacy-card-content">
+            <strong>Motor nativo Web Crypto API</strong>
+            <p>Los hashes se calculan localmente mediante crypto.subtle.digest() sin transferir el contenido de tus archivos a servidores.</p>
+          </div>
+        </div>
+        <div class="privacy-card">
+          <span class="privacy-card-icon" aria-hidden="true">⚡</span>
+          <div class="privacy-card-content">
+            <strong>Sin cuenta ni registro</strong>
+            <p>Verifica la integridad de archivos de cualquier tamaño sin registro, sin colas de espera y sin límites comerciales.</p>
+          </div>
+        </div>
+        <div class="privacy-card">
+          <span class="privacy-card-icon" aria-hidden="true">🛡️</span>
+          <div class="privacy-card-content">
+            <strong>Verificación de archivos confidenciales</strong>
+            <p>Comprueba código fuente propietario, claves criptográficas y copias de seguridad directamente en tu equipo.</p>
+          </div>
+        </div>
+        <div class="privacy-card">
+          <span class="privacy-card-icon" aria-hidden="true">🧹</span>
+          <div class="privacy-card-content">
+            <strong>Cero telemetría sobre contenidos</strong>
+            <p>Ni los nombres de archivo, ni los datos de entrada, ni los hashes generados son registrados por sistemas de analítica.</p>
+          </div>
+        </div>
+      </div>
+    </section>
     <section class="faq">
       <h2>Preguntas Frecuentes</h2>
       <div class="faq-list">
         <details class="faq-item"><summary class="faq-question">¿Para qué sirve un hash? <span class="faq-icon">+</span></summary><div class="faq-answer">Los hashes se usan para verificar la integridad de archivos, almacenar contraseñas de forma segura, generar identificadores únicos y detectar duplicados o cambios en datos.</div></details>
         <details class="faq-item"><summary class="faq-question">¿Es MD5 seguro para contraseñas? <span class="faq-icon">+</span></summary><div class="faq-answer">No. MD5 está obsoleto para uso criptográfico. Para contraseñas, usa bcrypt, scrypt o Argon2. MD5 sigue siendo útil para verificar integridad de archivos no críticos.</div></details>
         <details class="faq-item"><summary class="faq-question">¿Puedo hashear archivos grandes? <span class="faq-icon">+</span></summary><div class="faq-answer">Sí. La herramienta lee el archivo en fragmentos para que no se sature la memoria. Archivos de varios GB pueden procesarse aunque puede tardar unos segundos.</div></details>
+    <details class="faq-item"><summary class="faq-question">¿Para qué se utiliza SHA-256 en la práctica? <span class="faq-icon">+</span></summary><div class="faq-answer">SHA-256 es el estándar de la industria para firmas digitales, verificación de integridad de archivos descargados, certificados TLS/SSL y mecanismos de consenso en cadenas de bloques como Bitcoin.</div></details>
+    <details class="faq-item"><summary class="faq-question">¿Puede un hash demostrar que un archivo no contiene malware? <span class="faq-icon">+</span></summary><div class="faq-answer">No. Un hash solo verifica que un archivo es idéntico byte por byte a una versión conocida. Si el archivo original distribuido por la fuente contenía código malicioso, su hash seguirá coincidiendo.</div></details>
       </div>
     </section>
     <section class="related-tools">
       <h2>Herramientas Relacionadas</h2>
       <div class="tool-grid">
+        <a href="/es/password-strength-checker/" class="tool-card"><img src="/assets/img/icon-password-strength.svg" alt="Comprobador de Fortaleza de Contraseña icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Comprobador de Fortaleza de Contraseña</h3><p>Comprueba la fortaleza de contrasenas localmente con tiempo de ataque, patrones detectados, criterios y privacidad clara.</p><span class="tool-card-link">Probar →</span></a>
         <a href="/es/jwt-decoder/" class="tool-card"><img src="/assets/img/icon-jwt.svg" alt="Decodificador JWT Online Gratis icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Decodificador JWT Online Gratis</h3><p>Usa el decodificador de tokens JWT gratis en el navegador.</p><span class="tool-card-link">Probar →</span></a>
         <a href="/es/base64-encoder/" class="tool-card"><img src="/assets/img/icon-base64.svg" alt="Codificador Base64 Online Gratis icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Codificador Base64 Online Gratis</h3><p>Convierte texto plano a Base64 online gratis y decodifica Base64 a texto.</p><span class="tool-card-link">Probar →</span></a>
         <a href="/es/uuid-generator/" class="tool-card"><img src="/assets/img/icon-uuid.svg" alt="Generador de UUID Online Gratis icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Generador de UUID Online Gratis</h3><p>Genera UUID v4 y v7 en lote, copia o descarga resultados y valida el formato UUID directamente en el navegador.</p><span class="tool-card-link">Probar →</span></a>

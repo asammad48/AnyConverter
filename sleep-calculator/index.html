@@ -29,7 +29,54 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Sleep Calculator","url":"https://anyconverter.io/sleep-calculator/","description":"Calculate the best wake-up or bedtime based on 90-minute sleep cycles to wake up refreshed.","applicationCategory":"HealthApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Why are sleep cycles 90 minutes?","acceptedAnswer":{"@type":"Answer","text":"Research shows that a typical human sleep cycle (light sleep → deep sleep → REM sleep) takes about 90 minutes to complete. Waking up at the end of a cycle, rather than in the middle, leaves you feeling more alert and refreshed."}},{"@type":"Question","name":"How many cycles should I aim for?","acceptedAnswer":{"@type":"Answer","text":"Most adults need 5–6 complete sleep cycles per night, which equals 7.5–9 hours of sleep. The calculator highlights these as \"Recommended\" options."}},{"@type":"Question","name":"Why is 14 minutes added?","acceptedAnswer":{"@type":"Answer","text":"Studies show it takes the average person about 14 minutes to fall asleep after getting into bed. The calculator adds this buffer so the cycle count starts from when you actually fall asleep, not when you lie down."}}]}</script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Why are sleep cycles 90 minutes?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Research shows that a typical human sleep cycle (light sleep → deep sleep → REM sleep) takes about 90 minutes to complete. Waking up at the end of a cycle, rather than in the middle, leaves you feeling more alert and refreshed."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How many cycles should I aim for?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Most adults need 5–6 complete sleep cycles per night, which equals 7.5–9 hours of sleep. The calculator highlights these as \"Recommended\" options."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why is 14 minutes added?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Studies show it takes the average person about 14 minutes to fall asleep after getting into bed. The calculator adds this buffer so the cycle count starts from when you actually fall asleep, not when you lie down."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What happens if I wake up in the middle of a sleep cycle?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Waking up during deep non-REM (NREM) sleep often causes sleep inertia—a feeling of grogginess, brain fog, and disorientation that can last from 15 minutes to over an hour."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I use the sleep calculator for power naps?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. An optimal power nap should last either 20–30 minutes (preventing deep sleep entry and avoiding sleep inertia) or a full 90-minute cycle to complete all sleep stages."
+      }
+    }
+  ]
+}
+</script>
 
 
 <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
@@ -45,6 +92,26 @@
     @font-face{font-family:'Inter';font-display:swap}
   </style>
   <link rel="stylesheet" href="/assets/css/style.css?v=20261109">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://anyconverter.io/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Sleep Calculator",
+      "item": "https://anyconverter.io/sleep-calculator/"
+    }
+  ]
+}
+  </script>
 </head>
 <body>
   <header id="site-header" class="site-header"></header>
@@ -141,15 +208,17 @@
         <details class="faq-item"><summary class="faq-question">Why are sleep cycles 90 minutes? <span class="faq-icon">+</span></summary><div class="faq-answer">Research shows that a typical human sleep cycle (light sleep → deep sleep → REM sleep) takes about 90 minutes to complete. Waking up at the end of a cycle, rather than in the middle, leaves you feeling more alert and refreshed.</div></details>
         <details class="faq-item"><summary class="faq-question">How many cycles should I aim for? <span class="faq-icon">+</span></summary><div class="faq-answer">Most adults need 5–6 complete sleep cycles per night, which equals 7.5–9 hours of sleep. The calculator highlights these as "Recommended" options.</div></details>
         <details class="faq-item"><summary class="faq-question">Why is 14 minutes added? <span class="faq-icon">+</span></summary><div class="faq-answer">Studies show it takes the average person about 14 minutes to fall asleep after getting into bed. The calculator adds this buffer so the cycle count starts from when you actually fall asleep, not when you lie down.</div></details>
+    <details class="faq-item"><summary class="faq-question">What happens if I wake up in the middle of a sleep cycle? <span class="faq-icon">+</span></summary><div class="faq-answer">Waking up during deep non-REM (NREM) sleep often causes sleep inertia—a feeling of grogginess, brain fog, and disorientation that can last from 15 minutes to over an hour.</div></details>
+    <details class="faq-item"><summary class="faq-question">Can I use the sleep calculator for power naps? <span class="faq-icon">+</span></summary><div class="faq-answer">Yes. An optimal power nap should last either 20–30 minutes (preventing deep sleep entry and avoiding sleep inertia) or a full 90-minute cycle to complete all sleep stages.</div></details>
       </div>
     </section>
     <section class="related-tools">
       <h2>Related Tools</h2>
       <div class="tool-grid">
-        <a href="/calorie-calculator/" class="tool-card"><img src="/assets/img/icon-calorie.svg" alt="Calorie Calculator icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Calorie Calculator</h3><p>Calculate your daily calorie needs based on age, weight and activity.</p><span class="tool-card-link">Try it →</span></a>
         <a href="/bmi-calculator/" class="tool-card"><img src="/assets/img/icon-bmi.svg" alt="BMI Calculator icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>BMI Calculator</h3><p>Calculate Body Mass Index with metric or imperial units.</p><span class="tool-card-link">Try it →</span></a>
+        <a href="/calorie-calculator/" class="tool-card"><img src="/assets/img/icon-calorie.svg" alt="Calorie Calculator icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Calorie Calculator</h3><p>Calculate your daily calorie needs based on age, weight and activity.</p><span class="tool-card-link">Try it →</span></a>
+        <a href="/age-calculator/" class="tool-card"><img src="/assets/img/icon-age.svg" alt="Age Calculator icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Age Calculator</h3><p>Calculate your exact age in years, months and days.</p><span class="tool-card-link">Try it →</span></a>
         <a href="/pomodoro-timer/" class="tool-card"><img src="/assets/img/icon-pomodoro.svg" alt="Pomodoro Timer icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Pomodoro Timer</h3><p>Boost focus with 25-minute work sessions and short breaks.</p><span class="tool-card-link">Try it →</span></a>
-        <a href="/countdown-timer/" class="tool-card"><img src="/assets/img/icon-countdown.svg" alt="Countdown Timer icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Countdown Timer</h3><p>Set any countdown with presets for Pomodoro, 10 min and 1 hour.</p><span class="tool-card-link">Try it →</span></a>
       </div>
     </section>
   </main>

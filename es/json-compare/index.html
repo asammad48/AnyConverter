@@ -29,7 +29,54 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Comparar JSON","url":"https://anyconverter.io/es/json-compare/","description":"Compara dos documentos JSON de forma semántica: ignora el orden de claves, empareja arrays por ID o posición, ignora rutas ruidosas, y exporta un JSON Patch. Funciona totalmente en tu navegador.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"¿Importa el orden de las claves?","acceptedAnswer":{"@type":"Answer","text":"No. Los objetos se comparan por clave, así que {\"a\":1,\"b\":2} y {\"b\":2,\"a\":1} son iguales."}},{"@type":"Question","name":"¿Cómo comparo arrays con distinto orden?","acceptedAnswer":{"@type":"Answer","text":"Usa el modo Inteligente o Por clave. Los elementos se emparejan por un ID como id, y solo verás los cambios reales."}},{"@type":"Question","name":"¿Puedo ignorar campos como marcas de tiempo?","acceptedAnswer":{"@type":"Answer","text":"Sí. Añade rutas como $..updatedAt en Ignorar rutas."}},{"@type":"Question","name":"¿Se sube mi JSON?","acceptedAnswer":{"@type":"Answer","text":"No. La comparación se hace en tu navegador; no se envía nada a ningún servidor."}},{"@type":"Question","name":"¿Qué es JSON Patch?","acceptedAnswer":{"@type":"Answer","text":"Un estándar (RFC 6902) con la lista de operaciones que convierten el primer documento en el segundo. Puedes exportarlo y aplicarlo en tu código."}}]}</script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "¿Importa el orden de las claves?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Los objetos se comparan por clave, así que {\"a\":1,\"b\":2} y {\"b\":2,\"a\":1} son iguales."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cómo comparo arrays con distinto orden?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Usa el modo \"Inteligente\" o \"Por clave\". Los elementos se emparejan por un ID como id, y solo verás los cambios reales."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Puedo ignorar campos como marcas de tiempo?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sí. Añade rutas como $..updatedAt en \"Ignorar rutas\"."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Se sube mi JSON?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. La comparación se hace en tu navegador; no se envía nada a ningún servidor."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Qué es JSON Patch?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Un estándar (RFC 6902) con la lista de operaciones que convierten el primer documento en el segundo. Puedes exportarlo y aplicarlo en tu código."
+      }
+    }
+  ]
+}
+</script>
 
 
 <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
@@ -45,6 +92,26 @@
     @font-face{font-family:'Inter';font-display:swap}
   </style>
   <link rel="stylesheet" href="/assets/css/style.css?v=20261109">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Inicio",
+      "item": "https://anyconverter.io/es/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Comparar JSON",
+      "item": "https://anyconverter.io/es/json-compare/"
+    }
+  ]
+}
+  </script>
 </head>
 <body>
   <header id="site-header" class="site-header"></header>
@@ -205,6 +272,25 @@
       </ol>
     </section>
 
+    <section class="how-it-works" id="how-it-works">
+      <h2>Cómo funciona: Comparación de JSON y alineación estructural de Myers</h2>
+
+      <h3>¿Qué es una herramienta de comparación de JSON?</h3>
+      <p>Una herramienta de comparación de JSON es una utilidad analítica que deserializa dos cargas útiles de JSON, alinea recursivamente sus claves de objetos y elementos de matrices, y calcula la diferencia exacta utilizando algoritmos de diferencias gráficas. Resalta adiciones, eliminaciones, modificaciones de valores y cambios de tipo en objetos anidados complejos.</p>
+
+      <h3>Cómo funciona en el navegador</h3>
+      <p>Nuestro motor de diferencias en el cliente calcula comparaciones profundas directamente en tu navegador mediante la normalización de claves y el recorrido de grafos de edición:</p>
+      <ol class="how-it-works-steps">
+        <li><strong>Normalización y alineación estructural de claves</strong>: Ambas entradas se analizan bajo el estándar RFC 8259 en grafos de objetos en memoria, aplicando alineación estructural de claves (structural key alignment) para eliminar falsas discrepancias derivadas del orden de propiedades.</li>
+        <li><strong>Recorrido del grafo con el algoritmo de diff de Myers</strong>: Las líneas y valores estructurales se evalúan mediante el algoritmo de diff de Myers (Myers diff algorithm), generando el camino de edición más corto con eficiencia O(ND).</li>
+        <li><strong>Heurísticas de orden de matrices</strong>: Las listas se comparan mediante heurísticas de orden de matrices (array order heuristics) e identidad de elementos para diferenciar elementos desplazados de actualizaciones reales de valores.</li>
+        <li><strong>Visualización paralela sincronizada</strong>: Las diferencias se resaltan mediante colores en tiempo real con barras de desplazamiento coordinadas y contadores detallados, sin enviar información a ningún servidor.</li>
+      </ol>
+
+      <h3>Especificaciones técnicas y mecánica algorítmica</h3>
+      <p>El comparador se basa en el <strong>algoritmo de diff de Myers</strong> (Myers diff algorithm, 1986), la referencia técnica para calcular rutas de edición mínimas. A diferencia de los comparadores de texto plano que fallan cuando las claves cambian de posición, la alineación estructural de claves (structural key alignment) junto con heurísticas de orden de matrices (array order heuristics) garantiza coherencia sintáctica bajo la norma <strong>RFC 8259</strong>, admitiendo árboles jerárquicos profundos y caracteres internacionales en UTF-8.</p>
+    </section>
+
     <section class="features">
       <h2>Características</h2>
       <ul class="features-list">
@@ -264,8 +350,9 @@
       <div class="tool-grid">
         <a href="/es/json-formatter/" class="tool-card"><img src="/assets/img/icon-json.svg" alt="Formateador JSON Online Gratis icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Formateador JSON Online Gratis</h3><p>Formatea, valida y minifica JSON gratis.</p><span class="tool-card-link">Probar →</span></a>
         <a href="/es/json-to-yaml/" class="tool-card"><img src="/assets/img/icon-json-yaml.svg" alt="Convertidor JSON a YAML Online Gratis icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Convertidor JSON a YAML Online Gratis</h3><p>Usa Convertidor JSON a YAML gratis en el navegador.</p><span class="tool-card-link">Probar →</span></a>
-        <a href="/es/text-diff-checker/" class="tool-card"><img src="/assets/img/icon-diff.svg" alt="Comparador de Texto Online Gratis icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Comparador de Texto Online Gratis</h3><p>Usa text diff checker gratis en el navegador.</p><span class="tool-card-link">Probar →</span></a>
+        <a href="/es/text-diff-checker/" class="tool-card"><img src="/assets/img/icon-diff.svg" alt="Comparador de Texto Online Gratis icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Comparador de Texto Online Gratis</h3><p>Usa el comparador de texto gratis en el navegador.</p><span class="tool-card-link">Probar →</span></a>
         <a href="/es/xml-formatter/" class="tool-card"><img src="/assets/img/icon-xml.svg" alt="Formateador XML Online Gratis icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Formateador XML Online Gratis</h3><p>Usa Formateador XML gratis en el navegador.</p><span class="tool-card-link">Probar →</span></a>
+        <a href="/es/csv-query/" class="tool-card"><img src="/assets/img/icon-csv-query.svg" alt="Herramienta de Consulta CSV icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Herramienta de Consulta CSV</h3><p>Consulta datos CSV con filtros tipo SQL en el navegador, previsualiza filas, ejecuta ejemplos y exporta resultados.</p><span class="tool-card-link">Probar →</span></a>
       </div>
     </section>
   </main>

@@ -91,13 +91,59 @@
 
 
 
+        <!-- Contextual Workflow Chain: Next Step (Sprint S25) -->
+    <section class="workflow-chain-section" id="workflow-chain-pdf" aria-labelledby="workflow-chain-heading" style="display:none;">
+      <div class="workflow-chain-header">
+        <div class="workflow-chain-badge">
+          <span aria-hidden="true">⚡</span>
+          <span>Next Step</span>
+        </div>
+        <h2 class="workflow-chain-title" id="workflow-chain-heading">Next Step: Continue Your PDF Workflow</h2>
+        <p class="workflow-chain-sub">Your document is ready. Continue with the next step in your workflow:</p>
+        <button type="button" class="workflow-chain-dismiss" id="btn-chain-dismiss" aria-label="Dismiss workflow suggestions">✕</button>
+      </div>
+      <div class="workflow-chain-grid">
+        <a href="/pdf-compress/" class="workflow-chain-card" id="chain-step-compress" data-target="/pdf-compress/">
+          <div class="workflow-chain-card-icon">
+            <img src="/assets/img/icon-pdf-compress.svg" alt="Compress PDF icon" width="28" height="28" loading="lazy">
+          </div>
+          <div class="workflow-chain-card-content">
+            <span class="workflow-chain-card-title">Compress PDF</span>
+            <span class="workflow-chain-card-desc">Reduce file size for easier sharing and email attachments</span>
+          </div>
+          <span class="workflow-chain-card-action">Compress PDF →</span>
+        </a>
+        <a href="/pdf-split/" class="workflow-chain-card" id="chain-step-split" data-target="/pdf-split/">
+          <div class="workflow-chain-card-icon">
+            <img src="/assets/img/icon-pdf-split.svg" alt="Split PDF icon" width="28" height="28" loading="lazy">
+          </div>
+          <div class="workflow-chain-card-content">
+            <span class="workflow-chain-card-title">Split Pages</span>
+            <span class="workflow-chain-card-desc">Extract specific pages or break into separate documents</span>
+          </div>
+          <span class="workflow-chain-card-action">Split PDF →</span>
+        </a>
+        <a href="/pdf-merge/" class="workflow-chain-card" id="chain-step-merge" data-target="/pdf-merge/">
+          <div class="workflow-chain-card-icon">
+            <img src="/assets/img/icon-pdf-merge.svg" alt="Merge PDF icon" width="28" height="28" loading="lazy">
+          </div>
+          <div class="workflow-chain-card-content">
+            <span class="workflow-chain-card-title">Merge PDF</span>
+            <span class="workflow-chain-card-desc">Combine multiple documents into one single file</span>
+          </div>
+          <span class="workflow-chain-card-action">Merge PDF →</span>
+        </a>
+      </div>
+    </section>
+
     <section class="related-tools">
       <h2>Related Tools</h2>
       <div class="tool-grid">
         <a href="/jpg-to-pdf/" class="tool-card"><img src="/assets/img/icon-jpg-to-pdf.svg" alt="JPG to PDF icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>JPG to PDF</h3><p>Convert one or more JPG/PNG images into a single PDF file.</p><span class="tool-card-link">Try it →</span></a>
         <a href="/pdf-to-word/" class="tool-card"><img src="/assets/img/icon-pdf.svg" alt="PDF to Word icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>PDF to Word</h3><p>Convert a PDF into an editable .docx, with OCR for scanned pages.</p><span class="tool-card-link">Try it →</span></a>
-        <a href="/extract-pdf-pages/" class="tool-card"><img src="/assets/img/icon-pdf-extract.svg" alt="Extract PDF Pages icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Extract PDF Pages</h3><p>Save specific pages or ranges as a new standalone PDF file.</p><span class="tool-card-link">Try it →</span></a>
         <a href="/image-converter/" class="tool-card"><img src="/assets/img/icon-image.svg" alt="Image Converter icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Image Converter</h3><p>Convert images between PNG, JPG, WebP, AVIF and BMP.</p><span class="tool-card-link">Try it →</span></a>
+        <a href="/extract-pdf-pages/" class="tool-card"><img src="/assets/img/icon-pdf-extract.svg" alt="Extract PDF Pages icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Extract PDF Pages</h3><p>Save specific pages or ranges as a new standalone PDF file.</p><span class="tool-card-link">Try it →</span></a>
+        <a href="/scan-to-pdf/" class="tool-card"><img src="/assets/img/icon-scan-pdf.svg" alt="Scan to PDF icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Scan to PDF</h3><p>Combine scanned photos into a single PDF with thumbnail previews.</p><span class="tool-card-link">Try it →</span></a>
       </div>
     </section>
   </main>
@@ -174,5 +220,6 @@
   <script src="https://cdn.jsdelivr.net/npm/pdf-lib@1.17.1/dist/pdf-lib.min.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/build/pdf.min.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js" defer></script>
+  <script src="/assets/js/tools/pdf-workflow-chain.js?v=20261124" defer></script>
 </body>
 </html>

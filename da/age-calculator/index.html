@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Aldersberegner Online Gratis | AnyConverter</title>
-  <meta name="description" content="Beregn alder online gratis ud fra fødselsdato. Se alder i ar, maneder og dage, samlede levede dage og dage til naeste fodselsdag.">
+  <meta name="description" content="Beregn alder online gratis ud fra fødselsdato. Se alder i år, måneder og dage, samlede levede dage og dage til næste fødselsdag.">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://anyconverter.io/da/age-calculator/">
   <link rel="alternate" hreflang="en" href="https://anyconverter.io/age-calculator/">
@@ -14,7 +14,7 @@
 
 <meta property="og:type" content="website">
   <meta property="og:title" content="Aldersberegner Online Gratis | AnyConverter">
-  <meta property="og:description" content="Beregn alder online gratis ud fra fødselsdato. Se alder i ar, maneder og dage, samlede levede dage og dage til naeste fodselsdag.">
+  <meta property="og:description" content="Beregn alder online gratis ud fra fødselsdato. Se alder i år, måneder og dage, samlede levede dage og dage til næste fødselsdag.">
   <meta property="og:url" content="https://anyconverter.io/da/age-calculator/">
   <meta property="og:site_name" content="AnyConverter">
   <meta property="og:image" content="https://anyconverter.io/assets/img/og-image.png">
@@ -23,16 +23,73 @@
   <meta property="og:image:alt" content="AnyConverter free online tools">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Aldersberegner Online Gratis | AnyConverter">
-  <meta name="twitter:description" content="Beregn alder online gratis ud fra fødselsdato. Se alder i ar, maneder og dage, samlede levede dage og dage til naeste fodselsdag.">
+  <meta name="twitter:description" content="Beregn alder online gratis ud fra fødselsdato. Se alder i år, måneder og dage, samlede levede dage og dage til næste fødselsdag.">
   <meta name="twitter:image" content="https://anyconverter.io/assets/img/og-image.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Aldersberegner","url":"https://anyconverter.io/da/age-calculator/","description":"Beregn din nøjagtige alder i år, måneder og dage. Find det samlede antal levede dage og dage til næste fødselsdag.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Hvordan beregnes den nøjagtige alder?","acceptedAnswer":{"@type":"Answer","text":"Beregneren trækker fødselsdatoen fra måldatoen (som standard i dag) og tager hensyn til det nøjagtige antal dage i hver måned og skudår. Den returnerer de fulde år, resterende måneder og resterende dage."}},{"@type":"Question","name":"Kan jeg beregne alder på en bestemt tidligere dato?","acceptedAnswer":{"@type":"Answer","text":"Ja. Feltet \"Målsdato\" lader dig angive enhver tidligere dato for at beregne, hvad en persons alder var på det tidspunkt. Dette er nyttigt til juridiske eller historiske aldersberegninger."}},{"@type":"Question","name":"Hvordan håndteres skudår?","acceptedAnswer":{"@type":"Answer","text":"Skudår håndteres automatisk. Beregneren bruger JavaScripts indbyggede Date-objekt, som korrekt tager højde for februar med 28 eller 29 dage afhængigt af året."}},{"@type":"Question","name":"Hvad inkluderer \"Samlede levede dage\"?","acceptedAnswer":{"@type":"Answer","text":"Samlede levede dage er det komplette antal dage fra din fødselsdato til måldatoen, inklusive selve fødselsdagen. Det tager højde for alle skudår imellem."}},{"@type":"Question","name":"Hvordan beregnes \"Næste fødselsdag\"?","acceptedAnswer":{"@type":"Answer","text":"Beregneren finder den næste forekomst af din fødselsmåned og -dag efter måldatoen. Hvis din fødselsdag allerede er passeret i år, vises dage til næste års fødselsdag. Hvis det er din fødselsdag i dag, vises \"I dag!\""}}]}</script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Hvordan beregnes den nøjagtige alder?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Beregneren trækker fødselsdatoen fra måldatoen (som standard i dag) og tager hensyn til det nøjagtige antal dage i hver måned og skudår. Den returnerer de fulde år, resterende måneder og resterende dage."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Kan jeg beregne alder på en bestemt tidligere dato?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ja. Feltet \"Målsdato\" lader dig angive enhver tidligere dato for at beregne, hvad en persons alder var på det tidspunkt. Dette er nyttigt til juridiske eller historiske aldersberegninger."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Hvordan håndteres skudår?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Skudår håndteres automatisk. Beregneren bruger JavaScripts indbyggede Date-objekt, som korrekt tager højde for februar med 28 eller 29 dage afhængigt af året."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Hvad inkluderer \"Samlede levede dage\"?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Samlede levede dage er det komplette antal dage fra din fødselsdato til måldatoen, inklusive selve fødselsdagen. Det tager højde for alle skudår imellem."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Hvordan beregnes \"Næste fødselsdag\"?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Beregneren finder den næste forekomst af din fødselsmåned og -dag efter måldatoen. Hvis din fødselsdag allerede er passeret i år, vises dage til næste års fødselsdag. Hvis det er din fødselsdag i dag, vises \"I dag!\""
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Kan jeg beregne alder online gratis?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ja. Værktøjet er gratis og beregner alder direkte i browseren ud fra fødselsdato og en valgfri målsdato."
+      }
+    }
+  ]
+}
+</script>
 
 
 <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <meta name="theme-color" content="#B04A45">
+  <link rel="manifest" href="/manifest.webmanifest">
   <style>
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
     html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F7F6F3);color:var(--color-text,#151515)}
@@ -45,6 +102,26 @@
     @font-face{font-family:'Inter';font-display:swap}
   </style>
   <link rel="stylesheet" href="/assets/css/style.css?v=20261109">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Hjem",
+      "item": "https://anyconverter.io/da/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Aldersberegner",
+      "item": "https://anyconverter.io/da/age-calculator/"
+    }
+  ]
+}
+  </script>
 </head>
 <body>
   <header id="site-header" class="site-header"></header>
@@ -69,9 +146,14 @@
               <input type="date" id="target-date" style="width:100%;padding:10px 12px;border:1px solid var(--color-border,#DDD8D0);border-radius:8px;font-size:15px">
             </div>
           </div>
-          <div class="action-bar" style="margin-bottom:20px">
+          <div class="action-bar ac-action-bar" style="margin-bottom:20px;display:flex;gap:8px;align-items:center;flex-wrap:wrap">
             <button class="btn btn-primary" id="btn-calc-age">Beregn alder</button>
             <button class="btn btn-secondary" id="btn-reset-age">Nulstil</button>
+            <button class="btn btn-secondary" id="btn-share-age" type="button" aria-label="Del beregningslink">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="margin-right:6px;vertical-align:-2px"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg>
+              <span>Del beregning</span>
+            </button>
+            <span id="age-share-feedback" class="pct-share-feedback" role="status" aria-live="polite" style="display:none">Link kopieret til udklipsholder!</span>
           </div>
           <div id="age-result" style="display:none">
             <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:12px">
@@ -82,6 +164,12 @@
             <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
               <div class="stat-card"><div class="stat-val" id="age-total-days" style="font-size:18px">—</div><div class="stat-lbl">Samlede levede dage</div></div>
               <div class="stat-card"><div class="stat-val" id="age-next-bday" style="font-size:15px">—</div><div class="stat-lbl">Næste fødselsdag</div></div>
+            </div>
+            <div style="margin-top:14px;text-align:center">
+              <button class="btn btn-secondary btn-sm" id="btn-share-result" type="button" aria-label="Kopier beregningslink">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="margin-right:4px;vertical-align:-1px"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg>
+                <span>Kopier beregningslink</span>
+              </button>
             </div>
           </div>
         </div>
@@ -130,12 +218,12 @@
         <li>Samlet antal dage mellem fødselsdato og måldato.</li>
         <li>Antal dage til næste fødselsdag baseret på den valgte dato.</li>
       </ul>
-      <p>For andre dato- og tidsopgaver kan du også bruge <a href="/da/countdown-timer/">nedtæller</a>, <a href="/da/timestamp-converter/">tidsstempel konverter</a> og <a href="/world-clock/">verdensur</a>.</p>
+      <p>For andre dato- og tidsopgaver kan du også bruge <a href="/da/countdown-timer/">nedtæller</a>, <a href="/da/timestamp-converter/">tidsstempel konverter</a> og <a href="/da/world-clock/">verdensur</a>.</p>
     </section>
     <!-- SEO keyword implementation: 2026-08-21 -->
     <section class="seo-content" data-seo-keyword-plan="2026-08-21">
       <h2>Beregn alder online: praktisk brug</h2>
-      <p>Brug denne alder beregner, nar du vil beregne alder fra fødselsdato uden konto. Siden daekker relaterede behov som beregn alder, hvor gammel er jeg og fødselsdato beregner, sa resultatet matcher den dato, du arbejder med.</p>
+      <p>Brug denne alderberegner, når du vil beregne alder fra fødselsdato uden konto. Siden dækker relaterede behov som beregn alder, hvor gammel er jeg og fødselsdato beregner, så resultatet matcher den dato, du arbejder med.</p>
       <h3>Hvornår det er nyttigt</h3>
       <ul>
         <li><strong>Bedst til:</strong> Få et hurtigt svar og samtidig se formler, antagelser og eksempler bag tallet.</li>
@@ -156,7 +244,7 @@
         <details class="faq-item"><summary class="faq-question">Hvordan håndteres skudår? <span class="faq-icon">+</span></summary><div class="faq-answer">Skudår håndteres automatisk. Beregneren bruger JavaScripts indbyggede Date-objekt, som korrekt tager højde for februar med 28 eller 29 dage afhængigt af året.</div></details>
         <details class="faq-item"><summary class="faq-question">Hvad inkluderer "Samlede levede dage"? <span class="faq-icon">+</span></summary><div class="faq-answer">Samlede levede dage er det komplette antal dage fra din fødselsdato til måldatoen, inklusive selve fødselsdagen. Det tager højde for alle skudår imellem.</div></details>
         <details class="faq-item"><summary class="faq-question">Hvordan beregnes "Næste fødselsdag"? <span class="faq-icon">+</span></summary><div class="faq-answer">Beregneren finder den næste forekomst af din fødselsmåned og -dag efter måldatoen. Hvis din fødselsdag allerede er passeret i år, vises dage til næste års fødselsdag. Hvis det er din fødselsdag i dag, vises "I dag!"</div></details>
-        <details class="faq-item"><summary class="faq-question">Kan jeg beregne alder online gratis? <span class="faq-icon">+</span></summary><div class="faq-answer">Ja. Værktøjet er gratis og beregner alder direkte i browseren ud fra fødselsdato og en valgfri malsdato.</div></details>
+        <details class="faq-item"><summary class="faq-question">Kan jeg beregne alder online gratis? <span class="faq-icon">+</span></summary><div class="faq-answer">Ja. Værktøjet er gratis og beregner alder direkte i browseren ud fra fødselsdato og en valgfri målsdato.</div></details>
       </div>
     </section>
         <section class="related-tools">
@@ -165,12 +253,15 @@
         <a href="/da/birthday-countdown-calculator/" class="tool-card"><img src="/assets/img/icon-calculator.svg" alt="Fødselsdagsnedtælling Online Gratis icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Fødselsdagsnedtælling Online Gratis</h3><p>Gratis fødselsdagsnedtælling: se måneder, dage og timer til din næste fødselsdag, hvilken ugedag den falder på, og hvor gammel du bliver.</p><span class="tool-card-link">Prøv det →</span></a>
         <a href="/da/bmi-calculator/" class="tool-card"><img src="/assets/img/icon-bmi.svg" alt="BMI Beregner Online Gratis icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>BMI Beregner Online Gratis</h3><p>Beregn voksen-BMI, vægtkategori, sundt vægtinterval og valgfrit talje-højde-forhold i et privat browserværktøj.</p><span class="tool-card-link">Prøv det →</span></a>
         <a href="/da/calorie-calculator/" class="tool-card"><img src="/assets/img/icon-calorie.svg" alt="Kaloriebehov Beregner Online Gratis icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Kaloriebehov Beregner Online Gratis</h3><p>Beregn dit daglige kaloriebehov baseret på din alder, vægt, højde og aktivitetsniveau.</p><span class="tool-card-link">Prøv det →</span></a>
+        <a href="/da/roman-numeral-converter/" class="tool-card"><img src="/assets/img/icon-roman.svg" alt="Romertal Konverter Online Gratis icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Romertal Konverter Online Gratis</h3><p>Konverter et vilkårligt heltal (1–3.999.999) til romertal og afkod romertal tilbage til et heltal.</p><span class="tool-card-link">Prøv det →</span></a>
         <a href="/da/sleep-calculator/" class="tool-card"><img src="/assets/img/icon-sleep.svg" alt="Søvnberegner Online Gratis icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Søvnberegner Online Gratis</h3><p>Vågn op udhvilet.</p><span class="tool-card-link">Prøv det →</span></a>
       </div>
     </section>
   </main>
   <footer id="site-footer" class="site-footer"></footer>
+  <script src="/assets/js/shared/analytics.js" defer></script>
   <script src="/assets/js/shared.js?v=20261109" defer></script>
+  <script src="/assets/js/shared/pwa.js" defer></script>
   <script src="/assets/js/tools/age-calculator.js" defer></script>
 </body>
 </html>

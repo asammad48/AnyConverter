@@ -29,7 +29,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Sammenlign JSON","url":"https://anyconverter.io/da/json-compare/","description":"Sammenlign to JSON-dokumenter semantisk: ignorér nøglerækkefølge, match arrays på ID eller position, ignorér støjende stier, og eksportér en JSON Patch. Kører helt i din browser.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Betyder rækkefølgen af nøgler noget?","acceptedAnswer":{"@type":"Answer","text":"Nej. Objekter sammenlignes på nøgle, så {\"a\":1,\"b\":2} og {\"b\":2,\"a\":1} er ens."}},{"@type":"Question","name":"Hvordan sammenligner jeg arrays, hvor rækkefølgen er ændret?","acceptedAnswer":{"@type":"Answer","text":"Brug Smart eller Efter nøgle. Elementer matches på fx id, så en omsorteret liste kun viser reelle ændringer."}},{"@type":"Question","name":"Kan jeg ignorere felter som tidsstempler?","acceptedAnswer":{"@type":"Answer","text":"Ja. Tilføj stier som $..updatedAt under Ignorér stier."}},{"@type":"Question","name":"Bliver min JSON uploadet?","acceptedAnswer":{"@type":"Answer","text":"Nej. Begge filer sammenlignes i din browser, og intet sendes til en server."}},{"@type":"Question","name":"Hvad er JSON Patch?","acceptedAnswer":{"@type":"Answer","text":"En standard (RFC 6902) med en liste af operationer, der gør det første dokument til det andet. Du kan eksportere den og bruge den i din kode."}}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Betyder rækkefølgen af nøgler noget?","acceptedAnswer":{"@type":"Answer","text":"Nej. Objekter sammenlignes på nøgle, så {\"a\":1,\"b\":2} og {\"b\":2,\"a\":1} er ens."}},{"@type":"Question","name":"Hvordan sammenligner jeg arrays, hvor rækkefølgen er ændret?","acceptedAnswer":{"@type":"Answer","text":"Brug \"Smart\" eller \"Efter nøgle\". Elementer matches på fx id, så en omsorteret liste kun viser reelle ændringer."}},{"@type":"Question","name":"Kan jeg ignorere felter som tidsstempler?","acceptedAnswer":{"@type":"Answer","text":"Ja. Tilføj stier som $..updatedAt under \"Ignorér stier\"."}},{"@type":"Question","name":"Bliver min JSON uploadet?","acceptedAnswer":{"@type":"Answer","text":"Nej. Begge filer sammenlignes i din browser, og intet sendes til en server."}},{"@type":"Question","name":"Hvad er JSON Patch?","acceptedAnswer":{"@type":"Answer","text":"En standard (RFC 6902) med en liste af operationer, der gør det første dokument til det andet. Du kan eksportere den og bruge den i din kode."}}]}</script>
 
 
 <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
@@ -45,6 +45,26 @@
     @font-face{font-family:'Inter';font-display:swap}
   </style>
   <link rel="stylesheet" href="/assets/css/style.css?v=20261109">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Hjem",
+      "item": "https://anyconverter.io/da/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Sammenlign JSON",
+      "item": "https://anyconverter.io/da/json-compare/"
+    }
+  ]
+}
+  </script>
 </head>
 <body>
   <header id="site-header" class="site-header"></header>
@@ -205,6 +225,25 @@
       </ol>
     </section>
 
+    <section class="how-it-works" id="how-it-works">
+      <h2>Hvordan det virker: JSON-sammenligning og Myers-strukturjustering</h2>
+
+      <h3>Hvad er et JSON-sammenligningsværktøj?</h3>
+      <p>Et JSON-sammenligningsværktøj er et analytisk værktøj, der deserialiserer to JSON-nyttelaster, justerer deres strukturelle objektnøgler og matrixelementer rekursivt og beregner den nøjagtige forskel ved hjælp af avancerede graf-diff-algoritmer. Værktøjet fremhæver tilføjelser, sletninger, værdiændringer og datatyper på tværs af komplekse indlejrede objekter med millimeterpræcision.</p>
+
+      <h3>Hvordan det virker i browseren</h3>
+      <p>Vores klientside-diff-motor beregner dybdegående sammenligninger direkte i browseren ved hjælp af nøglenormalisering, grafanalyse og sikre algoritmer:</p>
+      <ol class="how-it-works-steps">
+        <li><strong>Normalisering og strukturel nøglejustering</strong>: Begge datasæt parses under RFC 8259-standarden til hukommelsesobjekter, hvor strukturel nøglejustering (structural key alignment) anvendes for at undgå falske forskelle forårsaget af vilkårlig egenskabsrækkefølge.</li>
+        <li><strong>Myers diff algorithm grafevaluering</strong>: Strukturelle linjer og værdier behandles via Myers diff algorithm, som finder den korteste redigeringsvej med O(ND) tidseffektivitet og minimalt hukommelsesforbrug.</li>
+        <li><strong>Semantiske matrixrækkefølge-heuristikker</strong>: Lister sammenlignes via avancerede matrixrækkefølge-heuristikker (array order heuristics) for præcist at skelne mellem flyttede elementer, ændrede værdier og sletninger.</li>
+        <li><strong>Synkroniseret to-kolonne visning</strong>: Forskelle farvekodes i realtid med synkroniserede rullebjælker og detaljerede tællere uden ekstern serveroverførsel.</li>
+      </ol>
+
+      <h3>Tekniske specifikationer og algoritmiske principper</h3>
+      <p>Sammenligningsmotoren anvender <strong>Myers diff algorithm</strong> (Eugene Myers, 1986), den klassiske standard til beregning af minimale ændringsskripter. I modsætning til simple linje-differ, der skaber støj ved ændret nøglerækkefølge, bevarer strukturel nøglejustering (structural key alignment) og array order heuristics den fulde syntaktiske sammenhæng under <strong>RFC 8259</strong>-specifikationen med komplet understøttelse af Unicode, store datamængder og dybe datastrukturer i lokal hukommelse.</p>
+    </section>
+
     <section class="features">
       <h2>Funktioner</h2>
       <ul class="features-list">
@@ -266,6 +305,7 @@
         <a href="/da/json-to-yaml/" class="tool-card"><img src="/assets/img/icon-json-yaml.svg" alt="JSON til YAML Konverter Online Gratis icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>JSON til YAML Konverter Online Gratis</h3><p>Konverter mellem JSON og YAML øjeblikkeligt.</p><span class="tool-card-link">Prøv det →</span></a>
         <a href="/da/text-diff-checker/" class="tool-card"><img src="/assets/img/icon-diff.svg" alt="Tekst Forskels Checker Online Gratis icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Tekst Forskels Checker Online Gratis</h3><p>Sammenlign to blokke af tekst og se forskelle fremhævet øjeblikkeligt.</p><span class="tool-card-link">Prøv det →</span></a>
         <a href="/da/xml-formatter/" class="tool-card"><img src="/assets/img/icon-xml.svg" alt="XML Formatter Online Gratis icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>XML Formatter Online Gratis</h3><p>Formater og valider XML online gratis.</p><span class="tool-card-link">Prøv det →</span></a>
+        <a href="/da/csv-query/" class="tool-card"><img src="/assets/img/icon-csv-query.svg" alt="CSV-forespørgselsværktøj icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>CSV-forespørgselsværktøj</h3><p>Foresporg CSV-data med SQL-lignende filtre i browseren, se raekker, kør eksempler og eksporter resultater. Med klare trin, praktiske resultater og ingen konto.</p><span class="tool-card-link">Prøv det →</span></a>
       </div>
     </section>
   </main>

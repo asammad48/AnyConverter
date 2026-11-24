@@ -45,6 +45,26 @@
     @font-face{font-family:'Inter';font-display:swap}
   </style>
   <link rel="stylesheet" href="/assets/css/style.css?v=20261109">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://anyconverter.io/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Hash Generator",
+      "item": "https://anyconverter.io/hash-generator/"
+    }
+  ]
+}
+  </script>
 </head>
 <body>
   <header id="site-header" class="site-header"></header>
@@ -140,6 +160,25 @@
         <li><strong>Copy your hash</strong> — Click the Copy button next to any hash algorithm to copy it to clipboard.</li>
       </ol>
     </section>
+
+    <section class="how-it-works" id="how-it-works">
+      <h2>How It Works: Cryptographic Hashing & Web Crypto Digest Algorithms</h2>
+
+      <h3>What is a Cryptographic Hash Generator?</h3>
+      <p>A cryptographic hash generator is an information security utility that transforms arbitrary input strings or binary files into fixed-length, deterministic checksum digests using cryptographic algorithms including SHA-256, SHA-512, and MD5 cryptographic digest algorithms. Hash functions are irreversible, one-way mathematical operations designed for integrity verification and password security.</p>
+
+      <h3>How It Works in the Browser</h3>
+      <p>AnyConverter computes message digests directly in your browser using the hardware-accelerated W3C Web Crypto API without uploading data:</p>
+      <ol class="how-it-works-steps">
+        <li><strong>UTF-8 Byte Encoding</strong>: Text input is transformed into an 8-bit unsigned byte array via the native <code>TextEncoder()</code> interface.</li>
+        <li><strong>Hardware-Accelerated Web Crypto API Digesting</strong>: For SHA-256 and SHA-512 cryptographic digest algorithms, the byte buffer is processed through <code>crypto.subtle.digest()</code> via the native Web Crypto API, utilizing local hardware acceleration for maximum throughput.</li>
+        <li><strong>Hexadecimal Serialization</strong>: The resulting ArrayBuffer digest is mapped byte-by-byte into lowercase hexadecimal strings (2 hex characters per byte).</li>
+        <li><strong>Legacy MD5 Computation</strong>: MD5 cryptographic digest algorithms checksums are calculated using a pure client-side bitwise transformation pipeline for legacy checksum comparisons.</li>
+      </ol>
+
+      <h3>Key Specifications & Cryptographic Properties</h3>
+      <p>The hash functions implement <strong>FIPS PUB 180-4</strong> (Secure Hash Standard for SHA-256 and SHA-512) and <strong>RFC 1321</strong> (MD5). SHA-256 produces a 256-bit (32-byte / 64-hex-character) digest with pre-image and strong collision resistance. SHA-512 outputs a 512-bit (64-byte / 128-hex-character) digest suitable for high-security environments. All SHA-256 / SHA-512 / MD5 cryptographic digest algorithms execute locally through the Web Crypto API in browser memory with zero network latency or external exposure.</p>
+    </section>
     <section class="features">
       <h2>Features</h2>
       <ul class="features-list">
@@ -167,6 +206,41 @@
     <div class="ad-slot ad-slot--rectangle" style="margin:0 auto 32px">
       <div class="adsbygoogle" style="display:block" aria-hidden="true"></div>
 </div>
+    
+    <section class="privacy-section" id="privacy-and-security" aria-labelledby="privacy-heading">
+      <h2 id="privacy-heading">Private Hash Generator & Checksum Verifier: In-Browser Web Crypto, No Uploads, No Signup</h2>
+      <p class="privacy-lead">Compute cryptographic hashes (MD5, SHA-1, SHA-256, SHA-512) and verify file checksums locally with zero data transfer.</p>
+      <div class="privacy-grid">
+        <div class="privacy-card">
+          <span class="privacy-card-icon" aria-hidden="true">🔒</span>
+          <div class="privacy-card-content">
+            <strong>Native Web Crypto API Engine</strong>
+            <p>Hashes are calculated locally using crypto.subtle.digest() and streaming chunk readers without sending file bytes to servers.</p>
+          </div>
+        </div>
+        <div class="privacy-card">
+          <span class="privacy-card-icon" aria-hidden="true">⚡</span>
+          <div class="privacy-card-content">
+            <strong>No Account or Signup Required</strong>
+            <p>Compute checksums on files of any size without registration, without waiting lists, and without commercial limits.</p>
+          </div>
+        </div>
+        <div class="privacy-card">
+          <span class="privacy-card-icon" aria-hidden="true">🛡️</span>
+          <div class="privacy-card-content">
+            <strong>Confidential File Verification</strong>
+            <p>Verify the integrity of proprietary source code, cryptographic keys, and database dumps completely on your device.</p>
+          </div>
+        </div>
+        <div class="privacy-card">
+          <span class="privacy-card-icon" aria-hidden="true">🧹</span>
+          <div class="privacy-card-content">
+            <strong>Zero Telemetry on Payloads</strong>
+            <p>Neither file names, inputs, nor computed hash digest outputs are captured by telemetry or analytics trackers.</p>
+          </div>
+        </div>
+      </div>
+    </section>
     <section class="faq">
       <h2>Frequently Asked Questions</h2>
       <div class="faq-list">
@@ -180,6 +254,7 @@
     <section class="related-tools">
       <h2>Related Tools</h2>
       <div class="tool-grid">
+        <a href="/password-strength-checker/" class="tool-card"><img src="/assets/img/icon-password-strength.svg" alt="Password Strength Checker icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Password Strength Checker</h3><p>Check how strong your password is with a 7-point checklist.</p><span class="tool-card-link">Try it →</span></a>
         <a href="/jwt-decoder/" class="tool-card"><img src="/assets/img/icon-jwt.svg" alt="JWT Decoder icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>JWT Decoder</h3><p>Decode and inspect JWT tokens with expiration checking.</p><span class="tool-card-link">Try it →</span></a>
         <a href="/base64-encoder/" class="tool-card"><img src="/assets/img/icon-base64.svg" alt="Base64 Encoder icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Base64 Encoder</h3><p>Encode and decode Base64 text and files online.</p><span class="tool-card-link">Try it →</span></a>
         <a href="/uuid-generator/" class="tool-card"><img src="/assets/img/icon-uuid.svg" alt="UUID Generator icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>UUID Generator</h3><p>Generate cryptographically secure UUID v4 identifiers.</p><span class="tool-card-link">Try it →</span></a>

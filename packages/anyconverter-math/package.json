@@ -1,0 +1,36 @@
+{
+  "name": "@anyconverter/math",
+  "version": "1.0.0",
+  "description": "Zero-dependency pure calculation utilities for financial amortization, percentage arithmetic, and exact calendar date differences.",
+  "main": "index.js",
+  "module": "index.js",
+  "types": "index.d.ts",
+  "scripts": {
+    "test": "node test/index.test.js"
+  },
+  "keywords": [
+    "math",
+    "finance",
+    "loan",
+    "emi",
+    "amortization",
+    "compound-interest",
+    "percentage",
+    "date-difference",
+    "anyconverter"
+  ],
+  "author": "AnyConverter Team (https://anyconverter.io)",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/asammad48/AnyConverter.git",
+    "directory": "packages/anyconverter-math"
+  },
+  "homepage": "https://anyconverter.io",
+  "bugs": {
+    "url": "https://github.com/asammad48/AnyConverter/issues"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}

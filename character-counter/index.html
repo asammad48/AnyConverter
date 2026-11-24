@@ -45,6 +45,26 @@
     @font-face{font-family:'Inter';font-display:swap}
   </style>
   <link rel="stylesheet" href="/assets/css/style.css?v=20261109">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://anyconverter.io/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Character Counter",
+      "item": "https://anyconverter.io/character-counter/"
+    }
+  ]
+}
+  </script>
 </head>
 <body>
   <header id="site-header" class="site-header"></header>
@@ -84,6 +104,51 @@
         </div>
       </aside>
     </div>
+        <!-- Contextual Workflow Chain: Next Step (Sprint S26) -->
+    <section class="workflow-chain-section" id="workflow-chain-text" aria-labelledby="workflow-chain-heading" style="display:none;">
+      <div class="workflow-chain-header">
+        <div class="workflow-chain-badge">
+          <span aria-hidden="true">⚡</span>
+          <span>Next Step</span>
+        </div>
+        <h2 class="workflow-chain-title" id="workflow-chain-heading">Next Step: Continue Your Text Workflow</h2>
+        <p class="workflow-chain-sub">Your text is ready. Continue directly with the next tool in the pipeline:</p>
+        <button type="button" class="workflow-chain-dismiss" id="btn-chain-dismiss" aria-label="Dismiss workflow suggestions">✕</button>
+      </div>
+      <div class="workflow-chain-grid">
+        <a href="/word-counter/" class="workflow-chain-card" id="chain-step-counter" data-target="/word-counter/">
+          <div class="workflow-chain-card-icon">
+            <img src="/assets/img/icon-wordcount.svg" alt="Word Counter icon" width="28" height="28" loading="lazy">
+          </div>
+          <div class="workflow-chain-card-content">
+            <span class="workflow-chain-card-title">Word Counter</span>
+            <span class="workflow-chain-card-desc">Count words, sentences, paragraphs, and reading time</span>
+          </div>
+          <span class="workflow-chain-card-action">Count Words →</span>
+        </a>
+        <a href="/text-case-converter/" class="workflow-chain-card" id="chain-step-case-converter" data-target="/text-case-converter/">
+          <div class="workflow-chain-card-icon">
+            <img src="/assets/img/icon-textcase.svg" alt="Text Case Converter icon" width="28" height="28" loading="lazy">
+          </div>
+          <div class="workflow-chain-card-content">
+            <span class="workflow-chain-card-title">Text Case Converter</span>
+            <span class="workflow-chain-card-desc">Convert to uppercase, lowercase, title case, camelCase, and more</span>
+          </div>
+          <span class="workflow-chain-card-action">Convert Case →</span>
+        </a>
+        <a href="/text-diff-checker/" class="workflow-chain-card" id="chain-step-diff-checker" data-target="/text-diff-checker/">
+          <div class="workflow-chain-card-icon">
+            <img src="/assets/img/icon-diff.svg" alt="Text Diff Checker icon" width="28" height="28" loading="lazy">
+          </div>
+          <div class="workflow-chain-card-content">
+            <span class="workflow-chain-card-title">Text Diff Checker</span>
+            <span class="workflow-chain-card-desc">Compare two text versions side-by-side with line highlights</span>
+          </div>
+          <span class="workflow-chain-card-action">Compare Text →</span>
+        </a>
+      </div>
+    </section>
+
     <div class="ad-slot ad-slot--leaderboard">
       <div class="adsbygoogle" style="display:block" aria-hidden="true"></div>
 </div>
@@ -134,15 +199,17 @@
         <section class="related-tools">
       <h2>Related Tools</h2>
       <div class="tool-grid">
+        <a href="/number-to-words/" class="tool-card"><img src="/assets/img/icon-number-words.svg" alt="Number to Words icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Number to Words</h3><p>Convert any number to its English word equivalent instantly.</p><span class="tool-card-link">Try it →</span></a>
+        <a href="/markdown-html/" class="tool-card"><img src="/assets/img/icon-markdown.svg" alt="Markdown to HTML icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Markdown to HTML</h3><p>Convert Markdown to HTML with live preview.</p><span class="tool-card-link">Try it →</span></a>
         <a href="/word-counter/" class="tool-card"><img src="/assets/img/icon-wordcount.svg" alt="Word Counter icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Word Counter</h3><p>Count words, characters, sentences and reading time.</p><span class="tool-card-link">Try it →</span></a>
         <a href="/text-case-converter/" class="tool-card"><img src="/assets/img/icon-textcase.svg" alt="Text Case Converter icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Text Case Converter</h3><p>Convert text to uppercase, lowercase, title case, camelCase and more.</p><span class="tool-card-link">Try it →</span></a>
         <a href="/text-diff-checker/" class="tool-card"><img src="/assets/img/icon-diff.svg" alt="Text Diff Checker icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Text Diff Checker</h3><p>Compare two texts and highlight added and removed lines.</p><span class="tool-card-link">Try it →</span></a>
-        <a href="/text-repeater/" class="tool-card"><img src="/assets/img/icon-repeat.svg" alt="Text Repeater icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Text Repeater</h3><p>Repeat any text up to 10,000 times with a custom separator and line breaks.</p><span class="tool-card-link">Try it →</span></a>
       </div>
     </section>
   </main>
   <footer id="site-footer" class="site-footer"></footer>
   <script src="/assets/js/shared.js?v=20261109" defer></script>
   <script src="/assets/js/tools/character-counter.js" defer></script>
+  <script src="/assets/js/tools/text-workflow-chain.js?v=20261124" defer></script>
 </body>
 </html>

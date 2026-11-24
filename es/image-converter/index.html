@@ -45,6 +45,26 @@
     @font-face{font-family:'Inter';font-display:swap}
   </style>
   <link rel="stylesheet" href="/assets/css/style.css?v=20261109">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Inicio",
+      "item": "https://anyconverter.io/es/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Convertidor de Imágenes",
+      "item": "https://anyconverter.io/es/image-converter/"
+    }
+  ]
+}
+  </script>
 </head>
 <body>
   <header id="site-header" class="site-header"></header>
@@ -104,12 +124,12 @@
           <div class="image-preview-grid mt-4">
             <div class="image-preview-item">
               <p class="panel-label">Original</p>
-              <img id="img-original-preview" alt="Vista previa original" style="max-width:100%;border-radius:8px">
+              <img id="img-original-preview" src="" alt="Vista previa original" style="max-width:100%;border-radius:8px" width="300" height="200" loading="lazy">
               <p class="image-size-label" id="img-original-size"></p>
             </div>
             <div class="image-preview-item">
               <p class="panel-label">Convertida</p>
-              <img id="img-converted-preview" alt="Vista previa convertida" style="max-width:100%;border-radius:8px">
+              <img id="img-converted-preview" src="" alt="Vista previa convertida" style="max-width:100%;border-radius:8px" width="300" height="200" loading="lazy">
               <p class="image-size-label" id="img-converted-size"></p>
             </div>
           </div>
@@ -179,6 +199,41 @@
     <div class="ad-slot ad-slot--rectangle" style="margin:0 auto 32px">
       <div class="adsbygoogle" style="display:block" aria-hidden="true"></div>
 </div>
+    
+    <section class="privacy-section" id="privacy-and-security" aria-labelledby="privacy-heading">
+      <h2 id="privacy-heading">Convertidor de imágenes privado: conversión en el navegador, sin subir archivos y sin registro</h2>
+      <p class="privacy-lead">Convierte fotos y gráficos entre WebP, PNG, JPG y AVIF localmente sin exponer tus imágenes a procesadores en la nube.</p>
+      <div class="privacy-grid">
+        <div class="privacy-card">
+          <span class="privacy-card-icon" aria-hidden="true">🔒</span>
+          <div class="privacy-card-content">
+            <strong>Decodificación local con Canvas HTML5</strong>
+            <p>La decodificación, redimensionado y codificación se realizan dentro de tu navegador mediante la API Canvas.</p>
+          </div>
+        </div>
+        <div class="privacy-card">
+          <span class="privacy-card-icon" aria-hidden="true">⚡</span>
+          <div class="privacy-card-content">
+            <strong>Sin cuenta ni registro</strong>
+            <p>Convierte imágenes de inmediato sin crear cuentas de usuario, sin tiempos de espera y sin límites diarios.</p>
+          </div>
+        </div>
+        <div class="privacy-card">
+          <span class="privacy-card-icon" aria-hidden="true">🛡️</span>
+          <div class="privacy-card-content">
+            <strong>Confidencialidad para fotos privadas</strong>
+            <p>Fotografías personales, recursos de diseño y material gráfico se procesan sin transferencias a servidores.</p>
+          </div>
+        </div>
+        <div class="privacy-card">
+          <span class="privacy-card-icon" aria-hidden="true">🧹</span>
+          <div class="privacy-card-content">
+            <strong>Liberación rápida de recursos</strong>
+            <p>Los objetos de imagen convertidos se gestionan en memoria local y se liberan al completar la descarga.</p>
+          </div>
+        </div>
+      </div>
+    </section>
     <section class="faq">
       <h2>Preguntas Frecuentes</h2>
       <div class="faq-list">
@@ -190,10 +245,11 @@
         <section class="related-tools">
       <h2>Herramientas Relacionadas</h2>
       <div class="tool-grid">
+        <a href="/es/barcode-generator/" class="tool-card"><img src="/assets/img/icon-text.svg" alt="Generador de Códigos de Barras Gratis icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Generador de Códigos de Barras Gratis</h3><p>Crea códigos de barras Code 128, EAN-13, UPC-A y Code 39 gratis.</p><span class="tool-card-link">Probar →</span></a>
+        <a href="/es/pdf-to-jpg/" class="tool-card"><img src="/assets/img/icon-pdf-to-jpg.svg" alt="PDF a JPG icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>PDF a JPG</h3><p>Convierte páginas de un PDF en imágenes JPG, PNG o WebP desde tu navegador.</p><span class="tool-card-link">Probar →</span></a>
+        <a href="/es/color-converter/" class="tool-card"><img src="/assets/img/icon-color.svg" alt="Conversor de Colores icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Conversor de Colores</h3><p>Usa Conversor de Colores gratis en el navegador.</p><span class="tool-card-link">Probar →</span></a>
         <a href="/es/image-compressor/" class="tool-card"><img src="/assets/img/icon-image.svg" alt="Compresor de Imágenes Online Gratis icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Compresor de Imágenes Online Gratis</h3><p>Usa Compresor de Imágenes gratis en el navegador.</p><span class="tool-card-link">Probar →</span></a>
         <a href="/es/aspect-ratio-calculator/" class="tool-card"><img src="/assets/img/icon-ratio.svg" alt="Calculadora de Relación de Aspecto Online Gratis icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Calculadora de Relación de Aspecto Online Gratis</h3><p>Usa Calculadora de Relación de Aspecto gratis en el navegador.</p><span class="tool-card-link">Probar →</span></a>
-        <a href="/es/color-converter/" class="tool-card"><img src="/assets/img/icon-color.svg" alt="Conversor de Colores icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Conversor de Colores</h3><p>Usa Conversor de Colores gratis en el navegador.</p><span class="tool-card-link">Probar →</span></a>
-        <a href="/es/pdf-to-jpg/" class="tool-card"><img src="/assets/img/icon-pdf-to-jpg.svg" alt="PDF a JPG icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>PDF a JPG</h3><p>Convierte páginas de un PDF en imágenes JPG, PNG o WebP desde tu navegador.</p><span class="tool-card-link">Probar →</span></a>
       </div>
     </section>
   </main>

@@ -29,7 +29,54 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Regex Tester","url":"https://anyconverter.io/da/regex-tester/","description":"Test regulære udtryk online med live match-fremhævning.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Hvilken regex-syntaks bruges?","acceptedAnswer":{"@type":"Answer","text":"Værktøjet bruger JavaScript's regex-motor, som er kompatibel med ECMA-262. Det er den samme motor, som bruges af Node.js og moderne browsere."}},{"@type":"Question","name":"Hvad betyder de forskellige flag?","acceptedAnswer":{"@type":"Answer","text":"g (global) finder alle matches i stedet for kun det første. i ignorerer forskellen på store og små bogstaver. m behandler hver linje som en separat streng for ^ og $. s får punktum (.) til også at matche linjeskift."}}]}</script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Hvilken regex-syntaks bruges?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Værktøjet bruger JavaScript's regex-motor, som er kompatibel med ECMA-262. Det er den samme motor, som bruges af Node.js og moderne browsere."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Hvad betyder de forskellige flag?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "g (global) finder alle matches i stedet for kun det første. i ignorerer forskellen på store og små bogstaver. m behandler hver linje som en separat streng for ^ og $. s får punktum (.) til også at matche linjeskift."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Hvordan fungerer fangstgrupper (capture groups)?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Pak dele af dit mønster ind i parenteser () for at oprette fangstgrupper. Hvert matchende segment viser de udtrukne undergrupper separat til analyse eller erstatning."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Hvordan eksporterer jeg regex-matches?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Du kan kopiere listen over fundne matches direkte til udklipsholderen eller eksportere de udtrukne data som ren tekst eller struktureret JSON med et enkelt klik."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Kan jeg teste mod store logfiler?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ja. Evalueringsmotoren kører i browseren med indbyggede sikkerhedsgrænser for at forhindre katastrofal backtracking (catastrophic backtracking) ved store datamængder."
+      }
+    }
+  ]
+}
+</script>
 
 
 <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
@@ -45,6 +92,26 @@
     @font-face{font-family:'Inter';font-display:swap}
   </style>
   <link rel="stylesheet" href="/assets/css/style.css?v=20261109">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Hjem",
+      "item": "https://anyconverter.io/da/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Regex Tester",
+      "item": "https://anyconverter.io/da/regex-tester/"
+    }
+  ]
+}
+  </script>
 </head>
 <body>
   <header id="site-header" class="site-header"></header>
@@ -198,6 +265,25 @@
         <li><strong>Analyser resultaterne</strong> — Se antallet af matches, deres positioner og capture-grupper.</li>
       </ol>
     </section>
+
+    <section class="how-it-works" id="how-it-works">
+      <h2>Hvordan det virker: ECMAScript RegExp-motor og mønsterevaluering</h2>
+
+      <h3>Hvad er en regulær udtrykstester?</h3>
+      <p>En regulær udtrykstester er et interaktivt fejlfindingsværktøj, der kompilerer søgemønstre mod tekststrenge ved hjælp af browserens indbyggede ECMAScript RegExp engine, fanger tokengrupper og evaluerer match-positioner i realtid. Værktøjet gør det nemt at inspicere resultater, teste syntaksgrænser og validere avancerede tekstmønstre med høj præcision.</p>
+
+      <h3>Hvordan det virker i browseren</h3>
+      <p>Vores regex-arbejdsbænk kompilerer mønstre i browserens lokale runtime ved hjælp af standard V8/SpiderMonkey-motorer for autentisk JavaScript-funktionalitet:</p>
+      <ol class="how-it-works-steps">
+        <li><strong>Mønsterkompilering og flag handling</strong>: Inputmønsteret instantieres i browserens ECMAScript RegExp engine via <code>new RegExp(pattern, flags)</code> med fuld flag handling af globalt (<code>g</code>), case-insensitivt (<code>i</code>), multiline (<code>m</code>), dotAll (<code>s</code>) og unicode (<code>u</code>) flag.</li>
+        <li><strong>Match group capturing</strong>: Motoren gennemgår tekstmatcher og udfører præcis match group capturing for nummererede og navngivne fangstgrupper samt start- og slutindekser.</li>
+        <li><strong>Ikke-destruktiv fremhævning</strong>: Tekststykker omsluttes af fremhævningselementer med kontrasterende baggrundsfarver, så på hinanden følgende matcher let skelnes visuelt.</li>
+        <li><strong>Udførelsesbeskyttelse</strong>: Evalueringen kører med sikkerhedsgrænser for at forhindre browserfrysning forårsaget af katastrofal backtracking i NFA-motorer.</li>
+      </ol>
+
+      <h3>Tekniske specifikationer og motorstandarder</h3>
+      <p>Testeren følger den officielle <strong>ECMAScript RegExp (ECMA-262)</strong> engine-standard. Den understøtter fuldt ud lookahead- og lookbehind-betingelser, avanceret match group capturing (<code>(?&lt;navn&gt;...)</code>), komplet flag handling (<code>gimsuy</code>), Unicode-egenskabs-escapes (<code>\p{...}</code>) og backreferences. Hele evalueringen foregår lokalt uden datatransmission over internettet, hvilket beskytter følsomme logfiler og tekstdata.</p>
+    </section>
     <section class="features">
       <h2>Funktioner</h2>
       <ul class="features-list">
@@ -229,15 +315,18 @@
       <div class="faq-list">
         <details class="faq-item"><summary class="faq-question">Hvilken regex-syntaks bruges? <span class="faq-icon">+</span></summary><div class="faq-answer">Værktøjet bruger JavaScript's regex-motor, som er kompatibel med ECMA-262. Det er den samme motor, som bruges af Node.js og moderne browsere.</div></details>
         <details class="faq-item"><summary class="faq-question">Hvad betyder de forskellige flag? <span class="faq-icon">+</span></summary><div class="faq-answer">g (global) finder alle matches i stedet for kun det første. i ignorerer forskellen på store og små bogstaver. m behandler hver linje som en separat streng for ^ og $. s får punktum (.) til også at matche linjeskift.</div></details>
+    <details class="faq-item"><summary class="faq-question">Hvordan fungerer fangstgrupper (capture groups)? <span class="faq-icon">+</span></summary><div class="faq-answer">Pak dele af dit mønster ind i parenteser () for at oprette fangstgrupper. Hvert matchende segment viser de udtrukne undergrupper separat til analyse eller erstatning.</div></details>
+    <details class="faq-item"><summary class="faq-question">Hvordan eksporterer jeg regex-matches? <span class="faq-icon">+</span></summary><div class="faq-answer">Du kan kopiere listen over fundne matches direkte til udklipsholderen eller eksportere de udtrukne data som ren tekst eller struktureret JSON med et enkelt klik.</div></details>
+    <details class="faq-item"><summary class="faq-question">Kan jeg teste mod store logfiler? <span class="faq-icon">+</span></summary><div class="faq-answer">Ja. Evalueringsmotoren kører i browseren med indbyggede sikkerhedsgrænser for at forhindre katastrofal backtracking (catastrophic backtracking) ved store datamængder.</div></details>
       </div>
     </section>
     <section class="related-tools">
       <h2>Relaterede Værktøjer</h2>
       <div class="tool-grid">
-        <a href="/da/json-formatter/" class="tool-card"><img src="/assets/img/icon-json.svg" alt="JSON Formatter Online Gratis icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>JSON Formatter Online Gratis</h3><p>Formatér, validér og minificér JSON gratis.</p><span class="tool-card-link">Prøv det →</span></a>
-        <a href="/da/text-diff-checker/" class="tool-card"><img src="/assets/img/icon-diff.svg" alt="Tekst Forskels Checker Online Gratis icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Tekst Forskels Checker Online Gratis</h3><p>Sammenlign to blokke af tekst og se forskelle fremhævet øjeblikkeligt.</p><span class="tool-card-link">Prøv det →</span></a>
         <a href="/da/cron-expression-parser/" class="tool-card"><img src="/assets/img/icon-timer.svg" alt="Cron Udtryks Parser Online Gratis icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Cron Udtryks Parser Online Gratis</h3><p>Afkod ethvert cron-udtryk til læsbar tekst øjeblikkeligt.</p><span class="tool-card-link">Prøv det →</span></a>
-        <a href="/da/base64-encoder/" class="tool-card"><img src="/assets/img/icon-base64.svg" alt="Base64 Encoder og Decoder Online Gratis icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Base64 Encoder og Decoder Online Gratis</h3><p>Kodér og dekodér Base64 online gratis.</p><span class="tool-card-link">Prøv det →</span></a>
+        <a href="/da/url-encoder/" class="tool-card"><img src="/assets/img/icon-url.svg" alt="URL Encoder og Decoder Online Gratis icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>URL Encoder og Decoder Online Gratis</h3><p>Kodér eller dekodér URL.</p><span class="tool-card-link">Prøv det →</span></a>
+        <a href="/da/xml-formatter/" class="tool-card"><img src="/assets/img/icon-xml.svg" alt="XML Formatter Online Gratis icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>XML Formatter Online Gratis</h3><p>Formater og valider XML online gratis.</p><span class="tool-card-link">Prøv det →</span></a>
+        <a href="/da/json-formatter/" class="tool-card"><img src="/assets/img/icon-json.svg" alt="JSON Formatter Online Gratis icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>JSON Formatter Online Gratis</h3><p>Formatér, validér og minificér JSON gratis.</p><span class="tool-card-link">Prøv det →</span></a>
       </div>
     </section>
   </main>

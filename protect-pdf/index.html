@@ -43,6 +43,32 @@
     @font-face{font-family:'Inter';font-display:swap}
   </style>
   <link rel="stylesheet" href="/assets/css/style.css?v=20261109">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://anyconverter.io/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "PDF Tools",
+      "item": "https://anyconverter.io/pdf-merge/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Protect PDF",
+      "item": "https://anyconverter.io/protect-pdf/"
+    }
+  ]
+}
+  </script>
 </head>
 <body>
   <header id="site-header" class="site-header"></header>
@@ -55,7 +81,7 @@
     <div class="tool-wrapper">
       <div class="tool-zone">
         <div style="padding:24px">
-          <div class="upload-area" data-file-target="pp2-file" role="button" tabindex="0">
+          <div class="upload-area" data-file-target="pp2-file" role="button" tabindex="0" aria-label="Drop file here or click to browse">
             <img src="/assets/img/icon-pdf.svg" alt="Protect PDF with Password Online Free icon" width="36" height="36" style="margin-bottom:10px">
             <p style="font-size:14px;color:var(--color-text-2,#6B7280);margin-bottom:10px">Drop your PDF here or click to browse</p>
             <input type="file" id="pp2-file" accept=".pdf" style="display:none">
@@ -111,10 +137,11 @@
     <section class="related-tools">
       <h2>Related Tools</h2>
       <div class="tool-grid">
+        <a href="/add-watermark/" class="tool-card"><img src="/assets/img/icon-pdf-watermark.svg" alt="Add Watermark icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Add Watermark</h3><p>Stamp a custom text watermark on every page. Adjustable opacity and colour.</p><span class="tool-card-link">Try it →</span></a>
         <a href="/unlock-pdf/" class="tool-card"><img src="/assets/img/icon-pdf-unlock.svg" alt="Unlock PDF icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Unlock PDF</h3><p>Remove the password from a PDF you own and download the unlocked copy.</p><span class="tool-card-link">Try it →</span></a>
         <a href="/pdf-security/" class="tool-card"><img src="/assets/img/icon-pdf-security.svg" alt="PDF Security icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>PDF Security</h3><p>Set granular permissions: restrict printing, copying, editing and more.</p><span class="tool-card-link">Try it →</span></a>
-        <a href="/add-watermark/" class="tool-card"><img src="/assets/img/icon-pdf-watermark.svg" alt="Add Watermark icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Add Watermark</h3><p>Stamp a custom text watermark on every page. Adjustable opacity and colour.</p><span class="tool-card-link">Try it →</span></a>
         <a href="/pdf-metadata-remover/" class="tool-card"><img src="/assets/img/icon-pdf.svg" alt="PDF Metadata Remover icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>PDF Metadata Remover</h3><p>Inspect and strip author, title, keywords and creator properties from PDF files.</p><span class="tool-card-link">Try it →</span></a>
+        <a href="/pdf-forms/" class="tool-card"><img src="/assets/img/icon-pdf-forms.svg" alt="Fill PDF Forms icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Fill PDF Forms</h3><p>Fill text fields, checkboxes and dropdowns in any fillable PDF.</p><span class="tool-card-link">Try it →</span></a>
       </div>
     </section>
 

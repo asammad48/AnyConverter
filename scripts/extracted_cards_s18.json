@@ -1,0 +1,1406 @@
+{
+  "dev_en": {
+    "json-formatter": {
+      "href": "/json-formatter/",
+      "icon": "/assets/img/icon-json.svg",
+      "alt": "JSON Formatter icon",
+      "name": "JSON Formatter",
+      "desc": "Format, beautify and validate JSON with syntax highlighting.",
+      "linkText": "Use tool"
+    },
+    "json-compare": {
+      "href": "/json-compare/",
+      "icon": "/assets/img/icon-json.svg",
+      "alt": "JSON Compare icon",
+      "name": "JSON Compare",
+      "desc": "Find real differences between two JSON files.",
+      "linkText": "Use tool"
+    },
+    "json-to-yaml": {
+      "href": "/json-to-yaml/",
+      "icon": "/assets/img/icon-json-yaml.svg",
+      "alt": "JSON ↔ YAML Converter icon",
+      "name": "JSON ↔ YAML Converter",
+      "desc": "Convert between JSON and YAML instantly in your browser.",
+      "linkText": "Use tool"
+    },
+    "xml-formatter": {
+      "href": "/xml-formatter/",
+      "icon": "/assets/img/icon-xml.svg",
+      "alt": "XML Formatter icon",
+      "name": "XML Formatter",
+      "desc": "Format and validate XML online with error detection.",
+      "linkText": "Use tool"
+    },
+    "html-beautifier": {
+      "href": "/html-beautifier/",
+      "icon": "/assets/img/icon-html-beautifier.svg",
+      "alt": "HTML Beautifier icon",
+      "name": "HTML Beautifier",
+      "desc": "Beautify or minify HTML code with one click.",
+      "linkText": "Use tool"
+    },
+    "base64-encoder": {
+      "href": "/base64-encoder/",
+      "icon": "/assets/img/icon-base64.svg",
+      "alt": "Base64 Encoder icon",
+      "name": "Base64 Encoder",
+      "desc": "Encode and decode Base64 text and files online.",
+      "linkText": "Use tool"
+    },
+    "url-encoder": {
+      "href": "/url-encoder/",
+      "icon": "/assets/img/icon-url.svg",
+      "alt": "URL Encoder icon",
+      "name": "URL Encoder",
+      "desc": "Encode or decode URLs and query parameters online.",
+      "linkText": "Use tool"
+    },
+    "jwt-decoder": {
+      "href": "/jwt-decoder/",
+      "icon": "/assets/img/icon-jwt.svg",
+      "alt": "JWT Decoder icon",
+      "name": "JWT Decoder",
+      "desc": "Decode and inspect JWT tokens with expiration checking.",
+      "linkText": "Use tool"
+    },
+    "hash-generator": {
+      "href": "/hash-generator/",
+      "icon": "/assets/img/icon-hash.svg",
+      "alt": "Hash Generator icon",
+      "name": "Hash Generator",
+      "desc": "Generate MD5, SHA-1, SHA-256, SHA-512 hashes instantly.",
+      "linkText": "Use tool"
+    },
+    "uuid-generator": {
+      "href": "/uuid-generator/",
+      "icon": "/assets/img/icon-uuid.svg",
+      "alt": "UUID Generator icon",
+      "name": "UUID Generator",
+      "desc": "Generate cryptographically secure UUID v4 identifiers.",
+      "linkText": "Use tool"
+    },
+    "regex-tester": {
+      "href": "/regex-tester/",
+      "icon": "/assets/img/icon-regex.svg",
+      "alt": "Regex Tester icon",
+      "name": "Regex Tester",
+      "desc": "Test regular expressions with live match highlighting.",
+      "linkText": "Use tool"
+    },
+    "cron-expression-parser": {
+      "href": "/cron-expression-parser/",
+      "icon": "/assets/img/icon-timer.svg",
+      "alt": "Cron Expression Parser icon",
+      "name": "Cron Expression Parser",
+      "desc": "Decode any cron expression into plain English instantly.",
+      "linkText": "Use tool"
+    },
+    "timestamp-converter": {
+      "href": "/timestamp-converter/",
+      "icon": "/assets/img/icon-clock.svg",
+      "alt": "Timestamp Converter icon",
+      "name": "Timestamp Converter",
+      "desc": "Convert Unix timestamps to human-readable dates and back.",
+      "linkText": "Use tool"
+    },
+    "css-gradient-generator": {
+      "href": "/css-gradient-generator/",
+      "icon": "/assets/img/icon-css-gradient.svg",
+      "alt": "CSS Gradient Generator icon",
+      "name": "CSS Gradient Generator",
+      "desc": "Design linear and radial CSS gradients visually.",
+      "linkText": "Use tool"
+    },
+    "css-shadow-generator": {
+      "href": "/css-shadow-generator/",
+      "icon": "/assets/img/icon-shadow.svg",
+      "alt": "CSS Shadow Generator icon",
+      "name": "CSS Shadow Generator",
+      "desc": "Design box-shadow and text-shadow visually with live preview and CSS copy.",
+      "linkText": "Use tool"
+    },
+    "px-to-rem": {
+      "href": "/px-to-rem/",
+      "icon": "/assets/img/icon-pxrem.svg",
+      "alt": "PX to REM icon",
+      "name": "PX to REM",
+      "desc": "Convert pixel values to REM and back with a customisable base font size.",
+      "linkText": "Use tool"
+    },
+    "color-converter": {
+      "href": "/color-converter/",
+      "icon": "/assets/img/icon-color.svg",
+      "alt": "Color Converter icon",
+      "name": "Color Converter",
+      "desc": "Convert colors between HEX, RGB, HSL, CMYK and HSB.",
+      "linkText": "Use tool"
+    },
+    "markdown-html": {
+      "href": "/markdown-html/",
+      "icon": "/assets/img/icon-markdown.svg",
+      "alt": "Markdown to HTML icon",
+      "name": "Markdown to HTML",
+      "desc": "Convert Markdown to HTML with live preview.",
+      "linkText": "Use tool"
+    },
+    "csv-to-sql": {
+      "href": "/csv-to-sql/",
+      "icon": "/assets/img/icon-csv.svg",
+      "alt": "CSV to SQL icon",
+      "name": "CSV to SQL",
+      "desc": "Convert CSV to SQL INSERT statements with auto type detection.",
+      "linkText": "Use tool"
+    },
+    "csv-query": {
+      "href": "/csv-query/",
+      "icon": "/assets/img/icon-csv-query.svg",
+      "alt": "CSV Query icon",
+      "name": "CSV Query",
+      "desc": "Run SQL queries on CSV files directly in your browser.",
+      "linkText": "Use tool"
+    },
+    "parquet-to-csv": {
+      "href": "/parquet-to-csv/",
+      "icon": "/assets/img/icon-csv.svg",
+      "alt": "Parquet to CSV icon",
+      "name": "Parquet to CSV",
+      "desc": "Convert Parquet files to CSV, with exact big numbers.",
+      "linkText": "Use tool"
+    },
+    "camt053-to-csv": {
+      "href": "/camt053-to-csv/",
+      "icon": "/assets/img/icon-csv.svg",
+      "alt": "CAMT.053 to CSV icon",
+      "name": "CAMT.053 to CSV",
+      "desc": "Convert ISO 20022 bank statements to CSV, with a balance check.",
+      "linkText": "Use tool"
+    },
+    "password-generator": {
+      "href": "/password-generator/",
+      "icon": "/assets/img/icon-lock.svg",
+      "alt": "Password Generator icon",
+      "name": "Password Generator",
+      "desc": "Generate strong, secure passwords with custom settings.",
+      "linkText": "Use tool"
+    },
+    "password-strength-checker": {
+      "href": "/password-strength-checker/",
+      "icon": "/assets/img/icon-password-strength.svg",
+      "alt": "Password Strength Checker icon",
+      "name": "Password Strength Checker",
+      "desc": "Check how strong your password is with a 7-point checklist.",
+      "linkText": "Use tool"
+    },
+    "ip-address-lookup": {
+      "href": "/ip-address-lookup/",
+      "icon": "/assets/img/icon-ip-lookup.svg",
+      "alt": "IP Address Lookup icon",
+      "name": "IP Address Lookup",
+      "desc": "Look up geolocation, ISP and timezone for any IP address.",
+      "linkText": "Use tool"
+    },
+    "screen-resolution": {
+      "href": "/screen-resolution/",
+      "icon": "/assets/img/icon-screen.svg",
+      "alt": "Screen Resolution icon",
+      "name": "Screen Resolution",
+      "desc": "Detect screen resolution, viewport size, DPR and colour depth instantly.",
+      "linkText": "Use tool"
+    }
+  },
+  "dev_es": {
+    "json-formatter": {
+      "href": "/es/json-formatter/",
+      "icon": "/assets/img/icon-json.svg",
+      "alt": "Formateador JSON Online Gratis icon",
+      "name": "Formateador JSON Online Gratis",
+      "desc": "Formatea, valida y minifica JSON gratis.",
+      "linkText": "Usar herramienta"
+    },
+    "json-compare": {
+      "href": "/es/json-compare/",
+      "icon": "/assets/img/icon-json.svg",
+      "alt": "Comparar JSON Online icon",
+      "name": "Comparar JSON Online",
+      "desc": "Compara dos archivos JSON lado a lado gratis.",
+      "linkText": "Usar herramienta"
+    },
+    "json-to-yaml": {
+      "href": "/es/json-to-yaml/",
+      "icon": "/assets/img/icon-json-yaml.svg",
+      "alt": "Convertidor JSON a YAML Online Gratis icon",
+      "name": "Convertidor JSON a YAML Online Gratis",
+      "desc": "Usa Convertidor JSON a YAML gratis en el navegador.",
+      "linkText": "Usar herramienta"
+    },
+    "xml-formatter": {
+      "href": "/es/xml-formatter/",
+      "icon": "/assets/img/icon-xml.svg",
+      "alt": "Formateador XML Online Gratis icon",
+      "name": "Formateador XML Online Gratis",
+      "desc": "Usa Formateador XML gratis en el navegador.",
+      "linkText": "Usar herramienta"
+    },
+    "html-beautifier": {
+      "href": "/es/html-beautifier/",
+      "icon": "/assets/img/icon-html-beautifier.svg",
+      "alt": "Embellecedor y Minificador HTML Online Gratis icon",
+      "name": "Embellecedor y Minificador HTML Online Gratis",
+      "desc": "Usa beautifier html gratis en el navegador.",
+      "linkText": "Usar herramienta"
+    },
+    "base64-encoder": {
+      "href": "/es/base64-encoder/",
+      "icon": "/assets/img/icon-base64.svg",
+      "alt": "Codificador Base64 Online Gratis icon",
+      "name": "Codificador Base64 Online Gratis",
+      "desc": "Convierte texto plano a Base64 online gratis y decodifica Base64 a texto.",
+      "linkText": "Usar herramienta"
+    },
+    "url-encoder": {
+      "href": "/es/url-encoder/",
+      "icon": "/assets/img/icon-url.svg",
+      "alt": "Codificador URL Online Gratis icon",
+      "name": "Codificador URL Online Gratis",
+      "desc": "Usa url encoder gratis en el navegador.",
+      "linkText": "Usar herramienta"
+    },
+    "jwt-decoder": {
+      "href": "/es/jwt-decoder/",
+      "icon": "/assets/img/icon-jwt.svg",
+      "alt": "Decodificador JWT Online Gratis icon",
+      "name": "Decodificador JWT Online Gratis",
+      "desc": "Usa el decodificador de tokens JWT gratis en el navegador.",
+      "linkText": "Usar herramienta"
+    },
+    "hash-generator": {
+      "href": "/es/hash-generator/",
+      "icon": "/assets/img/icon-hash.svg",
+      "alt": "Generador de Hash icon",
+      "name": "Generador de Hash",
+      "desc": "Usa Generador de Hash gratis en el navegador.",
+      "linkText": "Usar herramienta"
+    },
+    "uuid-generator": {
+      "href": "/es/uuid-generator/",
+      "icon": "/assets/img/icon-uuid.svg",
+      "alt": "Generador de UUID Online Gratis icon",
+      "name": "Generador de UUID Online Gratis",
+      "desc": "Genera UUID v4 y v7 en lote, copia o descarga resultados y valida el formato UUID directamente en el navegador.",
+      "linkText": "Usar herramienta"
+    },
+    "regex-tester": {
+      "href": "/es/regex-tester/",
+      "icon": "/assets/img/icon-regex.svg",
+      "alt": "Probador de Expresiones Regulares Online Gratis icon",
+      "name": "Probador de Expresiones Regulares Online Gratis",
+      "desc": "Usa regex tester gratis en el navegador.",
+      "linkText": "Usar herramienta"
+    },
+    "cron-expression-parser": {
+      "href": "/es/cron-expression-parser/",
+      "icon": "/assets/img/icon-timer.svg",
+      "alt": "Analizador de Expresiones Cron Online Gratis icon",
+      "name": "Analizador de Expresiones Cron Online Gratis",
+      "desc": "Usa Analizador de Expresiones Cron gratis en el navegador.",
+      "linkText": "Usar herramienta"
+    },
+    "timestamp-converter": {
+      "href": "/es/timestamp-converter/",
+      "icon": "/assets/img/icon-clock.svg",
+      "alt": "Convertidor de Timestamp Unix Online icon",
+      "name": "Convertidor de Timestamp Unix Online",
+      "desc": "Usa Convertidor de Timestamp Unix gratis en el navegador.",
+      "linkText": "Usar herramienta"
+    },
+    "css-gradient-generator": {
+      "href": "/es/css-gradient-generator/",
+      "icon": "/assets/img/icon-css-gradient.svg",
+      "alt": "Generador de Gradientes CSS Online Gratis icon",
+      "name": "Generador de Gradientes CSS Online Gratis",
+      "desc": "Usa Generador de Gradientes CSS gratis en el navegador.",
+      "linkText": "Usar herramienta"
+    },
+    "css-shadow-generator": {
+      "href": "/es/css-shadow-generator/",
+      "icon": "/assets/img/icon-shadow.svg",
+      "alt": "Generador de Sombras CSS Online Gratis icon",
+      "name": "Generador de Sombras CSS Online Gratis",
+      "desc": "Usa el generador de sombras CSS gratis en el navegador.",
+      "linkText": "Usar herramienta"
+    },
+    "px-to-rem": {
+      "href": "/es/px-to-rem/",
+      "icon": "/assets/img/icon-pxrem.svg",
+      "alt": "Convertidor de PX a REM Online Gratis icon",
+      "name": "Convertidor de PX a REM Online Gratis",
+      "desc": "Usa px to rem gratis en el navegador.",
+      "linkText": "Usar herramienta"
+    },
+    "color-converter": {
+      "href": "/es/color-converter/",
+      "icon": "/assets/img/icon-color.svg",
+      "alt": "Conversor de Colores icon",
+      "name": "Conversor de Colores",
+      "desc": "Usa Conversor de Colores gratis en el navegador.",
+      "linkText": "Usar herramienta"
+    },
+    "markdown-html": {
+      "href": "/es/markdown-html/",
+      "icon": "/assets/img/icon-markdown.svg",
+      "alt": "Conversor de Markdown a HTML Online Gratis icon",
+      "name": "Conversor de Markdown a HTML Online Gratis",
+      "desc": "Usa Conversor de Markdown a HTML gratis en el navegador.",
+      "linkText": "Usar herramienta"
+    },
+    "csv-to-sql": {
+      "href": "/es/csv-to-sql/",
+      "icon": "/assets/img/icon-csv.svg",
+      "alt": "Conversor CSV a SQL Online Gratis icon",
+      "name": "Conversor CSV a SQL Online Gratis",
+      "desc": "Convierte CSV a SQL CREATE TABLE e INSERT con opciones de dialecto, deteccion de tipos y salida editable. Incluye pasos claros, resultados prácticos y sin registro.",
+      "linkText": "Usar herramienta"
+    },
+    "csv-query": {
+      "href": "/es/csv-query/",
+      "icon": "/assets/img/icon-csv-query.svg",
+      "alt": "Herramienta de Consulta CSV icon",
+      "name": "Herramienta de Consulta CSV",
+      "desc": "Consulta datos CSV con filtros tipo SQL en el navegador, previsualiza filas, ejecuta ejemplos y exporta resultados.",
+      "linkText": "Usar herramienta"
+    },
+    "parquet-to-csv": {
+      "href": "/es/parquet-to-csv/",
+      "icon": "/assets/img/icon-csv.svg",
+      "alt": "Convertir Parquet a CSV Gratis, Sin Subir Archivos icon",
+      "name": "Convertir Parquet a CSV Gratis, Sin Subir Archivos",
+      "desc": "Convierte archivos Parquet a CSV en tu navegador.",
+      "linkText": "Usar herramienta"
+    },
+    "camt053-to-csv": {
+      "href": "/es/camt053-to-csv/",
+      "icon": "/assets/img/icon-csv.svg",
+      "alt": "Convertir CAMT.053 a CSV icon",
+      "name": "Convertir CAMT.053 a CSV",
+      "desc": "Convierte extractos bancarios CAMT.053 XML a CSV para Excel.",
+      "linkText": "Usar herramienta"
+    },
+    "password-generator": {
+      "href": "/es/password-generator/",
+      "icon": "/assets/img/icon-lock.svg",
+      "alt": "Generador de Contraseñas Online Gratis icon",
+      "name": "Generador de Contraseñas Online Gratis",
+      "desc": "Usa password generator gratis en el navegador.",
+      "linkText": "Usar herramienta"
+    },
+    "password-strength-checker": {
+      "href": "/es/password-strength-checker/",
+      "icon": "/assets/img/icon-password-strength.svg",
+      "alt": "Comprobador de Fortaleza de Contraseña icon",
+      "name": "Comprobador de Fortaleza de Contraseña",
+      "desc": "Comprueba la fortaleza de contrasenas localmente con tiempo de ataque, patrones detectados, criterios y privacidad clara.",
+      "linkText": "Usar herramienta"
+    },
+    "ip-address-lookup": {
+      "href": "/es/ip-address-lookup/",
+      "icon": "/assets/img/icon-ip-lookup.svg",
+      "alt": "¿Cuál es mi dirección IP? icon",
+      "name": "¿Cuál es mi dirección IP?",
+      "desc": "Consulta tu dirección IP pública al instante con geolocalización, proveedor ISP, ciudad, país y ASN.",
+      "linkText": "Usar herramienta"
+    },
+    "screen-resolution": {
+      "href": "/es/screen-resolution/",
+      "icon": "/assets/img/icon-screen.svg",
+      "alt": "Comprobador de Resolución de Pantalla icon",
+      "name": "Comprobador de Resolución de Pantalla",
+      "desc": "Comprueba la resolución de pantalla gratis en el navegador.",
+      "linkText": "Usar herramienta"
+    }
+  },
+  "dev_da": {
+    "json-formatter": {
+      "href": "/da/json-formatter/",
+      "icon": "/assets/img/icon-json.svg",
+      "alt": "JSON Formatter Online Gratis icon",
+      "name": "JSON Formatter Online Gratis",
+      "desc": "Formatér, validér og minificér JSON gratis.",
+      "linkText": "Brug værktøj"
+    },
+    "json-compare": {
+      "href": "/da/json-compare/",
+      "icon": "/assets/img/icon-json.svg",
+      "alt": "Sammenlign JSON icon",
+      "name": "Sammenlign JSON",
+      "desc": "Sammenlign to JSON-filer side om side gratis.",
+      "linkText": "Brug værktøj"
+    },
+    "json-to-yaml": {
+      "href": "/da/json-to-yaml/",
+      "icon": "/assets/img/icon-json-yaml.svg",
+      "alt": "JSON til YAML Konverter Online Gratis icon",
+      "name": "JSON til YAML Konverter Online Gratis",
+      "desc": "Konverter mellem JSON og YAML øjeblikkeligt.",
+      "linkText": "Brug værktøj"
+    },
+    "xml-formatter": {
+      "href": "/da/xml-formatter/",
+      "icon": "/assets/img/icon-xml.svg",
+      "alt": "XML Formatter Online Gratis icon",
+      "name": "XML Formatter Online Gratis",
+      "desc": "Formater og valider XML online gratis.",
+      "linkText": "Brug værktøj"
+    },
+    "html-beautifier": {
+      "href": "/da/html-beautifier/",
+      "icon": "/assets/img/icon-html-beautifier.svg",
+      "alt": "HTML Formaterer &amp; Minifier Online Gratis icon",
+      "name": "HTML Formaterer &amp; Minifier Online Gratis",
+      "desc": "Formater rodet HTML til ren, indenteret kode eller komprimer den til én linje.",
+      "linkText": "Brug værktøj"
+    },
+    "base64-encoder": {
+      "href": "/da/base64-encoder/",
+      "icon": "/assets/img/icon-base64.svg",
+      "alt": "Base64 Encoder og Decoder Online Gratis icon",
+      "name": "Base64 Encoder og Decoder Online Gratis",
+      "desc": "Kodér og dekodér Base64 online gratis.",
+      "linkText": "Brug værktøj"
+    },
+    "url-encoder": {
+      "href": "/da/url-encoder/",
+      "icon": "/assets/img/icon-url.svg",
+      "alt": "URL Encoder og Decoder Online Gratis icon",
+      "name": "URL Encoder og Decoder Online Gratis",
+      "desc": "Kodér eller dekodér URL.",
+      "linkText": "Brug værktøj"
+    },
+    "jwt-decoder": {
+      "href": "/da/jwt-decoder/",
+      "icon": "/assets/img/icon-jwt.svg",
+      "alt": "JWT Dekoder Online Gratis icon",
+      "name": "JWT Dekoder Online Gratis",
+      "desc": "Dekod og inspicér ethvert JWT-token øjeblikkeligt.",
+      "linkText": "Brug værktøj"
+    },
+    "hash-generator": {
+      "href": "/da/hash-generator/",
+      "icon": "/assets/img/icon-hash.svg",
+      "alt": "Hash Generator Online icon",
+      "name": "Hash Generator Online",
+      "desc": "Generer kryptografiske hashes MD5, SHA-1, SHA-256 og SHA-512 online gratis.",
+      "linkText": "Brug værktøj"
+    },
+    "uuid-generator": {
+      "href": "/da/uuid-generator/",
+      "icon": "/assets/img/icon-uuid.svg",
+      "alt": "UUID Generator Online Gratis icon",
+      "name": "UUID Generator Online Gratis",
+      "desc": "Generer UUID v4 og v7 i store maengder, kopier eller download resultater og valider UUID-format i browseren. Med klare trin, praktiske resultater og ingen konto.",
+      "linkText": "Brug værktøj"
+    },
+    "regex-tester": {
+      "href": "/da/regex-tester/",
+      "icon": "/assets/img/icon-regex.svg",
+      "alt": "Regex Tester Online Gratis icon",
+      "name": "Regex Tester Online Gratis",
+      "desc": "Test og fejlret regulære udtryk online i realtid.",
+      "linkText": "Brug værktøj"
+    },
+    "cron-expression-parser": {
+      "href": "/da/cron-expression-parser/",
+      "icon": "/assets/img/icon-timer.svg",
+      "alt": "Cron Udtryks Parser Online Gratis icon",
+      "name": "Cron Udtryks Parser Online Gratis",
+      "desc": "Afkod ethvert cron-udtryk til læsbar tekst øjeblikkeligt.",
+      "linkText": "Brug værktøj"
+    },
+    "timestamp-converter": {
+      "href": "/da/timestamp-converter/",
+      "icon": "/assets/img/icon-clock.svg",
+      "alt": "Unix Timestamp Konverter Online icon",
+      "name": "Unix Timestamp Konverter Online",
+      "desc": "Konvertér Unix-tidsstempler til læsbare datoer og tidspunkter, eller konvertér datoer tilbage til Unix-tidsstempler.",
+      "linkText": "Brug værktøj"
+    },
+    "css-gradient-generator": {
+      "href": "/da/css-gradient-generator/",
+      "icon": "/assets/img/icon-css-gradient.svg",
+      "alt": "CSS Gradient Generator Online Gratis icon",
+      "name": "CSS Gradient Generator Online Gratis",
+      "desc": "Design lineære og radiale CSS-gradienter visuelt.",
+      "linkText": "Brug værktøj"
+    },
+    "css-shadow-generator": {
+      "href": "/da/css-shadow-generator/",
+      "icon": "/assets/img/icon-shadow.svg",
+      "alt": "CSS Skygge Generator Online Gratis icon",
+      "name": "CSS Skygge Generator Online Gratis",
+      "desc": "Design box-shadow og text-shadow effekter visuelt med skydelister og live forhåndsvisning.",
+      "linkText": "Brug værktøj"
+    },
+    "px-to-rem": {
+      "href": "/da/px-to-rem/",
+      "icon": "/assets/img/icon-pxrem.svg",
+      "alt": "PX til REM Konverter Online Gratis icon",
+      "name": "PX til REM Konverter Online Gratis",
+      "desc": "Konverter pixelværdier til REM-enheder og REM tilbage til pixels.",
+      "linkText": "Brug værktøj"
+    },
+    "color-converter": {
+      "href": "/da/color-converter/",
+      "icon": "/assets/img/icon-color.svg",
+      "alt": "Farvekonverter Online icon",
+      "name": "Farvekonverter Online",
+      "desc": "Konverter farver mellem HEX, RGB, HSL, CMYK og HSB-formater øjeblikkeligt.",
+      "linkText": "Brug værktøj"
+    },
+    "markdown-html": {
+      "href": "/da/markdown-html/",
+      "icon": "/assets/img/icon-markdown.svg",
+      "alt": "Markdown til HTML Konverter Online Gratis icon",
+      "name": "Markdown til HTML Konverter Online Gratis",
+      "desc": "Konverter Markdown til HTML med live forhåndsvisning.",
+      "linkText": "Brug værktøj"
+    },
+    "csv-to-sql": {
+      "href": "/da/csv-to-sql/",
+      "icon": "/assets/img/icon-csv.svg",
+      "alt": "CSV til SQL Konverter Online Gratis icon",
+      "name": "CSV til SQL Konverter Online Gratis",
+      "desc": "Konverter CSV-data til SQL CREATE TABLE og INSERT med dialektvalg, typegenkendelse og redigerbart output. Med klare trin, praktiske resultater og ingen konto.",
+      "linkText": "Brug værktøj"
+    },
+    "csv-query": {
+      "href": "/da/csv-query/",
+      "icon": "/assets/img/icon-csv-query.svg",
+      "alt": "CSV-forespørgselsværktøj icon",
+      "name": "CSV-forespørgselsværktøj",
+      "desc": "Foresporg CSV-data med SQL-lignende filtre i browseren, se raekker, kør eksempler og eksporter resultater. Med klare trin, praktiske resultater og ingen konto.",
+      "linkText": "Brug værktøj"
+    },
+    "parquet-to-csv": {
+      "href": "/da/parquet-to-csv/",
+      "icon": "/assets/img/icon-csv.svg",
+      "alt": "Parquet til CSV icon",
+      "name": "Parquet til CSV",
+      "desc": "Konvertér Parquet-filer til CSV direkte i browseren.",
+      "linkText": "Brug værktøj"
+    },
+    "camt053-to-csv": {
+      "href": "/da/camt053-to-csv/",
+      "icon": "/assets/img/icon-csv.svg",
+      "alt": "CAMT.053 til CSV icon",
+      "name": "CAMT.053 til CSV",
+      "desc": "Konvertér CAMT.053 XML-kontoudtog til CSV til Excel.",
+      "linkText": "Brug værktøj"
+    },
+    "password-generator": {
+      "href": "/da/password-generator/",
+      "icon": "/assets/img/icon-lock.svg",
+      "alt": "Adgangskodegenerator Online Gratis icon",
+      "name": "Adgangskodegenerator Online Gratis",
+      "desc": "Opret stærke, tilfældige adgangskoder med store bogstaver, små bogstaver, tal og symboler.",
+      "linkText": "Brug værktøj"
+    },
+    "password-strength-checker": {
+      "href": "/da/password-strength-checker/",
+      "icon": "/assets/img/icon-password-strength.svg",
+      "alt": "Adgangskode Styrke Tjekker Online Gratis icon",
+      "name": "Adgangskode Styrke Tjekker Online Gratis",
+      "desc": "Tjek adgangskodestyrke lokalt med angrebstid, monsterfeedback, kriterieliste og tydelig privatlivsvejledning. Med klare trin, praktiske resultater og ingen konto.",
+      "linkText": "Brug værktøj"
+    },
+    "ip-address-lookup": {
+      "href": "/da/ip-address-lookup/",
+      "icon": "/assets/img/icon-ip-lookup.svg",
+      "alt": "Hvad er min IP-adresse? icon",
+      "name": "Hvad er min IP-adresse?",
+      "desc": "Find din offentlige IP-adresse med det samme med placering, internetudbyder (ISP), by, land og netværksoplysninger.",
+      "linkText": "Brug værktøj"
+    },
+    "screen-resolution": {
+      "href": "/da/screen-resolution/",
+      "icon": "/assets/img/icon-screen.svg",
+      "alt": "Skærmopløsning Checker Online Gratis icon",
+      "name": "Skærmopløsning Checker Online Gratis",
+      "desc": "Tjek skærmopløsninger online gratis.",
+      "linkText": "Brug værktøj"
+    }
+  },
+  "calc_en": {
+    "discount-calculator": {
+      "href": "/discount-calculator/",
+      "icon": "/assets/img/icon-calculator.svg",
+      "alt": "",
+      "name": "Discount Calculator",
+      "desc": "Find the final price after a discount and your savings.",
+      "linkText": "Try it →"
+    },
+    "discount-stacking-calculator": {
+      "href": "/discount-stacking-calculator/",
+      "icon": "/assets/img/icon-calculator.svg",
+      "alt": "",
+      "name": "Discount Stacking Calculator",
+      "desc": "Stack coupons and successive % discounts and see the real total.",
+      "linkText": "Try it →"
+    },
+    "percentage-calculator": {
+      "href": "/percentage-calculator/",
+      "icon": "/assets/img/icon-calculator.svg",
+      "alt": "",
+      "name": "Percentage Calculator",
+      "desc": "Calculate percentages, changes and ratios instantly.",
+      "linkText": "Try it →"
+    },
+    "reverse-percentage-calculator": {
+      "href": "/reverse-percentage-calculator/",
+      "icon": "/assets/img/icon-calculator.svg",
+      "alt": "",
+      "name": "Reverse Percentage Calculator",
+      "desc": "Find the original value before a % increase, discount or VAT.",
+      "linkText": "Try it →"
+    },
+    "percentage-difference-calculator": {
+      "href": "/percentage-difference-calculator/",
+      "icon": "/assets/img/icon-calculator.svg",
+      "alt": "",
+      "name": "Percentage Difference Calculator",
+      "desc": "Compare two values without a “before” and “after”.",
+      "linkText": "Try it →"
+    },
+    "price-increase-calculator": {
+      "href": "/price-increase-calculator/",
+      "icon": "/assets/img/icon-calculator.svg",
+      "alt": "",
+      "name": "Price Increase Calculator",
+      "desc": "New price after a % rise, or the % between two prices.",
+      "linkText": "Try it →"
+    },
+    "unit-price-calculator": {
+      "href": "/unit-price-calculator/",
+      "icon": "/assets/img/icon-calculator.svg",
+      "alt": "",
+      "name": "Unit Price Calculator",
+      "desc": "Compare pack sizes and find the cheapest per kg, litre or item.",
+      "linkText": "Try it →"
+    },
+    "margin-vs-markup-calculator": {
+      "href": "/margin-vs-markup-calculator/",
+      "icon": "/assets/img/icon-calculator.svg",
+      "alt": "",
+      "name": "Margin vs Markup Calculator",
+      "desc": "Margin and markup from cost and price, or the price you need.",
+      "linkText": "Try it →"
+    },
+    "gst-vat-calculator": {
+      "href": "/gst-vat-calculator/",
+      "icon": "/assets/img/icon-calculator.svg",
+      "alt": "",
+      "name": "GST / VAT Calculator",
+      "desc": "Add or remove tax from any amount at any rate.",
+      "linkText": "Try it →"
+    },
+    "tip-calculator": {
+      "href": "/tip-calculator/",
+      "icon": "/assets/img/icon-calculator.svg",
+      "alt": "",
+      "name": "Tip Calculator",
+      "desc": "Calculate tip and split the bill between multiple people.",
+      "linkText": "Try it →"
+    },
+    "pay-rise-calculator": {
+      "href": "/pay-rise-calculator/",
+      "icon": "/assets/img/icon-calculator.svg",
+      "alt": "",
+      "name": "Pay Rise Calculator",
+      "desc": "New salary after a raise, and the raise after inflation.",
+      "linkText": "Try it →"
+    },
+    "loan-calculator": {
+      "href": "/loan-calculator/",
+      "icon": "/assets/img/icon-calculator.svg",
+      "alt": "",
+      "name": "Loan &amp; EMI Calculator",
+      "desc": "Calculate monthly loan payments and total interest costs.",
+      "linkText": "Try it →"
+    },
+    "mortgage-calculator": {
+      "href": "/mortgage-calculator/",
+      "icon": "/assets/img/icon-calculator.svg",
+      "alt": "",
+      "name": "Mortgage Calculator",
+      "desc": "Calculate monthly mortgage payments and total loan cost.",
+      "linkText": "Try it →"
+    },
+    "compound-interest-calculator": {
+      "href": "/compound-interest-calculator/",
+      "icon": "/assets/img/icon-calculator.svg",
+      "alt": "",
+      "name": "Compound Interest Calculator",
+      "desc": "See how your money grows with compound interest over time.",
+      "linkText": "Try it →"
+    },
+    "currency-converter": {
+      "href": "/currency-converter/",
+      "icon": "/assets/img/icon-calculator.svg",
+      "alt": "",
+      "name": "Currency Converter",
+      "desc": "Convert between 150+ currencies with live exchange rates.",
+      "linkText": "Try it →"
+    },
+    "rise-over-run-calculator": {
+      "href": "/rise-over-run-calculator/",
+      "icon": "/assets/img/icon-calculator.svg",
+      "alt": "",
+      "name": "Rise Over Run Calculator",
+      "desc": "Slope from rise and run, or from two points.",
+      "linkText": "Try it →"
+    },
+    "slope-grade-angle-calculator": {
+      "href": "/slope-grade-angle-calculator/",
+      "icon": "/assets/img/icon-calculator.svg",
+      "alt": "",
+      "name": "Slope, Grade &amp; Angle Calculator",
+      "desc": "Convert slope ratio, decimal, % grade, ‰ and degrees.",
+      "linkText": "Try it →"
+    },
+    "aspect-ratio-calculator": {
+      "href": "/aspect-ratio-calculator/",
+      "icon": "/assets/img/icon-calculator.svg",
+      "alt": "",
+      "name": "Aspect Ratio Calculator",
+      "desc": "Calculate aspect ratios and scale dimensions while preserving the ratio.",
+      "linkText": "Try it →"
+    },
+    "age-calculator": {
+      "href": "/age-calculator/",
+      "icon": "/assets/img/icon-calculator.svg",
+      "alt": "",
+      "name": "Age Calculator",
+      "desc": "Calculate your exact age in years, months and days.",
+      "linkText": "Try it →"
+    },
+    "bmi-calculator": {
+      "href": "/bmi-calculator/",
+      "icon": "/assets/img/icon-calculator.svg",
+      "alt": "",
+      "name": "BMI Calculator",
+      "desc": "Calculate Body Mass Index with metric or imperial units.",
+      "linkText": "Try it →"
+    },
+    "calorie-calculator": {
+      "href": "/calorie-calculator/",
+      "icon": "/assets/img/icon-calculator.svg",
+      "alt": "",
+      "name": "Calorie Calculator",
+      "desc": "Calculate your daily calorie needs based on age, weight and activity.",
+      "linkText": "Try it →"
+    },
+    "sleep-calculator": {
+      "href": "/sleep-calculator/",
+      "icon": "/assets/img/icon-calculator.svg",
+      "alt": "",
+      "name": "Sleep Calculator",
+      "desc": "Find the best wake-up or bedtime based on 90-minute sleep cycles.",
+      "linkText": "Try it →"
+    },
+    "blood-type-compatibility": {
+      "href": "/blood-type-compatibility/",
+      "icon": "/assets/img/icon-calculator.svg",
+      "alt": "",
+      "name": "Blood Type Compatibility",
+      "desc": "Check which blood types you can donate to or receive from.",
+      "linkText": "Try it →"
+    },
+    "birthday-countdown-calculator": {
+      "href": "/birthday-countdown-calculator/",
+      "icon": "/assets/img/icon-calculator.svg",
+      "alt": "",
+      "name": "Birthday Countdown",
+      "desc": "Calculate exact days, hours, and minutes until your next birthday.",
+      "linkText": "Try it →"
+    },
+    "love-calculator": {
+      "href": "/love-calculator/",
+      "icon": "/assets/img/icon-calculator.svg",
+      "alt": "",
+      "name": "Love Calculator",
+      "desc": "Calculate relationship compatibility score from names and affinity.",
+      "linkText": "Try it →"
+    },
+    "flames-calculator": {
+      "href": "/flames-calculator/",
+      "icon": "/assets/img/icon-calculator.svg",
+      "alt": "",
+      "name": "FLAMES Calculator",
+      "desc": "Classic game finding Friends, Lovers, Affection, Marriage, Enemies, Siblings.",
+      "linkText": "Try it →"
+    },
+    "numerology-calculator": {
+      "href": "/numerology-calculator/",
+      "icon": "/assets/img/icon-calculator.svg",
+      "alt": "",
+      "name": "Numerology Calculator",
+      "desc": "Discover Life Path, Destiny, and Soul Urge numbers from your birthdate.",
+      "linkText": "Try it →"
+    },
+    "name-numerology-calculator": {
+      "href": "/name-numerology-calculator/",
+      "icon": "/assets/img/icon-calculator.svg",
+      "alt": "",
+      "name": "Name Numerology",
+      "desc": "Calculate Pythagorean and Chaldean name vibrations and personality numbers.",
+      "linkText": "Try it →"
+    },
+    "lo-shu-grid-calculator": {
+      "href": "/lo-shu-grid-calculator/",
+      "icon": "/assets/img/icon-calculator.svg",
+      "alt": "",
+      "name": "Lo Shu Grid Calculator",
+      "desc": "Generate Chinese 3x3 numerology square analyzing energy arrows.",
+      "linkText": "Try it →"
+    },
+    "tarot-birth-card-calculator": {
+      "href": "/tarot-birth-card-calculator/",
+      "icon": "/assets/img/icon-calculator.svg",
+      "alt": "",
+      "name": "Tarot Birth Card",
+      "desc": "Determine your Major Arcana life lesson and spiritual archetype.",
+      "linkText": "Try it →"
+    },
+    "moon-sign-calculator": {
+      "href": "/moon-sign-calculator/",
+      "icon": "/assets/img/icon-calculator.svg",
+      "alt": "",
+      "name": "Moon Sign Calculator",
+      "desc": "Calculate your Moon sign to understand emotional instincts.",
+      "linkText": "Try it →"
+    },
+    "rising-sign-calculator": {
+      "href": "/rising-sign-calculator/",
+      "icon": "/assets/img/icon-calculator.svg",
+      "alt": "",
+      "name": "Rising Sign Calculator",
+      "desc": "Find your Ascendant zodiac sign and outer persona.",
+      "linkText": "Try it →"
+    }
+  },
+  "calc_es": {
+    "discount-calculator": {
+      "href": "/es/discount-calculator/",
+      "icon": "/assets/img/icon-calculator.svg",
+      "alt": "",
+      "name": "Calculadora de Descuentos",
+      "desc": "Encuentra el precio final después de un descuento y tu ahorro.",
+      "linkText": "Usar →"
+    },
+    "discount-stacking-calculator": {
+      "href": "/es/discount-stacking-calculator/",
+      "icon": "/assets/img/icon-calculator.svg",
+      "alt": "",
+      "name": "Calculadora de Descuentos Acumulados",
+      "desc": "Acumula cupones y descuentos sucesivos y mira el total real.",
+      "linkText": "Usar →"
+    },
+    "percentage-calculator": {
+      "href": "/es/percentage-calculator/",
+      "icon": "/assets/img/icon-calculator.svg",
+      "alt": "",
+      "name": "Calculadora de Porcentajes",
+      "desc": "Calcula porcentajes, variaciones y ratios al instante.",
+      "linkText": "Usar →"
+    },
+    "reverse-percentage-calculator": {
+      "href": "/es/reverse-percentage-calculator/",
+      "icon": "/assets/img/icon-calculator.svg",
+      "alt": "",
+      "name": "Calculadora de Porcentaje Inverso",
+      "desc": "Calcula el valor original antes de una subida, descuento o IVA.",
+      "linkText": "Usar →"
+    },
+    "percentage-difference-calculator": {
+      "href": "/es/percentage-difference-calculator/",
+      "icon": "/assets/img/icon-calculator.svg",
+      "alt": "",
+      "name": "Calculadora de Diferencia Porcentual",
+      "desc": "Compara dos valores sin un “antes” y un “después”.",
+      "linkText": "Usar →"
+    },
+    "price-increase-calculator": {
+      "href": "/es/price-increase-calculator/",
+      "icon": "/assets/img/icon-calculator.svg",
+      "alt": "",
+      "name": "Calculadora de Aumento de Precio",
+      "desc": "Precio nuevo tras una subida o el % entre dos precios.",
+      "linkText": "Usar →"
+    },
+    "unit-price-calculator": {
+      "href": "/es/unit-price-calculator/",
+      "icon": "/assets/img/icon-calculator.svg",
+      "alt": "",
+      "name": "Calculadora de Precio Unitario",
+      "desc": "Compara formatos y encuentra el más barato por kg, litro o unidad.",
+      "linkText": "Usar →"
+    },
+    "margin-vs-markup-calculator": {
+      "href": "/es/margin-vs-markup-calculator/",
+      "icon": "/assets/img/icon-calculator.svg",
+      "alt": "",
+      "name": "Calculadora de Margen y Recargo",
+      "desc": "Margen y recargo desde coste y precio, o el precio necesario.",
+      "linkText": "Usar →"
+    },
+    "gst-vat-calculator": {
+      "href": "/es/gst-vat-calculator/",
+      "icon": "/assets/img/icon-calculator.svg",
+      "alt": "",
+      "name": "Calculadora de IVA / GST",
+      "desc": "Añade o elimina impuestos de cualquier importe.",
+      "linkText": "Usar →"
+    },
+    "tip-calculator": {
+      "href": "/es/tip-calculator/",
+      "icon": "/assets/img/icon-calculator.svg",
+      "alt": "",
+      "name": "Calculadora de Propinas",
+      "desc": "Calcula la propina y divide la cuenta entre varias personas.",
+      "linkText": "Usar →"
+    },
+    "pay-rise-calculator": {
+      "href": "/es/pay-rise-calculator/",
+      "icon": "/assets/img/icon-calculator.svg",
+      "alt": "",
+      "name": "Calculadora de Aumento Salarial",
+      "desc": "Sueldo nuevo tras un aumento y el aumento real con inflación.",
+      "linkText": "Usar →"
+    },
+    "loan-calculator": {
+      "href": "/es/loan-calculator/",
+      "icon": "/assets/img/icon-calculator.svg",
+      "alt": "",
+      "name": "Calculadora de Préstamos / EMI",
+      "desc": "Calcula cuotas mensuales y el costo total del préstamo.",
+      "linkText": "Usar →"
+    },
+    "mortgage-calculator": {
+      "href": "/es/mortgage-calculator/",
+      "icon": "/assets/img/icon-calculator.svg",
+      "alt": "",
+      "name": "Calculadora de Hipoteca",
+      "desc": "Calcula cuotas mensuales y el costo total de tu hipoteca.",
+      "linkText": "Usar →"
+    },
+    "compound-interest-calculator": {
+      "href": "/es/compound-interest-calculator/",
+      "icon": "/assets/img/icon-calculator.svg",
+      "alt": "",
+      "name": "Calculadora de Interés Compuesto",
+      "desc": "Mira cómo crece tu dinero con el interés compuesto.",
+      "linkText": "Usar →"
+    },
+    "currency-converter": {
+      "href": "/es/currency-converter/",
+      "icon": "/assets/img/icon-calculator.svg",
+      "alt": "",
+      "name": "Conversor de Divisas",
+      "desc": "Convierte entre más de 150 monedas con tasas de cambio en vivo.",
+      "linkText": "Usar →"
+    },
+    "rise-over-run-calculator": {
+      "href": "/es/rise-over-run-calculator/",
+      "icon": "/assets/img/icon-calculator.svg",
+      "alt": "",
+      "name": "Calculadora de Pendiente — Elevación y Recorrido",
+      "desc": "Pendiente a partir de elevación y recorrido, o de dos puntos.",
+      "linkText": "Usar →"
+    },
+    "slope-grade-angle-calculator": {
+      "href": "/es/slope-grade-angle-calculator/",
+      "icon": "/assets/img/icon-calculator.svg",
+      "alt": "",
+      "name": "Calculadora de Pendiente, Porcentaje y Ángulo",
+      "desc": "Convierte proporción, decimal, %, ‰ y grados de pendiente.",
+      "linkText": "Usar →"
+    },
+    "aspect-ratio-calculator": {
+      "href": "/es/aspect-ratio-calculator/",
+      "icon": "/assets/img/icon-calculator.svg",
+      "alt": "",
+      "name": "Calculadora de Relación de Aspecto",
+      "desc": "Usa Calculadora de Relación de Aspecto gratis en el navegador.",
+      "linkText": "Usar →"
+    },
+    "age-calculator": {
+      "href": "/es/age-calculator/",
+      "icon": "/assets/img/icon-calculator.svg",
+      "alt": "",
+      "name": "Calculadora de Edad",
+      "desc": "Calcula tu edad exacta en años, meses y días.",
+      "linkText": "Usar →"
+    },
+    "bmi-calculator": {
+      "href": "/es/bmi-calculator/",
+      "icon": "/assets/img/icon-calculator.svg",
+      "alt": "",
+      "name": "Calculadora de IMC",
+      "desc": "Calcula tu Índice de Masa Corporal con unidades métricas o imperiales.",
+      "linkText": "Usar →"
+    },
+    "calorie-calculator": {
+      "href": "/es/calorie-calculator/",
+      "icon": "/assets/img/icon-calculator.svg",
+      "alt": "",
+      "name": "Calculadora de Calorías",
+      "desc": "Calcula tus necesidades calóricas diarias según edad, peso y actividad.",
+      "linkText": "Usar →"
+    },
+    "sleep-calculator": {
+      "href": "/es/sleep-calculator/",
+      "icon": "/assets/img/icon-calculator.svg",
+      "alt": "",
+      "name": "Calculadora de Sueño",
+      "desc": "Usa sleep calculator gratis en el navegador.",
+      "linkText": "Usar →"
+    },
+    "blood-type-compatibility": {
+      "href": "/es/blood-type-compatibility/",
+      "icon": "/assets/img/icon-calculator.svg",
+      "alt": "",
+      "name": "Compatibilidad de Grupos Sanguíneos",
+      "desc": "Comprueba a qué tipos de sangre puedes donar o de cuáles recibir.",
+      "linkText": "Probar →"
+    },
+    "birthday-countdown-calculator": {
+      "href": "/es/birthday-countdown-calculator/",
+      "icon": "/assets/img/icon-calculator.svg",
+      "alt": "",
+      "name": "Cuenta Regresiva para tu Cumpleaños Online Gratis",
+      "desc": "Cuenta regresiva para tu cumpleaños gratis: mira los meses, días y horas que faltan, qué día de la semana cae y cuántos cumples.",
+      "linkText": "Probar →"
+    },
+    "love-calculator": {
+      "href": "/es/love-calculator/",
+      "icon": "/assets/img/icon-calculator.svg",
+      "alt": "",
+      "name": "Calculadora del Amor por Nombres Online Gratis",
+      "desc": "Calculadora del amor por nombres gratis: escribe dos nombres y obtén un porcentaje de amor divertido calculado con las letras, paso a paso.",
+      "linkText": "Probar →"
+    },
+    "flames-calculator": {
+      "href": "/es/flames-calculator/",
+      "icon": "/assets/img/icon-calculator.svg",
+      "alt": "",
+      "name": "Calculadora FLAMES Online Gratis",
+      "desc": "Calculadora FLAMES gratis: escribe dos nombres y juega al clásico juego de amigos, amor, cariño, matrimonio, enemigos o hermanos, con cada ronda a la vista.",
+      "linkText": "Probar →"
+    },
+    "numerology-calculator": {
+      "href": "/es/numerology-calculator/",
+      "icon": "/assets/img/icon-calculator.svg",
+      "alt": "",
+      "name": "Calculadora de Numerología Online Gratis",
+      "desc": "Calculadora de numerología gratis: obtén camino de vida, número de cumpleaños, año personal, destino, alma y personalidad con el cálculo completo.",
+      "linkText": "Probar →"
+    },
+    "name-numerology-calculator": {
+      "href": "/es/name-numerology-calculator/",
+      "icon": "/assets/img/icon-calculator.svg",
+      "alt": "",
+      "name": "Calculadora de Numerología del Nombre Online Gratis",
+      "desc": "Calculadora de numerología del nombre gratis: obtén tus números de destino, alma y personalidad con valores pitagóricos o caldeos y cada paso a la vista.",
+      "linkText": "Probar →"
+    },
+    "lo-shu-grid-calculator": {
+      "href": "/es/lo-shu-grid-calculator/",
+      "icon": "/assets/img/icon-calculator.svg",
+      "alt": "",
+      "name": "Calculadora de Cuadrícula Lo Shu Online Gratis",
+      "desc": "Calculadora de cuadrícula Lo Shu gratis: crea tu cuadrícula 3×3 con tu fecha de nacimiento y mira números repetidos y faltantes, planos, flechas y el método.",
+      "linkText": "Probar →"
+    },
+    "tarot-birth-card-calculator": {
+      "href": "/es/tarot-birth-card-calculator/",
+      "icon": "/assets/img/icon-calculator.svg",
+      "alt": "",
+      "name": "Calculadora de Cartas de Nacimiento del Tarot",
+      "desc": "Calculadora de cartas de nacimiento del tarot gratis: descubre tus cartas de personalidad y del alma con tu fecha de nacimiento y el método de Mary K.",
+      "linkText": "Probar →"
+    },
+    "moon-sign-calculator": {
+      "href": "/es/moon-sign-calculator/",
+      "icon": "/assets/img/icon-calculator.svg",
+      "alt": "",
+      "name": "Calculadora de Signo Lunar Online Gratis",
+      "desc": "Calculadora de signo lunar gratis con efemérides astronómicas reales: introduce fecha, hora y lugar de nacimiento y obtén tu signo, grado exacto y fase.",
+      "linkText": "Probar →"
+    },
+    "rising-sign-calculator": {
+      "href": "/es/rising-sign-calculator/",
+      "icon": "/assets/img/icon-calculator.svg",
+      "alt": "",
+      "name": "Calculadora de Ascendente Online Gratis",
+      "desc": "Calculadora de ascendente gratis: obtén tu signo ascendente y su grado exacto con fecha, hora y lugar de nacimiento, con zona horaria y horario de verano.",
+      "linkText": "Probar →"
+    }
+  },
+  "calc_da": {
+    "discount-calculator": {
+      "href": "/da/discount-calculator/",
+      "icon": "/assets/img/icon-calculator.svg",
+      "alt": "",
+      "name": "Rabatberegner",
+      "desc": "Find den endelige pris efter rabat og din besparelse.",
+      "linkText": "Prøv →"
+    },
+    "discount-stacking-calculator": {
+      "href": "/da/discount-stacking-calculator/",
+      "icon": "/assets/img/icon-calculator.svg",
+      "alt": "",
+      "name": "Rabatberegner med flere rabatter",
+      "desc": "Læg rabatter og kuponer oven i hinanden, og se den reelle pris.",
+      "linkText": "Prøv →"
+    },
+    "percentage-calculator": {
+      "href": "/da/percentage-calculator/",
+      "icon": "/assets/img/icon-calculator.svg",
+      "alt": "",
+      "name": "Procentberegner",
+      "desc": "Beregn procenter, ændringer og forhold øjeblikkeligt.",
+      "linkText": "Prøv →"
+    },
+    "reverse-percentage-calculator": {
+      "href": "/da/reverse-percentage-calculator/",
+      "icon": "/assets/img/icon-calculator.svg",
+      "alt": "",
+      "name": "Omvendt procentberegner",
+      "desc": "Find den oprindelige værdi før en stigning, rabat eller moms.",
+      "linkText": "Prøv →"
+    },
+    "percentage-difference-calculator": {
+      "href": "/da/percentage-difference-calculator/",
+      "icon": "/assets/img/icon-calculator.svg",
+      "alt": "",
+      "name": "Procentforskelberegner",
+      "desc": "Sammenlign to tal uden et “før” og “efter”.",
+      "linkText": "Prøv →"
+    },
+    "price-increase-calculator": {
+      "href": "/da/price-increase-calculator/",
+      "icon": "/assets/img/icon-calculator.svg",
+      "alt": "",
+      "name": "Prisforhøjelsesberegner",
+      "desc": "Ny pris efter en stigning, eller % mellem to priser.",
+      "linkText": "Prøv →"
+    },
+    "unit-price-calculator": {
+      "href": "/da/unit-price-calculator/",
+      "icon": "/assets/img/icon-calculator.svg",
+      "alt": "",
+      "name": "Enhedsprisberegner",
+      "desc": "Sammenlign pakkestørrelser og find den billigste pr. kg, liter eller stk.",
+      "linkText": "Prøv →"
+    },
+    "margin-vs-markup-calculator": {
+      "href": "/da/margin-vs-markup-calculator/",
+      "icon": "/assets/img/icon-calculator.svg",
+      "alt": "",
+      "name": "Margin- og avanceberegner",
+      "desc": "Margin og avance ud fra kostpris og pris – eller prisen du skal tage.",
+      "linkText": "Prøv →"
+    },
+    "gst-vat-calculator": {
+      "href": "/da/gst-vat-calculator/",
+      "icon": "/assets/img/icon-calculator.svg",
+      "alt": "",
+      "name": "Moms / GST Beregner",
+      "desc": "Tilføj eller fjern skat fra ethvert beløb til enhver sats.",
+      "linkText": "Prøv →"
+    },
+    "tip-calculator": {
+      "href": "/da/tip-calculator/",
+      "icon": "/assets/img/icon-calculator.svg",
+      "alt": "",
+      "name": "Drikkepenge Beregner",
+      "desc": "Beregn drikkepenge og del regningen mellem flere personer.",
+      "linkText": "Prøv →"
+    },
+    "pay-rise-calculator": {
+      "href": "/da/pay-rise-calculator/",
+      "icon": "/assets/img/icon-calculator.svg",
+      "alt": "",
+      "name": "Lønstigningsberegner",
+      "desc": "Ny løn efter en lønstigning, og stigningen efter inflation.",
+      "linkText": "Prøv →"
+    },
+    "loan-calculator": {
+      "href": "/da/loan-calculator/",
+      "icon": "/assets/img/icon-calculator.svg",
+      "alt": "",
+      "name": "Lånberegner",
+      "desc": "Beregn månedlige lånebetalinger og samlede renteomkostninger.",
+      "linkText": "Prøv →"
+    },
+    "mortgage-calculator": {
+      "href": "/da/mortgage-calculator/",
+      "icon": "/assets/img/icon-calculator.svg",
+      "alt": "",
+      "name": "Realkreditberegner",
+      "desc": "Beregn månedlige realkreditbetalinger og samlede låneomkostninger.",
+      "linkText": "Prøv →"
+    },
+    "compound-interest-calculator": {
+      "href": "/da/compound-interest-calculator/",
+      "icon": "/assets/img/icon-calculator.svg",
+      "alt": "",
+      "name": "Renters Rente Beregner",
+      "desc": "Se hvordan dine penge vokser med renters rente over tid.",
+      "linkText": "Prøv →"
+    },
+    "currency-converter": {
+      "href": "/da/currency-converter/",
+      "icon": "/assets/img/icon-calculator.svg",
+      "alt": "",
+      "name": "Valutaomregner",
+      "desc": "Konverter mellem 150+ valutaer med live valutakurser.",
+      "linkText": "Prøv →"
+    },
+    "rise-over-run-calculator": {
+      "href": "/da/rise-over-run-calculator/",
+      "icon": "/assets/img/icon-calculator.svg",
+      "alt": "",
+      "name": "Hældningsberegner — Stigning og afstand",
+      "desc": "Hældning ud fra stigning og vandret afstand, eller to punkter.",
+      "linkText": "Prøv →"
+    },
+    "slope-grade-angle-calculator": {
+      "href": "/da/slope-grade-angle-calculator/",
+      "icon": "/assets/img/icon-calculator.svg",
+      "alt": "",
+      "name": "Hældning, stigningsprocent og vinkel-beregner",
+      "desc": "Omregn hældningsforhold, decimal, %, ‰ og grader.",
+      "linkText": "Prøv →"
+    },
+    "aspect-ratio-calculator": {
+      "href": "/da/aspect-ratio-calculator/",
+      "icon": "/assets/img/icon-calculator.svg",
+      "alt": "",
+      "name": "Billedforholdsberegner",
+      "desc": "Brug Billedforholdsberegner gratis i browseren.",
+      "linkText": "Prøv →"
+    },
+    "age-calculator": {
+      "href": "/da/age-calculator/",
+      "icon": "/assets/img/icon-calculator.svg",
+      "alt": "",
+      "name": "Aldersberegner",
+      "desc": "Beregn din nøjagtige alder i år, måneder og dage.",
+      "linkText": "Prøv →"
+    },
+    "bmi-calculator": {
+      "href": "/da/bmi-calculator/",
+      "icon": "/assets/img/icon-calculator.svg",
+      "alt": "",
+      "name": "BMI Beregner",
+      "desc": "Beregn Body Mass Index med metriske eller imperiale enheder.",
+      "linkText": "Prøv →"
+    },
+    "calorie-calculator": {
+      "href": "/da/calorie-calculator/",
+      "icon": "/assets/img/icon-calculator.svg",
+      "alt": "",
+      "name": "Kaloriebehov Beregner",
+      "desc": "Beregn dit daglige kaloriebehov baseret på alder, vægt og aktivitet.",
+      "linkText": "Prøv →"
+    },
+    "sleep-calculator": {
+      "href": "/da/sleep-calculator/",
+      "icon": "/assets/img/icon-calculator.svg",
+      "alt": "",
+      "name": "Søvnberegner",
+      "desc": "Brug sleep calculator gratis i browseren.",
+      "linkText": "Prøv →"
+    },
+    "blood-type-compatibility": {
+      "href": "/da/blood-type-compatibility/",
+      "icon": "/assets/img/icon-calculator.svg",
+      "alt": "",
+      "name": "Blodtypekompatibilitet",
+      "desc": "Se hvilke blodtyper du kan donere blod til og modtage fra.",
+      "linkText": "Prøv det →"
+    },
+    "birthday-countdown-calculator": {
+      "href": "/da/birthday-countdown-calculator/",
+      "icon": "/assets/img/icon-calculator.svg",
+      "alt": "",
+      "name": "Fødselsdagsnedtælling Online Gratis",
+      "desc": "Gratis fødselsdagsnedtælling: se måneder, dage og timer til din næste fødselsdag, hvilken ugedag den falder på, og hvor gammel du bliver.",
+      "linkText": "Prøv det →"
+    },
+    "love-calculator": {
+      "href": "/da/love-calculator/",
+      "icon": "/assets/img/icon-calculator.svg",
+      "alt": "",
+      "name": "Kærlighedsberegner med navne Online Gratis",
+      "desc": "Gratis kærlighedsberegner med navne: skriv to navne og få en sjov kærlighedsprocent beregnet ud fra bogstaverne, trin for trin.",
+      "linkText": "Prøv det →"
+    },
+    "flames-calculator": {
+      "href": "/da/flames-calculator/",
+      "icon": "/assets/img/icon-calculator.svg",
+      "alt": "",
+      "name": "FLAMES-beregner Online Gratis",
+      "desc": "Gratis FLAMES-beregner: skriv to navne og spil den klassiske leg om venner, kærlighed, hengivenhed, ægteskab, fjender og søskende – med hver runde vist.",
+      "linkText": "Prøv det →"
+    },
+    "numerology-calculator": {
+      "href": "/da/numerology-calculator/",
+      "icon": "/assets/img/icon-calculator.svg",
+      "alt": "",
+      "name": "Numerologi-beregner Online Gratis",
+      "desc": "Gratis numerologi-beregner: få livstal, fødselsdagstal, personligt år, skæbnetal, sjælstal og personlighedstal ud fra din fødselsdato – med udregning.",
+      "linkText": "Prøv det →"
+    },
+    "name-numerology-calculator": {
+      "href": "/da/name-numerology-calculator/",
+      "icon": "/assets/img/icon-calculator.svg",
+      "alt": "",
+      "name": "Navnenumerologi",
+      "desc": "Gratis navnenumerologi-beregner: find skæbnetal, sjælstal og personlighedstal med pythagoræiske eller kaldæiske værdier – hvert bogstav og trin vises.",
+      "linkText": "Prøv det →"
+    },
+    "lo-shu-grid-calculator": {
+      "href": "/da/lo-shu-grid-calculator/",
+      "icon": "/assets/img/icon-calculator.svg",
+      "alt": "",
+      "name": "Lo Shu-gitterberegner Online Gratis",
+      "desc": "Gratis Lo Shu-gitterberegner: lav dit 3×3-gitter ud fra fødselsdatoen, og se gentagne og manglende tal, alle otte linjer og pile samt metoden bag.",
+      "linkText": "Prøv det →"
+    },
+    "tarot-birth-card-calculator": {
+      "href": "/da/tarot-birth-card-calculator/",
+      "icon": "/assets/img/icon-calculator.svg",
+      "alt": "",
+      "name": "Tarot",
+      "desc": "Gratis tarot-fødselskortberegner: find dit personligheds- og sjælekort ud fra fødselsdatoen med Mary K.",
+      "linkText": "Prøv det →"
+    },
+    "moon-sign-calculator": {
+      "href": "/da/moon-sign-calculator/",
+      "icon": "/assets/img/icon-calculator.svg",
+      "alt": "",
+      "name": "Månetegnsberegner Online Gratis",
+      "desc": "Gratis månetegnsberegner med rigtige astronomiske efemerider: indtast fødselsdato, tidspunkt og sted, og få dit månetegn, præcise grad og månefase.",
+      "linkText": "Prøv det →"
+    },
+    "rising-sign-calculator": {
+      "href": "/da/rising-sign-calculator/",
+      "icon": "/assets/img/icon-calculator.svg",
+      "alt": "",
+      "name": "Ascendantberegner Online Gratis",
+      "desc": "Gratis ascendantberegner: find din ascendant og præcise grad ud fra fødselsdato, tidspunkt og fødested – med tidszone, sommertid og tjek af fødselstid.",
+      "linkText": "Prøv det →"
+    }
+  }
+}

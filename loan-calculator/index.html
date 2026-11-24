@@ -33,6 +33,8 @@
 
 
 <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <meta name="theme-color" content="#B04A45">
+  <link rel="manifest" href="/manifest.webmanifest">
   <style>
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
     html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F7F6F3);color:var(--color-text,#151515)}
@@ -45,6 +47,26 @@
     @font-face{font-family:'Inter';font-display:swap}
   </style>
   <link rel="stylesheet" href="/assets/css/style.css?v=20261109">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://anyconverter.io/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Loan & EMI Calculator",
+      "item": "https://anyconverter.io/loan-calculator/"
+    }
+  ]
+}
+  </script>
 </head>
 <body>
   <header id="site-header" class="site-header"></header>
@@ -152,15 +174,18 @@
     <section class="related-tools">
       <h2>Related Tools</h2>
       <div class="tool-grid">
-        <a href="/mortgage-calculator/" class="tool-card"><img src="/assets/img/icon-mortgage.svg" alt="Mortgage Calculator icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Mortgage Calculator</h3><p>Calculate monthly mortgage payments and total loan cost.</p><span class="tool-card-link">Try it →</span></a>
-        <a href="/compound-interest-calculator/" class="tool-card"><img src="/assets/img/icon-compound.svg" alt="Compound Interest Calculator icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Compound Interest Calculator</h3><p>See how your money grows with compound interest over time.</p><span class="tool-card-link">Try it →</span></a>
         <a href="/currency-converter/" class="tool-card"><img src="/assets/img/icon-currency.svg" alt="Currency Converter icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Currency Converter</h3><p>Convert between 150+ currencies with live exchange rates.</p><span class="tool-card-link">Try it →</span></a>
-        <a href="/discount-calculator/" class="tool-card"><img src="/assets/img/icon-discount.svg" alt="Discount Calculator icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Discount Calculator</h3><p>Find the final price after a discount and your savings.</p><span class="tool-card-link">Try it →</span></a>
+        <a href="/compound-interest-calculator/" class="tool-card"><img src="/assets/img/icon-compound.svg" alt="Compound Interest Calculator icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Compound Interest Calculator</h3><p>See how your money grows with compound interest over time.</p><span class="tool-card-link">Try it →</span></a>
+        <a href="/mortgage-calculator/" class="tool-card"><img src="/assets/img/icon-mortgage.svg" alt="Mortgage Calculator icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Mortgage Calculator</h3><p>Calculate monthly mortgage payments and total loan cost.</p><span class="tool-card-link">Try it →</span></a>
+        <a href="/pay-rise-calculator/" class="tool-card"><img src="/assets/img/icon-calculator.svg" alt="Pay Rise Calculator icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Pay Rise Calculator</h3><p>New salary after a raise, and the raise after inflation.</p><span class="tool-card-link">Try it →</span></a>
+        <a href="/discount-stacking-calculator/" class="tool-card"><img src="/assets/img/icon-calculator.svg" alt="Discount Stacking Calculator icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Discount Stacking Calculator</h3><p>See what 20% + 10% off really costs, and the best order.</p><span class="tool-card-link">Try it →</span></a>
       </div>
     </section>
   </main>
   <footer id="site-footer" class="site-footer"></footer>
+  <script src="/assets/js/shared/analytics.js" defer></script>
   <script src="/assets/js/shared.js?v=20261109" defer></script>
+  <script src="/assets/js/shared/pwa.js" defer></script>
   <script src="/assets/js/tools/loan-calculator.js" defer></script>
 </body>
 </html>

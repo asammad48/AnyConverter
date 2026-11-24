@@ -23,7 +23,54 @@
   <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Edit PDF","url":"https://anyconverter.io/edit-pdf/","description":"Add text, rectangles or highlight boxes to PDF pages online for free.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do I find the right coordinates?","acceptedAnswer":{"@type":"Answer","text":"Open the PDF in Adobe Acrobat Reader, enable the coordinate display (View → Show/Hide → Cursor Coordinates), then hover over the target location. Remember PDF coordinates start from the bottom-left — y=0 is the bottom of the page."}},{"@type":"Question","name":"Can I edit existing text in the PDF?","acceptedAnswer":{"@type":"Answer","text":"No. This tool overlays new content on top of existing pages — it does not modify or replace existing text. True text editing in PDFs requires dedicated editing software."}}]}</script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How do I find the right coordinates?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Open the PDF in Adobe Acrobat Reader, enable the coordinate display (View → Show/Hide → Cursor Coordinates), then hover over the target location. Remember PDF coordinates start from the bottom-left — y=0 is the bottom of the page."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I edit existing text in the PDF?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. This tool overlays new content on top of existing pages — it does not modify or replace existing text. True text editing in PDFs requires dedicated editing software."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is it secure to edit sensitive documents here?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. All editing operations run entirely inside your browser using client-side JavaScript. Your PDF files are never uploaded to any remote server, ensuring complete confidentiality."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does the tool add any watermark to edited PDFs?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. AnyConverter never adds watermarks, stamps, or restrictions to your output PDF files. You receive clean, unmodified PDF pages."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I add text and signatures without installing software?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. You can position custom text, notes, annotations, and signatures directly onto any page without installing desktop software or browser extensions."
+      }
+    }
+  ]
+}
+</script>
 
 
 <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
@@ -43,6 +90,32 @@
     @font-face{font-family:'Inter';font-display:swap}
   </style>
   <link rel="stylesheet" href="/assets/css/style.css?v=20261109">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://anyconverter.io/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "PDF Tools",
+      "item": "https://anyconverter.io/pdf-merge/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Edit PDF",
+      "item": "https://anyconverter.io/edit-pdf/"
+    }
+  ]
+}
+  </script>
 </head>
 <body>
   <header id="site-header" class="site-header"></header>
@@ -55,7 +128,7 @@
     <div class="tool-wrapper">
       <div class="tool-zone">
         <div style="padding:24px">
-          <div class="upload-area" data-file-target="ed-file" role="button" tabindex="0">
+          <div class="upload-area" data-file-target="ed-file" role="button" tabindex="0" aria-label="Drop file here or click to browse">
             <img src="/assets/img/icon-pdf.svg" alt="Edit PDF — Add Text, Shapes &amp; Highlights icon" width="36" height="36" style="margin-bottom:10px">
             <p style="font-size:14px;color:var(--color-text-2,#6B7280);margin-bottom:10px">Drop your PDF here or click to browse</p>
             <input type="file" id="ed-file" accept=".pdf" style="display:none">
@@ -126,6 +199,51 @@
         </div>
       </aside>
     </div>
+        <!-- Contextual Workflow Chain: Next Step (Sprint S25) -->
+    <section class="workflow-chain-section" id="workflow-chain-pdf" aria-labelledby="workflow-chain-heading" style="display:none;">
+      <div class="workflow-chain-header">
+        <div class="workflow-chain-badge">
+          <span aria-hidden="true">⚡</span>
+          <span>Next Step</span>
+        </div>
+        <h2 class="workflow-chain-title" id="workflow-chain-heading">Next Step: Continue Your PDF Workflow</h2>
+        <p class="workflow-chain-sub">Your document is ready. Continue with the next step in your workflow:</p>
+        <button type="button" class="workflow-chain-dismiss" id="btn-chain-dismiss" aria-label="Dismiss workflow suggestions">✕</button>
+      </div>
+      <div class="workflow-chain-grid">
+        <a href="/pdf-compress/" class="workflow-chain-card" id="chain-step-compress" data-target="/pdf-compress/">
+          <div class="workflow-chain-card-icon">
+            <img src="/assets/img/icon-pdf-compress.svg" alt="Compress PDF icon" width="28" height="28" loading="lazy">
+          </div>
+          <div class="workflow-chain-card-content">
+            <span class="workflow-chain-card-title">Compress PDF</span>
+            <span class="workflow-chain-card-desc">Reduce file size for easier sharing and email attachments</span>
+          </div>
+          <span class="workflow-chain-card-action">Compress PDF →</span>
+        </a>
+        <a href="/pdf-split/" class="workflow-chain-card" id="chain-step-split" data-target="/pdf-split/">
+          <div class="workflow-chain-card-icon">
+            <img src="/assets/img/icon-pdf-split.svg" alt="Split PDF icon" width="28" height="28" loading="lazy">
+          </div>
+          <div class="workflow-chain-card-content">
+            <span class="workflow-chain-card-title">Split Pages</span>
+            <span class="workflow-chain-card-desc">Extract specific pages or break into separate documents</span>
+          </div>
+          <span class="workflow-chain-card-action">Split PDF →</span>
+        </a>
+        <a href="/pdf-to-jpg/" class="workflow-chain-card" id="chain-step-to-jpg" data-target="/pdf-to-jpg/">
+          <div class="workflow-chain-card-icon">
+            <img src="/assets/img/icon-pdf-to-jpg.svg" alt="Convert to JPG icon" width="28" height="28" loading="lazy">
+          </div>
+          <div class="workflow-chain-card-content">
+            <span class="workflow-chain-card-title">Convert to JPG</span>
+            <span class="workflow-chain-card-desc">Extract pages as high-resolution JPG images</span>
+          </div>
+          <span class="workflow-chain-card-action">Convert to JPG →</span>
+        </a>
+      </div>
+    </section>
+
     <section class="how-to-use"><h2>How to Edit a PDF</h2><ol class="steps"><li>Upload your PDF (first page dimensions shown).</li><li>Choose the annotation type, page, X/Y position and properties.</li><li>Click "+ Add Annotation" to queue it. Repeat as needed.</li><li>Click "Apply &amp; Download".</li></ol></section>
     <section class="features"><h2>Features</h2><ul class="features-list"><li>Three annotation types: text overlay, border rectangle, yellow highlight</li><li>Custom font size and colour for text</li><li>Custom width and height for rectangles and highlights</li><li>Queue multiple annotations before applying</li><li>100% browser-based — no server upload</li></ul></section>
     <!-- SEO keyword implementation: 2026-08-21 -->
@@ -141,25 +259,66 @@
       <p>For the next step, try <a href="/pdf-merge/">Merge PDF Files Online</a>, <a href="/pdf-split/">Split PDF</a>, <a href="/pdf-compress/">Compress PDF Online</a>, <a href="/pdf-to-jpg/">PDF to JPG Converter</a>.</p>
     </section>
 
+    
+    <section class="privacy-section" id="privacy-and-security" aria-labelledby="privacy-heading">
+      <h2 id="privacy-heading">Private PDF Editor: In-Browser Annotations & Redactions, No Uploads, No Signup</h2>
+      <p class="privacy-lead">Add text, shapes, and blackouts to confidential PDF files client-side without sharing documents with cloud services.</p>
+      <div class="privacy-grid">
+        <div class="privacy-card">
+          <span class="privacy-card-icon" aria-hidden="true">🔒</span>
+          <div class="privacy-card-content">
+            <strong>In-Browser Visual Editing</strong>
+            <p>PDF pages render to HTML5 Canvas and are edited with vector overlays strictly inside your device browser.</p>
+          </div>
+        </div>
+        <div class="privacy-card">
+          <span class="privacy-card-icon" aria-hidden="true">⚡</span>
+          <div class="privacy-card-content">
+            <strong>No Account or Signup Required</strong>
+            <p>Edit and export annotated PDFs immediately without subscription paywalls or mandatory account creation.</p>
+          </div>
+        </div>
+        <div class="privacy-card">
+          <span class="privacy-card-icon" aria-hidden="true">🛡️</span>
+          <div class="privacy-card-content">
+            <strong>Confidential Redaction Integrity</strong>
+            <p>Cover sensitive account numbers and personal details locally prior to sharing documents externally.</p>
+          </div>
+        </div>
+        <div class="privacy-card">
+          <span class="privacy-card-icon" aria-hidden="true">🧹</span>
+          <div class="privacy-card-content">
+            <strong>Zero Server Document Retention</strong>
+            <p>No document revisions or uploaded drafts are ever sent to or archived on remote cloud servers.</p>
+          </div>
+        </div>
+      </div>
+    </section>
     <section class="faq"><h2>Frequently Asked Questions</h2><div class="faq-list">
       <details class="faq-item"><summary class="faq-question">How do I find the right coordinates? <span class="faq-icon">+</span></summary><div class="faq-answer">Open the PDF in Adobe Acrobat Reader, enable the coordinate display (View → Show/Hide → Cursor Coordinates), then hover over the target location. Remember PDF coordinates start from the bottom-left — y=0 is the bottom of the page.</div></details>
       <details class="faq-item"><summary class="faq-question">Can I edit existing text in the PDF? <span class="faq-icon">+</span></summary><div class="faq-answer">No. This tool overlays new content on top of existing pages — it does not modify or replace existing text. True text editing in PDFs requires dedicated editing software.</div></details>
+    <details class="faq-item"><summary class="faq-question">Is it secure to edit sensitive documents here? <span class="faq-icon">+</span></summary><div class="faq-answer">Yes. All editing operations run entirely inside your browser using client-side JavaScript. Your PDF files are never uploaded to any remote server, ensuring complete confidentiality.</div></details>
+    <details class="faq-item"><summary class="faq-question">Does the tool add any watermark to edited PDFs? <span class="faq-icon">+</span></summary><div class="faq-answer">No. AnyConverter never adds watermarks, stamps, or restrictions to your output PDF files. You receive clean, unmodified PDF pages.</div></details>
+    <details class="faq-item"><summary class="faq-question">Can I add text and signatures without installing software? <span class="faq-icon">+</span></summary><div class="faq-answer">Yes. You can position custom text, notes, annotations, and signatures directly onto any page without installing desktop software or browser extensions.</div></details>
     </div></section>
 
     <section class="related-tools">
       <h2>Related Tools</h2>
       <div class="tool-grid">
+        <a href="/compare-pdf/" class="tool-card"><img src="/assets/img/icon-pdf-compare.svg" alt="Compare PDF icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Compare PDF</h3><p>View two PDFs side by side and navigate pages together to spot differences.</p><span class="tool-card-link">Try it →</span></a>
+        <a href="/add-page-numbers/" class="tool-card"><img src="/assets/img/icon-pdf-pagenums.svg" alt="Add Page Numbers icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Add Page Numbers</h3><p>Stamp page numbers at header or footer with custom font size and prefix.</p><span class="tool-card-link">Try it →</span></a>
         <a href="/pdf-forms/" class="tool-card"><img src="/assets/img/icon-pdf-forms.svg" alt="Fill PDF Forms icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Fill PDF Forms</h3><p>Fill text fields, checkboxes and dropdowns in any fillable PDF.</p><span class="tool-card-link">Try it →</span></a>
         <a href="/sign-pdf/" class="tool-card"><img src="/assets/img/icon-pdf-sign.svg" alt="Sign PDF icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Sign PDF</h3><p>Draw your signature and embed it into any PDF page instantly.</p><span class="tool-card-link">Try it →</span></a>
-        <a href="/add-page-numbers/" class="tool-card"><img src="/assets/img/icon-pdf-pagenums.svg" alt="Add Page Numbers icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Add Page Numbers</h3><p>Stamp page numbers at header or footer with custom font size and prefix.</p><span class="tool-card-link">Try it →</span></a>
-        <a href="/add-watermark/" class="tool-card"><img src="/assets/img/icon-pdf-watermark.svg" alt="Add Watermark icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Add Watermark</h3><p>Stamp a custom text watermark on every page. Adjustable opacity and colour.</p><span class="tool-card-link">Try it →</span></a>
+        <a href="/ocr-pdf/" class="tool-card"><img src="/assets/img/icon-ocr-pdf.svg" alt="OCR PDF icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>OCR PDF</h3><p>Extract text from scanned PDFs and images using Tesseract OCR.</p><span class="tool-card-link">Try it →</span></a>
       </div>
     </section>
 
   </main>
   <footer id="site-footer" class="site-footer"></footer>
   <script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js" defer></script>
+  <script src="/assets/js/shared/analytics.js" defer></script>
   <script src="/assets/js/shared.js?v=20261109" defer></script>
   <script src="/assets/js/tools/edit-pdf.js?v=20261108" defer></script>
+  <script src="/assets/js/tools/pdf-workflow-chain.js?v=20261124" defer></script>
 </body>
 </html>

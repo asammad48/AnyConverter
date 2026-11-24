@@ -44,6 +44,32 @@
     @font-face{font-family:'Inter';font-display:swap}
   </style>
   <link rel="stylesheet" href="/assets/css/style.css?v=20261109">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Inicio",
+      "item": "https://anyconverter.io/es/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Herramientas PDF",
+      "item": "https://anyconverter.io/es/pdf-merge/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Firmar PDF",
+      "item": "https://anyconverter.io/es/sign-pdf/"
+    }
+  ]
+}
+  </script>
 </head>
 <body>
   <header id="site-header" class="site-header"></header>
@@ -56,7 +82,7 @@
     <div class="tool-wrapper">
       <div class="tool-zone">
         <div style="padding:24px">
-          <div class="upload-area" data-file-target="sp-file" role="button" tabindex="0">
+          <div class="upload-area" data-file-target="sp-file" role="button" tabindex="0" aria-label="Arrastra un archivo aquí o haz clic para seleccionar">
             <img src="/assets/img/icon-pdf.svg" alt="Firmar PDF Online Gratis icon" width="36" height="36" style="margin-bottom:10px">
             <p style="font-size:14px;color:var(--color-text-2,#6B7280);margin-bottom:10px">Arrastra tu PDF aquí o haz clic para buscar</p>
             <input type="file" id="sp-file" accept=".pdf" style="display:none">
@@ -121,10 +147,10 @@
     <section class="related-tools">
       <h2>Herramientas Relacionadas</h2>
       <div class="tool-grid">
+        <a href="/es/add-watermark/" class="tool-card"><img src="/assets/img/icon-pdf-watermark.svg" alt="Añadir Marca de Agua a PDF Online Gratis icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Añadir Marca de Agua a PDF Online Gratis</h3><p>Añade una marca de agua de texto a páginas PDF online, ajusta posición y opacidad, y descarga el PDF marcado. Incluye pasos claros, resultados prácticos y sin registro.</p><span class="tool-card-link">Probar →</span></a>
         <a href="/es/pdf-forms/" class="tool-card"><img src="/assets/img/icon-pdf-forms.svg" alt="Rellenar Formularios PDF Online Gratis icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Rellenar Formularios PDF Online Gratis</h3><p>Rellena formularios PDF online, revisa los campos y descarga el archivo completado sin enviar documentos al servidor.</p><span class="tool-card-link">Probar →</span></a>
-        <a href="/es/edit-pdf/" class="tool-card"><img src="/assets/img/icon-pdf-edit.svg" alt="Editar PDF icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Editar PDF</h3><p>Usa edit PDF online gratis en el navegador.</p><span class="tool-card-link">Probar →</span></a>
-        <a href="/es/add-watermark/" class="tool-card"><img src="/assets/img/icon-pdf-watermark.svg" alt="Añadir Marca de Agua a PDF Online Gratis icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Añadir Marca de Agua a PDF Online Gratis</h3><p>Añade una marca de agua de texto a páginas PDF online, ajusta posicion y opacidad, y descarga el PDF marcado Incluye pasos claros, resultados practicos y sin registro.</p><span class="tool-card-link">Probar →</span></a>
-        <a href="/es/protect-pdf/" class="tool-card"><img src="/assets/img/icon-pdf-protect.svg" alt="Proteger PDF con Contraseña Online Gratis icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Proteger PDF con Contraseña Online Gratis</h3><p>Usa Proteger PDF con Contraseña gratis en el navegador.</p><span class="tool-card-link">Probar →</span></a>
+        <a href="/es/edit-pdf/" class="tool-card"><img src="/assets/img/icon-pdf-edit.svg" alt="Editar PDF icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Editar PDF</h3><p>Edita archivos PDF online gratis directamente en el navegador.</p><span class="tool-card-link">Probar →</span></a>
+        <a href="/es/redact-pdf/" class="tool-card"><img src="/assets/img/icon-pdf-redact.svg" alt="Blackout PDF icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Blackout PDF</h3><p>Cubre partes del documento con rectángulos negros mediante coordenadas.</p><span class="tool-card-link">Probar →</span></a>
       </div>
     </section>
   </main>

@@ -14,6 +14,11 @@
     var input = document.getElementById('tcc-input').value;
     document.getElementById('tcc-output').value = fn(input);
     lastCase = fn;
+    if (typeof window !== 'undefined' && window.ACTextWorkflowChain) {
+      if (input.trim().length > 0) {
+        window.ACTextWorkflowChain.showWorkflowChain();
+      }
+    }
   }
 
   function copyOutput() {
@@ -37,6 +42,9 @@
       document.getElementById('tcc-input').value = '';
       document.getElementById('tcc-output').value = '';
       lastCase = null;
+      if (typeof window !== 'undefined' && window.ACTextWorkflowChain) {
+        window.ACTextWorkflowChain.hideWorkflowChain();
+      }
     });
     var tccTimer;
     document.getElementById('tcc-input').addEventListener('input', function() {

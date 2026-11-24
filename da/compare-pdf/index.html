@@ -44,6 +44,32 @@
     @font-face{font-family:'Inter';font-display:swap}
   </style>
   <link rel="stylesheet" href="/assets/css/style.css?v=20261109">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Hjem",
+      "item": "https://anyconverter.io/da/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "PDF Værktøjer",
+      "item": "https://anyconverter.io/da/pdf-merge/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Sammenlign PDF",
+      "item": "https://anyconverter.io/da/compare-pdf/"
+    }
+  ]
+}
+  </script>
 </head>
 <body>
   <header id="site-header" class="site-header"></header>
@@ -59,7 +85,7 @@
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px">
             <div>
               <p style="font-size:13px;font-weight:600;margin-bottom:8px">Dokument A</p>
-              <div class="upload-area" data-file-target="cmp-file-a" role="button" tabindex="0" style="padding:16px">
+              <div class="upload-area" data-file-target="cmp-file-a" role="button" tabindex="0" style="padding:16px" aria-label="Vælg første PDF-fil til sammenligning">
                 <p style="font-size:13px;color:var(--color-text-2,#6B7280);margin-bottom:6px">Klik eller træk PDF A hertil</p>
                 <input type="file" id="cmp-file-a" accept=".pdf" style="display:none">
                 <button class="btn btn-secondary" type="button" style="font-size:12px">Vælg PDF A</button>
@@ -68,7 +94,7 @@
             </div>
             <div>
               <p style="font-size:13px;font-weight:600;margin-bottom:8px">Dokument B</p>
-              <div class="upload-area" data-file-target="cmp-file-b" role="button" tabindex="0" style="padding:16px">
+              <div class="upload-area" data-file-target="cmp-file-b" role="button" tabindex="0" style="padding:16px" aria-label="Vælg anden PDF-fil til sammenligning">
                 <p style="font-size:13px;color:var(--color-text-2,#6B7280);margin-bottom:6px">Klik eller træk PDF B hertil</p>
                 <input type="file" id="cmp-file-b" accept=".pdf" style="display:none">
                 <button class="btn btn-secondary" type="button" style="font-size:12px">Vælg PDF B</button>
@@ -129,10 +155,10 @@
     <section class="related-tools">
       <h2>Relaterede Værktøjer</h2>
       <div class="tool-grid">
+        <a href="/da/edit-pdf/" class="tool-card"><img src="/assets/img/icon-pdf-edit.svg" alt="Tildæk PDF icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Tildæk PDF</h3><p>Læg tekst, kantede rektangler eller gule fremhævninger oven på enhver PDF-side.</p><span class="tool-card-link">Prøv det →</span></a>
         <a href="/da/pdf-merge/" class="tool-card"><img src="/assets/img/icon-pdf-merge.svg" alt="Saml PDF-filer icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Saml PDF-filer</h3><p>Saml flere PDF-filer til én i din browser.</p><span class="tool-card-link">Prøv det →</span></a>
         <a href="/da/pdf-split/" class="tool-card"><img src="/assets/img/icon-pdf-split.svg" alt="Opdel PDF icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Opdel PDF</h3><p>Opdel en PDF i flere filer i din browser.</p><span class="tool-card-link">Prøv det →</span></a>
         <a href="/da/text-diff-checker/" class="tool-card"><img src="/assets/img/icon-diff.svg" alt="Tekst Forskels Checker Online Gratis icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Tekst Forskels Checker Online Gratis</h3><p>Sammenlign to blokke af tekst og se forskelle fremhævet øjeblikkeligt.</p><span class="tool-card-link">Prøv det →</span></a>
-        <a href="/da/edit-pdf/" class="tool-card"><img src="/assets/img/icon-pdf-edit.svg" alt="Tildæk PDF icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Tildæk PDF</h3><p>Læg tekst, kantede rektangler eller gule fremhævninger oven på enhver PDF-side.</p><span class="tool-card-link">Prøv det →</span></a>
       </div>
     </section>
   </main>

@@ -41,7 +41,7 @@ window.DCTool = function (lang, DCLogic) {
     toast(msg){ this.setState({toast:msg}); clearTimeout(this._tt); this._tt=setTimeout(()=>this.setState({toast:''}),1800); }
     fallbackCopy(t){ const ta=document.createElement('textarea'); ta.value=t; document.body.appendChild(ta); ta.select(); try{ document.execCommand('copy'); }catch(e){} ta.remove(); }
     copy(text,msg){ const done=()=>this.toast(msg||this.T.copied); try{ navigator.clipboard.writeText(text).then(done,()=>{ this.fallbackCopy(text); done(); }); }catch(e){ this.fallbackCopy(text); done(); } }
-    download(name,data,mime){ const b=data instanceof Blob?data:new Blob([data],{type:mime||'text/plain'}); const a=document.createElement('a'); a.href=URL.createObjectURL(b); a.download=name; document.body.appendChild(a); a.click(); a.remove(); setTimeout(()=>URL.revokeObjectURL(a.href),2000); this.toast(this.T.downloaded+': '+name); }
+    download(name,data,mime){ const b=data instanceof Blob?data:new Blob([data],{type:mime||'text/plain'}); const a=document.createElement('a'); a.href=URL.createObjectURL(b); a.download=name; document.body.appendChild(a); a.click(); a.remove(); setTimeout(()=>URL.revokeObjectURL(a.href),2000); this.toast(this.T.downloaded+': '+name); if(window.ACAnalytics) window.ACAnalytics.trackResultDownloaded('pdf-merge', 'pdf', '<10MB'); }
     opts(list,cur,set,labels){ return list.map((v,i)=>{ const on=Array.isArray(cur)?cur.indexOf(v)>-1:v===cur; return { label:labels?labels[i]:String(v), value:v, on, onClick:()=>set(v), bg:on?'#b5412b':'#fff', fg:on?'#fff':'#1f1a17', bd:on?'#b5412b':'#d9cfc3', tbd:on?'#b5412b':'transparent', soft:on?'#f6e6e0':'#fff', softFg:on?'#8f2f1d':'#1f1a17' }; }); }
     sw(on){ return { track:on?'#b5412b':'#d9cfc3', knob:on?'19px':'3px' }; }
     num(v){ const n=parseFloat(String(v).replace(',','.')); return isFinite(n)?n:0; }
@@ -93,10 +93,16 @@ window.DCTool = function (lang, DCLogic) {
     async job(fn){ this._cx=0; this.setState({ stage:'working', prog:0, plabel:'', err:'' }); this.track('tool_calculate'); await this.tick();
       try{ const res=await fn((p,label)=>{ if(this._cx) throw new Error('cx'); this.setState({ prog:Math.max(0,Math.min(1,p)), plabel:label||this.state.plabel }); });
         res.items.forEach(it=>{ it.size=it.blob.size; if(/^image\//.test(it.blob.type)) it.url=URL.createObjectURL(it.blob); });
-        this.setState({ stage:'done', res, prog:1 }); this.track('file_ready'); }
-      catch(e){ console.warn(e); this.setState({ stage:'ready', prog:0, err:e&&e.message==='cx'?PX.cancelled:PX.fail }); } }
+        this.setState({ stage:'done', res, prog:1 }); this.track('file_ready');
+        if (typeof window !== 'undefined' && window.ACWorkflowChainPDF && res && res.items && res.items[0]) {
+          window.ACWorkflowChainPDF.showWorkflowChain(res.items[0].blob, res.items[0].name);
+        }
+        if(window.ACAnalytics) window.ACAnalytics.trackToolCompleted('pdf-merge', 'file_upload', 'pdf_merged', { file_count: this.state.files ? this.state.files.length : 1 }); }
+      catch(e){ console.warn(e); this.setState({ stage:'ready', prog:0, err:e&&e.message==='cx'?PX.cancelled:PX.fail });
+        if(window.ACAnalytics) window.ACAnalytics.trackToolFailed('pdf-merge', 'processing_error'); } }
     saveAll(){ const r=this.state.res; if(!r) return; const it=r.items; if(it.length===1) return this.download(it[0].name,it[0].blob); const z=new window.JSZip(); it.forEach(i=>z.file(i.name,i.blob)); z.generateAsync({ type:'blob' }).then(b=>this.download(r.zip||'anyconverter.zip',b)); }
-    resetAll(){ this._cx=1; this._drop(); this.setState(Object.assign({ files:[], th:{}, stage:'empty', res:null, err:'', prog:0, loading:false }, this.resetExtra?this.resetExtra():{})); }
+    resetAll(){ this._cx=1; this._drop(); this.setState(Object.assign({ files:[], th:{}, stage:'empty', res:null, err:'', prog:0, loading:false }, this.resetExtra?this.resetExtra():{}));
+      if(window.ACAnalytics) window.ACAnalytics.trackToolReset('pdf-merge'); }
     xVals(){ const s=this.state, f0=s.files[0], r=s.res; const items=r?r.items:[];
       return { isEmpty:!s.files.length, hasFiles:s.files.length>0, isReading:!!s.loading, hasErr:!!s.err, err:s.err,
         isReady:s.files.length>0&&s.stage==='ready', isWorking:s.stage==='working', isDone:s.stage==='done'&&!!r, notDone:s.stage!=='done',

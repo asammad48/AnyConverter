@@ -45,6 +45,26 @@
     @font-face{font-family:'Inter';font-display:swap}
   </style>
   <link rel="stylesheet" href="/assets/css/style.css?v=20261109">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://anyconverter.io/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "CSS Gradient Generator",
+      "item": "https://anyconverter.io/css-gradient-generator/"
+    }
+  ]
+}
+  </script>
 </head>
 <body>
   <header id="site-header" class="site-header"></header>
@@ -75,13 +95,13 @@
                 <input type="color" class="stop-color" value="#B04A45" style="width:40px;height:36px;border:none;border-radius:6px;cursor:pointer">
                 <input type="range" class="stop-pos" min="0" max="100" value="0" style="flex:1;accent-color:var(--color-primary,#B04A45)">
                 <span class="stop-pos-val" style="width:36px;font-size:13px;text-align:right">0%</span>
-                <button class="btn btn-secondary btn-sm stop-remove" style="padding:4px 8px">×</button>
+                <button class="btn btn-secondary btn-sm stop-remove" style="padding:4px 8px" aria-label="Remove color stop">×</button>
               </div>
               <div class="grad-stop" style="display:flex;align-items:center;gap:8px">
                 <input type="color" class="stop-color" value="#06B6D4" style="width:40px;height:36px;border:none;border-radius:6px;cursor:pointer">
                 <input type="range" class="stop-pos" min="0" max="100" value="100" style="flex:1;accent-color:var(--color-primary,#B04A45)">
                 <span class="stop-pos-val" style="width:36px;font-size:13px;text-align:right">100%</span>
-                <button class="btn btn-secondary btn-sm stop-remove" style="padding:4px 8px">×</button>
+                <button class="btn btn-secondary btn-sm stop-remove" style="padding:4px 8px" aria-label="Remove color stop">×</button>
               </div>
             </div>
             <button class="btn btn-secondary btn-sm" id="btn-add-stop" style="margin-top:8px">+ Add Stop</button>
@@ -155,10 +175,10 @@
         <section class="related-tools">
       <h2>Related Tools</h2>
       <div class="tool-grid">
-        <a href="/css-shadow-generator/" class="tool-card"><img src="/assets/img/icon-shadow.svg" alt="CSS Shadow Generator icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>CSS Shadow Generator</h3><p>Design box-shadow and text-shadow visually with live preview and CSS copy.</p><span class="tool-card-link">Try it →</span></a>
         <a href="/color-converter/" class="tool-card"><img src="/assets/img/icon-color.svg" alt="Color Converter icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Color Converter</h3><p>Convert colors between HEX, RGB, HSL, CMYK and HSB.</p><span class="tool-card-link">Try it →</span></a>
+        <a href="/css-shadow-generator/" class="tool-card"><img src="/assets/img/icon-shadow.svg" alt="CSS Shadow Generator icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>CSS Shadow Generator</h3><p>Design box-shadow and text-shadow visually with live preview and CSS copy.</p><span class="tool-card-link">Try it →</span></a>
         <a href="/px-to-rem/" class="tool-card"><img src="/assets/img/icon-pxrem.svg" alt="PX to REM icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>PX to REM</h3><p>Convert pixel values to REM and back with a customisable base font size.</p><span class="tool-card-link">Try it →</span></a>
-        <a href="/aspect-ratio-calculator/" class="tool-card"><img src="/assets/img/icon-ratio.svg" alt="Aspect Ratio Calculator icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Aspect Ratio Calculator</h3><p>Calculate aspect ratios and scale dimensions while preserving the ratio.</p><span class="tool-card-link">Try it →</span></a>
+        <a href="/html-beautifier/" class="tool-card"><img src="/assets/img/icon-html-beautifier.svg" alt="HTML Beautifier icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>HTML Beautifier</h3><p>Beautify or minify HTML code with one click.</p><span class="tool-card-link">Try it →</span></a>
       </div>
     </section>
   </main>

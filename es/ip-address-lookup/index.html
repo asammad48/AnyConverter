@@ -33,6 +33,8 @@
 
 
 <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <meta name="theme-color" content="#B04A45">
+  <link rel="manifest" href="/manifest.webmanifest">
   <style>
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
     html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F7F6F3);color:var(--color-text,#151515)}
@@ -45,6 +47,26 @@
     @font-face{font-family:'Inter';font-display:swap}
   </style>
   <link rel="stylesheet" href="/assets/css/style.css?v=20261109">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Inicio",
+      "item": "https://anyconverter.io/es/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Búsqueda de Dirección IP",
+      "item": "https://anyconverter.io/es/ip-address-lookup/"
+    }
+  ]
+}
+  </script>
 </head>
 <body>
   <header id="site-header" class="site-header"></header>
@@ -160,15 +182,17 @@
     <section class="related-tools">
       <h2>Herramientas Relacionadas</h2>
       <div class="tool-grid">
+        <a href="/es/url-encoder/" class="tool-card"><img src="/assets/img/icon-url.svg" alt="Codificador URL Online Gratis icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Codificador URL Online Gratis</h3><p>Usa url encoder gratis en el navegador.</p><span class="tool-card-link">Probar →</span></a>
         <a href="/es/internet-speed-test/" class="tool-card"><img src="/assets/img/icon-speed.svg" alt="Prueba de Velocidad de Internet Online Gratis icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Prueba de Velocidad de Internet Online Gratis</h3><p>Haz una prueba de velocidad de internet en el navegador con ping, descarga, subida y notas para entender la conexion.</p><span class="tool-card-link">Probar →</span></a>
         <a href="/es/browser-info/" class="tool-card"><img src="/assets/img/icon-browser.svg" alt="Visor de Información del Navegador Online Gratis icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Visor de Información del Navegador Online Gratis</h3><p>Usa Visor de Información del Navegador gratis en el navegador.</p><span class="tool-card-link">Probar →</span></a>
-        <a href="/es/viewport-size/" class="tool-card"><img src="/assets/img/icon-viewport.svg" alt="Comprobador de Tamaño de Ventana Online Gratis icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Comprobador de Tamaño de Ventana Online Gratis</h3><p>Mide tamano de viewport, pantalla, relacion de pixeles y breakpoints responsive directamente en el navegador Incluye pasos claros, resultados practicos y sin registro.</p><span class="tool-card-link">Probar →</span></a>
-        <a href="/es/url-encoder/" class="tool-card"><img src="/assets/img/icon-url.svg" alt="Codificador URL Online Gratis icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Codificador URL Online Gratis</h3><p>Usa url encoder gratis en el navegador.</p><span class="tool-card-link">Probar →</span></a>
+        <a href="/es/viewport-size/" class="tool-card"><img src="/assets/img/icon-viewport.svg" alt="Comprobador de Tamaño de Ventana Online Gratis icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Comprobador de Tamaño de Ventana Online Gratis</h3><p>Mide el tamaño de viewport, pantalla, relación de píxeles y breakpoints responsive directamente en el navegador. Incluye pasos claros, resultados prácticos y sin registro.</p><span class="tool-card-link">Probar →</span></a>
       </div>
     </section>
   </main>
   <footer id="site-footer" class="site-footer"></footer>
+  <script src="/assets/js/shared/analytics.js" defer></script>
   <script src="/assets/js/shared.js?v=20261109" defer></script>
+  <script src="/assets/js/shared/pwa.js" defer></script>
   <script src="/assets/js/tools/ip-address-lookup.js" defer></script>
 </body>
 </html>

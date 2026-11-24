@@ -29,7 +29,54 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Aspect Ratio Calculator","url":"https://anyconverter.io/aspect-ratio-calculator/","description":"Calculate aspect ratios, scale image or video dimensions while preserving the ratio.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How is the aspect ratio simplified?","acceptedAnswer":{"@type":"Answer","text":"The calculator uses the Greatest Common Divisor (GCD) algorithm to reduce the width and height to their smallest whole-number ratio. For example, 1920:1080 simplifies to 16:9 because both numbers are divisible by 120."}},{"@type":"Question","name":"What is the decimal ratio used for?","acceptedAnswer":{"@type":"Answer","text":"The decimal ratio (width ÷ height) is useful for CSS aspect-ratio property and some design tools that accept a single decimal value instead of two numbers. For 16:9 the decimal is 1.7778."}},{"@type":"Question","name":"Can I use this for video editing?","acceptedAnswer":{"@type":"Answer","text":"Yes. This tool is commonly used to find the correct height for a thumbnail given a width (or vice versa), to verify that a crop maintains a specific aspect ratio, or to convert between standard video dimensions like 4K (3840×2160) and 1080p (1920×1080)."}}]}</script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How is the aspect ratio simplified?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The calculator uses the Greatest Common Divisor (GCD) algorithm to reduce the width and height to their smallest whole-number ratio. For example, 1920:1080 simplifies to 16:9 because both numbers are divisible by 120."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the decimal ratio used for?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The decimal ratio (width ÷ height) is useful for CSS aspect-ratio property and some design tools that accept a single decimal value instead of two numbers. For 16:9 the decimal is 1.7778."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I use this for video editing?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. This tool is commonly used to find the correct height for a thumbnail given a width (or vice versa), to verify that a crop maintains a specific aspect ratio, or to convert between standard video dimensions like 4K (3840×2160) and 1080p (1920×1080)."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What are the most common aspect ratios for digital media?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The most prevalent aspect ratios are 16:9 for widescreen video and YouTube, 9:16 for vertical TikTok and Instagram Reels, 1:1 for square social posts, and 4:3 for legacy television and tablet photography."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I calculate new dimensions while preserving aspect ratio?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Divide the original width by the original height to find the ratio multiplier, then multiply or divide your target dimension by this factor to compute the proportional width or height without distortion."
+      }
+    }
+  ]
+}
+</script>
 
 
 <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
@@ -46,6 +93,26 @@
     @font-face{font-family:'Inter';font-display:swap}
   </style>
   <link rel="stylesheet" href="/assets/css/style.css?v=20261109">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://anyconverter.io/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Aspect Ratio Calculator",
+      "item": "https://anyconverter.io/aspect-ratio-calculator/"
+    }
+  ]
+}
+  </script>
 </head>
 <body>
   <header id="site-header" class="site-header"></header>
@@ -179,15 +246,18 @@
         <details class="faq-item"><summary class="faq-question">How is the aspect ratio simplified? <span class="faq-icon">+</span></summary><div class="faq-answer">The calculator uses the Greatest Common Divisor (GCD) algorithm to reduce the width and height to their smallest whole-number ratio. For example, 1920:1080 simplifies to 16:9 because both numbers are divisible by 120.</div></details>
         <details class="faq-item"><summary class="faq-question">What is the decimal ratio used for? <span class="faq-icon">+</span></summary><div class="faq-answer">The decimal ratio (width ÷ height) is useful for CSS aspect-ratio property and some design tools that accept a single decimal value instead of two numbers. For 16:9 the decimal is 1.7778.</div></details>
         <details class="faq-item"><summary class="faq-question">Can I use this for video editing? <span class="faq-icon">+</span></summary><div class="faq-answer">Yes. This tool is commonly used to find the correct height for a thumbnail given a width (or vice versa), to verify that a crop maintains a specific aspect ratio, or to convert between standard video dimensions like 4K (3840×2160) and 1080p (1920×1080).</div></details>
+    <details class="faq-item"><summary class="faq-question">What are the most common aspect ratios for digital media? <span class="faq-icon">+</span></summary><div class="faq-answer">The most prevalent aspect ratios are 16:9 for widescreen video and YouTube, 9:16 for vertical TikTok and Instagram Reels, 1:1 for square social posts, and 4:3 for legacy television and tablet photography.</div></details>
+    <details class="faq-item"><summary class="faq-question">How do I calculate new dimensions while preserving aspect ratio? <span class="faq-icon">+</span></summary><div class="faq-answer">Divide the original width by the original height to find the ratio multiplier, then multiply or divide your target dimension by this factor to compute the proportional width or height without distortion.</div></details>
       </div>
     </section>
         <section class="related-tools">
       <h2>Related Tools</h2>
       <div class="tool-grid">
+        <a href="/rise-over-run-calculator/" class="tool-card"><img src="/assets/img/icon-calculator.svg" alt="Rise Over Run Calculator icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Rise Over Run Calculator</h3><p>Slope from rise and run, or from two points.</p><span class="tool-card-link">Try it →</span></a>
+        <a href="/slope-grade-angle-calculator/" class="tool-card"><img src="/assets/img/icon-calculator.svg" alt="Slope, Grade &amp; Angle Calculator icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Slope, Grade &amp; Angle Calculator</h3><p>Convert slope ratio, decimal, % grade, ‰ and degrees.</p><span class="tool-card-link">Try it →</span></a>
         <a href="/screen-resolution/" class="tool-card"><img src="/assets/img/icon-screen.svg" alt="Screen Resolution icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Screen Resolution</h3><p>Detect screen resolution, viewport size, DPR and colour depth instantly.</p><span class="tool-card-link">Try it →</span></a>
-        <a href="/viewport-size/" class="tool-card"><img src="/assets/img/icon-viewport.svg" alt="Viewport Size Checker icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Viewport Size Checker</h3><p>Live viewport width, height, DPR, orientation and CSS breakpoint — updates on resize.</p><span class="tool-card-link">Try it →</span></a>
-        <a href="/image-compressor/" class="tool-card"><img src="/assets/img/icon-image.svg" alt="Image Compressor icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Image Compressor</h3><p>Compress JPEG and PNG images without visible quality loss.</p><span class="tool-card-link">Try it →</span></a>
         <a href="/image-converter/" class="tool-card"><img src="/assets/img/icon-image.svg" alt="Image Converter icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Image Converter</h3><p>Convert images between PNG, JPG, WebP, AVIF and BMP.</p><span class="tool-card-link">Try it →</span></a>
+        <a href="/image-compressor/" class="tool-card"><img src="/assets/img/icon-image.svg" alt="Image Compressor icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Image Compressor</h3><p>Compress JPEG and PNG images without visible quality loss.</p><span class="tool-card-link">Try it →</span></a>
       </div>
     </section>
   </main>

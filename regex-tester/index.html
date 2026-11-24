@@ -45,6 +45,26 @@
     @font-face{font-family:'Inter';font-display:swap}
   </style>
   <link rel="stylesheet" href="/assets/css/style.css?v=20261109">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://anyconverter.io/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Regex / Log Extractor",
+      "item": "https://anyconverter.io/regex-tester/"
+    }
+  ]
+}
+  </script>
 </head>
 <body>
   <header id="site-header" class="site-header"></header>
@@ -193,6 +213,25 @@
       </ol>
     </section>
 
+    <section class="how-it-works" id="how-it-works">
+      <h2>How It Works: ECMAScript Regex Engine & Pattern Evaluation</h2>
+
+      <h3>What is a Regular Expression Tester?</h3>
+      <p>A regular expression tester is an interactive debugging tool that compiles search patterns against sample text using the browser's native ECMAScript RegExp engine, capturing token groups and evaluating match offsets in real time. It enables developers to inspect matches, test boundaries, and validate complex parsing rules.</p>
+
+      <h3>How It Works in the Browser</h3>
+      <p>Our regex workbench compiles patterns in the client runtime using standard V8/SpiderMonkey regex engines for authentic JavaScript runtime parity:</p>
+      <ol class="how-it-works-steps">
+        <li><strong>Pattern Compilation & Flag Handling</strong>: The input pattern is instantiated via <code>new RegExp(pattern, flags)</code> using the ECMAScript RegExp engine, evaluating global (<code>g</code>), case-insensitive (<code>i</code>), multiline (<code>m</code>), dotAll (<code>s</code>), and unicode (<code>u</code>) flag handling.</li>
+        <li><strong>Match Group Capturing</strong>: The engine iterates through text matches, performing match group capturing for numbered indices and named capture groups along with exact start and end offsets.</li>
+        <li><strong>Non-Destructive Highlighting</strong>: Text slices are wrapped in semantic highlight tags with alternating contrast backgrounds to differentiate consecutive adjacent matches.</li>
+        <li><strong>Safety Evaluation</strong>: Evaluation occurs with execution limits to prevent browser lockup from catastrophic backtracking in non-deterministic finite automata (NFA).</li>
+      </ol>
+
+      <h3>Key Specifications & Engine Standards</h3>
+      <p>The tester operates under the official <strong>ECMAScript RegExp (ECMA-262)</strong> engine specification. It fully supports lookahead (<code>(?=...)</code>, <code>(?!...)</code>) and lookbehind (<code>(?<=...)</code>, <code>(?<!...)</code>) assertions, robust match group capturing (<code>(?&lt;name&gt;...)</code>), comprehensive flag handling (<code>gimsuy</code>), Unicode property escapes (<code>\p{...}</code>), and backreferences. All execution runs locally with zero network latency or text transmission.</p>
+    </section>
+
     <section class="features">
       <h2>Features</h2>
       <ul class="features-list">
@@ -239,10 +278,10 @@
     <section class="related-tools">
       <h2>Related Tools</h2>
       <div class="tool-grid">
-        <a href="/json-formatter/" class="tool-card"><img src="/assets/img/icon-json.svg" alt="JSON Formatter icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>JSON Formatter</h3><p>Format, beautify and validate JSON with syntax highlighting.</p><span class="tool-card-link">Try it →</span></a>
-        <a href="/text-diff-checker/" class="tool-card"><img src="/assets/img/icon-diff.svg" alt="Text Diff Checker icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Text Diff Checker</h3><p>Compare two texts and highlight added and removed lines.</p><span class="tool-card-link">Try it →</span></a>
         <a href="/cron-expression-parser/" class="tool-card"><img src="/assets/img/icon-timer.svg" alt="Cron Expression Parser icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Cron Expression Parser</h3><p>Decode any cron expression into plain English instantly.</p><span class="tool-card-link">Try it →</span></a>
-        <a href="/base64-encoder/" class="tool-card"><img src="/assets/img/icon-base64.svg" alt="Base64 Encoder icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Base64 Encoder</h3><p>Encode and decode Base64 text and files online.</p><span class="tool-card-link">Try it →</span></a>
+        <a href="/url-encoder/" class="tool-card"><img src="/assets/img/icon-url.svg" alt="URL Encoder icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>URL Encoder</h3><p>Encode or decode URLs and query parameters online.</p><span class="tool-card-link">Try it →</span></a>
+        <a href="/xml-formatter/" class="tool-card"><img src="/assets/img/icon-xml.svg" alt="XML Formatter icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>XML Formatter</h3><p>Format and validate XML online with error detection.</p><span class="tool-card-link">Try it →</span></a>
+        <a href="/json-formatter/" class="tool-card"><img src="/assets/img/icon-json.svg" alt="JSON Formatter icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>JSON Formatter</h3><p>Format, beautify and validate JSON with syntax highlighting.</p><span class="tool-card-link">Try it →</span></a>
       </div>
     </section>
   </main>

@@ -65,13 +65,15 @@ console.log('✓ Blood Type Compatibility pages (ES, DA) verified with localized
 const daFiles = walk('da');
 let daSentenceBoundaryErrors = 0;
 let daDiacriticErrors = 0;
-const daStrippedRegex = /(\bnar\b du har brug|vaerktoj|faerdige|\blaeg\b gst|\bplanlaeg\b dagen|skaermoplosninger|viewport-storrelse|\bnaeste trin\b|Hold siden aben|boliglansbetalinger)/i;
+const daStrippedRegex = /(\bnar\b|\bdaekker\b|\bvaelge\b|\bvaelg\b|\bmaneder\b|\bnaeste\b|\btraeffe\b|\bvaerktoj\b|\bfaerdige\b|\blaeg\b gst|\bplanlaeg\b dagen|\bskaermoplosninger\b|\bviewport-storrelse\b|\bHold siden aben\b|\bboliglansbetalinger\b|\bmodetimer\b|\btilfoj\b|\bpamindelser\b|Text repeater online: praktisk|World Clock: practical uses)/i;
+
+assert.ok(daStrippedRegex instanceof RegExp, 'daStrippedRegex guard must be defined as a valid RegExp');
 
 for (const file of daFiles) {
   const content = fs.readFileSync(file, 'utf8');
   const strippedMatch = content.match(daStrippedRegex);
   if (strippedMatch) {
-    console.error(`Found stripped Danish diacritic in ${file}: "${strippedMatch[0]}"`);
+    console.error(`Found stripped Danish diacritic or leaked string in ${file}: "${strippedMatch[0]}"`);
     daDiacriticErrors++;
   }
   // Check unpunctuated "Med klare trin"
@@ -83,24 +85,26 @@ for (const file of daFiles) {
     }
   }
 }
-assert.strictEqual(daDiacriticErrors, 0, `Zero stripped Danish diacritics allowed across ${daFiles.length} Danish pages`);
+assert.strictEqual(daDiacriticErrors, 0, `Zero stripped Danish diacritics or leaked strings allowed across ${daFiles.length} Danish pages`);
 assert.strictEqual(daSentenceBoundaryErrors, 0, 'Zero missing sentence boundaries before "Med klare trin" allowed across Danish pages');
-console.log(`✓ Danish localization verified across all ${daFiles.length} pages: correct diacritics and sentence boundaries`);
+console.log(`✓ daStrippedRegex guard verified across all ${daFiles.length} pages: correct diacritics and sentence boundaries`);
 
 // 6. Sitewide Spanish scans (diacritics, accent marks, ASCII fallback detection)
 const esFiles = walk('es');
 let esDiacriticErrors = 0;
-const esStrippedRegex = /(resultados rapidos|usos practicos|detalles utiles|la pagina tambien|detras del resultado|formula, supuestos|misma decision)/i;
+const esStrippedRegex = /(resultados rapidos|usos practicos|pasos practicos|limites practicos|controles practicos|sin limites en el navegador|detalles utiles|la pagina tambien|detras del resultado|formula, supuestos|misma decision|despues de|el dia con linea|linea de tiempo|codigos QR|guia de idioma|ajusta posicion|colores solidos|pixeles muertos|tamano de viewport|guardado automatico|categoria de peso|text diff checker gratis|habit tracker online gratis|screen resolution checker gratis|css shadow generator|edit PDF online|free PDF editor|annotate PDF|add text to PDF|Screen resolution checker: usos|Usa screen resolution checker|World Clock: practical uses|alt="Edit PDF icon"|alt="Text Diff Checker icon"|alt="CSS Shadow Generator icon"|alt="Habit Tracker icon")/i;
+
+assert.ok(esStrippedRegex instanceof RegExp, 'esStrippedRegex guard must be defined as a valid RegExp');
 
 for (const file of esFiles) {
   const content = fs.readFileSync(file, 'utf8');
   const strippedMatch = content.match(esStrippedRegex);
   if (strippedMatch) {
-    console.error(`Found unaccented Spanish word in ${file}: "${strippedMatch[0]}"`);
+    console.error(`Found unaccented Spanish word or untranslated fragment in ${file}: "${strippedMatch[0]}"`);
     esDiacriticErrors++;
   }
 }
-assert.strictEqual(esDiacriticErrors, 0, `Zero unaccented Spanish diacritics allowed across ${esFiles.length} Spanish pages`);
-console.log(`✓ Spanish localization verified across all ${esFiles.length} pages: proper diacritics and accent marks`);
+assert.strictEqual(esDiacriticErrors, 0, `Zero unaccented Spanish diacritics or leaked fragments allowed across ${esFiles.length} Spanish pages`);
+console.log(`✓ esStrippedRegex guard verified across all ${esFiles.length} pages: proper diacritics, accent marks, and zero leaked English`);
 
 console.log('\nALL MULTILINGUAL LOCALIZATION TESTS PASSED!');

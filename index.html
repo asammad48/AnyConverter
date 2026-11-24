@@ -38,6 +38,8 @@
   </script>
 
   <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <meta name="theme-color" content="#B04A45">
+  <link rel="manifest" href="/manifest.webmanifest">
 
   <style>
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -73,6 +75,9 @@
           <span class="dash-hero-pill" role="listitem">🛠 128 Tools</span>
         </div>
       </section>
+
+      <!-- Recently Used (Hydrated via client-side ac:recents) -->
+      <section class="dash-section dash-recents-section" id="dash-recents-section" aria-labelledby="recents-heading" style="display:none;"></section>
 
       <!-- Quick Access -->
       <div class="dash-section">
@@ -1108,6 +1113,8 @@
 
   <footer id="site-footer" class="site-footer"></footer>
 
+  <script src="/assets/js/shared/analytics.js" defer></script>
   <script src="/assets/js/shared.js?v=20261109" defer></script>
+  <script src="/assets/js/shared/pwa.js" defer></script>
 </body>
 </html>

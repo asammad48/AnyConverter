@@ -62,6 +62,13 @@
     var fill = document.getElementById('ascii-fill').value || '#';
     var ascii = toAscii(text, scale).replace(/#/g, fill);
     document.getElementById('ascii-output').value = ascii;
+    if (window.ACAnalytics) {
+      if (text) {
+        window.ACAnalytics.trackToolCompleted('ascii-art-generator', 'manual_input', 'ascii_rendered', { scale: scale });
+      } else {
+        window.ACAnalytics.trackToolReset('ascii-art-generator');
+      }
+    }
   }
 
   document.addEventListener('DOMContentLoaded', function() {
@@ -70,11 +77,15 @@
     document.getElementById('ascii-fill').addEventListener('input', generate);
     document.getElementById('btn-ascii-copy').addEventListener('click', function() {
       var v = document.getElementById('ascii-output').value;
-      if (v) navigator.clipboard.writeText(v);
+      if (v) {
+        navigator.clipboard.writeText(v);
+        if (window.ACAnalytics) window.ACAnalytics.trackResultCopied('ascii-art-generator', 'text');
+      }
     });
     document.getElementById('btn-ascii-clear').addEventListener('click', function() {
       document.getElementById('ascii-input').value = '';
       document.getElementById('ascii-output').value = '';
+      if (window.ACAnalytics) window.ACAnalytics.trackToolReset('ascii-art-generator');
     });
     generate();
   });

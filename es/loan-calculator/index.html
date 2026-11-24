@@ -33,6 +33,8 @@
 
 
 <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <meta name="theme-color" content="#B04A45">
+  <link rel="manifest" href="/manifest.webmanifest">
   <style>
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
     html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F7F6F3);color:var(--color-text,#151515)}
@@ -45,6 +47,26 @@
     @font-face{font-family:'Inter';font-display:swap}
   </style>
   <link rel="stylesheet" href="/assets/css/style.css?v=20261109">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Inicio",
+      "item": "https://anyconverter.io/es/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Calculadora de Préstamos / EMI",
+      "item": "https://anyconverter.io/es/loan-calculator/"
+    }
+  ]
+}
+  </script>
 </head>
 <body>
   <header id="site-header" class="site-header"></header>
@@ -156,15 +178,18 @@
     <section class="related-tools">
       <h2>Herramientas Relacionadas</h2>
       <div class="tool-grid">
-        <a href="/es/mortgage-calculator/" class="tool-card"><img src="/assets/img/icon-mortgage.svg" alt="Calculadora de Hipoteca Online Gratis icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Calculadora de Hipoteca Online Gratis</h3><p>Estima pagos hipotecarios, intereses, coste total y amortización con una calculadora práctica en el navegador.</p><span class="tool-card-link">Probar →</span></a>
-        <a href="/es/compound-interest-calculator/" class="tool-card"><img src="/assets/img/icon-compound.svg" alt="Calculadora de Interés Compuesto Online Gratis icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Calculadora de Interés Compuesto Online Gratis</h3><p>Usa Calculadora de Interés Compuesto gratis en el navegador.</p><span class="tool-card-link">Probar →</span></a>
         <a href="/es/currency-converter/" class="tool-card"><img src="/assets/img/icon-currency.svg" alt="Conversor de Divisas Online Gratis icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Conversor de Divisas Online Gratis</h3><p>Usa Conversor de Divisas gratis en el navegador.</p><span class="tool-card-link">Probar →</span></a>
-        <a href="/es/discount-calculator/" class="tool-card"><img src="/assets/img/icon-discount.svg" alt="Calculadora de Descuentos Online Gratis icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Calculadora de Descuentos Online Gratis</h3><p>Calcula precio final, ahorro y coste despues de aplicar descuentos.</p><span class="tool-card-link">Probar →</span></a>
+        <a href="/es/compound-interest-calculator/" class="tool-card"><img src="/assets/img/icon-compound.svg" alt="Calculadora de Interés Compuesto Online Gratis icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Calculadora de Interés Compuesto Online Gratis</h3><p>Usa Calculadora de Interés Compuesto gratis en el navegador.</p><span class="tool-card-link">Probar →</span></a>
+        <a href="/es/mortgage-calculator/" class="tool-card"><img src="/assets/img/icon-mortgage.svg" alt="Calculadora de Hipoteca Online Gratis icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Calculadora de Hipoteca Online Gratis</h3><p>Estima pagos hipotecarios, intereses, coste total y amortización con una calculadora práctica en el navegador.</p><span class="tool-card-link">Probar →</span></a>
+        <a href="/es/pay-rise-calculator/" class="tool-card"><img src="/assets/img/icon-calculator.svg" alt="Calculadora de Aumento Salarial Online Gratis icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Calculadora de Aumento Salarial Online Gratis</h3><p>Calculadora de aumento salarial gratis: tu nuevo sueldo tras un aumento en % o importe fijo, el % de subida, el sueldo mensual y por hora y el aumento real.</p><span class="tool-card-link">Probar →</span></a>
+        <a href="/es/discount-stacking-calculator/" class="tool-card"><img src="/assets/img/icon-calculator.svg" alt="Calculadora de Descuentos Acumulados Gratis icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Calculadora de Descuentos Acumulados Gratis</h3><p>Calculadora de descuentos acumulados gratis: ve lo que cuesta un 20 % + 10 %, combina cupones y descuentos sucesivos y descubre el mejor orden para aplicarlos.</p><span class="tool-card-link">Probar →</span></a>
       </div>
     </section>
   </main>
   <footer id="site-footer" class="site-footer"></footer>
+  <script src="/assets/js/shared/analytics.js" defer></script>
   <script src="/assets/js/shared.js?v=20261109" defer></script>
+  <script src="/assets/js/shared/pwa.js" defer></script>
   <script src="/assets/js/tools/loan-calculator.js" defer></script>
 </body>
 </html>

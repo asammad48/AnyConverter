@@ -29,7 +29,54 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"CSV til SQL Konverter","url":"https://anyconverter.io/da/csv-to-sql/","description":"Konverter CSV-filer til SQL INSERT-sætninger online gratis.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Hvilke SQL-dialekter understøttes?","acceptedAnswer":{"@type":"Answer","text":"MySQL (backtick-citering og AUTO_INCREMENT), PostgreSQL (dobbeltcitering af identifikatorer, SERIAL) og SQLite (INTEGER PRIMARY KEY AUTOINCREMENT)."}},{"@type":"Question","name":"Hvordan håndteres tomme celler?","acceptedAnswer":{"@type":"Answer","text":"Tomme celler i CSV konverteres til NULL i SQL INSERT-sætningerne, som er den standard SQL-repræsentation af en manglende værdi."}},{"@type":"Question","name":"Escapes enkeltcitater i data?","acceptedAnswer":{"@type":"Answer","text":"Ja. Enkeltcitater i strengværdier escapes ved at fordoble dem (f.eks. O'Brien bliver O''Brien), hvilket er standard SQL-strengescaping."}}]}</script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Hvilke SQL-dialekter understøttes?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "MySQL (backtick-citering og AUTO_INCREMENT), PostgreSQL (dobbeltcitering af identifikatorer, SERIAL) og SQLite (INTEGER PRIMARY KEY AUTOINCREMENT)."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Hvordan håndteres tomme celler?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Tomme celler i CSV konverteres til NULL i SQL INSERT-sætningerne, som er den standard SQL-repræsentation af en manglende værdi."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Escapes enkeltcitater i data?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ja. Enkeltcitater i strengværdier escapes ved at fordoble dem (f.eks. O'Brien bliver O''Brien), hvilket er standard SQL-strengescaping."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Hvordan fungerer automatisk typedetektering?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Konverteren analyserer værdierne i hver kolonne for heltal, decimaltal, booleske værdier og ISO-datoer. Hvis alle værdier i en kolonne er numeriske, erklæres den som INT eller DECIMAL i stedet for VARCHAR."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Hvad er et batch-INSERT?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Et batch-INSERT kombinerer flere rækker i en enkelt SQL-sætning med flere værdisæt (VALUES (...), (...)), hvilket markant øger import- og udførelseshastigheden i forhold til individuelle INSERT-sætninger."
+      }
+    }
+  ]
+}
+</script>
 
 
 <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
@@ -46,6 +93,26 @@
   </style>
   <link rel="stylesheet" href="/assets/css/style.css?v=20261109">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Hjem",
+      "item": "https://anyconverter.io/da/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "CSV til SQL",
+      "item": "https://anyconverter.io/da/csv-to-sql/"
+    }
+  ]
+}
+  </script>
 </head>
 <body>
   <header id="site-header" class="site-header"></header>
@@ -152,7 +219,7 @@
           </div>
 
           <div style="margin-top:12px">
-            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+            <div class="column-types-header" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:8px">
               <span style="font-size:12px;font-weight:600;color:var(--color-text-2);text-transform:uppercase;letter-spacing:.04em" id="column-types-label">Kolonnetyper — fundet automatisk, klik for at ændre</span>
               <div style="display:flex;gap:6px">
                 <button class="ac-btn" id="btn-auto-detect">Find alle automatisk</button>
@@ -248,6 +315,25 @@
         <li><strong>Generer SQL</strong> — Indstil tabelnavn, vælg dialekt og klik "Generer SQL". Kopier eller download resultatet.</li>
       </ol>
     </section>
+
+    <section class="how-it-works" id="how-it-works">
+      <h2>Hvordan det virker: CSV-parsing og generering af SQL-dialekter</h2>
+
+      <h3>Hvad er en CSV til SQL-konverter?</h3>
+      <p>En CSV til SQL-konverter er et alsidigt datamigreringsværktøj, der opdeler afgrænsede tabeldata i henhold til de officielle RFC 4180 parsing-specifikationer, udleder kolonnedatatyper og genererer strukturerede SQL INSERT-sætninger tilpasset specifikke databasemotorer. Værktøjet automatiserer tabelskemaoprettelse, datatypedetektion og batch-transformation af rækker på få millisekunder.</p>
+
+      <h3>Hvordan det virker i browseren</h3>
+      <p>AnyConverter behandler dine regneark og afgrænsede datafiler direkte i browserens hukommelse via en streaming-tilstandsmaskine med høj hastighed:</p>
+      <ol class="how-it-works-steps">
+        <li><strong>RFC 4180 parsing og leksikalsk analyse</strong>: Parseren scanner rækker efter RFC 4180 parsing-standarden og håndterer undvegne anførselstegn, indlejrede kommaer og linjeskift inden for anførselstegn korrekt.</li>
+        <li><strong>Type inference heuristics (typeudledning)</strong>: Kolonner evalueres på tværs af rækker via automatiserede type inference heuristics for at fastlægge optimale SQL-typer (INTEGER, DECIMAL, BOOLEAN, TIMESTAMP eller VARCHAR).</li>
+        <li><strong>Automated dialect quoting (dialekt-indkapsling)</strong>: Kolonnenavne og værdier indkapsles med automated dialect quoting tilpasset specifikke motorer (MySQL backticks, PostgreSQL dobbelte anførselstegn, SQL Server klammer eller SQLite anførselstegn).</li>
+        <li><strong>Batch-sætninger</strong>: Rækker grupperes i multi-værdi INSERT-blokke for at maksimere indlæsningshastigheden i destinationsdatabasen.</li>
+      </ol>
+
+      <h3>Tekniske specifikationer og dialektunderstøttelse</h3>
+      <p>Værktøjet overholder <strong>RFC 4180</strong> (RFC 4180 parsing) for kommaseparerede værdier og understøtter også tabulatorer, semikoloner og pipes som separatorer. Motoren integrerer automated dialect quoting og type inference heuristics til <strong>MySQL</strong>, <strong>PostgreSQL</strong>, <strong>SQLite</strong> og <strong>Microsoft SQL Server (T-SQL)</strong> med korrekt håndtering af NULL-værdier, sandt/falsk-literaler og tidsstempler uden ekstern dataoverførsel.</p>
+    </section>
     <section class="features">
       <h2>Funktioner</h2>
       <ul class="features-list">
@@ -281,6 +367,8 @@
         <details class="faq-item"><summary class="faq-question">Hvilke SQL-dialekter understøttes? <span class="faq-icon">+</span></summary><div class="faq-answer">MySQL (backtick-citering og AUTO_INCREMENT), PostgreSQL (dobbeltcitering af identifikatorer, SERIAL) og SQLite (INTEGER PRIMARY KEY AUTOINCREMENT).</div></details>
         <details class="faq-item"><summary class="faq-question">Hvordan håndteres tomme celler? <span class="faq-icon">+</span></summary><div class="faq-answer">Tomme celler i CSV konverteres til NULL i SQL INSERT-sætningerne, som er den standard SQL-repræsentation af en manglende værdi.</div></details>
         <details class="faq-item"><summary class="faq-question">Escapes enkeltcitater i data? <span class="faq-icon">+</span></summary><div class="faq-answer">Ja. Enkeltcitater i strengværdier escapes ved at fordoble dem (f.eks. O'Brien bliver O''Brien), hvilket er standard SQL-strengescaping.</div></details>
+    <details class="faq-item"><summary class="faq-question">Hvordan fungerer automatisk typedetektering? <span class="faq-icon">+</span></summary><div class="faq-answer">Konverteren analyserer værdierne i hver kolonne for heltal, decimaltal, booleske værdier og ISO-datoer. Hvis alle værdier i en kolonne er numeriske, erklæres den som INT eller DECIMAL i stedet for VARCHAR.</div></details>
+    <details class="faq-item"><summary class="faq-question">Hvad er et batch-INSERT? <span class="faq-icon">+</span></summary><div class="faq-answer">Et batch-INSERT kombinerer flere rækker i en enkelt SQL-sætning med flere værdisæt (VALUES (...), (...)), hvilket markant øger import- og udførelseshastigheden i forhold til individuelle INSERT-sætninger.</div></details>
       </div>
     </section>
     <section class="related-tools">
@@ -289,7 +377,7 @@
         <a href="/da/csv-query/" class="tool-card"><img src="/assets/img/icon-csv-query.svg" alt="CSV-forespørgselsværktøj icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>CSV-forespørgselsværktøj</h3><p>Foresporg CSV-data med SQL-lignende filtre i browseren, se raekker, kør eksempler og eksporter resultater. Med klare trin, praktiske resultater og ingen konto.</p><span class="tool-card-link">Prøv det →</span></a>
         <a href="/da/parquet-to-csv/" class="tool-card"><img src="/assets/img/icon-csv.svg" alt="Parquet til CSV icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Parquet til CSV</h3><p>Konvertér Parquet-filer til CSV direkte i browseren.</p><span class="tool-card-link">Prøv det →</span></a>
         <a href="/da/camt053-to-csv/" class="tool-card"><img src="/assets/img/icon-csv.svg" alt="CAMT.053 til CSV icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>CAMT.053 til CSV</h3><p>Konvertér CAMT.053 XML-kontoudtog til CSV til Excel.</p><span class="tool-card-link">Prøv det →</span></a>
-        <a href="/da/json-formatter/" class="tool-card"><img src="/assets/img/icon-json.svg" alt="JSON Formatter Online Gratis icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>JSON Formatter Online Gratis</h3><p>Formatér, validér og minificér JSON gratis.</p><span class="tool-card-link">Prøv det →</span></a>
+        <a href="/da/timestamp-converter/" class="tool-card"><img src="/assets/img/icon-clock.svg" alt="Unix Timestamp Konverter Online icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Unix Timestamp Konverter Online</h3><p>Konvertér Unix-tidsstempler til læsbare datoer og tidspunkter, eller konvertér datoer tilbage til Unix-tidsstempler.</p><span class="tool-card-link">Prøv det →</span></a>
       </div>
     </section>
   </main>

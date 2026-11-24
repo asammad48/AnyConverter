@@ -45,6 +45,26 @@
     @font-face{font-family:'Inter';font-display:swap}
   </style>
   <link rel="stylesheet" href="/assets/css/style.css?v=20261109">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Hjem",
+      "item": "https://anyconverter.io/da/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Billedkonverter",
+      "item": "https://anyconverter.io/da/image-converter/"
+    }
+  ]
+}
+  </script>
 </head>
 <body>
   <header id="site-header" class="site-header"></header>
@@ -104,12 +124,12 @@
           <div class="image-preview-grid mt-4">
             <div class="image-preview-item">
               <p class="panel-label">Original</p>
-              <img id="img-original-preview" alt="Original forhåndsvisning" style="max-width:100%;border-radius:8px">
+              <img id="img-original-preview" src="" alt="Original forhåndsvisning" style="max-width:100%;border-radius:8px" width="300" height="200" loading="lazy">
               <p class="image-size-label" id="img-original-size"></p>
             </div>
             <div class="image-preview-item">
               <p class="panel-label">Konverteret</p>
-              <img id="img-converted-preview" alt="Konverteret forhåndsvisning" style="max-width:100%;border-radius:8px">
+              <img id="img-converted-preview" src="" alt="Konverteret forhåndsvisning" style="max-width:100%;border-radius:8px" width="300" height="200" loading="lazy">
               <p class="image-size-label" id="img-converted-size"></p>
             </div>
           </div>
@@ -179,6 +199,41 @@
     <div class="ad-slot ad-slot--rectangle" style="margin:0 auto 32px">
       <div class="adsbygoogle" style="display:block" aria-hidden="true"></div>
 </div>
+    
+    <section class="privacy-section" id="privacy-and-security" aria-labelledby="privacy-heading">
+      <h2 id="privacy-heading">Privat billedkonvertering: konverter i browseren, uden upload og uden oprettelse</h2>
+      <p class="privacy-lead">Konverter fotos og grafik mellem WebP, PNG, JPG og AVIF lokalt uden at eksponere billeder for cloud-tjenester.</p>
+      <div class="privacy-grid">
+        <div class="privacy-card">
+          <span class="privacy-card-icon" aria-hidden="true">🔒</span>
+          <div class="privacy-card-content">
+            <strong>Lokal afkodning med HTML5 Canvas</strong>
+            <p>Afkodning, skalering og kodning af billeder sker udelukkende i din browser via Canvas API'et.</p>
+          </div>
+        </div>
+        <div class="privacy-card">
+          <span class="privacy-card-icon" aria-hidden="true">⚡</span>
+          <div class="privacy-card-content">
+            <strong>Intet krav om login eller oprettelse</strong>
+            <p>Konverter billeder øjeblikkeligt uden kontooprettelse, uden ventetid og uden daglige kvoter.</p>
+          </div>
+        </div>
+        <div class="privacy-card">
+          <span class="privacy-card-icon" aria-hidden="true">🛡️</span>
+          <div class="privacy-card-content">
+            <strong>Fortrolighed for private fotos</strong>
+            <p>Private billeder, kundegrafik og visuelle aktiver behandles sikkert uden overførsel til eksterne servere.</p>
+          </div>
+        </div>
+        <div class="privacy-card">
+          <span class="privacy-card-icon" aria-hidden="true">🧹</span>
+          <div class="privacy-card-content">
+            <strong>Hurtig frigivelse af hukommelse</strong>
+            <p>De konverterede billeddata håndteres i lokal hukommelse og slettes automatisk, når processen afsluttes.</p>
+          </div>
+        </div>
+      </div>
+    </section>
     <section class="faq">
       <h2>Ofte stillede spørgsmål</h2>
       <div class="faq-list">
@@ -190,10 +245,11 @@
         <section class="related-tools">
       <h2>Relaterede Værktøjer</h2>
       <div class="tool-grid">
+        <a href="/da/barcode-generator/" class="tool-card"><img src="/assets/img/icon-text.svg" alt="Stregkode Generator Online Gratis icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Stregkode Generator Online Gratis</h3><p>Lav Code 128-, EAN-13-, UPC-A- og Code 39-stregkoder gratis.</p><span class="tool-card-link">Prøv det →</span></a>
+        <a href="/da/pdf-to-jpg/" class="tool-card"><img src="/assets/img/icon-pdf-to-jpg.svg" alt="PDF til JPG icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>PDF til JPG</h3><p>Lav PDF-sider om til JPG-, PNG- eller WebP-billeder i din browser.</p><span class="tool-card-link">Prøv det →</span></a>
+        <a href="/da/color-converter/" class="tool-card"><img src="/assets/img/icon-color.svg" alt="Farvekonverter Online icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Farvekonverter Online</h3><p>Konverter farver mellem HEX, RGB, HSL, CMYK og HSB-formater øjeblikkeligt.</p><span class="tool-card-link">Prøv det →</span></a>
         <a href="/da/image-compressor/" class="tool-card"><img src="/assets/img/icon-image.svg" alt="Billedkomprimering Online Gratis icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Billedkomprimering Online Gratis</h3><p>Reducer billedfilstørrelser direkte i din browser.</p><span class="tool-card-link">Prøv det →</span></a>
         <a href="/da/aspect-ratio-calculator/" class="tool-card"><img src="/assets/img/icon-ratio.svg" alt="Billedforholdsberegner Online Gratis icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Billedforholdsberegner Online Gratis</h3><p>Beregn øjeblikkeligt billedforholdet ud fra enhver bredde og højde.</p><span class="tool-card-link">Prøv det →</span></a>
-        <a href="/da/color-converter/" class="tool-card"><img src="/assets/img/icon-color.svg" alt="Farvekonverter Online icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Farvekonverter Online</h3><p>Konverter farver mellem HEX, RGB, HSL, CMYK og HSB-formater øjeblikkeligt.</p><span class="tool-card-link">Prøv det →</span></a>
-        <a href="/da/pdf-to-jpg/" class="tool-card"><img src="/assets/img/icon-pdf-to-jpg.svg" alt="PDF til JPG icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>PDF til JPG</h3><p>Lav PDF-sider om til JPG-, PNG- eller WebP-billeder i din browser.</p><span class="tool-card-link">Prøv det →</span></a>
       </div>
     </section>
   </main>

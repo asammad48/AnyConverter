@@ -1058,6 +1058,84 @@ document.addEventListener('DOMContentLoaded', function () {
     if (b) b.style.display = 'none';
   }
 
+  /* ===== SPRINT S12: CONTEXTUAL WORKFLOW CHAIN (JSON GROUP) ===== */
+  var workflowChainDismissed = false;
+
+  function showWorkflowChain() {
+    var chainEl = document.getElementById('workflow-chain-json');
+    if (chainEl && !workflowChainDismissed) {
+      chainEl.style.display = 'block';
+    }
+  }
+
+  function hideWorkflowChain() {
+    var chainEl = document.getElementById('workflow-chain-json');
+    if (chainEl) {
+      chainEl.style.display = 'none';
+    }
+  }
+
+  function getActiveJsonPayload() {
+    if (standardFormattedText) return standardFormattedText;
+    if (lastParsed) {
+      try { return JSON.stringify(lastParsed, null, 2); } catch (_e) {}
+    }
+    var raw = (stagedLargeInput && input.value.startsWith('/* [Loaded:')) ? stagedLargeInput : input.value.trim();
+    return raw || '';
+  }
+
+  function initWorkflowChain() {
+    var chainEl = document.getElementById('workflow-chain-json');
+    if (!chainEl) return;
+
+    var dismissBtn = document.getElementById('btn-chain-dismiss');
+    if (dismissBtn) {
+      bind(dismissBtn, 'click', function (e) {
+        e.preventDefault();
+        workflowChainDismissed = true;
+        hideWorkflowChain();
+      });
+    }
+
+    var compareLink = document.getElementById('chain-step-compare');
+    if (compareLink) {
+      bind(compareLink, 'click', function () {
+        var payload = getActiveJsonPayload();
+        if (payload && payload.length < 5 * 1024 * 1024) {
+          try { sessionStorage.setItem('ac:chain-json-a', payload); } catch (_e) {}
+        }
+        if (window.ACAnalytics) {
+          window.ACAnalytics.trackRelatedToolClicked('json-formatter', 'json-compare', 1);
+        }
+      });
+    }
+
+    var csvBtn = document.getElementById('chain-step-csv');
+    if (csvBtn) {
+      bind(csvBtn, 'click', function (e) {
+        e.preventDefault();
+        var toCsv = document.getElementById('btn-to-csv');
+        if (toCsv) toCsv.click();
+        if (window.ACAnalytics) {
+          window.ACAnalytics.trackRelatedToolClicked('json-formatter', 'csv', 2);
+        }
+      });
+    }
+
+    var yamlLink = document.getElementById('chain-step-yaml');
+    if (yamlLink) {
+      bind(yamlLink, 'click', function () {
+        var payload = getActiveJsonPayload();
+        if (payload && payload.length < 5 * 1024 * 1024) {
+          try { sessionStorage.setItem('ac:chain-json', payload); } catch (_e) {}
+        }
+        if (window.ACAnalytics) {
+          window.ACAnalytics.trackRelatedToolClicked('json-formatter', 'json-to-yaml', 3);
+        }
+      });
+    }
+  }
+
   /* ===== CORE OPERATIONS ===== */
   async function runFormat() {
     var raw = (stagedLargeInput && input.value.startsWith('/* [Loaded:')) ? stagedLargeInput : input.value.trim();
@@ -1079,10 +1157,12 @@ document.addEventListener('DOMContentLoaded', function () {
       updateBookmarkUI();
       updateSelectionUI();
       refreshSearch();
+      hideWorkflowChain();
       return;
     }
 
     var isLarge = raw.length >= LARGE_THRESHOLD;
+    if (window.ACAnalytics) window.ACAnalytics.trackToolStarted('json-formatter', isLarge ? 'file_upload' : 'manual_input');
 
     if (isLarge) {
       // High-performance virtual scroller path
@@ -1099,6 +1179,7 @@ document.addEventListener('DOMContentLoaded', function () {
       });
 
       if (!res.success) {
+        if (window.ACAnalytics) window.ACAnalytics.trackToolFailed('json-formatter', 'invalid_json');
         lastParsed = null;
         isVirtualized = false;
         virtualText = ChunkedText.empty();
@@ -1132,11 +1213,13 @@ document.addEventListener('DOMContentLoaded', function () {
       updateBookmarkUI();
       setupVirtualScroller(chunked, res.lineOffsets, res.lineCount, res.stats);
 
+      if (window.ACAnalytics) window.ACAnalytics.trackToolCompleted('json-formatter', isLarge ? 'file_upload' : 'manual_input', 'json_formatted', { duration_ms: parseInt(dur, 10) || 0 });
       setInputStatus('ok', '✓ Valid JSON', formatBytes(raw.length));
       setOutputStatus('ok', '✓ Formatted in ' + dur + 'ms', res.lineCount.toLocaleString() + ' lines · ' + res.stats.keys.toLocaleString() + ' keys');
       updateStats(res.stats.keys, res.stats.depth, res.stats.bytes, 0);
       input.style.borderColor = '';
       refreshSearch();
+      showWorkflowChain();
       // Keep the staged raw if it's small enough that the user may still want
       // to convert to YAML/CSV. For huge inputs, drop it to reclaim memory.
       if (raw && raw.length > CONVERT_MAX) {
@@ -1169,11 +1252,14 @@ document.addEventListener('DOMContentLoaded', function () {
         }
         var s = countStats(parsed);
         setInputStatus('ok', '✓ Valid JSON', raw.length + ' chars');
+        if (window.ACAnalytics) window.ACAnalytics.trackToolCompleted('json-formatter', 'manual_input', 'json_formatted');
         setOutputStatus('ok', '✓ Formatted', lines + ' lines · ' + s.keys + ' keys');
         updateStats(s.keys, s.depth, new TextEncoder().encode(raw).length, 0);
         input.style.borderColor = '';
         refreshSearch();
+        showWorkflowChain();
       } catch (e) {
+        if (window.ACAnalytics) window.ACAnalytics.trackToolFailed('json-formatter', 'invalid_json');
         lastParsed = null;
         bookmarkedLines.clear();
         clearLineSelection();
@@ -1182,6 +1268,7 @@ document.addEventListener('DOMContentLoaded', function () {
         standardFormattedLines = null;
         updateBookmarkUI();
         updateSelectionUI();
+        hideWorkflowChain();
         var msg = '✕ ' + e.message;
         setInputStatus('err', msg, '');
         setOutputStatus('err', msg, '');
@@ -1271,6 +1358,7 @@ document.addEventListener('DOMContentLoaded', function () {
         if (statErrors) statErrors.textContent = '1';
       }
       refreshSearch();
+      hideWorkflowChain();
       return;
     }
 
@@ -2531,6 +2619,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   renderBookmarks();
   refreshSearch();
+  initWorkflowChain();
 
   /* ===== TEST / DIAGNOSTIC HOOK ===== */
   window._ac_virtualScroller = {

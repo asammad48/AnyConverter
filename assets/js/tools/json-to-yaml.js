@@ -38,6 +38,21 @@
   }
 
   document.addEventListener('DOMContentLoaded', function() {
+    try {
+      var chained = sessionStorage.getItem('ac:chain-json');
+      if (chained) {
+        sessionStorage.removeItem('ac:chain-json');
+        var jyInput = document.getElementById('jy-input');
+        if (jyInput && !jyInput.value.trim()) {
+          setMode('j2y');
+          jyInput.value = chained;
+          if (typeof jsyaml !== 'undefined') {
+            convert();
+          }
+        }
+      }
+    } catch (_e) {}
+
     var err = document.getElementById('jy-error');
     document.getElementById('jy-mode-j2y').addEventListener('click', function() { setMode('j2y'); });
     document.getElementById('jy-mode-y2j').addEventListener('click', function() { setMode('y2j'); });

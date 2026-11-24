@@ -33,6 +33,8 @@
 
 
 <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <meta name="theme-color" content="#B04A45">
+  <link rel="manifest" href="/manifest.webmanifest">
   <style>
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
     html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F7F6F3);color:var(--color-text,#151515)}
@@ -45,6 +47,26 @@
     @font-face{font-family:'Inter';font-display:swap}
   </style>
   <link rel="stylesheet" href="/assets/css/style.css?v=20261109">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Hjem",
+      "item": "https://anyconverter.io/da/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "IP-adresse Opslag",
+      "item": "https://anyconverter.io/da/ip-address-lookup/"
+    }
+  ]
+}
+  </script>
 </head>
 <body>
   <header id="site-header" class="site-header"></header>
@@ -160,15 +182,17 @@
     <section class="related-tools">
       <h2>Relaterede Værktøjer</h2>
       <div class="tool-grid">
+        <a href="/da/url-encoder/" class="tool-card"><img src="/assets/img/icon-url.svg" alt="URL Encoder og Decoder Online Gratis icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>URL Encoder og Decoder Online Gratis</h3><p>Kodér eller dekodér URL.</p><span class="tool-card-link">Prøv det →</span></a>
         <a href="/da/internet-speed-test/" class="tool-card"><img src="/assets/img/icon-speed.svg" alt="Internethastighed Test icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Internethastighed Test</h3><p>Kør en internethastighedstest i browseren med ping, download, upload og korte noter om forbindelseskvalitet. Med klare trin, praktiske resultater og ingen konto.</p><span class="tool-card-link">Prøv det →</span></a>
         <a href="/da/browser-info/" class="tool-card"><img src="/assets/img/icon-browser.svg" alt="Browser Info Fremviser Online Gratis icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Browser Info Fremviser Online Gratis</h3><p>Se alt om din browser, operativsystem, skærm og hardware ét sted — browsernavn, version, sprog, skærmopløsning, CPU-kerner, tidszone og mere.</p><span class="tool-card-link">Prøv det →</span></a>
         <a href="/da/viewport-size/" class="tool-card"><img src="/assets/img/icon-viewport.svg" alt="Viewport Størrelse Tjekker Online Gratis icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Viewport Størrelse Tjekker Online Gratis</h3><p>Mål live viewport-størrelse, skærmdimensioner, pixel ratio og responsive breakpoints direkte i browseren. Med klare trin, praktiske resultater og ingen konto.</p><span class="tool-card-link">Prøv det →</span></a>
-        <a href="/da/url-encoder/" class="tool-card"><img src="/assets/img/icon-url.svg" alt="URL Encoder og Decoder Online Gratis icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>URL Encoder og Decoder Online Gratis</h3><p>Kodér eller dekodér URL.</p><span class="tool-card-link">Prøv det →</span></a>
       </div>
     </section>
   </main>
   <footer id="site-footer" class="site-footer"></footer>
+  <script src="/assets/js/shared/analytics.js" defer></script>
   <script src="/assets/js/shared.js?v=20261109" defer></script>
+  <script src="/assets/js/shared/pwa.js" defer></script>
   <script src="/assets/js/tools/ip-address-lookup.js" defer></script>
 </body>
 </html>

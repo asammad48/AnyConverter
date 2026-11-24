@@ -48,6 +48,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <meta name="theme-color" content="#B04A45">
+  <link rel="manifest" href="/manifest.webmanifest">
 
   <style>
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -62,6 +64,26 @@
   </style>
 
   <link rel="stylesheet" href="/assets/css/style.css?v=20261109">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://anyconverter.io/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "JSON Formatter",
+      "item": "https://anyconverter.io/json-formatter/"
+    }
+  ]
+}
+  </script>
 </head>
 <body>
 
@@ -372,6 +394,53 @@
       </aside>
     </div><!-- /tool-wrapper -->
 
+    <!-- Contextual Workflow Chain: Next Step (Sprint S12) -->
+    <section class="workflow-chain-section" id="workflow-chain-json" aria-labelledby="workflow-chain-heading" style="display:none;">
+      <div class="workflow-chain-header">
+        <div class="workflow-chain-badge">
+          <span aria-hidden="true">⚡</span>
+          <span>Next Step</span>
+        </div>
+        <h2 class="workflow-chain-title" id="workflow-chain-heading">Continue Your Workflow</h2>
+        <p class="workflow-chain-sub">Send your formatted JSON directly to the next tool in the pipeline:</p>
+        <button type="button" class="workflow-chain-dismiss" id="btn-chain-dismiss" aria-label="Dismiss workflow suggestions">✕</button>
+      </div>
+      <div class="workflow-chain-grid">
+        <a href="/json-compare/" class="workflow-chain-card" id="chain-step-compare" data-target="/json-compare/">
+          <div class="workflow-chain-card-icon">
+            <img src="/assets/img/icon-json.svg" alt="JSON Compare icon" width="28" height="28" loading="lazy">
+          </div>
+          <div class="workflow-chain-card-content">
+            <span class="workflow-chain-card-title">JSON Compare</span>
+            <span class="workflow-chain-card-desc">Diff against another JSON payload side-by-side</span>
+          </div>
+          <span class="workflow-chain-card-action">Compare JSON →</span>
+        </a>
+
+        <button type="button" class="workflow-chain-card workflow-chain-btn" id="chain-step-csv">
+          <div class="workflow-chain-card-icon">
+            <img src="/assets/img/icon-csv.svg" alt="JSON to CSV icon" width="28" height="28" loading="lazy">
+          </div>
+          <div class="workflow-chain-card-content">
+            <span class="workflow-chain-card-title">JSON → CSV</span>
+            <span class="workflow-chain-card-desc">Convert structured objects into a CSV spreadsheet</span>
+          </div>
+          <span class="workflow-chain-card-action">Export CSV →</span>
+        </button>
+
+        <a href="/json-to-yaml/" class="workflow-chain-card" id="chain-step-yaml" data-target="/json-to-yaml/">
+          <div class="workflow-chain-card-icon">
+            <img src="/assets/img/icon-json-yaml.svg" alt="JSON to YAML icon" width="28" height="28" loading="lazy">
+          </div>
+          <div class="workflow-chain-card-content">
+            <span class="workflow-chain-card-title">JSON → YAML</span>
+            <span class="workflow-chain-card-desc">Transform into clean YAML configuration format</span>
+          </div>
+          <span class="workflow-chain-card-action">Convert to YAML →</span>
+        </a>
+      </div>
+    </section>
+
     <!-- AdSense leaderboard -->
     <div class="ad-slot ad-slot--leaderboard">
       <p class="ad-label">Advertisement</p>
@@ -386,6 +455,25 @@
         <li><strong>Copy or Download</strong> — Copy the formatted output to your clipboard or download it as a .json file.</li>
         <li><strong>Search or bookmark</strong> — Use the sidebar to search keys, values, regex, or a path like <code>a.b[0].c</code>, or save the current JSON as a local bookmark for later.</li>
       </ol>
+    </section>
+
+    <section class="how-it-works" id="how-it-works">
+      <h2>How It Works: JSON Formatting & Tree Serialization</h2>
+
+      <h3>What is a JSON Formatter?</h3>
+      <p>A JSON formatter is a software utility that validates raw JavaScript Object Notation against RFC 8259 grammar specifications and serializes parsed tokens into human-readable, indented text hierarchies. It transforms minified, unformatted, or single-line data structures into clean trees with consistent indentation and syntax coloring.</p>
+
+      <h3>How It Works in the Browser</h3>
+      <p>AnyConverter formats and validates JSON 100% client-side inside your browser engine using high-performance JavaScript workers without transmitting data over the network:</p>
+      <ol class="how-it-works-steps">
+        <li><strong>Lexical Analysis & Streaming Parser</strong>: The input string is parsed using native <code>JSON.parse()</code> or a streaming parser tokenizer to verify valid RFC 8259 grammar tokens (strings, numbers, booleans, null, arrays, objects).</li>
+        <li><strong>Syntax Tree Serialization</strong>: Valid structures undergo tree serialization, recursively traversing nodes to calculate indentation depth, apply chosen whitespace (2 spaces, 4 spaces, or tabs), and sort object keys alphabetically if requested.</li>
+        <li><strong>Virtual DOM Rendering</strong>: Large payloads exceeding 150 KB are mapped to an in-memory newline offset index and rendered through a 50-node virtual scroller to maintain 60 FPS performance without browser freezing.</li>
+        <li><strong>Zero-Server Privacy</strong>: All parsing, formatting, searching, and downloads happen entirely in local browser memory with zero server telemetry or payload retention.</li>
+      </ol>
+
+      <h3>Key Specifications & Technical Standards</h3>
+      <p>The formatter strictly adheres to <strong>RFC 8259</strong> grammar and ECMA-404 JSON data interchange standards. Valid JSON requires double-quoted property keys, prohibits trailing commas, rejects single-quoted strings, and restricts numeric values to standard decimal notation without leading zeros. Our engine validates syntax down to line and column coordinates, performs recursive tree serialization, and supports streaming parser transformations directly to YAML or CSV for supported tabular shapes.</p>
     </section>
 
     <section class="features">
@@ -464,6 +552,7 @@
         <a href="/json-to-yaml/" class="tool-card"><img src="/assets/img/icon-json-yaml.svg" alt="JSON ↔ YAML Converter icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>JSON ↔ YAML Converter</h3><p>Convert between JSON and YAML instantly in your browser.</p><span class="tool-card-link">Try it →</span></a>
         <a href="/xml-formatter/" class="tool-card"><img src="/assets/img/icon-xml.svg" alt="XML Formatter icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>XML Formatter</h3><p>Format and validate XML online with error detection.</p><span class="tool-card-link">Try it →</span></a>
         <a href="/base64-encoder/" class="tool-card"><img src="/assets/img/icon-base64.svg" alt="Base64 Encoder icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Base64 Encoder</h3><p>Encode and decode Base64 text and files online.</p><span class="tool-card-link">Try it →</span></a>
+        <a href="/regex-tester/" class="tool-card"><img src="/assets/img/icon-regex.svg" alt="Regex Tester icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Regex Tester</h3><p>Test regular expressions with live match highlighting.</p><span class="tool-card-link">Try it →</span></a>
       </div>
     </section>
   </main>
@@ -472,7 +561,9 @@
 
   <footer id="site-footer" class="site-footer"></footer>
 
+  <script src="/assets/js/shared/analytics.js" defer></script>
   <script src="/assets/js/shared.js?v=20261109" defer></script>
+  <script src="/assets/js/shared/pwa.js" defer></script>
   <script src="/assets/js/tools/json-formatter.js?v=20261109" defer></script>
 </body>
 </html>

@@ -23,7 +23,54 @@
   <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Tildæk PDF","url":"https://anyconverter.io/da/edit-pdf/","description":"Tilføj tekst, rektangler eller fremhævningsbokse til PDF-sider online gratis.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Hvordan finder jeg de rigtige koordinater?","acceptedAnswer":{"@type":"Answer","text":"Åbn PDF'en i Adobe Acrobat Reader, aktiver koordinatvisningen (Vis → Vis/Skjul → Markørkoordinater), og hold musen over målplaceringen. Husk at PDF-koordinater starter fra hjørnet nederst til venstre — y=0 er bunden af siden."}},{"@type":"Question","name":"Kan jeg redigere eksisterende tekst i PDF'en?","acceptedAnswer":{"@type":"Answer","text":"Nej. Dette værktøj lægger nyt indhold oven på eksisterende sider — det ændrer eller erstatter ikke eksisterende tekst. Reel tekstvisuel tildækning i PDF'er kræver dedikeret visuel tildækningssoftware."}}]}</script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Hvordan finder jeg de rigtige koordinater?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Åbn PDF'en i Adobe Acrobat Reader, aktiver koordinatvisningen (Vis → Vis/Skjul → Markørkoordinater), og hold musen over målplaceringen. Husk at PDF-koordinater starter fra hjørnet nederst til venstre — y=0 er bunden af siden."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Kan jeg redigere eksisterende tekst i PDF'en?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Nej. Dette værktøj lægger nyt indhold oven på eksisterende sider — det ændrer eller erstatter ikke eksisterende tekst. Reel tekstvisuel tildækning i PDF'er kræver dedikeret visuel tildækningssoftware."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Er det sikkert at redigere fortrolige dokumenter her?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ja. Al redigering foregår 100 % lokalt i din browser via klient-side JavaScript. Dine PDF-filer overføres aldrig til en fjernserver, hvilket garanterer fuld databeskyttelse."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Tilføjes der vandmærker til redigerede PDF-filer?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Nej. AnyConverter tilføjer aldrig vandmærker eller begrænsninger til dine eksporterede PDF-dokumenter. Du får rene, uændrede PDF-sider."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Kan jeg tilføje tekst og underskrifter uden at installere software?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ja. Du kan placere brugerdefineret tekst, noter og signaturer direkte på enhver PDF-side uden at installere desktop-programmer eller browserudvidelser."
+      }
+    }
+  ]
+}
+</script>
 
 
 <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
@@ -43,6 +90,32 @@
     @font-face{font-family:'Inter';font-display:swap}
   </style>
   <link rel="stylesheet" href="/assets/css/style.css?v=20261109">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Hjem",
+      "item": "https://anyconverter.io/da/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "PDF-værktøjer",
+      "item": "https://anyconverter.io/da/pdf-merge/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Tildæk PDF",
+      "item": "https://anyconverter.io/da/edit-pdf/"
+    }
+  ]
+}
+  </script>
 </head>
 <body>
   <header id="site-header" class="site-header"></header>
@@ -55,7 +128,7 @@
     <div class="tool-wrapper">
       <div class="tool-zone">
         <div style="padding:24px">
-          <div class="upload-area" data-file-target="ed-file" role="button" tabindex="0">
+          <div class="upload-area" data-file-target="ed-file" role="button" tabindex="0" aria-label="Træk en fil hertil eller klik for at vælge">
             <img src="/assets/img/icon-pdf.svg" alt="Tildæk PDF — Tilføj Tekst, Former og icon" width="36" height="36" style="margin-bottom:10px">
             <p style="font-size:14px;color:var(--color-text-2,#6B7280);margin-bottom:10px">Slip din PDF her eller klik for at gennemse</p>
             <input type="file" id="ed-file" accept=".pdf" style="display:none">
@@ -126,6 +199,51 @@
         </div>
       </aside>
     </div>
+        <!-- Contextual Workflow Chain: Next Step (Sprint S25) -->
+    <section class="workflow-chain-section" id="workflow-chain-pdf" aria-labelledby="workflow-chain-heading" style="display:none;">
+      <div class="workflow-chain-header">
+        <div class="workflow-chain-badge">
+          <span aria-hidden="true">⚡</span>
+          <span>Næste trin</span>
+        </div>
+        <h2 class="workflow-chain-title" id="workflow-chain-heading">Næste trin: Fortsæt dit PDF-workflow</h2>
+        <p class="workflow-chain-sub">Dit dokument er klar. Fortsæt direkte med det næste trin i dit workflow:</p>
+        <button type="button" class="workflow-chain-dismiss" id="btn-chain-dismiss" aria-label="Afvis workflowforslag">✕</button>
+      </div>
+      <div class="workflow-chain-grid">
+        <a href="/da/pdf-compress/" class="workflow-chain-card" id="chain-step-compress" data-target="/da/pdf-compress/">
+          <div class="workflow-chain-card-icon">
+            <img src="/assets/img/icon-pdf-compress.svg" alt="Komprimér PDF ikon" width="28" height="28" loading="lazy">
+          </div>
+          <div class="workflow-chain-card-content">
+            <span class="workflow-chain-card-title">Komprimér PDF</span>
+            <span class="workflow-chain-card-desc">Reducer filstørrelsen for nemmere deling og e-mailvedhæftninger</span>
+          </div>
+          <span class="workflow-chain-card-action">Komprimér PDF →</span>
+        </a>
+        <a href="/da/pdf-split/" class="workflow-chain-card" id="chain-step-split" data-target="/da/pdf-split/">
+          <div class="workflow-chain-card-icon">
+            <img src="/assets/img/icon-pdf-split.svg" alt="Opdel sider ikon" width="28" height="28" loading="lazy">
+          </div>
+          <div class="workflow-chain-card-content">
+            <span class="workflow-chain-card-title">Opdel sider</span>
+            <span class="workflow-chain-card-desc">Udtræk specifikke sider eller opdel i separate dokumenter</span>
+          </div>
+          <span class="workflow-chain-card-action">Opdel sider →</span>
+        </a>
+        <a href="/da/pdf-to-jpg/" class="workflow-chain-card" id="chain-step-to-jpg" data-target="/da/pdf-to-jpg/">
+          <div class="workflow-chain-card-icon">
+            <img src="/assets/img/icon-pdf-to-jpg.svg" alt="Konvertér til JPG ikon" width="28" height="28" loading="lazy">
+          </div>
+          <div class="workflow-chain-card-content">
+            <span class="workflow-chain-card-title">Konvertér til JPG</span>
+            <span class="workflow-chain-card-desc">Konvertér hver side til JPG-billeder i høj opløsning</span>
+          </div>
+          <span class="workflow-chain-card-action">Konvertér til JPG →</span>
+        </a>
+      </div>
+    </section>
+
     <section class="how-to-use"><h2>Sådan redigerer du en PDF</h2><ol class="steps"><li>Upload din PDF (første sides dimensioner vises).</li><li>Vælg annotationstype, side, X/Y-position og egenskaber.</li><li>Klik på "+ Tilføj annotation" for at sætte den i kø. Gentag efter behov.</li><li>Klik på "Anvend og download".</li></ol></section>
     <section class="features"><h2>Funktioner</h2><ul class="features-list"><li>Tre annotationstyper: tekstoverlejring, kantet rektangel, gul fremhævning</li><li>Brugerdefineret skriftstørrelse og farve til tekst</li><li>Brugerdefineret bredde og højde til rektangler og fremhævninger</li><li>Sæt flere annotationer i kø før du anvender</li><li>Browserbaseret behandling; filen uploades ikke til serveren til denne opgave</li></ul></section>
     <!-- SEO keyword implementation: 2026-08-21 -->
@@ -141,25 +259,66 @@
       <p>Fortsæt eventuelt med <a href="/da/pdf-merge/">Sammensæt PDF-Filer Online</a>, <a href="/da/pdf-split/">Del PDF</a>, <a href="/da/pdf-compress/">Komprimer PDF Online</a>, <a href="/da/pdf-to-jpg/">PDF til JPG Konverter</a>.</p>
     </section>
 
+    
+    <section class="privacy-section" id="privacy-and-security" aria-labelledby="privacy-heading">
+      <h2 id="privacy-heading">Privat PDF-redigering: annoteringer i browseren, uden upload og uden oprettelse</h2>
+      <p class="privacy-lead">Tilføj tekst, markeringer og overstregninger på fortrolige PDF-filer lokalt uden at dele dokumenter med skytjenester.</p>
+      <div class="privacy-grid">
+        <div class="privacy-card">
+          <span class="privacy-card-icon" aria-hidden="true">🔒</span>
+          <div class="privacy-card-content">
+            <strong>Visuel redigering i browseren</strong>
+            <p>PDF-sider gengives på HTML5 Canvas og redigeres med vektorlag udelukkende på din egen enhed.</p>
+          </div>
+        </div>
+        <div class="privacy-card">
+          <span class="privacy-card-icon" aria-hidden="true">⚡</span>
+          <div class="privacy-card-content">
+            <strong>Intet krav om login eller oprettelse</strong>
+            <p>Rediger og gem annoterede PDF-filer omgående uden betalingsmure eller tvungen brugeroprettelse.</p>
+          </div>
+        </div>
+        <div class="privacy-card">
+          <span class="privacy-card-icon" aria-hidden="true">🛡️</span>
+          <div class="privacy-card-content">
+            <strong>Fortrolig overstregning og anonymisering</strong>
+            <p>Skjul følsomme kontonumre og personoplysninger direkte på din enhed, inden dokumentet deles videre.</p>
+          </div>
+        </div>
+        <div class="privacy-card">
+          <span class="privacy-card-icon" aria-hidden="true">🧹</span>
+          <div class="privacy-card-content">
+            <strong>Nul dokumentlagring på eksterne servere</strong>
+            <p>Hverken udkast eller rettede versioner sendes til eller arkiveres på eksterne servere.</p>
+          </div>
+        </div>
+      </div>
+    </section>
     <section class="faq"><h2>Ofte stillede spørgsmål</h2><div class="faq-list">
       <details class="faq-item"><summary class="faq-question">Hvordan finder jeg de rigtige koordinater? <span class="faq-icon">+</span></summary><div class="faq-answer">Åbn PDF'en i Adobe Acrobat Reader, aktiver koordinatvisningen (Vis → Vis/Skjul → Markørkoordinater), og hold musen over målplaceringen. Husk at PDF-koordinater starter fra hjørnet nederst til venstre — y=0 er bunden af siden.</div></details>
       <details class="faq-item"><summary class="faq-question">Kan jeg redigere eksisterende tekst i PDF'en? <span class="faq-icon">+</span></summary><div class="faq-answer">Nej. Dette værktøj lægger nyt indhold oven på eksisterende sider — det ændrer eller erstatter ikke eksisterende tekst. Reel tekstvisuel tildækning i PDF'er kræver dedikeret visuel tildækningssoftware.</div></details>
+    <details class="faq-item"><summary class="faq-question">Er det sikkert at redigere fortrolige dokumenter her? <span class="faq-icon">+</span></summary><div class="faq-answer">Ja. Al redigering foregår 100 % lokalt i din browser via klient-side JavaScript. Dine PDF-filer overføres aldrig til en fjernserver, hvilket garanterer fuld databeskyttelse.</div></details>
+    <details class="faq-item"><summary class="faq-question">Tilføjes der vandmærker til redigerede PDF-filer? <span class="faq-icon">+</span></summary><div class="faq-answer">Nej. AnyConverter tilføjer aldrig vandmærker eller begrænsninger til dine eksporterede PDF-dokumenter. Du får rene, uændrede PDF-sider.</div></details>
+    <details class="faq-item"><summary class="faq-question">Kan jeg tilføje tekst og underskrifter uden at installere software? <span class="faq-icon">+</span></summary><div class="faq-answer">Ja. Du kan placere brugerdefineret tekst, noter og signaturer direkte på enhver PDF-side uden at installere desktop-programmer eller browserudvidelser.</div></details>
     </div></section>
 
     <section class="related-tools">
       <h2>Relaterede Værktøjer</h2>
       <div class="tool-grid">
+        <a href="/da/compare-pdf/" class="tool-card"><img src="/assets/img/icon-pdf-compare.svg" alt="Sammenlign to PDF'er Side om Side Online Gratis icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Sammenlign to PDF'er Side om Side Online Gratis</h3><p>Sammenlign to PDF-dokumenter side om side gratis direkte i browseren.</p><span class="tool-card-link">Prøv det →</span></a>
+        <a href="/da/add-page-numbers/" class="tool-card"><img src="/assets/img/icon-pdf-pagenums.svg" alt="Sidetal i PDF icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Sidetal i PDF</h3><p>Sæt sidetal på en PDF i din browser.</p><span class="tool-card-link">Prøv det →</span></a>
         <a href="/da/pdf-forms/" class="tool-card"><img src="/assets/img/icon-pdf-forms.svg" alt="Udfyld PDF-formularer Online Gratis icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Udfyld PDF-formularer Online Gratis</h3><p>Udfyld PDF-formularer online, se felter tydeligt og download den færdige PDF uden at sende dokumentet til en server.</p><span class="tool-card-link">Prøv det →</span></a>
         <a href="/da/sign-pdf/" class="tool-card"><img src="/assets/img/icon-pdf-sign.svg" alt="Underskriv PDF Online Gratis icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Underskriv PDF Online Gratis</h3><p>Tegn din håndskrevne underskrift på et lærred og integrer den i din PDF.</p><span class="tool-card-link">Prøv det →</span></a>
-        <a href="/da/add-page-numbers/" class="tool-card"><img src="/assets/img/icon-pdf-pagenums.svg" alt="Sidetal i PDF icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Sidetal i PDF</h3><p>Sæt sidetal på en PDF i din browser.</p><span class="tool-card-link">Prøv det →</span></a>
-        <a href="/da/add-watermark/" class="tool-card"><img src="/assets/img/icon-pdf-watermark.svg" alt="Tilføj Vandmærke til PDF Online Gratis icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Tilføj Vandmærke til PDF Online Gratis</h3><p>Tilfoj tekstvandmaerke til PDF-sider online, juster placering og gennemsigtighed, og download den markerede PDF.</p><span class="tool-card-link">Prøv det →</span></a>
+        <a href="/da/ocr-pdf/" class="tool-card"><img src="/assets/img/icon-ocr-pdf.svg" alt="OCR PDF icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>OCR PDF</h3><p>Konverter scannede PDF-sider til markerbar tekst med OCR-indstillinger, sprogvejledning og browserbaseret arbejdsgang.</p><span class="tool-card-link">Prøv det →</span></a>
       </div>
     </section>
 
   </main>
   <footer id="site-footer" class="site-footer"></footer>
   <script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js" defer></script>
+  <script src="/assets/js/shared/analytics.js" defer></script>
   <script src="/assets/js/shared.js?v=20261109" defer></script>
   <script src="/assets/js/tools/edit-pdf.js?v=20261108" defer></script>
+  <script src="/assets/js/tools/pdf-workflow-chain.js?v=20261124" defer></script>
 </body>
 </html>

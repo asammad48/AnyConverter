@@ -45,6 +45,26 @@
     @font-face{font-family:'Inter';font-display:swap}
   </style>
   <link rel="stylesheet" href="/assets/css/style.css?v=20261109">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://anyconverter.io/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "URL Encoder",
+      "item": "https://anyconverter.io/url-encoder/"
+    }
+  ]
+}
+  </script>
 </head>
 <body>
   <header id="site-header" class="site-header"></header>
@@ -112,6 +132,25 @@
         <li><strong>Click Convert</strong> — Copy the output or use Swap to move the output back to input for chaining.</li>
       </ol>
     </section>
+
+    <section class="how-it-works" id="how-it-works">
+      <h2>How It Works: RFC 3986 Percent-Encoding & URI Octet Escaping</h2>
+
+      <h3>What is URL Percent-Encoding?</h3>
+      <p>URL percent-encoding is a character substitution mechanism defined by RFC 3986 percent-encoding standards that converts non-ASCII characters, whitespace, and reserved delimiters in Uniform Resource Identifiers (URIs) into hexadecimal triplets of the form %XX. It guarantees that query parameters, path components, and headers conform to universal internet addressing standards.</p>
+
+      <h3>How It Works in the Browser</h3>
+      <p>AnyConverter handles URI normalization locally using standards-compliant JavaScript encoding functions and UTF-8 octet serialization:</p>
+      <ol class="how-it-works-steps">
+        <li><strong>Codepoint to UTF-8 Conversion</strong>: Input characters are converted into their variable-length UTF-8 byte sequences (1 to 4 bytes per character).</li>
+        <li><strong>Reserved vs. Unreserved Characters Evaluation</strong>: Characters are classified into reserved vs. unreserved characters according to RFC 3986. The unreserved set—letters (<code>A-Z</code>, <code>a-z</code>), digits (<code>0-9</code>), hyphen (<code>-</code>), underscore (<code>_</code>), period (<code>.</code>), and tilde (<code>~</code>)—remains unescaped.</li>
+        <li><strong>Hex Triplet Substitution</strong>: All reserved characters and non-ASCII bytes are replaced with a percent sign (<code>%</code>) followed by two uppercase hexadecimal digits representing the byte value.</li>
+        <li><strong>Component vs Full URI Differentiation</strong>: Path delimiters like slashes and query delimiters like ampersands can be preserved or escaped based on whether full URI or query parameter encoding is selected.</li>
+      </ol>
+
+      <h3>Key Specifications & Reserved Character Rules</h3>
+      <p>The tool strictly observes <strong>RFC 3986 percent-encoding</strong> specifications and the WHATWG URL standard. It rigorously distinguishes reserved vs. unreserved characters, differentiating between <code>encodeURIComponent()</code> (which escapes reserved delimiters like <code>/</code>, <code>?</code>, <code>&amp;</code>, <code>=</code> for query parameters) and <code>encodeURI()</code> (which preserves protocol and path delimiters for full web addresses). All decoding reconstructs original UTF-8 strings entirely within your browser.</p>
+    </section>
     <section class="features">
       <h2>Features</h2>
       <ul class="features-list">
@@ -153,9 +192,10 @@
       <h2>Related Tools</h2>
       <div class="tool-grid">
         <a href="/base64-encoder/" class="tool-card"><img src="/assets/img/icon-base64.svg" alt="Base64 Encoder icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Base64 Encoder</h3><p>Encode and decode Base64 text and files online.</p><span class="tool-card-link">Try it →</span></a>
+        <a href="/ip-address-lookup/" class="tool-card"><img src="/assets/img/icon-ip-lookup.svg" alt="IP Address Lookup icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>IP Address Lookup</h3><p>Look up geolocation, ISP and timezone for any IP address.</p><span class="tool-card-link">Try it →</span></a>
         <a href="/jwt-decoder/" class="tool-card"><img src="/assets/img/icon-jwt.svg" alt="JWT Decoder icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>JWT Decoder</h3><p>Decode and inspect JWT tokens with expiration checking.</p><span class="tool-card-link">Try it →</span></a>
         <a href="/regex-tester/" class="tool-card"><img src="/assets/img/icon-regex.svg" alt="Regex Tester icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Regex Tester</h3><p>Test regular expressions with live match highlighting.</p><span class="tool-card-link">Try it →</span></a>
-        <a href="/ip-address-lookup/" class="tool-card"><img src="/assets/img/icon-ip-lookup.svg" alt="IP Address Lookup icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>IP Address Lookup</h3><p>Look up geolocation, ISP and timezone for any IP address.</p><span class="tool-card-link">Try it →</span></a>
+        <a href="/qr-code-generator/" class="tool-card"><img src="/assets/img/icon-qr.svg" alt="QR Code Generator icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>QR Code Generator</h3><p>Generate QR codes for URLs, text, email or phone numbers.</p><span class="tool-card-link">Try it →</span></a>
       </div>
     </section>
   </main>

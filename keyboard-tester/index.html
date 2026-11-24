@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Keyboard Tester Online Free | AnyConverter</title>
-  <meta name="description" content="Test every keyboard key in your browser, spot stuck keys or chatter, and review live key events without installing software.">
+  <meta name="description" content="Test keyboard keys online free in your browser. Check key latency, detect ghosting, identify stuck keys, and inspect scan codes with zero software installs.">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://anyconverter.io/keyboard-tester/">
   <link rel="alternate" hreflang="en" href="https://anyconverter.io/keyboard-tester/">
@@ -14,7 +14,7 @@
 
 <meta property="og:type" content="website">
   <meta property="og:title" content="Keyboard Tester Online Free | AnyConverter">
-  <meta property="og:description" content="Test every keyboard key in your browser, spot stuck keys or chatter, and review live key events without installing software.">
+  <meta property="og:description" content="Test keyboard keys online free in your browser. Check key latency, detect ghosting, identify stuck keys, and inspect scan codes with zero software installs.">
   <meta property="og:url" content="https://anyconverter.io/keyboard-tester/">
   <meta property="og:site_name" content="AnyConverter">
   <meta property="og:image" content="https://anyconverter.io/assets/img/og-image.png">
@@ -23,13 +23,12 @@
   <meta property="og:image:alt" content="AnyConverter free online tools">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Keyboard Tester Online Free | AnyConverter">
-  <meta name="twitter:description" content="Test every keyboard key in your browser, spot stuck keys or chatter, and review live key events without installing software.">
+  <meta name="twitter:description" content="Test keyboard keys online free in your browser. Check key latency, detect ghosting, identify stuck keys, and inspect scan codes with zero software installs.">
   <meta name="twitter:image" content="https://anyconverter.io/assets/img/og-image.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Keyboard Tester","url":"https://anyconverter.io/keyboard-tester/","description":"Test every key on your keyboard. Press any key and see it light up instantly.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"AnyConverter","url":"https://anyconverter.io"}}</script>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Why doesn't a key show up when I press it?","acceptedAnswer":{"@type":"Answer","text":"The key may be physically damaged or the connection is broken. Some special keys (like Fn on laptops) are handled by hardware and never send a keycode to the browser."}},{"@type":"Question","name":"How do I test for ghost keys?","acceptedAnswer":{"@type":"Answer","text":"Hold down multiple keys simultaneously. If a key registers without you pressing it, that is a ghost key — a limitation of the keyboard's hardware matrix. Higher quality keyboards (with N-Key Rollover) prevent this."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do I test if a keyboard key is working or stuck?","acceptedAnswer":{"@type":"Answer","text":"Press any key on your physical keyboard. The corresponding key on the visual layout lights up in real time, increments its press count, and displays its JavaScript event code, scan code, and latency."}},{"@type":"Question","name":"How do I test for keyboard ghosting or key rollover?","acceptedAnswer":{"@type":"Answer","text":"Keyboard ghosting occurs when multiple simultaneous keystrokes fail to register. Press and hold combinations of keys (such as W, A, S, D, and Shift or multiple arrow keys) simultaneously to verify that all inputs register without dropping."}},{"@type":"Question","name":"Why do special keys like Print Screen or Fn not respond?","acceptedAnswer":{"@type":"Answer","text":"Certain hardware keys (such as Fn on laptops) are handled directly by hardware firmware and do not emit standard OS keyboard events. Additionally, browser shortcuts (like F11 or Ctrl+W) may be intercepted by your browser before reaching the page."}},{"@type":"Question","name":"Can I test keyboard chatter or double-typing issues?","acceptedAnswer":{"@type":"Answer","text":"Yes. If a mechanical switch is chattering or bouncing, a single physical keystroke will register multiple times in rapid succession. The press counter and event log will highlight abnormally high key counts."}},{"@type":"Question","name":"Does this keyboard tester support Mac, Windows, and numeric keypads?","acceptedAnswer":{"@type":"Answer","text":"Yes. The tester detects key event codes across Windows, macOS, Linux, and ChromeOS, supporting full ANSI layouts, function rows, navigation clusters, and numpads."}}]}</script>
 
 
 <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
@@ -65,6 +64,26 @@
     .kb-log-key{font-weight:600}
   </style>
   <link rel="stylesheet" href="/assets/css/style.css?v=20261109">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://anyconverter.io/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Keyboard Tester",
+      "item": "https://anyconverter.io/keyboard-tester/"
+    }
+  ]
+}
+  </script>
 </head>
 <body>
   <header id="site-header" class="site-header"></header>
@@ -130,17 +149,37 @@
     <section class="faq">
       <h2>Frequently Asked Questions</h2>
       <div class="faq-list">
-        <details class="faq-item"><summary class="faq-question">Why doesn't a key show up when I press it? <span class="faq-icon">+</span></summary><div class="faq-answer">The key may be physically damaged or the connection is broken. Some special keys (like Fn on laptops) are handled by hardware and never send a keycode to the browser.</div></details>
-        <details class="faq-item"><summary class="faq-question">How do I test for ghost keys? <span class="faq-icon">+</span></summary><div class="faq-answer">Hold down multiple keys simultaneously. If a key registers without you pressing it, that is a ghost key — a limitation of the keyboard's hardware matrix. Higher quality keyboards (with N-Key Rollover) prevent this.</div></details>
+        <details class="faq-item">
+          <summary class="faq-question">How do I test if a keyboard key is working or stuck? <span class="faq-icon">+</span></summary>
+          <div class="faq-answer">Press any key on your physical keyboard. The corresponding key on the visual layout lights up in real time, increments its press count, and displays its JavaScript event code, scan code, and latency.</div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-question">How do I test for keyboard ghosting or key rollover? <span class="faq-icon">+</span></summary>
+          <div class="faq-answer">Keyboard ghosting occurs when multiple simultaneous keystrokes fail to register. Press and hold combinations of keys (such as W, A, S, D, and Shift or multiple arrow keys) simultaneously to verify that all inputs register without dropping.</div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-question">Why do special keys like Print Screen or Fn not respond? <span class="faq-icon">+</span></summary>
+          <div class="faq-answer">Certain hardware keys (such as Fn on laptops) are handled directly by hardware firmware and do not emit standard OS keyboard events. Additionally, browser shortcuts (like F11 or Ctrl+W) may be intercepted by your browser before reaching the page.</div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-question">Can I test keyboard chatter or double-typing issues? <span class="faq-icon">+</span></summary>
+          <div class="faq-answer">Yes. If a mechanical switch is chattering or bouncing, a single physical keystroke will register multiple times in rapid succession. The press counter and event log will highlight abnormally high key counts.</div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-question">Does this keyboard tester support Mac, Windows, and numeric keypads? <span class="faq-icon">+</span></summary>
+          <div class="faq-answer">Yes. The tester detects key event codes across Windows, macOS, Linux, and ChromeOS, supporting full ANSI layouts, function rows, navigation clusters, and numpads.</div>
+        </details>
       </div>
     </section>
 
     <section class="related-tools">
       <h2>Related Tools</h2>
       <div class="tool-grid">
+        <a href="/webcam-tester/" class="tool-card"><img src="/assets/img/icon-webcam.svg" alt="Webcam Tester icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Webcam Tester</h3><p>Check your webcam with a live preview, resolution info, and snapshot download.</p><span class="tool-card-link">Try it →</span></a>
+        <a href="/microphone-tester/" class="tool-card"><img src="/assets/img/icon-mic.svg" alt="Microphone Tester icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Microphone Tester</h3><p>Live audio level meter to verify your mic is picking up sound correctly.</p><span class="tool-card-link">Try it →</span></a>
         <a href="/mouse-tester/" class="tool-card"><img src="/assets/img/icon-mouse.svg" alt="Mouse Tester icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Mouse Tester</h3><p>Test all mouse buttons, scroll wheel, and pointer tracking in real time.</p><span class="tool-card-link">Try it →</span></a>
         <a href="/typing-speed-test/" class="tool-card"><img src="/assets/img/icon-typing.svg" alt="Typing Speed Test icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Typing Speed Test</h3><p>Measure your typing speed in WPM and accuracy.</p><span class="tool-card-link">Try it →</span></a>
-        <a href="/browser-info/" class="tool-card"><img src="/assets/img/icon-browser.svg" alt="Browser Info Viewer icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Browser Info Viewer</h3><p>See your browser, OS, screen resolution, CPU, timezone and 20+ other details.</p><span class="tool-card-link">Try it →</span></a>
+        <a href="/internet-speed-test/" class="tool-card"><img src="/assets/img/icon-speed.svg" alt="Internet Speed Test icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Internet Speed Test</h3><p>Test your download speed, upload speed, and ping latency in your browser.</p><span class="tool-card-link">Try it →</span></a>
       </div>
     </section>
 

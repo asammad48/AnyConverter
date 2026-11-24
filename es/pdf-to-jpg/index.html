@@ -91,13 +91,59 @@
 
 
 
+        <!-- Contextual Workflow Chain: Next Step (Sprint S25) -->
+    <section class="workflow-chain-section" id="workflow-chain-pdf" aria-labelledby="workflow-chain-heading" style="display:none;">
+      <div class="workflow-chain-header">
+        <div class="workflow-chain-badge">
+          <span aria-hidden="true">⚡</span>
+          <span>Siguiente paso</span>
+        </div>
+        <h2 class="workflow-chain-title" id="workflow-chain-heading">Siguiente paso: Continúa tu flujo de trabajo con PDF</h2>
+        <p class="workflow-chain-sub">Tu documento está listo. Continúa con el siguiente paso en tu flujo de trabajo:</p>
+        <button type="button" class="workflow-chain-dismiss" id="btn-chain-dismiss" aria-label="Descartar sugerencias de flujo de trabajo">✕</button>
+      </div>
+      <div class="workflow-chain-grid">
+        <a href="/es/pdf-compress/" class="workflow-chain-card" id="chain-step-compress" data-target="/es/pdf-compress/">
+          <div class="workflow-chain-card-icon">
+            <img src="/assets/img/icon-pdf-compress.svg" alt="Icono de Comprimir PDF" width="28" height="28" loading="lazy">
+          </div>
+          <div class="workflow-chain-card-content">
+            <span class="workflow-chain-card-title">Comprimir PDF</span>
+            <span class="workflow-chain-card-desc">Reduce el tamaño del archivo para compartirlo o enviarlo por correo</span>
+          </div>
+          <span class="workflow-chain-card-action">Comprimir PDF →</span>
+        </a>
+        <a href="/es/pdf-split/" class="workflow-chain-card" id="chain-step-split" data-target="/es/pdf-split/">
+          <div class="workflow-chain-card-icon">
+            <img src="/assets/img/icon-pdf-split.svg" alt="Icono de Dividir PDF" width="28" height="28" loading="lazy">
+          </div>
+          <div class="workflow-chain-card-content">
+            <span class="workflow-chain-card-title">Dividir páginas</span>
+            <span class="workflow-chain-card-desc">Extrae páginas específicas o divide en documentos individuales</span>
+          </div>
+          <span class="workflow-chain-card-action">Dividir páginas →</span>
+        </a>
+        <a href="/es/pdf-merge/" class="workflow-chain-card" id="chain-step-merge" data-target="/es/pdf-merge/">
+          <div class="workflow-chain-card-icon">
+            <img src="/assets/img/icon-pdf-merge.svg" alt="Icono de Unir PDF" width="28" height="28" loading="lazy">
+          </div>
+          <div class="workflow-chain-card-content">
+            <span class="workflow-chain-card-title">Unir PDF</span>
+            <span class="workflow-chain-card-desc">Combina múltiples documentos en un solo archivo</span>
+          </div>
+          <span class="workflow-chain-card-action">Unir PDF →</span>
+        </a>
+      </div>
+    </section>
+
     <section class="related-tools">
       <h2>Herramientas Relacionadas</h2>
       <div class="tool-grid">
         <a href="/es/jpg-to-pdf/" class="tool-card"><img src="/assets/img/icon-jpg-to-pdf.svg" alt="JPG a PDF icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>JPG a PDF</h3><p>Junta imágenes JPG, PNG y WebP en un PDF desde tu navegador.</p><span class="tool-card-link">Probar →</span></a>
         <a href="/es/pdf-to-word/" class="tool-card"><img src="/assets/img/icon-pdf.svg" alt="Convertir PDF a Word icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Convertir PDF a Word</h3><p>Convierte un PDF en un documento de Word editable.</p><span class="tool-card-link">Probar →</span></a>
-        <a href="/es/extract-pdf-pages/" class="tool-card"><img src="/assets/img/icon-pdf-extract.svg" alt="Extraer Páginas de PDF icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Extraer Páginas de PDF</h3><p>Elige páginas de un PDF y guárdalas como archivo nuevo en tu navegador.</p><span class="tool-card-link">Probar →</span></a>
         <a href="/es/image-converter/" class="tool-card"><img src="/assets/img/icon-image.svg" alt="Convertidor de Imágenes icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Convertidor de Imágenes</h3><p>Usa Convertidor de Imágenes Gratis gratis en el navegador.</p><span class="tool-card-link">Probar →</span></a>
+        <a href="/es/extract-pdf-pages/" class="tool-card"><img src="/assets/img/icon-pdf-extract.svg" alt="Extraer Páginas de PDF icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Extraer Páginas de PDF</h3><p>Elige páginas de un PDF y guárdalas como archivo nuevo en tu navegador.</p><span class="tool-card-link">Probar →</span></a>
+        <a href="/es/scan-to-pdf/" class="tool-card"><img src="/assets/img/icon-scan-pdf.svg" alt="Escanear a PDF icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Escanear a PDF</h3><p>Usa escanear imagen a pdf gratis en el navegador.</p><span class="tool-card-link">Probar →</span></a>
       </div>
     </section>
   </main>
@@ -174,5 +220,6 @@
   <script src="https://cdn.jsdelivr.net/npm/pdf-lib@1.17.1/dist/pdf-lib.min.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/build/pdf.min.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js" defer></script>
+  <script src="/assets/js/tools/pdf-workflow-chain.js?v=20261124" defer></script>
 </body>
 </html>

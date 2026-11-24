@@ -33,6 +33,8 @@
 
 
 <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <meta name="theme-color" content="#B04A45">
+  <link rel="manifest" href="/manifest.webmanifest">
 
   <style>
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -47,6 +49,26 @@
   </style>
 
   <link rel="stylesheet" href="/assets/css/style.css?v=20261109">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Hjem",
+      "item": "https://anyconverter.io/da/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "JSON Formatter",
+      "item": "https://anyconverter.io/da/json-formatter/"
+    }
+  ]
+}
+  </script>
 </head>
 <body>
 
@@ -357,6 +379,53 @@
       </aside>
     </div><!-- /tool-wrapper -->
 
+    <!-- Contextual Workflow Chain: Next Step (Sprint S12) -->
+    <section class="workflow-chain-section" id="workflow-chain-json" aria-labelledby="workflow-chain-heading" style="display:none;">
+      <div class="workflow-chain-header">
+        <div class="workflow-chain-badge">
+          <span aria-hidden="true">⚡</span>
+          <span>Næste trin</span>
+        </div>
+        <h2 class="workflow-chain-title" id="workflow-chain-heading">Fortsæt dit workflow</h2>
+        <p class="workflow-chain-sub">Send denne formaterede JSON direkte videre til næste værktøj:</p>
+        <button type="button" class="workflow-chain-dismiss" id="btn-chain-dismiss" aria-label="Afvis workflow-forslag">✕</button>
+      </div>
+      <div class="workflow-chain-grid">
+        <a href="/da/json-compare/" class="workflow-chain-card" id="chain-step-compare" data-target="/da/json-compare/">
+          <div class="workflow-chain-card-icon">
+            <img src="/assets/img/icon-json.svg" alt="JSON Compare ikon" width="28" height="28" loading="lazy">
+          </div>
+          <div class="workflow-chain-card-content">
+            <span class="workflow-chain-card-title">JSON Compare</span>
+            <span class="workflow-chain-card-desc">Sammenlign med en anden JSON side om side</span>
+          </div>
+          <span class="workflow-chain-card-action">Sammenlign JSON →</span>
+        </a>
+
+        <button type="button" class="workflow-chain-card workflow-chain-btn" id="chain-step-csv">
+          <div class="workflow-chain-card-icon">
+            <img src="/assets/img/icon-csv.svg" alt="JSON til CSV ikon" width="28" height="28" loading="lazy">
+          </div>
+          <div class="workflow-chain-card-content">
+            <span class="workflow-chain-card-title">JSON → CSV</span>
+            <span class="workflow-chain-card-desc">Konverter strukturerede objekter til et CSV-regneark</span>
+          </div>
+          <span class="workflow-chain-card-action">Eksporter CSV →</span>
+        </button>
+
+        <a href="/da/json-to-yaml/" class="workflow-chain-card" id="chain-step-yaml" data-target="/da/json-to-yaml/">
+          <div class="workflow-chain-card-icon">
+            <img src="/assets/img/icon-json-yaml.svg" alt="JSON til YAML ikon" width="28" height="28" loading="lazy">
+          </div>
+          <div class="workflow-chain-card-content">
+            <span class="workflow-chain-card-title">JSON → YAML</span>
+            <span class="workflow-chain-card-desc">Omdan til ren YAML-konfigurationsformat</span>
+          </div>
+          <span class="workflow-chain-card-action">Konverter til YAML →</span>
+        </a>
+      </div>
+    </section>
+
     <!-- AdSense leaderboard -->
     <div class="ad-slot ad-slot--leaderboard">
       <p class="ad-label">Annonce</p>
@@ -371,6 +440,25 @@
         <li><strong>Kopiér eller download</strong> — Kopiér det formaterede output til udklipsholderen, eller download det som en .json-fil.</li>
         <li><strong>Søg eller book mærke</strong> — Brug sidepanelet til at søge i nøgler, værdier, regex eller en sti som <code>a.b[0].c</code>, eller gem den nuværende JSON som et lokalt bogmærke.</li>
       </ol>
+    </section>
+
+    <section class="how-it-works" id="how-it-works">
+      <h2>Hvordan det virker: JSON-formatering og træ-serialisering</h2>
+
+      <h3>Hvad er en JSON-formaterer?</h3>
+      <p>En JSON-formaterer er et softwareværktøj, der validerer JavaScript Object Notation mod RFC 8259-grammatikspecifikationen og serialiserer de analyserede tokens til et letlæseligt, indrykket teksthierarki. Værktøjet forvandler minificerede data eller rå tekstlinjer til overskuelige strukturer med ensartede indrykninger og syntaksfremhævning.</p>
+
+      <h3>Hvordan det virker i browseren</h3>
+      <p>AnyConverter formaterer og validerer JSON 100% klientside i din browser ved hjælp af optimerede JavaScript-baggrundsprocesser uden at sende data over netværket:</p>
+      <ol class="how-it-works-steps">
+        <li><strong>Leksikalsk analyse og streaming parser</strong>: Inputstrengen parses med indbygget <code>JSON.parse()</code> eller en streaming parser-tokenizer for at bekræfte gyldige RFC 8259 grammar-tokens (strenge, tal, boolske værdier, null, lister og objekter).</li>
+        <li><strong>Træ-serialisering (tree serialization)</strong>: Gyldige datastrukturer gennemgår træ-serialisering, hvor knuder gennemgås rekursivt for at beregne indrykningsdybde, anvende valgt afstand (2 mellemrum, 4 mellemrum eller tabulator) og sortere nøgler alfabetisk efter behov.</li>
+        <li><strong>Virtuel DOM-visning</strong>: Store datamængder over 150 KB indekseres i hukommelsen og gengives via en 50-linjers virtuel scroller, hvilket fastholder 60 FPS uden at belaste browseren.</li>
+        <li><strong>Fuldstændigt privatliv</strong>: Al parsing, formatering, søgning og eksport udføres udelukkende i lokal enhedshukommelse uden ekstern datatransmission.</li>
+      </ol>
+
+      <h3>Tekniske specifikationer og RFC-standarder</h3>
+      <p>Formateringsmotoren overholder nøje <strong>RFC 8259</strong>-grammatikken og ECMA-404-standarden for dataudveksling. Gyldig JSON kræver dobbelte anførselstegn omkring alle nøglenavne, afviser efterfølgende kommaer og forbyder uindkapslede enkeltanførselstegn. Vores motor udfører robust træ-serialisering (tree serialization), identificerer syntaksfejl med nøjagtig linje- og kolonneangivelse og muliggør direkte streaming parser-konvertering til YAML eller CSV for kompatible tabelstrukturer.</p>
     </section>
 
     <section class="features">
@@ -447,6 +535,7 @@
         <a href="/da/json-to-yaml/" class="tool-card"><img src="/assets/img/icon-json-yaml.svg" alt="JSON til YAML Konverter Online Gratis icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>JSON til YAML Konverter Online Gratis</h3><p>Konverter mellem JSON og YAML øjeblikkeligt.</p><span class="tool-card-link">Prøv det →</span></a>
         <a href="/da/xml-formatter/" class="tool-card"><img src="/assets/img/icon-xml.svg" alt="XML Formatter Online Gratis icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>XML Formatter Online Gratis</h3><p>Formater og valider XML online gratis.</p><span class="tool-card-link">Prøv det →</span></a>
         <a href="/da/base64-encoder/" class="tool-card"><img src="/assets/img/icon-base64.svg" alt="Base64 Encoder og Decoder Online Gratis icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Base64 Encoder og Decoder Online Gratis</h3><p>Kodér og dekodér Base64 online gratis.</p><span class="tool-card-link">Prøv det →</span></a>
+        <a href="/da/regex-tester/" class="tool-card"><img src="/assets/img/icon-regex.svg" alt="Regex Tester Online Gratis icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Regex Tester Online Gratis</h3><p>Test og fejlret regulære udtryk online i realtid.</p><span class="tool-card-link">Prøv det →</span></a>
       </div>
     </section>
   </main>
@@ -455,7 +544,9 @@
 
   <footer id="site-footer" class="site-footer"></footer>
 
+  <script src="/assets/js/shared/analytics.js" defer></script>
   <script src="/assets/js/shared.js?v=20261109" defer></script>
+  <script src="/assets/js/shared/pwa.js" defer></script>
   <script src="/assets/js/tools/json-formatter.js?v=20261109" defer></script>
 </body>
 </html>

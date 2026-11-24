@@ -188,7 +188,11 @@
       var el = document.getElementById('dc-root'), tpl = document.getElementById('dc-template');
       if (!el || !tpl || typeof root.DCTool !== 'function') return;
       var Comp = root.DCTool(el.getAttribute('data-lang') || 'en', DCLogic);
-      mount(el, parse(tpl.textContent), Comp);
+      var instance = mount(el, parse(tpl.textContent), Comp);
+      root._acCurrentToolComponent = instance;
+      if (typeof window !== 'undefined' && typeof window.dispatchEvent === 'function') {
+        window.dispatchEvent(new CustomEvent('ac:tool-mounted', { detail: { component: instance } }));
+      }
     };
     /* Deferred tool scripts run after this file, so wait for DOMContentLoaded (fires after all of them). */
     if (document.readyState === 'complete') boot(); else document.addEventListener('DOMContentLoaded', boot);

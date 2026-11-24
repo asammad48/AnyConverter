@@ -45,6 +45,26 @@
     @font-face{font-family:'Inter';font-display:swap}
   </style>
   <link rel="stylesheet" href="/assets/css/style.css?v=20261109">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Hjem",
+      "item": "https://anyconverter.io/da/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Tegntæller",
+      "item": "https://anyconverter.io/da/character-counter/"
+    }
+  ]
+}
+  </script>
 </head>
 <body>
   <header id="site-header" class="site-header"></header>
@@ -88,6 +108,51 @@
         </div>
       </aside>
     </div>
+        <!-- Contextual Workflow Chain: Next Step (Sprint S26) -->
+    <section class="workflow-chain-section" id="workflow-chain-text" aria-labelledby="workflow-chain-heading" style="display:none;">
+      <div class="workflow-chain-header">
+        <div class="workflow-chain-badge">
+          <span aria-hidden="true">⚡</span>
+          <span>Næste trin</span>
+        </div>
+        <h2 class="workflow-chain-title" id="workflow-chain-heading">Næste trin: Fortsæt dit tekst-workflow</h2>
+        <p class="workflow-chain-sub">Din tekst er klar. Fortsæt direkte i det næste værktøj i pipelinen:</p>
+        <button type="button" class="workflow-chain-dismiss" id="btn-chain-dismiss" aria-label="Afvis workflowforslag">✕</button>
+      </div>
+      <div class="workflow-chain-grid">
+        <a href="/da/word-counter/" class="workflow-chain-card" id="chain-step-counter" data-target="/da/word-counter/">
+          <div class="workflow-chain-card-icon">
+            <img src="/assets/img/icon-wordcount.svg" alt="Ordoptæller ikon" width="28" height="28" loading="lazy">
+          </div>
+          <div class="workflow-chain-card-content">
+            <span class="workflow-chain-card-title">Ordoptæller</span>
+            <span class="workflow-chain-card-desc">Tæl ord, sætninger, afsnit og estimeret læsetid</span>
+          </div>
+          <span class="workflow-chain-card-action">Tæl ord →</span>
+        </a>
+        <a href="/da/text-case-converter/" class="workflow-chain-card" id="chain-step-case-converter" data-target="/da/text-case-converter/">
+          <div class="workflow-chain-card-icon">
+            <img src="/assets/img/icon-textcase.svg" alt="Konvertering af store/små bogstaver ikon" width="28" height="28" loading="lazy">
+          </div>
+          <div class="workflow-chain-card-content">
+            <span class="workflow-chain-card-title">Konvertering af store/små bogstaver</span>
+            <span class="workflow-chain-card-desc">Konvertér til store/små bogstaver, title case, camelCase og mere</span>
+          </div>
+          <span class="workflow-chain-card-action">Konvertér tekst →</span>
+        </a>
+        <a href="/da/text-diff-checker/" class="workflow-chain-card" id="chain-step-diff-checker" data-target="/da/text-diff-checker/">
+          <div class="workflow-chain-card-icon">
+            <img src="/assets/img/icon-diff.svg" alt="Tekstsammenligning ikon" width="28" height="28" loading="lazy">
+          </div>
+          <div class="workflow-chain-card-content">
+            <span class="workflow-chain-card-title">Tekstsammenligning</span>
+            <span class="workflow-chain-card-desc">Sammenlign to tekstversioner side om side med linjefremhævelse</span>
+          </div>
+          <span class="workflow-chain-card-action">Sammenlign tekst →</span>
+        </a>
+      </div>
+    </section>
+
     <div class="ad-slot ad-slot--leaderboard">
       <div class="adsbygoogle" style="display:block" aria-hidden="true"></div>
 </div>
@@ -138,15 +203,17 @@
         <section class="related-tools">
       <h2>Relaterede Værktøjer</h2>
       <div class="tool-grid">
+        <a href="/da/number-to-words/" class="tool-card"><img src="/assets/img/icon-number-words.svg" alt="Tal til Ord Konverter Online Gratis icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Tal til Ord Konverter Online Gratis</h3><p>Konverter ethvert tal til dets engelske ordækvivalent øjeblikkeligt.</p><span class="tool-card-link">Prøv det →</span></a>
+        <a href="/da/markdown-html/" class="tool-card"><img src="/assets/img/icon-markdown.svg" alt="Markdown til HTML Konverter Online Gratis icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Markdown til HTML Konverter Online Gratis</h3><p>Konverter Markdown til HTML med live forhåndsvisning.</p><span class="tool-card-link">Prøv det →</span></a>
         <a href="/da/word-counter/" class="tool-card"><img src="/assets/img/icon-wordcount.svg" alt="Ordtæller Online Gratis icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Ordtæller Online Gratis</h3><p>Tæl ord, tegn, sætninger, afsnit og unikke ord i din tekst øjeblikkeligt.</p><span class="tool-card-link">Prøv det →</span></a>
         <a href="/da/text-case-converter/" class="tool-card"><img src="/assets/img/icon-textcase.svg" alt="Tekst Store/Små Bogstaver Konverter Online Gratis icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Tekst Store/Små Bogstaver Konverter Online Gratis</h3><p>Konverter din tekst til ethvert format øjeblikkeligt — store bogstaver, små bogstaver, titel, sætning, CamelCase, snake_case, kebab-case og mere.</p><span class="tool-card-link">Prøv det →</span></a>
         <a href="/da/text-diff-checker/" class="tool-card"><img src="/assets/img/icon-diff.svg" alt="Tekst Forskels Checker Online Gratis icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Tekst Forskels Checker Online Gratis</h3><p>Sammenlign to blokke af tekst og se forskelle fremhævet øjeblikkeligt.</p><span class="tool-card-link">Prøv det →</span></a>
-        <a href="/da/text-repeater/" class="tool-card"><img src="/assets/img/icon-repeat.svg" alt="Tekstgentagelse Online Gratis icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Tekstgentagelse Online Gratis</h3><p>Gentag et vilkårligt ord, sætning eller tekststykke et valgfrit antal gange med en brugerdefineret separator.</p><span class="tool-card-link">Prøv det →</span></a>
       </div>
     </section>
   </main>
   <footer id="site-footer" class="site-footer"></footer>
   <script src="/assets/js/shared.js?v=20261109" defer></script>
   <script src="/assets/js/tools/character-counter.js" defer></script>
+  <script src="/assets/js/tools/text-workflow-chain.js?v=20261124" defer></script>
 </body>
 </html>

@@ -43,6 +43,32 @@
     @font-face{font-family:'Inter';font-display:swap}
   </style>
   <link rel="stylesheet" href="/assets/css/style.css?v=20261109">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Inicio",
+      "item": "https://anyconverter.io/es/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Herramientas PDF",
+      "item": "https://anyconverter.io/es/pdf-merge/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Recortar PDF",
+      "item": "https://anyconverter.io/es/crop-pdf/"
+    }
+  ]
+}
+  </script>
 </head>
 <body>
   <header id="site-header" class="site-header"></header>
@@ -55,7 +81,7 @@
     <div class="tool-wrapper">
       <div class="tool-zone">
         <div style="padding:24px">
-          <div class="upload-area" data-file-target="cp-file" role="button" tabindex="0">
+          <div class="upload-area" data-file-target="cp-file" role="button" tabindex="0" aria-label="Arrastra un archivo aquí o haz clic para seleccionar">
             <img src="/assets/img/icon-pdf.svg" alt="Recortar Páginas PDF Online Gratis icon" width="36" height="36" style="margin-bottom:10px">
             <p style="font-size:14px;color:var(--color-text-2,#6B7280);margin-bottom:10px">Arrastra tu PDF aquí o haz clic para buscar</p>
             <input type="file" id="cp-file" accept=".pdf" style="display:none">
@@ -118,10 +144,11 @@
     <section class="related-tools">
       <h2>Herramientas Relacionadas</h2>
       <div class="tool-grid">
-        <a href="/es/rotate-pdf/" class="tool-card"><img src="/assets/img/icon-pdf-rotate.svg" alt="Girar PDF icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Girar PDF</h3><p>Gira páginas de un PDF en tu navegador y guarda el cambio.</p><span class="tool-card-link">Probar →</span></a>
-        <a href="/es/organize-pdf/" class="tool-card"><img src="/assets/img/icon-pdf-organize.svg" alt="Organizar PDF icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Organizar PDF</h3><p>Reordena las páginas de un PDF en tu navegador.</p><span class="tool-card-link">Probar →</span></a>
-        <a href="/es/pdf-compress/" class="tool-card"><img src="/assets/img/icon-pdf-compress.svg" alt="Comprimir PDF icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Comprimir PDF</h3><p>Reduce el tamaño de un PDF desde tu navegador.</p><span class="tool-card-link">Probar →</span></a>
         <a href="/es/remove-pdf-pages/" class="tool-card"><img src="/assets/img/icon-pdf-remove.svg" alt="Eliminar Páginas de PDF icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Eliminar Páginas de PDF</h3><p>Borra páginas de un PDF en tu navegador.</p><span class="tool-card-link">Probar →</span></a>
+        <a href="/es/rotate-pdf/" class="tool-card"><img src="/assets/img/icon-pdf-rotate.svg" alt="Girar PDF icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Girar PDF</h3><p>Gira páginas de un PDF en tu navegador y guarda el cambio.</p><span class="tool-card-link">Probar →</span></a>
+        <a href="/es/pdf-compress/" class="tool-card"><img src="/assets/img/icon-pdf-compress.svg" alt="Comprimir PDF icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Comprimir PDF</h3><p>Reduce el tamaño de un PDF desde tu navegador.</p><span class="tool-card-link">Probar →</span></a>
+        <a href="/es/add-page-numbers/" class="tool-card"><img src="/assets/img/icon-pdf-pagenums.svg" alt="Numerar Páginas PDF icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Numerar Páginas PDF</h3><p>Numera las páginas de un PDF en tu navegador.</p><span class="tool-card-link">Probar →</span></a>
+        <a href="/es/unlock-pdf/" class="tool-card"><img src="/assets/img/icon-pdf-unlock.svg" alt="Desbloquear PDF icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Desbloquear PDF</h3><p>Usa desbloquear pdf gratis en el navegador.</p><span class="tool-card-link">Probar →</span></a>
       </div>
     </section>
   </main>

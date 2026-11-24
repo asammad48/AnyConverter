@@ -45,6 +45,26 @@
     @font-face{font-family:'Inter';font-display:swap}
   </style>
   <link rel="stylesheet" href="/assets/css/style.css?v=20261109">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Inicio",
+      "item": "https://anyconverter.io/es/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Decodificador JWT",
+      "item": "https://anyconverter.io/es/jwt-decoder/"
+    }
+  ]
+}
+  </script>
 </head>
 <body>
   <header id="site-header" class="site-header"></header>
@@ -146,6 +166,25 @@
         <li>Ve el encabezado, payload y firma decodificados. Si hay un claim de expiración, la herramienta muestra si el token sigue siendo válido.</li>
       </ol>
     </section>
+
+    <section class="how-it-works" id="how-it-works">
+      <h2>Cómo funciona: Arquitectura de JSON Web Tokens y decodificación RFC 7519</h2>
+
+      <h3>¿Qué es un JSON Web Token (JWT)?</h3>
+      <p>Un JSON Web Token (JWT) es un formato contenedor compacto y seguro para URL definido por la especificación RFC 7519 (RFC 7519 specification) que transmite afirmaciones criptográficas entre partes en forma de objeto JSON. Consta de tres segmentos codificados en Base64URL separados por puntos: una cabecera JOSE, una carga útil de reclamaciones y un segmento de verificación de firma.</p>
+
+      <h3>Cómo funciona en el navegador</h3>
+      <p>AnyConverter descompone e inspecciona tokens de forma totalmente local en tu navegador mediante decodificación criptográfica estándar sin exponer credenciales:</p>
+      <ol class="how-it-works-steps">
+        <li><strong>División de segmentos</strong>: La cadena compacta se valida y se divide en sus tres partes constitutivas: <code>cabecera.carga.firma</code>.</li>
+        <li><strong>Decodificación Base64URL (Base64URL decoding)</strong>: Cada segmento se normaliza mediante Base64URL decoding a Base64 estándar sustituyendo <code>-</code> por <code>+</code>, <code>_</code> por <code>/</code> y calculando el relleno necesario con <code>=</code>.</li>
+        <li><strong>Deserialización binaria en UTF-8</strong>: Los bytes decodificados se transforman mediante un decodificador UTF-8 en objetos JSON tipados con <code>JSON.parse()</code>.</li>
+        <li><strong>Reclamaciones de firma criptográfica (cryptographic signature claims)</strong>: Las marcas de tiempo y cryptographic signature claims (<code>iss</code>, <code>sub</code>, <code>exp</code>, <code>iat</code>) se convierten de segundos Unix a fechas ISO 8601 con cálculo en tiempo real de caducidad.</li>
+      </ol>
+
+      <h3>Especificaciones técnicas y definiciones de reclamaciones</h3>
+      <p>El decodificador aplica las directrices de <strong>RFC 7519 specification</strong> (JWT), <strong>RFC 7515</strong> (JWS) y <strong>RFC 7516</strong> (JWE). Realiza Base64URL decoding de cryptographic signature claims reservadas como <code>iss</code> (emisor), <code>sub</code> (sujeto), <code>aud</code> (audiencia), <code>exp</code> (tiempo de expiración), <code>nbf</code> (no antes de) y <code>iat</code> (emitido en). Todo el procesamiento se realiza en la memoria del navegador, garantizando que los tokens y credenciales de sesión nunca salgan de tu equipo.</p>
+    </section>
     <section class="features">
       <h2>Características</h2>
       <ul class="features-list">
@@ -186,9 +225,10 @@
     <section class="related-tools">
       <h2>Herramientas Relacionadas</h2>
       <div class="tool-grid">
-        <a href="/es/base64-encoder/" class="tool-card"><img src="/assets/img/icon-base64.svg" alt="Codificador Base64 Online Gratis icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Codificador Base64 Online Gratis</h3><p>Convierte texto plano a Base64 online gratis y decodifica Base64 a texto.</p><span class="tool-card-link">Probar →</span></a>
         <a href="/es/hash-generator/" class="tool-card"><img src="/assets/img/icon-hash.svg" alt="Generador de Hash icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Generador de Hash</h3><p>Usa Generador de Hash gratis en el navegador.</p><span class="tool-card-link">Probar →</span></a>
+        <a href="/es/base64-encoder/" class="tool-card"><img src="/assets/img/icon-base64.svg" alt="Codificador Base64 Online Gratis icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Codificador Base64 Online Gratis</h3><p>Convierte texto plano a Base64 online gratis y decodifica Base64 a texto.</p><span class="tool-card-link">Probar →</span></a>
         <a href="/es/uuid-generator/" class="tool-card"><img src="/assets/img/icon-uuid.svg" alt="Generador de UUID Online Gratis icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Generador de UUID Online Gratis</h3><p>Genera UUID v4 y v7 en lote, copia o descarga resultados y valida el formato UUID directamente en el navegador.</p><span class="tool-card-link">Probar →</span></a>
+        <a href="/es/url-encoder/" class="tool-card"><img src="/assets/img/icon-url.svg" alt="Codificador URL Online Gratis icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Codificador URL Online Gratis</h3><p>Usa url encoder gratis en el navegador.</p><span class="tool-card-link">Probar →</span></a>
         <a href="/es/cron-expression-parser/" class="tool-card"><img src="/assets/img/icon-timer.svg" alt="Analizador de Expresiones Cron Online Gratis icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Analizador de Expresiones Cron Online Gratis</h3><p>Usa Analizador de Expresiones Cron gratis en el navegador.</p><span class="tool-card-link">Probar →</span></a>
       </div>
     </section>

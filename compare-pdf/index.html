@@ -44,6 +44,32 @@
     @font-face{font-family:'Inter';font-display:swap}
   </style>
   <link rel="stylesheet" href="/assets/css/style.css?v=20261109">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://anyconverter.io/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "PDF Tools",
+      "item": "https://anyconverter.io/pdf-merge/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Compare PDF",
+      "item": "https://anyconverter.io/compare-pdf/"
+    }
+  ]
+}
+  </script>
 </head>
 <body>
   <header id="site-header" class="site-header"></header>
@@ -59,7 +85,7 @@
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px">
             <div>
               <p style="font-size:13px;font-weight:600;margin-bottom:8px">Document A</p>
-              <div class="upload-area" data-file-target="cmp-file-a" role="button" tabindex="0" style="padding:16px">
+              <div class="upload-area" data-file-target="cmp-file-a" role="button" tabindex="0" style="padding:16px" aria-label="Choose first PDF to compare">
                 <p style="font-size:13px;color:var(--color-text-2,#6B7280);margin-bottom:6px">Click or drop PDF A</p>
                 <input type="file" id="cmp-file-a" accept=".pdf" style="display:none">
                 <button class="btn btn-secondary" type="button" style="font-size:12px">Choose PDF A</button>
@@ -68,7 +94,7 @@
             </div>
             <div>
               <p style="font-size:13px;font-weight:600;margin-bottom:8px">Document B</p>
-              <div class="upload-area" data-file-target="cmp-file-b" role="button" tabindex="0" style="padding:16px">
+              <div class="upload-area" data-file-target="cmp-file-b" role="button" tabindex="0" style="padding:16px" aria-label="Choose second PDF to compare">
                 <p style="font-size:13px;color:var(--color-text-2,#6B7280);margin-bottom:6px">Click or drop PDF B</p>
                 <input type="file" id="cmp-file-b" accept=".pdf" style="display:none">
                 <button class="btn btn-secondary" type="button" style="font-size:12px">Choose PDF B</button>
@@ -130,10 +156,10 @@
     <section class="related-tools">
       <h2>Related Tools</h2>
       <div class="tool-grid">
+        <a href="/edit-pdf/" class="tool-card"><img src="/assets/img/icon-pdf-edit.svg" alt="Edit PDF icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Edit PDF</h3><p>Add text, border rectangles or yellow highlights to any PDF page.</p><span class="tool-card-link">Try it →</span></a>
         <a href="/pdf-merge/" class="tool-card"><img src="/assets/img/icon-pdf-merge.svg" alt="PDF Merge icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>PDF Merge</h3><p>Combine multiple PDF files into one. Drag to reorder pages.</p><span class="tool-card-link">Try it →</span></a>
         <a href="/pdf-split/" class="tool-card"><img src="/assets/img/icon-pdf-split.svg" alt="PDF Split icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>PDF Split</h3><p>Split a PDF into multiple files or extract specific pages.</p><span class="tool-card-link">Try it →</span></a>
         <a href="/text-diff-checker/" class="tool-card"><img src="/assets/img/icon-diff.svg" alt="Text Diff Checker icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Text Diff Checker</h3><p>Compare two texts and highlight added and removed lines.</p><span class="tool-card-link">Try it →</span></a>
-        <a href="/edit-pdf/" class="tool-card"><img src="/assets/img/icon-pdf-edit.svg" alt="Edit PDF icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Edit PDF</h3><p>Add text, border rectangles or yellow highlights to any PDF page.</p><span class="tool-card-link">Try it →</span></a>
       </div>
     </section>
 

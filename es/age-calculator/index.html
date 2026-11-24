@@ -33,6 +33,8 @@
 
 
 <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <meta name="theme-color" content="#B04A45">
+  <link rel="manifest" href="/manifest.webmanifest">
   <style>
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
     html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F7F6F3);color:var(--color-text,#151515)}
@@ -45,6 +47,26 @@
     @font-face{font-family:'Inter';font-display:swap}
   </style>
   <link rel="stylesheet" href="/assets/css/style.css?v=20261109">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Inicio",
+      "item": "https://anyconverter.io/es/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Calculadora de Edad",
+      "item": "https://anyconverter.io/es/age-calculator/"
+    }
+  ]
+}
+  </script>
 </head>
 <body>
   <header id="site-header" class="site-header"></header>
@@ -69,9 +91,14 @@
               <input type="date" id="target-date" style="width:100%;padding:10px 12px;border:1px solid var(--color-border,#DDD8D0);border-radius:8px;font-size:15px">
             </div>
           </div>
-          <div class="action-bar" style="margin-bottom:20px">
+          <div class="action-bar ac-action-bar" style="margin-bottom:20px;display:flex;gap:8px;align-items:center;flex-wrap:wrap">
             <button class="btn btn-primary" id="btn-calc-age">Calcular edad</button>
             <button class="btn btn-secondary" id="btn-reset-age">Restablecer</button>
+            <button class="btn btn-secondary" id="btn-share-age" type="button" aria-label="Compartir enlace de cálculo">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="margin-right:6px;vertical-align:-2px"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg>
+              <span>Compartir cálculo</span>
+            </button>
+            <span id="age-share-feedback" class="pct-share-feedback" role="status" aria-live="polite" style="display:none">¡Enlace copiado al portapapeles!</span>
           </div>
           <div id="age-result" style="display:none">
             <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:12px">
@@ -82,6 +109,12 @@
             <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
               <div class="stat-card"><div class="stat-val" id="age-total-days" style="font-size:18px">—</div><div class="stat-lbl">Total de días vividos</div></div>
               <div class="stat-card"><div class="stat-val" id="age-next-bday" style="font-size:15px">—</div><div class="stat-lbl">Próximo cumpleaños</div></div>
+            </div>
+            <div style="margin-top:14px;text-align:center">
+              <button class="btn btn-secondary btn-sm" id="btn-share-result" type="button" aria-label="Copiar enlace de cálculo">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="margin-right:4px;vertical-align:-1px"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg>
+                <span>Copiar enlace de cálculo</span>
+              </button>
             </div>
           </div>
         </div>
@@ -151,14 +184,17 @@
       <h2>Herramientas Relacionadas</h2>
       <div class="tool-grid">
         <a href="/es/birthday-countdown-calculator/" class="tool-card"><img src="/assets/img/icon-calculator.svg" alt="Cuenta Regresiva para tu Cumpleaños Online Gratis icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Cuenta Regresiva para tu Cumpleaños Online Gratis</h3><p>Cuenta regresiva para tu cumpleaños gratis: mira los meses, días y horas que faltan, qué día de la semana cae y cuántos cumples.</p><span class="tool-card-link">Probar →</span></a>
-        <a href="/es/bmi-calculator/" class="tool-card"><img src="/assets/img/icon-bmi.svg" alt="Calculadora de IMC Online Gratis icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Calculadora de IMC Online Gratis</h3><p>Calcula IMC adulto, categoria de peso, rango saludable y contexto opcional cintura-altura en una herramienta privada.</p><span class="tool-card-link">Probar →</span></a>
+        <a href="/es/bmi-calculator/" class="tool-card"><img src="/assets/img/icon-bmi.svg" alt="Calculadora de IMC Online Gratis icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Calculadora de IMC Online Gratis</h3><p>Calcula IMC adulto, categoría de peso, rango saludable y contexto opcional cintura-altura en una herramienta privada.</p><span class="tool-card-link">Probar →</span></a>
         <a href="/es/calorie-calculator/" class="tool-card"><img src="/assets/img/icon-calorie.svg" alt="Calculadora de Calorías Online Gratis icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Calculadora de Calorías Online Gratis</h3><p>Usa Calculadora de Calorías gratis en el navegador.</p><span class="tool-card-link">Probar →</span></a>
+        <a href="/es/roman-numeral-converter/" class="tool-card"><img src="/assets/img/icon-roman.svg" alt="Convertidor de Números Romanos Online Gratis icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Convertidor de Números Romanos Online Gratis</h3><p>Usa roman numeral converter gratis en el navegador.</p><span class="tool-card-link">Probar →</span></a>
         <a href="/es/sleep-calculator/" class="tool-card"><img src="/assets/img/icon-sleep.svg" alt="Calculadora de Sueño Online Gratis icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Calculadora de Sueño Online Gratis</h3><p>Usa sleep calculator gratis en el navegador.</p><span class="tool-card-link">Probar →</span></a>
       </div>
     </section>
   </main>
   <footer id="site-footer" class="site-footer"></footer>
+  <script src="/assets/js/shared/analytics.js" defer></script>
   <script src="/assets/js/shared.js?v=20261109" defer></script>
+  <script src="/assets/js/shared/pwa.js" defer></script>
   <script src="/assets/js/tools/age-calculator.js" defer></script>
 </body>
 </html>

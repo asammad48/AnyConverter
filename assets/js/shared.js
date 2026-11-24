@@ -224,6 +224,7 @@
         <li role="option" data-lang="da" data-flag="🇩🇰" data-path="da">🇩🇰 Dansk</li>
       </ul>
     </div>
+    <button class="shortcuts-help-btn" id="btn-shortcuts-help" aria-label="Keyboard Shortcuts" title="Keyboard Shortcuts (?)">⌨️</button>
     <button class="theme-toggle" id="theme-toggle-btn" aria-label="Toggle dark mode" title="Toggle dark mode">🌙</button>
     <button class="hamburger" id="mobile-menu-btn"
             aria-expanded="false" aria-label="Open menu" aria-controls="mobile-menu">
@@ -397,6 +398,42 @@
       <span><kbd>↑↓</kbd> Navigate</span>
       <span><kbd>↵</kbd> Open</span>
       <span><kbd>Esc</kbd> Close</span>
+    </div>
+  </div>
+</div>
+<div class="modal" id="shortcuts-modal" role="dialog" aria-modal="true" aria-labelledby="shortcuts-modal-title" style="display:none;" aria-hidden="true">
+  <div class="shortcuts-backdrop" id="shortcuts-backdrop"></div>
+  <div class="shortcuts-dialog" role="document">
+    <div class="shortcuts-header">
+      <h2 id="shortcuts-modal-title" class="shortcuts-title">Keyboard Shortcuts</h2>
+      <button type="button" class="shortcuts-close-btn" id="btn-shortcuts-close" aria-label="Close keyboard shortcuts">&times;</button>
+    </div>
+    <div class="shortcuts-body">
+      <ul class="shortcuts-list" id="shortcuts-list">
+        <li class="shortcuts-item">
+          <span class="shortcuts-desc">Open shortcuts help</span>
+          <div class="shortcuts-keys"><kbd>?</kbd></div>
+        </li>
+        <li class="shortcuts-item">
+          <span class="shortcuts-desc">Focus search</span>
+          <div class="shortcuts-keys"><kbd>/</kbd></div>
+        </li>
+        <li class="shortcuts-item">
+          <span class="shortcuts-desc">Close modal / unfocus</span>
+          <div class="shortcuts-keys"><kbd>Esc</kbd></div>
+        </li>
+        <li class="shortcuts-item">
+          <span class="shortcuts-desc">Favorite current tool</span>
+          <div class="shortcuts-keys"><kbd>Alt</kbd> + <kbd>F</kbd></div>
+        </li>
+        <li class="shortcuts-item">
+          <span class="shortcuts-desc">Toggle dark / light mode</span>
+          <div class="shortcuts-keys"><kbd>Alt</kbd> + <kbd>T</kbd></div>
+        </li>
+      </ul>
+    </div>
+    <div class="shortcuts-footer">
+      <span class="shortcuts-footer-hint" id="shortcuts-footer-hint">AnyConverter sitewide navigation</span>
     </div>
   </div>
 </div>`;
@@ -1278,15 +1315,24 @@
   }
 
   function getCanonicalToolPath(rawUrlOrPath) {
-    if (!rawUrlOrPath) return '';
+    if (!rawUrlOrPath || typeof rawUrlOrPath !== 'string') return '';
     try {
-      var pathname = rawUrlOrPath;
-      if (rawUrlOrPath.indexOf('://') !== -1 || rawUrlOrPath.startsWith('//')) {
-        pathname = new URL(rawUrlOrPath, window.location.origin).pathname;
+      var pathname = rawUrlOrPath.trim();
+      if (pathname.indexOf('://') !== -1 || pathname.startsWith('//')) {
+        pathname = new URL(pathname, (typeof window !== 'undefined' && window.location && window.location.origin) ? window.location.origin : 'https://anyconverter.io').pathname;
       }
-      return englishPathFor(pathname);
+      pathname = splitLocalPath(pathname).path;
+      pathname = pathname.replace(/index\.html?$/i, '');
+      var enPath = englishPathFor(pathname);
+      if (enPath.length > 1 && !enPath.endsWith('/')) {
+        enPath += '/';
+      }
+      return enPath;
     } catch (_e) {
-      return removeLocalePrefix(rawUrlOrPath);
+      var clean = removeLocalePrefix(rawUrlOrPath);
+      clean = splitLocalPath(clean).path.replace(/index\.html?$/i, '');
+      if (clean.length > 1 && !clean.endsWith('/')) clean += '/';
+      return clean;
     }
   }
 
@@ -1303,8 +1349,8 @@
       seen[canon] = true;
 
       var toolMeta = TOOLS.find(function (t) { return t.u === canon; });
-      var toolName = toolMeta ? toolMeta.n : (item.name || canon.replace(/\//g, ' ').trim());
-      var toolDesc = toolMeta ? toolMeta.d : '';
+      var toolName = toolMeta ? getToolName(toolMeta, lang) : (item.name || canon.replace(/\//g, ' ').trim());
+      var toolDesc = toolMeta ? getToolDesc(toolMeta, lang) : '';
       var toolIcon = toolMeta ? toolMeta.i : (item.icon || '/assets/img/icon-json.svg');
       var toolCat  = toolMeta ? toolMeta.c : (item.cat || 'Tool');
       var localizedUrl = localizedPathForLang(canon, lang, false);
@@ -1324,21 +1370,24 @@
 
   function isFavoriteTool(canonPath) {
     if (!canonPath) return false;
+    var normTarget = getCanonicalToolPath(canonPath);
     var rawList = getFavoritesRaw();
     return rawList.some(function (item) {
       if (!item) return false;
       var c = getCanonicalToolPath(item.u || item.url || item.path);
-      return c === canonPath;
+      return c === normTarget;
     });
   }
 
   function toggleFavoriteTool(canonPath, toolName) {
     if (!canonPath) return false;
+    var normCanon = getCanonicalToolPath(canonPath);
+    if (!normCanon) return false;
     var rawList = getFavoritesRaw();
     var existingIdx = -1;
     for (var i = 0; i < rawList.length; i++) {
       var c = getCanonicalToolPath(rawList[i].u || rawList[i].url || rawList[i].path);
-      if (c === canonPath) {
+      if (c === normCanon) {
         existingIdx = i;
         break;
       }
@@ -1349,10 +1398,10 @@
       rawList.splice(existingIdx, 1);
       isNowFav = false;
     } else {
-      var meta = TOOLS.find(function (t) { return t.u === canonPath; });
+      var meta = TOOLS.find(function (t) { return t.u === normCanon; });
       rawList.unshift({
-        u: canonPath,
-        name: toolName || (meta ? meta.n : canonPath),
+        u: normCanon,
+        name: toolName || (meta ? getToolName(meta, currentPageLang()) : normCanon),
         icon: meta ? meta.i : '/assets/img/icon-json.svg',
         cat: meta ? meta.c : 'Tool',
         ts: Date.now()
@@ -1366,7 +1415,7 @@
 
     try {
       window.dispatchEvent(new CustomEvent('ac:favorites-updated', {
-        detail: { canonPath: canonPath, isFavorite: isNowFav }
+        detail: { canonPath: normCanon, isFavorite: isNowFav }
       }));
     } catch (_e) {}
 
@@ -1377,27 +1426,152 @@
     if (!btn) return;
     var iconSpan = btn.querySelector('span[aria-hidden="true"]');
     var textSpan = btn.querySelector('span:not([aria-hidden="true"])');
+    btn.setAttribute('aria-pressed', isFav ? 'true' : 'false');
     if (isFav) {
       btn.classList.add('is-favorited');
       btn.setAttribute('aria-label', t.removeFavoriteLabel || 'Remove tool from favorites');
-      btn.setAttribute('title', t.removeFavorite || 'Remove from favorites');
+      btn.setAttribute('title', (t.removeFavorite || 'Remove from favorites') + ' (Alt+F)');
       if (iconSpan) iconSpan.textContent = '★';
       if (textSpan) textSpan.textContent = t.favorited || 'Favorited';
     } else {
       btn.classList.remove('is-favorited');
       btn.setAttribute('aria-label', t.favoriteLabel || 'Add tool to favorites');
-      btn.setAttribute('title', t.favorite || 'Add to Favorites');
+      btn.setAttribute('title', (t.favorite || 'Add to Favorites') + ' (Alt+F)');
       if (iconSpan) iconSpan.textContent = '☆';
       if (textSpan) textSpan.textContent = t.favorite || 'Add to Favorites';
     }
   }
 
+  /* ===== RECENTLY USED TOOLS DATA MANAGEMENT (RING BUFFER) ===== */
+  var MAX_RECENTS = 8;
+
+  function getRecentsRaw() {
+    try {
+      var raw = JSON.parse(localStorage.getItem('ac:recents') || '[]');
+      return Array.isArray(raw) ? raw : [];
+    } catch (_e) {
+      return [];
+    }
+  }
+
+  function getRecentsList() {
+    var rawList = getRecentsRaw();
+    var lang = currentPageLang();
+    var list = [];
+    var seen = {};
+
+    rawList.forEach(function (item) {
+      if (!item) return;
+      var canon = getCanonicalToolPath(item.u || item.url || item.path);
+      if (!canon || seen[canon]) return;
+      seen[canon] = true;
+
+      var toolMeta = TOOLS.find(function (t) { return t.u === canon; });
+      var toolName = toolMeta ? getToolName(toolMeta, lang) : (item.name || canon.replace(/\//g, ' ').trim());
+      var toolDesc = toolMeta ? getToolDesc(toolMeta, lang) : '';
+      var toolIcon = toolMeta ? toolMeta.i : (item.icon || '/assets/img/icon-json.svg');
+      var toolCat  = toolMeta ? toolMeta.c : (item.cat || 'Tool');
+      var localizedUrl = localizedPathForLang(canon, lang, false);
+
+      list.push({
+        n: toolName,
+        u: canon,
+        d: toolDesc,
+        i: toolIcon,
+        c: toolCat,
+        ts: item.ts || 0,
+        localizedUrl: localizedUrl
+      });
+    });
+
+    return list.slice(0, MAX_RECENTS);
+  }
+
+  function recordRecentTool(rawPath) {
+    if (!rawPath) return;
+    var canon = getCanonicalToolPath(rawPath);
+    if (!canon || canon === '/' || canon === '') return;
+
+    var isKnownTool = TOOLS.some(function (t) { return t.u === canon; });
+    if (!isKnownTool) return;
+
+    var rawList = getRecentsRaw();
+    var existingIdx = -1;
+    for (var i = 0; i < rawList.length; i++) {
+      if (rawList[i]) {
+        var c = getCanonicalToolPath(rawList[i].u || rawList[i].url || rawList[i].path);
+        if (c === canon) {
+          existingIdx = i;
+          break;
+        }
+      }
+    }
+
+    if (existingIdx !== -1) {
+      rawList.splice(existingIdx, 1);
+    }
+    rawList.unshift({
+      u: canon,
+      ts: Date.now()
+    });
+
+    if (rawList.length > MAX_RECENTS) {
+      rawList = rawList.slice(0, MAX_RECENTS);
+    }
+
+    try {
+      localStorage.setItem('ac:recents', JSON.stringify(rawList));
+    } catch (_e) {}
+
+    try {
+      window.dispatchEvent(new CustomEvent('ac:recents-updated', {
+        detail: { canonPath: canon, recents: rawList }
+      }));
+    } catch (_e) {}
+  }
+
+  function clearRecents() {
+    try {
+      localStorage.removeItem('ac:recents');
+    } catch (_e) {}
+
+    try {
+      window.dispatchEvent(new CustomEvent('ac:recents-updated', {
+        detail: { canonPath: null, recents: [] }
+      }));
+    } catch (_e) {}
+  }
+
+  function removeRecentTool(rawPath) {
+    if (!rawPath) return;
+    var canon = getCanonicalToolPath(rawPath);
+    var rawList = getRecentsRaw();
+    var filtered = rawList.filter(function (item) {
+      if (!item) return false;
+      return getCanonicalToolPath(item.u || item.url || item.path) !== canon;
+    });
+
+    try {
+      localStorage.setItem('ac:recents', JSON.stringify(filtered));
+    } catch (_e) {}
+
+    try {
+      window.dispatchEvent(new CustomEvent('ac:recents-updated', {
+        detail: { canonPath: canon, recents: filtered }
+      }));
+    } catch (_e) {}
+  }
+
   function initToolPageActions() {
-    const hasToolLayout = document.querySelector('.tool-wrapper, .tool-card, .tool-container, .tool-zone');
+    const hasToolLayout = document.querySelector('.tool-wrapper, .tool-card, .tool-container, .tool-zone, .dc-root');
     if (!hasToolLayout) return;
 
+    if (typeof window !== 'undefined' && window.location) {
+      recordRecentTool(window.location.pathname);
+    }
+
     const hero = document.querySelector('.hero');
-    const breadcrumb = document.querySelector('.breadcrumb');
+    const breadcrumb = document.querySelector('.breadcrumb, nav[aria-label="Breadcrumb"], nav[aria-label="breadcrumbs"]');
     const actionHost = breadcrumb || hero;
     if (!actionHost || actionHost.querySelector('.tool-page-actions')) return;
 
@@ -1486,13 +1660,13 @@
         <span aria-hidden="true">⌁</span>
         <span>${t.copy}</span>
       </button>
-      <button type="button" class="ac-btn tool-page-action-btn" data-action="favorite" aria-label="${t.favoriteLabel}">
+      <button type="button" class="ac-btn tool-page-action-btn" data-action="favorite" aria-pressed="false" aria-keyshortcuts="Alt+F" aria-label="${t.favoriteLabel}">
         <span aria-hidden="true">☆</span>
         <span>${t.favorite}</span>
       </button>
     `;
 
-    const title = hero.querySelector('h1');
+    const title = (hero && hero.querySelector('h1')) || document.querySelector('main h1, h1');
     const toolName = title ? title.textContent.trim() : document.title;
     const canonPath = getCanonicalToolPath(window.location.pathname);
     const favButton = actions.querySelector('[data-action="favorite"]');
@@ -1502,6 +1676,8 @@
     window.addEventListener('ac:favorites-updated', function () {
       updateFavoriteBtnState(favButton, isFavoriteTool(canonPath), t);
     });
+
+    // Alt+F shortcut dispatched globally via initGlobalShortcuts (favButton.click)
 
     actions.addEventListener('click', async (event) => {
       const button = event.target.closest('[data-action]');
@@ -1541,6 +1717,7 @@
         const isNowFav = toggleFavoriteTool(canonPath, toolName);
         updateFavoriteBtnState(button, isNowFav, t);
         showToast(isNowFav ? t.added : t.removed, isNowFav ? 'success' : 'info');
+        if (window.ACAnalytics) window.ACAnalytics.trackFavorite(canonPath, isNowFav);
       }
     });
 
@@ -1609,6 +1786,29 @@
   }
 
   function initAnalytics() {
+    // Ensure shared analytics adapter is available
+    function triggerInitialTelemetry() {
+      if (!window.ACAnalytics || window._acInitialTelemetryDispatched) return;
+      window._acInitialTelemetryDispatched = true;
+      window.ACAnalytics.track('page_view', {});
+      if (document.querySelector('.tool-wrapper, .tool-zone, .tool-container')) {
+        window.ACAnalytics.trackToolViewed();
+      }
+    }
+
+    if (!window.ACAnalytics && !document.querySelector('script[data-ac-analytics-adapter]')) {
+      const adapterScript = document.createElement('script');
+      adapterScript.src = '/assets/js/shared/analytics.js';
+      adapterScript.async = false;
+      adapterScript.setAttribute('data-ac-analytics-adapter', 'true');
+      adapterScript.onload = function () {
+        triggerInitialTelemetry();
+      };
+      document.head.appendChild(adapterScript);
+    } else if (window.ACAnalytics) {
+      triggerInitialTelemetry();
+    }
+
     const meta = document.querySelector('meta[name="google-analytics-id"]');
     const measurementId = (window.AC_GA_MEASUREMENT_ID || (meta && meta.content) || '').trim();
     if (!/^G-[A-Z0-9]+$/i.test(measurementId)) return;
@@ -1629,6 +1829,18 @@
     document.head.appendChild(script);
   }
 
+  /* ===== PRODUCTION FEATURE FLAGS & EXPERIMENT GATING (SPRINT S30) =====
+     Allows the platform owner to toggle, iterate, or gate individual levers
+     at runtime without breaking backward compatibility or user preferences. */
+  window.AC_FEATURES = Object.assign({
+    shortcuts: true,       // Sprint S27: Global keyboard shortcuts & help modal
+    favorites: true,       // Sprint S10: Local tool favoriting system
+    recents: true,         // Sprint S11: Local recents carousel & ring buffer
+    themeToggle: true,     // Sprint S27: Dark / Light theme persistence & sync
+    workflowChains: true,  // Sprints S12, S25, S26: Cross-tool workflow chaining
+    shareableState: true   // Sprints S13, S14: Compact shareable query parameter state
+  }, window.AC_FEATURES || {});
+
   /* ===== INIT ===== */
   applyStoredTheme();
   initAnalytics();
@@ -1639,15 +1851,59 @@
     initToolPageActions();
     initToolTrustBadge();
     initHeader();
-    initThemeToggle();
+    if (window.AC_FEATURES.themeToggle === false) {
+      var tBtn = document.getElementById('theme-toggle-btn');
+      if (tBtn) tBtn.style.display = 'none';
+    } else {
+      initThemeToggle();
+    }
     initLangSwitcher();
     updateMobileLangLinks();
     initSearch();
-    initDashboardQuickAccess();
+    if (window.AC_FEATURES.shortcuts === false) {
+      var sBtn = document.getElementById('btn-shortcuts-help');
+      if (sBtn) sBtn.style.display = 'none';
+    } else {
+      initShortcutsModal();
+      initGlobalShortcuts();
+    }
+    if (window.AC_FEATURES.favorites !== false) initDashboardQuickAccess();
+    if (window.AC_FEATURES.recents !== false) initDashboardRecents();
     initFileUploadTriggers();
     initPromptCards();
     initStaticFaqAccordion();
     initContactForm();
+
+    if (window.ACAnalytics && !window._acInitialTelemetryDispatched) {
+      window._acInitialTelemetryDispatched = true;
+      window.ACAnalytics.track('page_view', {});
+      if (document.querySelector('.tool-wrapper, .tool-zone, .tool-container')) {
+        window.ACAnalytics.trackToolViewed();
+      }
+    }
+
+    // Universal navigation & related-tool telemetry
+    document.addEventListener('click', function (e) {
+      var relLink = e.target.closest('.related-tools a, .tool-card');
+      if (relLink && window.ACAnalytics) {
+        var targetHref = relLink.getAttribute('href');
+        if (targetHref && targetHref.startsWith('/')) {
+          var pos = 0;
+          var parentCard = relLink.closest('.tool-card');
+          if (parentCard && parentCard.parentElement) {
+            var cards = Array.prototype.slice.call(parentCard.parentElement.querySelectorAll('.tool-card'));
+            pos = cards.indexOf(parentCard);
+          }
+          if (typeof window.ACAnalytics.trackRelatedToolClicked === 'function') {
+            window.ACAnalytics.trackRelatedToolClicked(null, targetHref, pos);
+          }
+        }
+      }
+      var catLink = e.target.closest('.main-nav a[href*="-tools/"], .main-nav a[href*="/calculators/"]');
+      if (catLink && window.ACAnalytics) {
+        window.ACAnalytics.trackCategoryHubClicked(catLink.getAttribute('href'), 'main_nav');
+      }
+    });
   });
 
   function initPromptCards() {
@@ -1733,11 +1989,20 @@
       if (searchModal && searchModal.parentElement !== document.body) {
         document.body.appendChild(searchModal);
       }
+      const shortcutsModal = document.getElementById('shortcuts-modal');
+      if (shortcutsModal && shortcutsModal.parentElement !== document.body) {
+        document.body.appendChild(shortcutsModal);
+      }
       var lang = currentPageLang();
       if (lang !== 'en') {
         var searchBtnLabel = el.querySelector('.search-btn-label');
         if (searchBtnLabel) {
           searchBtnLabel.textContent = lang === 'es' ? 'Buscar herramientas…' : (lang === 'da' ? 'Søg værktøjer…' : 'Search tools…');
+        }
+        var helpBtn = el.querySelector('#btn-shortcuts-help');
+        if (helpBtn && SHORTCUTS_I18N && SHORTCUTS_I18N[lang]) {
+          helpBtn.setAttribute('aria-label', SHORTCUTS_I18N[lang].btnLabel);
+          helpBtn.setAttribute('title', SHORTCUTS_I18N[lang].btnTitle);
         }
       }
     }
@@ -1764,6 +2029,7 @@
       <a href="/es/" class="footer-lang-badge" aria-label="Español">🇪🇸 ES</a>
       <a href="/da/" class="footer-lang-badge" aria-label="Dansk">🇩🇰 DA</a>
     </div>
+    <button id="btn-footer-pwa-install" class="footer-pwa-btn" style="display:none;" aria-label="Install AnyConverter App">📲 <span class="pwa-install-text">${lang === 'es' ? 'Instalar app' : (lang === 'da' ? 'Installer app' : 'Install App')}</span></button>
   </div>
   <div class="footer-links">
     <div class="footer-col">
@@ -1817,6 +2083,15 @@
   <p>${t.rights}</p>
   <p>${t.noData}</p>
 </div>`;
+
+    var footerPwaBtn = el.querySelector('#btn-footer-pwa-install');
+    if (footerPwaBtn) {
+      footerPwaBtn.addEventListener('click', function () {
+        if (window.ACPwa && typeof window.ACPwa.handleInstallClick === 'function') {
+          window.ACPwa.handleInstallClick();
+        }
+      });
+    }
   }
 
   /* ===== HEADER BEHAVIOR ===== */
@@ -1913,28 +2188,105 @@
     }
   }
 
-  /* ===== THEME ===== */
-  function applyStoredTheme() {
-    const stored = localStorage.getItem('ac_theme');
-    if (stored === 'dark') {
-      document.documentElement.classList.add('dark');
-    } else if (stored === 'light') {
-      document.documentElement.classList.remove('dark');
+  /* ===== THEME PERSISTENCE & OS PREFERENCE SYNCHRONIZATION (S27) ===== */
+  function getSystemTheme() {
+    if (typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      return 'dark';
     }
+    return 'light';
+  }
+
+  function getEffectiveTheme() {
+    try {
+      var stored = localStorage.getItem('ac_theme');
+      if (stored === 'dark' || stored === 'light') return stored;
+    } catch (_e) {}
+    return getSystemTheme();
+  }
+
+  function updateThemeToggleBtn() {
+    var btn = document.getElementById('theme-toggle-btn');
+    if (!btn) return;
+    var isDark = document.documentElement && document.documentElement.classList ? document.documentElement.classList.contains('dark') : false;
+    btn.textContent = isDark ? '☀️' : '🌙';
+    var lang = typeof currentPageLang === 'function' ? currentPageLang() : 'en';
+    var titles = {
+      en: isDark ? 'Switch to light mode' : 'Switch to dark mode',
+      es: isDark ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro',
+      da: isDark ? 'Skift til lys tilstand' : 'Skift til mørk tilstand'
+    };
+    var title = titles[lang] || titles.en;
+    btn.title = title;
+    btn.setAttribute('aria-label', title);
+  }
+
+  function applyStoredTheme() {
+    var theme = getEffectiveTheme();
+    if (document.documentElement && document.documentElement.classList) {
+      if (theme === 'dark') {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+    }
+    updateThemeToggleBtn();
   }
 
   function initThemeToggle() {
     const btn = document.getElementById('theme-toggle-btn');
-    if (!btn) return;
-    const isDark = document.documentElement.classList.contains('dark');
-    btn.textContent = isDark ? '☀️' : '🌙';
-    btn.title = isDark ? 'Switch to light mode' : 'Switch to dark mode';
-    btn.addEventListener('click', function () {
-      const nowDark = document.documentElement.classList.toggle('dark');
-      localStorage.setItem('ac_theme', nowDark ? 'dark' : 'light');
-      btn.textContent = nowDark ? '☀️' : '🌙';
-      btn.title = nowDark ? 'Switch to light mode' : 'Switch to dark mode';
-    });
+    if (btn) {
+      updateThemeToggleBtn();
+      btn.addEventListener('click', function () {
+        const nowDark = document.documentElement && document.documentElement.classList ? !document.documentElement.classList.contains('dark') : false;
+        if (document.documentElement && document.documentElement.classList) {
+          if (nowDark) {
+            document.documentElement.classList.add('dark');
+          } else {
+            document.documentElement.classList.remove('dark');
+          }
+        }
+        try {
+          localStorage.setItem('ac_theme', nowDark ? 'dark' : 'light');
+        } catch (_e) {}
+        updateThemeToggleBtn();
+      });
+    }
+
+    // Real-time OS preference change listener (when no explicit user override is stored)
+    if (typeof window !== 'undefined' && window.matchMedia) {
+      try {
+        var mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+        var onMediaChange = function (e) {
+          try {
+            var stored = localStorage.getItem('ac_theme');
+            if (stored !== 'dark' && stored !== 'light') {
+              if (document.documentElement && document.documentElement.classList) {
+                if (e.matches) {
+                  document.documentElement.classList.add('dark');
+                } else {
+                  document.documentElement.classList.remove('dark');
+                }
+              }
+              updateThemeToggleBtn();
+            }
+          } catch (_e) {}
+        };
+        if (typeof mediaQuery.addEventListener === 'function') {
+          mediaQuery.addEventListener('change', onMediaChange);
+        } else if (typeof mediaQuery.addListener === 'function') {
+          mediaQuery.addListener(onMediaChange);
+        }
+      } catch (_e) {}
+    }
+
+    // Cross-tab synchronization via 'storage' window event
+    if (typeof window !== 'undefined') {
+      window.addEventListener('storage', function (e) {
+        if (e.key === 'ac_theme') {
+          applyStoredTheme();
+        }
+      });
+    }
   }
 
   /* ===== LANGUAGE SWITCHER ===== */
@@ -1981,6 +2333,7 @@
       opt.addEventListener('click', function () {
         const targetLang = opt.dataset.lang;
         const url = buildLangUrl(targetLang);
+        if (window.ACAnalytics) window.ACAnalytics.trackLanguageSwitched(currentLang, targetLang);
         localStorage.setItem('ac_lang', targetLang);
         window.location.href = url;
       });
@@ -2014,15 +2367,19 @@
     if (!container) {
       container = document.createElement('div');
       container.id = 'toast-container';
+      container.setAttribute('role', 'region');
+      container.setAttribute('aria-label', acLang() === 'es' ? 'Notificaciones' : (acLang() === 'da' ? 'Notifikationer' : 'Notifications'));
       document.body.appendChild(container);
     }
     const toast = document.createElement('div');
     const icons = { success: '✓', error: '✕', info: 'ℹ' };
     toast.className = 'toast toast--' + type;
+    toast.setAttribute('role', type === 'error' ? 'alert' : 'status');
+    toast.setAttribute('aria-live', type === 'error' ? 'assertive' : 'polite');
     toast.innerHTML =
-      '<span class="toast-icon">' + (icons[type] || '✓') + '</span>' +
+      '<span class="toast-icon" aria-hidden="true">' + (icons[type] || '✓') + '</span>' +
       '<span class="toast-message">' + escapeHtml(message) + '</span>' +
-      '<button class="toast-close" aria-label="Close">×</button>';
+      '<button class="toast-close" aria-label="' + (acLang() === 'es' ? 'Cerrar notificación' : (acLang() === 'da' ? 'Luk notifikation' : 'Close notification')) + '">×</button>';
     container.appendChild(toast);
     requestAnimationFrame(function () { toast.classList.add('toast--visible'); });
     const timer = setTimeout(function () { removeToast(toast); }, duration);
@@ -2058,6 +2415,7 @@
       }
     }
     if (success) {
+      if (window.ACAnalytics) window.ACAnalytics.trackResultCopied(null, 'clipboard_text');
       window.showToast('Copied to clipboard!', 'success');
       const btn = triggerEl || (document.activeElement && (document.activeElement.tagName === 'BUTTON' || document.activeElement.classList.contains('ac-btn')) ? document.activeElement : null);
       if (btn && !btn.dataset.copying) {
@@ -2120,7 +2478,8 @@
       }
     }
 
-    function openSearch() {
+    function openSearch(source) {
+      if (window.ACAnalytics) window.ACAnalytics.trackSearchOpened(source || 'header_button');
       closeMobileMenu();
       if (modal.parentElement !== document.body) {
         document.body.appendChild(modal);
@@ -2129,10 +2488,15 @@
       modal.classList.add('open');
       modal.setAttribute('aria-hidden', 'false');
       document.body.style.overflow = 'hidden';
-      input.value = '';
-      activeIdx = -1;
-      showDefaultList();
-      requestAnimationFrame(function () { input.focus(); });
+      if (source !== 'slash_key' || !input.value) {
+        input.value = '';
+        activeIdx = -1;
+        showDefaultList();
+      }
+      requestAnimationFrame(function () {
+        input.focus();
+        if (typeof input.select === 'function') input.select();
+      });
     }
 
     function closeSearch() {
@@ -2143,8 +2507,18 @@
       activeIdx = -1;
     }
 
-    btn.addEventListener('click', openSearch);
+    btn.addEventListener('click', function () { openSearch('header_button'); });
     if (backdrop) backdrop.addEventListener('click', closeSearch);
+
+    list.addEventListener('click', function (e) {
+      var item = e.target.closest('.search-result-item');
+      if (item && window.ACAnalytics) {
+        var href = item.getAttribute('href');
+        var allItems = Array.prototype.slice.call(list.querySelectorAll('.search-result-item'));
+        var rank = allItems.indexOf(item);
+        window.ACAnalytics.trackSearchResultClicked(href, rank);
+      }
+    });
 
     document.addEventListener('keydown', function (e) {
       if (modal.classList.contains('open')) {
@@ -2154,8 +2528,10 @@
         if (e.key === 'Enter') {
           var links = list.querySelectorAll('.search-result-item');
           if (activeIdx >= 0 && links[activeIdx]) {
+            if (window.ACAnalytics) window.ACAnalytics.trackSearchResultClicked(links[activeIdx].getAttribute('href'), activeIdx);
             window.location.href = links[activeIdx].getAttribute('href');
           } else if (links.length === 1) {
+            if (window.ACAnalytics) window.ACAnalytics.trackSearchResultClicked(links[0].getAttribute('href'), 0);
             window.location.href = links[0].getAttribute('href');
           }
           return;
@@ -2163,19 +2539,23 @@
         return;
       }
       // Open shortcuts when modal is closed
-      var tag = document.activeElement ? document.activeElement.tagName : '';
       if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
-        e.preventDefault(); openSearch();
-      } else if (e.key === '/' && tag !== 'INPUT' && tag !== 'TEXTAREA') {
-        e.preventDefault(); openSearch();
+        e.preventDefault(); openSearch('keyboard_shortcut');
       }
     });
+
+    window.openSearch = openSearch;
+    window.closeSearch = closeSearch;
 
     input.addEventListener('input', function () {
       activeIdx = -1;
       var q = input.value.trim();
       if (!q) { showDefaultList(); return; }
       renderResults(q);
+      if (window.ACAnalytics) {
+        var itemsCount = list.querySelectorAll('.search-result-item').length;
+        window.ACAnalytics.trackSearchPerformed(q.length, itemsCount);
+      }
     });
 
     function moveActive(dir) {
@@ -2364,6 +2744,356 @@
     }
   }
 
+  /* ===== KEYBOARD SHORTCUTS DISCOVERY MODAL & ENGINE (S27) ===== */
+  var SHORTCUTS_I18N = {
+    en: {
+      btnLabel: 'Keyboard Shortcuts',
+      btnTitle: 'Keyboard shortcuts (?)',
+      title: 'Keyboard Shortcuts',
+      closeLabel: 'Close keyboard shortcuts',
+      openHelp: 'Open shortcuts help',
+      focusSearch: 'Focus search',
+      closeModal: 'Close modal / unfocus',
+      favoriteTool: 'Favorite current tool',
+      toggleTheme: 'Toggle dark / light mode',
+      footerHint: 'AnyConverter Navigation Shortcuts'
+    },
+    es: {
+      btnLabel: 'Atajos de teclado',
+      btnTitle: 'Atajos de teclado (?)',
+      title: 'Atajos de teclado',
+      closeLabel: 'Cerrar atajos de teclado',
+      openHelp: 'Abrir ayuda de atajos',
+      focusSearch: 'Enfocar búsqueda',
+      closeModal: 'Cerrar modal / desenfocar',
+      favoriteTool: 'Añadir a favoritos',
+      toggleTheme: 'Alternar modo oscuro / claro',
+      footerHint: 'Atajos de navegación de AnyConverter'
+    },
+    da: {
+      btnLabel: 'Tastaturgenveje',
+      btnTitle: 'Tastaturgenveje (?)',
+      title: 'Tastaturgenveje',
+      closeLabel: 'Luk tastaturgenveje',
+      openHelp: 'Åbn genvejshjælp',
+      focusSearch: 'Fokusér søgning',
+      closeModal: 'Luk modal / fjern fokus',
+      favoriteTool: 'Føj til favoritter',
+      toggleTheme: 'Skift mørk / lys tilstand',
+      footerHint: 'AnyConverter navigationsgenveje'
+    }
+  };
+
+  var lastFocusedTrigger = null;
+
+  function renderShortcutsModalHTML(lang) {
+    var t = SHORTCUTS_I18N[lang] || SHORTCUTS_I18N.en;
+    return `
+  <div class="shortcuts-backdrop" id="shortcuts-backdrop"></div>
+  <div class="shortcuts-dialog" role="document">
+    <div class="shortcuts-header">
+      <h2 id="shortcuts-modal-title" class="shortcuts-title">${t.title}</h2>
+      <button type="button" class="shortcuts-close-btn" id="btn-shortcuts-close" aria-label="${t.closeLabel}">&times;</button>
+    </div>
+    <div class="shortcuts-body">
+      <ul class="shortcuts-list" id="shortcuts-list">
+        <li class="shortcuts-item">
+          <span class="shortcuts-desc">${t.openHelp}</span>
+          <div class="shortcuts-keys"><kbd>?</kbd></div>
+        </li>
+        <li class="shortcuts-item">
+          <span class="shortcuts-desc">${t.focusSearch}</span>
+          <div class="shortcuts-keys"><kbd>/</kbd></div>
+        </li>
+        <li class="shortcuts-item">
+          <span class="shortcuts-desc">${t.closeModal}</span>
+          <div class="shortcuts-keys"><kbd>Esc</kbd></div>
+        </li>
+        <li class="shortcuts-item">
+          <span class="shortcuts-desc">${t.favoriteTool}</span>
+          <div class="shortcuts-keys"><kbd>Alt</kbd> + <kbd>F</kbd></div>
+        </li>
+        <li class="shortcuts-item">
+          <span class="shortcuts-desc">${t.toggleTheme}</span>
+          <div class="shortcuts-keys"><kbd>Alt</kbd> + <kbd>T</kbd></div>
+        </li>
+      </ul>
+    </div>
+    <div class="shortcuts-footer">
+      <span class="shortcuts-footer-hint" id="shortcuts-footer-hint">${t.footerHint}</span>
+    </div>
+  </div>`;
+  }
+
+  function openShortcutsModal(triggerSource) {
+    var modal = document.getElementById('shortcuts-modal');
+    if (!modal) {
+      initShortcutsModal();
+      modal = document.getElementById('shortcuts-modal');
+    }
+    if (!modal) return;
+
+    triggerSource = triggerSource || 'keyboard';
+    lastFocusedTrigger = document.activeElement;
+
+    if (typeof closeSearch === 'function') closeSearch();
+    if (typeof closeMobileMenu === 'function') closeMobileMenu();
+    if (typeof closeLangDropdown === 'function') closeLangDropdown();
+
+    modal.style.display = 'flex';
+    modal.classList.add('open');
+    modal.setAttribute('aria-hidden', 'false');
+
+    var closeBtn = document.getElementById('btn-shortcuts-close');
+    if (closeBtn) {
+      closeBtn.focus();
+    }
+
+    if (window.ACAnalytics) {
+      if (typeof window.ACAnalytics.trackEvent === 'function') {
+        window.ACAnalytics.trackEvent('shortcuts_modal_viewed', { trigger: triggerSource });
+      } else if (typeof window.ACAnalytics.track === 'function') {
+        window.ACAnalytics.track('shortcuts_modal_viewed', { trigger: triggerSource });
+      }
+    }
+  }
+
+  function closeShortcutsModal() {
+    var modal = document.getElementById('shortcuts-modal');
+    if (!modal) return;
+
+    modal.style.display = 'none';
+    modal.classList.remove('open');
+    modal.setAttribute('aria-hidden', 'true');
+
+    if (lastFocusedTrigger && typeof lastFocusedTrigger.focus === 'function') {
+      try {
+        lastFocusedTrigger.focus();
+      } catch (_e) {}
+    }
+    lastFocusedTrigger = null;
+  }
+
+  function initShortcutsModal() {
+    var lang = typeof currentPageLang === 'function' ? currentPageLang() : 'en';
+    var t = SHORTCUTS_I18N[lang] || SHORTCUTS_I18N.en;
+
+    var helpBtn = document.getElementById('btn-shortcuts-help');
+    if (helpBtn) {
+      helpBtn.setAttribute('aria-label', t.btnLabel);
+      helpBtn.setAttribute('title', t.btnTitle);
+      helpBtn.onclick = function () {
+        openShortcutsModal('button');
+      };
+    }
+
+    var modal = document.getElementById('shortcuts-modal');
+    if (!modal) {
+      modal = document.createElement('div');
+      modal.className = 'modal shortcuts-modal';
+      modal.id = 'shortcuts-modal';
+      modal.setAttribute('role', 'dialog');
+      modal.setAttribute('aria-modal', 'true');
+      modal.setAttribute('aria-labelledby', 'shortcuts-modal-title');
+      modal.setAttribute('aria-hidden', 'true');
+      modal.style.display = 'none';
+      modal.innerHTML = renderShortcutsModalHTML(lang);
+      document.body.appendChild(modal);
+    } else {
+      modal.innerHTML = renderShortcutsModalHTML(lang);
+    }
+
+    var closeBtn = document.getElementById('btn-shortcuts-close');
+    if (closeBtn) {
+      closeBtn.onclick = closeShortcutsModal;
+    }
+
+    var backdrop = document.getElementById('shortcuts-backdrop');
+    if (backdrop) {
+      backdrop.onclick = closeShortcutsModal;
+    }
+
+    // Modal Focus Trap (WCAG 2.2 AA)
+    modal.addEventListener('keydown', function (e) {
+      if (e.key === 'Tab') {
+        var focusables = modal.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+        if (!focusables.length) return;
+        var firstEl = focusables[0];
+        var lastEl = focusables[focusables.length - 1];
+        if (e.shiftKey) {
+          if (document.activeElement === firstEl) {
+            e.preventDefault();
+            lastEl.focus();
+          }
+        } else {
+          if (document.activeElement === lastEl) {
+            e.preventDefault();
+            firstEl.focus();
+          }
+        }
+      }
+    });
+  }
+
+  function isInputActive(target) {
+    if (!target) return false;
+    var tag = (target.tagName || '').toLowerCase();
+    if (tag === 'input' || tag === 'textarea' || tag === 'select') return true;
+    if (target.isContentEditable || target.getAttribute('contenteditable') === 'true') return true;
+    return false;
+  }
+
+  function initGlobalShortcuts() {
+    document.addEventListener('keydown', function (e) {
+      // 1. Esc: Closes any active modal, mobile menu, search dropdown, clears search focus, exits fullscreen
+      if (e.key === 'Escape') {
+        var didAction = false;
+
+        // Input shielding exception: safely blurs active input
+        if (isInputActive(document.activeElement)) {
+          document.activeElement.blur();
+          didAction = true;
+        }
+
+        var sModal = document.getElementById('shortcuts-modal');
+        if (sModal && (sModal.classList.contains('open') || sModal.style.display !== 'none')) {
+          e.preventDefault();
+          closeShortcutsModal();
+          didAction = true;
+        }
+
+        var searchModal = document.getElementById('search-modal');
+        if (searchModal && (searchModal.classList.contains('open') || document.body.classList.contains('search-open'))) {
+          e.preventDefault();
+          if (typeof closeSearch === 'function') closeSearch();
+          didAction = true;
+        }
+
+        var mobileBtn = document.getElementById('mobile-menu-btn');
+        if (mobileBtn && mobileBtn.getAttribute('aria-expanded') === 'true') {
+          e.preventDefault();
+          if (typeof closeMobileMenu === 'function') closeMobileMenu();
+          didAction = true;
+        }
+
+        if (typeof closeAllNavDropdowns === 'function') closeAllNavDropdowns();
+        if (typeof closeLangDropdown === 'function') closeLangDropdown();
+
+        var fullscreenPanel = document.querySelector('.ac-panel.is-fullscreen, .is-fullscreen');
+        if (fullscreenPanel) {
+          e.preventDefault();
+          var fsBtn = fullscreenPanel.querySelector('[data-action="fullscreen"]') || document.getElementById('fs-btn');
+          if (fsBtn) {
+            fsBtn.click();
+          } else {
+            fullscreenPanel.classList.remove('is-fullscreen');
+            document.body.classList.remove('has-fullscreen');
+          }
+          didAction = true;
+        }
+
+        if (didAction && window.ACAnalytics) {
+          if (typeof window.ACAnalytics.trackEvent === 'function') {
+            window.ACAnalytics.trackEvent('shortcut_used', { key: 'escape' });
+          } else if (typeof window.ACAnalytics.track === 'function') {
+            window.ACAnalytics.track('shortcut_used', { key: 'escape' });
+          }
+        }
+        return;
+      }
+
+      // Input Shielding Guard: Shortcuts must NOT trigger when typing in inputs/textareas/selects/contenteditable
+      if (isInputActive(e.target) || isInputActive(document.activeElement)) {
+        return;
+      }
+
+      // 2. '?' (Shift + '/') -> Opens Keyboard Shortcuts Discovery Modal
+      if (e.key === '?' || (e.shiftKey && (e.key === '/' || e.code === 'Slash'))) {
+        e.preventDefault();
+        openShortcutsModal('keyboard');
+        if (window.ACAnalytics) {
+          if (typeof window.ACAnalytics.trackEvent === 'function') {
+            window.ACAnalytics.trackEvent('shortcut_used', { key: 'question_mark' });
+          } else if (typeof window.ACAnalytics.track === 'function') {
+            window.ACAnalytics.track('shortcut_used', { key: 'question_mark' });
+          }
+        }
+        return;
+      }
+
+      // 3. '/' -> Focuses global search input, selecting existing query text
+      if (e.key === '/' && !e.shiftKey && !e.ctrlKey && !e.metaKey && !e.altKey) {
+        e.preventDefault();
+        if (typeof openSearch === 'function') {
+          openSearch('slash_key');
+        }
+        var searchInput = document.getElementById('search-input') || document.getElementById('hero-search-input');
+        if (searchInput) {
+          searchInput.focus();
+          if (typeof searchInput.select === 'function') {
+            searchInput.select();
+          }
+        }
+        if (window.ACAnalytics) {
+          if (typeof window.ACAnalytics.trackEvent === 'function') {
+            window.ACAnalytics.trackEvent('shortcut_used', { key: 'slash' });
+          } else if (typeof window.ACAnalytics.track === 'function') {
+            window.ACAnalytics.track('shortcut_used', { key: 'slash' });
+          }
+        }
+        return;
+      }
+
+      // 4. 'Alt+F' -> Toggles favoriting for current tool (preserving existing S10 logic)
+      if (e.altKey && !e.ctrlKey && !e.metaKey && (e.key === 'f' || e.key === 'F')) {
+        e.preventDefault();
+        var favButton = document.querySelector('[data-action="favorite"]');
+        if (favButton) {
+          favButton.click();
+          favButton.focus();
+        } else {
+          var canon = typeof getCanonicalToolPath === 'function' ? getCanonicalToolPath(window.location.pathname) : window.location.pathname;
+          if (canon && canon !== '/' && typeof toggleFavoriteTool === 'function') {
+            toggleFavoriteTool(canon);
+          }
+        }
+        if (window.ACAnalytics) {
+          if (typeof window.ACAnalytics.trackEvent === 'function') {
+            window.ACAnalytics.trackEvent('shortcut_used', { key: 'alt_f' });
+          } else if (typeof window.ACAnalytics.track === 'function') {
+            window.ACAnalytics.track('shortcut_used', { key: 'alt_f' });
+          }
+        }
+        return;
+      }
+
+      // 5. 'Alt+T' -> Toggles dark / light theme
+      if (e.altKey && !e.ctrlKey && !e.metaKey && (e.key === 't' || e.key === 'T')) {
+        e.preventDefault();
+        var themeBtn = document.getElementById('theme-toggle-btn');
+        if (themeBtn) {
+          themeBtn.click();
+        } else {
+          var nowDark = document.documentElement && document.documentElement.classList ? !document.documentElement.classList.contains('dark') : false;
+          if (document.documentElement && document.documentElement.classList) {
+            if (nowDark) document.documentElement.classList.add('dark');
+            else document.documentElement.classList.remove('dark');
+          }
+          try { localStorage.setItem('ac_theme', nowDark ? 'dark' : 'light'); } catch (_e) {}
+          if (typeof updateThemeToggleBtn === 'function') updateThemeToggleBtn();
+        }
+        if (window.ACAnalytics) {
+          if (typeof window.ACAnalytics.trackEvent === 'function') {
+            window.ACAnalytics.trackEvent('shortcut_used', { key: 'alt_t' });
+          } else if (typeof window.ACAnalytics.track === 'function') {
+            window.ACAnalytics.track('shortcut_used', { key: 'alt_t' });
+          }
+        }
+        return;
+      }
+    });
+  }
+
   /* ===== HOMEPAGE DASHBOARD QUICK ACCESS / FAVORITES ===== */
   function initDashboardQuickAccess() {
     var quickGrid = document.querySelector('.dash-quick-grid');
@@ -2400,10 +3130,153 @@
     window.addEventListener('ac:favorites-updated', renderDashboardQuick);
   }
 
+  /* ===== HOMEPAGE DASHBOARD RECENTLY USED CAROUSEL / ROW ===== */
+  var RECENTS_I18N = {
+    en: {
+      title: 'Recently Used',
+      clear: 'Clear recents',
+      clearAria: 'Clear recently used tools',
+      navAria: 'Recently used tools'
+    },
+    es: {
+      title: 'Usado recientemente',
+      clear: 'Borrar recientes',
+      clearAria: 'Borrar herramientas usadas recientemente',
+      navAria: 'Herramientas usadas recientemente'
+    },
+    da: {
+      title: 'Senest brugte',
+      clear: 'Ryd seneste',
+      clearAria: 'Ryd senest brugte værktøjer',
+      navAria: 'Senest brugte værktøjer'
+    }
+  };
+
+  function initDashboardRecents() {
+    var quickGrid = document.querySelector('.dash-quick-grid');
+    var dashMain = document.querySelector('.dash-main');
+    if (!quickGrid && !dashMain) return;
+
+    var quickSection = (quickGrid && typeof quickGrid.closest === 'function') ? quickGrid.closest('.dash-section') : null;
+
+    // Locate or create recents container
+    var section = document.getElementById('dash-recents-section') || (typeof document.querySelector === 'function' ? document.querySelector('.dash-recents-section') : null);
+    if (!section && typeof document.createElement === 'function') {
+      section = document.createElement('section');
+      section.className = 'dash-section dash-recents-section';
+      section.id = 'dash-recents-section';
+      section.setAttribute('aria-labelledby', 'recents-heading');
+      section.style.display = 'none';
+
+      if (quickSection && quickSection.parentNode) {
+        quickSection.parentNode.insertBefore(section, quickSection);
+      } else if (dashMain) {
+        dashMain.insertBefore(section, dashMain.firstChild);
+      }
+    }
+
+    function renderDashboardRecents() {
+      var recents = getRecentsList();
+      if (!recents || recents.length === 0) {
+        section.style.display = 'none';
+        section.hidden = true;
+        section.innerHTML = '';
+        return;
+      }
+
+      var lang = currentPageLang();
+      var i18n = RECENTS_I18N[lang] || RECENTS_I18N.en;
+
+      section.style.display = '';
+      section.hidden = false;
+
+      var cardsHtml = recents.map(function (tool) {
+        var toolName = getToolName(tool, lang);
+        var href = localizedPathForLang(tool.u, lang, false);
+        return '<a href="' + href + '" class="dash-quick-card dash-recent-card" data-canon="' + escapeHtml(tool.u) + '">' +
+          '<img src="' + tool.i + '" alt="' + escapeHtml(toolName) + ' icon" width="26" height="26" loading="lazy">' +
+          '<span class="dash-quick-card-name">' + escapeHtml(toolName) + '</span>' +
+        '</a>';
+      }).join('');
+
+      section.innerHTML =
+        '<div class="dash-section-header">' +
+          '<h2 class="dash-section-title" id="recents-heading">' + escapeHtml(i18n.title) + '</h2>' +
+          '<button type="button" class="dash-recents-clear-btn" aria-label="' + escapeHtml(i18n.clearAria) + '">' +
+            escapeHtml(i18n.clear) +
+          '</button>' +
+        '</div>' +
+        '<nav aria-label="' + escapeHtml(i18n.navAria) + '">' +
+          '<div class="dash-quick-grid dash-recents-grid">' +
+            cardsHtml +
+          '</div>' +
+        '</nav>';
+
+      var clearBtn = section.querySelector('.dash-recents-clear-btn');
+      if (clearBtn) {
+        clearBtn.addEventListener('click', function (e) {
+          e.preventDefault();
+          clearRecents();
+          if (window.ACAnalytics) {
+            if (typeof window.ACAnalytics.trackRecentsCleared === 'function') {
+              window.ACAnalytics.trackRecentsCleared();
+            } else if (typeof window.ACAnalytics.track === 'function') {
+              window.ACAnalytics.track('recents_cleared', {});
+            }
+          }
+        });
+        clearBtn.addEventListener('keydown', function (e) {
+          if (e.key === 'Enter' || e.key === ' ' || e.key === 'Spacebar') {
+            e.preventDefault();
+            clearBtn.click();
+          }
+        });
+      }
+
+      var grid = section.querySelector('.dash-recents-grid');
+      if (grid) {
+        grid.addEventListener('click', function (e) {
+          var card = e.target.closest('.dash-recent-card, .dash-quick-card');
+          if (card) {
+            var canon = card.getAttribute('data-canon') || getCanonicalToolPath(card.getAttribute('href'));
+            if (window.ACAnalytics) {
+              if (typeof window.ACAnalytics.trackRecentClicked === 'function') {
+                window.ACAnalytics.trackRecentClicked(canon);
+              } else if (typeof window.ACAnalytics.track === 'function') {
+                window.ACAnalytics.track('recent_clicked', { tool_slug: canon });
+              }
+            }
+          }
+        });
+      }
+    }
+
+    renderDashboardRecents();
+    window.addEventListener('ac:recents-updated', renderDashboardRecents);
+  }
+
   /* ===== MAIN CONTENT ID ===== */
   document.addEventListener('DOMContentLoaded', function () {
     const main = document.querySelector('main');
     if (main && !main.id) main.id = 'main-content';
+  });
+
+  /* ===== ACCESSIBLE SWITCH & DROPZONE KEYBOARD ACTIVATION ===== */
+  document.addEventListener('keydown', function (e) {
+    if (e.key === ' ' || e.key === 'Enter') {
+      var target = e.target;
+      if (!target) return;
+      // Handle custom switch activation via Space or Enter
+      if (target.getAttribute && target.getAttribute('role') === 'switch') {
+        e.preventDefault();
+        target.click();
+      }
+      // Handle custom button activation on div/label dropzones with role="button"
+      else if (target.getAttribute && target.getAttribute('role') === 'button' && target.tagName !== 'BUTTON') {
+        e.preventDefault();
+        target.click();
+      }
+    }
   });
 
   /* ============================================================
@@ -2844,6 +3717,26 @@
   window.getToolCategory = getToolCategory;
   window.TOOL_I18N = TOOL_I18N;
   window.CATEGORY_I18N = CATEGORY_I18N;
+
+  /* Sprint S10/S11 Window APIs */
+  window.getCanonicalToolPath = getCanonicalToolPath;
+  window.getFavoritesList = getFavoritesList;
+  window.isFavoriteTool = isFavoriteTool;
+  window.toggleFavoriteTool = toggleFavoriteTool;
+  window.getRecentsList = getRecentsList;
+  window.getRecentsRaw = getRecentsRaw;
+  window.recordRecentTool = recordRecentTool;
+  window.clearRecents = clearRecents;
+  window.removeRecentTool = removeRecentTool;
+  window.initDashboardRecents = initDashboardRecents;
+
+  /* Sprint S27 Theme & Shortcuts Window APIs */
+  window.applyStoredTheme = applyStoredTheme;
+  window.initShortcutsModal = initShortcutsModal;
+  window.initGlobalShortcuts = initGlobalShortcuts;
+  window.openShortcutsModal = openShortcutsModal;
+  window.closeShortcutsModal = closeShortcutsModal;
+  window.SHORTCUTS_I18N = SHORTCUTS_I18N;
 
   window.loadFileWithProgress = function (file, maxMB) {
     maxMB = typeof maxMB === 'number' ? maxMB : 100;

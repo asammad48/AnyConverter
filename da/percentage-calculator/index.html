@@ -33,6 +33,8 @@
 
 
 <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <meta name="theme-color" content="#B04A45">
+  <link rel="manifest" href="/manifest.webmanifest">
   <style>
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
     html{font-family:'Inter',system-ui,sans-serif;background:var(--color-bg,#F7F6F3);color:var(--color-text,#151515)}
@@ -45,6 +47,26 @@
     @font-face{font-family:'Inter';font-display:swap}
   </style>
   <link rel="stylesheet" href="/assets/css/style.css?v=20261109">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Hjem",
+      "item": "https://anyconverter.io/da/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Procentberegner",
+      "item": "https://anyconverter.io/da/percentage-calculator/"
+    }
+  ]
+}
+  </script>
 </head>
 <body>
   <header id="site-header" class="site-header"></header>
@@ -169,15 +191,18 @@
     <section class="related-tools">
       <h2>Relaterede Værktøjer</h2>
       <div class="tool-grid">
-        <a href="/da/percentage-difference-calculator/" class="tool-card"><img src="/assets/img/icon-calculator.svg" alt="Procentforskelberegner Online Gratis icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Procentforskelberegner Online Gratis</h3><p>Gratis procentforskelberegner: sammenlign to værdier med den symmetriske formel, og se også procentvis ændring og procentpoint side om side – med udregning.</p><span class="tool-card-link">Prøv det →</span></a>
-        <a href="/da/reverse-percentage-calculator/" class="tool-card"><img src="/assets/img/icon-calculator.svg" alt="Omvendt Procentberegner Online Gratis icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Omvendt Procentberegner Online Gratis</h3><p>Brug omvendt procentberegner gratis i browseren.</p><span class="tool-card-link">Prøv det →</span></a>
-        <a href="/da/discount-calculator/" class="tool-card"><img src="/assets/img/icon-discount.svg" alt="Rabatberegner Online Gratis icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Rabatberegner Online Gratis</h3><p>Beregn salgspris, besparelse og endelig pris ud fra en rabatprocent med en gratis online beregner. Med klare trin, praktiske resultater og ingen konto.</p><span class="tool-card-link">Prøv det →</span></a>
+        <a href="/da/rise-over-run-calculator/" class="tool-card"><img src="/assets/img/icon-calculator.svg" alt="Hældningsberegner icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Hældningsberegner</h3><p>Gratis hældningsberegner: find hældningen m = stigning ÷ vandret afstand som brøk, decimaltal, procent og vinkel, ud fra stigning og afstand eller to punkter.</p><span class="tool-card-link">Prøv det →</span></a>
+        <a href="/da/slope-grade-angle-calculator/" class="tool-card"><img src="/assets/img/icon-calculator.svg" alt="Hældning, Stigningsprocent og Vinkel Beregner icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Hældning, Stigningsprocent og Vinkel Beregner</h3><p>Gratis beregner for hældning, stigningsprocent og vinkel: omregn mellem forhold 1:n, decimaltal, procent, promille, taghældning og vinkel i grader.</p><span class="tool-card-link">Prøv det →</span></a>
         <a href="/da/tip-calculator/" class="tool-card"><img src="/assets/img/icon-tip.svg" alt="Drikkepenge Beregner Online Gratis icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Drikkepenge Beregner Online Gratis</h3><p>Beregn det nøjagtige drikkepenge beløb for enhver regning og del det mellem flere personer.</p><span class="tool-card-link">Prøv det →</span></a>
+        <a href="/da/discount-calculator/" class="tool-card"><img src="/assets/img/icon-discount.svg" alt="Rabatberegner Online Gratis icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Rabatberegner Online Gratis</h3><p>Beregn salgspris, besparelse og endelig pris ud fra en rabatprocent med en gratis online beregner. Med klare trin, praktiske resultater og ingen konto.</p><span class="tool-card-link">Prøv det →</span></a>
+        <a href="/da/percentage-difference-calculator/" class="tool-card"><img src="/assets/img/icon-calculator.svg" alt="Procentforskelberegner Online Gratis icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Procentforskelberegner Online Gratis</h3><p>Gratis procentforskelberegner: sammenlign to værdier med den symmetriske formel, og se også procentvis ændring og procentpoint side om side – med udregning.</p><span class="tool-card-link">Prøv det →</span></a>
       </div>
     </section>
   </main>
   <footer id="site-footer" class="site-footer"></footer>
+  <script src="/assets/js/shared/analytics.js" defer></script>
   <script src="/assets/js/shared.js?v=20261109" defer></script>
+  <script src="/assets/js/shared/pwa.js" defer></script>
   <script src="/assets/js/tools/percentage-calculator.js" defer></script>
 </body>
 </html>

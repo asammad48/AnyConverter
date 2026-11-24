@@ -43,6 +43,32 @@
     @font-face{font-family:'Inter';font-display:swap}
   </style>
   <link rel="stylesheet" href="/assets/css/style.css?v=20261109">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://anyconverter.io/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "PDF Tools",
+      "item": "https://anyconverter.io/pdf-merge/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Blackout PDF",
+      "item": "https://anyconverter.io/redact-pdf/"
+    }
+  ]
+}
+  </script>
 </head>
 <body>
   <header id="site-header" class="site-header"></header>
@@ -55,7 +81,7 @@
     <div class="tool-wrapper">
       <div class="tool-zone">
         <div style="padding:24px">
-          <div class="upload-area" data-file-target="rd-file" role="button" tabindex="0">
+          <div class="upload-area" data-file-target="rd-file" role="button" tabindex="0" aria-label="Drop file here or click to browse">
             <img src="/assets/img/icon-pdf.svg" alt="Blackout PDF Online Free icon" width="36" height="36" style="margin-bottom:10px">
             <p style="font-size:14px;color:var(--color-text-2,#6B7280);margin-bottom:10px">Drop your PDF here or click to browse</p>
             <input type="file" id="rd-file" accept=".pdf" style="display:none">
@@ -127,10 +153,10 @@
     <section class="related-tools">
       <h2>Related Tools</h2>
       <div class="tool-grid">
-        <a href="/pdf-metadata-remover/" class="tool-card"><img src="/assets/img/icon-pdf.svg" alt="PDF Metadata Remover icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>PDF Metadata Remover</h3><p>Inspect and strip author, title, keywords and creator properties from PDF files.</p><span class="tool-card-link">Try it →</span></a>
-        <a href="/protect-pdf/" class="tool-card"><img src="/assets/img/icon-pdf-protect.svg" alt="Protect PDF icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Protect PDF</h3><p>Add a password to a PDF to prevent unauthorised access.</p><span class="tool-card-link">Try it →</span></a>
         <a href="/pdf-security/" class="tool-card"><img src="/assets/img/icon-pdf-security.svg" alt="PDF Security icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>PDF Security</h3><p>Set granular permissions: restrict printing, copying, editing and more.</p><span class="tool-card-link">Try it →</span></a>
+        <a href="/pdf-metadata-remover/" class="tool-card"><img src="/assets/img/icon-pdf.svg" alt="PDF Metadata Remover icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>PDF Metadata Remover</h3><p>Inspect and strip author, title, keywords and creator properties from PDF files.</p><span class="tool-card-link">Try it →</span></a>
         <a href="/sign-pdf/" class="tool-card"><img src="/assets/img/icon-pdf-sign.svg" alt="Sign PDF icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>Sign PDF</h3><p>Draw your signature and embed it into any PDF page instantly.</p><span class="tool-card-link">Try it →</span></a>
+        <a href="/ocr-pdf/" class="tool-card"><img src="/assets/img/icon-ocr-pdf.svg" alt="OCR PDF icon" class="tool-card-icon" width="40" height="40" loading="lazy"><h3>OCR PDF</h3><p>Extract text from scanned PDFs and images using Tesseract OCR.</p><span class="tool-card-link">Try it →</span></a>
       </div>
     </section>
 
