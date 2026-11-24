@@ -2,6 +2,32 @@
 
 ---
 
+## Creative Studio — Phase 06: Non-Destructive Video Editor, Generated Clips, Audio & Captions (2026-11-24)
+
+**Program:** AnyConverter Creative Studio (14-File Concrete Implementation Plan).  
+**Source Specification:** `D:\AnyConverter_Creative_Studio_14_File_Concrete_Implementation_Plan (1)` (File 06).  
+**Phase Status:** **100% COMPLETED & VERIFIED (PASS FOR PHASE 06 RELEASE)**  
+**Active Branch:** `feat/creative-studio-phase-06-timeline-audio-captions` (branched from Phase 05 checkpoint `920dc97`).  
+**Deliverables Produced & Verified:**
+1. **Multitrack NLE Timeline Engine:**
+   - `assets/js/creative-studio/timeline-editor.js` (Non-destructive clip editing, splitting at arbitrary playhead frames, gap-free ripple trimming, clip reordering, and three distinct clip editing classes: `SOURCE_NATIVE`, `GENERATED_FOOTAGE`, `IMPORTED_RASTER`).
+2. **Audio Mixer & Ducking Engine:**
+   - `assets/js/creative-studio/audio-mixer.js` (Per-track gain automation, fade in/out curves, waveform visualization peak generator, and deterministic audio ducking attenuating background music to 25% whenever voiceover narration is active).
+3. **Caption & Subtitle Editor:**
+   - `assets/js/creative-studio/caption-editor.js` (Bidirectional SubRip `.srt` and WebVTT `.vtt` parsing/generation with broadcast safe-zone line wrapping <= 42 chars).
+4. **Selective Scene Invalidation Tracker:**
+   - `assets/js/creative-studio/scene-invalidation.js` (Dependency graph ensuring modifications to Scene 8 mark only Scene 8 dirty while preserving 100% identical asset hashes for Scenes 1–7 and 9–12; candidate versioning workflow staging `version 2` with user Accept/Reject).
+5. **Automated Unit & Integration Test Suite:**
+   - `tests/creative-studio/unit/test_phase06_timeline_audio_captions.js` (7/7 tests passed: T1 2-minute MP4 split at 0:43/1:18 and reorder, T2 12-scene selective invalidation, T3 clip editability classification, T4 audio ducking, T5 ripple trimming, T6 SRT/VTT caption roundtrip, T7 candidate replacement workflow).
+6. **Comprehensive Master Test Suite:**
+   - Registered Phase 06 into `tests/run_all_tests.js`. 50/50 suites passed (100%), including 21/21 Playwright visual regressions.
+7. **Phase 06 Release Gate Report:**
+   - `docs/creative-studio/PHASE_06_RELEASE_GATE.md` with explicit `PASS FOR PHASE 06 RELEASE` verdict.
+
+**Next Immediate Step:** Owner review and sign-off on Phase 06; then proceed to Phase 07 (`07_CREATION_WIZARDS_AI_AND_NATIVE_PROMPT_STORYBOARD.md`).
+
+---
+
 ## Creative Studio — Phase 05: Native 2D/3D Animation, Remotion Feasibility, Browser Preview & Rendering (2026-11-24)
 
 **Program:** AnyConverter Creative Studio (14-File Concrete Implementation Plan).  

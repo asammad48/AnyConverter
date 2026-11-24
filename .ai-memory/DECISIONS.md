@@ -1768,3 +1768,38 @@ ADR-051: Tool-to-Tool Workflow Chaining for JSON Group (JSON Formatter → Compa
 - **Consequences:**
   - Formally clears Phase 05 with `PASS FOR PHASE 05 RELEASE` verdict.
   - Fully unblocks Phase 06 (Non-Destructive Video Editor, Generated Clips, Audio & Captions).
+
+
+## ADR-075: Creative Studio Phase 06 Multitrack Timeline, Audio Ducking, SRT/VTT Captions & Selective Invalidation
+- **Date:** 2026-11-24
+- **Status:** Approved & Implemented
+- **Context:**
+  - Implementation of File 06 (`06_NONDESTRUCTIVE_VIDEO_EDITOR_GENERATED_CLIP_EDITS_AUDIO_CAPTIONS.md`) for AnyConverter Creative Studio.
+  - Requires non-destructive multitrack NLE video editing, audio mixing with deterministic ducking, broadcast-safe subtitle handling, and selective shot regeneration invalidation.
+- **Decision:**
+  1. **Three Clip Editing Classes (`timeline-editor.js`):**
+     - `SOURCE_NATIVE`: Full vector/layer object tree editable in `.acstudio`.
+     - `GENERATED_FOOTAGE`: Raster video with prompt, seed, model metadata; editable only via shot regeneration or overlays.
+     - `IMPORTED_RASTER`: Standard external MP4/WebM; supports non-linear edits (trim, split, speed, volume, captions, overlays).
+     - Explicit UX messaging explains choices when users attempt to edit flattened clips, eliminating false expectations of direct geometry editing on flattened MP4s.
+  2. **Multitrack Timeline & NLE Operations (`timeline-editor.js`):**
+     - Implemented frame-accurate splitting at arbitrary playhead positions.
+     - Implemented non-destructive ripple trimming that shifts downstream clips and eliminates timeline gaps.
+     - Enforced timebase invariants with rational framerates and integer frame clocks.
+  3. **Multitrack Audio Mixer & Deterministic Ducking (`audio-mixer.js`):**
+     - Implemented per-track and per-clip volume automation with fade-in and fade-out curves.
+     - Built automatic ducking: background music volume attenuates to 0.25 (-12dB) whenever a voiceover/narration track is active.
+     - Generated normalized waveform peaks for timeline UI visualization.
+  4. **Caption & Subtitle Engine (`caption-editor.js`):**
+     - Implemented bidirectional SubRip (`.srt`) and WebVTT (`.vtt`) parsing and generation.
+     - Implemented automatic broadcast-safe line wrapping (<= 42 characters per line) preventing subtitle spill beyond video safe zones.
+  5. **Selective Scene Invalidation Tracker (`scene-invalidation.js`):**
+     - Built dependency graph `scene -> shots -> assetIds`.
+     - When a single scene is modified (e.g. Scene 9 in a 12-scene project), only that scene is marked dirty; all other scenes remain clean with unchanged SHA-256 asset hashes.
+     - Implemented candidate replacement staging (`version 2`) allowing users to review, accept, or reject replacements before committing to the timeline.
+  6. **Verification & Regression:**
+     - Created `tests/creative-studio/unit/test_phase06_timeline_audio_captions.js` passing 7/7 tests.
+     - Registered Suite #50 into `tests/run_all_tests.js`.
+- **Consequences:**
+  - Formally clears Phase 06 with `PASS FOR PHASE 06 RELEASE` verdict.
+  - Fully unblocks Phase 07 (Creation Wizards, AI & Native Prompt Storyboards, and No-AI Automation).
