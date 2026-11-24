@@ -1803,3 +1803,32 @@ ADR-051: Tool-to-Tool Workflow Chaining for JSON Group (JSON Formatter → Compa
 - **Consequences:**
   - Formally clears Phase 06 with `PASS FOR PHASE 06 RELEASE` verdict.
   - Fully unblocks Phase 07 (Creation Wizards, AI & Native Prompt Storyboards, and No-AI Automation).
+
+
+## ADR-076: Creative Studio Phase 07 Creation Wizards, Native Parser, Prompt Compiler & Storyboards
+- **Date:** 2026-11-24
+- **Status:** Approved & Implemented
+- **Context:**
+  - Implementation of File 07 (`07_CREATION_WIZARDS_AI_AND_NATIVE_PROMPT_STORYBOARD.md`) for AnyConverter Creative Studio.
+  - Requires contextual creation wizards across formats, deterministic mini-language parsing for zero-cost explainers, structured AI prompt compiling with camera directions, and visual storyboards with per-shot native fallbacks.
+- **Decision:**
+  - 1. **Contextual Creation Wizard (`creation-wizard.js`):**
+     - Implemented an 8-step wizard flow (`FORMAT_SELECTION`, `PURPOSE`, `STYLE_SELECTION`, `SCRIPT_INPUT`, `ASSET_COLLECTION`, `AUDIO_VOICEOVER`, `STORYBOARD_REVIEW`, `PROJECT_INITIALIZATION`).
+     - Enforced contextual style constraints (e.g., rejecting 3D styles for 2D print business cards).
+     - Gracefully handled AI mode selection when no provider is connected, warning the user and defaulting to native generation without throwing unhandled exceptions.
+  - 2. **Deterministic Native Mini-Language Parser (`native-parser.js`):**
+     - Built a zero-AI parser supporting structured cues: `[SCENE]`, `[DURATION]`, `[TRANSITION]`, `[TITLE]`, `[SUBTITLE]`, `[TEXT]`, `[CALLOUT]`, `[AUDIO]`, `[BG]`.
+     - Generates rich kinetic typography, transitions (fade, slide, zoom, wipe), and background treatments deterministically with zero external API calls or tokens.
+  - 3. **Structured AI Prompt Compiler (`prompt-compiler.js`):**
+     - Translates user narrative text into professional shot-level video/image prompts with camera motion directions, lighting, composition styles, and negative constraints.
+     - Enforces shot bounding to prevent runaway cost or excessive API token generation.
+  - 4. **Storyboard Grid & Native Fallback Manager (`storyboard-manager.js`):**
+     - Built an interactive storyboard model with scene cards, thumbnail previews, shot reordering, and timing adjustments.
+     - Implemented an instant native fallback toggle on individual shots, immediately zeroing out estimated AI cost for that shot.
+     - Provided credential-free CSV and JSON export routines with proper sanitization and multilingual support (EN, ES, DA).
+  - 5. **Verification & Regression:**
+     - Created `tests/creative-studio/unit/test_phase07_wizards_and_storyboards.js` passing 7/7 tests.
+     - Registered Suite #51 into `tests/run_all_tests.js`.
+- **Consequences:**
+  - Formally clears Phase 07 with `PASS FOR PHASE 07 RELEASE` verdict.
+  - Fully unblocks Phase 08 (Browser-Only Auth, Provider Credentials, and Security).
