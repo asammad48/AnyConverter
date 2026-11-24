@@ -1,26 +1,26 @@
 {
-  "updatedAt": "2026-11-24T16:40:00.000Z",
+  "updatedAt": "2026-11-24T17:05:00.000Z",
   "activeProfile": "PROFILE 1 — SEO RESEARCH",
-  "currentPhase": "CREATIVE STUDIO — PHASE 10: GOOGLE DRIVE BIDIRECTIONAL PROJECT STORAGE, RESUMABLE UPLOADS & CONFLICT RESOLUTION",
-  "activeBranch": "feat/creative-studio-phase-10-google-drive-sync",
-  "baseReleaseCheckpoint": "e3ad113",
+  "currentPhase": "CREATIVE STUDIO — PHASE 11: CHARACTER CONSISTENCY, WORLD BIBLE, EPISODIC DRAMA & SELECTIVE SCENE REGENERATION",
+  "activeBranch": "feat/creative-studio-phase-11-character-consistency-and-series",
+  "baseReleaseCheckpoint": "2ce7c00",
   "headCommit": "HEAD",
-  "auditVerdict": "PASS FOR PHASE 10 RELEASE — Direct browser Google Drive v3 REST client under GIS token model and minimal drive.file scope, Commit-Manifest-Last 5-step transactional protocol engine, 256KB-aligned resumable chunked uploader (>5MB) with token-expiration pause/resume and QuotaExceeded fallback, and optimistic concurrency conflict resolver with non-destructive 'Save Both' duplicate creation fully implemented and verified. 54/54 master test suites passed (100%), including 21/21 Playwright visual regressions, 0 sitemap drift, and 0 broken links.",
+  "auditVerdict": "PASS FOR PHASE 11 RELEASE — Persistent Series, World, and Character Bibles with native 2D/3D rig links and legal consent validation, Episodic Drama Series Planner with dialogue beats and automated continuity checks, and Selective Shot Regeneration & Rollback Engine with middle-scene edit isolation (Scene 8 of 20 verified) and non-destructive missing asset relinking diagnostics fully implemented and verified. 55/55 master test suites passed (100%), including 21/21 Playwright visual regressions, 0 sitemap drift, and 0 broken links.",
   "warningsRecorded": [
     "Remotion Commercial License Gate: Evaluated under Remotion Terms. Bounded behind pluggable RenderAdapter interface; default rendering engine set to Native HTML5 Canvas + WebCodecs (VideoEncoder/AudioEncoder) + Web Audio + WASM Muxer to ensure zero recurring software license cost under rule G-02.",
     "Static QR / Physical Print Immutability: Standard static vCard QR codes printed on physical paper/cards cannot be remotely altered. Dynamic URLs require user-controlled domain/hosting; AnyConverter hosts zero public user profile endpoints under zero-backend rule G-01.",
     "Flattened AI Video Editability: Flattened AI-generated MP4 footage cannot be directly disassembled into vector layers. Users are given explicit choices: add overlays/masks, selectively regenerate the specific shot with user approval, or cancel.",
     "Local Encrypted Storage XSS Threat Model: Client-side PBKDF2/AES-GCM encryption protects stored keys against offline disk theft, but cannot protect against malicious scripts (XSS) executing in the same origin when unlocked. Session-only mode recommended on untrusted hardware.",
     "Kaggle Policy: Public unattended automated orchestration of Kaggle workflows remains disabled pending written authorization; personal user-driven notebook execution supported.",
-    "Drive Quota & Token Immutability: AnyConverter hosts zero user media files or storage buckets. Storage quota belongs strictly to the user's Google Drive. Tokens are kept in memory only; connecting or disconnecting Google Drive never mutates or overwrites local IndexedDB drafts."
+    "Drive Quota & Token Immutability: AnyConverter hosts zero user media files or storage buckets. Storage quota belongs strictly to the user's Google Drive. Tokens are kept in memory only; connecting or disconnecting Google Drive never mutates or overwrites local IndexedDB drafts.",
+    "Probabilistic AI Character Consistency: Never claim AI character generation is guaranteed or deterministic. Highest deterministic identity is achieved via native 2D sprite sheets or 3D glTF rigs; reference-supported AI is probabilistic and accompanied by candidate review/replacement workflows."
   ],
   "deliverables": [
-    "assets/js/creative-studio/drive-sync-adapter.js",
-    "assets/js/creative-studio/drive-commit-protocol.js",
-    "assets/js/creative-studio/drive-resumable-uploader.js",
-    "assets/js/creative-studio/drive-conflict-resolver.js",
-    "tests/creative-studio/unit/test_phase10_google_drive_sync.js",
-    "docs/creative-studio/PHASE_10_RELEASE_GATE.md",
+    "assets/js/creative-studio/character-bible.js",
+    "assets/js/creative-studio/drama-series-planner.js",
+    "assets/js/creative-studio/shot-regeneration.js",
+    "tests/creative-studio/unit/test_phase11_character_and_series.js",
+    "docs/creative-studio/PHASE_11_RELEASE_GATE.md",
     "tests/run_all_tests.js",
     ".ai-memory/DECISIONS.md",
     ".ai-memory/STATE.json",
@@ -37,10 +37,11 @@
     "dataforseo": "DISABLED"
   },
   "testResults": {
-    "totalSuites": 54,
-    "passedSuites": 54,
+    "totalSuites": 55,
+    "passedSuites": 55,
     "status": "PASS",
-    "creativeStudioPhase10DriveSync": "pass (7/7 tests passed: T1 bundle roundtrip with media verification, T2 commit-manifest-last ordering, T3 resumable chunked upload >5MB with retry, T4 optimistic concurrency & Save Both, T5 network disconnect & recovery, T6 QuotaExceeded fallback, T7 token expiry pause/reauth/resume)",
+    "creativeStudioPhase11CharacterSeries": "pass (7/7 tests passed: T1 bible validation with native rigs, T2 multi-episode consistency, T3 selective candidate proposing & rollback, T4 middle scene edit isolation, T5 missing asset relinking diagnostics, T6 legal consent & rights gate, T7 full series archive roundtrip)",
+    "creativeStudioPhase10DriveSync": "pass (7/7 tests passed)",
     "creativeStudioPhase09Adapters": "pass (7/7 tests passed)",
     "creativeStudioPhase08Auth": "pass (7/7 tests passed)",
     "creativeStudioPhase07Wizards": "pass (7/7 tests passed)",
@@ -57,23 +58,23 @@
     "playwrightVisualRegression": "pass (21/21 baselines intact)"
   },
   "nextWorkstream": {
-    "target": "Creative Studio Phase 11 — Character Consistency, Drama Series & Scene Regeneration (File 11)",
-    "branch": "feat/creative-studio-phase-10-google-drive-sync",
+    "target": "Creative Studio Phase 12 — Token, GPU Credit Budget, Capacity & Retry Optimization (File 12)",
+    "branch": "feat/creative-studio-phase-11-character-consistency-and-series",
     "requirements": [
-      "Review Phase 10 Release Gate Report (docs/creative-studio/PHASE_10_RELEASE_GATE.md)",
-      "Authorize merge of Phase 10 into main or progression to Phase 11 feature branch",
-      "Implement multi-angle reference sheet generator",
-      "Implement scene-level seed & face embeddings tracking",
-      "Implement prompt delta compiler for character consistency",
-      "Implement non-destructive shot regeneration workflow",
-      "Produce PHASE_11_RELEASE_GATE.md"
+      "Review Phase 11 Release Gate Report (docs/creative-studio/PHASE_11_RELEASE_GATE.md)",
+      "Authorize merge of Phase 11 into main or progression to Phase 12 feature branch",
+      "Implement credit budget & token cost calculator",
+      "Implement rate limit & concurrency queue manager",
+      "Implement exponential backoff retry scheduler with user authorization",
+      "Implement degraded mode & free GPU fallback switch",
+      "Produce PHASE_12_RELEASE_GATE.md"
     ]
   },
   "creativeStudioProgram": {
     "planLocation": "D:\\AnyConverter_Creative_Studio_14_File_Concrete_Implementation_Plan (1)",
-    "currentPhase": "10_GOOGLE_DRIVE_SAVE_OPEN_RESUME_SYNC_AND_CONFLICTS",
+    "currentPhase": "11_CHARACTER_CONSISTENCY_DRAMA_SERIES_AND_SCENE_REGENERATION",
     "phaseStatus": "COMPLETED_READY_FOR_OWNER_REVIEW",
-    "phaseGate": "docs/creative-studio/PHASE_10_RELEASE_GATE.md",
-    "testsPassed": "7/7 unit tests; 54/54 repository suites"
+    "phaseGate": "docs/creative-studio/PHASE_11_RELEASE_GATE.md",
+    "testsPassed": "7/7 unit tests; 55/55 repository suites"
   }
 }

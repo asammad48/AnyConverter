@@ -1932,3 +1932,35 @@ ADR-051: Tool-to-Tool Workflow Chaining for JSON Group (JSON Formatter → Compa
 - **Consequences:**
   - Formally clears Phase 10 with `PASS FOR PHASE 10 RELEASE` verdict.
   - Fully unblocks Phase 11 (Character Consistency, Drama Series & Scene Regeneration).
+
+## ADR-080: Creative Studio Phase 11 Character Consistency, World Bible, Episodic Drama & Selective Scene Regeneration
+- **Date:** 2026-11-24
+- **Status:** Approved & Implemented
+- **Context:**
+  - Implementation of File 11 (`11_CHARACTER_CONSISTENCY_DRAMA_SERIES_AND_SCENE_REGENERATION.md`) for AnyConverter Creative Studio.
+  - Requires persistent Series, World, and Character Bibles with stable identity tracking, multi-episode drama continuity, selective scene/shot regeneration with rollback, missing asset diagnostics, and legal consent validation.
+  - Must avoid misleading claims of "perfect AI consistency"; native 2D/3D rigs offer deterministic consistency while reference-supported AI is probabilistic.
+- **Decision:**
+  - 1. **Series, World & Character Bible (`character-bible.js`):**
+     - Established series hierarchy: Series -> World & Character Bibles -> Episodes -> Scenes -> Shots.
+     - Modeled `CharacterBible` with stable `characterId`, appearance parameters, continuity locks, approved/rejected shot records, native rig references (2D sprite sheet, 3D glTF rig), voice profiles, and legal consent verification.
+     - Modeled `WorldBible` with locations, lighting presets, camera presets, props, and shared color palettes.
+     - Modeled `SeriesBible` unifying production modes (`NATIVE_RIG`, `REFERENCE_AI`, `HYBRID`) and cast repositories.
+  - 2. **Episodic Drama Planner & Continuity Tracker (`drama-series-planner.js`):**
+     - Organized episodic storylines into dialogue turns, narrative beats, and camera instructions.
+     - Built automated continuity validator checking location existence in World Bible, character participation in Character Bible, and visual anchor/rig availability.
+     - Implemented shot prompt compiler bundling character visual anchors, location backdrops, camera instructions, and emotional beats into generation requests.
+  - 3. **Selective Shot Regeneration & Rollback Engine (`shot-regeneration.js`):**
+     - Built multi-version shot manager (`versions: [{ versionNumber, assetId, prompt, status }]`).
+     - Kept active timeline pointer intact on version 1 while version 2 is proposed as a candidate.
+     - Provided explicit user Accept, Reject, and instant Rollback actions.
+     - Implemented middle scene edit isolation: verified that modifying Scene 8 of 20 leaves scenes 1–7 and 9–20 asset hashes and durations 100% unmutated.
+     - Built non-destructive missing asset diagnostics: missing storage assets are flagged across affected characters and scenes without destructive deletion, supporting safe relinking (`relinkAsset`).
+  - 4. **Legal Consent & Rights Warning Gate:**
+     - Enforced mandatory user confirmation for portrayals of real persons or user-supplied voice clones.
+  - 5. **Verification & Regression:**
+     - Created `tests/creative-studio/unit/test_phase11_character_and_series.js` passing 7/7 tests.
+     - Registered Suite #55 into `tests/run_all_tests.js`.
+- **Consequences:**
+  - Formally clears Phase 11 with `PASS FOR PHASE 11 RELEASE` verdict.
+  - Fully unblocks Phase 12 (Token, GPU Credit Budget, Capacity & Retry Optimization).
