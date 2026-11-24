@@ -49,6 +49,7 @@ const testSuites = [
   { name: 'Creative Studio Phase 02 Feasibility Spikes', cmd: 'node tests/creative-studio/spikes/run_all_spikes.js' },
   { name: 'Creative Studio Phase 03 Schema & Persistence', cmd: 'node tests/creative-studio/unit/test_phase03_schema_and_persistence.js' },
   { name: 'Creative Studio Phase 04 Graphics, Cards, QR & NFC', cmd: 'node tests/creative-studio/unit/test_phase04_graphics_cards_qr_nfc.js' },
+  { name: 'Creative Studio Phase 05 Animation & Browser Rendering', cmd: 'node tests/creative-studio/unit/test_phase05_animation_and_rendering.js' },
   { name: 'Playwright Visual Regression Suite (21/21 Baselines)', cmd: 'node tests/run_visual_regression.js' }
 ];
 

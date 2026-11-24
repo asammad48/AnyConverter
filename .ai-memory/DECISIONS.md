@@ -1735,3 +1735,36 @@ ADR-051: Tool-to-Tool Workflow Chaining for JSON Group (JSON Formatter → Compa
 - **Consequences:**
   - Formally clears Phase 04 with `PASS FOR PHASE 04 RELEASE` verdict.
   - Fully unblocks Phase 05 (Native 2D/3D Animation, Remotion Feasibility, Browser Preview & Rendering).
+
+
+## ADR-074: Creative Studio Phase 05 Pluggable RenderAdapter, 2D Animation Curves & Three.js 3D Context Recovery
+- **Date:** 2026-11-24
+- **Status:** Approved & Implemented
+- **Context:**
+  - Implementation of File 05 (`05_NATIVE_2D_3D_REMOTION_AND_BROWSER_RENDERING.md`) for AnyConverter Creative Studio.
+  - Requires deterministic 2D property animation, genuine Three.js 3D glTF model rendering, and zero-cost client-side AV encoding.
+  - Mandates strict enforcement of the Remotion commercial license gate under rule G-02 (no recurring SaaS/license cost to AnyConverter).
+- **Decision:**
+  1. **Pluggable RenderAdapter Interface (`render-adapter.js`):**
+     - Decoupled video timeline composition from the underlying encoding engine.
+     - Implemented `NativeCanvasRenderAdapter` as the primary zero-cost default, utilizing modern browser WebCodecs (`VideoEncoder`, `AudioEncoder`) with `MediaRecorder` WebM fallback on older browsers.
+     - Implemented `RemotionRenderAdapter` strictly gated behind an enterprise license key; if unlicensed, the engine throws an explicit notice and falls back to Native Canvas.
+     - Guaranteed rational frame clock execution (`fpsNumerator / fpsDenominator`), ensuring audio sample synchronization with < 0.02ms drift.
+  2. **2D Animation & Keyframing Engine (`animation-engine.js`):**
+     - Implemented mathematical easing curves: `linear`, `easeInQuad`, `easeOutQuad`, `easeInOutQuad`, `easeOutBack`, and `step`.
+     - Built motion presets: typewriter text reveal, Ken Burns pan/zoom, and fade in/out curves.
+     - Guaranteed frame-accurate determinism when evaluating arbitrary timeline frames (e.g., frame 47).
+  3. **Three.js 3D Scene Graph & Context Loss Recovery (`three-scene-adapter.js`):**
+     - Integrated glTF/GLB character models, camera positioning, and directional/ambient lighting.
+     - Implemented a complete WebGL context loss recovery cycle (`webglcontextlost` -> snapshot transforms -> `webglcontextrestored` -> restore state).
+     - Provided a 2D poster fallback mode for devices lacking WebGL hardware support.
+  4. **Export Preflight Engine (`export-preflight.js`):**
+     - Audited missing asset references prior to export.
+     - Added warnings for resolutions > 1080p and framerates > 30 fps to protect low-end mobile devices.
+     - Detected unsupported CSS filters (`backdrop-filter`, `drop-shadow`) and suggested pre-rendered bitmap alternatives.
+  5. **Verification & Regression:**
+     - Created `tests/creative-studio/unit/test_phase05_animation_and_rendering.js` passing all 7 R1–R8 acceptance tests.
+     - Registered Suite #49 into `tests/run_all_tests.js`.
+- **Consequences:**
+  - Formally clears Phase 05 with `PASS FOR PHASE 05 RELEASE` verdict.
+  - Fully unblocks Phase 06 (Non-Destructive Video Editor, Generated Clips, Audio & Captions).
