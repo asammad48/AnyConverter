@@ -136,6 +136,41 @@
       <p>For related PDF work, try <a href="/pdf-to-jpg/">PDF to JPG Converter</a>, <a href="/jpg-to-pdf/">JPG to PDF</a>, <a href="/pdf-split/">Split PDF</a>, or <a href="/pdf-compress/">Compress PDF Online</a>.</p>
     </section>
 
+    
+    <section class="privacy-section" id="privacy-and-security" aria-labelledby="privacy-heading">
+      <h2 id="privacy-heading">Private OCR PDF: In-Browser Text Recognition, No Uploads, No Signup</h2>
+      <p class="privacy-lead">Extract selectable text from scanned receipts, invoices, and contracts locally with complete document privacy.</p>
+      <div class="privacy-grid">
+        <div class="privacy-card">
+          <span class="privacy-card-icon" aria-hidden="true">🔒</span>
+          <div class="privacy-card-content">
+            <strong>Client-Side OCR Recognition</strong>
+            <p>Optical character recognition runs entirely in your browser using WebAssembly. Scanned documents are never sent to external OCR APIs.</p>
+          </div>
+        </div>
+        <div class="privacy-card">
+          <span class="privacy-card-icon" aria-hidden="true">⚡</span>
+          <div class="privacy-card-content">
+            <strong>No Account or Signup Required</strong>
+            <p>Extract text immediately without registering, creating passwords, or providing an email address.</p>
+          </div>
+        </div>
+        <div class="privacy-card">
+          <span class="privacy-card-icon" aria-hidden="true">🛡️</span>
+          <div class="privacy-card-content">
+            <strong>Sensitive Scan Confidentiality</strong>
+            <p>Identity cards, bank slips, and private receipts remain securely inside your local browser memory.</p>
+          </div>
+        </div>
+        <div class="privacy-card">
+          <span class="privacy-card-icon" aria-hidden="true">🧹</span>
+          <div class="privacy-card-content">
+            <strong>Direct Clipboard & Zero Retention</strong>
+            <p>Copy recognized text directly to your clipboard. All temporary canvas buffers are wiped upon tab exit.</p>
+          </div>
+        </div>
+      </div>
+    </section>
     <section class="faq"><h2>Frequently Asked Questions</h2><div class="faq-list">
       <details class="faq-item"><summary class="faq-question">Why can OCR take a while? <span class="faq-icon">+</span></summary><div class="faq-answer">The page renders PDF pages and runs OCR on each page. Tesseract.js may also load worker or language assets before recognition starts, and multi-page scans take longer than single images.</div></details>
       <details class="faq-item"><summary class="faq-question">My text is already selectable in the PDF. Do I need OCR? <span class="faq-icon">+</span></summary><div class="faq-answer">No. OCR is for scanned PDFs or images where text is part of the picture. If you can select text in your PDF viewer, a text layer already exists and you can copy it directly.</div></details>

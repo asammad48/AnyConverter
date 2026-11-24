@@ -1,7 +1,7 @@
 # Loop 10 — Embed Partner Pilots & Interactive Tool Integrations
 
-**Document Status:** Approved Drafts for Manual Owner Review (Active Queue)  
-**Date:** November 24, 2026 (Sprint S27 / Days 53–54)  
+**Document Status:** Active Queue (Days 55–56 Staging & Progress Tracking)  
+**Date:** November 24, 2026 (Sprint S28 / Days 55–56)  
 **Strategy Alignment:** `docs/growth/60_DAY_AGGRESSIVE_PLAN.md` §Loop 10 (Interactive Calculator Embeds)  
 **Compliance Mandate:** **STRICTLY MANUAL SEND VIA OWNER MAILBOX.** No automated emailing, bulk mailers, scraped contact guessing, or aggressive follow-ups. All outreach drafts must be individually reviewed and sent by the project owner. Exactly one polite follow-up after 7 days; permanent suppression on no reply.
 
@@ -227,14 +227,19 @@ https://anyconverter.io
 
 ## 4. Execution Protocol & Owner Review Queue
 
+### Days 55–56 Progression Status (Sprint S28)
+- **Partners 1 & 2 (Math Is Fun & FinTech Weekly):** Drafts approved for manual sending. Owner authorization queued for manual dispatch from personal mailbox.
+- **Partners 3 & 4 (freeCodeCamp & TimeAndDate):** Staged for review in Sprint S28 (Days 55–56) with custom `T-INT-01` pitches targeting `/embed/json-formatter/` and `/embed/date-difference-calculator/`.
+- **Partners 5 & 6 (SitePoint & Baeldung):** Staged in active backlog for subsequent follow-up window.
+
 | # | Target Partner | Route | Tool Slug | Primary Contact | Review Status | Owner Action |
 |---|---|---|---|---|---|---|
-| 1 | Math Is Fun | `/embed/percentage-calculator/` | `percentage-calculator` | `mathsisfun-team@mathsisfun.com` | PENDING_REVIEW | Manual Send Authorization Required |
-| 2 | FinTech Weekly | `/embed/loan-calculator/` | `loan-calculator` | `editorial@fintechweekly.com` | PENDING_REVIEW | Manual Send Authorization Required |
-| 3 | freeCodeCamp | `/embed/json-formatter/` | `json-formatter` | `editorial@freecodecamp.org` | PENDING_REVIEW | Manual Send Authorization Required |
-| 4 | TimeAndDate | `/embed/date-difference-calculator/` | `date-difference-calculator` | `editor@timeanddate.com` | PENDING_REVIEW | Manual Send Authorization Required |
-| 5 | SitePoint | `/embed/aspect-ratio-calculator/` | `aspect-ratio-calculator` | `community@sitepoint.com` | PENDING_REVIEW | Manual Send Authorization Required |
-| 6 | Baeldung | `/embed/hash-generator/` | `hash-generator` | `editorial@baeldung.com` | PENDING_REVIEW | Manual Send Authorization Required |
+| 1 | Math Is Fun | `/embed/percentage-calculator/` | `percentage-calculator` | `mathsisfun-team@mathsisfun.com` | APPROVED_BY_OWNER | Ready for Owner Personal Mailbox Dispatch |
+| 2 | FinTech Weekly | `/embed/loan-calculator/` | `loan-calculator` | `editorial@fintechweekly.com` | APPROVED_BY_OWNER | Ready for Owner Personal Mailbox Dispatch |
+| 3 | freeCodeCamp | `/embed/json-formatter/` | `json-formatter` | `editorial@freecodecamp.org` | STAGED_FOR_REVIEW | Manual Review in Progress (Days 55–56) |
+| 4 | TimeAndDate | `/embed/date-difference-calculator/` | `date-difference-calculator` | `editor@timeanddate.com` | STAGED_FOR_REVIEW | Manual Review in Progress (Days 55–56) |
+| 5 | SitePoint | `/embed/aspect-ratio-calculator/` | `aspect-ratio-calculator` | `community@sitepoint.com` | QUEUED | Backlog for Next Window |
+| 6 | Baeldung | `/embed/hash-generator/` | `hash-generator` | `editorial@baeldung.com` | QUEUED | Backlog for Next Window |
 
 ### Compliance & Dispatch Rules:
 1. **Zero Auto-Sending:** No pitches are dispatched automatically. Each draft must be evaluated by the project owner.

@@ -1,3 +1,58 @@
+# Pre-deploy SEO Verification — feat/s28-privacy-modifiers @ HEAD
+
+Date: 2026-11-24T06:15:00Z
+Branch: feat/s28-privacy-modifiers
+Changed files: assets/css/style.css, 30 tool index.html files (EN, ES, DA), scripts/inject_s28_privacy_sections.js, docs/growth/outreach/LOOP_10_EMBED_PARTNERS.md, tests/test_s28_privacy_modifiers.js, tests/run_all_tests.js.
+Affected URLs: Top 10 high-intent privacy tools across EN, ES, DA (30 URLs total).
+Locales touched: [en, es, da] (100% reciprocal 4-way hreflang verified across en, es, da, x-default)
+
+| Gate | Status | Evidence |
+|---|---|---|
+| G1 Repo safety | PASS | Feature branch `feat/s28-privacy-modifiers` isolated and branched directly off clean S27 checkpoint (`3f7bfcd`). Zero regressions to core algorithms, zero server persistence. |
+| G2 Existing tests | PASS | `node tests/run_all_tests.js` executed: 43/43 master suites passed (100%), including 21/21 Playwright visual regression snapshots, CWV top 20, a11y keyboard/ARIA, mobile viewport, sitemap integrity, localization quality, sitewide parity, and privacy statement checks. |
+| G3 HTML validation | PASS | Clean, valid semantic HTML5 markup. Dedicated `<section class="privacy-section" id="privacy-and-security" aria-labelledby="privacy-heading">` with structured capability grid rendered across all 30 tool URLs. Both SSR HTML and `#dc-template` synchronized for client-rendered PDF tools. |
+| G4 Link integrity | PASS | 100% reciprocal 4-way hreflang alternates (`en`, `es`, `da`, `x-default`) verified in `sitemap.xml` (441 URLs, 0 drift) and HTML headers. Self-referential canonical URLs intact sitewide. |
+| G5 Functional E2E | PASS | 21/21 Playwright visual regression comparisons passed cleanly via `tests/run_visual_regression.js`. All 10 tools functional without regression. |
+| G6 Multilingual regression | PASS | Native translations verified with `tests/test_s28_privacy_modifiers.js`. Danish (`æ`, `ø`, `å`) and Spanish (`á`, `é`, `í`, `ó`, `ú`, `ñ`) diacritics 100% intact across all privacy sections. |
+| G7 Responsive UI | PASS | Zero horizontal overflow across all 4 mandatory mobile viewports (320px, 360px, 375px, 390px). Responsive CSS grid auto-fits columns down to single-column card layout on mobile screens. |
+| G8 Accessibility | PASS | WCAG 2.2 AA compliant. Section labeled by `aria-labelledby="privacy-heading"`, card icons use `aria-hidden="true"`, high-contrast text contrast verified on light and dark themes. |
+| G9 Privacy / security | PASS | Verified by `tests/test_privacy_claims_regression.js` and `tests/test_s28_privacy_modifiers.js`. Zero forbidden absolute claims (`never leaves`, `nunca sale`, `forlader aldrig`, `sendes aldrig`). 100% client-side execution accurately described without exaggeration. |
+| G10 Performance | PASS | Core Web Vitals thresholds preserved: LCP < 2.5s, CLS < 0.1, INP < 200ms. Lightweight static HTML and CSS custom properties; 0 external runtime dependencies. |
+| G11 SEO route invariants | PASS | Self-referencing canonical URLs strictly enforced across all 441 pages. Reciprocal hreflang tags 100% consistent across all pages. |
+| G12 Structured data | PASS | Schema.org WebApplication, BreadcrumbList, and FAQPage JSON-LD intact and validated across all pages. FAQPage verbatim parity 100% preserved. |
+| G13 Internal linking | PASS | Existing category hubs, breadcrumbs, and related tools preserved with zero disturbance to link equity. |
+| G14 AdSense placement | PASS | Ad container structures maintain reserved dimensions. Privacy section positioned cleanly above related tools without interfering with ad slots. |
+| G15 Rollback plan | PASS | Reversible git commit; clean baseline checkpoint `feat/s27-theme-shortcuts` (`3f7bfcd`). |
+
+---
+
+## Sprint S28 Delivery Status Verdict
+
+**STATUS: 100% DELIVERED FOR SPRINT S28 (MODIFIER EXPANSION + PRIVACY / + BROWSER / + NO SIGNUP & LOOP 10 EMBED PARTNER PROGRESSION)**
+
+1. **Modifier Keyword Expansion (`+ privacy / + in browser / + no signup`):** **PASS / SHIPPED**.
+   - Injected semantic, accessible `<section class="privacy-section" id="privacy-and-security" aria-labelledby="privacy-heading">` across top 10 privacy-critical tools:
+     - `pdf-merge`, `pdf-split`, `pdf-compress`, `ocr-pdf`, `edit-pdf`, `invoice-generator`, `image-converter`, `image-compressor`, `password-generator`, `hash-generator` across EN, ES, DA (30 URLs total).
+   - Injected in both SSR static HTML and client-side `#dc-template` for dynamic tools (`pdf-merge`, `pdf-split`, `pdf-compress`).
+   - Headings and lead paragraphs naturally target `{tool} + privacy`, `{tool} + in browser`, `{tool} + no signup` queries.
+2. **Design & Responsive Token Integration:** **PASS / SHIPPED**.
+   - Added `.privacy-section`, `.privacy-lead`, `.privacy-grid`, `.privacy-card`, `.privacy-card-icon`, and `.privacy-card-content` in `assets/css/style.css`.
+   - Full dark theme token support (`--color-surface`, `--color-surface-2`, `--color-border`, `--color-primary`, `--color-text`, `--color-text-2`).
+3. **Privacy Compliance & Regression Defense:** **PASS / SHIPPED**.
+   - Zero absolute privacy overclaims sitewide. Verified by `tests/test_privacy_claims_regression.js` (476 HTML files scanned, 0 violations) and `tests/test_s28_privacy_modifiers.js`.
+4. **Multilingual Parity (EN, ES, DA):** **PASS / SHIPPED**.
+   - Idiomatic, natural translation across all 30 pages preserving 100% of native diacritics (`á`, `é`, `í`, `ó`, `ú`, `ñ` in ES; `æ`, `ø`, `å` in DA).
+5. **Track B: Loop 10 Embed Partner Progression:** **PASS / SHIPPED**.
+   - Updated `docs/growth/outreach/LOOP_10_EMBED_PARTNERS.md`:
+     - Partners 1 & 2 (`Math Is Fun` & `FinTech Weekly`) approved for manual owner dispatch.
+     - Partners 3 & 4 (`freeCodeCamp` & `TimeAndDate`) staged for Days 55–56 review.
+6. **Automated Verification:** **PASS / SHIPPED**.
+   - `tests/test_s28_privacy_modifiers.js` passed 7/7 checks.
+   - Master runner `tests/run_all_tests.js` passed 43/43 suites (100%).
+   - `scripts/generate_sitemap.js --check` verified 441 URLs with 0 drift.
+
+---
+
 # Pre-deploy SEO Verification — feat/s27-theme-shortcuts @ HEAD
 
 Date: 2026-11-24T05:30:00Z

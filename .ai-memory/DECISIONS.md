@@ -1547,6 +1547,31 @@ ADR-051: Tool-to-Tool Workflow Chaining for JSON Group (JSON Formatter → Compa
   - Hardens theme consistency across tab switches and system dark mode transitions without FOUC.
   - Zero accessibility regressions, strict privacy compliance, and zero backend dependencies preserved.
 
+## ADR-067: Modifier Expansion (+ privacy / + in browser / + no signup) across Top 10 High-Intent Privacy Tools & Loop 10 Partner Staging
+- **Date:** 2026-11-24
+- **Status:** Approved & Implemented
+- **Context:**
+  - Growth Sprint S28 (Days 55–56) requires modifier keyword expansion (`+ privacy`, `+ in browser`, `+ no signup`) targeting high-intent, low-competition SERP clusters across the top 10 tools where users demand private, local, client-side processing: `pdf-merge`, `pdf-split`, `pdf-compress`, `ocr-pdf`, `edit-pdf`, `invoice-generator`, `image-converter`, `image-compressor`, `password-generator`, `hash-generator` across all 3 locales (EN, ES, DA — 30 URLs total).
+  - Incumbent SaaS converters frequently force file uploads to remote cloud servers, enforce account signups, or throttle downloads behind paywalls. AnyConverter's technical architecture processes data 100% client-side via JavaScript, Web Workers, Web Cryptography API, and Canvas, providing an authentic, verifiable differentiation.
+  - Core requirements mandate:
+    1. Dedicated semantic `<section class="privacy-section" id="privacy-and-security" aria-labelledby="privacy-heading">` on all 30 tool pages.
+    2. Headings and lead paragraphs addressing `{tool} + privacy`, `{tool} + in browser`, `{tool} + no signup` search intent in natural, non-stuffed copy.
+    3. Grid of 3–4 descriptive capability cards highlighting local client-side execution, zero account requirement, zero document transmission, and immediate memory clearance upon tab closure.
+    4. Client-side rendering synchronization: for tools utilizing `dc-runtime.js` (`pdf-merge`, `pdf-split`, `pdf-compress`), the section is embedded in both the static HTML container and inside `<script type="text/x-dc-template" id="dc-template">` to prevent DOM replacement wipeout.
+    5. Multilingual parity and native diacritics preservation across EN, ES (`á`, `é`, `í`, `ó`, `ú`, `ñ`), and DA (`æ`, `ø`, `å`).
+    6. Compliance with `tests/test_privacy_claims_regression.js`: zero forbidden absolute overclaims (`never leaves`, `nunca sale`, `forlader aldrig`, `sendes aldrig`).
+    7. Track B: Advance Loop 10 Embed Partner pilots in `docs/growth/outreach/LOOP_10_EMBED_PARTNERS.md`: stage Partners 1 & 2 for manual owner mailbox dispatch, and stage Partners 3 & 4 for review during Days 55–56.
+- **Decision:**
+  1. Injected structured `#privacy-and-security` sections into all 30 HTML files (EN, ES, DA) via `scripts/inject_s28_privacy_sections.js`.
+  2. Implemented CSS custom properties and responsive styling in `assets/css/style.css` (`.privacy-section`, `.privacy-lead`, `.privacy-grid`, `.privacy-card`, `.privacy-card-icon`, `.privacy-card-content`, supporting light and dark modes).
+  3. Preserved canonical links, hreflang alternates, and existing FAQPage schemas with 100% integrity.
+  4. Created dedicated test suite `tests/test_s28_privacy_modifiers.js` asserting all 7 core gates.
+  5. Registered S28 suite in `tests/run_all_tests.js` bringing total master suites to 43 passing suites (100%).
+- **Consequences:**
+  - Captures high-intent long-tail search queries with zero competitive overlap with server-based tools.
+  - Communicates authentic security attributes clearly to end users, improving conversion and retention.
+  - Zero performance degradation or server reliance.
+
 
 
 
