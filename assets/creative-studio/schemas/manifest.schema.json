@@ -1,0 +1,98 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://anyconverter.io/schemas/creative-studio/manifest.schema.json",
+  "title": "AnyConverterCreativeStudioManifestDocument",
+  "description": "Manifest schema stored at the root of every .acstudio container archive.",
+  "type": "object",
+  "required": [
+    "manifestVersion",
+    "projectId",
+    "revisionId",
+    "createdAt",
+    "updatedAt",
+    "generator",
+    "entrypoint",
+    "assets",
+    "security"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "manifestVersion": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+    },
+    "projectId": {
+      "type": "string",
+      "minLength": 8,
+      "maxLength": 64
+    },
+    "revisionId": {
+      "type": "string",
+      "minLength": 8,
+      "maxLength": 64
+    },
+    "title": {
+      "type": "string",
+      "maxLength": 255
+    },
+    "kind": {
+      "type": "string",
+      "enum": ["graphic", "video", "business-card", "series"]
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "updatedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "generator": {
+      "type": "string",
+      "maxLength": 100
+    },
+    "entrypoint": {
+      "type": "string",
+      "enum": ["project.json"]
+    },
+    "assets": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "path", "mimeType", "sizeBytes", "sha256"],
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^sha256:[a-f0-9]{64}$"
+          },
+          "path": {
+            "type": "string",
+            "pattern": "^assets/[a-f0-9]{64}\\.[a-z0-9]+$"
+          },
+          "mimeType": { "type": "string" },
+          "sizeBytes": { "type": "integer", "minimum": 0 },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          }
+        }
+      }
+    },
+    "security": {
+      "type": "object",
+      "required": ["containsSecrets", "verifiedZeroCredentials"],
+      "additionalProperties": false,
+      "properties": {
+        "containsSecrets": {
+          "type": "boolean",
+          "const": false
+        },
+        "verifiedZeroCredentials": {
+          "type": "boolean",
+          "const": true
+        }
+      }
+    }
+  }
+}

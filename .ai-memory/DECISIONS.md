@@ -1669,3 +1669,37 @@ ADR-051: Tool-to-Tool Workflow Chaining for JSON Group (JSON Formatter → Compa
 - **Consequences:**
   - Formally clears Phase 02 with `PASS FOR PHASE 02 RELEASE` verdict.
   - Fully unblocks Phase 03 (`.acstudio` Canonical Editor Schema, Local Persistence & Recovery).
+
+
+## ADR-072: Creative Studio Phase 03 Canonical Schema, .acstudio Portable Container & Reversible Command Engine
+- **Date:** 2026-11-24
+- **Status:** Approved & Implemented
+- **Context:**
+  - Implementation of File 03 (`03_CANONICAL_EDITOR_SCHEMA_LOCAL_STORAGE_AND_RECOVERY.md`) for AnyConverter Creative Studio.
+  - Requires establishing a single, unified, reversible project model shared across thumbnails, business cards, video animations, and drama episodes.
+  - Mandates portable `.acstudio` ZIP containers as the authoritative source of truth, protected against path traversal, zip bombs, and token leakage.
+- **Decision:**
+  1. **Canonical JSON Schemas:**
+     - Published `assets/creative-studio/schemas/project.schema.json` and `manifest.schema.json` (Draft-07 compliant).
+     - Built `assets/js/creative-studio/schema-validator.js` for strict schema validation, type checking, and forward migration from legacy `0.9.x` versions.
+  2. **Portable .acstudio ZIP Container (`archive.js`):**
+     - Authored zero-dependency client/node PKWARE ZIP packager and unpackager using standard deflate/inflate algorithms.
+     - Implemented 4-tier security defenses:
+       - Path traversal protection blocking `..`, leading slashes, backslashes, and control characters.
+       - ZIP bomb defense enforcing 500MB max per-file size and 100:1 max decompression ratio.
+       - Hostile script defense detecting and rejecting `<script>`, `onload=`, `onerror=`, `javascript:` in imported SVGs and HTML payloads.
+       - Secret leak defense auditing all text entries and blocking raw API keys (`sk-...`) or OAuth tokens (`ya29...`).
+  3. **Reversible Command Engine (`command-engine.js`):**
+     - Implemented transactional command pattern with inverse actions for `addLayer`, `deleteLayer`, `setLayerProperty`, and `splitClip`.
+     - Validated 100+ action undo/redo stack maintaining mathematical state invariance.
+  4. **Persistence & Crash Recovery (`storage-manager.js`):**
+     - Implemented atomic snapshotting before disk overwrites, recovering drafts even if primary storage is corrupted.
+     - Implemented `QuotaExceededError` fail-safe keeping projects safe in memory and prompting local export.
+     - Multi-tab conflict detection preventing silent overwrites across tabs.
+  5. **Verification & Regression:**
+     - Created `tests/creative-studio/unit/test_phase03_schema_and_persistence.js` passing 7/7 mandatory exit tests.
+     - Verified fixture generation at `tests/creative-studio/fixtures/sample_project.acstudio`.
+     - Registered Suite #47 into `tests/run_all_tests.js`.
+- **Consequences:**
+  - Formally clears Phase 03 with `PASS FOR PHASE 03 RELEASE` verdict.
+  - Fully unblocks Phase 04 (Thumbnail Studio, Branding, Business Cards, QR & NFC).

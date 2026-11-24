@@ -1,0 +1,234 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://anyconverter.io/schemas/creative-studio/project.schema.json",
+  "title": "AnyConverterCreativeStudioProjectDocument",
+  "description": "Canonical project document schema for AnyConverter Creative Studio (.acstudio source of truth).",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "projectId",
+    "revisionId",
+    "title",
+    "kind",
+    "locale",
+    "canvas",
+    "assets",
+    "scenes",
+    "tracks"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "schemaVersion": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+    },
+    "projectId": {
+      "type": "string",
+      "minLength": 8,
+      "maxLength": 64
+    },
+    "revisionId": {
+      "type": "string",
+      "minLength": 8,
+      "maxLength": 64
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 255
+    },
+    "kind": {
+      "type": "string",
+      "enum": ["graphic", "video", "business-card", "series"]
+    },
+    "locale": {
+      "type": "string",
+      "enum": ["en", "es", "da"]
+    },
+    "canvas": {
+      "type": "object",
+      "required": ["width", "height", "fpsNumerator", "fpsDenominator", "background"],
+      "additionalProperties": false,
+      "properties": {
+        "width": { "type": "integer", "minimum": 64, "maximum": 8192 },
+        "height": { "type": "integer", "minimum": 64, "maximum": 8192 },
+        "fpsNumerator": { "type": "integer", "minimum": 1, "maximum": 120 },
+        "fpsDenominator": { "type": "integer", "minimum": 1, "maximum": 1000 },
+        "background": { "type": "string", "maxLength": 64 },
+        "bleedMm": { "type": "number", "minimum": 0, "maximum": 25 },
+        "safeMarginMm": { "type": "number", "minimum": 0, "maximum": 25 }
+      }
+    },
+    "assets": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "mimeType", "sizeBytes", "storageRef", "source"],
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^sha256:[a-f0-9]{64}$"
+          },
+          "mimeType": { "type": "string", "maxLength": 100 },
+          "sizeBytes": { "type": "integer", "minimum": 0 },
+          "storageRef": { "type": "string", "maxLength": 255 },
+          "source": {
+            "type": "string",
+            "enum": ["import", "native", "generated", "drive"]
+          },
+          "originalFileName": { "type": "string", "maxLength": 255 },
+          "dimensions": {
+            "type": "object",
+            "properties": {
+              "width": { "type": "integer" },
+              "height": { "type": "integer" }
+            }
+          },
+          "durationFrames": { "type": "integer", "minimum": 0 }
+        }
+      }
+    },
+    "scenes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "startFrame", "durationFrames", "layers"],
+        "additionalProperties": false,
+        "properties": {
+          "id": { "type": "string", "minLength": 1, "maxLength": 64 },
+          "name": { "type": "string", "maxLength": 100 },
+          "startFrame": { "type": "integer", "minimum": 0 },
+          "durationFrames": { "type": "integer", "minimum": 1 },
+          "layers": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["id", "type", "name", "visible", "locked", "opacity", "transform"],
+              "additionalProperties": false,
+              "properties": {
+                "id": { "type": "string", "minLength": 1, "maxLength": 64 },
+                "type": {
+                  "type": "string",
+                  "enum": ["text", "shape", "image", "video", "3d", "audio", "background", "qr", "vcard"]
+                },
+                "name": { "type": "string", "maxLength": 100 },
+                "visible": { "type": "boolean" },
+                "locked": { "type": "boolean" },
+                "opacity": { "type": "number", "minimum": 0.0, "maximum": 1.0 },
+                "transform": {
+                  "type": "object",
+                  "required": ["x", "y", "scaleX", "scaleY", "rotationDeg"],
+                  "additionalProperties": false,
+                  "properties": {
+                    "x": { "type": "number" },
+                    "y": { "type": "number" },
+                    "scaleX": { "type": "number" },
+                    "scaleY": { "type": "number" },
+                    "rotationDeg": { "type": "number" }
+                  }
+                },
+                "assetId": {
+                  "type": "string",
+                  "pattern": "^sha256:[a-f0-9]{64}$"
+                },
+                "content": {
+                  "type": ["string", "object", "null"]
+                },
+                "font": {
+                  "type": "object",
+                  "properties": {
+                    "family": { "type": "string" },
+                    "size": { "type": "number" },
+                    "color": { "type": "string" },
+                    "fallbackChain": { "type": "array", "items": { "type": "string" } }
+                  }
+                },
+                "keyframes": {
+                  "type": "array",
+                  "items": { "type": "object" }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "tracks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "kind", "clips"],
+        "additionalProperties": false,
+        "properties": {
+          "id": { "type": "string", "minLength": 1, "maxLength": 64 },
+          "kind": {
+            "type": "string",
+            "enum": ["video", "audio", "text", "caption", "camera"]
+          },
+          "name": { "type": "string", "maxLength": 100 },
+          "muted": { "type": "boolean" },
+          "solo": { "type": "boolean" },
+          "locked": { "type": "boolean" },
+          "clips": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "clipId",
+                "assetId",
+                "sourceInFrame",
+                "sourceOutFrame",
+                "destinationStartFrame",
+                "durationFrames"
+              ],
+              "additionalProperties": false,
+              "properties": {
+                "clipId": { "type": "string", "minLength": 1, "maxLength": 64 },
+                "assetId": {
+                  "type": "string",
+                  "pattern": "^sha256:[a-f0-9]{64}$"
+                },
+                "sourceInFrame": { "type": "integer", "minimum": 0 },
+                "sourceOutFrame": { "type": "integer", "minimum": 1 },
+                "destinationStartFrame": { "type": "integer", "minimum": 0 },
+                "durationFrames": { "type": "integer", "minimum": 1 },
+                "speed": { "type": "number", "minimum": 0.1, "maximum": 10.0 },
+                "volume": { "type": "number", "minimum": 0.0, "maximum": 2.0 }
+              }
+            }
+          }
+        }
+      }
+    },
+    "characters": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "displayName"],
+        "properties": {
+          "id": { "type": "string" },
+          "displayName": { "type": "string" },
+          "faceAnchorAssetId": { "type": "string" },
+          "rigAssetId": { "type": "string" }
+        }
+      }
+    },
+    "lastEdit": {
+      "type": "object",
+      "properties": {
+        "playheadFrame": { "type": "integer", "minimum": 0 },
+        "selectedSceneId": { "type": ["string", "null"] },
+        "selectedLayerId": { "type": ["string", "null"] }
+      }
+    },
+    "sync": {
+      "type": "object",
+      "properties": {
+        "driveFileId": { "type": ["string", "null"] },
+        "lastConfirmedRevision": { "type": ["string", "null"] },
+        "lastConfirmedAt": { "type": ["string", "null"] }
+      }
+    }
+  }
+}
