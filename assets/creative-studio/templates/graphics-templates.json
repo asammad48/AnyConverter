@@ -1,0 +1,154 @@
+[
+  {
+    "id": "template-yt-tech-explainer",
+    "name": "YouTube Tech Explainer",
+    "category": "thumbnails",
+    "preset": "youtube-thumbnail",
+    "width": 1280,
+    "height": 720,
+    "locale": "en",
+    "layers": [
+      {
+        "id": "bg-dark",
+        "type": "background",
+        "name": "Dark Gradient Background",
+        "visible": true,
+        "locked": true,
+        "opacity": 1.0,
+        "transform": { "x": 0, "y": 0, "scaleX": 1, "scaleY": 1, "rotationDeg": 0 },
+        "content": "linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%)"
+      },
+      {
+        "id": "badge-topic",
+        "type": "shape",
+        "name": "Topic Badge",
+        "visible": true,
+        "locked": false,
+        "opacity": 0.9,
+        "transform": { "x": 80, "y": 80, "scaleX": 1, "scaleY": 1, "rotationDeg": 0 },
+        "content": { "shape": "rounded-rect", "fill": "#3b82f6", "radius": 8, "width": 220, "height": 48 }
+      },
+      {
+        "id": "text-badge",
+        "type": "text",
+        "name": "Badge Text",
+        "visible": true,
+        "locked": false,
+        "opacity": 1.0,
+        "transform": { "x": 100, "y": 92, "scaleX": 1, "scaleY": 1, "rotationDeg": 0 },
+        "content": "DEEP DIVE 2026",
+        "font": { "family": "Inter, sans-serif", "size": 20, "color": "#ffffff" }
+      },
+      {
+        "id": "text-headline",
+        "type": "text",
+        "name": "Catchy Headline",
+        "visible": true,
+        "locked": false,
+        "opacity": 1.0,
+        "transform": { "x": 80, "y": 180, "scaleX": 1, "scaleY": 1, "rotationDeg": 0 },
+        "content": "HOW IT ACTUALLY WORKS",
+        "font": { "family": "Montserrat, sans-serif", "size": 64, "color": "#f8fafc" }
+      },
+      {
+        "id": "text-subhead",
+        "type": "text",
+        "name": "Subhead Highlight",
+        "visible": true,
+        "locked": false,
+        "opacity": 1.0,
+        "transform": { "x": 80, "y": 340, "scaleX": 1, "scaleY": 1, "rotationDeg": 0 },
+        "content": "Zero Server. 100% Client.",
+        "font": { "family": "Inter, sans-serif", "size": 36, "color": "#38bdf8" }
+      }
+    ]
+  },
+  {
+    "id": "template-biz-card-minimal",
+    "name": "Minimalist NFC Business Card",
+    "category": "business-cards",
+    "preset": "card-standard-eu",
+    "width": 1004,
+    "height": 650,
+    "locale": "en",
+    "print": {
+      "trimWidthMm": 85,
+      "trimHeightMm": 55,
+      "bleedMm": 3,
+      "safeMarginMm": 3,
+      "targetDpi": 300
+    },
+    "sides": {
+      "front": [
+        {
+          "id": "front-bg",
+          "type": "background",
+          "name": "Front Background",
+          "visible": true,
+          "locked": true,
+          "opacity": 1.0,
+          "transform": { "x": 0, "y": 0, "scaleX": 1, "scaleY": 1, "rotationDeg": 0 },
+          "content": "#09090b"
+        },
+        {
+          "id": "front-name",
+          "type": "text",
+          "name": "Full Name",
+          "visible": true,
+          "locked": false,
+          "opacity": 1.0,
+          "transform": { "x": 100, "y": 240, "scaleX": 1, "scaleY": 1, "rotationDeg": 0 },
+          "content": "Jane Doe",
+          "font": { "family": "Inter, sans-serif", "size": 48, "color": "#ffffff" }
+        },
+        {
+          "id": "front-role",
+          "type": "text",
+          "name": "Professional Title",
+          "visible": true,
+          "locked": false,
+          "opacity": 1.0,
+          "transform": { "x": 100, "y": 320, "scaleX": 1, "scaleY": 1, "rotationDeg": 0 },
+          "content": "Principal Systems Engineer",
+          "font": { "family": "Inter, sans-serif", "size": 24, "color": "#a1a1aa" }
+        }
+      ],
+      "back": [
+        {
+          "id": "back-bg",
+          "type": "background",
+          "name": "Back Background",
+          "visible": true,
+          "locked": true,
+          "opacity": 1.0,
+          "transform": { "x": 0, "y": 0, "scaleX": 1, "scaleY": 1, "rotationDeg": 0 },
+          "content": "#18181b"
+        },
+        {
+          "id": "back-qr",
+          "type": "qr",
+          "name": "Contact vCard QR",
+          "visible": true,
+          "locked": false,
+          "opacity": 1.0,
+          "transform": { "x": 680, "y": 175, "scaleX": 1, "scaleY": 1, "rotationDeg": 0 },
+          "content": {
+            "mode": "vcard",
+            "vcardPayload": "BEGIN:VCARD\nVERSION:3.0\nFN:Jane Doe\nTITLE:Principal Systems Engineer\nURL:https://example.com\nEND:VCARD"
+          }
+        },
+        {
+          "id": "back-contact-info",
+          "type": "text",
+          "name": "Contact Details",
+          "visible": true,
+          "locked": false,
+          "opacity": 1.0,
+          "transform": { "x": 80, "y": 200, "scaleX": 1, "scaleY": 1, "rotationDeg": 0 },
+          "content": "hello@example.com\n+1 (555) 019-2834\nhttps://example.com",
+          "font": { "family": "Inter, monospace", "size": 22, "color": "#e4e4e7" }
+        }
+      ]
+    }
+  }
+]

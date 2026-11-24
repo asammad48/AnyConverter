@@ -1703,3 +1703,35 @@ ADR-051: Tool-to-Tool Workflow Chaining for JSON Group (JSON Formatter → Compa
 - **Consequences:**
   - Formally clears Phase 03 with `PASS FOR PHASE 03 RELEASE` verdict.
   - Fully unblocks Phase 04 (Thumbnail Studio, Branding, Business Cards, QR & NFC).
+
+
+## ADR-073: Creative Studio Phase 04 2D Graphics Canvas, Print Business Cards, Vector QR & Web NFC Architecture
+- **Date:** 2026-11-24
+- **Status:** Approved & Implemented
+- **Context:**
+  - Implementation of File 04 (`04_THUMBNAIL_BRANDING_BUSINESS_CARDS_QR_AND_NFC.md`) for AnyConverter Creative Studio.
+  - Requires providing professional graphic design tools (thumbnails, covers, banners, posters), two-sided print-safe business cards, vector QR codes with vCard 3.0 formatting, and Web NFC writing with graceful fallback on unsupported devices.
+  - Must operate with zero backend and zero external SaaS dependencies.
+- **Decision:**
+  1. **2D Graphics Canvas Engine (`graphics-canvas.js`):**
+     - Built an object-oriented 2D scene graph supporting standard social presets (1280x720, 1080x1080, 1080x1920, 1200x630, 1500x500).
+     - Implemented magnetic snapping to canvas edges, centerlines, and layer boundaries.
+     - Provided high-DPI export calculations for 1x, 2x Retina, and 3x 300DPI print outputs.
+  2. **Two-Sided Print Business Card Engine (`business-card.js`):**
+     - Implemented European (85x55mm) and US (3.5x2in) standard sizes at 300 DPI.
+     - Calculated exact 3mm bleed geometry, safe zone margins (3mm inside trim), and 8 corner crop tick mark lines for commercial printing.
+     - Built a client-side CSV batch personalization engine parsing local CSV data and generating 20+ personalized cards with UTF-8 diacritic preservation in EN, ES, DA without server upload.
+  3. **Vector QR Code & vCard Engine (`qr-vcard.js`):**
+     - Implemented pure client-side vector SVG QR code generator with 4-module quiet zone enforcement.
+     - Formatted standard vCard 3.0 records (`BEGIN:VCARD ... END:VCARD`).
+     - Codified mandatory disclosure: static vCards are immutable once printed; dynamic URLs depend on user-owned hosting (AnyConverter hosts no public profiles).
+  4. **Web NFC Adapter (`nfc-adapter.js`):**
+     - Feature detected `NDEFReader` (supported on Chromium on Android).
+     - Implemented direct NDEF payload writing with user gesture.
+     - On unsupported platforms (Desktop, iOS Safari), gracefully generates downloadable `.txt` NDEF payloads with step-by-step instructions for native NFC writer apps.
+  5. **Verification & Regression:**
+     - Created `tests/creative-studio/unit/test_phase04_graphics_cards_qr_nfc.js` passing 7/7 tests.
+     - Registered Suite #48 into `tests/run_all_tests.js`.
+- **Consequences:**
+  - Formally clears Phase 04 with `PASS FOR PHASE 04 RELEASE` verdict.
+  - Fully unblocks Phase 05 (Native 2D/3D Animation, Remotion Feasibility, Browser Preview & Rendering).
