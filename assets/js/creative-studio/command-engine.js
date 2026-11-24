@@ -3,7 +3,7 @@
  * Command pattern implementation for reversible, transactional editing operations.
  */
 
-const crypto = require('crypto');
+const nodeCrypto = (typeof require !== 'undefined') ? (function() { try { return require('crypto'); } catch(e) { return null; } })() : null;
 
 class CommandEngine {
   constructor(initialProject, options = {}) {
@@ -24,7 +24,8 @@ class CommandEngine {
   }
 
   _notify(commandName) {
-    this.project.revisionId = crypto.randomUUID ? crypto.randomUUID() : `rev-${Date.now()}-${Math.random().toString(36).slice(2, 7)}`;
+    const uuidFn = (nodeCrypto && nodeCrypto.randomUUID) || (typeof crypto !== 'undefined' && crypto.randomUUID ? crypto.randomUUID.bind(crypto) : null);
+    this.project.revisionId = uuidFn ? uuidFn() : `rev-${Date.now()}-${Math.random().toString(36).slice(2, 7)}`;
     for (const listener of this.listeners) {
       try {
         listener(this.project, commandName);
@@ -230,4 +231,7 @@ class CommandEngine {
 
 if (typeof module !== 'undefined' && module.exports) {
   module.exports = { CommandEngine };
+}
+if (typeof window !== 'undefined') {
+  window.CommandEngine = CommandEngine;
 }

@@ -1,0 +1,125 @@
+{
+  "homepage": {
+    "status": 200,
+    "title": "AnyConverter - Free PDF, Image, Calculator & Developer Tools",
+    "screenshot": "D:\\SynergyRepo\\AnyConverter\\AnyConverter\\reports\\creative-studio\\live-localhost-qa\\2026-11-25-audit\\screenshots\\01_homepage.png",
+    "totalNavLinks": 440,
+    "creativeLinksFound": [],
+    "pageTextMentionsCreative": {
+      "creativeStudio": false,
+      "creative": false,
+      "studio": false
+    }
+  },
+  "creativeStudioRoutes": {
+    "/creative-studio/": {
+      "status": 404,
+      "is404": true,
+      "contentLength": 186,
+      "screenshot": "D:\\SynergyRepo\\AnyConverter\\AnyConverter\\reports\\creative-studio\\live-localhost-qa\\2026-11-25-audit\\screenshots\\03_route__creative-studio_.png"
+    },
+    "/creative-studio/index.html": {
+      "status": 404,
+      "is404": true,
+      "contentLength": 186,
+      "screenshot": "D:\\SynergyRepo\\AnyConverter\\AnyConverter\\reports\\creative-studio\\live-localhost-qa\\2026-11-25-audit\\screenshots\\03_route__creative-studio_index_html.png"
+    },
+    "/es/creative-studio/": {
+      "status": 404,
+      "is404": true,
+      "contentLength": 189
+    },
+    "/da/creative-studio/": {
+      "status": 404,
+      "is404": true,
+      "contentLength": 189
+    },
+    "/thumbnail-maker/": {
+      "status": 404,
+      "is404": true,
+      "contentLength": 186
+    },
+    "/business-card-maker/": {
+      "status": 404,
+      "is404": true,
+      "contentLength": 190
+    },
+    "/qr-business-card/": {
+      "status": 404,
+      "is404": true,
+      "contentLength": 187
+    },
+    "/animated-text-video-maker/": {
+      "status": 404,
+      "is404": true,
+      "contentLength": 196
+    },
+    "/video-editor/": {
+      "status": 404,
+      "is404": true,
+      "contentLength": 183
+    },
+    "/2d-animation-maker/": {
+      "status": 404,
+      "is404": true,
+      "contentLength": 189
+    },
+    "/3d-animation-maker/": {
+      "status": 404,
+      "is404": true,
+      "contentLength": 189
+    },
+    "/ai-video-creator/": {
+      "status": 404,
+      "is404": true,
+      "contentLength": 187
+    },
+    "/editable-video-project/": {
+      "status": 404,
+      "is404": true,
+      "contentLength": 193
+    }
+  },
+  "existingTools": {
+    "jsonFormatter": {
+      "status": 200,
+      "title": "JSON Formatter & Validator Online — Free | AnyConverter",
+      "screenshot": "D:\\SynergyRepo\\AnyConverter\\AnyConverter\\reports\\creative-studio\\live-localhost-qa\\2026-11-25-audit\\screenshots\\04_existing_tool_json_formatter.png"
+    }
+  },
+  "browserModuleEvaluation": {
+    "requireDefinedInBrowser": false,
+    "cryptoSubtleAvailable": true,
+    "videoEncoderAvailable": true,
+    "audioEncoderAvailable": true,
+    "offscreenCanvasAvailable": true,
+    "ndefReaderAvailable": false,
+    "archiveFetchStatus": 200,
+    "archiveExecution": "ERROR: ReferenceError - require is not defined",
+    "graphicsCanvasFetchStatus": 200,
+    "graphicsCanvasExecution": "SUCCESS",
+    "renderAdapterFetchStatus": 200,
+    "renderAdapterExecution": "SUCCESS",
+    "businessCardFetchStatus": 200,
+    "businessCardExecution": "SUCCESS",
+    "qrVcardFetchStatus": 200,
+    "qrVcardExecution": "SUCCESS"
+  },
+  "consoleLogs": [
+    "[error] Failed to load resource: the server responded with a status of 404 (Not Found)",
+    "[error] Failed to load resource: the server responded with a status of 404 (Not Found)",
+    "[error] Failed to load resource: the server responded with a status of 404 (Not Found)",
+    "[error] Failed to load resource: the server responded with a status of 404 (Not Found)",
+    "[error] Failed to load resource: the server responded with a status of 404 (Not Found)",
+    "[error] Failed to load resource: the server responded with a status of 404 (Not Found)",
+    "[error] Failed to load resource: the server responded with a status of 404 (Not Found)",
+    "[error] Failed to load resource: the server responded with a status of 404 (Not Found)",
+    "[error] Failed to load resource: the server responded with a status of 404 (Not Found)",
+    "[error] Failed to load resource: the server responded with a status of 404 (Not Found)",
+    "[error] Failed to load resource: the server responded with a status of 404 (Not Found)",
+    "[error] Failed to load resource: the server responded with a status of 404 (Not Found)",
+    "[error] Failed to load resource: the server responded with a status of 404 (Not Found)",
+    "[error] Failed to load resource: the server responded with a status of 404 (Not Found)"
+  ],
+  "networkErrors": []
+}

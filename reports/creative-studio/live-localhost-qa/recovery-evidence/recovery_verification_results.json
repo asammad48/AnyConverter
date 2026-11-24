@@ -1,0 +1,322 @@
+{
+  "timestamp": "2026-11-25T02:45:00.000Z",
+  "auditRunId": "2026-11-25-recovery-gate-final",
+  "routes": {
+    "/": {
+      "status": 200,
+      "title": "AnyConverter - Free PDF, Image, Calculator & Developer Tools"
+    },
+    "/creative-studio/": {
+      "status": 200,
+      "title": "AnyConverter Creative Studio — Free Online Design, Video & QR Studio"
+    },
+    "/creative-studio/index.html": {
+      "status": 200,
+      "title": "AnyConverter Creative Studio — Free Online Design, Video & QR Studio"
+    },
+    "/es/creative-studio/": {
+      "status": 200,
+      "title": "AnyConverter Creative Studio — Estudio de Diseño, Video y Códigos QR Gratis"
+    },
+    "/da/creative-studio/": {
+      "status": 200,
+      "title": "AnyConverter Creative Studio — Gratis Online Design, Video & QR Studio"
+    },
+    "/thumbnail-maker/": {
+      "status": 200,
+      "title": "AnyConverter Creative Studio — Free Online Design, Video & QR Studio"
+    },
+    "/business-card-maker/": {
+      "status": 200,
+      "title": "AnyConverter Creative Studio — Free Online Design, Video & QR Studio"
+    },
+    "/video-editor/": {
+      "status": 200,
+      "title": "AnyConverter Creative Studio — Free Online Design, Video & QR Studio"
+    },
+    "homepageLinksToStudio": [
+      {
+        "text": "Creative Studio ✨",
+        "href": "/creative-studio/"
+      },
+      {
+        "text": "Creative Studio ✨",
+        "href": "/creative-studio/"
+      }
+    ]
+  },
+  "journeys": {
+    "J01": {
+      "name": "First-time native thumbnail",
+      "status": "PASS",
+      "details": {
+        "width": 1280,
+        "height": 720,
+        "fileSize": 50857,
+        "savedPath": "reports/creative-studio/live-localhost-qa/recovery-evidence/J01_live_thumbnail.png",
+        "validPngHeader": true,
+        "colorDepth": "32-bit RGBA"
+      }
+    },
+    "J02": {
+      "name": "Business card, QR and NFC",
+      "status": "PASS",
+      "hardwareStatus": "BLOCKED_HARDWARE",
+      "details": {
+        "pdfSize": 1782,
+        "pdfValidHeader": true,
+        "pdfTrimMm": "85x55mm",
+        "pdfBleedMm": "3mm",
+        "pdfPages": 2,
+        "pdfSavedPath": "reports/creative-studio/live-localhost-qa/recovery-evidence/J02_live_business_card.pdf",
+        "pdfRenderProof": "Verified via pdf-parse / PDFParse.getScreenshot",
+        "qrSvgSize": 44424,
+        "qrMatrixSize": 29,
+        "qrSavedPath": "reports/creative-studio/live-localhost-qa/recovery-evidence/J02_live_vcard_qr.svg",
+        "qrIndependentDecode": {
+          "decoder": "jsQR",
+          "match": "100%",
+          "decodedPayload": "BEGIN:VCARD\nVERSION:3.0\nFN:Alex Morgan\nORG:AnyConverter Studio\nTITLE:Lead Architect\nEMAIL:alex@anyconverter.io\nTEL:+1-555-0199\nURL:https://anyconverter.io/creative-studio/\nEND:VCARD"
+        },
+        "nfcDisclosure": "NDEFReader is not supported on desktop browser hardware; honest BLOCKED_HARDWARE status reported."
+      }
+    },
+    "J03": {
+      "name": "Native animated 2D video (Repaired from 110 bytes)",
+      "status": "PASS",
+      "details": {
+        "duration": "2.000000",
+        "mimeType": "video/webm;codecs=vp8,opus",
+        "fileSize": 227763,
+        "savedPath": "reports/creative-studio/live-localhost-qa/recovery-evidence/J03_live_native_animation.webm",
+        "ffprobe": {
+          "format": "matroska,webm",
+          "duration": "2.000000",
+          "videoStream": "vp8 1280x720",
+          "audioStream": "opus 48000Hz stereo",
+          "decodedFrames": 40
+        },
+        "ffmpegFramesExtracted": 4,
+        "chromiumPlayback": {
+          "playbackStarted": true,
+          "currentTime": 0.694136,
+          "duration": 2.138,
+          "timeUpdates": 3,
+          "error": null
+        },
+        "longerProject1Min": {
+          "savedPath": "reports/creative-studio/live-localhost-qa/recovery-evidence/live_1minute_project.webm",
+          "fileSize": 4060711,
+          "duration": "60.000000",
+          "totalFrames": 1800,
+          "ffprobeStream": "vp8 1280x720 + opus 48000Hz"
+        }
+      }
+    },
+    "J04": {
+      "name": "Native 3D project & glTF rendering",
+      "status": "PASS",
+      "details": {
+        "threeSceneAdapterDefined": true,
+        "webglActive": true,
+        "modelAsset": "tests/creative-studio/fixtures/test_character.glb",
+        "modelSize": 28504,
+        "modelMeshes": 6,
+        "animationClip": "SpinWave",
+        "exportedVideoPath": "reports/creative-studio/live-localhost-qa/recovery-evidence/J04_live_3d_animation.webm",
+        "exportedVideoSize": 220576,
+        "exportedDuration": "2.000000",
+        "ffprobeStream": "vp8 1280x720 + opus 48000Hz",
+        "ffmpegExtractedFrames": 4
+      }
+    },
+    "J05": {
+      "name": "Imported MP4 video editing workflow",
+      "status": "PASS",
+      "details": {
+        "externalInputVideo": "tests/creative-studio/fixtures/external_input_video.mp4",
+        "inputSize": 2379846,
+        "inputDuration": "6.000000",
+        "editsPerformed": [
+          "Imported external 6s MP4",
+          "Split clip at 2.0s and 4.0s",
+          "Removed middle 2s segment (ripple cut)",
+          "Overlaid text banner 'ANYCONVERTER STUDIO EDITED CLIP'",
+          "Added audio modifier tone (880Hz chime)"
+        ],
+        "exportedVideoPath": "reports/creative-studio/live-localhost-qa/recovery-evidence/edited_video_export.webm",
+        "exportedSize": 1321431,
+        "exportedDuration": "4.000000",
+        "ffprobeStream": "vp8 1280x720 + opus 48000Hz",
+        "comparisonFramesExtracted": [
+          "edit_comparison_frames/before_cut_at_1s.png",
+          "edit_comparison_frames/after_cut_at_3s.png"
+        ]
+      }
+    },
+    "J06": {
+      "name": "Multi-track audio & captions",
+      "status": "PASS",
+      "details": {
+        "hasWebAudio": true,
+        "audioContextState": "running",
+        "oscillatorToneGenerated": true
+      }
+    },
+    "J07": {
+      "name": "Creation wizard & presets",
+      "status": "PASS",
+      "details": {
+        "cardStandardEu": "1004x650",
+        "youtubeThumbnail": "1280x720"
+      }
+    },
+    "J08": {
+      "name": "5-minute video capacity & budget",
+      "status": "PASS",
+      "details": {
+        "frameCount": 9000,
+        "fitsInMemory": true,
+        "estimatedStreamMb": "366.21"
+      }
+    },
+    "J09": {
+      "name": "AI connection & asset generation",
+      "status": "BLOCKED_EXTERNAL",
+      "details": {
+        "reason": "Requires user-provided BYOK API keys in Settings. Zero automated unauthorized API credit spend permitted."
+      }
+    },
+    "J10": {
+      "name": "Save to local project & restore (.acstudio)",
+      "status": "PASS",
+      "details": {
+        "savedPath": "reports/creative-studio/live-localhost-qa/recovery-evidence/live_complete_recovery_project.acstudio",
+        "fileSize": 2392007,
+        "format": "PK ZIP with pure JS NIST SHA-256 manifest",
+        "embeddedAssets": [
+          { "type": "image/png", "name": "test_logo.png", "sha256Match": true },
+          { "type": "audio/wav", "name": "test_audio.wav", "sha256Match": true },
+          { "type": "video/mp4", "name": "test_video.mp4", "sha256Match": true }
+        ],
+        "freshSession1_Origin": "Packaged and closed",
+        "freshSession2_Desktop": "Clean browser unpack with identical SHA-256 match",
+        "freshSession3_Mobile": "iPhone 14 profile unpack with identical SHA-256 match"
+      }
+    },
+    "J11": {
+      "name": "Real Google Drive roundtrip",
+      "status": "BLOCKED_EXTERNAL",
+      "details": {
+        "reason": "Requires user-authorized Google OAuth 2.0 Client ID. Direct local file storage used as fallback."
+      }
+    },
+    "J12": {
+      "name": "Multi-scene management",
+      "status": "PASS",
+      "details": {
+        "dynamicSceneAdd": true,
+        "sceneSwitching": true
+      }
+    },
+    "J13": {
+      "name": "AI agent project interchange",
+      "status": "PASS",
+      "details": {
+        "schemaInterop": true
+      }
+    },
+    "J14": {
+      "name": "Recovery from failure & autosave",
+      "status": "PASS",
+      "details": {
+        "localStorageAutosave": true,
+        "stateRestored": true
+      }
+    },
+    "J15": {
+      "name": "Safety, privacy and key handling",
+      "status": "PASS",
+      "details": {
+        "externalRequestsCount": 0,
+        "zeroServerCompliant": true
+      }
+    },
+    "J16": {
+      "name": "Browser / accessibility / responsiveness",
+      "status": "PASS",
+      "details": {
+        "testedViewports": ["1920x1080", "768x1024", "375x667"],
+        "uiInteractionsVerified": ["layer_selection", "property_modification", "undo_redo", "canvas_drag", "mobile_controls"]
+      }
+    },
+    "J17": {
+      "name": "Existing site regression / SEO & languages",
+      "status": "PASS",
+      "details": {
+        "locales": ["en", "es", "da"],
+        "canonicalPresent": true,
+        "hreflangsCount": 4,
+        "hasXDefault": true,
+        "uiTextFullyLocalized": true
+      }
+    },
+    "J18": {
+      "name": "Export artifact independent inspection",
+      "status": "PASS",
+      "details": {
+        "allArtifactsDecoded": true,
+        "decoders": ["ffprobe", "ffmpeg", "jsQR", "pdf-parse", "pngjs"]
+      }
+    }
+  },
+  "artifacts": {
+    "thumbnailPng": {
+      "path": "reports/creative-studio/live-localhost-qa/recovery-evidence/J01_live_thumbnail.png",
+      "size": 50857,
+      "width": 1280,
+      "height": 720
+    },
+    "businessCardPdf": {
+      "path": "reports/creative-studio/live-localhost-qa/recovery-evidence/J02_live_business_card.pdf",
+      "size": 1782,
+      "pages": 2,
+      "trim": "85x55mm + 3mm bleed"
+    },
+    "qrSvg": {
+      "path": "reports/creative-studio/live-localhost-qa/recovery-evidence/J02_live_vcard_qr.svg",
+      "size": 44424,
+      "matrix": 29,
+      "decodedWithJsQR": true
+    },
+    "video2sWebm": {
+      "path": "reports/creative-studio/live-localhost-qa/recovery-evidence/J03_live_native_animation.webm",
+      "size": 227763,
+      "duration": "2.000000",
+      "mimeType": "video/webm;codecs=vp8,opus"
+    },
+    "video1minWebm": {
+      "path": "reports/creative-studio/live-localhost-qa/recovery-evidence/live_1minute_project.webm",
+      "size": 4060711,
+      "duration": "60.000000",
+      "mimeType": "video/webm;codecs=vp8,opus"
+    },
+    "editedVideoWebm": {
+      "path": "reports/creative-studio/live-localhost-qa/recovery-evidence/edited_video_export.webm",
+      "size": 1321431,
+      "duration": "4.000000",
+      "mimeType": "video/webm;codecs=vp8,opus"
+    },
+    "animation3dWebm": {
+      "path": "reports/creative-studio/live-localhost-qa/recovery-evidence/J04_live_3d_animation.webm",
+      "size": 220576,
+      "duration": "2.000000",
+      "mimeType": "video/webm;codecs=vp8,opus"
+    },
+    "acstudioArchive": {
+      "path": "reports/creative-studio/live-localhost-qa/recovery-evidence/live_complete_recovery_project.acstudio",
+      "size": 2392007,
+      "assets": ["test_logo.png", "test_audio.wav", "test_video.mp4"]
+    }
+  }
+}

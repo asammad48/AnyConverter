@@ -32,6 +32,23 @@
 /da/realkreditberegner   /da/mortgage-calculator/  301
 /da/moentkast            /da/coin-flip/            301
 
+# Creative Studio aliases
+/creative-studio            /creative-studio/         301
+/es/creative-studio         /es/creative-studio/      301
+/da/creative-studio         /da/creative-studio/      301
+/thumbnail-maker            /creative-studio/         302
+/thumbnail-maker/           /creative-studio/         302
+/business-card-maker        /creative-studio/         302
+/business-card-maker/       /creative-studio/         302
+/qr-business-card           /creative-studio/         302
+/qr-business-card/          /creative-studio/         302
+/video-editor               /creative-studio/         302
+/video-editor/              /creative-studio/         302
+/2d-animation-maker         /creative-studio/         302
+/2d-animation-maker/        /creative-studio/         302
+/3d-animation-maker         /creative-studio/         302
+/3d-animation-maker/        /creative-studio/         302
+
 # Trailing slash redirects — EN tool pages
 /json-formatter           /json-formatter/          301
 /xml-formatter            /xml-formatter/           301

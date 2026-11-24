@@ -1,0 +1,13 @@
+{
+  "devDependencies": {
+    "ffmpeg-static": "^5.3.0",
+    "ffprobe-static": "^3.1.0",
+    "fix-webm-duration": "^1.0.6",
+    "jsqr": "^1.4.0",
+    "pdf-parse": "^2.4.5",
+    "playwright-core": "^1.65.1",
+    "pngjs": "^7.0.0",
+    "qrcode": "^1.5.4",
+    "three": "^0.187.0"
+  }
+}

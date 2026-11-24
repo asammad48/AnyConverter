@@ -3,7 +3,7 @@
  * Ensures editing Scene 8 invalidates ONLY Scene 8, keeping all other scene asset hashes unchanged.
  */
 
-const crypto = require('crypto');
+const nodeCrypto = (typeof require !== 'undefined') ? (function() { try { return require('crypto'); } catch(e) { return null; } })() : null;
 
 class SceneInvalidationTracker {
   constructor(projectDocument) {
@@ -33,7 +33,15 @@ class SceneInvalidationTracker {
       durationFrames: scene.durationFrames,
       script: scene.script || ''
     });
-    return crypto.createHash('sha256').update(raw).digest('hex');
+    if (nodeCrypto && typeof nodeCrypto.createHash === 'function') {
+      return nodeCrypto.createHash('sha256').update(raw).digest('hex');
+    }
+    let h1 = 0xdeadbeef, h2 = 0x41c64e6d;
+    for (let i = 0; i < raw.length; i++) {
+      h1 = Math.imul(h1 ^ raw.charCodeAt(i), 2654435761);
+      h2 = Math.imul(h2 ^ raw.charCodeAt(i), 1597334677);
+    }
+    return (h1 >>> 0).toString(16).padStart(8, '0') + (h2 >>> 0).toString(16).padStart(8, '0');
   }
 
   /**
@@ -149,4 +157,7 @@ class SceneInvalidationTracker {
 
 if (typeof module !== 'undefined' && module.exports) {
   module.exports = { SceneInvalidationTracker };
+}
+if (typeof window !== 'undefined') {
+  window.SceneInvalidationTracker = SceneInvalidationTracker;
 }

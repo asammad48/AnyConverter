@@ -32,11 +32,11 @@
   </a>
   <nav class="main-nav" aria-label="Main navigation">
     <ul>
-
       <!-- Developer Tools -->
       <li class="nav-dropdown">
         <button class="nav-link nav-more" aria-expanded="false" aria-haspopup="true">Developer ▾</button>
         <ul class="dropdown-menu" role="menu">
+          <li><a href="/creative-studio/" role="menuitem" style="font-weight: 600; color: var(--color-primary, #b5412b);">Creative Studio ✨</a></li>
           <li><a href="/developer-tools/" role="menuitem">All Developer Tools</a></li>
           <li><a href="/json-formatter/" role="menuitem">JSON Formatter</a></li>
           <li><a href="/json-compare/" role="menuitem">JSON Compare</a></li>

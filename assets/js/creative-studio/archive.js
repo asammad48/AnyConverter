@@ -3,8 +3,59 @@
  * Pure JavaScript client/node compatible archive module with strict security guards.
  */
 
-const crypto = require('crypto');
-const zlib = require('zlib');
+const nodeCrypto = (typeof require !== 'undefined') ? (function() { try { return require('crypto'); } catch(e) { return null; } })() : null;
+const nodeZlib = (typeof require !== 'undefined') ? (function() { try { return require('zlib'); } catch(e) { return null; } })() : null;
+
+// Browser buffer polyfill if Buffer is not globally defined
+if (typeof globalThis.Buffer === 'undefined') {
+  class BrowserBuffer extends Uint8Array {
+    static from(source, encoding) {
+      if (typeof source === 'string') {
+        return new BrowserBuffer(new TextEncoder().encode(source));
+      }
+      return new BrowserBuffer(source);
+    }
+    static alloc(size) {
+      return new BrowserBuffer(size);
+    }
+    static concat(list) {
+      const totalLen = list.reduce((acc, b) => acc + b.length, 0);
+      const res = new BrowserBuffer(totalLen);
+      let offset = 0;
+      for (const item of list) {
+        res.set(item, offset);
+        offset += item.length;
+      }
+      return res;
+    }
+    static isBuffer(obj) {
+      return obj instanceof Uint8Array;
+    }
+    readUInt32LE(offset) {
+      return new DataView(this.buffer, this.byteOffset + offset, 4).getUint32(0, true);
+    }
+    readUInt16LE(offset) {
+      return new DataView(this.buffer, this.byteOffset + offset, 2).getUint16(0, true);
+    }
+    writeUInt32LE(val, offset) {
+      new DataView(this.buffer, this.byteOffset + offset, 4).setUint32(0, val, true);
+    }
+    writeUInt16LE(val, offset) {
+      new DataView(this.buffer, this.byteOffset + offset, 2).setUint16(0, val, true);
+    }
+    copy(target, targetStart = 0) {
+      target.set(this, targetStart);
+    }
+    toString(encoding, start = 0, end = this.length) {
+      const slice = this.subarray(start, end);
+      return new TextDecoder('utf-8').decode(slice);
+    }
+    slice(start, end) {
+      return new BrowserBuffer(this.subarray(start, end));
+    }
+  }
+  globalThis.Buffer = BrowserBuffer;
+}
 
 class AcStudioArchive {
   constructor(options = {}) {
@@ -30,7 +81,7 @@ class AcStudioArchive {
     const assetMap = binaryAssets instanceof Map ? binaryAssets : new Map(Object.entries(binaryAssets));
 
     for (const [id, buffer] of assetMap.entries()) {
-      const sha = crypto.createHash('sha256').update(buffer).digest('hex');
+      const sha = this._computeSha256(buffer);
       const expectedId = `sha256:${sha}`;
       if (id !== expectedId) {
         throw new Error(`Asset ID mismatch: provided '${id}', actual sha256 '${expectedId}'`);
@@ -87,11 +138,11 @@ class AcStudioArchive {
    * @returns {{ manifest: Object, project: Object, assets: Map<string, Buffer> }}
    */
   unpackage(zipBuffer) {
-    if (!Buffer.isBuffer(zipBuffer) || zipBuffer.length < 22) {
+    if (!zipBuffer || zipBuffer.length < 22) {
       throw new Error('Invalid archive: buffer is too short or not a valid ZIP container');
     }
-
-    const entries = this._readZip(zipBuffer);
+    const buf = (typeof Buffer !== 'undefined' && typeof Buffer.from === 'function') ? Buffer.from(zipBuffer) : zipBuffer;
+    const entries = this._readZip(buf);
 
     if (entries.length > this.maxEntryCount) {
       throw new Error(`ZIP entry count ${entries.length} exceeds max allowed limit of ${this.maxEntryCount}`);
@@ -134,7 +185,7 @@ class AcStudioArchive {
           throw new Error(`Invalid asset path convention: '${entry.name}'. Must be assets/<sha256>.<ext>`);
         }
         const expectedSha = hashMatch[1].toLowerCase();
-        const actualSha = crypto.createHash('sha256').update(entry.data).digest('hex');
+        const actualSha = this._computeSha256(entry.data);
         if (actualSha !== expectedSha) {
           throw new Error(`Asset checksum failure for '${entry.name}': computed sha256 does not match path`);
         }
@@ -218,8 +269,15 @@ class AcStudioArchive {
       const nameBuf = Buffer.from(entry.name, 'utf8');
       const dataBuf = entry.data;
       const crc = this._crc32(dataBuf);
-      const compressedData = zlib.deflateRawSync(dataBuf);
-      const isDeflated = compressedData.length < dataBuf.length;
+      let compressedData = null;
+      if (nodeZlib && typeof nodeZlib.deflateRawSync === 'function') {
+        try {
+          compressedData = nodeZlib.deflateRawSync(dataBuf);
+        } catch (e) {
+          compressedData = null;
+        }
+      }
+      const isDeflated = compressedData && compressedData.length < dataBuf.length;
       const finalData = isDeflated ? compressedData : dataBuf;
       const method = isDeflated ? 8 : 0; // 8 = Deflate, 0 = Store
 
@@ -312,7 +370,14 @@ class AcStudioArchive {
       if (method === 0) {
         data = rawData;
       } else if (method === 8) {
-        data = zlib.inflateRawSync(rawData);
+        if (nodeZlib && typeof nodeZlib.inflateRawSync === 'function') {
+          data = nodeZlib.inflateRawSync(rawData);
+        } else if (typeof DecompressionStream !== 'undefined') {
+          // Browser native decompression stream fallback if available
+          throw new Error('Decompression in browser requires uncompressed store or DecompressionStream');
+        } else {
+          throw new Error('zlib decompression unavailable in current runtime');
+        }
       } else {
         throw new Error(`Unsupported compression method in ZIP: ${method}`);
       }
@@ -322,6 +387,70 @@ class AcStudioArchive {
     }
 
     return entries;
+  }
+
+  _computeSha256(buf) {
+    if (nodeCrypto && typeof nodeCrypto.createHash === 'function') {
+      return nodeCrypto.createHash('sha256').update(buf).digest('hex');
+    }
+    // Synchronous standards-compliant SHA-256 implementation
+    function rightRotate(value, amount) {
+      return (value >>> amount) | (value << (32 - amount));
+    }
+    const mathPow = Math.pow;
+    const maxWord = mathPow(2, 32);
+    const K = [];
+    const H = [];
+    let primeCounter = 0;
+    const isPrime = {};
+    for (let candidate = 2; primeCounter < 64; candidate++) {
+      if (!isPrime[candidate]) {
+        for (let i = 0; i < 313; i += candidate) isPrime[i] = candidate;
+        H[primeCounter] = (mathPow(candidate, 0.5) * maxWord) | 0;
+        K[primeCounter++] = (mathPow(candidate, 1 / 3) * maxWord) | 0;
+      }
+    }
+    const bytes = new Uint8Array(buf);
+    const byteLength = bytes.length;
+    const bitLength = byteLength * 8;
+    const newByteLength = (((byteLength + 8) >> 6) + 1) << 6;
+    const padded = new Uint8Array(newByteLength);
+    padded.set(bytes);
+    padded[byteLength] = 0x80;
+    const view = new DataView(padded.buffer);
+    view.setUint32(newByteLength - 4, bitLength, false);
+
+    const W = new Uint32Array(64);
+    for (let i = 0; i < newByteLength; i += 64) {
+      for (let t = 0; t < 16; t++) {
+        W[t] = view.getUint32(i + t * 4, false);
+      }
+      for (let t = 16; t < 64; t++) {
+        const s0 = rightRotate(W[t - 15], 7) ^ rightRotate(W[t - 15], 18) ^ (W[t - 15] >>> 3);
+        const s1 = rightRotate(W[t - 2], 17) ^ rightRotate(W[t - 2], 19) ^ (W[t - 2] >>> 10);
+        W[t] = (W[t - 16] + s0 + W[t - 7] + s1) | 0;
+      }
+      let [a, b, c, d, e, f, g, h] = H;
+      for (let t = 0; t < 64; t++) {
+        const S1 = rightRotate(e, 6) ^ rightRotate(e, 11) ^ rightRotate(e, 25);
+        const ch = (e & f) ^ (~e & g);
+        const temp1 = (h + S1 + ch + K[t] + W[t]) | 0;
+        const S0 = rightRotate(a, 2) ^ rightRotate(a, 13) ^ rightRotate(a, 22);
+        const maj = (a & b) ^ (a & c) ^ (b & c);
+        const temp2 = (S0 + maj) | 0;
+        h = g; g = f; f = e; e = (d + temp1) | 0;
+        d = c; c = b; b = a; a = (temp1 + temp2) | 0;
+      }
+      H[0] = (H[0] + a) | 0;
+      H[1] = (H[1] + b) | 0;
+      H[2] = (H[2] + c) | 0;
+      H[3] = (H[3] + d) | 0;
+      H[4] = (H[4] + e) | 0;
+      H[5] = (H[5] + f) | 0;
+      H[6] = (H[6] + g) | 0;
+      H[7] = (H[7] + h) | 0;
+    }
+    return H.slice(0, 8).map(x => ((x >>> 0).toString(16)).padStart(8, '0')).join('');
   }
 
   _crc32(buf) {
@@ -348,4 +477,7 @@ AcStudioArchive._crcTable = (() => {
 
 if (typeof module !== 'undefined' && module.exports) {
   module.exports = { AcStudioArchive };
+}
+if (typeof window !== 'undefined') {
+  window.AcStudioArchive = AcStudioArchive;
 }

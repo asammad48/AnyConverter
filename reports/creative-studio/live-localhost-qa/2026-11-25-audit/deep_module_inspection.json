@@ -1,0 +1,234 @@
+{
+  "graphicsCanvas": {
+    "methods": [
+      "constructor",
+      "setPreset",
+      "addLayer",
+      "getLayer",
+      "removeLayer",
+      "reorderLayer",
+      "alignSelected",
+      "getLayerBounds",
+      "calculateSnap",
+      "serializeToProjectScene",
+      "getExportDimensions"
+    ],
+    "hasDrawMethod": false,
+    "hasExportPngMethod": false,
+    "serialized": {
+      "id": "scene-graphic-01",
+      "name": "Graphic Artboard",
+      "startFrame": 0,
+      "durationFrames": 1,
+      "layers": [
+        {
+          "id": "l1",
+          "type": "text",
+          "content": "Test Title",
+          "visible": true,
+          "locked": false,
+          "opacity": 1,
+          "transform": {
+            "x": 0,
+            "y": 0,
+            "scaleX": 1,
+            "scaleY": 1,
+            "rotationDeg": 0
+          }
+        }
+      ]
+    }
+  },
+  "businessCard": {
+    "methods": [
+      "constructor",
+      "setSize",
+      "mmToPixels",
+      "getPrintGeometry",
+      "setActiveSide",
+      "addLayerToSide",
+      "batchGenerateFromCsv",
+      "_parseCsvRow",
+      "_replacePlaceholders"
+    ],
+    "hasPdfExportMethod": false,
+    "geometry": {
+      "totalWidthPx": 1075,
+      "totalHeightPx": 720,
+      "bleedPx": 35,
+      "safeMarginPx": 35,
+      "trimRect": {
+        "x": 35,
+        "y": 35,
+        "width": 1005,
+        "height": 650
+      },
+      "safeRect": {
+        "x": 70,
+        "y": 70,
+        "width": 935,
+        "height": 580
+      },
+      "cropMarks": [
+        {
+          "x1": 35,
+          "y1": 0,
+          "x2": 35,
+          "y2": 33
+        },
+        {
+          "x1": 0,
+          "y1": 35,
+          "x2": 33,
+          "y2": 35
+        },
+        {
+          "x1": 1040,
+          "y1": 0,
+          "x2": 1040,
+          "y2": 33
+        },
+        {
+          "x1": 1075,
+          "y1": 35,
+          "x2": 1042,
+          "y2": 35
+        },
+        {
+          "x1": 35,
+          "y1": 720,
+          "x2": 35,
+          "y2": 687
+        },
+        {
+          "x1": 0,
+          "y1": 685,
+          "x2": 33,
+          "y2": 685
+        },
+        {
+          "x1": 1040,
+          "y1": 720,
+          "x2": 1040,
+          "y2": 687
+        },
+        {
+          "x1": 1075,
+          "y1": 685,
+          "x2": 1042,
+          "y2": 685
+        }
+      ]
+    }
+  },
+  "qrVcard": {
+    "vcardOutput": "BEGIN:VCARD\r\nVERSION:3.0\r\nFN:John Doe\r\nEMAIL;TYPE=INTERNET:john@example.com\r\nTEL;TYPE=CELL:+1234567890\r\nEND:VCARD",
+    "svgLength": 17277,
+    "matrixSize": 41,
+    "payloadMode": "vcard",
+    "warnings": [
+      "NOTICE: Static vCard content cannot be changed once printed on physical media."
+    ],
+    "savedSvgPath": "D:\\SynergyRepo\\AnyConverter\\AnyConverter\\reports\\creative-studio\\live-localhost-qa\\2026-11-25-audit\\OUTPUTS\\test_qr_vcard.svg",
+    "matrixGenerationAnalysis": "Deterministic pseudo-random hash distribution: (hash ^ (r*13 + c*37)) & 1. Lacks QR standard Reed-Solomon error correction, format information, and masking patterns. Real QR scanners will fail to decode this pattern."
+  },
+  "renderAdapter": {
+    "methods": [
+      "constructor",
+      "checkCapabilities",
+      "render"
+    ],
+    "renderResult": {
+      "success": true,
+      "aborted": false,
+      "width": 1920,
+      "height": 1080,
+      "fps": 30,
+      "durationSeconds": 2,
+      "totalFrames": 60,
+      "totalAudioSamples": 96000,
+      "mimeType": "video/mp4",
+      "maxDriftSamples": 1,
+      "maxDriftMs": 0.02
+    },
+    "progressCallsCount": 6,
+    "returnsMediaBlobOrBuffer": false,
+    "finding": "The render() method is a synchronous counter simulation loop. It computes drift math and increments frame counter, returning metadata { success: true, totalFrames: 60 } without encoding actual video frames, canvas pixel data, or MP4 container bytes."
+  },
+  "archive": {
+    "manifest": {
+      "manifestVersion": "1.0.0",
+      "projectId": "proj-video-multitrack-001",
+      "revisionId": "rev-001-init",
+      "title": "Episodic Science Explainer",
+      "kind": "video",
+      "createdAt": "2026-11-24T17:54:25.819Z",
+      "updatedAt": "2026-11-24T17:54:25.819Z",
+      "generator": "AnyConverter Creative Studio v1.0",
+      "entrypoint": "project.json",
+      "assets": [
+        {
+          "id": "sha256:ea6c332b312790675b00782f95eaecb9ababf40f9e60181147aafeeade534691",
+          "path": "assets/ea6c332b312790675b00782f95eaecb9ababf40f9e60181147aafeeade534691.png",
+          "mimeType": "image/png",
+          "sizeBytes": 26,
+          "sha256": "ea6c332b312790675b00782f95eaecb9ababf40f9e60181147aafeeade534691"
+        },
+        {
+          "id": "sha256:46bcba0b7f1b2ccbaea0b202a1ee4b879edd5792b83fc61ef8856567635368d7",
+          "path": "assets/46bcba0b7f1b2ccbaea0b202a1ee4b879edd5792b83fc61ef8856567635368d7.mp4",
+          "mimeType": "video/mp4",
+          "sizeBytes": 29,
+          "sha256": "46bcba0b7f1b2ccbaea0b202a1ee4b879edd5792b83fc61ef8856567635368d7"
+        },
+        {
+          "id": "sha256:2d133a64243e58205ee144778c60a456d209f81492dbe79a585e92be663fc9f2",
+          "path": "assets/2d133a64243e58205ee144778c60a456d209f81492dbe79a585e92be663fc9f2.wav",
+          "mimeType": "audio/wav",
+          "sizeBytes": 29,
+          "sha256": "2d133a64243e58205ee144778c60a456d209f81492dbe79a585e92be663fc9f2"
+        },
+        {
+          "id": "sha256:c1feef77f97069f458937d8fab501dbd96a692bb76ad1fd4aebac354206aab1a",
+          "path": "assets/c1feef77f97069f458937d8fab501dbd96a692bb76ad1fd4aebac354206aab1a.glb",
+          "mimeType": "model/gltf-binary",
+          "sizeBytes": 29,
+          "sha256": "c1feef77f97069f458937d8fab501dbd96a692bb76ad1fd4aebac354206aab1a"
+        }
+      ],
+      "security": {
+        "containsSecrets": false,
+        "verifiedZeroCredentials": true
+      }
+    },
+    "assets": {
+      "sha256:ea6c332b312790675b00782f95eaecb9ababf40f9e60181147aafeeade534691": {
+        "size": 26,
+        "utf8Text": "FAKE_PNG_HEADER_DATA_12345",
+        "sha256": "ea6c332b312790675b00782f95eaecb9ababf40f9e60181147aafeeade534691"
+      },
+      "sha256:46bcba0b7f1b2ccbaea0b202a1ee4b879edd5792b83fc61ef8856567635368d7": {
+        "size": 29,
+        "utf8Text": "FAKE_MP4_AV_STREAM_DATA_67890",
+        "sha256": "46bcba0b7f1b2ccbaea0b202a1ee4b879edd5792b83fc61ef8856567635368d7"
+      },
+      "sha256:2d133a64243e58205ee144778c60a456d209f81492dbe79a585e92be663fc9f2": {
+        "size": 29,
+        "utf8Text": "FAKE_WAV_AUDIO_PCM_DATA_11122",
+        "sha256": "2d133a64243e58205ee144778c60a456d209f81492dbe79a585e92be663fc9f2"
+      },
+      "sha256:c1feef77f97069f458937d8fab501dbd96a692bb76ad1fd4aebac354206aab1a": {
+        "size": 29,
+        "utf8Text": "FAKE_GLTF_3D_MODEL_DATA_33344",
+        "sha256": "c1feef77f97069f458937d8fab501dbd96a692bb76ad1fd4aebac354206aab1a"
+      }
+    },
+    "browserCompatibilityFinding": "assets/js/creative-studio/archive.js contains hardcoded Node.js requires (require('crypto'), require('zlib')). In the browser without a bundler, evaluating this file throws 'ReferenceError: require is not defined', completely preventing client-side unpackage."
+  },
+  "characterBible": {
+    "error": "bible.createCharacter is not a function"
+  },
+  "agentInterop": {
+    "error": "AgentInteropEngine is not a constructor"
+  }
+}

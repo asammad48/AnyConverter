@@ -1,0 +1,21 @@
+# AnyConverter Creative Studio — Discovered Flow Gaps & Architecture Blindspots
+
+**Audit Run ID:** `2026-11-25-audit`  
+**Standard:** Exploratory live-browser discovery, architectural integrity, and real-user journey verification.
+
+---
+
+## 1. Discovered Gaps Summary
+
+| Gap ID | Title & Discovery | Severity | Affected Area | Root Cause & Failure Mode | Proposed Zero-Backend Remediation |
+|:---:|---|:---:|---|---|---|
+| **GAP-01** | **Total UI Absence (Ghost Application)** | **P0 (Blocker)** | Routing & Presentation | No HTML entrypoint (`/creative-studio/index.html`) or localized pages exist. All studio routes return HTTP 404. | Construct canonical semantic HTML pages for `/creative-studio/`, `/es/creative-studio/`, `/da/creative-studio/` adhering to AnyConverter shared layout. |
+| **GAP-02** | **Simulated Video Renderer (Fake Counter)** | **P0 (Blocker)** | `render-adapter.js` | `NativeCanvasRenderAdapter.render()` increments a counter loop and returns `{ success: true, totalFrames: N }` without encoding canvas frames or creating video files. | Implement real WebCodecs `VideoEncoder` + `AudioEncoder` compositing into `mp4-muxer` WASM/JS container to yield an actual playable MP4 Blob. |
+| **GAP-03** | **Unscannable Pseudo-Random QR Code** | **P0 (Blocker)** | `qr-vcard.js` | `_generateMatrix` fills modules with `(hash ^ (r*13 + c*37)) & 1`. It lacks Reed-Solomon codewords, format information, and timing tracks. Real QR scanners fail. | Replace custom hash formula with a compliant client-side QR generation library (e.g. `qrcode-generator` or `qrcode-svg`) or full ISO/IEC 18004 matrix generator. |
+| **GAP-04** | **Browser Runtime Crash on Archive Import** | **P0 (Blocker)** | `archive.js` | Top-level `require('crypto')` and `require('zlib')` throw `ReferenceError: require is not defined` when loaded in browser script tags. | Polyfill or replace with standard Web Crypto API (`crypto.subtle`) and modern browser Compression Streams API (`DecompressionStream('deflate')`) / `fflate`. |
+| **GAP-05** | **Dummy Fixture Assets Masking Broken Renderers** | **P0 (Blocker)** | Test Fixtures | `sample_project.acstudio` contains text strings (`FAKE_PNG_HEADER_DATA_12345`, `FAKE_MP4_AV_STREAM_DATA_67890`) rather than binary media files. | Replace test fixtures with genuine binary media assets (real 1x1 transparent PNG, genuine MP4 MOOV/MDAT container, 44.1kHz WAV). |
+| **GAP-06** | **Missing Graphic & PDF Export Pipeline** | **P0 (Blocker)** | `graphics-canvas.js`, `business-card.js` | Classes only store geometric numbers; neither implements rendering onto `<canvas>` or exporting PNG/PDF. | Wire `HTMLCanvasElement` 2D context rendering with `toBlob('image/png')` and integrate `pdf-lib` (already used in AnyConverter PDF tools) for PDF generation. |
+| **GAP-07** | **Zero UI Integration with Existing Site Catalog** | **P1 (Major)** | `index.html`, `sitemap.xml` | Homepage lists 128 tools across 9 categories; Creative Studio is completely missing from navigation, category hubs, and search. | Add Creative Studio to navigation bar, category hubs, and `sitemap.xml` with reciprocal hreflang links. |
+| **GAP-08** | **Guest-to-Cloud Sync State Transition Undefined** | **P1 (Major)** | UI / State Flow | When a guest user designs a project offline and later decides to connect Google Drive, no UI modal prompts whether to push local draft or pull remote folder. | Implement explicit bidirectional reconciliation dialog: "Keep Local Draft as New File" vs "Link to Existing Remote Project". |
+| **GAP-09** | **AI Fallback to Native Storyboard Disconnection** | **P2 (Moderate)** | Wizard / Flow | When an AI provider key is exhausted or encounters 429, no UI path seamlessly converts the AI shot prompts into native 2D/3D template placeholders. | Provide one-click "Convert Pending AI Shots to Native Vector Placeholders" button in JobLifecycleManager. |
+| **GAP-10** | **Mobile Timeline Usability Blindspot** | **P2 (Moderate)** | Responsive UI | Full multi-track video timeline requires horizontal space; on mobile viewports (<600px), multi-track timeline overflows without compact single-track view. | Design mobile-responsive stacked scene card view with vertical scrubbing for narrow viewports. |

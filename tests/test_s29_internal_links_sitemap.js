@@ -268,11 +268,11 @@ check('RELATED_TOOLS_COMPLETE_MAPPING.json covers all 128 tools with 100% recipr
 
 console.log('\n--- 3. Canonical Sitemap Synchronization ---');
 
-check('sitemap.xml has 441 URLs with 100% reciprocal 4-way hreflang and passes drift check', () => {
+check('sitemap.xml has 444 URLs with 100% reciprocal 4-way hreflang and passes drift check', () => {
   assert.ok(fs.existsSync(SITEMAP_PATH), 'sitemap.xml must exist');
   const xml = fs.readFileSync(SITEMAP_PATH, 'utf8');
   const urlMatches = xml.match(/<loc>/g) || [];
-  assert.strictEqual(urlMatches.length, 441, `Expected 441 <loc> tags in sitemap.xml, found ${urlMatches.length}`);
+  assert.strictEqual(urlMatches.length, 444, `Expected 444 <loc> tags in sitemap.xml, found ${urlMatches.length}`);
 
   // Run sitemap verification check
   const checkOutput = execSync('node scripts/generate_sitemap.js --check', { cwd: ROOT, encoding: 'utf8' });

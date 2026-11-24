@@ -208,3 +208,6 @@ class TimelineEditor {
 if (typeof module !== 'undefined' && module.exports) {
   module.exports = { TimelineEditor };
 }
+if (typeof window !== 'undefined') {
+  window.TimelineEditor = TimelineEditor;
+}

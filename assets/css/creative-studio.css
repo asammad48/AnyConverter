@@ -1,0 +1,534 @@
+/* AnyConverter Creative Studio — Responsive Workspace Stylesheet */
+:root {
+  --cs-bg: #0b0f19;
+  --cs-surface: #151d2e;
+  --cs-surface-card: #1c263c;
+  --cs-surface-hover: #26334f;
+  --cs-border: #2b3954;
+  --cs-border-light: #3d4f73;
+  --cs-primary: #b5412b;
+  --cs-primary-hover: #9c3420;
+  --cs-accent: #3b82f6;
+  --cs-success: #10b981;
+  --cs-warning: #f59e0b;
+  --cs-danger: #ef4444;
+  --cs-text: #f8fafc;
+  --cs-text-muted: #94a3b8;
+  --cs-header-height: 52px;
+  --cs-timeline-height: 180px;
+}
+
+.cs-app-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: calc(100vh - 56px);
+  background: var(--cs-bg);
+  color: var(--cs-text);
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  overflow: hidden;
+}
+
+/* Studio Header / Command Bar */
+.cs-header {
+  height: var(--cs-header-height);
+  background: var(--cs-surface);
+  border-bottom: 1px solid var(--cs-border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  gap: 12px;
+  z-index: 40;
+  flex-wrap: nowrap;
+}
+
+.cs-header-left, .cs-header-center, .cs-header-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.cs-header-left {
+  flex: 0 1 auto;
+}
+
+.cs-header-center {
+  flex: 1 1 auto;
+  justify-content: center;
+  overflow-x: auto;
+}
+
+.cs-header-right {
+  flex: 0 1 auto;
+}
+
+.cs-project-title-input {
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--cs-text);
+  font-weight: 600;
+  font-size: 15px;
+  padding: 4px 8px;
+  border-radius: 6px;
+  max-width: 220px;
+  outline: none;
+  transition: all 0.15s;
+}
+
+.cs-project-title-input:hover, .cs-project-title-input:focus {
+  background: var(--cs-surface-card);
+  border-color: var(--cs-border);
+}
+
+.cs-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 6px 12px;
+  font-size: 13px;
+  font-weight: 500;
+  border-radius: 6px;
+  border: 1px solid var(--cs-border);
+  background: var(--cs-surface-card);
+  color: var(--cs-text);
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s, transform 0.05s;
+  white-space: nowrap;
+}
+
+.cs-btn:hover {
+  background: var(--cs-surface-hover);
+  border-color: var(--cs-border-light);
+}
+
+.cs-btn:active {
+  transform: translateY(1px);
+}
+
+.cs-btn-primary {
+  background: var(--cs-primary);
+  border-color: var(--cs-primary);
+  color: #ffffff;
+}
+
+.cs-btn-primary:hover {
+  background: var(--cs-primary-hover);
+  border-color: var(--cs-primary-hover);
+}
+
+.cs-btn-icon {
+  padding: 6px 8px;
+  font-size: 14px;
+}
+
+.cs-select {
+  background: var(--cs-surface-card);
+  border: 1px solid var(--cs-border);
+  color: var(--cs-text);
+  padding: 6px 10px;
+  font-size: 13px;
+  border-radius: 6px;
+  outline: none;
+  cursor: pointer;
+}
+
+.cs-select:hover {
+  border-color: var(--cs-border-light);
+}
+
+/* Studio Workspace Layout */
+.cs-workspace {
+  display: grid;
+  grid-template-columns: 280px 1fr 300px;
+  grid-template-rows: 1fr;
+  flex: 1;
+  min-height: 0;
+  height: calc(100vh - 56px - var(--cs-header-height));
+  background: var(--cs-bg);
+  overflow: hidden;
+}
+
+/* Left Sidebar */
+.cs-sidebar-left {
+  background: var(--cs-surface);
+  border-right: 1px solid var(--cs-border);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.cs-tabs-header {
+  display: flex;
+  background: var(--cs-surface-card);
+  border-bottom: 1px solid var(--cs-border);
+  overflow-x: auto;
+}
+
+.cs-tab-btn {
+  flex: 1;
+  padding: 10px 8px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--cs-text-muted);
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+  text-align: center;
+  white-space: nowrap;
+  transition: all 0.15s;
+}
+
+.cs-tab-btn:hover {
+  color: var(--cs-text);
+}
+
+.cs-tab-btn.active {
+  color: #ffffff;
+  border-bottom-color: var(--cs-primary);
+  background: var(--cs-surface);
+}
+
+.cs-tab-pane {
+  display: none;
+  flex: 1;
+  overflow-y: auto;
+  padding: 14px;
+}
+
+.cs-tab-pane.active {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* Layers List */
+.cs-layers-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  max-height: 240px;
+  overflow-y: auto;
+}
+
+.cs-layer-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 10px;
+  background: var(--cs-surface-card);
+  border: 1px solid var(--cs-border);
+  border-radius: 6px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.cs-layer-item:hover {
+  border-color: var(--cs-border-light);
+  background: var(--cs-surface-hover);
+}
+
+.cs-layer-item.active {
+  border-color: var(--cs-accent);
+  background: rgba(59, 130, 246, 0.15);
+}
+
+.cs-layer-controls {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* Center Stage (Canvas & Timeline) */
+.cs-stage {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 0;
+  background: #090d16;
+  overflow: hidden;
+  position: relative;
+}
+
+.cs-stage-toolbar {
+  height: 40px;
+  background: var(--cs-surface);
+  border-bottom: 1px solid var(--cs-border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+}
+
+.cs-viewport {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: auto;
+  padding: 24px;
+  position: relative;
+  background-image: 
+    linear-gradient(45deg, #111827 25%, transparent 25%), 
+    linear-gradient(-45deg, #111827 25%, transparent 25%), 
+    linear-gradient(45deg, transparent 75%, #111827 75%), 
+    linear-gradient(-45deg, transparent 75%, #111827 75%);
+  background-size: 20px 20px;
+  background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+}
+
+.cs-canvas-wrapper {
+  position: relative;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), 0 0 0 1px var(--cs-border);
+  background: #ffffff;
+  display: inline-block;
+  user-select: none;
+}
+
+#cs-canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* Timeline Panel */
+.cs-timeline-panel {
+  height: var(--cs-timeline-height);
+  background: var(--cs-surface);
+  border-top: 1px solid var(--cs-border);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.cs-timeline-header {
+  height: 36px;
+  background: var(--cs-surface-card);
+  border-bottom: 1px solid var(--cs-border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 12px;
+}
+
+.cs-timeline-body {
+  flex: 1;
+  overflow-x: auto;
+  overflow-y: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.cs-timeline-ruler {
+  height: 24px;
+  background: #0f172a;
+  border-bottom: 1px solid var(--cs-border);
+  position: relative;
+}
+
+.cs-timeline-track {
+  height: 36px;
+  border-bottom: 1px solid var(--cs-border);
+  position: relative;
+  background: rgba(255, 255, 255, 0.02);
+  display: flex;
+  align-items: center;
+}
+
+.cs-clip {
+  position: absolute;
+  height: 28px;
+  background: rgba(59, 130, 246, 0.6);
+  border: 1px solid #60a5fa;
+  border-radius: 4px;
+  top: 4px;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  padding: 0 8px;
+  cursor: grab;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.cs-playhead {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: #ef4444;
+  z-index: 30;
+  pointer-events: none;
+}
+
+.cs-playhead::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -5px;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 8px solid #ef4444;
+}
+
+/* Right Sidebar (Properties Inspector) */
+.cs-sidebar-right {
+  background: var(--cs-surface);
+  border-left: 1px solid var(--cs-border);
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  padding: 16px;
+  gap: 16px;
+}
+
+.cs-section-title {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--cs-text-muted);
+  margin-bottom: 8px;
+}
+
+.cs-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 10px;
+}
+
+.cs-form-label {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--cs-text-muted);
+}
+
+.cs-input {
+  background: var(--cs-surface-card);
+  border: 1px solid var(--cs-border);
+  color: var(--cs-text);
+  padding: 6px 10px;
+  font-size: 13px;
+  border-radius: 6px;
+  outline: none;
+}
+
+.cs-input:focus {
+  border-color: var(--cs-accent);
+}
+
+.cs-grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+/* Modals & Dialogs */
+.cs-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 200;
+  backdrop-filter: blur(4px);
+}
+
+.cs-modal-backdrop.open {
+  display: flex;
+}
+
+.cs-modal {
+  background: var(--cs-surface);
+  border: 1px solid var(--cs-border);
+  border-radius: 12px;
+  width: 90%;
+  max-width: 540px;
+  max-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+  overflow: hidden;
+}
+
+.cs-modal-header {
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--cs-border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.cs-modal-body {
+  padding: 20px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.cs-modal-footer {
+  padding: 14px 20px;
+  border-top: 1px solid var(--cs-border);
+  background: var(--cs-surface-card);
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+/* Responsive Media Queries */
+@media (max-width: 1024px) {
+  .cs-workspace {
+    grid-template-columns: 240px 1fr;
+  }
+  .cs-sidebar-right {
+    display: none;
+  }
+  .cs-sidebar-right.mobile-open {
+    display: flex;
+    position: fixed;
+    top: var(--cs-header-height);
+    right: 0;
+    bottom: 0;
+    width: 320px;
+    z-index: 50;
+    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
+  }
+}
+
+@media (max-width: 768px) {
+  .cs-workspace {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr auto;
+  }
+  .cs-sidebar-left {
+    display: none;
+  }
+  .cs-sidebar-left.mobile-open {
+    display: flex;
+    position: fixed;
+    top: var(--cs-header-height);
+    left: 0;
+    bottom: 0;
+    width: 280px;
+    z-index: 50;
+    box-shadow: 10px 0 30px rgba(0, 0, 0, 0.5);
+  }
+  .cs-timeline-panel {
+    height: 140px;
+  }
+  .cs-header {
+    padding: 0 8px;
+  }
+  .cs-project-title-input {
+    max-width: 130px;
+  }
+}

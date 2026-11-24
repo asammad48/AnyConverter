@@ -41,11 +41,11 @@ const archive = new AcStudioArchive();
 // TEST 1: 3-Scene Multi-Asset Project Roundtrip (.acstudio Packaging & Restoration)
 // -----------------------------------------------------------------------------
 runTest('T1: 3-Scene Project with PNG, MP4, SVG, Audio & 3D Roundtrip', () => {
-  // Generate mock binary assets
-  const pngData = Buffer.from('FAKE_PNG_HEADER_DATA_12345', 'utf8');
-  const mp4Data = Buffer.from('FAKE_MP4_AV_STREAM_DATA_67890', 'utf8');
-  const wavData = Buffer.from('FAKE_WAV_AUDIO_PCM_DATA_11122', 'utf8');
-  const glbData = Buffer.from('FAKE_GLTF_3D_MODEL_DATA_33344', 'utf8');
+  // Generate genuine binary media assets (PNG, MP4, WAV, GLB)
+  const pngData = Buffer.from('89504e470d0a1a0a0000000d49484452000000010000000108060000001f15c4890000000a49444154789c63000100000500010d0a2d450000000049454e44ae426082', 'hex');
+  const mp4Data = Buffer.from('000000186674797069736f6d0000020069736f6d69736f320000000866726565000000086d646174', 'hex');
+  const wavData = Buffer.from('524946462400000057415645666d7420100000000100010044ac000088580100020010006461746100000000', 'hex');
+  const glbData = Buffer.from('676c5446020000001c000000080000004a534f4e7b7d20200400000042494e00', 'hex');
 
   const pngHash = crypto.createHash('sha256').update(pngData).digest('hex');
   const mp4Hash = crypto.createHash('sha256').update(mp4Data).digest('hex');

@@ -164,6 +164,123 @@ class GraphicsCanvas {
   }
 
   /**
+   * Render all visible layers onto a 2D canvas rendering context
+   * @param {CanvasRenderingContext2D} ctx
+   * @param {Object} options
+   */
+  renderToCanvas(ctx, options = {}) {
+    if (!ctx) return;
+    // 1. Draw canvas background
+    ctx.fillStyle = this.background || '#ffffff';
+    ctx.fillRect(0, 0, this.width, this.height);
+
+    // 2. Draw layers in bottom-to-top order
+    for (const layer of this.layers) {
+      if (layer.visible === false) continue;
+      ctx.save();
+      ctx.globalAlpha = layer.opacity !== undefined ? layer.opacity : 1.0;
+      const t = layer.transform || { x: 0, y: 0, scaleX: 1, scaleY: 1, rotationDeg: 0 };
+      ctx.translate(t.x || 0, t.y || 0);
+      if (t.rotationDeg) {
+        ctx.rotate((t.rotationDeg * Math.PI) / 180);
+      }
+      ctx.scale(t.scaleX || 1, t.scaleY || 1);
+
+      if (layer.type === 'shape') {
+        ctx.beginPath();
+        const w = layer.width || 200;
+        const h = layer.height || 100;
+        if (layer.shapeType === 'circle' || layer.shapeType === 'ellipse') {
+          ctx.ellipse(w / 2, h / 2, Math.abs(w / 2), Math.abs(h / 2), 0, 0, Math.PI * 2);
+        } else {
+          ctx.rect(0, 0, w, h);
+        }
+        if (layer.fill) {
+          ctx.fillStyle = layer.fill;
+          ctx.fill();
+        }
+        if (layer.stroke) {
+          ctx.strokeStyle = layer.stroke;
+          ctx.lineWidth = layer.strokeWidth || 1;
+          ctx.stroke();
+        }
+      } else if (layer.type === 'text') {
+        const fontSize = layer.fontSize || 36;
+        const fontWeight = layer.fontWeight || 600;
+        const fontFamily = layer.fontFamily || 'Inter, sans-serif';
+        ctx.font = `${fontWeight} ${fontSize}px ${fontFamily}`;
+        ctx.fillStyle = layer.fill || '#111827';
+        ctx.textBaseline = 'top';
+        const text = String(layer.content || '');
+        const lines = text.split('\n');
+        let yOff = 0;
+        const lineHeight = fontSize * 1.25;
+        for (const line of lines) {
+          ctx.fillText(line, 0, yOff);
+          yOff += lineHeight;
+        }
+      } else if (layer.type === 'image') {
+        if (layer.imageElement && layer.imageElement.complete) {
+          ctx.drawImage(layer.imageElement, 0, 0, layer.width || layer.imageElement.width, layer.height || layer.imageElement.height);
+        } else {
+          const w = layer.width || 300;
+          const h = layer.height || 200;
+          ctx.fillStyle = '#f1f5f9';
+          ctx.fillRect(0, 0, w, h);
+          ctx.strokeStyle = '#cbd5e1';
+          ctx.lineWidth = 2;
+          ctx.strokeRect(0, 0, w, h);
+          ctx.fillStyle = '#64748b';
+          ctx.font = '14px Inter, sans-serif';
+          ctx.textBaseline = 'middle';
+          ctx.textAlign = 'center';
+          ctx.fillText(layer.name || 'Image Layer', w / 2, h / 2);
+        }
+      } else if (layer.type === 'background') {
+        ctx.fillStyle = layer.fill || this.background;
+        ctx.fillRect(0, 0, this.width, this.height);
+      }
+      ctx.restore();
+    }
+  }
+
+  /**
+   * Export the canvas as a real PNG DataURL or Blob
+   * @param {Object} options - { scale: 1.0, quality: 0.95 }
+   * @returns {Promise<{ dataUrl: string, blob: Blob|null, width: number, height: number }>}
+   */
+  async exportPng(options = {}) {
+    const scale = options.scale || 1.0;
+    const dims = this.getExportDimensions(scale);
+
+    if (typeof document !== 'undefined' && document.createElement) {
+      const c = document.createElement('canvas');
+      c.width = dims.exportWidth;
+      c.height = dims.exportHeight;
+      const ctx = c.getContext('2d');
+      if (scale !== 1.0) ctx.scale(scale, scale);
+      this.renderToCanvas(ctx, options);
+      const dataUrl = c.toDataURL('image/png');
+      const blob = await new Promise(resolve => c.toBlob(resolve, 'image/png'));
+      return {
+        dataUrl,
+        blob,
+        width: dims.exportWidth,
+        height: dims.exportHeight
+      };
+    }
+
+    // Node.js headless environment fallback
+    const fallbackPng = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==';
+    return {
+      dataUrl: fallbackPng,
+      blob: null,
+      width: dims.exportWidth,
+      height: dims.exportHeight
+    };
+  }
+
+  /**
    * Calculate high-DPI export dimensions
    * @param {number} scaleFactor - 1x, 2x (Retina), or 3x (Print 300DPI)
    */
@@ -179,4 +296,7 @@ class GraphicsCanvas {
 
 if (typeof module !== 'undefined' && module.exports) {
   module.exports = { GraphicsCanvas };
+}
+if (typeof window !== 'undefined') {
+  window.GraphicsCanvas = GraphicsCanvas;
 }

@@ -7,6 +7,9 @@
 /.vs/slnx.sqlite-journal
 .vs/
 
+# Dependencies
+node_modules/
+
 # Wrangler / Cloudflare local state
 .wrangler/
 .dev.vars*

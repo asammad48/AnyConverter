@@ -66,10 +66,10 @@ for (const block of urlBlocks) {
 
 // Test 1: URL Count & Uniqueness
 console.log(`[CHECK 1] Sitemap Total URLs Declared: ${locs.length}`);
-assert.strictEqual(locs.length, 441, `Expected exactly 441 URLs in sitemap.xml, found ${locs.length}`);
+assert.strictEqual(locs.length, 444, `Expected exactly 444 URLs in sitemap.xml, found ${locs.length}`);
 const uniqueLocs = new Set(locs);
-assert.strictEqual(uniqueLocs.size, 441, 'All 441 URLs in sitemap.xml must be unique (0 duplicates allowed)');
-console.log('✓ Exactly 441 unique URLs verified in sitemap.xml');
+assert.strictEqual(uniqueLocs.size, 444, 'All 444 URLs in sitemap.xml must be unique (0 duplicates allowed)');
+console.log('✓ Exactly 444 unique URLs verified in sitemap.xml');
 
 // Test 2: Locale Breakdown
 let enCount = 0;
@@ -86,10 +86,10 @@ for (const loc of locs) {
   }
 }
 console.log(`[CHECK 2] Locale Breakdown: EN=${enCount}, ES=${esCount}, DA=${daCount}`);
-assert.strictEqual(enCount, 147, `Expected 147 English URLs, found ${enCount}`);
-assert.strictEqual(esCount, 147, `Expected 147 Spanish URLs, found ${esCount}`);
-assert.strictEqual(daCount, 147, `Expected 147 Danish URLs, found ${daCount}`);
-console.log('✓ Exact 147/147/147 locale symmetry confirmed');
+assert.strictEqual(enCount, 148, `Expected 148 English URLs, found ${enCount}`);
+assert.strictEqual(esCount, 148, `Expected 148 Spanish URLs, found ${esCount}`);
+assert.strictEqual(daCount, 148, `Expected 148 Danish URLs, found ${daCount}`);
+console.log('✓ Exact 148/148/148 locale symmetry confirmed');
 
 // Test 3: Zero Dangling URLs (Every sitemap URL exists on disk)
 for (const loc of locs) {
@@ -101,7 +101,7 @@ for (const loc of locs) {
     `Dangling URL detected: ${loc} references non-existent file ${relFile}`
   );
 }
-console.log('✓ Zero dangling URLs: 100% of 441 sitemap URLs verified active on disk');
+console.log('✓ Zero dangling URLs: 100% of 444 sitemap URLs verified active on disk');
 
 // Test 4: Zero Orphan Pages (Every indexable HTML page is in sitemap)
 const excludedScanDirs = new Set(['.git', '.vs', 'node_modules', 'output', 'attached_assets', 'scratch', 'test-results', 'reports', 'coverage', '.agents', '.claude']);
@@ -120,7 +120,7 @@ function walkHtml(dir, out = []) {
 
 const onDiskPages = walkHtml(ROOT);
 console.log(`[CHECK 4] Total indexable index.html files discovered on disk: ${onDiskPages.length}`);
-assert.strictEqual(onDiskPages.length, 441, `Expected exactly 441 index.html files on disk, found ${onDiskPages.length}`);
+assert.strictEqual(onDiskPages.length, 444, `Expected exactly 444 index.html files on disk, found ${onDiskPages.length}`);
 
 for (const p of onDiskPages) {
   const route = p === 'index.html' ? '/' : `/${p.replace(/\/index\.html$/, '')}/`;
@@ -179,8 +179,8 @@ console.log('✓ Zero redirected URLs present in sitemap.xml');
 
 // Test 8: Deterministic Generator Verification (Drift Detection)
 const generated = generateSitemapXml();
-assert.strictEqual(generated.urlsCount, 441, 'Generator must produce exactly 441 URLs');
-assert.strictEqual(generated.clustersCount, 147, 'Generator must produce exactly 147 clusters');
+assert.strictEqual(generated.urlsCount, 444, 'Generator must produce exactly 444 URLs');
+assert.strictEqual(generated.clustersCount, 148, 'Generator must produce exactly 148 clusters');
 console.log('✓ Sitemap generator execution verified: clean drift-free output');
 
 console.log('\nALL SITEMAP INTEGRITY TESTS PASSED!');

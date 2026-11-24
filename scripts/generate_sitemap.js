@@ -186,6 +186,24 @@ function buildClusters() {
     });
   }
 
+  // 6. Creative Studio Application Cluster
+  clusters.push({
+    type: 'studio',
+    slug: 'creative-studio',
+    priority: '0.9',
+    changefreq: 'weekly',
+    routes: {
+      en: '/creative-studio/',
+      es: '/es/creative-studio/',
+      da: '/da/creative-studio/'
+    },
+    files: {
+      en: 'creative-studio/index.html',
+      es: 'es/creative-studio/index.html',
+      da: 'da/creative-studio/index.html'
+    }
+  });
+
   return clusters;
 }
 

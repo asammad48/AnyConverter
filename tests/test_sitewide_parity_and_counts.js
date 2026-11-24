@@ -11,7 +11,7 @@ console.log('Running Sitewide Parity & Inventory Counts Regression Suite...\n');
 
 // 1. Unique Functional Tool Inventory Verification
 const excludedDirs = new Set(['.git', '.vs', 'node_modules', 'output', 'attached_assets', 'scratch', 'test-results', 'reports', 'assets', 'tools', 'tests', 'docs', 'es', 'da']);
-const knownNonTools = new Set(['about', 'blog', 'contact', 'cookies', 'faq', 'press', 'privacy', 'security', 'terms', 'calculators', 'developer-tools', 'pdf-tools', 'productivity-tools', 'numerology-astrology', 'fun-relationships', 'date-time', 'text-tools', 'browser-tools']);
+const knownNonTools = new Set(['about', 'blog', 'contact', 'cookies', 'faq', 'press', 'privacy', 'security', 'terms', 'calculators', 'developer-tools', 'pdf-tools', 'productivity-tools', 'numerology-astrology', 'fun-relationships', 'date-time', 'text-tools', 'browser-tools', 'creative-studio']);
 
 const uniqueTools = fs.readdirSync(ROOT, { withFileTypes: true })
   .filter(d => d.isDirectory() && !excludedDirs.has(d.name) && !knownNonTools.has(d.name))

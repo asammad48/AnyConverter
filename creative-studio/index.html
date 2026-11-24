@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AnyConverter Creative Studio — Free Online Design, Video & QR Studio</title>
+  <meta name="description" content="Create thumbnails, print-ready business cards with vector QR codes, 2D animations, and video edits directly in your browser. 100% client-side, zero uploads, zero login.">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://anyconverter.io/creative-studio/">
+  <link rel="alternate" hreflang="en" href="https://anyconverter.io/creative-studio/">
+  <link rel="alternate" hreflang="es" href="https://anyconverter.io/es/creative-studio/">
+  <link rel="alternate" hreflang="da" href="https://anyconverter.io/da/creative-studio/">
+  <link rel="alternate" hreflang="x-default" href="https://anyconverter.io/creative-studio/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="AnyConverter">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:url" content="https://anyconverter.io/creative-studio/">
+  <meta property="og:title" content="AnyConverter Creative Studio — In-Browser Design & Video Editor">
+  <meta property="og:description" content="Design thumbnails, business cards with QR codes, 2D animations and video edits locally in your browser.">
+  <meta property="og:image" content="https://anyconverter.io/assets/img/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="AnyConverter Creative Studio">
+  <meta name="twitter:description" content="Free browser-based visual studio for graphics, print cards, QR codes, and video rendering.">
+  <meta name="twitter:image" content="https://anyconverter.io/assets/img/og-image.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&display=swap" rel="stylesheet">
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "name": "AnyConverter Creative Studio",
+        "url": "https://anyconverter.io/creative-studio/",
+        "description": "High-performance client-side creative engine for thumbnails, vector business cards, QR codes, 2D animations and video editing.",
+        "applicationCategory": "MultimediaApplication",
+        "operatingSystem": "Any (Web Browser)",
+        "browserRequirements": "Requires JavaScript and HTML5 Canvas",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+        "featureList": [
+          "YouTube thumbnail maker with presets",
+          "Two-sided 300 DPI business card maker with bleed and crop marks",
+          "ISO/IEC 18004 compliant scannable QR and vCard generator",
+          "Real-time canvas video rendering and WebM/MP4 export",
+          "Portable .acstudio project packaging and restore",
+          "100% Client-side zero-backend privacy architecture"
+        ]
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://anyconverter.io/" },
+          { "@type": "ListItem", "position": 2, "name": "Creative Studio", "item": "https://anyconverter.io/creative-studio/" }
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Are my media files or designs uploaded to an external server?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. AnyConverter Creative Studio operates 100% client-side in your web browser. All canvas drawing, video frame encoding, and .acstudio project packaging happen entirely on your local hardware without sending bytes to AnyConverter servers."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I export real print-ready business cards?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. The business card engine generates vector two-page PDF documents (front and back) at exact 300 DPI European or US standard dimensions with 3mm bleed margins and precise corner crop marks."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How does video rendering work without a cloud backend?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Video frames are rendered deterministically using HTML5 Canvas, Web Audio, and hardware-accelerated browser encoders (MediaRecorder / WebCodecs). The resulting video file downloads straight from browser memory to your disk."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <link rel="stylesheet" href="/assets/css/style.css?v=20261109">
+  <link rel="stylesheet" href="/assets/css/creative-studio.css?v=20261125">
+</head>
+<body>
+  <header id="site-header" class="site-header"></header>
+
+  <main id="main-content" class="cs-app-container">
+    <!-- Studio Header Command Bar -->
+    <div class="cs-header">
+      <div class="cs-header-left">
+        <input type="text" id="cs-project-title" class="cs-project-title-input" value="My Creative Project" title="Project Title" aria-label="Project Title">
+        <select id="cs-preset-select" class="cs-select" aria-label="Preset Canvas Geometry">
+          <option value="youtube-thumbnail">YouTube Thumbnail (1280×720)</option>
+          <option value="social-square">Social Square (1080×1080)</option>
+          <option value="social-story">Story / Reel (1080×1920)</option>
+          <option value="card-standard-eu">EU Business Card (85×55mm)</option>
+          <option value="card-standard-us">US Business Card (3.5×2.0in)</option>
+          <option value="social-banner">Banner (1200×630)</option>
+        </select>
+        <select id="cs-mode-select" class="cs-select" aria-label="Studio Mode">
+          <option value="thumbnail">Graphics & Thumbnails</option>
+          <option value="business-card">Print Business Card</option>
+          <option value="video">2D Video & Animation</option>
+          <option value="3d">3D glTF Model</option>
+        </select>
+      </div>
+
+      <div class="cs-header-center">
+        <button id="cs-btn-undo" class="cs-btn cs-btn-icon" title="Undo (Ctrl+Z)" aria-label="Undo">↩️</button>
+        <button id="cs-btn-redo" class="cs-btn cs-btn-icon" title="Redo (Ctrl+Y)" aria-label="Redo">↪️</button>
+        <span style="width: 1px; height: 20px; background: var(--cs-border); margin: 0 4px;"></span>
+        <button id="cs-btn-save-project" class="cs-btn" title="Save Project (.acstudio)">💾 Save .acstudio</button>
+        <button id="cs-btn-open-project" class="cs-btn" title="Open Project (.acstudio)">📂 Open Project</button>
+        <input type="file" id="cs-file-input" accept=".acstudio,application/zip" style="display: none;" aria-hidden="true">
+      </div>
+
+      <div class="cs-header-right">
+        <button id="cs-btn-export-png" class="cs-btn cs-btn-primary" title="Export PNG image">Export PNG</button>
+        <button id="cs-btn-export-pdf" class="cs-btn" title="Export 300DPI Print PDF">Export PDF</button>
+        <button id="cs-btn-export-qr" class="cs-btn" title="Export Vector QR Code">Export QR</button>
+        <button id="cs-btn-export-video" class="cs-btn" title="Render Video (WebM/MP4)">Export Video</button>
+      </div>
+    </div>
+
+    <!-- Main Studio Workspace Grid -->
+    <div class="cs-workspace">
+      <!-- Left Sidebar: Panels & Layers -->
+      <aside class="cs-sidebar-left">
+        <div class="cs-tabs-header">
+          <button class="cs-tab-btn active" data-target="tab-layers">Layers</button>
+          <button class="cs-tab-btn" data-target="tab-add">Add</button>
+          <button class="cs-tab-btn" data-target="tab-assets">Assets</button>
+          <button class="cs-tab-btn" data-target="tab-settings">Settings</button>
+        </div>
+
+        <!-- Tab 1: Layers -->
+        <div id="tab-layers" class="cs-tab-pane active">
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <span class="cs-section-title" style="margin: 0;">Scene Layers</span>
+            <button id="cs-btn-delete-layer" class="cs-btn cs-btn-icon" title="Delete selected layer">🗑️</button>
+          </div>
+          <div id="cs-layers-list" class="cs-layers-list"></div>
+        </div>
+
+        <!-- Tab 2: Add Components -->
+        <div id="tab-add" class="cs-tab-pane">
+          <span class="cs-section-title">Insert Element</span>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+            <button id="cs-btn-add-text" class="cs-btn">✍️ Text</button>
+            <button id="cs-btn-add-shape" class="cs-btn">🟦 Shape</button>
+            <button id="cs-btn-add-image" class="cs-btn">🖼️ Image</button>
+            <button id="cs-btn-add-qr" class="cs-btn">📱 vCard QR</button>
+          </div>
+        </div>
+
+        <!-- Tab 3: Media Assets -->
+        <div id="tab-assets" class="cs-tab-pane">
+          <span class="cs-section-title">Media Library</span>
+          <p style="font-size: 12px; color: var(--cs-text-muted);">Imported images, audio stems, and glTF 3D models stored strictly in browser memory.</p>
+          <div id="cs-assets-grid" style="display: flex; flex-direction: column; gap: 6px; font-size: 12px; color: var(--cs-text-muted);">
+            <em>No external media imported yet.</em>
+          </div>
+        </div>
+
+        <!-- Tab 4: BYOK & Security Settings -->
+        <div id="tab-settings" class="cs-tab-pane">
+          <span class="cs-section-title">Client-Side Privacy</span>
+          <div style="font-size: 12px; line-height: 1.5; color: var(--cs-text-muted);">
+            <p>🔒 <strong>Zero Server Storage:</strong> Your projects, API credentials, and generated images stay on your device.</p>
+            <p style="margin-top: 8px;">🔑 <strong>BYOK Vault:</strong> Keys are held in transient memory only or encrypted locally via PBKDF2 + AES-GCM.</p>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Center Stage: Canvas & Timeline -->
+      <section class="cs-stage">
+        <!-- Viewport Toolbar -->
+        <div class="cs-stage-toolbar">
+          <div style="display: flex; gap: 8px; align-items: center;">
+            <span id="cs-status-badge" style="font-size: 11px; padding: 2px 8px; border-radius: 999px; background: rgba(16, 185, 129, 0.2); color: #10b981; font-weight: 600;">100% Client-Side Engine</span>
+            <!-- Card side toggle (visible in business card mode) -->
+            <div id="cs-card-side-toggle" style="display: inline-flex; border: 1px solid var(--cs-border); border-radius: 6px; overflow: hidden; margin-left: 8px;">
+              <button id="cs-card-side-front" class="cs-btn" style="border: none; border-radius: 0; padding: 4px 8px; font-size: 11px;">Front</button>
+              <button id="cs-card-side-back" class="cs-btn" style="border: none; border-radius: 0; padding: 4px 8px; font-size: 11px;">Back (QR)</button>
+            </div>
+          </div>
+          <div style="display: flex; gap: 8px; align-items: center;">
+            <button id="cs-btn-zoom-fit" class="cs-btn cs-btn-icon" title="Fit to Screen">🔍 Fit</button>
+          </div>
+        </div>
+
+        <!-- Interactive Canvas Viewport -->
+        <div class="cs-viewport">
+          <div class="cs-canvas-wrapper">
+            <canvas id="cs-canvas" width="1280" height="720"></canvas>
+          </div>
+        </div>
+
+        <!-- Timeline / Multi-Scene & Audio Panel -->
+        <div class="cs-timeline-panel">
+          <div class="cs-timeline-header">
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <button id="cs-btn-play-pause" class="cs-btn" style="font-size: 12px; padding: 4px 10px;">▶️ Play</button>
+              <span id="cs-frame-display" style="font-size: 12px; font-family: monospace; color: var(--cs-text-muted);">Frame 0 / 150 (0.00s)</span>
+              <button id="cs-btn-split-clip" class="cs-btn" style="font-size: 12px; padding: 4px 8px;" title="Split clip at playhead">✂️ Split</button>
+            </div>
+            <div id="cs-scenes-tabs" style="display: flex; gap: 4px;">
+              <button class="cs-btn cs-btn-primary" style="font-size: 11px; padding: 2px 8px;">Scene 1</button>
+              <button id="cs-btn-add-scene" class="cs-btn" style="font-size: 11px; padding: 2px 8px;">+ Scene</button>
+            </div>
+          </div>
+          <div class="cs-timeline-body">
+            <div class="cs-timeline-ruler">
+              <input type="range" id="cs-timeline-scrubber" min="0" max="150" value="0" style="width: 100%; height: 100%; opacity: 0; cursor: pointer; position: absolute; z-index: 10;">
+            </div>
+            <div class="cs-timeline-track">
+              <div class="cs-clip" style="left: 0; width: 100%;">Scene 1: Visual Artboard & Title</div>
+            </div>
+            <div class="cs-timeline-track">
+              <div class="cs-clip" style="left: 0; width: 100%; background: rgba(16, 185, 129, 0.5); border-color: #34d399;">Audio Stem (Stereo 48kHz)</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Right Sidebar: Properties Inspector -->
+      <aside class="cs-sidebar-right">
+        <span class="cs-section-title">Properties Inspector</span>
+
+        <div class="cs-form-group">
+          <label class="cs-form-label" for="cs-prop-content">Text / Content</label>
+          <input type="text" id="cs-prop-content" class="cs-input" placeholder="Layer text or content">
+        </div>
+
+        <div class="cs-grid-2">
+          <div class="cs-form-group">
+            <label class="cs-form-label" for="cs-prop-font-size">Font Size (px)</label>
+            <input type="number" id="cs-prop-font-size" class="cs-input" value="36" min="8" max="200">
+          </div>
+          <div class="cs-form-group">
+            <label class="cs-form-label" for="cs-prop-fill">Color</label>
+            <input type="color" id="cs-prop-fill" class="cs-input" value="#ffffff" style="height: 35px; padding: 2px;">
+          </div>
+        </div>
+
+        <span class="cs-section-title" style="margin-top: 10px;">Transform & Alignment</span>
+        <div class="cs-grid-2">
+          <div class="cs-form-group">
+            <label class="cs-form-label" for="cs-prop-x">Position X</label>
+            <input type="number" id="cs-prop-x" class="cs-input" value="100">
+          </div>
+          <div class="cs-form-group">
+            <label class="cs-form-label" for="cs-prop-y">Position Y</label>
+            <input type="number" id="cs-prop-y" class="cs-input" value="100">
+          </div>
+          <div class="cs-form-group">
+            <label class="cs-form-label" for="cs-prop-w">Width</label>
+            <input type="number" id="cs-prop-w" class="cs-input" value="300">
+          </div>
+          <div class="cs-form-group">
+            <label class="cs-form-label" for="cs-prop-h">Height</label>
+            <input type="number" id="cs-prop-h" class="cs-input" value="100">
+          </div>
+        </div>
+
+        <div class="cs-form-group" style="margin-top: 10px;">
+          <span class="cs-section-title">vCard QR Details</span>
+          <p style="font-size: 11px; color: var(--cs-text-muted); margin-bottom: 6px;">Generates ISO/IEC 18004 compliant scannable QR matrix.</p>
+          <input type="text" id="cs-vcard-name" class="cs-input" placeholder="Full Name (e.g. Sara Connor)" style="margin-bottom: 6px;">
+          <input type="email" id="cs-vcard-email" class="cs-input" placeholder="Email Address" style="margin-bottom: 6px;">
+          <input type="tel" id="cs-vcard-phone" class="cs-input" placeholder="Phone Number">
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <footer id="site-footer" class="site-footer"></footer>
+
+  <!-- Vendor and Engine Scripts -->
+  <script src="/assets/js/shared/analytics.js" defer></script>
+  <script src="/assets/js/shared.js?v=20261109" defer></script>
+  <script src="/assets/js/vendor/qrcode.bundle.js?v=20261125" defer></script>
+  <script src="/assets/js/vendor/fix-webm-duration.js?v=20261125" defer></script>
+  <script src="/assets/js/vendor/three.bundle.js?v=20261125" defer></script>
+  <script src="/assets/js/creative-studio/archive.js?v=20261125" defer></script>
+  <script src="/assets/js/creative-studio/graphics-canvas.js?v=20261125" defer></script>
+  <script src="/assets/js/creative-studio/business-card.js?v=20261125" defer></script>
+  <script src="/assets/js/creative-studio/qr-vcard.js?v=20261125" defer></script>
+  <script src="/assets/js/creative-studio/timeline-editor.js?v=20261125" defer></script>
+  <script src="/assets/js/creative-studio/three-scene-adapter.js?v=20261125" defer></script>
+  <script src="/assets/js/creative-studio/command-engine.js?v=20261125" defer></script>
+  <script src="/assets/js/creative-studio/animation-engine.js?v=20261125" defer></script>
+  <script src="/assets/js/creative-studio/render-adapter.js?v=20261125" defer></script>
+  <script src="/assets/js/creative-studio/studio-app.js?v=20261125" defer></script>
+</body>
+</html>
