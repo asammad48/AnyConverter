@@ -1893,3 +1893,42 @@ ADR-051: Tool-to-Tool Workflow Chaining for JSON Group (JSON Formatter → Compa
 - **Consequences:**
   - Formally clears Phase 09 with `PASS FOR PHASE 09 RELEASE` verdict.
   - Fully unblocks Phase 10 (Google Drive Save, Open, Resume, Sync & Conflicts).
+
+## ADR-079: Creative Studio Phase 10 Google Drive Bidirectional Storage, Resumable Uploads & Conflict Resolution
+- **Date:** 2026-11-24
+- **Status:** Approved & Implemented
+- **Context:**
+  - Implementation of File 10 (`10_GOOGLE_DRIVE_SAVE_OPEN_RESUME_SYNC_AND_CONFLICTS.md`) for AnyConverter Creative Studio.
+  - Requires enabling users to save complete, restorable projects into their own Google Drive, open them across devices, and edit purely from browser JavaScript.
+  - Must strictly honor Immutable Architectural Governance: G-01 (Zero Backend), G-02 / G-03 (Zero Storage Cost / User-owned quota), GIS browser token model with minimal `drive.file` scope, strict in-memory token lifecycle (zero token leaks), local autosave preservation, commit-manifest-last transactional ordering, resumable 256KB-aligned chunked uploads (>5MB), and optimistic concurrency conflict resolution.
+- **Decision:**
+  - 1. **Google Drive Sync Adapter (`drive-sync-adapter.js`):**
+     - Built direct browser client interfacing with official Google Drive v3 REST API (`googleapis.com/drive/v3/files` and `googleapis.com/upload/drive/v3/files`).
+     - Adopted Google Identity Services (GIS) token client with minimal `drive.file` scope.
+     - Confined OAuth access tokens strictly to ephemeral memory; never persisted in localStorage, cookies, or archives.
+     - Enforced local autosave draft preservation upon connecting or disconnecting Google Drive.
+     - Explicitly separated `saveEditableProject` (manifest, scenes, source media, timeline state) and `saveFinalVideo` (flattened MP4 export).
+  - 2. **Commit-Manifest-Last Protocol Engine (`drive-commit-protocol.js`):**
+     - Enforced 5-step transactional commit order on individual Drive files:
+       1. Compute local revision ID and SHA-256 asset hashes.
+       2. Upload changed/new content-addressed media assets (`assets/<sha256>`).
+       3. Verify all asset uploads and metadata integrity.
+       4. Upload immutable revision JSON (`revisions/<revision-id>.json`).
+       5. Update root `project-manifest.json` pointer **last**.
+     - Guaranteed that if any step prior to or during step 5 fails or aborts, the remote root manifest remains safely pointing to `lastGoodRevision`, completely preventing project corruption.
+  - 3. **Resumable Chunked Upload Engine (`drive-resumable-uploader.js`):**
+     - Slices packages and media assets >5MB into 256KB-aligned chunks.
+     - Handles HTTP 308 Resume Incomplete, exponential backoff with jitter on 5xx network hiccups, and emits progress events.
+     - Detects 401 token expiration mid-transfer, pauses session without losing accepted chunks, triggers reauthorization, and queries `bytes */total` to resume from exact byte offset.
+     - Catches 403 `quotaExceeded` errors and triggers non-destructive fallback to local `.acstudio` export package.
+  - 4. **Optimistic Concurrency & Conflict Resolver (`drive-conflict-resolver.js`):**
+     - Tracks `baseRevision`, `workingRevision`, and `remoteRevision`.
+     - Detects conflicts before committing when remote revision has progressed beyond local base.
+     - Generates non-destructive scene/asset diffs.
+     - Provides three resolution strategies: `OPEN_REMOTE` (discard local, load remote), `KEEP_LOCAL_AS_NEW_REVISION` (force commit local), and `SAVE_BOTH_COPIES` (preserves remote project intact while creating non-destructive duplicate `${title} (Copy from Device B)`).
+  - 5. **Verification & Regression:**
+     - Created `tests/creative-studio/unit/test_phase10_google_drive_sync.js` passing 7/7 tests.
+     - Registered Suite #54 into `tests/run_all_tests.js`.
+- **Consequences:**
+  - Formally clears Phase 10 with `PASS FOR PHASE 10 RELEASE` verdict.
+  - Fully unblocks Phase 11 (Character Consistency, Drama Series & Scene Regeneration).

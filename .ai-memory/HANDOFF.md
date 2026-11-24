@@ -2,6 +2,33 @@
 
 ---
 
+## Creative Studio — Phase 10: Google Drive Bidirectional Storage, Resumable Uploads & Conflict Resolution (2026-11-24)
+
+**Program:** AnyConverter Creative Studio (14-File Concrete Implementation Plan).  
+**Source Specification:** `D:\AnyConverter_Creative_Studio_14_File_Concrete_Implementation_Plan (1)` (File 10).  
+**Phase Status:** **100% COMPLETED & VERIFIED (PASS FOR PHASE 10 RELEASE)**  
+**Active Branch:** `feat/creative-studio-phase-10-google-drive-sync` (branched from Phase 09 checkpoint).  
+**Deliverables Produced & Verified:**
+1. **Google Drive Sync Adapter:**
+   - `assets/js/creative-studio/drive-sync-adapter.js` (Connects to official Google Drive v3 REST API directly from browser; GIS token model with minimal `drive.file` scope; memory-only token storage; zero token leaks to localStorage/cookies; local IndexedDB autosave drafts preserved on connect/disconnect; distinct separation of editable project saves vs flattened MP4 video exports).
+2. **Commit-Manifest-Last Protocol Engine:**
+   - `assets/js/creative-studio/drive-commit-protocol.js` (Enforces 5-step transactional commit order on individual Drive files: compute revision & hashes -> upload content-addressed media -> verify integrity -> upload immutable revision JSON -> update root `project-manifest.json` pointer last; if any prior step aborts, remote manifest remains safely pointing to last good revision).
+3. **Resumable Chunked Upload Engine:**
+   - `assets/js/creative-studio/drive-resumable-uploader.js` (Resumable upload session for payloads >5MB; 256KB-aligned chunk slicing; exponential backoff retries on transient network errors; pause/resume functionality; token-expiration recovery via `Content-Range: bytes */total` without losing accepted chunks; QuotaExceeded detection with automatic recommendation of local `.acstudio` fallback).
+4. **Optimistic Concurrency & Conflict Resolver:**
+   - `assets/js/creative-studio/drive-conflict-resolver.js` (Tracks baseRevision, workingRevision, and remoteRevision; flags concurrent device conflicts; provides non-destructive scene/asset diff generator; supports `OPEN_REMOTE`, `KEEP_LOCAL_AS_NEW_REVISION`, and `SAVE_BOTH_COPIES` creating non-destructive duplicate `${title} (Copy from Device B)`).
+5. **Automated Unit & Integration Test Suite:**
+   - `tests/creative-studio/unit/test_phase10_google_drive_sync.js` (7/7 tests passed: T1 project bundle save & download roundtrip with media verification, T2 commit-manifest-last ordering, T3 resumable chunked upload >5MB, T4 optimistic concurrency conflict detection & "Save Both" resolution, T5 network disconnect & recovery, T6 QuotaExceeded / 403 handling & local export fallback, T7 token expiration pause/reauth/resume).
+6. **Comprehensive Master Test Suite:**
+   - Registered Phase 10 into `tests/run_all_tests.js`. 54/54 suites passed (100%), including 21/21 Playwright visual regressions.
+7. **Phase 10 Release Gate Report & ADR:**
+   - `docs/creative-studio/PHASE_10_RELEASE_GATE.md` with explicit `PASS FOR PHASE 10 RELEASE` verdict.
+   - ADR-079 recorded in `.ai-memory/DECISIONS.md`.
+
+**Next Immediate Step:** Owner review and sign-off on Phase 10; then proceed to Phase 11 (`11_CHARACTER_CONSISTENCY_DRAMA_SERIES_AND_SCENE_REGENERATION.md`).
+
+---
+
 ## Creative Studio — Phase 09: AI Provider Adapters, Notebook Workflows & Free GPU Fallbacks (2026-11-24)
 
 **Program:** AnyConverter Creative Studio (14-File Concrete Implementation Plan).  
