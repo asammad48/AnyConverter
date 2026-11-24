@@ -1996,3 +1996,30 @@ ADR-051: Tool-to-Tool Workflow Chaining for JSON Group (JSON Formatter → Compa
 - **Consequences:**
   - Formally clears Phase 12 with `PASS FOR PHASE 12 RELEASE` verdict.
   - Fully unblocks Phase 13 (ChatGPT, Claude & Agent Interoperability Without Backend).
+
+## ADR-082: Creative Studio Phase 13 ChatGPT, Claude & Agent Interoperability Without Backend
+- **Date:** 2026-11-24
+- **Status:** Approved & Implemented
+- **Context:**
+  - Implementation of File 13 (`13_CHATGPT_CLAUDE_AGENT_INTEROPERABILITY_WITHOUT_BACKEND.md`) for AnyConverter Creative Studio.
+  - Requires enabling AI assistants (ChatGPT, Claude, custom agents) to generate genuine, restorable, editable AnyConverter video projects without violating zero-backend governance (Rule G-01).
+  - Must avoid false promises of hosted cloud MCP servers; instead deliver portable `CreationRequest` schemas, deterministic compilation, untrusted input sanitization, non-destructive scene patching, and a sandboxed local agent bridge.
+- **Decision:**
+  - 1. **Agent Interoperability Compiler & Schema (`agent-interop.js`):**
+     - Published portable `CreationRequest` schema version `1.0.0` (intent, productionMode, durationSeconds, aspectRatio, language, templateId, topic, scenes).
+     - Built `CreationRequestCompiler` deterministically converting lightweight assistant prompts into canonical `ProjectDocument` with 1920x1080 resolution, 30 FPS, background, headline, and vector badge layers.
+     - Implemented `AgentInteropSecurity` rigorously defending against prototype pollution (`__proto__`, `constructor`), script injection (`<script>`, `javascript:`, inline handlers), path traversal (`../`), and negative durations.
+     - Implemented leaked secret detector matching API key patterns (`sk-...`, `AIzaSy...`, `hf_...`, Bearer tokens) and rejecting compromised assistant payloads.
+  - 2. **Non-Destructive Scene Patching (`applyScenePatch`):**
+     - Allowed assistants to propose localized JSON patches (e.g. subtitle/headline revisions in Scene 8) without touching any of the other 19 scenes or invalidating unchanged asset hashes.
+     - Preserved previous scene snapshots enabling instant, lossless undo/revert (`revertScenePatch`).
+  - 3. **Local Agent Bridge SDK (`agent-bridge.js`):**
+     - Implemented canonical tool-like contract: `createProject`, `validateProject`, `applyScenePatch`, `exportProject`, `importProject`.
+     - Enforced strict filesystem sandboxing ensuring file operations stay inside user-configured `allowedDirectory`.
+     - Required explicit user write permission; prohibited hosted remote tunnels or external network sockets.
+  - 4. **Verification & Regression:**
+     - Created `tests/creative-studio/unit/test_phase13_agent_interoperability.js` passing 7/7 tests.
+     - Registered Suite #57 into `tests/run_all_tests.js`.
+- **Consequences:**
+  - Formally clears Phase 13 with `PASS FOR PHASE 13 RELEASE` verdict.
+  - Fully unblocks Phase 14 (Full QA, Performance, Security, SEO, i18n & Release Gate).

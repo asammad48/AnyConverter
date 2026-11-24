@@ -57,6 +57,7 @@ const testSuites = [
   { name: 'Creative Studio Phase 10 Google Drive Sync', cmd: 'node tests/creative-studio/unit/test_phase10_google_drive_sync.js' },
   { name: 'Creative Studio Phase 11 Character Consistency & Series', cmd: 'node tests/creative-studio/unit/test_phase11_character_and_series.js' },
   { name: 'Creative Studio Phase 12 Budget & Optimization', cmd: 'node tests/creative-studio/unit/test_phase12_budget_and_optimization.js' },
+  { name: 'Creative Studio Phase 13 Agent Interoperability', cmd: 'node tests/creative-studio/unit/test_phase13_agent_interoperability.js' },
   { name: 'Playwright Visual Regression Suite (21/21 Baselines)', cmd: 'node tests/run_visual_regression.js' }
 ];
 
