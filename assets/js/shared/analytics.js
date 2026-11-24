@@ -69,6 +69,15 @@
     ALLOWED_EVENTS_SET[S25_WORKFLOW_EVENTS[k]] = true;
   });
 
+  // Sprint S27 Theme Persistence & Keyboard Shortcuts events
+  var S27_SHORTCUT_EVENTS = {
+    SHORTCUT_USED: 'shortcut_used',
+    SHORTCUTS_MODAL_VIEWED: 'shortcuts_modal_viewed'
+  };
+  Object.keys(S27_SHORTCUT_EVENTS).forEach(function (k) {
+    ALLOWED_EVENTS_SET[S27_SHORTCUT_EVENTS[k]] = true;
+  });
+
   // Sensitive parameter keys that must NEVER be transmitted (zero PII, zero file content)
   var FORBIDDEN_KEY_REGEX = /^(file|filename|content|text|data|input|query|email|user|pass|password|token|secret|doc|prompt|val|body|ip|address|ssn|card|credit)$/i;
   // Patterns matching emails, IP addresses, credit cards, or external URLs
@@ -377,6 +386,23 @@
       track('workflow_chain_dismissed', {
         tool_slug: toolSlug || getCurrentToolSlug(),
         group: group || 'pdf'
+      });
+    },
+
+    // 9. Sprint S27 Keyboard Shortcuts Telemetry
+    trackEvent: function (eventName, params) {
+      track(eventName, params);
+    },
+
+    trackShortcutUsed: function (keyName) {
+      track('shortcut_used', {
+        key: keyName
+      });
+    },
+
+    trackShortcutsModalViewed: function (triggerSource) {
+      track('shortcuts_modal_viewed', {
+        trigger: triggerSource || 'keyboard'
       });
     }
   };

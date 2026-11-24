@@ -2,6 +2,60 @@
 
 ---
 
+## Phase 59 — Growth Program Sprint S27: Theme Persistence Hardening + Global Keyboard Shortcuts & Discovery Modal (2026-11-24)
+
+**Program:** AnyConverter.io Global Growth Engine (SEO + engagement + backlinks + distribution).  
+**Operating cadence:** 30 sprints × 2 days = 60 days. One prod ship per sprint.  
+**Active branch:** `feat/s27-theme-shortcuts` (branched from S26 release checkpoint `d666c86`).  
+**Current sprint pointer:** `S27 — Theme Persistence Hardening + Global Keyboard Shortcuts & Discovery Modal` (100% COMPLETED & VERIFIED; ready for owner review).  
+
+**Current sprint (S27) progress & status:**
+- **Branch Created:** Created `feat/s27-theme-shortcuts` off `d666c86`.
+- **Target Inventory:** Sitewide across all 441 URLs in EN, ES, DA.
+- **Core Implementations & Fixes:**
+  1. **Sitewide Keyboard Shortcuts Engine (`assets/js/shared.js`):**
+     - Implemented centralized keydown dispatcher with strict input shielding guard (`isInputActive`):
+       - `?` (Shift + `/`): Opens the accessible shortcuts discovery modal (`#shortcuts-modal`).
+       - `/`: Opens and focuses global search input (`#search-input` in header or `#hero-search-input` on homepage), selecting existing query text (`input.select()`).
+       - `Esc`: Closes any active overlay (`#shortcuts-modal`, `#search-modal`, mobile menu `#mobile-menu`, dropdowns), exits `.is-fullscreen` panel states, and safely blurs active form inputs.
+       - `Alt+F`: Toggles favoriting for current tool (preserving existing S10 logic).
+       - `Alt+T`: Toggles dark/light theme mode.
+     - Input shielding guard verified: hotkeys do not fire while typing in `<input>`, `<textarea>`, `<select>`, or `[contenteditable="true"]` (except `Esc` which safely blurs the control).
+  2. **Accessible Shortcuts Discovery Modal (`#shortcuts-modal`):**
+     - Injected semantic dialog structure with `role="dialog"`, `aria-modal="true"`, `aria-labelledby="shortcuts-modal-title"`, close button (`#btn-shortcuts-close`), backdrop (`#shortcuts-backdrop`), and header trigger button (`#btn-shortcuts-help` / `⌨️`).
+     - Focus management: remembers trigger element, shifts focus into modal on open, restores focus to trigger on close.
+     - Focus trap: traps Tab cycling within modal elements.
+     - WCAG 2.2 AA `:focus-visible` styling (`outline: 2px solid #B04A45`, `2px offset`).
+  3. **Dark / Light Theme Persistence Hardening:**
+     - Enhanced `applyStoredTheme()` and `initThemeToggle()` in `assets/js/shared.js`:
+       - Respects explicit user preference in `localStorage.getItem('ac_theme')` (`'dark'` / `'light'`).
+       - Falls back to system preference via `window.matchMedia('(prefers-color-scheme: dark)')` with real-time change listener.
+       - Synchronizes theme state across all open browser tabs via window `'storage'` event.
+       - Zero FOUC guaranteed by running `applyStoredTheme()` immediately on script load.
+  4. **Multilingual Parity (EN, ES, DA):**
+     - Preserves 100% native diacritics in `SHORTCUTS_I18N`:
+       - EN: "Keyboard Shortcuts" · "Open shortcuts help" · "Focus search" · "Close modal / unfocus" · "Favorite current tool" · "Toggle dark / light mode"
+       - ES: "Atajos de teclado" · "Abrir ayuda de atajos" · "Enfocar búsqueda" · "Cerrar modal / desenfocar" · "Añadir a favoritos" · "Alternar modo oscuro / claro"
+       - DA: "Tastaturgenveje" · "Åbn genvejshjælp" · "Fokusér søgning" · "Luk modal / fjern fokus" · "Føj til favoritter" · "Skift mørk / lys tilstand"
+  5. **Telemetry & Analytics Integration:**
+     - Dispatches `window.ACAnalytics.trackEvent('shortcut_used', { key: 'question_mark' | 'slash' | 'escape' | 'alt_f' | 'alt_t' })`.
+     - Dispatches `window.ACAnalytics.trackEvent('shortcuts_modal_viewed', { trigger: 'keyboard' | 'button' })`.
+  6. **Track B: Loop 10 Embed Partner Pilots Queue:**
+     - Documented 6 target publisher/education partners in `docs/growth/outreach/LOOP_10_EMBED_PARTNERS.md` (`Math Is Fun`, `FinTech Weekly`, `freeCodeCamp`, `TimeAndDate`, `SitePoint`, `Baeldung`).
+     - Prepared custom integration pitch drafts using `T-INT-01` targeting embed routes (`/embed/percentage-calculator/`, `/embed/loan-calculator/`, `/embed/json-formatter/`, `/embed/date-difference-calculator/`, `/embed/aspect-ratio-calculator/`, `/embed/hash-generator/`) under strict manual owner sending mandate.
+- **Automated Verification:**
+  - Dedicated verification suite `tests/test_s27_theme_shortcuts.js`: 8/8 checks passing (100%).
+  - Registered in master runner `tests/run_all_tests.js`.
+  - Repository master suite `node tests/run_all_tests.js`: 42/42 suites passing (100%), including 21/21 Playwright visual regression screenshot comparisons.
+  - Sitemap integrity verified: `node scripts/generate_sitemap.js --check` passes with zero drift (441 URLs, 147 clusters).
+- **Documentation & Memory:**
+  - Recorded ADR-066 in `.ai-memory/DECISIONS.md`.
+  - Prepended G1–G15 release gate evidence to `docs/growth/91-TEST-EVIDENCE-AND-RELEASE-GATES.md`.
+  - Updated `.ai-memory/STATE.json`.
+- **Next Sprint Pointer:** Sprint S28 — Embed Routes Expansion & Partner Launch Support (Days 55–56).
+
+---
+
 ## Phase 58 — Growth Program Sprint S26: Tool-to-Tool Workflow Chain: Text Group (2026-11-24)
 
 **Program:** AnyConverter.io Global Growth Engine (SEO + engagement + backlinks + distribution).  

@@ -224,6 +224,7 @@
         <li role="option" data-lang="da" data-flag="🇩🇰" data-path="da">🇩🇰 Dansk</li>
       </ul>
     </div>
+    <button class="shortcuts-help-btn" id="btn-shortcuts-help" aria-label="Keyboard Shortcuts" title="Keyboard Shortcuts (?)">⌨️</button>
     <button class="theme-toggle" id="theme-toggle-btn" aria-label="Toggle dark mode" title="Toggle dark mode">🌙</button>
     <button class="hamburger" id="mobile-menu-btn"
             aria-expanded="false" aria-label="Open menu" aria-controls="mobile-menu">
@@ -397,6 +398,42 @@
       <span><kbd>↑↓</kbd> Navigate</span>
       <span><kbd>↵</kbd> Open</span>
       <span><kbd>Esc</kbd> Close</span>
+    </div>
+  </div>
+</div>
+<div class="modal" id="shortcuts-modal" role="dialog" aria-modal="true" aria-labelledby="shortcuts-modal-title" style="display:none;" aria-hidden="true">
+  <div class="shortcuts-backdrop" id="shortcuts-backdrop"></div>
+  <div class="shortcuts-dialog" role="document">
+    <div class="shortcuts-header">
+      <h2 id="shortcuts-modal-title" class="shortcuts-title">Keyboard Shortcuts</h2>
+      <button type="button" class="shortcuts-close-btn" id="btn-shortcuts-close" aria-label="Close keyboard shortcuts">&times;</button>
+    </div>
+    <div class="shortcuts-body">
+      <ul class="shortcuts-list" id="shortcuts-list">
+        <li class="shortcuts-item">
+          <span class="shortcuts-desc">Open shortcuts help</span>
+          <div class="shortcuts-keys"><kbd>?</kbd></div>
+        </li>
+        <li class="shortcuts-item">
+          <span class="shortcuts-desc">Focus search</span>
+          <div class="shortcuts-keys"><kbd>/</kbd></div>
+        </li>
+        <li class="shortcuts-item">
+          <span class="shortcuts-desc">Close modal / unfocus</span>
+          <div class="shortcuts-keys"><kbd>Esc</kbd></div>
+        </li>
+        <li class="shortcuts-item">
+          <span class="shortcuts-desc">Favorite current tool</span>
+          <div class="shortcuts-keys"><kbd>Alt</kbd> + <kbd>F</kbd></div>
+        </li>
+        <li class="shortcuts-item">
+          <span class="shortcuts-desc">Toggle dark / light mode</span>
+          <div class="shortcuts-keys"><kbd>Alt</kbd> + <kbd>T</kbd></div>
+        </li>
+      </ul>
+    </div>
+    <div class="shortcuts-footer">
+      <span class="shortcuts-footer-hint" id="shortcuts-footer-hint">AnyConverter sitewide navigation</span>
     </div>
   </div>
 </div>`;
@@ -1640,15 +1677,7 @@
       updateFavoriteBtnState(favButton, isFavoriteTool(canonPath), t);
     });
 
-    document.addEventListener('keydown', function (e) {
-      var tag = (e.target && e.target.tagName) ? e.target.tagName.toLowerCase() : '';
-      if (tag === 'input' || tag === 'textarea' || tag === 'select' || (e.target && e.target.isContentEditable)) return;
-      if (e.altKey && !e.ctrlKey && !e.metaKey && (e.key === 'f' || e.key === 'F')) {
-        e.preventDefault();
-        favButton.click();
-        favButton.focus();
-      }
-    });
+    // Alt+F shortcut dispatched globally via initGlobalShortcuts (favButton.click)
 
     actions.addEventListener('click', async (event) => {
       const button = event.target.closest('[data-action]');
@@ -1814,6 +1843,8 @@
     initLangSwitcher();
     updateMobileLangLinks();
     initSearch();
+    initShortcutsModal();
+    initGlobalShortcuts();
     initDashboardQuickAccess();
     initDashboardRecents();
     initFileUploadTriggers();
@@ -1936,11 +1967,20 @@
       if (searchModal && searchModal.parentElement !== document.body) {
         document.body.appendChild(searchModal);
       }
+      const shortcutsModal = document.getElementById('shortcuts-modal');
+      if (shortcutsModal && shortcutsModal.parentElement !== document.body) {
+        document.body.appendChild(shortcutsModal);
+      }
       var lang = currentPageLang();
       if (lang !== 'en') {
         var searchBtnLabel = el.querySelector('.search-btn-label');
         if (searchBtnLabel) {
           searchBtnLabel.textContent = lang === 'es' ? 'Buscar herramientas…' : (lang === 'da' ? 'Søg værktøjer…' : 'Search tools…');
+        }
+        var helpBtn = el.querySelector('#btn-shortcuts-help');
+        if (helpBtn && SHORTCUTS_I18N && SHORTCUTS_I18N[lang]) {
+          helpBtn.setAttribute('aria-label', SHORTCUTS_I18N[lang].btnLabel);
+          helpBtn.setAttribute('title', SHORTCUTS_I18N[lang].btnTitle);
         }
       }
     }
@@ -2126,28 +2166,105 @@
     }
   }
 
-  /* ===== THEME ===== */
-  function applyStoredTheme() {
-    const stored = localStorage.getItem('ac_theme');
-    if (stored === 'dark') {
-      document.documentElement.classList.add('dark');
-    } else if (stored === 'light') {
-      document.documentElement.classList.remove('dark');
+  /* ===== THEME PERSISTENCE & OS PREFERENCE SYNCHRONIZATION (S27) ===== */
+  function getSystemTheme() {
+    if (typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      return 'dark';
     }
+    return 'light';
+  }
+
+  function getEffectiveTheme() {
+    try {
+      var stored = localStorage.getItem('ac_theme');
+      if (stored === 'dark' || stored === 'light') return stored;
+    } catch (_e) {}
+    return getSystemTheme();
+  }
+
+  function updateThemeToggleBtn() {
+    var btn = document.getElementById('theme-toggle-btn');
+    if (!btn) return;
+    var isDark = document.documentElement && document.documentElement.classList ? document.documentElement.classList.contains('dark') : false;
+    btn.textContent = isDark ? '☀️' : '🌙';
+    var lang = typeof currentPageLang === 'function' ? currentPageLang() : 'en';
+    var titles = {
+      en: isDark ? 'Switch to light mode' : 'Switch to dark mode',
+      es: isDark ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro',
+      da: isDark ? 'Skift til lys tilstand' : 'Skift til mørk tilstand'
+    };
+    var title = titles[lang] || titles.en;
+    btn.title = title;
+    btn.setAttribute('aria-label', title);
+  }
+
+  function applyStoredTheme() {
+    var theme = getEffectiveTheme();
+    if (document.documentElement && document.documentElement.classList) {
+      if (theme === 'dark') {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+    }
+    updateThemeToggleBtn();
   }
 
   function initThemeToggle() {
     const btn = document.getElementById('theme-toggle-btn');
-    if (!btn) return;
-    const isDark = document.documentElement.classList.contains('dark');
-    btn.textContent = isDark ? '☀️' : '🌙';
-    btn.title = isDark ? 'Switch to light mode' : 'Switch to dark mode';
-    btn.addEventListener('click', function () {
-      const nowDark = document.documentElement.classList.toggle('dark');
-      localStorage.setItem('ac_theme', nowDark ? 'dark' : 'light');
-      btn.textContent = nowDark ? '☀️' : '🌙';
-      btn.title = nowDark ? 'Switch to light mode' : 'Switch to dark mode';
-    });
+    if (btn) {
+      updateThemeToggleBtn();
+      btn.addEventListener('click', function () {
+        const nowDark = document.documentElement && document.documentElement.classList ? !document.documentElement.classList.contains('dark') : false;
+        if (document.documentElement && document.documentElement.classList) {
+          if (nowDark) {
+            document.documentElement.classList.add('dark');
+          } else {
+            document.documentElement.classList.remove('dark');
+          }
+        }
+        try {
+          localStorage.setItem('ac_theme', nowDark ? 'dark' : 'light');
+        } catch (_e) {}
+        updateThemeToggleBtn();
+      });
+    }
+
+    // Real-time OS preference change listener (when no explicit user override is stored)
+    if (typeof window !== 'undefined' && window.matchMedia) {
+      try {
+        var mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+        var onMediaChange = function (e) {
+          try {
+            var stored = localStorage.getItem('ac_theme');
+            if (stored !== 'dark' && stored !== 'light') {
+              if (document.documentElement && document.documentElement.classList) {
+                if (e.matches) {
+                  document.documentElement.classList.add('dark');
+                } else {
+                  document.documentElement.classList.remove('dark');
+                }
+              }
+              updateThemeToggleBtn();
+            }
+          } catch (_e) {}
+        };
+        if (typeof mediaQuery.addEventListener === 'function') {
+          mediaQuery.addEventListener('change', onMediaChange);
+        } else if (typeof mediaQuery.addListener === 'function') {
+          mediaQuery.addListener(onMediaChange);
+        }
+      } catch (_e) {}
+    }
+
+    // Cross-tab synchronization via 'storage' window event
+    if (typeof window !== 'undefined') {
+      window.addEventListener('storage', function (e) {
+        if (e.key === 'ac_theme') {
+          applyStoredTheme();
+        }
+      });
+    }
   }
 
   /* ===== LANGUAGE SWITCHER ===== */
@@ -2349,10 +2466,15 @@
       modal.classList.add('open');
       modal.setAttribute('aria-hidden', 'false');
       document.body.style.overflow = 'hidden';
-      input.value = '';
-      activeIdx = -1;
-      showDefaultList();
-      requestAnimationFrame(function () { input.focus(); });
+      if (source !== 'slash_key' || !input.value) {
+        input.value = '';
+        activeIdx = -1;
+        showDefaultList();
+      }
+      requestAnimationFrame(function () {
+        input.focus();
+        if (typeof input.select === 'function') input.select();
+      });
     }
 
     function closeSearch() {
@@ -2395,13 +2517,13 @@
         return;
       }
       // Open shortcuts when modal is closed
-      var tag = document.activeElement ? document.activeElement.tagName : '';
       if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
         e.preventDefault(); openSearch('keyboard_shortcut');
-      } else if (e.key === '/' && tag !== 'INPUT' && tag !== 'TEXTAREA') {
-        e.preventDefault(); openSearch('slash_key');
       }
     });
+
+    window.openSearch = openSearch;
+    window.closeSearch = closeSearch;
 
     input.addEventListener('input', function () {
       activeIdx = -1;
@@ -2598,6 +2720,356 @@
         '<mark class="search-hl">' + escapeHtml(text.slice(idx, idx + query.length)) + '</mark>' +
         escapeHtml(text.slice(idx + query.length));
     }
+  }
+
+  /* ===== KEYBOARD SHORTCUTS DISCOVERY MODAL & ENGINE (S27) ===== */
+  var SHORTCUTS_I18N = {
+    en: {
+      btnLabel: 'Keyboard Shortcuts',
+      btnTitle: 'Keyboard shortcuts (?)',
+      title: 'Keyboard Shortcuts',
+      closeLabel: 'Close keyboard shortcuts',
+      openHelp: 'Open shortcuts help',
+      focusSearch: 'Focus search',
+      closeModal: 'Close modal / unfocus',
+      favoriteTool: 'Favorite current tool',
+      toggleTheme: 'Toggle dark / light mode',
+      footerHint: 'AnyConverter Navigation Shortcuts'
+    },
+    es: {
+      btnLabel: 'Atajos de teclado',
+      btnTitle: 'Atajos de teclado (?)',
+      title: 'Atajos de teclado',
+      closeLabel: 'Cerrar atajos de teclado',
+      openHelp: 'Abrir ayuda de atajos',
+      focusSearch: 'Enfocar búsqueda',
+      closeModal: 'Cerrar modal / desenfocar',
+      favoriteTool: 'Añadir a favoritos',
+      toggleTheme: 'Alternar modo oscuro / claro',
+      footerHint: 'Atajos de navegación de AnyConverter'
+    },
+    da: {
+      btnLabel: 'Tastaturgenveje',
+      btnTitle: 'Tastaturgenveje (?)',
+      title: 'Tastaturgenveje',
+      closeLabel: 'Luk tastaturgenveje',
+      openHelp: 'Åbn genvejshjælp',
+      focusSearch: 'Fokusér søgning',
+      closeModal: 'Luk modal / fjern fokus',
+      favoriteTool: 'Føj til favoritter',
+      toggleTheme: 'Skift mørk / lys tilstand',
+      footerHint: 'AnyConverter navigationsgenveje'
+    }
+  };
+
+  var lastFocusedTrigger = null;
+
+  function renderShortcutsModalHTML(lang) {
+    var t = SHORTCUTS_I18N[lang] || SHORTCUTS_I18N.en;
+    return `
+  <div class="shortcuts-backdrop" id="shortcuts-backdrop"></div>
+  <div class="shortcuts-dialog" role="document">
+    <div class="shortcuts-header">
+      <h2 id="shortcuts-modal-title" class="shortcuts-title">${t.title}</h2>
+      <button type="button" class="shortcuts-close-btn" id="btn-shortcuts-close" aria-label="${t.closeLabel}">&times;</button>
+    </div>
+    <div class="shortcuts-body">
+      <ul class="shortcuts-list" id="shortcuts-list">
+        <li class="shortcuts-item">
+          <span class="shortcuts-desc">${t.openHelp}</span>
+          <div class="shortcuts-keys"><kbd>?</kbd></div>
+        </li>
+        <li class="shortcuts-item">
+          <span class="shortcuts-desc">${t.focusSearch}</span>
+          <div class="shortcuts-keys"><kbd>/</kbd></div>
+        </li>
+        <li class="shortcuts-item">
+          <span class="shortcuts-desc">${t.closeModal}</span>
+          <div class="shortcuts-keys"><kbd>Esc</kbd></div>
+        </li>
+        <li class="shortcuts-item">
+          <span class="shortcuts-desc">${t.favoriteTool}</span>
+          <div class="shortcuts-keys"><kbd>Alt</kbd> + <kbd>F</kbd></div>
+        </li>
+        <li class="shortcuts-item">
+          <span class="shortcuts-desc">${t.toggleTheme}</span>
+          <div class="shortcuts-keys"><kbd>Alt</kbd> + <kbd>T</kbd></div>
+        </li>
+      </ul>
+    </div>
+    <div class="shortcuts-footer">
+      <span class="shortcuts-footer-hint" id="shortcuts-footer-hint">${t.footerHint}</span>
+    </div>
+  </div>`;
+  }
+
+  function openShortcutsModal(triggerSource) {
+    var modal = document.getElementById('shortcuts-modal');
+    if (!modal) {
+      initShortcutsModal();
+      modal = document.getElementById('shortcuts-modal');
+    }
+    if (!modal) return;
+
+    triggerSource = triggerSource || 'keyboard';
+    lastFocusedTrigger = document.activeElement;
+
+    if (typeof closeSearch === 'function') closeSearch();
+    if (typeof closeMobileMenu === 'function') closeMobileMenu();
+    if (typeof closeLangDropdown === 'function') closeLangDropdown();
+
+    modal.style.display = 'flex';
+    modal.classList.add('open');
+    modal.setAttribute('aria-hidden', 'false');
+
+    var closeBtn = document.getElementById('btn-shortcuts-close');
+    if (closeBtn) {
+      closeBtn.focus();
+    }
+
+    if (window.ACAnalytics) {
+      if (typeof window.ACAnalytics.trackEvent === 'function') {
+        window.ACAnalytics.trackEvent('shortcuts_modal_viewed', { trigger: triggerSource });
+      } else if (typeof window.ACAnalytics.track === 'function') {
+        window.ACAnalytics.track('shortcuts_modal_viewed', { trigger: triggerSource });
+      }
+    }
+  }
+
+  function closeShortcutsModal() {
+    var modal = document.getElementById('shortcuts-modal');
+    if (!modal) return;
+
+    modal.style.display = 'none';
+    modal.classList.remove('open');
+    modal.setAttribute('aria-hidden', 'true');
+
+    if (lastFocusedTrigger && typeof lastFocusedTrigger.focus === 'function') {
+      try {
+        lastFocusedTrigger.focus();
+      } catch (_e) {}
+    }
+    lastFocusedTrigger = null;
+  }
+
+  function initShortcutsModal() {
+    var lang = typeof currentPageLang === 'function' ? currentPageLang() : 'en';
+    var t = SHORTCUTS_I18N[lang] || SHORTCUTS_I18N.en;
+
+    var helpBtn = document.getElementById('btn-shortcuts-help');
+    if (helpBtn) {
+      helpBtn.setAttribute('aria-label', t.btnLabel);
+      helpBtn.setAttribute('title', t.btnTitle);
+      helpBtn.onclick = function () {
+        openShortcutsModal('button');
+      };
+    }
+
+    var modal = document.getElementById('shortcuts-modal');
+    if (!modal) {
+      modal = document.createElement('div');
+      modal.className = 'modal shortcuts-modal';
+      modal.id = 'shortcuts-modal';
+      modal.setAttribute('role', 'dialog');
+      modal.setAttribute('aria-modal', 'true');
+      modal.setAttribute('aria-labelledby', 'shortcuts-modal-title');
+      modal.setAttribute('aria-hidden', 'true');
+      modal.style.display = 'none';
+      modal.innerHTML = renderShortcutsModalHTML(lang);
+      document.body.appendChild(modal);
+    } else {
+      modal.innerHTML = renderShortcutsModalHTML(lang);
+    }
+
+    var closeBtn = document.getElementById('btn-shortcuts-close');
+    if (closeBtn) {
+      closeBtn.onclick = closeShortcutsModal;
+    }
+
+    var backdrop = document.getElementById('shortcuts-backdrop');
+    if (backdrop) {
+      backdrop.onclick = closeShortcutsModal;
+    }
+
+    // Modal Focus Trap (WCAG 2.2 AA)
+    modal.addEventListener('keydown', function (e) {
+      if (e.key === 'Tab') {
+        var focusables = modal.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+        if (!focusables.length) return;
+        var firstEl = focusables[0];
+        var lastEl = focusables[focusables.length - 1];
+        if (e.shiftKey) {
+          if (document.activeElement === firstEl) {
+            e.preventDefault();
+            lastEl.focus();
+          }
+        } else {
+          if (document.activeElement === lastEl) {
+            e.preventDefault();
+            firstEl.focus();
+          }
+        }
+      }
+    });
+  }
+
+  function isInputActive(target) {
+    if (!target) return false;
+    var tag = (target.tagName || '').toLowerCase();
+    if (tag === 'input' || tag === 'textarea' || tag === 'select') return true;
+    if (target.isContentEditable || target.getAttribute('contenteditable') === 'true') return true;
+    return false;
+  }
+
+  function initGlobalShortcuts() {
+    document.addEventListener('keydown', function (e) {
+      // 1. Esc: Closes any active modal, mobile menu, search dropdown, clears search focus, exits fullscreen
+      if (e.key === 'Escape') {
+        var didAction = false;
+
+        // Input shielding exception: safely blurs active input
+        if (isInputActive(document.activeElement)) {
+          document.activeElement.blur();
+          didAction = true;
+        }
+
+        var sModal = document.getElementById('shortcuts-modal');
+        if (sModal && (sModal.classList.contains('open') || sModal.style.display !== 'none')) {
+          e.preventDefault();
+          closeShortcutsModal();
+          didAction = true;
+        }
+
+        var searchModal = document.getElementById('search-modal');
+        if (searchModal && (searchModal.classList.contains('open') || document.body.classList.contains('search-open'))) {
+          e.preventDefault();
+          if (typeof closeSearch === 'function') closeSearch();
+          didAction = true;
+        }
+
+        var mobileBtn = document.getElementById('mobile-menu-btn');
+        if (mobileBtn && mobileBtn.getAttribute('aria-expanded') === 'true') {
+          e.preventDefault();
+          if (typeof closeMobileMenu === 'function') closeMobileMenu();
+          didAction = true;
+        }
+
+        if (typeof closeAllNavDropdowns === 'function') closeAllNavDropdowns();
+        if (typeof closeLangDropdown === 'function') closeLangDropdown();
+
+        var fullscreenPanel = document.querySelector('.ac-panel.is-fullscreen, .is-fullscreen');
+        if (fullscreenPanel) {
+          e.preventDefault();
+          var fsBtn = fullscreenPanel.querySelector('[data-action="fullscreen"]') || document.getElementById('fs-btn');
+          if (fsBtn) {
+            fsBtn.click();
+          } else {
+            fullscreenPanel.classList.remove('is-fullscreen');
+            document.body.classList.remove('has-fullscreen');
+          }
+          didAction = true;
+        }
+
+        if (didAction && window.ACAnalytics) {
+          if (typeof window.ACAnalytics.trackEvent === 'function') {
+            window.ACAnalytics.trackEvent('shortcut_used', { key: 'escape' });
+          } else if (typeof window.ACAnalytics.track === 'function') {
+            window.ACAnalytics.track('shortcut_used', { key: 'escape' });
+          }
+        }
+        return;
+      }
+
+      // Input Shielding Guard: Shortcuts must NOT trigger when typing in inputs/textareas/selects/contenteditable
+      if (isInputActive(e.target) || isInputActive(document.activeElement)) {
+        return;
+      }
+
+      // 2. '?' (Shift + '/') -> Opens Keyboard Shortcuts Discovery Modal
+      if (e.key === '?' || (e.shiftKey && (e.key === '/' || e.code === 'Slash'))) {
+        e.preventDefault();
+        openShortcutsModal('keyboard');
+        if (window.ACAnalytics) {
+          if (typeof window.ACAnalytics.trackEvent === 'function') {
+            window.ACAnalytics.trackEvent('shortcut_used', { key: 'question_mark' });
+          } else if (typeof window.ACAnalytics.track === 'function') {
+            window.ACAnalytics.track('shortcut_used', { key: 'question_mark' });
+          }
+        }
+        return;
+      }
+
+      // 3. '/' -> Focuses global search input, selecting existing query text
+      if (e.key === '/' && !e.shiftKey && !e.ctrlKey && !e.metaKey && !e.altKey) {
+        e.preventDefault();
+        if (typeof openSearch === 'function') {
+          openSearch('slash_key');
+        }
+        var searchInput = document.getElementById('search-input') || document.getElementById('hero-search-input');
+        if (searchInput) {
+          searchInput.focus();
+          if (typeof searchInput.select === 'function') {
+            searchInput.select();
+          }
+        }
+        if (window.ACAnalytics) {
+          if (typeof window.ACAnalytics.trackEvent === 'function') {
+            window.ACAnalytics.trackEvent('shortcut_used', { key: 'slash' });
+          } else if (typeof window.ACAnalytics.track === 'function') {
+            window.ACAnalytics.track('shortcut_used', { key: 'slash' });
+          }
+        }
+        return;
+      }
+
+      // 4. 'Alt+F' -> Toggles favoriting for current tool (preserving existing S10 logic)
+      if (e.altKey && !e.ctrlKey && !e.metaKey && (e.key === 'f' || e.key === 'F')) {
+        e.preventDefault();
+        var favButton = document.querySelector('[data-action="favorite"]');
+        if (favButton) {
+          favButton.click();
+          favButton.focus();
+        } else {
+          var canon = typeof getCanonicalToolPath === 'function' ? getCanonicalToolPath(window.location.pathname) : window.location.pathname;
+          if (canon && canon !== '/' && typeof toggleFavoriteTool === 'function') {
+            toggleFavoriteTool(canon);
+          }
+        }
+        if (window.ACAnalytics) {
+          if (typeof window.ACAnalytics.trackEvent === 'function') {
+            window.ACAnalytics.trackEvent('shortcut_used', { key: 'alt_f' });
+          } else if (typeof window.ACAnalytics.track === 'function') {
+            window.ACAnalytics.track('shortcut_used', { key: 'alt_f' });
+          }
+        }
+        return;
+      }
+
+      // 5. 'Alt+T' -> Toggles dark / light theme
+      if (e.altKey && !e.ctrlKey && !e.metaKey && (e.key === 't' || e.key === 'T')) {
+        e.preventDefault();
+        var themeBtn = document.getElementById('theme-toggle-btn');
+        if (themeBtn) {
+          themeBtn.click();
+        } else {
+          var nowDark = document.documentElement && document.documentElement.classList ? !document.documentElement.classList.contains('dark') : false;
+          if (document.documentElement && document.documentElement.classList) {
+            if (nowDark) document.documentElement.classList.add('dark');
+            else document.documentElement.classList.remove('dark');
+          }
+          try { localStorage.setItem('ac_theme', nowDark ? 'dark' : 'light'); } catch (_e) {}
+          if (typeof updateThemeToggleBtn === 'function') updateThemeToggleBtn();
+        }
+        if (window.ACAnalytics) {
+          if (typeof window.ACAnalytics.trackEvent === 'function') {
+            window.ACAnalytics.trackEvent('shortcut_used', { key: 'alt_t' });
+          } else if (typeof window.ACAnalytics.track === 'function') {
+            window.ACAnalytics.track('shortcut_used', { key: 'alt_t' });
+          }
+        }
+        return;
+      }
+    });
   }
 
   /* ===== HOMEPAGE DASHBOARD QUICK ACCESS / FAVORITES ===== */
@@ -3235,6 +3707,14 @@
   window.clearRecents = clearRecents;
   window.removeRecentTool = removeRecentTool;
   window.initDashboardRecents = initDashboardRecents;
+
+  /* Sprint S27 Theme & Shortcuts Window APIs */
+  window.applyStoredTheme = applyStoredTheme;
+  window.initShortcutsModal = initShortcutsModal;
+  window.initGlobalShortcuts = initGlobalShortcuts;
+  window.openShortcutsModal = openShortcutsModal;
+  window.closeShortcutsModal = closeShortcutsModal;
+  window.SHORTCUTS_I18N = SHORTCUTS_I18N;
 
   window.loadFileWithProgress = function (file, maxMB) {
     maxMB = typeof maxMB === 'number' ? maxMB : 100;

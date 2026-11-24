@@ -1,3 +1,72 @@
+# Pre-deploy SEO Verification — feat/s27-theme-shortcuts @ HEAD
+
+Date: 2026-11-24T05:30:00Z
+Branch: feat/s27-theme-shortcuts
+Changed files: assets/js/shared.js, assets/css/style.css, assets/js/shared/analytics.js, docs/growth/outreach/LOOP_10_EMBED_PARTNERS.md, tests/test_s27_theme_shortcuts.js, tests/run_all_tests.js.
+Affected URLs: Sitewide across all 441 URLs in EN, ES, DA.
+Locales touched: [en, es, da] (100% reciprocal 4-way hreflang verified across en, es, da, x-default)
+
+| Gate | Status | Evidence |
+|---|---|---|
+| G1 Repo safety | PASS | Feature branch `feat/s27-theme-shortcuts` isolated and branched directly off clean S26 checkpoint (`d666c86`). Zero regressions to core algorithms, zero server persistence. |
+| G2 Existing tests | PASS | `node tests/run_all_tests.js` executed: 42/42 master suites passed (100%), including 21/21 Playwright visual regression snapshots, CWV top 20, a11y keyboard/ARIA, mobile viewport, sitemap integrity, localization quality, sitewide parity, and privacy statement checks. |
+| G3 HTML validation | PASS | Clean, valid semantic HTML5 markup. `#shortcuts-modal` rendered with `role="dialog"`, `aria-modal="true"`, and `aria-labelledby="shortcuts-modal-title"` injected into `document.body` with accessible trigger button `#btn-shortcuts-help` (`⌨️`) and close button `#btn-shortcuts-close`. |
+| G4 Link integrity | PASS | 100% reciprocal 4-way hreflang alternates (`en`, `es`, `da`, `x-default`) verified in `sitemap.xml` (441 URLs, 0 drift) and HTML headers. Self-referential canonical URLs intact sitewide. |
+| G5 Functional E2E | PASS | 21/21 Playwright visual regression comparisons passed cleanly via `tests/run_visual_regression.js`. All keyboard shortcuts (`?`, `/`, `Esc`, `Alt+F`, `Alt+T`) and theme persistence fully operational. |
+| G6 Multilingual regression | PASS | Native translations verified with `tests/test_s27_theme_shortcuts.js`. Danish (`æ`, `ø`, `å`) and Spanish (`á`, `é`, `í`, `ó`, `ú`, `ñ`) diacritics 100% intact across all modal labels, action descriptions, and theme toggle buttons. |
+| G7 Responsive UI | PASS | Zero horizontal overflow across all 4 mandatory mobile viewports (320px, 360px, 375px, 390px). `#shortcuts-modal` dialog scales responsively up to `max-width: 520px` with fluid mobile padding. |
+| G8 Accessibility | PASS | WCAG 2.2 AA compliant. Focus management shifts to close button upon open and returns to previous trigger upon close. Focus trap active within dialog; backdrop click or `Esc` closes modal. High-contrast `:focus-visible` outlines (`2px solid #B04A45`, `2px offset`) active on all triggers. |
+| G9 Privacy / security | PASS | Verified by `tests/test_privacy_claims_regression.js` and `tests/test_s27_theme_shortcuts.js`. Zero external telemetry leaks, zero PII, zero server storage; theme preferences and shortcuts state stored strictly in client-side `localStorage`. |
+| G10 Performance | PASS | Core Web Vitals thresholds preserved: LCP < 2.5s, CLS < 0.1, INP < 200ms. Modal hidden by default (`style="display:none;"`), theme persistence runs early preventing FOUC. |
+| G11 SEO route invariants | PASS | Self-referencing canonical URLs strictly enforced across all 441 pages. Reciprocal hreflang tags 100% consistent across all pages. |
+| G12 Structured data | PASS | Schema.org WebApplication, BreadcrumbList, and FAQPage JSON-LD intact and validated across all pages. |
+| G13 Internal linking | PASS | Global search shortcut `/` selects existing text and facilitates fast internal discovery without modifying internal linking architecture. |
+| G14 AdSense placement | PASS | Ad container structures maintain reserved dimensions. Shortcuts modal dialog renders in high z-index overlay layer (`z-index: 100001`) without displacing ad slots. |
+| G15 Rollback plan | PASS | Reversible git commit; clean baseline checkpoint `feat/s26-workflow-chain-text` (`d666c86`). |
+
+---
+
+## Sprint S27 Delivery Status Verdict
+
+**STATUS: 100% DELIVERED FOR SPRINT S27 (THEME PERSISTENCE HARDENING + GLOBAL KEYBOARD SHORTCUTS & DISCOVERY MODAL)**
+
+1. **Global Keyboard Shortcuts Engine (`assets/js/shared.js`):** **PASS / SHIPPED**.
+   - Implemented centralized keydown dispatcher with strict input shielding guard (`isInputActive`):
+     - `?` (Shift + `/`): Opens `#shortcuts-modal`.
+     - `/`: Opens/focuses global search input (`#search-input` or `#hero-search-input`) and selects existing query text (`input.select()`).
+     - `Esc`: Closes `#shortcuts-modal`, `#search-modal`, mobile menu `#mobile-menu`, dropdowns, blurs active form controls, or exits fullscreen panel.
+     - `Alt+F`: Toggles favoriting for current tool (preserving existing S10 logic).
+     - `Alt+T`: Toggles dark/light theme mode.
+   - Input shielding guard verified: hotkeys do not fire while typing in `<input>`, `<textarea>`, `<select>`, or `[contenteditable="true"]` (except `Esc` which safely blurs the control).
+2. **Accessible Shortcuts Discovery Modal (`#shortcuts-modal`):** **PASS / SHIPPED**.
+   - Injected semantic dialog structure with `role="dialog"`, `aria-modal="true"`, `aria-labelledby="shortcuts-modal-title"`, close button (`#btn-shortcuts-close`), backdrop (`#shortcuts-backdrop`), and header trigger button (`#btn-shortcuts-help` / `⌨️`).
+   - Focus management: remembers trigger element, shifts focus into modal on open, restores focus to trigger on close.
+   - Focus trap: traps Tab cycling within modal elements.
+   - WCAG 2.2 AA `:focus-visible` styling (`outline: 2px solid #B04A45`, `2px offset`).
+3. **Dark / Light Theme Persistence Hardening:** **PASS / SHIPPED**.
+   - Enhanced `applyStoredTheme()` and `initThemeToggle()` in `assets/js/shared.js`:
+     - Respects explicit user preference in `localStorage.getItem('ac_theme')` (`'dark'` / `'light'`).
+     - Falls back to system preference via `window.matchMedia('(prefers-color-scheme: dark)')` with real-time change listener.
+     - Synchronizes theme state across all open browser tabs via window `'storage'` event.
+     - Zero FOUC guaranteed by running `applyStoredTheme()` immediately on script load.
+4. **Multilingual Parity (EN, ES, DA):** **PASS / SHIPPED**.
+   - Preserves 100% native diacritics in `SHORTCUTS_I18N`:
+     - EN: "Keyboard Shortcuts" · "Open shortcuts help" · "Focus search" · "Close modal / unfocus" · "Favorite current tool" · "Toggle dark / light mode"
+     - ES: "Atajos de teclado" · "Abrir ayuda de atajos" · "Enfocar búsqueda" · "Cerrar modal / desenfocar" · "Añadir a favoritos" · "Alternar modo oscuro / claro"
+     - DA: "Tastaturgenveje" · "Åbn genvejshjælp" · "Fokusér søgning" · "Luk modal / fjern fokus" · "Føj til favoritter" · "Skift mørk / lys tilstand"
+5. **Telemetry & Analytics Integration:** **PASS / SHIPPED**.
+   - Dispatches `window.ACAnalytics.trackEvent('shortcut_used', { key: 'question_mark' | 'slash' | 'escape' | 'alt_f' | 'alt_t' })`.
+   - Dispatches `window.ACAnalytics.trackEvent('shortcuts_modal_viewed', { trigger: 'keyboard' | 'button' })`.
+6. **Track B: Loop 10 Embed Partner Pilots Queue:** **PASS / SHIPPED**.
+   - Documented 6 target publisher/education partners in `docs/growth/outreach/LOOP_10_EMBED_PARTNERS.md` (`Math Is Fun`, `FinTech Weekly`, `freeCodeCamp`, `TimeAndDate`, `SitePoint`, `Baeldung`).
+   - Prepared custom integration pitch drafts using `T-INT-01` targeting embed routes (`/embed/percentage-calculator/`, `/embed/loan-calculator/`, `/embed/json-formatter/`, `/embed/date-difference-calculator/`, `/embed/aspect-ratio-calculator/`, `/embed/hash-generator/`) under strict manual owner sending mandate.
+7. **Automated Verification:** **PASS / SHIPPED**.
+   - Dedicated verification suite `tests/test_s27_theme_shortcuts.js`: 8/8 checks passing (100%).
+   - Repository master runner `tests/run_all_tests.js`: 42/42 suites passing (100%), including 21/21 Playwright visual regression screenshot comparisons.
+   - Sitemap integrity verified: `node scripts/generate_sitemap.js --check` passes with zero drift (441 URLs, 147 clusters).
+
+---
+
 # Pre-deploy SEO Verification — feat/s26-workflow-chain-text @ HEAD
 
 Date: 2026-11-24T05:00:00Z

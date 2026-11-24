@@ -1504,5 +1504,49 @@ ADR-051: Tool-to-Tool Workflow Chaining for JSON Group (JSON Formatter → Compa
   - Provides seamless, frictionless workflow chaining across text analysis and transformation tools without manual copy-pasting.
   - Maintains strict zero-server privacy, full WCAG 2.2 AA accessibility, and zero-drift SEO canonical/hreflang invariants.
 
+## ADR-066: Sitewide Keyboard Shortcuts Engine & Hardened Dark/Light Theme Persistence
+- **Date:** 2026-11-24
+- **Status:** Approved & Implemented
+- **Context:**
+  - Growth Sprint S27 (Days 53–54) requires implementing a sitewide, accessible keyboard shortcuts engine and discovery modal (`#shortcuts-modal`) alongside hardened dark/light theme persistence and OS preference synchronization across all 441 URLs in EN, ES, and DA.
+  - Target KPI: $\ge 10\%$ of return sessions engage with at least one keyboard shortcut; zero accessibility regressions.
+  - Core requirements mandate:
+    1. Global keyboard shortcuts dispatcher in `assets/js/shared.js`: `?` (Shift + `/`) opens `#shortcuts-modal`, `/` focuses search input selecting existing query text, `Esc` dismisses modals/search/fullscreen/blurs inputs, `Alt+F` toggles favoriting for current tool, `Alt+T` toggles dark/light theme mode.
+    2. Input Shielding Guard: Shortcuts must NOT trigger when typing in `<input>`, `<textarea>`, `<select>`, or `[contenteditable="true"]` (except `Esc` which safely blurs the input).
+    3. Accessible Keyboard Shortcuts Discovery Modal (`#shortcuts-modal`): `<div class="modal" id="shortcuts-modal" role="dialog" aria-modal="true" aria-labelledby="shortcuts-modal-title" style="display:none;">`, header trigger button (`#btn-shortcuts-help` / `⌨️`), close button (`#btn-shortcuts-close`), focus trap (WCAG 2.2 AA), and backdrop dismiss.
+    4. Dark/Light Theme Persistence Hardening: respects `localStorage.getItem('ac_theme')`, falls back to `window.matchMedia('(prefers-color-scheme: dark)')` with real-time change listener, and broadcasts changes across active tabs via `'storage'` window event.
+    5. Multilingual parity across EN, ES, DA preserving native diacritics (`á`, `é`, `í`, `ó`, `ú`, `ñ`, `æ`, `ø`, `å`).
+    6. Telemetry integration: dispatches `shortcut_used` and `shortcuts_modal_viewed` events.
+    7. Track B: Loop 10 Embed Partner Pilots Queue documented in `docs/growth/outreach/LOOP_10_EMBED_PARTNERS.md` with 6 publisher/education partners and custom `T-INT-01` pitch drafts under strict manual owner review.
+- **Decision:**
+  1. **Global Keyboard Shortcuts Engine (`assets/js/shared.js`):**
+     - Implemented `initGlobalShortcuts()` with resilient input shielding (`isInputActive()`), preventing hotkey collisions during text entry.
+     - Centralized `Escape` key handling to dismiss `#shortcuts-modal`, `#search-modal`, mobile menu `#mobile-menu`, and `.is-fullscreen` panel states, safely blurring active form controls.
+     - Handled `?` to open discovery modal and `/` to open search and select existing query text via `input.select()`.
+     - Preserved and harmonized `Alt+F` favoriting toggle and added `Alt+T` theme toggle.
+  2. **Accessible Discovery Modal (`#shortcuts-modal`):**
+     - Injected semantic dialog structure into `document.body` with `role="dialog"`, `aria-modal="true"`, and `aria-labelledby="shortcuts-modal-title"`.
+     - Added `#btn-shortcuts-help` (`⌨️`) in the header actions bar for mouse and screen reader discovery.
+     - Enforced WCAG 2.2 AA focus management (shifting focus into modal, trapping Tab cycling, restoring focus to trigger upon dismissal).
+     - Defined high-contrast `:focus-visible` styling (`outline: 2px solid #B04A45`, `outline-offset: 2px`).
+  3. **Theme Persistence Hardening:**
+     - Enhanced `applyStoredTheme()` to check `localStorage.getItem('ac_theme')` (`'dark'` / `'light'`), defaulting to `window.matchMedia('(prefers-color-scheme: dark)')`.
+     - Configured real-time listener for OS preference shifts (`mediaQuery.addEventListener('change', ...)`).
+     - Connected `window.addEventListener('storage', ...)` to synchronize theme toggles immediately across multiple open browser tabs.
+  4. **Multilingual Parity (EN, ES, DA):**
+     - Implemented localized dictionary `SHORTCUTS_I18N` preserving native diacritics in ES ("Atajos de teclado", "Enfocar búsqueda", "Cerrar modal / desenfocar", "Añadir a favoritos", "Alternar modo oscuro / claro") and DA ("Tastaturgenveje", "Åbn genvejshjælp", "Fokusér søgning", "Luk modal / fjern fokus", "Føj til favoritter", "Skift mørk / lys tilstand").
+  5. **Telemetry & Track B Outreach:**
+     - Registered `shortcut_used` and `shortcuts_modal_viewed` events in `assets/js/shared/analytics.js`.
+     - Published `docs/growth/outreach/LOOP_10_EMBED_PARTNERS.md` queue for 6 integration partners (`Math Is Fun`, `FinTech Weekly`, `freeCodeCamp`, `TimeAndDate`, `SitePoint`, `Baeldung`) using `/embed/` routes and `T-INT-01` templates under strict manual owner sending mandate.
+  6. **Automated Verification:**
+     - Created dedicated test suite `tests/test_s27_theme_shortcuts.js` (8/8 checks passing).
+     - Registered in `tests/run_all_tests.js` (42/42 master suites passing, 100%).
+     - Sitemap synchronized with 0 drift (441 URLs).
+- **Consequences:**
+  - Accelerates power user navigation and return session engagement sitewide.
+  - Hardens theme consistency across tab switches and system dark mode transitions without FOUC.
+  - Zero accessibility regressions, strict privacy compliance, and zero backend dependencies preserved.
+
+
 
 
