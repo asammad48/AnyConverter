@@ -3,7 +3,7 @@
  * Ensures editing Scene 8 invalidates ONLY Scene 8, keeping all other scene asset hashes unchanged.
  */
 
-const nodeCrypto = (typeof require !== 'undefined') ? (function() { try { return require('crypto'); } catch(e) { return null; } })() : null;
+var nodeCrypto = (typeof require !== 'undefined') ? (function() { try { return require('crypto'); } catch(e) { return null; } })() : null;
 
 class SceneInvalidationTracker {
   constructor(projectDocument) {

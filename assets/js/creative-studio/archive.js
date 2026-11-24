@@ -3,8 +3,8 @@
  * Pure JavaScript client/node compatible archive module with strict security guards.
  */
 
-const nodeCrypto = (typeof require !== 'undefined') ? (function() { try { return require('crypto'); } catch(e) { return null; } })() : null;
-const nodeZlib = (typeof require !== 'undefined') ? (function() { try { return require('zlib'); } catch(e) { return null; } })() : null;
+var nodeCrypto = (typeof require !== 'undefined') ? (function() { try { return require('crypto'); } catch(e) { return null; } })() : null;
+var nodeZlib = (typeof require !== 'undefined') ? (function() { try { return require('zlib'); } catch(e) { return null; } })() : null;
 
 // Browser buffer polyfill if Buffer is not globally defined
 if (typeof globalThis.Buffer === 'undefined') {
@@ -129,7 +129,7 @@ class AcStudioArchive {
     });
 
     // 3. Encode into PKWARE ZIP format
-    return this._createZip(entries);
+    return this._createZip(entries, options);
   }
 
   /**
@@ -260,7 +260,7 @@ class AcStudioArchive {
     return asset && asset.mimeType ? asset.mimeType : 'application/octet-stream';
   }
 
-  _createZip(entries) {
+  _createZip(entries, options = {}) {
     const localHeaders = [];
     const centralDirectoryHeaders = [];
     let offset = 0;
@@ -270,14 +270,14 @@ class AcStudioArchive {
       const dataBuf = entry.data;
       const crc = this._crc32(dataBuf);
       let compressedData = null;
-      if (nodeZlib && typeof nodeZlib.deflateRawSync === 'function') {
+      if (options.compress && nodeZlib && typeof nodeZlib.deflateRawSync === 'function') {
         try {
           compressedData = nodeZlib.deflateRawSync(dataBuf);
         } catch (e) {
           compressedData = null;
         }
       }
-      const isDeflated = compressedData && compressedData.length < dataBuf.length;
+      const isDeflated = !!(compressedData && compressedData.length < dataBuf.length);
       const finalData = isDeflated ? compressedData : dataBuf;
       const method = isDeflated ? 8 : 0; // 8 = Deflate, 0 = Store
 

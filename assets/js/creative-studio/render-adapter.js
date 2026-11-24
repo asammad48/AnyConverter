@@ -145,8 +145,28 @@ class NativeCanvasRenderAdapter extends RenderAdapter {
             if (typeof options.onRenderFrame === 'function') {
               await options.onRenderFrame(ctx, f, timeSec, totalFrames, canvas);
             } else {
-              // Default animated canvas drawing
-              ctx.fillStyle = (project.canvas && project.canvas.background) || '#0f172a';
+              // Scene-aware rendering
+              let currentScene = null;
+              let currentSceneIndex = 0;
+              if (project.scenes && project.scenes.length > 0) {
+                let accFrames = 0;
+                for (let s = 0; s < project.scenes.length; s++) {
+                  const sc = project.scenes[s];
+                  const scDur = sc.durationFrames || Math.round(totalFrames / project.scenes.length);
+                  if (f >= accFrames && (f < accFrames + scDur || s === project.scenes.length - 1)) {
+                    currentScene = sc;
+                    currentSceneIndex = s;
+                    break;
+                  }
+                  accFrames += scDur;
+                }
+              }
+              if (!currentScene && project.scenes && project.scenes[0]) {
+                currentScene = project.scenes[0];
+              }
+
+              const sceneBg = (currentScene && currentScene.background) || (project.canvas && project.canvas.background) || '#0f172a';
+              ctx.fillStyle = sceneBg;
               ctx.fillRect(0, 0, width, height);
 
               // Title and project name
@@ -154,10 +174,31 @@ class NativeCanvasRenderAdapter extends RenderAdapter {
               ctx.font = 'bold 36px Inter, sans-serif';
               ctx.fillText(project.title || 'AnyConverter Creative Studio', 60, 80);
 
-              // Subtitle
+              // Subtitle & Active Scene Indicator
               ctx.fillStyle = '#94a3b8';
               ctx.font = '20px Inter, sans-serif';
-              ctx.fillText('Client-Side Video Render Engine • 100% In-Browser', 60, 120);
+              const sceneLabel = currentScene ? `Scene ${currentSceneIndex + 1}: ${currentScene.name || 'Artboard'}` : 'Single Scene';
+              ctx.fillText(`${sceneLabel} • Client-Side Video Render Engine`, 60, 120);
+
+              // Render scene layers if present
+              if (currentScene && Array.isArray(currentScene.layers)) {
+                for (const layer of currentScene.layers) {
+                  if (layer.type === 'text' && layer.content) {
+                    ctx.fillStyle = (layer.style && layer.style.color) || layer.color || '#38bdf8';
+                    ctx.font = `${layer.fontSize || 32}px Inter, sans-serif`;
+                    const lx = (layer.transform && layer.transform.x) || layer.x || 60;
+                    const ly = (layer.transform && layer.transform.y) || layer.y || 200;
+                    ctx.fillText(layer.content, lx, ly);
+                  } else if (layer.type === 'shape') {
+                    ctx.fillStyle = (layer.style && layer.style.fill) || '#3b82f6';
+                    const sx = (layer.transform && layer.transform.x) || layer.x || 60;
+                    const sy = (layer.transform && layer.transform.y) || layer.y || 240;
+                    const sw = (layer.transform && layer.transform.width) || layer.width || 120;
+                    const sh = (layer.transform && layer.transform.height) || layer.height || 60;
+                    ctx.fillRect(sx, sy, sw, sh);
+                  }
+                }
+              }
 
               // Dynamic animated element (bouncing orb & progress bar)
               const progress = f / totalFrames;
@@ -176,8 +217,8 @@ class NativeCanvasRenderAdapter extends RenderAdapter {
 
               // Timestamp & frame counter
               ctx.fillStyle = '#ffffff';
-              ctx.font = '28px monospace';
-              ctx.fillText(`Frame ${f + 1}/${totalFrames} (${timeSec.toFixed(2)}s / ${durationSeconds}s)`, 60, height / 2);
+              ctx.font = '24px monospace';
+              ctx.fillText(`Frame ${f + 1}/${totalFrames} (${timeSec.toFixed(2)}s / ${durationSeconds}s) [Scene ${currentSceneIndex + 1}]`, 60, height / 2 + 50);
             }
 
             if (track && typeof track.requestFrame === 'function') {

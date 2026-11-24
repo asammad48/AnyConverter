@@ -3,7 +3,7 @@
  * Command pattern implementation for reversible, transactional editing operations.
  */
 
-const nodeCrypto = (typeof require !== 'undefined') ? (function() { try { return require('crypto'); } catch(e) { return null; } })() : null;
+var nodeCrypto = (typeof require !== 'undefined') ? (function() { try { return require('crypto'); } catch(e) { return null; } })() : null;
 
 class CommandEngine {
   constructor(initialProject, options = {}) {

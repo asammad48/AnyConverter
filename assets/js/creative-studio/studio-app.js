@@ -687,16 +687,28 @@
       }
     }
 
-    async exportVideo() {
+    async exportVideo(options = {}) {
       try {
-        const res = await this.renderAdapter.render(this.project, { durationSeconds: 3, fps: 30 });
+        if (this.dom.titleInput) {
+          this.project.title = this.dom.titleInput.value;
+        }
+        if (this.project.scenes && this.project.scenes[this.activeSceneIndex || 0]) {
+          this.project.scenes[this.activeSceneIndex || 0].layers = JSON.parse(JSON.stringify(this.graphics.layers));
+        }
+
+        const renderOpts = Object.assign({ durationSeconds: 3, fps: 30 }, options);
+        const res = await this.renderAdapter.render(this.project, renderOpts);
+        this.lastExportResult = res;
+
         if (res && res.blob) {
           const ext = res.mimeType.includes('webm') ? 'webm' : 'mp4';
           const url = URL.createObjectURL(res.blob);
           this.downloadFile(url, `${this.project.title || 'video-export'}.${ext}`);
         }
+        return res;
       } catch (err) {
         console.error('Export Video failed:', err);
+        return { success: false, error: err.message };
       }
     }
 
@@ -705,17 +717,25 @@
     saveProjectArchive() {
       try {
         // Sync graphics layers into canonical scene
-        if (this.project.scenes && this.project.scenes[0]) {
-          this.project.scenes[0].layers = JSON.parse(JSON.stringify(this.graphics.layers));
+        if (this.project.scenes && this.project.scenes[this.activeSceneIndex || 0]) {
+          this.project.scenes[this.activeSceneIndex || 0].layers = JSON.parse(JSON.stringify(this.graphics.layers));
+        }
+        if (this.dom.titleInput) {
+          this.project.title = this.dom.titleInput.value;
         }
 
         const zipBuffer = this.archive.package(this.project, this.assetBlobs);
         const blob = new Blob([zipBuffer], { type: 'application/x-acstudio+zip' });
+        this.lastSavedBlob = blob;
+        this.lastSavedZip = zipBuffer;
+
         const url = URL.createObjectURL(blob);
         this.downloadFile(url, `${this.project.title || 'project'}.acstudio`);
+        return { success: true, size: zipBuffer.length, blob };
       } catch (err) {
         console.error('Save .acstudio failed:', err);
         alert('Could not package .acstudio project: ' + err.message);
+        return { success: false, error: err.message };
       }
     }
 
@@ -728,16 +748,21 @@
         const res = this.archive.unpackage(new Uint8Array(arrayBuf));
         if (res && res.project) {
           this.project = res.project;
+          this.assetBlobs = res.assets || new Map();
+          this.lastOpenedUnpack = res;
+
           if (this.dom.titleInput) this.dom.titleInput.value = this.project.title;
           if (res.project.scenes && res.project.scenes[0]) {
             this.graphics.layers = res.project.scenes[0].layers || [];
           }
           this.render();
           console.log('Project restored successfully from .acstudio container!');
+          return res;
         }
       } catch (err) {
         console.error('Open .acstudio failed:', err);
         alert('Failed to unpack .acstudio project: ' + err.message);
+        return { success: false, error: err.message };
       }
     }
 
