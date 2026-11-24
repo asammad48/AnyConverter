@@ -53,6 +53,7 @@ const testSuites = [
   { name: 'Creative Studio Phase 06 Timeline, Audio & Captions', cmd: 'node tests/creative-studio/unit/test_phase06_timeline_audio_captions.js' },
   { name: 'Creative Studio Phase 07 Wizards, Native Parser & Storyboards', cmd: 'node tests/creative-studio/unit/test_phase07_wizards_and_storyboards.js' },
   { name: 'Creative Studio Phase 08 Auth, BYOK & Security', cmd: 'node tests/creative-studio/unit/test_phase08_auth_and_security.js' },
+  { name: 'Creative Studio Phase 09 AI Adapters & Notebooks', cmd: 'node tests/creative-studio/unit/test_phase09_provider_adapters_and_notebooks.js' },
   { name: 'Playwright Visual Regression Suite (21/21 Baselines)', cmd: 'node tests/run_visual_regression.js' }
 ];
 

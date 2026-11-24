@@ -1863,3 +1863,33 @@ ADR-051: Tool-to-Tool Workflow Chaining for JSON Group (JSON Formatter → Compa
 - **Consequences:**
   - Formally clears Phase 08 with `PASS FOR PHASE 08 RELEASE` verdict.
   - Fully unblocks Phase 09 (AI Provider Adapters, Notebooks & Free GPU Fallbacks).
+
+
+## ADR-078: Creative Studio Phase 09 AI Provider Adapters, Notebook Workflows & Free GPU Fallbacks
+- **Date:** 2026-11-24
+- **Status:** Approved & Implemented
+- **Context:**
+  - Implementation of File 09 (`09_AI_PROVIDER_ADAPTERS_NOTEBOOKS_AND_FREE_GPU_FALLBACKS.md`) for AnyConverter Creative Studio.
+  - Requires zero AnyConverter inference cost (BYOK only), live capability registry, pluggable `AiProviderAdapter` contract with strict user approval gates, reproducible `.ipynb` notebooks for heavy GPU video generation (SVD), and an 11-state job lifecycle manager with magic byte validation and auto-retry bans.
+- **Decision:**
+  - 1. **Live Provider Capability Registry (`provider-capability-registry.js`):**
+     - Mapped supported browser models (`google-gemini`, `huggingface-inference`), manual-only GPU models (`stable-video-diffusion`, `openai-sora-dalle`), and prohibited proxy routers (`third-party-cors-proxy`).
+     - Provided real cost and quota estimation functions without hardcoded marketing claims.
+  - 2. **Pluggable Adapter Contract & Approval Gate (`ai-provider-adapter.js`):**
+     - Enforced `AiProviderAdapter` interface methods (`capabilities`, `estimate`, `submitApprovedJob`, `poll`, `fetchResults`, `cancel`, `disconnect`).
+     - Mandated that `submitApprovedJob` throws `APPROVAL_REQUIRED` or `USER_APPROVAL_NOT_GRANTED` unless accompanied by an explicit user approval record specifying maximum request bounds.
+     - Built `GeminiProviderAdapter` and `HuggingFaceProviderAdapter` supporting client-side generation and `AbortController` cancellation.
+  - 3. **Reproducible Notebook Workflow Generator (`notebook-workflow.js`):**
+     - Generated compliant Jupyter Notebooks (`.ipynb`, nbformat v4) for SVD video generation on Google Colab or Kaggle.
+     - Included automatic hardware checks (`torch.cuda.is_available()`), pinned dependencies (`diffusers==0.31.0`), output manifest (`manifest.json`), and ZIP packaging with zero embedded secrets.
+  - 4. **11-State Job Lifecycle & Media Verification (`job-lifecycle-manager.js`):**
+     - Tracked complete lifecycle: `DRAFT -> CAPABILITY_CHECKED -> AUTHORIZED -> USER_APPROVED -> SUBMITTED -> RUNNING -> COMPLETED -> OUTPUT_RETRIEVED -> HASHED_AND_SAVED_LOCAL -> ATTACHED_TO_SCENE -> VERIFIED`.
+     - Built deterministic per-scene cache key hashing to prevent redundant identical calls.
+     - Implemented binary magic byte inspection, verifying real media signatures (PNG, JPEG, MP4) and rejecting HTML error documents or JSON errors disguised as binary media.
+     - Strictly prohibited automatic retries for failed or canceled jobs without fresh user authorization.
+  - 5. **Verification & Regression:**
+     - Created `tests/creative-studio/unit/test_phase09_provider_adapters_and_notebooks.js` passing 7/7 tests.
+     - Registered Suite #53 into `tests/run_all_tests.js`.
+- **Consequences:**
+  - Formally clears Phase 09 with `PASS FOR PHASE 09 RELEASE` verdict.
+  - Fully unblocks Phase 10 (Google Drive Save, Open, Resume, Sync & Conflicts).
