@@ -1832,3 +1832,34 @@ ADR-051: Tool-to-Tool Workflow Chaining for JSON Group (JSON Formatter → Compa
 - **Consequences:**
   - Formally clears Phase 07 with `PASS FOR PHASE 07 RELEASE` verdict.
   - Fully unblocks Phase 08 (Browser-Only Auth, Provider Credentials, and Security).
+
+
+## ADR-077: Creative Studio Phase 08 Browser-Only Auth, BYOK Credential Handling & Security
+- **Date:** 2026-11-24
+- **Status:** Approved & Implemented
+- **Context:**
+  - Implementation of File 08 (`08_BROWSER_ONLY_AUTH_PROVIDER_CREDENTIALS_AND_SECURITY.md`) for AnyConverter Creative Studio.
+  - Requires completely dropping server-side login concepts, using official GIS browser token models for Google Drive with `drive.file` scope only, ephemeral in-memory BYOK management, opt-in client-side encryption via PBKDF2/AES-256-GCM, and CSP/sanitization controls.
+- **Decision:**
+  - 1. **Zero-Backend Identity & GIS Token Model (`auth-provider.js`):**
+     - Dropped any concept of AnyConverter accounts or backend sessions; editor is local/guest by default.
+     - Implemented Google Identity Services (GIS) token model for Google Drive file access with `drive.file` scope only.
+     - Tokens are held purely in transient JavaScript memory and are never persisted to localStorage, cookies, IndexedDB, or `.acstudio` archives.
+     - Implemented active account indicator masking (`u***@domain.com`) and zeroization on token revocation.
+  - 2. **BYOK Vault & Opt-in Local Cryptography (`byok-vault.js`):**
+     - Built default Session-Only memory vault (`_sessionKeys` Map) wiped instantly on disconnect or unload.
+     - Implemented opt-in client-side encrypted vault using WebCrypto: PBKDF2 (SHA-256, 100,000 iterations, 16-byte random salt) + AES-256-GCM (256-bit key, 96-bit random nonce).
+     - Standardized encrypted record format matching Section 6 of File 08.
+     - Wrong passphrase strictly triggers authentication tag failure (`INVALID_PASSPHRASE`) with zero plaintext leakage.
+     - Codified explicit XSS limitation disclaimer in vault documentation.
+  - 3. **Provider Decision Tree & Secret Redaction (`provider-security.js`):**
+     - Implemented provider suitability decision tree: directly supported browser clients (`google-gemini`, `huggingface-inference`) vs. confidential server APIs (`openai`, `runway`, `midjourney`) routed to manual notebooks.
+     - Explicitly blocked third-party CORS proxies as `REJECTED_UNSAFE`.
+     - Built regex-based secret scrubber (`redactSecrets`) and an in-memory `AuditLogger` ensuring zero API key leaks in telemetry or console logs.
+     - Built `sanitizeUntrustedInput` stripping `<script>`, inline event handlers, and `javascript:` URLs.
+  - 4. **Verification & Regression:**
+     - Created `tests/creative-studio/unit/test_phase08_auth_and_security.js` passing 7/7 tests.
+     - Registered Suite #52 into `tests/run_all_tests.js`.
+- **Consequences:**
+  - Formally clears Phase 08 with `PASS FOR PHASE 08 RELEASE` verdict.
+  - Fully unblocks Phase 09 (AI Provider Adapters, Notebooks & Free GPU Fallbacks).
