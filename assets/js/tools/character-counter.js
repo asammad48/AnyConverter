@@ -34,6 +34,13 @@
       var color = over ? '#EF4444' : pct > 80 ? '#F59E0B' : '#22C55E';
       return '<div><div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:3px"><span>' + l.name + '</span><span style="color:' + color + ';font-weight:500">' + used + ' / ' + l.limit + (over ? ' (+' + (used - l.limit) + ')' : '') + '</span></div><div style="height:4px;border-radius:2px;background:var(--color-border,#DDD8D0);overflow:hidden"><div style="height:100%;width:' + pct + '%;background:' + color + ';border-radius:2px"></div></div></div>';
     }).join('');
+    if (typeof window !== 'undefined' && window.ACTextWorkflowChain) {
+      if (chars > 0) {
+        window.ACTextWorkflowChain.showWorkflowChain();
+      } else {
+        window.ACTextWorkflowChain.hideWorkflowChain();
+      }
+    }
   }
 
   document.addEventListener('DOMContentLoaded', function() {

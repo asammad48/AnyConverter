@@ -20,6 +20,13 @@
         window.ACAnalytics.trackToolReset('word-counter');
       }
     }
+    if (typeof window !== 'undefined' && window.ACTextWorkflowChain) {
+      if (words > 0) {
+        window.ACTextWorkflowChain.showWorkflowChain();
+      } else {
+        window.ACTextWorkflowChain.hideWorkflowChain();
+      }
+    }
   }
 
   document.addEventListener('DOMContentLoaded', function() {

@@ -1466,11 +1466,43 @@ ADR-051: Tool-to-Tool Workflow Chaining for JSON Group (JSON Formatter → Compa
      - Verified sitemap synchronization with 0 drift (441 URLs).
 - **Consequences:**
   - Dramatically improves user journey completion across PDF operations by eliminating repetitive file uploads and downloads.
-  - Boosts tool-to-tool cross-navigation and dwell time while strictly preserving privacy, zero-server architecture, and Core Web Vitals.
-
-
-
-
+  - Boosts tool-to-tool cross-navigation and dwell time while strictly preserving privacy, zero-server architecture, and Core Web Vitals.## ADR-065: Tool-to-Tool Workflow Chain for Text Group & Ephemeral Client-Side Text Handoff
+- **Date:** 2026-11-24
+- **Status:** Approved & Implemented
+- **Context:**
+  - Growth Sprint S26 (Days 51–52) requires implementing an intelligent, non-interruptive "Next Step" contextual workflow chain across AnyConverter's primary Text utilities (`/word-counter/`, `/text-case-converter/`, `/text-diff-checker/`, `/character-counter/`) in all 3 supported languages (`/tool/`, `/es/tool/`, `/da/tool/` — 12 URLs total).
+  - Target KPI: $\ge 8\%$ of successful Text processing sessions chain into a second Text utility.
+  - Core requirements mandate:
+    1. Semantic `#workflow-chain-text` component with `.workflow-chain-section` hidden by default (`style="display:none;"`), revealing only upon successful text input/operation.
+    2. Ephemeral client-side text handoff preserving text context without server persistence (`sessionStorage` text buffer handoff with immediate zero-persistence clearing on downstream receipt).
+    3. Multilingual parity across EN, ES, and DA preserving all native technical diacritics (`æ`, `ø`, `å`, `á`, `é`, `í`, `ó`, `ú`, `ñ`).
+    4. WCAG 2.2 AA accessibility (:focus-visible states, keyboard tabbing, Enter/Space, Esc dismissal) and responsive styling across 320px–390px viewports.
+    5. Telemetry integration with `window.ACAnalytics.trackRelatedToolClicked(sourceSlug, targetSlug, 'workflow_chain')`, `workflow_chain_shown`, and `workflow_chain_dismissed`.
+    6. Track B Loop 9 active PR outreach monitoring recorded in `docs/growth/outreach/LOOP_9_BENCHMARK_PROSPECTS.md`.
+- **Decision:**
+  1. **Semantic Workflow Chain Component (`#workflow-chain-text`):**
+     - Injected semantic `<section class="workflow-chain-section" id="workflow-chain-text" aria-labelledby="workflow-chain-heading" style="display:none;">` across all 12 target Text URLs positioned beneath the main tool interface.
+     - Provided accessible dismiss button (`#btn-chain-dismiss`) that collapses the section, persists session dismissal in `ac:chain-text-dismissed`, and dispatches `workflow_chain_dismissed` telemetry.
+  2. **Ephemeral Client-Side Text Handoff Protocol (`text-workflow-chain.js`):**
+     - Developed `assets/js/tools/text-workflow-chain.js` implementing temporary staging of active text in `sessionStorage` (`ac:chain-text`, `ac:chain-text-source`).
+     - Downstream tools (`/word-counter/`, `/text-case-converter/`, `/text-diff-checker/`, `/character-counter/`) check for incoming handoffs on DOMContentLoaded, auto-populate the active input textarea (`#wc-input`, `#tcc-input`, `#diff-orig`, `#cc-text`), trigger calculation, and display an accessible, dismissable toast banner (`.workflow-chain-toast`).
+     - Enforced strict zero-persistence guarantee: `sessionStorage.removeItem` is called immediately on receipt, ensuring zero server ingress and zero residual data.
+  3. **Multilingual Parity (EN, ES, DA):**
+     - Implemented natural, idiomatic localized strings and preserved exact technical diacritics:
+       - EN: "Next Step: Continue Your Text Workflow" · "Convert Case" · "Compare Text" · "Count Characters" · "Count Words"
+       - ES: "Siguiente paso: Continúa tu flujo de trabajo de texto" · "Convertir mayúsculas y minúsculas" · "Comparar texto" · "Contar caracteres" · "Contar palabras"
+       - DA: "Næste trin: Fortsæt dit tekst-workflow" · "Konvertér store og små bogstaver" · "Sammenlign tekst" · "Tæl tegn" · "Tæl ord"
+     - Enforced exact cross-locale link routing (`/` for EN, `/es/` for ES, `/da/` for DA).
+  4. **Telemetry & Analytics Integration:**
+     - Registered card click tracking to dispatch `window.ACAnalytics.trackRelatedToolClicked(sourceSlug, targetSlug, 'workflow_chain')`.
+     - Dispatched `workflow_chain_shown` and `workflow_chain_dismissed` events.
+  5. **Verification & Gates:**
+     - Created dedicated test suite `tests/test_s26_workflow_chain_text.js` validating all 7 core assertions.
+     - Registered S26 suite in `tests/run_all_tests.js` bringing master suite count to 41 passing suites (100%).
+     - Synchronized `sitemap.xml` with 0 drift (441 URLs).
+- **Consequences:**
+  - Provides seamless, frictionless workflow chaining across text analysis and transformation tools without manual copy-pasting.
+  - Maintains strict zero-server privacy, full WCAG 2.2 AA accessibility, and zero-drift SEO canonical/hreflang invariants.
 
 
 

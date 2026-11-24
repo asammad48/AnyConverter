@@ -102,6 +102,51 @@
         </div>
       </aside>
     </div>
+        <!-- Contextual Workflow Chain: Next Step (Sprint S26) -->
+    <section class="workflow-chain-section" id="workflow-chain-text" aria-labelledby="workflow-chain-heading" style="display:none;">
+      <div class="workflow-chain-header">
+        <div class="workflow-chain-badge">
+          <span aria-hidden="true">⚡</span>
+          <span>Next Step</span>
+        </div>
+        <h2 class="workflow-chain-title" id="workflow-chain-heading">Next Step: Continue Your Text Workflow</h2>
+        <p class="workflow-chain-sub">Your text is ready. Continue directly with the next tool in the pipeline:</p>
+        <button type="button" class="workflow-chain-dismiss" id="btn-chain-dismiss" aria-label="Dismiss workflow suggestions">✕</button>
+      </div>
+      <div class="workflow-chain-grid">
+        <a href="/text-case-converter/" class="workflow-chain-card" id="chain-step-case-converter" data-target="/text-case-converter/">
+          <div class="workflow-chain-card-icon">
+            <img src="/assets/img/icon-textcase.svg" alt="Text Case Converter icon" width="28" height="28" loading="lazy">
+          </div>
+          <div class="workflow-chain-card-content">
+            <span class="workflow-chain-card-title">Text Case Converter</span>
+            <span class="workflow-chain-card-desc">Convert to uppercase, lowercase, title case, camelCase, and more</span>
+          </div>
+          <span class="workflow-chain-card-action">Convert Case →</span>
+        </a>
+        <a href="/text-diff-checker/" class="workflow-chain-card" id="chain-step-diff-checker" data-target="/text-diff-checker/">
+          <div class="workflow-chain-card-icon">
+            <img src="/assets/img/icon-diff.svg" alt="Text Diff Checker icon" width="28" height="28" loading="lazy">
+          </div>
+          <div class="workflow-chain-card-content">
+            <span class="workflow-chain-card-title">Text Diff Checker</span>
+            <span class="workflow-chain-card-desc">Compare two text versions side-by-side with line highlights</span>
+          </div>
+          <span class="workflow-chain-card-action">Compare Text →</span>
+        </a>
+        <a href="/character-counter/" class="workflow-chain-card" id="chain-step-counter" data-target="/character-counter/">
+          <div class="workflow-chain-card-icon">
+            <img src="/assets/img/icon-charcount.svg" alt="Character Counter icon" width="28" height="28" loading="lazy">
+          </div>
+          <div class="workflow-chain-card-content">
+            <span class="workflow-chain-card-title">Character Counter</span>
+            <span class="workflow-chain-card-desc">Count characters with platform limits for X, LinkedIn, and SMS</span>
+          </div>
+          <span class="workflow-chain-card-action">Count Characters →</span>
+        </a>
+      </div>
+    </section>
+
     <div class="ad-slot ad-slot--leaderboard">
       <div class="adsbygoogle" style="display:block" aria-hidden="true"></div>
 </div>
@@ -166,5 +211,6 @@
   <script src="/assets/js/shared/analytics.js" defer></script>
   <script src="/assets/js/shared.js?v=20261109" defer></script>
   <script src="/assets/js/tools/word-counter.js" defer></script>
+  <script src="/assets/js/tools/text-workflow-chain.js?v=20261124" defer></script>
 </body>
 </html>

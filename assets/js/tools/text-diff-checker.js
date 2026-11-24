@@ -37,6 +37,9 @@
     document.getElementById('diff-stats').style.display = 'flex';
     document.getElementById('diff-output').innerHTML = html || '<div style="color:#94a3b8;padding:2px 8px">No differences found.</div>';
     document.getElementById('diff-output').style.display = 'block';
+    if (typeof window !== 'undefined' && window.ACTextWorkflowChain) {
+      window.ACTextWorkflowChain.showWorkflowChain();
+    }
   }
 
   document.addEventListener('DOMContentLoaded', function() {
@@ -46,6 +49,9 @@
       document.getElementById('diff-new').value = '';
       document.getElementById('diff-stats').style.display = 'none';
       document.getElementById('diff-output').style.display = 'none';
+      if (typeof window !== 'undefined' && window.ACTextWorkflowChain) {
+        window.ACTextWorkflowChain.hideWorkflowChain();
+      }
     });
   });
 })();
