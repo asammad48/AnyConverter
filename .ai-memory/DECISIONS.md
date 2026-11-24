@@ -1964,3 +1964,35 @@ ADR-051: Tool-to-Tool Workflow Chaining for JSON Group (JSON Formatter → Compa
 - **Consequences:**
   - Formally clears Phase 11 with `PASS FOR PHASE 11 RELEASE` verdict.
   - Fully unblocks Phase 12 (Token, GPU Credit Budget, Capacity & Retry Optimization).
+
+## ADR-081: Creative Studio Phase 12 AI Token, GPU Credit, Budget & Retry Optimization
+- **Date:** 2026-11-24
+- **Status:** Approved & Implemented
+- **Context:**
+  - Implementation of File 12 (`12_TOKEN_GPU_CREDIT_BUDGET_CAPACITY_AND_RETRY_OPTIMIZATION.md`) for AnyConverter Creative Studio.
+  - Requires stopping the conflation of all AI compute under generic "tokens", establishing a source-dated pricing manifest, calculating preflight workloads with accurate ceiling division, preventing duplicate submissions, handling 429 rate limits without work loss, and maintaining local-only auditable telemetry.
+- **Decision:**
+  - 1. **Multi-Unit Billing Registry (`billing-unit-registry.js`):**
+     - Mapped distinct resource units: `TEXT_TOKENS`, `IMAGE_COUNT`, `VIDEO_SECONDS`, `VIDEO_CREDITS`, `GPU_MINUTES`, `VOICE_CHARACTERS`, `INFERENCE_REQUESTS`, `FREE_TIER`, and `MANUAL_NOTEBOOK`.
+     - Built a versioned, source-dated pricing manifest (`2026-11-20`) with documented URLs.
+     - Strictly prohibited fake $0 cost estimates for unverified models; unverified models return explicit `known: false` warnings.
+  - 2. **Preflight Budget Planner & Workload Estimator (`budget-planner.js`):**
+     - Separated AI footage duration from zero-cost native scenes.
+     - Enforced clip ceiling division: `planned_requests = SUM(ceil(shot_seconds / max_clip_seconds))`, preventing call undercounts.
+     - Added user-configurable retry contingency reserves (e.g. 20%).
+     - Implemented decision statuses (`FEASIBLE_VERIFIED_CREDITS`, `FITS_ESTIMATED_BUDGET`, `BUDGET_SHORTFALL`, `PROVIDER_QUOTA_UNKNOWN`).
+     - Formulated actionable shortfall mitigation strategies: reduce AI footage with native animations, lower retry reserves, or switch to free SVD Colab notebooks.
+  - 3. **Request Deduplication & Budget Guard Engine (`budget-guard.js`):**
+     - Computed deterministic prompt fingerprints based on model, prompt, references, and parameters.
+     - Reused identical completed outputs at zero cost deduction.
+     - Blocked identical in-flight submissions to prevent accidental double charges (`DUPLICATE_IN_FLIGHT_JOB`).
+     - Handled HTTP 429 rate limits gracefully: preserved completed shots and queued remaining items for safe resume without cost leaks.
+  - 4. **Local-Only Auditable Telemetry (`BudgetTelemetry`):**
+     - Recorded generation submissions, successes, failures, asset reuses, seconds generated, and estimated cost savings purely in client-side memory.
+     - Zero data transmitted externally under zero-backend rule G-01.
+  - 5. **Verification & Regression:**
+     - Created `tests/creative-studio/unit/test_phase12_budget_and_optimization.js` passing 7/7 tests.
+     - Registered Suite #56 into `tests/run_all_tests.js`.
+- **Consequences:**
+  - Formally clears Phase 12 with `PASS FOR PHASE 12 RELEASE` verdict.
+  - Fully unblocks Phase 13 (ChatGPT, Claude & Agent Interoperability Without Backend).

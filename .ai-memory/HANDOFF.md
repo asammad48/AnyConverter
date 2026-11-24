@@ -2,6 +2,31 @@
 
 ---
 
+## Creative Studio — Phase 12: AI Token, GPU Credit, Budget & Retry Optimization (2026-11-24)
+
+**Program:** AnyConverter Creative Studio (14-File Concrete Implementation Plan).  
+**Source Specification:** `D:\AnyConverter_Creative_Studio_14_File_Concrete_Implementation_Plan (1)` (File 12).  
+**Phase Status:** **100% COMPLETED & VERIFIED (PASS FOR PHASE 12 RELEASE)**  
+**Active Branch:** `feat/creative-studio-phase-12-budget-and-optimization` (branched from Phase 11 checkpoint).  
+**Deliverables Produced & Verified:**
+1. **Multi-Unit Billing Registry & Dated Pricing Manifest:**
+   - `assets/js/creative-studio/billing-unit-registry.js` (Maps distinct resource units: Text Tokens, Image Count, Video Seconds, Video Credits, GPU Minutes, Voice Characters, Free Tier, Manual Notebook; dated pricing manifest as of `2026-11-20`; strictly rejects fake $0 costs for unverified models).
+2. **Preflight Budget Planner & Workload Estimator:**
+   - `assets/js/creative-studio/budget-planner.js` (Calculates AI duration vs. zero-cost native scenes; enforces clip ceiling division `Math.ceil(shot_seconds / maxClipSeconds)` to prevent call undercounts; contingency reserves; evaluates budget statuses; formulates actionable shortfall mitigations).
+3. **Request Deduplication & Budget Guard Engine:**
+   - `assets/js/creative-studio/budget-guard.js` (Deterministic prompt fingerprinting; in-flight duplicate submit protection; reuses identical completed outputs at zero cost; handles HTTP 429 rate limit pauses without losing completed shots; local-only auditable telemetry).
+4. **Automated Unit & Integration Test Suite:**
+   - `tests/creative-studio/unit/test_phase12_budget_and_optimization.js` (7/7 tests passed: T1 call-count & duration arithmetic for 100% vs 30% AI share, T2 multi-unit billing registry & source-dated manifest, T3 preflight budget evaluation & shortfall mitigation, T4 request deduplication & double-submit protection, T5 partial failure & 429 rate limit pausing, T6 unknown quota & balance honesty, T7 local-only auditable telemetry & credit savings report).
+5. **Comprehensive Master Test Suite:**
+   - Registered Phase 12 into `tests/run_all_tests.js`. 56/56 suites passed (100%), including 21/21 Playwright visual regressions.
+6. **Phase 12 Release Gate Report & ADR:**
+   - `docs/creative-studio/PHASE_12_RELEASE_GATE.md` with explicit `PASS FOR PHASE 12 RELEASE` verdict.
+   - ADR-081 recorded in `.ai-memory/DECISIONS.md`.
+
+**Next Immediate Step:** Owner review and sign-off on Phase 12; then proceed to Phase 13 (`13_CHATGPT_CLAUDE_AGENT_INTEROPERABILITY_WITHOUT_BACKEND.md`).
+
+---
+
 ## Creative Studio — Phase 11: Character Consistency, World Bible, Episodic Drama & Selective Scene Regeneration (2026-11-24)
 
 **Program:** AnyConverter Creative Studio (14-File Concrete Implementation Plan).  
