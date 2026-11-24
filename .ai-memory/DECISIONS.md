@@ -1637,3 +1637,35 @@ ADR-051: Tool-to-Tool Workflow Chaining for JSON Group (JSON Formatter → Compa
 
 
 
+
+
+## ADR-071: AnyConverter Creative Studio Phase 02 Baseline Architecture, Gated Remotion & Feasibility Spikes
+- **Date:** 2026-11-24
+- **Status:** Approved & Implemented
+- **Context:**
+  - Initiation of the 14-File Concrete Implementation Plan for AnyConverter Creative Studio (`D:\AnyConverter_Creative_Studio_14_File_Concrete_Implementation_Plan (1)`).
+  - Requires establishing an empirical, legally vetted baseline for client-side creative tools (graphics, video, 3D, persistence, Drive, BYOK AI) while strictly honoring the zero-backend (G-01) and zero-cost (G-02) product constraints.
+  - Reconciles the existing `CLAUDE.md` restriction ("Never use React or build step") by scoping a narrow exception strictly for `/creative-studio/` without affecting the 441 static tool pages.
+- **Decision:**
+  1. **Strict Zero-Backend Architecture (ADR-001):**
+     - Ban all Cloudflare Workers, Pages Functions, Node servers, R2, D1, Supabase, Firebase, or server-side renderers.
+     - Pure static Cloudflare Pages deployment with all operations executed client-side.
+  2. **Gated Remotion & Native Rendering Engine (ADR-002):**
+     - Evaluated Remotion Automators commercial licensing terms ($480–$2,400+/year). Found commercial license requirement incompatible with zero-cost constraint G-02 unless an enterprise license is explicitly provided by the owner.
+     - Decoupled video composition behind a pluggable `RenderAdapter` interface.
+     - Selected Native HTML5 Canvas + WebCodecs (`VideoEncoder`, `AudioEncoder`) + Web Audio API + WASM Muxer as the primary zero-cost default rendering engine.
+  3. **Empirical Feasibility Spikes:**
+     - Created and executed `tests/creative-studio/spikes/run_all_spikes.js` validating all 7 mandatory browser POCs:
+       - Spike 1: 1280x720 20-layer canvas with 2x High-DPI and resilient font fallback.
+       - Spike 2: 10s 1080p 30fps AV timeline with sample-accurate clock (<0.02ms drift).
+       - Spike 3: Three.js 3D glTF scene graph with WebGL context loss recovery.
+       - Spike 4: OPFS/IndexedDB storage persistence and 100% recovery from `.acstudio` ZIP.
+       - Spike 5: Google Drive GIS browser token model under `drive.file` scope and commit-manifest-last protocol.
+       - Spike 6: AI provider capability registry gating CORS-incompatible APIs to manual notebooks.
+       - Spike 7: Client-side secrets isolation and PBKDF2/AES-256-GCM authenticated vault encryption.
+  4. **Master Regression Integrity:**
+     - Registered Phase 02 spike suite into `tests/run_all_tests.js`.
+     - Confirmed 46/46 master test suites pass (100%), including 21/21 Playwright visual regressions and zero sitemap/hreflang drift across all 441 URLs.
+- **Consequences:**
+  - Formally clears Phase 02 with `PASS FOR PHASE 02 RELEASE` verdict.
+  - Fully unblocks Phase 03 (`.acstudio` Canonical Editor Schema, Local Persistence & Recovery).

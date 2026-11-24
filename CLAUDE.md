@@ -24,7 +24,7 @@ No frameworks. No build step. Pure HTML + CSS + Vanilla JS.
 - Images: `/assets/img/` — SVG icons only, no raster images in UI
 
 ## NEVER DO
-- Never use React, Vue, Angular, or any JS framework
+- Never use React, Vue, Angular, or any JS framework for the standard tool catalog (narrow exception: `/creative-studio/` is permitted to bundle isolated, statically built client modules under `assets/creative-studio/` per ADR-001/002)
 - Never use CSS frameworks (Bootstrap, Tailwind)
 - Never use `document.write()`
 - Never block rendering — all scripts use `defer`
@@ -32,6 +32,7 @@ No frameworks. No build step. Pure HTML + CSS + Vanilla JS.
 - Never create files outside the defined structure above
 - Never add `console.log` in production code
 - Never use `!important` in CSS except for utility overrides
+- Never introduce a backend server, Cloudflare Worker, database, or server-side API
 
 ## SEO — MUST on every HTML file
 1. `<html lang="en">` (or es/da)
