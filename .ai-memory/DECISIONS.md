@@ -1547,30 +1547,45 @@ ADR-051: Tool-to-Tool Workflow Chaining for JSON Group (JSON Formatter → Compa
   - Hardens theme consistency across tab switches and system dark mode transitions without FOUC.
   - Zero accessibility regressions, strict privacy compliance, and zero backend dependencies preserved.
 
-## ADR-067: Modifier Expansion (+ privacy / + in browser / + no signup) across Top 10 High-Intent Privacy Tools & Loop 10 Partner Staging
+## ADR-068: Sitewide Internal Link Audit, Sitemap Reciprocal Synchronization & Loop 11 Open-Source Micro-Library Packaging
 - **Date:** 2026-11-24
 - **Status:** Approved & Implemented
 - **Context:**
-  - Growth Sprint S28 (Days 55–56) requires modifier keyword expansion (`+ privacy`, `+ in browser`, `+ no signup`) targeting high-intent, low-competition SERP clusters across the top 10 tools where users demand private, local, client-side processing: `pdf-merge`, `pdf-split`, `pdf-compress`, `ocr-pdf`, `edit-pdf`, `invoice-generator`, `image-converter`, `image-compressor`, `password-generator`, `hash-generator` across all 3 locales (EN, ES, DA — 30 URLs total).
-  - Incumbent SaaS converters frequently force file uploads to remote cloud servers, enforce account signups, or throttle downloads behind paywalls. AnyConverter's technical architecture processes data 100% client-side via JavaScript, Web Workers, Web Cryptography API, and Canvas, providing an authentic, verifiable differentiation.
-  - Core requirements mandate:
-    1. Dedicated semantic `<section class="privacy-section" id="privacy-and-security" aria-labelledby="privacy-heading">` on all 30 tool pages.
-    2. Headings and lead paragraphs addressing `{tool} + privacy`, `{tool} + in browser`, `{tool} + no signup` search intent in natural, non-stuffed copy.
-    3. Grid of 3–4 descriptive capability cards highlighting local client-side execution, zero account requirement, zero document transmission, and immediate memory clearance upon tab closure.
-    4. Client-side rendering synchronization: for tools utilizing `dc-runtime.js` (`pdf-merge`, `pdf-split`, `pdf-compress`), the section is embedded in both the static HTML container and inside `<script type="text/x-dc-template" id="dc-template">` to prevent DOM replacement wipeout.
-    5. Multilingual parity and native diacritics preservation across EN, ES (`á`, `é`, `í`, `ó`, `ú`, `ñ`), and DA (`æ`, `ø`, `å`).
-    6. Compliance with `tests/test_privacy_claims_regression.js`: zero forbidden absolute overclaims (`never leaves`, `nunca sale`, `forlader aldrig`, `sendes aldrig`).
-    7. Track B: Advance Loop 10 Embed Partner pilots in `docs/growth/outreach/LOOP_10_EMBED_PARTNERS.md`: stage Partners 1 & 2 for manual owner mailbox dispatch, and stage Partners 3 & 4 for review during Days 55–56.
+  - Growth Sprint S29 (Days 57–58) mandates a comprehensive sitewide internal link audit across all 441 URLs (147 clusters × 3 locales: EN, ES, DA), eliminating broken links, orphaned URLs, cross-locale leaks, and unnecessary redirects introduced during the 60-day sprints.
+  - Refresh and synchronize `sitemap.xml` with zero drift against git history and canonical manifest.
+  - Package AnyConverter's pure calculation utilities into a zero-dependency, open-source npm micro-library seed (`packages/anyconverter-math/`) for developer authority building, backlink equity, and ecosystem citations.
+  - Assert 100% adherence to `RELATED_TOOLS_COMPLETE_MAPPING.json`: degree bounded to 4–5 reciprocal links, 0 asymmetric edges, and 0 orphan tools.
+  - Document owner publish instructions and strict manual publishing checklist in `docs/growth/outreach/LOOP_11_NPM_PUBLISH.md` (no automated external publish; requires manual owner review).
 - **Decision:**
-  1. Injected structured `#privacy-and-security` sections into all 30 HTML files (EN, ES, DA) via `scripts/inject_s28_privacy_sections.js`.
-  2. Implemented CSS custom properties and responsive styling in `assets/css/style.css` (`.privacy-section`, `.privacy-lead`, `.privacy-grid`, `.privacy-card`, `.privacy-card-icon`, `.privacy-card-content`, supporting light and dark modes).
-  3. Preserved canonical links, hreflang alternates, and existing FAQPage schemas with 100% integrity.
-  4. Created dedicated test suite `tests/test_s28_privacy_modifiers.js` asserting all 7 core gates.
-  5. Registered S28 suite in `tests/run_all_tests.js` bringing total master suites to 43 passing suites (100%).
+  1. **Sitewide Internal Link Audit & Graph Export:**
+     - Crawled all 5,312 internal links across 441 HTML pages via `reports/seo/audit_internal_links.js`.
+     - Fixed trailing slash redirect anomalies in `es/blog/index.html` and `da/blog/index.html` (`/es` -> `/es/`, `/da` -> `/da/`).
+     - Corrected cross-locale breadcrumb and home links in `es/cookies/`, `da/cookies/`, `es/privacy/`, `da/privacy/`, `es/terms/`, `da/terms/` (`/` -> `/es/` or `/da/`).
+     - Fixed unlocalized clock link in `da/age-calculator/index.html` (`/world-clock/` -> `/da/world-clock/`).
+     - Connected static in-content cross-links in `about/index.html`, `es/about/`, `da/about/`, `privacy/`, `es/privacy/`, and `da/privacy/`, eliminating all 9 previously unlinked informational pages in static HTML.
+     - Exported updated reports `reports/seo-remediation-2026-11/INTERNAL_LINK_AUDIT.csv` and `reports/seo-remediation-2026-11/INTERNAL_LINK_GRAPH.json`.
+     - Result: Exactly 0 broken internal links sitewide, 0 orphaned URLs, and 100% language context isolation.
+  2. **Related Tools Reciprocal Graph Bounds:**
+     - Verified `RELATED_TOOLS_COMPLETE_MAPPING.json` covers all 128 tools with 100% bidirectional reciprocity, degree strictly bounded to 4–5 (54 tools with degree 4, 74 tools with degree 5), 0 asymmetric edges, and 0 orphan tools.
+  3. **Canonical Sitemap Synchronization:**
+     - Regenerated `sitemap.xml` using `node scripts/generate_sitemap.js` (441 unique URLs, 147 clusters, 100% reciprocal 4-way hreflang alternates `en`, `es`, `da`, `x-default`).
+     - Verified `node scripts/generate_sitemap.js --check` passes with zero drift.
+  4. **Loop 11: Open-Source Micro-Library Package (`packages/anyconverter-math/`):**
+     - Decoupled pure utility algorithms from production engines into `@anyconverter/math` (v1.0.0, MIT license, zero runtime dependencies).
+     - Provides percentage arithmetic (`percentOf`, `percentageWhatIs`, `percentageChange`, `percentageAdd`, `percentageSubtract`, `percentageDifference`, `reversePercentage`, `marginFromMarkup`, `markupFromMargin`).
+     - Provides loan & financial amortization formulas (`calculateLoanPayment`, `calculateEar`, `calculateNominalApr`, `calculateAmortizationSchedule`, `calculateCompoundInterest`, `calculateSavingsGoal`).
+     - Provides calendar date arithmetic (`isLeapYear`, `daysInMonth`, `calculateDateDifference`, `addDays`).
+     - Added comprehensive TypeScript typings (`index.d.ts`), documentation with formulas and backlinks to live AnyConverter tools (`README.md`), and passing unit test suite (17/17 tests passing, 100%).
+  5. **Governance & Manual Publishing Mandate:**
+     - Created `docs/growth/outreach/LOOP_11_NPM_PUBLISH.md` documenting manual owner verification and npm publishing steps with strict prohibition against automated agent token transmission.
+  6. **Automated Verification:**
+     - Created dedicated test suite `tests/test_s29_internal_links_sitemap.js` passing 10/10 assertions.
+     - Registered in `tests/run_all_tests.js` as Suite #44.
 - **Consequences:**
-  - Captures high-intent long-tail search queries with zero competitive overlap with server-based tools.
-  - Communicates authentic security attributes clearly to end users, improving conversion and retention.
-  - Zero performance degradation or server reliance.
+  - Guarantees seamless link equity flow across all 441 URLs without 404 traps, 301 redirect chains, or locale leakage.
+  - Establishes a permanent developer distribution vector through `@anyconverter/math` on npm.
+  - Preserves 100% sitemap synchronicity and canonical hreflang invariants.
+
 
 
 

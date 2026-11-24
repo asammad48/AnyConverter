@@ -2,6 +2,49 @@
 
 ---
 
+## Phase 61 — Growth Program Sprint S29: Sitewide Internal Link Audit + Sitemap Refresh & Loop 11 Open-Source NPM Micro-Library Staging (2026-11-24)
+
+**Program:** AnyConverter.io Global Growth Engine (SEO + engagement + backlinks + distribution).  
+**Operating cadence:** 30 sprints × 2 days = 60 days. One prod ship per sprint.  
+**Active branch:** `feat/s29-link-audit-sitemap` (branched from S28 release checkpoint `48a6c8b`).  
+**Current sprint pointer:** `S29 — Sitewide Internal Link Audit + Sitemap Refresh & Loop 11 Open-Source NPM Micro-Library Staging` (100% COMPLETED & VERIFIED; ready for owner review).  
+
+**Current sprint (S29) progress & status:**
+- **Branch Created:** Created `feat/s29-link-audit-sitemap` off `48a6c8b`.
+- **Target Inventory:** Sitewide across all 441 URLs in EN, ES, DA (147 clusters × 3 locales + x-default).
+- **Core Implementations & Fixes:**
+  1. **Sitewide Internal Link Audit & Graph Export:**
+     - Crawled all 5,312 internal links across 441 HTML pages in EN, ES, and DA via `reports/seo/audit_internal_links.js`.
+     - Corrected trailing-slash redirect mismatches in `es/blog/index.html` and `da/blog/index.html` (`/es` -> `/es/`, `/da` -> `/da/`).
+     - Corrected cross-locale breadcrumbs in `es/cookies/`, `da/cookies/`, `es/privacy/`, `da/privacy/`, `es/terms/`, `da/terms/` (`/` -> `/es/` or `/da/`).
+     - Fixed unlocalized clock link in `da/age-calculator/index.html` (`/world-clock/` -> `/da/world-clock/`).
+     - Connected static in-content cross-links in `about/index.html`, `es/about/`, `da/about/`, `privacy/`, `es/privacy/`, and `da/privacy/`, eliminating all 9 unlinked informational pages in static HTML.
+     - Exported updated reports `reports/seo-remediation-2026-11/INTERNAL_LINK_AUDIT.csv` and `reports/seo-remediation-2026-11/INTERNAL_LINK_GRAPH.json`.
+     - Result: Exactly 0 broken internal links sitewide, 0 orphaned URLs, and 100% language isolation.
+  2. **Canonical Sitemap Refresh & Reciprocal Invariants:**
+     - Regenerated `sitemap.xml` via `node scripts/generate_sitemap.js` (441 unique URLs, 147 clusters, 100% reciprocal 4-way hreflang alternates `en`, `es`, `da`, `x-default`).
+     - Verified `node scripts/generate_sitemap.js --check` passes with exactly 0 drift.
+  3. **Loop 11: Open-Source Micro-Library Package (`packages/anyconverter-math/`):**
+     - Extracted pure math utilities into zero-dependency npm micro-library `@anyconverter/math` (v1.0.0, MIT license).
+     - Full percentage arithmetic (`percentOf`, `percentageWhatIs`, `percentageChange`, `percentageAdd`, `percentageSubtract`, `percentageDifference`, `reversePercentage`, `marginFromMarkup`, `markupFromMargin`).
+     - Full loan & financial amortization formulas (`calculateLoanPayment`, `calculateEar`, `calculateNominalApr`, `calculateAmortizationSchedule`, `calculateCompoundInterest`, `calculateSavingsGoal`).
+     - Full calendar date arithmetic (`isLeapYear`, `daysInMonth`, `calculateDateDifference`, `addDays`).
+     - Dual CJS / ESM compatibility (`index.js`).
+     - Complete TypeScript definitions (`index.d.ts`).
+     - Complete unit test suite (`test/index.test.js`) with 17/17 tests passing (100%).
+     - Comprehensive `README.md` with formulas, usage examples, and backlinks to live AnyConverter tools.
+  4. **Governance & Owner Publishing Mandate:**
+     - Authored `docs/growth/outreach/LOOP_11_NPM_PUBLISH.md` with strict owner review checklist and terminal publishing instructions (zero automated external agent publishing).
+  5. **Automated Verification:**
+     - Dedicated verification suite `tests/test_s29_internal_links_sitemap.js` passed 10/10 assertions.
+     - Master test runner `tests/run_all_tests.js` registered S29 suite as Suite #44: 44/44 suites passed (100%), including 21/21 Playwright visual regressions.
+     - Recorded ADR-068 in `.ai-memory/DECISIONS.md`.
+     - Prepended G1–G15 release gate evidence to `docs/growth/91-TEST-EVIDENCE-AND-RELEASE-GATES.md`.
+     - Updated `.ai-memory/STATE.json`.
+- **Next Sprint Pointer:** Sprint S30 — 60-Day Retrospective Ship: Dashboard + Decisions (Days 59–60).
+
+---
+
 ## Phase 60 — Growth Program Sprint S28: Modifier Expansion (+ privacy / + browser / + no signup) across Top 10 Tools & Loop 10 Partner Staging (2026-11-24)
 
 **Program:** AnyConverter.io Global Growth Engine (SEO + engagement + backlinks + distribution).  

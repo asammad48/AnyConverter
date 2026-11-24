@@ -44,6 +44,7 @@ const testSuites = [
   { name: 'Sprint S26 Workflow Chain Text Suite', cmd: 'node tests/test_s26_workflow_chain_text.js' },
   { name: 'Sprint S27 Theme Shortcuts Suite', cmd: 'node tests/test_s27_theme_shortcuts.js' },
   { name: 'Sprint S28 Privacy Modifiers Suite', cmd: 'node tests/test_s28_privacy_modifiers.js' },
+  { name: 'Sprint S29 Internal Links & Sitemap Suite', cmd: 'node tests/test_s29_internal_links_sitemap.js' },
   { name: 'Playwright Visual Regression Suite (21/21 Baselines)', cmd: 'node tests/run_visual_regression.js' }
 ];
 
