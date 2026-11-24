@@ -246,7 +246,8 @@
       currentStagedName = filename || 'document.pdf';
       var sourceSlug = getCurrentToolSlug();
 
-      if (blob && blob.size <= 8 * 1024 * 1024) {
+      // Hardened threshold: base64 overhead is ~1.33x. 3.5MB * 1.33 = ~4.65MB (safe for 5MB sessionStorage quota)
+      if (blob && blob.size <= 3.5 * 1024 * 1024) {
         try {
           var reader = new FileReader();
           reader.onloadend = function () {
@@ -254,7 +255,9 @@
               sessionStorage.setItem(STORAGE_KEY_BLOB, reader.result);
               sessionStorage.setItem(STORAGE_KEY_NAME, currentStagedName);
               sessionStorage.setItem(STORAGE_KEY_SOURCE, sourceSlug);
-            } catch (_e) {}
+            } catch (_e) {
+              // Quota exceeded: gracefully proceed with navigation without caching oversized blob
+            }
           };
           reader.readAsDataURL(blob);
         } catch (_err) {}

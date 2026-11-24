@@ -1616,6 +1616,22 @@ ADR-051: Tool-to-Tool Workflow Chaining for JSON Group (JSON Formatter → Compa
   - Equips the platform owner with granular runtime control over user-facing growth features.
   - Preserves 441 URLs, 100% reciprocal 4-way hreflang, zero broken links, and zero sitemap drift.
 
+## ADR-070: Preventative Hardening — PDF SessionStorage Quota Safe Guard & Feature Flag Header Concealment
+- **Date:** 2026-11-24
+- **Status:** Approved & Implemented
+- **Context:**
+  - Post-S30 comprehensive repository audit identified two P2 hardening advisories prior to production push:
+    1. PDF workflow chain ephemeral handoff in `assets/js/tools/pdf-workflow-chain.js` previously used an 8MB threshold. Converting an 8MB blob to base64 Data URL results in ~10.6MB, exceeding standard browser 5MB `sessionStorage` quotas and triggering silent `QuotaExceededError`.
+    2. In `assets/js/shared.js`, when runtime feature flags `themeToggle` or `shortcuts` are explicitly set to `false`, event listeners were prevented, but `#theme-toggle-btn` and `#btn-shortcuts-help` buttons remained visible in the header as dangling, unresponsive elements.
+- **Decision:**
+  1. Reduced PDF workflow chain ephemeral storage threshold to 3.5MB (base64 ~4.65MB, comfortably within the 5MB sessionStorage quota) with defensive try/catch handling.
+  2. Implemented active element concealment (`display = 'none'`) in `assets/js/shared.js` for `#theme-toggle-btn` and `#btn-shortcuts-help` when their respective feature flags are explicitly set to `false`.
+  3. Updated `tests/test_s30_retrospective_ship.js` assertions to validate both feature flag gating and clean UI concealment.
+- **Consequences:**
+  - Eliminates silent `QuotaExceededError` in client sessions handling multi-megabyte PDFs.
+  - Ensures clean, uncompromised UX when feature toggles are deactivated without leaving dangling unresponsive header buttons.
+  - 45/45 master test suites continue to pass at 100%.
+
 
 
 

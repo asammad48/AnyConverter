@@ -131,8 +131,16 @@ check('assets/js/shared.js defines window.AC_FEATURES with all 6 production flag
 });
 
 check('assets/js/shared.js guards subsystems with AC_FEATURES checks', () => {
-  assert(sharedJsContent.includes('if (window.AC_FEATURES.themeToggle !== false) initThemeToggle();'), 'Theme toggle must be guarded');
-  assert(sharedJsContent.includes('if (window.AC_FEATURES.shortcuts !== false)'), 'Shortcuts must be guarded');
+  assert(
+    sharedJsContent.includes('window.AC_FEATURES.themeToggle === false') ||
+    sharedJsContent.includes('if (window.AC_FEATURES.themeToggle !== false) initThemeToggle();'),
+    'Theme toggle must be guarded'
+  );
+  assert(
+    sharedJsContent.includes('window.AC_FEATURES.shortcuts === false') ||
+    sharedJsContent.includes('if (window.AC_FEATURES.shortcuts !== false)'),
+    'Shortcuts must be guarded'
+  );
   assert(sharedJsContent.includes('if (window.AC_FEATURES.favorites !== false) initDashboardQuickAccess();'), 'Favorites must be guarded');
   assert(sharedJsContent.includes('if (window.AC_FEATURES.recents !== false) initDashboardRecents();'), 'Recents must be guarded');
 });

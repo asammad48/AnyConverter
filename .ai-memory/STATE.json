@@ -1,11 +1,11 @@
 {
-  "updatedAt": "2026-11-24T08:05:00.000Z",
+  "updatedAt": "2026-11-24T10:35:00.000Z",
   "activeProfile": "PROFILE 1 — SEO RESEARCH",
   "currentPhase": "PHASE 62: GROWTH PROGRAM SPRINT S30 (60-DAY RETROSPECTIVE SHIP: DASHBOARD + DECISIONS & PROGRAM COMPLETION)",
   "activeBranch": "feat/s30-retrospective-ship",
   "baseReleaseCheckpoint": "cb65fea",
   "headCommit": "HEAD",
-  "auditVerdict": "PASS FOR USER REVIEW — Sprint S30 60-Day Retrospective Ship: Dashboard + Decisions (Days 59–60) completed. 1) Comprehensive 60-Day Retrospective: published docs/growth/99-FINAL-EXECUTION-REPORT-60D.md covering all 30 sprints and 12 distribution loops with §1 deltas, Keep/Iterate/Kill matrix (25 Keep, 5 Iterate, 4 Kill), and Next-60 Days Plan (S31–S60); 2) Feature Flag Gating: implemented window.AC_FEATURES in assets/js/shared.js gating shortcuts, favorites, recents, themeToggle, workflowChains, and shareableState; 3) Verification: dedicated suite tests/test_s30_retrospective_ship.js passed 13/13 assertions; master test runner tests/run_all_tests.js passed 45/45 suites (100%), including 21/21 Playwright visual regressions. ADR-069 recorded in .ai-memory/DECISIONS.md, and G1-G15 release evidence prepended to docs/growth/91-TEST-EVIDENCE-AND-RELEASE-GATES.md.",
+  "auditVerdict": "PASS FOR PRODUCTION SHIP — Sprint S30 60-Day Retrospective Ship completed, supplemented by ADR-070 preventative hardening patches: 1) PDF workflow chain sessionStorage quota threshold safely lowered to 3.5MB in assets/js/tools/pdf-workflow-chain.js; 2) Clean button concealment for themeToggle and shortcuts when disabled via window.AC_FEATURES in assets/js/shared.js; 3) 45/45 master test suites passed (100%), including 21/21 Playwright visual regressions; 4) Invariants 100% verified across 441 URLs, zero broken links, zero orphaned pages, and zero sitemap drift.",
   "warningsRecorded": [
     "Loan Term Unit Toggle: Clarification that 8.58% nominal APR / 8.93% EAR in fixture documentation corresponds to a 36-year (432-month) loan input. When '#term-unit-mos' is selected, 36 months correctly yields 10.55% nominal APR / 11.08% EAR. Both modes execute with 100% mathematical precision.",
     "Non-Latin-1 Characters in jsPDF: All supported platform languages (EN, ES, DA) and currency symbols (€, £, kr.) are fully preserved in Latin-1 / WinAnsi range; non-Latin-1 Unicode characters are safely mapped to '?' to prevent jsPDF Helvetica Type 1 crashes. Future expansion into non-Latin locales would require custom embedded TTF fonts."

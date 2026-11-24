@@ -1851,11 +1851,19 @@
     initToolPageActions();
     initToolTrustBadge();
     initHeader();
-    if (window.AC_FEATURES.themeToggle !== false) initThemeToggle();
+    if (window.AC_FEATURES.themeToggle === false) {
+      var tBtn = document.getElementById('theme-toggle-btn');
+      if (tBtn) tBtn.style.display = 'none';
+    } else {
+      initThemeToggle();
+    }
     initLangSwitcher();
     updateMobileLangLinks();
     initSearch();
-    if (window.AC_FEATURES.shortcuts !== false) {
+    if (window.AC_FEATURES.shortcuts === false) {
+      var sBtn = document.getElementById('btn-shortcuts-help');
+      if (sBtn) sBtn.style.display = 'none';
+    } else {
       initShortcutsModal();
       initGlobalShortcuts();
     }
