@@ -108,6 +108,7 @@
       this.cacheDom();
       this.bindEvents();
       this.initDefaultLayers();
+      this.updateModeUI('video');
       if (window.CreativeDirector) {
         this.initCinematicSequence('cinematic-saas');
       }
@@ -170,7 +171,11 @@
         sidebarRight: document.getElementById('cs-sidebar-right'),
         shotsList: document.getElementById('cs-shots-list'),
         timelineVideoTrack: document.getElementById('cs-timeline-video-track'),
-        tabBtnShots: document.getElementById('cs-tab-btn-shots')
+        tabBtnShots: document.getElementById('cs-tab-btn-shots'),
+        presetContainer: document.getElementById('cs-preset-container'),
+        inspectorVideoGroup: document.getElementById('cs-inspector-video-group'),
+        inspectorLayerGroup: document.getElementById('cs-inspector-layer-group'),
+        inspectorVcardGroup: document.getElementById('cs-inspector-vcard-group')
       };
 
       if (this.dom.canvas) {
@@ -919,12 +924,40 @@
 
     switchMode(mode) {
       this.currentMode = mode;
+      this.updateModeUI(mode);
       if (mode === 'business-card') {
         this.applyPreset('card-standard-eu');
       } else if (mode === 'thumbnail') {
         this.applyPreset('youtube-thumbnail');
       } else if (mode === 'video') {
         this.applyPreset('youtube-thumbnail');
+      }
+    }
+
+    updateModeUI(mode) {
+      const isVideo = (mode === 'video');
+      const isCard = (mode === 'business-card');
+
+      if (this.dom.presetContainer) {
+        this.dom.presetContainer.style.display = isVideo ? 'none' : 'inline-block';
+      }
+      if (this.dom.directionSelect) {
+        this.dom.directionSelect.style.display = isVideo ? 'inline-block' : 'none';
+      }
+      if (this.dom.renderModeSelect) {
+        this.dom.renderModeSelect.style.display = isVideo ? 'inline-block' : 'none';
+      }
+      if (this.dom.cardSideToggle) {
+        this.dom.cardSideToggle.style.display = isCard ? 'inline-flex' : 'none';
+      }
+      if (this.dom.inspectorVideoGroup) {
+        this.dom.inspectorVideoGroup.style.display = isVideo ? 'block' : 'none';
+      }
+      if (this.dom.inspectorLayerGroup) {
+        this.dom.inspectorLayerGroup.style.display = isVideo ? 'none' : 'block';
+      }
+      if (this.dom.inspectorVcardGroup) {
+        this.dom.inspectorVcardGroup.style.display = isCard ? 'block' : 'none';
       }
     }
 

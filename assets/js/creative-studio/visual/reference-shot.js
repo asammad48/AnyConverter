@@ -447,27 +447,48 @@
     // 2. CHARACTER COMEDY ART DIRECTION (The Manager Parrot)
     // =========================================================================
     _renderCharacterComedy(ctx, progress, width, height) {
-      ctx.fillStyle = '#1a1829';
+      // Warm modern office studio backdrop
+      const bgGrad = ctx.createRadialGradient(width * 0.45, height * 0.48, 60, width * 0.45, height * 0.5, width * 0.8);
+      bgGrad.addColorStop(0, '#2e1065');
+      bgGrad.addColorStop(0.55, '#1e1b4b');
+      bgGrad.addColorStop(1, '#0f0e1a');
+      ctx.fillStyle = bgGrad;
       ctx.fillRect(0, 0, width, height);
 
-      const glow = ctx.createRadialGradient(width * 0.45, height * 0.5, 50, width * 0.45, height * 0.5, width * 0.75);
-      glow.addColorStop(0, '#2e1065');
-      glow.addColorStop(0.65, '#1a1829');
-      glow.addColorStop(1, '#0e0d17');
-      ctx.fillStyle = glow;
-      ctx.fillRect(0, 0, width, height);
+      // Studio key light beam
+      const spotGrad = ctx.createLinearGradient(width * 0.15, 0, width * 0.45, height * 0.72);
+      spotGrad.addColorStop(0, 'rgba(250, 204, 21, 0.12)');
+      spotGrad.addColorStop(1, 'rgba(250, 204, 21, 0)');
+      ctx.fillStyle = spotGrad;
+      ctx.beginPath();
+      ctx.moveTo(width * 0.10, 0);
+      ctx.lineTo(width * 0.35, 0);
+      ctx.lineTo(width * 0.65, height * 0.72);
+      ctx.lineTo(width * 0.10, height * 0.72);
+      ctx.fill();
 
-      // Desk line
-      ctx.fillStyle = '#2d2845';
-      ctx.fillRect(0, height * 0.72, width, height * 0.28);
-      ctx.fillStyle = '#f59e0b';
-      ctx.fillRect(0, height * 0.72, width, 4);
+      // Polished Executive Desk
+      const deskY = height * 0.70;
+      ctx.fillStyle = '#1e1b38';
+      ctx.fillRect(0, deskY, width, height - deskY);
 
-      // Staging: Render Character larger and prominent (scale 1.35x)
+      // Mahogany desk surface trim
+      const trimGrad = ctx.createLinearGradient(0, deskY, width, deskY);
+      trimGrad.addColorStop(0, '#f59e0b');
+      trimGrad.addColorStop(0.5, '#fbbf24');
+      trimGrad.addColorStop(1, '#d97706');
+      ctx.fillStyle = trimGrad;
+      ctx.fillRect(0, deskY, width, 5);
+
+      // Desk drop shadow
+      ctx.fillStyle = 'rgba(0, 0, 0, 0.45)';
+      ctx.fillRect(0, deskY + 5, width, 14);
+
+      // Staging: Render Character prominent (scale 1.45x)
       const pose = this.customData.characterPose || (progress < 0.28 ? 'neutral' : (progress < 0.68 ? 'wing-point' : 'smug'));
-      this._drawParrotCharacter(ctx, progress, width * 0.36, height * 0.46, pose);
+      this._drawParrotCharacter(ctx, progress, width * 0.35, height * 0.45, pose);
 
-      // Office Props
+      // Office Props (Mic, Agenda, CEO Nameplate, Coffee Mug)
       this._drawParrotProps(ctx, progress, width, height);
 
       // Dialogue Speech Bubble
@@ -477,29 +498,30 @@
     _drawParrotCharacter(ctx, progress, cx, cy, pose) {
       ctx.save();
       ctx.translate(cx, cy);
-      ctx.scale(1.35, 1.35); // Enlarge for prominent character presence
+      ctx.scale(1.45, 1.45); // Enlarge for commanding screen presence
 
-      const bob = Math.sin(progress * Math.PI * 6) * 5;
+      // Character breathing & comedic bobbing
+      const bob = Math.sin(progress * Math.PI * 8) * 4.5;
       ctx.translate(0, bob);
 
       // Tail feathers
       ctx.fillStyle = '#0284c7';
       ctx.beginPath();
-      ctx.moveTo(-50, 60);
-      ctx.lineTo(-95, 115);
-      ctx.lineTo(-40, 90);
+      ctx.moveTo(-52, 62);
+      ctx.lineTo(-100, 120);
+      ctx.lineTo(-42, 92);
       ctx.fill();
 
-      // Body (Emerald Green)
+      // Body (Vibrant Emerald Green)
       ctx.fillStyle = '#10b981';
       ctx.beginPath();
-      ctx.ellipse(0, 30, 58, 78, 0.08, 0, Math.PI * 2);
+      ctx.ellipse(0, 30, 60, 80, 0.08, 0, Math.PI * 2);
       ctx.fill();
 
-      // Belly (Vibrant Yellow)
+      // Belly (Warm Golden Yellow)
       ctx.fillStyle = '#facc15';
       ctx.beginPath();
-      ctx.ellipse(16, 38, 32, 50, 0.04, 0, Math.PI * 2);
+      ctx.ellipse(16, 38, 34, 52, 0.04, 0, Math.PI * 2);
       ctx.fill();
 
       // Wing Gestures
@@ -507,61 +529,91 @@
       ctx.beginPath();
       if (pose === 'wing-point') {
         ctx.moveTo(0, 20);
-        ctx.quadraticCurveTo(85, -5, 110, -18);
-        ctx.quadraticCurveTo(85, 38, 20, 50);
+        ctx.quadraticCurveTo(88, -8, 115, -20);
+        ctx.quadraticCurveTo(88, 40, 20, 52);
       } else if (pose === 'shocked') {
-        ctx.moveTo(-20, 10);
-        ctx.quadraticCurveTo(-65, -35, -55, -55);
-        ctx.quadraticCurveTo(0, -30, 0, 30);
+        ctx.moveTo(-22, 10);
+        ctx.quadraticCurveTo(-70, -38, -60, -60);
+        ctx.quadraticCurveTo(0, -32, 0, 32);
       } else {
-        ctx.ellipse(-14, 34, 32, 52, -0.28, 0, Math.PI * 2);
+        ctx.ellipse(-14, 34, 34, 54, -0.28, 0, Math.PI * 2);
       }
       ctx.fill();
 
       // Head
       ctx.fillStyle = '#06b6d4';
       ctx.beginPath();
-      ctx.arc(16, -46, 44, 0, Math.PI * 2);
+      ctx.arc(16, -46, 45, 0, Math.PI * 2);
       ctx.fill();
 
-      // Crest Feathers
+      // Animated Crest Feathers
+      const crestBounce = Math.sin(progress * Math.PI * 12) * 3;
       ctx.fillStyle = '#ef4444';
       ctx.beginPath();
-      ctx.moveTo(12, -88);
-      ctx.quadraticCurveTo(34, -120, 48, -104);
-      ctx.quadraticCurveTo(32, -82, 26, -78);
+      ctx.moveTo(12, -88 + crestBounce);
+      ctx.quadraticCurveTo(36, -125 + crestBounce, 50, -108 + crestBounce);
+      ctx.quadraticCurveTo(34, -84 + crestBounce, 28, -80 + crestBounce);
       ctx.fill();
 
-      // Eye
+      // White Sclera
       ctx.fillStyle = '#ffffff';
       ctx.beginPath();
-      ctx.arc(34, -52, 13, 0, Math.PI * 2);
+      ctx.arc(34, -52, 14, 0, Math.PI * 2);
       ctx.fill();
 
-      // Pupil (Expands/contracts for comedic beats)
-      ctx.fillStyle = '#0f172a';
-      ctx.beginPath();
-      const pupilX = pose === 'shocked' ? 33 : 37;
-      const pupilSize = pose === 'shocked' ? 3.5 : 6;
-      ctx.arc(pupilX, -52, pupilSize, 0, Math.PI * 2);
-      ctx.fill();
+      // Natural Eye Blinking cycle (~every 2 seconds)
+      const blinkCycle = (progress * 9) % 2.2;
+      const isBlinking = blinkCycle > 2.08;
 
-      // Beak
+      if (!isBlinking) {
+        // Expressive Iris & Pupil
+        ctx.fillStyle = '#0f172a';
+        ctx.beginPath();
+        const pupilX = pose === 'shocked' ? 32 : 36;
+        const pupilSize = pose === 'shocked' ? 4 : 7;
+        ctx.arc(pupilX, -52, pupilSize, 0, Math.PI * 2);
+        ctx.fill();
+
+        // Eye catchlight reflection
+        ctx.fillStyle = '#ffffff';
+        ctx.beginPath();
+        ctx.arc(pupilX + 2, -55, 2.5, 0, Math.PI * 2);
+        ctx.fill();
+      } else {
+        // Closed eyelid
+        ctx.strokeStyle = '#047857';
+        ctx.lineWidth = 3;
+        ctx.beginPath();
+        ctx.moveTo(22, -52);
+        ctx.quadraticCurveTo(34, -46, 46, -52);
+        ctx.stroke();
+      }
+
+      // Curved Beak with animated speech opening
+      const speechOpen = (Math.sin(progress * Math.PI * 18) > 0.3) ? 5 : 0;
       ctx.fillStyle = '#f59e0b';
       ctx.beginPath();
       ctx.moveTo(50, -56);
-      ctx.quadraticCurveTo(90, -52, 80, -24);
-      ctx.quadraticCurveTo(58, -34, 48, -34);
+      ctx.quadraticCurveTo(94, -50, 84, -22 + speechOpen);
+      ctx.quadraticCurveTo(60, -32 + speechOpen, 48, -32 + speechOpen);
       ctx.fill();
 
-      // Business Necktie
+      // Lower Beak
+      ctx.fillStyle = '#d97706';
+      ctx.beginPath();
+      ctx.moveTo(50, -32);
+      ctx.lineTo(76, -22 + speechOpen);
+      ctx.lineTo(52, -18 + speechOpen);
+      ctx.fill();
+
+      // Red Executive Necktie
       ctx.fillStyle = '#ef4444';
       ctx.beginPath();
       ctx.moveTo(18, -12);
       ctx.lineTo(28, -12);
-      ctx.lineTo(34, 26);
-      ctx.lineTo(23, 38);
-      ctx.lineTo(12, 26);
+      ctx.lineTo(34, 28);
+      ctx.lineTo(23, 40);
+      ctx.lineTo(12, 28);
       ctx.fill();
 
       ctx.restore();
@@ -569,36 +621,78 @@
 
     _drawParrotProps(ctx, progress, width, height) {
       ctx.save();
-      const micX = width * 0.18;
-      const micY = height * 0.68;
+      const micX = width * 0.16;
+      const micY = height * 0.66;
 
-      // Chrome vintage desk mic
-      ctx.fillStyle = '#94a3b8';
-      ctx.fillRect(micX - 5, micY, 10, 50);
-      ctx.beginPath(); ctx.ellipse(micX, micY + 50, 28, 7, 0, 0, Math.PI * 2); ctx.fill();
+      // Chrome vintage desk mic with stand
+      ctx.fillStyle = '#64748b';
+      ctx.fillRect(micX - 5, micY, 10, 55);
+      ctx.beginPath(); ctx.ellipse(micX, micY + 55, 30, 8, 0, 0, Math.PI * 2); ctx.fill();
 
-      ctx.fillStyle = '#cbd5e1';
+      // Metallic Mic Capsule
+      const micGrad = ctx.createLinearGradient(micX - 20, micY - 55, micX + 20, micY);
+      micGrad.addColorStop(0, '#f8fafc');
+      micGrad.addColorStop(0.5, '#94a3b8');
+      micGrad.addColorStop(1, '#475569');
+      ctx.fillStyle = micGrad;
       ctx.beginPath();
-      ctx.roundRect(micX - 18, micY - 50, 36, 50, 14);
+      ctx.roundRect(micX - 20, micY - 55, 40, 55, 16);
       ctx.fill();
-      ctx.strokeStyle = '#475569';
+      ctx.strokeStyle = '#334155';
       ctx.lineWidth = 2;
       ctx.stroke();
 
-      // Agenda Checklist Card
+      // Mic audio live indicator LED
+      ctx.fillStyle = '#ef4444';
+      ctx.beginPath();
+      ctx.arc(micX, micY - 44, 3.5, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Executive Acrylic Desk Nameplate
+      const npX = width * 0.26;
+      const npY = height * 0.72;
+      ctx.fillStyle = 'rgba(30, 41, 59, 0.9)';
+      ctx.beginPath();
+      ctx.roundRect(npX, npY, 210, 36, 6);
+      ctx.fill();
+      ctx.strokeStyle = '#f59e0b';
+      ctx.lineWidth = 1.5;
+      ctx.stroke();
+
+      ctx.font = '700 12px Inter, sans-serif';
+      ctx.fillStyle = '#f8fafc';
+      ctx.fillText('MR. CRACKERS', npX + 14, npY + 18);
+      ctx.font = '500 10px monospace';
+      ctx.fillStyle = '#fbbf24';
+      ctx.fillText('INTERIM CHIEF EXECUTIVE', npX + 14, npY + 30);
+
+      // Steaming Coffee Mug
+      const mugX = width * 0.50;
+      const mugY = height * 0.69;
+      ctx.fillStyle = '#38bdf8';
+      ctx.beginPath();
+      ctx.roundRect(mugX, mugY, 32, 40, 4);
+      ctx.fill();
+      ctx.strokeStyle = '#38bdf8';
+      ctx.lineWidth = 3.5;
+      ctx.beginPath();
+      ctx.arc(mugX + 32, mugY + 20, 10, -Math.PI / 2, Math.PI / 2);
+      ctx.stroke();
+
+      // Meeting Agenda Whiteboard Card
       const cardX = width * 0.58;
-      const cardY = height * 0.35;
+      const cardY = height * 0.28;
       ctx.fillStyle = '#ffffff';
       ctx.beginPath();
-      ctx.roundRect(cardX, cardY, 280, 220, 10);
+      ctx.roundRect(cardX, cardY, 330, 260, 12);
       ctx.fill();
       ctx.strokeStyle = '#e2e8f0';
-      ctx.lineWidth = 2;
+      ctx.lineWidth = 3;
       ctx.stroke();
 
-      ctx.font = '700 17px Inter, sans-serif';
+      ctx.font = '700 16px Inter, sans-serif';
       ctx.fillStyle = '#1e1b4b';
-      ctx.fillText('OFFICE AGENDA', cardX + 24, cardY + 38);
+      ctx.fillText('OFFICE ALL-HANDS AGENDA', cardX + 24, cardY + 36);
 
       ctx.font = '500 13px Inter, sans-serif';
       ctx.fillStyle = '#dc2626';
@@ -607,7 +701,7 @@
       ctx.fillText('❌ 2:00 PM — Pre-Meeting Prep', cardX + 24, cardY + 150);
       ctx.fillStyle = '#16a34a';
       ctx.font = '700 14px Inter, sans-serif';
-      ctx.fillText('✅ NO MORE MEETINGS', cardX + 24, cardY + 188);
+      ctx.fillText('✅ NO MORE MEETINGS', cardX + 24, cardY + 195);
 
       ctx.restore();
     }
@@ -655,14 +749,32 @@
     // 3. MINIMAL SUSPENSE ART DIRECTION (Vector Noir)
     // =========================================================================
     _renderMinimalSuspense(ctx, progress, width, height) {
-      ctx.fillStyle = '#040404';
+      // Enhanced atmospheric deep background with subtle blue-gray rim
+      const bgGrad = ctx.createLinearGradient(0, 0, 0, height);
+      bgGrad.addColorStop(0, '#0a0d14');
+      bgGrad.addColorStop(0.5, '#07090f');
+      bgGrad.addColorStop(1, '#030407');
+      ctx.fillStyle = bgGrad;
       ctx.fillRect(0, 0, width, height);
 
       const vanishingX = width * 0.5;
-      const vanishingY = height * 0.42;
+      const vanishingY = height * 0.40;
 
-      // Perspective Corridor lines
-      ctx.strokeStyle = '#222222';
+      // Volumetric Overhead Industrial Lamp Spotlight
+      const lampGrad = ctx.createRadialGradient(vanishingX, vanishingY - 60, 20, vanishingX, vanishingY + 120, 420);
+      lampGrad.addColorStop(0, 'rgba(254, 240, 138, 0.28)');
+      lampGrad.addColorStop(0.4, 'rgba(239, 68, 68, 0.14)');
+      lampGrad.addColorStop(1, 'rgba(0, 0, 0, 0)');
+      ctx.fillStyle = lampGrad;
+      ctx.beginPath();
+      ctx.moveTo(vanishingX - 80, vanishingY - 80);
+      ctx.lineTo(vanishingX + 80, vanishingY - 80);
+      ctx.lineTo(width, height);
+      ctx.lineTo(0, height);
+      ctx.fill();
+
+      // Perspective Corridor Architectural Orthogonals
+      ctx.strokeStyle = 'rgba(255, 255, 255, 0.12)';
       ctx.lineWidth = 2;
       ctx.beginPath();
       ctx.moveTo(0, 0); ctx.lineTo(vanishingX, vanishingY);
@@ -671,65 +783,112 @@
       ctx.moveTo(width, height); ctx.lineTo(vanishingX, vanishingY);
       ctx.stroke();
 
-      // Floor tiles orthogonals
-      for (let f = 1; f <= 4; f++) {
-        const fy = vanishingY + (height - vanishingY) * (f / 5);
+      // Wet Floor Tiles Reflections
+      for (let f = 1; f <= 5; f++) {
+        const fy = vanishingY + (height - vanishingY) * (f / 5.5);
+        ctx.strokeStyle = `rgba(255, 255, 255, ${0.05 + f * 0.03})`;
         ctx.beginPath();
-        ctx.moveTo(vanishingX - (vanishingX * f) / 5, fy);
-        ctx.lineTo(vanishingX + ((width - vanishingX) * f) / 5, fy);
+        ctx.moveTo(vanishingX - (vanishingX * f) / 5.5, fy);
+        ctx.lineTo(vanishingX + ((width - vanishingX) * f) / 5.5, fy);
         ctx.stroke();
       }
 
-      // Electrical flicker simulation
-      const flicker = Math.sin(progress * 50) + Math.cos(progress * 90);
-      const isOff = progress > 0.38 && progress < 0.46 && flicker > 0.2;
-      const lightAlpha = isOff ? 0.04 : (0.28 + 0.16 * Math.sin(progress * Math.PI * 6));
+      // Electrical Flicker Dynamics
+      const flicker = Math.sin(progress * 45) + Math.cos(progress * 85);
+      const isFlickerDip = progress > 0.40 && progress < 0.48 && flicker > 0.15;
+      const bulbAlpha = isFlickerDip ? 0.08 : (0.45 + 0.25 * Math.sin(progress * Math.PI * 4));
 
-      const lightGrad = ctx.createRadialGradient(vanishingX, vanishingY - 30, 8, vanishingX, vanishingY, 280);
-      lightGrad.addColorStop(0, `rgba(255, 255, 255, ${lightAlpha * 1.6})`);
-      lightGrad.addColorStop(0.5, `rgba(239, 68, 68, ${lightAlpha * 0.7})`);
-      lightGrad.addColorStop(1, 'rgba(0,0,0,0)');
-      ctx.fillStyle = lightGrad;
+      // Light fixture at ceiling
+      ctx.fillStyle = '#475569';
+      ctx.fillRect(vanishingX - 22, vanishingY - 95, 44, 18);
+      ctx.fillStyle = `rgba(254, 240, 138, ${bulbAlpha * 1.5})`;
       ctx.beginPath();
-      ctx.arc(vanishingX, vanishingY, 280, 0, Math.PI * 2);
+      ctx.arc(vanishingX, vanishingY - 76, 12, 0, Math.PI * 2);
       ctx.fill();
 
-      // Silhouette figure
-      const figDist = 1 - Math.min(1, progress * 0.85);
-      const figH = 95 + (1 - figDist) * 120;
-      const figW = figH * 0.36;
+      // Atmospheric Suspended Dust Motes
+      ctx.fillStyle = 'rgba(255, 255, 255, 0.4)';
+      for (let m = 0; m < 16; m++) {
+        const mx = (vanishingX - 120) + ((m * 37 + progress * 60) % 240);
+        const my = (vanishingY - 50) + ((m * 29 + progress * 40) % 220);
+        ctx.fillRect(mx, my, 2, 2);
+      }
+
+      // Mystery Trenchcoat Figure Silhouette (Approaches the camera)
+      const figDist = 1 - Math.min(1, progress * 0.90);
+      const figH = 110 + (1 - figDist) * 140;
+      const figW = figH * 0.38;
       const figX = vanishingX - figW / 2;
-      const figY = vanishingY + 28 + (1 - figDist) * 85;
+      const figY = vanishingY + 15 + (1 - figDist) * 110;
 
+      // Forward cast shadow on wet floor
       ctx.beginPath();
-      ctx.ellipse(figX + figW / 2, figY + figH, figW * 1.3, 10, 0, 0, Math.PI * 2);
-      ctx.fillStyle = 'rgba(0,0,0,0.85)';
+      ctx.ellipse(figX + figW / 2, figY + figH, figW * 1.6, 14, 0, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(0, 0, 0, 0.9)';
       ctx.fill();
 
-      ctx.fillStyle = '#0c0c0c';
-      ctx.beginPath();
-      ctx.arc(figX + figW / 2, figY + 16, 13, 0, Math.PI * 2);
-      ctx.rect(figX + 2, figY + 28, figW - 4, figH - 28);
-      ctx.fill();
-
-      // Letterbox Bars
-      ctx.fillStyle = '#000000';
-      ctx.fillRect(0, 0, width, 52);
-      ctx.fillRect(0, height - 52, width, 52);
-
-      // High-contrast clean subtitles
+      // Trenchcoat & Fedora Silhouette with Rim Lighting
       ctx.save();
-      ctx.font = '400 28px Inter, sans-serif';
-      ctx.fillStyle = '#f1f5f9';
+      // Red Rim Highlight
+      ctx.strokeStyle = 'rgba(239, 68, 68, 0.65)';
+      ctx.lineWidth = 2.5;
+
+      // Hat
+      ctx.fillStyle = '#06080d';
+      ctx.beginPath();
+      ctx.ellipse(figX + figW / 2, figY + 12, figW * 0.65, 8, -0.05, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.stroke();
+
+      // Head
+      ctx.beginPath();
+      ctx.arc(figX + figW / 2, figY + 22, 16, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Coat Body
+      ctx.beginPath();
+      ctx.moveTo(figX + 4, figY + 38);
+      ctx.lineTo(figX + figW - 4, figY + 38);
+      ctx.lineTo(figX + figW + 12, figY + figH);
+      ctx.lineTo(figX - 12, figY + figH);
+      ctx.closePath();
+      ctx.fill();
+      ctx.stroke();
+
+      // Glowing Cyan Cigarette / Terminal Ember
+      ctx.fillStyle = '#38bdf8';
+      ctx.shadowColor = '#38bdf8';
+      ctx.shadowBlur = 8;
+      ctx.beginPath();
+      ctx.arc(figX + figW * 0.58, figY + 32, 2.5, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.restore();
+
+      // Cinematic Letterbox Bars
+      ctx.fillStyle = '#000000';
+      ctx.fillRect(0, 0, width, 56);
+      ctx.fillRect(0, height - 56, width, 56);
+
+      // High-Contrast Legible Subtitles
+      ctx.save();
+      ctx.font = '700 32px "Bricolage Grotesque", Inter, sans-serif';
+      ctx.fillStyle = '#f8fafc';
       ctx.textAlign = 'center';
 
       const textAlpha = ReferenceShot.easeOutCubic(Math.min(1, progress * 2));
       ctx.globalAlpha = textAlpha;
-      ctx.fillText((this.headline || 'THE LAST LIGHT').toUpperCase(), width / 2, height - 76);
 
-      ctx.font = '500 13px Inter, monospace';
+      // Text stroke for absolute readability
+      ctx.strokeStyle = '#000000';
+      ctx.lineWidth = 4;
+      const headlineText = (this.headline || 'THE LAST LIGHT').toUpperCase();
+      ctx.strokeText(headlineText, width / 2, height - 80);
+      ctx.fillText(headlineText, width / 2, height - 80);
+
+      // Secondary narrative cue
+      ctx.font = '600 14px Inter, monospace';
       ctx.fillStyle = '#ef4444';
-      ctx.fillText((this.subhead || 'Zero external signals. Ambient tone: 42dB.').toUpperCase(), width / 2, height - 22);
+      ctx.fillText((this.subhead || 'Zero external signals. Ambient tone: 42dB.').toUpperCase(), width / 2, height - 24);
 
       ctx.restore();
     }

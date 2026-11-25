@@ -219,8 +219,14 @@ class NativeCanvasRenderAdapter extends RenderAdapter {
           codec: 'vp8',
           width,
           height,
-          bitrate: options.videoBitsPerSecond || 2500000,
-          framerate: fps
+          bitrate: options.videoBitsPerSecond || 4000000,
+          framerate: fps,
+          colorSpace: {
+            primaries: 'bt709',
+            transfer: 'iec61966-2-1',
+            matrix: 'bt709',
+            fullRange: true
+          }
         });
 
         let audioEncoder = null;
