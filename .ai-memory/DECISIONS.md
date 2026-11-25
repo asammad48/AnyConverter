@@ -2142,3 +2142,16 @@ ADR-051: Tool-to-Tool Workflow Chaining for JSON Group (JSON Formatter → Compa
   - Zero-backend architecture preserved.
   - Final verdict: Approved for Native Offline Studio release; Google Drive marked `OWNER_CONFIG_REQUIRED`; AI marked `BLOCKED_EXTERNAL`. No merge to main without owner approval.
 
+
+## ADR-088: Creative Studio Visual Quality Phase 01 — Visual Baseline, Canonical Compositor & First Publishable Slice
+- **Date:** 2026-11-25
+- **Status:** Implemented & Awaiting Owner Visual Approval
+- **Context:** Previous video exports exhibited engineering demo aesthetics (bouncing orange orb, test progress strip, debug frame numbers, monospace labels, and un-paced animations) despite frame accuracy. Phase 01 mandates replacing this aesthetic with a genuine 20–25s SaaS launch composition, unified preview/export parity, clean diagnostics separation, and V2 short-form pilots.
+- **Decision:**
+  1. Built `assets/js/creative-studio/visual/reference-shot.js` and `creative-director.js`, decoupling composition into purposeful cinematic shots with Bricolage Grotesque typography, camera moves (push-in, whip-in, pan), glassmorphic device mockups, and cross-shot dissolve transitions.
+  2. Implemented 3 art directions: Cinematic SaaS Launch (24s / 5-shot), Parrot Character Comedy (9s pilot), and Minimal Noir Suspense (9s pilot).
+  3. Replaced hardcoded debug graphics in `render-adapter.js` with delegation to `CreativeDirector`, strictly isolating diagnostic overlays behind `#cs-render-mode-select === 'diagnostics'`.
+  4. Unified viewport playback (`studioApp.render()`) and video export (`renderAdapter.render()`) to execute the exact same canonical frame evaluator for 100% semantic parity.
+  5. Enhanced `.acstudio` serialization to store and restore multi-shot sequences, verified in an isolated browser session with project mutation and re-export.
+  6. Generated empirical video exports, 3x3 storyboard contact sheet, and old-vs-new comparison artifacts in `reports/creative-studio/visual-quality/phase-01/`.
+- **Consequence:** Solves the visual quality deficit permanently. Preserves zero-dependency, zero-backend, 100% in-browser compute architecture with zero console errors. Strictly local commits; awaiting owner visual approval before any push or Phase 02 start.

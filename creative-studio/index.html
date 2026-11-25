@@ -112,8 +112,17 @@
         <select id="cs-mode-select" class="cs-select" aria-label="Studio Mode">
           <option value="thumbnail">Graphics & Thumbnails</option>
           <option value="business-card">Print Business Card</option>
-          <option value="video">2D Video & Animation</option>
+          <option value="video" selected>Cinematic Video & Animation</option>
           <option value="3d">3D glTF Model</option>
+        </select>
+        <select id="cs-direction-select" class="cs-select" aria-label="Art Direction Preset" title="Art Direction Preset">
+          <option value="cinematic-saas" selected>Cinematic SaaS (24s / 5-Shot)</option>
+          <option value="character-comedy">Parrot Character Comedy (9s Pilot)</option>
+          <option value="minimal-suspense">Minimal Noir Suspense (9s Pilot)</option>
+        </select>
+        <select id="cs-render-mode-select" class="cs-select" aria-label="Render Quality Mode" title="Render Quality Mode">
+          <option value="production" selected>Mode: Production Quality</option>
+          <option value="diagnostics">Mode: Diagnostics Overlay</option>
         </select>
       </div>
 
@@ -276,6 +285,33 @@
         </div>
 
         <div class="cs-form-group" style="margin-top: 10px;">
+          <span class="cs-section-title">Cinematic Shot Editor</span>
+          <p style="font-size: 11px; color: var(--cs-text-muted); margin-bottom: 6px;">Edit active shot headline, narrative subhead, and brand accent.</p>
+          <label class="cs-form-label" for="cs-shot-select">Active Shot</label>
+          <select id="cs-shot-select" class="cs-select" style="width: 100%; margin-bottom: 8px;">
+            <option value="0">Shot 1: The Hook</option>
+            <option value="1">Shot 2: The Problem</option>
+            <option value="2">Shot 3: The Solution</option>
+            <option value="3">Shot 4: The Benefit</option>
+            <option value="4">Shot 5: The Payoff</option>
+          </select>
+          <label class="cs-form-label" for="cs-shot-headline">Headline</label>
+          <input type="text" id="cs-shot-headline" class="cs-input" placeholder="Shot headline" style="margin-bottom: 8px;">
+          <label class="cs-form-label" for="cs-shot-subhead">Subhead / Narrative</label>
+          <textarea id="cs-shot-subhead" class="cs-input" rows="2" placeholder="Shot narrative subhead" style="margin-bottom: 8px; resize: vertical;"></textarea>
+          <div class="cs-grid-2">
+            <div>
+              <label class="cs-form-label" for="cs-shot-accent">Accent Color</label>
+              <input type="color" id="cs-shot-accent" class="cs-input" value="#38bdf8" style="height: 35px; padding: 2px;">
+            </div>
+            <div>
+              <label class="cs-form-label" for="cs-shot-duration">Duration (frames)</label>
+              <input type="number" id="cs-shot-duration" class="cs-input" value="120" min="30" max="600">
+            </div>
+          </div>
+        </div>
+
+        <div class="cs-form-group" style="margin-top: 10px;">
           <span class="cs-section-title">vCard QR Details</span>
           <p style="font-size: 11px; color: var(--cs-text-muted); margin-bottom: 6px;">Generates ISO/IEC 18004 compliant scannable QR matrix.</p>
           <input type="text" id="cs-vcard-name" class="cs-input" placeholder="Full Name (e.g. Sara Connor)" style="margin-bottom: 6px;">
@@ -303,6 +339,8 @@
   <script src="/assets/js/creative-studio/three-scene-adapter.js?v=20261125" defer></script>
   <script src="/assets/js/creative-studio/command-engine.js?v=20261125" defer></script>
   <script src="/assets/js/creative-studio/animation-engine.js?v=20261125" defer></script>
+  <script src="/assets/js/creative-studio/visual/reference-shot.js?v=20261125" defer></script>
+  <script src="/assets/js/creative-studio/visual/creative-director.js?v=20261125" defer></script>
   <script src="/assets/js/creative-studio/render-adapter.js?v=20261125" defer></script>
   <script src="/assets/js/creative-studio/studio-app.js?v=20261125" defer></script>
 </body>

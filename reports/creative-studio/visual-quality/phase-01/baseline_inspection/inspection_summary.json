@@ -1,0 +1,272 @@
+[
+  {
+    "file": "reports/creative-studio/blocker-repair/REAL_OUTPUTS/J03_live_native_animation.webm",
+    "baseName": "J03_live_native_animation",
+    "duration": 2,
+    "width": 1280,
+    "height": 720,
+    "fps": "30/1",
+    "frames": [
+      {
+        "pct": 0,
+        "time": 0,
+        "file": "reports/creative-studio/visual-quality/phase-01/baseline_inspection/J03_live_native_animation_pct_0.png"
+      },
+      {
+        "pct": 10,
+        "time": 0.2,
+        "file": "reports/creative-studio/visual-quality/phase-01/baseline_inspection/J03_live_native_animation_pct_10.png"
+      },
+      {
+        "pct": 25,
+        "time": 0.5,
+        "file": "reports/creative-studio/visual-quality/phase-01/baseline_inspection/J03_live_native_animation_pct_25.png"
+      },
+      {
+        "pct": 50,
+        "time": 1,
+        "file": "reports/creative-studio/visual-quality/phase-01/baseline_inspection/J03_live_native_animation_pct_50.png"
+      },
+      {
+        "pct": 75,
+        "time": 1.5,
+        "file": "reports/creative-studio/visual-quality/phase-01/baseline_inspection/J03_live_native_animation_pct_75.png"
+      },
+      {
+        "pct": 90,
+        "time": 1.8,
+        "file": "reports/creative-studio/visual-quality/phase-01/baseline_inspection/J03_live_native_animation_pct_90.png"
+      },
+      {
+        "pct": 100,
+        "time": 1.95,
+        "file": "reports/creative-studio/visual-quality/phase-01/baseline_inspection/J03_live_native_animation_pct_100.png"
+      }
+    ]
+  },
+  {
+    "file": "reports/creative-studio/blocker-repair/REAL_OUTPUTS/live_1minute_project.webm",
+    "baseName": "live_1minute_project",
+    "duration": 60,
+    "width": 1280,
+    "height": 720,
+    "fps": "30/1",
+    "frames": [
+      {
+        "pct": 0,
+        "time": 0,
+        "file": "reports/creative-studio/visual-quality/phase-01/baseline_inspection/live_1minute_project_pct_0.png"
+      },
+      {
+        "pct": 10,
+        "time": 6,
+        "file": "reports/creative-studio/visual-quality/phase-01/baseline_inspection/live_1minute_project_pct_10.png"
+      },
+      {
+        "pct": 25,
+        "time": 15,
+        "file": "reports/creative-studio/visual-quality/phase-01/baseline_inspection/live_1minute_project_pct_25.png"
+      },
+      {
+        "pct": 50,
+        "time": 30,
+        "file": "reports/creative-studio/visual-quality/phase-01/baseline_inspection/live_1minute_project_pct_50.png"
+      },
+      {
+        "pct": 75,
+        "time": 45,
+        "file": "reports/creative-studio/visual-quality/phase-01/baseline_inspection/live_1minute_project_pct_75.png"
+      },
+      {
+        "pct": 90,
+        "time": 54,
+        "file": "reports/creative-studio/visual-quality/phase-01/baseline_inspection/live_1minute_project_pct_90.png"
+      },
+      {
+        "pct": 100,
+        "time": 59.95,
+        "file": "reports/creative-studio/visual-quality/phase-01/baseline_inspection/live_1minute_project_pct_100.png"
+      }
+    ]
+  },
+  {
+    "file": "reports/creative-studio/blocker-repair/REAL_OUTPUTS/live_5minute_benchmark.webm",
+    "baseName": "live_5minute_benchmark",
+    "duration": 300,
+    "width": 1280,
+    "height": 720,
+    "fps": "30/1",
+    "frames": [
+      {
+        "pct": 0,
+        "time": 0,
+        "file": "reports/creative-studio/visual-quality/phase-01/baseline_inspection/live_5minute_benchmark_pct_0.png"
+      },
+      {
+        "pct": 10,
+        "time": 30,
+        "file": "reports/creative-studio/visual-quality/phase-01/baseline_inspection/live_5minute_benchmark_pct_10.png"
+      },
+      {
+        "pct": 25,
+        "time": 75,
+        "file": "reports/creative-studio/visual-quality/phase-01/baseline_inspection/live_5minute_benchmark_pct_25.png"
+      },
+      {
+        "pct": 50,
+        "time": 150,
+        "file": "reports/creative-studio/visual-quality/phase-01/baseline_inspection/live_5minute_benchmark_pct_50.png"
+      },
+      {
+        "pct": 75,
+        "time": 225,
+        "file": "reports/creative-studio/visual-quality/phase-01/baseline_inspection/live_5minute_benchmark_pct_75.png"
+      },
+      {
+        "pct": 90,
+        "time": 270,
+        "file": "reports/creative-studio/visual-quality/phase-01/baseline_inspection/live_5minute_benchmark_pct_90.png"
+      },
+      {
+        "pct": 100,
+        "time": 299.95,
+        "file": "reports/creative-studio/visual-quality/phase-01/baseline_inspection/live_5minute_benchmark_pct_100.png"
+      }
+    ]
+  },
+  {
+    "file": "reports/creative-studio/blocker-repair/REAL_OUTPUTS/edited_video_export.webm",
+    "baseName": "edited_video_export",
+    "duration": 4,
+    "width": 1280,
+    "height": 720,
+    "fps": "30/1",
+    "frames": [
+      {
+        "pct": 0,
+        "time": 0,
+        "file": "reports/creative-studio/visual-quality/phase-01/baseline_inspection/edited_video_export_pct_0.png"
+      },
+      {
+        "pct": 10,
+        "time": 0.4,
+        "file": "reports/creative-studio/visual-quality/phase-01/baseline_inspection/edited_video_export_pct_10.png"
+      },
+      {
+        "pct": 25,
+        "time": 1,
+        "file": "reports/creative-studio/visual-quality/phase-01/baseline_inspection/edited_video_export_pct_25.png"
+      },
+      {
+        "pct": 50,
+        "time": 2,
+        "file": "reports/creative-studio/visual-quality/phase-01/baseline_inspection/edited_video_export_pct_50.png"
+      },
+      {
+        "pct": 75,
+        "time": 3,
+        "file": "reports/creative-studio/visual-quality/phase-01/baseline_inspection/edited_video_export_pct_75.png"
+      },
+      {
+        "pct": 90,
+        "time": 3.6,
+        "file": "reports/creative-studio/visual-quality/phase-01/baseline_inspection/edited_video_export_pct_90.png"
+      },
+      {
+        "pct": 100,
+        "time": 3.95,
+        "file": "reports/creative-studio/visual-quality/phase-01/baseline_inspection/edited_video_export_pct_100.png"
+      }
+    ]
+  },
+  {
+    "file": "reports/creative-studio/blocker-repair/REAL_OUTPUTS/J04_live_3d_animation.webm",
+    "baseName": "J04_live_3d_animation",
+    "duration": 2,
+    "width": 1280,
+    "height": 720,
+    "fps": "29/1",
+    "frames": [
+      {
+        "pct": 0,
+        "time": 0,
+        "file": "reports/creative-studio/visual-quality/phase-01/baseline_inspection/J04_live_3d_animation_pct_0.png"
+      },
+      {
+        "pct": 10,
+        "time": 0.2,
+        "file": "reports/creative-studio/visual-quality/phase-01/baseline_inspection/J04_live_3d_animation_pct_10.png"
+      },
+      {
+        "pct": 25,
+        "time": 0.5,
+        "file": "reports/creative-studio/visual-quality/phase-01/baseline_inspection/J04_live_3d_animation_pct_25.png"
+      },
+      {
+        "pct": 50,
+        "time": 1,
+        "file": "reports/creative-studio/visual-quality/phase-01/baseline_inspection/J04_live_3d_animation_pct_50.png"
+      },
+      {
+        "pct": 75,
+        "time": 1.5,
+        "file": "reports/creative-studio/visual-quality/phase-01/baseline_inspection/J04_live_3d_animation_pct_75.png"
+      },
+      {
+        "pct": 90,
+        "time": 1.8,
+        "file": "reports/creative-studio/visual-quality/phase-01/baseline_inspection/J04_live_3d_animation_pct_90.png"
+      },
+      {
+        "pct": 100,
+        "time": 1.95,
+        "file": "reports/creative-studio/visual-quality/phase-01/baseline_inspection/J04_live_3d_animation_pct_100.png"
+      }
+    ]
+  },
+  {
+    "file": "reports/creative-studio/blocker-repair/REAL_OUTPUTS/check3_modified_exported_video.webm",
+    "baseName": "check3_modified_exported_video",
+    "duration": 3,
+    "width": 1280,
+    "height": 720,
+    "fps": "30/1",
+    "frames": [
+      {
+        "pct": 0,
+        "time": 0,
+        "file": "reports/creative-studio/visual-quality/phase-01/baseline_inspection/check3_modified_exported_video_pct_0.png"
+      },
+      {
+        "pct": 10,
+        "time": 0.3,
+        "file": "reports/creative-studio/visual-quality/phase-01/baseline_inspection/check3_modified_exported_video_pct_10.png"
+      },
+      {
+        "pct": 25,
+        "time": 0.75,
+        "file": "reports/creative-studio/visual-quality/phase-01/baseline_inspection/check3_modified_exported_video_pct_25.png"
+      },
+      {
+        "pct": 50,
+        "time": 1.5,
+        "file": "reports/creative-studio/visual-quality/phase-01/baseline_inspection/check3_modified_exported_video_pct_50.png"
+      },
+      {
+        "pct": 75,
+        "time": 2.25,
+        "file": "reports/creative-studio/visual-quality/phase-01/baseline_inspection/check3_modified_exported_video_pct_75.png"
+      },
+      {
+        "pct": 90,
+        "time": 2.7,
+        "file": "reports/creative-studio/visual-quality/phase-01/baseline_inspection/check3_modified_exported_video_pct_90.png"
+      },
+      {
+        "pct": 100,
+        "time": 2.95,
+        "file": "reports/creative-studio/visual-quality/phase-01/baseline_inspection/check3_modified_exported_video_pct_100.png"
+      }
+    ]
+  }
+]

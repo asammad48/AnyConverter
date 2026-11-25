@@ -20,11 +20,13 @@
       this.selectedLayerId = null;
       this.isPlaying = false;
       this.currentFrame = 0;
-      this.totalFrames = 150; // 5 seconds @ 30fps
+      this.totalFrames = 720; // 24 seconds @ 30fps default for master SaaS sequence
       this.fps = 30;
       this.zoom = 1.0;
       this.activeCardSide = 'front';
       this.activeSceneIndex = 0;
+      this.activeShotIndex = 0;
+      this.renderMode = 'production';
 
       // Core Engines Validation (B11: Never disguise missing dependencies with plain Objects)
       const missing = [];
@@ -105,6 +107,9 @@
       this.cacheDom();
       this.bindEvents();
       this.initDefaultLayers();
+      if (window.CreativeDirector) {
+        this.initCinematicSequence('cinematic-saas');
+      }
       this.render();
       this.initialized = true;
     }
@@ -151,7 +156,14 @@
         btnCancelExport: document.getElementById('cs-btn-cancel-export'),
         cardSideToggle: document.getElementById('cs-card-side-toggle'),
         cardSideFront: document.getElementById('cs-card-side-front'),
-        cardSideBack: document.getElementById('cs-card-side-back')
+        cardSideBack: document.getElementById('cs-card-side-back'),
+        directionSelect: document.getElementById('cs-direction-select'),
+        renderModeSelect: document.getElementById('cs-render-mode-select'),
+        shotSelect: document.getElementById('cs-shot-select'),
+        shotHeadline: document.getElementById('cs-shot-headline'),
+        shotSubhead: document.getElementById('cs-shot-subhead'),
+        shotAccent: document.getElementById('cs-shot-accent'),
+        shotDuration: document.getElementById('cs-shot-duration')
       };
 
       if (this.dom.canvas) {
@@ -254,6 +266,31 @@
       }
       if (this.dom.cardSideBack) {
         this.dom.cardSideBack.addEventListener('click', () => this.switchCardSide('back'));
+      }
+
+      // Visual Direction & Render Mode
+      if (this.dom.directionSelect) {
+        this.dom.directionSelect.addEventListener('change', (e) => this.switchArtDirection(e.target.value));
+      }
+      if (this.dom.renderModeSelect) {
+        this.dom.renderModeSelect.addEventListener('change', (e) => this.switchRenderMode(e.target.value));
+      }
+
+      // Cinematic Shot Editor
+      if (this.dom.shotSelect) {
+        this.dom.shotSelect.addEventListener('change', (e) => this.selectShot(parseInt(e.target.value, 10)));
+      }
+      if (this.dom.shotHeadline) {
+        this.dom.shotHeadline.addEventListener('input', (e) => this.updateActiveShot('headline', e.target.value));
+      }
+      if (this.dom.shotSubhead) {
+        this.dom.shotSubhead.addEventListener('input', (e) => this.updateActiveShot('subhead', e.target.value));
+      }
+      if (this.dom.shotAccent) {
+        this.dom.shotAccent.addEventListener('input', (e) => this.updateActiveShot('accentColor', e.target.value));
+      }
+      if (this.dom.shotDuration) {
+        this.dom.shotDuration.addEventListener('input', (e) => this.updateActiveShot('durationFrames', parseInt(e.target.value, 10) || 60));
       }
 
       // Canvas Dragging
@@ -421,6 +458,104 @@
       this.selectLayer('layer-title');
     }
 
+    initCinematicSequence(directionKey = 'cinematic-saas') {
+      if (!window.CreativeDirector) return;
+      let seq = null;
+      if (directionKey === 'character-comedy') {
+        seq = window.CreativeDirector.createParrotComedyPilot();
+      } else if (directionKey === 'minimal-suspense') {
+        seq = window.CreativeDirector.createMinimalSuspensePilot();
+      } else {
+        seq = window.CreativeDirector.createMasterSaaSSequence();
+      }
+
+      this.project = Object.assign(this.project, seq);
+      this.project.visualDirection = directionKey;
+      this.project.renderMode = this.renderMode || 'production';
+      this.totalFrames = seq.totalFrames;
+      this.fps = seq.fps;
+      this.currentFrame = 0;
+      this.activeShotIndex = 0;
+
+      if (this.dom.titleInput) this.dom.titleInput.value = seq.title;
+      if (this.dom.timelineScrubber) {
+        this.dom.timelineScrubber.max = this.totalFrames - 1;
+        this.dom.timelineScrubber.value = 0;
+      }
+      if (this.dom.directionSelect) {
+        this.dom.directionSelect.value = directionKey;
+      }
+      if (this.dom.renderModeSelect) {
+        this.dom.renderModeSelect.value = this.renderMode;
+      }
+
+      this.updateShotSelectOptions();
+      this.updateShotInspectorUI();
+      this.seekFrame(0);
+    }
+
+    switchArtDirection(directionKey) {
+      this.initCinematicSequence(directionKey);
+      this.render();
+    }
+
+    switchRenderMode(mode) {
+      this.renderMode = mode;
+      this.project.renderMode = mode;
+      this.render();
+    }
+
+    selectShot(shotIndex) {
+      if (!this.project.shots || !this.project.shots[shotIndex]) return;
+      this.activeShotIndex = shotIndex;
+      const shot = this.project.shots[shotIndex];
+      this.updateShotInspectorUI();
+      this.seekFrame(shot.startFrame);
+    }
+
+    updateActiveShot(field, value) {
+      if (!this.project.shots || !this.project.shots[this.activeShotIndex]) return;
+      const shot = this.project.shots[this.activeShotIndex];
+      shot[field] = value;
+
+      if (field === 'durationFrames') {
+        let acc = 0;
+        for (let i = 0; i < this.project.shots.length; i++) {
+          this.project.shots[i].startFrame = acc;
+          acc += this.project.shots[i].durationFrames;
+        }
+        this.totalFrames = acc;
+        this.project.totalFrames = acc;
+        this.project.durationSeconds = Math.round(acc / this.fps);
+        if (this.dom.timelineScrubber) this.dom.timelineScrubber.max = this.totalFrames - 1;
+        this.updateShotSelectOptions();
+      }
+
+      this.render();
+    }
+
+    updateShotSelectOptions() {
+      if (!this.dom.shotSelect || !this.project.shots) return;
+      this.dom.shotSelect.innerHTML = '';
+      this.project.shots.forEach((s, idx) => {
+        const opt = document.createElement('option');
+        opt.value = idx;
+        opt.textContent = `Shot ${idx + 1}: ${s.title || s.purpose} (${s.durationFrames}f)`;
+        if (idx === this.activeShotIndex) opt.selected = true;
+        this.dom.shotSelect.appendChild(opt);
+      });
+    }
+
+    updateShotInspectorUI() {
+      if (!this.project.shots || !this.project.shots[this.activeShotIndex]) return;
+      const shot = this.project.shots[this.activeShotIndex];
+      if (this.dom.shotSelect) this.dom.shotSelect.value = this.activeShotIndex;
+      if (this.dom.shotHeadline) this.dom.shotHeadline.value = shot.headline || '';
+      if (this.dom.shotSubhead) this.dom.shotSubhead.value = shot.subhead || '';
+      if (this.dom.shotAccent) this.dom.shotAccent.value = shot.accentColor || '#38bdf8';
+      if (this.dom.shotDuration) this.dom.shotDuration.value = shot.durationFrames || 90;
+    }
+
     render() {
       if (!this.dom.ctx || !this.dom.canvas) return;
 
@@ -430,6 +565,20 @@
       }
       if (this.dom.canvas.height !== this.graphics.height) {
         this.dom.canvas.height = this.graphics.height;
+      }
+
+      // Check if project is a Cinematic sequence
+      if (window.CreativeDirector && window.CreativeDirector.isCreativeProject(this.project)) {
+        window.CreativeDirector.renderFrame(
+          this.dom.ctx,
+          this.project,
+          this.currentFrame,
+          this.totalFrames,
+          this.graphics.width,
+          this.graphics.height,
+          { mode: this.renderMode || 'production' }
+        );
+        return;
       }
 
       // 1. Draw graphic layers
@@ -727,8 +876,20 @@
           this.project.scenes[this.activeSceneIndex || 0].layers = JSON.parse(JSON.stringify(this.graphics.layers));
         }
 
-        const renderOpts = Object.assign({ durationSeconds: 3, fps: 30 }, options);
-        const res = await this.renderAdapter.render(this.project, renderOpts);
+        const durationSeconds = options.durationSeconds || this.project.durationSeconds || Math.round(this.totalFrames / this.fps) || 24;
+        const renderOpts = Object.assign({
+          durationSeconds,
+          fps: this.fps,
+          width: this.graphics.width,
+          height: this.graphics.height
+        }, options);
+
+        const res = await this.renderAdapter.render(this.project, renderOpts, (prog) => {
+          if (this.dom.exportProgressBar && this.dom.exportProgressText) {
+            this.dom.exportProgressBar.style.width = `${prog.percent}%`;
+            this.dom.exportProgressText.textContent = `Rendering frame ${prog.frame} / ${prog.totalFrames} (${prog.percent}%)`;
+          }
+        });
         this.lastExportResult = res;
 
         if (res && res.blob) {
@@ -753,6 +914,25 @@
         }
         if (this.dom.titleInput) {
           this.project.title = this.dom.titleInput.value;
+        }
+
+        // Clean serialization of cinematic shots
+        if (this.project.shots) {
+          this.project.shots = this.project.shots.map(s => ({
+            id: s.id,
+            purpose: s.purpose,
+            title: s.title,
+            startFrame: s.startFrame,
+            durationFrames: s.durationFrames,
+            headline: s.headline,
+            subhead: s.subhead,
+            badge: s.badge,
+            accentColor: s.accentColor,
+            secondaryColor: s.secondaryColor,
+            artDirection: s.artDirection,
+            cameraMove: s.cameraMove,
+            customData: s.customData || {}
+          }));
         }
 
         const zipBuffer = this.archive.package(this.project, this.assetBlobs);
@@ -783,7 +963,26 @@
           this.lastOpenedUnpack = res;
 
           if (this.dom.titleInput) this.dom.titleInput.value = this.project.title;
-          if (res.project.scenes && res.project.scenes[0]) {
+
+          // Restore Cinematic Sequence if present
+          if (this.project.visualDirection && window.CreativeDirector) {
+            this.currentMode = 'video';
+            if (this.dom.modeSelect) this.dom.modeSelect.value = 'video';
+            if (this.dom.directionSelect) this.dom.directionSelect.value = this.project.visualDirection;
+            this.totalFrames = this.project.totalFrames || 720;
+            this.fps = this.project.fps || 30;
+            if (this.dom.timelineScrubber) {
+              this.dom.timelineScrubber.max = this.totalFrames - 1;
+              this.dom.timelineScrubber.value = 0;
+            }
+            if (this.project.shots && window.ReferenceShot) {
+              this.project.shots = this.project.shots.map(s => new window.ReferenceShot(s));
+            }
+            this.activeShotIndex = 0;
+            this.updateShotSelectOptions();
+            this.updateShotInspectorUI();
+            this.seekFrame(0);
+          } else if (res.project.scenes && res.project.scenes[0]) {
             this.graphics.layers = res.project.scenes[0].layers || [];
           }
           this.render();
@@ -824,7 +1023,21 @@
         this.dom.frameDisplay.textContent = `Frame ${frame} / ${this.totalFrames} (${sec}s)`;
       }
 
-      // Animate any keyframed layers
+      // Track active shot index in cinematic project
+      if (this.project.shots && this.project.shots.length > 0) {
+        for (let i = 0; i < this.project.shots.length; i++) {
+          const s = this.project.shots[i];
+          if (frame >= s.startFrame && (frame < s.startFrame + s.durationFrames || i === this.project.shots.length - 1)) {
+            if (this.activeShotIndex !== i) {
+              this.activeShotIndex = i;
+              this.updateShotInspectorUI();
+            }
+            break;
+          }
+        }
+      }
+
+      // Animate any keyframed layers (fallback mode)
       const timeRatio = frame / this.totalFrames;
       const titleLayer = this.graphics.getLayer('layer-title');
       if (titleLayer) {

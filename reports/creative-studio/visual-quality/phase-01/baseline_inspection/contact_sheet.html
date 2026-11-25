@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Baseline Video Inspection Contact Sheet</title>
+  <style>
+    body { font-family: Inter, sans-serif; background: #0f172a; color: #f8fafc; padding: 24px; margin: 0; }
+    h1 { font-size: 24px; margin-bottom: 8px; color: #38bdf8; }
+    p.sub { font-size: 14px; color: #94a3b8; margin-bottom: 24px; }
+    .video-block { margin-bottom: 32px; background: #1e293b; border-radius: 8px; padding: 16px; border: 1px solid #334155; }
+    .video-title { font-size: 16px; font-weight: 600; margin-bottom: 12px; color: #f1f5f9; display: flex; justify-content: space-between; }
+    .frames-row { display: grid; grid-template-columns: repeat(7, 1fr); gap: 10px; }
+    .frame-card { background: #0f172a; border-radius: 4px; overflow: hidden; border: 1px solid #334155; }
+    .frame-card img { width: 100%; aspect-ratio: 16/9; display: block; object-fit: cover; }
+    .frame-label { padding: 4px 6px; font-size: 11px; font-family: monospace; color: #94a3b8; text-align: center; }
+  </style>
+</head>
+<body>
+  <h1>AnyConverter Creative Studio — Baseline Video Decoded Frame Analysis</h1>
+  <p class="sub">Decoded frames at 0%, 10%, 25%, 50%, 75%, 90%, 100% timestamps from baseline exports before Phase 01 visual redesign.</p>
+  <div id="container"></div>
+
+  <script>
+    const data = [
+      { name: "J03_live_native_animation.webm (2s)", base: "J03_live_native_animation", pcts: [0, 10, 25, 50, 75, 90, 100] },
+      { name: "live_1minute_project.webm (60s)", base: "live_1minute_project", pcts: [0, 10, 25, 50, 75, 90, 100] },
+      { name: "live_5minute_benchmark.webm (300s)", base: "live_5minute_benchmark", pcts: [0, 10, 25, 50, 75, 90, 100] },
+      { name: "edited_video_export.webm (4s)", base: "edited_video_export", pcts: [0, 10, 25, 50, 75, 90, 100] },
+      { name: "J04_live_3d_animation.webm (2s)", base: "J04_live_3d_animation", pcts: [0, 10, 25, 50, 75, 90, 100] },
+      { name: "check3_modified_exported_video.webm (3s)", base: "check3_modified_exported_video", pcts: [0, 10, 25, 50, 75, 90, 100] }
+    ];
+
+    const container = document.getElementById('container');
+    data.forEach(item => {
+      const block = document.createElement('div');
+      block.className = 'video-block';
+      let html = `<div class="video-title"><span>${item.name}</span><span style="color:#ef4444;font-size:12px;">Engineering Demo Aesthetic</span></div><div class="frames-row">`;
+      item.pcts.forEach(p => {
+        html += `<div class="frame-card"><img src="${item.base}_pct_${p}.png"><div class="frame-label">${p}%</div></div>`;
+      });
+      html += `</div>`;
+      block.innerHTML = html;
+      container.appendChild(block);
+    });
+  </script>
+</body>
+</html>

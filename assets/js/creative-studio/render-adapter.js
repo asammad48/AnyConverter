@@ -514,9 +514,20 @@ class NativeCanvasRenderAdapter extends RenderAdapter {
   }
 
   /**
-   * Canonical scene compositor
+   * Canonical scene compositor — delegates to CreativeDirector when present,
+   * with strict separation of production and diagnostics modes.
    */
   _renderCanonicalScene(ctx, project, f, totalFrames, timeSec, durationSeconds, width, height) {
+    // 1. Delegate to CreativeDirector if project has cinematic shots or art direction
+    const CD = (typeof window !== 'undefined' && window.CreativeDirector) ||
+      (typeof require !== 'undefined' ? (() => { try { return require('./visual/creative-director').CreativeDirector; } catch (e) { return null; } })() : null);
+
+    if (CD && CD.isCreativeProject(project)) {
+      CD.renderFrame(ctx, project, f, totalFrames, width, height, { mode: project.renderMode || 'production' });
+      return;
+    }
+
+    // 2. Canonical Clean Production Fallback
     let currentScene = null;
     let currentSceneIndex = 0;
     if (project.scenes && project.scenes.length > 0) {
@@ -536,60 +547,56 @@ class NativeCanvasRenderAdapter extends RenderAdapter {
       currentScene = project.scenes[0];
     }
 
-    const sceneBg = (currentScene && currentScene.background) || (project.canvas && project.canvas.background) || '#0f172a';
+    const sceneBg = (currentScene && currentScene.background) || (project.canvas && project.canvas.background) || '#090d16';
     ctx.fillStyle = sceneBg;
     ctx.fillRect(0, 0, width, height);
 
-    // Title and project name
+    // Title and project name in production styling
     ctx.fillStyle = '#ffffff';
-    ctx.font = 'bold 36px Inter, sans-serif';
-    ctx.fillText(project.title || 'AnyConverter Creative Studio', 60, 80);
+    ctx.font = '600 36px "Bricolage Grotesque", Inter, sans-serif';
+    ctx.fillText(project.title || 'AnyConverter Creative Studio', 80, 90);
 
-    // Subtitle & Active Scene Indicator
+    // Subtitle
     ctx.fillStyle = '#94a3b8';
-    ctx.font = '20px Inter, sans-serif';
-    const sceneLabel = currentScene ? `Scene ${currentSceneIndex + 1}: ${currentScene.name || 'Artboard'}` : 'Single Scene';
-    ctx.fillText(`${sceneLabel} • Deterministic Client-Side Render Engine`, 60, 120);
+    ctx.font = '400 18px Inter, sans-serif';
+    const sceneLabel = currentScene ? (currentScene.name || `Scene ${currentSceneIndex + 1}`) : 'Production Scene';
+    ctx.fillText(`${sceneLabel} • Client-Side Precision Engine`, 80, 130);
 
     // Render scene layers if present
     if (currentScene && Array.isArray(currentScene.layers)) {
       for (const layer of currentScene.layers) {
+        if (layer.visible === false) continue;
         if (layer.type === 'text' && layer.content) {
-          ctx.fillStyle = (layer.style && layer.style.color) || layer.color || '#38bdf8';
-          ctx.font = `${layer.fontSize || 32}px Inter, sans-serif`;
-          const lx = (layer.transform && layer.transform.x) || layer.x || 60;
+          ctx.fillStyle = (layer.style && layer.style.color) || layer.color || layer.fill || '#38bdf8';
+          ctx.font = `${layer.fontWeight || 600} ${layer.fontSize || 32}px Inter, sans-serif`;
+          const lx = (layer.transform && layer.transform.x) || layer.x || 80;
           const ly = (layer.transform && layer.transform.y) || layer.y || 200;
           ctx.fillText(layer.content, lx, ly);
         } else if (layer.type === 'shape') {
-          ctx.fillStyle = (layer.style && layer.style.fill) || layer.color || '#3b82f6';
-          const sx = (layer.transform && layer.transform.x) || layer.x || 60;
+          ctx.fillStyle = (layer.style && layer.style.fill) || layer.color || layer.fill || '#38bdf8';
+          const sx = (layer.transform && layer.transform.x) || layer.x || 80;
           const sy = (layer.transform && layer.transform.y) || layer.y || 240;
           const sw = (layer.transform && layer.transform.width) || layer.width || 120;
           const sh = (layer.transform && layer.transform.height) || layer.height || 60;
-          ctx.fillRect(sx, sy, sw, sh);
+          ctx.beginPath();
+          ctx.roundRect ? ctx.roundRect(sx, sy, sw, sh, 8) : ctx.rect(sx, sy, sw, sh);
+          ctx.fill();
         }
       }
     }
 
-    // Dynamic animated element (bouncing orb & progress bar)
-    const progress = f / totalFrames;
-    const barWidth = width - 120;
-    ctx.fillStyle = 'rgba(255,255,255,0.1)';
-    ctx.fillRect(60, height - 60, barWidth, 12);
-    ctx.fillStyle = '#3b82f6';
-    ctx.fillRect(60, height - 60, barWidth * progress, 12);
-
-    const orbX = 60 + Math.sin(progress * Math.PI * 2) * (width / 4) + (width / 4);
-    const orbY = height / 2 + Math.cos(progress * Math.PI * 4) * 60;
-    ctx.fillStyle = '#f59e0b';
-    ctx.beginPath();
-    ctx.arc(orbX, orbY, 40, 0, Math.PI * 2);
-    ctx.fill();
-
-    // Timestamp & frame counter
-    ctx.fillStyle = '#ffffff';
-    ctx.font = '24px monospace';
-    ctx.fillText(`Frame ${f + 1}/${totalFrames} (${timeSec.toFixed(2)}s / ${durationSeconds}s) [Scene ${currentSceneIndex + 1}]`, 60, height / 2 + 50);
+    // Diagnostics Overlay: ONLY rendered when explicitly requested, NEVER in production
+    if (project.renderMode === 'diagnostics') {
+      ctx.save();
+      ctx.fillStyle = 'rgba(0, 0, 0, 0.75)';
+      ctx.fillRect(40, height - 60, 420, 40);
+      ctx.strokeStyle = '#38bdf8';
+      ctx.strokeRect(40, height - 60, 420, 40);
+      ctx.fillStyle = '#38bdf8';
+      ctx.font = '12px monospace';
+      ctx.fillText(`DIAGNOSTICS | Frame ${f + 1}/${totalFrames} (${timeSec.toFixed(2)}s / ${durationSeconds}s)`, 50, height - 36);
+      ctx.restore();
+    }
   }
 
   /**

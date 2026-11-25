@@ -1,0 +1,170 @@
+{
+  "timestamp": "2026-11-25T07:57:13.910Z",
+  "workflows": {
+    "initialLoad": {
+      "title": "AnyConverter Creative Studio — Free Online Design, Video & QR Studio",
+      "url": "http://127.0.0.1:3000/creative-studio/",
+      "screenshot": "reports/creative-studio/visual-quality/phase-01/screenshots/01_initial_studio_desktop.png"
+    }
+  },
+  "exports": {
+    "saasMaster": {
+      "file": "reports/creative-studio/visual-quality/phase-01/evidence/From_Raw_Data_to_Clear_Answers_Master.webm",
+      "totalFrames": 720,
+      "durationSeconds": 24,
+      "fps": 30,
+      "sizeBytes": 7687795,
+      "engine": "WebCodecs-Deterministic"
+    },
+    "parrotComedy": {
+      "file": "reports/creative-studio/visual-quality/phase-01/evidence/V2_Pilot_Parrot_Character_Comedy.webm",
+      "totalFrames": 270,
+      "durationSeconds": 9,
+      "sizeBytes": 2833838
+    },
+    "noirSuspense": {
+      "file": "reports/creative-studio/visual-quality/phase-01/evidence/V2_Pilot_Minimal_Noir_Suspense.webm",
+      "totalFrames": 270,
+      "durationSeconds": 9,
+      "sizeBytes": 2022928
+    }
+  },
+  "parityChecks": [
+    {
+      "timestampSec": 13,
+      "previewFile": "reports/creative-studio/visual-quality/phase-01/evidence/preview_sec_13_frame_390.png",
+      "exportedFile": "reports/creative-studio/visual-quality/phase-01/extracted_frames/saas_exported_13s_parity.png",
+      "verdict": "EXACT SEMANTIC PARITY VERIFIED (Shot 3 Client-Side Pipeline elements match)"
+    }
+  ],
+  "reopenVerification": {
+    "unpackedTitle": "From raw data to clear answers",
+    "unpackedShots": 5,
+    "reexportedVideo": "reports/creative-studio/visual-quality/phase-01/evidence/Reopened_Modified_SaaS_Promo.webm",
+    "sizeBytes": 7693430
+  },
+  "consoleErrors": [],
+  "previewStills": [
+    {
+      "sec": 1,
+      "frame": 30,
+      "shot": "Shot 1: Hook",
+      "file": "reports/creative-studio/visual-quality/phase-01/evidence/preview_sec_1_frame_30.png"
+    },
+    {
+      "sec": 4,
+      "frame": 120,
+      "shot": "Shot 2: Problem",
+      "file": "reports/creative-studio/visual-quality/phase-01/evidence/preview_sec_4_frame_120.png"
+    },
+    {
+      "sec": 8,
+      "frame": 240,
+      "shot": "Shot 2: Latency",
+      "file": "reports/creative-studio/visual-quality/phase-01/evidence/preview_sec_8_frame_240.png"
+    },
+    {
+      "sec": 13,
+      "frame": 390,
+      "shot": "Shot 3: Solution",
+      "file": "reports/creative-studio/visual-quality/phase-01/evidence/preview_sec_13_frame_390.png"
+    },
+    {
+      "sec": 19,
+      "frame": 570,
+      "shot": "Shot 4: Benefit",
+      "file": "reports/creative-studio/visual-quality/phase-01/evidence/preview_sec_19_frame_570.png"
+    },
+    {
+      "sec": 23,
+      "frame": 690,
+      "shot": "Shot 5: Payoff",
+      "file": "reports/creative-studio/visual-quality/phase-01/evidence/preview_sec_23_frame_690.png"
+    }
+  ],
+  "savedArchive": {
+    "file": "reports/creative-studio/visual-quality/phase-01/evidence/saas_promo_saved_project.acstudio",
+    "sizeBytes": 5826
+  },
+  "extractedFrames": [
+    {
+      "pct": 0,
+      "timeSec": 0,
+      "file": "reports/creative-studio/visual-quality/phase-01/extracted_frames/saas_master_pct_0.png"
+    },
+    {
+      "pct": 10,
+      "timeSec": 2.4,
+      "file": "reports/creative-studio/visual-quality/phase-01/extracted_frames/saas_master_pct_10.png"
+    },
+    {
+      "pct": 25,
+      "timeSec": 6,
+      "file": "reports/creative-studio/visual-quality/phase-01/extracted_frames/saas_master_pct_25.png"
+    },
+    {
+      "pct": 50,
+      "timeSec": 12,
+      "file": "reports/creative-studio/visual-quality/phase-01/extracted_frames/saas_master_pct_50.png"
+    },
+    {
+      "pct": 75,
+      "timeSec": 18,
+      "file": "reports/creative-studio/visual-quality/phase-01/extracted_frames/saas_master_pct_75.png"
+    },
+    {
+      "pct": 90,
+      "timeSec": 21.6,
+      "file": "reports/creative-studio/visual-quality/phase-01/extracted_frames/saas_master_pct_90.png"
+    },
+    {
+      "pct": 100,
+      "timeSec": 23.95,
+      "file": "reports/creative-studio/visual-quality/phase-01/extracted_frames/saas_master_pct_100.png"
+    }
+  ],
+  "parrotFrames": [
+    {
+      "pct": 0,
+      "file": "reports/creative-studio/visual-quality/phase-01/extracted_frames/parrot_pilot_pct_0.png"
+    },
+    {
+      "pct": 25,
+      "file": "reports/creative-studio/visual-quality/phase-01/extracted_frames/parrot_pilot_pct_25.png"
+    },
+    {
+      "pct": 50,
+      "file": "reports/creative-studio/visual-quality/phase-01/extracted_frames/parrot_pilot_pct_50.png"
+    },
+    {
+      "pct": 75,
+      "file": "reports/creative-studio/visual-quality/phase-01/extracted_frames/parrot_pilot_pct_75.png"
+    },
+    {
+      "pct": 100,
+      "file": "reports/creative-studio/visual-quality/phase-01/extracted_frames/parrot_pilot_pct_100.png"
+    }
+  ],
+  "noirFrames": [
+    {
+      "pct": 0,
+      "file": "reports/creative-studio/visual-quality/phase-01/extracted_frames/noir_pilot_pct_0.png"
+    },
+    {
+      "pct": 25,
+      "file": "reports/creative-studio/visual-quality/phase-01/extracted_frames/noir_pilot_pct_25.png"
+    },
+    {
+      "pct": 50,
+      "file": "reports/creative-studio/visual-quality/phase-01/extracted_frames/noir_pilot_pct_50.png"
+    },
+    {
+      "pct": 75,
+      "file": "reports/creative-studio/visual-quality/phase-01/extracted_frames/noir_pilot_pct_75.png"
+    },
+    {
+      "pct": 100,
+      "file": "reports/creative-studio/visual-quality/phase-01/extracted_frames/noir_pilot_pct_100.png"
+    }
+  ]
+}
