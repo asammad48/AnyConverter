@@ -1,7 +1,7 @@
 /**
- * AnyConverter Creative Studio — CreativeDirector Engine
+ * AnyConverter Creative Studio — CreativeDirector Engine (V2 Enhanced)
  * Canonical scene compositor, visual direction orchestrator,
- * and high-production-value video timeline compiler.
+ * and high-production-value video timeline compiler with synthesized PCM audio.
  */
 
 (function () {
@@ -25,7 +25,7 @@
           id: 'character-comedy',
           name: 'Parrot Character Comedy',
           category: 'Character / Social',
-          palette: { primary: '#f59e0b', secondary: '#10b981', background: '#1e1b2e', text: '#0f172a' },
+          palette: { primary: '#f59e0b', secondary: '#10b981', background: '#1a1829', text: '#0f172a' },
           typography: 'Bricolage Grotesque Bold + Inter',
           aspectRatios: ['16:9', '9:16', '1:1']
         },
@@ -33,31 +33,109 @@
           id: 'minimal-suspense',
           name: 'Minimal Noir Suspense',
           category: 'Cinematic Drama',
-          palette: { primary: '#e5e5e5', secondary: '#ef4444', background: '#050505', text: '#e5e5e5' },
+          palette: { primary: '#e5e5e5', secondary: '#ef4444', background: '#040404', text: '#e5e5e5' },
           typography: 'Inter Thin + Monospace',
           aspectRatios: ['16:9', '9:16', '1:1']
         }
       };
     }
 
-    /**
-     * Check if a project uses CreativeDirector composition
-     */
     static isCreativeProject(project) {
       if (!project) return false;
       return Boolean(project.visualDirection || (project.shots && project.shots.length > 0) || project.kind === 'cinematic');
     }
 
     /**
+     * Synthesize clean, audible, rights-cleared PCM backing audio
+     * @param {number} durationSeconds - duration in seconds
+     * @param {string} theme - 'saas' | 'comedy' | 'suspense'
+     * @param {number} sampleRate - default 48000
+     * @returns {Float32Array} Monophonic PCM samples (mixed to stereo in adapter)
+     */
+    static synthesizeAudibleAudio(durationSeconds = 24, theme = 'saas', sampleRate = 48000) {
+      const totalSamples = Math.round(durationSeconds * sampleRate);
+      const pcm = new Float32Array(totalSamples);
+
+      if (theme === 'comedy') {
+        // Upbeat, playful comedic progression with chirp accent
+        const chordFreqs = [261.63, 329.63, 392.00, 523.25]; // C major
+        for (let i = 0; i < totalSamples; i++) {
+          const t = i / sampleRate;
+          const beat = Math.floor(t * 3.5);
+          const f = chordFreqs[beat % chordFreqs.length];
+          const envelope = Math.max(0, 1 - (t * 3.5 - beat));
+          let sample = Math.sin(2 * Math.PI * f * t) * 0.22 * envelope;
+          // Add humorous chirp around 5.0s (contradiction beat)
+          if (t >= 4.8 && t <= 5.4) {
+            const ct = t - 4.8;
+            const cf = 600 + Math.sin(ct * 40) * 300;
+            sample += Math.sin(2 * Math.PI * cf * ct) * 0.35 * Math.sin(ct * Math.PI / 0.6);
+          }
+          pcm[i] = sample;
+        }
+      } else if (theme === 'suspense') {
+        // Deep resonant sub-bass drone and electrical hum
+        for (let i = 0; i < totalSamples; i++) {
+          const t = i / sampleRate;
+          // 55 Hz drone with 110 Hz overtone
+          const drone = Math.sin(2 * Math.PI * 55 * t) * 0.28 + Math.sin(2 * Math.PI * 110 * t) * 0.12;
+          // Atmospheric slow swell
+          const swell = 0.6 + 0.4 * Math.sin(t * 0.8);
+          // High tense shimmer
+          const shimmer = Math.sin(2 * Math.PI * 880 * t) * 0.03 * Math.sin(t * 6);
+          pcm[i] = (drone * swell + shimmer) * 0.7;
+        }
+      } else {
+        // Master SaaS Corporate Tech Theme (Dm -> Bb -> F -> C progression)
+        const chords = [
+          [146.83, 220.00, 293.66, 349.23], // Dm (0-6s)
+          [116.54, 233.08, 293.66, 349.23], // Bb (6-12s)
+          [174.61, 220.00, 261.63, 349.23], // F  (12-18s)
+          [130.81, 196.00, 261.63, 329.63]  // C  (18-24s)
+        ];
+
+        for (let i = 0; i < totalSamples; i++) {
+          const t = i / sampleRate;
+          const chordIdx = Math.min(chords.length - 1, Math.floor(t / 6));
+          const currentChord = chords[chordIdx];
+
+          // 1. Warm ambient synth pad
+          let pad = 0;
+          for (let c = 0; c < currentChord.length; c++) {
+            pad += Math.sin(2 * Math.PI * currentChord[c] * t) * 0.08;
+            pad += Math.sin(2 * Math.PI * (currentChord[c] * 2) * t) * 0.03;
+          }
+
+          // 2. Rhythmic eighth-note arpeggiator (120 BPM = 0.5s beat, 0.25s per 8th note)
+          const arpStep = Math.floor(t / 0.25);
+          const arpF = currentChord[arpStep % currentChord.length] * 2;
+          const arpEnv = Math.max(0, 1 - (t % 0.25) / 0.22);
+          const arp = Math.sin(2 * Math.PI * arpF * t) * 0.09 * arpEnv;
+
+          // 3. Sub-bass pulse
+          const bassF = currentChord[0] / 2;
+          const bass = Math.sin(2 * Math.PI * bassF * t) * 0.16;
+
+          // Overall fade in and fade out
+          const fadeIn = Math.min(1, t / 0.8);
+          const fadeOut = Math.min(1, (durationSeconds - t) / 1.0);
+
+          pcm[i] = (pad + arp + bass) * fadeIn * fadeOut;
+        }
+      }
+
+      return pcm;
+    }
+
+    /**
      * Master 24-second SaaS Launch Sequence: "From raw data to clear answers"
-     * 5 distinct purposeful shots @ 30fps = 720 frames total
+     * 5 distinct purposeful shots @ 30fps = 720 frames total with audible audio
      */
     static createMasterSaaSSequence(options = {}) {
       const title = options.title || 'From raw data to clear answers';
       const accent = options.accentColor || '#38bdf8';
 
       const shots = [
-        // Shot 1: The Hook (0-120 frames, 4.0s)
         new ReferenceShotClass({
           id: 'shot-01-hook',
           purpose: 'hook',
@@ -65,14 +143,13 @@
           startFrame: 0,
           durationFrames: 120,
           headline: 'RAW DATA IS NOISY.',
-          subhead: 'Unstructured tables, broken schemas, and trapped numbers stall production.',
+          subhead: 'Unstructured tables, broken schemas, and trapped numbers stall workflows.',
           badge: 'CHALLENGE',
           accentColor: accent,
           secondaryColor: '#f59e0b',
           artDirection: 'cinematic-saas',
           cameraMove: 'push-in'
         }),
-        // Shot 2: The Problem / Bottleneck (120-270 frames, 5.0s)
         new ReferenceShotClass({
           id: 'shot-02-problem',
           purpose: 'problem',
@@ -80,14 +157,13 @@
           startFrame: 120,
           durationFrames: 150,
           headline: 'HOURS LOST TO FORMAT CHAOS.',
-          subhead: 'Manual parsing, cloud queues, and recurring API token charges drain teams.',
+          subhead: 'Manual parsing, remote queues, and third-party API limits drain productivity.',
           badge: 'BOTTLENECK',
           accentColor: '#ef4444',
           secondaryColor: '#f59e0b',
           artDirection: 'cinematic-saas',
           cameraMove: 'whip-in'
         }),
-        // Shot 3: The Solution / Transformation (270-450 frames, 6.0s)
         new ReferenceShotClass({
           id: 'shot-03-solution',
           purpose: 'solution',
@@ -95,14 +171,13 @@
           startFrame: 270,
           durationFrames: 180,
           headline: 'CLIENT-SIDE PRECISION PIPELINE.',
-          subhead: 'Instant WebAssembly processing. Zero server uploads. 100% private in-browser compute.',
+          subhead: 'Hardware-accelerated WebCodecs. Zero server uploads. Absolute data privacy.',
           badge: 'ARCHITECTURE',
           accentColor: accent,
           secondaryColor: '#10b981',
           artDirection: 'cinematic-saas',
           cameraMove: 'pan-right'
         }),
-        // Shot 4: The Benefit / Concrete Value (450-600 frames, 5.0s)
         new ReferenceShotClass({
           id: 'shot-04-benefit',
           purpose: 'benefit',
@@ -110,14 +185,13 @@
           startFrame: 450,
           durationFrames: 150,
           headline: 'CLEAR ANSWERS. INSTANT SPEED.',
-          subhead: 'Sub-42ms parsing latency. Sample-accurate video export with zero frame drops.',
+          subhead: 'Deterministic integer frame clock. Sample-accurate video export with zero frame drops.',
           badge: 'PERFORMANCE',
           accentColor: '#10b981',
           secondaryColor: accent,
           artDirection: 'cinematic-saas',
           cameraMove: 'pull-out'
         }),
-        // Shot 5: The Payoff / CTA (600-720 frames, 4.0s)
         new ReferenceShotClass({
           id: 'shot-05-payoff',
           purpose: 'payoff',
@@ -125,13 +199,25 @@
           startFrame: 600,
           durationFrames: 120,
           headline: 'ANYCONVERTER CREATIVE STUDIO.',
-          subhead: 'From raw data to clear answers. Professional visual production free in your browser.',
+          subhead: 'From raw data to clear answers. Professional in-browser visual production suite.',
           badge: 'GET STARTED',
           accentColor: accent,
           secondaryColor: '#6366f1',
           artDirection: 'cinematic-saas',
           cameraMove: 'push-in'
         })
+      ];
+
+      // Synthesize audible corporate tech backing audio
+      const audioPcm = CreativeDirector.synthesizeAudibleAudio(24, 'saas', 48000);
+      const audioClips = [
+        {
+          clipId: 'saas-master-audio',
+          startSample: 0,
+          durationSamples: audioPcm.length,
+          volume: 0.85,
+          pcmData: audioPcm
+        }
       ];
 
       return {
@@ -144,13 +230,13 @@
         fps: 30,
         durationSeconds: 24,
         canvas: { width: 1280, height: 720, background: '#090d16' },
-        shots
+        shots,
+        audioClips
       };
     }
 
     /**
-     * V2 Pilot 1: 9-second Parrot Character Comedy ("The Parrot Who Tried to Run a Meeting")
-     * 270 frames @ 30fps
+     * V2 Pilot 1: 9-second Parrot Character Comedy with audible sound
      */
     static createParrotComedyPilot(options = {}) {
       const shots = [
@@ -212,6 +298,17 @@
         })
       ];
 
+      const audioPcm = CreativeDirector.synthesizeAudibleAudio(9, 'comedy', 48000);
+      const audioClips = [
+        {
+          clipId: 'parrot-comedy-audio',
+          startSample: 0,
+          durationSamples: audioPcm.length,
+          volume: 0.85,
+          pcmData: audioPcm
+        }
+      ];
+
       return {
         id: 'project-parrot-comedy',
         title: 'The Parrot Who Tried to Run a Meeting',
@@ -221,14 +318,14 @@
         totalFrames: 270,
         fps: 30,
         durationSeconds: 9,
-        canvas: { width: 1280, height: 720, background: '#1e1b2e' },
-        shots
+        canvas: { width: 1280, height: 720, background: '#1a1829' },
+        shots,
+        audioClips
       };
     }
 
     /**
-     * V2 Pilot 2: 9-second Minimal Noir Suspense ("The Last Light in the Corridor")
-     * 270 frames @ 30fps
+     * V2 Pilot 2: 9-second Minimal Noir Suspense with audible tension drone
      */
     static createMinimalSuspensePilot(options = {}) {
       const shots = [
@@ -286,6 +383,17 @@
         })
       ];
 
+      const audioPcm = CreativeDirector.synthesizeAudibleAudio(9, 'suspense', 48000);
+      const audioClips = [
+        {
+          clipId: 'noir-suspense-audio',
+          startSample: 0,
+          durationSamples: audioPcm.length,
+          volume: 0.85,
+          pcmData: audioPcm
+        }
+      ];
+
       return {
         id: 'project-noir-suspense',
         title: 'The Last Light in the Corridor',
@@ -295,13 +403,14 @@
         totalFrames: 270,
         fps: 30,
         durationSeconds: 9,
-        canvas: { width: 1280, height: 720, background: '#050505' },
-        shots
+        canvas: { width: 1280, height: 720, background: '#040404' },
+        shots,
+        audioClips
       };
     }
 
     /**
-     * Canonical Frame Evaluator: Shared by interactive preview and offline export
+     * Canonical Frame Evaluator: Shared by viewport preview and offline export
      */
     static renderFrame(ctx, project, f, totalFrames, width, height, options = {}) {
       if (!ctx || !project) return;
@@ -309,7 +418,6 @@
       const shots = project.shots || [];
 
       if (shots.length === 0) {
-        // Fallback blank canvas
         ctx.fillStyle = (project.canvas && project.canvas.background) || '#090d16';
         ctx.fillRect(0, 0, width, height);
         return;
@@ -337,21 +445,19 @@
         shotLocalFrame = 0;
       }
 
-      // Ensure activeShot is a ReferenceShot instance
       let shotInstance = activeShot;
       if (!(activeShot instanceof ReferenceShotClass) && ReferenceShotClass) {
         shotInstance = new ReferenceShotClass(activeShot);
       }
 
-      // Render active shot
       shotInstance.render(ctx, shotLocalFrame, shotInstance.durationFrames, f, totalFrames, width, height, { mode });
 
-      // Cross-Shot Subtle Dissolve Transition (5 frames before shot end)
-      const transitionWindow = 4;
+      // Fast, clean 2-frame cross-shot cut transition (no prolonged empty black pauses)
+      const transitionWindow = 2;
       if (shotLocalFrame < transitionWindow && activeShotIndex > 0) {
         const tProgress = shotLocalFrame / transitionWindow;
         ctx.save();
-        ctx.fillStyle = `rgba(0, 0, 0, ${ReferenceShotClass.clamp(1 - tProgress, 0, 1) * 0.4})`;
+        ctx.fillStyle = `rgba(0, 0, 0, ${ReferenceShotClass.clamp(1 - tProgress, 0, 1) * 0.25})`;
         ctx.fillRect(0, 0, width, height);
         ctx.restore();
       }

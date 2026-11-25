@@ -87,6 +87,7 @@
       }
 
       this.assetBlobs = new Map();
+      this.cachedDirectionProjects = {};
     }
 
     _renderMissingDependencyBanner(missing, msg) {
@@ -163,7 +164,13 @@
         shotHeadline: document.getElementById('cs-shot-headline'),
         shotSubhead: document.getElementById('cs-shot-subhead'),
         shotAccent: document.getElementById('cs-shot-accent'),
-        shotDuration: document.getElementById('cs-shot-duration')
+        shotDuration: document.getElementById('cs-shot-duration'),
+        btnMobileInspector: document.getElementById('cs-btn-mobile-inspector'),
+        btnCloseInspector: document.getElementById('cs-btn-close-inspector'),
+        sidebarRight: document.getElementById('cs-sidebar-right'),
+        shotsList: document.getElementById('cs-shots-list'),
+        timelineVideoTrack: document.getElementById('cs-timeline-video-track'),
+        tabBtnShots: document.getElementById('cs-tab-btn-shots')
       };
 
       if (this.dom.canvas) {
@@ -291,6 +298,18 @@
       }
       if (this.dom.shotDuration) {
         this.dom.shotDuration.addEventListener('input', (e) => this.updateActiveShot('durationFrames', parseInt(e.target.value, 10) || 60));
+      }
+
+      // Mobile Inspector Toggle
+      if (this.dom.btnMobileInspector && this.dom.sidebarRight) {
+        this.dom.btnMobileInspector.addEventListener('click', () => {
+          this.dom.sidebarRight.classList.toggle('mobile-open');
+        });
+      }
+      if (this.dom.btnCloseInspector && this.dom.sidebarRight) {
+        this.dom.btnCloseInspector.addEventListener('click', () => {
+          this.dom.sidebarRight.classList.remove('mobile-open');
+        });
       }
 
       // Canvas Dragging
@@ -460,18 +479,65 @@
 
     initCinematicSequence(directionKey = 'cinematic-saas') {
       if (!window.CreativeDirector) return;
-      let seq = null;
-      if (directionKey === 'character-comedy') {
-        seq = window.CreativeDirector.createParrotComedyPilot();
-      } else if (directionKey === 'minimal-suspense') {
-        seq = window.CreativeDirector.createMinimalSuspensePilot();
-      } else {
-        seq = window.CreativeDirector.createMasterSaaSSequence();
+
+      // Save deep copy of current sequence state before switching
+      if (this.project && this.project.visualDirection && this.project.shots) {
+        this.cachedDirectionProjects[this.project.visualDirection] = {
+          title: this.project.title,
+          visualDirection: this.project.visualDirection,
+          totalFrames: this.project.totalFrames,
+          fps: this.project.fps,
+          durationSeconds: this.project.durationSeconds,
+          canvas: Object.assign({}, this.project.canvas),
+          shots: this.project.shots.map(s => new window.ReferenceShot(s)),
+          audioClips: this.project.audioClips
+        };
       }
 
-      this.project = Object.assign(this.project, seq);
+      let cached = this.cachedDirectionProjects[directionKey];
+      let seq;
+      if (cached) {
+        seq = {
+          title: cached.title,
+          visualDirection: cached.visualDirection,
+          totalFrames: cached.totalFrames,
+          fps: cached.fps,
+          durationSeconds: cached.durationSeconds,
+          canvas: Object.assign({}, cached.canvas),
+          shots: cached.shots.map(s => new window.ReferenceShot(s)),
+          audioClips: cached.audioClips
+        };
+      } else {
+        if (directionKey === 'character-comedy') {
+          seq = window.CreativeDirector.createParrotComedyPilot();
+        } else if (directionKey === 'minimal-suspense') {
+          seq = window.CreativeDirector.createMinimalSuspensePilot();
+        } else {
+          seq = window.CreativeDirector.createMasterSaaSSequence();
+        }
+        this.cachedDirectionProjects[directionKey] = {
+          title: seq.title,
+          visualDirection: directionKey,
+          totalFrames: seq.totalFrames,
+          fps: seq.fps,
+          durationSeconds: seq.durationSeconds,
+          canvas: Object.assign({}, seq.canvas),
+          shots: seq.shots.map(s => new window.ReferenceShot(s)),
+          audioClips: seq.audioClips
+        };
+      }
+
+      this.project.title = seq.title;
+      this.project.kind = 'cinematic';
       this.project.visualDirection = directionKey;
       this.project.renderMode = this.renderMode || 'production';
+      this.project.totalFrames = seq.totalFrames;
+      this.project.fps = seq.fps;
+      this.project.durationSeconds = seq.durationSeconds;
+      this.project.canvas = Object.assign({}, seq.canvas);
+      this.project.shots = seq.shots;
+      this.project.audioClips = seq.audioClips;
+
       this.totalFrames = seq.totalFrames;
       this.fps = seq.fps;
       this.currentFrame = 0;
@@ -491,6 +557,8 @@
 
       this.updateShotSelectOptions();
       this.updateShotInspectorUI();
+      this.updateShotsListUI();
+      this.updateTimelineTracks();
       this.seekFrame(0);
     }
 
@@ -510,6 +578,8 @@
       this.activeShotIndex = shotIndex;
       const shot = this.project.shots[shotIndex];
       this.updateShotInspectorUI();
+      this.updateShotsListUI();
+      this.updateTimelineTracks();
       this.seekFrame(shot.startFrame);
     }
 
@@ -529,8 +599,10 @@
         this.project.durationSeconds = Math.round(acc / this.fps);
         if (this.dom.timelineScrubber) this.dom.timelineScrubber.max = this.totalFrames - 1;
         this.updateShotSelectOptions();
+        this.updateTimelineTracks();
       }
 
+      this.updateShotsListUI();
       this.render();
     }
 
@@ -554,6 +626,46 @@
       if (this.dom.shotSubhead) this.dom.shotSubhead.value = shot.subhead || '';
       if (this.dom.shotAccent) this.dom.shotAccent.value = shot.accentColor || '#38bdf8';
       if (this.dom.shotDuration) this.dom.shotDuration.value = shot.durationFrames || 90;
+    }
+
+    updateShotsListUI() {
+      if (!this.dom.shotsList || !this.project.shots) return;
+      this.dom.shotsList.innerHTML = '';
+      this.project.shots.forEach((s, idx) => {
+        const item = document.createElement('div');
+        item.className = 'cs-shot-item' + (idx === this.activeShotIndex ? ' active' : '');
+        item.innerHTML = `
+          <div style="display:flex;justify-content:space-between;align-items:center;">
+            <span style="font-weight:600;font-size:12px;color:var(--cs-text-main, #f8fafc);">Shot ${idx + 1}: ${s.title || s.purpose}</span>
+            <span class="cs-badge" style="font-size:10px;padding:1px 5px;">${s.durationFrames}f</span>
+          </div>
+          <div style="font-size:11px;color:var(--cs-text-muted, #94a3b8);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:2px;">${s.headline || ''}</div>
+        `;
+        item.addEventListener('click', () => this.selectShot(idx));
+        this.dom.shotsList.appendChild(item);
+      });
+    }
+
+    updateTimelineTracks() {
+      if (!this.dom.timelineVideoTrack || !this.project.shots) return;
+      this.dom.timelineVideoTrack.innerHTML = '';
+      const totalF = this.totalFrames || 720;
+      this.project.shots.forEach((s, idx) => {
+        const block = document.createElement('div');
+        block.className = 'cs-shot-block' + (idx === this.activeShotIndex ? ' active' : '');
+        const pct = ((s.durationFrames / totalF) * 100).toFixed(2);
+        block.style.width = `${pct}%`;
+        block.title = `Shot ${idx + 1}: ${s.title || s.purpose} (${s.durationFrames}f)`;
+        block.innerHTML = `
+          <span class="cs-shot-block-label">Shot ${idx + 1}: ${s.title || s.purpose}</span>
+          <span style="font-size:9px;opacity:0.8;">${s.durationFrames}f</span>
+        `;
+        block.addEventListener('click', (e) => {
+          e.stopPropagation();
+          this.selectShot(idx);
+        });
+        this.dom.timelineVideoTrack.appendChild(block);
+      });
     }
 
     render() {
@@ -935,7 +1047,17 @@
           }));
         }
 
-        const zipBuffer = this.archive.package(this.project, this.assetBlobs);
+        // Clean serialization of audio clips (avoid massive raw Float32Array in JSON)
+        const savedAudioClips = (this.project.audioClips || []).map(c => ({
+          clipId: c.clipId,
+          startSample: c.startSample,
+          durationSamples: c.durationSamples,
+          volume: c.volume,
+          theme: c.theme || (this.project.visualDirection === 'character-comedy' ? 'comedy' : (this.project.visualDirection === 'minimal-suspense' ? 'suspense' : 'saas'))
+        }));
+        const projectToPackage = Object.assign({}, this.project, { audioClips: savedAudioClips });
+
+        const zipBuffer = this.archive.package(projectToPackage, this.assetBlobs);
         const blob = new Blob([zipBuffer], { type: 'application/x-acstudio+zip' });
         this.lastSavedBlob = blob;
         this.lastSavedZip = zipBuffer;
@@ -978,9 +1100,21 @@
             if (this.project.shots && window.ReferenceShot) {
               this.project.shots = this.project.shots.map(s => new window.ReferenceShot(s));
             }
+            if (this.project.audioClips && window.CreativeDirector) {
+              this.project.audioClips.forEach(c => {
+                if (!c.pcmData) {
+                  const theme = c.theme || (this.project.visualDirection === 'character-comedy' ? 'comedy' : (this.project.visualDirection === 'minimal-suspense' ? 'suspense' : 'saas'));
+                  const durSec = c.durationSamples ? c.durationSamples / 48000 : 24;
+                  c.pcmData = window.CreativeDirector.synthesizeAudibleAudio(durSec, theme, 48000);
+                }
+              });
+            }
+            this.cachedDirectionProjects[this.project.visualDirection] = this.project;
             this.activeShotIndex = 0;
             this.updateShotSelectOptions();
             this.updateShotInspectorUI();
+            this.updateShotsListUI();
+            this.updateTimelineTracks();
             this.seekFrame(0);
           } else if (res.project.scenes && res.project.scenes[0]) {
             this.graphics.layers = res.project.scenes[0].layers || [];
@@ -1031,6 +1165,8 @@
             if (this.activeShotIndex !== i) {
               this.activeShotIndex = i;
               this.updateShotInspectorUI();
+              this.updateShotsListUI();
+              this.updateTimelineTracks();
             }
             break;
           }

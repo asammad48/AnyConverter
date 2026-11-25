@@ -1,48 +1,85 @@
-# Phase 01 — Project Archive Reopen, Edit & Re-Export Verification
+# Phase 01 — Project Persistence, Reopening & Re-Export Verification
 
 **Project:** AnyConverter Creative Studio — Visual Quality Production Programme  
 **Phase:** 01 (Visual Baseline & First Publishable Slice)  
-**Status:** `PASS — VERIFIED IN ISOLATED BROWSER SESSION`  
+**Verification Harness:** `reports/creative-studio/visual-quality/phase-01/scripts/run_phase01_corrections.js`  
+**Artifacts Generated:**
+- Saved Project: `./evidence/From_Raw_Data_to_Clear_Answers_Master.acstudio` (5.8 KB)
+- Initial Master Video: `./evidence/From_Raw_Data_to_Clear_Answers_Master.webm` (7.59 MB)
+- Mutated Re-Export Video: `./evidence/Reopened_and_Mutated_Master.webm` (7.63 MB)
+- Reopened UI Mutation Screenshot: `./screenshots/05_reopened_mutated_frame_480.png`
 
 ---
 
-## 1. Archive Serialization Contract
+## 1. Resolution of P0-02 & P0-03 Persistence Defect
 
-Under AnyConverter Creative Studio specification, project persistence must save complete shot models, timings, headlines, subheads, badges, accent colors, camera moves, and art direction parameters into portable `.acstudio` ZIP archives.
+In the initial submission audit, two critical defects were identified:
+1. **P0-02:** Project unpacking in Playwright used internal JS calls (`page.evaluate(() => archive.unpackage())`), bypassing the actual browser file chooser and UI restoration flow.
+2. **P0-03:** The saved `.acstudio` archive contained the default headline `"RAW DATA IS NOISY."` while the exported video had `"FROM RAW DATA TO CLEAR ANSWERS"`. Switching art directions in the editor silently wiped prior user modifications.
 
-During the verification run:
-1. The 24-second 5-shot project was serialized via `AcStudioArchive.package(project)`.
-2. The generated binary buffer was verified as a valid ZIP archive:
-   - Output File: [`evidence/saas_promo_saved_project.acstudio`](file:///D:/SynergyRepo/AnyConverter/AnyConverter/reports/creative-studio/visual-quality/phase-01/evidence/saas_promo_saved_project.acstudio)
-   - Size: **5,826 bytes**
+### Root Cause
+`StudioApp.prototype.initCinematicSequence()` mutated `this.project` in place using `Object.assign(this.project, seq)` and assigned `this.cachedDirectionProjects[directionKey] = this.project`. Because JavaScript passes objects by reference, all cached direction entries pointed to the identical mutable project object. Whenever the user switched to `minimal-suspense`, `this.project.shots` was overwritten, corrupting both the cached SaaS project and the `.acstudio` packaging data.
 
----
-
-## 2. Clean-Session Reopen & Mutation Protocol
-
-To guarantee that project state was genuinely loaded from disk rather than lingering in memory:
-1. The original browser context was closed.
-2. A completely fresh Chromium browser context was initialized.
-3. The page was loaded from `http://127.0.0.1:3000/creative-studio/`.
-4. The binary `.acstudio` file was delivered via the archive unpacking pipeline.
-5. The unpacking pipeline restored:
-   - Project Title: `"From raw data to clear answers"`
-   - Total Shots: **5 shots**
-   - Total Frames: **720 frames**
-   - Visual Direction: `"cinematic-saas"`
-6. The user navigated to Shot 4 (Benefit) and applied the following mutations:
-   - Headline: Changed to `"MUTATED IN FRESH REOPENED SESSION"`
-   - Accent Color: Changed to `#10b981` (emerald green)
-7. A screenshot of the mutated editor state was captured: [`screenshots/06_reopened_session_mutated_shot4.png`](file:///D:/SynergyRepo/AnyConverter/AnyConverter/reports/creative-studio/visual-quality/phase-01/screenshots/06_reopened_session_mutated_shot4.png).
+### Architectural Fix
+1. **Isolated Sequence Caching:** `initCinematicSequence()` now performs an explicit deep clone of the outgoing sequence before loading a new one. Each direction retains its own independent shot array and audio buffers.
+2. **Real UI File Chooser Handling:** `#cs-btn-open-project` triggers `<input type="file" id="cs-file-input">`. Playwright listens to the native `filechooser` event via `page.waitForEvent('filechooser')` and calls `fileChooser.setFiles()`. The file `change` event invokes `openProjectArchive()`, which automatically updates the DOM inputs, shot selector, timeline tracks, and canvas buffer.
+3. **Compact Typed-Array Archive Packaging:** Audio clip definitions in `saveProjectArchive()` are serialized as clean metadata objects, omitting raw 1.15M Float32Array JSON bloat. On `openProjectArchive()`, the deterministic algorithmic synthesizer regenerates the exact stereo PCM buffers instantly.
 
 ---
 
-## 3. Second Export Verification
+## 2. Real Browser Verification Lifecycle
 
-A fresh 24-second render (720 frames @ 30fps) was initiated from the mutated project:
-- Re-exported Video: [`evidence/Reopened_Modified_SaaS_Promo.webm`](file:///D:/SynergyRepo/AnyConverter/AnyConverter/reports/creative-studio/visual-quality/phase-01/evidence/Reopened_Modified_SaaS_Promo.webm)
-- File Size: **7,693,430 bytes**
-- Frame Count: **720/720 frames**
-- Drift: **0 samples**
+The corrected test script executed the following strict lifecycle without any internal function calls:
 
-Visual inspection of the re-exported movie confirms that Shot 4 now prominently features the mutated green headline *"MUTATED IN FRESH REOPENED SESSION"* with emerald line graph accents, proving full editability and persistence across separate browser sessions.
+```mermaid
+sequenceDiagram
+    autonumber
+    participant U as User (Playwright UI)
+    participant E as Creative Studio Editor
+    participant D as Disk Storage
+    
+    Note over U,E: 1. Edit & Art Direction Switch Round-Trip
+    U->>E: Fill #cs-shot-headline = "FROM RAW DATA TO CLEAR ANSWERS"
+    U->>E: Fill #cs-shot-accent = "#06b6d4"
+    U->>E: Select #cs-direction-select = "character-comedy"
+    U->>E: Fill #cs-shot-headline = "THE COCKATOO HAS ENTERED"
+    U->>E: Select #cs-direction-select = "minimal-suspense"
+    U->>E: Select #cs-direction-select = "character-comedy"
+    E-->>U: Verify Headline == "THE COCKATOO HAS ENTERED" (Preserved!)
+    U->>E: Select #cs-direction-select = "cinematic-saas"
+    E-->>U: Verify Headline == "FROM RAW DATA TO CLEAR ANSWERS" (Preserved!)
+    
+    Note over U,E: 2. Export Master via UI
+    U->>E: Click #cs-btn-export-video
+    E->>D: Save From_Raw_Data_to_Clear_Answers_Master.webm (7.59 MB)
+    
+    Note over U,E: 3. Save Project via UI
+    U->>E: Click #cs-btn-save-project
+    E->>D: Save From_Raw_Data_to_Clear_Answers_Master.acstudio (5.8 KB)
+    
+    Note over U,E: 4. Independent Archive Verification in Node
+    D->>D: AcStudioArchive.unpackage(archiveBuffer)
+    D-->>U: Confirm project.json shots[0].headline == "FROM RAW DATA TO CLEAR ANSWERS"
+    
+    Note over U,E: 5. Fresh Page Load & Reopen via UI File Chooser
+    U->>E: Navigate to http://127.0.0.1:3000/creative-studio/ (Wipe memory)
+    E-->>U: Default Headline == "RAW DATA IS NOISY."
+    U->>E: Click #cs-btn-open-project -> fileChooser.setFiles(archivePath)
+    E-->>U: UI automatically populated: Headline == "FROM RAW DATA TO CLEAR ANSWERS", Accent == "#06b6d4"
+    
+    Note over U,E: 6. Mutate Reopened Project & Re-Export via UI
+    U->>E: Select Shot 4 -> Fill #cs-shot-headline = "MUTATED BENEFIT: 0 DROPPED FRAMES"
+    U->>E: Select Shot 1 -> Fill #cs-shot-headline = "REOPENED AND MUTATED MASTER"
+    U->>E: Seek Frame 480 -> Screenshot 05_reopened_mutated_frame_480.png
+    U->>E: Click #cs-btn-export-video
+    E->>D: Save Reopened_and_Mutated_Master.webm (7.63 MB)
+```
+
+---
+
+## 3. Evidence Findings
+
+1. **Archive Match:** The headline inside the saved `.acstudio` ZIP (`project.json`) was independently read in Node and confirmed to equal `"FROM RAW DATA TO CLEAR ANSWERS"`.
+2. **UI Restoration:** When reopened in a fresh browser session, the DOM input `#cs-shot-headline` immediately displayed `"FROM RAW DATA TO CLEAR ANSWERS"` and `#cs-shot-accent` was `"#06b6d4"`.
+3. **Mid-Shot Mutation Screenshot:** Frame 480 (Shot 4) captured during mutation demonstrates the updated UI in [05_reopened_mutated_frame_480.png](./screenshots/05_reopened_mutated_frame_480.png).
+4. **Re-Exported Binary:** `Reopened_and_Mutated_Master.webm` was written to disk at 7.63 MB, containing the updated text and valid audio.

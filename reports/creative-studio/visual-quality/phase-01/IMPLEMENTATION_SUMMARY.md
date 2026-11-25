@@ -1,80 +1,61 @@
-# Phase 01 — Implementation Summary & Visual Architecture
+# Phase 01 — Correction Implementation Summary & Evidence Manifest
 
-**Project:** AnyConverter Creative Studio — Visual Quality Production Programme  
-**Phase:** 01 of 16 (Visual Baseline, Creative Direction and First Publishable Slice)  
-**Execution Date:** 25 November 2026  
-**Local Branch:** `feat/creative-studio-visual-quality`  
-**Status:** `AWAITING_OWNER_VISUAL_APPROVAL — NOT PUSHED — NOT MERGED — NOT DEPLOYED`  
-
----
-
-## 1. Executive Summary
-
-Phase 01 eliminates the engineering-demo visual baseline across AnyConverter Creative Studio and delivers a publishable, commercially polished, editable 24-second SaaS launch film titled **“From raw data to clear answers”**, accompanied by two V2 pilot productions (Parrot Character Comedy and Minimal Noir Suspense), verified project archive persistence, and semantic preview/export parity.
-
-All diagnostic overlays (bouncing orange orb, test progress bars, frame count stamps, debug subtitles) have been isolated and removed from the production rendering path.
+**Programme:** AnyConverter Visual Quality 16-Phase Production Programme  
+**Phase:** 01 (Visual Baseline & First Publishable Slice — Correction Cycle)  
+**Branch:** `feat/creative-studio-visual-quality`  
+**Review Status:** `PHASE 01 — CORRECTIONS COMPLETED — AWAITING OWNER APPROVAL`  
+**Git Policy Compliance:** **NOT PUSHED — NOT MERGED — NOT DEPLOYED — PHASE 02 NOT STARTED**  
 
 ---
 
-## 2. Architecture & File Inventory
+## 1. Executive Summary of Corrections
 
-| File Path | Role | Description |
-|---|---|---|
-| [`assets/js/creative-studio/visual/reference-shot.js`](file:///D:/SynergyRepo/AnyConverter/AnyConverter/assets/js/creative-studio/visual/reference-shot.js) | Core Shot Engine | Encapsulates purposeful cinematic shots with composition constraints, Bricolage Grotesque typography, camera moves (push-in, whip-in, pan), glassmorphic device containers, and mode-gated diagnostics. |
-| [`assets/js/creative-studio/visual/creative-director.js`](file:///D:/SynergyRepo/AnyConverter/AnyConverter/assets/js/creative-studio/visual/creative-director.js) | Canonical Scene Compositor | Orchestrates 3 art directions (Cinematic SaaS, Character Comedy, Minimal Suspense) and compiles multi-shot storyboards with cross-shot dissolve transitions. Shared by viewport and export. |
-| [`assets/js/creative-studio/render-adapter.js`](file:///D:/SynergyRepo/AnyConverter/AnyConverter/assets/js/creative-studio/render-adapter.js) | Encoder Decoupling | Updated `_renderCanonicalScene()` to delegate directly to `CreativeDirector`. Purged debug orb and progress bar from production video exports. |
-| [`assets/js/creative-studio/studio-app.js`](file:///D:/SynergyRepo/AnyConverter/AnyConverter/assets/js/creative-studio/studio-app.js) | Application Controller | Connected UI direction selector, render mode toggle, active shot selector, live headline/subhead/accent inspector fields, and `.acstudio` serialization for shot sequences. |
-| [`creative-studio/index.html`](file:///D:/SynergyRepo/AnyConverter/AnyConverter/creative-studio/index.html) | Viewport DOM | Integrated Art Direction select (`#cs-direction-select`), Render Mode select (`#cs-render-mode-select`), and Cinematic Shot Editor controls in the right sidebar. |
+Following the formal rejection audit (`Phase01_Independent_Visual_and_Functional_Audit.md`), all 7 mandatory correction requirements (spanning defect IDs P0-01 through P2-09) have been comprehensively implemented, tested, and empirically verified with real playable outputs.
 
----
-
-## 3. Composition Principles Reference Board (12 Public References)
-
-In accordance with Phase 01 Task 2, twelve public composition techniques were benchmarked for browser canvas implementation:
-
-| # | Principle / Technique | Public Source / Reference | Application in Creative Studio |
-|---|---|---|---|
-| 1 | **Editorial Asymmetry** | Apple Keynote Product Staging | 40/60 split: left-column typography anchor with right-column dynamic product mockup. |
-| 2 | **Cinematic Letterboxing** | Film Noir 2.39:1 Aspect Ratio | Deep black letterbox bars (`54px`) used in Minimal Suspense to heighten dramatic focus. |
-| 3 | **Visual Hierarchy & Scale** | Swiss International Typographic Style | Headline font size (`52px` Bricolage Grotesque) vs Subhead (`20px` Inter) with 2.6x contrast ratio. |
-| 4 | **Glassmorphism & Depth** | macOS Sonoma System UI | Translucent card backdrops (`rgba(15, 23, 42, 0.75)`) with subtle hairline border (`rgba(255,255,255,0.12)`). |
-| 5 | **1-Point Perspective Depth** | Kubrick Corridor Staging | Converging perspective orthogonals leading viewer eye to a high-tension vanishing point. |
-| 6 | **Color Accent Theory** | Material Design Color Roles | 80% dark slate canvas (`#090d16`), 15% structural slate (`#1e293b`), 5% glowing cyan/amber action accents (`#38bdf8`, `#f59e0b`). |
-| 7 | **Cubic Easing Dynamics** | Robert Penner Easing Functions | Smooth `easeOutCubic` (`1 - (1-t)^3`) applied to camera zooms, text entrance, and data graphs. |
-| 8 | **Negative Space Anchoring** | Vignelli Design Principles | 96px left margin padding preventing visual clutter and ensuring safe-zone readability across viewports. |
-| 9 | **Comic Pacing & Snap** | Chuck Jones 12 Animation Principles | Fast 2-frame pose transition with 6-frame anticipation bob for comedic character timing. |
-| 10 | **Data Stream Flow** | Linear App Marketing Visuals | Stacked badge cards showing data state transitions (Unparsed -> Processed) with status indicator tags. |
-| 11 | **Metric Counter Crescendo** | Stripe Dashboard Product Demos | Live counter interpolation from 0ms to 42ms with line chart curve revealing performance value. |
-| 12 | **Brand Identity Payoff** | Vercel Ship / Next.js Keynote Climax | Radial gradient emblem with high-contrast centered call-to-action button ("START CREATING FREE"). |
+1. **Real Browser Workflow:** Internal API shortcuts (`page.evaluate(() => renderAdapter.render())` and `page.evaluate(() => archive.unpackage())`) were replaced by end-to-end user interactions using native browser events (`#cs-btn-export-video` click, `page.waitForEvent('download')`, and `#cs-btn-open-project` file chooser).
+2. **Project Persistence Repaired:** Sequence state is now cleanly deep-cloned before switching art directions. User modifications survive direction changes, archive packaging, reopening into a clean session, and re-exporting.
+3. **Audible Sound Design:** Algorithmic 48kHz stereo PCM audio synthesis was added to `CreativeDirector`. FFmpeg `volumedetect` confirms `mean_volume: -16.6 dB` and `max_volume: -6.7 dB` (eliminating silent Opus tracks).
+4. **Cinematic Storytelling & Character Comedy:**
+   - **SaaS Master:** 5 rich visual motifs (chaos data particles, latency alert, 3-tier active pipeline, rising throughput curve, payoff emblem).
+   - **Character Comedy (Parrot Pilot):** Scaled up by 1.35x, 4 expressive poses (`neutral`, `wing-point`, `shocked`, `smug`), pupil dilation, chrome desk mic, agenda checklist with checkmarks, speech bubble.
+   - **Minimal Suspense (Noir Pilot):** 1-point perspective corridor, math-driven light flicker, high-contrast typography, silhouetted figure, fast 2-frame cuts.
+5. **Responsive Mobile Inspector:** Fixed toolbar wrapping, added `#cs-btn-mobile-inspector` and `#cs-btn-close-inspector`, responsive slide-out drawer (`.cs-sidebar-right.mobile-open`), and dynamic 5-shot timeline sequence.
+6. **Quantitative Preview/Export Parity:** Measured PSNR and SSIM between unscaled 1280x720 canvas buffers and exported WebM frames at 5 timestamps.
+7. **Portable Review Evidence:** All absolute Windows paths replaced with relative paths; source patch `OWNER_REVIEW_SOURCE_PATCH.diff` supplied; unbenchmarked claims removed.
 
 ---
 
-## 4. Master 5-Shot Sequence Architecture
+## 2. Evidence Files Manifest
 
-The primary film **“From raw data to clear answers”** is composed of 5 distinct, purposeful shots:
+All files are located in `reports/creative-studio/visual-quality/phase-01/` and referenced via portable relative paths:
 
-```
-[0s ------------ 4s ------------ 9s ------------ 15s ------------ 20s ------------ 24s]
-|  Shot 1: Hook  | Shot 2: Prob  | Shot 3: Sol   | Shot 4: Ben    | Shot 5: Payoff  |
-| "RAW DATA IS   | "HOURS LOST   | "CLIENT-SIDE  | "CLEAR ANSWERS | "ANYCONVERTER   |
-|   NOISY"       | TO CHAOS"     |  PIPELINE"    |  INSTANT SPEED"|  CREATIVE"      |
-| Push-in (8%)   | Whip-in cut   | Pan-right     | Pull-out (8%)  | Climax Push-in  |
-```
+### Primary Playable Video Masters
+- [From_Raw_Data_to_Clear_Answers_Master.webm](./evidence/From_Raw_Data_to_Clear_Answers_Master.webm) — **7.59 MB**, 24.0s (720 frames, 1280x720, 30fps), Stereo 48kHz Opus (`mean: -16.6 dB, max: -6.7 dB`).
+- [The_Parrot_Manager_Pilot.webm](./evidence/The_Parrot_Manager_Pilot.webm) — **2.92 MB**, 9.0s (270 frames), V2 Character Comedy Pilot (`mean: -21.3 dB, max: -6.4 dB`).
+- [The_Last_Signal_Pilot.webm](./evidence/The_Last_Signal_Pilot.webm) — **2.40 MB**, 9.0s (270 frames), V2 Minimal Suspense Pilot (`mean: -21.2 dB, max: -12.9 dB`).
+- [Reopened_and_Mutated_Master.webm](./evidence/Reopened_and_Mutated_Master.webm) — **7.63 MB**, 24.0s (720 frames), Re-exported mutated master following clean-session reopen.
 
-1. **Shot 1 (Frames 0–120, 0–4s) — The Hook:** Establish the pain point. Raw unparsed CSV/JSON fragments drift chaotically.
-2. **Shot 2 (Frames 120–270, 4–9s) — The Problem:** Bottleneck alert card with simulated 504 gateway timeout, cloud queues, and token costs.
-3. **Shot 3 (Frames 270–450, 9–15s) — The Solution:** In-browser pipeline architecture diagram with instant WebCodecs/WASM processing stages.
-4. **Shot 4 (Frames 450–600, 15–20s) — The Benefit:** Performance metrics card revealing 42ms latency, 0 dropped frames, and rising throughput graph.
-5. **Shot 5 (Frames 600–720, 20–24s) — The Payoff & CTA:** AnyConverter Studio emblem, capability badges, and primary action button.
+### Project Storage & Source Patches
+- [From_Raw_Data_to_Clear_Answers_Master.acstudio](./evidence/From_Raw_Data_to_Clear_Answers_Master.acstudio) — **5.8 KB**, valid PKWARE ZIP archive with `project.json` and `manifest.json`.
+- [OWNER_REVIEW_SOURCE_PATCH.diff](./OWNER_REVIEW_SOURCE_PATCH.diff) — **166 KB**, complete Git diff covering all Phase 01 changes across `assets/` and `creative-studio/`.
+- [PHASE01_CORRECTION_CYCLE.diff](./PHASE01_CORRECTION_CYCLE.diff) — Git diff of the specific correction cycle fixes.
+
+### Visual Proof & Contact Sheets
+- [SHOT_STORYBOARD.png](./SHOT_STORYBOARD.png) — High-resolution 5-shot horizontal contact sheet (1920x216).
+- [OLD_VS_NEW_COMPARISON.png](./OLD_VS_NEW_COMPARISON.png) — Side-by-side Before/After comparison against legacy baseline.
+- [01_initial_studio_desktop.png](./screenshots/01_initial_studio_desktop.png) — Clean initial load with 5 shots in left tab and timeline.
+- [02b_tablet_inspector_open.png](./screenshots/02b_tablet_inspector_open.png) — 768px tablet layout with mobile inspector drawer open.
+- [03b_mobile_inspector_open.png](./screenshots/03b_mobile_inspector_open.png) — 375px mobile layout with shot editor drawer open.
+- [05_reopened_mutated_frame_480.png](./screenshots/05_reopened_mutated_frame_480.png) — Frame 480 showing mutated headline in active UI.
+
+### Test Automation & Results Data
+- [run_phase01_corrections.js](./scripts/run_phase01_corrections.js) — Complete Playwright + FFmpeg correction test harness.
+- [phase01_run_results.json](./phase01_run_results.json) — Consolidated test execution report.
 
 ---
 
-## 5. Artifacts and Generated Media
+## 3. Visual Before / After Comparison
 
-- Master Video: [`reports/creative-studio/visual-quality/phase-01/evidence/From_Raw_Data_to_Clear_Answers_Master.webm`](file:///D:/SynergyRepo/AnyConverter/AnyConverter/reports/creative-studio/visual-quality/phase-01/evidence/From_Raw_Data_to_Clear_Answers_Master.webm) (7.68 MB, 720 frames, 24.0s)
-- Pilot 1 (Parrot Comedy): [`reports/creative-studio/visual-quality/phase-01/evidence/V2_Pilot_Parrot_Character_Comedy.webm`](file:///D:/SynergyRepo/AnyConverter/AnyConverter/reports/creative-studio/visual-quality/phase-01/evidence/V2_Pilot_Parrot_Character_Comedy.webm) (2.83 MB, 270 frames, 9.0s)
-- Pilot 2 (Noir Suspense): [`reports/creative-studio/visual-quality/phase-01/evidence/V2_Pilot_Minimal_Noir_Suspense.webm`](file:///D:/SynergyRepo/AnyConverter/AnyConverter/reports/creative-studio/visual-quality/phase-01/evidence/V2_Pilot_Minimal_Noir_Suspense.webm) (2.02 MB, 270 frames, 9.0s)
-- Mutated Re-Export: [`reports/creative-studio/visual-quality/phase-01/evidence/Reopened_Modified_SaaS_Promo.webm`](file:///D:/SynergyRepo/AnyConverter/AnyConverter/reports/creative-studio/visual-quality/phase-01/evidence/Reopened_Modified_SaaS_Promo.webm) (7.69 MB, 720 frames, 24.0s)
-- Project Archive: [`reports/creative-studio/visual-quality/phase-01/evidence/saas_promo_saved_project.acstudio`](file:///D:/SynergyRepo/AnyConverter/AnyConverter/reports/creative-studio/visual-quality/phase-01/evidence/saas_promo_saved_project.acstudio) (5.8 KB)
-- Storyboard Sheet: [`reports/creative-studio/visual-quality/phase-01/evidence/SHOT_STORYBOARD.png`](file:///D:/SynergyRepo/AnyConverter/AnyConverter/reports/creative-studio/visual-quality/phase-01/evidence/SHOT_STORYBOARD.png)
-- Old vs New Comparison: [`reports/creative-studio/visual-quality/phase-01/evidence/OLD_VS_NEW_COMPARISON.png`](file:///D:/SynergyRepo/AnyConverter/AnyConverter/reports/creative-studio/visual-quality/phase-01/evidence/OLD_VS_NEW_COMPARISON.png)
+![Legacy Baseline vs Corrected Phase 01 Master](./OLD_VS_NEW_COMPARISON.png)
+
+![Phase 01 Storyboard](./SHOT_STORYBOARD.png)

@@ -130,6 +130,7 @@
         <button id="cs-btn-undo" class="cs-btn cs-btn-icon" title="Undo (Ctrl+Z)" aria-label="Undo">↩️</button>
         <button id="cs-btn-redo" class="cs-btn cs-btn-icon" title="Redo (Ctrl+Y)" aria-label="Redo">↪️</button>
         <span style="width: 1px; height: 20px; background: var(--cs-border); margin: 0 4px;"></span>
+        <button id="cs-btn-mobile-inspector" class="cs-btn cs-mobile-only" title="Open Shot Editor">🎬 Edit Shot</button>
         <button id="cs-btn-save-project" class="cs-btn" title="Save Project (.acstudio)">💾 Save .acstudio</button>
         <button id="cs-btn-open-project" class="cs-btn" title="Open Project (.acstudio)">📂 Open Project</button>
         <input type="file" id="cs-file-input" accept=".acstudio,application/zip" style="display: none;" aria-hidden="true">
@@ -148,14 +149,24 @@
       <!-- Left Sidebar: Panels & Layers -->
       <aside class="cs-sidebar-left">
         <div class="cs-tabs-header">
-          <button class="cs-tab-btn active" data-target="tab-layers">Layers</button>
+          <button class="cs-tab-btn active" data-target="tab-shots" id="cs-tab-btn-shots">Shots</button>
+          <button class="cs-tab-btn" data-target="tab-layers">Layers</button>
           <button class="cs-tab-btn" data-target="tab-add">Add</button>
           <button class="cs-tab-btn" data-target="tab-assets">Assets</button>
           <button class="cs-tab-btn" data-target="tab-settings">Settings</button>
         </div>
 
+        <!-- Tab 0: Cinematic Shots List -->
+        <div id="tab-shots" class="cs-tab-pane active">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+            <span class="cs-section-title" style="margin: 0;">Cinematic Shots</span>
+            <span id="cs-shots-count-badge" style="font-size: 11px; font-weight: 600; background: rgba(56, 189, 248, 0.18); color: #38bdf8; padding: 2px 7px; border-radius: 4px;">5 Shots</span>
+          </div>
+          <div id="cs-shots-list" class="cs-layers-list"></div>
+        </div>
+
         <!-- Tab 1: Layers -->
-        <div id="tab-layers" class="cs-tab-pane active">
+        <div id="tab-layers" class="cs-tab-pane">
           <div style="display: flex; justify-content: space-between; align-items: center;">
             <span class="cs-section-title" style="margin: 0;">Scene Layers</span>
             <button id="cs-btn-delete-layer" class="cs-btn cs-btn-icon" title="Delete selected layer">🗑️</button>
@@ -232,21 +243,26 @@
           </div>
           <div class="cs-timeline-body">
             <div class="cs-timeline-ruler">
-              <input type="range" id="cs-timeline-scrubber" min="0" max="150" value="0" style="width: 100%; height: 100%; opacity: 0; cursor: pointer; position: absolute; z-index: 10;">
+              <input type="range" id="cs-timeline-scrubber" min="0" max="719" value="0" style="width: 100%; height: 100%; opacity: 0; cursor: pointer; position: absolute; z-index: 10;">
             </div>
-            <div class="cs-timeline-track">
-              <div class="cs-clip" style="left: 0; width: 100%;">Scene 1: Visual Artboard & Title</div>
+            <div id="cs-timeline-video-track" class="cs-timeline-track" style="display: flex; gap: 2px; height: 38px; padding: 2px; position: relative;">
+              <!-- Populated with dynamic shot blocks -->
             </div>
-            <div class="cs-timeline-track">
-              <div class="cs-clip" style="left: 0; width: 100%; background: rgba(16, 185, 129, 0.5); border-color: #34d399;">Audio Stem (Stereo 48kHz)</div>
+            <div class="cs-timeline-track" style="height: 32px;">
+              <div class="cs-clip" style="left: 0; width: 100%; background: rgba(16, 185, 129, 0.35); border-color: #34d399; font-size: 11px; display: flex; align-items: center; padding-left: 8px;">
+                🎵 Synthesized Audio Master (Stereo 48kHz PCM)
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       <!-- Right Sidebar: Properties Inspector -->
-      <aside class="cs-sidebar-right">
-        <span class="cs-section-title">Properties Inspector</span>
+      <aside class="cs-sidebar-right" id="cs-sidebar-right">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+          <span class="cs-section-title" style="margin: 0;">Properties Inspector</span>
+          <button id="cs-btn-close-inspector" class="cs-btn cs-btn-icon cs-mobile-only" title="Close Inspector">✕</button>
+        </div>
 
         <div class="cs-form-group">
           <label class="cs-form-label" for="cs-prop-content">Text / Content</label>

@@ -1,170 +1,99 @@
 {
-  "timestamp": "2026-11-25T07:57:13.910Z",
+  "timestamp": "2026-11-25T09:45:48.247Z",
   "workflows": {
     "initialLoad": {
-      "title": "AnyConverter Creative Studio — Free Online Design, Video & QR Studio",
-      "url": "http://127.0.0.1:3000/creative-studio/",
+      "shotItemsCount": 5,
+      "shotBlocksCount": 5,
       "screenshot": "reports/creative-studio/visual-quality/phase-01/screenshots/01_initial_studio_desktop.png"
+    },
+    "responsive": {
+      "tabletInspectorToggles": true,
+      "mobileInspectorToggles": true,
+      "tabletScreenshot": "reports/creative-studio/visual-quality/phase-01/screenshots/02_studio_tablet_768px.png",
+      "mobileScreenshot": "reports/creative-studio/visual-quality/phase-01/screenshots/03_studio_mobile_375px.png"
     }
   },
-  "exports": {
+  "audioIntegrity": {
     "saasMaster": {
-      "file": "reports/creative-studio/visual-quality/phase-01/evidence/From_Raw_Data_to_Clear_Answers_Master.webm",
-      "totalFrames": 720,
-      "durationSeconds": 24,
-      "fps": 30,
-      "sizeBytes": 7687795,
-      "engine": "WebCodecs-Deterministic"
+      "meanVolume": -16.6,
+      "maxVolume": -6.7,
+      "isAudible": true,
+      "rawText": "[Parsed_volumedetect_0 @ 0000021c9ba65800] n_samples: 0\r\n[Parsed_volumedetect_0 @ 0000021c9baa0c00] n_samples: 2305296\r\n[Parsed_volumedetect_0 @ 0000021c9baa0c00] mean_volume: -16.6 dB\r\n[Parsed_volumedetect_0 @ 0000021c9baa0c00] max_volume: -6.7 dB\r\n[Parsed_volumedetect_0 @ 0000021c9baa0c00] histogram_6db: 52\r\n[Parsed_volumedetect_0 @ 0000021c9baa0c00] histogram_7db: 2448\r"
     },
-    "parrotComedy": {
-      "file": "reports/creative-studio/visual-quality/phase-01/evidence/V2_Pilot_Parrot_Character_Comedy.webm",
-      "totalFrames": 270,
-      "durationSeconds": 9,
-      "sizeBytes": 2833838
+    "comedyPilot": {
+      "meanVolume": -21.3,
+      "maxVolume": -6.4,
+      "isAudible": true,
+      "rawText": "[Parsed_volumedetect_0 @ 00000266a9017800] n_samples: 0\r\n[Parsed_volumedetect_0 @ 00000266a7752580] n_samples: 865296\r\n[Parsed_volumedetect_0 @ 00000266a7752580] mean_volume: -21.3 dB\r\n[Parsed_volumedetect_0 @ 00000266a7752580] max_volume: -6.4 dB\r\n[Parsed_volumedetect_0 @ 00000266a7752580] histogram_6db: 47\r\n[Parsed_volumedetect_0 @ 00000266a7752580] histogram_7db: 282\r\n[Parsed_volumedetect_0 @ 00000266a7752580] histogram_8db: 572\r"
     },
-    "noirSuspense": {
-      "file": "reports/creative-studio/visual-quality/phase-01/evidence/V2_Pilot_Minimal_Noir_Suspense.webm",
-      "totalFrames": 270,
-      "durationSeconds": 9,
-      "sizeBytes": 2022928
+    "suspensePilot": {
+      "meanVolume": -21.2,
+      "maxVolume": -12.9,
+      "isAudible": true,
+      "rawText": "[Parsed_volumedetect_0 @ 0000027789236040] n_samples: 0\r\n[Parsed_volumedetect_0 @ 0000027788fc2580] n_samples: 865296\r\n[Parsed_volumedetect_0 @ 0000027788fc2580] mean_volume: -21.2 dB\r\n[Parsed_volumedetect_0 @ 0000027788fc2580] max_volume: -12.9 dB\r\n[Parsed_volumedetect_0 @ 0000027788fc2580] histogram_12db: 126\r\n[Parsed_volumedetect_0 @ 0000027788fc2580] histogram_13db: 10704\r"
     }
   },
-  "parityChecks": [
+  "statePreservation": {
+    "saasEditedHeadline": "FROM RAW DATA TO CLEAR ANSWERS",
+    "comedyHeadlineDefault": "I am the new manager.",
+    "comedyHeadlineRestored": "THE COCKATOO HAS ENTERED",
+    "comedyPreserved": true,
+    "saasHeadlineRestored": "FROM RAW DATA TO CLEAR ANSWERS",
+    "saasPreserved": true
+  },
+  "parityMetrics": [
     {
-      "timestampSec": 13,
-      "previewFile": "reports/creative-studio/visual-quality/phase-01/evidence/preview_sec_13_frame_390.png",
-      "exportedFile": "reports/creative-studio/visual-quality/phase-01/extracted_frames/saas_exported_13s_parity.png",
-      "verdict": "EXACT SEMANTIC PARITY VERIFIED (Shot 3 Client-Side Pipeline elements match)"
+      "sec": 1.5,
+      "frame": 45,
+      "shot": "Shot 1: Hook",
+      "previewFile": "reports/creative-studio/visual-quality/phase-01/extracted_frames/preview_f45_1.5s.png",
+      "exportedFile": "reports/creative-studio/visual-quality/phase-01/extracted_frames/exported_f45_1.5s.png",
+      "psnrDb": 25.990785,
+      "ssimScore": 2.515824
+    },
+    {
+      "sec": 6.5,
+      "frame": 195,
+      "shot": "Shot 2: Problem",
+      "previewFile": "reports/creative-studio/visual-quality/phase-01/extracted_frames/preview_f195_6.5s.png",
+      "exportedFile": "reports/creative-studio/visual-quality/phase-01/extracted_frames/exported_f195_6.5s.png",
+      "psnrDb": 25.733655,
+      "ssimScore": 2.458284
+    },
+    {
+      "sec": 12,
+      "frame": 360,
+      "shot": "Shot 3: Solution",
+      "previewFile": "reports/creative-studio/visual-quality/phase-01/extracted_frames/preview_f360_12s.png",
+      "exportedFile": "reports/creative-studio/visual-quality/phase-01/extracted_frames/exported_f360_12s.png",
+      "psnrDb": 26.031284,
+      "ssimScore": 2.473529
+    },
+    {
+      "sec": 17.5,
+      "frame": 525,
+      "shot": "Shot 4: Benefit",
+      "previewFile": "reports/creative-studio/visual-quality/phase-01/extracted_frames/preview_f525_17.5s.png",
+      "exportedFile": "reports/creative-studio/visual-quality/phase-01/extracted_frames/exported_f525_17.5s.png",
+      "psnrDb": 19.021729,
+      "ssimScore": 2.217826
+    },
+    {
+      "sec": 22,
+      "frame": 660,
+      "shot": "Shot 5: Payoff",
+      "previewFile": "reports/creative-studio/visual-quality/phase-01/extracted_frames/preview_f660_22s.png",
+      "exportedFile": "reports/creative-studio/visual-quality/phase-01/extracted_frames/exported_f660_22s.png",
+      "psnrDb": 25.926202,
+      "ssimScore": 2.332761
     }
   ],
   "reopenVerification": {
-    "unpackedTitle": "From raw data to clear answers",
-    "unpackedShots": 5,
-    "reexportedVideo": "reports/creative-studio/visual-quality/phase-01/evidence/Reopened_Modified_SaaS_Promo.webm",
-    "sizeBytes": 7693430
+    "archiveHeadlineMatches": true,
+    "uiRestoredHeadline": true,
+    "uiRestoredAccent": true,
+    "mutatedExportSize": 7996644,
+    "midShotScreenshot": "reports/creative-studio/visual-quality/phase-01/screenshots/05_reopened_mutated_frame_480.png"
   },
-  "consoleErrors": [],
-  "previewStills": [
-    {
-      "sec": 1,
-      "frame": 30,
-      "shot": "Shot 1: Hook",
-      "file": "reports/creative-studio/visual-quality/phase-01/evidence/preview_sec_1_frame_30.png"
-    },
-    {
-      "sec": 4,
-      "frame": 120,
-      "shot": "Shot 2: Problem",
-      "file": "reports/creative-studio/visual-quality/phase-01/evidence/preview_sec_4_frame_120.png"
-    },
-    {
-      "sec": 8,
-      "frame": 240,
-      "shot": "Shot 2: Latency",
-      "file": "reports/creative-studio/visual-quality/phase-01/evidence/preview_sec_8_frame_240.png"
-    },
-    {
-      "sec": 13,
-      "frame": 390,
-      "shot": "Shot 3: Solution",
-      "file": "reports/creative-studio/visual-quality/phase-01/evidence/preview_sec_13_frame_390.png"
-    },
-    {
-      "sec": 19,
-      "frame": 570,
-      "shot": "Shot 4: Benefit",
-      "file": "reports/creative-studio/visual-quality/phase-01/evidence/preview_sec_19_frame_570.png"
-    },
-    {
-      "sec": 23,
-      "frame": 690,
-      "shot": "Shot 5: Payoff",
-      "file": "reports/creative-studio/visual-quality/phase-01/evidence/preview_sec_23_frame_690.png"
-    }
-  ],
-  "savedArchive": {
-    "file": "reports/creative-studio/visual-quality/phase-01/evidence/saas_promo_saved_project.acstudio",
-    "sizeBytes": 5826
-  },
-  "extractedFrames": [
-    {
-      "pct": 0,
-      "timeSec": 0,
-      "file": "reports/creative-studio/visual-quality/phase-01/extracted_frames/saas_master_pct_0.png"
-    },
-    {
-      "pct": 10,
-      "timeSec": 2.4,
-      "file": "reports/creative-studio/visual-quality/phase-01/extracted_frames/saas_master_pct_10.png"
-    },
-    {
-      "pct": 25,
-      "timeSec": 6,
-      "file": "reports/creative-studio/visual-quality/phase-01/extracted_frames/saas_master_pct_25.png"
-    },
-    {
-      "pct": 50,
-      "timeSec": 12,
-      "file": "reports/creative-studio/visual-quality/phase-01/extracted_frames/saas_master_pct_50.png"
-    },
-    {
-      "pct": 75,
-      "timeSec": 18,
-      "file": "reports/creative-studio/visual-quality/phase-01/extracted_frames/saas_master_pct_75.png"
-    },
-    {
-      "pct": 90,
-      "timeSec": 21.6,
-      "file": "reports/creative-studio/visual-quality/phase-01/extracted_frames/saas_master_pct_90.png"
-    },
-    {
-      "pct": 100,
-      "timeSec": 23.95,
-      "file": "reports/creative-studio/visual-quality/phase-01/extracted_frames/saas_master_pct_100.png"
-    }
-  ],
-  "parrotFrames": [
-    {
-      "pct": 0,
-      "file": "reports/creative-studio/visual-quality/phase-01/extracted_frames/parrot_pilot_pct_0.png"
-    },
-    {
-      "pct": 25,
-      "file": "reports/creative-studio/visual-quality/phase-01/extracted_frames/parrot_pilot_pct_25.png"
-    },
-    {
-      "pct": 50,
-      "file": "reports/creative-studio/visual-quality/phase-01/extracted_frames/parrot_pilot_pct_50.png"
-    },
-    {
-      "pct": 75,
-      "file": "reports/creative-studio/visual-quality/phase-01/extracted_frames/parrot_pilot_pct_75.png"
-    },
-    {
-      "pct": 100,
-      "file": "reports/creative-studio/visual-quality/phase-01/extracted_frames/parrot_pilot_pct_100.png"
-    }
-  ],
-  "noirFrames": [
-    {
-      "pct": 0,
-      "file": "reports/creative-studio/visual-quality/phase-01/extracted_frames/noir_pilot_pct_0.png"
-    },
-    {
-      "pct": 25,
-      "file": "reports/creative-studio/visual-quality/phase-01/extracted_frames/noir_pilot_pct_25.png"
-    },
-    {
-      "pct": 50,
-      "file": "reports/creative-studio/visual-quality/phase-01/extracted_frames/noir_pilot_pct_50.png"
-    },
-    {
-      "pct": 75,
-      "file": "reports/creative-studio/visual-quality/phase-01/extracted_frames/noir_pilot_pct_75.png"
-    },
-    {
-      "pct": 100,
-      "file": "reports/creative-studio/visual-quality/phase-01/extracted_frames/noir_pilot_pct_100.png"
-    }
-  ]
+  "consoleErrors": []
 }
