@@ -3,12 +3,18 @@
  * Pure client-side browser integration with official Google Drive v3 REST API.
  * Follows GIS token model, minimal `drive.file` scope, zero-backend architecture (G-01),
  * zero AnyConverter storage costs (G-02/G-03), and zero persistent token leaks.
+ *
+ * Security & Browser Hardening:
+ * - Native Blob / Uint8Array / TextEncoder (zero Node Buffer dependency in browser).
+ * - Bearer Token Host Allowlist: Only www.googleapis.com / upload endpoints are permitted.
+ * - Redirect security: Authorization header is never forwarded to external hosts.
+ * - Public Client ID with explicit OWNER_CONFIG_REQUIRED status when unconfigured.
  */
 
-const crypto = typeof require !== 'undefined' ? require('crypto') : null;
-const { AcStudioArchive } = typeof require !== 'undefined'
-  ? require('./archive.js')
-  : (typeof window !== 'undefined' ? window : {});
+var nodeCrypto = typeof require !== 'undefined' ? require('crypto') : null;
+var AcStudioArchiveClass = typeof require !== 'undefined'
+  ? require('./archive.js').AcStudioArchive
+  : (typeof window !== 'undefined' ? window.AcStudioArchive : null);
 
 const DRIVE_CONSTANTS = {
   API_BASE: 'https://www.googleapis.com/drive/v3',
@@ -36,7 +42,7 @@ class DriveSyncAdapter {
     this._tokenClient = null;
     this._appFolderId = null;
     this._onTokenExpiredCallback = null;
-    this._archive = new AcStudioArchive();
+    this._archive = new (AcStudioArchiveClass || (typeof window !== 'undefined' && window.AcStudioArchive) || Object)();
   }
 
   /**
@@ -68,6 +74,13 @@ class DriveSyncAdapter {
       return { success: true, token: this._token };
     }
 
+    if (!this.clientId) {
+      const err = new Error('OWNER_CONFIG_REQUIRED: Google OAuth Client ID is not configured. The site owner must create an OAuth 2.0 Web Client ID in Google Cloud Console and set the Client ID in Studio settings.');
+      err.code = 'OWNER_CONFIG_REQUIRED';
+      err.status = 'OWNER_CONFIG_REQUIRED';
+      throw err;
+    }
+
     // Browser Google Identity Services (GIS) flow
     if (typeof window !== 'undefined' && window.google && window.google.accounts && window.google.accounts.oauth2) {
       return new Promise((resolve, reject) => {
@@ -93,7 +106,7 @@ class DriveSyncAdapter {
       });
     }
 
-    throw new Error('GIS_UNAVAILABLE: Google Identity Services library is not loaded or missing clientId');
+    throw new Error('GIS_UNAVAILABLE: Google Identity Services library is not loaded');
   }
 
   /**
@@ -138,6 +151,7 @@ class DriveSyncAdapter {
 
   /**
    * Execute an authorized request against Google Drive API
+   * Enforces security allowlist on destination host and path prefix.
    * @param {string} url - Full URL or relative endpoint
    * @param {Object} [options]
    * @returns {Promise<Response>}
@@ -147,12 +161,30 @@ class DriveSyncAdapter {
       throw new Error('TOKEN_ABSENT: No Google OAuth access token present in memory');
     }
 
+    const fullUrl = url.startsWith('http') ? url : `${DRIVE_CONSTANTS.API_BASE}${url}`;
+    let parsedUrl;
+    try {
+      parsedUrl = new URL(fullUrl);
+    } catch (e) {
+      throw new Error(`INVALID_DRIVE_URL: ${e.message}`);
+    }
+
+    // Security Hardening (B06): Only allow official Google Drive API endpoints
+    const ALLOWED_HOSTS = ['www.googleapis.com'];
+    if (parsedUrl.protocol !== 'https:' || !ALLOWED_HOSTS.includes(parsedUrl.hostname)) {
+      throw new Error(`SECURITY_VIOLATION: Google Drive request to unauthorized host/protocol: ${parsedUrl.origin}`);
+    }
+
+    const ALLOWED_PATH_PREFIXES = ['/drive/v3/', '/upload/drive/v3/'];
+    if (!ALLOWED_PATH_PREFIXES.some(prefix => parsedUrl.pathname.startsWith(prefix))) {
+      throw new Error(`SECURITY_VIOLATION: Google Drive request to unauthorized path: ${parsedUrl.pathname}`);
+    }
+
     const headers = Object.assign({}, options.headers || {}, {
       'Authorization': `Bearer ${this._token}`
     });
 
-    const fullUrl = url.startsWith('http') ? url : `${DRIVE_CONSTANTS.API_BASE}${url}`;
-    const response = await this.fetcher(fullUrl, Object.assign({}, options, { headers }));
+    const response = await this.fetcher(fullUrl, Object.assign({}, options, { headers, redirect: 'error' }));
 
     // Handle Token Expiry
     if (response.status === 401) {
@@ -253,11 +285,12 @@ class DriveSyncAdapter {
 
   /**
    * Create a file in Google Drive via multipart upload
+   * Browser-safe: uses TextEncoder, Blob, Uint8Array (no mandatory Buffer)
    * @param {Object} fileParams
    * @param {string} fileParams.name
    * @param {Array<string>} [fileParams.parents]
    * @param {string} fileParams.mimeType
-   * @param {string|Buffer|Uint8Array} fileParams.content
+   * @param {string|Buffer|Uint8Array|Blob} fileParams.content
    * @returns {Promise<Object>} Created file metadata
    */
   async createFile(fileParams) {
@@ -274,16 +307,31 @@ class DriveSyncAdapter {
     const metadataPart = `${delimiter}Content-Type: application/json; charset=UTF-8\r\n\r\n${JSON.stringify(metadata)}`;
     const mediaHeader = `${delimiter}Content-Type: ${mimeType}\r\n\r\n`;
 
-    let multipartBody;
+    const encoder = new TextEncoder();
+    const part1Bytes = encoder.encode(metadataPart + mediaHeader);
+    const part3Bytes = encoder.encode(closeDelimiter);
+
+    let contentBytes;
     if (typeof content === 'string') {
-      multipartBody = `${metadataPart}${mediaHeader}${content}${closeDelimiter}`;
+      contentBytes = encoder.encode(content);
+    } else if (content instanceof Uint8Array) {
+      contentBytes = content;
+    } else if (content instanceof ArrayBuffer) {
+      contentBytes = new Uint8Array(content);
+    } else if (typeof Blob !== 'undefined' && content instanceof Blob) {
+      // If Blob, read as ArrayBuffer or use Uint8Array
+      contentBytes = new Uint8Array(await content.arrayBuffer());
+    } else if (typeof Buffer !== 'undefined' && Buffer.isBuffer && Buffer.isBuffer(content)) {
+      contentBytes = new Uint8Array(content.buffer, content.byteOffset, content.byteLength);
     } else {
-      // Binary content (Buffer or Uint8Array)
-      const part1 = Buffer.from(metadataPart + mediaHeader, 'utf8');
-      const part2 = Buffer.isBuffer(content) ? content : Buffer.from(content);
-      const part3 = Buffer.from(closeDelimiter, 'utf8');
-      multipartBody = Buffer.concat([part1, part2, part3]);
+      contentBytes = encoder.encode(String(content));
     }
+
+    const totalLen = part1Bytes.length + contentBytes.length + part3Bytes.length;
+    const multipartBody = new Uint8Array(totalLen);
+    multipartBody.set(part1Bytes, 0);
+    multipartBody.set(contentBytes, part1Bytes.length);
+    multipartBody.set(part3Bytes, part1Bytes.length + contentBytes.length);
 
     const res = await this.authorizedFetch(`${DRIVE_CONSTANTS.UPLOAD_BASE}/files?uploadType=multipart&fields=id,name,mimeType,size,md5Checksum,modifiedTime`, {
       method: 'POST',
@@ -303,17 +351,29 @@ class DriveSyncAdapter {
 
   /**
    * Update existing file content and/or metadata
+   * Browser-safe: accepts String, Uint8Array, Blob, ArrayBuffer, or Buffer
    * @param {Object} updateParams
    * @param {string} updateParams.fileId
    * @param {string} [updateParams.mimeType='application/json']
-   * @param {string|Buffer} updateParams.content
+   * @param {string|Buffer|Uint8Array|Blob} updateParams.content
    * @returns {Promise<Object>} Updated file metadata
    */
   async updateFile(updateParams) {
     const { fileId, mimeType = DRIVE_CONSTANTS.MIME_JSON, content } = updateParams;
-    const body = Buffer.isBuffer(content) || typeof content === 'string'
-      ? content
-      : (typeof content === 'object' ? JSON.stringify(content, null, 2) : String(content));
+    let body;
+    if (typeof content === 'string') {
+      body = content;
+    } else if (content instanceof Uint8Array || content instanceof ArrayBuffer) {
+      body = content;
+    } else if (typeof Blob !== 'undefined' && content instanceof Blob) {
+      body = content;
+    } else if (typeof Buffer !== 'undefined' && Buffer.isBuffer && Buffer.isBuffer(content)) {
+      body = new Uint8Array(content.buffer, content.byteOffset, content.byteLength);
+    } else if (typeof content === 'object') {
+      body = JSON.stringify(content, null, 2);
+    } else {
+      body = String(content);
+    }
 
     const res = await this.authorizedFetch(`${DRIVE_CONSTANTS.UPLOAD_BASE}/files/${fileId}?uploadType=media&fields=id,name,mimeType,size,md5Checksum,modifiedTime`, {
       method: 'PATCH',
@@ -370,7 +430,10 @@ class DriveSyncAdapter {
         return await res.buffer();
       }
       const arrayBuf = await res.arrayBuffer();
-      return Buffer.from(arrayBuf);
+      if (typeof Buffer !== 'undefined' && Buffer.from) {
+        return Buffer.from(arrayBuf);
+      }
+      return new Uint8Array(arrayBuf);
     }
     if (responseType === 'blob') {
       return await res.blob();
@@ -430,13 +493,13 @@ class DriveSyncAdapter {
   }
 
   /**
-   * Distinct Action: Save Final Video (Flattened MP4 Export)
+   * Distinct Action: Save Final Video (Flattened MP4/WebM Export)
    * Does NOT replace the editable project; saves standalone viewable video file.
    * @param {Object} params
-   * @param {Buffer|Blob|Uint8Array} params.videoData - Flattened MP4 binary
+   * @param {Buffer|Blob|Uint8Array} params.videoData - Flattened video binary
    * @param {string} [params.filename]
    * @param {string} [params.remoteFolderId]
-   * @returns {Promise<{ success: boolean, fileId: string, name: string, isFinalVideo: true }>}
+   * @returns {Promise<{ success: boolean, fileId: string, name: string, sizeBytes: number, isFinalVideo: true }>}
    */
   async saveFinalVideo(params = {}) {
     const { videoData, filename = 'exported_video.mp4', remoteFolderId } = params;
@@ -445,20 +508,38 @@ class DriveSyncAdapter {
     }
 
     const folderId = remoteFolderId || (await this.findOrCreateAppFolder());
-    const buf = Buffer.isBuffer(videoData) ? videoData : Buffer.from(videoData);
+    let payload;
+    let sizeBytes = 0;
+
+    if (typeof Blob !== 'undefined' && videoData instanceof Blob) {
+      payload = videoData;
+      sizeBytes = videoData.size;
+    } else if (videoData instanceof Uint8Array || videoData instanceof ArrayBuffer) {
+      payload = videoData;
+      sizeBytes = videoData.byteLength;
+    } else if (typeof Buffer !== 'undefined' && Buffer.isBuffer && Buffer.isBuffer(videoData)) {
+      payload = new Uint8Array(videoData.buffer, videoData.byteOffset, videoData.byteLength);
+      sizeBytes = videoData.length;
+    } else {
+      const bytes = new TextEncoder().encode(String(videoData));
+      payload = bytes;
+      sizeBytes = bytes.length;
+    }
+
+    const mimeType = filename.endsWith('.webm') ? 'video/webm' : DRIVE_CONSTANTS.MIME_MP4;
 
     const resultFile = await this.createFile({
       name: filename,
       parents: [folderId],
-      mimeType: DRIVE_CONSTANTS.MIME_MP4,
-      content: buf
+      mimeType,
+      content: payload
     });
 
     return {
       success: true,
       fileId: resultFile.id,
       name: filename,
-      sizeBytes: buf.length,
+      sizeBytes: sizeBytes,
       isFinalVideo: true
     };
   }
@@ -487,7 +568,8 @@ class DriveSyncAdapter {
     }
 
     // Direct JSON file
-    const parsed = JSON.parse(contentBuffer.toString('utf8'));
+    const textDecoder = new TextDecoder('utf-8');
+    const parsed = JSON.parse(typeof contentBuffer === 'string' ? contentBuffer : textDecoder.decode(contentBuffer));
     return {
       projectDocument: parsed,
       binaryAssets: new Map(),
@@ -502,7 +584,8 @@ if (typeof module !== 'undefined' && module.exports) {
     DRIVE_CONSTANTS,
     DriveSyncAdapter
   };
-} else if (typeof window !== 'undefined') {
+}
+if (typeof window !== 'undefined') {
   window.DriveSyncAdapter = DriveSyncAdapter;
   window.DRIVE_CONSTANTS = DRIVE_CONSTANTS;
 }

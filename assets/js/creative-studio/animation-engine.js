@@ -119,3 +119,6 @@ class AnimationEngine {
 if (typeof module !== 'undefined' && module.exports) {
   module.exports = { AnimationEngine };
 }
+if (typeof window !== 'undefined') {
+  window.AnimationEngine = AnimationEngine;
+}

@@ -189,7 +189,11 @@ class MockDriveServer {
         let fileContent = Buffer.alloc(0);
 
         if (boundaryMatch) {
-          const bodyBuf = Buffer.isBuffer(rawBody) ? rawBody : Buffer.from(rawBody);
+          const bodyBuf = Buffer.isBuffer(rawBody)
+            ? rawBody
+            : (rawBody && typeof rawBody.arrayBuffer === 'function'
+                ? Buffer.from(await rawBody.arrayBuffer())
+                : Buffer.from(rawBody));
           const bodyStr = bodyBuf.toString('utf8');
           const metaJsonMatch = bodyStr.match(/Content-Type: application\/json[^\r\n]*\r\n\r\n(\{[\s\S]*?\})\r\n/);
           if (metaJsonMatch) {

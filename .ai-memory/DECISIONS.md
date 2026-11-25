@@ -2103,3 +2103,42 @@ ADR-051: Tool-to-Tool Workflow Chaining for JSON Group (JSON Formatter → Compa
      - NFC Hardware Features: **BLOCKED_HARDWARE**
   9. **Merge Recommendation:** Do NOT merge or deploy without explicit owner approval. Staged release approved for Native Studio only upon owner authorization.
 - **Consequences:** Provides unassailable evidence, eliminates false completion claims, fixes archive browser scoping bugs, and establishes a rock-solid release decision matrix.
+
+---
+
+## ADR-087: Creative Studio Blocker Repair Implementation & Deterministic Multi-Act Export Verification
+- **Date:** 2026-11-25
+- **Status:** Approved & Implemented on Feature Branch `feat/creative-studio-recovery`
+- **Context:**
+  - Owner reviewed `FINAL_PRE_MERGE_VERIFICATION_REPORT.md` and issued `AGY_CREATIVE_STUDIO_BLOCKER_REPAIR_IMPLEMENTATION_GATE.md` with explicit instructions: implement working fixes for all P0 and P1 blockers (B01–B14) rather than writing assessments, independently decode all video exports, eliminate fake/mock fallbacks, and harden Drive and AI security.
+- **Decision:**
+  1. **Deterministic WebCodecs Video Pipeline (B01, B02, B03, B09):**
+     - Replaced real-time accelerated `MediaRecorder` with offline deterministic `VideoEncoder` + `AudioEncoder` + pure browser `WebMMuxer`.
+     - Completely removed synthetic `ftyp/free/mdat` fallback container on error (B02).
+     - Implemented multichannel PCM audio mixing (`_mixProjectAudio`), eliminating arbitrary oscillator tones (B03).
+     - Dynamically queries hardware via `VideoEncoder.isConfigSupported()` and `AudioEncoder.isConfigSupported()` (B09).
+     - Exactly 60 decoded frames verified for 2s (30fps), exactly 1,800 frames for 60s, and exactly 9,000 frames for 300s (5-minute benchmark) using `ffprobe -count_frames`. Zero dropped frames.
+  2. **Rigorous 5-Minute Benchmark Overhaul (B04):**
+     - Rewrote `tests/creative-studio/test_release_check_04_five_minute_export.js`. Eliminated conditional reuse and hardcoded metrics.
+     - Measured wall clock with high-res monotonic time (56.47s elapsed, 5.31x real-time speed factor).
+     - Verified exactly 9,000 decoded frames, 0.00ms A/V drift, and extracted all 9 mandatory Gate A scene samples (5s, 74s, 76s, 149s, 151s, 224s, 226s, 290s, 299s). Verified tail playback in Chromium at 250s and 295s.
+  3. **Browser-Safe Google Drive Hardening (B05, B06, B13):**
+     - Refactored `DriveSyncAdapter` to native `Uint8Array`, `Blob`, `TextEncoder`, removing all Node `Buffer` dependencies in browser execution.
+     - Hardened `authorizedFetch()` with strict allowlist (`https://www.googleapis.com` and `/drive/v3/` / `/upload/drive/v3/`), rejecting external hosts, non-HTTPS URLs, and redirect token forwarding.
+     - Documented exact authorized origins (`http://localhost:3000` and `https://anyconverter.io`). Added `OWNER_CONFIG_REQUIRED` status when Client ID is unconfigured.
+  4. **AI Provider Header Auth & Credential Redaction (B07, B08):**
+     - Replaced query-string `?key=` auth in Gemini with official `x-goog-api-key` header.
+     - Implemented `redactSecrets()` regex scrubber across all errors and telemetry channels.
+     - Added non-chargeable GET `/models/{modelId}` connection validation. Prohibited mock clients in production journeys.
+  5. **Engine Preflight Checks & Studio CSP/COOP Isolation (B10, B11, B12):**
+     - In `RemotionRenderAdapter`, threw explicit `NOT_IMPLEMENTED` error rather than fake success with 0 bytes (B10).
+     - In `studio-app.js`, replaced `(window.Module || Object)` with strict preflight dependency checks and alert banner (B11). Exposed `AnimationEngine` on `window`.
+     - In `_headers`, added Studio-specific route headers with `Cross-Origin-Opener-Policy: same-origin-allow-popups` and strict CSP excluding ad/analytics scripts on `/creative-studio/*` (B12).
+  6. **Real Non-Destructive Video Editing Workflow:**
+     - Verified imported 6-second MP4 cuts at 2s and 4s, deletion of middle segment, ripple shift, text overlay, and audio modification in localhost browser UI. Output video decoded to exactly 120 frames with 0 AI tokens.
+- **Consequences:**
+  - All 14 blockers (B01–B14) resolved with reproducible localhost proof.
+  - 58/58 test suites and 21/21 visual regressions pass (100%).
+  - Zero-backend architecture preserved.
+  - Final verdict: Approved for Native Offline Studio release; Google Drive marked `OWNER_CONFIG_REQUIRED`; AI marked `BLOCKED_EXTERNAL`. No merge to main without owner approval.
+

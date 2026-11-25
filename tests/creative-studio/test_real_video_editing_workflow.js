@@ -1,7 +1,9 @@
 const { chromium } = require('playwright-core');
+const http = require('http');
 const fs = require('fs');
 const path = require('path');
 const { execSync } = require('child_process');
+const assert = require('assert');
 
 const FFPROBE_BIN = path.resolve('node_modules/ffprobe-static/bin/win32/x64/ffprobe.exe');
 const FFMPEG_BIN = path.resolve('node_modules/ffmpeg-static/ffmpeg.exe');
@@ -9,22 +11,49 @@ const INPUT_VIDEO = path.resolve('tests/creative-studio/fixtures/external_input_
 const EVIDENCE_DIR = path.resolve('reports/creative-studio/live-localhost-qa/recovery-evidence');
 
 (async () => {
-  console.log('=== REAL VIDEO EDITING WORKFLOW TEST ===');
+  console.log('================================================================');
+  console.log(' REAL VIDEO EDITING WORKFLOW TEST: CUT, SPLIT, RIPPLE & RENDER  ');
+  console.log('================================================================');
   console.log('Original Input Video:', INPUT_VIDEO);
   const inputStat = fs.statSync(INPUT_VIDEO);
   console.log(`Original Input Size: ${inputStat.size} bytes`);
+
+  const server = http.createServer((req, res) => {
+    let filePath = path.join(process.cwd(), req.url.split('?')[0]);
+    if (req.url === '/' || req.url === '/creative-studio/') {
+      filePath = path.join(process.cwd(), 'creative-studio/index.html');
+    }
+    if (fs.existsSync(filePath) && fs.statSync(filePath).isFile()) {
+      const ext = path.extname(filePath);
+      const mimeMap = {
+        '.html': 'text/html',
+        '.js': 'application/javascript',
+        '.css': 'text/css',
+        '.json': 'application/json',
+        '.svg': 'image/svg+xml',
+        '.webm': 'video/webm',
+        '.mp4': 'video/mp4'
+      };
+      res.writeHead(200, { 'Content-Type': mimeMap[ext] || 'application/octet-stream' });
+      res.end(fs.readFileSync(filePath));
+    } else {
+      res.writeHead(404);
+      res.end('Not found');
+    }
+  }).listen(3003);
 
   const browser = await chromium.launch({
     executablePath: 'C:\\Users\\abdul.sammad\\AppData\\Local\\ms-playwright\\chromium-1248\\chrome-win64\\chrome.exe',
     headless: true
   });
   const page = await browser.newPage();
+  await page.goto('http://localhost:3003/creative-studio/');
 
-  // Load scripts
-  const fixDurationJs = fs.readFileSync('assets/js/vendor/fix-webm-duration.js', 'utf8');
+  // Ensure WebCodecs muxer and timeline scripts
+  const webmMuxerJs = fs.readFileSync('assets/js/vendor/webm-muxer.js', 'utf8');
   const timelineJs = fs.readFileSync('assets/js/creative-studio/timeline-editor.js', 'utf8');
   const renderAdapterJs = fs.readFileSync('assets/js/creative-studio/render-adapter.js', 'utf8');
-  await page.addScriptTag({ content: fixDurationJs });
+  await page.addScriptTag({ content: webmMuxerJs });
   await page.addScriptTag({ content: timelineJs });
   await page.addScriptTag({ content: renderAdapterJs });
 
@@ -65,13 +94,10 @@ const EVIDENCE_DIR = path.resolve('reports/creative-studio/live-localhost-qa/rec
 
     // 4. Split clip at 2.0s (frame 60)
     const split1 = timeline.splitClip('track-v1', 'clip-orig', 60);
-    // Left piece: frames 0 to 60 (0s - 2s)
-    // Right piece: frames 60 to 180 (2s - 6s)
     const rightPieceId = split1.rightClip.clipId;
 
     // 5. Split right piece again at 4.0s (frame 120)
     const split2 = timeline.splitClip('track-v1', rightPieceId, 120);
-    // Section from 60 to 120 (2s - 4s) is targetClip in split2
     const middleSectionId = split2.leftClip.clipId;
     const endPieceId = split2.rightClip.clipId;
 
@@ -96,7 +122,7 @@ const EVIDENCE_DIR = path.resolve('reports/creative-studio/live-localhost-qa/rec
       y: 120
     };
 
-    // 9. Render composited edited video
+    // 9. Render composited edited video using deterministic WebCodecs
     const renderAdapter = new window.NativeCanvasRenderAdapter();
     const project = {
       title: 'Edited Video Project',
@@ -108,21 +134,16 @@ const EVIDENCE_DIR = path.resolve('reports/creative-studio/live-localhost-qa/rec
       fps: 30,
       audioFreq: 880, // Audio modified: added 880Hz chime
       onRenderFrame: async (ctx, f, timeSec, totalFrames, canvas) => {
-        // Determine which clip is active at this project frame f
         let activeSourceSec = 0;
         if (f < 60) {
-          // Part 1: source 0s to 2s
           activeSourceSec = f / fps;
         } else {
-          // Part 2: source 4s to 6s
           activeSourceSec = 4.0 + ((f - 60) / fps);
         }
 
-        // Seek video to active source timestamp
         video.currentTime = activeSourceSec;
         await new Promise(r => video.onseeked = r);
 
-        // Draw video frame to canvas
         ctx.drawImage(video, 0, 0, 1280, 720);
 
         // Draw inserted text banner
@@ -159,6 +180,8 @@ const EVIDENCE_DIR = path.resolve('reports/creative-studio/live-localhost-qa/rec
       clipDetails: track.clips.map(c => ({ id: c.clipId, start: c.destinationStartFrame, dur: c.durationFrames, srcIn: c.sourceInFrame, srcOut: c.sourceOutFrame })),
       success: renderRes.success,
       size: renderRes.blob ? renderRes.blob.size : 0,
+      engine: renderRes.engine,
+      frameAccurate: renderRes.frameAccurate,
       base64
     };
   }, videoDataUrl);
@@ -169,29 +192,23 @@ const EVIDENCE_DIR = path.resolve('reports/creative-studio/live-localhost-qa/rec
     clipsCount: editResult.clipsCount,
     clips: editResult.clipDetails,
     success: editResult.success,
-    size: editResult.size
+    size: editResult.size,
+    engine: editResult.engine,
+    frameAccurate: editResult.frameAccurate
   });
+
+  assert.ok(editResult.success, 'Video editing render failed');
+  assert.strictEqual(editResult.frameAccurate, true, 'Export was not frame-accurate');
 
   const exportBuffer = Buffer.from(editResult.base64.split(',')[1], 'base64');
   const exportPath = path.join(EVIDENCE_DIR, 'edited_video_export.webm');
   fs.writeFileSync(exportPath, exportBuffer);
   console.log(`Saved exported edited video to ${exportPath} (${exportBuffer.length} bytes)`);
 
-  // Independent Comparison using ffprobe
-  console.log('\n--- Independent Comparison: Original vs Exported Video ---');
-  const ffprobeOrig = JSON.parse(execSync(`"${FFPROBE_BIN}" -v error -show_entries format=duration,size:stream=codec_name,width,height -of json "${INPUT_VIDEO}"`).toString());
-  const ffprobeExport = JSON.parse(execSync(`"${FFPROBE_BIN}" -v error -show_entries format=duration,size:stream=codec_name,width,height -of json "${exportPath}"`).toString());
-
-  console.log('Original Video:', {
-    duration: ffprobeOrig.format.duration,
-    size: ffprobeOrig.format.size,
-    streams: ffprobeOrig.streams
-  });
-  console.log('Exported Edited Video:', {
-    duration: ffprobeExport.format.duration,
-    size: ffprobeExport.format.size,
-    streams: ffprobeExport.streams
-  });
+  // Count decoded frames: 4.0s @ 30fps = exactly 120 frames!
+  const decodedFrames = execSync(`"${FFPROBE_BIN}" -v error -count_frames -select_streams v:0 -show_entries stream=nb_read_frames -of default=noprint_wrappers=1:nokey=1 "${exportPath}"`).toString().trim();
+  console.log(`Decoded Frame Count: ${decodedFrames} (Expected: exactly 120 frames)`);
+  assert.strictEqual(parseInt(decodedFrames, 10), 120, `Edited video MUST have exactly 120 decoded frames! Got: ${decodedFrames}`);
 
   // Extract frames before cut (1.0s) and after cut (2.5s)
   const compareDir = path.join(EVIDENCE_DIR, 'edit_comparison_frames');
@@ -201,13 +218,7 @@ const EVIDENCE_DIR = path.resolve('reports/creative-studio/live-localhost-qa/rec
   execSync(`"${FFMPEG_BIN}" -v error -y -ss 00:00:02.500 -i "${exportPath}" -vframes 1 "${path.join(compareDir, 'exported_2.5s_after_cut.png')}"`);
   console.log(`Extracted comparison frames to ${compareDir}`);
 
-  // Audio frequency inspection: verify 880Hz audio tone in export vs 440Hz in original
-  console.log('\n--- Audio Comparison: Frequency Inspection ---');
-  const audioOrig = execSync(`"${FFPROBE_BIN}" -v error -select_streams a:0 -show_entries stream=codec_name,sample_rate,channels -of json "${INPUT_VIDEO}"`).toString();
-  const audioExport = execSync(`"${FFPROBE_BIN}" -v error -select_streams a:0 -show_entries stream=codec_name,sample_rate,channels -of json "${exportPath}"`).toString();
-  console.log('Original Audio Stream:', JSON.parse(audioOrig).streams[0]);
-  console.log('Exported Audio Stream:', JSON.parse(audioExport).streams[0]);
-
   await browser.close();
+  server.close();
   console.log('\n=== REAL VIDEO EDITING WORKFLOW TEST: ALL PASS ===');
 })();

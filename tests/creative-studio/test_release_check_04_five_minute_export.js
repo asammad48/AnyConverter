@@ -1,7 +1,9 @@
 const { chromium } = require('playwright-core');
+const http = require('http');
 const fs = require('fs');
 const path = require('path');
 const { execSync } = require('child_process');
+const assert = require('assert');
 
 const FFPROBE_BIN = path.resolve('node_modules/ffprobe-static/bin/win32/x64/ffprobe.exe');
 const FFMPEG_BIN = path.resolve('node_modules/ffmpeg-static/ffmpeg.exe');
@@ -10,20 +12,47 @@ const EVIDENCE_DIR = path.resolve('reports/creative-studio/live-localhost-qa/rec
 
 (async () => {
   console.log('================================================================');
-  console.log(' RELEASE CHECK 4: 5-MINUTE NATIVE VIDEO EXPORT & BENCHMARK      ');
+  console.log(' RELEASE CHECK 4: 5-MINUTE DETERMINISTIC 9,000-FRAME BENCHMARK  ');
   console.log('================================================================');
+
+  // Static HTTP server for localhost secure context
+  const server = http.createServer((req, res) => {
+    let filePath = path.join(process.cwd(), req.url.split('?')[0]);
+    if (req.url === '/' || req.url === '/creative-studio/') {
+      filePath = path.join(process.cwd(), 'creative-studio/index.html');
+    }
+    if (fs.existsSync(filePath) && fs.statSync(filePath).isFile()) {
+      const ext = path.extname(filePath);
+      const mimeMap = {
+        '.html': 'text/html',
+        '.js': 'application/javascript',
+        '.css': 'text/css',
+        '.json': 'application/json',
+        '.svg': 'image/svg+xml',
+        '.webm': 'video/webm',
+        '.mp4': 'video/mp4'
+      };
+      res.writeHead(200, { 'Content-Type': mimeMap[ext] || 'application/octet-stream' });
+      res.end(fs.readFileSync(filePath));
+    } else {
+      res.writeHead(404);
+      res.end('Not found');
+    }
+  }).listen(3002);
 
   const browser = await chromium.launch({
     executablePath: 'C:\\Users\\abdul.sammad\\AppData\\Local\\ms-playwright\\chromium-1248\\chrome-win64\\chrome.exe',
     headless: true,
     args: ['--enable-precise-memory-info', '--js-flags=--expose-gc']
   });
-  const page = await browser.newPage();
 
-  // Inject scripts
-  const fixDurationJs = fs.readFileSync('assets/js/vendor/fix-webm-duration.js', 'utf8');
+  const page = await browser.newPage();
+  await page.goto('http://localhost:3002/creative-studio/');
+
+  // Ensure WebMMuxer and NativeCanvasRenderAdapter scripts are loaded
+  const webmMuxerJs = fs.readFileSync('assets/js/vendor/webm-muxer.js', 'utf8');
   const renderAdapterJs = fs.readFileSync('assets/js/creative-studio/render-adapter.js', 'utf8');
-  await page.addScriptTag({ content: fixDurationJs });
+  await page.addScriptTag({ content: webmMuxerJs });
   await page.addScriptTag({ content: renderAdapterJs });
 
   // Baseline memory before export
@@ -38,19 +67,22 @@ const EVIDENCE_DIR = path.resolve('reports/creative-studio/live-localhost-qa/rec
   const nodeMemBefore = process.memoryUsage();
   console.log('Initial Memory State:');
   console.log('  Node Heap Used:', (nodeMemBefore.heapUsed / (1024 * 1024)).toFixed(2), 'MB');
-  if (memBefore) console.log('  Browser JS Heap Used:', (memBefore.usedJSHeap / (1024 * 1024)).toFixed(2), 'MB');
+  if (memBefore) {
+    console.log('  Browser JS Heap Used:', (memBefore.usedJSHeap / (1024 * 1024)).toFixed(2), 'MB');
+  }
 
+  // Multi-Scene 5-minute project: 4 acts x 75 seconds = 300.0s = 9,000 frames
   console.log('\nConfiguring 5-Minute (300.0s @ 30fps = 9,000 frames) multi-scene project...');
   const project = {
     schemaVersion: '1.0.0',
-    projectId: 'proj-5min-benchmark',
+    projectId: 'proj-5min-deterministic-benchmark',
     title: 'AnyConverter 5-Minute Multi-Scene Production Video',
     canvas: { width: 1280, height: 720, fpsNumerator: 30, fpsDenominator: 1, background: '#0a0e1a' },
     scenes: [
       {
         id: 'scene-act-1',
         name: 'Act 1: Studio Architecture & Core Capabilities',
-        durationFrames: 2250, // 75 seconds
+        durationFrames: 2250, // 0s - 75s
         background: '#090d16',
         layers: [
           { type: 'text', content: 'ACT 1: Zero-Backend Video Engine', fontSize: 44, color: '#38bdf8', transform: { x: 80, y: 180 } },
@@ -60,7 +92,7 @@ const EVIDENCE_DIR = path.resolve('reports/creative-studio/live-localhost-qa/rec
       {
         id: 'scene-act-2',
         name: 'Act 2: Real-Time Vector & 2D Animation',
-        durationFrames: 2250, // 75 seconds
+        durationFrames: 2250, // 75s - 150s
         background: '#0f172a',
         layers: [
           { type: 'text', content: 'ACT 2: High-Performance Canvas Rendering', fontSize: 44, color: '#a855f7', transform: { x: 80, y: 180 } },
@@ -70,7 +102,7 @@ const EVIDENCE_DIR = path.resolve('reports/creative-studio/live-localhost-qa/rec
       {
         id: 'scene-act-3',
         name: 'Act 3: Audio Stems & Timeline Orchestration',
-        durationFrames: 2250, // 75 seconds
+        durationFrames: 2250, // 150s - 225s
         background: '#064e3b',
         layers: [
           { type: 'text', content: 'ACT 3: Stereo 48kHz Audio Synchronization', fontSize: 44, color: '#34d399', transform: { x: 80, y: 180 } },
@@ -80,7 +112,7 @@ const EVIDENCE_DIR = path.resolve('reports/creative-studio/live-localhost-qa/rec
       {
         id: 'scene-act-4',
         name: 'Act 4: 9,000 Frame Stress & Memory Benchmark',
-        durationFrames: 2250, // 75 seconds
+        durationFrames: 2250, // 225s - 300s
         background: '#1e1b4b',
         layers: [
           { type: 'text', content: 'ACT 4: 5-Minute Production Stress Gate', fontSize: 44, color: '#fbbf24', transform: { x: 80, y: 180 } },
@@ -90,98 +122,88 @@ const EVIDENCE_DIR = path.resolve('reports/creative-studio/live-localhost-qa/rec
     ]
   };
 
-  let renderResult = null;
-  let videoBuffer = null;
-  let exportElapsedSec = '70.32';
-  let nodeMemAfter = { rss: 111.07 * 1024 * 1024, heapUsed: 91.03 * 1024 * 1024 };
+  console.log('Beginning deterministic 9,000-frame render in browser...');
+  const startHrTime = process.hrtime.bigint();
 
-  if (fs.existsSync(OUTPUT_VIDEO) && fs.statSync(OUTPUT_VIDEO).size > 15000000 && !process.argv.includes('--force')) {
-    console.log(`Found existing 5-minute benchmark video: ${OUTPUT_VIDEO} (${fs.statSync(OUTPUT_VIDEO).size} bytes)`);
-    videoBuffer = fs.readFileSync(OUTPUT_VIDEO);
-    renderResult = {
-      success: true,
-      size: videoBuffer.length,
-      mimeType: 'video/webm;codecs=vp8',
-      durationSeconds: 300,
-      totalFrames: 9000,
-      memAfter: { usedJSHeap: 90.85 * 1024 * 1024, totalJSHeap: 120 * 1024 * 1024 },
-      memSnapshots: [
-        { frame: 0, usedJSHeap: 1.87 * 1024 * 1024, percent: 0 },
-        { frame: 1500, usedJSHeap: 1.92 * 1024 * 1024, percent: 17 },
-        { frame: 3000, usedJSHeap: 2.21 * 1024 * 1024, percent: 33 },
-        { frame: 4500, usedJSHeap: 2.44 * 1024 * 1024, percent: 50 },
-        { frame: 6000, usedJSHeap: 1.61 * 1024 * 1024, percent: 67 },
-        { frame: 7500, usedJSHeap: 1.80 * 1024 * 1024, percent: 83 }
-      ]
-    };
-  } else {
-    console.log('Beginning 5-minute video render in browser...');
-    const startWallClock = Date.now();
+  const renderResult = await page.evaluate(async (proj) => {
+    const adapter = new window.NativeCanvasRenderAdapter();
+    const memSnapshots = [];
 
-    renderResult = await page.evaluate(async (proj) => {
-      const adapter = new window.NativeCanvasRenderAdapter();
-      const memSnapshots = [];
-
-      const onProgress = (prog) => {
-        if (prog.frame % 1500 === 0 && window.performance && window.performance.memory) {
-          memSnapshots.push({
-            frame: prog.frame,
-            usedJSHeap: window.performance.memory.usedJSHeapSize,
-            percent: prog.percent
-          });
-        }
-      };
-
-      const res = await adapter.render(proj, {
-        durationSeconds: 300,
-        fps: 30,
-        fastRender: true,
-        audioFreq: 440,
-        videoBitsPerSecond: 3000000
-      }, onProgress);
-
-      const memAfter = window.performance && window.performance.memory
-        ? {
-            usedJSHeap: window.performance.memory.usedJSHeapSize,
-            totalJSHeap: window.performance.memory.totalJSHeapSize
-          }
-        : null;
-
-      let base64 = null;
-      if (res.blob) {
-        const reader = new FileReader();
-        base64 = await new Promise(r => {
-          reader.onloadend = () => r(reader.result);
-          reader.readAsDataURL(res.blob);
+    const onProgress = (prog) => {
+      if (prog.frame % 1500 === 0 && window.performance && window.performance.memory) {
+        memSnapshots.push({
+          frame: prog.frame,
+          usedJSHeap: window.performance.memory.usedJSHeapSize,
+          percent: prog.percent
         });
       }
+    };
 
-      return {
-        success: res.success,
-        size: res.blob ? res.blob.size : 0,
-        mimeType: res.mimeType,
-        totalFrames: res.totalFrames,
-        durationSeconds: res.durationSeconds,
-        memSnapshots,
-        memAfter,
-        base64
-      };
-    }, project);
+    const res = await adapter.render(proj, {
+      durationSeconds: 300,
+      fps: 30,
+      audioFreq: 440,
+      videoBitsPerSecond: 2500000
+    }, onProgress);
 
-    const endWallClock = Date.now();
-    exportElapsedSec = ((endWallClock - startWallClock) / 1000).toFixed(2);
-    videoBuffer = Buffer.from(renderResult.base64.split(',')[1], 'base64');
-    fs.writeFileSync(OUTPUT_VIDEO, videoBuffer);
-    nodeMemAfter = process.memoryUsage();
-  }
-  console.log('\n--- MEMORY CONSUMPTION METRICS ---');
+    const memAfter = window.performance && window.performance.memory
+      ? {
+          usedJSHeap: window.performance.memory.usedJSHeapSize,
+          totalJSHeap: window.performance.memory.totalJSHeapSize
+        }
+      : null;
+
+    let base64 = null;
+    if (res.blob) {
+      const reader = new FileReader();
+      base64 = await new Promise(r => {
+        reader.onloadend = () => r(reader.result);
+        reader.readAsDataURL(res.blob);
+      });
+    }
+
+    return {
+      success: res.success,
+      size: res.blob ? res.blob.size : 0,
+      mimeType: res.mimeType,
+      totalFrames: res.totalFrames,
+      durationSeconds: res.durationSeconds,
+      engine: res.engine,
+      frameAccurate: res.frameAccurate,
+      memSnapshots,
+      memAfter,
+      base64
+    };
+  }, project);
+
+  const endHrTime = process.hrtime.bigint();
+  const exportElapsedSec = (Number(endHrTime - startHrTime) / 1e9).toFixed(2);
+  const nodeMemAfter = process.memoryUsage();
+
+  console.log(`Render finished in ${exportElapsedSec}s:`, {
+    success: renderResult.success,
+    size: renderResult.size,
+    totalFrames: renderResult.totalFrames,
+    engine: renderResult.engine
+  });
+
+  assert.ok(renderResult.success, 'Deterministic 5-minute render failed!');
+  assert.strictEqual(renderResult.frameAccurate, true, 'Export was not frame-accurate!');
+
+  // Save new unique output video
+  const videoBuffer = Buffer.from(renderResult.base64.split(',')[1], 'base64');
+  fs.writeFileSync(OUTPUT_VIDEO, videoBuffer);
+  console.log(`Saved fresh benchmark video: ${OUTPUT_VIDEO} (${videoBuffer.length} bytes)`);
+
+  console.log('\n--- MEASURED MEMORY METRICS ---');
   console.log('  Node.js Peak RSS:', (nodeMemAfter.rss / (1024 * 1024)).toFixed(2), 'MB');
   console.log('  Node.js Heap Used:', (nodeMemAfter.heapUsed / (1024 * 1024)).toFixed(2), 'MB');
   if (renderResult.memAfter) {
-    console.log('  Browser JS Heap Peak:', (renderResult.memAfter.usedJSHeap / (1024 * 1024)).toFixed(2), 'MB');
+    console.log('  Browser JS Heap Used:', (renderResult.memAfter.usedJSHeap / (1024 * 1024)).toFixed(2), 'MB');
+    console.log('  Browser JS Heap Total:', (renderResult.memAfter.totalJSHeap / (1024 * 1024)).toFixed(2), 'MB');
   }
   if (renderResult.memSnapshots && renderResult.memSnapshots.length > 0) {
-    console.log('  Browser Memory Progression during render:');
+    console.log('  Browser Memory Progression during 9,000 frames:');
     for (const snap of renderResult.memSnapshots) {
       console.log(`    Frame ${snap.frame} (${snap.percent}%): ${(snap.usedJSHeap / (1024 * 1024)).toFixed(2)} MB`);
     }
@@ -196,8 +218,17 @@ const EVIDENCE_DIR = path.resolve('reports/creative-studio/live-localhost-qa/rec
 
   const videoStream = probeData.streams.find(s => s.codec_type === 'video');
   const audioStream = probeData.streams.find(s => s.codec_type === 'audio');
-
   const formatDuration = parseFloat(probeData.format.duration);
+
+  // Exact Decoded Frame Count Assertion (Mandatory Gate A requirement: exactly 9,000 frames)
+  console.log('\n--- COUNTING DECODED VIDEO FRAMES (ffprobe -count_frames) ---');
+  const frameCountCmd = `"${FFPROBE_BIN}" -v error -count_frames -select_streams v:0 -show_entries stream=nb_read_frames -of default=noprint_wrappers=1:nokey=1 "${OUTPUT_VIDEO}"`;
+  const decodedFrameCountStr = execSync(frameCountCmd).toString().trim();
+  const decodedFrameCount = parseInt(decodedFrameCountStr, 10);
+  console.log(`Decoded Frame Count: ${decodedFrameCount} (Expected: exactly 9000 frames)`);
+  assert.strictEqual(decodedFrameCount, 9000, `Gate A Violation: Expected 9000 decoded frames, got ${decodedFrameCount}`);
+
+  // Audio / Video Synchronization
   const videoDuration = videoStream && videoStream.duration ? parseFloat(videoStream.duration) : formatDuration;
   const audioDuration = audioStream && audioStream.duration ? parseFloat(audioStream.duration) : formatDuration;
   const driftMs = Math.abs(videoDuration - audioDuration) * 1000;
@@ -209,87 +240,78 @@ const EVIDENCE_DIR = path.resolve('reports/creative-studio/live-localhost-qa/rec
   console.log(`  Audio Sample Rate: ${audioStream ? audioStream.sample_rate : 'N/A'} Hz`);
   console.log(`  Audio Channels: ${audioStream ? audioStream.channels : 'N/A'} (Stereo)`);
   console.log(`  Measured A/V Drift: ${driftMs.toFixed(2)} ms`);
-  console.log(`  A/V Sync Status: ${driftMs < 500 ? 'IN-SYNC (PASS)' : 'DRIFTED'}`);
+  console.log(`  A/V Sync Status: ${driftMs < 50 ? 'IN-SYNC (PASS)' : 'DRIFTED'}`);
 
-  // Extract sample frames across the recorded stream to verify scene transitions
-  console.log('\n--- EXTRACTING SCENE FRAMES (Act 1, Act 2, Act 3, Act 4) ---');
+  // Extract Gate A Mandatory Sample Frames: 5s, 74s, 76s, 149s, 151s, 224s, 226s, 290s, 299s
+  console.log('\n--- EXTRACTING MANDATORY GATE A SCENE SAMPLES (5s, 74s, 76s, 149s, 151s, 224s, 226s, 290s, 299s) ---');
   const framesDir = path.join(EVIDENCE_DIR, 'frames_5min');
   if (!fs.existsSync(framesDir)) fs.mkdirSync(framesDir, { recursive: true });
 
-  // Sample frames across recorded stream packets
-  const timestamps = [5, 15, 30, 50];
-  for (let i = 0; i < timestamps.length; i++) {
-    const ts = timestamps[i];
-    const outPng = path.join(framesDir, `scene_act_${i+1}_${ts}s.png`);
-    execSync(`"${FFMPEG_BIN}" -v error -y -i "${OUTPUT_VIDEO}" -ss ${ts} -vframes 1 "${outPng}"`);
+  const gateATimestamps = [5, 74, 76, 149, 151, 224, 226, 290, 299];
+  for (const ts of gateATimestamps) {
+    let actNum = 1;
+    if (ts >= 225) actNum = 4;
+    else if (ts >= 150) actNum = 3;
+    else if (ts >= 75) actNum = 2;
+
+    const outPng = path.join(framesDir, `scene_act_${actNum}_${ts}s.png`);
+    execSync(`"${FFMPEG_BIN}" -v error -y -ss ${ts} -i "${OUTPUT_VIDEO}" -vframes 1 "${outPng}"`);
     const pngStat = fs.statSync(outPng);
-    console.log(`  ✓ Extracted Act ${i+1} at ${ts}s: ${outPng} (${pngStat.size} bytes)`);
+    console.log(`  ✓ Extracted Act ${actNum} at ${ts}s: ${outPng} (${pngStat.size} bytes)`);
   }
 
-  // Playback in Chromium: seek to 25s and verify playhead advances
-  console.log('\n--- VERIFYING PLAYBACK IN CHROMIUM ---');
-  const http = require('http');
-  const server = http.createServer((req, res) => {
-    res.writeHead(200, {
-      'Content-Type': 'video/webm',
-      'Content-Length': fs.statSync(OUTPUT_VIDEO).size,
-      'Access-Control-Allow-Origin': '*'
-    });
-    fs.createReadStream(OUTPUT_VIDEO).pipe(res);
-  });
-  await new Promise(r => server.listen(3005, r));
-
-  const playbackCheck = await page.evaluate(async () => {
+  // Playback in Chromium: verify playback near end (at 250s and 295s)
+  console.log('\n--- VERIFYING PLAYBACK IN CHROMIUM AT 250s AND 295s ---');
+  const playbackCheck = await page.evaluate(async (videoUrl) => {
     const v = document.createElement('video');
-    v.src = 'http://localhost:3005/';
+    v.src = videoUrl;
     v.muted = true;
     document.body.appendChild(v);
 
-    return new Promise((resolve) => {
-      v.onloadedmetadata = async () => {
-        try {
-          // Seek to 25s
-          v.currentTime = 25.0;
-          await new Promise(r => v.onseeked = r);
-          
+    const seekAndPlay = async (seekSec) => {
+      return new Promise((resolve) => {
+        v.currentTime = seekSec;
+        v.onseeked = () => {
           let ticks = 0;
           v.ontimeupdate = () => {
             ticks++;
-            if (ticks >= 3 || v.currentTime > 25.2) {
+            if (ticks >= 3 || v.currentTime > seekSec + 0.2) {
               v.pause();
-              resolve({
-                playbackWorking: true,
-                duration: v.duration,
-                currentTime: v.currentTime,
-                ticks,
-                videoWidth: v.videoWidth,
-                videoHeight: v.videoHeight
-              });
+              resolve({ ok: true, currentTime: v.currentTime, ticks });
             }
           };
-          v.play().catch(e => resolve({ playbackWorking: false, error: e.message }));
-          setTimeout(() => resolve({ playbackWorking: ticks > 0, duration: v.duration, currentTime: v.currentTime, ticks }), 5000);
-        } catch(e) {
-          resolve({ playbackWorking: false, error: e.message });
-        }
-      };
-      v.onerror = (e) => resolve({ playbackWorking: false, error: 'Video load error: ' + (v.error ? v.error.message : '') });
-      setTimeout(() => resolve({ playbackWorking: false, error: 'Metadata load timeout' }), 8000);
-    });
-  });
+          v.play().catch(e => resolve({ ok: false, error: e.message }));
+          setTimeout(() => resolve({ ok: ticks > 0, currentTime: v.currentTime, ticks }), 4000);
+        };
+      });
+    };
 
-  server.close();
+    await new Promise(r => { v.onloadedmetadata = r; });
+    const check250 = await seekAndPlay(250.0);
+    const check295 = await seekAndPlay(295.0);
 
-  console.log('Playback verification result at t=150s:', playbackCheck);
+    return {
+      duration: v.duration,
+      check250,
+      check295
+    };
+  }, `http://localhost:3002/reports/creative-studio/live-localhost-qa/recovery-evidence/live_5minute_benchmark.webm`);
+
+  console.log('Playback Verification at 250s:', playbackCheck.check250);
+  console.log('Playback Verification at 295s:', playbackCheck.check295);
+  assert.ok(playbackCheck.check250.ok, 'Playback failed at 250s');
+  assert.ok(playbackCheck.check295.ok, 'Playback failed at 295s');
 
   await browser.close();
+  server.close();
 
   // Summary Metrics Table
   console.log('\n================================================================');
   console.log('           5-MINUTE VIDEO EXPORT BENCHMARK REPORT               ');
   console.log('================================================================');
   console.log(`Export Wall-Clock Time   : ${exportElapsedSec} seconds`);
-  console.log(`Nominal Duration         : 300.000 seconds (5 minutes)`);
+  console.log(`Nominal Duration         : ${formatDuration.toFixed(3)} seconds (5 minutes)`);
+  console.log(`Decoded Frame Count      : ${decodedFrameCount} / 9000 (100% complete)`);
   console.log(`Effective Speed Factor   : ${(300 / parseFloat(exportElapsedSec)).toFixed(2)}x real-time`);
   console.log(`Peak Memory (Node RSS)   : ${(nodeMemAfter.rss / (1024 * 1024)).toFixed(2)} MB`);
   if (renderResult.memAfter) {
@@ -300,9 +322,7 @@ const EVIDENCE_DIR = path.resolve('reports/creative-studio/live-localhost-qa/rec
   console.log(`Audio/Video Drift        : ${driftMs.toFixed(2)} ms (Zero perceptual drift)`);
   const fileSizeMb = (videoBuffer.length / (1024 * 1024)).toFixed(2);
   console.log(`Final File Size          : ${fileSizeMb} MB (${videoBuffer.length} bytes)`);
-  console.log(`Playback Verified        : ${playbackCheck.playbackWorking ? 'PASS' : 'FAIL'}`);
+  console.log(`Playback (250s & 295s)   : PASS`);
+  console.log(`Verdict                  : 100% DETERMINISTIC PASS (GATE A & GATE B CLEARED)`);
   console.log('================================================================');
-
-  const passed = renderResult.success && formatDuration >= 299 && playbackCheck.playbackWorking;
-  if (!passed) process.exit(1);
 })();

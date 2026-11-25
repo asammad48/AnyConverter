@@ -2,10 +2,13 @@
  * AnyConverter Creative Studio — AI Provider Adapter Interface & Adapters
  * File 09 Implementation: Pluggable Browser Adapters for BYOK AI Generation
  *
- * Core Principles:
+ * Core Security & Operational Principles:
  * - Strict AiProviderAdapter contract.
  * - Explicit user pre-approval required before submission (no unapproved spending).
- * - Direct client-side invocation for browser-authorized APIs.
+ * - Header-based authentication (x-goog-api-key / Bearer) — ZERO API keys in URLs/query params (B07).
+ * - Rigorous credential redaction in all telemetry, logs, and error messages (B07).
+ * - Genuine authenticated read-only connection validation without consuming paid inference (B08).
+ * - Production journeys strictly reject mock clients (B08).
  * - AbortController cancellation support.
  */
 
@@ -18,6 +21,22 @@
   }
 }(typeof globalThis !== 'undefined' ? globalThis : this, function () {
   'use strict';
+
+  /**
+   * Helper to redact sensitive API keys from strings and error messages
+   */
+  function redactSecrets(message, secret) {
+    if (!message) return '';
+    let sanitized = String(message);
+    if (secret && typeof secret === 'string' && secret.length > 4) {
+      sanitized = sanitized.split(secret).join('[REDACTED_API_KEY]');
+    }
+    // Pattern match standard Google / HF / OpenAI keys
+    sanitized = sanitized.replace(/AIza[0-9A-Za-z-_]{35}/g, '[REDACTED_GEMINI_KEY]');
+    sanitized = sanitized.replace(/hf_[0-9A-Za-z]{30,}/g, '[REDACTED_HF_TOKEN]');
+    sanitized = sanitized.replace(/sk-[0-9A-Za-z]{30,}/g, '[REDACTED_API_KEY]');
+    return sanitized;
+  }
 
   /**
    * Base AiProviderAdapter Contract
@@ -106,6 +125,7 @@
 
   /**
    * Google Gemini / Imagen 3 Adapter
+   * Uses header-based authorization (`x-goog-api-key`) — NEVER URL query string (B07).
    */
   class GeminiProviderAdapter extends BaseAiProviderAdapter {
     constructor(options = {}) {
@@ -129,14 +149,52 @@
       if (!this.apiKey) {
         return { connected: false, message: 'API key required' };
       }
-      return { connected: true, providerId: this.id };
+      const validation = await this.validateConnection();
+      return { connected: validation.valid, providerId: this.id, status: validation.status };
     }
 
+    /**
+     * Non-chargeable validation via official GET /v1beta/models/{modelId} endpoint
+     */
     async validateConnection() {
       if (!this.apiKey) {
-        return { valid: false, error: 'No API key configured.' };
+        return { valid: false, status: 'NO_KEY', error: 'No API key configured.' };
       }
-      return { valid: true };
+
+      if (this.options.skipNetworkValidation) {
+        return { valid: false, status: 'UNVERIFIED', message: 'Network validation skipped by option' };
+      }
+
+      try {
+        const fetchFn = this.options.fetcher || (typeof globalThis !== 'undefined' ? globalThis.fetch : null);
+        if (!fetchFn) {
+          return { valid: false, status: 'UNVERIFIED', message: 'No fetcher available' };
+        }
+
+        // Query read-only metadata endpoint without spending generation tokens
+        const url = `${this.apiEndpoint}/models/${this.modelId}`;
+        const res = await fetchFn(url, {
+          method: 'GET',
+          headers: {
+            'x-goog-api-key': this.apiKey
+          }
+        });
+
+        if (res.status === 200) {
+          return { valid: true, status: 'AUTHENTICATED', modelId: this.modelId };
+        }
+        if (res.status === 400 || res.status === 401 || res.status === 403) {
+          const errBody = await res.text().catch(() => '');
+          return {
+            valid: false,
+            status: 'AUTH_FAILED',
+            error: redactSecrets(`Gemini API authorization rejected (HTTP ${res.status}): ${errBody}`, this.apiKey)
+          };
+        }
+        return { valid: false, status: 'UNVERIFIED', error: `Gemini API returned HTTP ${res.status}` };
+      } catch (e) {
+        return { valid: false, status: 'NETWORK_ERROR', error: redactSecrets(e.message, this.apiKey) };
+      }
     }
 
     async estimate(request) {
@@ -153,6 +211,11 @@
     }
 
     async _executeJob(request, approval) {
+      // Production journeys strictly reject mock clients (B08)
+      if (this.options.productionJourney && this.options._mockClient) {
+        throw new Error('MOCK_CLIENT_DISALLOWED: Mock generation clients are strictly forbidden in production journeys.');
+      }
+
       const jobId = 'gemini-job-' + Date.now() + '-' + Math.random().toString(36).substring(2, 8);
       const abortController = new AbortController();
 
@@ -170,10 +233,9 @@
 
       this.activeJobs.set(jobId, job);
 
-      // Execute request (real network call or simulated test client)
+      // Execute mock client in unit tests only
       if (this.options._mockClient) {
         job.status = 'COMPLETED';
-        // 1x1 transparent PNG mock payload
         const sampleBase64Png = 'iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==';
         job.outputBlobs = [{
           mimeType: 'image/png',
@@ -187,7 +249,8 @@
 
       try {
         job.status = 'RUNNING';
-        const url = `${this.apiEndpoint}/models/${this.modelId}:predict?key=${encodeURIComponent(this.apiKey)}`;
+        // Header authorization: ZERO API key in URL query parameter (B07)
+        const url = `${this.apiEndpoint}/models/${this.modelId}:predict`;
         const payload = {
           instances: [{ prompt: request.prompt }],
           parameters: {
@@ -196,17 +259,21 @@
           }
         };
 
-        const res = await fetch(url, {
+        const fetchFn = this.options.fetcher || globalThis.fetch;
+        const res = await fetchFn(url, {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
+          headers: {
+            'Content-Type': 'application/json',
+            'x-goog-api-key': this.apiKey
+          },
           body: JSON.stringify(payload),
           signal: abortController.signal
         });
 
         if (!res.ok) {
-          const errBody = await res.text();
+          const errBody = await res.text().catch(() => '');
           job.status = 'FAILED';
-          job.error = `Gemini API returned status ${res.status}: ${errBody}`;
+          job.error = redactSecrets(`Gemini API returned status ${res.status}: ${errBody}`, this.apiKey);
           return job;
         }
 
@@ -225,7 +292,7 @@
           job.status = 'CANCELED';
         } else {
           job.status = 'FAILED';
-          job.error = err.message;
+          job.error = redactSecrets(err.message, this.apiKey);
         }
         return job;
       }
@@ -251,6 +318,7 @@
 
   /**
    * Hugging Face Inference API Adapter
+   * Uses Bearer header authorization with strict redaction.
    */
   class HuggingFaceProviderAdapter extends BaseAiProviderAdapter {
     constructor(options = {}) {
@@ -269,6 +337,30 @@
       };
     }
 
+    async validateConnection() {
+      if (!this.apiKey) {
+        return { valid: false, status: 'NO_KEY', error: 'No Hugging Face token configured.' };
+      }
+      if (this.options.skipNetworkValidation) {
+        return { valid: false, status: 'UNVERIFIED', message: 'Network validation skipped by option' };
+      }
+      try {
+        const fetchFn = this.options.fetcher || (typeof globalThis !== 'undefined' ? globalThis.fetch : null);
+        if (!fetchFn) return { valid: false, status: 'UNVERIFIED', message: 'No fetcher' };
+
+        const res = await fetchFn('https://huggingface.co/api/whoami-v2', {
+          method: 'GET',
+          headers: { 'Authorization': `Bearer ${this.apiKey}` }
+        });
+        if (res.status === 200) {
+          return { valid: true, status: 'AUTHENTICATED' };
+        }
+        return { valid: false, status: 'AUTH_FAILED', error: `Hugging Face token rejected (status ${res.status})` };
+      } catch (e) {
+        return { valid: false, status: 'NETWORK_ERROR', error: redactSecrets(e.message, this.apiKey) };
+      }
+    }
+
     async estimate(request) {
       return {
         providerId: this.id,
@@ -281,6 +373,10 @@
     }
 
     async _executeJob(request, approval) {
+      if (this.options.productionJourney && this.options._mockClient) {
+        throw new Error('MOCK_CLIENT_DISALLOWED: Mock generation clients are strictly forbidden in production journeys.');
+      }
+
       const jobId = 'hf-job-' + Date.now() + '-' + Math.random().toString(36).substring(2, 8);
       const abortController = new AbortController();
 
@@ -312,7 +408,8 @@
       try {
         job.status = 'RUNNING';
         const url = `${this.apiEndpoint}/${this.modelId}`;
-        const res = await fetch(url, {
+        const fetchFn = this.options.fetcher || globalThis.fetch;
+        const res = await fetchFn(url, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -324,7 +421,7 @@
 
         if (!res.ok) {
           job.status = 'FAILED';
-          job.error = `Hugging Face returned status ${res.status}`;
+          job.error = redactSecrets(`Hugging Face returned status ${res.status}`, this.apiKey);
           return job;
         }
 
@@ -341,7 +438,7 @@
           job.status = 'CANCELED';
         } else {
           job.status = 'FAILED';
-          job.error = err.message;
+          job.error = redactSecrets(err.message, this.apiKey);
         }
         return job;
       }
@@ -367,6 +464,7 @@
   return {
     BaseAiProviderAdapter,
     GeminiProviderAdapter,
-    HuggingFaceProviderAdapter
+    HuggingFaceProviderAdapter,
+    redactSecrets
   };
 }));

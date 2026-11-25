@@ -9,5 +9,10 @@
     "pngjs": "^7.0.0",
     "qrcode": "^1.5.4",
     "three": "^0.187.0"
+  },
+  "dependencies": {
+    "mediabunny": "^1.66.4",
+    "mp4-muxer": "^5.2.2",
+    "webm-muxer": "^5.1.4"
   }
 }

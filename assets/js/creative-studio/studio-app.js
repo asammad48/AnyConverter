@@ -26,13 +26,32 @@
       this.activeCardSide = 'front';
       this.activeSceneIndex = 0;
 
-      // Core Engines
-      this.graphics = new (window.GraphicsCanvas || Object)({ width: 1280, height: 720 });
-      this.cardEngine = new (window.BusinessCardEngine || Object)();
-      this.qrEngine = new (window.QrVcardEngine || Object)();
-      this.archive = new (window.AcStudioArchive || Object)();
-      this.renderAdapter = new (window.NativeCanvasRenderAdapter || Object)();
-      this.animation = new (window.AnimationEngine || Object)();
+      // Core Engines Validation (B11: Never disguise missing dependencies with plain Objects)
+      const missing = [];
+      const checkEngine = (name, target) => {
+        if (!target) missing.push(name);
+        return target;
+      };
+
+      const GraphicsCanvasClass = checkEngine('GraphicsCanvas', window.GraphicsCanvas);
+      const BusinessCardEngineClass = checkEngine('BusinessCardEngine', window.BusinessCardEngine);
+      const QrVcardEngineClass = checkEngine('QrVcardEngine', window.QrVcardEngine);
+      const AcStudioArchiveClass = checkEngine('AcStudioArchive', window.AcStudioArchive);
+      const RenderAdapterClass = checkEngine('NativeCanvasRenderAdapter', window.NativeCanvasRenderAdapter);
+      const AnimationEngineClass = checkEngine('AnimationEngine', window.AnimationEngine);
+
+      if (missing.length > 0) {
+        const errorMsg = `Creative Studio engine initialization failed: Missing required modules [${missing.join(', ')}].`;
+        this._renderMissingDependencyBanner(missing, errorMsg);
+        throw new Error(errorMsg);
+      }
+
+      this.graphics = new GraphicsCanvasClass({ width: 1280, height: 720 });
+      this.cardEngine = new BusinessCardEngineClass();
+      this.qrEngine = new QrVcardEngineClass();
+      this.archive = new AcStudioArchiveClass();
+      this.renderAdapter = new RenderAdapterClass();
+      this.animation = new AnimationEngineClass();
 
       // Canonical Project Model
       this.project = {
@@ -68,6 +87,19 @@
       this.assetBlobs = new Map();
     }
 
+    _renderMissingDependencyBanner(missing, msg) {
+      if (typeof document === 'undefined') return;
+      const existing = document.getElementById('cs-dependency-error');
+      if (existing) return;
+      const banner = document.createElement('div');
+      banner.id = 'cs-dependency-error';
+      banner.className = 'cs-alert cs-alert-error';
+      banner.setAttribute('role', 'alert');
+      banner.style.cssText = 'position:fixed;top:10px;left:50%;transform:translateX(-50%);z-index:99999;background:#ef4444;color:#fff;padding:12px 20px;border-radius:8px;font-family:sans-serif;font-weight:600;box-shadow:0 4px 12px rgba(0,0,0,0.3);';
+      banner.textContent = msg;
+      document.body.appendChild(banner);
+    }
+
     init() {
       if (this.initialized) return;
       this.cacheDom();
@@ -75,7 +107,6 @@
       this.initDefaultLayers();
       this.render();
       this.initialized = true;
-      console.log('AnyConverter Creative Studio initialized successfully.');
     }
 
     cacheDom() {
@@ -756,7 +787,6 @@
             this.graphics.layers = res.project.scenes[0].layers || [];
           }
           this.render();
-          console.log('Project restored successfully from .acstudio container!');
           return res;
         }
       } catch (err) {
@@ -804,7 +834,10 @@
     }
 
     splitActiveClip() {
-      console.log('Clip split at frame', this.currentFrame);
+      // Split clip at current playhead position
+      if (this.currentScene && this.timeline) {
+        this.timeline.splitClip('track-v1', 'active-clip', this.currentFrame);
+      }
     }
 
     addNewScene() {
