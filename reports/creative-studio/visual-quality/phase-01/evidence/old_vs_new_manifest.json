@@ -1,0 +1,34 @@
+{
+  "generatedAt": "2026-11-26T21:15:11.432Z",
+  "description": "Deterministic Old Baseline vs Phase 01 New Production Master Visual Comparison with Visible Labels",
+  "leftPanel": {
+    "label": "OLD • live_1minute_project.webm • 30s",
+    "sourceVideo": "reports/creative-studio/visual-quality/phase-01/baseline_inspection/live_1minute_project.webm",
+    "sourceVideoSha256": "3b61c3cc0a2c7eea2ebb241b68bbfe786dd93c268566d65914146b1ef04b1d3f",
+    "timestampSec": 30,
+    "percentage": "50%",
+    "extractedFrame": "reports/creative-studio/visual-quality/phase-01/baseline_inspection/live_1minute_project_pct_50.png",
+    "extractedFrameSha256": "757323c7965077aa10fd4c17529b8c29de23edb1a358e8538f7b9fa71d999137",
+    "bannerColor": "#dc2626",
+    "visibleTextPixels": 820
+  },
+  "rightPanel": {
+    "label": "NEW • SaaS Master • 12s",
+    "sourceVideo": "reports/creative-studio/visual-quality/phase-01/evidence/From_Raw_Data_to_Clear_Answers_Master.webm",
+    "sourceVideoSha256": "3bbc56b4135d4b94d14c67d4526d25819eb020f14901fb0bbc140e93e6dcf77b",
+    "timestampSec": 12,
+    "percentage": "50%",
+    "extractedFrame": "reports/creative-studio/visual-quality/phase-01/extracted_frames/saas_master_pct_50.png",
+    "extractedFrameSha256": "572fe2abf70aa8d637f45aec8fc133b80e8738166257d9fa57770cc02435d9d7",
+    "bannerColor": "#0284c7",
+    "visibleTextPixels": 512
+  },
+  "compositeOutput": {
+    "filePath": "reports/creative-studio/visual-quality/phase-01/OLD_VS_NEW_COMPARISON.png",
+    "evidencePath": "reports/creative-studio/visual-quality/phase-01/evidence/OLD_VS_NEW_COMPARISON.png",
+    "zoomProofPath": "reports/creative-studio/visual-quality/phase-01/UPPER_BAR_ZOOM_PROOF.png",
+    "dimensions": "1280x360",
+    "sha256": "e396d07de05b62ddfd9ba408189ae5549ff0644faa663fca411deb7b0868441b",
+    "zoomSha256": "75098cb378f08aeba70dcbaddac868588b5b586832b697b7dfa40bf61361d35d"
+  }
+}

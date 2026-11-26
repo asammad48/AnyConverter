@@ -1,12 +1,19 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <title>Phase 01 — Baseline vs New Production Visual Comparison</title>
   <style>
-    body { font-family: 'Inter', -apple-system, sans-serif; background: #030712; color: #f8fafc; margin: 0; padding: 32px; }
+    body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #030712; color: #f8fafc; margin: 0; padding: 32px; line-height: 1.5; }
     h1 { font-size: 26px; font-weight: 700; color: #38bdf8; margin: 0 0 6px 0; }
     p.subtitle { font-size: 14px; color: #94a3b8; margin: 0 0 28px 0; }
+    .hero-banner { background: #0f172a; border: 1px solid #1e293b; border-radius: 8px; padding: 20px; margin-bottom: 32px; }
+    .hero-banner h2 { font-size: 18px; margin: 0 0 12px 0; color: #f1f5f9; }
+    .hero-banner img { width: 100%; max-width: 1280px; height: auto; display: block; border-radius: 6px; border: 1px solid #334155; margin-bottom: 12px; }
+    .manifest-table { width: 100%; border-collapse: collapse; margin-top: 12px; font-size: 12px; font-family: monospace; }
+    .manifest-table th, .manifest-table td { padding: 8px 12px; text-align: left; border: 1px solid #1e293b; }
+    .manifest-table th { background: #1e293b; color: #94a3b8; }
+    .manifest-table td { background: #0b1120; color: #cbd5e1; }
     .comparison-row { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 32px; }
     .comp-col { background: #0f172a; border-radius: 8px; overflow: hidden; border: 1px solid #1e293b; }
     .col-header { padding: 10px 16px; font-weight: 700; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px; display: flex; justify-content: space-between; }
@@ -16,11 +23,52 @@
     .col-meta { padding: 14px 16px; font-size: 13px; line-height: 1.5; color: #94a3b8; }
     .defect-tag { display: inline-block; background: rgba(239, 68, 68, 0.2); color: #f87171; padding: 2px 6px; border-radius: 4px; font-size: 11px; font-weight: 600; margin-right: 4px; margin-bottom: 4px; }
     .feature-tag { display: inline-block; background: rgba(56, 189, 248, 0.2); color: #38bdf8; padding: 2px 6px; border-radius: 4px; font-size: 11px; font-weight: 600; margin-right: 4px; margin-bottom: 4px; }
+    .hash-badge { font-family: monospace; font-size: 11px; color: #64748b; margin-top: 4px; word-break: break-all; }
   </style>
 </head>
 <body>
   <h1>AnyConverter Creative Studio — Old vs New Visual Production Comparison</h1>
-  <p class="subtitle">Direct pixel comparison between baseline engineering demo exports and Phase 01 production compositions.</p>
+  <p class="subtitle">Direct, deterministic pixel comparison between baseline engineering demo exports and Phase 01 production compositions.</p>
+
+  <!-- Hero: Labeled Composite Image -->
+  <div class="hero-banner">
+    <h2>Deterministic Side-by-Side Comparison (OLD_VS_NEW_COMPARISON.png)</h2>
+    <img src="OLD_VS_NEW_COMPARISON.png" alt="Old vs New Production Comparison">
+    <div style="margin: 12px 0;">
+      <h3 style="font-size: 14px; margin: 0 0 6px 0; color: #94a3b8;">Enlarged Header Zoom Proof (UPPER_BAR_ZOOM_PROOF.png):</h3>
+      <img src="UPPER_BAR_ZOOM_PROOF.png" alt="Enlarged Header Zoom Proof" style="border: 1px solid #0284c7;">
+    </div>
+    <table class="manifest-table">
+      <thead>
+        <tr>
+          <th>Panel</th>
+          <th>Source Media</th>
+          <th>Timestamp</th>
+          <th>Extracted Frame</th>
+          <th>Source SHA-256</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong style="color: #f87171;">LEFT (OLD • live_1minute_project.webm • 30s)</strong></td>
+          <td>live_1minute_project.webm</td>
+          <td>30.0s (50%)</td>
+          <td>baseline_inspection/live_1minute_project_pct_50.png</td>
+          <td>3b61c3cc0a2c7eea2ebb241b68bbfe786dd93c268566d65914146b1ef04b1d3f</td>
+        </tr>
+        <tr>
+          <td><strong style="color: #34d399;">RIGHT (NEW • SaaS Master • 12s)</strong></td>
+          <td>From_Raw_Data_to_Clear_Answers_Master.webm</td>
+          <td>12.0s (50%)</td>
+          <td>extracted_frames/saas_master_pct_50.png</td>
+          <td>3bbc56b4135d4b94d14c67d4526d25819eb020f14901fb0bbc140e93e6dcf77b</td>
+        </tr>
+      </tbody>
+    </table>
+    <p style="font-size: 11px; color: #64748b; margin-top: 8px;">
+      * Prerequisite Notice: Re-extracting frames requires the original baseline video at <code>reports/creative-studio/blocker-repair/REAL_OUTPUTS/live_1minute_project.webm</code>. Browser runner execution requires full website repository files and dependencies (<code>npx playwright install chromium</code>).
+    </p>
+  </div>
 
   <!-- Comparison 1: 50% Timestamp -->
   <div class="comparison-row">
@@ -29,10 +77,11 @@
         <span>Baseline Output (live_1minute_project.webm @ 50%)</span>
         <span>DEFECTS FOUND</span>
       </div>
-      <img src="../baseline_inspection/live_1minute_project_pct_50.png">
+      <img src="../baseline_inspection/live_1minute_project_pct_50.png" alt="Baseline at 50%">
       <div class="col-meta">
         <div><span class="defect-tag">Debug Orb</span><span class="defect-tag">Engineering Progress Bar</span><span class="defect-tag">Frame Counter</span><span class="defect-tag">Empty Space</span></div>
         <p>Repeated orange test circle, bottom progress strip, debug subtitle, and huge empty slate background. No story or commercial value.</p>
+        <div class="hash-badge">SHA256: 757323c7965077aa10fd4c17529b8c29de23edb1a358e8538f7b9fa71d999137</div>
       </div>
     </div>
 
@@ -41,10 +90,11 @@
         <span>Phase 01 Redesign (From_Raw_Data_to_Clear_Answers_Master.webm @ 50%)</span>
         <span>PRODUCTION VERIFIED</span>
       </div>
-      <img src="../extracted_frames/saas_master_pct_50.png">
+      <img src="../extracted_frames/saas_master_pct_50.png" alt="Phase 01 Redesign at 50%">
       <div class="col-meta">
         <div><span class="feature-tag">Editorial Typography</span><span class="feature-tag">Glass Device Card</span><span class="feature-tag">Pipeline Flow</span><span class="feature-tag">Zero Diagnostics</span></div>
         <p>Purposeful 5-shot narrative, Bricolage Grotesque typography, data transformation mockup, sub-42ms latency metrics, pure commercial polish.</p>
+        <div class="hash-badge">SHA256: 572fe2abf70aa8d637f45aec8fc133b80e8738166257d9fa57770cc02435d9d7</div>
       </div>
     </div>
   </div>
@@ -56,10 +106,10 @@
         <span>Baseline Output (live_5minute_benchmark.webm @ 100%)</span>
         <span>DEFECTS FOUND</span>
       </div>
-      <img src="../baseline_inspection/live_5minute_benchmark_pct_100.png">
+      <img src="../baseline_inspection/live_5minute_benchmark_pct_100.png" alt="Baseline at 100%">
       <div class="col-meta">
-        <div><span class="defect-tag">Same Frame 9000 Times</span><span class="defect-tag">Mechanical Sine Wave</span><span class="defect-tag">No Call To Action</span></div>
-        <p>Technical 300-second benchmark repeats the exact same non-diegetic orb oscillation with zero editorial pacing or visual progression.</p>
+        <div><span class="defect-tag">Repetitive 4-Act Engineering Demo</span><span class="defect-tag">Mechanical Sine Wave</span><span class="defect-tag">No Call To Action</span></div>
+        <p>Technical 300-second benchmark contains four distinct technical acts, but relies on internal developer demo motifs (oscillating orb, progress bar, frame timestamps) with no editorial storytelling or commercial call to action.</p>
       </div>
     </div>
 
@@ -68,7 +118,7 @@
         <span>Phase 01 Redesign (From_Raw_Data_to_Clear_Answers_Master.webm @ 100%)</span>
         <span>PRODUCTION VERIFIED</span>
       </div>
-      <img src="../extracted_frames/saas_master_pct_100.png">
+      <img src="../extracted_frames/saas_master_pct_100.png" alt="Phase 01 Redesign at 100%">
       <div class="col-meta">
         <div><span class="feature-tag">Brand Emblem</span><span class="feature-tag">Pulsing CTA Button</span><span class="feature-tag">Feature Tags</span><span class="feature-tag">Story Closure</span></div>
         <p>Deliberate payoff shot establishing AnyConverter Creative Studio as a client-side powerhouse with clear call-to-action.</p>
