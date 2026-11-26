@@ -79,3 +79,6 @@ RELATED_TOOLS_AUDIT.json
 TOOL_INVENTORY_AND_COUNTS.json
 /qa-evidence
 /tests/visual-snapshots
+
+# Ignore large archives and zip packages
+*.zip
