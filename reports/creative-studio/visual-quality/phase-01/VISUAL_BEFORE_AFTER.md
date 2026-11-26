@@ -2,8 +2,8 @@
 
 **Project:** AnyConverter Creative Studio — Visual Quality Production Programme  
 **Phase:** 01 (Visual Baseline & First Publishable Slice)  
-**Evidence Artifact:** [`reports/creative-studio/visual-quality/phase-01/evidence/OLD_VS_NEW_COMPARISON.png`](./evidence/OLD_VS_NEW_COMPARISON.png)  
-**Baseline Inspection:** [`reports/creative-studio/visual-quality/phase-01/baseline_inspection/baseline_contact_sheet.png`](./baseline_inspection/baseline_contact_sheet.png)  
+**Evidence Artifact:** [`reports/creative-studio/visual-quality/phase-01/evidence/OLD_VS_NEW_COMPARISON.png`](file:///D:/SynergyRepo/AnyConverter/AnyConverter/reports/creative-studio/visual-quality/phase-01/evidence/OLD_VS_NEW_COMPARISON.png)  
+**Baseline Inspection:** [`reports/creative-studio/visual-quality/phase-01/baseline_inspection/baseline_contact_sheet.png`](file:///D:/SynergyRepo/AnyConverter/AnyConverter/reports/creative-studio/visual-quality/phase-01/baseline_inspection/baseline_contact_sheet.png)  
 
 ---
 
