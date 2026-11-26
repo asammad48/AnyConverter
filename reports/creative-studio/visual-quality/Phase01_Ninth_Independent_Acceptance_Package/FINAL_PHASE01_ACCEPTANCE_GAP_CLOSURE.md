@@ -5,7 +5,7 @@
 **Date:** 2026-11-26  
 **Active Branch:** `feat/creative-studio-visual-quality` (strictly local, unpushed)  
 **Governance Status:**  
-`PHASE 01 — FINAL ACCEPTANCE GAP CLOSURE COMPLETE — AWAITING OWNER VISUAL APPROVAL — NOT PUSHED — NOT MERGED — NOT DEPLOYED — PHASE 02 NOT STARTED.`
+`PHASE 01 — FIVE-SHOT REORDERING IMPLEMENTED — AWAITING OWNER REVIEW — NOT PUSHED — NOT MERGED — NOT DEPLOYED — PHASE 02 NOT STARTED.`
 
 ---
 
@@ -13,12 +13,12 @@
 
 This report completes the final acceptance-gap review against the original Phase 01 specification (`Creative_studio_better_implementation/01_VISUAL_BASELINE_AND_VERTICAL_SLICE.md`), resolving all remaining governance and technical gaps without rebuilding verified functionality:
 
-1. **Current Comprehensive Source Diffs**: Generated full-scope patches (`OWNER_REVIEW_SOURCE_PATCH.diff` and `PHASE01_CORRECTION_CYCLE.diff`) incorporating visual motif dispatch, pre-export suitability validation, brand conclusion mode, `.acstudio` schema duration synchronization, and multilingual EN/ES/DA files.
-2. **Production Export Publishability Guard**: Verified and hardened `exportVideo()` in `assets/js/creative-studio/studio-app.js`. The normal Export button now strictly blocks exports when semantic concept mismatches exist (`status === 'TEMPLATE_CONCEPT_MISMATCH'`), surfacing UI alerts and preventing users from exporting misleading videos.
-3. **Shot Reorder / Replace Scope Reconciliation**: Explicitly addressed the original mention of reordering/replacing shots. Documented the architectural boundary: non-linear shot manipulation and multi-track audio retiming belong to **Phase 02 (Timeline Architecture & Non-Linear Shot Sequencing)**. Formulated an explicit owner approval request to defer this capability to Phase 02 rather than falsely claiming it as complete.
-4. **Art Direction & Reference Board Reconciliation**: Authored `REFERENCE_BOARD_AND_ART_DIRECTIONS.md` satisfying Work Packages 2 and 3, documenting 12 public composition principles with technique references, along with full design specifications (safe areas, palettes, type scale, animation tone, luminance) for all 3 implemented art directions.
+1. **Current Comprehensive Source Diffs**: Generated full-scope patches (`OWNER_REVIEW_SOURCE_PATCH.diff` and `PHASE01_CORRECTION_CYCLE.diff`) incorporating visual motif dispatch, pre-export suitability validation, brand conclusion mode, `.acstudio` schema duration synchronization, five-shot reordering controls, and multilingual EN/ES/DA files.
+2. **Production Export Publishability Guard**: Verified and hardened `exportVideo()` in `assets/js/creative-studio/studio-app.js`. The normal Export button now strictly blocks exports when semantic concept mismatches exist (`status === 'TEMPLATE_CONCEPT_MISMATCH'`), surfacing UI alerts and preventing users from exporting misleading videos. Dedicated draft export (`#cs-btn-export-draft`) handles storyboards.
+3. **Five-Shot Reordering Implemented**: Enacted the Owner decision requiring basic five-shot reordering in Phase 01. Added Move Up and Move Down controls in the inspector and direct ▲/▼ controls in the shot list across EN, ES, DA. Slices and moves the complete shot object with automatic sequential recalculation of startFrame, playhead, and total sequence timing. Preserved across art directions, archive save/reopen, and live exports. Fully verified via `test_shot_reordering_workflow.js`.
+4. **Art Direction & Reference Board Reconciliation**: Authored `REFERENCE_BOARD_AND_ART_DIRECTIONS.md` satisfying Work Packages 2 and 3, documenting 12 public composition principles with traceable HTTPS links, along with full design specifications (safe areas, palettes, type scale, animation tone, keyframes) for all three original contract art directions (Editorial Kinetic, Cinematic SaaS, Modern Educational) and generated the 9-frame master storyboard sheet `ORIGINAL_THREE_DIRECTIONS_NINE_FRAME_BOARD.png`.
 5. **Multilingual Parity & Sitewide Regressions**: Brought Spanish (`es/creative-studio/index.html`) and Danish (`da/creative-studio/index.html`) into 100% structural and script parity with English. Created `test_multilingual_creative_studio_ui.js` (3/3 locales PASS) and confirmed 0 regressions on `test_sitewide_parity_and_counts.js` (128 tools, 435 URLs PASS).
-6. **Preservation of Engineering Baseline**: Proved that all four original master WebM videos retain their exact, byte-for-byte SHA-256 hashes, with 56/56 passing assertions on `run_phase01_second_correction.js` and 8/8 passing tests on `test_negative_gates.js`.
+6. **Preservation of Engineering Baseline**: Proved that all four original master WebM videos retain their exact, byte-for-byte SHA-256 hashes, with 56/56 passing assertions on `run_phase01_second_correction.js`, 8/8 passing tests on `test_negative_gates.js`, and 10/10 stages passing on `test_shot_reordering_workflow.js`.
 
 ---
 
@@ -30,10 +30,10 @@ Every requirement from `Creative_studio_better_implementation/01_VISUAL_BASELINE
 |---|---|---|---|---|
 | **1** | **Capture contact sheets & fault audit** | WP 1 (Lines 32) | **PASS** | Captured 6 baseline faults; generated `OLD_VS_NEW_COMPARISON.png` and `UPPER_BAR_ZOOM_PROOF.png` (820/512 visible text pixels verified). |
 | **2** | **Build Reference Board (12 Examples)** | WP 2 (Line 33) | **PASS** | Documented in `REFERENCE_BOARD_AND_ART_DIRECTIONS.md` with 12 public composition techniques, source references, and code bindings. |
-| **3** | **Design 3 Original Art Directions** | WP 3 (Line 34) | **PASS** | Fully specified in `REFERENCE_BOARD_AND_ART_DIRECTIONS.md` and implemented in `creative-director.js`: SaaS Master (24s), Parrot Comedy (9s), Noir Suspense (9s). |
+| **3** | **Design 3 Original Art Directions (Editorial Kinetic, Cinematic SaaS, Modern Educational)** | WP 3 (Line 34) | **PASS** | Fully specified in `REFERENCE_BOARD_AND_ART_DIRECTIONS.md` (defining palette, type scale, rhythm, safe areas for Editorial Kinetic, Cinematic SaaS, Modern Educational) and visualized across the 9-frame master storyboard sheet [`ORIGINAL_THREE_DIRECTIONS_NINE_FRAME_BOARD.png`](ORIGINAL_THREE_DIRECTIONS_NINE_FRAME_BOARD.png). Cinematic SaaS is fully integrated as the 24s production release slice, with genre pilots (Parrot Comedy, Minimal Noir Suspense) demonstrating engine versatility. |
 | **4** | **5-Shot Composition as Editable Scenes** | WP 4 (Line 35) | **PASS** | Implemented in `reference-shot.js` with 5 purposeful narrative stages (Hook, Problem, Solution, Benefit, Payoff). |
 | **5** | **Remove Debug Overlays from Production** | WP 5 (Line 36) | **PASS** | Verified in `run_phase01_second_correction.js`: 0 debug orbs, 0 progress strips in production WebMs; diagnostics isolated behind mode toggle. |
-| **6** | **Strong Still Compositions (First/Mid/Final)** | WP 6 (Line 37) | **PASS** | Contact sheets (`SHOT_STORYBOARD.png`, `PARROT_PILOT_CONTACT_SHEET.png`, `NOIR_PILOT_CONTACT_SHEET.png`) confirm robust visual framing at 0%, 50%, 100%. |
+| **6** | **Strong Still Compositions & 9-Frame Storyboard (3 frames × 3 directions)** | WP 6 (Line 37) | **PASS** | Evaluated and verified across the 1920×1080 9-frame master storyboard contact sheet [`ORIGINAL_THREE_DIRECTIONS_NINE_FRAME_BOARD.png`](ORIGINAL_THREE_DIRECTIONS_NINE_FRAME_BOARD.png) (3 keyframes × 3 contract directions: Editorial Kinetic, Cinematic SaaS, Modern Educational). Composition framing at 0%, 50%, and 100% also validated in supplementary genre sheets (`SHOT_STORYBOARD.png`, `PARROT_PILOT_CONTACT_SHEET.png`, `NOIR_PILOT_CONTACT_SHEET.png`). |
 | **7** | **Authoring via Public UI & Project Mutability** | WP 7 (Line 38) | **PASS** | Verified in `test_user_authoring_truth_gate.js`: edited title, headline, subhead, accent, duration, and visual motif via public UI; exported and re-exported. |
 | **8** | **Side-by-Side Baseline Comparison** | WP 8 (Line 39) | **PASS** | Manifest `old_vs_new_manifest.json` and side-by-side image `OLD_VS_NEW_COMPARISON.png` proving marked composition, type, and contrast improvement. |
 | **9** | **Art Direction Picker in UI** | Workflow 4.1 (Line 43) | **PASS** | `#cs-direction-select` switches between `cinematic-saas`, `character-comedy`, and `minimal-suspense` with edit state preserved across switches. |
@@ -131,6 +131,5 @@ All diff deliverables have been regenerated using deterministic UTF-8 encoding w
 ## 6. Mandatory Phase Boundary Governance
 
 - **Strictly Local Changes**: No git push executed, no remote branches created, no pull requests opened, no production merging, no deployment.
-- **Phase Boundaries Enforced**: Phase 02 (Visual Design Tokens & Grids) has NOT been started. Comprehensive timeline editing remains scheduled for Phase 10 (WP2).
-- **Status**: STOPPED for explicit Owner Visual Approval and Shot Reordering Scope Decision.
-- **Status**: STOPPED for explicit Owner Visual Approval.
+- **Phase Boundaries Enforced**: Phase 02 (Visual Design Tokens & Grids) has NOT been started. Comprehensive non-linear timeline editing remains scheduled for Phase 10 (WP2).
+- **Status**: `PHASE 01 — FIVE-SHOT REORDERING IMPLEMENTED — AWAITING OWNER REVIEW — NOT PUSHED — NOT MERGED — NOT DEPLOYED — PHASE 02 NOT STARTED.`
