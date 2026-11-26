@@ -132,6 +132,7 @@
         btnExportPdf: document.getElementById('cs-btn-export-pdf'),
         btnExportQr: document.getElementById('cs-btn-export-qr'),
         btnExportVideo: document.getElementById('cs-btn-export-video'),
+        btnExportDraft: document.getElementById('cs-btn-export-draft'),
         layersList: document.getElementById('cs-layers-list'),
         btnAddText: document.getElementById('cs-btn-add-text'),
         btnAddShape: document.getElementById('cs-btn-add-shape'),
@@ -162,10 +163,16 @@
         directionSelect: document.getElementById('cs-direction-select'),
         renderModeSelect: document.getElementById('cs-render-mode-select'),
         shotSelect: document.getElementById('cs-shot-select'),
+        btnShotMoveUp: document.getElementById('cs-btn-shot-move-up'),
+        btnShotMoveDown: document.getElementById('cs-btn-shot-move-down'),
         shotHeadline: document.getElementById('cs-shot-headline'),
         shotSubhead: document.getElementById('cs-shot-subhead'),
         shotAccent: document.getElementById('cs-shot-accent'),
         shotDuration: document.getElementById('cs-shot-duration'),
+        shotMotifSelect: document.getElementById('cs-shot-motif-select'),
+        shotSuitabilityAlert: document.getElementById('cs-shot-suitability-alert'),
+        shotSuitabilityMsg: document.getElementById('cs-shot-suitability-msg'),
+        brandModeSelect: document.getElementById('cs-brand-mode'),
         btnMobileInspector: document.getElementById('cs-btn-mobile-inspector'),
         btnCloseInspector: document.getElementById('cs-btn-close-inspector'),
         sidebarRight: document.getElementById('cs-sidebar-right'),
@@ -233,7 +240,10 @@
         this.dom.btnExportQr.addEventListener('click', () => this.exportQr());
       }
       if (this.dom.btnExportVideo) {
-        this.dom.btnExportVideo.addEventListener('click', () => this.exportVideo());
+        this.dom.btnExportVideo.addEventListener('click', () => this.exportVideo({ requirePublishable: true }));
+      }
+      if (this.dom.btnExportDraft) {
+        this.dom.btnExportDraft.addEventListener('click', () => this.exportVideo({ isDraft: true, requirePublishable: false }));
       }
 
       // Add Layers
@@ -292,17 +302,57 @@
       if (this.dom.shotSelect) {
         this.dom.shotSelect.addEventListener('change', (e) => this.selectShot(parseInt(e.target.value, 10)));
       }
+      if (this.dom.btnShotMoveUp) {
+        this.dom.btnShotMoveUp.addEventListener('click', () => {
+          if (this.activeShotIndex > 0) {
+            this.moveShot(this.activeShotIndex, this.activeShotIndex - 1);
+          }
+        });
+      }
+      if (this.dom.btnShotMoveDown) {
+        this.dom.btnShotMoveDown.addEventListener('click', () => {
+          if (this.project.shots && this.activeShotIndex < this.project.shots.length - 1) {
+            this.moveShot(this.activeShotIndex, this.activeShotIndex + 1);
+          }
+        });
+      }
       if (this.dom.shotHeadline) {
-        this.dom.shotHeadline.addEventListener('input', (e) => this.updateActiveShot('headline', e.target.value));
+        this.dom.shotHeadline.addEventListener('input', (e) => {
+          this.updateActiveShot('headline', e.target.value);
+          this.checkActiveShotSuitability();
+        });
       }
       if (this.dom.shotSubhead) {
-        this.dom.shotSubhead.addEventListener('input', (e) => this.updateActiveShot('subhead', e.target.value));
+        this.dom.shotSubhead.addEventListener('input', (e) => {
+          this.updateActiveShot('subhead', e.target.value);
+          this.checkActiveShotSuitability();
+        });
       }
       if (this.dom.shotAccent) {
         this.dom.shotAccent.addEventListener('input', (e) => this.updateActiveShot('accentColor', e.target.value));
       }
       if (this.dom.shotDuration) {
         this.dom.shotDuration.addEventListener('input', (e) => this.updateActiveShot('durationFrames', parseInt(e.target.value, 10) || 60));
+      }
+      if (this.dom.shotMotifSelect) {
+        this.dom.shotMotifSelect.addEventListener('change', (e) => {
+          this.updateActiveShot('motif', e.target.value);
+          this.checkActiveShotSuitability();
+        });
+      }
+      if (this.dom.brandModeSelect) {
+        this.dom.brandModeSelect.addEventListener('change', (e) => {
+          const mode = e.target.value;
+          this.project.brandMode = mode;
+          if (this.project.shots && this.project.shots.length > 0) {
+            const lastShot = this.project.shots[this.project.shots.length - 1];
+            if (lastShot) {
+              lastShot.motif = (mode === 'unbranded') ? 'unbranded-conclusion' : 'branded-payoff';
+            }
+          }
+          this.updateShotInspectorUI();
+          this.render();
+        });
       }
 
       // Mobile Inspector Toggle
@@ -602,6 +652,9 @@
         this.totalFrames = acc;
         this.project.totalFrames = acc;
         this.project.durationSeconds = Math.round(acc / this.fps);
+        if (this.project.scenes && this.project.scenes[0]) {
+          this.project.scenes[0].durationFrames = acc;
+        }
         if (this.dom.timelineScrubber) this.dom.timelineScrubber.max = this.totalFrames - 1;
         this.updateShotSelectOptions();
         this.updateTimelineTracks();
@@ -609,6 +662,63 @@
 
       this.updateShotsListUI();
       this.render();
+    }
+
+    moveShot(fromIndex, toIndex) {
+      if (!this.project.shots || !Array.isArray(this.project.shots)) return false;
+      const count = this.project.shots.length;
+      if (fromIndex < 0 || fromIndex >= count) return false;
+      if (toIndex < 0 || toIndex >= count) return false;
+      if (fromIndex === toIndex) return false;
+
+      // Move complete shot object
+      const movedShot = this.project.shots.splice(fromIndex, 1)[0];
+      this.project.shots.splice(toIndex, 0, movedShot);
+
+      // Recalculate startFrame sequentially for all shots
+      let acc = 0;
+      for (let i = 0; i < this.project.shots.length; i++) {
+        this.project.shots[i].startFrame = acc;
+        acc += this.project.shots[i].durationFrames;
+      }
+      this.totalFrames = acc;
+      this.project.totalFrames = acc;
+      this.project.durationSeconds = Math.round(acc / (this.fps || 30));
+      if (this.project.scenes && this.project.scenes[0]) {
+        this.project.scenes[0].durationFrames = acc;
+      }
+      if (this.dom.timelineScrubber) {
+        this.dom.timelineScrubber.max = this.totalFrames - 1;
+      }
+
+      // Sync activeShotIndex to new index of moved shot
+      this.activeShotIndex = toIndex;
+
+      // Update cached direction project if exists
+      if (this.cachedDirectionProjects && this.project.visualDirection) {
+        this.cachedDirectionProjects[this.project.visualDirection] = {
+          title: this.project.title,
+          visualDirection: this.project.visualDirection,
+          totalFrames: this.project.totalFrames,
+          fps: this.project.fps,
+          durationSeconds: this.project.durationSeconds,
+          canvas: Object.assign({}, this.project.canvas),
+          shots: this.project.shots.map(s => new window.ReferenceShot(s)),
+          audioClips: this.project.audioClips
+        };
+      }
+
+      // Refresh UI components
+      this.updateShotSelectOptions();
+      this.updateShotInspectorUI();
+      this.updateShotsListUI();
+      this.updateTimelineTracks();
+
+      // Seek playhead to start of moved shot and render preview
+      const targetShot = this.project.shots[toIndex];
+      this.seekFrame(targetShot ? targetShot.startFrame : 0);
+      this.render();
+      return true;
     }
 
     updateShotSelectOptions() {
@@ -631,22 +741,87 @@
       if (this.dom.shotSubhead) this.dom.shotSubhead.value = shot.subhead || '';
       if (this.dom.shotAccent) this.dom.shotAccent.value = shot.accentColor || '#38bdf8';
       if (this.dom.shotDuration) this.dom.shotDuration.value = shot.durationFrames || 90;
+      if (this.dom.shotMotifSelect) this.dom.shotMotifSelect.value = shot.motif || 'default';
+      if (this.dom.brandModeSelect) {
+        this.dom.brandModeSelect.value = (shot.motif === 'unbranded-conclusion' || this.project.brandMode === 'unbranded')
+          ? 'unbranded'
+          : 'branded';
+      }
+      if (this.dom.btnShotMoveUp) {
+        const canMoveUp = this.activeShotIndex > 0;
+        this.dom.btnShotMoveUp.disabled = !canMoveUp;
+        this.dom.btnShotMoveUp.style.opacity = canMoveUp ? '1' : '0.4';
+        this.dom.btnShotMoveUp.style.cursor = canMoveUp ? 'pointer' : 'not-allowed';
+      }
+      if (this.dom.btnShotMoveDown) {
+        const canMoveDown = this.project.shots && this.activeShotIndex < (this.project.shots.length - 1);
+        this.dom.btnShotMoveDown.disabled = !canMoveDown;
+        this.dom.btnShotMoveDown.style.opacity = canMoveDown ? '1' : '0.4';
+        this.dom.btnShotMoveDown.style.cursor = canMoveDown ? 'pointer' : 'not-allowed';
+      }
+      this.checkActiveShotSuitability();
+    }
+
+    checkActiveShotSuitability() {
+      if (!this.project.shots || !this.project.shots[this.activeShotIndex]) return;
+      const shot = this.project.shots[this.activeShotIndex];
+      const evalResult = (window.ReferenceShot && window.ReferenceShot.evaluateSuitability)
+        ? window.ReferenceShot.evaluateSuitability(shot)
+        : { suitable: true };
+
+      if (this.dom.shotSuitabilityAlert) {
+        if (!evalResult.suitable) {
+          this.dom.shotSuitabilityAlert.style.display = 'block';
+          if (this.dom.shotSuitabilityMsg) {
+            this.dom.shotSuitabilityMsg.textContent = evalResult.reason;
+          }
+        } else {
+          this.dom.shotSuitabilityAlert.style.display = 'none';
+        }
+      }
     }
 
     updateShotsListUI() {
       if (!this.dom.shotsList || !this.project.shots) return;
       this.dom.shotsList.innerHTML = '';
+      const totalCount = this.project.shots.length;
       this.project.shots.forEach((s, idx) => {
         const item = document.createElement('div');
         item.className = 'cs-shot-item' + (idx === this.activeShotIndex ? ' active' : '');
+        item.style.position = 'relative';
         item.innerHTML = `
           <div style="display:flex;justify-content:space-between;align-items:center;">
             <span style="font-weight:600;font-size:12px;color:var(--cs-text-main, #f8fafc);">Shot ${idx + 1}: ${s.title || s.purpose}</span>
-            <span class="cs-badge" style="font-size:10px;padding:1px 5px;">${s.durationFrames}f</span>
+            <div style="display:flex;align-items:center;gap:4px;">
+              <span class="cs-badge" style="font-size:10px;padding:1px 5px;">${s.durationFrames}f</span>
+              <button type="button" class="cs-btn cs-btn-icon cs-shot-move-up-item" data-index="${idx}" title="Move Shot Up" style="width:20px;height:20px;font-size:10px;padding:0;line-height:1;${idx === 0 ? 'opacity:0.3;cursor:not-allowed;' : ''}" ${idx === 0 ? 'disabled' : ''}>▲</button>
+              <button type="button" class="cs-btn cs-btn-icon cs-shot-move-down-item" data-index="${idx}" title="Move Shot Down" style="width:20px;height:20px;font-size:10px;padding:0;line-height:1;${idx === totalCount - 1 ? 'opacity:0.3;cursor:not-allowed;' : ''}" ${idx === totalCount - 1 ? 'disabled' : ''}>▼</button>
+            </div>
           </div>
           <div style="font-size:11px;color:var(--cs-text-muted, #94a3b8);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:2px;">${s.headline || ''}</div>
         `;
-        item.addEventListener('click', () => this.selectShot(idx));
+
+        item.addEventListener('click', (e) => {
+          if (e.target.closest('.cs-shot-move-up-item') || e.target.closest('.cs-shot-move-down-item')) return;
+          this.selectShot(idx);
+        });
+
+        const btnUp = item.querySelector('.cs-shot-move-up-item');
+        if (btnUp && idx > 0) {
+          btnUp.addEventListener('click', (e) => {
+            e.stopPropagation();
+            this.moveShot(idx, idx - 1);
+          });
+        }
+
+        const btnDown = item.querySelector('.cs-shot-move-down-item');
+        if (btnDown && idx < totalCount - 1) {
+          btnDown.addEventListener('click', (e) => {
+            e.stopPropagation();
+            this.moveShot(idx, idx + 1);
+          });
+        }
+
         this.dom.shotsList.appendChild(item);
       });
     }
@@ -1017,6 +1192,51 @@
         if (this.dom.titleInput) {
           this.project.title = this.dom.titleInput.value;
         }
+
+        const isDraft = options.isDraft === true;
+        const requirePublishable = options.requirePublishable !== undefined ? options.requirePublishable : !isDraft;
+
+        // Pre-Export Semantic Suitability & Publishability Guard (for cinematic-saas direction)
+        const isSaaSProject = !this.project.visualDirection || this.project.visualDirection === 'cinematic-saas';
+        if (isSaaSProject && this.project.shots && window.ReferenceShot && window.ReferenceShot.evaluateSuitability) {
+          for (let i = 0; i < this.project.shots.length; i++) {
+            const shot = this.project.shots[i];
+            const evalResult = window.ReferenceShot.evaluateSuitability(shot);
+
+            // 1. Strict Concept Mismatch Block: Prevent publishing mismatched videos in both production and draft
+            if (evalResult.isSuitable === false) {
+              const errorMsg = `Export Blocked: Concept Mismatch in Shot ${i + 1} ("${(shot.headline || '').slice(0, 30)}..."). Narrative copy discusses a topic not illustrated by the active graphic motif. Please select a matching motif or switch to placeholder before exporting.`;
+              console.warn(errorMsg);
+              if (this.dom.shotSuitabilityAlert) {
+                this.dom.shotSuitabilityAlert.style.display = 'block';
+                if (this.dom.shotSuitabilityMsg) {
+                  this.dom.shotSuitabilityMsg.textContent = errorMsg;
+                }
+              }
+              if (typeof alert === 'function' && !options.silent) {
+                alert(errorMsg);
+              }
+              return { success: false, blocked: true, isDraft, error: errorMsg };
+            }
+
+            // 2. Publishable Requirement Block: Deny normal production export if placeholders exist
+            if (requirePublishable && evalResult.isPublishable === false) {
+              const errorMsg = `Export Blocked: Shot ${i + 1} contains unillustrated storyboard placeholders and cannot be exported as a publishable release. Use 'Export Draft' or select an illustrated motif.`;
+              console.warn(errorMsg);
+              if (this.dom.shotSuitabilityAlert) {
+                this.dom.shotSuitabilityAlert.style.display = 'block';
+                if (this.dom.shotSuitabilityMsg) {
+                  this.dom.shotSuitabilityMsg.textContent = errorMsg;
+                }
+              }
+              if (typeof alert === 'function' && !options.silent) {
+                alert(errorMsg);
+              }
+              return { success: false, blocked: true, isDraft: false, error: errorMsg };
+            }
+          }
+        }
+
         if (this.project.scenes && this.project.scenes[this.activeSceneIndex || 0]) {
           this.project.scenes[this.activeSceneIndex || 0].layers = JSON.parse(JSON.stringify(this.graphics.layers));
         }
@@ -1039,8 +1259,12 @@
 
         if (res && res.blob) {
           const ext = res.mimeType.includes('webm') ? 'webm' : 'mp4';
+          const prefix = isDraft ? '[DRAFT]_' : '';
           const url = URL.createObjectURL(res.blob);
-          this.downloadFile(url, `${this.project.title || 'video-export'}.${ext}`);
+          this.downloadFile(url, `${prefix}${this.project.title || 'video-export'}.${ext}`);
+        }
+        if (res) {
+          res.isDraft = isDraft;
         }
         return res;
       } catch (err) {
@@ -1076,8 +1300,15 @@
             secondaryColor: s.secondaryColor,
             artDirection: s.artDirection,
             cameraMove: s.cameraMove,
+            motif: s.motif || 'default',
+            motifTitle: s.motifTitle || '',
             customData: s.customData || {}
           }));
+        }
+
+        // Schema coherence: sync scenes duration to total cinematic frames
+        if (this.project.scenes && this.project.scenes[0]) {
+          this.project.scenes[0].durationFrames = this.totalFrames;
         }
 
         // Clean serialization of audio clips (avoid massive raw Float32Array in JSON)
@@ -1088,7 +1319,10 @@
           volume: c.volume,
           theme: c.theme || (this.project.visualDirection === 'character-comedy' ? 'comedy' : (this.project.visualDirection === 'minimal-suspense' ? 'suspense' : 'saas'))
         }));
-        const projectToPackage = Object.assign({}, this.project, { audioClips: savedAudioClips });
+        const projectToPackage = Object.assign({}, this.project, {
+          brandMode: this.project.brandMode || 'branded',
+          audioClips: savedAudioClips
+        });
 
         const zipBuffer = this.archive.package(projectToPackage, this.assetBlobs);
         const blob = new Blob([zipBuffer], { type: 'application/x-acstudio+zip' });
@@ -1279,6 +1513,7 @@
   document.addEventListener('DOMContentLoaded', () => {
     if (document.getElementById('cs-canvas')) {
       window.studioApp = new StudioApp();
+      window.app = window.studioApp;
       window.studioApp.init();
     }
   });

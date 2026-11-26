@@ -1,56 +1,71 @@
 # AnyConverter Session Handoff — Creative Studio Visual Quality Phase 01
 
-**Timestamp:** 2026-11-25T08:00:00.000Z  
+**Timestamp:** 2026-11-26T21:20:00.000Z  
 **Active Profile:** `PROFILE 2 — DESIGN & TESTING`  
-**Active Branch:** `feat/creative-studio-visual-quality` (local only)  
+**Active Branch:** `feat/creative-studio-visual-quality` (strictly local, unpushed)  
 **Base Release Checkpoint:** `eb35600`  
-**Phase Status:** `PHASE 01 — AWAITING OWNER VISUAL APPROVAL — NOT PUSHED — NOT MERGED — NOT DEPLOYED — NEXT PHASE NOT STARTED`  
+**Phase Status:** `PHASE 01 — FIVE-SHOT REORDERING IMPLEMENTED — AWAITING OWNER REVIEW — NOT PUSHED — NOT MERGED — NOT DEPLOYED — PHASE 02 NOT STARTED`  
 
 ---
 
-## 1. What Was Completed in Phase 01
+## 1. What Was Completed: Five-Shot Reordering Implementation & Full Regression
 
-1. **Visual Baseline Overhaul & Canonical Evaluator:**
-   - Designed and implemented `ReferenceShot` and `CreativeDirector` (`assets/js/creative-studio/visual/`), replacing the engineering demo compositor.
-   - Purged the bouncing orange test circle, bottom progress bar, and frame counter overlay from production output.
-   - Mode-gated developer diagnostics strictly behind `#cs-render-mode-select === 'diagnostics'`.
-   - Unified viewport preview and offline video export under the same canonical frame evaluator for 100% semantic parity.
+1. **Owner Decision Enacted:**
+   - Owner explicitly ordered: *"Implement basic five-shot reordering in Phase 01. The original Phase 01 requirement, 'Reorder or replace a shot via project layers', remains mandatory. It is not deferred to Phase 10."*
+   - Implemented `#cs-btn-shot-move-up` (⬆ Move Up / ⬆ Subir / ⬆ Flyt Op) and `#cs-btn-shot-move-down` (⬇ Move Down / ⬇ Bajar / ⬇ Flyt Ned) in the Cinematic Shot Editor (`#cs-inspector-video-group`), plus direct ▲/▼ move buttons on `#cs-shots-list`, in `creative-studio/index.html`, `es/creative-studio/index.html`, and `da/creative-studio/index.html`.
+   - Implemented `moveShot(fromIndex, toIndex)` in `studio-app.js`, moving the complete shot object (id, headline, subhead, duration, visual motif, brand mode, accent, animation parameters) with immediate sequential recalculation of `startFrame`, playhead, and total frames.
+   - Enforced boundary controls: Shot 1 Move Up is disabled, Shot 5 Move Down is disabled.
+   - Preserved reordered sequence across round-trip art direction switches.
 
-2. **Master 24s SaaS Promo ("From raw data to clear answers"):**
-   - Implemented a 5-shot narrative arc: Hook (Data noise) -> Problem (Format chaos & latency) -> Solution (Client-side pipeline) -> Benefit (Sub-42ms speed) -> Payoff (AnyConverter CTA).
-   - Rendered at 1280×720, 720 frames @ 30fps (24.0s) via WebCodecs: [`From_Raw_Data_to_Clear_Answers_Master.webm`](file:///D:/SynergyRepo/AnyConverter/AnyConverter/reports/creative-studio/visual-quality/phase-01/evidence/From_Raw_Data_to_Clear_Answers_Master.webm).
+2. **Real Website Verification (`test_shot_reordering_workflow.js`):**
+   - 10/10 stages passed with exit code 0 in Chromium.
+   - Authored 5 distinct shots (450 frames / 15.0s).
+   - Moved Shot 4 above Shot 3: Shot 4 (Benefit / Metric Counter) moved to index 2 (180f start, 60f duration), Shot 3 (Solution / WASM Core) moved to index 3 (240f start, 120f duration).
+   - Exported reordered project via physical `#cs-btn-export-video` to `reordered_five_shot_saas_master.webm`.
+   - FFprobe verified 450 frames and 15.00s; FFmpeg volume detect confirmed audible audio (-16.4dB mean, -7.1dB max).
+   - Extracted decoded stills and generated contact sheet `REORDERED_SHOTS_CONTACT_SHEET.png`.
+   - Packaged `.acstudio` project archive, verified in fresh isolated browser context, mutated Shot 5 and re-exported (`reordered_and_modified_reexport.webm`), and tested reverse reorder.
 
-3. **V2 Short-Form Pilots:**
-   - **Parrot Character Comedy:** 9.0s (270 frames), 4 poses (neutral, wing-point, shocked, smug), chrome mic & agenda checklist props, speech bubble: [`V2_Pilot_Parrot_Character_Comedy.webm`](file:///D:/SynergyRepo/AnyConverter/AnyConverter/reports/creative-studio/visual-quality/phase-01/evidence/V2_Pilot_Parrot_Character_Comedy.webm).
-   - **Minimal Noir Suspense:** 9.0s (270 frames), 1-point perspective corridor, electrical light flicker, silhouette: [`V2_Pilot_Minimal_Noir_Suspense.webm`](file:///D:/SynergyRepo/AnyConverter/AnyConverter/reports/creative-studio/visual-quality/phase-01/evidence/V2_Pilot_Minimal_Noir_Suspense.webm).
+3. **Responsive Viewport Coverage (`test_responsive_viewports.js`):**
+   - Validated desktop (1280px), tablet (768px), and mobile (375px) across EN, ES, DA (9/9 combinations passed).
 
-4. **Live User Journey, Archive Reopen & Re-Export:**
-   - Tested in real Chromium on `http://127.0.0.1:3000/creative-studio/`.
-   - Edited headlines and colors via UI; exported 24s video.
-   - Saved project to `.acstudio` ZIP archive (5.8 KB).
-   - Unpacked in fresh isolated browser session, mutated Shot 4 headline/color, and re-exported: [`Reopened_Modified_SaaS_Promo.webm`](file:///D:/SynergyRepo/AnyConverter/AnyConverter/reports/creative-studio/visual-quality/phase-01/evidence/Reopened_Modified_SaaS_Promo.webm).
-
-5. **Defect Elimination & Scorecard:**
-   - All 7 identified visual/functional defects (D01–D07) fixed and verified.
-   - Creative scorecard awarded **90/100** (threshold: 80/100, all dimensions >= 80%).
-
----
-
-## 2. Key Deliverables & Reports Created
-
-- [`reports/creative-studio/visual-quality/phase-01/IMPLEMENTATION_SUMMARY.md`](file:///D:/SynergyRepo/AnyConverter/AnyConverter/reports/creative-studio/visual-quality/phase-01/IMPLEMENTATION_SUMMARY.md)
-- [`reports/creative-studio/visual-quality/phase-01/VISUAL_BEFORE_AFTER.md`](file:///D:/SynergyRepo/AnyConverter/AnyConverter/reports/creative-studio/visual-quality/phase-01/VISUAL_BEFORE_AFTER.md)
-- [`reports/creative-studio/visual-quality/phase-01/PREVIEW_EXPORT_PARITY.md`](file:///D:/SynergyRepo/AnyConverter/AnyConverter/reports/creative-studio/visual-quality/phase-01/PREVIEW_EXPORT_PARITY.md)
-- [`reports/creative-studio/visual-quality/phase-01/LIVE_LOCALHOST_JOURNEY.md`](file:///D:/SynergyRepo/AnyConverter/AnyConverter/reports/creative-studio/visual-quality/phase-01/LIVE_LOCALHOST_JOURNEY.md)
-- [`reports/creative-studio/visual-quality/phase-01/REOPEN_EDIT_REEXPORT.md`](file:///D:/SynergyRepo/AnyConverter/AnyConverter/reports/creative-studio/visual-quality/phase-01/REOPEN_EDIT_REEXPORT.md)
-- [`reports/creative-studio/visual-quality/phase-01/DEFECT_REGISTER.md`](file:///D:/SynergyRepo/AnyConverter/AnyConverter/reports/creative-studio/visual-quality/phase-01/DEFECT_REGISTER.md)
-- [`reports/creative-studio/visual-quality/phase-01/CREATIVE_SCORECARD.md`](file:///D:/SynergyRepo/AnyConverter/AnyConverter/reports/creative-studio/visual-quality/phase-01/CREATIVE_SCORECARD.md)
-- [`reports/creative-studio/visual-quality/phase-01/V2_SHORTS_INTEGRATION_EVIDENCE.md`](file:///D:/SynergyRepo/AnyConverter/AnyConverter/reports/creative-studio/visual-quality/phase-01/V2_SHORTS_INTEGRATION_EVIDENCE.md)
-- [`reports/creative-studio/visual-quality/phase-01/PHASE_HANDOFF.md`](file:///D:/SynergyRepo/AnyConverter/AnyConverter/reports/creative-studio/visual-quality/phase-01/PHASE_HANDOFF.md)
+4. **Regressions & Patch Cleanliness:**
+   - Core acceptance suite `run_phase01_second_correction.js`: 56/56 assertions passed with exit code 0.
+   - Negative fault injection suite `test_negative_gates.js`: 8/8 fault injections passed with exit code 0.
+   - User-authoring truth gate `test_user_authoring_truth_gate.js`: passed 100% with exit code 0.
+   - Multilingual test `test_multilingual_creative_studio_ui.js`: 3/3 locales passed with exit code 0.
+   - Sitewide test `test_sitewide_parity_and_counts.js`: 128 tools / 435 URLs passed with exit code 0.
+   - Clean UTF-8 patches regenerated (0 BOM, 0 NUL bytes; verified via `git apply --stat` across 10 files).
 
 ---
 
-## 3. Strict Push & Next Phase Governance
+## 2. Master Media Verification
 
-**NO PUSH, NO PR, NO MERGE, NO DEPLOY, NEXT PHASE NOT STARTED.**  
-Awaiting owner visual review and explicit authorization.
+All master and newly verified media files:
+- `reordered_five_shot_saas_master.webm`: `5d3493a5c343f9218cb01d40e665becec614c81282336f9497b37382799ecc69` (15.0s / 450f, -16.4 dB)
+- `REORDERED_SHOTS_CONTACT_SHEET.png`: 5-frame contact sheet showing reordered sequence
+- `reordered_five_shot_project.acstudio`: 6.2 KB valid project archive
+- `reordered_and_modified_reexport.webm`: `51827c38e99a3391a664ecc4e9b72e0548181ce609eee22a821a5ae3088425dc` (15.0s / 450f)
+- `From_Raw_Data_to_Clear_Answers_Master.webm`: `3bbc56b4135d4b94d14c67d4526d25819eb020f14901fb0bbc140e93e6dcf77b` (24.0s / 720f, -16.6 dB)
+- `The_Parrot_Manager_Pilot.webm`: `b60ac719786e372e45394649d86f7aa78b00a7d738bb25145a23d03663640cd3` (9.0s / 270f, -21.3 dB)
+- `The_Last_Signal_Pilot.webm`: `3b994708fda3b91ac9dd2b6618d532d1894d4796023c09f9213479ee776b56b4` (9.0s / 270f, -21.2 dB)
+- `Reopened_and_Mutated_Master.webm`: `c790c3a570fde06f139e411506632aac984fc5b772be8496f8fc3cd2f876129f` (24.0s / 720f, -16.6 dB)
+
+---
+
+## 3. Recommended Viewing for the Owner
+
+1. **Reordered Video Master:**
+   `reports/creative-studio/visual-quality/phase-01/evidence/reordered_five_shot_saas_master.webm` (15.0s / 450 frames @ 30fps)
+2. **Reordered Shots Contact Sheet:**
+   `reports/creative-studio/visual-quality/phase-01/evidence/REORDERED_SHOTS_CONTACT_SHEET.png`
+3. **9-Frame Master Storyboard Sheet:**
+   `reports/creative-studio/visual-quality/phase-01/ORIGINAL_THREE_DIRECTIONS_NINE_FRAME_BOARD.png`
+4. **Primary Original Master Video:**
+   `reports/creative-studio/visual-quality/phase-01/evidence/From_Raw_Data_to_Clear_Answers_Master.webm` (24.0s / 720 frames @ 30fps)
+
+---
+
+## 4. Final Mandatory Governance Statement
+
+`PHASE 01 — FIVE-SHOT REORDERING IMPLEMENTED — AWAITING OWNER REVIEW — NOT PUSHED — NOT MERGED — NOT DEPLOYED — PHASE 02 NOT STARTED.`

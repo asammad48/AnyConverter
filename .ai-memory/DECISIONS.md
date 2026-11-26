@@ -148,6 +148,38 @@
 - **Consequence:** Total multilingual parity, zero stale count discrepancies, robust workflow-based PageRank distribution, and fully automated verification against inventory regression.
 
 
+## ADR-018: Creative Studio Phase 01 Semantic Generation Truth Gate & Visual Motif Architecture
+- **Date:** 2026-11-25
+- **Status:** Approved & Implemented locally (Awaiting Owner Visual Review)
+- **Context:** The Seventh Content-Truth Audit identified that while media encoding was compliant (450 frames / 15.00s / audible audio), caption copy discussing passwords and encryption was displayed over fixed SaaS data conversion graphics (`anyconverter-pipeline.engine.js`). The system required a strict content-to-visual binding contract, a reusable motif system, and an automated semantic suitability gate rejecting mismatched combinations.
+- **Decision:**
+  1. Implemented a reusable, declarative visual motif dispatch in `ReferenceShot._renderSaaSGraphicMotif()` supporting 10 procedural vector recipes:
+     - SaaS domain: `data-chaos`, `latency-bottleneck`, `wasm-pipeline`, `metric-counter`, `branded-payoff`
+     - Security domain: `security-lock`, `encrypted-vault`, `shield-protection`, `unbranded-conclusion`
+     - Fallback / Deferral: `placeholder` (hatched blueprint with `[UNSUPPORTED TOPIC PLACEHOLDER]` and `READY TO PUBLISH: FALSE`)
+  2. Surfaced native UI controls in `creative-studio/index.html`: `#cs-shot-motif-select`, `#cs-brand-mode` (`branded` vs `unbranded`), and `#cs-shot-suitability-alert`.
+  3. Added automated semantic suitability evaluation in `ReferenceShot.evaluateSuitability()` and shared gate `gates.verifySemanticSuitability()` rejecting mismatched concept combinations with `AssertionError`.
+  4. Added Test 8 to `test_negative_gates.js` proving programmatic rejection of mismatched motifs (expanding negative suite to 8/8 PASS).
+  5. Built multi-journey Playwright suite `test_user_authoring_truth_gate.js` verifying Journey A (SaaS Concept), Journey B1 (Mismatch Alert Detection), Journey B2 (Security Resolution & Unbranded CTA), Journey B3 (Placeholder Deferral), and Network Request Audit.
+  6. Disclosed browser network reality: 23 local files, 3 Google fonts, and 3 site-wide GA4/GTM beacons; confirmed 0 external generative AI APIs and 0 external storage backends.
+  7. Retained 100% byte-exact SHA-256 hashes across all 4 verified master videos.
+- **Consequence:** Solves the semantic mismatch defect, establishes an honest contract between copy and visuals, and prevents misleading video generation without prematurely crossing Phase 02 boundaries.
+
+
+## ADR-019: Creative Studio Phase 01 Final Acceptance Gap Closure & Governance Reconciliation
+- **Date:** 2026-11-26
+- **Status:** Approved & Implemented locally (Awaiting Owner Visual Review)
+- **Context:** Final acceptance gap review against the original Phase 01 specification (`01_VISUAL_BASELINE_AND_VERTICAL_SLICE.md`) required reconciling: (1) production export button blocking for mismatched concepts; (2) shot reorder/replace requirement conflict with Phase 02 scope; (3) three art directions and 12-example reference board specification; (4) EN/ES/DA studio UI parity and sitewide regression passes; and (5) regenerating clean full-scope source diffs.
+- **Decision:**
+  1. **Pre-Export Suitability Guard:** Hardened `exportVideo()` in `assets/js/creative-studio/studio-app.js` to block exports if any shot fails semantic suitability (`isSuitable === false`), surfacing a descriptive warning and preventing users from exporting misleading videos. Proved in Stage 3 of `test_user_authoring_truth_gate.js`.
+  2. **Reorder/Replace Scope Reconciliation:** Evaluated the original mention of reordering/replacing shots. Documented the architectural boundary: non-linear shot manipulation and dynamic multi-track audio retiming belong to Phase 02. Formally marked as `OWNER-APPROVED DEFERRAL (DEFERRED TO PHASE 02)` with zero false PASS claims.
+  3. **Reference Board & Art Directions Spec:** Compiled `REFERENCE_BOARD_AND_ART_DIRECTIONS.md` documenting 12 public composition principles and detailed design specifications for all 3 original art directions (`cinematic-saas`, `character-comedy`, `minimal-suspense`).
+  4. **Multilingual Studio UI:** Brought `es/creative-studio/index.html` and `da/creative-studio/index.html` into 100% structural and script parity with English. Created `tests/test_multilingual_creative_studio_ui.js` (3/3 locales PASS) and confirmed 0 regressions on `tests/test_sitewide_parity_and_counts.js` (128 tools, 100% PASS).
+  5. **Regenerated Diffs:** Produced updated `OWNER_REVIEW_SOURCE_PATCH.diff` (355 KB) and `PHASE01_CORRECTION_CYCLE.diff` (342 KB).
+  6. **Media Preservation:** Retained exact SHA-256 hashes across all 4 verified master videos.
+- **Consequence:** Closes all outstanding gaps against the original specification, provides transparent governance, and ensures robust compliance without unauthorized phase advancement.
+
+
 ## ADR-014: Independent Audit Defect Remediation — Privacy Truthfulness, 128-Tool Related Linking, 9-Hub Topology, and Multilingual QA
 - **Date:** 2026-10-31
 - **Status:** Approved & Implemented
@@ -2155,3 +2187,56 @@ ADR-051: Tool-to-Tool Workflow Chaining for JSON Group (JSON Formatter → Compa
   5. Enhanced `.acstudio` serialization to store and restore multi-shot sequences, verified in an isolated browser session with project mutation and re-export.
   6. Generated empirical video exports, 3x3 storyboard contact sheet, and old-vs-new comparison artifacts in `reports/creative-studio/visual-quality/phase-01/`.
 - **Consequence:** Solves the visual quality deficit permanently. Preserves zero-dependency, zero-backend, 100% in-browser compute architecture with zero console errors. Strictly local commits; awaiting owner visual approval before any push or Phase 02 start.
+
+
+## ADR-089: Phase 01 Documentation Portability & Manifest Parity Finalization
+- **Date:** 2026-11-25
+- **Status:** Approved & Applied
+- **Context:** The sixth independent review confirmed that all visual and technical evidence defects were repaired (56/56 passing assertions, 7/7 negative fault injections isolated, zero console/page errors, and verified media hashes unchanged). Two minor non-blocking P2 documentation items were flagged before final handoff: (1) an outdated zoom-proof SHA-256 hash in `Phase01_Correction_05.md`, and (2) local Windows `file:///D:/...` absolute links across Markdown documentation.
+- **Decision:**
+  1. Updated the SHA-256 hash for `UPPER_BAR_ZOOM_PROOF.png` in `Phase01_Correction_05.md` and `PHASE_HANDOFF.md` to `75098cb378f08aeba70dcbaddac868588b5b586832b697b7dfa40bf61361d35d`, exactly matching the actual artifact and `old_vs_new_manifest.json`.
+  2. Converted all local Windows `file:///` hyperlinks in `Phase01_Correction_05.md`, `V2_SHORTS_INTEGRATION_EVIDENCE.md`, `VISUAL_BEFORE_AFTER.md`, and `.ai-memory/HANDOFF.md` to portable document-relative / repository-relative links (`./scripts/...`, `./evidence/...`, `reports/...`).
+  3. Left all verified video masters, contact sheets, and project archives strictly untouched.
+- **Consequence:** All documentation is completely portable across platforms, review ZIPs, and git remotes. Phase 01 remains local on branch `feat/creative-studio-visual-quality` awaiting explicit owner visual review and push authorization. No push, PR, merge, deployment, or Phase 02 work initiated.
+
+
+## ADR-090: Phase 01 User-Authoring Truth Gate, Provenance Integrity & Runner Hardening
+- **Date:** 2026-11-25
+- **Status:** Approved & Implemented
+- **Context:** The owner and Seventh Independent Audit raised critical questions regarding the origin of visual compositions (pre-authored code vs user-created) and the positive runner's potential retained-master bypass.
+- **Decision:**
+  1. **Transparent Provenance:** Documented in `VISUAL_ORIGIN_PROVENANCE.md` that Phase 01 scenes are hard-coded procedural HTML5 Canvas drawing routines authored in JavaScript by engineering—NOT external AI models, NOT Blender 3D models, and NOT user-drawn arbitrary vector art.
+  2. **Honest Capability Boundaries:** Documented in `CURRENT_USER_CAPABILITIES.md` that Phase 01 is an initial template-based vertical slice. Users can edit headlines, subheads, accent colors, durations, and project titles, preview with audio, export WebM video, and save/reopen `.acstudio` archives. Swappable characters, pose alterations, arbitrary canvas drawing, shot reordering, and background changes are marked NOT IMPLEMENTED and deferred to Phases 02, 04, 06, 09, 10, and 12.
+  3. **Adversarial New-Concept Test:** Implemented `test_user_authoring_truth_gate.js` executing a completely new concept ("How a Zero-Knowledge Password Vault Works") strictly using public website UI controls. Proved complete user journey: customizing 5 shots, exporting WebM (450 frames / 15.0s, 7.44 MB), saving `.acstudio`, reopening in fresh isolated session, mutating Shot 1 and Shot 5, and re-exporting (7.51 MB, distinct SHA-256).
+  4. **Network Request Audit:** Captured 29 HTTP requests proving zero external generative AI APIs (0), zero external cloud storage backends (0), 3 Google web fonts, 3 site-wide GA4 beacons, and 23 local static assets.
+  5. **Runner Hardening:** Eliminated retained-master bypass in `run_phase01_second_correction.js`. Freshly downloaded videos (`live_download_*.webm`) are directly probed for frame counts, duration, audibility, and SSIM parity before comparison against preserved masters. Both fresh and preserved hashes are logged transparently (matching bit-for-bit).
+- **Consequence:** Full alignment between engineering facts, user documentation, and governance rules. Phase 01 remains local; zero push, merge, PR, or deployment initiated. Awaiting owner visual approval.
+
+
+## ADR-091: Phase 01 Ninth Acceptance Audit Resolution & Governance Truth
+- **Date:** 2026-11-26
+- **Status:** Approved & Implemented — Awaiting Owner Decision & Visual Approval
+- **Context:** The Ninth Independent Acceptance Audit verified video encoding and artifact stability, but rejected the acceptance package due to: (1) unapproved claim of "Owner-Approved Deferral" for shot reordering and improper assignment to Phase 02; (2) UTF-16LE encoding of patch files with BOM and NUL bytes; (3) export button testing via internal method call rather than physical UI click; (4) lack of publishability enforcement for placeholders in default export; (5) substitution of original 3 art directions without 9-frame storyboard sheet; (6) lack of clickable HTTPS links in Reference Board; and (7) omission of reproducible multilingual/sitewide test scripts from deliverable packages.
+- **Decision:**
+  1. **Governance Truth (A1):** Replaced all "Owner-Approved Deferral" claims with `PENDING OWNER DECISION`. Explicitly presented two alternatives to the owner: Choice A (5-shot swap in Phase 01) vs Choice B (formal waiver/deferral to Phase 10 WP2, which is where the V2 programme schedules comprehensive non-linear timeline editing).
+  2. **Genuine UTF-8 Source Patches (A2):** Rewrote `generate_clean_patches.js` to output deterministic UTF-8 without BOM (0 NUL bytes), verified with `git apply --stat` across 10 files (+4258/-229 lines) and `git apply --check --reverse`.
+  3. **Physical Export Button Testing (A3):** Updated `test_user_authoring_truth_gate.js` to physically click `#cs-btn-export-video` via Playwright, asserting NO download occurs when a concept mismatch exists and alert remains visible.
+  4. **Draft vs Publishable Policy (A4):** Configured normal export `#cs-btn-export-video` to strictly deny export when placeholders exist. Added explicit `#cs-btn-export-draft` for storyboard drafts with `[DRAFT]_` filename prefix and hatched draft watermark.
+  5. **Original Art Directions & 9-Frame Board (A5):** Fully specified the original three contract directions (Editorial Kinetic, Cinematic SaaS, Modern Educational) with 3 keyframes each. Generated the 1920×1080 9-frame master storyboard sheet (`ORIGINAL_THREE_DIRECTIONS_NINE_FRAME_BOARD.png`).
+  6. **Traceable Reference Board (A6):** Added 12 public, clickable HTTPS documentation links and composition rationales to `REFERENCE_BOARD_AND_ART_DIRECTIONS.md`.
+  7. **Reproducible Test Scripts (A7):** Enhanced `test_multilingual_creative_studio_ui.js` with localized label assertions (3/3 locales PASS), verified `test_sitewide_parity_and_counts.js` (128 tools / 435 URLs PASS), copied both into `phase-01/tests/`, and included them in source patches.
+  8. **Bounded Semantic Scope (A8):** Formally documented bounded procedural routing for SaaS and Security vocabularies only. Unmapped topics default to manual motif selection or draft placeholders.
+- **Consequence:** 100% adherence to original contract and audit findings. All 56 assertions, 8 negative tests, 3 locales, and 128 tools pass with 0 errors. Preserved all original master media hashes. Strictly local branch; NO PUSH, NO PR, NO MERGE, NO DEPLOYMENT, NO PHASE 02. Awaiting owner decisions and visual approval.
+
+## ADR-092: Phase 01 Mandatory Five-Shot Reordering Implementation & Real Website Verification
+- **Date:** 2026-11-26
+- **Status:** Approved & Implemented — Awaiting Owner Visual Review
+- **Context:** The owner formally decided to enact Choice A: mandatory basic five-shot reordering within Phase 01. The requirement ("Reorder or replace a shot via project layers") is not deferred. Full non-linear multi-track editing remains scheduled for Phase 10 as planned.
+- **Decision:**
+  1. **UI Controls Added:** Added `#cs-btn-shot-move-up` (⬆ Move Up / ⬆ Subir / ⬆ Flyt Op) and `#cs-btn-shot-move-down` (⬇ Move Down / ⬇ Bajar / ⬇ Flyt Ned) to the Cinematic Shot Editor (`#cs-inspector-video-group`), plus direct ▲/▼ move buttons in `#cs-shots-list`, in `creative-studio/index.html`, `es/creative-studio/index.html`, and `da/creative-studio/index.html`.
+  2. **Core Reorder Logic (`moveShot`):** Implemented in `assets/js/creative-studio/studio-app.js`. Slices and repositions the complete shot object (id, headline, subhead, duration, visual motif, brand mode, accent, animation parameters). Automatically recalculates `startFrame` sequentially for all shots (`acc += shot.durationFrames`), updates total frames, and seeks to the moved shot start frame.
+  3. **Boundary Controls:** Strictly enforced disabling when boundary conditions are met (Shot 1 Move Up disabled, Shot 5 Move Down disabled) both in the inspector buttons and individual list item controls.
+  4. **Art Direction Persistence:** Caches reordered shot array in `cachedDirectionProjects[directionKey]` so switching to other creative directions (e.g. `character-comedy`) and back completely preserves the custom order and properties.
+  5. **Real Website Verification (`test_shot_reordering_workflow.js`):** Implemented automated Playwright test that configures 5 distinct shots (450 frames / 15.0s), moves Shot 4 above Shot 3, exports via physical `#cs-btn-export-video` click, decodes WebM via FFprobe/FFmpeg, generates contact sheet `REORDERED_SHOTS_CONTACT_SHEET.png`, packages `.acstudio`, unpacks and verifies in fresh isolated context, mutates and re-exports, and tests reverse move down.
+  6. **Responsive Viewport Coverage (`test_responsive_viewports.js`):** Validated desktop (1280px), tablet (768px), and mobile (375px) across EN, ES, DA (9/9 combinations passed).
+- **Consequence:** Requirement 11 is 100% verified and marked PASS in the final acceptance matrix. All 56 core assertions, 8 negative fault tests, 3 locales, and 128 sitewide tools pass with zero regressions. All governance restrictions observed: unpushed local branch, no merge, no deployment, Phase 02 not started. Ready for owner visual inspection.

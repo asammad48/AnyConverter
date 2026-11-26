@@ -1,0 +1,20 @@
+# AGY / Antigravity — Phase 01 Final Contract Closure (No Push)
+
+Work only on local branch `feat/creative-studio-visual-quality`. Read `PHASE01_NINTH_INDEPENDENT_ACCEPTANCE_AUDIT.md` and the original `01_VISUAL_BASELINE_AND_VERTICAL_SLICE.md`, plus real Phase 02 and Phase 10 specifications. **Do not rewrite the working WebCodecs encoder, rebuild existing videos unnecessarily, start another 16-phase feature, or push.**
+
+## Contract fixes
+
+1. **Governance truth:** Replace every `OWNER-APPROVED DEFERRAL` claim for shot reorder/replace with `OWNER DECISION REQUIRED`. The user has not approved a deferral. The actual V2 Phase 02 covers design tokens; shot insertion/deletion/reorder is explicitly scheduled for Phase 10. Present two alternatives for owner selection: (A) minimum functional reorder/replace of the fixed five shots now, with UI/save/reopen/export proof; or (B) explicit owner-approved deferral to Phase 10. Until chosen, mark the acceptance item pending, not PASS.
+2. **Deliver genuine UTF-8 patches:** Both submitted diff files are actually UTF-16LE with BOM and fail `git apply`. Update patch generation; include EN/ES/DA and **all implementation and new tests**. Produce `OWNER_REVIEW_SOURCE_PATCH.diff`, correction diff, current commit/working-tree inventory, and command outputs for `git apply --stat` and `git apply --check --reverse`. Include no absolute Windows paths.
+3. **Test the normal export button:** In Playwright, keep a known mismatched shot, click `#cs-btn-export-video` and confirm there is **no browser download** and the warning is clear; fix if violated. Then select a matching motif and prove fresh successful download. Do not use `window.studioApp.exportVideo()` as a substitute for the actual click.
+4. **Define draft versus finished exports:** An unsupported placeholder currently exports using the ordinary button while `requirePublishable` is optional. Decide and implement explicit treatment: separate Draft and Publishable modes, or deny normal export of placeholders. Test both cases using the actual UI, including saved/reopened projects. Never label an exported placeholder video as publishable.
+5. **Reconcile creative directions with actual original brief:** The original list is Editorial Kinetic / Cinematic SaaS / Modern Educational. Do not pretend Parrot Comedy and Minimal Suspense are the original three. Supply three concept key frames for each original direction and the nine-frame board, or ask the owner to approve a substitution before calling PASS. Preserve the parrot/noir demos as additional work.
+6. **Make the reference board traceable:** The 12 entries currently lack actual source URLs. Add public examples with clickable links and explain the composition technique without copying protected assets.
+7. **Supply reproducible EN/ES/DA/sitewide tests:** Include the exact two claimed test scripts, console output, and a concise localization text inspection; prove the 128-tool/435-URL inventory without claiming it establishes comprehensive functional coverage. Report tests not executed and gaps explicitly.
+8. **Honest semantic scope:** Distinguish supported SaaS and security motif matching from general semantic understanding. Do not assert arbitrary video topic accuracy.
+
+## Required owner-facing closure format
+
+Produce a corrected matrix using `PASS / FAIL / PENDING OWNER DECISION / APPROVED DEFERRAL` (only after owner actually agrees), each supported by a working file path and live test evidence. Attach current-source patch, genuine public-UI workflows, videos/contact sheets and affected locale snapshots. Preserve established file hashes where there is no functional reason to regenerate them. State which final video you recommend the owner watch.
+
+**Hard stop:** No `git push`, no PR, no merge, no deployment, no Phase 02 or Phase 10 implementation unless separately authorized. Final status: `PHASE 01 — FINAL CONTRACT REVIEW REQUESTED — AWAITING OWNER DECISIONS AND VISUAL APPROVAL — NOT PUSHED — NOT MERGED — NOT DEPLOYED`.

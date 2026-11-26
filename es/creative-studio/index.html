@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AnyConverter Creative Studio — Estudio de Diseño, Video y Códigos QR Gratis</title>
-  <meta name="description" content="Crea miniaturas, tarjetas de visita listas para imprimir con códigos QR vectoriales, animaciones 2D y edición de video directamente en tu navegador. 100% en el dispositivo.">
+  <meta name="description" content="Crea miniaturas, tarjetas de visita listas para imprimir con códigos QR vectoriales, animaciones 2D y edición de video cinemático directamente en tu navegador. 100% en el dispositivo.">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <link rel="canonical" href="https://anyconverter.io/es/creative-studio/">
   <link rel="alternate" hreflang="en" href="https://anyconverter.io/creative-studio/">
@@ -16,7 +16,7 @@
   <meta property="og:locale" content="es_ES">
   <meta property="og:url" content="https://anyconverter.io/es/creative-studio/">
   <meta property="og:title" content="AnyConverter Creative Studio — Editor de Diseño y Video en el Navegador">
-  <meta property="og:description" content="Diseña miniaturas, tarjetas de visita con códigos QR, animaciones 2D y edición de video localmente en tu navegador.">
+  <meta property="og:description" content="Diseña miniaturas, tarjetas de visita con códigos QR, animaciones 2D y edición de video cinemático localmente en tu navegador.">
   <meta property="og:image" content="https://anyconverter.io/assets/img/og-image.png">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="AnyConverter Creative Studio (Español)">
@@ -65,19 +65,30 @@
     <div class="cs-header">
       <div class="cs-header-left">
         <input type="text" id="cs-project-title" class="cs-project-title-input" value="Mi Proyecto Creativo" title="Título del Proyecto" aria-label="Título del Proyecto">
-        <select id="cs-preset-select" class="cs-select" aria-label="Geometría del Lienzo">
-          <option value="youtube-thumbnail">Miniatura YouTube (1280×720)</option>
-          <option value="social-square">Cuadrado Social (1080×1080)</option>
-          <option value="social-story">Historia / Reel (1080×1920)</option>
-          <option value="card-standard-eu">Tarjeta Visita EU (85×55mm)</option>
-          <option value="card-standard-us">Tarjeta Visita US (3.5×2.0in)</option>
-          <option value="social-banner">Banner (1200×630)</option>
-        </select>
+        <span id="cs-preset-container" style="display: none;">
+          <select id="cs-preset-select" class="cs-select" aria-label="Geometría del Lienzo">
+            <option value="youtube-thumbnail">Miniatura YouTube (1280×720)</option>
+            <option value="social-square">Cuadrado Social (1080×1080)</option>
+            <option value="social-story">Historia / Reel (1080×1920)</option>
+            <option value="card-standard-eu">Tarjeta Visita EU (85×55mm)</option>
+            <option value="card-standard-us">Tarjeta Visita US (3.5×2.0in)</option>
+            <option value="social-banner">Banner (1200×630)</option>
+          </select>
+        </span>
         <select id="cs-mode-select" class="cs-select" aria-label="Modo de Estudio">
           <option value="thumbnail">Gráficos y Miniaturas</option>
           <option value="business-card">Tarjeta de Visita</option>
-          <option value="video">Video y Animación 2D</option>
+          <option value="video" selected>Video Cinemático y Animación</option>
           <option value="3d">Modelo 3D glTF</option>
+        </select>
+        <select id="cs-direction-select" class="cs-select" aria-label="Dirección Artística" title="Dirección Artística">
+          <option value="cinematic-saas" selected>SaaS Cinemático (24s / 5 Tomas)</option>
+          <option value="character-comedy">Comedia del Loro Gerente (Piloto 9s)</option>
+          <option value="minimal-suspense">Suspenso Noir Minimalista (Piloto 9s)</option>
+        </select>
+        <select id="cs-render-mode-select" class="cs-select" aria-label="Calidad de Renderizado" title="Calidad de Renderizado">
+          <option value="production" selected>Modo: Calidad Producción</option>
+          <option value="diagnostics">Modo: Diagnóstico</option>
         </select>
       </div>
 
@@ -85,6 +96,7 @@
         <button id="cs-btn-undo" class="cs-btn cs-btn-icon" title="Deshacer (Ctrl+Z)" aria-label="Deshacer">↩️</button>
         <button id="cs-btn-redo" class="cs-btn cs-btn-icon" title="Rehacer (Ctrl+Y)" aria-label="Rehacer">↪️</button>
         <span style="width: 1px; height: 20px; background: var(--cs-border); margin: 0 4px;"></span>
+        <button id="cs-btn-mobile-inspector" class="cs-btn cs-mobile-only" title="Editar Toma">🎬 Editar Toma</button>
         <button id="cs-btn-save-project" class="cs-btn" title="Guardar Proyecto (.acstudio)">💾 Guardar .acstudio</button>
         <button id="cs-btn-open-project" class="cs-btn" title="Abrir Proyecto (.acstudio)">📂 Abrir Proyecto</button>
         <input type="file" id="cs-file-input" accept=".acstudio,application/zip" style="display: none;" aria-hidden="true">
@@ -94,6 +106,7 @@
         <button id="cs-btn-export-png" class="cs-btn cs-btn-primary" title="Exportar imagen PNG">Exportar PNG</button>
         <button id="cs-btn-export-pdf" class="cs-btn" title="Exportar PDF 300DPI">Exportar PDF</button>
         <button id="cs-btn-export-qr" class="cs-btn" title="Exportar Código QR Vectorial">Exportar QR</button>
+        <button id="cs-btn-export-draft" class="cs-btn" title="Exportar borrador del guión gráfico">Exportar Borrador</button>
         <button id="cs-btn-export-video" class="cs-btn" title="Renderizar Video">Exportar Video</button>
       </div>
     </div>
@@ -103,13 +116,24 @@
       <!-- Left Sidebar: Panels & Layers -->
       <aside class="cs-sidebar-left">
         <div class="cs-tabs-header">
-          <button class="cs-tab-btn active" data-target="tab-layers">Capas</button>
+          <button class="cs-tab-btn active" data-target="tab-shots" id="cs-tab-btn-shots">Tomas</button>
+          <button class="cs-tab-btn" data-target="tab-layers">Capas</button>
           <button class="cs-tab-btn" data-target="tab-add">Añadir</button>
           <button class="cs-tab-btn" data-target="tab-assets">Archivos</button>
           <button class="cs-tab-btn" data-target="tab-settings">Ajustes</button>
         </div>
 
-        <div id="tab-layers" class="cs-tab-pane active">
+        <!-- Tab 0: Cinematic Shots List -->
+        <div id="tab-shots" class="cs-tab-pane active">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+            <span class="cs-section-title" style="margin: 0;">Tomas Cinemáticas</span>
+            <span id="cs-shots-count-badge" style="font-size: 11px; font-weight: 600; background: rgba(56, 189, 248, 0.18); color: #38bdf8; padding: 2px 7px; border-radius: 4px;">5 Tomas</span>
+          </div>
+          <div id="cs-shots-list" class="cs-layers-list"></div>
+        </div>
+
+        <!-- Tab 1: Layers -->
+        <div id="tab-layers" class="cs-tab-pane">
           <div style="display: flex; justify-content: space-between; align-items: center;">
             <span class="cs-section-title" style="margin: 0;">Capas de Escena</span>
             <button id="cs-btn-delete-layer" class="cs-btn cs-btn-icon" title="Eliminar capa seleccionada">🗑️</button>
@@ -117,60 +141,63 @@
           <div id="cs-layers-list" class="cs-layers-list"></div>
         </div>
 
+        <!-- Tab 2: Add Components -->
         <div id="tab-add" class="cs-tab-pane">
           <span class="cs-section-title">Insertar Elemento</span>
           <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
             <button id="cs-btn-add-text" class="cs-btn">✍️ Texto</button>
-            <button id="cs-btn-add-shape" class="cs-btn">🟦 Forma</button>
+            <button id="cs-btn-add-shape" class="cs-btn">🟦 Figura</button>
             <button id="cs-btn-add-image" class="cs-btn">🖼️ Imagen</button>
-            <button id="cs-btn-add-qr" class="cs-btn">📱 QR vCard</button>
+            <button id="cs-btn-add-qr" class="cs-btn">📱 Código QR</button>
           </div>
         </div>
 
+        <!-- Tab 3: Media Assets -->
         <div id="tab-assets" class="cs-tab-pane">
           <span class="cs-section-title">Biblioteca Multimedia</span>
-          <p style="font-size: 12px; color: var(--cs-text-muted);">Imágenes, pistas de audio y modelos glTF almacenados localmente en la memoria del navegador.</p>
+          <p style="font-size: 12px; color: var(--cs-text-muted);">Imágenes, audio y modelos 3D almacenados localmente en la memoria del navegador.</p>
           <div id="cs-assets-grid" style="display: flex; flex-direction: column; gap: 6px; font-size: 12px; color: var(--cs-text-muted);">
-            <em>Sin archivos multimedia importados aún.</em>
+            <em>Sin archivos externos importados.</em>
           </div>
         </div>
 
+        <!-- Tab 4: BYOK & Security Settings -->
         <div id="tab-settings" class="cs-tab-pane">
-          <span class="cs-section-title">Privacidad Local</span>
+          <span class="cs-section-title">Privacidad en el Navegador</span>
           <div style="font-size: 12px; line-height: 1.5; color: var(--cs-text-muted);">
-            <p>🔒 <strong>Cero Servidores:</strong> Tus proyectos, credenciales y diseños se quedan en tu dispositivo.</p>
-            <p style="margin-top: 8px;">🔑 <strong>Bóveda BYOK:</strong> Claves guardadas en memoria de sesión o cifradas localmente con PBKDF2 + AES-GCM.</p>
+            <p>🔒 <strong>Cero Almacenamiento en Servidor:</strong> Tus proyectos, credenciales y videos permanecen exclusivamente en tu dispositivo.</p>
+            <p style="margin-top: 8px;">🔑 <strong>Bóveda Local:</strong> Las claves residen en memoria volátil o cifradas localmente con PBKDF2 + AES-GCM.</p>
           </div>
         </div>
       </aside>
 
       <!-- Center Stage: Canvas & Timeline -->
       <section class="cs-stage">
+        <!-- Viewport Toolbar -->
         <div class="cs-stage-toolbar">
           <div style="display: flex; gap: 8px; align-items: center;">
-            <span id="cs-status-badge" style="font-size: 11px; padding: 2px 8px; border-radius: 999px; background: rgba(16, 185, 129, 0.2); color: #10b981; font-weight: 600;">Motor 100% en el Navegador</span>
-            <div id="cs-card-side-toggle" style="display: inline-flex; border: 1px solid var(--cs-border); border-radius: 6px; overflow: hidden; margin-left: 8px;">
+            <span id="cs-status-badge" style="font-size: 11px; padding: 2px 8px; border-radius: 999px; background: rgba(16, 185, 129, 0.2); color: #10b981; font-weight: 600;">Motor 100% en Cliente</span>
+            <div id="cs-card-side-toggle" style="display: none; border: 1px solid var(--cs-border); border-radius: 6px; overflow: hidden; margin-left: 8px;">
               <button id="cs-card-side-front" class="cs-btn" style="border: none; border-radius: 0; padding: 4px 8px; font-size: 11px;">Frente</button>
               <button id="cs-card-side-back" class="cs-btn" style="border: none; border-radius: 0; padding: 4px 8px; font-size: 11px;">Dorso (QR)</button>
             </div>
           </div>
-          <div style="display: flex; gap: 8px; align-items: center;">
-            <button id="cs-btn-zoom-fit" class="cs-btn cs-btn-icon" title="Ajustar a la pantalla">🔍 Ajustar</button>
+          <div style="display: flex; gap: 6px; align-items: center;">
+            <span id="cs-frame-display" style="font-family: monospace; font-size: 11px; color: var(--cs-text-muted);">00:00 / 00:24</span>
           </div>
         </div>
 
-        <div class="cs-viewport">
-          <div class="cs-canvas-wrapper">
-            <canvas id="cs-canvas" width="1280" height="720"></canvas>
-          </div>
+        <!-- Responsive Canvas Container -->
+        <div class="cs-canvas-viewport">
+          <canvas id="cs-canvas" width="1280" height="720"></canvas>
         </div>
 
-        <div class="cs-timeline-panel">
-          <div class="cs-timeline-header">
-            <div style="display: flex; align-items: center; gap: 8px;">
-              <button id="cs-btn-play-pause" class="cs-btn" style="font-size: 12px; padding: 4px 10px;">▶️ Reproducir</button>
-              <span id="cs-frame-display" style="font-size: 12px; font-family: monospace; color: var(--cs-text-muted);">Fotograma 0 / 150 (0.00s)</span>
-              <button id="cs-btn-split-clip" class="cs-btn" style="font-size: 12px; padding: 4px 8px;" title="Dividir clip">✂️ Dividir</button>
+        <!-- Bottom Timeline Editor -->
+        <div class="cs-timeline-container">
+          <div class="cs-timeline-toolbar">
+            <div style="display: flex; gap: 4px; align-items: center;">
+              <button id="cs-btn-play-pause" class="cs-btn cs-btn-primary" style="padding: 2px 10px; font-size: 12px;">▶ Reproducir</button>
+              <button id="cs-btn-split-clip" class="cs-btn" style="padding: 2px 8px; font-size: 11px;">✂️ Dividir</button>
             </div>
             <div id="cs-scenes-tabs" style="display: flex; gap: 4px;">
               <button class="cs-btn cs-btn-primary" style="font-size: 11px; padding: 2px 8px;">Escena 1</button>
@@ -179,59 +206,136 @@
           </div>
           <div class="cs-timeline-body">
             <div class="cs-timeline-ruler">
-              <input type="range" id="cs-timeline-scrubber" min="0" max="150" value="0" style="width: 100%; height: 100%; opacity: 0; cursor: pointer; position: absolute; z-index: 10;">
+              <input type="range" id="cs-timeline-scrubber" min="0" max="719" value="0" style="width: 100%; height: 100%; opacity: 0; cursor: pointer; position: absolute; z-index: 10;">
             </div>
-            <div class="cs-timeline-track">
-              <div class="cs-clip" style="left: 0; width: 100%;">Escena 1: Gráficos y Título</div>
+            <div id="cs-timeline-video-track" class="cs-timeline-track" style="display: flex; gap: 2px; height: 38px; padding: 2px; position: relative;">
+              <!-- Bloques dinámicos de tomas -->
             </div>
-            <div class="cs-timeline-track">
-              <div class="cs-clip" style="left: 0; width: 100%; background: rgba(16, 185, 129, 0.5); border-color: #34d399;">Pista de Audio (Estéreo 48kHz)</div>
+            <div class="cs-timeline-track" style="height: 32px;">
+              <div class="cs-clip" style="left: 0; width: 100%; background: rgba(16, 185, 129, 0.35); border-color: #34d399; font-size: 11px; display: flex; align-items: center; padding-left: 8px;">
+                🎵 Master de Audio Sintetizado (Estéreo 48kHz PCM)
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       <!-- Right Sidebar: Properties Inspector -->
-      <aside class="cs-sidebar-right">
-        <span class="cs-section-title">Inspector de Propiedades</span>
-
-        <div class="cs-form-group">
-          <label class="cs-form-label" for="cs-prop-content">Texto / Contenido</label>
-          <input type="text" id="cs-prop-content" class="cs-input" placeholder="Contenido de la capa">
+      <aside class="cs-sidebar-right" id="cs-sidebar-right">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+          <span class="cs-section-title" style="margin: 0;">Inspector de Propiedades</span>
+          <button id="cs-btn-close-inspector" class="cs-btn cs-btn-icon cs-mobile-only" title="Cerrar Inspector">✕</button>
         </div>
 
-        <div class="cs-grid-2">
-          <div class="cs-form-group">
-            <label class="cs-form-label" for="cs-prop-font-size">Tamaño Fuente (px)</label>
-            <input type="number" id="cs-prop-font-size" class="cs-input" value="36" min="8" max="200">
+        <!-- Mode Group 1: Cinematic Shot Editor -->
+        <div id="cs-inspector-video-group" class="cs-form-group" style="margin-top: 4px;">
+          <span class="cs-section-title">Editor de Tomas Cinemáticas</span>
+          <p style="font-size: 11px; color: var(--cs-text-muted); margin-bottom: 6px;">Edita titular, narrativa y acento de la toma activa.</p>
+          <label class="cs-form-label" for="cs-shot-select">Toma Activa</label>
+          <select id="cs-shot-select" class="cs-select" style="width: 100%; margin-bottom: 8px;">
+            <option value="0">Toma 1: El Gancho</option>
+            <option value="1">Toma 2: El Problema</option>
+            <option value="2">Toma 3: La Solución</option>
+            <option value="3">Toma 4: El Beneficio</option>
+            <option value="4">Toma 5: El Cierre</option>
+          </select>
+          <div style="display: flex; gap: 6px; margin-bottom: 8px;">
+            <button type="button" id="cs-btn-shot-move-up" class="cs-btn" style="flex: 1; padding: 5px 8px; font-size: 11px;" title="Mover toma activa hacia arriba">⬆ Subir</button>
+            <button type="button" id="cs-btn-shot-move-down" class="cs-btn" style="flex: 1; padding: 5px 8px; font-size: 11px;" title="Mover toma activa hacia abajo">⬇ Bajar</button>
           </div>
-          <div class="cs-form-group">
-            <label class="cs-form-label" for="cs-prop-fill">Color</label>
-            <input type="color" id="cs-prop-fill" class="cs-input" value="#ffffff" style="height: 35px; padding: 2px;">
+          <label class="cs-form-label" for="cs-shot-headline">Titular</label>
+          <input type="text" id="cs-shot-headline" class="cs-input" placeholder="Titular de la toma" style="margin-bottom: 8px;">
+          <label class="cs-form-label" for="cs-shot-subhead">Subtítulo / Narrativa</label>
+          <textarea id="cs-shot-subhead" class="cs-input" rows="2" placeholder="Narrativa de la toma" style="margin-bottom: 8px; resize: vertical;"></textarea>
+
+          <label class="cs-form-label" for="cs-shot-motif-select">Motivo Gráfico Visual</label>
+          <select id="cs-shot-motif-select" class="cs-select" style="width: 100%; margin-bottom: 8px;">
+            <option value="default">Automático (Según Etapa)</option>
+            <optgroup label="SaaS y Procesamiento de Datos">
+              <option value="data-chaos">Flujo Caótico de Datos (Archivos Sin Procesar)</option>
+              <option value="latency-bottleneck">Cuello de Botella de Latencia (Latencia Cloud)</option>
+              <option value="wasm-pipeline">Pipeline WASM (Etapas Deterministas)</option>
+              <option value="metric-counter">Contador de Métricas (0 Fotogramas Caídos)</option>
+              <option value="branded-payoff">AnyConverter Studio (Cierre Con Marca)</option>
+            </optgroup>
+            <optgroup label="Seguridad y Criptografía">
+              <option value="security-lock">Llave de Seguridad y Candado (PBKDF2/Derivación)</option>
+              <option value="encrypted-vault">Bóveda Cifrada (Embudo Sal -> AES-GCM)</option>
+              <option value="shield-protection">Escudo Cibernético (RAM de Conocimiento Cero)</option>
+              <option value="unbranded-conclusion">Cierre Neutro (Llamada a la Acción Sin Marca)</option>
+            </optgroup>
+            <optgroup label="Marcador de Posición y Aplazamiento">
+              <option value="placeholder">Tema No Soportado (Marcador Trazado)</option>
+            </optgroup>
+          </select>
+
+          <!-- Semantic Suitability Alert -->
+          <div id="cs-shot-suitability-alert" style="display: none; padding: 6px 10px; margin-bottom: 8px; border-radius: 6px; font-size: 11px; line-height: 1.4; background: rgba(239, 68, 68, 0.15); border: 1px solid rgba(239, 68, 68, 0.4); color: #fca5a5;">
+            ⚠️ <strong>DESAJUSTE DE CONCEPTO:</strong> <span id="cs-shot-suitability-msg">El texto describe seguridad pero el gráfico muestra conversión de archivos. Cambie el motivo o use un marcador.</span>
+          </div>
+
+          <div class="cs-grid-2">
+            <div>
+              <label class="cs-form-label" for="cs-shot-accent">Color de Acento</label>
+              <input type="color" id="cs-shot-accent" class="cs-input" value="#38bdf8" style="height: 35px; padding: 2px;">
+            </div>
+            <div>
+              <label class="cs-form-label" for="cs-shot-duration">Duración (fotogramas)</label>
+              <input type="number" id="cs-shot-duration" class="cs-input" value="120" min="30" max="600">
+            </div>
+          </div>
+
+          <div style="margin-top: 8px;">
+            <label class="cs-form-label" for="cs-brand-mode">Modo de Cierre de Marca</label>
+            <select id="cs-brand-mode" class="cs-select" style="width: 100%;">
+              <option value="branded">Con Marca (AnyConverter Studio)</option>
+              <option value="unbranded">Sin Marca (Neutro / Terceros)</option>
+            </select>
           </div>
         </div>
 
-        <span class="cs-section-title" style="margin-top: 10px;">Transformación</span>
-        <div class="cs-grid-2">
+        <!-- Mode Group 2: Layer Properties -->
+        <div id="cs-inspector-layer-group" style="display: none;">
+          <span class="cs-section-title" style="margin-top: 6px;">Propiedades de Capa</span>
           <div class="cs-form-group">
-            <label class="cs-form-label" for="cs-prop-x">Posición X</label>
-            <input type="number" id="cs-prop-x" class="cs-input" value="100">
+            <label class="cs-form-label" for="cs-prop-content">Texto / Contenido</label>
+            <input type="text" id="cs-prop-content" class="cs-input" placeholder="Contenido de la capa">
           </div>
-          <div class="cs-form-group">
-            <label class="cs-prop-y">Posición Y</label>
-            <input type="number" id="cs-prop-y" class="cs-input" value="100">
+
+          <div class="cs-grid-2">
+            <div class="cs-form-group">
+              <label class="cs-form-label" for="cs-prop-font-size">Tamaño Fuente (px)</label>
+              <input type="number" id="cs-prop-font-size" class="cs-input" value="36" min="8" max="200">
+            </div>
+            <div class="cs-form-group">
+              <label class="cs-form-label" for="cs-prop-fill">Color</label>
+              <input type="color" id="cs-prop-fill" class="cs-input" value="#ffffff" style="height: 35px; padding: 2px;">
+            </div>
           </div>
-          <div class="cs-form-group">
-            <label class="cs-form-label" for="cs-prop-w">Ancho</label>
-            <input type="number" id="cs-prop-w" class="cs-input" value="300">
-          </div>
-          <div class="cs-form-group">
-            <label class="cs-form-label" for="cs-prop-h">Alto</label>
-            <input type="number" id="cs-prop-h" class="cs-input" value="100">
+
+          <span class="cs-section-title" style="margin-top: 10px;">Transformación y Alineación</span>
+          <div class="cs-grid-2">
+            <div class="cs-form-group">
+              <label class="cs-form-label" for="cs-prop-x">Posición X</label>
+              <input type="number" id="cs-prop-x" class="cs-input" value="100">
+            </div>
+            <div class="cs-form-group">
+              <label class="cs-prop-y">Posición Y</label>
+              <input type="number" id="cs-prop-y" class="cs-input" value="100">
+            </div>
+            <div class="cs-form-group">
+              <label class="cs-prop-w">Ancho</label>
+              <input type="number" id="cs-prop-w" class="cs-input" value="300">
+            </div>
+            <div class="cs-form-group">
+              <label class="cs-prop-h">Alto</label>
+              <input type="number" id="cs-prop-h" class="cs-input" value="100">
+            </div>
           </div>
         </div>
 
-        <div class="cs-form-group" style="margin-top: 10px;">
+        <!-- Mode Group 3: vCard QR Details -->
+        <div id="cs-inspector-vcard-group" class="cs-form-group" style="margin-top: 10px; display: none;">
           <span class="cs-section-title">Detalles Código QR vCard</span>
           <p style="font-size: 11px; color: var(--cs-text-muted); margin-bottom: 6px;">Genera matriz QR compatible con la norma ISO/IEC 18004.</p>
           <input type="text" id="cs-vcard-name" class="cs-input" placeholder="Nombre Completo" style="margin-bottom: 6px;">
@@ -259,6 +363,8 @@
   <script src="/assets/js/creative-studio/three-scene-adapter.js?v=20261125" defer></script>
   <script src="/assets/js/creative-studio/command-engine.js?v=20261125" defer></script>
   <script src="/assets/js/creative-studio/animation-engine.js?v=20261125" defer></script>
+  <script src="/assets/js/creative-studio/visual/reference-shot.js?v=20261125" defer></script>
+  <script src="/assets/js/creative-studio/visual/creative-director.js?v=20261125" defer></script>
   <script src="/assets/js/creative-studio/render-adapter.js?v=20261125" defer></script>
   <script src="/assets/js/creative-studio/studio-app.js?v=20261125" defer></script>
 </body>

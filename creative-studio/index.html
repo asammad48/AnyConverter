@@ -142,6 +142,7 @@
         <button id="cs-btn-export-png" class="cs-btn cs-btn-primary" title="Export PNG image">Export PNG</button>
         <button id="cs-btn-export-pdf" class="cs-btn" title="Export 300DPI Print PDF">Export PDF</button>
         <button id="cs-btn-export-qr" class="cs-btn" title="Export Vector QR Code">Export QR</button>
+        <button id="cs-btn-export-draft" class="cs-btn" title="Export Storyboard Draft (Allows Placeholders)">Export Draft</button>
         <button id="cs-btn-export-video" class="cs-btn" title="Render Video (WebM/MP4)">Export Video</button>
       </div>
     </div>
@@ -278,10 +279,41 @@
             <option value="3">Shot 4: The Benefit</option>
             <option value="4">Shot 5: The Payoff</option>
           </select>
+          <div style="display: flex; gap: 6px; margin-bottom: 8px;">
+            <button type="button" id="cs-btn-shot-move-up" class="cs-btn" style="flex: 1; padding: 5px 8px; font-size: 11px;" title="Move active shot earlier in sequence">⬆ Move Up</button>
+            <button type="button" id="cs-btn-shot-move-down" class="cs-btn" style="flex: 1; padding: 5px 8px; font-size: 11px;" title="Move active shot later in sequence">⬇ Move Down</button>
+          </div>
           <label class="cs-form-label" for="cs-shot-headline">Headline</label>
           <input type="text" id="cs-shot-headline" class="cs-input" placeholder="Shot headline" style="margin-bottom: 8px;">
           <label class="cs-form-label" for="cs-shot-subhead">Subhead / Narrative</label>
           <textarea id="cs-shot-subhead" class="cs-input" rows="2" placeholder="Shot narrative subhead" style="margin-bottom: 8px; resize: vertical;"></textarea>
+          
+          <label class="cs-form-label" for="cs-shot-motif-select">Visual Graphic Motif</label>
+          <select id="cs-shot-motif-select" class="cs-select" style="width: 100%; margin-bottom: 8px;">
+            <option value="default">Auto (Follow Shot Stage)</option>
+            <optgroup label="SaaS & Data Processing">
+              <option value="data-chaos">Chaos Data Stream (Unparsed Files)</option>
+              <option value="latency-bottleneck">Latency Bottleneck (Cloud Latency)</option>
+              <option value="wasm-pipeline">WASM Pipeline (Deterministic Stages)</option>
+              <option value="metric-counter">Metrics Counter (0 Dropped Frames)</option>
+              <option value="branded-payoff">AnyConverter Studio (Branded Payoff)</option>
+            </optgroup>
+            <optgroup label="Security & Cryptography">
+              <option value="security-lock">Security Key & Padlock (PBKDF2/Derivation)</option>
+              <option value="encrypted-vault">Encrypted Vault (Salt Funnel -> AES-GCM)</option>
+              <option value="shield-protection">Cyber Shield (Zero-Knowledge RAM)</option>
+              <option value="unbranded-conclusion">Neutral Payoff (Unbranded Call-To-Action)</option>
+            </optgroup>
+            <optgroup label="Fallback & Deferral">
+              <option value="placeholder">Unsupported Topic (Hatched Placeholder)</option>
+            </optgroup>
+          </select>
+
+          <!-- Semantic Suitability Alert -->
+          <div id="cs-shot-suitability-alert" style="display: none; padding: 6px 10px; margin-bottom: 8px; border-radius: 6px; font-size: 11px; line-height: 1.4; background: rgba(239, 68, 68, 0.15); border: 1px solid rgba(239, 68, 68, 0.4); color: #fca5a5;">
+            ⚠️ <strong>CONCEPT MISMATCH:</strong> <span id="cs-shot-suitability-msg">Copy discusses security but visual displays file conversion. Switch motif or use placeholder.</span>
+          </div>
+
           <div class="cs-grid-2">
             <div>
               <label class="cs-form-label" for="cs-shot-accent">Accent Color</label>
@@ -291,6 +323,14 @@
               <label class="cs-form-label" for="cs-shot-duration">Duration (frames)</label>
               <input type="number" id="cs-shot-duration" class="cs-input" value="120" min="30" max="600">
             </div>
+          </div>
+
+          <div style="margin-top: 8px;">
+            <label class="cs-form-label" for="cs-brand-mode">Brand Conclusion Mode</label>
+            <select id="cs-brand-mode" class="cs-select" style="width: 100%;">
+              <option value="branded">Branded (AnyConverter Studio)</option>
+              <option value="unbranded">Unbranded (Neutral / Third-Party)</option>
+            </select>
           </div>
         </div>
 
