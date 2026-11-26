@@ -1,0 +1,127 @@
+{
+  "live_user_password_vault_explainer.webm": {
+    "programs": [],
+    "stream_groups": [],
+    "streams": [
+      {
+        "codec_name": "vp8",
+        "codec_type": "video",
+        "width": 1280,
+        "height": 720,
+        "avg_frame_rate": "30/1",
+        "nb_read_frames": "450"
+      },
+      {
+        "codec_name": "opus",
+        "codec_type": "audio",
+        "avg_frame_rate": "0/0",
+        "nb_read_frames": "751"
+      }
+    ],
+    "format": {
+      "duration": "15.000000",
+      "size": "7806464"
+    },
+    "sha256": "cd4b68d426c2ffed77d0be667ae1b673503f0ff2e31868252145433601703324"
+  },
+  "live_user_password_vault_modified.webm": {
+    "programs": [],
+    "stream_groups": [],
+    "streams": [
+      {
+        "codec_name": "vp8",
+        "codec_type": "video",
+        "width": 1280,
+        "height": 720,
+        "avg_frame_rate": "30/1",
+        "nb_read_frames": "450"
+      },
+      {
+        "codec_name": "opus",
+        "codec_type": "audio",
+        "avg_frame_rate": "0/0",
+        "nb_read_frames": "751"
+      }
+    ],
+    "format": {
+      "duration": "15.000000",
+      "size": "7874953"
+    },
+    "sha256": "142df0c58aeb8bc4f7c38e5345460dee016a11a70d78a25c928db03bb050292c"
+  },
+  "From_Raw_Data_to_Clear_Answers_Master.webm": {
+    "programs": [],
+    "stream_groups": [],
+    "streams": [
+      {
+        "codec_name": "vp8",
+        "codec_type": "video",
+        "width": 1280,
+        "height": 720,
+        "avg_frame_rate": "30/1",
+        "nb_read_frames": "720"
+      },
+      {
+        "codec_name": "opus",
+        "codec_type": "audio",
+        "avg_frame_rate": "0/0",
+        "nb_read_frames": "1201"
+      }
+    ],
+    "format": {
+      "duration": "24.000000",
+      "size": "12417810"
+    },
+    "sha256": "3bbc56b4135d4b94d14c67d4526d25819eb020f14901fb0bbc140e93e6dcf77b"
+  },
+  "The_Parrot_Manager_Pilot.webm": {
+    "programs": [],
+    "stream_groups": [],
+    "streams": [
+      {
+        "codec_name": "vp8",
+        "codec_type": "video",
+        "width": 1280,
+        "height": 720,
+        "avg_frame_rate": "30/1",
+        "nb_read_frames": "270"
+      },
+      {
+        "codec_name": "opus",
+        "codec_type": "audio",
+        "avg_frame_rate": "0/0",
+        "nb_read_frames": "451"
+      }
+    ],
+    "format": {
+      "duration": "9.000000",
+      "size": "4405469"
+    },
+    "sha256": "b60ac719786e372e45394649d86f7aa78b00a7d738bb25145a23d03663640cd3"
+  },
+  "The_Last_Signal_Pilot.webm": {
+    "programs": [],
+    "stream_groups": [],
+    "streams": [
+      {
+        "codec_name": "vp8",
+        "codec_type": "video",
+        "width": 1280,
+        "height": 720,
+        "avg_frame_rate": "30/1",
+        "nb_read_frames": "270"
+      },
+      {
+        "codec_name": "opus",
+        "codec_type": "audio",
+        "avg_frame_rate": "0/0",
+        "nb_read_frames": "451"
+      }
+    ],
+    "format": {
+      "duration": "9.000000",
+      "size": "4471543"
+    },
+    "sha256": "3b994708fda3b91ac9dd2b6618d532d1894d4796023c09f9213479ee776b56b4"
+  }
+}
