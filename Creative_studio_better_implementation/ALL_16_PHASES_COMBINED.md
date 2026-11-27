@@ -2,6 +2,8 @@
 
 **All 16 original phase scopes are preserved and extended. Read README and MASTER before Phase 01. No push until owner-finalized phase + explicit push permission.**
 
+[Phase 17 — AI-Guided Blender Production](17_AI_GUIDED_BLENDER_PRODUCTION.md) is a separately authorized extension after the original 16-phase program. Use the individual roadmap files for the current Blender handoff notes.
+
 
 
 ---

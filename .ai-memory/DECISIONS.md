@@ -2240,3 +2240,9 @@ ADR-051: Tool-to-Tool Workflow Chaining for JSON Group (JSON Formatter → Compa
   5. **Real Website Verification (`test_shot_reordering_workflow.js`):** Implemented automated Playwright test that configures 5 distinct shots (450 frames / 15.0s), moves Shot 4 above Shot 3, exports via physical `#cs-btn-export-video` click, decodes WebM via FFprobe/FFmpeg, generates contact sheet `REORDERED_SHOTS_CONTACT_SHEET.png`, packages `.acstudio`, unpacks and verifies in fresh isolated context, mutates and re-exports, and tests reverse move down.
   6. **Responsive Viewport Coverage (`test_responsive_viewports.js`):** Validated desktop (1280px), tablet (768px), and mobile (375px) across EN, ES, DA (9/9 combinations passed).
 - **Consequence:** Requirement 11 is 100% verified and marked PASS in the final acceptance matrix. All 56 core assertions, 8 negative fault tests, 3 locales, and 128 sitewide tools pass with zero regressions. All governance restrictions observed: unpushed local branch, no merge, no deployment, Phase 02 not started. Ready for owner visual inspection.
+
+## ADR-093 Creative Studio layout versioning
+
+**Date** 2026-11-27
+
+A cinematic shot opts into normalized, constraint-based composition through `customData.layout.version`. CreativeDirector uses the same evaluator for preview, PNG and WebCodecs video. Legacy wide shots keep their original renderer and archives. The editor draws guides after rendering the preview frame. System fonts and native Canvas preserve local, static-site operation.

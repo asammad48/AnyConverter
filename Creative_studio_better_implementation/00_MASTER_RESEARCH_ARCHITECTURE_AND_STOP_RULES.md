@@ -54,6 +54,10 @@ The current `_renderCanonicalScene()` explicitly draws the debug title/orb/progr
 | 15 | Five-Minute Narrative Continuity, Pacing and Quality Budgets | Five-minute native educational episode with 5 chapters, at least 24 purposefully composed shots, genuine media/diagrams and voice or caption-led narration | Memory/codec limits |
 | 16 | Independent Creative QA, Blind Comparison and Final Visual Release Gate | Final comparative evidence package, seven showcase projects, objective technical report and an explicit owner-go/no-go decision | Human aesthetics cannot be proven by automated score |
 
+### Planned extension after Phase 16
+
+[Phase 17 — AI-Guided Blender Production](17_AI_GUIDED_BLENDER_PRODUCTION.md) adds a reviewed prompt-to-scene workflow through an optional local Blender add-on. Phases 07, 09 and 12 provide the import, planning and 3D foundations. Phase 17 requires the Phase 16 release-gate review and a separate owner START.
+
 ## Contract for each phase
 
 **DO NOT begin all phases when handed the zip. Execute Phase 01 only.** Every subsequent phase requires a separately sent owner command. AGY must work through implement → live localhost visual QA → repair all issues → regenerate actual video/contact sheet → full project save/reopen/edit/export → owner review → only authorized push → STOP.
@@ -205,6 +209,8 @@ Do not merge, deploy or start Phase 02. End with PHASE 01: AWAITING_OWNER_VISUAL
 - [`14_ASPECT_RATIO_RECOMPOSITION.md`](14_ASPECT_RATIO_RECOMPOSITION.md)
 - [`15_LONG_FORM_STORY_PACING_CONTINUITY.md`](15_LONG_FORM_STORY_PACING_CONTINUITY.md)
 - [`16_FINAL_VISUAL_ACCEPTANCE_AND_RELEASE_GATE.md`](16_FINAL_VISUAL_ACCEPTANCE_AND_RELEASE_GATE.md)
+
+- [`17_AI_GUIDED_BLENDER_PRODUCTION.md`](17_AI_GUIDED_BLENDER_PRODUCTION.md) — planned extension
 
 **There is no permission to push the work merely because this package was downloaded.**
 

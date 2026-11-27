@@ -273,3 +273,7 @@ AGY: PHASE 12 NOT ACCEPTED. Fix all defects I list in the SAME PHASE, including 
 OWNER DEFECTS:
 [PASTE ALL FEEDBACK HERE]
 ```
+
+## Planned Blender handoff
+
+Document the rig, animation-clip, anchor and camera conventions used by browser playback so the later Blender add-on can target the same assets and preserve timing on re-import. [Phase 17](17_AI_GUIDED_BLENDER_PRODUCTION.md)

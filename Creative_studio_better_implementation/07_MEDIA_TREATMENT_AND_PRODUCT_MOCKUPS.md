@@ -404,3 +404,6 @@ Use the actual user-facing browser controls to run Journeys A–E and the ORIGIN
 GIT/PHASE HARD STOP: NO PUSH, PR, MERGE, DEPLOY OR PHASE 08 until the owner explicitly reviews and authorizes. Return AWAITING OWNER VISUAL APPROVAL, not 'approved' or 'done' based on own test scores.
 ```
 
+## Planned Blender handoff
+
+Document the supported GLB and PNG handoff from Blender, including scale, axes, pose names and asset provenance. Use the import contract as the foundation for the later local Blender workflow. [Phase 17](17_AI_GUIDED_BLENDER_PRODUCTION.md)

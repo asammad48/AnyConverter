@@ -46,6 +46,8 @@ Prior videos had correct WebM framing but low-quality designs: tiny titles, repe
 - 15. Five-Minute Narrative Continuity, Pacing and Quality Budgets
 - 16. Independent Creative QA, Blind Comparison and Final Visual Release Gate
 
+**Planned extension after Phase 16** — [Phase 17. AI-Guided Blender Production](17_AI_GUIDED_BLENDER_PRODUCTION.md). It requires its own owner START.
+
 **New fees or hosting are prohibited unless the owner explicitly authorises them.** Remotion is a reference only, pending commercial license and telemetry review.
 
 

@@ -2,6 +2,10 @@
 
 **This is not a server implementation request and not a one-shot command.** Use the master roadmap and individual phase specs; do not implement past the current owner-authorized phase.
 
+## Planned AI-guided Blender extension
+
+[Phase 17](17_AI_GUIDED_BLENDER_PRODUCTION.md) carries a reviewed Phase 09 shot plan into an editable local Blender scene through a validated recipe and optional add-on. Users render in Blender and import the result into Creative Studio using the Phase 07 and 12 asset and timing conventions. The browser remains independently usable.
+
 ## The user-supplied short-form stack vs browser runtime
 
 | Desktop source technique | Browser implementation | What is NOT included | Phase(s) |

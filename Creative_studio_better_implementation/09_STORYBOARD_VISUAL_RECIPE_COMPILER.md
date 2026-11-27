@@ -378,3 +378,6 @@ Phase 09 delivers **engine and minimum import UI**, not the full six-mode polish
 AGY — EXECUTE AUTHORIZED PHASE 09 ONLY: SAFE JSON-BASED VISUALRECIPE + COMPOSITION COMPILER. Read original V2 Phase 09, V3 addendum and master governance. Keep original guided 6-shot/45s movie and handwritten JSON import requirements. Implement versioned strict JSON Schema, safe parser, semantic/asset/capability validation, canonical frame-based compilation, migrations, all offline without Remotion. Add Copy Prompt and Import AI Design (copy/paste, not hosted AI) and a Copy Fix Prompt explaining schema problems. No arbitrary AI code, HTML, SVG actions, shaders, image generation promises or remote asset magic. Validate realistic no-image and missing-asset workflows; export and reopen the actual project through browser UI; prove codec frames, preview/export parity, meaningful visuals, EN/ES/DA and negative security gates. Return truthful source diffs, actual playable media, and defects. DO NOT PUSH, PR, MERGE, DEPLOY OR START PHASE 10. Owner must approve output and separately authorize any push.
 ```
 
+## Planned Blender handoff
+
+Preserve stable shot IDs and structured fields for pose, framing, camera, lighting and props in the reviewed storyboard. These fields form the handoff for a later Blender scene recipe. [Phase 17](17_AI_GUIDED_BLENDER_PRODUCTION.md)
