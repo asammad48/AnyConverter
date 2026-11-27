@@ -40,13 +40,15 @@
     const preset = Object.hasOwn(presets, layout.preset) ? layout.preset : 'hero';
     const slots = format === 'wide' ? presets[preset] : preset === 'punchline' ? [
       [.02, .26, .96, .45], [.30, 0, .40, .23], [.02, .76, .96, tokens.captionArea]
+    ] : format === 'portrait' ? [
+      [.035, .015, .93, .22], [.035, .26, .93, .48], [.035, .77, .93, .20]
     ] : [
-      [.02, 0, .96, format === 'portrait' ? .25 : .27],
+      [.02, 0, .96, .27],
       [.02, .30, .96, .43],
       [.02, .76, .96, tokens.captionArea]
     ];
     const constraints = layout.blocks || {};
-    const intersects = (a, b) => a.x + a.width > b.x && b.x + b.width > a.x &&
+    const intersects = (a, b) => a.width > 0 && a.height > 0 && b.width > 0 && b.height > 0 && a.x + a.width > b.x && b.x + b.width > a.x &&
       a.y + a.height > b.y && b.y + b.height > a.y;
     function evaluate(role) {
       if (blocks[role]) return blocks[role];
@@ -60,11 +62,11 @@
       const target = roles.includes(c.relativeTo) ? evaluate(c.relativeTo) : null;
       const size = intrinsic[role] || {};
       const maxWidth = clamp(finite(c.maxWidth, 1), .05, 1) * safe.width;
-      const w = clamp(c.intrinsic ? finite(size.width, sw * safe.width) : finite(c.width, sw) * safe.width,
-        Math.min(maxWidth, Math.max(1, finite(c.minSize, 0) * scale)), maxWidth);
+      const w = Math.round(clamp(c.intrinsic ? finite(size.width, sw * safe.width) : finite(c.width, sw) * safe.width,
+        Math.min(maxWidth, Math.max(1, finite(c.minSize, 0) * scale)), maxWidth));
       const maxHeight = clamp(finite(c.maxHeight, 1), .05, 1) * safe.height;
-      const h = clamp(c.intrinsic ? finite(size.height, sh * safe.height) : finite(c.height, sh) * safe.height,
-        Math.min(maxHeight, Math.max(1, finite(c.minSize, 0) * scale)), maxHeight);
+      const h = Math.round(clamp(c.intrinsic ? finite(size.height, sh * safe.height) : finite(c.height, sh) * safe.height,
+        Math.min(maxHeight, Math.max(1, finite(c.minSize, 0) * scale)), maxHeight));
       let x = safe.x + finite(c.x, Number.isFinite(c.pixelX) ? c.pixelX / safe.width : sx) * safe.width;
       let y = safe.y + finite(c.y, Number.isFinite(c.pixelY) ? c.pixelY / safe.height : sy) * safe.height;
       if (c.anchor === 'left') x = safe.x;
@@ -96,18 +98,39 @@
         }
       }
     }
-    // The caption occupies a separate band even when a drag crosses a subject.
-    if (['title', 'subject'].some(role => intersects(blocks[role], blocks.caption))) {
-      const caption = blocks.caption;
-      caption.y = safe.y + safe.height - caption.height;
-      for (const role of ['title', 'subject']) {
-        const box = blocks[role];
-        if (!intersects(box, caption)) continue;
-        const limit = Math.max(safe.y + 1, caption.y - Math.round(tokens.space.unit * scale));
-        box.height = Math.min(box.height, limit - safe.y);
-        box.y = Math.min(box.y, limit - box.height);
+    // Place each lower-priority block in the nearest free rectangle.
+    // Keep the caption fixed, and only reduce a block when shifting cannot fit it.
+    function clear(role, blockers) {
+      const block = blocks[role];
+      if (!blockers.some(other => intersects(block, other))) return;
+      const right = safe.x + safe.width, bottom = safe.y + safe.height;
+      const xs = [safe.x, right, ...blockers.flatMap(other => [other.x, other.x + other.width])];
+      const ys = [safe.y, bottom, ...blockers.flatMap(other => [other.y, other.y + other.height])];
+      let best;
+      for (const left of xs) for (const endX of xs) {
+        if (endX <= left) continue;
+        for (const top of ys) for (const endY of ys) {
+          if (endY <= top) continue;
+          const width = Math.min(block.width, endX - left);
+          const height = Math.min(block.height, endY - top);
+          const candidate = {
+            x: clamp(block.x, left, endX - width), y: clamp(block.y, top, endY - height), width, height
+          };
+          if (blockers.some(other => intersects(candidate, other))) continue;
+          const loss = 1 - width * height / (block.width * block.height);
+          const cost = loss * (safe.width + safe.height + 1) + Math.hypot(candidate.x - block.x, candidate.y - block.y);
+          if (!best || cost < best.cost) best = { candidate, cost };
+        }
+      }
+      if (best) Object.assign(block, best.candidate);
+      else {
+        // A user-sized block can occupy the entire safe area. Preserve the caption.
+        block.width = 0;
+        block.height = 0;
       }
     }
+    clear('subject', [blocks.caption]);
+    clear('title', layout.allowOverlap === true ? [blocks.caption] : [blocks.caption, blocks.subject]);
     return { ...grid, blocks, warnings };
   }
 
@@ -126,8 +149,8 @@
     function nearest(edges, value) {
       return edges.reduce((best, point) => Math.abs(point - value) < Math.abs(best - value) ? point : best);
     }
-    const nearX = nearest(xEdges, x);
-    const nearY = nearest(yEdges, y);
+    const nearX = nearest(xEdges.filter(edge => edge >= safe.x && edge + box.width <= safe.x + safe.width), x);
+    const nearY = nearest(yEdges.filter(edge => edge >= safe.y && edge + box.height <= safe.y + safe.height), y);
     const unit = tokens.space.unit * scale;
     return {
       x: (clamp(Math.abs(nearX - x) <= unit * 2 ? nearX : x, safe.x, safe.x + safe.width - box.width) - safe.x) / safe.width,

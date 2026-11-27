@@ -166,17 +166,20 @@
       if (!layout || !this.resolved) return;
       const { safe, blocks } = this.resolved;
       const height = solver.roles.reduce((sum, role) => sum + blocks[role].height, 0);
+      if (!height) return;
       const factor = Math.min(1, safe.height * .90 / height);
-      const gap = (safe.height - height * factor) / (solver.roles.length - 1);
+      const heights = solver.roles.map(role => Math.max(1, Math.round(blocks[role].height * factor)));
+      const gap = Math.max(0, safe.height - heights.reduce((sum, pixels) => sum + pixels, 0)) / (solver.roles.length - 1);
       let y = 0;
       layout.blocks ||= {};
-      for (const role of solver.roles) {
+      for (const [index, role] of solver.roles.entries()) {
         const box = blocks[role];
         layout.blocks[role] = {
           ...layout.blocks[role], anchor: '', relativeTo: '', baseline: false, intrinsic: false,
-          x: (box.x - safe.x) / safe.width, y: y / safe.height, height: box.height * factor / safe.height
+          x: (box.x - safe.x) / safe.width, y: Math.round(y) / safe.height,
+          width: Math.max(1, box.width) / safe.width, height: heights[index] / safe.height, minSize: 0
         };
-        y += box.height * factor + gap;
+        y += heights[index] + gap;
       }
       this.app.render();
     }
@@ -230,8 +233,27 @@
       for (const key of ['block', 'anchor', 'align', 'depth', 'palette', 'pose', 'letterbox', 'overlap', 'distribute']) {
         this.controls[key].disabled = !layout;
       }
-      const warnings = (resolved?.warnings || []).filter(warning => !warning.intentional);
-      const message = warnings.length ? this.tr('Check block overlap, safe areas, or text fit.', 'Revisa la superposición, las zonas seguras o el ajuste del texto.', 'Kontrollér overlap, sikkerhedszoner eller tekstens placering.') : '';
+      const warnings = resolved?.warnings || [];
+      const messages = [];
+      if (warnings.some(item => item.type === 'overlap' && !item.intentional)) {
+        messages.push(this.tr('Blocks overlap. The layout moved or resized a block to keep it clear.', 'Hay bloques superpuestos. El diseño los reubica o redimensiona.', 'Blokke overlapper. Layoutet flytter eller tilpasser en blok.'));
+      }
+      if (warnings.some(item => item.intentional)) {
+        messages.push(this.tr('Intentional title and subject overlap.', 'Superposición intencional de título y sujeto.', 'Tilsigtet overlap mellem titel og motiv.'));
+      }
+      if (warnings.some(item => item.type === 'text')) {
+        messages.push(this.tr('Text does not fit at the minimum size. Shorten the text or enlarge its block.', 'El texto no cabe con el tamaño mínimo. Acórtalo o amplía el bloque.', 'Teksten passer ikke ved mindste størrelse. Forkort teksten, eller gør blokken større.'));
+      }
+      if (warnings.some(item => ['cycle', 'outside', 'contrast'].includes(item.type))) {
+        messages.push(this.tr('Check the safe area, contrast or constraint references.', 'Revisa la zona segura, el contraste o las referencias.', 'Kontrollér sikkerhedszonen, kontrasten eller referencerne.'));
+      }
+      const timing = warnings.find(item => item.type === 'timing');
+      if (timing) {
+        const seconds = new Intl.NumberFormat(document.documentElement.lang, { maximumFractionDigits: 1, minimumFractionDigits: 1 });
+        const needed = seconds.format(Math.ceil(timing.recommended * 10) / 10);
+        messages.push(this.tr(`Allow at least ${needed} s to read this caption.`, `Deja al menos ${needed} s para leer este subtítulo.`, `Giv mindst ${needed} sek. til at læse underteksten.`));
+      }
+      const message = messages.join(' ');
       if (this.status.textContent !== message) this.status.textContent = message;
       if (!this.guides) return;
       this.drawGuides(resolved || solver.geometry(this.canvas.width, this.canvas.height));
@@ -260,7 +282,7 @@
       if (blocks) {
         for (const role of solver.roles) {
           const b = blocks[role];
-          const warning = warnings.some(item => !item.intentional && item.roles.includes(role));
+          const warning = warnings.some(item => item.roles.includes(role));
           ctx.strokeStyle = warning ? '#ffbd73' : role === this.role ? '#fff8ee' : '#78f3db';
           ctx.lineWidth = (role === this.role ? 3 : 1) * scale;
           ctx.strokeRect(b.x, b.y, b.width, b.height);

@@ -463,7 +463,7 @@
         const composition = typeof window !== 'undefined'
           ? window.StudioLayoutComposition
           : require('./layout-composition');
-        return composition.render(ctx, shotInstance, layout, shotLocalFrame, width, height, project.locale);
+        return composition.render(ctx, shotInstance, layout, shotLocalFrame, width, height, project.locale || 'en', project.fps || 30);
       }
 
       if (height > width) {

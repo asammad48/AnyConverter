@@ -654,3 +654,38 @@
 #cs-canvas.cs-layout-draggable:active {
   cursor: grabbing;
 }
+
+/* Keep format, export and archive controls reachable when the toolbar wraps. */
+@media (max-width: 1300px) {
+  .cs-header {
+    height: auto;
+    min-height: var(--cs-header-height);
+    flex-wrap: wrap;
+    padding-block: 6px;
+  }
+
+  .cs-header-left, .cs-header-center, .cs-header-right {
+    flex-wrap: wrap;
+    min-width: 0;
+    max-width: 100%;
+    justify-content: flex-start;
+  }
+
+  .cs-header select {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 1024px) {
+  .cs-sidebar-right.mobile-open {
+    top: 0;
+    max-height: 100dvh;
+    z-index: 1100;
+  }
+}
+
+@media (max-width: 768px) {
+  .cs-viewport {
+    padding: 12px;
+  }
+}

@@ -1207,6 +1207,22 @@
       }
     }
 
+    syncLayoutSoundtrack() {
+      if (!this.project.shots?.some(shot => shot.customData?.layout?.version === 1)) return;
+      const builtinThemes = new Map([
+        ['saas-master-audio', 'saas'], ['parrot-comedy-audio', 'comedy'], ['noir-suspense-audio', 'suspense']
+      ]);
+      const frames = this.totalFrames;
+      const samples = Math.round(frames * 48000 / this.fps);
+      for (const clip of this.project.audioClips || []) {
+        const theme = builtinThemes.get(clip.clipId);
+        if (!theme || clip.startSample !== 0 || clip.durationSamples === samples) continue;
+        clip.pcmData = window.CreativeDirector.synthesizeAudibleAudio(frames / this.fps, theme, 48000);
+        clip.durationSamples = samples;
+        clip.theme = theme;
+      }
+    }
+
     async exportVideo(options = {}) {
       try {
         if (this.dom.titleInput) {
@@ -1269,6 +1285,7 @@
           height: this.project.canvas.height
         }, options);
 
+        this.syncLayoutSoundtrack();
         const res = await this.renderAdapter.render(this.project, renderOpts, (prog) => {
           if (this.dom.exportProgressBar && this.dom.exportProgressText) {
             this.dom.exportProgressBar.style.width = `${prog.percent}%`;
@@ -1334,6 +1351,7 @@
         }
 
         // Clean serialization of audio clips (avoid massive raw Float32Array in JSON)
+        this.syncLayoutSoundtrack();
         const savedAudioClips = (this.project.audioClips || []).map(c => ({
           clipId: c.clipId,
           startSample: c.startSample,

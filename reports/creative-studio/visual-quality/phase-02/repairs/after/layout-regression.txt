@@ -1,0 +1,1 @@
+44 preset and format combinations, deterministic geometry, cycles, safe fallback, snapping and palette contrast passed.

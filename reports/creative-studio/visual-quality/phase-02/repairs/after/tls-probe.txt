@@ -1,0 +1,4 @@
+https://fonts.googleapis.com/css2
+http=400 verify=0
+https://www.googletagmanager.com/gtag/js
+http=200 verify=0

@@ -4,8 +4,28 @@
   const { tokens, contrast } = root.StudioDesignTokens || require('./design-tokens');
   const solver = root.StudioLayoutSolver || require('./layout-solver');
 
+  const graphemeSegmenter = typeof Intl.Segmenter === 'function' ? new Intl.Segmenter(undefined, { granularity: 'grapheme' }) : null;
+  const graphemes = value => graphemeSegmenter ? Array.from(graphemeSegmenter.segment(value), item => item.segment) : Array.from(value);
+
+  const wordSegmenters = new Map();
+
+  function captionTiming(value, frames, fps, locale) {
+    const copy = value.trim();
+    locale = ['en', 'es', 'da'].includes(locale) ? locale : 'en';
+    if (!copy) return { available: frames / fps, recommended: 0 };
+    if (typeof Intl.Segmenter === 'function' && !wordSegmenters.has(locale)) {
+      wordSegmenters.set(locale, new Intl.Segmenter(locale, { granularity: 'word' }));
+    }
+    const words = wordSegmenters.has(locale)
+      ? Array.from(wordSegmenters.get(locale).segment(copy)).filter(item => item.isWordLike).length
+      : copy.split(/\s+/u).length;
+    return { available: frames / fps, recommended: Math.max(1, words / 3, graphemes(copy).length / 17) };
+  }
+
   function text(ctx, value, box, ideal, weight, color, scale, align) {
-    const floor = tokens.type.minimum * scale;
+    if (!value.trim()) return false;
+    const floor = Math.min(ideal, tokens.type.minimum) * scale;
+    if (box.height < floor * tokens.type.lineHeight || box.width <= 0) return true;
     let size = Math.min(ideal * scale, box.height / tokens.type.lineHeight);
     let lines;
     function wrap() {
@@ -19,7 +39,7 @@
         }
         if (line) result.push(line);
         line = '';
-        for (const character of word) {
+        for (const character of graphemes(word)) {
           if (line && ctx.measureText(line + character).width > box.width) {
             result.push(line);
             line = '';
@@ -38,19 +58,25 @@
     } while (true);
     const step = size * tokens.type.lineHeight;
     const count = Math.max(0, Math.floor((box.height + .01) / step));
+    const fitsWidth = line => ctx.measureText(line).width <= box.width;
+    const truncated = lines.length > count || lines.some(line => !fitsWidth(line));
     const visible = lines.slice(0, count);
-    if (count && lines.length > count) {
-      let last = visible[count - 1];
-      while (last && ctx.measureText(last + '…').width > box.width) last = Array.from(last).slice(0, -1).join('');
-      visible[count - 1] = last + '…';
+    const firstTooWide = visible.findIndex(line => !fitsWidth(line));
+    if (firstTooWide >= 0) visible.length = firstTooWide + 1;
+    if (visible.length && truncated) {
+      const lastIndex = visible.length - 1;
+      const last = graphemes(visible[lastIndex]);
+      while (last.length && !fitsWidth(last.join('') + '…')) last.pop();
+      if (fitsWidth('…')) visible[lastIndex] = last.join('') + '…';
+      else visible.pop();
     }
     ctx.fillStyle = color;
     ctx.textAlign = align;
     ctx.textBaseline = 'middle';
     const x = box.x + (align === 'center' ? box.width / 2 : align === 'right' ? box.width : 0);
     const y = box.y + (box.height - visible.length * step) / 2;
-    visible.forEach((line, i) => ctx.fillText(line, x, y + (i + .5) * step, box.width));
-    return lines.length > count;
+    visible.forEach((line, i) => ctx.fillText(line, x, y + (i + .5) * step));
+    return truncated;
   }
 
   function panel(ctx, x, y, w, h, radius, color) {
@@ -85,11 +111,13 @@
       ctx.fillStyle = '#171d2f';
       ctx.fillRect(x, y + h * .86, w, h * .14);
       const scale = Math.min(w / (preset === 'reaction' ? 650 : 320), h / 340) * tokens.characterScale[layout.pose === 'large' ? 'large' : 'standard'];
-      const originalPose = layout.pose === 'large' ? 'shocked' : (shot.customData.characterPose || 'neutral');
-      const people = preset === 'reaction' ? [[.28, 'neutral', 1, .91], [.73, progress > .3 ? 'shocked' : 'neutral', -1, 1.12]] : [[.50, originalPose, 1, 1]];
+      const originalPose = layout.pose === 'large' ? 'shocked' : (shot.customData.characterPose || (preset === 'character-right' ? 'wing-point' : 'neutral'));
+      const people = preset === 'reaction' ? [[.28, 'wing-point', 1, .84], [.73, progress > .3 ? 'shocked' : 'neutral', -1, 1.12]]
+        : [[preset === 'dialogue' ? .40 : .51, originalPose, 1, 1]];
+      panel(ctx, x + w * .08, y + h * .80, w * .84, h * .12, h * .05, '#283247');
       people.forEach(([position, pose, facing, size]) => {
         ctx.save();
-        ctx.translate(x + w * position, y + h * .47);
+        ctx.translate(x + w * position, y + h * .44);
         ctx.scale(scale * facing * size, scale * size);
         shot._drawParrotCharacter(ctx, phase, 0, 0, pose);
         ctx.restore();
@@ -134,7 +162,7 @@
       const cx = x + w * .67;
       const cy = y + h * .64;
       const light = ctx.createRadialGradient(cx, cy, 0, cx, cy, Math.max(1, w * .62));
-      light.addColorStop(0, progress > .78 && shot.purpose === 'benefit' ? '#6c4b52' : '#d18358');
+      light.addColorStop(0, '#d89a67');
       light.addColorStop(.48, '#4b3244');
       light.addColorStop(1, '#121421');
       panel(ctx, x, y, w, h - offset, tokens.radius, light);
@@ -142,16 +170,23 @@
       ctx.fillRect(cx - w * .10, y + h * .18, w * .20, h * .63);
       ctx.fillStyle = '#392944';
       ctx.fillRect(cx - w * .07, y + h * .22, w * .14, h * .59);
-      const actorX = cx - w * (.22 - Math.max(0, progress - .54) * (shot.startFrame ? .16 : .07));
-      if (shot.startFrame > 0) {
-        ctx.save();
-        ctx.globalAlpha = .62;
-        ctx.fillStyle = '#160f20';
-        ctx.beginPath();
-        ctx.ellipse(cx - w * .32 + w * .36 * progress, cy + h * .18, w * .095, h * .048, -.12, 0, Math.PI * 2);
-        ctx.fill();
-        ctx.restore();
-      }
+      const floor = cy + h * .17;
+      ctx.fillStyle = '#e0ac6640';
+      ctx.beginPath();
+      ctx.moveTo(cx - w * .09, floor);
+      ctx.lineTo(cx + w * .10, floor);
+      ctx.lineTo(cx + w * .21, y + h * .98);
+      ctx.lineTo(cx - w * .20, y + h * .98);
+      ctx.fill();
+      const actorX = cx - w * (.20 - Math.max(0, progress - .54) * (shot.startFrame ? .16 : .07));
+      const shadowTravel = shot.startFrame > 0 ? progress * w * .15 : 0;
+      ctx.fillStyle = '#131320b0';
+      ctx.beginPath();
+      ctx.moveTo(actorX - w * .06, floor);
+      ctx.lineTo(actorX + w * .07, floor);
+      ctx.lineTo(actorX - w * .08 - shadowTravel, y + h * .95);
+      ctx.lineTo(actorX - w * .20 - shadowTravel, y + h * .95);
+      ctx.fill();
       ctx.fillStyle = '#171421';
       ctx.beginPath();
       ctx.ellipse(actorX, cy - h * .26, w * .047, h * .09, 0, 0, Math.PI * 2);
@@ -224,10 +259,14 @@
         const bodyW = gw * .61;
         text(ctx, strings[2], { x: bodyX, y: gy + gh * .05, width: bodyW, height: gh * .23 }, 30, 740, palette.foreground, gh / 230, 'left');
         panel(ctx, bodyX, gy + gh * .34, bodyW, gh * .50, tokens.radius / 2, palette.surface);
-        text(ctx, strings[3], { x: bodyX + bodyW * .10, y: gy + gh * .34, width: bodyW * .80, height: gh * .15 }, 18, 700, palette.muted, gh / 230, 'left');
-        text(ctx, strings[4], { x: bodyX + bodyW * .10, y: gy + gh * .68, width: bodyW * .80, height: gh * .14 }, 18, 700, palette.accent, gh / 230, 'left');
-        const reveal = preset === 'reveal' ? progress : .40 + progress * .60;
-        panel(ctx, bodyX + bodyW * .10, gy + gh * .51, bodyW * .80 * reveal, gh * .14, tokens.radius / 2, palette.accent);
+        const tableX = bodyX + bodyW * .10, tableW = bodyW * .80;
+        text(ctx, strings[3], { x: tableX, y: gy + gh * .34, width: tableW, height: gh * .15 }, 21, 700, palette.foreground, gh / 230, 'left');
+        for (let row = 0; row < 3; row++) {
+          const rowY = gy + gh * (.52 + row * .10);
+          const active = row <= progress * 3;
+          panel(ctx, tableX, rowY, tableW * .48, gh * .041, tokens.radius / 6, active ? palette.accent : palette.muted);
+          panel(ctx, tableX + tableW * .57, rowY, tableW * .33, gh * .041, tokens.radius / 6, palette.muted);
+        }
       } else {
         panel(ctx, gx, gy, gw, gh, tokens.radius / 2, palette.overlay);
         for (let i = 0; i < 4; i++) {
@@ -239,7 +278,7 @@
     ctx.restore();
   }
 
-  function render(ctx, shot, layout, frame, width, height, locale = 'en') {
+  function render(ctx, shot, layout, frame, width, height, locale = 'en', fps = 30) {
     const { scale: measureScale } = solver.geometry(width, height);
     const intrinsic = {};
     ctx.save();
@@ -252,6 +291,8 @@
     ctx.restore();
     const resolved = solver.resolve(layout, width, height, intrinsic);
     const { blocks, scale, warnings } = resolved;
+    const timing = captionTiming(String(shot.subhead || ''), shot.durationFrames, fps, locale.slice(0, 2));
+    if (timing.available + .001 < timing.recommended) warnings.push({ type: 'timing', roles: ['caption'], ...timing });
     const theme = tokens.color[layout.palette === 'light' ? 'light' : 'dark'];
     const accent = /^#[0-9a-f]{6}$/i.test(shot.accentColor) && contrast(shot.accentColor, theme.surface) >= 3
       ? shot.accentColor : theme.accent;
@@ -287,7 +328,7 @@
       }
       const background = caption && shot.artDirection !== 'minimal-suspense' ? palette.surface : palette.background;
       if (contrast(color, background) < 4.5) warnings.push({ type: 'contrast', roles: [role] });
-      if (text(ctx, String((caption ? shot.subhead : shot.headline) || ''), inner, caption ? tokens.type.body : tokens.type.title, caption ? 550 : 790, color, scale, box.align)) {
+      if (text(ctx, String((caption ? shot.subhead : shot.headline) || ''), inner, caption ? (resolved.format === 'portrait' ? 34 : tokens.type.body) : tokens.type.title, caption ? 550 : 790, color, scale, box.align)) {
         warnings.push({ type: 'text', roles: [role] });
       }
     }
@@ -295,6 +336,6 @@
     return resolved;
   }
 
-  root.StudioLayoutComposition = { render };
+  root.StudioLayoutComposition = { render, captionTiming };
   if (typeof module !== 'undefined') module.exports = root.StudioLayoutComposition;
 })(typeof window === 'undefined' ? globalThis : window);

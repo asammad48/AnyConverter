@@ -1,5 +1,7 @@
 # Phase 02 handoff
 
+**Publication history** The original Phase 02 implementation and evidence were pushed as `6ab952968ae2825a666b55674c0e6c50b2e1fb27` to `feat/create-studio-visual-quality_PR`. The status below records the original pre-push handoff. See the [repair handoff](repairs/PHASE02_REPAIR_HANDOFF.md) for the current local review.
+
 **PHASE 02 — AWAITING OWNER VISUAL APPROVAL — NOT PUSHED — NOT MERGED — NOT DEPLOYED**
 
 The working branch is `feat/creative-studio-phase-02`. The local HEAD is the approved Phase 01 baseline, `2812c0ae72487901c7f5f2d83515c005214a9353`. Phase 02 is held in the local working tree. The Phase 01 evidence directory and archive were preserved. No Phase 03 work was started.

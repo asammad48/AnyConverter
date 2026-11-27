@@ -1,0 +1,24 @@
+[
+  {
+    "pass": "before",
+    "duration": 9,
+    "endedAt": 9,
+    "callbacks": 269,
+    "lastPresentation": 8.966,
+    "rawQualityFrames": 274,
+    "framesMeasured": 266,
+    "prePlayQualityFrames": 8,
+    "droppedFrames": 0
+  },
+  {
+    "pass": "after",
+    "duration": 11.66,
+    "endedAt": 11.66,
+    "callbacks": 345,
+    "lastPresentation": 11.633,
+    "rawQualityFrames": 355,
+    "framesMeasured": 346,
+    "prePlayQualityFrames": 9,
+    "droppedFrames": 3
+  }
+]

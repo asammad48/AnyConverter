@@ -15,3 +15,5 @@ The Phase 02 visual tests used built-in Canvas artwork and layout presets. The p
 - [AnyConverter-Reel-Cover.png](evidence/image-compressor-reel/AnyConverter-Reel-Cover.png)
 
 Additional screenshots, decoded frames, trace, media metadata and tests are in the evidence folder. The Phase 02 handoff records the historical status at the time of visual review.
+
+The original evidence was published in commit `6ab952968ae2825a666b55674c0e6c50b2e1fb27`. Fresh repair outputs are documented in the [repair handoff](repairs/PHASE02_REPAIR_HANDOFF.md).
