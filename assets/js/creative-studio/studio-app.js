@@ -107,7 +107,12 @@
       if (this.initialized) return;
       this.cacheDom();
       this.layoutEditor = window.StudioLayoutEditor ? new window.StudioLayoutEditor(this) : null;
+      this.typographyEditor = window.StudioTypographyEditor ? new window.StudioTypographyEditor(this) : null;
       this.bindEvents();
+      window.StudioFonts?.prepare().then(() => {
+        this.typographyEditor?.sync();
+        this.render();
+      });
       this.initDefaultLayers();
       this.currentMode = 'video';
       this.updateModeUI('video');
@@ -662,6 +667,7 @@
         if (this.dom.timelineScrubber) this.dom.timelineScrubber.max = this.totalFrames - 1;
         this.updateShotSelectOptions();
         this.updateTimelineTracks();
+        this.typographyEditor?.sync();
       }
 
       this.updateShotsListUI();
@@ -763,6 +769,7 @@
         this.dom.btnShotMoveDown.style.opacity = canMoveDown ? '1' : '0.4';
         this.dom.btnShotMoveDown.style.cursor = canMoveDown ? 'pointer' : 'not-allowed';
       }
+      this.typographyEditor?.sync();
       this.checkActiveShotSuitability();
     }
 
@@ -795,16 +802,18 @@
         item.style.position = 'relative';
         item.innerHTML = `
           <div style="display:flex;justify-content:space-between;align-items:center;">
-            <span style="font-weight:600;font-size:12px;color:var(--cs-text-main, #f8fafc);">Shot ${idx + 1}: ${s.title || s.purpose}</span>
+            <span style="font-weight:600;font-size:12px;color:var(--cs-text-main, #f8fafc);" data-shot-title></span>
             <div style="display:flex;align-items:center;gap:4px;">
-              <span class="cs-badge" style="font-size:10px;padding:1px 5px;">${s.durationFrames}f</span>
+              <span class="cs-badge" style="font-size:10px;padding:1px 5px;">${Number(s.durationFrames)}f</span>
               <button type="button" class="cs-btn cs-btn-icon cs-shot-move-up-item" data-index="${idx}" title="Move Shot Up" style="width:20px;height:20px;font-size:10px;padding:0;line-height:1;${idx === 0 ? 'opacity:0.3;cursor:not-allowed;' : ''}" ${idx === 0 ? 'disabled' : ''}>▲</button>
               <button type="button" class="cs-btn cs-btn-icon cs-shot-move-down-item" data-index="${idx}" title="Move Shot Down" style="width:20px;height:20px;font-size:10px;padding:0;line-height:1;${idx === totalCount - 1 ? 'opacity:0.3;cursor:not-allowed;' : ''}" ${idx === totalCount - 1 ? 'disabled' : ''}>▼</button>
             </div>
           </div>
-          <div style="font-size:11px;color:var(--cs-text-muted, #94a3b8);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:2px;">${s.headline || ''}</div>
+          <div style="font-size:11px;color:var(--cs-text-muted, #94a3b8);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:2px;" data-shot-headline></div>
         `;
 
+        item.querySelector('[data-shot-title]').textContent = `Shot ${idx + 1}: ${s.title || s.purpose}`;
+        item.querySelector('[data-shot-headline]').textContent = s.headline || '';
         item.addEventListener('click', (e) => {
           if (e.target.closest('.cs-shot-move-up-item') || e.target.closest('.cs-shot-move-down-item')) return;
           this.selectShot(idx);
@@ -841,9 +850,10 @@
         block.style.width = `${pct}%`;
         block.title = `Shot ${idx + 1}: ${s.title || s.purpose} (${s.durationFrames}f)`;
         block.innerHTML = `
-          <span class="cs-shot-block-label">Shot ${idx + 1}: ${s.title || s.purpose}</span>
-          <span style="font-size:9px;opacity:0.8;">${s.durationFrames}f</span>
+          <span class="cs-shot-block-label" data-shot-title></span>
+          <span style="font-size:9px;opacity:0.8;">${Number(s.durationFrames)}f</span>
         `;
+        block.querySelector('[data-shot-title]').textContent = `Shot ${idx + 1}: ${s.title || s.purpose}`;
         block.addEventListener('click', (e) => {
           e.stopPropagation();
           this.selectShot(idx);
@@ -1159,6 +1169,7 @@
     async exportPng() {
       try {
         if (this.currentMode === 'video' && window.CreativeDirector?.isCreativeProject(this.project)) {
+          if (this.project.shots?.some(shot => shot.customData?.typography?.version === 1)) await window.StudioFonts.prepare();
           const output = document.createElement('canvas');
           const { width, height } = this.project.canvas;
           output.width = width;
@@ -1387,6 +1398,7 @@
         const arrayBuf = await file.arrayBuffer();
         const res = this.archive.unpackage(new Uint8Array(arrayBuf));
         if (res && res.project) {
+          if (res.project.shots?.some(shot => shot.customData?.typography?.version === 1)) await window.StudioFonts.prepare();
           this.project = res.project;
           this.assetBlobs = res.assets || new Map();
           this.lastOpenedUnpack = res;

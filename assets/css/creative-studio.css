@@ -607,27 +607,27 @@
   }
 }
 
-#cs-layout-editor {
+:is(#cs-layout-editor, #cs-typography-editor) {
   margin-block: 8px 16px;
   padding: 8px;
   border: 1px solid var(--cs-border);
   border-radius: 8px;
 }
 
-#cs-layout-editor summary {
+:is(#cs-layout-editor, #cs-typography-editor) summary {
   color: var(--cs-text-main);
   cursor: pointer;
   font-weight: 600;
 }
 
-#cs-layout-editor label {
+:is(#cs-layout-editor, #cs-typography-editor) label {
   display: block;
   color: var(--cs-text-muted);
   margin-top: 8px;
   font-size: 12px;
 }
 
-#cs-layout-editor select {
+:is(#cs-layout-editor, #cs-typography-editor) select {
   display: block;
   width: 100%;
   margin-top: 4px;
@@ -688,4 +688,17 @@
   .cs-viewport {
     padding: 12px;
   }
+}
+
+#cs-typography-editor input,
+#cs-typography-editor select {
+  display: block;
+  width: 100%;
+  margin-top: 4px;
+}
+
+#cs-typography-editor [role="status"] {
+  margin-top: 8px;
+  color: var(--cs-text-muted);
+  font-size: 12px;
 }

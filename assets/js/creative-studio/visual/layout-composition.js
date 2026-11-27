@@ -90,6 +90,7 @@
     const { x, y, width: w, height: h } = box;
     if (w < 4 || h < 4) return;
     const preset = layout.preset;
+    const typography = shot.customData?.typography;
     const strings = ({ es: ['Antes', 'Después', 'Informe', 'Registros', 'Revisar'], da: ['Før', 'Efter', 'Rapport', 'Poster', 'Gennemse'] })[locale] ||
       ['Before', 'After', 'Report', 'Records', 'Review'];
     const isCharacter = ['dialogue', 'character-right', 'character-center', 'reaction'].includes(preset);
@@ -152,6 +153,25 @@
         ctx.moveTo(cx - size * .17, cy + size * .01);
         ctx.lineTo(cx - size * .04, cy + size * .14);
         ctx.lineTo(cx + size * .20, cy - size * .12);
+      } else if (typography?.version === 1 && shot.artDirection === 'minimal-suspense') {
+        const edge = cx + size * .14;
+        const threshold = cy + size * .33;
+        const beam = ctx.createLinearGradient(edge, threshold, cx - size * .36, cy + size * .41);
+        beam.addColorStop(0, '#dfb080');
+        beam.addColorStop(1, '#dfb08000');
+        ctx.fillStyle = beam;
+        ctx.moveTo(edge - size * .04, threshold);
+        ctx.lineTo(edge, threshold);
+        ctx.lineTo(cx - size * .36, cy + size * .46);
+        ctx.lineTo(cx - size * .55, cy + size * .46);
+        ctx.fill();
+        ctx.beginPath();
+        ctx.strokeStyle = '#dfb080';
+        ctx.lineWidth = Math.max(1, size * .025);
+        ctx.moveTo(cx - size * .25, threshold);
+        ctx.lineTo(cx - size * .25, cy - size * .37);
+        ctx.lineTo(edge, cy - size * .37);
+        ctx.lineTo(edge, threshold);
       } else {
         ctx.arc(cx, cy, size * .29, 0, Math.PI * 2);
         ctx.moveTo(cx, cy - size * .43);
@@ -216,8 +236,25 @@
       const gw = w - pad * 4, gh = Math.max(1, h - pad * 4 - offset);
       if (preset === 'statistic') {
         const figure = shot.headline.match(/\d+(?:[.,]\d+)?(?:\s?%|×|x)?/u)?.[0];
-        if (figure) text(ctx, figure, { x: gx, y: gy, width: gw, height: gh }, 120, 800, palette.accent, Math.min(w, h) / 260, 'center');
-        else {
+        if (typography?.version === 1 && typography.title?.effect === 'counter' && /^[1-9]\d?$/u.test(shot.headline) && Number(shot.headline) <= 8) {
+          const sourceCount = Number(shot.headline);
+          const fileWidth = Math.min(gw / (sourceCount * 1.5), gh * .48);
+          const gap = fileWidth * .40;
+          const left = gx + (gw - (sourceCount * fileWidth + (sourceCount - 1) * gap)) / 2;
+          const fileHeight = Math.min(gh * .50, fileWidth * 1.32);
+          const top = gy + (gh - fileHeight) / 2;
+          const cue = root.StudioKineticType.cue(typography.title, 'title', shot.durationFrames);
+          const cueProgress = root.StudioKineticType.progress(phase * (shot.durationFrames - 1), cue);
+          const active = Math.round(sourceCount * (1 - (1 - cueProgress) ** 3));
+          for (let index = 0; index < sourceCount; index++) {
+            const x = left + index * (fileWidth + gap);
+            panel(ctx, x, top, fileWidth, fileHeight, fileWidth * .11, index < active ? palette.accent : palette.overlay);
+            panel(ctx, x + fileWidth * .18, top + fileHeight * .34, fileWidth * .64, fileHeight * .07, 2, palette.background);
+            panel(ctx, x + fileWidth * .18, top + fileHeight * .56, fileWidth * .47, fileHeight * .07, 2, palette.background);
+          }
+        } else if (figure) {
+          text(ctx, figure, { x: gx, y: gy, width: gw, height: gh }, 120, 800, palette.accent, Math.min(w, h) / 260, 'center');
+        } else {
           ctx.strokeStyle = palette.accent;
           ctx.lineWidth = tokens.outline * 2;
           ctx.beginPath();
@@ -280,18 +317,36 @@
 
   function render(ctx, shot, layout, frame, width, height, locale = 'en', fps = 30) {
     const { scale: measureScale } = solver.geometry(width, height);
+    const typography = shot.customData?.typography?.version === 1 ? shot.customData.typography : null;
+    const makeNode = (role, content) => ({
+      ...root.StudioKineticType.cue(typography[role], role, shot.durationFrames),
+      content: String(content || '')
+    });
+    const captionNode = typography ? makeNode('caption', shot.subhead) : null;
     const intrinsic = {};
     ctx.save();
     for (const [role, value, ideal, weight] of [['title', shot.headline, tokens.type.title, 790], ['caption', shot.subhead, tokens.type.body, 550]]) {
       if (!layout.blocks?.[role]?.intrinsic) continue;
       const fontSize = ideal * measureScale;
+      if (typography) {
+        const node = makeNode(role, value);
+        const typeScale = measureScale * 720 / 1080;
+        ctx.font = `${node.weight} ${node.size * typeScale}px ${root.StudioFonts.family(node.family, node.size)}`;
+        const lines = node.content.split(/\r?\n/);
+        intrinsic[role] = {
+          width: Math.max(...lines.map(line => ctx.measureText(line).width)) + tokens.space.padding * measureScale,
+          height: node.size * node.lineHeight * Math.max(2, lines.length) * typeScale
+        };
+        continue;
+      }
       ctx.font = `${weight} ${fontSize}px ${tokens.type.family}`;
       intrinsic[role] = { width: ctx.measureText(String(value || '')).width + tokens.space.padding * measureScale, height: fontSize * 2 * tokens.type.lineHeight };
     }
     ctx.restore();
     const resolved = solver.resolve(layout, width, height, intrinsic);
     const { blocks, scale, warnings } = resolved;
-    const timing = captionTiming(String(shot.subhead || ''), shot.durationFrames, fps, locale.slice(0, 2));
+    const available = captionNode ? captionNode.endFrame - captionNode.startFrame : shot.durationFrames;
+    const timing = captionTiming(String(shot.subhead || ''), available, fps, locale.slice(0, 2));
     if (timing.available + .001 < timing.recommended) warnings.push({ type: 'timing', roles: ['caption'], ...timing });
     const theme = tokens.color[layout.palette === 'light' ? 'light' : 'dark'];
     const accent = /^#[0-9a-f]{6}$/i.test(shot.accentColor) && contrast(shot.accentColor, theme.surface) >= 3
@@ -317,18 +372,35 @@
       const color = caption ? palette.muted : palette.foreground;
       let inner = box;
       if (caption) {
-        if (shot.artDirection === 'minimal-suspense') {
+        if (captionNode && (frame < captionNode.startFrame || frame >= captionNode.endFrame)) continue;
+        const card = !captionNode || captionNode.contrast === 'panel';
+        if (card && shot.artDirection === 'minimal-suspense') {
           panel(ctx, box.x, box.y + box.height * .18, Math.max(2, tokens.outline * scale), box.height * .64, 1, palette.accent);
-        } else {
+        } else if (card) {
           const radius = shot.artDirection === 'character-comedy' ? tokens.radius * 1.45 : tokens.radius;
           panel(ctx, box.x, box.y, box.width, box.height, radius * scale, palette.surface);
         }
         const padding = Math.min(tokens.space.padding * scale, box.height * .18, box.width * .12);
         inner = { x: box.x + padding, y: box.y + padding, width: box.width - padding * 2, height: box.height - padding * 2 };
       }
-      const background = caption && shot.artDirection !== 'minimal-suspense' ? palette.surface : palette.background;
+      const background = caption && (!captionNode || captionNode.contrast === 'panel') && shot.artDirection !== 'minimal-suspense' ? palette.surface : palette.background;
       if (contrast(color, background) < 4.5) warnings.push({ type: 'contrast', roles: [role] });
-      if (text(ctx, String((caption ? shot.subhead : shot.headline) || ''), inner, caption ? (resolved.format === 'portrait' ? 34 : tokens.type.body) : tokens.type.title, caption ? 550 : 790, color, scale, box.align)) {
+      if (typography) {
+        const node = caption ? captionNode : makeNode('title', shot.headline);
+        const typeScale = scale * 720 / 1080;
+        const ctaCopy = typeof typography.ctaCopy === 'string' ? typography.ctaCopy.slice(0, 180) : '';
+        const ink = { ...palette, ink: color, accent: contrast(palette.accent, background) >= 4.5 ? palette.accent : color };
+        if (!caption && ctaCopy.trim() && inner.height > 0) {
+          const ctaHeight = Math.min(inner.height * .34, 88 * scale);
+          const ctaBox = { ...inner, y: inner.y + inner.height - ctaHeight, height: ctaHeight };
+          inner = { ...inner, height: inner.height - ctaHeight - Math.min(ctaHeight * .18, 10 * scale) };
+          if (root.StudioTextLayout.draw(ctx, makeNode('cta', ctaCopy), ctaBox, typeScale, box.align, frame,
+            { ...ink, ink: ink.accent }, locale)) warnings.push({ type: 'text', roles: [role] });
+        }
+        if (node.content.trim() && root.StudioTextLayout.draw(ctx, node, inner, typeScale, box.align, frame, ink, locale)) {
+          warnings.push({ type: 'text', roles: [role] });
+        }
+      } else if (text(ctx, String((caption ? shot.subhead : shot.headline) || ''), inner, caption ? (resolved.format === 'portrait' ? 34 : tokens.type.body) : tokens.type.title, caption ? 550 : 790, color, scale, box.align)) {
         warnings.push({ type: 'text', roles: [role] });
       }
     }

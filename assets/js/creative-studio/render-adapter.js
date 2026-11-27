@@ -174,6 +174,9 @@ class NativeCanvasRenderAdapter extends RenderAdapter {
     const totalAudioSamples = Math.round(durationSeconds * sampleRate);
     const includeAudio = options.includeAudio !== false;
 
+    if (project.shots?.some(shot => shot.customData?.typography?.version === 1)) {
+      await globalThis.StudioFonts?.prepare();
+    }
     const caps = await this.checkCapabilities();
     const { WebMMuxerLib, Mp4MuxerLib } = this._resolveMuxers();
 
