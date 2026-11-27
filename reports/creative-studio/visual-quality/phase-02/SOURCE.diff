@@ -1,0 +1,1158 @@
+diff --git a/assets/css/creative-studio.css b/assets/css/creative-studio.css
+index 977cdf60..be3459b6 100644
+--- a/assets/css/creative-studio.css
++++ b/assets/css/creative-studio.css
+@@ -606,3 +606,51 @@
+     max-width: 100vw;
+   }
+ }
++
++#cs-layout-editor {
++  margin-block: 8px 16px;
++  padding: 8px;
++  border: 1px solid var(--cs-border);
++  border-radius: 8px;
++}
++
++#cs-layout-editor summary {
++  color: var(--cs-text-main);
++  cursor: pointer;
++  font-weight: 600;
++}
++
++#cs-layout-editor label {
++  display: block;
++  color: var(--cs-text-muted);
++  margin-top: 8px;
++  font-size: 12px;
++}
++
++#cs-layout-editor select {
++  display: block;
++  width: 100%;
++  margin-top: 4px;
++}
++
++#cs-layout-editor input[type="checkbox"] {
++  margin-inline-end: 8px;
++}
++
++#cs-layout-editor button {
++  margin-top: 8px;
++}
++
++#cs-layout-warnings {
++  font-size: 12px;
++  color: #f5c98d;
++}
++
++#cs-canvas.cs-layout-draggable {
++  cursor: grab;
++  touch-action: none;
++}
++
++#cs-canvas.cs-layout-draggable:active {
++  cursor: grabbing;
++}
+diff --git a/assets/js/creative-studio/studio-app.js b/assets/js/creative-studio/studio-app.js
+index b23a97ca..fb17d11f 100644
+--- a/assets/js/creative-studio/studio-app.js
++++ b/assets/js/creative-studio/studio-app.js
+@@ -106,9 +106,12 @@
+     init() {
+       if (this.initialized) return;
+       this.cacheDom();
++      this.layoutEditor = window.StudioLayoutEditor ? new window.StudioLayoutEditor(this) : null;
+       this.bindEvents();
+       this.initDefaultLayers();
++      this.currentMode = 'video';
+       this.updateModeUI('video');
++      if (this.dom.modeSelect) this.dom.modeSelect.value = 'video';
+       if (window.CreativeDirector) {
+         this.initCinematicSequence('cinematic-saas');
+       }
+@@ -427,6 +430,7 @@
+       let initialLayerX = 0, initialLayerY = 0;
+ 
+       this.dom.canvas.addEventListener('mousedown', (e) => {
++        if (this.currentMode === 'video' && this.project.shots?.length) return;
+         const rect = this.dom.canvas.getBoundingClientRect();
+         const mouseX = (e.clientX - rect.left) * (this.graphics.width / rect.width);
+         const mouseY = (e.clientY - rect.top) * (this.graphics.height / rect.height);
+@@ -651,7 +655,7 @@
+         }
+         this.totalFrames = acc;
+         this.project.totalFrames = acc;
+-        this.project.durationSeconds = Math.round(acc / this.fps);
++        this.project.durationSeconds = acc / this.fps;
+         if (this.project.scenes && this.project.scenes[0]) {
+           this.project.scenes[0].durationFrames = acc;
+         }
+@@ -683,7 +687,7 @@
+       }
+       this.totalFrames = acc;
+       this.project.totalFrames = acc;
+-      this.project.durationSeconds = Math.round(acc / (this.fps || 30));
++      this.project.durationSeconds = acc / (this.fps || 30);
+       if (this.project.scenes && this.project.scenes[0]) {
+         this.project.scenes[0].durationFrames = acc;
+       }
+@@ -851,25 +855,29 @@
+     render() {
+       if (!this.dom.ctx || !this.dom.canvas) return;
+ 
++      const cinematic = this.currentMode === 'video' && window.CreativeDirector?.isCreativeProject(this.project);
++      const { width, height } = cinematic ? this.project.canvas : this.graphics;
++
+       // Match canvas internal resolution to current project geometry
+-      if (this.dom.canvas.width !== this.graphics.width) {
+-        this.dom.canvas.width = this.graphics.width;
++      if (this.dom.canvas.width !== width) {
++        this.dom.canvas.width = width;
+       }
+-      if (this.dom.canvas.height !== this.graphics.height) {
+-        this.dom.canvas.height = this.graphics.height;
++      if (this.dom.canvas.height !== height) {
++        this.dom.canvas.height = height;
+       }
+ 
+       // Check if project is a Cinematic sequence
+-      if (window.CreativeDirector && window.CreativeDirector.isCreativeProject(this.project)) {
+-        window.CreativeDirector.renderFrame(
++      if (cinematic) {
++        const resolved = window.CreativeDirector.renderFrame(
+           this.dom.ctx,
+           this.project,
+           this.currentFrame,
+           this.totalFrames,
+-          this.graphics.width,
+-          this.graphics.height,
++          width,
++          height,
+           { mode: this.renderMode || 'production' }
+         );
++        this.layoutEditor?.afterRender(resolved);
+         return;
+       }
+ 
+@@ -904,6 +912,8 @@
+         ctx.restore();
+       }
+ 
++      this.layoutEditor?.fit();
++      this.dom.canvas.classList.remove('cs-layout-draggable');
+       this.updateLayersListUI();
+     }
+ 
+@@ -1148,6 +1158,16 @@
+ 
+     async exportPng() {
+       try {
++        if (this.currentMode === 'video' && window.CreativeDirector?.isCreativeProject(this.project)) {
++          const output = document.createElement('canvas');
++          const { width, height } = this.project.canvas;
++          output.width = width;
++          output.height = height;
++          window.CreativeDirector.renderFrame(output.getContext('2d'), this.project, this.currentFrame,
++            this.totalFrames, width, height, { mode: 'production' });
++          this.downloadFile(output.toDataURL('image/png'), `${this.project.title || 'studio-export'}.png`);
++          return;
++        }
+         const res = await this.graphics.exportPng({ scale: 1.0 });
+         if (res && res.dataUrl) {
+           this.downloadFile(res.dataUrl, `${this.project.title || 'studio-export'}.png`);
+@@ -1241,12 +1261,12 @@
+           this.project.scenes[this.activeSceneIndex || 0].layers = JSON.parse(JSON.stringify(this.graphics.layers));
+         }
+ 
+-        const durationSeconds = options.durationSeconds || this.project.durationSeconds || Math.round(this.totalFrames / this.fps) || 24;
++        const durationSeconds = options.durationSeconds || (this.currentMode === 'video' && this.project.shots?.length ? this.totalFrames / this.fps : this.project.durationSeconds) || this.totalFrames / this.fps || 24;
+         const renderOpts = Object.assign({
+           durationSeconds,
+           fps: this.fps,
+-          width: this.graphics.width,
+-          height: this.graphics.height
++          width: this.project.canvas.width,
++          height: this.project.canvas.height
+         }, options);
+ 
+         const res = await this.renderAdapter.render(this.project, renderOpts, (prog) => {
+@@ -1298,6 +1318,8 @@
+             badge: s.badge,
+             accentColor: s.accentColor,
+             secondaryColor: s.secondaryColor,
++            backgroundColor: s.backgroundColor,
++            directorNotes: s.directorNotes,
+             artDirection: s.artDirection,
+             cameraMove: s.cameraMove,
+             motif: s.motif || 'default',
+@@ -1356,6 +1378,7 @@
+           // Restore Cinematic Sequence if present
+           if (this.project.visualDirection && window.CreativeDirector) {
+             this.currentMode = 'video';
++            this.updateModeUI('video');
+             if (this.dom.modeSelect) this.dom.modeSelect.value = 'video';
+             if (this.dom.directionSelect) this.dom.directionSelect.value = this.project.visualDirection;
+             this.totalFrames = this.project.totalFrames || 720;
+diff --git a/assets/js/creative-studio/visual/creative-director.js b/assets/js/creative-studio/visual/creative-director.js
+index 212137e7..a6110c25 100644
+--- a/assets/js/creative-studio/visual/creative-director.js
++++ b/assets/js/creative-studio/visual/creative-director.js
+@@ -458,7 +458,28 @@
+         shotInstance = new ReferenceShotClass(activeShot);
+       }
+ 
+-      shotInstance.render(ctx, shotLocalFrame, shotInstance.durationFrames, f, totalFrames, width, height, { mode });
++      const layout = activeShot.customData?.layout;
++      if (layout?.version === 1) {
++        const composition = typeof window !== 'undefined'
++          ? window.StudioLayoutComposition
++          : require('./layout-composition');
++        return composition.render(ctx, shotInstance, layout, shotLocalFrame, width, height, project.locale);
++      }
++
++      if (height > width) {
++        const legacyHeight = width * 9 / 16;
++        ctx.save();
++        ctx.fillStyle = project.canvas?.background || '#090d16';
++        ctx.fillRect(0, 0, width, height);
++        ctx.translate(0, (height - legacyHeight) / 2);
++        ctx.beginPath();
++        ctx.rect(0, 0, width, legacyHeight);
++        ctx.clip();
++        shotInstance.render(ctx, shotLocalFrame, shotInstance.durationFrames, f, totalFrames, width, legacyHeight, { mode });
++        ctx.restore();
++      } else {
++        shotInstance.render(ctx, shotLocalFrame, shotInstance.durationFrames, f, totalFrames, width, height, { mode });
++      }
+ 
+       // Fast, clean 2-frame cross-shot cut transition (no prolonged empty black pauses)
+       const transitionWindow = 2;
+diff --git a/creative-studio/index.html b/creative-studio/index.html
+index 4696194b..d630c53a 100644
+--- a/creative-studio/index.html
++++ b/creative-studio/index.html
+@@ -269,6 +269,7 @@
+ 
+         <!-- Mode Group 1: Cinematic Shot Editor (Top Priority in Video Mode) -->
+         <div id="cs-inspector-video-group" class="cs-form-group" style="margin-top: 4px;">
++          <details id="cs-layout-editor"></details>
+           <span class="cs-section-title">Cinematic Shot Editor</span>
+           <p style="font-size: 11px; color: var(--cs-text-muted); margin-bottom: 6px;">Edit active shot headline, narrative subhead, and brand accent.</p>
+           <label class="cs-form-label" for="cs-shot-select">Active Shot</label>
+@@ -404,6 +405,10 @@
+   <script src="/assets/js/creative-studio/command-engine.js?v=20261125" defer></script>
+   <script src="/assets/js/creative-studio/animation-engine.js?v=20261125" defer></script>
+   <script src="/assets/js/creative-studio/visual/reference-shot.js?v=20261125" defer></script>
++  <script src="/assets/js/creative-studio/visual/design-tokens.js" defer></script>
++  <script src="/assets/js/creative-studio/visual/layout-solver.js" defer></script>
++  <script src="/assets/js/creative-studio/visual/layout-composition.js" defer></script>
++  <script src="/assets/js/creative-studio/visual/layout-editor.js" defer></script>
+   <script src="/assets/js/creative-studio/visual/creative-director.js?v=20261125" defer></script>
+   <script src="/assets/js/creative-studio/render-adapter.js?v=20261125" defer></script>
+   <script src="/assets/js/creative-studio/studio-app.js?v=20261125" defer></script>
+diff --git a/da/creative-studio/index.html b/da/creative-studio/index.html
+index ca9e8e04..3ad0d95d 100644
+--- a/da/creative-studio/index.html
++++ b/da/creative-studio/index.html
+@@ -188,8 +188,10 @@
+         </div>
+ 
+         <!-- Responsive Canvas Viewport -->
+-        <div class="cs-canvas-viewport">
+-          <canvas id="cs-canvas" width="1280" height="720"></canvas>
++        <div class="cs-viewport">
++          <div class="cs-canvas-wrapper">
++            <canvas id="cs-canvas" width="1280" height="720"></canvas>
++          </div>
+         </div>
+ 
+         <!-- Bottom Timeline Editor -->
+@@ -229,6 +231,7 @@
+ 
+         <!-- Mode Group 1: Cinematic Shot Editor -->
+         <div id="cs-inspector-video-group" class="cs-form-group" style="margin-top: 4px;">
++          <details id="cs-layout-editor"></details>
+           <span class="cs-section-title">Filmisk Scene Editor</span>
+           <p style="font-size: 11px; color: var(--cs-text-muted); margin-bottom: 6px;">Rediger overskrift, fortælling og accentfarve for den aktive scene.</p>
+           <label class="cs-form-label" for="cs-shot-select">Aktiv Scene</label>
+@@ -364,6 +367,10 @@
+   <script src="/assets/js/creative-studio/command-engine.js?v=20261125" defer></script>
+   <script src="/assets/js/creative-studio/animation-engine.js?v=20261125" defer></script>
+   <script src="/assets/js/creative-studio/visual/reference-shot.js?v=20261125" defer></script>
++  <script src="/assets/js/creative-studio/visual/design-tokens.js" defer></script>
++  <script src="/assets/js/creative-studio/visual/layout-solver.js" defer></script>
++  <script src="/assets/js/creative-studio/visual/layout-composition.js" defer></script>
++  <script src="/assets/js/creative-studio/visual/layout-editor.js" defer></script>
+   <script src="/assets/js/creative-studio/visual/creative-director.js?v=20261125" defer></script>
+   <script src="/assets/js/creative-studio/render-adapter.js?v=20261125" defer></script>
+   <script src="/assets/js/creative-studio/studio-app.js?v=20261125" defer></script>
+diff --git a/es/creative-studio/index.html b/es/creative-studio/index.html
+index efe39773..b91afd41 100644
+--- a/es/creative-studio/index.html
++++ b/es/creative-studio/index.html
+@@ -188,8 +188,10 @@
+         </div>
+ 
+         <!-- Responsive Canvas Container -->
+-        <div class="cs-canvas-viewport">
+-          <canvas id="cs-canvas" width="1280" height="720"></canvas>
++        <div class="cs-viewport">
++          <div class="cs-canvas-wrapper">
++            <canvas id="cs-canvas" width="1280" height="720"></canvas>
++          </div>
+         </div>
+ 
+         <!-- Bottom Timeline Editor -->
+@@ -229,6 +231,7 @@
+ 
+         <!-- Mode Group 1: Cinematic Shot Editor -->
+         <div id="cs-inspector-video-group" class="cs-form-group" style="margin-top: 4px;">
++          <details id="cs-layout-editor"></details>
+           <span class="cs-section-title">Editor de Tomas Cinemáticas</span>
+           <p style="font-size: 11px; color: var(--cs-text-muted); margin-bottom: 6px;">Edita titular, narrativa y acento de la toma activa.</p>
+           <label class="cs-form-label" for="cs-shot-select">Toma Activa</label>
+@@ -364,6 +367,10 @@
+   <script src="/assets/js/creative-studio/command-engine.js?v=20261125" defer></script>
+   <script src="/assets/js/creative-studio/animation-engine.js?v=20261125" defer></script>
+   <script src="/assets/js/creative-studio/visual/reference-shot.js?v=20261125" defer></script>
++  <script src="/assets/js/creative-studio/visual/design-tokens.js" defer></script>
++  <script src="/assets/js/creative-studio/visual/layout-solver.js" defer></script>
++  <script src="/assets/js/creative-studio/visual/layout-composition.js" defer></script>
++  <script src="/assets/js/creative-studio/visual/layout-editor.js" defer></script>
+   <script src="/assets/js/creative-studio/visual/creative-director.js?v=20261125" defer></script>
+   <script src="/assets/js/creative-studio/render-adapter.js?v=20261125" defer></script>
+   <script src="/assets/js/creative-studio/studio-app.js?v=20261125" defer></script>
+diff --git a/assets/js/creative-studio/visual/constraint-schema.json b/assets/js/creative-studio/visual/constraint-schema.json
+new file mode 100644
+index 00000000..2c4dd9cb
+--- /dev/null
++++ b/assets/js/creative-studio/visual/constraint-schema.json
+@@ -0,0 +1,49 @@
++{
++  "$schema": "http://json-schema.org/draft-07/schema#",
++  "title": "Creative Studio cinematic shot layout",
++  "description": "Optional customData.layout field. Absence selects the original Phase 01 renderer.",
++  "type": "object",
++  "additionalProperties": false,
++  "required": ["version", "preset"],
++  "properties": {
++    "version": { "const": 1 },
++    "preset": { "enum": ["hero", "comparison", "statistic", "dialogue", "character-right", "character-center", "reaction", "reveal", "product", "silhouette", "punchline"] },
++    "palette": { "enum": ["light", "dark"] },
++    "pose": { "enum": ["standard", "large"] },
++    "letterbox": { "type": "boolean" },
++    "allowOverlap": { "type": "boolean" },
++    "blocks": {
++      "type": "object",
++      "additionalProperties": false,
++      "properties": {
++        "title": { "$ref": "#/definitions/layoutConstraint" },
++        "subject": { "$ref": "#/definitions/layoutConstraint" },
++        "caption": { "$ref": "#/definitions/layoutConstraint" }
++      }
++    }
++  },
++  "definitions": {
++    "layoutConstraint": {
++      "type": "object",
++      "additionalProperties": false,
++      "properties": {
++        "anchor": { "enum": ["", "left", "center", "right", "top", "bottom"] },
++        "align": { "enum": ["left", "center", "right"] },
++        "relativeTo": { "enum": ["", "title", "subject", "caption"] },
++        "depth": { "enum": ["", "background", "midground", "foreground"] },
++        "intrinsic": { "type": "boolean" },
++        "baseline": { "type": "boolean" },
++        "x": { "type": "number" },
++        "y": { "type": "number" },
++        "pixelX": { "type": "number" },
++        "pixelY": { "type": "number" },
++        "width": { "type": "number", "exclusiveMinimum": 0 },
++        "height": { "type": "number", "exclusiveMinimum": 0 },
++        "maxWidth": { "type": "number", "exclusiveMinimum": 0, "maximum": 1 },
++        "maxHeight": { "type": "number", "exclusiveMinimum": 0, "maximum": 1 },
++        "minSize": { "type": "number", "minimum": 0 },
++        "gap": { "type": "number", "minimum": 0 }
++      }
++    }
++  }
++}
+diff --git a/assets/js/creative-studio/visual/design-tokens.js b/assets/js/creative-studio/visual/design-tokens.js
+new file mode 100644
+index 00000000..b4ad519f
+--- /dev/null
++++ b/assets/js/creative-studio/visual/design-tokens.js
+@@ -0,0 +1,40 @@
++(function (root) {
++  'use strict';
++
++  const tokens = Object.freeze({
++    space: Object.freeze({ unit: 8, inset: 48, gap: 24, padding: 32 }),
++    type: Object.freeze({ title: 76, body: 30, label: 20, minimum: 18, lineHeight: 1.12, family: 'system-ui, sans-serif' }),
++    color: Object.freeze({
++      dark: Object.freeze({ background: '#111522', surface: '#20283b', foreground: '#fff8ee', muted: '#b8c4d9', accent: '#a7f0d4', success: '#9ee5b0', warning: '#ffd18a', overlay: '#0c101b' }),
++      light: Object.freeze({ background: '#f4ebdd', surface: '#fff9ef', foreground: '#20232f', muted: '#4e5261', accent: '#28594d', success: '#236345', warning: '#794712', overlay: '#ded5c7' })
++    }),
++    radius: 24,
++    shadow: Object.freeze({ blur: 28, offset: 12, color: '#00000050' }),
++    z: Object.freeze({ background: 0, midground: 1, foreground: 2 }),
++    safeInsets: Object.freeze({
++      wide: Object.freeze({ top: .07, right: .06, bottom: .08, left: .06 }),
++      portrait: Object.freeze({ top: .12, right: .15, bottom: .19, left: .08 }),
++      square: Object.freeze({ top: .08, right: .08, bottom: .09, left: .08 })
++    }),
++    characterScale: Object.freeze({ standard: .72, large: .9 }),
++    propElevation: 12,
++    outline: 3,
++    captionArea: .24,
++    letterbox: .045
++  });
++
++  function contrast(a, b) {
++    function luminance(color) {
++      const channels = color.slice(1).match(/../g).map(value => {
++        const channel = parseInt(value, 16) / 255;
++        return channel <= .04045 ? channel / 12.92 : ((channel + .055) / 1.055) ** 2.4;
++      });
++      return channels[0] * .2126 + channels[1] * .7152 + channels[2] * .0722;
++    }
++    const [low, high] = [luminance(a), luminance(b)].sort((a, b) => a - b);
++    return (high + .05) / (low + .05);
++  }
++
++  root.StudioDesignTokens = { tokens, contrast };
++  if (typeof module !== 'undefined') module.exports = root.StudioDesignTokens;
++})(typeof window === 'undefined' ? globalThis : window);
+diff --git a/assets/js/creative-studio/visual/layout-composition.js b/assets/js/creative-studio/visual/layout-composition.js
+new file mode 100644
+index 00000000..c17b44d7
+--- /dev/null
++++ b/assets/js/creative-studio/visual/layout-composition.js
+@@ -0,0 +1,300 @@
++(function (root) {
++  'use strict';
++
++  const { tokens, contrast } = root.StudioDesignTokens || require('./design-tokens');
++  const solver = root.StudioLayoutSolver || require('./layout-solver');
++
++  function text(ctx, value, box, ideal, weight, color, scale, align) {
++    const floor = tokens.type.minimum * scale;
++    let size = Math.min(ideal * scale, box.height / tokens.type.lineHeight);
++    let lines;
++    function wrap() {
++      const result = [];
++      let line = '';
++      for (const word of value.trim().split(/\s+/u)) {
++        const next = line ? line + ' ' + word : word;
++        if (ctx.measureText(next).width <= box.width) {
++          line = next;
++          continue;
++        }
++        if (line) result.push(line);
++        line = '';
++        for (const character of word) {
++          if (line && ctx.measureText(line + character).width > box.width) {
++            result.push(line);
++            line = '';
++          }
++          line += character;
++        }
++      }
++      if (line) result.push(line);
++      return result;
++    }
++    do {
++      ctx.font = `${weight} ${size}px ${tokens.type.family}`;
++      lines = wrap();
++      if (lines.length * size * tokens.type.lineHeight <= box.height || size <= floor) break;
++      size = Math.max(floor, size * .92);
++    } while (true);
++    const step = size * tokens.type.lineHeight;
++    const count = Math.max(0, Math.floor((box.height + .01) / step));
++    const visible = lines.slice(0, count);
++    if (count && lines.length > count) {
++      let last = visible[count - 1];
++      while (last && ctx.measureText(last + '…').width > box.width) last = Array.from(last).slice(0, -1).join('');
++      visible[count - 1] = last + '…';
++    }
++    ctx.fillStyle = color;
++    ctx.textAlign = align;
++    ctx.textBaseline = 'middle';
++    const x = box.x + (align === 'center' ? box.width / 2 : align === 'right' ? box.width : 0);
++    const y = box.y + (box.height - visible.length * step) / 2;
++    visible.forEach((line, i) => ctx.fillText(line, x, y + (i + .5) * step, box.width));
++    return lines.length > count;
++  }
++
++  function panel(ctx, x, y, w, h, radius, color) {
++    ctx.fillStyle = color;
++    ctx.beginPath();
++    ctx.roundRect(x, y, w, h, Math.max(0, Math.min(radius, w / 2, h / 2)));
++    ctx.fill();
++  }
++
++  function drawSubject(ctx, shot, layout, box, palette, phase, locale) {
++    const { x, y, width: w, height: h } = box;
++    if (w < 4 || h < 4) return;
++    const preset = layout.preset;
++    const strings = ({ es: ['Antes', 'Después', 'Informe', 'Registros', 'Revisar'], da: ['Før', 'Efter', 'Rapport', 'Poster', 'Gennemse'] })[locale] ||
++      ['Before', 'After', 'Report', 'Records', 'Review'];
++    const isCharacter = ['dialogue', 'character-right', 'character-center', 'reaction'].includes(preset);
++    const settle = 1 - (1 - Math.min(1, phase * 2.5)) ** 3;
++    const hold = Math.max(0, Math.min(1, (phase - .22) / .64));
++    const progress = hold * hold * (3 - 2 * hold);
++    ctx.save();
++    ctx.beginPath();
++    ctx.rect(x, y, w, h);
++    ctx.clip();
++    const elevation = Math.min(h * .08, tokens.propElevation * Math.min(w, h) / 240);
++    const offset = (1 - settle) * elevation * (box.depth + 1) / 3;
++    ctx.translate(0, offset);
++    if (isCharacter) {
++      const backdrop = ctx.createLinearGradient(x, y, x + w, y + h);
++      backdrop.addColorStop(0, '#222138');
++      backdrop.addColorStop(1, '#465071');
++      panel(ctx, x, y, w, h - offset, tokens.radius, backdrop);
++      ctx.fillStyle = '#171d2f';
++      ctx.fillRect(x, y + h * .86, w, h * .14);
++      const scale = Math.min(w / (preset === 'reaction' ? 650 : 320), h / 340) * tokens.characterScale[layout.pose === 'large' ? 'large' : 'standard'];
++      const originalPose = layout.pose === 'large' ? 'shocked' : (shot.customData.characterPose || 'neutral');
++      const people = preset === 'reaction' ? [[.28, 'neutral', 1, .91], [.73, progress > .3 ? 'shocked' : 'neutral', -1, 1.12]] : [[.50, originalPose, 1, 1]];
++      people.forEach(([position, pose, facing, size]) => {
++        ctx.save();
++        ctx.translate(x + w * position, y + h * .47);
++        ctx.scale(scale * facing * size, scale * size);
++        shot._drawParrotCharacter(ctx, phase, 0, 0, pose);
++        ctx.restore();
++      });
++      if (preset === 'dialogue') {
++        const mx = x + w * .76, my = y + h * .62;
++        const size = Math.min(w, h);
++        panel(ctx, mx - size * .05, my - size * .13, size * .10, size * .20, tokens.radius, '#d2dae9');
++        panel(ctx, mx - size * .015, my + size * .04, size * .03, size * .20, tokens.radius / 3, '#d2dae9');
++        panel(ctx, mx - size * .085, my + size * .22, size * .17, size * .025, tokens.radius / 3, '#d2dae9');
++      }
++    } else if (preset === 'punchline') {
++      ctx.fillStyle = palette.accent;
++      ctx.textAlign = 'center';
++      ctx.textBaseline = 'middle';
++      const size = Math.min(w, h) * (.60 + .26 * settle);
++      ctx.lineWidth = Math.max(2, size * .09);
++      ctx.strokeStyle = palette.accent;
++      ctx.lineCap = 'round';
++      const cx = x + w / 2, cy = y + h / 2;
++      ctx.beginPath();
++      if (shot.artDirection === 'character-comedy') {
++        ctx.roundRect(cx - size * .40, cy - size * .34, size * .80, size * .70, size * .10);
++        ctx.moveTo(cx - size * .40, cy - size * .14);
++        ctx.lineTo(cx + size * .40, cy - size * .14);
++        ctx.moveTo(cx - size * .18, cy + size * .03);
++        ctx.lineTo(cx + size * .18, cy + size * .23);
++        ctx.moveTo(cx + size * .18, cy + size * .03);
++        ctx.lineTo(cx - size * .18, cy + size * .23);
++      } else if (shot.artDirection === 'cinematic-saas') {
++        ctx.roundRect(cx - size * .37, cy - size * .42, size * .74, size * .85, size * .10);
++        ctx.moveTo(cx - size * .17, cy + size * .01);
++        ctx.lineTo(cx - size * .04, cy + size * .14);
++        ctx.lineTo(cx + size * .20, cy - size * .12);
++      } else {
++        ctx.arc(cx, cy, size * .29, 0, Math.PI * 2);
++        ctx.moveTo(cx, cy - size * .43);
++        ctx.lineTo(cx, cy - size * .26);
++      }
++      ctx.stroke();
++    } else if (preset === 'silhouette') {
++      const cx = x + w * .67;
++      const cy = y + h * .64;
++      const light = ctx.createRadialGradient(cx, cy, 0, cx, cy, Math.max(1, w * .62));
++      light.addColorStop(0, progress > .78 && shot.purpose === 'benefit' ? '#6c4b52' : '#d18358');
++      light.addColorStop(.48, '#4b3244');
++      light.addColorStop(1, '#121421');
++      panel(ctx, x, y, w, h - offset, tokens.radius, light);
++      ctx.fillStyle = '#eab680';
++      ctx.fillRect(cx - w * .10, y + h * .18, w * .20, h * .63);
++      ctx.fillStyle = '#392944';
++      ctx.fillRect(cx - w * .07, y + h * .22, w * .14, h * .59);
++      const actorX = cx - w * (.22 - Math.max(0, progress - .54) * (shot.startFrame ? .16 : .07));
++      if (shot.startFrame > 0) {
++        ctx.save();
++        ctx.globalAlpha = .62;
++        ctx.fillStyle = '#160f20';
++        ctx.beginPath();
++        ctx.ellipse(cx - w * .32 + w * .36 * progress, cy + h * .18, w * .095, h * .048, -.12, 0, Math.PI * 2);
++        ctx.fill();
++        ctx.restore();
++      }
++      ctx.fillStyle = '#171421';
++      ctx.beginPath();
++      ctx.ellipse(actorX, cy - h * .26, w * .047, h * .09, 0, 0, Math.PI * 2);
++      ctx.fill();
++      ctx.beginPath();
++      ctx.moveTo(actorX - w * .06, cy - h * .17);
++      ctx.lineTo(actorX + w * .06, cy - h * .17);
++      ctx.lineTo(actorX + w * .09, cy + h * .17);
++      ctx.lineTo(actorX - w * .09, cy + h * .17);
++      ctx.fill();
++    } else if (preset === 'reveal' && shot.artDirection === 'minimal-suspense') {
++      const size = Math.min(w * .42, h * .70);
++      const switchX = x + (w - size) * .62;
++      const switchY = y + (h - size) / 2;
++      panel(ctx, x, y, w, h - offset, tokens.radius, '#282333');
++      panel(ctx, switchX, switchY, size * .67, size, tokens.radius / 2, '#bba28c');
++      panel(ctx, switchX + size * .20, switchY + size * .19, size * .27, size * .62, tokens.radius / 3, '#594956');
++      panel(ctx, switchX + size * .22, switchY + size * (progress < .62 ? .24 : .46), size * .23, size * .31, tokens.radius / 4, '#efe0c3');
++    } else {
++      const pad = Math.min(w, h) * tokens.space.padding / 360;
++      ctx.shadowColor = tokens.shadow.color;
++      ctx.shadowBlur = tokens.shadow.blur;
++      ctx.shadowOffsetY = tokens.shadow.offset;
++      panel(ctx, x + pad, y + pad, w - 2 * pad, h - 2 * pad - offset, tokens.radius, palette.surface);
++      ctx.shadowColor = '#00000000';
++      const gx = x + pad * 2, gy = y + pad * 2;
++      const gw = w - pad * 4, gh = Math.max(1, h - pad * 4 - offset);
++      if (preset === 'statistic') {
++        const figure = shot.headline.match(/\d+(?:[.,]\d+)?(?:\s?%|×|x)?/u)?.[0];
++        if (figure) text(ctx, figure, { x: gx, y: gy, width: gw, height: gh }, 120, 800, palette.accent, Math.min(w, h) / 260, 'center');
++        else {
++          ctx.strokeStyle = palette.accent;
++          ctx.lineWidth = tokens.outline * 2;
++          ctx.beginPath();
++          ctx.moveTo(gx, gy + gh * .75);
++          ctx.lineTo(gx + gw * .34, gy + gh * .62);
++          ctx.lineTo(gx + gw * .60, gy + gh * .68);
++          ctx.lineTo(gx + gw, gy + gh * (.66 - progress * .42));
++          ctx.stroke();
++        }
++      } else if (preset === 'hero') {
++        const unit = Math.min(gw / 450, gh / 250);
++        if (unit > 0) {
++          ctx.save();
++          ctx.translate(gx + (gw - 450 * unit) / 2, gy + (gh - 250 * unit) / 2);
++          ctx.scale(unit, unit);
++          shot._renderChaosDataStream(ctx, .25 + progress * .75, 0, 0, 450, 250);
++          ctx.restore();
++        }
++      } else if (preset === 'comparison') {
++        const card = gw * .46;
++        panel(ctx, gx, gy, card, gh, tokens.radius / 2, palette.overlay);
++        panel(ctx, gx + gw - card, gy, card, gh, tokens.radius / 2, palette.overlay);
++        text(ctx, strings[0], { x: gx + card * .09, y: gy, width: card * .78, height: gh * .20 }, 22, 700, palette.muted, gh / 190, 'left');
++        text(ctx, strings[1], { x: gx + gw - card * .86, y: gy, width: card * .78, height: gh * .20 }, 24, 750, palette.foreground, gh / 190, 'left');
++        for (let i = 0; i < 4; i++) {
++          const row = gh * .12;
++          panel(ctx, gx + card * (.09 + .11 * i), gy + row * (1.6 + i * 1.3), card * (.62 - .09 * i), row * .50, tokens.radius / 3, palette.muted);
++          panel(ctx, gx + gw - card * .86, gy + row * (1.6 + i * 1.3), card * .72, row * .50, tokens.radius / 3, palette.accent);
++        }
++      } else if (preset === 'product' || preset === 'reveal') {
++        panel(ctx, gx, gy, gw, gh, tokens.radius / 2, palette.overlay);
++        const rail = gw * .24;
++        panel(ctx, gx, gy, rail, gh, tokens.radius / 2, palette.surface);
++        for (let i = 0; i < 3; i++) {
++          panel(ctx, gx + rail * .16, gy + gh * (.16 + i * .18), rail * .68, gh * .065, tokens.radius / 3,
++            i === 1 ? palette.accent : palette.muted);
++        }
++        const bodyX = gx + rail + gw * .07;
++        const bodyW = gw * .61;
++        text(ctx, strings[2], { x: bodyX, y: gy + gh * .05, width: bodyW, height: gh * .23 }, 30, 740, palette.foreground, gh / 230, 'left');
++        panel(ctx, bodyX, gy + gh * .34, bodyW, gh * .50, tokens.radius / 2, palette.surface);
++        text(ctx, strings[3], { x: bodyX + bodyW * .10, y: gy + gh * .34, width: bodyW * .80, height: gh * .15 }, 18, 700, palette.muted, gh / 230, 'left');
++        text(ctx, strings[4], { x: bodyX + bodyW * .10, y: gy + gh * .68, width: bodyW * .80, height: gh * .14 }, 18, 700, palette.accent, gh / 230, 'left');
++        const reveal = preset === 'reveal' ? progress : .40 + progress * .60;
++        panel(ctx, bodyX + bodyW * .10, gy + gh * .51, bodyW * .80 * reveal, gh * .14, tokens.radius / 2, palette.accent);
++      } else {
++        panel(ctx, gx, gy, gw, gh, tokens.radius / 2, palette.overlay);
++        for (let i = 0; i < 4; i++) {
++          const line = gh / 8;
++          panel(ctx, gx + gw * .10, gy + (2 + i * 1.3) * line, gw * [0.80, 0.52, 0.64, 0.38][i] * (.62 + .38 * progress), line * .55, tokens.radius / 2, i === 0 ? palette.accent : palette.muted);
++        }
++      }
++    }
++    ctx.restore();
++  }
++
++  function render(ctx, shot, layout, frame, width, height, locale = 'en') {
++    const { scale: measureScale } = solver.geometry(width, height);
++    const intrinsic = {};
++    ctx.save();
++    for (const [role, value, ideal, weight] of [['title', shot.headline, tokens.type.title, 790], ['caption', shot.subhead, tokens.type.body, 550]]) {
++      if (!layout.blocks?.[role]?.intrinsic) continue;
++      const fontSize = ideal * measureScale;
++      ctx.font = `${weight} ${fontSize}px ${tokens.type.family}`;
++      intrinsic[role] = { width: ctx.measureText(String(value || '')).width + tokens.space.padding * measureScale, height: fontSize * 2 * tokens.type.lineHeight };
++    }
++    ctx.restore();
++    const resolved = solver.resolve(layout, width, height, intrinsic);
++    const { blocks, scale, warnings } = resolved;
++    const theme = tokens.color[layout.palette === 'light' ? 'light' : 'dark'];
++    const accent = /^#[0-9a-f]{6}$/i.test(shot.accentColor) && contrast(shot.accentColor, theme.surface) >= 3
++      ? shot.accentColor : theme.accent;
++    const palette = { ...theme, accent };
++    const phase = Math.max(0, Math.min(1, frame / Math.max(1, shot.durationFrames - 1)));
++    ctx.save();
++    ctx.fillStyle = palette.background;
++    ctx.fillRect(0, 0, width, height);
++    if (layout.letterbox) {
++      const inset = height * tokens.letterbox;
++      ctx.fillStyle = palette.overlay;
++      ctx.fillRect(0, 0, width, inset);
++      ctx.fillRect(0, height - inset, width, inset);
++    }
++    for (const role of [...solver.roles].sort((a, b) => blocks[a].depth - blocks[b].depth)) {
++      const box = blocks[role];
++      if (role === 'subject') {
++        drawSubject(ctx, shot, layout, box, palette, phase, String(locale || 'en').slice(0, 2));
++        continue;
++      }
++      const caption = role === 'caption';
++      const color = caption ? palette.muted : palette.foreground;
++      let inner = box;
++      if (caption) {
++        if (shot.artDirection === 'minimal-suspense') {
++          panel(ctx, box.x, box.y + box.height * .18, Math.max(2, tokens.outline * scale), box.height * .64, 1, palette.accent);
++        } else {
++          const radius = shot.artDirection === 'character-comedy' ? tokens.radius * 1.45 : tokens.radius;
++          panel(ctx, box.x, box.y, box.width, box.height, radius * scale, palette.surface);
++        }
++        const padding = Math.min(tokens.space.padding * scale, box.height * .18, box.width * .12);
++        inner = { x: box.x + padding, y: box.y + padding, width: box.width - padding * 2, height: box.height - padding * 2 };
++      }
++      const background = caption && shot.artDirection !== 'minimal-suspense' ? palette.surface : palette.background;
++      if (contrast(color, background) < 4.5) warnings.push({ type: 'contrast', roles: [role] });
++      if (text(ctx, String((caption ? shot.subhead : shot.headline) || ''), inner, caption ? tokens.type.body : tokens.type.title, caption ? 550 : 790, color, scale, box.align)) {
++        warnings.push({ type: 'text', roles: [role] });
++      }
++    }
++    ctx.restore();
++    return resolved;
++  }
++
++  root.StudioLayoutComposition = { render };
++  if (typeof module !== 'undefined') module.exports = root.StudioLayoutComposition;
++})(typeof window === 'undefined' ? globalThis : window);
+diff --git a/assets/js/creative-studio/visual/layout-editor.js b/assets/js/creative-studio/visual/layout-editor.js
+new file mode 100644
+index 00000000..e6c7124d
+--- /dev/null
++++ b/assets/js/creative-studio/visual/layout-editor.js
+@@ -0,0 +1,274 @@
++(function (root) {
++  'use strict';
++
++  const solver = root.StudioLayoutSolver;
++  const { tokens } = root.StudioDesignTokens;
++  const formats = [[1280, 720], [1920, 1080], [1080, 1920], [1080, 1080]];
++  const names = {
++    hero: ['Hero', 'Portada', 'Forside'], comparison: ['Comparison', 'Comparación', 'Sammenligning'],
++    statistic: ['Statistic', 'Estadística', 'Statistik'], dialogue: ['Dialogue', 'Diálogo', 'Dialog'],
++    'character-right': ['Character right', 'Personaje a la derecha', 'Figur til højre'],
++    'character-center': ['Character centered', 'Personaje centrado', 'Centreret figur'],
++    reaction: ['Two-shot reaction', 'Reacción en pareja', 'Reaktion i to felter'],
++    reveal: ['Prop reveal', 'Aparición del objeto', 'Afsløring af rekvisit'],
++    product: ['Product', 'Producto', 'Produkt'], silhouette: ['Silhouette', 'Silueta', 'Silhuet'],
++    punchline: ['Punchline', 'Remate', 'Pointe']
++  };
++
++  class StudioLayoutEditor {
++    constructor(app) {
++      this.app = app;
++      this.canvas = app.dom.canvas;
++      this.locale = ['en', 'es', 'da'].indexOf(document.documentElement.lang.slice(0, 2));
++      this.role = 'title';
++      this.guides = false;
++      this.viewport = this.canvas.closest('.cs-viewport');
++      this.wrapper = this.canvas.parentElement;
++      new ResizeObserver(() => this.fit()).observe(this.viewport);
++      document.getElementById('cs-btn-zoom-fit')?.addEventListener('click', () => this.fit());
++      const host = document.getElementById('cs-layout-editor');
++      if (!host) return;
++      this.host = host;
++      this.controls = {};
++      const tr = (...values) => values[Math.max(0, this.locale)];
++      this.tr = tr;
++      const heading = document.createElement('summary');
++      heading.textContent = tr('Composition layout', 'Diseño de composición', 'Kompositionslayout');
++      host.append(heading);
++      const select = (key, label, options, update) => {
++        const wrapper = document.createElement('label');
++        wrapper.textContent = tr(...label);
++        const input = document.createElement('select');
++        input.id = 'cs-layout-' + key;
++        input.className = 'cs-select';
++        options.forEach(([value, copy]) => input.add(new Option(Array.isArray(copy) ? tr(...copy) : copy, value)));
++        wrapper.append(input);
++        host.append(wrapper);
++        this.controls[key] = input;
++        input.addEventListener('change', () => update(input.value));
++        return input;
++      };
++      select('preset', ['Layout', 'Diseño', 'Layout'], [
++        ['', ['Original', 'Original', 'Original']], ...Object.entries(names)
++      ], value => {
++        const shot = this.shot();
++        if (!shot) return;
++        if (value) shot.customData.layout = { version: 1, preset: value, blocks: {} };
++        else delete shot.customData.layout;
++        this.app.render();
++      });
++      select('format', ['Canvas size', 'Tamaño del lienzo', 'Lærredsstørrelse'],
++        formats.map(([w, h]) => [w + 'x' + h, w + ' × ' + h]), value => {
++          const [width, height] = value.split('x').map(Number);
++          Object.assign(app.project.canvas, { width, height });
++          app.render();
++        });
++      select('block', ['Block', 'Bloque', 'Blok'], [
++        ['title', ['Title', 'Título', 'Titel']], ['subject', ['Subject', 'Sujeto', 'Motiv']], ['caption', ['Caption', 'Subtítulo', 'Undertekst']]
++      ], value => { this.role = value; app.render(); });
++      select('anchor', ['Anchor', 'Anclaje', 'Forankring'], [
++        ['', ['Free', 'Libre', 'Fri']], ['left', ['Left', 'Izquierda', 'Venstre']], ['center', ['Center', 'Centro', 'Midte']],
++        ['right', ['Right', 'Derecha', 'Højre']], ['top', ['Top', 'Arriba', 'Top']], ['bottom', ['Bottom', 'Abajo', 'Bund']]
++      ], value => this.updateBlock({ anchor: value }));
++      select('align', ['Text alignment', 'Alineación del texto', 'Tekstjustering'], [
++        ['left', ['Left', 'Izquierda', 'Venstre']], ['center', ['Center', 'Centro', 'Midte']], ['right', ['Right', 'Derecha', 'Højre']]
++      ], value => this.updateBlock({ align: value }));
++      select('depth', ['Layer depth', 'Profundidad de capa', 'Lagdybde'], [
++        ['', ['Automatic', 'Automática', 'Automatisk']], ['background', ['Background', 'Fondo', 'Baggrund']],
++        ['midground', ['Middle', 'Plano medio', 'Mellemgrund']], ['foreground', ['Foreground', 'Primer plano', 'Forgrund']]
++      ], value => this.updateBlock({ depth: value }));
++      select('pose', ['Pose size', 'Tamaño de la pose', 'Posestørrelse'], [
++        ['standard', ['Standard', 'Estándar', 'Standard']], ['large', ['Large', 'Grande', 'Stor']]
++      ], value => this.updateLayout({ pose: value }));
++      select('palette', ['Palette', 'Paleta', 'Palet'], [
++        ['dark', ['Dark', 'Oscura', 'Mørk']], ['light', ['Light', 'Clara', 'Lys']]
++      ], value => this.updateLayout({ palette: value }));
++      const toggle = (key, copies, update) => {
++        const wrapper = document.createElement('label');
++        const input = document.createElement('input');
++        input.type = 'checkbox';
++        input.id = 'cs-layout-' + key;
++        wrapper.append(input, tr(...copies));
++        host.append(wrapper);
++        this.controls[key] = input;
++        input.addEventListener('change', () => update(input.checked));
++      };
++      toggle('guides', ['Grid and safe areas', 'Cuadrícula y zonas seguras', 'Gitter og sikkerhedszoner'], value => {
++        this.guides = value;
++        app.render();
++      });
++      toggle('letterbox', ['Cinematic bars', 'Bandas cinematográficas', 'Filmstriber'], value => this.updateLayout({ letterbox: value }));
++      toggle('overlap', ['Allow artistic overlap', 'Permitir superposición artística', 'Tillad kunstnerisk overlap'], value => this.updateLayout({ allowOverlap: value }));
++      const distribute = document.createElement('button');
++      distribute.type = 'button';
++      distribute.id = 'cs-layout-distribute';
++      distribute.className = 'cs-btn';
++      distribute.textContent = tr('Distribute evenly', 'Distribuir uniformemente', 'Fordel jævnt');
++      distribute.addEventListener('click', () => this.distribute());
++      host.append(distribute);
++      this.controls.distribute = distribute;
++      this.status = document.createElement('div');
++      this.status.id = 'cs-layout-warnings';
++      this.status.setAttribute('role', 'status');
++      host.append(this.status);
++
++      this.canvas.addEventListener('pointerdown', event => this.startDrag(event));
++      this.canvas.addEventListener('pointermove', event => this.moveDrag(event));
++      this.canvas.addEventListener('lostpointercapture', () => { this.drag = null; });
++      this.canvas.addEventListener('pointerup', () => { this.drag = null; });
++    }
++
++    fit() {
++      if (this.app.currentMode !== 'video') {
++        this.fittedWidth = undefined;
++        this.fittedHeight = undefined;
++        this.wrapper.style.removeProperty('width');
++        this.wrapper.style.removeProperty('height');
++        return;
++      }
++      const style = getComputedStyle(this.viewport);
++      const availableWidth = this.viewport.clientWidth - parseFloat(style.paddingLeft) - parseFloat(style.paddingRight);
++      const availableHeight = this.viewport.clientHeight - parseFloat(style.paddingTop) - parseFloat(style.paddingBottom);
++      const scale = Math.min(availableWidth / this.canvas.width, availableHeight / this.canvas.height, 1);
++      if (!(scale > 0)) return;
++      this.fittedWidth = this.canvas.width;
++      this.fittedHeight = this.canvas.height;
++      this.wrapper.style.width = Math.floor(this.canvas.width * scale) + 'px';
++      this.wrapper.style.height = Math.floor(this.canvas.height * scale) + 'px';
++    }
++
++    shot() {
++      return this.app.project.shots?.[this.app.activeShotIndex];
++    }
++
++    layout() {
++      const layout = this.shot()?.customData?.layout;
++      return layout?.version === 1 ? layout : null;
++    }
++
++    updateLayout(change) {
++      const layout = this.layout();
++      if (!layout) return;
++      Object.assign(layout, change);
++      this.app.render();
++    }
++
++    updateBlock(change) {
++      const layout = this.layout();
++      if (!layout) return;
++      layout.blocks ||= {};
++      layout.blocks[this.role] = { ...layout.blocks[this.role], ...change };
++      this.app.render();
++    }
++
++    distribute() {
++      const layout = this.layout();
++      if (!layout || !this.resolved) return;
++      const { safe, blocks } = this.resolved;
++      const height = solver.roles.reduce((sum, role) => sum + blocks[role].height, 0);
++      const factor = Math.min(1, safe.height * .90 / height);
++      const gap = (safe.height - height * factor) / (solver.roles.length - 1);
++      let y = 0;
++      layout.blocks ||= {};
++      for (const role of solver.roles) {
++        const box = blocks[role];
++        layout.blocks[role] = {
++          ...layout.blocks[role], anchor: '', relativeTo: '', baseline: false, intrinsic: false,
++          x: (box.x - safe.x) / safe.width, y: y / safe.height, height: box.height * factor / safe.height
++        };
++        y += box.height * factor + gap;
++      }
++      this.app.render();
++    }
++
++    point(event) {
++      const rect = this.canvas.getBoundingClientRect();
++      return [(event.clientX - rect.left) * this.canvas.width / rect.width,
++        (event.clientY - rect.top) * this.canvas.height / rect.height];
++    }
++
++    startDrag(event) {
++      if (event.button !== 0 || !this.layout() || !this.resolved || this.app.isPlaying) return;
++      const [x, y] = this.point(event);
++      const { blocks } = this.resolved;
++      const hit = [...solver.roles].sort((a, b) => blocks[b].depth - blocks[a].depth).find(role => {
++        const box = blocks[role];
++        return x >= box.x && y >= box.y && x <= box.x + box.width && y <= box.y + box.height;
++      });
++      if (!hit) return;
++      this.role = hit;
++      this.drag = { dx: x - blocks[hit].x, dy: y - blocks[hit].y };
++      this.canvas.setPointerCapture(event.pointerId);
++      event.preventDefault();
++      this.app.render();
++    }
++
++    moveDrag(event) {
++      if (!this.drag || !this.resolved) return;
++      const [x, y] = this.point(event);
++      const position = solver.snap(this.resolved.blocks[this.role], this.resolved, this.role, x - this.drag.dx, y - this.drag.dy);
++      this.updateBlock({ anchor: '', relativeTo: '', baseline: false, ...position });
++    }
++
++    afterRender(resolved) {
++      if (!this.host) return;
++      const layout = this.layout();
++      this.resolved = resolved;
++      if (this.fittedWidth !== this.canvas.width || this.fittedHeight !== this.canvas.height) this.fit();
++      this.canvas.classList.toggle('cs-layout-draggable', Boolean(resolved));
++      const { width, height } = this.app.project.canvas;
++      this.controls.format.value = width + 'x' + height;
++      this.controls.preset.value = layout?.preset || '';
++      this.controls.block.value = this.role;
++      this.controls.anchor.value = layout?.blocks?.[this.role]?.anchor || '';
++      this.controls.align.value = layout?.blocks?.[this.role]?.align || 'left';
++      this.controls.depth.value = layout?.blocks?.[this.role]?.depth || '';
++      this.controls.palette.value = layout?.palette || 'dark';
++      this.controls.pose.value = layout?.pose || 'standard';
++      this.controls.letterbox.checked = layout?.letterbox === true;
++      this.controls.overlap.checked = layout?.allowOverlap === true;
++      for (const key of ['block', 'anchor', 'align', 'depth', 'palette', 'pose', 'letterbox', 'overlap', 'distribute']) {
++        this.controls[key].disabled = !layout;
++      }
++      const warnings = (resolved?.warnings || []).filter(warning => !warning.intentional);
++      const message = warnings.length ? this.tr('Check block overlap, safe areas, or text fit.', 'Revisa la superposición, las zonas seguras o el ajuste del texto.', 'Kontrollér overlap, sikkerhedszoner eller tekstens placering.') : '';
++      if (this.status.textContent !== message) this.status.textContent = message;
++      if (!this.guides) return;
++      this.drawGuides(resolved || solver.geometry(this.canvas.width, this.canvas.height));
++    }
++
++    drawGuides(resolved) {
++      const { safe, columns, scale, blocks, warnings } = resolved;
++      const ctx = this.app.dom.ctx;
++      ctx.save();
++      ctx.lineWidth = Math.max(1, scale);
++      ctx.strokeStyle = '#78f3db';
++      ctx.strokeRect(safe.x, safe.y, safe.width, safe.height);
++      ctx.globalAlpha = .24;
++      ctx.beginPath();
++      for (let i = 1; i < columns; i++) {
++        const x = safe.x + i * safe.width / columns;
++        ctx.moveTo(x, safe.y);
++        ctx.lineTo(x, safe.y + safe.height);
++      }
++      for (let y = safe.y + tokens.space.unit * scale; y < safe.y + safe.height; y += tokens.space.unit * scale) {
++        ctx.moveTo(safe.x, y);
++        ctx.lineTo(safe.x + safe.width, y);
++      }
++      ctx.stroke();
++      ctx.globalAlpha = 1;
++      if (blocks) {
++        for (const role of solver.roles) {
++          const b = blocks[role];
++          const warning = warnings.some(item => !item.intentional && item.roles.includes(role));
++          ctx.strokeStyle = warning ? '#ffbd73' : role === this.role ? '#fff8ee' : '#78f3db';
++          ctx.lineWidth = (role === this.role ? 3 : 1) * scale;
++          ctx.strokeRect(b.x, b.y, b.width, b.height);
++        }
++      }
++      ctx.restore();
++    }
++  }
++
++  root.StudioLayoutEditor = StudioLayoutEditor;
++})(window);
+diff --git a/assets/js/creative-studio/visual/layout-solver.js b/assets/js/creative-studio/visual/layout-solver.js
+new file mode 100644
+index 00000000..4adfec37
+--- /dev/null
++++ b/assets/js/creative-studio/visual/layout-solver.js
+@@ -0,0 +1,140 @@
++(function (root) {
++  'use strict';
++
++  const { tokens } = root.StudioDesignTokens || require('./design-tokens');
++  const roles = ['title', 'subject', 'caption'];
++  const presets = {
++    hero: [[0, .12, .50, .60], [.55, 0, .45, .79], [0, .83, .75, .17]],
++    comparison: [[0, 0, 1, .24], [0, .28, 1, .49], [0, .82, 1, .18]],
++    statistic: [[.55, .19, .45, .60], [0, .10, .50, .69], [0, .84, 1, .16]],
++    dialogue: [[.52, .10, .48, .60], [0, 0, .48, .75], [0, .78, 1, .22]],
++    'character-right': [[0, .10, .48, .60], [.52, 0, .48, .75], [0, .78, 1, .22]],
++    'character-center': [[0, 0, 1, .22], [.18, .25, .64, .50], [0, .78, 1, .22]],
++    reaction: [[0, 0, 1, .22], [0, .25, 1, .50], [0, .78, 1, .22]],
++    reveal: [[0, .12, .41, .58], [.46, 0, .54, .75], [0, .79, 1, .21]],
++    product: [[0, .16, .42, .53], [.46, 0, .54, .77], [0, .82, 1, .18]],
++    silhouette: [[0, .13, .44, .55], [.53, 0, .47, .75], [0, .81, 1, .19]],
++    punchline: [[.10, .22, .80, .48], [.37, 0, .26, .19], [.10, .76, .80, .24]]
++  };
++  const clamp = (v, min, max) => Math.max(min, Math.min(v, max));
++  const finite = (v, fallback) => Number.isFinite(v) ? v : fallback;
++
++  function geometry(width, height) {
++    const format = width / height > 1.2 ? 'wide' : height / width > 1.2 ? 'portrait' : 'square';
++    const inset = tokens.safeInsets[format];
++    const x = Math.round(inset.left * width);
++    const y = Math.round(inset.top * height);
++    return {
++      format, scale: Math.min(width, height) / 720,
++      columns: format === 'wide' ? 12 : format === 'square' ? 8 : 6,
++      safe: { x, y, width: Math.round((1 - inset.left - inset.right) * width), height: Math.round((1 - inset.top - inset.bottom) * height) }
++    };
++  }
++
++  function resolve(layout, width, height, intrinsic = {}) {
++    const grid = geometry(width, height);
++    const { safe, scale, format } = grid;
++    const blocks = {};
++    const pending = new Set();
++    const warnings = [];
++    const preset = Object.hasOwn(presets, layout.preset) ? layout.preset : 'hero';
++    const slots = format === 'wide' ? presets[preset] : preset === 'punchline' ? [
++      [.02, .26, .96, .45], [.30, 0, .40, .23], [.02, .76, .96, tokens.captionArea]
++    ] : [
++      [.02, 0, .96, format === 'portrait' ? .25 : .27],
++      [.02, .30, .96, .43],
++      [.02, .76, .96, tokens.captionArea]
++    ];
++    const constraints = layout.blocks || {};
++    const intersects = (a, b) => a.x + a.width > b.x && b.x + b.width > a.x &&
++      a.y + a.height > b.y && b.y + b.height > a.y;
++    function evaluate(role) {
++      if (blocks[role]) return blocks[role];
++      if (pending.has(role)) {
++        warnings.push({ type: 'cycle', roles: [role] });
++        return null;
++      }
++      pending.add(role);
++      const [sx, sy, sw, sh] = slots[roles.indexOf(role)];
++      const c = constraints[role] || {};
++      const target = roles.includes(c.relativeTo) ? evaluate(c.relativeTo) : null;
++      const size = intrinsic[role] || {};
++      const maxWidth = clamp(finite(c.maxWidth, 1), .05, 1) * safe.width;
++      const w = clamp(c.intrinsic ? finite(size.width, sw * safe.width) : finite(c.width, sw) * safe.width,
++        Math.min(maxWidth, Math.max(1, finite(c.minSize, 0) * scale)), maxWidth);
++      const maxHeight = clamp(finite(c.maxHeight, 1), .05, 1) * safe.height;
++      const h = clamp(c.intrinsic ? finite(size.height, sh * safe.height) : finite(c.height, sh) * safe.height,
++        Math.min(maxHeight, Math.max(1, finite(c.minSize, 0) * scale)), maxHeight);
++      let x = safe.x + finite(c.x, Number.isFinite(c.pixelX) ? c.pixelX / safe.width : sx) * safe.width;
++      let y = safe.y + finite(c.y, Number.isFinite(c.pixelY) ? c.pixelY / safe.height : sy) * safe.height;
++      if (c.anchor === 'left') x = safe.x;
++      if (c.anchor === 'center') x = safe.x + (safe.width - w) / 2;
++      if (c.anchor === 'right') x = safe.x + safe.width - w;
++      if (c.anchor === 'top') y = safe.y;
++      if (c.anchor === 'bottom') y = safe.y + safe.height - h;
++      if (target) y = target.y + target.height + Math.max(0, finite(c.gap, tokens.space.gap)) * scale;
++      if (c.baseline) y = safe.y + Math.round((y - safe.y) / (tokens.space.unit * scale)) * tokens.space.unit * scale;
++      if (x < safe.x - 1 || y < safe.y - 1 || x + w > safe.x + safe.width + 1 || y + h > safe.y + safe.height + 1) {
++        warnings.push({ type: 'outside', roles: [role] });
++      }
++      blocks[role] = {
++        x: Math.round(clamp(x, safe.x, safe.x + safe.width - w)),
++        y: Math.round(clamp(y, safe.y, safe.y + safe.height - h)),
++        width: Math.round(w), height: Math.round(h),
++        align: ['left', 'center', 'right'].includes(c.align) ? c.align : 'left',
++        depth: Object.hasOwn(tokens.z, c.depth) ? tokens.z[c.depth] : role === 'subject' ? 1 : 2
++      };
++      pending.delete(role);
++      return blocks[role];
++    }
++    roles.forEach(evaluate);
++    for (const [index, role] of roles.entries()) {
++      for (const other of roles.slice(index + 1)) {
++        const a = blocks[role], b = blocks[other];
++        if (intersects(a, b)) {
++          warnings.push({ type: 'overlap', roles: [role, other], intentional: role !== 'caption' && other !== 'caption' && layout.allowOverlap === true });
++        }
++      }
++    }
++    // The caption occupies a separate band even when a drag crosses a subject.
++    if (['title', 'subject'].some(role => intersects(blocks[role], blocks.caption))) {
++      const caption = blocks.caption;
++      caption.y = safe.y + safe.height - caption.height;
++      for (const role of ['title', 'subject']) {
++        const box = blocks[role];
++        if (!intersects(box, caption)) continue;
++        const limit = Math.max(safe.y + 1, caption.y - Math.round(tokens.space.unit * scale));
++        box.height = Math.min(box.height, limit - safe.y);
++        box.y = Math.min(box.y, limit - box.height);
++      }
++    }
++    return { ...grid, blocks, warnings };
++  }
++
++  function snap(box, resolved, role, x, y) {
++    const { safe, columns, scale, blocks } = resolved;
++    const step = safe.width / columns;
++    const columnLines = Array.from({ length: columns + 1 }, (_, i) => safe.x + i * step);
++    const xEdges = [...columnLines, ...columnLines.map(line => line - box.width), safe.x + (safe.width - box.width) / 2];
++    const yEdges = [safe.y, safe.y + (safe.height - box.height) / 2, safe.y + safe.height - box.height];
++    for (const key of roles) {
++      if (key === role) continue;
++      const b = blocks[key];
++      xEdges.push(b.x, b.x + b.width, b.x - box.width, b.x + b.width - box.width, b.x + (b.width - box.width) / 2);
++      yEdges.push(b.y, b.y + b.height, b.y - box.height, b.y + b.height - box.height, b.y + (b.height - box.height) / 2);
++    }
++    function nearest(edges, value) {
++      return edges.reduce((best, point) => Math.abs(point - value) < Math.abs(best - value) ? point : best);
++    }
++    const nearX = nearest(xEdges, x);
++    const nearY = nearest(yEdges, y);
++    const unit = tokens.space.unit * scale;
++    return {
++      x: (clamp(Math.abs(nearX - x) <= unit * 2 ? nearX : x, safe.x, safe.x + safe.width - box.width) - safe.x) / safe.width,
++      y: (clamp(Math.abs(nearY - y) <= unit ? nearY : safe.y + Math.round((y - safe.y) / unit) * unit, safe.y, safe.y + safe.height - box.height) - safe.y) / safe.height
++    };
++  }
++
++  root.StudioLayoutSolver = { geometry, resolve, snap, roles, presets };
++  if (typeof module !== 'undefined') module.exports = root.StudioLayoutSolver;
++})(typeof window === 'undefined' ? globalThis : window);

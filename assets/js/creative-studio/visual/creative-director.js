@@ -458,7 +458,28 @@
         shotInstance = new ReferenceShotClass(activeShot);
       }
 
-      shotInstance.render(ctx, shotLocalFrame, shotInstance.durationFrames, f, totalFrames, width, height, { mode });
+      const layout = activeShot.customData?.layout;
+      if (layout?.version === 1) {
+        const composition = typeof window !== 'undefined'
+          ? window.StudioLayoutComposition
+          : require('./layout-composition');
+        return composition.render(ctx, shotInstance, layout, shotLocalFrame, width, height, project.locale);
+      }
+
+      if (height > width) {
+        const legacyHeight = width * 9 / 16;
+        ctx.save();
+        ctx.fillStyle = project.canvas?.background || '#090d16';
+        ctx.fillRect(0, 0, width, height);
+        ctx.translate(0, (height - legacyHeight) / 2);
+        ctx.beginPath();
+        ctx.rect(0, 0, width, legacyHeight);
+        ctx.clip();
+        shotInstance.render(ctx, shotLocalFrame, shotInstance.durationFrames, f, totalFrames, width, legacyHeight, { mode });
+        ctx.restore();
+      } else {
+        shotInstance.render(ctx, shotLocalFrame, shotInstance.durationFrames, f, totalFrames, width, height, { mode });
+      }
 
       // Fast, clean 2-frame cross-shot cut transition (no prolonged empty black pauses)
       const transitionWindow = 2;

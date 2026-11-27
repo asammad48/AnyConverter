@@ -1,0 +1,80 @@
+{
+  "errors": [],
+  "consoleErrors": [
+    "Failed to load resource: net::ERR_CERT_AUTHORITY_INVALID",
+    "Failed to load resource: net::ERR_CERT_AUTHORITY_INVALID",
+    "Failed to load resource: net::ERR_CERT_AUTHORITY_INVALID",
+    "Failed to load resource: net::ERR_CERT_AUTHORITY_INVALID",
+    "Failed to load resource: net::ERR_CERT_AUTHORITY_INVALID",
+    "Failed to load resource: net::ERR_CERT_AUTHORITY_INVALID",
+    "Failed to load resource: net::ERR_CERT_AUTHORITY_INVALID",
+    "Failed to load resource: net::ERR_CERT_AUTHORITY_INVALID",
+    "Failed to load resource: net::ERR_CERT_AUTHORITY_INVALID",
+    "Failed to load resource: net::ERR_CERT_AUTHORITY_INVALID",
+    "Failed to load resource: net::ERR_CERT_AUTHORITY_INVALID",
+    "Failed to load resource: net::ERR_CERT_AUTHORITY_INVALID"
+  ],
+  "externalWrites": [],
+  "failedRequests": [
+    {
+      "host": "fonts.googleapis.com",
+      "path": "/css2",
+      "error": "net::ERR_CERT_AUTHORITY_INVALID"
+    },
+    {
+      "host": "www.googletagmanager.com",
+      "path": "/gtag/js",
+      "error": "net::ERR_CERT_AUTHORITY_INVALID"
+    },
+    {
+      "host": "fonts.googleapis.com",
+      "path": "/css2",
+      "error": "net::ERR_CERT_AUTHORITY_INVALID"
+    },
+    {
+      "host": "www.googletagmanager.com",
+      "path": "/gtag/js",
+      "error": "net::ERR_CERT_AUTHORITY_INVALID"
+    },
+    {
+      "host": "fonts.googleapis.com",
+      "path": "/css2",
+      "error": "net::ERR_CERT_AUTHORITY_INVALID"
+    },
+    {
+      "host": "www.googletagmanager.com",
+      "path": "/gtag/js",
+      "error": "net::ERR_CERT_AUTHORITY_INVALID"
+    },
+    {
+      "host": "fonts.googleapis.com",
+      "path": "/css2",
+      "error": "net::ERR_CERT_AUTHORITY_INVALID"
+    },
+    {
+      "host": "www.googletagmanager.com",
+      "path": "/gtag/js",
+      "error": "net::ERR_CERT_AUTHORITY_INVALID"
+    },
+    {
+      "host": "fonts.googleapis.com",
+      "path": "/css2",
+      "error": "net::ERR_CERT_AUTHORITY_INVALID"
+    },
+    {
+      "host": "www.googletagmanager.com",
+      "path": "/gtag/js",
+      "error": "net::ERR_CERT_AUTHORITY_INVALID"
+    },
+    {
+      "host": "fonts.googleapis.com",
+      "path": "/css2",
+      "error": "net::ERR_CERT_AUTHORITY_INVALID"
+    },
+    {
+      "host": "www.googletagmanager.com",
+      "path": "/gtag/js",
+      "error": "net::ERR_CERT_AUTHORITY_INVALID"
+    }
+  ]
+}

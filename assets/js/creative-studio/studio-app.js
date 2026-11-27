@@ -106,9 +106,12 @@
     init() {
       if (this.initialized) return;
       this.cacheDom();
+      this.layoutEditor = window.StudioLayoutEditor ? new window.StudioLayoutEditor(this) : null;
       this.bindEvents();
       this.initDefaultLayers();
+      this.currentMode = 'video';
       this.updateModeUI('video');
+      if (this.dom.modeSelect) this.dom.modeSelect.value = 'video';
       if (window.CreativeDirector) {
         this.initCinematicSequence('cinematic-saas');
       }
@@ -427,6 +430,7 @@
       let initialLayerX = 0, initialLayerY = 0;
 
       this.dom.canvas.addEventListener('mousedown', (e) => {
+        if (this.currentMode === 'video' && this.project.shots?.length) return;
         const rect = this.dom.canvas.getBoundingClientRect();
         const mouseX = (e.clientX - rect.left) * (this.graphics.width / rect.width);
         const mouseY = (e.clientY - rect.top) * (this.graphics.height / rect.height);
@@ -651,7 +655,7 @@
         }
         this.totalFrames = acc;
         this.project.totalFrames = acc;
-        this.project.durationSeconds = Math.round(acc / this.fps);
+        this.project.durationSeconds = acc / this.fps;
         if (this.project.scenes && this.project.scenes[0]) {
           this.project.scenes[0].durationFrames = acc;
         }
@@ -683,7 +687,7 @@
       }
       this.totalFrames = acc;
       this.project.totalFrames = acc;
-      this.project.durationSeconds = Math.round(acc / (this.fps || 30));
+      this.project.durationSeconds = acc / (this.fps || 30);
       if (this.project.scenes && this.project.scenes[0]) {
         this.project.scenes[0].durationFrames = acc;
       }
@@ -851,25 +855,29 @@
     render() {
       if (!this.dom.ctx || !this.dom.canvas) return;
 
+      const cinematic = this.currentMode === 'video' && window.CreativeDirector?.isCreativeProject(this.project);
+      const { width, height } = cinematic ? this.project.canvas : this.graphics;
+
       // Match canvas internal resolution to current project geometry
-      if (this.dom.canvas.width !== this.graphics.width) {
-        this.dom.canvas.width = this.graphics.width;
+      if (this.dom.canvas.width !== width) {
+        this.dom.canvas.width = width;
       }
-      if (this.dom.canvas.height !== this.graphics.height) {
-        this.dom.canvas.height = this.graphics.height;
+      if (this.dom.canvas.height !== height) {
+        this.dom.canvas.height = height;
       }
 
       // Check if project is a Cinematic sequence
-      if (window.CreativeDirector && window.CreativeDirector.isCreativeProject(this.project)) {
-        window.CreativeDirector.renderFrame(
+      if (cinematic) {
+        const resolved = window.CreativeDirector.renderFrame(
           this.dom.ctx,
           this.project,
           this.currentFrame,
           this.totalFrames,
-          this.graphics.width,
-          this.graphics.height,
+          width,
+          height,
           { mode: this.renderMode || 'production' }
         );
+        this.layoutEditor?.afterRender(resolved);
         return;
       }
 
@@ -904,6 +912,8 @@
         ctx.restore();
       }
 
+      this.layoutEditor?.fit();
+      this.dom.canvas.classList.remove('cs-layout-draggable');
       this.updateLayersListUI();
     }
 
@@ -1148,6 +1158,16 @@
 
     async exportPng() {
       try {
+        if (this.currentMode === 'video' && window.CreativeDirector?.isCreativeProject(this.project)) {
+          const output = document.createElement('canvas');
+          const { width, height } = this.project.canvas;
+          output.width = width;
+          output.height = height;
+          window.CreativeDirector.renderFrame(output.getContext('2d'), this.project, this.currentFrame,
+            this.totalFrames, width, height, { mode: 'production' });
+          this.downloadFile(output.toDataURL('image/png'), `${this.project.title || 'studio-export'}.png`);
+          return;
+        }
         const res = await this.graphics.exportPng({ scale: 1.0 });
         if (res && res.dataUrl) {
           this.downloadFile(res.dataUrl, `${this.project.title || 'studio-export'}.png`);
@@ -1241,12 +1261,12 @@
           this.project.scenes[this.activeSceneIndex || 0].layers = JSON.parse(JSON.stringify(this.graphics.layers));
         }
 
-        const durationSeconds = options.durationSeconds || this.project.durationSeconds || Math.round(this.totalFrames / this.fps) || 24;
+        const durationSeconds = options.durationSeconds || (this.currentMode === 'video' && this.project.shots?.length ? this.totalFrames / this.fps : this.project.durationSeconds) || this.totalFrames / this.fps || 24;
         const renderOpts = Object.assign({
           durationSeconds,
           fps: this.fps,
-          width: this.graphics.width,
-          height: this.graphics.height
+          width: this.project.canvas.width,
+          height: this.project.canvas.height
         }, options);
 
         const res = await this.renderAdapter.render(this.project, renderOpts, (prog) => {
@@ -1298,6 +1318,8 @@
             badge: s.badge,
             accentColor: s.accentColor,
             secondaryColor: s.secondaryColor,
+            backgroundColor: s.backgroundColor,
+            directorNotes: s.directorNotes,
             artDirection: s.artDirection,
             cameraMove: s.cameraMove,
             motif: s.motif || 'default',
@@ -1356,6 +1378,7 @@
           // Restore Cinematic Sequence if present
           if (this.project.visualDirection && window.CreativeDirector) {
             this.currentMode = 'video';
+            this.updateModeUI('video');
             if (this.dom.modeSelect) this.dom.modeSelect.value = 'video';
             if (this.dom.directionSelect) this.dom.directionSelect.value = this.project.visualDirection;
             this.totalFrames = this.project.totalFrames || 720;

@@ -1,0 +1,27 @@
+{
+    "programs": [
+
+    ],
+    "stream_groups": [
+
+    ],
+    "streams": [
+        {
+            "codec_name": "vp8",
+            "width": 1080,
+            "height": 1920,
+            "avg_frame_rate": "30/1",
+            "nb_read_frames": "270"
+        },
+        {
+            "codec_name": "opus",
+            "sample_rate": "48000",
+            "channels": 2,
+            "avg_frame_rate": "0/0",
+            "nb_read_frames": "451"
+        }
+    ],
+    "format": {
+        "duration": "9.000000"
+    }
+}

@@ -1,0 +1,25 @@
+{
+  "legacy-baseline": "73",
+  "legacy-current": "73",
+  "en": {
+    "headline": "Keep the conversation moving",
+    "caption": "Make sure that everyone leaves the meeting knowing their next step and who will do it.",
+    "viewport": "375 × 900",
+    "format": "1080 × 1920",
+    "warningCount": 0
+  },
+  "es": {
+    "headline": "Haz avanzar la conversación sin perder el hilo",
+    "caption": "Asegúrate de que todos salgan de la reunión sabiendo cuál es el siguiente paso y quién se encargará de darlo.",
+    "viewport": "375 × 900",
+    "format": "1080 × 1920",
+    "warningCount": 0
+  },
+  "da": {
+    "headline": "Hold samtalen i gang, og bevar overblikket",
+    "caption": "Sørg for, at alle går fra mødet med en fælles forståelse af næste skridt og hvem der har ansvaret for det.",
+    "viewport": "375 × 900",
+    "format": "1080 × 1920",
+    "warningCount": 0
+  }
+}

@@ -1,0 +1,37 @@
+[
+  {
+    "name": "dialogue-wide",
+    "duration": 9,
+    "currentTime": 9,
+    "decodedFrames": 270,
+    "droppedFrames": 0
+  },
+  {
+    "name": "silhouette-wide",
+    "duration": 9,
+    "currentTime": 9,
+    "decodedFrames": 266,
+    "droppedFrames": 0
+  },
+  {
+    "name": "product-wide",
+    "duration": 12.5,
+    "currentTime": 12.5,
+    "decodedFrames": 375,
+    "droppedFrames": 0
+  },
+  {
+    "name": "portrait-export",
+    "duration": 9,
+    "currentTime": 9,
+    "decodedFrames": 270,
+    "droppedFrames": 0
+  },
+  {
+    "name": "edited-reexport",
+    "duration": 9,
+    "currentTime": 9,
+    "decodedFrames": 270,
+    "droppedFrames": 0
+  }
+]
