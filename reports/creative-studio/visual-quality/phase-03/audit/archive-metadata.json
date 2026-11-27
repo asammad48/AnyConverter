@@ -1,0 +1,398 @@
+{
+  "fun.acstudio": {
+    "sha256": "49529debf18b658d28988bf40e6b1c315b97298c85ae98df3c1df44018a348b1",
+    "locale": "en",
+    "title": "The new manager",
+    "audioClips": [
+      {
+        "clipId": "parrot-comedy-audio",
+        "startSample": 0,
+        "durationSamples": 768000,
+        "volume": 0.85,
+        "theme": "comedy"
+      }
+    ],
+    "shots": [
+      {
+        "startFrame": 0,
+        "durationFrames": 120,
+        "headline": "The new manager",
+        "subhead": "“First rule: no more meetings.”",
+        "customData": {
+          "characterPose": "neutral",
+          "layout": {
+            "version": 1,
+            "preset": "dialogue",
+            "blocks": {}
+          },
+          "typography": {
+            "version": 1,
+            "title": {
+              "role": "hero",
+              "family": "display",
+              "effect": "tracking"
+            },
+            "caption": {
+              "role": "caption",
+              "effect": "word",
+              "backdrop": "pattern",
+              "contrast": "panel",
+              "family": "display",
+              "startFrame": 8,
+              "stagger": 5
+            }
+          }
+        }
+      },
+      {
+        "startFrame": 120,
+        "durationFrames": 120,
+        "headline": "An empty calendar",
+        "subhead": "Monday looked clear.\n\nThen the invites arrived.",
+        "customData": {
+          "characterPose": "wing-point",
+          "layout": {
+            "version": 1,
+            "preset": "character-right",
+            "blocks": {}
+          },
+          "typography": {
+            "version": 1,
+            "title": {
+              "role": "hook",
+              "effect": "line"
+            },
+            "caption": {
+              "role": "subtitle",
+              "effect": "type",
+              "backdrop": "pattern",
+              "contrast": "outline",
+              "length": 38
+            }
+          }
+        }
+      },
+      {
+        "startFrame": 240,
+        "durationFrames": 120,
+        "headline": "A meeting about meetings?",
+        "subhead": "“That makes no sense.”",
+        "customData": {
+          "characterPose": "shocked",
+          "layout": {
+            "version": 1,
+            "preset": "reaction",
+            "blocks": {}
+          },
+          "typography": {
+            "version": 1,
+            "title": {
+              "role": "quote",
+              "effect": "rise"
+            },
+            "caption": {
+              "role": "caption",
+              "effect": "highlight",
+              "backdrop": "pattern",
+              "contrast": "shadow",
+              "startFrame": 18,
+              "phrase": "no sense",
+              "spanStyle": "highlight"
+            }
+          }
+        }
+      },
+      {
+        "startFrame": 360,
+        "durationFrames": 120,
+        "headline": "Meeting canceled.",
+        "subhead": "The bird hits “decline all.”",
+        "customData": {
+          "characterPose": "smug",
+          "layout": {
+            "version": 1,
+            "preset": "punchline",
+            "blocks": {}
+          },
+          "typography": {
+            "version": 1,
+            "title": {
+              "role": "punchline",
+              "effect": "emphasis",
+              "phrase": "canceled",
+              "spanStyle": "bold"
+            },
+            "caption": {
+              "role": "caption",
+              "effect": "underline",
+              "backdrop": "pattern",
+              "contrast": "panel"
+            }
+          }
+        }
+      }
+    ]
+  },
+  "product.acstudio": {
+    "sha256": "d6a7b7b6ee27cff3ee069194202a51166cceecc62bb39023957e0ca00f47a56c",
+    "locale": "en",
+    "title": "Five files, one report",
+    "audioClips": [
+      {
+        "clipId": "saas-master-audio",
+        "startSample": 0,
+        "durationSamples": 720000,
+        "volume": 0.85,
+        "theme": "saas"
+      }
+    ],
+    "shots": [
+      {
+        "startFrame": 0,
+        "durationFrames": 144,
+        "headline": "Turn scattered spreadsheets into clear reports your entire team can share today",
+        "subhead": "Bring five sources together.\nReview the same records in one place.",
+        "customData": {
+          "layout": {
+            "version": 1,
+            "preset": "hero",
+            "blocks": {}
+          },
+          "typography": {
+            "version": 1,
+            "title": {
+              "role": "hook",
+              "effect": "rise",
+              "family": "serif",
+              "lineHeight": 1.22,
+              "tracking": 0.2
+            },
+            "caption": {
+              "role": "body",
+              "effect": "line"
+            },
+            "ctaCopy": "Review your report",
+            "cta": {
+              "effect": "underline",
+              "startFrame": 12,
+              "length": 18
+            }
+          }
+        }
+      },
+      {
+        "startFrame": 144,
+        "durationFrames": 76,
+        "headline": "Find the common fields",
+        "subhead": "Compare the same entries across the five source files.",
+        "customData": {
+          "layout": {
+            "version": 1,
+            "preset": "comparison",
+            "blocks": {}
+          },
+          "typography": {
+            "version": 1,
+            "title": {
+              "role": "hook",
+              "effect": "word"
+            },
+            "caption": {
+              "role": "body",
+              "effect": "none"
+            }
+          }
+        }
+      },
+      {
+        "startFrame": 220,
+        "durationFrames": 76,
+        "headline": "One place to review",
+        "subhead": "Put the important fields first.",
+        "customData": {
+          "layout": {
+            "version": 1,
+            "preset": "product",
+            "blocks": {}
+          },
+          "typography": {
+            "version": 1,
+            "title": {
+              "role": "quote",
+              "effect": "tracking"
+            },
+            "caption": {
+              "role": "body",
+              "effect": "none"
+            }
+          }
+        }
+      },
+      {
+        "startFrame": 296,
+        "durationFrames": 77,
+        "headline": "5",
+        "subhead": "Source files in one report.",
+        "customData": {
+          "layout": {
+            "version": 1,
+            "preset": "statistic",
+            "blocks": {}
+          },
+          "typography": {
+            "version": 1,
+            "title": {
+              "role": "number",
+              "effect": "counter"
+            },
+            "caption": {
+              "role": "subtitle",
+              "effect": "none"
+            }
+          }
+        }
+      },
+      {
+        "startFrame": 373,
+        "durationFrames": 77,
+        "headline": "Ready to share",
+        "subhead": "Check your report before you send it.",
+        "customData": {
+          "layout": {
+            "version": 1,
+            "preset": "punchline",
+            "blocks": {}
+          },
+          "typography": {
+            "version": 1,
+            "title": {
+              "role": "hero",
+              "effect": "rise"
+            },
+            "caption": {
+              "role": "caption",
+              "effect": "none"
+            }
+          }
+        }
+      }
+    ]
+  },
+  "suspense.acstudio": {
+    "sha256": "ab914828c2d23717d72e66fe6d8f57130088d3fbddfcfcc6538a2182d21e157d",
+    "locale": "en",
+    "title": "The last light",
+    "audioClips": [
+      {
+        "clipId": "noir-suspense-audio",
+        "startSample": 0,
+        "durationSamples": 768000,
+        "volume": 0.85,
+        "theme": "suspense"
+      }
+    ],
+    "shots": [
+      {
+        "startFrame": 0,
+        "durationFrames": 120,
+        "headline": "The last light",
+        "subhead": "“There’s nobody in the corridor.”",
+        "customData": {
+          "layout": {
+            "version": 1,
+            "preset": "silhouette",
+            "blocks": {}
+          },
+          "typography": {
+            "version": 1,
+            "title": {
+              "role": "hero",
+              "effect": "suspense",
+              "length": 72
+            },
+            "caption": {
+              "role": "whisper",
+              "effect": "none",
+              "contrast": "outline",
+              "stagger": 5
+            }
+          }
+        }
+      },
+      {
+        "startFrame": 120,
+        "durationFrames": 120,
+        "headline": "A switch clicks",
+        "subhead": "The light stays on.\n\nNobody is near the switch.",
+        "customData": {
+          "layout": {
+            "version": 1,
+            "preset": "reveal",
+            "blocks": {}
+          },
+          "typography": {
+            "version": 1,
+            "title": {
+              "role": "hook",
+              "effect": "echo"
+            },
+            "caption": {
+              "role": "body",
+              "effect": "none"
+            }
+          }
+        }
+      },
+      {
+        "startFrame": 240,
+        "durationFrames": 120,
+        "headline": "The shadow moved first",
+        "subhead": "A note slips under the door.",
+        "customData": {
+          "layout": {
+            "version": 1,
+            "preset": "silhouette",
+            "blocks": {}
+          },
+          "typography": {
+            "version": 1,
+            "title": {
+              "role": "note",
+              "effect": "type"
+            },
+            "caption": {
+              "role": "subtitle",
+              "effect": "none"
+            }
+          }
+        }
+      },
+      {
+        "startFrame": 360,
+        "durationFrames": 120,
+        "headline": "Don’t turn around.",
+        "subhead": "“It’s already behind you.”",
+        "customData": {
+          "layout": {
+            "version": 1,
+            "preset": "punchline",
+            "blocks": {}
+          },
+          "typography": {
+            "version": 1,
+            "title": {
+              "role": "note",
+              "effect": "rise"
+            },
+            "caption": {
+              "role": "whisper",
+              "effect": "suspense",
+              "startFrame": 25,
+              "length": 38
+            }
+          }
+        }
+      }
+    ]
+  }
+}

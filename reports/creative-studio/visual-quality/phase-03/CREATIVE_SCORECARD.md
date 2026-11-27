@@ -1,18 +1,18 @@
-# Creative scorecard
+# Independent creative scorecard
 
-An independent reviewer scored the first full capture 85/100 and the final revised capture 87/100 against the Phase 03 rubric. The reviewer inspected decoded story samples, progress frames, comparison stills and localization. The review used measured audio levels and browser playback results for the audio category.
+The published Phase 03 capture scored 87/100. A separate reviewer inspected the revised story stills, wide before/after, portrait progress, decoded quarter-second samples, and a 310-pixel-wide comparison. The revised score is **90/100**.
 
-| Dimension | Score | Observation |
+| Dimension | Score | Independent finding |
 | --- | ---: | --- |
-| Narrative and hierarchy | 18/20 | The parrot’s rule, contradiction and payoff are distinct. The product film moves from inputs to a shareable report. |
-| Composition and framing | 14/15 | Type and subjects are separate. The portrait bottom safe region remains conspicuous in a few frames. |
-| Typography and readability | 13/15 | Serif, sans, accents and paragraphs are legible. Background microcopy and whispers are small at reduced sizes. |
-| Motion and pacing | 12/15 | Word pop, type-on, tracking and the masked rise have discernible timing. Both variants use holds between beats. |
-| Colour and art direction | 8/10 | Comedy differentiates highlight accents from the warm corridor palette. First-frame VP8 tint is visible on close comparison. |
-| Imagery and diagrams | 9/10 | The microphone, calendar, switch and doorway serve specific beats. Final product uses one numeral and five document tiles. Suspense closes on the warm doorway. |
-| Audio and captions | 4/5 | Audible backing and timed captions support film pace. |
-| Aspect adaptation | 5/5 | Reflow and caption-safe positioning preserve the product hierarchy in all three exports. |
-| Brand coherence | 4/5 | Type and graphic rhythm stay consistent across the product film. |
-| **Total** | **87/100** | Independent score for the final revised capture. |
+| Narrative and hierarchy | 19/20 | The comedy, suspense and product hooks are distinct and easy to follow. |
+| Composition and framing | 14/15 | Captions sit closer to the action. Some final cards still show the broad lower safe margin. |
+| Typography and readability | 14/15 | More prominent captions and five file-format badges read at reduced scale. The opening suspense whisper remains the hardest caption. |
+| Motion and pacing | 12/15 | Word-pop and typed comedy differ from suspense’s slow reveal. Several four-second shots are near-static for the latter two to three seconds. |
+| Colour and art direction | 8/10 | Pattern supports the comedy-office look but competes slightly with the second caption. A brief frame-zero portrait tint persists in the decoded WebM. |
+| Imagery and diagrams | 9/10 | File badges communicate the idea without microscopic diagnostics. |
+| Audio and captions | 5/5 | Visual captions are improved. Audio scoring relies on measured levels and playback evidence. |
+| Aspect adaptation | 5/5 | Reflow across all three product formats retains the story. |
+| Brand coherence | 4/5 | Treatments are consistent with the established Studio visual languages. |
+| **Total** | **90/100** | Revised capture. |
 
-[Final storyboard](evidence/SHOT_STORYBOARD.png) · [Before and after](evidence/BEFORE_AFTER.png) · [Final defects and limits](DEFECT_REGISTER.md)
+The visual review used browser exports and resampled images. Physical-device viewing and independent audio listening were outside the review. [Storyboard](audit/SHOT_STORYBOARD.png) · [Phone captures](audit/PHONE_CAPTIONS.png) · [Before and after](audit/BEFORE_AFTER.png)

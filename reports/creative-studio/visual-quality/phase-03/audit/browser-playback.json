@@ -1,0 +1,162 @@
+{
+  "baselineConcurrent": {
+    "fun.webm": {
+      "duration": 16,
+      "ended": true,
+      "currentTime": 16,
+      "firstCallbackPTS": 0.033,
+      "lastCallbackPTS": 15.966,
+      "callbacks": 479,
+      "firstPresented": 2,
+      "lastPresented": 480,
+      "skippedCallbackPresentations": 0,
+      "qualityBefore": {
+        "totalVideoFrames": 4,
+        "droppedVideoFrames": 0,
+        "corruptedVideoFrames": 0
+      },
+      "qualityAfter": {
+        "totalVideoFrames": 480,
+        "droppedVideoFrames": 0,
+        "corruptedVideoFrames": 0
+      },
+      "width": 1080,
+      "height": 1920,
+      "muted": false,
+      "decodedFrames": 480,
+      "maxClockErrorMs": 0.6666666666674814
+    },
+    "suspense.webm": {
+      "duration": 16,
+      "ended": true,
+      "currentTime": 16,
+      "firstCallbackPTS": 0.033,
+      "lastCallbackPTS": 15.966,
+      "callbacks": 479,
+      "firstPresented": 2,
+      "lastPresented": 480,
+      "skippedCallbackPresentations": 0,
+      "qualityBefore": {
+        "totalVideoFrames": 4,
+        "droppedVideoFrames": 0,
+        "corruptedVideoFrames": 0
+      },
+      "qualityAfter": {
+        "totalVideoFrames": 480,
+        "droppedVideoFrames": 0,
+        "corruptedVideoFrames": 0
+      },
+      "width": 1080,
+      "height": 1920,
+      "muted": false,
+      "decodedFrames": 480,
+      "maxClockErrorMs": 0.6666666666674814
+    },
+    "product-wide.webm": {
+      "duration": 15,
+      "ended": true,
+      "currentTime": 15,
+      "firstCallbackPTS": 0.033,
+      "lastCallbackPTS": 14.966,
+      "callbacks": 449,
+      "firstPresented": 2,
+      "lastPresented": 450,
+      "skippedCallbackPresentations": 0,
+      "qualityBefore": {
+        "totalVideoFrames": 4,
+        "droppedVideoFrames": 0,
+        "corruptedVideoFrames": 0
+      },
+      "qualityAfter": {
+        "totalVideoFrames": 450,
+        "droppedVideoFrames": 0,
+        "corruptedVideoFrames": 0
+      },
+      "width": 1920,
+      "height": 1080,
+      "muted": false,
+      "decodedFrames": 450,
+      "maxClockErrorMs": 0.6666666666674814
+    }
+  },
+  "revisedSerial": {
+    "fun.webm": {
+      "duration": 16,
+      "ended": true,
+      "currentTime": 16,
+      "firstCallbackPTS": 0.033,
+      "lastCallbackPTS": 15.966,
+      "callbacks": 479,
+      "firstPresented": 2,
+      "lastPresented": 480,
+      "skippedCallbackPresentations": 0,
+      "qualityBefore": {
+        "totalVideoFrames": 4,
+        "droppedVideoFrames": 0,
+        "corruptedVideoFrames": 0
+      },
+      "qualityAfter": {
+        "totalVideoFrames": 480,
+        "droppedVideoFrames": 0,
+        "corruptedVideoFrames": 0
+      },
+      "width": 1080,
+      "height": 1920,
+      "muted": false,
+      "decodedFrames": 480,
+      "maxClockErrorMs": 0.6666666666674814
+    },
+    "suspense.webm": {
+      "duration": 16,
+      "ended": true,
+      "currentTime": 16,
+      "firstCallbackPTS": 0.033,
+      "lastCallbackPTS": 15.966,
+      "callbacks": 478,
+      "firstPresented": 2,
+      "lastPresented": 480,
+      "skippedCallbackPresentations": 1,
+      "qualityBefore": {
+        "totalVideoFrames": 4,
+        "droppedVideoFrames": 0,
+        "corruptedVideoFrames": 0
+      },
+      "qualityAfter": {
+        "totalVideoFrames": 480,
+        "droppedVideoFrames": 1,
+        "corruptedVideoFrames": 0
+      },
+      "width": 1080,
+      "height": 1920,
+      "muted": false,
+      "decodedFrames": 480,
+      "maxClockErrorMs": 0.6666666666674814
+    },
+    "product-wide.webm": {
+      "duration": 15,
+      "ended": true,
+      "currentTime": 15,
+      "firstCallbackPTS": 0.033,
+      "lastCallbackPTS": 14.966,
+      "callbacks": 448,
+      "firstPresented": 2,
+      "lastPresented": 450,
+      "skippedCallbackPresentations": 1,
+      "qualityBefore": {
+        "totalVideoFrames": 4,
+        "droppedVideoFrames": 0,
+        "corruptedVideoFrames": 0
+      },
+      "qualityAfter": {
+        "totalVideoFrames": 450,
+        "droppedVideoFrames": 2,
+        "corruptedVideoFrames": 0
+      },
+      "width": 1920,
+      "height": 1080,
+      "muted": false,
+      "decodedFrames": 450,
+      "maxClockErrorMs": 0.6666666666674814
+    }
+  }
+}

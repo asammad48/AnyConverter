@@ -1,0 +1,134 @@
+{
+  "fun-edited.webm": {
+    "sha256": "823adc403905148aa0522964d41ab72b8b30f317cf6de5adb000b9908f74b35e",
+    "width": 1080,
+    "height": 1920,
+    "fps": "30/1",
+    "frames": 480,
+    "durationSeconds": 16.0,
+    "videoCodec": "vp8",
+    "audioCodec": "opus",
+    "colorRange": "pc",
+    "colorSpace": "bt709",
+    "audioSampleRate": 48000,
+    "channels": 2,
+    "audioDecodedPackets": 801,
+    "firstVideoTimestamp": 0.0,
+    "lastVideoTimestamp": 15.966,
+    "maxFrameClockErrorMilliseconds": 0.667,
+    "audioLevels": {
+      "mean_volume": "-21.8 dB",
+      "max_volume": "-6.6 dB"
+    }
+  },
+  "fun.webm": {
+    "sha256": "dbccfb621060ece790592c3da60c9f2a9d9fbf37329045746dc8ae8e03ebe686",
+    "width": 1080,
+    "height": 1920,
+    "fps": "30/1",
+    "frames": 480,
+    "durationSeconds": 16.0,
+    "videoCodec": "vp8",
+    "audioCodec": "opus",
+    "colorRange": "pc",
+    "colorSpace": "bt709",
+    "audioSampleRate": 48000,
+    "channels": 2,
+    "audioDecodedPackets": 801,
+    "firstVideoTimestamp": 0.0,
+    "lastVideoTimestamp": 15.966,
+    "maxFrameClockErrorMilliseconds": 0.667,
+    "audioLevels": {
+      "mean_volume": "-21.8 dB",
+      "max_volume": "-6.6 dB"
+    }
+  },
+  "product-portrait.webm": {
+    "sha256": "93ff0a518c93cdfe404870f7128fe2cb14913f68eae40ff355f2a1462c65a542",
+    "width": 1080,
+    "height": 1920,
+    "fps": "30/1",
+    "frames": 450,
+    "durationSeconds": 15.0,
+    "videoCodec": "vp8",
+    "audioCodec": "opus",
+    "colorRange": "pc",
+    "colorSpace": "bt709",
+    "audioSampleRate": 48000,
+    "channels": 2,
+    "audioDecodedPackets": 751,
+    "firstVideoTimestamp": 0.0,
+    "lastVideoTimestamp": 14.966,
+    "maxFrameClockErrorMilliseconds": 0.667,
+    "audioLevels": {
+      "mean_volume": "-16.6 dB",
+      "max_volume": "-7.1 dB"
+    }
+  },
+  "product-square.webm": {
+    "sha256": "dd8cd00ca02474d663850487264b22b196ff1d8f615cc9b07d1ac0b405e9a74c",
+    "width": 1080,
+    "height": 1080,
+    "fps": "30/1",
+    "frames": 450,
+    "durationSeconds": 15.0,
+    "videoCodec": "vp8",
+    "audioCodec": "opus",
+    "colorRange": "pc",
+    "colorSpace": "bt709",
+    "audioSampleRate": 48000,
+    "channels": 2,
+    "audioDecodedPackets": 751,
+    "firstVideoTimestamp": 0.0,
+    "lastVideoTimestamp": 14.966,
+    "maxFrameClockErrorMilliseconds": 0.667,
+    "audioLevels": {
+      "mean_volume": "-16.6 dB",
+      "max_volume": "-7.1 dB"
+    }
+  },
+  "product-wide.webm": {
+    "sha256": "3344355e485c9e5a0d62f419ea29f8a03fdf3c6ac17001669e838cb2aaf9eb64",
+    "width": 1920,
+    "height": 1080,
+    "fps": "30/1",
+    "frames": 450,
+    "durationSeconds": 15.0,
+    "videoCodec": "vp8",
+    "audioCodec": "opus",
+    "colorRange": "pc",
+    "colorSpace": "bt709",
+    "audioSampleRate": 48000,
+    "channels": 2,
+    "audioDecodedPackets": 751,
+    "firstVideoTimestamp": 0.0,
+    "lastVideoTimestamp": 14.966,
+    "maxFrameClockErrorMilliseconds": 0.667,
+    "audioLevels": {
+      "mean_volume": "-16.6 dB",
+      "max_volume": "-7.1 dB"
+    }
+  },
+  "suspense.webm": {
+    "sha256": "36286684fce6c08027507095d44a6a3bfa637fbe0da3e9b7d8fb536675604c32",
+    "width": 1080,
+    "height": 1920,
+    "fps": "30/1",
+    "frames": 480,
+    "durationSeconds": 16.0,
+    "videoCodec": "vp8",
+    "audioCodec": "opus",
+    "colorRange": "pc",
+    "colorSpace": "bt709",
+    "audioSampleRate": 48000,
+    "channels": 2,
+    "audioDecodedPackets": 801,
+    "firstVideoTimestamp": 0.0,
+    "lastVideoTimestamp": 15.966,
+    "maxFrameClockErrorMilliseconds": 0.667,
+    "audioLevels": {
+      "mean_volume": "-21.4 dB",
+      "max_volume": "-12.9 dB"
+    }
+  }
+}

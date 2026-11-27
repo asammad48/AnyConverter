@@ -31,14 +31,18 @@
     };
   }
 
-  function resolve(layout, width, height, intrinsic = {}) {
+  function resolve(layout, width, height, intrinsic = {}, typography = false) {
     const grid = geometry(width, height);
     const { safe, scale, format } = grid;
     const blocks = {};
     const pending = new Set();
     const warnings = [];
     const preset = Object.hasOwn(presets, layout.preset) ? layout.preset : 'hero';
-    const slots = format === 'wide' ? presets[preset] : preset === 'punchline' ? [
+    const slots = format === 'wide' ? presets[preset] : format === 'portrait' && typography
+      ? (preset === 'punchline'
+        ? [[.035, .22, .93, .38], [.23, .015, .54, .20], [.035, .64, .93, .34]]
+        : [[.035, 0, .93, .25], [.035, .26, .93, .44], [.035, .715, .93, .265]])
+      : preset === 'punchline' ? [
       [.02, .26, .96, .45], [.30, 0, .40, .23], [.02, .76, .96, tokens.captionArea]
     ] : format === 'portrait' ? [
       [.035, .015, .93, .22], [.035, .26, .93, .48], [.035, .77, .93, .20]

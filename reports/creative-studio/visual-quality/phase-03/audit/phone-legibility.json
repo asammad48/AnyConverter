@@ -1,0 +1,44 @@
+{
+  "panel": {
+    "published": {
+      "expected": "First rule: no more meetings.",
+      "recognized": "“First rule: no more meetings”",
+      "recognizedExpectedWords": 5,
+      "expectedWords": 5
+    },
+    "revised": {
+      "expected": "First rule: no more meetings.",
+      "recognized": "“First rule: no more\n\nmeetings.”",
+      "recognizedExpectedWords": 5,
+      "expectedWords": 5
+    }
+  },
+  "outline": {
+    "published": {
+      "expected": "Monday looked clear. Then the invites arrived.",
+      "recognized": "Monday looked clear.\n\nThen the invites arrived.",
+      "recognizedExpectedWords": 7,
+      "expectedWords": 7
+    },
+    "revised": {
+      "expected": "Monday looked clear. Then the invites arrived.",
+      "recognized": "Monday looked clear.\n\nThen the invites\n\narrived.",
+      "recognizedExpectedWords": 7,
+      "expectedWords": 7
+    }
+  },
+  "shadow": {
+    "published": {
+      "expected": "That makes no sense.",
+      "recognized": "“That makes no sense.”",
+      "recognizedExpectedWords": 4,
+      "expectedWords": 4
+    },
+    "revised": {
+      "expected": "That makes no sense.",
+      "recognized": "“That makes no\n\nsense.”",
+      "recognizedExpectedWords": 4,
+      "expectedWords": 4
+    }
+  }
+}

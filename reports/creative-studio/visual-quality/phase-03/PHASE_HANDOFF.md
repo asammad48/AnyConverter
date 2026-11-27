@@ -1,27 +1,21 @@
 # Phase 03 handoff
 
-**AWAITING_OWNER_VISUAL_APPROVAL · NOT PUSHED / NOT MERGED / NOT DEPLOYED**
+**REVISED · AWAITING OWNER VISUAL APPROVAL · PHASE 04 NOT STARTED**
 
-Phase 03 is isolated on `feat/create-studio-phase-03` in `/workspace/AnyConverter-phase03`. The implementation commit is `017dd38a2183889f04f5629b2f98d4503f088001`. The published starting tip was `6786857063d89afb473560e928b7b2ebfca8c863`, verified to contain Phase 02 repair `1fe7e081922cf298aed3e7c8f631407c2baa6af3`. Phase 04 has not started.
+The published feature branch is [feat/create-studio-phase-03](https://github.com/asammad48/AnyConverter/tree/feat/create-studio-phase-03) at `84db9d1ef8aec6b35db3c7d4b85e14b239952218`. The owner explicitly requested that push. The subsequent audit withheld visual acceptance. The owner then separately authorized publishing the revisions to the dedicated `feat/create-studio-phase-03-audit` branch for review.
 
-## Play and reopen
+The Phase 02 source tip was `6786857063d89afb473560e928b7b2ebfca8c863`, with repair `1fe7e081922cf298aed3e7c8f631407c2baa6af3` verified as its ancestor. Legacy archive frame samples remain byte-identical in the revision.
 
-| Local project | Browser downloads |
+## Revised assets
+
+| Project | Production editor downloads |
 | --- | --- |
-| The new manager, 16 seconds | [Film](evidence/fun.webm) · [Editable archive](evidence/fun.acstudio) · [Edited re-export](evidence/fun-edited.webm) |
-| The last light, 16 seconds | [Film](evidence/suspense.webm) · [Editable archive](evidence/suspense.acstudio) |
-| Five files, one report, 15 seconds | [Wide 1920 × 1080](evidence/product-wide.webm) · [Portrait 1080 × 1920](evidence/product-portrait.webm) · [Square 1080 × 1080](evidence/product-square.webm) · [Editable archive](evidence/product.acstudio) |
-| Localized product films, 15 seconds each | [Spanish film](evidence/product-es.webm) · [Spanish archive](evidence/product-es.acstudio) · [Danish film](evidence/product-da.webm) · [Danish archive](evidence/product-da.acstudio) · [Edited Danish re-export](evidence/product-da-edited.webm) |
+| The new manager, 16 seconds | [fun.webm](audit/fun.webm) · [fun.acstudio](audit/fun.acstudio) · [fun-edited.webm](audit/fun-edited.webm) |
+| The last light, 16 seconds | [suspense.webm](audit/suspense.webm) · [suspense.acstudio](audit/suspense.acstudio) |
+| Five files, one report, 15 seconds | [product-wide.webm](audit/product-wide.webm) · [product-portrait.webm](audit/product-portrait.webm) · [product-square.webm](audit/product-square.webm) · [product.acstudio](audit/product.acstudio) |
 
-[Final storyboard](evidence/SHOT_STORYBOARD.png) · [Before and after](evidence/BEFORE_AFTER.png) · [Archive edit comparison](evidence/REOPEN_EDIT.png) · [Production UI trace](evidence/browser-trace.zip)
+[Storyboard](audit/SHOT_STORYBOARD.png) · [Before and after](audit/BEFORE_AFTER.png) · [Phone caption comparisons](audit/PHONE_CAPTIONS.png) · [Archive edit](audit/REOPEN_EDIT.png) · [Compact trace](audit/browser-trace.zip)
 
-## Results for review
+The revised independent score is 90/100. All six revised film downloads have the expected frame count. Twelve preview/export samples measure SSIM 0.993472–0.998706. A dedicated browser suite covers all 12 kinetic treatments and tests font handling, text layout, caption safe areas, archive persistence and export. Browser quality counters show why callback counts alone cannot establish missing encoded frames.
 
-- The real editor produced nine VP8/Opus WebMs. Full decode found the expected 450 or 480 video frames at 30 fps. Native Chromium played all three principal films to the end. [Media metadata](evidence/media-metadata.json) · [Browser playback](evidence/browser-playback.json)
-- Twelve preview and decoded export checkpoints cover 0%, 50% and 100% reveal progress at all three product sizes and on the comedy caption. [Parity report](PREVIEW_EXPORT_PARITY.md) · [Frame-by-frame measurements](evidence/parity.json)
-- Phase 01 and Phase 02 archive samples matched their baseline PNG hashes. A mobile Chromium sweep verified localized caption timing warnings and their clearance. Existing Studio unit, locale, 44-case composition and 128-tool sitewide checks passed. [Browser regression](evidence/browser-regression.json) · [Unit checks](evidence/studio-unit-regression.txt) · [Locales](evidence/locale-regression.txt) · [Layout](evidence/layout-regression.txt) · [Sitewide](evidence/sitewide-regression.txt)
-- Independent review scored the final capture 87/100 after the repeated statistic and suspense closing icon were repaired. Remaining review limits include VP8’s minor first-frame tint, small background microcopy, Linux Chromium-only coverage, and lack of imported noisy footage or voice proof. [Scorecard](CREATIVE_SCORECARD.md) · [Defects and limits](DEFECT_REGISTER.md)
-
-[Implementation and exact changed source paths](IMPLEMENTATION_SUMMARY.md) · [Localhost walkthrough](LIVE_LOCALHOST_JOURNEY.md) · [Reopen, edit and re-export](REOPEN_EDIT_REEXPORT.md) · [V2 integration](V2_SHORTS_INTEGRATION_EVIDENCE.md) · [All evidence files](EVIDENCE_INDEX.md)
-
-The next gate is the owner’s visual review of these local artifacts. Publication requires separate authorization.
+[Final gate and exact source paths](FINAL_INDEPENDENT_PHASE_03_GATE.md) · [Technical and visual limits](DEFECT_REGISTER.md) · [Creative scorecard](CREATIVE_SCORECARD.md) · [Published and revised evidence index](EVIDENCE_INDEX.md)

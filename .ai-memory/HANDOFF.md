@@ -1,10 +1,8 @@
-# AnyConverter Phase 03 handoff
+# AnyConverter Phase 03 audit correction handoff
 
-Phase 03 implementation is local on `feat/create-studio-phase-03` in the isolated checkout. Its source commit is `017dd38a2183889f04f5629b2f98d4503f088001`, based on the verified Phase 02 branch tip. Fresh evidence includes the two 16-second variants, the three 15-second product formats, translated copies, archive edits, parity, independent visual findings and Chromium regressions.
+The first Phase 03 package was explicitly authorized for push and published to `feat/create-studio-phase-03` at `84db9d1ef8aec6b35db3c7d4b85e14b239952218`. The owner withheld visual acceptance in the follow-up audit and subsequently authorized publishing the revisions for review. The revised branch is `feat/create-studio-phase-03-audit`. Phase 04 has not started.
 
-**AWAITING_OWNER_VISUAL_APPROVAL · NOT PUSHED / NOT MERGED / NOT DEPLOYED**
-
-[Phase 03 handoff](../reports/creative-studio/visual-quality/phase-03/PHASE_HANDOFF.md) · [Evidence inventory](../reports/creative-studio/visual-quality/phase-03/EVIDENCE_INDEX.md)
+[Revised handoff](../reports/creative-studio/visual-quality/phase-03/PHASE_HANDOFF.md) · [Final audit gate](../reports/creative-studio/visual-quality/phase-03/FINAL_INDEPENDENT_PHASE_03_GATE.md)
 
 ---
 

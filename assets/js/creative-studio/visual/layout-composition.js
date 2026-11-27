@@ -86,6 +86,24 @@
     ctx.fill();
   }
 
+  function drawCaptionPattern(ctx, box, colors, scale) {
+    const { x, y, width, height } = box;
+    ctx.save();
+    ctx.beginPath();
+    ctx.roundRect(x, y, width, height, 18 * scale);
+    ctx.clip();
+    ctx.fillStyle = colors[0];
+    ctx.fillRect(x, y, width, height);
+    const unit = 15 * scale;
+    for (let row = 0; row < Math.ceil(height / unit); row++) {
+      for (let col = -1; col < Math.ceil(width / unit); col++) {
+        ctx.fillStyle = colors[1 + (row * 2 + col + 1) % (colors.length - 1)];
+        ctx.fillRect(x + (col + (row % 2) * .5) * unit, y + row * unit, unit * .70, unit * .48);
+      }
+    }
+    ctx.restore();
+  }
+
   function drawSubject(ctx, shot, layout, box, palette, phase, locale) {
     const { x, y, width: w, height: h } = box;
     if (w < 4 || h < 4) return;
@@ -264,6 +282,20 @@
           ctx.lineTo(gx + gw, gy + gh * (.66 - progress * .42));
           ctx.stroke();
         }
+      } else if (preset === 'hero' && typography?.version === 1 && shot.artDirection === 'cinematic-saas') {
+        const labels = ['CSV', 'JSON', 'PDF', 'YAML', 'SQL'];
+        const row = Math.min(gh / 5, gw / 3);
+        const top = gy + (gh - row * 5) / 2;
+        const left = gx + gw * .07;
+        const labelWidth = gw * .29;
+        labels.forEach((label, index) => {
+          const y = top + index * row;
+          panel(ctx, left, y + row * .09, labelWidth, row * .78, row * .12, palette.overlay);
+          text(ctx, label, { x: left, y, width: labelWidth, height: row }, 46, 700,
+            palette.foreground, row / 67, 'center');
+          panel(ctx, gx + gw * .41, y + row * .29, gw * (.27 + (index % 3) * .12) * (.86 + progress * .14),
+            row * .38, row * .18, index % 2 ? palette.muted : palette.accent);
+        });
       } else if (preset === 'hero') {
         const unit = Math.min(gw / 450, gh / 250);
         if (unit > 0) {
@@ -343,7 +375,7 @@
       intrinsic[role] = { width: ctx.measureText(String(value || '')).width + tokens.space.padding * measureScale, height: fontSize * 2 * tokens.type.lineHeight };
     }
     ctx.restore();
-    const resolved = solver.resolve(layout, width, height, intrinsic);
+    const resolved = solver.resolve(layout, width, height, intrinsic, Boolean(typography));
     const { blocks, scale, warnings } = resolved;
     const available = captionNode ? captionNode.endFrame - captionNode.startFrame : shot.durationFrames;
     const timing = captionTiming(String(shot.subhead || ''), available, fps, locale.slice(0, 2));
@@ -369,12 +401,19 @@
         continue;
       }
       const caption = role === 'caption';
-      const color = caption ? palette.muted : palette.foreground;
+      const color = caption && !typography ? palette.muted : palette.foreground;
+      const pattern = caption && captionNode?.backdrop === 'pattern'
+        ? (layout.palette === 'light' ? ['#fff9ef', '#dacdc3', '#e3d6c2'] : ['#20283b', '#414b62', '#343d56'])
+        : null;
       let inner = box;
       if (caption) {
         if (captionNode && (frame < captionNode.startFrame || frame >= captionNode.endFrame)) continue;
         const card = !captionNode || captionNode.contrast === 'panel';
-        if (card && shot.artDirection === 'minimal-suspense') {
+        if (pattern) drawCaptionPattern(ctx, box, pattern, scale);
+        if (card && pattern) {
+          const inset = Math.min(9 * scale, box.height * .08, box.width * .08);
+          panel(ctx, box.x + inset, box.y + inset, box.width - 2 * inset, box.height - 2 * inset, tokens.radius * scale, palette.surface);
+        } else if (card && shot.artDirection === 'minimal-suspense' && !typography) {
           panel(ctx, box.x, box.y + box.height * .18, Math.max(2, tokens.outline * scale), box.height * .64, 1, palette.accent);
         } else if (card) {
           const radius = shot.artDirection === 'character-comedy' ? tokens.radius * 1.45 : tokens.radius;
@@ -383,13 +422,21 @@
         const padding = Math.min(tokens.space.padding * scale, box.height * .18, box.width * .12);
         inner = { x: box.x + padding, y: box.y + padding, width: box.width - padding * 2, height: box.height - padding * 2 };
       }
-      const background = caption && (!captionNode || captionNode.contrast === 'panel') && shot.artDirection !== 'minimal-suspense' ? palette.surface : palette.background;
-      if (contrast(color, background) < 4.5) warnings.push({ type: 'contrast', roles: [role] });
+      const background = caption && (!captionNode || captionNode.contrast === 'panel') && (typography || shot.artDirection !== 'minimal-suspense') ? palette.surface : palette.background;
+      const backgrounds = pattern ? (captionNode.contrast === 'panel' ? [palette.surface] : pattern) : [background];
+      const inkContrast = Math.min(...backgrounds.map(value => contrast(color, value)));
+      if (caption && typography) resolved.captionContrast = inkContrast;
+      if (inkContrast < 4.5) warnings.push({ type: 'contrast', roles: [role] });
       if (typography) {
         const node = caption ? captionNode : makeNode('title', shot.headline);
         const typeScale = scale * 720 / 1080;
         const ctaCopy = typeof typography.ctaCopy === 'string' ? typography.ctaCopy.slice(0, 180) : '';
-        const ink = { ...palette, ink: color, accent: contrast(palette.accent, background) >= 4.5 ? palette.accent : color };
+        if (caption && resolved.format === 'portrait') {
+          node.minSize = 40;
+          if (!typography.caption?.size) node.size = Math.max(50, node.size);
+        }
+        const ink = { ...palette, ink: color,
+          accent: backgrounds.every(value => contrast(palette.accent, value) >= 4.5) ? palette.accent : color };
         if (!caption && ctaCopy.trim() && inner.height > 0) {
           const ctaHeight = Math.min(inner.height * .34, 88 * scale);
           const ctaBox = { ...inner, y: inner.y + inner.height - ctaHeight, height: ctaHeight };

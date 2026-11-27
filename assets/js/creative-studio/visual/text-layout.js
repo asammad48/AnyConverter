@@ -75,7 +75,7 @@
     ctx.save();
     ctx.textAlign = 'left';
     ctx.direction = 'ltr';
-    const floor = Math.min(node.size, 24) * scale;
+    const floor = Math.min(node.size, node.minSize || 24) * scale;
     let size = node.size * scale;
     let lines;
     let count;
@@ -158,6 +158,7 @@
         ctx.clip();
       }
       if (['rise', 'line', 'echo'].includes(effect)) ctx.globalAlpha = ease(lineP);
+      if (effect === 'tracking' && !('letterSpacing' in ctx)) ctx.globalAlpha = ease(p);
       if (effect === 'suspense') ctx.globalAlpha = lineP ** 2;
       const paint = (text, x, styled, width) => {
         font(ctx, node, size, styled && node.spanStyle === 'bold');
@@ -206,7 +207,10 @@
       } else if (row.units.length && p < 1) {
         row.units.forEach((unit, unitIndex) => {
           const target = progress(frame, node, unitIndex, row.units.length);
-          if (target <= 0) return;
+          if (effect === 'type') {
+            const order = (unitIndex + 1) / row.units.length;
+            if (p < order * (node.stagger ? .9 : .75)) return;
+          } else if (target <= 0) return;
           ctx.save();
           ctx.globalAlpha *= effect === 'type' ? 1 : ease(target);
           if (effect === 'word') ctx.translate(0, (1 - ease(target)) * size * .22);

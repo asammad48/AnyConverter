@@ -3,7 +3,8 @@ const fs = require('node:fs/promises');
 const path = require('node:path');
 const { chromium } = require('playwright-core');
 
-const out = path.resolve(__dirname, '../evidence');
+const audit = process.env.PHASE03_AUDIT === '1';
+const out = path.resolve(__dirname, audit ? '../audit' : '../evidence');
 const base = 'http://localhost:3000';
 const results = { pageErrors: [], consoleErrors: [], externalWrites: [], failedRequests: [], frames: {}, formats: {}, layoutWarnings: {}, externalHosts: [] };
 const copy = {
@@ -33,7 +34,7 @@ const product = [
 
 async function open(browser, locale = 'en', url = base, trace = false) {
   const context = await browser.newContext({ viewport: { width: 1540, height: 1120 }, acceptDownloads: true });
-  if (trace) await context.tracing.start({ screenshots: true, snapshots: true });
+  if (trace) await context.tracing.start({ screenshots: !audit, snapshots: !audit });
   const page = await context.newPage();
   page.on('pageerror', error => results.pageErrors.push(error.message));
   page.on('console', message => {
@@ -108,7 +109,17 @@ async function author(page, scenes, duration, first = copy.en, locale = 'en') {
     await input(page, 'length', effect === 'suspense' ? 72 : 30);
     await select(page, 'track', 'caption');
     await select(page, 'role', captionRole);
-    await select(page, 'effect', captionEffect);
+    await select(page, 'effect', audit && scenes === suspense && index !== 3 ? 'none' : captionEffect);
+    if (audit && scenes === fun) {
+      await select(page, 'backdrop', 'pattern');
+      await select(page, 'contrast', ['panel', 'outline', 'shadow', 'panel'][index]);
+      if (index === 1) await input(page, 'length', 38);
+      if (index === 2) await input(page, 'startFrame', 18);
+    }
+    if (audit && scenes === suspense && index === 3) {
+      await input(page, 'startFrame', 25);
+      await input(page, 'length', 38);
+    }
     if (scenes === fun && index === 0) await select(page, 'family', 'display');
     if (effect === 'suspense') await select(page, 'contrast', 'outline');
     if (effect === 'emphasis') {
@@ -156,6 +167,7 @@ async function main() {
   await fs.mkdir(out, { recursive: true });
   const browser = await chromium.launch({ executablePath: '/usr/bin/chromium', args: ['--no-sandbox'] });
   try {
+    if (!audit) {
     const before = await open(browser, 'en', 'http://127.0.0.1:4173');
     await before.locator('#cs-layout-preset').selectOption('hero');
     await before.locator('#cs-shot-headline').fill(copy.en[0]);
@@ -163,6 +175,7 @@ async function main() {
     await seek(before, 30);
     await download(before, 'export-png', 'before-product.png');
     await before.context().close();
+    }
 
     const page = await open(browser, 'en', base, true);
     await page.locator('#cs-project-title').fill('Five files, one report');
@@ -189,7 +202,7 @@ async function main() {
       await page.locator('#cs-layout-format').selectOption('1080x1920');
       await author(page, scenes, 120);
       await select(page, 'track', 'caption');
-      await input(page, 'startFrame', 8);
+      if (name === 'fun' || !audit) await input(page, 'startFrame', 8);
       await input(page, 'stagger', 5);
       if (name === 'fun') {
         for (const index of [8, 23, 38]) {
@@ -200,10 +213,22 @@ async function main() {
       await video(page, name);
       await download(page, 'save-project', name + '.acstudio');
     }
+    if (audit) {
+      await page.locator('#cs-direction-select').selectOption('cinematic-saas');
+      await page.locator('#cs-layout-format').selectOption('3840x2160');
+      await seek(page, 30);
+      await download(page, 'export-png', 'product-4k.png');
+      await page.locator('#cs-shot-subhead').fill('¡Información! 👩🏽‍💻 ÆØÅ 品質. '.repeat(28));
+      await select(page, 'track', 'caption');
+      await input(page, 'maxLines', 2);
+      await download(page, 'export-png', 'extreme-4k.png');
+      results.extremeWarning = await page.locator('#cs-layout-warnings').textContent();
+    }
     await page.context().tracing.stop({ path: path.join(out, 'browser-trace.zip') });
     await page.context().close();
     results.recoveredEffect = await recover(browser, 'fun.acstudio', '“Règle un: ingen møder i caféen.”', 'fun-edited');
 
+    if (!audit) {
     for (const locale of ['es', 'da']) {
       const localized = await open(browser, locale);
       const first = [...copy[locale]];
@@ -233,6 +258,7 @@ async function main() {
       await legacy.waitForFunction(() => window.studioApp.lastOpenedUnpack?.project);
       await download(legacy, 'export-png', 'legacy-' + phase + '.png');
       await legacy.context().close();
+    }
     }
     const fallback = await browser.newPage();
     await fallback.route('**/assets/fonts/studio/*.ttf', route => route.abort());

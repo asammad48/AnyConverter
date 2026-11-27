@@ -1,6 +1,7 @@
 """Decode the Studio downloads and generate frame comparisons and contact sheets."""
 import hashlib
 import json
+import os
 import re
 import subprocess
 import zipfile
@@ -8,7 +9,7 @@ from pathlib import Path
 
 from PIL import Image, ImageDraw
 
-ROOT = Path(__file__).resolve().parents[1] / 'evidence'
+ROOT = Path(__file__).resolve().parents[1] / ('audit' if os.environ.get('PHASE03_AUDIT') == '1' else 'evidence')
 
 
 def run(*args):
@@ -65,7 +66,7 @@ def probe(movie):
 
 
 def main():
-    media = {movie.name: probe(movie) for movie in sorted(ROOT.glob('*.webm'))}
+    media = {movie.name: probe(movie) for movie in sorted(ROOT.glob('*.webm')) if not movie.name.startswith('compatibility-')}
     (ROOT / 'media-metadata.json').write_text(json.dumps(media, indent=2) + '\n')
     parity = {}
     groups = [
@@ -110,11 +111,12 @@ def main():
             by_story.append((output, f'{name.upper()}  {index / 30:.2f} s'))
     sheet(by_story, ROOT / 'SHOT_STORYBOARD.png')
     decode(ROOT / 'fun-edited.webm', 65, ROOT / 'fun-edited-65.png')
-    decode(ROOT / 'product-da-edited.webm', 65, ROOT / 'product-da-edited-65.png')
+    if (ROOT / 'product-da-edited.webm').exists():
+        decode(ROOT / 'product-da-edited.webm', 65, ROOT / 'product-da-edited-65.png')
     sheet([(ROOT / 'fun-65.png', 'SAVED  2.17 s'), (ROOT / 'fun-edited-65.png', 'REOPENED AND EDITED  2.17 s')],
           ROOT / 'REOPEN_EDIT.png', 2)
-    sheet([(ROOT / 'before-product.png', 'PHASE 02  1.00 s'),
-           (ROOT / 'after-product.png', 'PHASE 03  1.00 s')], ROOT / 'BEFORE_AFTER.png', 2, (520, 324))
+    sheet([((ROOT / 'before-product.png' if (ROOT / 'before-product.png').exists() else ROOT.parent / 'evidence' / 'after-product.png'), 'BASELINE  1.00 s'),
+           (ROOT / 'after-product.png', 'REVISED  1.00 s')], ROOT / 'BEFORE_AFTER.png', 2, (520, 324))
     print(f'{len(media)} browser videos fully decoded, {len(parity)} comparisons passed')
 
 

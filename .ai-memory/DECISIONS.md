@@ -2252,3 +2252,9 @@ A cinematic shot opts into normalized, constraint-based composition through `cus
 **Date** 2026-11-27
 
 Cinematic shots opt into professional typography through `customData.typography.version`. Existing title and caption strings remain the editable text source. Cue timing, semantic roles, matched phrase styles and optional CTA stay declarative in the same archived shot. The existing Phase 02 solver allocates text bounds and Canvas preflights local font families before measuring. The canonical scene evaluator provides preview, PNG and frame-deterministic WebCodecs output. The Phase 01 and Phase 02 sample archive PNGs each match the pinned baseline after reopening. [Phase 03 handoff](../reports/creative-studio/visual-quality/phase-03/PHASE_HANDOFF.md)
+
+## ADR-095 Phase 03 release gate and evidence storage
+
+**Date** 2026-11-27
+
+Opted-in shots use a tighter portrait arrangement within the existing safe bounds. A local pattern provides a production-path caption stress fixture for the outline, shadow and panel treatments. Compare dense patterns using worst-case settled contrast and phone-width frames. Diagnose playback with quality counters and decoded timestamps alongside callbacks. Store compact action traces separately from high-resolution stills and video. The published baseline trace remains in branch history.

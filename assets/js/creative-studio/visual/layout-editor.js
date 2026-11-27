@@ -3,7 +3,7 @@
 
   const solver = root.StudioLayoutSolver;
   const { tokens } = root.StudioDesignTokens;
-  const formats = [[1280, 720], [1920, 1080], [1080, 1920], [1080, 1080]];
+  const formats = [[1280, 720], [1920, 1080], [3840, 2160], [1080, 1920], [1080, 1080]];
   const names = {
     hero: ['Hero', 'Portada', 'Forside'], comparison: ['Comparison', 'Comparación', 'Sammenligning'],
     statistic: ['Statistic', 'Estadística', 'Statistik'], dialogue: ['Dialogue', 'Diálogo', 'Dialog'],

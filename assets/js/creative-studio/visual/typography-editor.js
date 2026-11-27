@@ -58,6 +58,9 @@
         ['shrink', 'Shrink to fit', 'Reducir para ajustar', 'Formindsk for at tilpasse'],
         ['ellipsis', 'Ellipsis', 'Puntos suspensivos', 'Udeladelsesprikker']
       ]);
+      field('backdrop', ['Caption backdrop', 'Fondo de subtítulos', 'Undertekstbaggrund'], [
+        ['plain', 'Plain', 'Liso', 'Ensfarvet'], ['pattern', 'Pattern', 'Trama', 'Mønster']
+      ]);
       field('contrast', ['Caption contrast', 'Contraste de subtítulos', 'Undertekstkontrast'], [
         ['panel', 'Panel', 'Panel', 'Panel'], ['outline', 'Outline', 'Contorno', 'Kontur'], ['shadow', 'Shadow', 'Sombra', 'Skygge']
       ]);
@@ -98,6 +101,7 @@
       const typography = shot.customData?.typography;
       const values = cue(typography?.[this.track], this.track, shot.durationFrames);
       for (const [key, input] of Object.entries(this.fields)) {
+        input.disabled = ['contrast', 'backdrop'].includes(key) && this.track !== 'caption';
         input.value = key === 'track' ? this.track : key === 'cta' ? typography?.ctaCopy || '' : values[key];
       }
       this.updateStatus(values.family);
@@ -108,6 +112,11 @@
       this.status.textContent = root.StudioFonts.loaded(family)
         ? this.tr('Animate a change in meaning, timing, or emphasis.', 'Anima un cambio de significado, ritmo o énfasis.', 'Animér et skift i betydning, timing eller betoning.')
         : this.tr('The local font is unavailable. Using the session fallback.', 'Fuente local no disponible. Se usa la fuente alternativa.', 'Den lokale skrifttype er utilgængelig. Reservetypen bruges.');
+      if (!('letterSpacing' in this.app.dom.ctx)) {
+        this.status.textContent += ' ' + this.tr('This browser uses a fade for tracking motion.',
+          'Este navegador usa un fundido para animar el espaciado.',
+          'Denne browser bruger en indtoning til bevægelse i bogstavafstanden.');
+      }
     }
 
     update(key, input) {

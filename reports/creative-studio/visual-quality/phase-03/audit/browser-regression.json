@@ -1,0 +1,34 @@
+{
+  "archives": {
+    "01": {
+      "frame": 30,
+      "baselineSha256": "4748d72a05002e7e34f881f1f2f0b10061dfb5abd41ebbe9d63c2a9fec8b3c73",
+      "candidateSha256": "4748d72a05002e7e34f881f1f2f0b10061dfb5abd41ebbe9d63c2a9fec8b3c73"
+    },
+    "02": {
+      "frame": 30,
+      "baselineSha256": "ffd7ad93eca329f2b3469fc8ae12097e98ea5ac2b51047454f4f75f8929d72d1",
+      "candidateSha256": "ffd7ad93eca329f2b3469fc8ae12097e98ea5ac2b51047454f4f75f8929d72d1"
+    }
+  },
+  "mobile": {
+    "en": {
+      "heading": "Typography and motion",
+      "caption": "Let the next line come in slowly.\nGive it room to breathe.",
+      "missedBudget": "Allow at least 4.0 s to read this caption.",
+      "cleared": true
+    },
+    "es": {
+      "heading": "Tipografía y movimiento",
+      "caption": "Deja que la próxima línea aparezca despacio.\nDale espacio para respirar.",
+      "missedBudget": "Deja al menos 4,3 s para leer este subtítulo.",
+      "cleared": true
+    },
+    "da": {
+      "heading": "Typografi og bevægelse",
+      "caption": "Lad den næste linje komme langsomt frem.\nGiv den plads til at ånde.",
+      "missedBudget": "Giv mindst 4,4 sek. til at læse underteksten.",
+      "cleared": true
+    }
+  }
+}

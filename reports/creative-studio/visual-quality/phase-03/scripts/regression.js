@@ -4,7 +4,7 @@ const fs = require('node:fs/promises');
 const path = require('node:path');
 const { chromium } = require('playwright-core');
 
-const out = path.resolve(__dirname, '../evidence');
+const out = path.resolve(__dirname, process.env.PHASE03_AUDIT === '1' ? '../audit' : '../evidence');
 const candidate = 'http://localhost:3000';
 const baseline = 'http://127.0.0.1:4173';
 
