@@ -1,0 +1,18 @@
+# Phase 03 defects and limits
+
+| Severity | Observation | Resolution and evidence |
+| --- | --- | --- |
+| P1 | Initial proof showed darker, purple-tinged decoded frames despite equivalent geometry. | FFmpeg had used frame-level limited-range BT.601 over the container’s full-range BT.709 tags. The evidence now explicitly decodes using the tags and compares all 12 frames. Native Chromium confirmed a small residual quantization tint on the initial keyframe. [Parity report](PREVIEW_EXPORT_PARITY.md) |
+| P1 | A first browser run used an 11-word product headline. | Added “today” and kept a 12-word assertion in the live workflow. Both before and after were recaptured with the corrected copy. [Browser journey](LIVE_LOCALHOST_JOURNEY.md) |
+| P2 | Long fixture text initially used an overly large size target for a 1080-pixel short edge and a three-second hold. | Matched the authored type scale to the short edge, used more compact caption settings when needed and allocated a longer opening hold while preserving the 15-second duration. [Spanish](evidence/product-es.png) · [Danish](evidence/product-da.png) |
+| P2 | The mobile ES timing fixture asked for a cue longer than the preset shot. | Set the same 180-frame shot in each locale. Confirmed warnings at a 30-frame caption window and cleared them at 150. [Mobile results](evidence/browser-regression.json) |
+| P2 | Review found a duplicated number in the statistic shot and an unrelated geometric icon in the suspense payoff. | The number now appears once with five source-file silhouettes in the diagram. The suspense closing repeats the doorway light in a tight graphic, and whisper type is slightly larger. Both retain the Phase 02 renderer for legacy shots. [Product video](evidence/product-wide.webm) · [Suspense video](evidence/suspense.webm) |
+| P2 | If a bundled family fails to load, late fonts can otherwise move text between edits and export. | Font faces settle before typography editing, archive display or export. A deliberately blocked font request exercised the localized warning and session fallback. [Font fallback result](evidence/browser-results.json) |
+| Visual | Phone-sized product microcopy remains small, and the bottom platform reserve is intentionally visible in portrait. | Main copy carries the message without relying on diagram microcopy. The phone proof uses Chromium touch emulation. [Portrait export](evidence/product-portrait.webm) · [Phone UI](evidence/mobile-en.png) |
+
+## Unverified cases
+
+- Physical mobile devices, Safari and Firefox were outside the Linux Chromium run. System glyph appearance can vary by device. Broad complex-script shaping and bidirectional layout were outside the proof. The selected CJK and joined emoji fixtures rendered in both localized previews and exports.
+- Contrast controls were exercised on the built-in illustrated scenes. The cinematic shot editor’s local footage treatment is a later roadmap capability, so contrast on imported noisy footage remains unverified. The Phase 03 films use caption-led stories and instrumentals. Imported dialogue, Kokoro voice and forced alignment were outside this run.
+- One cue per block per shot is supported. The archive is the declarative import path covered here. Standalone subtitle file import was outside the tested path.
+- Existing site Google Fonts and analytics requests were visible on the simple local server. The only observed external writes during the main browser run were existing Google Analytics collect requests. The audit recorded no user-media upload or new service call from the typography feature. The static server used here did not apply the deployment platform’s `_headers` file. [Request log](evidence/browser-results.json)

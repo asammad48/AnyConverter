@@ -1,0 +1,74 @@
+{
+  "product-wide-0": {
+    "frame": 0,
+    "timeSeconds": 0.0,
+    "revealPercent": 0,
+    "ssim": 0.992027
+  },
+  "product-wide-15": {
+    "frame": 15,
+    "timeSeconds": 0.5,
+    "revealPercent": 50,
+    "ssim": 0.995152
+  },
+  "product-wide-30": {
+    "frame": 30,
+    "timeSeconds": 1.0,
+    "revealPercent": 100,
+    "ssim": 0.998104
+  },
+  "product-portrait-0": {
+    "frame": 0,
+    "timeSeconds": 0.0,
+    "revealPercent": 0,
+    "ssim": 0.991902
+  },
+  "product-portrait-15": {
+    "frame": 15,
+    "timeSeconds": 0.5,
+    "revealPercent": 50,
+    "ssim": 0.99674
+  },
+  "product-portrait-30": {
+    "frame": 30,
+    "timeSeconds": 1.0,
+    "revealPercent": 100,
+    "ssim": 0.998731
+  },
+  "product-square-0": {
+    "frame": 0,
+    "timeSeconds": 0.0,
+    "revealPercent": 0,
+    "ssim": 0.995052
+  },
+  "product-square-15": {
+    "frame": 15,
+    "timeSeconds": 0.5,
+    "revealPercent": 50,
+    "ssim": 0.996515
+  },
+  "product-square-30": {
+    "frame": 30,
+    "timeSeconds": 1.0,
+    "revealPercent": 100,
+    "ssim": 0.998528
+  },
+  "fun-caption-8": {
+    "frame": 8,
+    "timeSeconds": 0.26666666666666666,
+    "revealPercent": 0,
+    "ssim": 0.995135
+  },
+  "fun-caption-23": {
+    "frame": 23,
+    "timeSeconds": 0.7666666666666667,
+    "revealPercent": 50,
+    "ssim": 0.998574
+  },
+  "fun-caption-38": {
+    "frame": 38,
+    "timeSeconds": 1.2666666666666666,
+    "revealPercent": 100,
+    "ssim": 0.998833
+  }
+}

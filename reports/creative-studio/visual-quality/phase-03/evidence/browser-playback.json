@@ -1,0 +1,35 @@
+{
+  "fun.webm": {
+    "duration": 16,
+    "ended": true,
+    "currentTime": 16,
+    "firstCallbackPTS": 0,
+    "lastCallbackPTS": 15.966,
+    "callbacks": 476,
+    "width": 1080,
+    "height": 1920,
+    "muted": false
+  },
+  "suspense.webm": {
+    "duration": 16,
+    "ended": true,
+    "currentTime": 16,
+    "firstCallbackPTS": 0,
+    "lastCallbackPTS": 15.966,
+    "callbacks": 477,
+    "width": 1080,
+    "height": 1920,
+    "muted": false
+  },
+  "product-wide.webm": {
+    "duration": 15,
+    "ended": true,
+    "currentTime": 15,
+    "firstCallbackPTS": 0,
+    "lastCallbackPTS": 14.966,
+    "callbacks": 446,
+    "width": 1920,
+    "height": 1080,
+    "muted": false
+  }
+}

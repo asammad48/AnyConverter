@@ -1,0 +1,115 @@
+{
+  "pageErrors": [],
+  "consoleErrors": [],
+  "externalWrites": [
+    [
+      "POST",
+      "www.google-analytics.com",
+      "/g/collect"
+    ],
+    [
+      "POST",
+      "www.google-analytics.com",
+      "/g/collect"
+    ],
+    [
+      "POST",
+      "www.google-analytics.com",
+      "/g/collect"
+    ],
+    [
+      "POST",
+      "www.google-analytics.com",
+      "/g/collect"
+    ],
+    [
+      "POST",
+      "www.google-analytics.com",
+      "/g/collect"
+    ],
+    [
+      "POST",
+      "www.google-analytics.com",
+      "/g/collect"
+    ],
+    [
+      "POST",
+      "www.google-analytics.com",
+      "/g/collect"
+    ],
+    [
+      "POST",
+      "www.google-analytics.com",
+      "/g/collect"
+    ],
+    [
+      "POST",
+      "www.google-analytics.com",
+      "/g/collect"
+    ],
+    [
+      "POST",
+      "www.google-analytics.com",
+      "/g/collect"
+    ],
+    [
+      "POST",
+      "www.google-analytics.com",
+      "/g/collect"
+    ],
+    [
+      "POST",
+      "www.google-analytics.com",
+      "/g/collect"
+    ],
+    [
+      "POST",
+      "www.google-analytics.com",
+      "/g/collect"
+    ]
+  ],
+  "failedRequests": [],
+  "frames": {
+    "product-wide-0": 0,
+    "product-wide-15": 15,
+    "product-wide-30": 30,
+    "product-portrait-0": 0,
+    "product-portrait-15": 15,
+    "product-portrait-30": 30,
+    "product-square-0": 0,
+    "product-square-15": 15,
+    "product-square-30": 30,
+    "fun-caption-8": 8,
+    "fun-caption-23": 23,
+    "fun-caption-38": 38,
+    "font-fallback": 15
+  },
+  "formats": {
+    "wide": [
+      1920,
+      1080
+    ],
+    "portrait": [
+      1080,
+      1920
+    ],
+    "square": [
+      1080,
+      1080
+    ]
+  },
+  "layoutWarnings": {
+    "wide": "",
+    "portrait": "",
+    "square": ""
+  },
+  "externalHosts": [
+    "fonts.googleapis.com",
+    "www.googletagmanager.com",
+    "fonts.gstatic.com",
+    "www.google-analytics.com"
+  ],
+  "recoveredEffect": "word",
+  "recoveredDanishEffect": "line",
+  "fontFallback": "The local font is unavailable. Using the session fallback."
+}

@@ -1,0 +1,681 @@
+{
+  "fun.acstudio": {
+    "sha256": "0b16a69a19a06ca3fef0e904f48d663616ead605dd11056f0cb71646636aa3cb",
+    "locale": "en",
+    "title": "The new manager",
+    "audioClips": [
+      {
+        "clipId": "parrot-comedy-audio",
+        "startSample": 0,
+        "durationSamples": 768000,
+        "volume": 0.85,
+        "theme": "comedy"
+      }
+    ],
+    "shots": [
+      {
+        "startFrame": 0,
+        "durationFrames": 120,
+        "headline": "The new manager",
+        "subhead": "“First rule: no more meetings.”",
+        "customData": {
+          "characterPose": "neutral",
+          "layout": {
+            "version": 1,
+            "preset": "dialogue",
+            "blocks": {}
+          },
+          "typography": {
+            "version": 1,
+            "title": {
+              "role": "hero",
+              "family": "display",
+              "effect": "tracking"
+            },
+            "caption": {
+              "role": "caption",
+              "effect": "word",
+              "family": "display",
+              "startFrame": 8,
+              "stagger": 5
+            }
+          }
+        }
+      },
+      {
+        "startFrame": 120,
+        "durationFrames": 120,
+        "headline": "An empty calendar",
+        "subhead": "Monday looked clear.\n\nThen the invites arrived.",
+        "customData": {
+          "characterPose": "wing-point",
+          "layout": {
+            "version": 1,
+            "preset": "character-right",
+            "blocks": {}
+          },
+          "typography": {
+            "version": 1,
+            "title": {
+              "role": "hook",
+              "effect": "line"
+            },
+            "caption": {
+              "role": "subtitle",
+              "effect": "type"
+            }
+          }
+        }
+      },
+      {
+        "startFrame": 240,
+        "durationFrames": 120,
+        "headline": "A meeting about meetings?",
+        "subhead": "“That makes no sense.”",
+        "customData": {
+          "characterPose": "shocked",
+          "layout": {
+            "version": 1,
+            "preset": "reaction",
+            "blocks": {}
+          },
+          "typography": {
+            "version": 1,
+            "title": {
+              "role": "quote",
+              "effect": "rise"
+            },
+            "caption": {
+              "role": "caption",
+              "effect": "highlight",
+              "phrase": "no sense",
+              "spanStyle": "highlight"
+            }
+          }
+        }
+      },
+      {
+        "startFrame": 360,
+        "durationFrames": 120,
+        "headline": "Meeting canceled.",
+        "subhead": "The bird hits “decline all.”",
+        "customData": {
+          "characterPose": "smug",
+          "layout": {
+            "version": 1,
+            "preset": "punchline",
+            "blocks": {}
+          },
+          "typography": {
+            "version": 1,
+            "title": {
+              "role": "punchline",
+              "effect": "emphasis",
+              "phrase": "canceled",
+              "spanStyle": "bold"
+            },
+            "caption": {
+              "role": "caption",
+              "effect": "underline"
+            }
+          }
+        }
+      }
+    ]
+  },
+  "product-da.acstudio": {
+    "sha256": "6a49748d65d0aa339ac9e13526c7fd3a5db0bb6232ca41b093ce34bdb0bdada9",
+    "locale": "da",
+    "title": "From raw data to clear answers",
+    "audioClips": [
+      {
+        "clipId": "saas-master-audio",
+        "startSample": 0,
+        "durationSamples": 720000,
+        "volume": 0.85,
+        "theme": "saas"
+      }
+    ],
+    "shots": [
+      {
+        "startFrame": 0,
+        "durationFrames": 225,
+        "headline": "Saml spredte regneark til overskuelige rapporter som hele holdet kan dele trygt",
+        "subhead": "Saml oplysninger fra fem forskellige kilder.\nGennemgå de samme poster på ét sted sammen med dit hold.\n品質 👩🏽‍💻",
+        "customData": {
+          "layout": {
+            "version": 1,
+            "preset": "hero",
+            "blocks": {}
+          },
+          "typography": {
+            "version": 1,
+            "title": {
+              "role": "hook",
+              "effect": "rise",
+              "family": "serif",
+              "lineHeight": 1.22,
+              "tracking": 0.2
+            },
+            "caption": {
+              "role": "body",
+              "effect": "line",
+              "lineHeight": 1.08,
+              "size": 34
+            },
+            "ctaCopy": "Gennemgå rapporten",
+            "cta": {
+              "effect": "underline",
+              "startFrame": 12,
+              "length": 18
+            }
+          }
+        }
+      },
+      {
+        "startFrame": 225,
+        "durationFrames": 56,
+        "headline": "Find fælles felter",
+        "subhead": "Sammenlign de samme poster.",
+        "customData": {
+          "layout": {
+            "version": 1,
+            "preset": "comparison",
+            "blocks": {}
+          },
+          "typography": {
+            "version": 1,
+            "title": {
+              "role": "hook",
+              "effect": "word"
+            },
+            "caption": {
+              "role": "body",
+              "effect": "none"
+            }
+          }
+        }
+      },
+      {
+        "startFrame": 281,
+        "durationFrames": 56,
+        "headline": "Alt ét sted",
+        "subhead": "Sortér de vigtigste felter først.",
+        "customData": {
+          "layout": {
+            "version": 1,
+            "preset": "product",
+            "blocks": {}
+          },
+          "typography": {
+            "version": 1,
+            "title": {
+              "role": "quote",
+              "effect": "tracking"
+            },
+            "caption": {
+              "role": "body",
+              "effect": "none"
+            }
+          }
+        }
+      },
+      {
+        "startFrame": 337,
+        "durationFrames": 56,
+        "headline": "5",
+        "subhead": "Fem kilder, én rapport.",
+        "customData": {
+          "layout": {
+            "version": 1,
+            "preset": "statistic",
+            "blocks": {}
+          },
+          "typography": {
+            "version": 1,
+            "title": {
+              "role": "number",
+              "effect": "counter"
+            },
+            "caption": {
+              "role": "subtitle",
+              "effect": "none"
+            }
+          }
+        }
+      },
+      {
+        "startFrame": 393,
+        "durationFrames": 57,
+        "headline": "Klar til deling",
+        "subhead": "Tjek rapporten før afsendelse.",
+        "customData": {
+          "layout": {
+            "version": 1,
+            "preset": "punchline",
+            "blocks": {}
+          },
+          "typography": {
+            "version": 1,
+            "title": {
+              "role": "hero",
+              "effect": "rise"
+            },
+            "caption": {
+              "role": "caption",
+              "effect": "none"
+            }
+          }
+        }
+      }
+    ]
+  },
+  "product-es.acstudio": {
+    "sha256": "8f818a87077a981f308fe5882311cfb6cbcf18ae167428eb0995f376d11d6b0e",
+    "locale": "es",
+    "title": "From raw data to clear answers",
+    "audioClips": [
+      {
+        "clipId": "saas-master-audio",
+        "startSample": 0,
+        "durationSamples": 720000,
+        "volume": 0.85,
+        "theme": "saas"
+      }
+    ],
+    "shots": [
+      {
+        "startFrame": 0,
+        "durationFrames": 225,
+        "headline": "Convierte hojas de cálculo dispersas en informes claros para todo tu equipo",
+        "subhead": "Reúne cinco fuentes de información.\nRevisa los mismos registros con todo tu equipo.\n品質 👩🏽‍💻",
+        "customData": {
+          "layout": {
+            "version": 1,
+            "preset": "hero",
+            "blocks": {}
+          },
+          "typography": {
+            "version": 1,
+            "title": {
+              "role": "hook",
+              "effect": "rise",
+              "family": "serif",
+              "lineHeight": 1.22,
+              "tracking": 0.2
+            },
+            "caption": {
+              "role": "body",
+              "effect": "line",
+              "lineHeight": 1.08,
+              "size": 34
+            },
+            "ctaCopy": "Revisa tu informe",
+            "cta": {
+              "effect": "underline",
+              "startFrame": 12,
+              "length": 18
+            }
+          }
+        }
+      },
+      {
+        "startFrame": 225,
+        "durationFrames": 56,
+        "headline": "Campos en común",
+        "subhead": "Compara los mismos registros.",
+        "customData": {
+          "layout": {
+            "version": 1,
+            "preset": "comparison",
+            "blocks": {}
+          },
+          "typography": {
+            "version": 1,
+            "title": {
+              "role": "hook",
+              "effect": "word"
+            },
+            "caption": {
+              "role": "body",
+              "effect": "none"
+            }
+          }
+        }
+      },
+      {
+        "startFrame": 281,
+        "durationFrames": 56,
+        "headline": "Todo en un lugar",
+        "subhead": "Ordena los campos por prioridad.",
+        "customData": {
+          "layout": {
+            "version": 1,
+            "preset": "product",
+            "blocks": {}
+          },
+          "typography": {
+            "version": 1,
+            "title": {
+              "role": "quote",
+              "effect": "tracking"
+            },
+            "caption": {
+              "role": "body",
+              "effect": "none"
+            }
+          }
+        }
+      },
+      {
+        "startFrame": 337,
+        "durationFrames": 56,
+        "headline": "5",
+        "subhead": "Cinco fuentes, un informe.",
+        "customData": {
+          "layout": {
+            "version": 1,
+            "preset": "statistic",
+            "blocks": {}
+          },
+          "typography": {
+            "version": 1,
+            "title": {
+              "role": "number",
+              "effect": "counter"
+            },
+            "caption": {
+              "role": "subtitle",
+              "effect": "none"
+            }
+          }
+        }
+      },
+      {
+        "startFrame": 393,
+        "durationFrames": 57,
+        "headline": "Listo para compartir",
+        "subhead": "Revisa antes de enviar.",
+        "customData": {
+          "layout": {
+            "version": 1,
+            "preset": "punchline",
+            "blocks": {}
+          },
+          "typography": {
+            "version": 1,
+            "title": {
+              "role": "hero",
+              "effect": "rise"
+            },
+            "caption": {
+              "role": "caption",
+              "effect": "none"
+            }
+          }
+        }
+      }
+    ]
+  },
+  "product.acstudio": {
+    "sha256": "572b4d1ddab1aa5f6e6bb80148e7681b30d7cf7886b44cf9521aa595c0623ce7",
+    "locale": "en",
+    "title": "Five files, one report",
+    "audioClips": [
+      {
+        "clipId": "saas-master-audio",
+        "startSample": 0,
+        "durationSamples": 720000,
+        "volume": 0.85,
+        "theme": "saas"
+      }
+    ],
+    "shots": [
+      {
+        "startFrame": 0,
+        "durationFrames": 144,
+        "headline": "Turn scattered spreadsheets into clear reports your entire team can share today",
+        "subhead": "Bring five sources together.\nReview the same records in one place.",
+        "customData": {
+          "layout": {
+            "version": 1,
+            "preset": "hero",
+            "blocks": {}
+          },
+          "typography": {
+            "version": 1,
+            "title": {
+              "role": "hook",
+              "effect": "rise",
+              "family": "serif",
+              "lineHeight": 1.22,
+              "tracking": 0.2
+            },
+            "caption": {
+              "role": "body",
+              "effect": "line"
+            },
+            "ctaCopy": "Review your report",
+            "cta": {
+              "effect": "underline",
+              "startFrame": 12,
+              "length": 18
+            }
+          }
+        }
+      },
+      {
+        "startFrame": 144,
+        "durationFrames": 76,
+        "headline": "Find the common fields",
+        "subhead": "Compare the same entries across the five source files.",
+        "customData": {
+          "layout": {
+            "version": 1,
+            "preset": "comparison",
+            "blocks": {}
+          },
+          "typography": {
+            "version": 1,
+            "title": {
+              "role": "hook",
+              "effect": "word"
+            },
+            "caption": {
+              "role": "body",
+              "effect": "none"
+            }
+          }
+        }
+      },
+      {
+        "startFrame": 220,
+        "durationFrames": 76,
+        "headline": "One place to review",
+        "subhead": "Put the important fields first.",
+        "customData": {
+          "layout": {
+            "version": 1,
+            "preset": "product",
+            "blocks": {}
+          },
+          "typography": {
+            "version": 1,
+            "title": {
+              "role": "quote",
+              "effect": "tracking"
+            },
+            "caption": {
+              "role": "body",
+              "effect": "none"
+            }
+          }
+        }
+      },
+      {
+        "startFrame": 296,
+        "durationFrames": 77,
+        "headline": "5",
+        "subhead": "Source files in one report.",
+        "customData": {
+          "layout": {
+            "version": 1,
+            "preset": "statistic",
+            "blocks": {}
+          },
+          "typography": {
+            "version": 1,
+            "title": {
+              "role": "number",
+              "effect": "counter"
+            },
+            "caption": {
+              "role": "subtitle",
+              "effect": "none"
+            }
+          }
+        }
+      },
+      {
+        "startFrame": 373,
+        "durationFrames": 77,
+        "headline": "Ready to share",
+        "subhead": "Check your report before you send it.",
+        "customData": {
+          "layout": {
+            "version": 1,
+            "preset": "punchline",
+            "blocks": {}
+          },
+          "typography": {
+            "version": 1,
+            "title": {
+              "role": "hero",
+              "effect": "rise"
+            },
+            "caption": {
+              "role": "caption",
+              "effect": "none"
+            }
+          }
+        }
+      }
+    ]
+  },
+  "suspense.acstudio": {
+    "sha256": "68735fb84b7f02a19b8c624a6ab2ec3274d014ef60af3b48d5bfb8dcf7889d82",
+    "locale": "en",
+    "title": "The last light",
+    "audioClips": [
+      {
+        "clipId": "noir-suspense-audio",
+        "startSample": 0,
+        "durationSamples": 768000,
+        "volume": 0.85,
+        "theme": "suspense"
+      }
+    ],
+    "shots": [
+      {
+        "startFrame": 0,
+        "durationFrames": 120,
+        "headline": "The last light",
+        "subhead": "“There’s nobody in the corridor.”",
+        "customData": {
+          "layout": {
+            "version": 1,
+            "preset": "silhouette",
+            "blocks": {}
+          },
+          "typography": {
+            "version": 1,
+            "title": {
+              "role": "hero",
+              "effect": "suspense",
+              "length": 72
+            },
+            "caption": {
+              "role": "whisper",
+              "effect": "line",
+              "contrast": "outline",
+              "startFrame": 8,
+              "stagger": 5
+            }
+          }
+        }
+      },
+      {
+        "startFrame": 120,
+        "durationFrames": 120,
+        "headline": "A switch clicks",
+        "subhead": "The light stays on.\n\nNobody is near the switch.",
+        "customData": {
+          "layout": {
+            "version": 1,
+            "preset": "reveal",
+            "blocks": {}
+          },
+          "typography": {
+            "version": 1,
+            "title": {
+              "role": "hook",
+              "effect": "echo"
+            },
+            "caption": {
+              "role": "body",
+              "effect": "rise"
+            }
+          }
+        }
+      },
+      {
+        "startFrame": 240,
+        "durationFrames": 120,
+        "headline": "The shadow moved first",
+        "subhead": "A note slips under the door.",
+        "customData": {
+          "layout": {
+            "version": 1,
+            "preset": "silhouette",
+            "blocks": {}
+          },
+          "typography": {
+            "version": 1,
+            "title": {
+              "role": "note",
+              "effect": "type"
+            },
+            "caption": {
+              "role": "subtitle",
+              "effect": "tracking"
+            }
+          }
+        }
+      },
+      {
+        "startFrame": 360,
+        "durationFrames": 120,
+        "headline": "Don’t turn around.",
+        "subhead": "“It’s already behind you.”",
+        "customData": {
+          "layout": {
+            "version": 1,
+            "preset": "punchline",
+            "blocks": {}
+          },
+          "typography": {
+            "version": 1,
+            "title": {
+              "role": "note",
+              "effect": "rise"
+            },
+            "caption": {
+              "role": "whisper",
+              "effect": "suspense"
+            }
+          }
+        }
+      }
+    ]
+  }
+}

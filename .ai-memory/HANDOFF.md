@@ -1,3 +1,13 @@
+# AnyConverter Phase 03 handoff
+
+Phase 03 implementation is local on `feat/create-studio-phase-03` in the isolated checkout. Its source commit is `017dd38a2183889f04f5629b2f98d4503f088001`, based on the verified Phase 02 branch tip. Fresh evidence includes the two 16-second variants, the three 15-second product formats, translated copies, archive edits, parity, independent visual findings and Chromium regressions.
+
+**AWAITING_OWNER_VISUAL_APPROVAL · NOT PUSHED / NOT MERGED / NOT DEPLOYED**
+
+[Phase 03 handoff](../reports/creative-studio/visual-quality/phase-03/PHASE_HANDOFF.md) · [Evidence inventory](../reports/creative-studio/visual-quality/phase-03/EVIDENCE_INDEX.md)
+
+---
+
 # AnyConverter Phase 02 handoff
 
 The Phase 02 implementation and repair evidence were published to `feat/create-studio-visual-quality_PR`. The original implementation commit is `6ab952968ae2825a666b55674c0e6c50b2e1fb27`. The repaired implementation and evidence commit is `1fe7e081922cf298aed3e7c8f631407c2baa6af3`. Later commits on the branch publish the roadmap and handoff documentation.

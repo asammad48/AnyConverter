@@ -1,0 +1,11 @@
+✔ tests/creative-studio/unit/test_phase03_schema_and_persistence.js (89.843246ms)
+✔ tests/creative-studio/unit/test_phase05_animation_and_rendering.js (40.814944ms)
+✔ tests/creative-studio/unit/test_phase06_timeline_audio_captions.js (52.192491ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 192.903489

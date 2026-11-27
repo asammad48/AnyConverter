@@ -2246,3 +2246,9 @@ ADR-051: Tool-to-Tool Workflow Chaining for JSON Group (JSON Formatter → Compa
 **Date** 2026-11-27
 
 A cinematic shot opts into normalized, constraint-based composition through `customData.layout.version`. CreativeDirector uses the same evaluator for preview, PNG and WebCodecs video. Legacy wide shots keep their original renderer and archives. The editor draws guides after rendering the preview frame. System fonts and native Canvas preserve local, static-site operation.
+
+## ADR-094 Creative Studio typography cues
+
+**Date** 2026-11-27
+
+Cinematic shots opt into professional typography through `customData.typography.version`. Existing title and caption strings remain the editable text source. Cue timing, semantic roles, matched phrase styles and optional CTA stay declarative in the same archived shot. The existing Phase 02 solver allocates text bounds and Canvas preflights local font families before measuring. The canonical scene evaluator provides preview, PNG and frame-deterministic WebCodecs output. The Phase 01 and Phase 02 sample archive PNGs each match the pinned baseline after reopening. [Phase 03 handoff](../reports/creative-studio/visual-quality/phase-03/PHASE_HANDOFF.md)
