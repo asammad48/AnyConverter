@@ -1,0 +1,659 @@
+{
+  "chromium": {
+    "version": "156.0.8078.79",
+    "cases": [
+      "single-frame cue settles on its only frame",
+      "explicit paragraphs",
+      "punctuation stays attached during long-word wrapping",
+      "2× layout shrinks to 40 px normalized floor then ellipsizes",
+      "fixed-size ellipsis",
+      "repeated styled phrase",
+      "glyph raster Café, acción, ¿qué?",
+      "glyph raster Ærø, blåbær, åbent",
+      "glyph raster 品質",
+      "glyph raster 👩🏽‍💻",
+      "joined emoji is one reveal unit",
+      "tracking metric or graceful fallback"
+    ],
+    "motion": {
+      "line": [
+        {
+          "hash": -494464731,
+          "pixels": 0
+        },
+        {
+          "hash": -494464731,
+          "pixels": 0
+        },
+        {
+          "hash": 1212445892,
+          "pixels": 33507
+        },
+        {
+          "hash": 1556178759,
+          "pixels": 33514
+        },
+        {
+          "hash": -2049353257,
+          "pixels": 33514
+        },
+        {
+          "hash": -2049353257,
+          "pixels": 33514
+        },
+        {
+          "hash": -494464731,
+          "pixels": 0
+        }
+      ],
+      "word": [
+        {
+          "hash": -494464731,
+          "pixels": 0
+        },
+        {
+          "hash": -494464731,
+          "pixels": 0
+        },
+        {
+          "hash": 1544610217,
+          "pixels": 25672
+        },
+        {
+          "hash": 1078080515,
+          "pixels": 33514
+        },
+        {
+          "hash": -2049353257,
+          "pixels": 33514
+        },
+        {
+          "hash": -2049353257,
+          "pixels": 33514
+        },
+        {
+          "hash": -494464731,
+          "pixels": 0
+        }
+      ],
+      "character": [
+        {
+          "hash": -494464731,
+          "pixels": 0
+        },
+        {
+          "hash": -494464731,
+          "pixels": 0
+        },
+        {
+          "hash": 44687560,
+          "pixels": 15057
+        },
+        {
+          "hash": 103040471,
+          "pixels": 33514
+        },
+        {
+          "hash": -2049353257,
+          "pixels": 33514
+        },
+        {
+          "hash": -2049353257,
+          "pixels": 33514
+        },
+        {
+          "hash": -494464731,
+          "pixels": 0
+        }
+      ],
+      "rise": [
+        {
+          "hash": -494464731,
+          "pixels": 0
+        },
+        {
+          "hash": -494464731,
+          "pixels": 0
+        },
+        {
+          "hash": -247018826,
+          "pixels": 22087
+        },
+        {
+          "hash": 657665985,
+          "pixels": 32548
+        },
+        {
+          "hash": -2049353257,
+          "pixels": 33514
+        },
+        {
+          "hash": -2049353257,
+          "pixels": 33514
+        },
+        {
+          "hash": -494464731,
+          "pixels": 0
+        }
+      ],
+      "type": [
+        {
+          "hash": -494464731,
+          "pixels": 0
+        },
+        {
+          "hash": -494464731,
+          "pixels": 0
+        },
+        {
+          "hash": 318338622,
+          "pixels": 8005
+        },
+        {
+          "hash": 1666372568,
+          "pixels": 19405
+        },
+        {
+          "hash": -2049353257,
+          "pixels": 33514
+        },
+        {
+          "hash": -2049353257,
+          "pixels": 33514
+        },
+        {
+          "hash": -494464731,
+          "pixels": 0
+        }
+      ],
+      "tracking": [
+        {
+          "hash": -494464731,
+          "pixels": 0
+        },
+        {
+          "hash": -2029786251,
+          "pixels": 33480
+        },
+        {
+          "hash": 1457112212,
+          "pixels": 33519
+        },
+        {
+          "hash": 1774158290,
+          "pixels": 33521
+        },
+        {
+          "hash": -2049353257,
+          "pixels": 33514
+        },
+        {
+          "hash": -2049353257,
+          "pixels": 33514
+        },
+        {
+          "hash": -494464731,
+          "pixels": 0
+        }
+      ],
+      "underline": [
+        {
+          "hash": -494464731,
+          "pixels": 0
+        },
+        {
+          "hash": -2049353257,
+          "pixels": 33514
+        },
+        {
+          "hash": 842469650,
+          "pixels": 36754
+        },
+        {
+          "hash": 1069274623,
+          "pixels": 39284
+        },
+        {
+          "hash": 2043975113,
+          "pixels": 39819
+        },
+        {
+          "hash": 2043975113,
+          "pixels": 39819
+        },
+        {
+          "hash": -494464731,
+          "pixels": 0
+        }
+      ],
+      "highlight": [
+        {
+          "hash": -494464731,
+          "pixels": 0
+        },
+        {
+          "hash": -2049353257,
+          "pixels": 33514
+        },
+        {
+          "hash": -1519471505,
+          "pixels": 40791
+        },
+        {
+          "hash": -1329449928,
+          "pixels": 46505
+        },
+        {
+          "hash": -1287687218,
+          "pixels": 47654
+        },
+        {
+          "hash": -1287687218,
+          "pixels": 47654
+        },
+        {
+          "hash": -494464731,
+          "pixels": 0
+        }
+      ],
+      "echo": [
+        {
+          "hash": -494464731,
+          "pixels": 0
+        },
+        {
+          "hash": -494464731,
+          "pixels": 0
+        },
+        {
+          "hash": -823949868,
+          "pixels": 89701
+        },
+        {
+          "hash": -305884109,
+          "pixels": 84010
+        },
+        {
+          "hash": -104176506,
+          "pixels": 83405
+        },
+        {
+          "hash": -104176506,
+          "pixels": 83405
+        },
+        {
+          "hash": -494464731,
+          "pixels": 0
+        }
+      ],
+      "suspense": [
+        {
+          "hash": -494464731,
+          "pixels": 0
+        },
+        {
+          "hash": -494464731,
+          "pixels": 0
+        },
+        {
+          "hash": -596741073,
+          "pixels": 32838
+        },
+        {
+          "hash": -1751719292,
+          "pixels": 33507
+        },
+        {
+          "hash": -2049353257,
+          "pixels": 33514
+        },
+        {
+          "hash": -2049353257,
+          "pixels": 33514
+        },
+        {
+          "hash": -494464731,
+          "pixels": 0
+        }
+      ],
+      "counter": [
+        {
+          "hash": -494464731,
+          "pixels": 0
+        },
+        {
+          "hash": -1885401811,
+          "pixels": 1912
+        },
+        {
+          "hash": -470865617,
+          "pixels": 3266
+        },
+        {
+          "hash": -654075641,
+          "pixels": 3284
+        },
+        {
+          "hash": 2121468289,
+          "pixels": 3662
+        },
+        {
+          "hash": 2121468289,
+          "pixels": 3662
+        },
+        {
+          "hash": -494464731,
+          "pixels": 0
+        }
+      ],
+      "emphasis": [
+        {
+          "hash": -494464731,
+          "pixels": 0
+        },
+        {
+          "hash": -2049353257,
+          "pixels": 33514
+        },
+        {
+          "hash": -888716304,
+          "pixels": 33514
+        },
+        {
+          "hash": 1848548383,
+          "pixels": 33514
+        },
+        {
+          "hash": 1902933689,
+          "pixels": 33514
+        },
+        {
+          "hash": 1902933689,
+          "pixels": 33514
+        },
+        {
+          "hash": -494464731,
+          "pixels": 0
+        }
+      ]
+    },
+    "tracking": true,
+    "measuredWidths": {
+      "tight": 288.232421875,
+      "wide": 328.232421875
+    },
+    "safe": {
+      "1920x1080": {
+        "outline": {
+          "contrast": 8.271257175662093,
+          "safe": {
+            "x": 115,
+            "y": 76,
+            "width": 1690,
+            "height": 918
+          },
+          "caption": {
+            "x": 115,
+            "y": 838,
+            "width": 1268,
+            "height": 156,
+            "align": "left",
+            "depth": 2
+          }
+        },
+        "shadow": {
+          "contrast": 8.271257175662093,
+          "safe": {
+            "x": 115,
+            "y": 76,
+            "width": 1690,
+            "height": 918
+          },
+          "caption": {
+            "x": 115,
+            "y": 838,
+            "width": 1268,
+            "height": 156,
+            "align": "left",
+            "depth": 2
+          }
+        },
+        "panel": {
+          "contrast": 13.944243787637385,
+          "safe": {
+            "x": 115,
+            "y": 76,
+            "width": 1690,
+            "height": 918
+          },
+          "caption": {
+            "x": 115,
+            "y": 838,
+            "width": 1268,
+            "height": 156,
+            "align": "left",
+            "depth": 2
+          }
+        }
+      },
+      "1080x1920": {
+        "outline": {
+          "contrast": 8.271257175662093,
+          "safe": {
+            "x": 86,
+            "y": 230,
+            "width": 832,
+            "height": 1325
+          },
+          "caption": {
+            "x": 115,
+            "y": 1177,
+            "width": 774,
+            "height": 351,
+            "align": "left",
+            "depth": 2
+          }
+        },
+        "shadow": {
+          "contrast": 8.271257175662093,
+          "safe": {
+            "x": 86,
+            "y": 230,
+            "width": 832,
+            "height": 1325
+          },
+          "caption": {
+            "x": 115,
+            "y": 1177,
+            "width": 774,
+            "height": 351,
+            "align": "left",
+            "depth": 2
+          }
+        },
+        "panel": {
+          "contrast": 13.944243787637385,
+          "safe": {
+            "x": 86,
+            "y": 230,
+            "width": 832,
+            "height": 1325
+          },
+          "caption": {
+            "x": 115,
+            "y": 1177,
+            "width": 774,
+            "height": 351,
+            "align": "left",
+            "depth": 2
+          }
+        }
+      },
+      "1080x1080": {
+        "outline": {
+          "contrast": 8.271257175662093,
+          "safe": {
+            "x": 86,
+            "y": 86,
+            "width": 907,
+            "height": 896
+          },
+          "caption": {
+            "x": 104,
+            "y": 767,
+            "width": 871,
+            "height": 215,
+            "align": "left",
+            "depth": 2
+          }
+        },
+        "shadow": {
+          "contrast": 8.271257175662093,
+          "safe": {
+            "x": 86,
+            "y": 86,
+            "width": 907,
+            "height": 896
+          },
+          "caption": {
+            "x": 104,
+            "y": 767,
+            "width": 871,
+            "height": 215,
+            "align": "left",
+            "depth": 2
+          }
+        },
+        "panel": {
+          "contrast": 13.944243787637385,
+          "safe": {
+            "x": 86,
+            "y": 86,
+            "width": 907,
+            "height": 896
+          },
+          "caption": {
+            "x": 104,
+            "y": 767,
+            "width": 871,
+            "height": 215,
+            "align": "left",
+            "depth": 2
+          }
+        }
+      },
+      "3840x2160": {
+        "outline": {
+          "contrast": 8.271257175662093,
+          "safe": {
+            "x": 230,
+            "y": 151,
+            "width": 3379,
+            "height": 1836
+          },
+          "caption": {
+            "x": 230,
+            "y": 1675,
+            "width": 2534,
+            "height": 312,
+            "align": "left",
+            "depth": 2
+          }
+        },
+        "shadow": {
+          "contrast": 8.271257175662093,
+          "safe": {
+            "x": 230,
+            "y": 151,
+            "width": 3379,
+            "height": 1836
+          },
+          "caption": {
+            "x": 230,
+            "y": 1675,
+            "width": 2534,
+            "height": 312,
+            "align": "left",
+            "depth": 2
+          }
+        },
+        "panel": {
+          "contrast": 13.944243787637385,
+          "safe": {
+            "x": 230,
+            "y": 151,
+            "width": 3379,
+            "height": 1836
+          },
+          "caption": {
+            "x": 230,
+            "y": 1675,
+            "width": 2534,
+            "height": 312,
+            "align": "left",
+            "depth": 2
+          }
+        }
+      }
+    },
+    "fonts": [
+      [
+        "sans",
+        true
+      ],
+      [
+        "serif",
+        true
+      ],
+      [
+        "display",
+        true
+      ]
+    ],
+    "archive": "word-pop, pattern, outline persisted",
+    "capabilities": {
+      "engine": "NativeCanvas",
+      "hardwareAccelerated": true,
+      "webCodecsSupported": true,
+      "audioEncoderSupported": true,
+      "offscreenCanvasSupported": true,
+      "mediaRecorderFallback": true,
+      "muxerAvailable": true,
+      "supportedVideoCodecs": [
+        "vp8",
+        "vp09.00.10.08",
+        "avc1.4d002a",
+        "av01.0.04M.08"
+      ],
+      "supportedAudioCodecs": [
+        "opus"
+      ],
+      "recommendedCodec": "vp8",
+      "recommendedFormat": "video/webm"
+    },
+    "stillExport": "From raw data to clear answers.png",
+    "videoExport": {
+      "engine": "WebCodecs-Deterministic",
+      "bytes": 190004,
+      "mimeType": "video/webm;codecs=vp8",
+      "filename": "compatibility-chromium.webm",
+      "streams": [
+        {
+          "codec_name": "vp8",
+          "nb_read_frames": "60"
+        },
+        {
+          "codec_name": "opus",
+          "nb_read_frames": "101"
+        }
+      ]
+    },
+    "fontFallback": "The local font is unavailable. Using the session fallback."
+  },
+  "firefox": {
+    "launchError": "Error: browserType.launch: Executable doesn't exist at /home/agent/.cache/ms-playwright/firefox-1555/firefox/firefox\n╔════════════════════════════════════════════════════════════╗\n║ Looks like Playwright was just installed or updated.       ║\n║ Please run the following command to download new browsers: ║\n║                                                            ║\n║     npx playwright install                                 ║\n║                                                            ║\n║ <3 Playwright Team                                         ║\n╚════════════════════════════════════════════════════════════╝"
+  },
+  "webkit": {
+    "launchError": "Error: browserType.launch: Executable doesn't exist at /home/agent/.cache/ms-playwright/webkit-2370/pw_run.sh\n╔════════════════════════════════════════════════════════════╗\n║ Looks like Playwright was just installed or updated.       ║\n║ Please run the following command to download new browsers: ║\n║                                                            ║\n║     npx playwright install                                 ║\n║                                                            ║\n║ <3 Playwright Team                                         ║\n╚════════════════════════════════════════════════════════════╝"
+  }
+}

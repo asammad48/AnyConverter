@@ -121,6 +121,7 @@
           <option value="cinematic-saas" selected>Cinematic SaaS (24s / 5-Shot)</option>
           <option value="character-comedy">Parrot Character Comedy (9s Pilot)</option>
           <option value="minimal-suspense">Minimal Noir Suspense (9s Pilot)</option>
+          <option value="motion-showreel">Motion showreel (20s)</option>
         </select>
         <select id="cs-render-mode-select" class="cs-select" aria-label="Render Quality Mode" title="Render Quality Mode">
           <option value="production" selected>Mode: Production Quality</option>
@@ -251,7 +252,9 @@
             <div id="cs-timeline-video-track" class="cs-timeline-track" style="display: flex; gap: 2px; height: 38px; padding: 2px; position: relative;">
               <!-- Populated with dynamic shot blocks -->
             </div>
-            <div class="cs-timeline-track" style="height: 32px;">
+            <div id="cs-motion-caption-track" class="cs-timeline-track" aria-label="Captions" hidden></div>
+            <div id="cs-motion-audio-track" class="cs-timeline-track" aria-label="Audio" hidden></div>
+            <div class="cs-timeline-track cs-legacy-audio-track" style="height: 32px;">
               <div class="cs-clip" style="left: 0; width: 100%; background: rgba(16, 185, 129, 0.35); border-color: #34d399; font-size: 11px; display: flex; align-items: center; padding-left: 8px;">
                 🎵 Synthesized Audio Master (Stereo 48kHz PCM)
               </div>
@@ -289,6 +292,7 @@
           <label class="cs-form-label" for="cs-shot-subhead">Subhead / Narrative</label>
           <textarea id="cs-shot-subhead" class="cs-input" rows="2" placeholder="Shot narrative subhead" style="margin-bottom: 8px; resize: vertical;"></textarea>
           <details id="cs-typography-editor"></details>
+          <details id="cs-motion-editor"></details>
           
           <label class="cs-form-label" for="cs-shot-motif-select">Visual Graphic Motif</label>
           <select id="cs-shot-motif-select" class="cs-select" style="width: 100%; margin-bottom: 8px;">
@@ -412,6 +416,11 @@
   <script src="/assets/js/creative-studio/visual/kinetic-type.js" defer></script>
   <script src="/assets/js/creative-studio/visual/text-layout.js" defer></script>
   <script src="/assets/js/creative-studio/visual/typography-editor.js" defer></script>
+  <script src="/assets/js/creative-studio/visual/easings.js" defer></script>
+  <script src="/assets/js/creative-studio/visual/motion-graph.js" defer></script>
+  <script src="/assets/js/creative-studio/visual/puppet.js" defer></script>
+  <script src="/assets/js/creative-studio/visual/motion-editor.js" defer></script>
+  <script src="/assets/js/creative-studio/visual/motion-showreel.js" defer></script>
   <script src="/assets/js/creative-studio/visual/layout-composition.js" defer></script>
   <script src="/assets/js/creative-studio/visual/layout-editor.js" defer></script>
   <script src="/assets/js/creative-studio/visual/creative-director.js?v=20261125" defer></script>

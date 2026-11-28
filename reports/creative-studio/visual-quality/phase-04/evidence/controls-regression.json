@@ -1,0 +1,20 @@
+{
+  "en": {
+    "systemReducedMotion": true,
+    "propertyLabel": "Camera shake",
+    "editableBezier": true,
+    "groupTransform": true
+  },
+  "es": {
+    "systemReducedMotion": true,
+    "propertyLabel": "Vibración de cámara",
+    "editableBezier": true,
+    "groupTransform": true
+  },
+  "da": {
+    "systemReducedMotion": true,
+    "propertyLabel": "Kamerarystelse",
+    "editableBezier": true,
+    "groupTransform": true
+  }
+}

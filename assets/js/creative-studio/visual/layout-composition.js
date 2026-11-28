@@ -104,7 +104,42 @@
     ctx.restore();
   }
 
-  function drawSubject(ctx, shot, layout, box, palette, phase, locale) {
+  function drawMotionLayer(ctx, states, id, box, draw, cameraBox = null, groupBox = box) {
+    const chain = root.StudioMotionGraph?.chain(states, id) || [];
+    if (cameraBox && states.has('camera') && !chain.some(state => state.id === 'camera')) chain.unshift(states.get('camera'));
+    if (!chain.length) return draw();
+    ctx.save();
+    try {
+      ctx.beginPath();
+      ctx.rect(box.x, box.y, box.width, box.height);
+      ctx.clip();
+      for (const state of chain) {
+        const bounds = state.id === 'camera' && cameraBox ? cameraBox : state.id === id ? box : groupBox;
+        const cx = bounds.x + bounds.width / 2;
+        const cy = bounds.y + bounds.height / 2;
+        ctx.globalAlpha *= state.opacity;
+        ctx.translate(cx + state.x * bounds.width, cy + (state.y + state.maskOffset) * bounds.height);
+        ctx.rotate(state.rotation * Math.PI / 180);
+        ctx.scale(state.scaleX, state.scaleY);
+        ctx.translate(-cx, -cy);
+        if (state.clip < 1) {
+          ctx.beginPath();
+          ctx.rect(bounds.x, bounds.y, bounds.width * state.clip, bounds.height);
+          ctx.clip();
+        }
+      }
+      const state = states.get(id);
+      draw(state);
+      if (state?.underline > 0) {
+        ctx.fillStyle = state.color || '#eeb875';
+        ctx.fillRect(box.x + box.width * .07, box.y + box.height * .90, box.width * .86 * state.underline, Math.max(2, box.height * .025));
+      }
+    } finally {
+      ctx.restore();
+    }
+  }
+
+  function drawSubject(ctx, shot, layout, box, palette, phase, locale, states, puppet) {
     const { x, y, width: w, height: h } = box;
     if (w < 4 || h < 4) return;
     const preset = layout.preset;
@@ -122,7 +157,40 @@
     const elevation = Math.min(h * .08, tokens.propElevation * Math.min(w, h) / 240);
     const offset = (1 - settle) * elevation * (box.depth + 1) / 3;
     ctx.translate(0, offset);
-    if (isCharacter) {
+    if (isCharacter && puppet) {
+      const backdrop = ctx.createLinearGradient(x, y, x + w, y + h);
+      backdrop.addColorStop(0, '#202b43');
+      backdrop.addColorStop(1, '#465b66');
+      panel(ctx, x, y, w, h - offset, tokens.radius, backdrop);
+      const floor = y + h * .86;
+      panel(ctx, x + w * .14, floor, w * .66, h * .04, h * .02, '#b68765');
+      drawMotionLayer(ctx, states, 'puppet', box, state => root.StudioPuppet.draw(ctx, box, state, 'calm'), box);
+      const prop = { x: x + w * .66, y: y + h * .24, width: w * .31, height: h * .55 };
+      if (states.has('prop')) drawMotionLayer(ctx, states, 'prop', prop, state => {
+        const size = Math.min(prop.width * .53, prop.height * .35);
+        const px = prop.x + prop.width * .48 - size * .5;
+        const py = prop.y + prop.height * .70 - size * .5;
+        const open = states.get('puppet')?.poseId === 'shock';
+        if (open) {
+          ctx.fillStyle = '#dd9b6e';
+          ctx.beginPath();
+          ctx.moveTo(px, py + size * .18);
+          ctx.lineTo(px + size * .5, py - size * .35);
+          ctx.lineTo(px + size, py + size * .18);
+          ctx.fill();
+          panel(ctx, px + size * .15, py - size * .14, size * .70, size * .71, size * .08, '#fff1cf');
+        }
+        panel(ctx, px, py + (open ? size * .26 : 0), size, size * (open ? .74 : 1), size * .13, state?.color || '#f1c383');
+        ctx.strokeStyle = '#5b4051';
+        ctx.lineWidth = Math.max(1, size * .045);
+        ctx.beginPath();
+        const fold = open ? .37 : .15;
+        ctx.moveTo(px, py + size * fold);
+        ctx.lineTo(px + size * .5, py + size * (fold + .34));
+        ctx.lineTo(px + size, py + size * fold);
+        ctx.stroke();
+      }, box, box);
+    } else if (isCharacter) {
       const backdrop = ctx.createLinearGradient(x, y, x + w, y + h);
       backdrop.addColorStop(0, '#222138');
       backdrop.addColorStop(1, '#465071');
@@ -148,6 +216,37 @@
         panel(ctx, mx - size * .015, my + size * .04, size * .03, size * .20, tokens.radius / 3, '#d2dae9');
         panel(ctx, mx - size * .085, my + size * .22, size * .17, size * .025, tokens.radius / 3, '#d2dae9');
       }
+    } else if (shot.customData?.motion?.subjectVisual === 'doorway') {
+      const opening = x + w * .61;
+      const floor = y + h * .86;
+      const light = ctx.createRadialGradient(opening, y + h * .52, 0, opening, y + h * .52, w * .65);
+      light.addColorStop(0, '#80585a');
+      light.addColorStop(.55, '#312a3b');
+      light.addColorStop(1, '#171928');
+      panel(ctx, x, y, w, h - offset, tokens.radius, light);
+      const left = x + w * .27;
+      const right = x + w * .74;
+      const top = y + h * .12;
+      panel(ctx, left, top, right - left, floor - top, 0, '#e6b483');
+      panel(ctx, left + w * .024, top + h * .035, right - left - w * .045, floor - top - h * .035, 0, '#593d4c');
+      ctx.fillStyle = '#bc846b';
+      ctx.beginPath();
+      ctx.moveTo(left + w * .025, top + h * .035);
+      ctx.lineTo(x + w * .44, top + h * .11);
+      ctx.lineTo(x + w * .44, floor + h * .035);
+      ctx.lineTo(left + w * .025, floor);
+      ctx.fill();
+      ctx.fillStyle = '#1c1a2a';
+      ctx.beginPath();
+      ctx.ellipse(opening, y + h * .40, w * .067, h * .13, -.1, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.beginPath();
+      ctx.moveTo(opening - w * .10, y + h * .54);
+      ctx.quadraticCurveTo(opening, y + h * .46, opening + w * .10, y + h * .55);
+      ctx.lineTo(opening + w * .14, floor);
+      ctx.lineTo(opening - w * .14, floor);
+      ctx.fill();
+      panel(ctx, x + w * .408, y + h * .57, w * .014, h * .023, 3, '#fff0bb');
     } else if (preset === 'punchline') {
       ctx.fillStyle = palette.accent;
       ctx.textAlign = 'center';
@@ -290,11 +389,15 @@
         const labelWidth = gw * .29;
         labels.forEach((label, index) => {
           const y = top + index * row;
-          panel(ctx, left, y + row * .09, labelWidth, row * .78, row * .12, palette.overlay);
-          text(ctx, label, { x: left, y, width: labelWidth, height: row }, 46, 700,
-            palette.foreground, row / 67, 'center');
-          panel(ctx, gx + gw * .41, y + row * .29, gw * (.27 + (index % 3) * .12) * (.86 + progress * .14),
-            row * .38, row * .18, index % 2 ? palette.muted : palette.accent);
+          const entry = { x: gx, y, width: gw, height: row };
+          drawMotionLayer(ctx, states, 'entry-' + label.toLowerCase(), entry, state => {
+            panel(ctx, left, y + row * .09, labelWidth, row * .78, row * .12, palette.overlay);
+            text(ctx, state?.animated.has('number') ? String(Math.round(state.number)) : label,
+              { x: left, y, width: labelWidth, height: row }, 46, 700,
+              palette.foreground, row / 67, 'center');
+            panel(ctx, gx + gw * .41, y + row * .29, gw * (.27 + (index % 3) * .12) * (.86 + progress * .14),
+              row * .38, row * .18, state?.color || (index % 2 ? palette.muted : palette.accent));
+          }, null, box);
         });
       } else if (preset === 'hero') {
         const unit = Math.min(gw / 450, gh / 250);
@@ -347,7 +450,7 @@
     ctx.restore();
   }
 
-  function render(ctx, shot, layout, frame, width, height, locale = 'en', fps = 30) {
+  function render(ctx, shot, layout, frame, width, height, locale = 'en', fps = 30, options = {}) {
     const { scale: measureScale } = solver.geometry(width, height);
     const typography = shot.customData?.typography?.version === 1 ? shot.customData.typography : null;
     const makeNode = (role, content) => ({
@@ -384,7 +487,10 @@
     const accent = /^#[0-9a-f]{6}$/i.test(shot.accentColor) && contrast(shot.accentColor, theme.surface) >= 3
       ? shot.accentColor : theme.accent;
     const palette = { ...theme, accent };
-    const phase = Math.max(0, Math.min(1, frame / Math.max(1, shot.durationFrames - 1)));
+    const graph = shot.customData?.motion;
+    const states = root.StudioMotionGraph?.evaluate(graph, frame, shot.durationFrames, options) || new Map();
+    resolved.motion = states;
+    const phase = options.reduced && graph?.version === 1 ? 1 : Math.max(0, Math.min(1, frame / Math.max(1, shot.durationFrames - 1)));
     ctx.save();
     ctx.fillStyle = palette.background;
     ctx.fillRect(0, 0, width, height);
@@ -397,59 +503,63 @@
     for (const role of [...solver.roles].sort((a, b) => blocks[a].depth - blocks[b].depth)) {
       const box = blocks[role];
       if (role === 'subject') {
-        drawSubject(ctx, shot, layout, box, palette, phase, String(locale || 'en').slice(0, 2));
+        drawMotionLayer(ctx, states, role, box, state => drawSubject(ctx, shot, layout, box,
+          state?.color ? { ...palette, accent: state.color } : palette, phase, String(locale || 'en').slice(0, 2),
+          states, graph?.puppet === 'parrot'), graph?.puppet === 'parrot' ? null : box);
         continue;
       }
-      const caption = role === 'caption';
-      const color = caption && !typography ? palette.muted : palette.foreground;
-      const pattern = caption && captionNode?.backdrop === 'pattern'
-        ? (layout.palette === 'light' ? ['#fff9ef', '#dacdc3', '#e3d6c2'] : ['#20283b', '#414b62', '#343d56'])
-        : null;
-      let inner = box;
-      if (caption) {
-        if (captionNode && (frame < captionNode.startFrame || frame >= captionNode.endFrame)) continue;
-        const card = !captionNode || captionNode.contrast === 'panel';
-        if (pattern) drawCaptionPattern(ctx, box, pattern, scale);
-        if (card && pattern) {
-          const inset = Math.min(9 * scale, box.height * .08, box.width * .08);
-          panel(ctx, box.x + inset, box.y + inset, box.width - 2 * inset, box.height - 2 * inset, tokens.radius * scale, palette.surface);
-        } else if (card && shot.artDirection === 'minimal-suspense' && !typography) {
-          panel(ctx, box.x, box.y + box.height * .18, Math.max(2, tokens.outline * scale), box.height * .64, 1, palette.accent);
-        } else if (card) {
-          const radius = shot.artDirection === 'character-comedy' ? tokens.radius * 1.45 : tokens.radius;
-          panel(ctx, box.x, box.y, box.width, box.height, radius * scale, palette.surface);
+      drawMotionLayer(ctx, states, role, box, () => {
+        const caption = role === 'caption';
+        const color = caption && !typography ? palette.muted : palette.foreground;
+        const pattern = caption && captionNode?.backdrop === 'pattern'
+          ? (layout.palette === 'light' ? ['#fff9ef', '#dacdc3', '#e3d6c2'] : ['#20283b', '#414b62', '#343d56'])
+          : null;
+        let inner = box;
+        if (caption) {
+          if (captionNode && (frame < captionNode.startFrame || frame >= captionNode.endFrame)) return;
+          const card = !captionNode || captionNode.contrast === 'panel';
+          if (pattern) drawCaptionPattern(ctx, box, pattern, scale);
+          if (card && pattern) {
+            const inset = Math.min(9 * scale, box.height * .08, box.width * .08);
+            panel(ctx, box.x + inset, box.y + inset, box.width - 2 * inset, box.height - 2 * inset, tokens.radius * scale, palette.surface);
+          } else if (card && shot.artDirection === 'minimal-suspense' && !typography) {
+            panel(ctx, box.x, box.y + box.height * .18, Math.max(2, tokens.outline * scale), box.height * .64, 1, palette.accent);
+          } else if (card) {
+            const radius = shot.artDirection === 'character-comedy' ? tokens.radius * 1.45 : tokens.radius;
+            panel(ctx, box.x, box.y, box.width, box.height, radius * scale, palette.surface);
+          }
+          const padding = Math.min(tokens.space.padding * scale, box.height * .18, box.width * .12);
+          inner = { x: box.x + padding, y: box.y + padding, width: box.width - padding * 2, height: box.height - padding * 2 };
         }
-        const padding = Math.min(tokens.space.padding * scale, box.height * .18, box.width * .12);
-        inner = { x: box.x + padding, y: box.y + padding, width: box.width - padding * 2, height: box.height - padding * 2 };
-      }
-      const background = caption && (!captionNode || captionNode.contrast === 'panel') && (typography || shot.artDirection !== 'minimal-suspense') ? palette.surface : palette.background;
-      const backgrounds = pattern ? (captionNode.contrast === 'panel' ? [palette.surface] : pattern) : [background];
-      const inkContrast = Math.min(...backgrounds.map(value => contrast(color, value)));
-      if (caption && typography) resolved.captionContrast = inkContrast;
-      if (inkContrast < 4.5) warnings.push({ type: 'contrast', roles: [role] });
-      if (typography) {
-        const node = caption ? captionNode : makeNode('title', shot.headline);
-        const typeScale = scale * 720 / 1080;
-        const ctaCopy = typeof typography.ctaCopy === 'string' ? typography.ctaCopy.slice(0, 180) : '';
-        if (caption && resolved.format === 'portrait') {
-          node.minSize = 40;
-          if (!typography.caption?.size) node.size = Math.max(50, node.size);
-        }
-        const ink = { ...palette, ink: color,
-          accent: backgrounds.every(value => contrast(palette.accent, value) >= 4.5) ? palette.accent : color };
-        if (!caption && ctaCopy.trim() && inner.height > 0) {
-          const ctaHeight = Math.min(inner.height * .34, 88 * scale);
-          const ctaBox = { ...inner, y: inner.y + inner.height - ctaHeight, height: ctaHeight };
-          inner = { ...inner, height: inner.height - ctaHeight - Math.min(ctaHeight * .18, 10 * scale) };
-          if (root.StudioTextLayout.draw(ctx, makeNode('cta', ctaCopy), ctaBox, typeScale, box.align, frame,
-            { ...ink, ink: ink.accent }, locale)) warnings.push({ type: 'text', roles: [role] });
-        }
-        if (node.content.trim() && root.StudioTextLayout.draw(ctx, node, inner, typeScale, box.align, frame, ink, locale)) {
+        const background = caption && (!captionNode || captionNode.contrast === 'panel') && (typography || shot.artDirection !== 'minimal-suspense') ? palette.surface : palette.background;
+        const backgrounds = pattern ? (captionNode.contrast === 'panel' ? [palette.surface] : pattern) : [background];
+        const inkContrast = Math.min(...backgrounds.map(value => contrast(color, value)));
+        if (caption && typography) resolved.captionContrast = inkContrast;
+        if (inkContrast < 4.5) warnings.push({ type: 'contrast', roles: [role] });
+        if (typography) {
+          const node = caption ? captionNode : makeNode('title', shot.headline);
+          const typeScale = scale * 720 / 1080;
+          const ctaCopy = typeof typography.ctaCopy === 'string' ? typography.ctaCopy.slice(0, 180) : '';
+          if (caption && resolved.format === 'portrait') {
+            node.minSize = 40;
+            if (!typography.caption?.size) node.size = Math.max(50, node.size);
+          }
+          const ink = { ...palette, ink: color,
+            accent: backgrounds.every(value => contrast(palette.accent, value) >= 4.5) ? palette.accent : color };
+          if (!caption && ctaCopy.trim() && inner.height > 0) {
+            const ctaHeight = Math.min(inner.height * .34, 88 * scale);
+            const ctaBox = { ...inner, y: inner.y + inner.height - ctaHeight, height: ctaHeight };
+            inner = { ...inner, height: inner.height - ctaHeight - Math.min(ctaHeight * .18, 10 * scale) };
+            if (root.StudioTextLayout.draw(ctx, makeNode('cta', ctaCopy), ctaBox, typeScale, box.align, frame,
+              { ...ink, ink: ink.accent }, locale)) warnings.push({ type: 'text', roles: [role] });
+          }
+          if (node.content.trim() && root.StudioTextLayout.draw(ctx, node, inner, typeScale, box.align, frame, ink, locale)) {
+            warnings.push({ type: 'text', roles: [role] });
+          }
+        } else if (text(ctx, String((caption ? shot.subhead : shot.headline) || ''), inner, caption ? (resolved.format === 'portrait' ? 34 : tokens.type.body) : tokens.type.title, caption ? 550 : 790, color, scale, box.align)) {
           warnings.push({ type: 'text', roles: [role] });
         }
-      } else if (text(ctx, String((caption ? shot.subhead : shot.headline) || ''), inner, caption ? (resolved.format === 'portrait' ? 34 : tokens.type.body) : tokens.type.title, caption ? 550 : 790, color, scale, box.align)) {
-        warnings.push({ type: 'text', roles: [role] });
-      }
+      });
     }
     ctx.restore();
     return resolved;

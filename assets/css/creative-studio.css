@@ -607,27 +607,27 @@
   }
 }
 
-:is(#cs-layout-editor, #cs-typography-editor) {
+:is(#cs-layout-editor, #cs-typography-editor, #cs-motion-editor) {
   margin-block: 8px 16px;
   padding: 8px;
   border: 1px solid var(--cs-border);
   border-radius: 8px;
 }
 
-:is(#cs-layout-editor, #cs-typography-editor) summary {
+:is(#cs-layout-editor, #cs-typography-editor, #cs-motion-editor) summary {
   color: var(--cs-text-main);
   cursor: pointer;
   font-weight: 600;
 }
 
-:is(#cs-layout-editor, #cs-typography-editor) label {
+:is(#cs-layout-editor, #cs-typography-editor, #cs-motion-editor) label {
   display: block;
   color: var(--cs-text-muted);
   margin-top: 8px;
   font-size: 12px;
 }
 
-:is(#cs-layout-editor, #cs-typography-editor) select {
+:is(#cs-layout-editor, #cs-typography-editor, #cs-motion-editor) select {
   display: block;
   width: 100%;
   margin-top: 4px;
@@ -701,4 +701,52 @@
   margin-top: 8px;
   color: var(--cs-text-muted);
   font-size: 12px;
+}
+
+#cs-motion-editor :is(input:not([type="checkbox"]), select, canvas) {
+  display: block;
+  width: 100%;
+}
+#cs-motion-editor canvas[hidden] {
+  display: none;
+}
+#cs-motion-editor button {
+  margin: 4px 0 8px;
+}
+#cs-motion-editor input[type="checkbox"] {
+  margin-inline-start: 8px;
+}
+
+.cs-motion-clip {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  color: inherit;
+  text-align: start;
+  cursor: pointer;
+}
+#cs-motion-caption-track .cs-motion-clip {
+  background: #233854;
+  border-color: #527396;
+}
+#cs-motion-audio-track .cs-motion-clip {
+  background: #194b43;
+  border-color: #429080;
+}
+
+
+.cs-timeline-track[hidden] {
+  display: none;
+}
+.cs-motion-stage-status {
+  position: absolute;
+  top: 8px;
+  inset-inline-end: 8px;
+  padding: 5px 9px;
+  color: #e1f2ff;
+  background: #172235;
+  border: 1px solid #6087a7;
+  border-radius: 5px;
+  font-size: 12px;
+  pointer-events: none;
 }

@@ -1,3 +1,9 @@
+# AnyConverter Phase 04 handoff
+
+The owner approved the revised Phase 03 visuals and authorized Phase 04 on the pinned audit tip. The owner authorized publication of Phase 04 to its feature branch on 2026-11-28. The handoff includes the playable film, editable archives, independent visual review and exact source paths. [Phase 04 handoff](../reports/creative-studio/visual-quality/phase-04/PHASE_HANDOFF.md)
+
+---
+
 # AnyConverter Phase 03 audit correction handoff
 
 The first Phase 03 package was explicitly authorized for push and published to `feat/create-studio-phase-03` at `84db9d1ef8aec6b35db3c7d4b85e14b239952218`. The owner withheld visual acceptance in the follow-up audit and subsequently authorized publishing the revisions for review. The revised branch is `feat/create-studio-phase-03-audit`. Phase 04 has not started.

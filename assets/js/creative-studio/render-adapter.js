@@ -177,6 +177,14 @@ class NativeCanvasRenderAdapter extends RenderAdapter {
     if (project.shots?.some(shot => shot.customData?.typography?.version === 1)) {
       await globalThis.StudioFonts?.prepare();
     }
+    if (project.shots?.some(shot => shot.customData?.motion?.puppet === 'parrot')) {
+      try {
+        await globalThis.StudioPuppet.prepare();
+      } catch (error) {
+        this.isRendering = false;
+        throw error;
+      }
+    }
     const caps = await this.checkCapabilities();
     const { WebMMuxerLib, Mp4MuxerLib } = this._resolveMuxers();
 

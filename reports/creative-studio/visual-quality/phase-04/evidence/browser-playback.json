@@ -1,0 +1,2999 @@
+{
+  "duration": 20,
+  "currentTime": 20,
+  "ended": true,
+  "resolution": [
+    1280,
+    720
+  ],
+  "callbackCount": 597,
+  "totalVideoFrames": 600,
+  "droppedVideoFrames": 2,
+  "callbacks": [
+    {
+      "callbackTimeMilliseconds": 497.4,
+      "presentationSeconds": 0,
+      "presentedFrames": 1
+    },
+    {
+      "callbackTimeMilliseconds": 614,
+      "presentationSeconds": 0.033,
+      "presentedFrames": 2
+    },
+    {
+      "callbackTimeMilliseconds": 647.4,
+      "presentationSeconds": 0.066,
+      "presentedFrames": 3
+    },
+    {
+      "callbackTimeMilliseconds": 680.8,
+      "presentationSeconds": 0.1,
+      "presentedFrames": 4
+    },
+    {
+      "callbackTimeMilliseconds": 714,
+      "presentationSeconds": 0.133,
+      "presentedFrames": 5
+    },
+    {
+      "callbackTimeMilliseconds": 747.4,
+      "presentationSeconds": 0.166,
+      "presentedFrames": 6
+    },
+    {
+      "callbackTimeMilliseconds": 780.7,
+      "presentationSeconds": 0.2,
+      "presentedFrames": 7
+    },
+    {
+      "callbackTimeMilliseconds": 797.4,
+      "presentationSeconds": 0.233,
+      "presentedFrames": 8
+    },
+    {
+      "callbackTimeMilliseconds": 847.4,
+      "presentationSeconds": 0.266,
+      "presentedFrames": 9
+    },
+    {
+      "callbackTimeMilliseconds": 864,
+      "presentationSeconds": 0.3,
+      "presentedFrames": 10
+    },
+    {
+      "callbackTimeMilliseconds": 897.4,
+      "presentationSeconds": 0.333,
+      "presentedFrames": 11
+    },
+    {
+      "callbackTimeMilliseconds": 930.7,
+      "presentationSeconds": 0.366,
+      "presentedFrames": 12
+    },
+    {
+      "callbackTimeMilliseconds": 964,
+      "presentationSeconds": 0.4,
+      "presentedFrames": 13
+    },
+    {
+      "callbackTimeMilliseconds": 997.4,
+      "presentationSeconds": 0.433,
+      "presentedFrames": 14
+    },
+    {
+      "callbackTimeMilliseconds": 1030.7,
+      "presentationSeconds": 0.466,
+      "presentedFrames": 15
+    },
+    {
+      "callbackTimeMilliseconds": 1080.7,
+      "presentationSeconds": 0.5,
+      "presentedFrames": 16
+    },
+    {
+      "callbackTimeMilliseconds": 1114,
+      "presentationSeconds": 0.533,
+      "presentedFrames": 17
+    },
+    {
+      "callbackTimeMilliseconds": 1130.6,
+      "presentationSeconds": 0.566,
+      "presentedFrames": 18
+    },
+    {
+      "callbackTimeMilliseconds": 1164,
+      "presentationSeconds": 0.6,
+      "presentedFrames": 19
+    },
+    {
+      "callbackTimeMilliseconds": 1197.3,
+      "presentationSeconds": 0.633,
+      "presentedFrames": 20
+    },
+    {
+      "callbackTimeMilliseconds": 1230.7,
+      "presentationSeconds": 0.666,
+      "presentedFrames": 21
+    },
+    {
+      "callbackTimeMilliseconds": 1264,
+      "presentationSeconds": 0.7,
+      "presentedFrames": 22
+    },
+    {
+      "callbackTimeMilliseconds": 1297.4,
+      "presentationSeconds": 0.733,
+      "presentedFrames": 23
+    },
+    {
+      "callbackTimeMilliseconds": 1330.6,
+      "presentationSeconds": 0.766,
+      "presentedFrames": 24
+    },
+    {
+      "callbackTimeMilliseconds": 1364,
+      "presentationSeconds": 0.8,
+      "presentedFrames": 25
+    },
+    {
+      "callbackTimeMilliseconds": 1397.4,
+      "presentationSeconds": 0.833,
+      "presentedFrames": 26
+    },
+    {
+      "callbackTimeMilliseconds": 1430.7,
+      "presentationSeconds": 0.866,
+      "presentedFrames": 27
+    },
+    {
+      "callbackTimeMilliseconds": 1464,
+      "presentationSeconds": 0.9,
+      "presentedFrames": 28
+    },
+    {
+      "callbackTimeMilliseconds": 1497.3,
+      "presentationSeconds": 0.933,
+      "presentedFrames": 29
+    },
+    {
+      "callbackTimeMilliseconds": 1547.3,
+      "presentationSeconds": 0.966,
+      "presentedFrames": 30
+    },
+    {
+      "callbackTimeMilliseconds": 1564,
+      "presentationSeconds": 1,
+      "presentedFrames": 31
+    },
+    {
+      "callbackTimeMilliseconds": 1597.4,
+      "presentationSeconds": 1.033,
+      "presentedFrames": 32
+    },
+    {
+      "callbackTimeMilliseconds": 1630.7,
+      "presentationSeconds": 1.066,
+      "presentedFrames": 33
+    },
+    {
+      "callbackTimeMilliseconds": 1664,
+      "presentationSeconds": 1.1,
+      "presentedFrames": 34
+    },
+    {
+      "callbackTimeMilliseconds": 1697.4,
+      "presentationSeconds": 1.133,
+      "presentedFrames": 35
+    },
+    {
+      "callbackTimeMilliseconds": 1730.7,
+      "presentationSeconds": 1.166,
+      "presentedFrames": 36
+    },
+    {
+      "callbackTimeMilliseconds": 1764,
+      "presentationSeconds": 1.2,
+      "presentedFrames": 37
+    },
+    {
+      "callbackTimeMilliseconds": 1797.3,
+      "presentationSeconds": 1.233,
+      "presentedFrames": 38
+    },
+    {
+      "callbackTimeMilliseconds": 1830.6,
+      "presentationSeconds": 1.266,
+      "presentedFrames": 39
+    },
+    {
+      "callbackTimeMilliseconds": 1864,
+      "presentationSeconds": 1.3,
+      "presentedFrames": 40
+    },
+    {
+      "callbackTimeMilliseconds": 1897.3,
+      "presentationSeconds": 1.333,
+      "presentedFrames": 41
+    },
+    {
+      "callbackTimeMilliseconds": 1930.7,
+      "presentationSeconds": 1.366,
+      "presentedFrames": 42
+    },
+    {
+      "callbackTimeMilliseconds": 1964,
+      "presentationSeconds": 1.4,
+      "presentedFrames": 43
+    },
+    {
+      "callbackTimeMilliseconds": 1997.3,
+      "presentationSeconds": 1.433,
+      "presentedFrames": 44
+    },
+    {
+      "callbackTimeMilliseconds": 2030.7,
+      "presentationSeconds": 1.466,
+      "presentedFrames": 45
+    },
+    {
+      "callbackTimeMilliseconds": 2064,
+      "presentationSeconds": 1.5,
+      "presentedFrames": 46
+    },
+    {
+      "callbackTimeMilliseconds": 2114,
+      "presentationSeconds": 1.533,
+      "presentedFrames": 47
+    },
+    {
+      "callbackTimeMilliseconds": 2130.7,
+      "presentationSeconds": 1.566,
+      "presentedFrames": 48
+    },
+    {
+      "callbackTimeMilliseconds": 2164,
+      "presentationSeconds": 1.6,
+      "presentedFrames": 49
+    },
+    {
+      "callbackTimeMilliseconds": 2197.3,
+      "presentationSeconds": 1.633,
+      "presentedFrames": 50
+    },
+    {
+      "callbackTimeMilliseconds": 2230.6,
+      "presentationSeconds": 1.666,
+      "presentedFrames": 51
+    },
+    {
+      "callbackTimeMilliseconds": 2264,
+      "presentationSeconds": 1.7,
+      "presentedFrames": 52
+    },
+    {
+      "callbackTimeMilliseconds": 2297.3,
+      "presentationSeconds": 1.733,
+      "presentedFrames": 53
+    },
+    {
+      "callbackTimeMilliseconds": 2347.3,
+      "presentationSeconds": 1.766,
+      "presentedFrames": 54
+    },
+    {
+      "callbackTimeMilliseconds": 2363.9,
+      "presentationSeconds": 1.8,
+      "presentedFrames": 55
+    },
+    {
+      "callbackTimeMilliseconds": 2414,
+      "presentationSeconds": 1.833,
+      "presentedFrames": 56
+    },
+    {
+      "callbackTimeMilliseconds": 2430.6,
+      "presentationSeconds": 1.866,
+      "presentedFrames": 57
+    },
+    {
+      "callbackTimeMilliseconds": 2464,
+      "presentationSeconds": 1.9,
+      "presentedFrames": 58
+    },
+    {
+      "callbackTimeMilliseconds": 2497.3,
+      "presentationSeconds": 1.933,
+      "presentedFrames": 59
+    },
+    {
+      "callbackTimeMilliseconds": 2530.6,
+      "presentationSeconds": 1.966,
+      "presentedFrames": 60
+    },
+    {
+      "callbackTimeMilliseconds": 2563.9,
+      "presentationSeconds": 2,
+      "presentedFrames": 61
+    },
+    {
+      "callbackTimeMilliseconds": 2597.3,
+      "presentationSeconds": 2.033,
+      "presentedFrames": 62
+    },
+    {
+      "callbackTimeMilliseconds": 2630.6,
+      "presentationSeconds": 2.066,
+      "presentedFrames": 63
+    },
+    {
+      "callbackTimeMilliseconds": 2664,
+      "presentationSeconds": 2.1,
+      "presentedFrames": 64
+    },
+    {
+      "callbackTimeMilliseconds": 2697.3,
+      "presentationSeconds": 2.133,
+      "presentedFrames": 65
+    },
+    {
+      "callbackTimeMilliseconds": 2730.6,
+      "presentationSeconds": 2.166,
+      "presentedFrames": 66
+    },
+    {
+      "callbackTimeMilliseconds": 2764,
+      "presentationSeconds": 2.2,
+      "presentedFrames": 67
+    },
+    {
+      "callbackTimeMilliseconds": 2814,
+      "presentationSeconds": 2.233,
+      "presentedFrames": 68
+    },
+    {
+      "callbackTimeMilliseconds": 2830.6,
+      "presentationSeconds": 2.266,
+      "presentedFrames": 69
+    },
+    {
+      "callbackTimeMilliseconds": 2863.9,
+      "presentationSeconds": 2.3,
+      "presentedFrames": 70
+    },
+    {
+      "callbackTimeMilliseconds": 2913.9,
+      "presentationSeconds": 2.333,
+      "presentedFrames": 71
+    },
+    {
+      "callbackTimeMilliseconds": 2947.3,
+      "presentationSeconds": 2.366,
+      "presentedFrames": 72
+    },
+    {
+      "callbackTimeMilliseconds": 2980.6,
+      "presentationSeconds": 2.4,
+      "presentedFrames": 73
+    },
+    {
+      "callbackTimeMilliseconds": 3014,
+      "presentationSeconds": 2.433,
+      "presentedFrames": 74
+    },
+    {
+      "callbackTimeMilliseconds": 3047.3,
+      "presentationSeconds": 2.466,
+      "presentedFrames": 75
+    },
+    {
+      "callbackTimeMilliseconds": 3080.6,
+      "presentationSeconds": 2.5,
+      "presentedFrames": 76
+    },
+    {
+      "callbackTimeMilliseconds": 3114,
+      "presentationSeconds": 2.533,
+      "presentedFrames": 77
+    },
+    {
+      "callbackTimeMilliseconds": 3147.3,
+      "presentationSeconds": 2.566,
+      "presentedFrames": 78
+    },
+    {
+      "callbackTimeMilliseconds": 3180.6,
+      "presentationSeconds": 2.6,
+      "presentedFrames": 79
+    },
+    {
+      "callbackTimeMilliseconds": 3213.9,
+      "presentationSeconds": 2.633,
+      "presentedFrames": 80
+    },
+    {
+      "callbackTimeMilliseconds": 3247.2,
+      "presentationSeconds": 2.666,
+      "presentedFrames": 81
+    },
+    {
+      "callbackTimeMilliseconds": 3263.9,
+      "presentationSeconds": 2.7,
+      "presentedFrames": 82
+    },
+    {
+      "callbackTimeMilliseconds": 3313.9,
+      "presentationSeconds": 2.733,
+      "presentedFrames": 83
+    },
+    {
+      "callbackTimeMilliseconds": 3347.2,
+      "presentationSeconds": 2.766,
+      "presentedFrames": 84
+    },
+    {
+      "callbackTimeMilliseconds": 3380.6,
+      "presentationSeconds": 2.8,
+      "presentedFrames": 85
+    },
+    {
+      "callbackTimeMilliseconds": 3413.9,
+      "presentationSeconds": 2.833,
+      "presentedFrames": 86
+    },
+    {
+      "callbackTimeMilliseconds": 3430.6,
+      "presentationSeconds": 2.866,
+      "presentedFrames": 87
+    },
+    {
+      "callbackTimeMilliseconds": 3480.6,
+      "presentationSeconds": 2.9,
+      "presentedFrames": 88
+    },
+    {
+      "callbackTimeMilliseconds": 3514,
+      "presentationSeconds": 2.933,
+      "presentedFrames": 89
+    },
+    {
+      "callbackTimeMilliseconds": 3547.3,
+      "presentationSeconds": 2.966,
+      "presentedFrames": 90
+    },
+    {
+      "callbackTimeMilliseconds": 3580.6,
+      "presentationSeconds": 3,
+      "presentedFrames": 91
+    },
+    {
+      "callbackTimeMilliseconds": 3597.3,
+      "presentationSeconds": 3.033,
+      "presentedFrames": 92
+    },
+    {
+      "callbackTimeMilliseconds": 3647.2,
+      "presentationSeconds": 3.066,
+      "presentedFrames": 93
+    },
+    {
+      "callbackTimeMilliseconds": 3680.6,
+      "presentationSeconds": 3.1,
+      "presentedFrames": 94
+    },
+    {
+      "callbackTimeMilliseconds": 3697.2,
+      "presentationSeconds": 3.133,
+      "presentedFrames": 95
+    },
+    {
+      "callbackTimeMilliseconds": 3730.6,
+      "presentationSeconds": 3.166,
+      "presentedFrames": 96
+    },
+    {
+      "callbackTimeMilliseconds": 3763.9,
+      "presentationSeconds": 3.2,
+      "presentedFrames": 97
+    },
+    {
+      "callbackTimeMilliseconds": 3797.3,
+      "presentationSeconds": 3.233,
+      "presentedFrames": 98
+    },
+    {
+      "callbackTimeMilliseconds": 3830.6,
+      "presentationSeconds": 3.266,
+      "presentedFrames": 99
+    },
+    {
+      "callbackTimeMilliseconds": 3863.9,
+      "presentationSeconds": 3.3,
+      "presentedFrames": 100
+    },
+    {
+      "callbackTimeMilliseconds": 3897.2,
+      "presentationSeconds": 3.333,
+      "presentedFrames": 101
+    },
+    {
+      "callbackTimeMilliseconds": 3930.6,
+      "presentationSeconds": 3.366,
+      "presentedFrames": 102
+    },
+    {
+      "callbackTimeMilliseconds": 3963.9,
+      "presentationSeconds": 3.4,
+      "presentedFrames": 103
+    },
+    {
+      "callbackTimeMilliseconds": 3997.3,
+      "presentationSeconds": 3.433,
+      "presentedFrames": 104
+    },
+    {
+      "callbackTimeMilliseconds": 4030.5,
+      "presentationSeconds": 3.466,
+      "presentedFrames": 105
+    },
+    {
+      "callbackTimeMilliseconds": 4063.9,
+      "presentationSeconds": 3.5,
+      "presentedFrames": 106
+    },
+    {
+      "callbackTimeMilliseconds": 4097.2,
+      "presentationSeconds": 3.533,
+      "presentedFrames": 107
+    },
+    {
+      "callbackTimeMilliseconds": 4130.5,
+      "presentationSeconds": 3.566,
+      "presentedFrames": 108
+    },
+    {
+      "callbackTimeMilliseconds": 4180.5,
+      "presentationSeconds": 3.6,
+      "presentedFrames": 109
+    },
+    {
+      "callbackTimeMilliseconds": 4197.3,
+      "presentationSeconds": 3.633,
+      "presentedFrames": 110
+    },
+    {
+      "callbackTimeMilliseconds": 4230.6,
+      "presentationSeconds": 3.666,
+      "presentedFrames": 111
+    },
+    {
+      "callbackTimeMilliseconds": 4280.5,
+      "presentationSeconds": 3.7,
+      "presentedFrames": 112
+    },
+    {
+      "callbackTimeMilliseconds": 4313.9,
+      "presentationSeconds": 3.733,
+      "presentedFrames": 113
+    },
+    {
+      "callbackTimeMilliseconds": 4347.2,
+      "presentationSeconds": 3.766,
+      "presentedFrames": 114
+    },
+    {
+      "callbackTimeMilliseconds": 4363.9,
+      "presentationSeconds": 3.8,
+      "presentedFrames": 115
+    },
+    {
+      "callbackTimeMilliseconds": 4413.9,
+      "presentationSeconds": 3.833,
+      "presentedFrames": 116
+    },
+    {
+      "callbackTimeMilliseconds": 4430.5,
+      "presentationSeconds": 3.866,
+      "presentedFrames": 117
+    },
+    {
+      "callbackTimeMilliseconds": 4463.9,
+      "presentationSeconds": 3.9,
+      "presentedFrames": 118
+    },
+    {
+      "callbackTimeMilliseconds": 4497.2,
+      "presentationSeconds": 3.933,
+      "presentedFrames": 119
+    },
+    {
+      "callbackTimeMilliseconds": 4530.6,
+      "presentationSeconds": 3.966,
+      "presentedFrames": 120
+    },
+    {
+      "callbackTimeMilliseconds": 4563.9,
+      "presentationSeconds": 4,
+      "presentedFrames": 121
+    },
+    {
+      "callbackTimeMilliseconds": 4597.2,
+      "presentationSeconds": 4.033,
+      "presentedFrames": 122
+    },
+    {
+      "callbackTimeMilliseconds": 4647.2,
+      "presentationSeconds": 4.066,
+      "presentedFrames": 123
+    },
+    {
+      "callbackTimeMilliseconds": 4663.9,
+      "presentationSeconds": 4.1,
+      "presentedFrames": 124
+    },
+    {
+      "callbackTimeMilliseconds": 4713.9,
+      "presentationSeconds": 4.133,
+      "presentedFrames": 125
+    },
+    {
+      "callbackTimeMilliseconds": 4730.5,
+      "presentationSeconds": 4.166,
+      "presentedFrames": 126
+    },
+    {
+      "callbackTimeMilliseconds": 4763.8,
+      "presentationSeconds": 4.2,
+      "presentedFrames": 127
+    },
+    {
+      "callbackTimeMilliseconds": 4797.2,
+      "presentationSeconds": 4.233,
+      "presentedFrames": 128
+    },
+    {
+      "callbackTimeMilliseconds": 4830.6,
+      "presentationSeconds": 4.266,
+      "presentedFrames": 129
+    },
+    {
+      "callbackTimeMilliseconds": 4863.9,
+      "presentationSeconds": 4.3,
+      "presentedFrames": 130
+    },
+    {
+      "callbackTimeMilliseconds": 4913.9,
+      "presentationSeconds": 4.333,
+      "presentedFrames": 131
+    },
+    {
+      "callbackTimeMilliseconds": 4947.2,
+      "presentationSeconds": 4.366,
+      "presentedFrames": 132
+    },
+    {
+      "callbackTimeMilliseconds": 4963.9,
+      "presentationSeconds": 4.4,
+      "presentedFrames": 133
+    },
+    {
+      "callbackTimeMilliseconds": 4997.2,
+      "presentationSeconds": 4.433,
+      "presentedFrames": 134
+    },
+    {
+      "callbackTimeMilliseconds": 5047.2,
+      "presentationSeconds": 4.466,
+      "presentedFrames": 135
+    },
+    {
+      "callbackTimeMilliseconds": 5063.9,
+      "presentationSeconds": 4.5,
+      "presentedFrames": 136
+    },
+    {
+      "callbackTimeMilliseconds": 5097.2,
+      "presentationSeconds": 4.533,
+      "presentedFrames": 137
+    },
+    {
+      "callbackTimeMilliseconds": 5147.2,
+      "presentationSeconds": 4.566,
+      "presentedFrames": 138
+    },
+    {
+      "callbackTimeMilliseconds": 5180.6,
+      "presentationSeconds": 4.6,
+      "presentedFrames": 139
+    },
+    {
+      "callbackTimeMilliseconds": 5213.9,
+      "presentationSeconds": 4.633,
+      "presentedFrames": 140
+    },
+    {
+      "callbackTimeMilliseconds": 5230.5,
+      "presentationSeconds": 4.666,
+      "presentedFrames": 141
+    },
+    {
+      "callbackTimeMilliseconds": 5263.9,
+      "presentationSeconds": 4.7,
+      "presentedFrames": 142
+    },
+    {
+      "callbackTimeMilliseconds": 5313.8,
+      "presentationSeconds": 4.733,
+      "presentedFrames": 143
+    },
+    {
+      "callbackTimeMilliseconds": 5347.2,
+      "presentationSeconds": 4.766,
+      "presentedFrames": 144
+    },
+    {
+      "callbackTimeMilliseconds": 5363.9,
+      "presentationSeconds": 4.8,
+      "presentedFrames": 145
+    },
+    {
+      "callbackTimeMilliseconds": 5397.2,
+      "presentationSeconds": 4.833,
+      "presentedFrames": 146
+    },
+    {
+      "callbackTimeMilliseconds": 5430.5,
+      "presentationSeconds": 4.866,
+      "presentedFrames": 147
+    },
+    {
+      "callbackTimeMilliseconds": 5463.8,
+      "presentationSeconds": 4.9,
+      "presentedFrames": 148
+    },
+    {
+      "callbackTimeMilliseconds": 5497.2,
+      "presentationSeconds": 4.933,
+      "presentedFrames": 149
+    },
+    {
+      "callbackTimeMilliseconds": 5547.2,
+      "presentationSeconds": 4.966,
+      "presentedFrames": 150
+    },
+    {
+      "callbackTimeMilliseconds": 5580.5,
+      "presentationSeconds": 5,
+      "presentedFrames": 151
+    },
+    {
+      "callbackTimeMilliseconds": 5597.2,
+      "presentationSeconds": 5.033,
+      "presentedFrames": 152
+    },
+    {
+      "callbackTimeMilliseconds": 5630.5,
+      "presentationSeconds": 5.066,
+      "presentedFrames": 153
+    },
+    {
+      "callbackTimeMilliseconds": 5663.8,
+      "presentationSeconds": 5.1,
+      "presentedFrames": 154
+    },
+    {
+      "callbackTimeMilliseconds": 5697.2,
+      "presentationSeconds": 5.133,
+      "presentedFrames": 155
+    },
+    {
+      "callbackTimeMilliseconds": 5730.5,
+      "presentationSeconds": 5.166,
+      "presentedFrames": 156
+    },
+    {
+      "callbackTimeMilliseconds": 5763.8,
+      "presentationSeconds": 5.2,
+      "presentedFrames": 157
+    },
+    {
+      "callbackTimeMilliseconds": 5797.2,
+      "presentationSeconds": 5.233,
+      "presentedFrames": 158
+    },
+    {
+      "callbackTimeMilliseconds": 5830.5,
+      "presentationSeconds": 5.266,
+      "presentedFrames": 159
+    },
+    {
+      "callbackTimeMilliseconds": 5863.8,
+      "presentationSeconds": 5.3,
+      "presentedFrames": 160
+    },
+    {
+      "callbackTimeMilliseconds": 5897.2,
+      "presentationSeconds": 5.333,
+      "presentedFrames": 161
+    },
+    {
+      "callbackTimeMilliseconds": 5930.5,
+      "presentationSeconds": 5.366,
+      "presentedFrames": 162
+    },
+    {
+      "callbackTimeMilliseconds": 5963.9,
+      "presentationSeconds": 5.4,
+      "presentedFrames": 163
+    },
+    {
+      "callbackTimeMilliseconds": 5997.1,
+      "presentationSeconds": 5.433,
+      "presentedFrames": 164
+    },
+    {
+      "callbackTimeMilliseconds": 6030.5,
+      "presentationSeconds": 5.466,
+      "presentedFrames": 165
+    },
+    {
+      "callbackTimeMilliseconds": 6063.9,
+      "presentationSeconds": 5.5,
+      "presentedFrames": 166
+    },
+    {
+      "callbackTimeMilliseconds": 6097.2,
+      "presentationSeconds": 5.533,
+      "presentedFrames": 167
+    },
+    {
+      "callbackTimeMilliseconds": 6130.5,
+      "presentationSeconds": 5.566,
+      "presentedFrames": 168
+    },
+    {
+      "callbackTimeMilliseconds": 6163.8,
+      "presentationSeconds": 5.6,
+      "presentedFrames": 169
+    },
+    {
+      "callbackTimeMilliseconds": 6213.8,
+      "presentationSeconds": 5.633,
+      "presentedFrames": 170
+    },
+    {
+      "callbackTimeMilliseconds": 6247.1,
+      "presentationSeconds": 5.666,
+      "presentedFrames": 171
+    },
+    {
+      "callbackTimeMilliseconds": 6280.5,
+      "presentationSeconds": 5.7,
+      "presentedFrames": 172
+    },
+    {
+      "callbackTimeMilliseconds": 6297.1,
+      "presentationSeconds": 5.733,
+      "presentedFrames": 173
+    },
+    {
+      "callbackTimeMilliseconds": 6330.5,
+      "presentationSeconds": 5.766,
+      "presentedFrames": 174
+    },
+    {
+      "callbackTimeMilliseconds": 6363.8,
+      "presentationSeconds": 5.8,
+      "presentedFrames": 175
+    },
+    {
+      "callbackTimeMilliseconds": 6397.2,
+      "presentationSeconds": 5.833,
+      "presentedFrames": 176
+    },
+    {
+      "callbackTimeMilliseconds": 6430.5,
+      "presentationSeconds": 5.866,
+      "presentedFrames": 177
+    },
+    {
+      "callbackTimeMilliseconds": 6463.8,
+      "presentationSeconds": 5.9,
+      "presentedFrames": 178
+    },
+    {
+      "callbackTimeMilliseconds": 6497.1,
+      "presentationSeconds": 5.933,
+      "presentedFrames": 179
+    },
+    {
+      "callbackTimeMilliseconds": 6613.8,
+      "presentationSeconds": 6.066,
+      "presentedFrames": 181
+    },
+    {
+      "callbackTimeMilliseconds": 6713.8,
+      "presentationSeconds": 6.1,
+      "presentedFrames": 182
+    },
+    {
+      "callbackTimeMilliseconds": 6747.1,
+      "presentationSeconds": 6.133,
+      "presentedFrames": 183
+    },
+    {
+      "callbackTimeMilliseconds": 6780.4,
+      "presentationSeconds": 6.166,
+      "presentedFrames": 184
+    },
+    {
+      "callbackTimeMilliseconds": 6813.8,
+      "presentationSeconds": 6.2,
+      "presentedFrames": 185
+    },
+    {
+      "callbackTimeMilliseconds": 6847.1,
+      "presentationSeconds": 6.233,
+      "presentedFrames": 186
+    },
+    {
+      "callbackTimeMilliseconds": 6880.5,
+      "presentationSeconds": 6.266,
+      "presentedFrames": 187
+    },
+    {
+      "callbackTimeMilliseconds": 6913.8,
+      "presentationSeconds": 6.3,
+      "presentedFrames": 188
+    },
+    {
+      "callbackTimeMilliseconds": 6947.1,
+      "presentationSeconds": 6.333,
+      "presentedFrames": 189
+    },
+    {
+      "callbackTimeMilliseconds": 6980.5,
+      "presentationSeconds": 6.366,
+      "presentedFrames": 190
+    },
+    {
+      "callbackTimeMilliseconds": 7030.5,
+      "presentationSeconds": 6.4,
+      "presentedFrames": 191
+    },
+    {
+      "callbackTimeMilliseconds": 7047.1,
+      "presentationSeconds": 6.433,
+      "presentedFrames": 192
+    },
+    {
+      "callbackTimeMilliseconds": 7080.5,
+      "presentationSeconds": 6.466,
+      "presentedFrames": 193
+    },
+    {
+      "callbackTimeMilliseconds": 7113.7,
+      "presentationSeconds": 6.5,
+      "presentedFrames": 194
+    },
+    {
+      "callbackTimeMilliseconds": 7147.1,
+      "presentationSeconds": 6.533,
+      "presentedFrames": 195
+    },
+    {
+      "callbackTimeMilliseconds": 7180.5,
+      "presentationSeconds": 6.566,
+      "presentedFrames": 196
+    },
+    {
+      "callbackTimeMilliseconds": 7230.4,
+      "presentationSeconds": 6.6,
+      "presentedFrames": 197
+    },
+    {
+      "callbackTimeMilliseconds": 7247.1,
+      "presentationSeconds": 6.633,
+      "presentedFrames": 198
+    },
+    {
+      "callbackTimeMilliseconds": 7280.5,
+      "presentationSeconds": 6.666,
+      "presentedFrames": 199
+    },
+    {
+      "callbackTimeMilliseconds": 7313.8,
+      "presentationSeconds": 6.7,
+      "presentedFrames": 200
+    },
+    {
+      "callbackTimeMilliseconds": 7363.8,
+      "presentationSeconds": 6.733,
+      "presentedFrames": 201
+    },
+    {
+      "callbackTimeMilliseconds": 7397.1,
+      "presentationSeconds": 6.766,
+      "presentedFrames": 202
+    },
+    {
+      "callbackTimeMilliseconds": 7430.4,
+      "presentationSeconds": 6.8,
+      "presentedFrames": 203
+    },
+    {
+      "callbackTimeMilliseconds": 7463.8,
+      "presentationSeconds": 6.833,
+      "presentedFrames": 204
+    },
+    {
+      "callbackTimeMilliseconds": 7480.4,
+      "presentationSeconds": 6.866,
+      "presentedFrames": 205
+    },
+    {
+      "callbackTimeMilliseconds": 7513.8,
+      "presentationSeconds": 6.9,
+      "presentedFrames": 206
+    },
+    {
+      "callbackTimeMilliseconds": 7547.1,
+      "presentationSeconds": 6.933,
+      "presentedFrames": 207
+    },
+    {
+      "callbackTimeMilliseconds": 7597.1,
+      "presentationSeconds": 6.966,
+      "presentedFrames": 208
+    },
+    {
+      "callbackTimeMilliseconds": 7630.4,
+      "presentationSeconds": 7,
+      "presentedFrames": 209
+    },
+    {
+      "callbackTimeMilliseconds": 7647.1,
+      "presentationSeconds": 7.033,
+      "presentedFrames": 210
+    },
+    {
+      "callbackTimeMilliseconds": 7697.1,
+      "presentationSeconds": 7.066,
+      "presentedFrames": 211
+    },
+    {
+      "callbackTimeMilliseconds": 7713.7,
+      "presentationSeconds": 7.1,
+      "presentedFrames": 212
+    },
+    {
+      "callbackTimeMilliseconds": 7763.8,
+      "presentationSeconds": 7.133,
+      "presentedFrames": 213
+    },
+    {
+      "callbackTimeMilliseconds": 7797.1,
+      "presentationSeconds": 7.166,
+      "presentedFrames": 214
+    },
+    {
+      "callbackTimeMilliseconds": 7813.8,
+      "presentationSeconds": 7.2,
+      "presentedFrames": 215
+    },
+    {
+      "callbackTimeMilliseconds": 7863.7,
+      "presentationSeconds": 7.233,
+      "presentedFrames": 216
+    },
+    {
+      "callbackTimeMilliseconds": 7897,
+      "presentationSeconds": 7.266,
+      "presentedFrames": 217
+    },
+    {
+      "callbackTimeMilliseconds": 7930.5,
+      "presentationSeconds": 7.3,
+      "presentedFrames": 218
+    },
+    {
+      "callbackTimeMilliseconds": 7947,
+      "presentationSeconds": 7.333,
+      "presentedFrames": 219
+    },
+    {
+      "callbackTimeMilliseconds": 7997.1,
+      "presentationSeconds": 7.366,
+      "presentedFrames": 220
+    },
+    {
+      "callbackTimeMilliseconds": 8013.8,
+      "presentationSeconds": 7.4,
+      "presentedFrames": 221
+    },
+    {
+      "callbackTimeMilliseconds": 8063.7,
+      "presentationSeconds": 7.433,
+      "presentedFrames": 222
+    },
+    {
+      "callbackTimeMilliseconds": 8080.5,
+      "presentationSeconds": 7.466,
+      "presentedFrames": 223
+    },
+    {
+      "callbackTimeMilliseconds": 8130.4,
+      "presentationSeconds": 7.5,
+      "presentedFrames": 224
+    },
+    {
+      "callbackTimeMilliseconds": 8163.7,
+      "presentationSeconds": 7.533,
+      "presentedFrames": 225
+    },
+    {
+      "callbackTimeMilliseconds": 8180.4,
+      "presentationSeconds": 7.566,
+      "presentedFrames": 226
+    },
+    {
+      "callbackTimeMilliseconds": 8230.4,
+      "presentationSeconds": 7.6,
+      "presentedFrames": 227
+    },
+    {
+      "callbackTimeMilliseconds": 8263.7,
+      "presentationSeconds": 7.633,
+      "presentedFrames": 228
+    },
+    {
+      "callbackTimeMilliseconds": 8297.1,
+      "presentationSeconds": 7.666,
+      "presentedFrames": 229
+    },
+    {
+      "callbackTimeMilliseconds": 8330.4,
+      "presentationSeconds": 7.7,
+      "presentedFrames": 230
+    },
+    {
+      "callbackTimeMilliseconds": 8363.7,
+      "presentationSeconds": 7.733,
+      "presentedFrames": 231
+    },
+    {
+      "callbackTimeMilliseconds": 8397,
+      "presentationSeconds": 7.766,
+      "presentedFrames": 232
+    },
+    {
+      "callbackTimeMilliseconds": 8430.4,
+      "presentationSeconds": 7.8,
+      "presentedFrames": 233
+    },
+    {
+      "callbackTimeMilliseconds": 8463.7,
+      "presentationSeconds": 7.833,
+      "presentedFrames": 234
+    },
+    {
+      "callbackTimeMilliseconds": 8497.1,
+      "presentationSeconds": 7.866,
+      "presentedFrames": 235
+    },
+    {
+      "callbackTimeMilliseconds": 8530.4,
+      "presentationSeconds": 7.9,
+      "presentedFrames": 236
+    },
+    {
+      "callbackTimeMilliseconds": 8563.7,
+      "presentationSeconds": 7.933,
+      "presentedFrames": 237
+    },
+    {
+      "callbackTimeMilliseconds": 8580.4,
+      "presentationSeconds": 7.966,
+      "presentedFrames": 238
+    },
+    {
+      "callbackTimeMilliseconds": 8613.7,
+      "presentationSeconds": 8,
+      "presentedFrames": 239
+    },
+    {
+      "callbackTimeMilliseconds": 8663.7,
+      "presentationSeconds": 8.033,
+      "presentedFrames": 240
+    },
+    {
+      "callbackTimeMilliseconds": 8680.3,
+      "presentationSeconds": 8.066,
+      "presentedFrames": 241
+    },
+    {
+      "callbackTimeMilliseconds": 8730.4,
+      "presentationSeconds": 8.1,
+      "presentedFrames": 242
+    },
+    {
+      "callbackTimeMilliseconds": 8763.7,
+      "presentationSeconds": 8.133,
+      "presentedFrames": 243
+    },
+    {
+      "callbackTimeMilliseconds": 8797.1,
+      "presentationSeconds": 8.166,
+      "presentedFrames": 244
+    },
+    {
+      "callbackTimeMilliseconds": 8830.4,
+      "presentationSeconds": 8.2,
+      "presentedFrames": 245
+    },
+    {
+      "callbackTimeMilliseconds": 8863.7,
+      "presentationSeconds": 8.233,
+      "presentedFrames": 246
+    },
+    {
+      "callbackTimeMilliseconds": 8897,
+      "presentationSeconds": 8.266,
+      "presentedFrames": 247
+    },
+    {
+      "callbackTimeMilliseconds": 8913.7,
+      "presentationSeconds": 8.3,
+      "presentedFrames": 248
+    },
+    {
+      "callbackTimeMilliseconds": 8947,
+      "presentationSeconds": 8.333,
+      "presentedFrames": 249
+    },
+    {
+      "callbackTimeMilliseconds": 8997.1,
+      "presentationSeconds": 8.366,
+      "presentedFrames": 250
+    },
+    {
+      "callbackTimeMilliseconds": 9013.7,
+      "presentationSeconds": 8.4,
+      "presentedFrames": 251
+    },
+    {
+      "callbackTimeMilliseconds": 9063.7,
+      "presentationSeconds": 8.433,
+      "presentedFrames": 252
+    },
+    {
+      "callbackTimeMilliseconds": 9097,
+      "presentationSeconds": 8.466,
+      "presentedFrames": 253
+    },
+    {
+      "callbackTimeMilliseconds": 9113.7,
+      "presentationSeconds": 8.5,
+      "presentedFrames": 254
+    },
+    {
+      "callbackTimeMilliseconds": 9163.7,
+      "presentationSeconds": 8.533,
+      "presentedFrames": 255
+    },
+    {
+      "callbackTimeMilliseconds": 9197,
+      "presentationSeconds": 8.566,
+      "presentedFrames": 256
+    },
+    {
+      "callbackTimeMilliseconds": 9230.4,
+      "presentationSeconds": 8.6,
+      "presentedFrames": 257
+    },
+    {
+      "callbackTimeMilliseconds": 9263.7,
+      "presentationSeconds": 8.633,
+      "presentedFrames": 258
+    },
+    {
+      "callbackTimeMilliseconds": 9297.1,
+      "presentationSeconds": 8.666,
+      "presentedFrames": 259
+    },
+    {
+      "callbackTimeMilliseconds": 9330.3,
+      "presentationSeconds": 8.7,
+      "presentedFrames": 260
+    },
+    {
+      "callbackTimeMilliseconds": 9363.7,
+      "presentationSeconds": 8.733,
+      "presentedFrames": 261
+    },
+    {
+      "callbackTimeMilliseconds": 9397,
+      "presentationSeconds": 8.766,
+      "presentedFrames": 262
+    },
+    {
+      "callbackTimeMilliseconds": 9430.4,
+      "presentationSeconds": 8.8,
+      "presentedFrames": 263
+    },
+    {
+      "callbackTimeMilliseconds": 9447.1,
+      "presentationSeconds": 8.833,
+      "presentedFrames": 264
+    },
+    {
+      "callbackTimeMilliseconds": 9497,
+      "presentationSeconds": 8.866,
+      "presentedFrames": 265
+    },
+    {
+      "callbackTimeMilliseconds": 9530.4,
+      "presentationSeconds": 8.9,
+      "presentedFrames": 266
+    },
+    {
+      "callbackTimeMilliseconds": 9563.7,
+      "presentationSeconds": 8.933,
+      "presentedFrames": 267
+    },
+    {
+      "callbackTimeMilliseconds": 9597,
+      "presentationSeconds": 8.966,
+      "presentedFrames": 268
+    },
+    {
+      "callbackTimeMilliseconds": 9630.3,
+      "presentationSeconds": 9,
+      "presentedFrames": 269
+    },
+    {
+      "callbackTimeMilliseconds": 9647,
+      "presentationSeconds": 9.033,
+      "presentedFrames": 270
+    },
+    {
+      "callbackTimeMilliseconds": 9697,
+      "presentationSeconds": 9.066,
+      "presentedFrames": 271
+    },
+    {
+      "callbackTimeMilliseconds": 9730.3,
+      "presentationSeconds": 9.1,
+      "presentedFrames": 272
+    },
+    {
+      "callbackTimeMilliseconds": 9763.7,
+      "presentationSeconds": 9.133,
+      "presentedFrames": 273
+    },
+    {
+      "callbackTimeMilliseconds": 9780.3,
+      "presentationSeconds": 9.166,
+      "presentedFrames": 274
+    },
+    {
+      "callbackTimeMilliseconds": 9813.7,
+      "presentationSeconds": 9.2,
+      "presentedFrames": 275
+    },
+    {
+      "callbackTimeMilliseconds": 9863.6,
+      "presentationSeconds": 9.233,
+      "presentedFrames": 276
+    },
+    {
+      "callbackTimeMilliseconds": 9897,
+      "presentationSeconds": 9.266,
+      "presentedFrames": 277
+    },
+    {
+      "callbackTimeMilliseconds": 9913.7,
+      "presentationSeconds": 9.3,
+      "presentedFrames": 278
+    },
+    {
+      "callbackTimeMilliseconds": 9947,
+      "presentationSeconds": 9.333,
+      "presentedFrames": 279
+    },
+    {
+      "callbackTimeMilliseconds": 9980.4,
+      "presentationSeconds": 9.366,
+      "presentedFrames": 280
+    },
+    {
+      "callbackTimeMilliseconds": 10030.4,
+      "presentationSeconds": 9.4,
+      "presentedFrames": 281
+    },
+    {
+      "callbackTimeMilliseconds": 10063.7,
+      "presentationSeconds": 9.433,
+      "presentedFrames": 282
+    },
+    {
+      "callbackTimeMilliseconds": 10097,
+      "presentationSeconds": 9.466,
+      "presentedFrames": 283
+    },
+    {
+      "callbackTimeMilliseconds": 10130.3,
+      "presentationSeconds": 9.5,
+      "presentedFrames": 284
+    },
+    {
+      "callbackTimeMilliseconds": 10163.7,
+      "presentationSeconds": 9.533,
+      "presentedFrames": 285
+    },
+    {
+      "callbackTimeMilliseconds": 10180.4,
+      "presentationSeconds": 9.566,
+      "presentedFrames": 286
+    },
+    {
+      "callbackTimeMilliseconds": 10213.7,
+      "presentationSeconds": 9.6,
+      "presentedFrames": 287
+    },
+    {
+      "callbackTimeMilliseconds": 10247,
+      "presentationSeconds": 9.633,
+      "presentedFrames": 288
+    },
+    {
+      "callbackTimeMilliseconds": 10280.3,
+      "presentationSeconds": 9.666,
+      "presentedFrames": 289
+    },
+    {
+      "callbackTimeMilliseconds": 10330.3,
+      "presentationSeconds": 9.7,
+      "presentedFrames": 290
+    },
+    {
+      "callbackTimeMilliseconds": 10363.6,
+      "presentationSeconds": 9.733,
+      "presentedFrames": 291
+    },
+    {
+      "callbackTimeMilliseconds": 10380.3,
+      "presentationSeconds": 9.766,
+      "presentedFrames": 292
+    },
+    {
+      "callbackTimeMilliseconds": 10430.3,
+      "presentationSeconds": 9.8,
+      "presentedFrames": 293
+    },
+    {
+      "callbackTimeMilliseconds": 10447,
+      "presentationSeconds": 9.833,
+      "presentedFrames": 294
+    },
+    {
+      "callbackTimeMilliseconds": 10497,
+      "presentationSeconds": 9.866,
+      "presentedFrames": 295
+    },
+    {
+      "callbackTimeMilliseconds": 10513.7,
+      "presentationSeconds": 9.9,
+      "presentedFrames": 296
+    },
+    {
+      "callbackTimeMilliseconds": 10547,
+      "presentationSeconds": 9.933,
+      "presentedFrames": 297
+    },
+    {
+      "callbackTimeMilliseconds": 10597,
+      "presentationSeconds": 9.966,
+      "presentedFrames": 298
+    },
+    {
+      "callbackTimeMilliseconds": 10630.3,
+      "presentationSeconds": 10,
+      "presentedFrames": 299
+    },
+    {
+      "callbackTimeMilliseconds": 10646.9,
+      "presentationSeconds": 10.033,
+      "presentedFrames": 300
+    },
+    {
+      "callbackTimeMilliseconds": 10680.3,
+      "presentationSeconds": 10.066,
+      "presentedFrames": 301
+    },
+    {
+      "callbackTimeMilliseconds": 10713.7,
+      "presentationSeconds": 10.1,
+      "presentedFrames": 302
+    },
+    {
+      "callbackTimeMilliseconds": 10747,
+      "presentationSeconds": 10.133,
+      "presentedFrames": 303
+    },
+    {
+      "callbackTimeMilliseconds": 10780.3,
+      "presentationSeconds": 10.166,
+      "presentedFrames": 304
+    },
+    {
+      "callbackTimeMilliseconds": 10813.7,
+      "presentationSeconds": 10.2,
+      "presentedFrames": 305
+    },
+    {
+      "callbackTimeMilliseconds": 10847,
+      "presentationSeconds": 10.233,
+      "presentedFrames": 306
+    },
+    {
+      "callbackTimeMilliseconds": 10880.3,
+      "presentationSeconds": 10.266,
+      "presentedFrames": 307
+    },
+    {
+      "callbackTimeMilliseconds": 10913.6,
+      "presentationSeconds": 10.3,
+      "presentedFrames": 308
+    },
+    {
+      "callbackTimeMilliseconds": 10963.7,
+      "presentationSeconds": 10.333,
+      "presentedFrames": 309
+    },
+    {
+      "callbackTimeMilliseconds": 10997,
+      "presentationSeconds": 10.366,
+      "presentedFrames": 310
+    },
+    {
+      "callbackTimeMilliseconds": 11030.3,
+      "presentationSeconds": 10.4,
+      "presentedFrames": 311
+    },
+    {
+      "callbackTimeMilliseconds": 11063.6,
+      "presentationSeconds": 10.433,
+      "presentedFrames": 312
+    },
+    {
+      "callbackTimeMilliseconds": 11097,
+      "presentationSeconds": 10.466,
+      "presentedFrames": 313
+    },
+    {
+      "callbackTimeMilliseconds": 11130.3,
+      "presentationSeconds": 10.5,
+      "presentedFrames": 314
+    },
+    {
+      "callbackTimeMilliseconds": 11163.7,
+      "presentationSeconds": 10.533,
+      "presentedFrames": 315
+    },
+    {
+      "callbackTimeMilliseconds": 11196.9,
+      "presentationSeconds": 10.566,
+      "presentedFrames": 316
+    },
+    {
+      "callbackTimeMilliseconds": 11230.2,
+      "presentationSeconds": 10.6,
+      "presentedFrames": 317
+    },
+    {
+      "callbackTimeMilliseconds": 11263.6,
+      "presentationSeconds": 10.633,
+      "presentedFrames": 318
+    },
+    {
+      "callbackTimeMilliseconds": 11280.3,
+      "presentationSeconds": 10.666,
+      "presentedFrames": 319
+    },
+    {
+      "callbackTimeMilliseconds": 11313.6,
+      "presentationSeconds": 10.7,
+      "presentedFrames": 320
+    },
+    {
+      "callbackTimeMilliseconds": 11363.7,
+      "presentationSeconds": 10.733,
+      "presentedFrames": 321
+    },
+    {
+      "callbackTimeMilliseconds": 11396.9,
+      "presentationSeconds": 10.766,
+      "presentedFrames": 322
+    },
+    {
+      "callbackTimeMilliseconds": 11413.7,
+      "presentationSeconds": 10.8,
+      "presentedFrames": 323
+    },
+    {
+      "callbackTimeMilliseconds": 11463.7,
+      "presentationSeconds": 10.833,
+      "presentedFrames": 324
+    },
+    {
+      "callbackTimeMilliseconds": 11496.9,
+      "presentationSeconds": 10.866,
+      "presentedFrames": 325
+    },
+    {
+      "callbackTimeMilliseconds": 11530.2,
+      "presentationSeconds": 10.9,
+      "presentedFrames": 326
+    },
+    {
+      "callbackTimeMilliseconds": 11563.6,
+      "presentationSeconds": 10.933,
+      "presentedFrames": 327
+    },
+    {
+      "callbackTimeMilliseconds": 11597,
+      "presentationSeconds": 10.966,
+      "presentedFrames": 328
+    },
+    {
+      "callbackTimeMilliseconds": 11630.3,
+      "presentationSeconds": 11,
+      "presentedFrames": 329
+    },
+    {
+      "callbackTimeMilliseconds": 11646.9,
+      "presentationSeconds": 11.033,
+      "presentedFrames": 330
+    },
+    {
+      "callbackTimeMilliseconds": 11697,
+      "presentationSeconds": 11.066,
+      "presentedFrames": 331
+    },
+    {
+      "callbackTimeMilliseconds": 11730.3,
+      "presentationSeconds": 11.1,
+      "presentedFrames": 332
+    },
+    {
+      "callbackTimeMilliseconds": 11763.6,
+      "presentationSeconds": 11.133,
+      "presentedFrames": 333
+    },
+    {
+      "callbackTimeMilliseconds": 11780.3,
+      "presentationSeconds": 11.166,
+      "presentedFrames": 334
+    },
+    {
+      "callbackTimeMilliseconds": 11813.6,
+      "presentationSeconds": 11.2,
+      "presentedFrames": 335
+    },
+    {
+      "callbackTimeMilliseconds": 11863.5,
+      "presentationSeconds": 11.233,
+      "presentedFrames": 336
+    },
+    {
+      "callbackTimeMilliseconds": 11896.9,
+      "presentationSeconds": 11.266,
+      "presentedFrames": 337
+    },
+    {
+      "callbackTimeMilliseconds": 11930.3,
+      "presentationSeconds": 11.3,
+      "presentedFrames": 338
+    },
+    {
+      "callbackTimeMilliseconds": 11963.6,
+      "presentationSeconds": 11.333,
+      "presentedFrames": 339
+    },
+    {
+      "callbackTimeMilliseconds": 11997,
+      "presentationSeconds": 11.366,
+      "presentedFrames": 340
+    },
+    {
+      "callbackTimeMilliseconds": 12030.3,
+      "presentationSeconds": 11.4,
+      "presentedFrames": 341
+    },
+    {
+      "callbackTimeMilliseconds": 12063.6,
+      "presentationSeconds": 11.433,
+      "presentedFrames": 342
+    },
+    {
+      "callbackTimeMilliseconds": 12080.3,
+      "presentationSeconds": 11.466,
+      "presentedFrames": 343
+    },
+    {
+      "callbackTimeMilliseconds": 12130.3,
+      "presentationSeconds": 11.5,
+      "presentedFrames": 344
+    },
+    {
+      "callbackTimeMilliseconds": 12163.5,
+      "presentationSeconds": 11.533,
+      "presentedFrames": 345
+    },
+    {
+      "callbackTimeMilliseconds": 12196.9,
+      "presentationSeconds": 11.566,
+      "presentedFrames": 346
+    },
+    {
+      "callbackTimeMilliseconds": 12230.3,
+      "presentationSeconds": 11.6,
+      "presentedFrames": 347
+    },
+    {
+      "callbackTimeMilliseconds": 12263.6,
+      "presentationSeconds": 11.633,
+      "presentedFrames": 348
+    },
+    {
+      "callbackTimeMilliseconds": 12296.9,
+      "presentationSeconds": 11.666,
+      "presentedFrames": 349
+    },
+    {
+      "callbackTimeMilliseconds": 12330.2,
+      "presentationSeconds": 11.7,
+      "presentedFrames": 350
+    },
+    {
+      "callbackTimeMilliseconds": 12363.5,
+      "presentationSeconds": 11.733,
+      "presentedFrames": 351
+    },
+    {
+      "callbackTimeMilliseconds": 12396.9,
+      "presentationSeconds": 11.766,
+      "presentedFrames": 352
+    },
+    {
+      "callbackTimeMilliseconds": 12430.2,
+      "presentationSeconds": 11.8,
+      "presentedFrames": 353
+    },
+    {
+      "callbackTimeMilliseconds": 12463.5,
+      "presentationSeconds": 11.833,
+      "presentedFrames": 354
+    },
+    {
+      "callbackTimeMilliseconds": 12496.9,
+      "presentationSeconds": 11.866,
+      "presentedFrames": 355
+    },
+    {
+      "callbackTimeMilliseconds": 12530.2,
+      "presentationSeconds": 11.9,
+      "presentedFrames": 356
+    },
+    {
+      "callbackTimeMilliseconds": 12563.6,
+      "presentationSeconds": 11.933,
+      "presentedFrames": 357
+    },
+    {
+      "callbackTimeMilliseconds": 12596.9,
+      "presentationSeconds": 11.966,
+      "presentedFrames": 358
+    },
+    {
+      "callbackTimeMilliseconds": 12630.2,
+      "presentationSeconds": 12,
+      "presentedFrames": 359
+    },
+    {
+      "callbackTimeMilliseconds": 12646.9,
+      "presentationSeconds": 12.033,
+      "presentedFrames": 360
+    },
+    {
+      "callbackTimeMilliseconds": 12696.9,
+      "presentationSeconds": 12.066,
+      "presentedFrames": 361
+    },
+    {
+      "callbackTimeMilliseconds": 12730.2,
+      "presentationSeconds": 12.1,
+      "presentedFrames": 362
+    },
+    {
+      "callbackTimeMilliseconds": 12763.6,
+      "presentationSeconds": 12.133,
+      "presentedFrames": 363
+    },
+    {
+      "callbackTimeMilliseconds": 12796.9,
+      "presentationSeconds": 12.166,
+      "presentedFrames": 364
+    },
+    {
+      "callbackTimeMilliseconds": 12813.5,
+      "presentationSeconds": 12.2,
+      "presentedFrames": 365
+    },
+    {
+      "callbackTimeMilliseconds": 12846.9,
+      "presentationSeconds": 12.233,
+      "presentedFrames": 366
+    },
+    {
+      "callbackTimeMilliseconds": 12896.9,
+      "presentationSeconds": 12.266,
+      "presentedFrames": 367
+    },
+    {
+      "callbackTimeMilliseconds": 12913.6,
+      "presentationSeconds": 12.3,
+      "presentedFrames": 368
+    },
+    {
+      "callbackTimeMilliseconds": 12946.8,
+      "presentationSeconds": 12.333,
+      "presentedFrames": 369
+    },
+    {
+      "callbackTimeMilliseconds": 12980.2,
+      "presentationSeconds": 12.366,
+      "presentedFrames": 370
+    },
+    {
+      "callbackTimeMilliseconds": 13013.6,
+      "presentationSeconds": 12.4,
+      "presentedFrames": 371
+    },
+    {
+      "callbackTimeMilliseconds": 13046.9,
+      "presentationSeconds": 12.433,
+      "presentedFrames": 372
+    },
+    {
+      "callbackTimeMilliseconds": 13080.2,
+      "presentationSeconds": 12.466,
+      "presentedFrames": 373
+    },
+    {
+      "callbackTimeMilliseconds": 13113.5,
+      "presentationSeconds": 12.5,
+      "presentedFrames": 374
+    },
+    {
+      "callbackTimeMilliseconds": 13146.9,
+      "presentationSeconds": 12.533,
+      "presentedFrames": 375
+    },
+    {
+      "callbackTimeMilliseconds": 13180.2,
+      "presentationSeconds": 12.566,
+      "presentedFrames": 376
+    },
+    {
+      "callbackTimeMilliseconds": 13230.2,
+      "presentationSeconds": 12.6,
+      "presentedFrames": 377
+    },
+    {
+      "callbackTimeMilliseconds": 13263.5,
+      "presentationSeconds": 12.633,
+      "presentedFrames": 378
+    },
+    {
+      "callbackTimeMilliseconds": 13296.9,
+      "presentationSeconds": 12.666,
+      "presentedFrames": 379
+    },
+    {
+      "callbackTimeMilliseconds": 13330.2,
+      "presentationSeconds": 12.7,
+      "presentedFrames": 380
+    },
+    {
+      "callbackTimeMilliseconds": 13363.5,
+      "presentationSeconds": 12.733,
+      "presentedFrames": 381
+    },
+    {
+      "callbackTimeMilliseconds": 13380.2,
+      "presentationSeconds": 12.766,
+      "presentedFrames": 382
+    },
+    {
+      "callbackTimeMilliseconds": 13430.1,
+      "presentationSeconds": 12.8,
+      "presentedFrames": 383
+    },
+    {
+      "callbackTimeMilliseconds": 13463.6,
+      "presentationSeconds": 12.833,
+      "presentedFrames": 384
+    },
+    {
+      "callbackTimeMilliseconds": 13480.2,
+      "presentationSeconds": 12.866,
+      "presentedFrames": 385
+    },
+    {
+      "callbackTimeMilliseconds": 13530.2,
+      "presentationSeconds": 12.9,
+      "presentedFrames": 386
+    },
+    {
+      "callbackTimeMilliseconds": 13546.8,
+      "presentationSeconds": 12.933,
+      "presentedFrames": 387
+    },
+    {
+      "callbackTimeMilliseconds": 13596.8,
+      "presentationSeconds": 12.966,
+      "presentedFrames": 388
+    },
+    {
+      "callbackTimeMilliseconds": 13630.2,
+      "presentationSeconds": 13,
+      "presentedFrames": 389
+    },
+    {
+      "callbackTimeMilliseconds": 13646.9,
+      "presentationSeconds": 13.033,
+      "presentedFrames": 390
+    },
+    {
+      "callbackTimeMilliseconds": 13696.9,
+      "presentationSeconds": 13.066,
+      "presentedFrames": 391
+    },
+    {
+      "callbackTimeMilliseconds": 13713.5,
+      "presentationSeconds": 13.1,
+      "presentedFrames": 392
+    },
+    {
+      "callbackTimeMilliseconds": 13746.9,
+      "presentationSeconds": 13.133,
+      "presentedFrames": 393
+    },
+    {
+      "callbackTimeMilliseconds": 13796.9,
+      "presentationSeconds": 13.166,
+      "presentedFrames": 394
+    },
+    {
+      "callbackTimeMilliseconds": 13830.2,
+      "presentationSeconds": 13.2,
+      "presentedFrames": 395
+    },
+    {
+      "callbackTimeMilliseconds": 13846.9,
+      "presentationSeconds": 13.233,
+      "presentedFrames": 396
+    },
+    {
+      "callbackTimeMilliseconds": 13896.9,
+      "presentationSeconds": 13.266,
+      "presentedFrames": 397
+    },
+    {
+      "callbackTimeMilliseconds": 13930.2,
+      "presentationSeconds": 13.3,
+      "presentedFrames": 398
+    },
+    {
+      "callbackTimeMilliseconds": 13963.5,
+      "presentationSeconds": 13.333,
+      "presentedFrames": 399
+    },
+    {
+      "callbackTimeMilliseconds": 13996.8,
+      "presentationSeconds": 13.366,
+      "presentedFrames": 400
+    },
+    {
+      "callbackTimeMilliseconds": 14013.5,
+      "presentationSeconds": 13.4,
+      "presentedFrames": 401
+    },
+    {
+      "callbackTimeMilliseconds": 14046.9,
+      "presentationSeconds": 13.433,
+      "presentedFrames": 402
+    },
+    {
+      "callbackTimeMilliseconds": 14096.9,
+      "presentationSeconds": 13.466,
+      "presentedFrames": 403
+    },
+    {
+      "callbackTimeMilliseconds": 14130.1,
+      "presentationSeconds": 13.5,
+      "presentedFrames": 404
+    },
+    {
+      "callbackTimeMilliseconds": 14146.8,
+      "presentationSeconds": 13.533,
+      "presentedFrames": 405
+    },
+    {
+      "callbackTimeMilliseconds": 14196.9,
+      "presentationSeconds": 13.566,
+      "presentedFrames": 406
+    },
+    {
+      "callbackTimeMilliseconds": 14213.5,
+      "presentationSeconds": 13.6,
+      "presentedFrames": 407
+    },
+    {
+      "callbackTimeMilliseconds": 14246.8,
+      "presentationSeconds": 13.633,
+      "presentedFrames": 408
+    },
+    {
+      "callbackTimeMilliseconds": 14280.2,
+      "presentationSeconds": 13.666,
+      "presentedFrames": 409
+    },
+    {
+      "callbackTimeMilliseconds": 14313.5,
+      "presentationSeconds": 13.7,
+      "presentedFrames": 410
+    },
+    {
+      "callbackTimeMilliseconds": 14346.8,
+      "presentationSeconds": 13.733,
+      "presentedFrames": 411
+    },
+    {
+      "callbackTimeMilliseconds": 14380.2,
+      "presentationSeconds": 13.766,
+      "presentedFrames": 412
+    },
+    {
+      "callbackTimeMilliseconds": 14413.5,
+      "presentationSeconds": 13.8,
+      "presentedFrames": 413
+    },
+    {
+      "callbackTimeMilliseconds": 14446.8,
+      "presentationSeconds": 13.833,
+      "presentedFrames": 414
+    },
+    {
+      "callbackTimeMilliseconds": 14480.2,
+      "presentationSeconds": 13.866,
+      "presentedFrames": 415
+    },
+    {
+      "callbackTimeMilliseconds": 14513.5,
+      "presentationSeconds": 13.9,
+      "presentedFrames": 416
+    },
+    {
+      "callbackTimeMilliseconds": 14546.8,
+      "presentationSeconds": 13.933,
+      "presentedFrames": 417
+    },
+    {
+      "callbackTimeMilliseconds": 14580.2,
+      "presentationSeconds": 13.966,
+      "presentedFrames": 418
+    },
+    {
+      "callbackTimeMilliseconds": 14613.5,
+      "presentationSeconds": 14,
+      "presentedFrames": 419
+    },
+    {
+      "callbackTimeMilliseconds": 14646.8,
+      "presentationSeconds": 14.033,
+      "presentedFrames": 420
+    },
+    {
+      "callbackTimeMilliseconds": 14680.2,
+      "presentationSeconds": 14.066,
+      "presentedFrames": 421
+    },
+    {
+      "callbackTimeMilliseconds": 14713.5,
+      "presentationSeconds": 14.1,
+      "presentedFrames": 422
+    },
+    {
+      "callbackTimeMilliseconds": 14763.4,
+      "presentationSeconds": 14.133,
+      "presentedFrames": 423
+    },
+    {
+      "callbackTimeMilliseconds": 14780.2,
+      "presentationSeconds": 14.166,
+      "presentedFrames": 424
+    },
+    {
+      "callbackTimeMilliseconds": 14830.2,
+      "presentationSeconds": 14.2,
+      "presentedFrames": 425
+    },
+    {
+      "callbackTimeMilliseconds": 14863.5,
+      "presentationSeconds": 14.233,
+      "presentedFrames": 426
+    },
+    {
+      "callbackTimeMilliseconds": 14880.1,
+      "presentationSeconds": 14.266,
+      "presentedFrames": 427
+    },
+    {
+      "callbackTimeMilliseconds": 14930.1,
+      "presentationSeconds": 14.3,
+      "presentedFrames": 428
+    },
+    {
+      "callbackTimeMilliseconds": 14946.8,
+      "presentationSeconds": 14.333,
+      "presentedFrames": 429
+    },
+    {
+      "callbackTimeMilliseconds": 14980.1,
+      "presentationSeconds": 14.366,
+      "presentedFrames": 430
+    },
+    {
+      "callbackTimeMilliseconds": 15030.1,
+      "presentationSeconds": 14.4,
+      "presentedFrames": 431
+    },
+    {
+      "callbackTimeMilliseconds": 15063.4,
+      "presentationSeconds": 14.433,
+      "presentedFrames": 432
+    },
+    {
+      "callbackTimeMilliseconds": 15096.8,
+      "presentationSeconds": 14.466,
+      "presentedFrames": 433
+    },
+    {
+      "callbackTimeMilliseconds": 15130.2,
+      "presentationSeconds": 14.5,
+      "presentedFrames": 434
+    },
+    {
+      "callbackTimeMilliseconds": 15146.8,
+      "presentationSeconds": 14.533,
+      "presentedFrames": 435
+    },
+    {
+      "callbackTimeMilliseconds": 15196.8,
+      "presentationSeconds": 14.566,
+      "presentedFrames": 436
+    },
+    {
+      "callbackTimeMilliseconds": 15213.4,
+      "presentationSeconds": 14.6,
+      "presentedFrames": 437
+    },
+    {
+      "callbackTimeMilliseconds": 15263.5,
+      "presentationSeconds": 14.633,
+      "presentedFrames": 438
+    },
+    {
+      "callbackTimeMilliseconds": 15296.8,
+      "presentationSeconds": 14.666,
+      "presentedFrames": 439
+    },
+    {
+      "callbackTimeMilliseconds": 15313.5,
+      "presentationSeconds": 14.7,
+      "presentedFrames": 440
+    },
+    {
+      "callbackTimeMilliseconds": 15363.4,
+      "presentationSeconds": 14.733,
+      "presentedFrames": 441
+    },
+    {
+      "callbackTimeMilliseconds": 15380.1,
+      "presentationSeconds": 14.766,
+      "presentedFrames": 442
+    },
+    {
+      "callbackTimeMilliseconds": 15430.1,
+      "presentationSeconds": 14.8,
+      "presentedFrames": 443
+    },
+    {
+      "callbackTimeMilliseconds": 15463.4,
+      "presentationSeconds": 14.833,
+      "presentedFrames": 444
+    },
+    {
+      "callbackTimeMilliseconds": 15480.1,
+      "presentationSeconds": 14.866,
+      "presentedFrames": 445
+    },
+    {
+      "callbackTimeMilliseconds": 15530.1,
+      "presentationSeconds": 14.9,
+      "presentedFrames": 446
+    },
+    {
+      "callbackTimeMilliseconds": 15563.4,
+      "presentationSeconds": 14.933,
+      "presentedFrames": 447
+    },
+    {
+      "callbackTimeMilliseconds": 15580.1,
+      "presentationSeconds": 14.966,
+      "presentedFrames": 448
+    },
+    {
+      "callbackTimeMilliseconds": 15613.5,
+      "presentationSeconds": 15,
+      "presentedFrames": 449
+    },
+    {
+      "callbackTimeMilliseconds": 15663.4,
+      "presentationSeconds": 15.033,
+      "presentedFrames": 450
+    },
+    {
+      "callbackTimeMilliseconds": 15696.7,
+      "presentationSeconds": 15.066,
+      "presentedFrames": 451
+    },
+    {
+      "callbackTimeMilliseconds": 15730.1,
+      "presentationSeconds": 15.1,
+      "presentedFrames": 452
+    },
+    {
+      "callbackTimeMilliseconds": 15763.4,
+      "presentationSeconds": 15.133,
+      "presentedFrames": 453
+    },
+    {
+      "callbackTimeMilliseconds": 15796.8,
+      "presentationSeconds": 15.166,
+      "presentedFrames": 454
+    },
+    {
+      "callbackTimeMilliseconds": 15830.1,
+      "presentationSeconds": 15.2,
+      "presentedFrames": 455
+    },
+    {
+      "callbackTimeMilliseconds": 15846.7,
+      "presentationSeconds": 15.233,
+      "presentedFrames": 456
+    },
+    {
+      "callbackTimeMilliseconds": 15896.8,
+      "presentationSeconds": 15.266,
+      "presentedFrames": 457
+    },
+    {
+      "callbackTimeMilliseconds": 15913.5,
+      "presentationSeconds": 15.3,
+      "presentedFrames": 458
+    },
+    {
+      "callbackTimeMilliseconds": 15963.4,
+      "presentationSeconds": 15.333,
+      "presentedFrames": 459
+    },
+    {
+      "callbackTimeMilliseconds": 15980.1,
+      "presentationSeconds": 15.366,
+      "presentedFrames": 460
+    },
+    {
+      "callbackTimeMilliseconds": 16030.1,
+      "presentationSeconds": 15.4,
+      "presentedFrames": 461
+    },
+    {
+      "callbackTimeMilliseconds": 16063.4,
+      "presentationSeconds": 15.433,
+      "presentedFrames": 462
+    },
+    {
+      "callbackTimeMilliseconds": 16080.1,
+      "presentationSeconds": 15.466,
+      "presentedFrames": 463
+    },
+    {
+      "callbackTimeMilliseconds": 16130.1,
+      "presentationSeconds": 15.5,
+      "presentedFrames": 464
+    },
+    {
+      "callbackTimeMilliseconds": 16163.4,
+      "presentationSeconds": 15.533,
+      "presentedFrames": 465
+    },
+    {
+      "callbackTimeMilliseconds": 16196.8,
+      "presentationSeconds": 15.566,
+      "presentedFrames": 466
+    },
+    {
+      "callbackTimeMilliseconds": 16213.4,
+      "presentationSeconds": 15.6,
+      "presentedFrames": 467
+    },
+    {
+      "callbackTimeMilliseconds": 16246.7,
+      "presentationSeconds": 15.633,
+      "presentedFrames": 468
+    },
+    {
+      "callbackTimeMilliseconds": 16280.1,
+      "presentationSeconds": 15.666,
+      "presentedFrames": 469
+    },
+    {
+      "callbackTimeMilliseconds": 16330.1,
+      "presentationSeconds": 15.7,
+      "presentedFrames": 470
+    },
+    {
+      "callbackTimeMilliseconds": 16363.4,
+      "presentationSeconds": 15.733,
+      "presentedFrames": 471
+    },
+    {
+      "callbackTimeMilliseconds": 16396.7,
+      "presentationSeconds": 15.766,
+      "presentedFrames": 472
+    },
+    {
+      "callbackTimeMilliseconds": 16413.5,
+      "presentationSeconds": 15.8,
+      "presentedFrames": 473
+    },
+    {
+      "callbackTimeMilliseconds": 16463.4,
+      "presentationSeconds": 15.833,
+      "presentedFrames": 474
+    },
+    {
+      "callbackTimeMilliseconds": 16496.8,
+      "presentationSeconds": 15.866,
+      "presentedFrames": 475
+    },
+    {
+      "callbackTimeMilliseconds": 16513.4,
+      "presentationSeconds": 15.9,
+      "presentedFrames": 476
+    },
+    {
+      "callbackTimeMilliseconds": 16563.4,
+      "presentationSeconds": 15.933,
+      "presentedFrames": 477
+    },
+    {
+      "callbackTimeMilliseconds": 16596.7,
+      "presentationSeconds": 15.966,
+      "presentedFrames": 478
+    },
+    {
+      "callbackTimeMilliseconds": 16630.1,
+      "presentationSeconds": 16,
+      "presentedFrames": 479
+    },
+    {
+      "callbackTimeMilliseconds": 16663.4,
+      "presentationSeconds": 16.033,
+      "presentedFrames": 480
+    },
+    {
+      "callbackTimeMilliseconds": 16696.8,
+      "presentationSeconds": 16.066,
+      "presentedFrames": 481
+    },
+    {
+      "callbackTimeMilliseconds": 16730,
+      "presentationSeconds": 16.1,
+      "presentedFrames": 482
+    },
+    {
+      "callbackTimeMilliseconds": 16763.4,
+      "presentationSeconds": 16.133,
+      "presentedFrames": 483
+    },
+    {
+      "callbackTimeMilliseconds": 16780.1,
+      "presentationSeconds": 16.166,
+      "presentedFrames": 484
+    },
+    {
+      "callbackTimeMilliseconds": 16830,
+      "presentationSeconds": 16.2,
+      "presentedFrames": 485
+    },
+    {
+      "callbackTimeMilliseconds": 16863.4,
+      "presentationSeconds": 16.233,
+      "presentedFrames": 486
+    },
+    {
+      "callbackTimeMilliseconds": 16880.1,
+      "presentationSeconds": 16.266,
+      "presentedFrames": 487
+    },
+    {
+      "callbackTimeMilliseconds": 16930.1,
+      "presentationSeconds": 16.3,
+      "presentedFrames": 488
+    },
+    {
+      "callbackTimeMilliseconds": 16946.8,
+      "presentationSeconds": 16.333,
+      "presentedFrames": 489
+    },
+    {
+      "callbackTimeMilliseconds": 16996.7,
+      "presentationSeconds": 16.366,
+      "presentedFrames": 490
+    },
+    {
+      "callbackTimeMilliseconds": 17030,
+      "presentationSeconds": 16.4,
+      "presentedFrames": 491
+    },
+    {
+      "callbackTimeMilliseconds": 17063.4,
+      "presentationSeconds": 16.433,
+      "presentedFrames": 492
+    },
+    {
+      "callbackTimeMilliseconds": 17096.7,
+      "presentationSeconds": 16.466,
+      "presentedFrames": 493
+    },
+    {
+      "callbackTimeMilliseconds": 17130,
+      "presentationSeconds": 16.5,
+      "presentedFrames": 494
+    },
+    {
+      "callbackTimeMilliseconds": 17146.7,
+      "presentationSeconds": 16.533,
+      "presentedFrames": 495
+    },
+    {
+      "callbackTimeMilliseconds": 17180.1,
+      "presentationSeconds": 16.566,
+      "presentedFrames": 496
+    },
+    {
+      "callbackTimeMilliseconds": 17213.3,
+      "presentationSeconds": 16.6,
+      "presentedFrames": 497
+    },
+    {
+      "callbackTimeMilliseconds": 17246.7,
+      "presentationSeconds": 16.633,
+      "presentedFrames": 498
+    },
+    {
+      "callbackTimeMilliseconds": 17280.1,
+      "presentationSeconds": 16.666,
+      "presentedFrames": 499
+    },
+    {
+      "callbackTimeMilliseconds": 17313.4,
+      "presentationSeconds": 16.7,
+      "presentedFrames": 500
+    },
+    {
+      "callbackTimeMilliseconds": 17346.7,
+      "presentationSeconds": 16.733,
+      "presentedFrames": 501
+    },
+    {
+      "callbackTimeMilliseconds": 17380.1,
+      "presentationSeconds": 16.766,
+      "presentedFrames": 502
+    },
+    {
+      "callbackTimeMilliseconds": 17413.4,
+      "presentationSeconds": 16.8,
+      "presentedFrames": 503
+    },
+    {
+      "callbackTimeMilliseconds": 17463.3,
+      "presentationSeconds": 16.833,
+      "presentedFrames": 504
+    },
+    {
+      "callbackTimeMilliseconds": 17496.7,
+      "presentationSeconds": 16.866,
+      "presentedFrames": 505
+    },
+    {
+      "callbackTimeMilliseconds": 17513.4,
+      "presentationSeconds": 16.9,
+      "presentedFrames": 506
+    },
+    {
+      "callbackTimeMilliseconds": 17563.3,
+      "presentationSeconds": 16.933,
+      "presentedFrames": 507
+    },
+    {
+      "callbackTimeMilliseconds": 17580,
+      "presentationSeconds": 16.966,
+      "presentedFrames": 508
+    },
+    {
+      "callbackTimeMilliseconds": 17613.4,
+      "presentationSeconds": 17,
+      "presentedFrames": 509
+    },
+    {
+      "callbackTimeMilliseconds": 17646.7,
+      "presentationSeconds": 17.033,
+      "presentedFrames": 510
+    },
+    {
+      "callbackTimeMilliseconds": 17680,
+      "presentationSeconds": 17.066,
+      "presentedFrames": 511
+    },
+    {
+      "callbackTimeMilliseconds": 17713.4,
+      "presentationSeconds": 17.1,
+      "presentedFrames": 512
+    },
+    {
+      "callbackTimeMilliseconds": 17763.4,
+      "presentationSeconds": 17.133,
+      "presentedFrames": 513
+    },
+    {
+      "callbackTimeMilliseconds": 17780,
+      "presentationSeconds": 17.166,
+      "presentedFrames": 514
+    },
+    {
+      "callbackTimeMilliseconds": 17830,
+      "presentationSeconds": 17.2,
+      "presentedFrames": 515
+    },
+    {
+      "callbackTimeMilliseconds": 17846.6,
+      "presentationSeconds": 17.233,
+      "presentedFrames": 516
+    },
+    {
+      "callbackTimeMilliseconds": 17896.7,
+      "presentationSeconds": 17.266,
+      "presentedFrames": 517
+    },
+    {
+      "callbackTimeMilliseconds": 17913.3,
+      "presentationSeconds": 17.3,
+      "presentedFrames": 518
+    },
+    {
+      "callbackTimeMilliseconds": 17946.6,
+      "presentationSeconds": 17.333,
+      "presentedFrames": 519
+    },
+    {
+      "callbackTimeMilliseconds": 17980,
+      "presentationSeconds": 17.366,
+      "presentedFrames": 520
+    },
+    {
+      "callbackTimeMilliseconds": 18013.3,
+      "presentationSeconds": 17.4,
+      "presentedFrames": 521
+    },
+    {
+      "callbackTimeMilliseconds": 18046.6,
+      "presentationSeconds": 17.433,
+      "presentedFrames": 522
+    },
+    {
+      "callbackTimeMilliseconds": 18080,
+      "presentationSeconds": 17.466,
+      "presentedFrames": 523
+    },
+    {
+      "callbackTimeMilliseconds": 18113.3,
+      "presentationSeconds": 17.5,
+      "presentedFrames": 524
+    },
+    {
+      "callbackTimeMilliseconds": 18146.7,
+      "presentationSeconds": 17.533,
+      "presentedFrames": 525
+    },
+    {
+      "callbackTimeMilliseconds": 18180,
+      "presentationSeconds": 17.566,
+      "presentedFrames": 526
+    },
+    {
+      "callbackTimeMilliseconds": 18230,
+      "presentationSeconds": 17.6,
+      "presentedFrames": 527
+    },
+    {
+      "callbackTimeMilliseconds": 18246.6,
+      "presentationSeconds": 17.633,
+      "presentedFrames": 528
+    },
+    {
+      "callbackTimeMilliseconds": 18296.7,
+      "presentationSeconds": 17.666,
+      "presentedFrames": 529
+    },
+    {
+      "callbackTimeMilliseconds": 18330,
+      "presentationSeconds": 17.7,
+      "presentedFrames": 530
+    },
+    {
+      "callbackTimeMilliseconds": 18363.4,
+      "presentationSeconds": 17.733,
+      "presentedFrames": 531
+    },
+    {
+      "callbackTimeMilliseconds": 18396.7,
+      "presentationSeconds": 17.766,
+      "presentedFrames": 532
+    },
+    {
+      "callbackTimeMilliseconds": 18413.3,
+      "presentationSeconds": 17.8,
+      "presentedFrames": 533
+    },
+    {
+      "callbackTimeMilliseconds": 18446.7,
+      "presentationSeconds": 17.833,
+      "presentedFrames": 534
+    },
+    {
+      "callbackTimeMilliseconds": 18480,
+      "presentationSeconds": 17.866,
+      "presentedFrames": 535
+    },
+    {
+      "callbackTimeMilliseconds": 18530,
+      "presentationSeconds": 17.9,
+      "presentedFrames": 536
+    },
+    {
+      "callbackTimeMilliseconds": 18563.4,
+      "presentationSeconds": 17.933,
+      "presentedFrames": 537
+    },
+    {
+      "callbackTimeMilliseconds": 18596.6,
+      "presentationSeconds": 17.966,
+      "presentedFrames": 538
+    },
+    {
+      "callbackTimeMilliseconds": 18630,
+      "presentationSeconds": 18,
+      "presentedFrames": 539
+    },
+    {
+      "callbackTimeMilliseconds": 18663.3,
+      "presentationSeconds": 18.033,
+      "presentedFrames": 540
+    },
+    {
+      "callbackTimeMilliseconds": 18680,
+      "presentationSeconds": 18.066,
+      "presentedFrames": 541
+    },
+    {
+      "callbackTimeMilliseconds": 18730,
+      "presentationSeconds": 18.1,
+      "presentedFrames": 542
+    },
+    {
+      "callbackTimeMilliseconds": 18746.6,
+      "presentationSeconds": 18.133,
+      "presentedFrames": 543
+    },
+    {
+      "callbackTimeMilliseconds": 18796.7,
+      "presentationSeconds": 18.166,
+      "presentedFrames": 544
+    },
+    {
+      "callbackTimeMilliseconds": 18829.9,
+      "presentationSeconds": 18.2,
+      "presentedFrames": 545
+    },
+    {
+      "callbackTimeMilliseconds": 18846.6,
+      "presentationSeconds": 18.233,
+      "presentedFrames": 546
+    },
+    {
+      "callbackTimeMilliseconds": 18896.7,
+      "presentationSeconds": 18.266,
+      "presentedFrames": 547
+    },
+    {
+      "callbackTimeMilliseconds": 18913.3,
+      "presentationSeconds": 18.3,
+      "presentedFrames": 548
+    },
+    {
+      "callbackTimeMilliseconds": 18963.3,
+      "presentationSeconds": 18.333,
+      "presentedFrames": 549
+    },
+    {
+      "callbackTimeMilliseconds": 18980,
+      "presentationSeconds": 18.366,
+      "presentedFrames": 550
+    },
+    {
+      "callbackTimeMilliseconds": 19013.3,
+      "presentationSeconds": 18.4,
+      "presentedFrames": 551
+    },
+    {
+      "callbackTimeMilliseconds": 19063.3,
+      "presentationSeconds": 18.433,
+      "presentedFrames": 552
+    },
+    {
+      "callbackTimeMilliseconds": 19096.6,
+      "presentationSeconds": 18.466,
+      "presentedFrames": 553
+    },
+    {
+      "callbackTimeMilliseconds": 19129.9,
+      "presentationSeconds": 18.5,
+      "presentedFrames": 554
+    },
+    {
+      "callbackTimeMilliseconds": 19163.3,
+      "presentationSeconds": 18.533,
+      "presentedFrames": 555
+    },
+    {
+      "callbackTimeMilliseconds": 19196.6,
+      "presentationSeconds": 18.566,
+      "presentedFrames": 556
+    },
+    {
+      "callbackTimeMilliseconds": 19230,
+      "presentationSeconds": 18.6,
+      "presentedFrames": 557
+    },
+    {
+      "callbackTimeMilliseconds": 19263.3,
+      "presentationSeconds": 18.633,
+      "presentedFrames": 558
+    },
+    {
+      "callbackTimeMilliseconds": 19296.6,
+      "presentationSeconds": 18.666,
+      "presentedFrames": 559
+    },
+    {
+      "callbackTimeMilliseconds": 19329.9,
+      "presentationSeconds": 18.7,
+      "presentedFrames": 560
+    },
+    {
+      "callbackTimeMilliseconds": 19346.6,
+      "presentationSeconds": 18.733,
+      "presentedFrames": 561
+    },
+    {
+      "callbackTimeMilliseconds": 19396.6,
+      "presentationSeconds": 18.766,
+      "presentedFrames": 562
+    },
+    {
+      "callbackTimeMilliseconds": 19429.9,
+      "presentationSeconds": 18.8,
+      "presentedFrames": 563
+    },
+    {
+      "callbackTimeMilliseconds": 19463.3,
+      "presentationSeconds": 18.833,
+      "presentedFrames": 564
+    },
+    {
+      "callbackTimeMilliseconds": 19480,
+      "presentationSeconds": 18.866,
+      "presentedFrames": 565
+    },
+    {
+      "callbackTimeMilliseconds": 19530,
+      "presentationSeconds": 18.9,
+      "presentedFrames": 566
+    },
+    {
+      "callbackTimeMilliseconds": 19563.3,
+      "presentationSeconds": 18.933,
+      "presentedFrames": 567
+    },
+    {
+      "callbackTimeMilliseconds": 19596.6,
+      "presentationSeconds": 18.966,
+      "presentedFrames": 568
+    },
+    {
+      "callbackTimeMilliseconds": 19630,
+      "presentationSeconds": 19,
+      "presentedFrames": 569
+    },
+    {
+      "callbackTimeMilliseconds": 19663.3,
+      "presentationSeconds": 19.033,
+      "presentedFrames": 570
+    },
+    {
+      "callbackTimeMilliseconds": 19696.6,
+      "presentationSeconds": 19.066,
+      "presentedFrames": 571
+    },
+    {
+      "callbackTimeMilliseconds": 19729.9,
+      "presentationSeconds": 19.1,
+      "presentedFrames": 572
+    },
+    {
+      "callbackTimeMilliseconds": 19746.6,
+      "presentationSeconds": 19.133,
+      "presentedFrames": 573
+    },
+    {
+      "callbackTimeMilliseconds": 19796.6,
+      "presentationSeconds": 19.166,
+      "presentedFrames": 574
+    },
+    {
+      "callbackTimeMilliseconds": 19813.3,
+      "presentationSeconds": 19.2,
+      "presentedFrames": 575
+    },
+    {
+      "callbackTimeMilliseconds": 19863.3,
+      "presentationSeconds": 19.233,
+      "presentedFrames": 576
+    },
+    {
+      "callbackTimeMilliseconds": 19896.6,
+      "presentationSeconds": 19.266,
+      "presentedFrames": 577
+    },
+    {
+      "callbackTimeMilliseconds": 19913.3,
+      "presentationSeconds": 19.3,
+      "presentedFrames": 578
+    },
+    {
+      "callbackTimeMilliseconds": 19946.6,
+      "presentationSeconds": 19.333,
+      "presentedFrames": 579
+    },
+    {
+      "callbackTimeMilliseconds": 19996.6,
+      "presentationSeconds": 19.366,
+      "presentedFrames": 580
+    },
+    {
+      "callbackTimeMilliseconds": 20013.2,
+      "presentationSeconds": 19.4,
+      "presentedFrames": 581
+    },
+    {
+      "callbackTimeMilliseconds": 20046.6,
+      "presentationSeconds": 19.433,
+      "presentedFrames": 582
+    },
+    {
+      "callbackTimeMilliseconds": 20096.6,
+      "presentationSeconds": 19.466,
+      "presentedFrames": 583
+    },
+    {
+      "callbackTimeMilliseconds": 20129.9,
+      "presentationSeconds": 19.5,
+      "presentedFrames": 584
+    },
+    {
+      "callbackTimeMilliseconds": 20163.2,
+      "presentationSeconds": 19.533,
+      "presentedFrames": 585
+    },
+    {
+      "callbackTimeMilliseconds": 20196.6,
+      "presentationSeconds": 19.566,
+      "presentedFrames": 586
+    },
+    {
+      "callbackTimeMilliseconds": 20213.3,
+      "presentationSeconds": 19.6,
+      "presentedFrames": 587
+    },
+    {
+      "callbackTimeMilliseconds": 20246.5,
+      "presentationSeconds": 19.633,
+      "presentedFrames": 588
+    },
+    {
+      "callbackTimeMilliseconds": 20296.6,
+      "presentationSeconds": 19.666,
+      "presentedFrames": 589
+    },
+    {
+      "callbackTimeMilliseconds": 20329.9,
+      "presentationSeconds": 19.7,
+      "presentedFrames": 590
+    },
+    {
+      "callbackTimeMilliseconds": 20346.6,
+      "presentationSeconds": 19.733,
+      "presentedFrames": 591
+    },
+    {
+      "callbackTimeMilliseconds": 20396.6,
+      "presentationSeconds": 19.766,
+      "presentedFrames": 592
+    },
+    {
+      "callbackTimeMilliseconds": 20430,
+      "presentationSeconds": 19.8,
+      "presentedFrames": 593
+    },
+    {
+      "callbackTimeMilliseconds": 20463.3,
+      "presentationSeconds": 19.833,
+      "presentedFrames": 594
+    },
+    {
+      "callbackTimeMilliseconds": 20496.6,
+      "presentationSeconds": 19.866,
+      "presentedFrames": 595
+    },
+    {
+      "callbackTimeMilliseconds": 20530,
+      "presentationSeconds": 19.9,
+      "presentedFrames": 596
+    },
+    {
+      "callbackTimeMilliseconds": 20546.5,
+      "presentationSeconds": 19.933,
+      "presentedFrames": 597
+    },
+    {
+      "callbackTimeMilliseconds": 20579.9,
+      "presentationSeconds": 19.966,
+      "presentedFrames": 598
+    }
+  ]
+}

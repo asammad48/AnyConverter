@@ -108,6 +108,7 @@
       this.cacheDom();
       this.layoutEditor = window.StudioLayoutEditor ? new window.StudioLayoutEditor(this) : null;
       this.typographyEditor = window.StudioTypographyEditor ? new window.StudioTypographyEditor(this) : null;
+      this.motionEditor = window.StudioMotionEditor ? new window.StudioMotionEditor(this) : null;
       this.bindEvents();
       window.StudioFonts?.prepare().then(() => {
         this.typographyEditor?.sync();
@@ -230,7 +231,18 @@
 
       // Save / Open Project (.acstudio)
       if (this.dom.btnSave) {
-        this.dom.btnSave.addEventListener('click', () => this.saveProjectArchive());
+        this.dom.btnSave.addEventListener('click', async () => {
+          if (this.hasParrotMotion()) {
+            try {
+              const { asset, archiveBytes } = window.StudioPuppet;
+              if (!this.assetBlobs.has(asset.id)) this.assetBlobs.set(asset.id, await archiveBytes());
+            } catch (error) {
+              this.motionEditor?.showError(error);
+              return;
+            }
+          }
+          this.saveProjectArchive();
+        });
       }
       if (this.dom.btnOpen && this.dom.fileInput) {
         this.dom.btnOpen.addEventListener('click', () => this.dom.fileInput.click());
@@ -333,6 +345,7 @@
       if (this.dom.shotSubhead) {
         this.dom.shotSubhead.addEventListener('input', (e) => {
           this.updateActiveShot('subhead', e.target.value);
+          this.updateMotionTimeline(this.totalFrames);
           this.checkActiveShotSuitability();
         });
       }
@@ -572,7 +585,9 @@
           audioClips: cached.audioClips
         };
       } else {
-        if (directionKey === 'character-comedy') {
+        if (directionKey === 'motion-showreel') {
+          seq = window.StudioMotionShowreel.create(this.project.locale);
+        } else if (directionKey === 'character-comedy') {
           seq = window.CreativeDirector.createParrotComedyPilot();
         } else if (directionKey === 'minimal-suspense') {
           seq = window.CreativeDirector.createMinimalSuspensePilot();
@@ -601,6 +616,7 @@
       this.project.canvas = Object.assign({}, seq.canvas);
       this.project.shots = seq.shots;
       this.project.audioClips = seq.audioClips;
+      this.prepareMotionAssets();
 
       this.totalFrames = seq.totalFrames;
       this.fps = seq.fps;
@@ -624,6 +640,16 @@
       this.updateShotsListUI();
       this.updateTimelineTracks();
       this.seekFrame(0);
+    }
+
+    hasParrotMotion() {
+      return this.project.shots?.some(shot => shot.customData?.motion?.puppet === 'parrot');
+    }
+
+    prepareMotionAssets() {
+      if (this.hasParrotMotion()) {
+        window.StudioPuppet.prepare(this.assetBlobs.get(window.StudioPuppet.asset.id)).then(() => this.render()).catch(error => this.motionEditor?.showError(error));
+      }
     }
 
     switchArtDirection(directionKey) {
@@ -770,6 +796,7 @@
         this.dom.btnShotMoveDown.style.cursor = canMoveDown ? 'pointer' : 'not-allowed';
       }
       this.typographyEditor?.sync();
+      this.motionEditor?.sync();
       this.checkActiveShotSuitability();
     }
 
@@ -860,6 +887,47 @@
         });
         this.dom.timelineVideoTrack.appendChild(block);
       });
+      this.updateMotionTimeline(totalF);
+    }
+
+    updateMotionTimeline(totalFrames) {
+      const captionTrack = document.getElementById('cs-motion-caption-track');
+      const audioTrack = document.getElementById('cs-motion-audio-track');
+      if (!captionTrack || !audioTrack) return;
+      const visible = this.project.shots.some(shot => shot.customData?.motion?.version === 1);
+      captionTrack.hidden = audioTrack.hidden = !visible;
+      audioTrack.parentElement.querySelector('.cs-legacy-audio-track').hidden = visible;
+      if (!visible) return;
+      captionTrack.replaceChildren();
+      audioTrack.replaceChildren();
+      const blocks = (host, label, start, duration) => {
+        const block = document.createElement('button');
+        block.type = 'button';
+        block.className = 'cs-clip cs-motion-clip';
+        block.style.left = 100 * start / totalFrames + '%';
+        block.style.width = 100 * Math.max(0, Math.min(duration, totalFrames - start)) / totalFrames + '%';
+        block.textContent = block.title = label;
+        block.addEventListener('click', () => this.seekFrame(Math.min(totalFrames - 1, Math.round(start))));
+        host.append(block);
+      };
+      for (const shot of this.project.shots) {
+        if (!shot.subhead) continue;
+        const caption = shot.customData?.typography?.caption;
+        const start = Math.max(0, caption?.startFrame || 0);
+        const end = Math.min(shot.durationFrames, caption?.endFrame || shot.durationFrames);
+        blocks(captionTrack, shot.subhead, shot.startFrame + start, Math.max(1, end - start));
+      }
+      for (const clip of this.project.audioClips || []) {
+        const names = {
+          inbox: ['Inbox music', 'Música del buzón', 'Indboksmusik'],
+          delivery: ['Delivery music', 'Música del envío', 'Leveringsmusik'],
+          hall: ['Hall ambience', 'Ambiente del pasillo', 'Gangens baggrundslyd'],
+          'door-hit': ['Door impact', 'Golpe de puerta', 'Dørslag']
+        };
+        const language = Math.max(0, ['en', 'es', 'da'].indexOf(this.project.locale));
+        blocks(audioTrack, names[clip.clipId]?.[language] || clip.clipId, clip.startSample * this.fps / 48000,
+          clip.durationSamples * this.fps / 48000);
+      }
     }
 
     render() {
@@ -885,11 +953,14 @@
           this.totalFrames,
           width,
           height,
-          { mode: this.renderMode || 'production' }
+          { mode: this.renderMode || 'production', reducedMotionPreview: this.motionEditor?.reduced }
         );
         this.layoutEditor?.afterRender(resolved);
+        this.motionEditor?.afterRender(resolved);
         return;
       }
+
+      this.motionEditor?.afterRender();
 
       // 1. Draw graphic layers
       this.graphics.renderToCanvas(this.dom.ctx);
@@ -1375,7 +1446,15 @@
           audioClips: savedAudioClips
         });
 
-        const zipBuffer = this.archive.package(projectToPackage, this.assetBlobs);
+        const binaryAssets = new Map(this.assetBlobs);
+        if (this.hasParrotMotion()) {
+          const { asset } = window.StudioPuppet;
+          if (!binaryAssets.has(asset.id)) throw new Error('The parrot atlas is unavailable for save.');
+          if (!projectToPackage.assets?.some(entry => entry.id === asset.id)) {
+            projectToPackage.assets = [...(projectToPackage.assets || []), asset];
+          }
+        }
+        const zipBuffer = this.archive.package(projectToPackage, binaryAssets);
         const blob = new Blob([zipBuffer], { type: 'application/x-acstudio+zip' });
         this.lastSavedBlob = blob;
         this.lastSavedZip = zipBuffer;
@@ -1419,6 +1498,7 @@
             }
             if (this.project.shots && window.ReferenceShot) {
               this.project.shots = this.project.shots.map(s => new window.ReferenceShot(s));
+              this.prepareMotionAssets();
             }
             if (this.project.audioClips && window.CreativeDirector) {
               this.project.audioClips.forEach(c => {

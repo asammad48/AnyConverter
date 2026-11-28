@@ -56,7 +56,13 @@
       const totalSamples = Math.round(durationSeconds * sampleRate);
       const pcm = new Float32Array(totalSamples);
 
-      if (theme === 'comedy') {
+      if (theme === 'door-hit') {
+        for (let i = 0; i < totalSamples; i++) {
+          const t = i / sampleRate;
+          pcm[i] = Math.min(1, t * 420) * Math.exp(-t * 12) *
+            (.37 * Math.sin(2 * Math.PI * (95 * t - 30 * t * t)) + .12 * Math.sin(2 * Math.PI * 221 * t));
+        }
+      } else if (theme === 'comedy') {
         // Upbeat, playful comedic progression with chirp accent
         const chordFreqs = [261.63, 329.63, 392.00, 523.25]; // C major
         for (let i = 0; i < totalSamples; i++) {
@@ -463,7 +469,9 @@
         const composition = typeof window !== 'undefined'
           ? window.StudioLayoutComposition
           : require('./layout-composition');
-        return composition.render(ctx, shotInstance, layout, shotLocalFrame, width, height, project.locale || 'en', project.fps || 30);
+        return composition.render(ctx, shotInstance, layout, shotLocalFrame, width, height, project.locale || 'en', project.fps || 30, {
+          reduced: Boolean(options.reducedMotionPreview), absoluteFrame: f
+        });
       }
 
       if (height > width) {

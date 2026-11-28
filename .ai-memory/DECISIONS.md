@@ -2258,3 +2258,10 @@ Cinematic shots opt into professional typography through `customData.typography.
 **Date** 2026-11-27
 
 Opted-in shots use a tighter portrait arrangement within the existing safe bounds. A local pattern provides a production-path caption stress fixture for the outline, shadow and panel treatments. Compare dense patterns using worst-case settled contrast and phone-width frames. Diagnose playback with quality counters and decoded timestamps alongside callbacks. Store compact action traces separately from high-resolution stills and video. The published baseline trace remains in branch history.
+
+
+## ADR-096 Creative Studio motion graph and pose atlas
+
+**Date** 2026-11-27
+
+Cinematic shots opt into frame-deterministic motion with versioned data in shot customData. The existing CreativeDirector entry drives the preview and WebCodecs renderer. Motion uses a shot-local key clock and absolute-frame seeded camera noise. Native puppet cels use a checksum-addressed atlas in the project archive. Preview reduction and diagnostics are editor state. Existing projects use their existing rendering path.

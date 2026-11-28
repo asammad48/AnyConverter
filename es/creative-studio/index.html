@@ -85,6 +85,7 @@
           <option value="cinematic-saas" selected>SaaS Cinemático (24s / 5 Tomas)</option>
           <option value="character-comedy">Comedia del Loro Gerente (Piloto 9s)</option>
           <option value="minimal-suspense">Suspenso Noir Minimalista (Piloto 9s)</option>
+          <option value="motion-showreel">Muestra de movimiento (20 s)</option>
         </select>
         <select id="cs-render-mode-select" class="cs-select" aria-label="Calidad de Renderizado" title="Calidad de Renderizado">
           <option value="production" selected>Modo: Calidad Producción</option>
@@ -213,7 +214,9 @@
             <div id="cs-timeline-video-track" class="cs-timeline-track" style="display: flex; gap: 2px; height: 38px; padding: 2px; position: relative;">
               <!-- Bloques dinámicos de tomas -->
             </div>
-            <div class="cs-timeline-track" style="height: 32px;">
+            <div id="cs-motion-caption-track" class="cs-timeline-track" aria-label="Subtítulos" hidden></div>
+            <div id="cs-motion-audio-track" class="cs-timeline-track" aria-label="Audio" hidden></div>
+            <div class="cs-timeline-track cs-legacy-audio-track" style="height: 32px;">
               <div class="cs-clip" style="left: 0; width: 100%; background: rgba(16, 185, 129, 0.35); border-color: #34d399; font-size: 11px; display: flex; align-items: center; padding-left: 8px;">
                 🎵 Master de Audio Sintetizado (Estéreo 48kHz PCM)
               </div>
@@ -251,6 +254,7 @@
           <label class="cs-form-label" for="cs-shot-subhead">Subtítulo / Narrativa</label>
           <textarea id="cs-shot-subhead" class="cs-input" rows="2" placeholder="Narrativa de la toma" style="margin-bottom: 8px; resize: vertical;"></textarea>
           <details id="cs-typography-editor"></details>
+          <details id="cs-motion-editor"></details>
 
           <label class="cs-form-label" for="cs-shot-motif-select">Motivo Gráfico Visual</label>
           <select id="cs-shot-motif-select" class="cs-select" style="width: 100%; margin-bottom: 8px;">
@@ -374,6 +378,11 @@
   <script src="/assets/js/creative-studio/visual/kinetic-type.js" defer></script>
   <script src="/assets/js/creative-studio/visual/text-layout.js" defer></script>
   <script src="/assets/js/creative-studio/visual/typography-editor.js" defer></script>
+  <script src="/assets/js/creative-studio/visual/easings.js" defer></script>
+  <script src="/assets/js/creative-studio/visual/motion-graph.js" defer></script>
+  <script src="/assets/js/creative-studio/visual/puppet.js" defer></script>
+  <script src="/assets/js/creative-studio/visual/motion-editor.js" defer></script>
+  <script src="/assets/js/creative-studio/visual/motion-showreel.js" defer></script>
   <script src="/assets/js/creative-studio/visual/layout-composition.js" defer></script>
   <script src="/assets/js/creative-studio/visual/layout-editor.js" defer></script>
   <script src="/assets/js/creative-studio/visual/creative-director.js?v=20261125" defer></script>

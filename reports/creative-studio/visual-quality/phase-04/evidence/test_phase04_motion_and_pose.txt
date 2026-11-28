@@ -1,0 +1,1 @@
+Motion and pose regression passed: 10 presets × 5 patterns, typed curves, seeks, hierarchy, reduced preview, atlas and eight actions.
