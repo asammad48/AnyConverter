@@ -1,3 +1,9 @@
+# AnyConverter Phase 04 source-audit revision
+
+The published Phase 04 baseline is c8e6073d86de4bb912e3fceb1afc25dee89aebeb. The owner requested mandatory repairs and withdrew final approval. The repair branch is local and awaits owner visual approval. Phase 05 has not started. [Revised Phase 04 gate](../reports/creative-studio/visual-quality/phase-04/FINAL_INDEPENDENT_PHASE_04_GATE.md)
+
+---
+
 # AnyConverter Phase 04 handoff
 
 The owner approved the revised Phase 03 visuals and authorized Phase 04 on the pinned audit tip. The owner authorized publication of Phase 04 to its feature branch on 2026-11-28. The handoff includes the playable film, editable archives, independent visual review and exact source paths. [Phase 04 handoff](../reports/creative-studio/visual-quality/phase-04/PHASE_HANDOFF.md)

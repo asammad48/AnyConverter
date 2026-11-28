@@ -1,0 +1,952 @@
+{
+  "assets": [
+    {
+      "id": "sha256:f75919eb13d67b66bd8e35941d4d1671d6916b0d36308d95a2679bfc96ddc5c9",
+      "path": "assets/f75919eb13d67b66bd8e35941d4d1671d6916b0d36308d95a2679bfc96ddc5c9.png",
+      "mimeType": "image/png",
+      "sizeBytes": 37131,
+      "sha256": "f75919eb13d67b66bd8e35941d4d1671d6916b0d36308d95a2679bfc96ddc5c9"
+    }
+  ],
+  "entries": [
+    "manifest.json",
+    "project.json",
+    "assets/f75919eb13d67b66bd8e35941d4d1671d6916b0d36308d95a2679bfc96ddc5c9.png"
+  ],
+  "audio": [
+    {
+      "clipId": "inbox",
+      "startSample": 0,
+      "durationSamples": 216000,
+      "volume": 0.78,
+      "theme": "saas"
+    },
+    {
+      "clipId": "delivery",
+      "startSample": 216000,
+      "durationSamples": 384000,
+      "volume": 0.78,
+      "theme": "comedy"
+    },
+    {
+      "clipId": "hall",
+      "startSample": 600000,
+      "durationSamples": 360000,
+      "volume": 0.78,
+      "theme": "suspense"
+    },
+    {
+      "clipId": "door-hit",
+      "startSample": 796800,
+      "durationSamples": 23040,
+      "volume": 0.78,
+      "theme": "door-hit"
+    }
+  ],
+  "shots": [
+    {
+      "id": "motion-study-0",
+      "startFrame": 0,
+      "durationFrames": 135,
+      "subhead": "Pico sorted five files. Only one delivery was left.",
+      "customData": {
+        "layout": {
+          "version": 1,
+          "preset": "hero",
+          "blocks": {}
+        },
+        "typography": {
+          "version": 1,
+          "title": {
+            "family": "display",
+            "weight": 700
+          }
+        },
+        "motion": {
+          "version": 1,
+          "seed": 804,
+          "layers": [
+            {
+              "id": "entry-csv",
+              "tracks": [
+                {
+                  "property": "opacity",
+                  "keys": [
+                    {
+                      "frame": 3,
+                      "value": 0,
+                      "ease": "bezier"
+                    },
+                    {
+                      "frame": 26,
+                      "value": 1,
+                      "ease": "linear"
+                    }
+                  ]
+                },
+                {
+                  "property": "y",
+                  "keys": [
+                    {
+                      "frame": 3,
+                      "value": 0.1,
+                      "ease": "bezier"
+                    },
+                    {
+                      "frame": 26,
+                      "value": 0,
+                      "ease": "linear"
+                    }
+                  ]
+                },
+                {
+                  "property": "underline",
+                  "keys": [
+                    {
+                      "frame": 25,
+                      "value": 0,
+                      "ease": "bezier"
+                    },
+                    {
+                      "frame": 43,
+                      "value": 1,
+                      "ease": "linear"
+                    }
+                  ]
+                },
+                {
+                  "property": "opacity",
+                  "keys": [
+                    {
+                      "frame": 0,
+                      "value": 0,
+                      "ease": "bezier"
+                    },
+                    {
+                      "frame": 19,
+                      "value": 1,
+                      "ease": "linear"
+                    }
+                  ]
+                },
+                {
+                  "property": "y",
+                  "keys": [
+                    {
+                      "frame": 0,
+                      "value": 0.1,
+                      "ease": "bezier"
+                    },
+                    {
+                      "frame": 19,
+                      "value": 0,
+                      "ease": "linear"
+                    }
+                  ]
+                },
+                {
+                  "property": "underline",
+                  "keys": [
+                    {
+                      "frame": 21,
+                      "value": 0,
+                      "ease": "easeOutExpo"
+                    },
+                    {
+                      "frame": 48,
+                      "value": 1,
+                      "ease": "linear"
+                    }
+                  ]
+                }
+              ],
+              "stagger": 8,
+              "staggerIndex": 0
+            },
+            {
+              "id": "entry-json",
+              "tracks": [
+                {
+                  "property": "opacity",
+                  "keys": [
+                    {
+                      "frame": 3,
+                      "value": 0,
+                      "ease": "bezier"
+                    },
+                    {
+                      "frame": 26,
+                      "value": 1,
+                      "ease": "linear"
+                    }
+                  ]
+                },
+                {
+                  "property": "y",
+                  "keys": [
+                    {
+                      "frame": 3,
+                      "value": 0.1,
+                      "ease": "bezier"
+                    },
+                    {
+                      "frame": 26,
+                      "value": 0,
+                      "ease": "linear"
+                    }
+                  ]
+                },
+                {
+                  "property": "opacity",
+                  "keys": [
+                    {
+                      "frame": 0,
+                      "value": 0,
+                      "ease": "bezier"
+                    },
+                    {
+                      "frame": 19,
+                      "value": 1,
+                      "ease": "linear"
+                    }
+                  ]
+                },
+                {
+                  "property": "y",
+                  "keys": [
+                    {
+                      "frame": 0,
+                      "value": 0.1,
+                      "ease": "bezier"
+                    },
+                    {
+                      "frame": 19,
+                      "value": 0,
+                      "ease": "linear"
+                    }
+                  ]
+                }
+              ],
+              "stagger": 8,
+              "staggerIndex": 1
+            },
+            {
+              "id": "entry-pdf",
+              "tracks": [
+                {
+                  "property": "opacity",
+                  "keys": [
+                    {
+                      "frame": 3,
+                      "value": 0,
+                      "ease": "bezier"
+                    },
+                    {
+                      "frame": 26,
+                      "value": 1,
+                      "ease": "linear"
+                    }
+                  ]
+                },
+                {
+                  "property": "y",
+                  "keys": [
+                    {
+                      "frame": 3,
+                      "value": 0.1,
+                      "ease": "bezier"
+                    },
+                    {
+                      "frame": 26,
+                      "value": 0,
+                      "ease": "linear"
+                    }
+                  ]
+                },
+                {
+                  "property": "opacity",
+                  "keys": [
+                    {
+                      "frame": 0,
+                      "value": 0,
+                      "ease": "bezier"
+                    },
+                    {
+                      "frame": 19,
+                      "value": 1,
+                      "ease": "linear"
+                    }
+                  ]
+                },
+                {
+                  "property": "y",
+                  "keys": [
+                    {
+                      "frame": 0,
+                      "value": 0.1,
+                      "ease": "bezier"
+                    },
+                    {
+                      "frame": 19,
+                      "value": 0,
+                      "ease": "linear"
+                    }
+                  ]
+                }
+              ],
+              "stagger": 8,
+              "staggerIndex": 2
+            },
+            {
+              "id": "entry-yaml",
+              "tracks": [
+                {
+                  "property": "opacity",
+                  "keys": [
+                    {
+                      "frame": 3,
+                      "value": 0,
+                      "ease": "bezier"
+                    },
+                    {
+                      "frame": 26,
+                      "value": 1,
+                      "ease": "linear"
+                    }
+                  ]
+                },
+                {
+                  "property": "y",
+                  "keys": [
+                    {
+                      "frame": 3,
+                      "value": 0.1,
+                      "ease": "bezier"
+                    },
+                    {
+                      "frame": 26,
+                      "value": 0,
+                      "ease": "linear"
+                    }
+                  ]
+                },
+                {
+                  "property": "opacity",
+                  "keys": [
+                    {
+                      "frame": 0,
+                      "value": 0,
+                      "ease": "bezier"
+                    },
+                    {
+                      "frame": 19,
+                      "value": 1,
+                      "ease": "linear"
+                    }
+                  ]
+                },
+                {
+                  "property": "y",
+                  "keys": [
+                    {
+                      "frame": 0,
+                      "value": 0.1,
+                      "ease": "bezier"
+                    },
+                    {
+                      "frame": 19,
+                      "value": 0,
+                      "ease": "linear"
+                    }
+                  ]
+                }
+              ],
+              "stagger": 8,
+              "staggerIndex": 3
+            },
+            {
+              "id": "entry-sql",
+              "tracks": [
+                {
+                  "property": "opacity",
+                  "keys": [
+                    {
+                      "frame": 3,
+                      "value": 0,
+                      "ease": "bezier"
+                    },
+                    {
+                      "frame": 26,
+                      "value": 1,
+                      "ease": "linear"
+                    }
+                  ]
+                },
+                {
+                  "property": "y",
+                  "keys": [
+                    {
+                      "frame": 3,
+                      "value": 0.1,
+                      "ease": "bezier"
+                    },
+                    {
+                      "frame": 26,
+                      "value": 0,
+                      "ease": "linear"
+                    }
+                  ]
+                },
+                {
+                  "property": "opacity",
+                  "keys": [
+                    {
+                      "frame": 0,
+                      "value": 0,
+                      "ease": "bezier"
+                    },
+                    {
+                      "frame": 19,
+                      "value": 1,
+                      "ease": "linear"
+                    }
+                  ]
+                },
+                {
+                  "property": "y",
+                  "keys": [
+                    {
+                      "frame": 0,
+                      "value": 0.1,
+                      "ease": "bezier"
+                    },
+                    {
+                      "frame": 19,
+                      "value": 0,
+                      "ease": "linear"
+                    }
+                  ]
+                }
+              ],
+              "stagger": 8,
+              "staggerIndex": 4
+            },
+            {
+              "id": "title",
+              "tracks": [
+                {
+                  "property": "opacity",
+                  "keys": [
+                    {
+                      "frame": 0,
+                      "value": 0,
+                      "ease": "bezier"
+                    },
+                    {
+                      "frame": 18,
+                      "value": 1,
+                      "ease": "linear"
+                    }
+                  ]
+                },
+                {
+                  "property": "y",
+                  "keys": [
+                    {
+                      "frame": 0,
+                      "value": 0.07,
+                      "ease": "bezier"
+                    },
+                    {
+                      "frame": 18,
+                      "value": 0,
+                      "ease": "linear"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "subject",
+              "tracks": [
+                {
+                  "property": "clip",
+                  "keys": [
+                    {
+                      "frame": 0,
+                      "value": 0,
+                      "ease": "bezier"
+                    },
+                    {
+                      "frame": 32,
+                      "value": 1,
+                      "ease": "linear"
+                    }
+                  ]
+                },
+                {
+                  "property": "maskOffset",
+                  "keys": [
+                    {
+                      "frame": 0,
+                      "value": 0.12,
+                      "ease": "bezier"
+                    },
+                    {
+                      "frame": 32,
+                      "value": 0,
+                      "ease": "linear"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "motion-study-1",
+      "startFrame": 135,
+      "durationFrames": 120,
+      "subhead": "A courier left one envelope with no return address.",
+      "customData": {
+        "layout": {
+          "version": 1,
+          "preset": "dialogue",
+          "blocks": {}
+        },
+        "typography": {
+          "version": 1,
+          "title": {
+            "family": "display",
+            "weight": 700
+          }
+        },
+        "motion": {
+          "version": 1,
+          "seed": 804,
+          "layers": [
+            {
+              "id": "title",
+              "tracks": [
+                {
+                  "property": "x",
+                  "keys": [
+                    {
+                      "frame": 0,
+                      "value": -0.16,
+                      "ease": "bezier"
+                    },
+                    {
+                      "frame": 18,
+                      "value": 0,
+                      "ease": "linear"
+                    }
+                  ]
+                },
+                {
+                  "property": "opacity",
+                  "keys": [
+                    {
+                      "frame": 0,
+                      "value": 0,
+                      "ease": "bezier"
+                    },
+                    {
+                      "frame": 18,
+                      "value": 1,
+                      "ease": "linear"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "puppet",
+              "actions": [
+                {
+                  "name": "blink",
+                  "start": 31,
+                  "duration": 12
+                },
+                {
+                  "name": "talk",
+                  "start": 52,
+                  "duration": 27
+                }
+              ]
+            },
+            {
+              "id": "prop",
+              "tracks": [
+                {
+                  "property": "path",
+                  "keys": [
+                    {
+                      "frame": 18,
+                      "value": 0,
+                      "ease": "bezier"
+                    },
+                    {
+                      "frame": 44,
+                      "value": 1,
+                      "ease": "linear"
+                    }
+                  ]
+                },
+                {
+                  "property": "opacity",
+                  "keys": [
+                    {
+                      "frame": 0,
+                      "value": 0,
+                      "ease": "bezier"
+                    },
+                    {
+                      "frame": 18,
+                      "value": 0,
+                      "ease": "bezier"
+                    },
+                    {
+                      "frame": 26,
+                      "value": 1,
+                      "ease": "bezier"
+                    }
+                  ]
+                }
+              ],
+              "path": [
+                [
+                  0.3,
+                  -0.35
+                ],
+                [
+                  0.34,
+                  -0.3
+                ],
+                [
+                  0.07,
+                  -0.24
+                ],
+                [
+                  0,
+                  0
+                ]
+              ]
+            }
+          ],
+          "puppet": "parrot"
+        }
+      }
+    },
+    {
+      "id": "motion-study-2",
+      "startFrame": 255,
+      "durationFrames": 120,
+      "subhead": "A keyhole. Check the hall.",
+      "customData": {
+        "layout": {
+          "version": 1,
+          "preset": "dialogue",
+          "blocks": {}
+        },
+        "typography": {
+          "version": 1,
+          "title": {
+            "family": "display",
+            "weight": 700
+          },
+          "caption": {
+            "startFrame": 49
+          }
+        },
+        "motion": {
+          "version": 1,
+          "seed": 804,
+          "layers": [
+            {
+              "id": "puppet",
+              "actions": [
+                {
+                  "name": "shocked",
+                  "start": 27,
+                  "duration": 41
+                },
+                {
+                  "name": "point",
+                  "start": 72,
+                  "duration": 48
+                }
+              ]
+            },
+            {
+              "id": "prop",
+              "tracks": [
+                {
+                  "property": "rotation",
+                  "keys": [
+                    {
+                      "frame": 0,
+                      "value": 0,
+                      "ease": "hold"
+                    },
+                    {
+                      "frame": 35,
+                      "value": 0,
+                      "ease": "bezier"
+                    },
+                    {
+                      "frame": 43,
+                      "value": -12,
+                      "ease": "spring"
+                    },
+                    {
+                      "frame": 61,
+                      "value": 0,
+                      "ease": "bezier"
+                    }
+                  ]
+                },
+                {
+                  "property": "propOpen",
+                  "keys": [
+                    {
+                      "frame": 0,
+                      "value": 0,
+                      "ease": "hold"
+                    },
+                    {
+                      "frame": 44,
+                      "value": 0,
+                      "ease": "bezier"
+                    },
+                    {
+                      "frame": 52,
+                      "value": 1,
+                      "ease": "bezier"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "camera",
+              "tracks": [
+                {
+                  "property": "shake",
+                  "keys": [
+                    {
+                      "frame": 0,
+                      "value": 0,
+                      "ease": "bezier"
+                    },
+                    {
+                      "frame": 43,
+                      "value": 0,
+                      "ease": "bezier"
+                    },
+                    {
+                      "frame": 45,
+                      "value": 0.01,
+                      "ease": "bezier"
+                    },
+                    {
+                      "frame": 55,
+                      "value": 0,
+                      "ease": "bezier"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "title",
+              "tracks": [
+                {
+                  "property": "scaleX",
+                  "keys": [
+                    {
+                      "frame": 1,
+                      "value": 0.73,
+                      "ease": "spring"
+                    },
+                    {
+                      "frame": 23,
+                      "value": 1,
+                      "ease": "linear"
+                    }
+                  ]
+                },
+                {
+                  "property": "scaleY",
+                  "keys": [
+                    {
+                      "frame": 1,
+                      "value": 0.73,
+                      "ease": "spring"
+                    },
+                    {
+                      "frame": 23,
+                      "value": 1,
+                      "ease": "linear"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "puppet": "parrot"
+        }
+      }
+    },
+    {
+      "id": "motion-study-3",
+      "startFrame": 375,
+      "durationFrames": 123,
+      "subhead": "The corridor was empty a moment ago.",
+      "customData": {
+        "layout": {
+          "version": 1,
+          "preset": "silhouette",
+          "blocks": {}
+        },
+        "typography": {
+          "version": 1,
+          "title": {
+            "family": "display",
+            "weight": 700
+          }
+        },
+        "motion": {
+          "version": 1,
+          "seed": 804,
+          "layers": [
+            {
+              "id": "subject",
+              "tracks": [
+                {
+                  "property": "scaleX",
+                  "keys": [
+                    {
+                      "frame": 12,
+                      "value": 1.16,
+                      "ease": "bezier"
+                    },
+                    {
+                      "frame": 104,
+                      "value": 1,
+                      "ease": "linear"
+                    }
+                  ]
+                },
+                {
+                  "property": "scaleY",
+                  "keys": [
+                    {
+                      "frame": 12,
+                      "value": 1.16,
+                      "ease": "bezier"
+                    },
+                    {
+                      "frame": 104,
+                      "value": 1,
+                      "ease": "linear"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "title",
+              "tracks": [
+                {
+                  "property": "underline",
+                  "keys": [
+                    {
+                      "frame": 35,
+                      "value": 0,
+                      "ease": "bezier"
+                    },
+                    {
+                      "frame": 64,
+                      "value": 1,
+                      "ease": "linear"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "motion-study-4",
+      "startFrame": 498,
+      "durationFrames": 102,
+      "subhead": "The light is still on. The door is open.",
+      "customData": {
+        "layout": {
+          "version": 1,
+          "preset": "silhouette",
+          "blocks": {}
+        },
+        "typography": {
+          "version": 1,
+          "title": {
+            "family": "display",
+            "weight": 700
+          }
+        },
+        "motion": {
+          "version": 1,
+          "seed": 804,
+          "layers": [
+            {
+              "id": "subject",
+              "tracks": [
+                {
+                  "property": "orbit",
+                  "keys": [
+                    {
+                      "frame": 0,
+                      "value": -1,
+                      "ease": "bezier"
+                    },
+                    {
+                      "frame": 29,
+                      "value": 0,
+                      "ease": "linear"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "camera",
+              "tracks": [
+                {
+                  "property": "shake",
+                  "keys": [
+                    {
+                      "frame": 0,
+                      "value": 0.011,
+                      "ease": "bezier"
+                    },
+                    {
+                      "frame": 12,
+                      "value": 0,
+                      "ease": "bezier"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "subjectVisual": "doorway"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "chromium": {
+    "browser": "156.0.8078.79",
+    "status": "PASS",
+    "properties": {
+      "title": {
+        "first": "#ff6633",
+        "last": "#33dd99",
+        "initial": 16390,
+        "final": 16390
+      },
+      "caption": {
+        "first": "#ffdf44",
+        "last": "#f286f0",
+        "initial": 5845,
+        "final": 5845
+      },
+      "statistic": {
+        "first": "7f269bf442211a2271ffd2bf2ce4f807cecc7c1c7730410156d6563b70314692",
+        "last": "1f5a0a9c79ae98186562a70c230aaf7b91376ad77db1c124c2bd857bcbd4b855"
+      }
+    }
+  }
+}

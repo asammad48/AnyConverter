@@ -50,7 +50,7 @@ assert.notEqual(authored.x, 0);
 assert.equal(reduced.scaleX, 1);
 const cycle = state(30);
 cycle.get('group').parentId = 'actor';
-assert.equal(motion.chain(cycle, 'actor').length, 2);
+assert.deepEqual(motion.chain(cycle, 'actor').map(layer => layer.id), ['actor']);
 
 for (const [name, mappings] of Object.entries(puppet.actions)) {
   const tracks = puppet.actionTracks(name, 10, 100);
@@ -78,4 +78,33 @@ for (const name of Object.keys(motion.presets)) {
     }
   }
 }
+
+const clips = ['idle', 'talk', 'recoil', 'shocked', 'point', 'exit'].reduce((sequence, name, i) =>
+  puppet.editActions(sequence, { name, start: i * 20, duration: 20 }), []);
+assert.equal(puppet.editActions(clips, { name: 'blink', start: 19, duration: 2 }), null);
+assert.equal(puppet.editActions(clips, { name: 'blink', start: 20, duration: 20 }, 1)[1].name, 'blink');
+const sequential = { version: 1, layers: [{ id: 'puppet', actions: clips,
+  tracks: [{ property: 'y', keys: [point(0, .05)] }] }] };
+for (const frame of [119, 0, 39, 20, 19, 80, 59, 60, 119]) {
+  const sampled = motion.evaluate(sequential, frame, 120).get('puppet');
+  assert.equal(sampled.action, clips[Math.floor(frame / 20)].name);
+  assert.equal(sampled.y, .05);
+  assert.deepEqual(puppet.geometry({ x: 20, y: 10, width: 300, height: 330 }, sampled).anchor, [161, 293.8]);
+}
+
+const { NativeCanvasRenderAdapter } = require('../../assets/js/creative-studio/render-adapter');
+const adapter = new NativeCanvasRenderAdapter();
+const left = new Float32Array(4).fill(.125);
+const right = new Float32Array(left);
+adapter._mixProjectAudio([{ startSample: 1.0000000001, durationSamples: 2,
+  pcmData: new Float32Array([.25, .5]) }], left, right, 0, 4, 48000);
+assert.deepEqual(Array.from(left), [.125, .375, .625, .125]);
+assert.deepEqual(left, right);
+
+const manual = { version: 1, layers: [{ id: 'puppet', actions: [{ name: 'shocked', start: 10, duration: 10 }],
+  tracks: [{ property: 'poseId', keys: [point(0, 'point'), point(23, 'blink')] }] }] };
+for (const [frame, expected] of [[0, 'point'], [19, 'shock'], [21, 'shock'], [23, 'blink']]) {
+  assert.equal(motion.evaluate(manual, frame, 40).get('puppet').poseId, expected);
+}
+
 console.log('Motion and pose regression passed: 10 presets × 5 patterns, typed curves, seeks, hierarchy, reduced preview, atlas and eight actions.');

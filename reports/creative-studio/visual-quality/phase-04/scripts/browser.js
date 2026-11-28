@@ -3,10 +3,10 @@ const fs = require('node:fs/promises');
 const path = require('node:path');
 const { chromium } = require('playwright-core');
 
-const out = path.resolve(__dirname, '../evidence');
+const out = process.env.PHASE04_EVIDENCE || path.resolve(__dirname, '../evidence');
 const base = 'http://localhost:3000';
 const result = { errors: [], console: [], failedRequests: [], externalWrites: [], formats: {}, locales: {}, samples: {} };
-const frames = [0, 7, 15, 30, 45, 90, 134, 135, 173, 258, 300, 374, 375, 479, 480, 599];
+const frames = [0, 7, 15, 30, 45, 90, 134, 135, 173, 258, 300, 374, 375, 497, 498, 599];
 
 async function open(browser, locale = 'en', trace = false) {
   const context = await browser.newContext({ viewport: { width: 1540, height: 1120 }, acceptDownloads: true });
@@ -141,7 +141,8 @@ async function main() {
     await motion('duration').fill('41');
     await motion('duration').press('Tab');
     await motion('action').selectOption('shocked');
-    await motion('apply-action').click();
+    await motion('action-clip').selectOption('0');
+    await motion('replace-action').click();
     await seek(page, 300);
     assert.match(await page.locator('#cs-motion-editor output').textContent(), /shock/);
     assert.equal(await page.locator('#cs-motion-caption-track button').count(), 5);
@@ -174,7 +175,7 @@ async function main() {
       result.locales[locale] = await localized.locator('#cs-motion-editor > summary').textContent();
       for (const format of ['1280x720', '1080x1920', '1080x1080']) {
         await localized.locator('#cs-layout-format').selectOption(format);
-        await seek(localized, 300);
+        await seek(localized, 309);
         result.formats[locale][format] = await localized.locator('#cs-canvas').evaluate(canvas => [canvas.width, canvas.height]);
         await capture(localized, 'format-' + locale + '-' + format);
       }

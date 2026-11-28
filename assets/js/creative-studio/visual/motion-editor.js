@@ -7,7 +7,7 @@
     title: ['Headline', 'Titular', 'Overskrift'], caption: ['Caption', 'Subtítulo', 'Undertekst'],
     subject: ['Subject', 'Sujeto', 'Motiv'], camera: ['Camera', 'Cámara', 'Kamera'],
     puppet: ['Parrot', 'Loro', 'Papegøje'], prop: ['Envelope', 'Sobre', 'Kuvert'],
-    group: ['Group', 'Grupo', 'Gruppe']
+    group: ['Group', 'Grupo', 'Gruppe'], 'group-inner': ['Nested group', 'Grupo anidado', 'Undergruppe']
   };
   const entryIds = ['csv', 'json', 'pdf', 'yaml', 'sql'].map(id => 'entry-' + id);
   const translated = {
@@ -32,6 +32,7 @@
     opacity: ['Opacity', 'Opacidad', 'Opacitet'], clip: ['Reveal progress', 'Progreso de aparición', 'Afsløringsgrad'],
     maskOffset: ['Mask offset', 'Desplazamiento de máscara', 'Maskeforskydning'],
     underline: ['Underline', 'Subrayado', 'Understregning'], number: ['Number', 'Número', 'Tal'],
+    propOpen: ['Envelope opening', 'Apertura del sobre', 'Kuvertåbning'],
     color: ['Color', 'Color', 'Farve'], squash: ['Squash and stretch', 'Compresión y estiramiento', 'Tryk og stræk'],
     headTilt: ['Head tilt', 'Inclinación de cabeza', 'Hovedhældning'],
     eyeDirection: ['Gaze direction', 'Dirección de la mirada', 'Blikretning'],
@@ -76,7 +77,20 @@
         }
       }
       this.field('action', ['Parrot action', 'Acción del loro', 'Papegøjens handling'], Object.keys(root.StudioPuppet.actions));
-      this.button('apply-action', ['Set parrot action', 'Asignar acción al loro', 'Vælg papegøjens handling'], () => this.apply(true));
+      this.field('action-clip', ['Action clip', 'Clip de acción', 'Handlingsklip'], []);
+      this.button('apply-action', ['Add action', 'Añadir acción', 'Tilføj handling'], () => this.apply(true));
+      this.button('replace-action', ['Replace selected action', 'Reemplazar acción', 'Erstat valgt handling'], () => this.apply(true, true));
+      this.button('remove-action', ['Remove selected action', 'Eliminar acción', 'Fjern valgt handling'], () => {
+        const clips = this.layers().find(layer => layer.id === 'puppet')?.actions;
+        if (clips && this.actionIndex >= 0) clips.splice(this.actionIndex, 1);
+        this.actionIndex = -1;
+        this.refresh();
+      });
+      this.field('clip-intent', ['Allow deliberate entrance clipping', 'Permitir recorte deliberado de entrada', 'Tillad tilsigtet beskæring ved indgang'],
+        null, { type: 'checkbox' });
+      this.feedback = document.createElement('p');
+      this.feedback.setAttribute('role', 'status');
+      this.host.append(this.feedback);
       this.field('property', ['New curve property', 'Propiedad de curva nueva', 'Egenskab for ny kurve'], graph.properties);
       this.button('add-track', ['Add curve', 'Añadir curva', 'Tilføj kurve'], () => this.addTrack());
       this.field('track', ['Curve', 'Curva', 'Kurve'], []);
@@ -179,11 +193,26 @@
       return this.layer()?.tracks?.[this.trackIndex];
     }
 
-    apply(action = false) {
+    apply(action = false, replace = false) {
       const shot = this.shot();
       if (!shot) return;
       const start = Math.min(shot.durationFrames - 1, Math.max(0, Math.round(Number(this.fields.start.value))));
-      const duration = Math.max(1, Math.min(shot.durationFrames - 1 - start, 3600, Math.round(Number(this.fields.duration.value))));
+      const duration = Math.max(1, Math.min(shot.durationFrames - start - (action ? 0 : 1), 3600, Math.round(Number(this.fields.duration.value))));
+      if (!action && !this.fields.preset.value) return;
+      if (action) {
+        const puppet = root.StudioPuppet;
+        const previous = this.layers().find(item => item.id === 'puppet')?.actions || [];
+        const clip = { name: this.fields.action.value, start, duration: Math.min(duration, shot.durationFrames - start) };
+        const next = puppet.editActions(previous, clip, replace ? this.actionIndex : -1);
+        if (!next) {
+          this.feedback.textContent = this.tr(['Actions cannot overlap. Move the clip or replace the selected action.',
+            'Las acciones no pueden superponerse. Mueve el clip o reemplaza la acción seleccionada.',
+            'Handlinger må ikke overlappe. Flyt klippet eller erstat den valgte handling.']);
+          return;
+        }
+        this.pendingActions = next;
+        this.actionIndex = next.indexOf(clip);
+      }
       if (action) this.target = 'puppet';
       const layer = this.layer(true);
       if (action) {
@@ -192,10 +221,9 @@
           shot.customData.layout.preset = 'dialogue';
         }
         root.StudioPuppet.prepare().then(() => this.app.render()).catch(error => this.showError(error));
-        const tracks = root.StudioPuppet.actionTracks(this.fields.action.value, start, duration);
-        layer.tracks = layer.tracks.filter(existing => !tracks.some(track => track.property === existing.property));
-        this.trackIndex = layer.tracks.length;
-        layer.tracks.push(...tracks);
+        layer.actions = this.pendingActions;
+        this.pendingActions = null;
+        this.feedback.textContent = '';
       } else {
         this.trackIndex = layer.tracks.length;
         layer.tracks.push(...graph.presetTracks(this.fields.preset.value, start, duration, this.fields.pattern.value));
@@ -210,8 +238,9 @@
     }
 
     addTrack() {
-      const layer = this.layer(true);
       const property = this.fields.property.value;
+      if (!this.supported().includes(property)) return;
+      const layer = this.layer(true);
       const initial = graph.limits[property]?.[2] ?? ({ color: '#eeb875', poseId: 'calm', armPose: 'rest' })[property];
       layer.tracks.push({ property, keys: [{ frame: 0, value: initial, ease: 'linear' }] });
       this.trackIndex = layer.tracks.length - 1;
@@ -245,6 +274,16 @@
 
     update(id, input) {
       if (!this.shot() || !input.validity.valid) return;
+      if (id === 'action-clip') {
+        this.actionIndex = Number(input.value);
+        const clip = this.layers().find(layer => layer.id === 'puppet')?.actions?.[this.actionIndex];
+        if (clip) {
+          this.fields.start.value = clip.start;
+          this.fields.duration.value = clip.duration;
+          this.fields.action.value = clip.name;
+        }
+      }
+      if (id === 'clip-intent') this.layer(true).clipIntent = input.checked;
       if (id === 'reduced') this.reduced = input.checked;
       if (id === 'layer') {
         this.target = input.value;
@@ -303,24 +342,68 @@
       this.app.render();
     }
 
+    supported() {
+      const shot = this.shot();
+      if (!shot) return [];
+      if (this.target.startsWith('entry-') && shot.artDirection === 'cinematic-saas' && !shot.customData?.layout) {
+        return graph.supported(this.target, { ...shot, customData: { layout: { preset: 'hero' } } });
+      }
+      return graph.supported(this.target, shot);
+    }
+
     sync() {
       const shot = this.shot();
       if (!shot || !this.host) return;
       const f = this.fields;
+      if (this.actionShot !== shot) {
+        this.actionShot = shot;
+        this.actionIndex = -1;
+      }
       const max = Math.max(0, shot.durationFrames - 1);
       f.time.max = f.offset.max = f.start.max = max;
-      f.duration.max = Math.max(1, Math.min(3600, max - Number(f.start.value)));
+      f.duration.max = Math.max(1, Math.min(3600, max + 1 - Number(f.start.value)));
       f.start.value = Math.min(max, Number(f.start.value));
       f.duration.value = Math.min(Number(f.duration.max), Number(f.duration.value));
       f.layer.replaceChildren(...Object.keys(labels).concat(entryIds).map(id => new Option(this.name(id), id)));
       f.layer.value = this.target;
+      const supported = this.supported();
+      const explanation = this.tr(['This property or preset does not render on the selected layer.',
+        'Esta propiedad o preajuste no se renderiza en la capa seleccionada.',
+        'Denne egenskab eller dette forvalg gengives ikke på det valgte lag.']);
+      for (const [control, compatible] of [[f.property, property => supported.includes(property)],
+        [f.preset, name => Object.keys(graph.presets[name]).every(property => supported.includes(property))]]) {
+        for (const option of control.options) {
+          option.disabled = !compatible(option.value);
+          option.title = option.disabled ? explanation : '';
+        }
+        if (control.selectedOptions[0]?.disabled) control.value = [...control.options].find(option => !option.disabled)?.value || '';
+      }
+      f.property.disabled = !supported.length;
+      f.preset.disabled = !supported.length;
+      f['add-track'].disabled = !f.property.value;
+      f.apply.disabled = !f.preset.value;
+      f.property.title = f.preset.title = explanation;
+      f['add-track'].title = f.apply.title = explanation;
+      if (!supported.length) this.feedback.textContent = explanation;
+      else if (this.feedback.textContent === explanation) this.feedback.textContent = '';
+      const clips = this.layers().find(layer => layer.id === 'puppet')?.actions || [];
+      f['action-clip'].replaceChildren(new Option(this.tr(['New action', 'Nueva acción', 'Ny handling']), -1),
+        ...clips.map((clip, i) => new Option(this.name(clip.name) + ' · ' + clip.start + '–' + (clip.start + clip.duration - 1), i)));
+      if (!(this.actionIndex >= 0 && this.actionIndex < clips.length)) this.actionIndex = -1;
+      f['action-clip'].value = this.actionIndex;
+      f['replace-action'].disabled = f['remove-action'].disabled = this.actionIndex < 0;
       const layer = this.layer();
       f.parent.replaceChildren(new Option(this.tr(['None', 'Ninguno', 'Ingen']), ''),
-        ...(this.target === 'group' ? [] : [new Option(this.name('group'), 'group')]));
+        ...['group', 'group-inner'].filter(id => id !== this.target &&
+          !graph.chain(new Map(this.layers().map(layer => [layer.id, layer])), id).some(layer => layer.id === this.target))
+          .map(id => new Option(this.name(id), id)));
       f.parent.value = layer?.parentId || '';
-      f.parent.disabled = this.target === 'group';
+      f.parent.disabled = this.target === 'camera';
+      f['clip-intent'].checked = Boolean(layer?.clipIntent);
       f.offset.value = layer?.offset || 0;
       f.stagger.value = layer?.stagger || 0;
+      f.stagger.disabled = !entryIds.includes(this.target) || this.target === entryIds[0];
+      f.stagger.title = f.stagger.disabled ? explanation : '';
       const tracks = layer?.tracks || [];
       this.pathDetails.hidden = !tracks.some(track => track.property === 'path');
       for (let point = 0; point < 4; point++) {
@@ -334,9 +417,13 @@
       const keys = this.track()?.keys || [];
       this.keyIndex = Math.min(this.keyIndex, Math.max(0, keys.length - 1));
       const key = keys[this.keyIndex];
+      const editable = Boolean(key) && supported.includes(this.track()?.property);
       f.key.replaceChildren(...keys.map((entry, i) => new Option(String(entry.frame), i)));
       f.key.value = this.keyIndex;
-      for (const id of ['track', 'key', 'time', 'value', 'ease', 'in-x', 'in-y', 'out-x', 'out-y', 'add-key', 'delete-key']) f[id].disabled = !key;
+      for (const id of ['track', 'key', 'time', 'value', 'ease', 'in-x', 'in-y', 'out-x', 'out-y', 'add-key', 'delete-key']) f[id].disabled = id === 'track' ? !tracks.length : !editable;
+      if (graph.held.includes(this.track()?.property)) {
+        for (const id of ['ease', 'in-x', 'in-y', 'out-x', 'out-y']) f[id].disabled = true;
+      }
       f.time.value = key?.frame || 0;
       f.time.setAttribute('aria-valuetext', String(key?.frame || 0));
       f.value.value = key?.value ?? '';
@@ -355,11 +442,16 @@
       this.stageStatus.hidden = !visible || !resolved?.motion?.size;
       if (!visible) return;
       const state = resolved?.motion?.get(this.target);
-      const warning = state && (Math.abs(state.x) + Math.abs(state.y) > .33 || Math.abs(state.rotation) > 22 ||
-        Math.max(state.scaleX, state.scaleY) > 1.28);
-      this.status.textContent = state ? [state.id, state.localFrame, state.poseId,
-        warning ? this.tr(['Check the layer edge for clipping', 'Comprueba si la capa se recorta', 'Kontrollér lagets kant for beskæring']) : undefined]
-        .filter(value => value !== undefined).join(' · ') : '';
+      const measured = resolved?.motionGeometry;
+      const bounds = measured?.get(this.target);
+      const childOverflow = this.target.startsWith('group') && [...(measured || [])].some(([id, geometry]) =>
+        geometry.clipping === 'overflow' && graph.chain(resolved.motion, id).some(member => member.id === this.target));
+      const warning = bounds?.clipping === 'overflow' || childOverflow
+        ? this.tr(['Transformed bounds exceed the clip region', 'Los límites transformados exceden la región de recorte',
+          'Transformerede grænser overskrider beskæringsområdet'])
+        : bounds?.clipping === 'intentional' ? this.tr(['Deliberate clipping', 'Recorte deliberado', 'Tilsigtet beskæring']) : '';
+      this.status.textContent = state ? [state.id, state.localFrame, state.action, state.poseId, warning]
+        .filter(value => value !== undefined && value !== '').join(' · ') : '';
       this.stageStatus.textContent = this.status.textContent;
       this.stageStatus.hidden ||= !this.stageStatus.textContent;
       const ctx = this.curve.getContext('2d');

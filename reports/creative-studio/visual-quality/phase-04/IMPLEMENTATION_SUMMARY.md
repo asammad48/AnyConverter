@@ -14,3 +14,15 @@ The parrot uses a split head/body PNG atlas with eight named actions. Pose keys 
 - Headless Chromium exercised the new authoring and export path. Firefox and WebKit binaries were unavailable in the environment. Detailed coverage and external resource errors are recorded in the browser results.
 
 [Production journey](LIVE_LOCALHOST_JOURNEY.md) · [Parity](PREVIEW_EXPORT_PARITY.md) · [V2 assets and pose evidence](V2_SHORTS_INTEGRATION_EVIDENCE.md) · [Exact changed paths](PHASE_HANDOFF.md)
+
+## Revision after the published source audit
+
+Named actions are stored as independent shot-local clips. Add and Replace reject overlap atomically. Imported overlaps resolve to the latest start and then the last stored clip for an equal start. Replace affects only the selected clip. Remove leaves existing curves and other action clips untouched. The active action overrides its pose channel and layers relative acting motion on top of authored transform curves. The most recent clip carries its terminal state to the next action. A manually authored pose key after the clip resumes control until the next action. The final exit holds its endpoint. Existing projects that store raw pose tracks continue to use them.
+
+Groups share the solved shot safe-box pivot. A group is composed before the child transform, and Canvas uses the same canonical transform in preview and export. A cyclic imported chain falls back to the child transform. The inspector prevents creation of a cycle through its two group nodes. Hero rows use fixed spacing when grouped.
+
+The renderer derives bounds from the transformed draw envelope, with alpha-derived pose rectangles and the neck/perch transforms for the parrot. Explicit entrance clipping is labeled separately. Captions retain their layout clip. The inspector disables unsupported properties and explains them in EN, ES and DA. Text ink, numeric Statistic and entry values, graphics colors and envelope opening are drawn by the production renderer.
+
+The revised 20-second reel adds a talk beat, an independently timed envelope reveal, a keyhole note, a point toward the hall and a shorter final hold. The doorway cue is placed on an integer audio sample. The mixer normalizes fractional archive offsets to preserve the rest of the mix.
+
+[Compatibility matrix](TARGET_PROPERTY_COMPATIBILITY.md) · [Revised gate](FINAL_INDEPENDENT_PHASE_04_GATE.md) · [Future-phase register](TECHNICAL_DEBT_AND_INTEGRATION.md)

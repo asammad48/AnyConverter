@@ -44,3 +44,11 @@ Local branch `feat/create-studio-phase-04` was created in an isolated checkout a
 Repository memory updates are in [STATE.json](../../../../.ai-memory/STATE.json), [DECISIONS.md](../../../../.ai-memory/DECISIONS.md), and [HANDOFF.md](../../../../.ai-memory/HANDOFF.md). The reproduction files are [browser.js](scripts/browser.js), [controls.js](scripts/controls.js), [legacy.js](scripts/legacy.js), [media.py](scripts/media.py), and [playback.js](scripts/playback.js).
 
 The owner authorized pushing Phase 04 to its feature branch on 2026-11-28. Phase 05 has not started.
+
+## Local source-audit revision
+
+After publication, the owner requested Phase 04 corrections. The local repair is on `feat/create-studio-phase-04-repair` and remains unpublished. The original links above document the published baseline. The [revised gate](FINAL_INDEPENDENT_PHASE_04_GATE.md) links to the replacement review assets and results in [revised](revised/).
+
+Changed production source paths are `assets/js/creative-studio/render-adapter.js` and `assets/js/creative-studio/visual/{layout-composition,layout-editor,motion-editor,motion-graph,motion-showreel,puppet}.js`. The dedicated test is `tests/creative-studio/test_phase04_motion_and_pose.js`. Reproduction scripts are in [scripts](scripts/).
+
+**PHASE 04: REVISED — AWAITING OWNER VISUAL APPROVAL — PHASE 05 NOT STARTED.**

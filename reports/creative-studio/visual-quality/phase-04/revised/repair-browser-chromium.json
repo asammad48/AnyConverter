@@ -1,0 +1,48 @@
+{
+  "chromium": {
+    "browser": "156.0.8078.79",
+    "status": "PASS",
+    "character": {
+      "actions": [
+        "idle",
+        "talk",
+        "recoil",
+        "shocked",
+        "point",
+        "exit"
+      ],
+      "additionalActions": [
+        "blink",
+        "excited"
+      ],
+      "samples": {
+        "0": "ca7a0438f5e93449458b65e04af35c09e8b6a7f6e329b260e8d720c3bceac046",
+        "18": "4afc356e59c0ed6b91bda361b84541fa00b7ba6509dfa673e82ccc6836c4c54d",
+        "35": "b2837e67a7b81cf3c74d03540bbf1e62d1f1f83fdbb1078f3ed7b435d539a155",
+        "36": "0a22d2363f1dab56f5ae9fe96888594e3c7fbc42e02c19ea6e807fdc9f2e925b",
+        "54": "77af2473386f22c819a6a1f9b7fb922dd612103138e01490bdd1f5d709cfa396",
+        "71": "ca2e05890af7049703f33dd8e4f5836d648962d839c1e0ea8983457be563baad",
+        "72": "eb03aaa92b2c29575a8d1c17393812bb2df742cec4d55a765a1e5378e542d633",
+        "90": "b61915eb89ea5af403e6c75b4f2e997ef4044759cb89dca494f4bcca9b53a483",
+        "107": "52e8507742b9a478cfe71f832554641158b91dca3053a7c6eda9913c7e205544",
+        "108": "52e8507742b9a478cfe71f832554641158b91dca3053a7c6eda9913c7e205544",
+        "126": "b61915eb89ea5af403e6c75b4f2e997ef4044759cb89dca494f4bcca9b53a483",
+        "143": "829082d987e9d8c6812ef17be2308a339486426fa6ab6a215635b63a6032b63f",
+        "144": "52e8507742b9a478cfe71f832554641158b91dca3053a7c6eda9913c7e205544",
+        "162": "9cdc29f0864f08a0053a968a10a85b496e5d8ef1a6cea0c544d4714d13d6c16a",
+        "179": "9cdc29f0864f08a0053a968a10a85b496e5d8ef1a6cea0c544d4714d13d6c16a",
+        "180": "55d40a7dba0bc6459447d270ff0a012f2b2e493731733fbbcac30440dfc9fa4b",
+        "198": "1566e11ecd769b00c042b7e9c5b87d14e97972c3b3cddb034a81da972a0ee97e",
+        "215": "71939d86980595f4fb76b59cfe2b533abe7a736602a54722016d70fe26c7ef01"
+      },
+      "archive": "sequential-actions-chromium.acstudio",
+      "media": "sequential-actions-chromium.webm",
+      "exportMode": {
+        "engine": "WebCodecs-Deterministic",
+        "mimeType": "video/webm;codecs=vp8",
+        "frameAccurate": true,
+        "totalFrames": 411
+      }
+    }
+  }
+}

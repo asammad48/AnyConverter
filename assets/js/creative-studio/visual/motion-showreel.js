@@ -3,7 +3,6 @@
 
   function createShowreel(locale) {
     const graph = root.StudioMotionGraph;
-    const puppet = root.StudioPuppet;
     const director = root.CreativeDirector;
     const layer = (id, name, start, duration, extra = {}) => ({
       id, tracks: graph.presetTracks(name, start, duration), ...extra
@@ -20,21 +19,21 @@
       en: [
         ['Five formats. One inbox.', 'Pico sorted five files. Only one delivery was left.'],
         ['Special delivery', 'The courier left one envelope without a name.'],
-        ['The seal is broken', 'Pico recognizes the handwriting.'],
+        ['The seal is broken', 'A keyhole. Check the hall.'],
         ['Keep the hall light on', 'The corridor was empty a moment ago.'],
         ['Someone is waiting', 'The light is still on. The door is open.']
       ],
       es: [
         ['Cinco formatos. Un buzón.', 'Pico ordenó cinco archivos. Solo quedaba un envío.'],
         ['Entrega especial', 'El mensajero dejó un sobre sin nombre.'],
-        ['El sello está roto', 'Pico reconoce la letra.'],
+        ['El sello está roto', 'Una cerradura. Mira en el pasillo.'],
         ['Deja la luz encendida', 'Hace un momento, el pasillo estaba vacío.'],
         ['Alguien espera', 'La luz sigue encendida. La puerta está abierta.']
       ],
       da: [
         ['Fem formater. Én indbakke.', 'Pico sorterede fem filer. Der var kun én levering tilbage.'],
         ['Særlig levering', 'Buddet efterlod en kuvert uden navn.'],
-        ['Seglet er brudt', 'Pico genkender håndskriften.'],
+        ['Seglet er brudt', 'Et nøglehul. Tjek gangen.'],
         ['Lad lyset brænde', 'Gangen var tom for et øjeblik siden.'],
         ['Nogen venter', 'Lyset er stadig tændt. Døren står åben.']
       ]
@@ -63,7 +62,7 @@
       ]),
       shot(1, bird, 120, 'dialogue', [
         layer('title', 'slide', 0, 18),
-        { id: 'puppet', tracks: puppet.actionTracks('blink', 31, 11) },
+        { id: 'puppet', actions: [{ name: 'blink', start: 31, duration: 12 }, { name: 'talk', start: 52, duration: 27 }] },
         layer('prop', 'path-follow', 18, 26, {
           path: [[.30, -.35], [.34, -.30], [.07, -.24], [0, 0]],
           tracks: [...graph.presetTracks('path-follow', 18, 26),
@@ -71,28 +70,32 @@
         })
       ], true),
       shot(2, bird, 120, 'dialogue', [
-        { id: 'puppet', tracks: puppet.actionTracks('shocked', 27, 41) },
+        { id: 'puppet', actions: [{ name: 'shocked', start: 27, duration: 41 }, { name: 'point', start: 72, duration: 48 }] },
         layer('prop', 'rotation', 24, 37, {
-          tracks: authored('prop', { rotation: [[0, 0, 'hold'], [35, 0], [43, -12, 'spring'], [61, 0]] }).tracks
+          tracks: authored('prop', {
+            rotation: [[0, 0, 'hold'], [35, 0], [43, -12, 'spring'], [61, 0]],
+            propOpen: [[0, 0, 'hold'], [44, 0], [52, 1]]
+          }).tracks
         }),
         authored('camera', { shake: [[0, 0], [43, 0], [45, .010], [55, 0]] }),
         layer('title', 'scale-pop', 1, 22)
       ], true),
-      shot(3, noir, 105, 'silhouette', [
+      shot(3, noir, 123, 'silhouette', [
         layer('subject', 'focus-zoom', 12, 92),
         layer('title', 'underline-draw', 35, 29)
       ]),
-      shot(4, noir, 120, 'silhouette', [
+      shot(4, noir, 102, 'silhouette', [
         layer('subject', 'orbit', 0, 29),
         authored('camera', { shake: [[0, .011], [12, 0]] })
       ])
     ];
+    shots[2].customData.typography.caption = { startFrame: 49 };
     shots[4].customData.motion.subjectVisual = 'doorway';
     const audioClips = [
-      ['inbox', 0, 4.5, 'saas'], ['delivery', 4.5, 8, 'comedy'], ['hall', 12.5, 7.5, 'suspense'], ['door-hit', 16, .48, 'door-hit']
+      ['inbox', 0, 4.5, 'saas'], ['delivery', 4.5, 8, 'comedy'], ['hall', 12.5, 7.5, 'suspense'], ['door-hit', 16.6, .48, 'door-hit']
     ].map(([clipId, start, seconds, theme]) => {
       const pcmData = director.synthesizeAudibleAudio(seconds, theme, 48000);
-      return { clipId, startSample: start * 48000, durationSamples: pcmData.length, volume: .78,
+      return { clipId, startSample: Math.round(start * 48000), durationSamples: pcmData.length, volume: .78,
         theme, pcmData };
     });
     return {

@@ -7,7 +7,7 @@
     x: [-.5, .5, 0], y: [-.5, .5, 0], rotation: [-360, 360, 0],
     scaleX: [.05, 2, 1], scaleY: [.05, 2, 1], opacity: [0, 1, 1],
     clip: [0, 1, 1], maskOffset: [-1, 1, 0], underline: [0, 1, 0],
-    number: [-1000000, 1000000, 0], squash: [-.4, .4, 0], headTilt: [-30, 30, 0],
+    propOpen: [0, 1, 0], number: [-1000000, 1000000, 0], squash: [-.4, .4, 0], headTilt: [-30, 30, 0],
     eyeDirection: [-1, 1, 0], shake: [0, .025, 0], orbit: [-1, 1, 0], path: [0, 1, 1]
   });
   const held = ['poseId', 'armPose'];
@@ -30,8 +30,32 @@
   const patterns = ['enter', 'settle', 'hold', 'emphasize', 'exit'];
   const defaultPath = [[-.14, .08], [-.16, -.16], [.13, -.10], [0, 0]];
 
+  const transforms = ['x', 'y', 'rotation', 'scaleX', 'scaleY', 'opacity', 'clip', 'maskOffset', 'orbit', 'path'];
+  const extras = {
+    title: ['color', 'underline'], caption: ['color', 'underline'], subject: ['color', 'number', 'underline'],
+    entry: ['color', 'number', 'underline'], prop: ['color', 'underline', 'propOpen'],
+    puppet: ['poseId', 'armPose', 'squash', 'headTilt', 'eyeDirection'], camera: ['shake'], group: []
+  };
+  const characterLayouts = ['dialogue', 'character-right', 'character-center', 'reaction'];
+
+  function supported(id, shot) {
+    const data = shot?.customData;
+    const layout = data?.layout?.preset;
+    const kind = id?.startsWith('entry-') ? 'entry' : id?.startsWith('group') ? 'group' : id;
+    if (!Object.hasOwn(extras, kind)) return [];
+    if (kind === 'entry' && !(layout === 'hero' && shot.artDirection === 'cinematic-saas')) return [];
+    if (['prop', 'puppet'].includes(kind) && !(characterLayouts.includes(layout) && data.motion?.puppet === 'parrot')) return [];
+    const additions = kind === 'subject' ? extras.subject.filter(property =>
+      property === 'underline' || layout === 'statistic' || (property === 'color' &&
+        ['hero', 'comparison', 'product', 'reveal', 'punchline'].includes(layout) &&
+        (layout !== 'hero' || data?.typography?.version === 1) &&
+        shot.artDirection === 'cinematic-saas')) : extras[kind];
+    return [...transforms, ...additions];
+  }
+
   function value(property, input) {
-    if (held.includes(property)) return typeof input === 'string' && token.test(input) ? input : undefined;
+    if (property === 'poseId') return typeof input === 'string' && Object.hasOwn(root.StudioPuppet?.poses || {}, input) ? input : undefined;
+    if (property === 'armPose') return ['rest', 'point'].includes(input) ? input : undefined;
     if (property === 'color') return typeof input === 'string' && colors.test(input) ? input : undefined;
     return limits[property] && Number.isFinite(input) ? clamp(input, ...limits[property].slice(0, 2)) : undefined;
   }
@@ -112,14 +136,32 @@
       const localFrame = clamp(Math.trunc(shotFrame) - delay, 0, last);
       const state = { ...defaults, id: layer.id, parentId: layer.parentId, localFrame };
       const animated = new Set();
+      let latestPoseKey = -1;
       for (const track of Array.isArray(layer.tracks) ? layer.tracks.slice(0, 128) : []) {
         if (!properties.includes(track?.property)) continue;
         const points = ordered(track.keys, track.property);
         if (!points.length || (animated.has(track.property) && localFrame < points[0].frame)) continue;
         state[track.property] = sampleOrdered(points, track.property, localFrame);
         animated.add(track.property);
+        if (track.property === 'poseId') {
+          latestPoseKey = points.findLast(key => key.frame <= localFrame)?.frame ?? -1;
+        }
+      }
+      const puppet = root.StudioPuppet;
+      const action = layer.id === 'puppet' ? puppet?.sampleAction(layer.actions, localFrame, sample) : null;
+      if (action) {
+        state.action = action.name;
+        // Add relative performance motion to independently authored base tracks.
+        for (const [property, sampled] of Object.entries(action.values)) {
+          if (property === 'opacity') state.opacity *= sampled;
+          else if (held.includes(property)) {
+            if (latestPoseKey < action.end) state[property] = sampled;
+          }
+          else state[property] = value(property, state[property] + sampled);
+        }
       }
       state.animated = animated;
+      state.clipIntent = layer.clipIntent === true;
       if (layer.path || state.path !== 1) {
         const points = Array.isArray(layer.path) && layer.path.length === 4 &&
           layer.path.every(p => Array.isArray(p) && p.length === 2 && p.every(Number.isFinite))
@@ -148,10 +190,11 @@
       visited.add(state.id);
       result.unshift(state);
     }
+    if (result[0]?.parentId && visited.has(result[0].parentId)) return states.has(id) ? [states.get(id)] : [];
     return result;
   }
 
-  const api = { limits, properties, held, value, ordered, sample, presets, patterns, presetTracks, defaultPath, evaluate, chain };
+  const api = { supported, characterLayouts, limits, properties, held, value, ordered, sample, presets, patterns, presetTracks, defaultPath, evaluate, chain };
   root.StudioMotionGraph = api;
   if (typeof module !== 'undefined') module.exports = api;
 })(typeof window === 'undefined' ? globalThis : window);

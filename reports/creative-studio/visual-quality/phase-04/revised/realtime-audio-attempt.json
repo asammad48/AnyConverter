@@ -1,0 +1,7 @@
+{
+  "firefox": {
+    "browser": "157.0",
+    "status": "FAIL",
+    "cause": "page.waitForEvent: Timeout 120000ms exceeded while waiting for event \"download\"\n=========================== logs ===========================\nwaiting for event \"download\"\n============================================================\n    at download (/workspace/AnyConverter-phase-04/reports/creative-studio/visual-quality/phase-04/scripts/repair-browser.js:42:42)\n    at character (/workspace/AnyConverter-phase-04/reports/creative-studio/visual-quality/phase-04/scripts/repair-browser.js:114:25)\n    at async main (/workspace/AnyConverter-phase-04/reports/creative-studio/visual-quality/phase-04/scripts/repair-browser.js:324:86)"
+  }
+}

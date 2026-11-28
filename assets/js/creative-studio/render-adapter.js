@@ -621,8 +621,8 @@ class NativeCanvasRenderAdapter extends RenderAdapter {
    */
   _mixProjectAudio(clips, left, right, startSample, count, sampleRate) {
     for (const clip of clips) {
-      const clipStart = clip.startSample || 0;
-      const clipDuration = clip.durationSamples || 0;
+      const clipStart = Number.isFinite(clip.startSample) ? Math.round(clip.startSample) : 0;
+      const clipDuration = Number.isFinite(clip.durationSamples) ? Math.max(0, Math.round(clip.durationSamples)) : 0;
       const clipEnd = clipStart + clipDuration;
 
       if (startSample + count <= clipStart || startSample >= clipEnd) {

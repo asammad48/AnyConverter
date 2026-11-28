@@ -14,3 +14,7 @@
 The Phase 03 suite attempted Firefox and WebKit. Both launches reported a missing executable. Physical mobile devices, Safari, and audible speaker playback were outside observed coverage. The locale and aspect-ratio proof uses actual Chromium previews in all nine combinations.
 
 [Motion and pose test](evidence/test_phase04_motion_and_pose.txt) · [Live controls](evidence/controls-regression.json) · [Phase 01–03 archive frame signatures](evidence/legacy-archive-regression.json) · [Layout suite](evidence/layout.txt) · [Typography regression](evidence/phase03-browser-regression.json) · [Schema and persistence](evidence/test_phase03_schema_and_persistence.txt) · [Legacy animation and render](evidence/test_phase05_animation_and_rendering.txt) · [Timeline, captions and audio](evidence/test_phase06_timeline_audio_captions.txt) · [Locale parity](evidence/test_multilingual_creative_studio_ui.txt) · [Sitewide parity](evidence/test_sitewide_parity_and_counts.txt)
+
+## Source-audit revision
+
+See [revised browser coverage](BROWSER_COMPATIBILITY.md), [revised unit and sitewide outputs](revised/), and [the final gate](FINAL_INDEPENDENT_PHASE_04_GATE.md). The Phase 01–03 legacy archive pixels matched exactly. The Phase 03 typography browser regression was rerun with the restored engines. [Fresh typography results](revised/phase03-regression/typography-regression.json)

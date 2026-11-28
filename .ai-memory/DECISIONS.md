@@ -2265,3 +2265,9 @@ Opted-in shots use a tighter portrait arrangement within the existing safe bound
 **Date** 2026-11-27
 
 Cinematic shots opt into frame-deterministic motion with versioned data in shot customData. The existing CreativeDirector entry drives the preview and WebCodecs renderer. Motion uses a shot-local key clock and absolute-frame seeded camera noise. Native puppet cels use a checksum-addressed atlas in the project archive. Preview reduction and diagnostics are editor state. Existing projects use their existing rendering path.
+
+## ADR-097 Creative Studio sequential actions and shared group space
+
+**Date** 2026-11-28
+
+Named puppet actions are saved as separate bounded scene clips. New overlaps are rejected and replacing a selected clip preserves the others. Group transforms use the shot safe-box pivot, with fixed spacing for grouped native hero rows. Boundary diagnostics measure transformed draw envelopes in the canonical Canvas compositor. The Phase 10 register includes native timeline markers as a mandatory integration.

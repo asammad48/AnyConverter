@@ -1,0 +1,158 @@
+{
+  "samples": [
+    {
+      "frame": 0,
+      "timeSeconds": 0.0,
+      "ssim": 0.992148,
+      "preview": "preview-0.png",
+      "decoded": "decoded-0.png"
+    },
+    {
+      "frame": 7,
+      "timeSeconds": 0.23333333333333334,
+      "ssim": 0.979482,
+      "preview": "preview-7.png",
+      "decoded": "decoded-7.png"
+    },
+    {
+      "frame": 15,
+      "timeSeconds": 0.5,
+      "ssim": 0.995854,
+      "preview": "preview-15.png",
+      "decoded": "decoded-15.png"
+    },
+    {
+      "frame": 30,
+      "timeSeconds": 1.0,
+      "ssim": 0.996404,
+      "preview": "preview-30.png",
+      "decoded": "decoded-30.png"
+    },
+    {
+      "frame": 45,
+      "timeSeconds": 1.5,
+      "ssim": 0.996481,
+      "preview": "preview-45.png",
+      "decoded": "decoded-45.png"
+    },
+    {
+      "frame": 90,
+      "timeSeconds": 3.0,
+      "ssim": 0.996825,
+      "preview": "preview-90.png",
+      "decoded": "decoded-90.png"
+    },
+    {
+      "frame": 134,
+      "timeSeconds": 4.466666666666667,
+      "ssim": 0.996883,
+      "preview": "preview-134.png",
+      "decoded": "decoded-134.png"
+    },
+    {
+      "frame": 135,
+      "timeSeconds": 4.5,
+      "ssim": 0.995006,
+      "preview": "preview-135.png",
+      "decoded": "decoded-135.png"
+    },
+    {
+      "frame": 173,
+      "timeSeconds": 5.766666666666667,
+      "ssim": 0.994067,
+      "preview": "preview-173.png",
+      "decoded": "decoded-173.png"
+    },
+    {
+      "frame": 258,
+      "timeSeconds": 8.6,
+      "ssim": 0.994438,
+      "preview": "preview-258.png",
+      "decoded": "decoded-258.png"
+    },
+    {
+      "frame": 300,
+      "timeSeconds": 10.0,
+      "ssim": 0.992724,
+      "preview": "preview-300.png",
+      "decoded": "decoded-300.png"
+    },
+    {
+      "frame": 374,
+      "timeSeconds": 12.466666666666667,
+      "ssim": 0.993706,
+      "preview": "preview-374.png",
+      "decoded": "decoded-374.png"
+    },
+    {
+      "frame": 375,
+      "timeSeconds": 12.5,
+      "ssim": 0.995964,
+      "preview": "preview-375.png",
+      "decoded": "decoded-375.png"
+    },
+    {
+      "frame": 497,
+      "timeSeconds": 16.566666666666666,
+      "ssim": 0.99605,
+      "preview": "preview-497.png",
+      "decoded": "decoded-497.png"
+    },
+    {
+      "frame": 498,
+      "timeSeconds": 16.6,
+      "ssim": 0.996733,
+      "preview": "preview-498.png",
+      "decoded": "decoded-498.png"
+    },
+    {
+      "frame": 599,
+      "timeSeconds": 19.966666666666665,
+      "ssim": 0.996527,
+      "preview": "preview-599.png",
+      "decoded": "decoded-599.png"
+    }
+  ],
+  "colorConversion": "BT.709 full-range YUV to RGB24",
+  "repeatAll600DecodedFramesIdentical": true,
+  "reopenedEditChangedDecodedFrames": [
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29,
+    30,
+    31,
+    32,
+    33,
+    34,
+    35,
+    36,
+    37,
+    38,
+    39,
+    40,
+    41,
+    42,
+    43,
+    44,
+    45,
+    46,
+    47,
+    48,
+    49,
+    50,
+    51,
+    52,
+    53,
+    54,
+    55,
+    56,
+    57,
+    58,
+    59
+  ]
+}

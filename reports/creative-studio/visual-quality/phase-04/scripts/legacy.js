@@ -4,7 +4,7 @@ const path = require('node:path');
 const { createHash } = require('node:crypto');
 const { chromium } = require('playwright-core');
 
-const output = path.resolve(__dirname, '../evidence');
+const output = process.env.PHASE04_EVIDENCE || path.resolve(__dirname, '../evidence');
 const parent = path.resolve(__dirname, '../..');
 const fixtures = {
   'phase-01': 'evidence/reordered_five_shot_project.acstudio',

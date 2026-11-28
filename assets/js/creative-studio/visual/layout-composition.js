@@ -104,17 +104,23 @@
     ctx.restore();
   }
 
-  function drawMotionLayer(ctx, states, id, box, draw, cameraBox = null, groupBox = box) {
+  function drawMotionLayer(ctx, states, id, box, draw, cameraBox = null, clipBox = box, inkBox = box) {
     const chain = root.StudioMotionGraph?.chain(states, id) || [];
     if (cameraBox && states.has('camera') && !chain.some(state => state.id === 'camera')) chain.unshift(states.get('camera'));
-    if (!chain.length) return draw();
+    const scope = states.scope;
+    const transforms = chain.filter(state => !scope.active.has(state.id));
+    if (!transforms.length) return draw(states.get(id));
     ctx.save();
     try {
       ctx.beginPath();
-      ctx.rect(box.x, box.y, box.width, box.height);
-      ctx.clip();
-      for (const state of chain) {
-        const bounds = state.id === 'camera' && cameraBox ? cameraBox : state.id === id ? box : groupBox;
+      // Establish the viewport before any child motion. Nested content inherits the outer clip.
+      if (scope.active.size === 0) {
+        ctx.rect(clipBox.x, clipBox.y, clipBox.width, clipBox.height);
+        ctx.clip();
+      }
+      for (const state of transforms) {
+        scope.active.add(state.id);
+        const bounds = state.id === 'camera' && cameraBox ? cameraBox : state.id === id ? box : scope.safe;
         const cx = bounds.x + bounds.width / 2;
         const cy = bounds.y + bounds.height / 2;
         ctx.globalAlpha *= state.opacity;
@@ -129,17 +135,34 @@
         }
       }
       const state = states.get(id);
-      draw(state);
+      const matrix = ctx.getTransform();
+      const rig = id === 'puppet' ? root.StudioPuppet.geometry(box, state) : null;
+      const points = rig?.points || [[inkBox.x, inkBox.y], [inkBox.x + inkBox.width, inkBox.y],
+        [inkBox.x, inkBox.y + inkBox.height], [inkBox.x + inkBox.width, inkBox.y + inkBox.height]];
+      const polygon = points.map(([x, y]) => [matrix.a * x + matrix.c * y + matrix.e, matrix.b * x + matrix.d * y + matrix.f]);
+      const limit = scope.clips.at(-1) || clipBox;
+      const outside = polygon.some(([x, y]) =>
+        x < limit.x - 1 || y < limit.y - 1 || x > limit.x + limit.width + 1 || y > limit.y + limit.height + 1);
+      const reveal = chain.some(item => item.clip < 1);
+      const intentional = reveal || chain.some(item => item.clipIntent) || (id === 'puppet' && state?.action === 'exit');
+      const anchor = rig?.anchor ? [matrix.a * rig.anchor[0] + matrix.c * rig.anchor[1] + matrix.e,
+        matrix.b * rig.anchor[0] + matrix.d * rig.anchor[1] + matrix.f] : undefined;
+      scope.geometry.set(id, { polygon, anchor, pivot: [matrix.a * (box.x + box.width / 2) + matrix.c * (box.y + box.height / 2) + matrix.e,
+        matrix.b * (box.x + box.width / 2) + matrix.d * (box.y + box.height / 2) + matrix.f],
+        clipping: outside && !intentional ? 'overflow' : reveal || outside ? 'intentional' : 'inside' });
+      scope.clips.push(limit);
+      try { draw(state); } finally { scope.clips.pop(); }
       if (state?.underline > 0) {
         ctx.fillStyle = state.color || '#eeb875';
         ctx.fillRect(box.x + box.width * .07, box.y + box.height * .90, box.width * .86 * state.underline, Math.max(2, box.height * .025));
       }
     } finally {
+      for (const state of transforms) scope.active.delete(state.id);
       ctx.restore();
     }
   }
 
-  function drawSubject(ctx, shot, layout, box, palette, phase, locale, states, puppet) {
+  function drawSubject(ctx, shot, layout, box, palette, phase, locale, states, puppet, subjectMotion) {
     const { x, y, width: w, height: h } = box;
     if (w < 4 || h < 4) return;
     const preset = layout.preset;
@@ -152,10 +175,14 @@
     const progress = hold * hold * (3 - 2 * hold);
     ctx.save();
     ctx.beginPath();
-    ctx.rect(x, y, w, h);
-    ctx.clip();
+    if (!states.has('subject')) {
+      ctx.rect(x, y, w, h);
+      ctx.clip();
+    }
     const elevation = Math.min(h * .08, tokens.propElevation * Math.min(w, h) / 240);
-    const offset = (1 - settle) * elevation * (box.depth + 1) / 3;
+    // Group members use stable row spacing while the authored transform plays.
+    const groupedEntries = preset === 'hero' && [...states].some(([id, state]) => id.startsWith('entry-') && state.parentId);
+    const offset = (groupedEntries ? 0 : 1 - settle) * elevation * (box.depth + 1) / 3;
     ctx.translate(0, offset);
     if (isCharacter && puppet) {
       const backdrop = ctx.createLinearGradient(x, y, x + w, y + h);
@@ -170,26 +197,34 @@
         const size = Math.min(prop.width * .53, prop.height * .35);
         const px = prop.x + prop.width * .48 - size * .5;
         const py = prop.y + prop.height * .70 - size * .5;
-        const open = states.get('puppet')?.poseId === 'shock';
+        const actor = states.get('puppet');
+        const isOpenPose = ['shock', 'point', 'exit'].includes(actor?.poseId) || actor?.action === 'exit';
+        const open = state?.animated.has('propOpen') ? state.propOpen : Number(isOpenPose);
         if (open) {
           ctx.fillStyle = '#dd9b6e';
           ctx.beginPath();
           ctx.moveTo(px, py + size * .18);
-          ctx.lineTo(px + size * .5, py - size * .35);
+          ctx.lineTo(px + size * .5, py + size * (.18 - .53 * open));
           ctx.lineTo(px + size, py + size * .18);
           ctx.fill();
-          panel(ctx, px + size * .15, py - size * .14, size * .70, size * .71, size * .08, '#fff1cf');
+          panel(ctx, px + size * .15, py + size * (.24 - .38 * open), size * .70, size * .71, size * .08, '#fff1cf');
+          // A keyhole on the enclosed note foreshadows the doorway.
+          ctx.fillStyle = '#705463';
+          ctx.beginPath();
+          ctx.arc(px + size * .50, py + size * .04, size * .075, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.fillRect(px + size * .465, py + size * .04, size * .07, size * .11);
         }
-        panel(ctx, px, py + (open ? size * .26 : 0), size, size * (open ? .74 : 1), size * .13, state?.color || '#f1c383');
+        panel(ctx, px, py + size * .26 * open, size, size * (1 - .26 * open), size * .13, state?.color || '#f1c383');
         ctx.strokeStyle = '#5b4051';
         ctx.lineWidth = Math.max(1, size * .045);
         ctx.beginPath();
-        const fold = open ? .37 : .15;
+        const fold = .15 + .22 * open;
         ctx.moveTo(px, py + size * fold);
         ctx.lineTo(px + size * .5, py + size * (fold + .34));
         ctx.lineTo(px + size, py + size * fold);
         ctx.stroke();
-      }, box, box);
+      }, box, box, { x: prop.x + prop.width * .21, y: prop.y + prop.height * .34, width: prop.width * .54, height: prop.height * .55 });
     } else if (isCharacter) {
       const backdrop = ctx.createLinearGradient(x, y, x + w, y + h);
       backdrop.addColorStop(0, '#222138');
@@ -352,8 +387,9 @@
       const gx = x + pad * 2, gy = y + pad * 2;
       const gw = w - pad * 4, gh = Math.max(1, h - pad * 4 - offset);
       if (preset === 'statistic') {
-        const figure = shot.headline.match(/\d+(?:[.,]\d+)?(?:\s?%|×|x)?/u)?.[0];
-        if (typography?.version === 1 && typography.title?.effect === 'counter' && /^[1-9]\d?$/u.test(shot.headline) && Number(shot.headline) <= 8) {
+        const numeric = subjectMotion?.animated.has('number');
+        const figure = numeric ? String(Math.round(subjectMotion.number)) : shot.headline.match(/\d+(?:[.,]\d+)?(?:\s?%|×|x)?/u)?.[0];
+        if (!numeric && typography?.version === 1 && typography.title?.effect === 'counter' && /^[1-9]\d?$/u.test(shot.headline) && Number(shot.headline) <= 8) {
           const sourceCount = Number(shot.headline);
           const fileWidth = Math.min(gw / (sourceCount * 1.5), gh * .48);
           const gap = fileWidth * .40;
@@ -397,7 +433,8 @@
               palette.foreground, row / 67, 'center');
             panel(ctx, gx + gw * .41, y + row * .29, gw * (.27 + (index % 3) * .12) * (.86 + progress * .14),
               row * .38, row * .18, state?.color || (index % 2 ? palette.muted : palette.accent));
-          }, null, box);
+          }, null, states.get('entry-' + label.toLowerCase())?.parentId ? box : entry,
+          { x: left, y: y + row * .09, width: gw * .84, height: row * .80 });
         });
       } else if (preset === 'hero') {
         const unit = Math.min(gw / 450, gh / 250);
@@ -490,6 +527,8 @@
     const graph = shot.customData?.motion;
     const states = root.StudioMotionGraph?.evaluate(graph, frame, shot.durationFrames, options) || new Map();
     resolved.motion = states;
+    resolved.motionGeometry = new Map();
+    states.scope = { safe: resolved.safe, active: new Set(), clips: [], geometry: resolved.motionGeometry };
     const phase = options.reduced && graph?.version === 1 ? 1 : Math.max(0, Math.min(1, frame / Math.max(1, shot.durationFrames - 1)));
     ctx.save();
     ctx.fillStyle = palette.background;
@@ -505,12 +544,12 @@
       if (role === 'subject') {
         drawMotionLayer(ctx, states, role, box, state => drawSubject(ctx, shot, layout, box,
           state?.color ? { ...palette, accent: state.color } : palette, phase, String(locale || 'en').slice(0, 2),
-          states, graph?.puppet === 'parrot'), graph?.puppet === 'parrot' ? null : box);
+          states, graph?.puppet === 'parrot', state), box);
         continue;
       }
-      drawMotionLayer(ctx, states, role, box, () => {
+      drawMotionLayer(ctx, states, role, box, state => {
         const caption = role === 'caption';
-        const color = caption && !typography ? palette.muted : palette.foreground;
+        const color = state?.color || (caption && !typography ? palette.muted : palette.foreground);
         const pattern = caption && captionNode?.backdrop === 'pattern'
           ? (layout.palette === 'light' ? ['#fff9ef', '#dacdc3', '#e3d6c2'] : ['#20283b', '#414b62', '#343d56'])
           : null;

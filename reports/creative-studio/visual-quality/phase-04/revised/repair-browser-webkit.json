@@ -1,0 +1,42 @@
+{
+  "webkit": {
+    "browser": "27.2",
+    "status": "PASS",
+    "character": {
+      "actions": [
+        "idle",
+        "talk",
+        "recoil",
+        "shocked",
+        "point",
+        "exit"
+      ],
+      "samples": {
+        "0": "e1242b840dabcaf1f4aff2da478d7fe9bc2aff23f3703a91fbf1554f80040aa8",
+        "18": "16bb8f66ba51b67002bb7943be34585534f56a34084e14f59815b13b8885c978",
+        "35": "0f6b3bb3ccb34564c9a4303b73a49e30746a269e0e2ff0c410cf5cf8aee54048",
+        "36": "b149a0aa09b2402fca95b4deb76c200774e53e2897e569d178ceeaa3af1a1741",
+        "54": "04c929e1fa677b70f0626d757a6ab7a68dde67e5261712a5079b28751551ddab",
+        "71": "c463e766383436e1e4ae224af46fa2916b7e9b76464e6c217e98a27d651c6601",
+        "72": "15b3c2518f65d930ce87957926c3af7af5570e3c423bd6f827474b89b61a883d",
+        "90": "f3730c882fb3b26a4103dd732d8aa34652d6f14361f6ad8a178aa6792df62976",
+        "107": "5ae9d79025a1beca7a3f9a75968ccd3a5edf47fbd6256adb5ae240ffbcb714cd",
+        "108": "5ae9d79025a1beca7a3f9a75968ccd3a5edf47fbd6256adb5ae240ffbcb714cd",
+        "126": "f3730c882fb3b26a4103dd732d8aa34652d6f14361f6ad8a178aa6792df62976",
+        "143": "8af0a27e665d3df6da351c9a995e0f2ff6a96f6c6b830d5430421233a4f905a9",
+        "144": "5ae9d79025a1beca7a3f9a75968ccd3a5edf47fbd6256adb5ae240ffbcb714cd",
+        "162": "164ea939616a5c7f405bd93124b3908420b68103026f7baed2b24e00a535ef87",
+        "179": "164ea939616a5c7f405bd93124b3908420b68103026f7baed2b24e00a535ef87",
+        "180": "aa828cad24117716684c24a163e1c0b2344625cb607265b9690c3a5417c87910",
+        "198": "6e3e489805136aecb7355eb048fbd109b74619cb2d67dc9e21bc447c9178e062",
+        "215": "bd54ac7c2dcaa1d44e3a3ea9f0590a3080f9130ffd9a81d0f287af602c0d0b24"
+      },
+      "archive": "sequential-actions-webkit.acstudio",
+      "media": "sequential-actions-webkit.webm",
+      "exportMode": {
+        "engine": "WebCodecs-Deterministic",
+        "mimeType": "video/webm;codecs=vp8"
+      }
+    }
+  }
+}

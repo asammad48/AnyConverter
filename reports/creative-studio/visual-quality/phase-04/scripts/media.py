@@ -5,13 +5,14 @@ from hashlib import sha256
 from io import BytesIO
 from zipfile import ZipFile
 import json
+import os
 import re
 import subprocess
 
 from PIL import Image, ImageDraw
 
-OUT = Path(__file__).resolve().parent.parent / 'evidence'
-SAMPLES = [0, 7, 15, 30, 45, 90, 134, 135, 173, 258, 300, 374, 375, 479, 480, 599]
+OUT = Path(os.environ['PHASE04_EVIDENCE']) if 'PHASE04_EVIDENCE' in os.environ else Path(__file__).resolve().parent.parent / 'evidence'
+SAMPLES = [0, 7, 15, 30, 45, 90, 134, 135, 173, 258, 300, 374, 375, 497, 498, 599]
 FILMS = ['showreel', 'showreel-repeat-reduced-preview', 'reopened-edited']
 
 
@@ -108,7 +109,7 @@ def main():
            ('preview-45.png', 'Redesigned hook | frame 45')], 'BEFORE_AFTER.png', 3)
     sheet([(f'decoded-{i}.png', f'{i / 30:04.1f}s | {label}') for i, label in [
         (45, 'Five formats, one inbox'), (173, 'The envelope enters'), (300, 'Pico recognizes the handwriting'),
-        (375, 'The hall light'), (479, 'One frame before the cut'), (480, 'Doorway jump cut'),
+        (375, 'The hall light'), (497, 'One frame before the cut'), (498, 'Doorway jump cut'),
         (599, 'The final hold')]], 'SHOT_STORYBOARD.png', 3)
     sheet([(f'pose-{i}.png', f'Frame {i}') for i in range(169, 181)], 'BLINK_POSE_STRIP.png', 4, (256, 144))
     sheet([(f'pose-{i}.png', f'Frame {i}') for i in range(292, 310)], 'REACTION_POSE_STRIP.png', 6, (256, 144))

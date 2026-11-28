@@ -1,0 +1,42 @@
+{
+  "firefox": {
+    "browser": "157.0",
+    "status": "PASS",
+    "character": {
+      "actions": [
+        "idle",
+        "talk",
+        "recoil",
+        "shocked",
+        "point",
+        "exit"
+      ],
+      "samples": {
+        "0": "d6b5b64d1e906c7a025900bc1da059eb940e45d20697e90b00b875f5909caec2",
+        "18": "9527d1e17b93a13313abe8c29fb8ba6d9bed71ce301d8543d28fcd61f87714b8",
+        "35": "0ac63e8c77d631d162dbcb8b0f765bf7c5c97e3e13c6f30160fd9ad9ad5bde17",
+        "36": "6246ffd6654ac4d78f3b217b8bcc3f2832a149a84b3b15fb5b6c72372743691b",
+        "54": "f493313f4a5c12c7241fba54f0dd621c887b3b21f68be9559de31db7e45d18de",
+        "71": "88d5859624cff20e5c7f9bd9e249cc020681d60a2d60907c921e4b836549d215",
+        "72": "56c602c1ca5f5e622778a6ca6aa85ba68e4f3bd6dd92f09ee409d3d4399309d7",
+        "90": "e6b261329300a243456646c9b5698c2ce218729d45ea9ad3a51c006e6a299550",
+        "107": "bda94fed7929edc0f7701f7c82dbea4f3e73486a0542b17f1bebe4266a393506",
+        "108": "bda94fed7929edc0f7701f7c82dbea4f3e73486a0542b17f1bebe4266a393506",
+        "126": "e6b261329300a243456646c9b5698c2ce218729d45ea9ad3a51c006e6a299550",
+        "143": "b7692c5200700916b0df104ec4cb1e40e4a6ce20e789ff22fae2e69c95426272",
+        "144": "bda94fed7929edc0f7701f7c82dbea4f3e73486a0542b17f1bebe4266a393506",
+        "162": "a5772a53fd07122379188674cf8f3e3c88e37a5c4ad84c87ade95e86ddf4d397",
+        "179": "a5772a53fd07122379188674cf8f3e3c88e37a5c4ad84c87ade95e86ddf4d397",
+        "180": "b4b752687a149864806e36c1ba9b46ab5f8d96e67f380ef296c6094f05576146",
+        "198": "b0fcbbaf81f8062709c471bf5f68b33c42b9d77641fa1c04fc49f3c5461fe2d0",
+        "215": "605f602b705cf5a9ec4960075c220350f5da7f3d3421b50cb56c26d7c6eba983"
+      },
+      "archive": "sequential-actions-firefox.acstudio",
+      "media": "sequential-actions-firefox.webm",
+      "exportMode": {
+        "engine": "WebCodecs-Deterministic",
+        "mimeType": "video/webm;codecs=vp8"
+      }
+    }
+  }
+}

@@ -13,6 +13,9 @@
     crop: [256 * i, 0, id === 'shock' || id === 'excited' || id === 'point' ? 256 : 224, 240],
     pivot: [108, 217],
     neck: [118, 119],
+    bodyBounds: [32, 100, i === 3 || i === 4 || i === 6 ? 224 : 162, 220],
+    headBounds: [[80,30,195,133], [80,30,195,133], [80,30,197,138], [80,6,197,131],
+      [80,13,197,138], [65,30,180,133], [80,30,195,133], [80,30,195,133]][i],
     eye: [id === 'recoil' ? 122 : 137, id === 'shock' ? 78 : 85],
     shoulder: [101, 142]
   }]));
@@ -39,6 +42,30 @@
     return tracks;
   }
 
+  // Action intervals include their first frame and exclude their end.
+  function editActions(sequence, clip, index = -1) {
+    if (!clip || !Object.hasOwn(actions, clip.name) || !Number.isInteger(clip.start) || clip.start < 0 ||
+        !Number.isInteger(clip.duration) || clip.duration < 1 || clip.duration > 3600) return null;
+    const next = (sequence || []).filter((_, i) => i !== index);
+    if (next.length >= 64 || next.some(other => clip.start < other.start + other.duration &&
+      other.start < clip.start + clip.duration)) return null;
+    return [...next, clip].sort((a, b) => a.start - b.start);
+  }
+
+  function sampleAction(sequence, frame, sample) {
+    if (!Array.isArray(sequence)) return null;
+    let active;
+    for (const clip of sequence.slice(0, 64)) {
+      if (!clip || !Object.hasOwn(actions, clip.name) || !Number.isInteger(clip.start) || clip.start < 0 ||
+          !Number.isInteger(clip.duration) || clip.duration < 1 || clip.duration > 3600 || clip.start > frame) continue;
+      if (!active || clip.start >= active.start) active = clip;
+    }
+    if (!active) return null;
+    const tracks = actionTracks(active.name, active.start, Math.max(0, active.duration - 1));
+    return { name: active.name, end: active.start + active.duration, values: Object.fromEntries(tracks.map(track =>
+      [track.property, sample(track.keys, track.property, Math.min(frame, active.start + active.duration - 1))])) };
+  }
+
   let atlas;
   let loading;
   function prepare(bytes) {
@@ -50,6 +77,27 @@
       loading.catch(() => { loading = null; });
     }
     return loading;
+  }
+
+  function geometry(box, state) {
+    const pose = Object.hasOwn(poses, state?.poseId) ? poses[state.poseId] : poses.calm;
+    const x = box.x + box.width * .47;
+    const y = box.y + box.height * .86;
+    const scale = Math.min(box.width / 310, box.height / 280);
+    const squash = state?.squash || 0;
+    const sx = (state?.poseId === 'exit' ? -1 : 1) * scale * (1 + squash);
+    const sy = scale * (1 - squash);
+    const tilt = (state?.headTilt || 0) * Math.PI / 180;
+    const rect = ([x0, y0, x1, y1]) => [[x0, y0], [x1, y0], [x1, y1], [x0, y1]];
+    const head = rect(pose.headBounds).map(([px, py]) => {
+      const dx = px - pose.neck[0];
+      const dy = py - pose.neck[1];
+      return [pose.neck[0] + dx * Math.cos(tilt) - dy * Math.sin(tilt),
+        pose.neck[1] + dx * Math.sin(tilt) + dy * Math.cos(tilt)];
+    });
+    const wing = state?.armPose === 'point' ? rect([96, 120, 195, 147]) : [];
+    return { anchor: [x, y], points: [...rect(pose.bodyBounds), ...head, ...wing].map(([px, py]) =>
+      [x + (px - pose.pivot[0]) * sx, y + (py - pose.pivot[1]) * sy]) };
   }
 
   function draw(ctx, box, state, fallback) {
@@ -94,7 +142,7 @@
     return new Uint8Array(await response.arrayBuffer());
   }
 
-  const api = { asset, poses, actions, actionTracks, prepare, archiveBytes, draw };
+  const api = { asset, poses, actions, actionTracks, editActions, sampleAction, geometry, prepare, archiveBytes, draw };
   root.StudioPuppet = api;
   if (typeof module !== 'undefined') module.exports = api;
 })(typeof window === 'undefined' ? globalThis : window);

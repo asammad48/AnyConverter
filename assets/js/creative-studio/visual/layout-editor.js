@@ -55,6 +55,7 @@
         if (!shot) return;
         if (value) shot.customData.layout = { version: 1, preset: value, blocks: {} };
         else delete shot.customData.layout;
+        this.app.motionEditor?.sync();
         this.app.render();
       });
       select('format', ['Canvas size', 'Tamaño del lienzo', 'Lærredsstørrelse'],
